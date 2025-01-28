@@ -46,78 +46,26 @@ void miqt_exec_callback_QDesktopWidget_resized(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_workAreaResized(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_screenCountChanged(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_primaryScreenChanged(intptr_t);
-QMetaObject* miqt_exec_callback_QDesktopWidget_metaObject(const QDesktopWidget*, intptr_t);
-void* miqt_exec_callback_QDesktopWidget_metacast(QDesktopWidget*, intptr_t, const char*);
-int miqt_exec_callback_QDesktopWidget_metacall(QDesktopWidget*, intptr_t, int, int, void**);
-void miqt_exec_callback_QDesktopWidget_resizeEvent(QDesktopWidget*, intptr_t, QResizeEvent*);
-int miqt_exec_callback_QDesktopWidget_devType(const QDesktopWidget*, intptr_t);
-void miqt_exec_callback_QDesktopWidget_setVisible(QDesktopWidget*, intptr_t, bool);
-QSize* miqt_exec_callback_QDesktopWidget_sizeHint(const QDesktopWidget*, intptr_t);
-QSize* miqt_exec_callback_QDesktopWidget_minimumSizeHint(const QDesktopWidget*, intptr_t);
-int miqt_exec_callback_QDesktopWidget_heightForWidth(const QDesktopWidget*, intptr_t, int);
-bool miqt_exec_callback_QDesktopWidget_hasHeightForWidth(const QDesktopWidget*, intptr_t);
-QPaintEngine* miqt_exec_callback_QDesktopWidget_paintEngine(const QDesktopWidget*, intptr_t);
-bool miqt_exec_callback_QDesktopWidget_event(QDesktopWidget*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_mousePressEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_mouseReleaseEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_mouseDoubleClickEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_mouseMoveEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_wheelEvent(QDesktopWidget*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QDesktopWidget_keyPressEvent(QDesktopWidget*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDesktopWidget_keyReleaseEvent(QDesktopWidget*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDesktopWidget_focusInEvent(QDesktopWidget*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDesktopWidget_focusOutEvent(QDesktopWidget*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDesktopWidget_enterEvent(QDesktopWidget*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_leaveEvent(QDesktopWidget*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_paintEvent(QDesktopWidget*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QDesktopWidget_moveEvent(QDesktopWidget*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QDesktopWidget_closeEvent(QDesktopWidget*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QDesktopWidget_contextMenuEvent(QDesktopWidget*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QDesktopWidget_tabletEvent(QDesktopWidget*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QDesktopWidget_actionEvent(QDesktopWidget*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QDesktopWidget_dragEnterEvent(QDesktopWidget*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QDesktopWidget_dragMoveEvent(QDesktopWidget*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QDesktopWidget_dragLeaveEvent(QDesktopWidget*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QDesktopWidget_dropEvent(QDesktopWidget*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QDesktopWidget_showEvent(QDesktopWidget*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QDesktopWidget_hideEvent(QDesktopWidget*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QDesktopWidget_nativeEvent(QDesktopWidget*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QDesktopWidget_changeEvent(QDesktopWidget*, intptr_t, QEvent*);
-int miqt_exec_callback_QDesktopWidget_metric(const QDesktopWidget*, intptr_t, int);
-void miqt_exec_callback_QDesktopWidget_initPainter(const QDesktopWidget*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QDesktopWidget_redirected(const QDesktopWidget*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QDesktopWidget_sharedPainter(const QDesktopWidget*, intptr_t);
-void miqt_exec_callback_QDesktopWidget_inputMethodEvent(QDesktopWidget*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QDesktopWidget_inputMethodQuery(const QDesktopWidget*, intptr_t, int);
-bool miqt_exec_callback_QDesktopWidget_focusNextPrevChild(QDesktopWidget*, intptr_t, bool);
-bool miqt_exec_callback_QDesktopWidget_eventFilter(QDesktopWidget*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDesktopWidget_timerEvent(QDesktopWidget*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDesktopWidget_childEvent(QDesktopWidget*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDesktopWidget_customEvent(QDesktopWidget*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_connectNotify(QDesktopWidget*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDesktopWidget_disconnectNotify(QDesktopWidget*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQDesktopWidget final : public QDesktopWidget {
+	struct QDesktopWidget_VTable* vtbl;
 public:
 
-	MiqtVirtualQDesktopWidget(): QDesktopWidget() {};
+	MiqtVirtualQDesktopWidget(struct QDesktopWidget_VTable* vtbl): QDesktopWidget(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQDesktopWidget() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQDesktopWidget() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QDesktopWidget::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QDesktopWidget_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -129,18 +77,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QDesktopWidget::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QDesktopWidget_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -152,21 +97,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QDesktopWidget::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QDesktopWidget_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -178,21 +120,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__resizeEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void resizeEvent(QResizeEvent* e) override {
-		if (handle__resizeEvent == 0) {
+		if (vtbl->resizeEvent == 0) {
 			QDesktopWidget::resizeEvent(e);
 			return;
 		}
-		
+
 		QResizeEvent* sigval1 = e;
 
-		miqt_exec_callback_QDesktopWidget_resizeEvent(this, handle__resizeEvent, sigval1);
+		vtbl->resizeEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -202,17 +140,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__devType = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int devType() const override {
-		if (handle__devType == 0) {
+		if (vtbl->devType == 0) {
 			return QDesktopWidget::devType();
 		}
-		
 
-		int callback_return_value = miqt_exec_callback_QDesktopWidget_devType(this, handle__devType);
+
+		int callback_return_value = vtbl->devType(vtbl, this);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -224,21 +159,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setVisible = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setVisible(bool visible) override {
-		if (handle__setVisible == 0) {
+		if (vtbl->setVisible == 0) {
 			QDesktopWidget::setVisible(visible);
 			return;
 		}
-		
+
 		bool sigval1 = visible;
 
-		miqt_exec_callback_QDesktopWidget_setVisible(this, handle__setVisible, sigval1);
+		vtbl->setVisible(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -248,17 +179,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__sizeHint = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSize sizeHint() const override {
-		if (handle__sizeHint == 0) {
+		if (vtbl->sizeHint == 0) {
 			return QDesktopWidget::sizeHint();
 		}
-		
 
-		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_sizeHint(this, handle__sizeHint);
+
+		QSize* callback_return_value = vtbl->sizeHint(vtbl, this);
 
 		return *callback_return_value;
 	}
@@ -270,17 +198,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__minimumSizeHint = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSize minimumSizeHint() const override {
-		if (handle__minimumSizeHint == 0) {
+		if (vtbl->minimumSizeHint == 0) {
 			return QDesktopWidget::minimumSizeHint();
 		}
-		
 
-		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_minimumSizeHint(this, handle__minimumSizeHint);
+
+		QSize* callback_return_value = vtbl->minimumSizeHint(vtbl, this);
 
 		return *callback_return_value;
 	}
@@ -292,18 +217,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__heightForWidth = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int heightForWidth(int param1) const override {
-		if (handle__heightForWidth == 0) {
+		if (vtbl->heightForWidth == 0) {
 			return QDesktopWidget::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QDesktopWidget_heightForWidth(this, handle__heightForWidth, sigval1);
+		int callback_return_value = vtbl->heightForWidth(vtbl, this, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -315,17 +237,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hasHeightForWidth = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool hasHeightForWidth() const override {
-		if (handle__hasHeightForWidth == 0) {
+		if (vtbl->hasHeightForWidth == 0) {
 			return QDesktopWidget::hasHeightForWidth();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QDesktopWidget_hasHeightForWidth(this, handle__hasHeightForWidth);
+
+		bool callback_return_value = vtbl->hasHeightForWidth(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -337,17 +256,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__paintEngine = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QPaintEngine* paintEngine() const override {
-		if (handle__paintEngine == 0) {
+		if (vtbl->paintEngine == 0) {
 			return QDesktopWidget::paintEngine();
 		}
-		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QDesktopWidget_paintEngine(this, handle__paintEngine);
+
+		QPaintEngine* callback_return_value = vtbl->paintEngine(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -359,18 +275,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QDesktopWidget::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QDesktopWidget_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -382,21 +295,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mousePressEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mousePressEvent(QMouseEvent* event) override {
-		if (handle__mousePressEvent == 0) {
+		if (vtbl->mousePressEvent == 0) {
 			QDesktopWidget::mousePressEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_mousePressEvent(this, handle__mousePressEvent, sigval1);
+		vtbl->mousePressEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -406,21 +315,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseReleaseEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseReleaseEvent(QMouseEvent* event) override {
-		if (handle__mouseReleaseEvent == 0) {
+		if (vtbl->mouseReleaseEvent == 0) {
 			QDesktopWidget::mouseReleaseEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
+		vtbl->mouseReleaseEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -430,21 +335,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseDoubleClickEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
-		if (handle__mouseDoubleClickEvent == 0) {
+		if (vtbl->mouseDoubleClickEvent == 0) {
 			QDesktopWidget::mouseDoubleClickEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
+		vtbl->mouseDoubleClickEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -454,21 +355,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseMoveEvent(QMouseEvent* event) override {
-		if (handle__mouseMoveEvent == 0) {
+		if (vtbl->mouseMoveEvent == 0) {
 			QDesktopWidget::mouseMoveEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
+		vtbl->mouseMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -478,21 +375,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__wheelEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void wheelEvent(QWheelEvent* event) override {
-		if (handle__wheelEvent == 0) {
+		if (vtbl->wheelEvent == 0) {
 			QDesktopWidget::wheelEvent(event);
 			return;
 		}
-		
+
 		QWheelEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_wheelEvent(this, handle__wheelEvent, sigval1);
+		vtbl->wheelEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -502,21 +395,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__keyPressEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void keyPressEvent(QKeyEvent* event) override {
-		if (handle__keyPressEvent == 0) {
+		if (vtbl->keyPressEvent == 0) {
 			QDesktopWidget::keyPressEvent(event);
 			return;
 		}
-		
+
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_keyPressEvent(this, handle__keyPressEvent, sigval1);
+		vtbl->keyPressEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -526,21 +415,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__keyReleaseEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void keyReleaseEvent(QKeyEvent* event) override {
-		if (handle__keyReleaseEvent == 0) {
+		if (vtbl->keyReleaseEvent == 0) {
 			QDesktopWidget::keyReleaseEvent(event);
 			return;
 		}
-		
+
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
+		vtbl->keyReleaseEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -550,21 +435,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__focusInEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void focusInEvent(QFocusEvent* event) override {
-		if (handle__focusInEvent == 0) {
+		if (vtbl->focusInEvent == 0) {
 			QDesktopWidget::focusInEvent(event);
 			return;
 		}
-		
+
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_focusInEvent(this, handle__focusInEvent, sigval1);
+		vtbl->focusInEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -574,21 +455,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__focusOutEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void focusOutEvent(QFocusEvent* event) override {
-		if (handle__focusOutEvent == 0) {
+		if (vtbl->focusOutEvent == 0) {
 			QDesktopWidget::focusOutEvent(event);
 			return;
 		}
-		
+
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_focusOutEvent(this, handle__focusOutEvent, sigval1);
+		vtbl->focusOutEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -598,21 +475,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__enterEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void enterEvent(QEvent* event) override {
-		if (handle__enterEvent == 0) {
+		if (vtbl->enterEvent == 0) {
 			QDesktopWidget::enterEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_enterEvent(this, handle__enterEvent, sigval1);
+		vtbl->enterEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -622,21 +495,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__leaveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void leaveEvent(QEvent* event) override {
-		if (handle__leaveEvent == 0) {
+		if (vtbl->leaveEvent == 0) {
 			QDesktopWidget::leaveEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_leaveEvent(this, handle__leaveEvent, sigval1);
+		vtbl->leaveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -646,21 +515,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__paintEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void paintEvent(QPaintEvent* event) override {
-		if (handle__paintEvent == 0) {
+		if (vtbl->paintEvent == 0) {
 			QDesktopWidget::paintEvent(event);
 			return;
 		}
-		
+
 		QPaintEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_paintEvent(this, handle__paintEvent, sigval1);
+		vtbl->paintEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -670,21 +535,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__moveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void moveEvent(QMoveEvent* event) override {
-		if (handle__moveEvent == 0) {
+		if (vtbl->moveEvent == 0) {
 			QDesktopWidget::moveEvent(event);
 			return;
 		}
-		
+
 		QMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_moveEvent(this, handle__moveEvent, sigval1);
+		vtbl->moveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -694,21 +555,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__closeEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void closeEvent(QCloseEvent* event) override {
-		if (handle__closeEvent == 0) {
+		if (vtbl->closeEvent == 0) {
 			QDesktopWidget::closeEvent(event);
 			return;
 		}
-		
+
 		QCloseEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_closeEvent(this, handle__closeEvent, sigval1);
+		vtbl->closeEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -718,21 +575,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__contextMenuEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void contextMenuEvent(QContextMenuEvent* event) override {
-		if (handle__contextMenuEvent == 0) {
+		if (vtbl->contextMenuEvent == 0) {
 			QDesktopWidget::contextMenuEvent(event);
 			return;
 		}
-		
+
 		QContextMenuEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
+		vtbl->contextMenuEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -742,21 +595,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__tabletEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void tabletEvent(QTabletEvent* event) override {
-		if (handle__tabletEvent == 0) {
+		if (vtbl->tabletEvent == 0) {
 			QDesktopWidget::tabletEvent(event);
 			return;
 		}
-		
+
 		QTabletEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_tabletEvent(this, handle__tabletEvent, sigval1);
+		vtbl->tabletEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -766,21 +615,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__actionEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void actionEvent(QActionEvent* event) override {
-		if (handle__actionEvent == 0) {
+		if (vtbl->actionEvent == 0) {
 			QDesktopWidget::actionEvent(event);
 			return;
 		}
-		
+
 		QActionEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_actionEvent(this, handle__actionEvent, sigval1);
+		vtbl->actionEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -790,21 +635,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragEnterEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragEnterEvent(QDragEnterEvent* event) override {
-		if (handle__dragEnterEvent == 0) {
+		if (vtbl->dragEnterEvent == 0) {
 			QDesktopWidget::dragEnterEvent(event);
 			return;
 		}
-		
+
 		QDragEnterEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
+		vtbl->dragEnterEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -814,21 +655,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragMoveEvent(QDragMoveEvent* event) override {
-		if (handle__dragMoveEvent == 0) {
+		if (vtbl->dragMoveEvent == 0) {
 			QDesktopWidget::dragMoveEvent(event);
 			return;
 		}
-		
+
 		QDragMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
+		vtbl->dragMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -838,21 +675,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragLeaveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
-		if (handle__dragLeaveEvent == 0) {
+		if (vtbl->dragLeaveEvent == 0) {
 			QDesktopWidget::dragLeaveEvent(event);
 			return;
 		}
-		
+
 		QDragLeaveEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
+		vtbl->dragLeaveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -862,21 +695,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dropEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dropEvent(QDropEvent* event) override {
-		if (handle__dropEvent == 0) {
+		if (vtbl->dropEvent == 0) {
 			QDesktopWidget::dropEvent(event);
 			return;
 		}
-		
+
 		QDropEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_dropEvent(this, handle__dropEvent, sigval1);
+		vtbl->dropEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -886,21 +715,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__showEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void showEvent(QShowEvent* event) override {
-		if (handle__showEvent == 0) {
+		if (vtbl->showEvent == 0) {
 			QDesktopWidget::showEvent(event);
 			return;
 		}
-		
+
 		QShowEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_showEvent(this, handle__showEvent, sigval1);
+		vtbl->showEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -910,21 +735,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hideEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void hideEvent(QHideEvent* event) override {
-		if (handle__hideEvent == 0) {
+		if (vtbl->hideEvent == 0) {
 			QDesktopWidget::hideEvent(event);
 			return;
 		}
-		
+
 		QHideEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_hideEvent(this, handle__hideEvent, sigval1);
+		vtbl->hideEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -934,15 +755,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__nativeEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool nativeEvent(const QByteArray& eventType, void* message, long* result) override {
-		if (handle__nativeEvent == 0) {
+		if (vtbl->nativeEvent == 0) {
 			return QDesktopWidget::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -952,7 +770,7 @@ public:
 		void* sigval2 = message;
 		long* sigval3 = result;
 
-		bool callback_return_value = miqt_exec_callback_QDesktopWidget_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
+		bool callback_return_value = vtbl->nativeEvent(vtbl, this, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
@@ -965,21 +783,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__changeEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void changeEvent(QEvent* param1) override {
-		if (handle__changeEvent == 0) {
+		if (vtbl->changeEvent == 0) {
 			QDesktopWidget::changeEvent(param1);
 			return;
 		}
-		
+
 		QEvent* sigval1 = param1;
 
-		miqt_exec_callback_QDesktopWidget_changeEvent(this, handle__changeEvent, sigval1);
+		vtbl->changeEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -989,19 +803,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metric = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
-		if (handle__metric == 0) {
+		if (vtbl->metric == 0) {
 			return QDesktopWidget::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QDesktopWidget_metric(this, handle__metric, sigval1);
+		int callback_return_value = vtbl->metric(vtbl, this, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1013,21 +824,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__initPainter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void initPainter(QPainter* painter) const override {
-		if (handle__initPainter == 0) {
+		if (vtbl->initPainter == 0) {
 			QDesktopWidget::initPainter(painter);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QDesktopWidget_initPainter(this, handle__initPainter, sigval1);
+		vtbl->initPainter(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1037,18 +844,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__redirected = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QPaintDevice* redirected(QPoint* offset) const override {
-		if (handle__redirected == 0) {
+		if (vtbl->redirected == 0) {
 			return QDesktopWidget::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QDesktopWidget_redirected(this, handle__redirected, sigval1);
+		QPaintDevice* callback_return_value = vtbl->redirected(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -1060,17 +864,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__sharedPainter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QPainter* sharedPainter() const override {
-		if (handle__sharedPainter == 0) {
+		if (vtbl->sharedPainter == 0) {
 			return QDesktopWidget::sharedPainter();
 		}
-		
 
-		QPainter* callback_return_value = miqt_exec_callback_QDesktopWidget_sharedPainter(this, handle__sharedPainter);
+
+		QPainter* callback_return_value = vtbl->sharedPainter(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1082,21 +883,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__inputMethodEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void inputMethodEvent(QInputMethodEvent* param1) override {
-		if (handle__inputMethodEvent == 0) {
+		if (vtbl->inputMethodEvent == 0) {
 			QDesktopWidget::inputMethodEvent(param1);
 			return;
 		}
-		
+
 		QInputMethodEvent* sigval1 = param1;
 
-		miqt_exec_callback_QDesktopWidget_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
+		vtbl->inputMethodEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1106,19 +903,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__inputMethodQuery = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery param1) const override {
-		if (handle__inputMethodQuery == 0) {
+		if (vtbl->inputMethodQuery == 0) {
 			return QDesktopWidget::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QDesktopWidget_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
+		QVariant* callback_return_value = vtbl->inputMethodQuery(vtbl, this, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1130,18 +924,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__focusNextPrevChild = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool focusNextPrevChild(bool next) override {
-		if (handle__focusNextPrevChild == 0) {
+		if (vtbl->focusNextPrevChild == 0) {
 			return QDesktopWidget::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
 
-		bool callback_return_value = miqt_exec_callback_QDesktopWidget_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
+		bool callback_return_value = vtbl->focusNextPrevChild(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -1153,19 +944,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QDesktopWidget::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QDesktopWidget_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -1177,21 +965,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QDesktopWidget::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1201,21 +985,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QDesktopWidget::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1225,21 +1005,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QDesktopWidget::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QDesktopWidget_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1249,23 +1025,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QDesktopWidget::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QDesktopWidget_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1275,23 +1047,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QDesktopWidget::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QDesktopWidget_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1303,8 +1071,8 @@ public:
 
 };
 
-QDesktopWidget* QDesktopWidget_new() {
-	return new MiqtVirtualQDesktopWidget();
+QDesktopWidget* QDesktopWidget_new(struct QDesktopWidget_VTable* vtbl) {
+	return new MiqtVirtualQDesktopWidget(vtbl);
 }
 
 void QDesktopWidget_virtbase(QDesktopWidget* src, QWidget** outptr_QWidget) {
@@ -1500,700 +1268,200 @@ QRect* QDesktopWidget_availableGeometry1(const QDesktopWidget* self, int screen)
 	return new QRect(self->availableGeometry(static_cast<int>(screen)));
 }
 
-bool QDesktopWidget_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QDesktopWidget_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_metaObject();
-}
-
-bool QDesktopWidget_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QDesktopWidget_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QDesktopWidget_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QDesktopWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QDesktopWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__resizeEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_resizeEvent(e);
 }
 
-bool QDesktopWidget_override_virtual_devType(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__devType = slot;
-	return true;
-}
-
 int QDesktopWidget_virtualbase_devType(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_devType();
-}
-
-bool QDesktopWidget_override_virtual_setVisible(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setVisible = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_setVisible(void* self, bool visible) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_setVisible(visible);
 }
 
-bool QDesktopWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__sizeHint = slot;
-	return true;
-}
-
 QSize* QDesktopWidget_virtualbase_sizeHint(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_sizeHint();
-}
-
-bool QDesktopWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__minimumSizeHint = slot;
-	return true;
 }
 
 QSize* QDesktopWidget_virtualbase_minimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_minimumSizeHint();
 }
 
-bool QDesktopWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__heightForWidth = slot;
-	return true;
-}
-
 int QDesktopWidget_virtualbase_heightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_heightForWidth(param1);
-}
-
-bool QDesktopWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hasHeightForWidth = slot;
-	return true;
 }
 
 bool QDesktopWidget_virtualbase_hasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_hasHeightForWidth();
 }
 
-bool QDesktopWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__paintEngine = slot;
-	return true;
-}
-
 QPaintEngine* QDesktopWidget_virtualbase_paintEngine(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_paintEngine();
-}
-
-bool QDesktopWidget_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
 }
 
 bool QDesktopWidget_virtualbase_event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_event(event);
 }
 
-bool QDesktopWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mousePressEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_mousePressEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseReleaseEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_mouseReleaseEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseDoubleClickEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_mouseDoubleClickEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseMoveEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_mouseMoveEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__wheelEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_wheelEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__keyPressEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_keyPressEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__keyReleaseEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_keyReleaseEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__focusInEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_focusInEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__focusOutEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_focusOutEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__enterEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_enterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_enterEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__leaveEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_leaveEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__paintEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_paintEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__moveEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_moveEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__closeEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_closeEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__contextMenuEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_contextMenuEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__tabletEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_tabletEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__actionEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_actionEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragEnterEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_dragEnterEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragMoveEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_dragMoveEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragLeaveEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_dragLeaveEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dropEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_dropEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_showEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__showEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_showEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hideEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_hideEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__nativeEvent = slot;
-	return true;
 }
 
 bool QDesktopWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_nativeEvent(eventType, message, result);
 }
 
-bool QDesktopWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__changeEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_changeEvent(param1);
-}
-
-bool QDesktopWidget_override_virtual_metric(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metric = slot;
-	return true;
 }
 
 int QDesktopWidget_virtualbase_metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_metric(param1);
 }
 
-bool QDesktopWidget_override_virtual_initPainter(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__initPainter = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_initPainter(painter);
-}
-
-bool QDesktopWidget_override_virtual_redirected(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__redirected = slot;
-	return true;
 }
 
 QPaintDevice* QDesktopWidget_virtualbase_redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_redirected(offset);
 }
 
-bool QDesktopWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__sharedPainter = slot;
-	return true;
-}
-
 QPainter* QDesktopWidget_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_sharedPainter();
-}
-
-bool QDesktopWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__inputMethodEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_inputMethodEvent(param1);
 }
 
-bool QDesktopWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__inputMethodQuery = slot;
-	return true;
-}
-
 QVariant* QDesktopWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_inputMethodQuery(param1);
-}
-
-bool QDesktopWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__focusNextPrevChild = slot;
-	return true;
 }
 
 bool QDesktopWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_focusNextPrevChild(next);
 }
 
-bool QDesktopWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
-}
-
 bool QDesktopWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_eventFilter(watched, event);
-}
-
-bool QDesktopWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_childEvent(event);
-}
-
-bool QDesktopWidget_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QDesktopWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QDesktopWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QDesktopWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

@@ -33,14 +33,13 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qstylefactory.cpp", cflags).}
 
-
 import gen_qstylefactory_types
 export gen_qstylefactory_types
 
 import
-  gen_qstyle
+  gen_qstyle_types
 export
-  gen_qstyle
+  gen_qstyle_types
 
 type cQStyleFactory*{.exportc: "QStyleFactory", incompleteStruct.} = object
 
@@ -48,9 +47,6 @@ proc fcQStyleFactory_keys(): struct_miqt_array {.importc: "QStyleFactory_keys".}
 proc fcQStyleFactory_create(param1: struct_miqt_string): pointer {.importc: "QStyleFactory_create".}
 proc fcQStyleFactory_delete(self: pointer) {.importc: "QStyleFactory_delete".}
 
-
-func init*(T: type gen_qstylefactory_types.QStyleFactory, h: ptr cQStyleFactory): gen_qstylefactory_types.QStyleFactory =
-  T(h: h)
 proc keys*(_: type gen_qstylefactory_types.QStyleFactory, ): seq[string] =
   var v_ma = fcQStyleFactory_keys()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -62,8 +58,8 @@ proc keys*(_: type gen_qstylefactory_types.QStyleFactory, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc create*(_: type gen_qstylefactory_types.QStyleFactory, param1: string): gen_qstyle.QStyle =
-  gen_qstyle.QStyle(h: fcQStyleFactory_create(struct_miqt_string(data: param1, len: csize_t(len(param1)))))
+proc create*(_: type gen_qstylefactory_types.QStyleFactory, param1: string): gen_qstyle_types.QStyle =
+  gen_qstyle_types.QStyle(h: fcQStyleFactory_create(struct_miqt_string(data: param1, len: csize_t(len(param1)))))
 
 proc delete*(self: gen_qstylefactory_types.QStyleFactory) =
   fcQStyleFactory_delete(self.h)

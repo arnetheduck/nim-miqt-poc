@@ -22,87 +22,54 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QImageIOHandler_canRead(const QImageIOHandler*, intptr_t);
-bool miqt_exec_callback_QImageIOHandler_read(QImageIOHandler*, intptr_t, QImage*);
-bool miqt_exec_callback_QImageIOHandler_write(QImageIOHandler*, intptr_t, QImage*);
-QVariant* miqt_exec_callback_QImageIOHandler_option(const QImageIOHandler*, intptr_t, int);
-void miqt_exec_callback_QImageIOHandler_setOption(QImageIOHandler*, intptr_t, int, QVariant*);
-bool miqt_exec_callback_QImageIOHandler_supportsOption(const QImageIOHandler*, intptr_t, int);
-bool miqt_exec_callback_QImageIOHandler_jumpToNextImage(QImageIOHandler*, intptr_t);
-bool miqt_exec_callback_QImageIOHandler_jumpToImage(QImageIOHandler*, intptr_t, int);
-int miqt_exec_callback_QImageIOHandler_loopCount(const QImageIOHandler*, intptr_t);
-int miqt_exec_callback_QImageIOHandler_imageCount(const QImageIOHandler*, intptr_t);
-int miqt_exec_callback_QImageIOHandler_nextImageDelay(const QImageIOHandler*, intptr_t);
-int miqt_exec_callback_QImageIOHandler_currentImageNumber(const QImageIOHandler*, intptr_t);
-QRect* miqt_exec_callback_QImageIOHandler_currentImageRect(const QImageIOHandler*, intptr_t);
-QMetaObject* miqt_exec_callback_QImageIOPlugin_metaObject(const QImageIOPlugin*, intptr_t);
-void* miqt_exec_callback_QImageIOPlugin_metacast(QImageIOPlugin*, intptr_t, const char*);
-int miqt_exec_callback_QImageIOPlugin_metacall(QImageIOPlugin*, intptr_t, int, int, void**);
-int miqt_exec_callback_QImageIOPlugin_capabilities(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
-QImageIOHandler* miqt_exec_callback_QImageIOPlugin_create(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
-bool miqt_exec_callback_QImageIOPlugin_event(QImageIOPlugin*, intptr_t, QEvent*);
-bool miqt_exec_callback_QImageIOPlugin_eventFilter(QImageIOPlugin*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QImageIOPlugin_timerEvent(QImageIOPlugin*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QImageIOPlugin_childEvent(QImageIOPlugin*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QImageIOPlugin_customEvent(QImageIOPlugin*, intptr_t, QEvent*);
-void miqt_exec_callback_QImageIOPlugin_connectNotify(QImageIOPlugin*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QImageIOPlugin_disconnectNotify(QImageIOPlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQImageIOHandler final : public QImageIOHandler {
+	struct QImageIOHandler_VTable* vtbl;
 public:
 
-	MiqtVirtualQImageIOHandler(): QImageIOHandler() {};
+	MiqtVirtualQImageIOHandler(struct QImageIOHandler_VTable* vtbl): QImageIOHandler(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQImageIOHandler() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__canRead = 0;
+	virtual ~MiqtVirtualQImageIOHandler() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool canRead() const override {
-		if (handle__canRead == 0) {
+		if (vtbl->canRead == 0) {
 			return false; // Pure virtual, there is no base we can call
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_canRead(this, handle__canRead);
+
+		bool callback_return_value = vtbl->canRead(vtbl, this);
 
 		return callback_return_value;
 	}
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__read = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool read(QImage* image) override {
-		if (handle__read == 0) {
+		if (vtbl->read == 0) {
 			return false; // Pure virtual, there is no base we can call
 		}
-		
+
 		QImage* sigval1 = image;
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_read(this, handle__read, sigval1);
+		bool callback_return_value = vtbl->read(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__write = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool write(const QImage& image) override {
-		if (handle__write == 0) {
+		if (vtbl->write == 0) {
 			return QImageIOHandler::write(image);
 		}
-		
+
 		const QImage& image_ret = image;
 		// Cast returned reference into pointer
 		QImage* sigval1 = const_cast<QImage*>(&image_ret);
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_write(this, handle__write, sigval1);
+		bool callback_return_value = vtbl->write(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -114,19 +81,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__option = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QVariant option(QImageIOHandler::ImageOption option) const override {
-		if (handle__option == 0) {
+		if (vtbl->option == 0) {
 			return QImageIOHandler::option(option);
 		}
-		
+
 		QImageIOHandler::ImageOption option_ret = option;
 		int sigval1 = static_cast<int>(option_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QImageIOHandler_option(this, handle__option, sigval1);
+		QVariant* callback_return_value = vtbl->option(vtbl, this, sigval1);
 
 		return *callback_return_value;
 	}
@@ -138,25 +102,21 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setOption = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setOption(QImageIOHandler::ImageOption option, const QVariant& value) override {
-		if (handle__setOption == 0) {
+		if (vtbl->setOption == 0) {
 			QImageIOHandler::setOption(option, value);
 			return;
 		}
-		
+
 		QImageIOHandler::ImageOption option_ret = option;
 		int sigval1 = static_cast<int>(option_ret);
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 
-		miqt_exec_callback_QImageIOHandler_setOption(this, handle__setOption, sigval1, sigval2);
+		vtbl->setOption(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -166,19 +126,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__supportsOption = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool supportsOption(QImageIOHandler::ImageOption option) const override {
-		if (handle__supportsOption == 0) {
+		if (vtbl->supportsOption == 0) {
 			return QImageIOHandler::supportsOption(option);
 		}
-		
+
 		QImageIOHandler::ImageOption option_ret = option;
 		int sigval1 = static_cast<int>(option_ret);
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_supportsOption(this, handle__supportsOption, sigval1);
+		bool callback_return_value = vtbl->supportsOption(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -190,17 +147,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__jumpToNextImage = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool jumpToNextImage() override {
-		if (handle__jumpToNextImage == 0) {
+		if (vtbl->jumpToNextImage == 0) {
 			return QImageIOHandler::jumpToNextImage();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_jumpToNextImage(this, handle__jumpToNextImage);
+
+		bool callback_return_value = vtbl->jumpToNextImage(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -212,18 +166,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__jumpToImage = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool jumpToImage(int imageNumber) override {
-		if (handle__jumpToImage == 0) {
+		if (vtbl->jumpToImage == 0) {
 			return QImageIOHandler::jumpToImage(imageNumber);
 		}
-		
+
 		int sigval1 = imageNumber;
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_jumpToImage(this, handle__jumpToImage, sigval1);
+		bool callback_return_value = vtbl->jumpToImage(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -235,17 +186,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__loopCount = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int loopCount() const override {
-		if (handle__loopCount == 0) {
+		if (vtbl->loopCount == 0) {
 			return QImageIOHandler::loopCount();
 		}
-		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_loopCount(this, handle__loopCount);
+
+		int callback_return_value = vtbl->loopCount(vtbl, this);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -257,17 +205,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__imageCount = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int imageCount() const override {
-		if (handle__imageCount == 0) {
+		if (vtbl->imageCount == 0) {
 			return QImageIOHandler::imageCount();
 		}
-		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_imageCount(this, handle__imageCount);
+
+		int callback_return_value = vtbl->imageCount(vtbl, this);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -279,17 +224,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__nextImageDelay = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int nextImageDelay() const override {
-		if (handle__nextImageDelay == 0) {
+		if (vtbl->nextImageDelay == 0) {
 			return QImageIOHandler::nextImageDelay();
 		}
-		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_nextImageDelay(this, handle__nextImageDelay);
+
+		int callback_return_value = vtbl->nextImageDelay(vtbl, this);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -301,17 +243,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__currentImageNumber = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int currentImageNumber() const override {
-		if (handle__currentImageNumber == 0) {
+		if (vtbl->currentImageNumber == 0) {
 			return QImageIOHandler::currentImageNumber();
 		}
-		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_currentImageNumber(this, handle__currentImageNumber);
+
+		int callback_return_value = vtbl->currentImageNumber(vtbl, this);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -323,17 +262,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__currentImageRect = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QRect currentImageRect() const override {
-		if (handle__currentImageRect == 0) {
+		if (vtbl->currentImageRect == 0) {
 			return QImageIOHandler::currentImageRect();
 		}
-		
 
-		QRect* callback_return_value = miqt_exec_callback_QImageIOHandler_currentImageRect(this, handle__currentImageRect);
+
+		QRect* callback_return_value = vtbl->currentImageRect(vtbl, this);
 
 		return *callback_return_value;
 	}
@@ -347,8 +283,8 @@ public:
 
 };
 
-QImageIOHandler* QImageIOHandler_new() {
-	return new MiqtVirtualQImageIOHandler();
+QImageIOHandler* QImageIOHandler_new(struct QImageIOHandler_VTable* vtbl) {
+	return new MiqtVirtualQImageIOHandler(vtbl);
 }
 
 void QImageIOHandler_setDevice(QImageIOHandler* self, QIODevice* device) {
@@ -434,174 +370,44 @@ bool QImageIOHandler_allocateImage(QSize* size, int format, QImage* image) {
 	return QImageIOHandler::allocateImage(*size, static_cast<QImage::Format>(format), image);
 }
 
-bool QImageIOHandler_override_virtual_canRead(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__canRead = slot;
-	return true;
-}
-
-bool QImageIOHandler_override_virtual_read(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__read = slot;
-	return true;
-}
-
-bool QImageIOHandler_override_virtual_write(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__write = slot;
-	return true;
-}
-
 bool QImageIOHandler_virtualbase_write(void* self, QImage* image) {
 	return ( (MiqtVirtualQImageIOHandler*)(self) )->virtualbase_write(image);
-}
-
-bool QImageIOHandler_override_virtual_option(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__option = slot;
-	return true;
 }
 
 QVariant* QImageIOHandler_virtualbase_option(const void* self, int option) {
 	return ( (const MiqtVirtualQImageIOHandler*)(self) )->virtualbase_option(option);
 }
 
-bool QImageIOHandler_override_virtual_setOption(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setOption = slot;
-	return true;
-}
-
 void QImageIOHandler_virtualbase_setOption(void* self, int option, QVariant* value) {
 	( (MiqtVirtualQImageIOHandler*)(self) )->virtualbase_setOption(option, value);
-}
-
-bool QImageIOHandler_override_virtual_supportsOption(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__supportsOption = slot;
-	return true;
 }
 
 bool QImageIOHandler_virtualbase_supportsOption(const void* self, int option) {
 	return ( (const MiqtVirtualQImageIOHandler*)(self) )->virtualbase_supportsOption(option);
 }
 
-bool QImageIOHandler_override_virtual_jumpToNextImage(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__jumpToNextImage = slot;
-	return true;
-}
-
 bool QImageIOHandler_virtualbase_jumpToNextImage(void* self) {
 	return ( (MiqtVirtualQImageIOHandler*)(self) )->virtualbase_jumpToNextImage();
-}
-
-bool QImageIOHandler_override_virtual_jumpToImage(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__jumpToImage = slot;
-	return true;
 }
 
 bool QImageIOHandler_virtualbase_jumpToImage(void* self, int imageNumber) {
 	return ( (MiqtVirtualQImageIOHandler*)(self) )->virtualbase_jumpToImage(imageNumber);
 }
 
-bool QImageIOHandler_override_virtual_loopCount(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__loopCount = slot;
-	return true;
-}
-
 int QImageIOHandler_virtualbase_loopCount(const void* self) {
 	return ( (const MiqtVirtualQImageIOHandler*)(self) )->virtualbase_loopCount();
-}
-
-bool QImageIOHandler_override_virtual_imageCount(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__imageCount = slot;
-	return true;
 }
 
 int QImageIOHandler_virtualbase_imageCount(const void* self) {
 	return ( (const MiqtVirtualQImageIOHandler*)(self) )->virtualbase_imageCount();
 }
 
-bool QImageIOHandler_override_virtual_nextImageDelay(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__nextImageDelay = slot;
-	return true;
-}
-
 int QImageIOHandler_virtualbase_nextImageDelay(const void* self) {
 	return ( (const MiqtVirtualQImageIOHandler*)(self) )->virtualbase_nextImageDelay();
 }
 
-bool QImageIOHandler_override_virtual_currentImageNumber(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__currentImageNumber = slot;
-	return true;
-}
-
 int QImageIOHandler_virtualbase_currentImageNumber(const void* self) {
 	return ( (const MiqtVirtualQImageIOHandler*)(self) )->virtualbase_currentImageNumber();
-}
-
-bool QImageIOHandler_override_virtual_currentImageRect(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOHandler* self_cast = dynamic_cast<MiqtVirtualQImageIOHandler*>( (QImageIOHandler*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__currentImageRect = slot;
-	return true;
 }
 
 QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self) {
@@ -613,24 +419,22 @@ void QImageIOHandler_delete(QImageIOHandler* self) {
 }
 
 class MiqtVirtualQImageIOPlugin final : public QImageIOPlugin {
+	struct QImageIOPlugin_VTable* vtbl;
 public:
 
-	MiqtVirtualQImageIOPlugin(): QImageIOPlugin() {};
-	MiqtVirtualQImageIOPlugin(QObject* parent): QImageIOPlugin(parent) {};
+	MiqtVirtualQImageIOPlugin(struct QImageIOPlugin_VTable* vtbl): QImageIOPlugin(), vtbl(vtbl) {};
+	MiqtVirtualQImageIOPlugin(struct QImageIOPlugin_VTable* vtbl, QObject* parent): QImageIOPlugin(parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQImageIOPlugin() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQImageIOPlugin() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QImageIOPlugin::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QImageIOPlugin_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -642,18 +446,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QImageIOPlugin::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QImageIOPlugin_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -665,21 +466,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QImageIOPlugin::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QImageIOPlugin_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -691,15 +489,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__capabilities = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QImageIOPlugin::Capabilities capabilities(QIODevice* device, const QByteArray& format) const override {
-		if (handle__capabilities == 0) {
+		if (vtbl->capabilities == 0) {
 			return QImageIOPlugin::Capabilities(); // Pure virtual, there is no base we can call
 		}
-		
+
 		QIODevice* sigval1 = device;
 		const QByteArray format_qb = format;
 		struct miqt_string format_ms;
@@ -708,20 +503,17 @@ public:
 		memcpy(format_ms.data, format_qb.data(), format_ms.len);
 		struct miqt_string sigval2 = format_ms;
 
-		int callback_return_value = miqt_exec_callback_QImageIOPlugin_capabilities(this, handle__capabilities, sigval1, sigval2);
+		int callback_return_value = vtbl->capabilities(vtbl, this, sigval1, sigval2);
 
 		return static_cast<QImageIOPlugin::Capabilities>(callback_return_value);
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__create = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QImageIOHandler* create(QIODevice* device, const QByteArray& format) const override {
-		if (handle__create == 0) {
+		if (vtbl->create == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		QIODevice* sigval1 = device;
 		const QByteArray format_qb = format;
 		struct miqt_string format_ms;
@@ -730,23 +522,20 @@ public:
 		memcpy(format_ms.data, format_qb.data(), format_ms.len);
 		struct miqt_string sigval2 = format_ms;
 
-		QImageIOHandler* callback_return_value = miqt_exec_callback_QImageIOPlugin_create(this, handle__create, sigval1, sigval2);
+		QImageIOHandler* callback_return_value = vtbl->create(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QImageIOPlugin::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QImageIOPlugin_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -758,19 +547,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QImageIOPlugin::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QImageIOPlugin_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -782,21 +568,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QImageIOPlugin::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QImageIOPlugin_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -806,21 +588,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QImageIOPlugin::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QImageIOPlugin_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -830,21 +608,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QImageIOPlugin::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QImageIOPlugin_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -854,23 +628,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QImageIOPlugin::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QImageIOPlugin_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -880,23 +650,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QImageIOPlugin::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QImageIOPlugin_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -908,12 +674,12 @@ public:
 
 };
 
-QImageIOPlugin* QImageIOPlugin_new() {
-	return new MiqtVirtualQImageIOPlugin();
+QImageIOPlugin* QImageIOPlugin_new(struct QImageIOPlugin_VTable* vtbl) {
+	return new MiqtVirtualQImageIOPlugin(vtbl);
 }
 
-QImageIOPlugin* QImageIOPlugin_new2(QObject* parent) {
-	return new MiqtVirtualQImageIOPlugin(parent);
+QImageIOPlugin* QImageIOPlugin_new2(struct QImageIOPlugin_VTable* vtbl, QObject* parent) {
+	return new MiqtVirtualQImageIOPlugin(vtbl, parent);
 }
 
 void QImageIOPlugin_virtbase(QImageIOPlugin* src, QObject** outptr_QObject) {
@@ -976,160 +742,40 @@ struct miqt_string QImageIOPlugin_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QImageIOPlugin_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QImageIOPlugin_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_metaObject();
-}
-
-bool QImageIOPlugin_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QImageIOPlugin_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QImageIOPlugin_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QImageIOPlugin_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QImageIOPlugin_override_virtual_capabilities(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__capabilities = slot;
-	return true;
-}
-
-bool QImageIOPlugin_override_virtual_create(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__create = slot;
-	return true;
-}
-
-bool QImageIOPlugin_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
 }
 
 bool QImageIOPlugin_virtualbase_event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_event(event);
 }
 
-bool QImageIOPlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
-}
-
 bool QImageIOPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_eventFilter(watched, event);
-}
-
-bool QImageIOPlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
 }
 
 void QImageIOPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QImageIOPlugin_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
-}
-
 void QImageIOPlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_childEvent(event);
-}
-
-bool QImageIOPlugin_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
 }
 
 void QImageIOPlugin_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QImageIOPlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QImageIOPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QImageIOPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QImageIOPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

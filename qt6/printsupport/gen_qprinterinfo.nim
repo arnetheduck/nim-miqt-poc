@@ -33,22 +33,18 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6PrintSupport")
 {.compile("gen_qprinterinfo.cpp", cflags).}
 
-
 import gen_qprinterinfo_types
 export gen_qprinterinfo_types
 
 import
-  gen_qpagesize,
-  gen_qprinter
+  gen_qpagesize_types,
+  gen_qprinter_types
 export
-  gen_qpagesize,
-  gen_qprinter
+  gen_qpagesize_types,
+  gen_qprinter_types
 
 type cQPrinterInfo*{.exportc: "QPrinterInfo", incompleteStruct.} = object
 
-proc fcQPrinterInfo_new(): ptr cQPrinterInfo {.importc: "QPrinterInfo_new".}
-proc fcQPrinterInfo_new2(other: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new2".}
-proc fcQPrinterInfo_new3(printer: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new3".}
 proc fcQPrinterInfo_operatorAssign(self: pointer, other: pointer): void {.importc: "QPrinterInfo_operatorAssign".}
 proc fcQPrinterInfo_printerName(self: pointer, ): struct_miqt_string {.importc: "QPrinterInfo_printerName".}
 proc fcQPrinterInfo_description(self: pointer, ): struct_miqt_string {.importc: "QPrinterInfo_description".}
@@ -73,19 +69,10 @@ proc fcQPrinterInfo_availablePrinters(): struct_miqt_array {.importc: "QPrinterI
 proc fcQPrinterInfo_defaultPrinterName(): struct_miqt_string {.importc: "QPrinterInfo_defaultPrinterName".}
 proc fcQPrinterInfo_defaultPrinter(): pointer {.importc: "QPrinterInfo_defaultPrinter".}
 proc fcQPrinterInfo_printerInfo(printerName: struct_miqt_string): pointer {.importc: "QPrinterInfo_printerInfo".}
+proc fcQPrinterInfo_new(): ptr cQPrinterInfo {.importc: "QPrinterInfo_new".}
+proc fcQPrinterInfo_new2(other: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new2".}
+proc fcQPrinterInfo_new3(printer: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new3".}
 proc fcQPrinterInfo_delete(self: pointer) {.importc: "QPrinterInfo_delete".}
-
-
-func init*(T: type gen_qprinterinfo_types.QPrinterInfo, h: ptr cQPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
-  T(h: h)
-proc create*(T: type gen_qprinterinfo_types.QPrinterInfo, ): gen_qprinterinfo_types.QPrinterInfo =
-  gen_qprinterinfo_types.QPrinterInfo.init(fcQPrinterInfo_new())
-
-proc create*(T: type gen_qprinterinfo_types.QPrinterInfo, other: gen_qprinterinfo_types.QPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
-  gen_qprinterinfo_types.QPrinterInfo.init(fcQPrinterInfo_new2(other.h))
-
-proc create*(T: type gen_qprinterinfo_types.QPrinterInfo, printer: gen_qprinter.QPrinter): gen_qprinterinfo_types.QPrinterInfo =
-  gen_qprinterinfo_types.QPrinterInfo.init(fcQPrinterInfo_new3(printer.h))
 
 proc operatorAssign*(self: gen_qprinterinfo_types.QPrinterInfo, other: gen_qprinterinfo_types.QPrinterInfo): void =
   fcQPrinterInfo_operatorAssign(self.h, other.h)
@@ -126,25 +113,25 @@ proc isRemote*(self: gen_qprinterinfo_types.QPrinterInfo, ): bool =
 proc state*(self: gen_qprinterinfo_types.QPrinterInfo, ): cint =
   cint(fcQPrinterInfo_state(self.h))
 
-proc supportedPageSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[gen_qpagesize.QPageSize] =
+proc supportedPageSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[gen_qpagesize_types.QPageSize] =
   var v_ma = fcQPrinterInfo_supportedPageSizes(self.h)
-  var vx_ret = newSeq[gen_qpagesize.QPageSize](int(v_ma.len))
+  var vx_ret = newSeq[gen_qpagesize_types.QPageSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qpagesize.QPageSize(h: v_outCast[i])
+    vx_ret[i] = gen_qpagesize_types.QPageSize(h: v_outCast[i])
   vx_ret
 
-proc defaultPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize.QPageSize =
-  gen_qpagesize.QPageSize(h: fcQPrinterInfo_defaultPageSize(self.h))
+proc defaultPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize_types.QPageSize =
+  gen_qpagesize_types.QPageSize(h: fcQPrinterInfo_defaultPageSize(self.h))
 
 proc supportsCustomPageSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): bool =
   fcQPrinterInfo_supportsCustomPageSizes(self.h)
 
-proc minimumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize.QPageSize =
-  gen_qpagesize.QPageSize(h: fcQPrinterInfo_minimumPhysicalPageSize(self.h))
+proc minimumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize_types.QPageSize =
+  gen_qpagesize_types.QPageSize(h: fcQPrinterInfo_minimumPhysicalPageSize(self.h))
 
-proc maximumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize.QPageSize =
-  gen_qpagesize.QPageSize(h: fcQPrinterInfo_maximumPhysicalPageSize(self.h))
+proc maximumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize_types.QPageSize =
+  gen_qpagesize_types.QPageSize(h: fcQPrinterInfo_maximumPhysicalPageSize(self.h))
 
 proc supportedResolutions*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[cint] =
   var v_ma = fcQPrinterInfo_supportedResolutions(self.h)
@@ -206,6 +193,17 @@ proc defaultPrinter*(_: type gen_qprinterinfo_types.QPrinterInfo, ): gen_qprinte
 
 proc printerInfo*(_: type gen_qprinterinfo_types.QPrinterInfo, printerName: string): gen_qprinterinfo_types.QPrinterInfo =
   gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_printerInfo(struct_miqt_string(data: printerName, len: csize_t(len(printerName)))))
+
+proc create*(T: type gen_qprinterinfo_types.QPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_new())
+
+proc create*(T: type gen_qprinterinfo_types.QPrinterInfo,
+    other: gen_qprinterinfo_types.QPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_new2(other.h))
+
+proc create*(T: type gen_qprinterinfo_types.QPrinterInfo,
+    printer: gen_qprinter_types.QPrinter): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_new3(printer.h))
 
 proc delete*(self: gen_qprinterinfo_types.QPrinterInfo) =
   fcQPrinterInfo_delete(self.h)

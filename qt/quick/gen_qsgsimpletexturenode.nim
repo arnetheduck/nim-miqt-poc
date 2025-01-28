@@ -39,22 +39,20 @@ template NoTransform*(_: type QSGSimpleTextureNodeTextureCoordinatesTransformFla
 template MirrorHorizontally*(_: type QSGSimpleTextureNodeTextureCoordinatesTransformFlagEnum): untyped = 1
 template MirrorVertically*(_: type QSGSimpleTextureNodeTextureCoordinatesTransformFlagEnum): untyped = 2
 
-
 import gen_qsgsimpletexturenode_types
 export gen_qsgsimpletexturenode_types
 
 import
-  gen_qrect,
+  gen_qrect_types,
   gen_qsgnode,
-  gen_qsgtexture
+  gen_qsgtexture_types
 export
-  gen_qrect,
+  gen_qrect_types,
   gen_qsgnode,
-  gen_qsgtexture
+  gen_qsgtexture_types
 
 type cQSGSimpleTextureNode*{.exportc: "QSGSimpleTextureNode", incompleteStruct.} = object
 
-proc fcQSGSimpleTextureNode_new(): ptr cQSGSimpleTextureNode {.importc: "QSGSimpleTextureNode_new".}
 proc fcQSGSimpleTextureNode_setRect(self: pointer, rect: pointer): void {.importc: "QSGSimpleTextureNode_setRect".}
 proc fcQSGSimpleTextureNode_setRect2(self: pointer, x: float64, y: float64, w: float64, h: float64): void {.importc: "QSGSimpleTextureNode_setRect2".}
 proc fcQSGSimpleTextureNode_rect(self: pointer, ): pointer {.importc: "QSGSimpleTextureNode_rect".}
@@ -69,41 +67,38 @@ proc fcQSGSimpleTextureNode_setTextureCoordinatesTransform(self: pointer, mode: 
 proc fcQSGSimpleTextureNode_textureCoordinatesTransform(self: pointer, ): cint {.importc: "QSGSimpleTextureNode_textureCoordinatesTransform".}
 proc fcQSGSimpleTextureNode_setOwnsTexture(self: pointer, owns: bool): void {.importc: "QSGSimpleTextureNode_setOwnsTexture".}
 proc fcQSGSimpleTextureNode_ownsTexture(self: pointer, ): bool {.importc: "QSGSimpleTextureNode_ownsTexture".}
-proc fQSGSimpleTextureNode_virtualbase_isSubtreeBlocked(self: pointer, ): bool{.importc: "QSGSimpleTextureNode_virtualbase_isSubtreeBlocked".}
-proc fcQSGSimpleTextureNode_override_virtual_isSubtreeBlocked(self: pointer, slot: int) {.importc: "QSGSimpleTextureNode_override_virtual_isSubtreeBlocked".}
-proc fQSGSimpleTextureNode_virtualbase_preprocess(self: pointer, ): void{.importc: "QSGSimpleTextureNode_virtualbase_preprocess".}
-proc fcQSGSimpleTextureNode_override_virtual_preprocess(self: pointer, slot: int) {.importc: "QSGSimpleTextureNode_override_virtual_preprocess".}
+type cQSGSimpleTextureNodeVTable = object
+  destructor*: proc(vtbl: ptr cQSGSimpleTextureNodeVTable, self: ptr cQSGSimpleTextureNode) {.cdecl, raises:[], gcsafe.}
+  isSubtreeBlocked*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  preprocess*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+proc fcQSGSimpleTextureNode_virtualbase_isSubtreeBlocked(self: pointer, ): bool {.importc: "QSGSimpleTextureNode_virtualbase_isSubtreeBlocked".}
+proc fcQSGSimpleTextureNode_virtualbase_preprocess(self: pointer, ): void {.importc: "QSGSimpleTextureNode_virtualbase_preprocess".}
+proc fcQSGSimpleTextureNode_new(vtbl: pointer, ): ptr cQSGSimpleTextureNode {.importc: "QSGSimpleTextureNode_new".}
 proc fcQSGSimpleTextureNode_delete(self: pointer) {.importc: "QSGSimpleTextureNode_delete".}
 
-
-func init*(T: type gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, h: ptr cQSGSimpleTextureNode): gen_qsgsimpletexturenode_types.QSGSimpleTextureNode =
-  T(h: h)
-proc create*(T: type gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qsgsimpletexturenode_types.QSGSimpleTextureNode =
-  gen_qsgsimpletexturenode_types.QSGSimpleTextureNode.init(fcQSGSimpleTextureNode_new())
-
-proc setRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, rect: gen_qrect.QRectF): void =
+proc setRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, rect: gen_qrect_types.QRectF): void =
   fcQSGSimpleTextureNode_setRect(self.h, rect.h)
 
 proc setRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, x: float64, y: float64, w: float64, h: float64): void =
   fcQSGSimpleTextureNode_setRect2(self.h, x, y, w, h)
 
-proc rect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qrect.QRectF =
-  gen_qrect.QRectF(h: fcQSGSimpleTextureNode_rect(self.h))
+proc rect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qrect_types.QRectF =
+  gen_qrect_types.QRectF(h: fcQSGSimpleTextureNode_rect(self.h))
 
-proc setSourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, r: gen_qrect.QRectF): void =
+proc setSourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, r: gen_qrect_types.QRectF): void =
   fcQSGSimpleTextureNode_setSourceRect(self.h, r.h)
 
 proc setSourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, x: float64, y: float64, w: float64, h: float64): void =
   fcQSGSimpleTextureNode_setSourceRect2(self.h, x, y, w, h)
 
-proc sourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qrect.QRectF =
-  gen_qrect.QRectF(h: fcQSGSimpleTextureNode_sourceRect(self.h))
+proc sourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qrect_types.QRectF =
+  gen_qrect_types.QRectF(h: fcQSGSimpleTextureNode_sourceRect(self.h))
 
-proc setTexture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, texture: gen_qsgtexture.QSGTexture): void =
+proc setTexture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, texture: gen_qsgtexture_types.QSGTexture): void =
   fcQSGSimpleTextureNode_setTexture(self.h, texture.h)
 
-proc texture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qsgtexture.QSGTexture =
-  gen_qsgtexture.QSGTexture(h: fcQSGSimpleTextureNode_texture(self.h))
+proc texture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qsgtexture_types.QSGTexture =
+  gen_qsgtexture_types.QSGTexture(h: fcQSGSimpleTextureNode_texture(self.h))
 
 proc setFiltering*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, filtering: cint): void =
   fcQSGSimpleTextureNode_setFiltering(self.h, cint(filtering))
@@ -123,37 +118,41 @@ proc setOwnsTexture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, 
 proc ownsTexture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): bool =
   fcQSGSimpleTextureNode_ownsTexture(self.h)
 
+type QSGSimpleTextureNodeisSubtreeBlockedProc* = proc(self: QSGSimpleTextureNode): bool {.raises: [], gcsafe.}
+type QSGSimpleTextureNodepreprocessProc* = proc(self: QSGSimpleTextureNode): void {.raises: [], gcsafe.}
+type QSGSimpleTextureNodeVTable* = object
+  vtbl: cQSGSimpleTextureNodeVTable
+  isSubtreeBlocked*: QSGSimpleTextureNodeisSubtreeBlockedProc
+  preprocess*: QSGSimpleTextureNodepreprocessProc
 proc QSGSimpleTextureNodeisSubtreeBlocked*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): bool =
-  fQSGSimpleTextureNode_virtualbase_isSubtreeBlocked(self.h)
+  fcQSGSimpleTextureNode_virtualbase_isSubtreeBlocked(self.h)
 
-type QSGSimpleTextureNodeisSubtreeBlockedProc* = proc(): bool
-proc onisSubtreeBlocked*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, slot: QSGSimpleTextureNodeisSubtreeBlockedProc) =
-  # TODO check subclass
-  var tmp = new QSGSimpleTextureNodeisSubtreeBlockedProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSGSimpleTextureNode_override_virtual_isSubtreeBlocked(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSGSimpleTextureNode_isSubtreeBlocked(self: ptr cQSGSimpleTextureNode, slot: int): bool {.exportc: "miqt_exec_callback_QSGSimpleTextureNode_isSubtreeBlocked ".} =
-  var nimfunc = cast[ptr QSGSimpleTextureNodeisSubtreeBlockedProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQSGSimpleTextureNode_isSubtreeBlocked(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QSGSimpleTextureNodeVTable](vtbl)
+  let self = QSGSimpleTextureNode(h: self)
+  let virtualReturn = vtbl[].isSubtreeBlocked(self)
   virtualReturn
+
 proc QSGSimpleTextureNodepreprocess*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): void =
-  fQSGSimpleTextureNode_virtualbase_preprocess(self.h)
+  fcQSGSimpleTextureNode_virtualbase_preprocess(self.h)
 
-type QSGSimpleTextureNodepreprocessProc* = proc(): void
-proc onpreprocess*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, slot: QSGSimpleTextureNodepreprocessProc) =
-  # TODO check subclass
-  var tmp = new QSGSimpleTextureNodepreprocessProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSGSimpleTextureNode_override_virtual_preprocess(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQSGSimpleTextureNode_preprocess(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSGSimpleTextureNodeVTable](vtbl)
+  let self = QSGSimpleTextureNode(h: self)
+  vtbl[].preprocess(self)
 
-proc miqt_exec_callback_QSGSimpleTextureNode_preprocess(self: ptr cQSGSimpleTextureNode, slot: int): void {.exportc: "miqt_exec_callback_QSGSimpleTextureNode_preprocess ".} =
-  var nimfunc = cast[ptr QSGSimpleTextureNodepreprocessProc](cast[pointer](slot))
+proc create*(T: type gen_qsgsimpletexturenode_types.QSGSimpleTextureNode,
+    vtbl: ref QSGSimpleTextureNodeVTable = nil): gen_qsgsimpletexturenode_types.QSGSimpleTextureNode =
+  let vtbl = if vtbl == nil: new QSGSimpleTextureNodeVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSGSimpleTextureNodeVTable, _: ptr cQSGSimpleTextureNode) {.cdecl.} =
+    let vtbl = cast[ref QSGSimpleTextureNodeVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.isSubtreeBlocked):
+    vtbl[].vtbl.isSubtreeBlocked = miqt_exec_callback_cQSGSimpleTextureNode_isSubtreeBlocked
+  if not isNil(vtbl.preprocess):
+    vtbl[].vtbl.preprocess = miqt_exec_callback_cQSGSimpleTextureNode_preprocess
+  gen_qsgsimpletexturenode_types.QSGSimpleTextureNode(h: fcQSGSimpleTextureNode_new(addr(vtbl[]), ))
 
-  nimfunc[]()
 proc delete*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode) =
   fcQSGSimpleTextureNode_delete(self.h)

@@ -33,25 +33,21 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qmediabindableinterface.cpp", cflags).}
 
-
 import gen_qmediabindableinterface_types
 export gen_qmediabindableinterface_types
 
 import
-  gen_qmediaobject
+  gen_qmediaobject_types
 export
-  gen_qmediaobject
+  gen_qmediaobject_types
 
 type cQMediaBindableInterface*{.exportc: "QMediaBindableInterface", incompleteStruct.} = object
 
 proc fcQMediaBindableInterface_mediaObject(self: pointer, ): pointer {.importc: "QMediaBindableInterface_mediaObject".}
 proc fcQMediaBindableInterface_delete(self: pointer) {.importc: "QMediaBindableInterface_delete".}
 
-
-func init*(T: type gen_qmediabindableinterface_types.QMediaBindableInterface, h: ptr cQMediaBindableInterface): gen_qmediabindableinterface_types.QMediaBindableInterface =
-  T(h: h)
-proc mediaObject*(self: gen_qmediabindableinterface_types.QMediaBindableInterface, ): gen_qmediaobject.QMediaObject =
-  gen_qmediaobject.QMediaObject(h: fcQMediaBindableInterface_mediaObject(self.h))
+proc mediaObject*(self: gen_qmediabindableinterface_types.QMediaBindableInterface, ): gen_qmediaobject_types.QMediaObject =
+  gen_qmediaobject_types.QMediaObject(h: fcQMediaBindableInterface_mediaObject(self.h))
 
 proc delete*(self: gen_qmediabindableinterface_types.QMediaBindableInterface) =
   fcQMediaBindableInterface_delete(self.h)

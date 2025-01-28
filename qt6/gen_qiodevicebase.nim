@@ -46,7 +46,6 @@ template Unbuffered*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 32
 template NewOnly*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 64
 template ExistingOnly*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 128
 
-
 import gen_qiodevicebase_types
 export gen_qiodevicebase_types
 
@@ -54,6 +53,3 @@ export gen_qiodevicebase_types
 type cQIODeviceBase*{.exportc: "QIODeviceBase", incompleteStruct.} = object
 
 
-
-func init*(T: type gen_qiodevicebase_types.QIODeviceBase, h: ptr cQIODeviceBase): gen_qiodevicebase_types.QIODeviceBase =
-  T(h: h)

@@ -1,4 +1,4 @@
 import gen_qaction_types
 export gen_qaction_types
-type QWidgetAction*  = object of gen_qaction_types.QAction
 
+type QWidgetAction* = object of gen_qaction_types.QAction

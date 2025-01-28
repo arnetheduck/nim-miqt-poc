@@ -8,4 +8,3 @@ type QPluginMetaDataMagicHeader* {.inheritable, pure.} = object
   h*: pointer
 type QPluginMetaDataElfNoteHeader* {.inheritable, pure.} = object
   h*: pointer
-

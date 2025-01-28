@@ -51,14 +51,13 @@ template ExamplesPath*(_: type QLibraryInfoLibraryPathEnum): untyped = 11
 template TestsPath*(_: type QLibraryInfoLibraryPathEnum): untyped = 12
 template SettingsPath*(_: type QLibraryInfoLibraryPathEnum): untyped = 100
 
-
 import gen_qlibraryinfo_types
 export gen_qlibraryinfo_types
 
 import
-  gen_qversionnumber
+  gen_qversionnumber_types
 export
-  gen_qversionnumber
+  gen_qversionnumber_types
 
 type cQLibraryInfo*{.exportc: "QLibraryInfo", incompleteStruct.} = object
 
@@ -70,17 +69,14 @@ proc fcQLibraryInfo_location(location: cint): struct_miqt_string {.importc: "QLi
 proc fcQLibraryInfo_platformPluginArguments(platformName: struct_miqt_string): struct_miqt_array {.importc: "QLibraryInfo_platformPluginArguments".}
 proc fcQLibraryInfo_delete(self: pointer) {.importc: "QLibraryInfo_delete".}
 
-
-func init*(T: type gen_qlibraryinfo_types.QLibraryInfo, h: ptr cQLibraryInfo): gen_qlibraryinfo_types.QLibraryInfo =
-  T(h: h)
 proc build*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): cstring =
   (fcQLibraryInfo_build())
 
 proc isDebugBuild*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): bool =
   fcQLibraryInfo_isDebugBuild()
 
-proc version*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): gen_qversionnumber.QVersionNumber =
-  gen_qversionnumber.QVersionNumber(h: fcQLibraryInfo_version())
+proc version*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): gen_qversionnumber_types.QVersionNumber =
+  gen_qversionnumber_types.QVersionNumber(h: fcQLibraryInfo_version())
 
 proc path*(_: type gen_qlibraryinfo_types.QLibraryInfo, p: cint): string =
   let v_ms = fcQLibraryInfo_path(cint(p))

@@ -33,40 +33,27 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6PrintSupport")
 {.compile("gen_qscistyledtext.cpp", cflags).}
 
-
 import gen_qscistyledtext_types
 export gen_qscistyledtext_types
 
 import
-  gen_qsciscintillabase,
-  gen_qscistyle
+  gen_qsciscintillabase_types,
+  gen_qscistyle_types
 export
-  gen_qsciscintillabase,
-  gen_qscistyle
+  gen_qsciscintillabase_types,
+  gen_qscistyle_types
 
 type cQsciStyledText*{.exportc: "QsciStyledText", incompleteStruct.} = object
 
-proc fcQsciStyledText_new(text: struct_miqt_string, style: cint): ptr cQsciStyledText {.importc: "QsciStyledText_new".}
-proc fcQsciStyledText_new2(text: struct_miqt_string, style: pointer): ptr cQsciStyledText {.importc: "QsciStyledText_new2".}
-proc fcQsciStyledText_new3(param1: pointer): ptr cQsciStyledText {.importc: "QsciStyledText_new3".}
 proc fcQsciStyledText_apply(self: pointer, sci: pointer): void {.importc: "QsciStyledText_apply".}
 proc fcQsciStyledText_text(self: pointer, ): struct_miqt_string {.importc: "QsciStyledText_text".}
 proc fcQsciStyledText_style(self: pointer, ): cint {.importc: "QsciStyledText_style".}
+proc fcQsciStyledText_new(text: struct_miqt_string, style: cint): ptr cQsciStyledText {.importc: "QsciStyledText_new".}
+proc fcQsciStyledText_new2(text: struct_miqt_string, style: pointer): ptr cQsciStyledText {.importc: "QsciStyledText_new2".}
+proc fcQsciStyledText_new3(param1: pointer): ptr cQsciStyledText {.importc: "QsciStyledText_new3".}
 proc fcQsciStyledText_delete(self: pointer) {.importc: "QsciStyledText_delete".}
 
-
-func init*(T: type gen_qscistyledtext_types.QsciStyledText, h: ptr cQsciStyledText): gen_qscistyledtext_types.QsciStyledText =
-  T(h: h)
-proc create*(T: type gen_qscistyledtext_types.QsciStyledText, text: string, style: cint): gen_qscistyledtext_types.QsciStyledText =
-  gen_qscistyledtext_types.QsciStyledText.init(fcQsciStyledText_new(struct_miqt_string(data: text, len: csize_t(len(text))), style))
-
-proc create*(T: type gen_qscistyledtext_types.QsciStyledText, text: string, style: gen_qscistyle.QsciStyle): gen_qscistyledtext_types.QsciStyledText =
-  gen_qscistyledtext_types.QsciStyledText.init(fcQsciStyledText_new2(struct_miqt_string(data: text, len: csize_t(len(text))), style.h))
-
-proc create*(T: type gen_qscistyledtext_types.QsciStyledText, param1: gen_qscistyledtext_types.QsciStyledText): gen_qscistyledtext_types.QsciStyledText =
-  gen_qscistyledtext_types.QsciStyledText.init(fcQsciStyledText_new3(param1.h))
-
-proc apply*(self: gen_qscistyledtext_types.QsciStyledText, sci: gen_qsciscintillabase.QsciScintillaBase): void =
+proc apply*(self: gen_qscistyledtext_types.QsciStyledText, sci: gen_qsciscintillabase_types.QsciScintillaBase): void =
   fcQsciStyledText_apply(self.h, sci.h)
 
 proc text*(self: gen_qscistyledtext_types.QsciStyledText, ): string =
@@ -77,6 +64,18 @@ proc text*(self: gen_qscistyledtext_types.QsciStyledText, ): string =
 
 proc style*(self: gen_qscistyledtext_types.QsciStyledText, ): cint =
   fcQsciStyledText_style(self.h)
+
+proc create*(T: type gen_qscistyledtext_types.QsciStyledText,
+    text: string, style: cint): gen_qscistyledtext_types.QsciStyledText =
+  gen_qscistyledtext_types.QsciStyledText(h: fcQsciStyledText_new(struct_miqt_string(data: text, len: csize_t(len(text))), style))
+
+proc create*(T: type gen_qscistyledtext_types.QsciStyledText,
+    text: string, style: gen_qscistyle_types.QsciStyle): gen_qscistyledtext_types.QsciStyledText =
+  gen_qscistyledtext_types.QsciStyledText(h: fcQsciStyledText_new2(struct_miqt_string(data: text, len: csize_t(len(text))), style.h))
+
+proc create*(T: type gen_qscistyledtext_types.QsciStyledText,
+    param1: gen_qscistyledtext_types.QsciStyledText): gen_qscistyledtext_types.QsciStyledText =
+  gen_qscistyledtext_types.QsciStyledText(h: fcQsciStyledText_new3(param1.h))
 
 proc delete*(self: gen_qscistyledtext_types.QsciStyledText) =
   fcQsciStyledText_delete(self.h)

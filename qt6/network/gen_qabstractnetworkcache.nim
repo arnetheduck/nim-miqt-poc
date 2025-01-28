@@ -33,31 +33,28 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6Network")
 {.compile("gen_qabstractnetworkcache.cpp", cflags).}
 
-
 import gen_qabstractnetworkcache_types
 export gen_qabstractnetworkcache_types
 
 import
-  gen_qdatetime,
-  gen_qiodevice,
+  gen_qdatetime_types,
+  gen_qiodevice_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qurl,
-  gen_qvariant,
+  gen_qobjectdefs_types,
+  gen_qurl_types,
+  gen_qvariant_types,
   std/tables
 export
-  gen_qdatetime,
-  gen_qiodevice,
+  gen_qdatetime_types,
+  gen_qiodevice_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qurl,
-  gen_qvariant
+  gen_qobjectdefs_types,
+  gen_qurl_types,
+  gen_qvariant_types
 
 type cQNetworkCacheMetaData*{.exportc: "QNetworkCacheMetaData", incompleteStruct.} = object
 type cQAbstractNetworkCache*{.exportc: "QAbstractNetworkCache", incompleteStruct.} = object
 
-proc fcQNetworkCacheMetaData_new(): ptr cQNetworkCacheMetaData {.importc: "QNetworkCacheMetaData_new".}
-proc fcQNetworkCacheMetaData_new2(other: pointer): ptr cQNetworkCacheMetaData {.importc: "QNetworkCacheMetaData_new2".}
 proc fcQNetworkCacheMetaData_operatorAssign(self: pointer, other: pointer): void {.importc: "QNetworkCacheMetaData_operatorAssign".}
 proc fcQNetworkCacheMetaData_swap(self: pointer, other: pointer): void {.importc: "QNetworkCacheMetaData_swap".}
 proc fcQNetworkCacheMetaData_operatorEqual(self: pointer, other: pointer): bool {.importc: "QNetworkCacheMetaData_operatorEqual".}
@@ -75,6 +72,8 @@ proc fcQNetworkCacheMetaData_saveToDisk(self: pointer, ): bool {.importc: "QNetw
 proc fcQNetworkCacheMetaData_setSaveToDisk(self: pointer, allow: bool): void {.importc: "QNetworkCacheMetaData_setSaveToDisk".}
 proc fcQNetworkCacheMetaData_attributes(self: pointer, ): struct_miqt_map {.importc: "QNetworkCacheMetaData_attributes".}
 proc fcQNetworkCacheMetaData_setAttributes(self: pointer, attributes: struct_miqt_map): void {.importc: "QNetworkCacheMetaData_setAttributes".}
+proc fcQNetworkCacheMetaData_new(): ptr cQNetworkCacheMetaData {.importc: "QNetworkCacheMetaData_new".}
+proc fcQNetworkCacheMetaData_new2(other: pointer): ptr cQNetworkCacheMetaData {.importc: "QNetworkCacheMetaData_new2".}
 proc fcQNetworkCacheMetaData_delete(self: pointer) {.importc: "QNetworkCacheMetaData_delete".}
 proc fcQAbstractNetworkCache_metaObject(self: pointer, ): pointer {.importc: "QAbstractNetworkCache_metaObject".}
 proc fcQAbstractNetworkCache_metacast(self: pointer, param1: cstring): pointer {.importc: "QAbstractNetworkCache_metacast".}
@@ -93,15 +92,6 @@ proc fcQAbstractNetworkCache_tr3(s: cstring, c: cstring, n: cint): struct_miqt_s
 proc fcQAbstractNetworkCache_staticMetaObject(): pointer {.importc: "QAbstractNetworkCache_staticMetaObject".}
 proc fcQAbstractNetworkCache_delete(self: pointer) {.importc: "QAbstractNetworkCache_delete".}
 
-
-func init*(T: type gen_qabstractnetworkcache_types.QNetworkCacheMetaData, h: ptr cQNetworkCacheMetaData): gen_qabstractnetworkcache_types.QNetworkCacheMetaData =
-  T(h: h)
-proc create*(T: type gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): gen_qabstractnetworkcache_types.QNetworkCacheMetaData =
-  gen_qabstractnetworkcache_types.QNetworkCacheMetaData.init(fcQNetworkCacheMetaData_new())
-
-proc create*(T: type gen_qabstractnetworkcache_types.QNetworkCacheMetaData, other: gen_qabstractnetworkcache_types.QNetworkCacheMetaData): gen_qabstractnetworkcache_types.QNetworkCacheMetaData =
-  gen_qabstractnetworkcache_types.QNetworkCacheMetaData.init(fcQNetworkCacheMetaData_new2(other.h))
-
 proc operatorAssign*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, other: gen_qabstractnetworkcache_types.QNetworkCacheMetaData): void =
   fcQNetworkCacheMetaData_operatorAssign(self.h, other.h)
 
@@ -117,10 +107,10 @@ proc operatorNotEqual*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaDa
 proc isValid*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): bool =
   fcQNetworkCacheMetaData_isValid(self.h)
 
-proc url*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQNetworkCacheMetaData_url(self.h))
+proc url*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQNetworkCacheMetaData_url(self.h))
 
-proc setUrl*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, url: gen_qurl.QUrl): void =
+proc setUrl*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, url: gen_qurl_types.QUrl): void =
   fcQNetworkCacheMetaData_setUrl(self.h, url.h)
 
 proc rawHeaders*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): seq[tuple[first: seq[byte], second: seq[byte]]] =
@@ -155,16 +145,16 @@ proc setRawHeaders*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData,
 
   fcQNetworkCacheMetaData_setRawHeaders(self.h, struct_miqt_array(len: csize_t(len(headers)), data: if len(headers) == 0: nil else: addr(headers_CArray[0])))
 
-proc lastModified*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): gen_qdatetime.QDateTime =
-  gen_qdatetime.QDateTime(h: fcQNetworkCacheMetaData_lastModified(self.h))
+proc lastModified*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQNetworkCacheMetaData_lastModified(self.h))
 
-proc setLastModified*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, dateTime: gen_qdatetime.QDateTime): void =
+proc setLastModified*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, dateTime: gen_qdatetime_types.QDateTime): void =
   fcQNetworkCacheMetaData_setLastModified(self.h, dateTime.h)
 
-proc expirationDate*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): gen_qdatetime.QDateTime =
-  gen_qdatetime.QDateTime(h: fcQNetworkCacheMetaData_expirationDate(self.h))
+proc expirationDate*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQNetworkCacheMetaData_expirationDate(self.h))
 
-proc setExpirationDate*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, dateTime: gen_qdatetime.QDateTime): void =
+proc setExpirationDate*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, dateTime: gen_qdatetime_types.QDateTime): void =
   fcQNetworkCacheMetaData_setExpirationDate(self.h, dateTime.h)
 
 proc saveToDisk*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): bool =
@@ -173,20 +163,20 @@ proc saveToDisk*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ):
 proc setSaveToDisk*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, allow: bool): void =
   fcQNetworkCacheMetaData_setSaveToDisk(self.h, allow)
 
-proc attributes*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): Table[cint,gen_qvariant.QVariant] =
+proc attributes*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, ): Table[cint,gen_qvariant_types.QVariant] =
   var v_mm = fcQNetworkCacheMetaData_attributes(self.h)
-  var vx_ret: Table[cint, gen_qvariant.QVariant]
+  var vx_ret: Table[cint, gen_qvariant_types.QVariant]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
   var v_Values = cast[ptr UncheckedArray[pointer]](v_mm.values)
   for i in 0..<v_mm.len:
     var v_entry_Key = cint(v_Keys[i])
 
-    var v_entry_Value = gen_qvariant.QVariant(h: v_Values[i])
+    var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-proc setAttributes*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, attributes: Table[cint,gen_qvariant.QVariant]): void =
+proc setAttributes*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData, attributes: Table[cint,gen_qvariant_types.QVariant]): void =
   var attributes_Keys_CArray = newSeq[cint](len(attributes))
   var attributes_Values_CArray = newSeq[pointer](len(attributes))
   var attributes_ctr = 0
@@ -197,13 +187,17 @@ proc setAttributes*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData,
 
   fcQNetworkCacheMetaData_setAttributes(self.h, struct_miqt_map(len: csize_t(len(attributes)),keys: if len(attributes) == 0: nil else: addr(attributes_Keys_CArray[0]), values: if len(attributes) == 0: nil else: addr(attributes_Values_CArray[0]),))
 
+proc create*(T: type gen_qabstractnetworkcache_types.QNetworkCacheMetaData): gen_qabstractnetworkcache_types.QNetworkCacheMetaData =
+  gen_qabstractnetworkcache_types.QNetworkCacheMetaData(h: fcQNetworkCacheMetaData_new())
+
+proc create*(T: type gen_qabstractnetworkcache_types.QNetworkCacheMetaData,
+    other: gen_qabstractnetworkcache_types.QNetworkCacheMetaData): gen_qabstractnetworkcache_types.QNetworkCacheMetaData =
+  gen_qabstractnetworkcache_types.QNetworkCacheMetaData(h: fcQNetworkCacheMetaData_new2(other.h))
+
 proc delete*(self: gen_qabstractnetworkcache_types.QNetworkCacheMetaData) =
   fcQNetworkCacheMetaData_delete(self.h)
-
-func init*(T: type gen_qabstractnetworkcache_types.QAbstractNetworkCache, h: ptr cQAbstractNetworkCache): gen_qabstractnetworkcache_types.QAbstractNetworkCache =
-  T(h: h)
-proc metaObject*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQAbstractNetworkCache_metaObject(self.h))
+proc metaObject*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractNetworkCache_metaObject(self.h))
 
 proc metacast*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, param1: cstring): pointer =
   fcQAbstractNetworkCache_metacast(self.h, param1)
@@ -217,25 +211,25 @@ proc tr*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache, s: cstri
   c_free(v_ms.data)
   vx_ret
 
-proc metaData*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, url: gen_qurl.QUrl): gen_qabstractnetworkcache_types.QNetworkCacheMetaData =
+proc metaData*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, url: gen_qurl_types.QUrl): gen_qabstractnetworkcache_types.QNetworkCacheMetaData =
   gen_qabstractnetworkcache_types.QNetworkCacheMetaData(h: fcQAbstractNetworkCache_metaData(self.h, url.h))
 
 proc updateMetaData*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, metaData: gen_qabstractnetworkcache_types.QNetworkCacheMetaData): void =
   fcQAbstractNetworkCache_updateMetaData(self.h, metaData.h)
 
-proc data*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, url: gen_qurl.QUrl): gen_qiodevice.QIODevice =
-  gen_qiodevice.QIODevice(h: fcQAbstractNetworkCache_data(self.h, url.h))
+proc data*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, url: gen_qurl_types.QUrl): gen_qiodevice_types.QIODevice =
+  gen_qiodevice_types.QIODevice(h: fcQAbstractNetworkCache_data(self.h, url.h))
 
-proc remove*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, url: gen_qurl.QUrl): bool =
+proc remove*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, url: gen_qurl_types.QUrl): bool =
   fcQAbstractNetworkCache_remove(self.h, url.h)
 
 proc cacheSize*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, ): clonglong =
   fcQAbstractNetworkCache_cacheSize(self.h)
 
-proc prepare*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, metaData: gen_qabstractnetworkcache_types.QNetworkCacheMetaData): gen_qiodevice.QIODevice =
-  gen_qiodevice.QIODevice(h: fcQAbstractNetworkCache_prepare(self.h, metaData.h))
+proc prepare*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, metaData: gen_qabstractnetworkcache_types.QNetworkCacheMetaData): gen_qiodevice_types.QIODevice =
+  gen_qiodevice_types.QIODevice(h: fcQAbstractNetworkCache_prepare(self.h, metaData.h))
 
-proc insert*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, device: gen_qiodevice.QIODevice): void =
+proc insert*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, device: gen_qiodevice_types.QIODevice): void =
   fcQAbstractNetworkCache_insert(self.h, device.h)
 
 proc clear*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache, ): void =
@@ -253,7 +247,7 @@ proc tr*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache, s: cstri
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQAbstractNetworkCache_staticMetaObject())
+proc staticMetaObject*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractNetworkCache_staticMetaObject())
 proc delete*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache) =
   fcQAbstractNetworkCache_delete(self.h)

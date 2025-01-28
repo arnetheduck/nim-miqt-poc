@@ -56,30 +56,25 @@ type QJsonDocumentJsonFormatEnum* = distinct cint
 template Indented*(_: type QJsonDocumentJsonFormatEnum): untyped = 0
 template Compact*(_: type QJsonDocumentJsonFormatEnum): untyped = 1
 
-
 import gen_qjsondocument_types
 export gen_qjsondocument_types
 
 import
-  gen_qjsonarray,
-  gen_qjsonobject,
-  gen_qjsonvalue,
-  gen_qvariant
+  gen_qjsonarray_types,
+  gen_qjsonobject_types,
+  gen_qjsonvalue_types,
+  gen_qvariant_types
 export
-  gen_qjsonarray,
-  gen_qjsonobject,
-  gen_qjsonvalue,
-  gen_qvariant
+  gen_qjsonarray_types,
+  gen_qjsonobject_types,
+  gen_qjsonvalue_types,
+  gen_qvariant_types
 
 type cQJsonParseError*{.exportc: "QJsonParseError", incompleteStruct.} = object
 type cQJsonDocument*{.exportc: "QJsonDocument", incompleteStruct.} = object
 
 proc fcQJsonParseError_errorString(self: pointer, ): struct_miqt_string {.importc: "QJsonParseError_errorString".}
 proc fcQJsonParseError_delete(self: pointer) {.importc: "QJsonParseError_delete".}
-proc fcQJsonDocument_new(): ptr cQJsonDocument {.importc: "QJsonDocument_new".}
-proc fcQJsonDocument_new2(objectVal: pointer): ptr cQJsonDocument {.importc: "QJsonDocument_new2".}
-proc fcQJsonDocument_new3(array: pointer): ptr cQJsonDocument {.importc: "QJsonDocument_new3".}
-proc fcQJsonDocument_new4(other: pointer): ptr cQJsonDocument {.importc: "QJsonDocument_new4".}
 proc fcQJsonDocument_operatorAssign(self: pointer, other: pointer): void {.importc: "QJsonDocument_operatorAssign".}
 proc fcQJsonDocument_swap(self: pointer, other: pointer): void {.importc: "QJsonDocument_swap".}
 proc fcQJsonDocument_fromVariant(variant: pointer): pointer {.importc: "QJsonDocument_fromVariant".}
@@ -100,11 +95,12 @@ proc fcQJsonDocument_operatorNotEqual(self: pointer, other: pointer): bool {.imp
 proc fcQJsonDocument_isNull(self: pointer, ): bool {.importc: "QJsonDocument_isNull".}
 proc fcQJsonDocument_fromJson2(json: struct_miqt_string, error: pointer): pointer {.importc: "QJsonDocument_fromJson2".}
 proc fcQJsonDocument_toJson1(self: pointer, format: cint): struct_miqt_string {.importc: "QJsonDocument_toJson1".}
+proc fcQJsonDocument_new(): ptr cQJsonDocument {.importc: "QJsonDocument_new".}
+proc fcQJsonDocument_new2(objectVal: pointer): ptr cQJsonDocument {.importc: "QJsonDocument_new2".}
+proc fcQJsonDocument_new3(array: pointer): ptr cQJsonDocument {.importc: "QJsonDocument_new3".}
+proc fcQJsonDocument_new4(other: pointer): ptr cQJsonDocument {.importc: "QJsonDocument_new4".}
 proc fcQJsonDocument_delete(self: pointer) {.importc: "QJsonDocument_delete".}
 
-
-func init*(T: type gen_qjsondocument_types.QJsonParseError, h: ptr cQJsonParseError): gen_qjsondocument_types.QJsonParseError =
-  T(h: h)
 proc errorString*(self: gen_qjsondocument_types.QJsonParseError, ): string =
   let v_ms = fcQJsonParseError_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
@@ -113,32 +109,17 @@ proc errorString*(self: gen_qjsondocument_types.QJsonParseError, ): string =
 
 proc delete*(self: gen_qjsondocument_types.QJsonParseError) =
   fcQJsonParseError_delete(self.h)
-
-func init*(T: type gen_qjsondocument_types.QJsonDocument, h: ptr cQJsonDocument): gen_qjsondocument_types.QJsonDocument =
-  T(h: h)
-proc create*(T: type gen_qjsondocument_types.QJsonDocument, ): gen_qjsondocument_types.QJsonDocument =
-  gen_qjsondocument_types.QJsonDocument.init(fcQJsonDocument_new())
-
-proc create*(T: type gen_qjsondocument_types.QJsonDocument, objectVal: gen_qjsonobject.QJsonObject): gen_qjsondocument_types.QJsonDocument =
-  gen_qjsondocument_types.QJsonDocument.init(fcQJsonDocument_new2(objectVal.h))
-
-proc create*(T: type gen_qjsondocument_types.QJsonDocument, array: gen_qjsonarray.QJsonArray): gen_qjsondocument_types.QJsonDocument =
-  gen_qjsondocument_types.QJsonDocument.init(fcQJsonDocument_new3(array.h))
-
-proc create*(T: type gen_qjsondocument_types.QJsonDocument, other: gen_qjsondocument_types.QJsonDocument): gen_qjsondocument_types.QJsonDocument =
-  gen_qjsondocument_types.QJsonDocument.init(fcQJsonDocument_new4(other.h))
-
 proc operatorAssign*(self: gen_qjsondocument_types.QJsonDocument, other: gen_qjsondocument_types.QJsonDocument): void =
   fcQJsonDocument_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qjsondocument_types.QJsonDocument, other: gen_qjsondocument_types.QJsonDocument): void =
   fcQJsonDocument_swap(self.h, other.h)
 
-proc fromVariant*(_: type gen_qjsondocument_types.QJsonDocument, variant: gen_qvariant.QVariant): gen_qjsondocument_types.QJsonDocument =
+proc fromVariant*(_: type gen_qjsondocument_types.QJsonDocument, variant: gen_qvariant_types.QVariant): gen_qjsondocument_types.QJsonDocument =
   gen_qjsondocument_types.QJsonDocument(h: fcQJsonDocument_fromVariant(variant.h))
 
-proc toVariant*(self: gen_qjsondocument_types.QJsonDocument, ): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQJsonDocument_toVariant(self.h))
+proc toVariant*(self: gen_qjsondocument_types.QJsonDocument, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQJsonDocument_toVariant(self.h))
 
 proc fromJson*(_: type gen_qjsondocument_types.QJsonDocument, json: seq[byte]): gen_qjsondocument_types.QJsonDocument =
   gen_qjsondocument_types.QJsonDocument(h: fcQJsonDocument_fromJson(struct_miqt_string(data: cast[cstring](if len(json) == 0: nil else: unsafeAddr json[0]), len: csize_t(len(json)))))
@@ -158,23 +139,23 @@ proc isArray*(self: gen_qjsondocument_types.QJsonDocument, ): bool =
 proc isObject*(self: gen_qjsondocument_types.QJsonDocument, ): bool =
   fcQJsonDocument_isObject(self.h)
 
-proc objectX*(self: gen_qjsondocument_types.QJsonDocument, ): gen_qjsonobject.QJsonObject =
-  gen_qjsonobject.QJsonObject(h: fcQJsonDocument_objectX(self.h))
+proc objectX*(self: gen_qjsondocument_types.QJsonDocument, ): gen_qjsonobject_types.QJsonObject =
+  gen_qjsonobject_types.QJsonObject(h: fcQJsonDocument_objectX(self.h))
 
-proc array*(self: gen_qjsondocument_types.QJsonDocument, ): gen_qjsonarray.QJsonArray =
-  gen_qjsonarray.QJsonArray(h: fcQJsonDocument_array(self.h))
+proc array*(self: gen_qjsondocument_types.QJsonDocument, ): gen_qjsonarray_types.QJsonArray =
+  gen_qjsonarray_types.QJsonArray(h: fcQJsonDocument_array(self.h))
 
-proc setObject*(self: gen_qjsondocument_types.QJsonDocument, objectVal: gen_qjsonobject.QJsonObject): void =
+proc setObject*(self: gen_qjsondocument_types.QJsonDocument, objectVal: gen_qjsonobject_types.QJsonObject): void =
   fcQJsonDocument_setObject(self.h, objectVal.h)
 
-proc setArray*(self: gen_qjsondocument_types.QJsonDocument, array: gen_qjsonarray.QJsonArray): void =
+proc setArray*(self: gen_qjsondocument_types.QJsonDocument, array: gen_qjsonarray_types.QJsonArray): void =
   fcQJsonDocument_setArray(self.h, array.h)
 
-proc operatorSubscript*(self: gen_qjsondocument_types.QJsonDocument, key: string): gen_qjsonvalue.QJsonValue =
-  gen_qjsonvalue.QJsonValue(h: fcQJsonDocument_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc operatorSubscript*(self: gen_qjsondocument_types.QJsonDocument, key: string): gen_qjsonvalue_types.QJsonValue =
+  gen_qjsonvalue_types.QJsonValue(h: fcQJsonDocument_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscript*(self: gen_qjsondocument_types.QJsonDocument, i: int64): gen_qjsonvalue.QJsonValue =
-  gen_qjsonvalue.QJsonValue(h: fcQJsonDocument_operatorSubscriptWithQsizetype(self.h, i))
+proc operatorSubscript*(self: gen_qjsondocument_types.QJsonDocument, i: int64): gen_qjsonvalue_types.QJsonValue =
+  gen_qjsonvalue_types.QJsonValue(h: fcQJsonDocument_operatorSubscriptWithQsizetype(self.h, i))
 
 proc operatorEqual*(self: gen_qjsondocument_types.QJsonDocument, other: gen_qjsondocument_types.QJsonDocument): bool =
   fcQJsonDocument_operatorEqual(self.h, other.h)
@@ -193,6 +174,21 @@ proc toJson*(self: gen_qjsondocument_types.QJsonDocument, format: cint): seq[byt
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
+
+proc create*(T: type gen_qjsondocument_types.QJsonDocument): gen_qjsondocument_types.QJsonDocument =
+  gen_qjsondocument_types.QJsonDocument(h: fcQJsonDocument_new())
+
+proc create*(T: type gen_qjsondocument_types.QJsonDocument,
+    objectVal: gen_qjsonobject_types.QJsonObject): gen_qjsondocument_types.QJsonDocument =
+  gen_qjsondocument_types.QJsonDocument(h: fcQJsonDocument_new2(objectVal.h))
+
+proc create*(T: type gen_qjsondocument_types.QJsonDocument,
+    array: gen_qjsonarray_types.QJsonArray): gen_qjsondocument_types.QJsonDocument =
+  gen_qjsondocument_types.QJsonDocument(h: fcQJsonDocument_new3(array.h))
+
+proc create*(T: type gen_qjsondocument_types.QJsonDocument,
+    other: gen_qjsondocument_types.QJsonDocument): gen_qjsondocument_types.QJsonDocument =
+  gen_qjsondocument_types.QJsonDocument(h: fcQJsonDocument_new4(other.h))
 
 proc delete*(self: gen_qjsondocument_types.QJsonDocument) =
   fcQJsonDocument_delete(self.h)

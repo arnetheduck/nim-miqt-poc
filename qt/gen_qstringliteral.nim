@@ -33,7 +33,6 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qstringliteral.cpp", cflags).}
 
-
 import gen_qstringliteral_types
 export gen_qstringliteral_types
 
@@ -42,8 +41,5 @@ type cQStringDataPtr*{.exportc: "QStringDataPtr", incompleteStruct.} = object
 
 proc fcQStringDataPtr_delete(self: pointer) {.importc: "QStringDataPtr_delete".}
 
-
-func init*(T: type gen_qstringliteral_types.QStringDataPtr, h: ptr cQStringDataPtr): gen_qstringliteral_types.QStringDataPtr =
-  T(h: h)
 proc delete*(self: gen_qstringliteral_types.QStringDataPtr) =
   fcQStringDataPtr_delete(self.h)

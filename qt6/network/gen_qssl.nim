@@ -143,7 +143,6 @@ template Psk*(_: type QSslSupportedFeatureEnum): untyped = 4
 template SessionTicket*(_: type QSslSupportedFeatureEnum): untyped = 5
 template Alerts*(_: type QSslSupportedFeatureEnum): untyped = 6
 
-
 import gen_qssl_types
 export gen_qssl_types
 

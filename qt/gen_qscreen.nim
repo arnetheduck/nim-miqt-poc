@@ -33,26 +33,25 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qscreen.cpp", cflags).}
 
-
 import gen_qscreen_types
 export gen_qscreen_types
 
 import
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qpixmap,
-  gen_qpoint,
-  gen_qrect,
-  gen_qsize,
-  gen_qtransform
+  gen_qobjectdefs_types,
+  gen_qpixmap_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qsize_types,
+  gen_qtransform_types
 export
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qpixmap,
-  gen_qpoint,
-  gen_qrect,
-  gen_qsize,
-  gen_qtransform
+  gen_qobjectdefs_types,
+  gen_qpixmap_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qsize_types,
+  gen_qtransform_types
 
 type cQScreen*{.exportc: "QScreen", incompleteStruct.} = object
 
@@ -97,23 +96,23 @@ proc fcQScreen_isLandscape(self: pointer, orientation: cint): bool {.importc: "Q
 proc fcQScreen_grabWindow(self: pointer, window: uint): pointer {.importc: "QScreen_grabWindow".}
 proc fcQScreen_refreshRate(self: pointer, ): float64 {.importc: "QScreen_refreshRate".}
 proc fcQScreen_geometryChanged(self: pointer, geometry: pointer): void {.importc: "QScreen_geometryChanged".}
-proc fQScreen_connect_geometryChanged(self: pointer, slot: int) {.importc: "QScreen_connect_geometryChanged".}
+proc fcQScreen_connect_geometryChanged(self: pointer, slot: int) {.importc: "QScreen_connect_geometryChanged".}
 proc fcQScreen_availableGeometryChanged(self: pointer, geometry: pointer): void {.importc: "QScreen_availableGeometryChanged".}
-proc fQScreen_connect_availableGeometryChanged(self: pointer, slot: int) {.importc: "QScreen_connect_availableGeometryChanged".}
+proc fcQScreen_connect_availableGeometryChanged(self: pointer, slot: int) {.importc: "QScreen_connect_availableGeometryChanged".}
 proc fcQScreen_physicalSizeChanged(self: pointer, size: pointer): void {.importc: "QScreen_physicalSizeChanged".}
-proc fQScreen_connect_physicalSizeChanged(self: pointer, slot: int) {.importc: "QScreen_connect_physicalSizeChanged".}
+proc fcQScreen_connect_physicalSizeChanged(self: pointer, slot: int) {.importc: "QScreen_connect_physicalSizeChanged".}
 proc fcQScreen_physicalDotsPerInchChanged(self: pointer, dpi: float64): void {.importc: "QScreen_physicalDotsPerInchChanged".}
-proc fQScreen_connect_physicalDotsPerInchChanged(self: pointer, slot: int) {.importc: "QScreen_connect_physicalDotsPerInchChanged".}
+proc fcQScreen_connect_physicalDotsPerInchChanged(self: pointer, slot: int) {.importc: "QScreen_connect_physicalDotsPerInchChanged".}
 proc fcQScreen_logicalDotsPerInchChanged(self: pointer, dpi: float64): void {.importc: "QScreen_logicalDotsPerInchChanged".}
-proc fQScreen_connect_logicalDotsPerInchChanged(self: pointer, slot: int) {.importc: "QScreen_connect_logicalDotsPerInchChanged".}
+proc fcQScreen_connect_logicalDotsPerInchChanged(self: pointer, slot: int) {.importc: "QScreen_connect_logicalDotsPerInchChanged".}
 proc fcQScreen_virtualGeometryChanged(self: pointer, rect: pointer): void {.importc: "QScreen_virtualGeometryChanged".}
-proc fQScreen_connect_virtualGeometryChanged(self: pointer, slot: int) {.importc: "QScreen_connect_virtualGeometryChanged".}
+proc fcQScreen_connect_virtualGeometryChanged(self: pointer, slot: int) {.importc: "QScreen_connect_virtualGeometryChanged".}
 proc fcQScreen_primaryOrientationChanged(self: pointer, orientation: cint): void {.importc: "QScreen_primaryOrientationChanged".}
-proc fQScreen_connect_primaryOrientationChanged(self: pointer, slot: int) {.importc: "QScreen_connect_primaryOrientationChanged".}
+proc fcQScreen_connect_primaryOrientationChanged(self: pointer, slot: int) {.importc: "QScreen_connect_primaryOrientationChanged".}
 proc fcQScreen_orientationChanged(self: pointer, orientation: cint): void {.importc: "QScreen_orientationChanged".}
-proc fQScreen_connect_orientationChanged(self: pointer, slot: int) {.importc: "QScreen_connect_orientationChanged".}
+proc fcQScreen_connect_orientationChanged(self: pointer, slot: int) {.importc: "QScreen_connect_orientationChanged".}
 proc fcQScreen_refreshRateChanged(self: pointer, refreshRate: float64): void {.importc: "QScreen_refreshRateChanged".}
-proc fQScreen_connect_refreshRateChanged(self: pointer, slot: int) {.importc: "QScreen_connect_refreshRateChanged".}
+proc fcQScreen_connect_refreshRateChanged(self: pointer, slot: int) {.importc: "QScreen_connect_refreshRateChanged".}
 proc fcQScreen_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QScreen_tr2".}
 proc fcQScreen_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QScreen_tr3".}
 proc fcQScreen_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QScreen_trUtf82".}
@@ -125,11 +124,8 @@ proc fcQScreen_grabWindow5(self: pointer, window: uint, x: cint, y: cint, w: cin
 proc fcQScreen_staticMetaObject(): pointer {.importc: "QScreen_staticMetaObject".}
 proc fcQScreen_delete(self: pointer) {.importc: "QScreen_delete".}
 
-
-func init*(T: type gen_qscreen_types.QScreen, h: ptr cQScreen): gen_qscreen_types.QScreen =
-  T(h: h)
-proc metaObject*(self: gen_qscreen_types.QScreen, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQScreen_metaObject(self.h))
+proc metaObject*(self: gen_qscreen_types.QScreen, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScreen_metaObject(self.h))
 
 proc metacast*(self: gen_qscreen_types.QScreen, param1: cstring): pointer =
   fcQScreen_metacast(self.h, param1)
@@ -176,14 +172,14 @@ proc serialNumber*(self: gen_qscreen_types.QScreen, ): string =
 proc depth*(self: gen_qscreen_types.QScreen, ): cint =
   fcQScreen_depth(self.h)
 
-proc size*(self: gen_qscreen_types.QScreen, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQScreen_size(self.h))
+proc size*(self: gen_qscreen_types.QScreen, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQScreen_size(self.h))
 
-proc geometry*(self: gen_qscreen_types.QScreen, ): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQScreen_geometry(self.h))
+proc geometry*(self: gen_qscreen_types.QScreen, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQScreen_geometry(self.h))
 
-proc physicalSize*(self: gen_qscreen_types.QScreen, ): gen_qsize.QSizeF =
-  gen_qsize.QSizeF(h: fcQScreen_physicalSize(self.h))
+proc physicalSize*(self: gen_qscreen_types.QScreen, ): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQScreen_physicalSize(self.h))
 
 proc physicalDotsPerInchX*(self: gen_qscreen_types.QScreen, ): float64 =
   fcQScreen_physicalDotsPerInchX(self.h)
@@ -206,11 +202,11 @@ proc logicalDotsPerInch*(self: gen_qscreen_types.QScreen, ): float64 =
 proc devicePixelRatio*(self: gen_qscreen_types.QScreen, ): float64 =
   fcQScreen_devicePixelRatio(self.h)
 
-proc availableSize*(self: gen_qscreen_types.QScreen, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQScreen_availableSize(self.h))
+proc availableSize*(self: gen_qscreen_types.QScreen, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQScreen_availableSize(self.h))
 
-proc availableGeometry*(self: gen_qscreen_types.QScreen, ): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQScreen_availableGeometry(self.h))
+proc availableGeometry*(self: gen_qscreen_types.QScreen, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQScreen_availableGeometry(self.h))
 
 proc virtualSiblings*(self: gen_qscreen_types.QScreen, ): seq[gen_qscreen_types.QScreen] =
   var v_ma = fcQScreen_virtualSiblings(self.h)
@@ -220,20 +216,20 @@ proc virtualSiblings*(self: gen_qscreen_types.QScreen, ): seq[gen_qscreen_types.
     vx_ret[i] = gen_qscreen_types.QScreen(h: v_outCast[i])
   vx_ret
 
-proc virtualSiblingAt*(self: gen_qscreen_types.QScreen, point: gen_qpoint.QPoint): gen_qscreen_types.QScreen =
+proc virtualSiblingAt*(self: gen_qscreen_types.QScreen, point: gen_qpoint_types.QPoint): gen_qscreen_types.QScreen =
   gen_qscreen_types.QScreen(h: fcQScreen_virtualSiblingAt(self.h, point.h))
 
-proc virtualSize*(self: gen_qscreen_types.QScreen, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQScreen_virtualSize(self.h))
+proc virtualSize*(self: gen_qscreen_types.QScreen, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQScreen_virtualSize(self.h))
 
-proc virtualGeometry*(self: gen_qscreen_types.QScreen, ): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQScreen_virtualGeometry(self.h))
+proc virtualGeometry*(self: gen_qscreen_types.QScreen, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQScreen_virtualGeometry(self.h))
 
-proc availableVirtualSize*(self: gen_qscreen_types.QScreen, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQScreen_availableVirtualSize(self.h))
+proc availableVirtualSize*(self: gen_qscreen_types.QScreen, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQScreen_availableVirtualSize(self.h))
 
-proc availableVirtualGeometry*(self: gen_qscreen_types.QScreen, ): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQScreen_availableVirtualGeometry(self.h))
+proc availableVirtualGeometry*(self: gen_qscreen_types.QScreen, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQScreen_availableVirtualGeometry(self.h))
 
 proc primaryOrientation*(self: gen_qscreen_types.QScreen, ): cint =
   cint(fcQScreen_primaryOrientation(self.h))
@@ -253,11 +249,11 @@ proc setOrientationUpdateMask*(self: gen_qscreen_types.QScreen, mask: cint): voi
 proc angleBetween*(self: gen_qscreen_types.QScreen, a: cint, b: cint): cint =
   fcQScreen_angleBetween(self.h, cint(a), cint(b))
 
-proc transformBetween*(self: gen_qscreen_types.QScreen, a: cint, b: cint, target: gen_qrect.QRect): gen_qtransform.QTransform =
-  gen_qtransform.QTransform(h: fcQScreen_transformBetween(self.h, cint(a), cint(b), target.h))
+proc transformBetween*(self: gen_qscreen_types.QScreen, a: cint, b: cint, target: gen_qrect_types.QRect): gen_qtransform_types.QTransform =
+  gen_qtransform_types.QTransform(h: fcQScreen_transformBetween(self.h, cint(a), cint(b), target.h))
 
-proc mapBetween*(self: gen_qscreen_types.QScreen, a: cint, b: cint, rect: gen_qrect.QRect): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQScreen_mapBetween(self.h, cint(a), cint(b), rect.h))
+proc mapBetween*(self: gen_qscreen_types.QScreen, a: cint, b: cint, rect: gen_qrect_types.QRect): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQScreen_mapBetween(self.h, cint(a), cint(b), rect.h))
 
 proc isPortrait*(self: gen_qscreen_types.QScreen, orientation: cint): bool =
   fcQScreen_isPortrait(self.h, cint(orientation))
@@ -265,19 +261,19 @@ proc isPortrait*(self: gen_qscreen_types.QScreen, orientation: cint): bool =
 proc isLandscape*(self: gen_qscreen_types.QScreen, orientation: cint): bool =
   fcQScreen_isLandscape(self.h, cint(orientation))
 
-proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint): gen_qpixmap.QPixmap =
-  gen_qpixmap.QPixmap(h: fcQScreen_grabWindow(self.h, window))
+proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQScreen_grabWindow(self.h, window))
 
 proc refreshRate*(self: gen_qscreen_types.QScreen, ): float64 =
   fcQScreen_refreshRate(self.h)
 
-proc geometryChanged*(self: gen_qscreen_types.QScreen, geometry: gen_qrect.QRect): void =
+proc geometryChanged*(self: gen_qscreen_types.QScreen, geometry: gen_qrect_types.QRect): void =
   fcQScreen_geometryChanged(self.h, geometry.h)
 
-type QScreengeometryChangedSlot* = proc(geometry: gen_qrect.QRect)
-proc miqt_exec_callback_QScreen_geometryChanged(slot: int, geometry: pointer) {.exportc.} =
+type QScreengeometryChangedSlot* = proc(geometry: gen_qrect_types.QRect)
+proc miqt_exec_callback_cQScreen_geometryChanged(slot: int, geometry: pointer) {.exportc: "miqt_exec_callback_QScreen_geometryChanged".} =
   let nimfunc = cast[ptr QScreengeometryChangedSlot](cast[pointer](slot))
-  let slotval1 = gen_qrect.QRect(h: geometry)
+  let slotval1 = gen_qrect_types.QRect(h: geometry)
 
   nimfunc[](slotval1)
 
@@ -285,15 +281,15 @@ proc ongeometryChanged*(self: gen_qscreen_types.QScreen, slot: QScreengeometryCh
   var tmp = new QScreengeometryChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_geometryChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_geometryChanged(self.h, cast[int](addr tmp[]))
 
-proc availableGeometryChanged*(self: gen_qscreen_types.QScreen, geometry: gen_qrect.QRect): void =
+proc availableGeometryChanged*(self: gen_qscreen_types.QScreen, geometry: gen_qrect_types.QRect): void =
   fcQScreen_availableGeometryChanged(self.h, geometry.h)
 
-type QScreenavailableGeometryChangedSlot* = proc(geometry: gen_qrect.QRect)
-proc miqt_exec_callback_QScreen_availableGeometryChanged(slot: int, geometry: pointer) {.exportc.} =
+type QScreenavailableGeometryChangedSlot* = proc(geometry: gen_qrect_types.QRect)
+proc miqt_exec_callback_cQScreen_availableGeometryChanged(slot: int, geometry: pointer) {.exportc: "miqt_exec_callback_QScreen_availableGeometryChanged".} =
   let nimfunc = cast[ptr QScreenavailableGeometryChangedSlot](cast[pointer](slot))
-  let slotval1 = gen_qrect.QRect(h: geometry)
+  let slotval1 = gen_qrect_types.QRect(h: geometry)
 
   nimfunc[](slotval1)
 
@@ -301,15 +297,15 @@ proc onavailableGeometryChanged*(self: gen_qscreen_types.QScreen, slot: QScreena
   var tmp = new QScreenavailableGeometryChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_availableGeometryChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_availableGeometryChanged(self.h, cast[int](addr tmp[]))
 
-proc physicalSizeChanged*(self: gen_qscreen_types.QScreen, size: gen_qsize.QSizeF): void =
+proc physicalSizeChanged*(self: gen_qscreen_types.QScreen, size: gen_qsize_types.QSizeF): void =
   fcQScreen_physicalSizeChanged(self.h, size.h)
 
-type QScreenphysicalSizeChangedSlot* = proc(size: gen_qsize.QSizeF)
-proc miqt_exec_callback_QScreen_physicalSizeChanged(slot: int, size: pointer) {.exportc.} =
+type QScreenphysicalSizeChangedSlot* = proc(size: gen_qsize_types.QSizeF)
+proc miqt_exec_callback_cQScreen_physicalSizeChanged(slot: int, size: pointer) {.exportc: "miqt_exec_callback_QScreen_physicalSizeChanged".} =
   let nimfunc = cast[ptr QScreenphysicalSizeChangedSlot](cast[pointer](slot))
-  let slotval1 = gen_qsize.QSizeF(h: size)
+  let slotval1 = gen_qsize_types.QSizeF(h: size)
 
   nimfunc[](slotval1)
 
@@ -317,13 +313,13 @@ proc onphysicalSizeChanged*(self: gen_qscreen_types.QScreen, slot: QScreenphysic
   var tmp = new QScreenphysicalSizeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_physicalSizeChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_physicalSizeChanged(self.h, cast[int](addr tmp[]))
 
 proc physicalDotsPerInchChanged*(self: gen_qscreen_types.QScreen, dpi: float64): void =
   fcQScreen_physicalDotsPerInchChanged(self.h, dpi)
 
 type QScreenphysicalDotsPerInchChangedSlot* = proc(dpi: float64)
-proc miqt_exec_callback_QScreen_physicalDotsPerInchChanged(slot: int, dpi: float64) {.exportc.} =
+proc miqt_exec_callback_cQScreen_physicalDotsPerInchChanged(slot: int, dpi: float64) {.exportc: "miqt_exec_callback_QScreen_physicalDotsPerInchChanged".} =
   let nimfunc = cast[ptr QScreenphysicalDotsPerInchChangedSlot](cast[pointer](slot))
   let slotval1 = dpi
 
@@ -333,13 +329,13 @@ proc onphysicalDotsPerInchChanged*(self: gen_qscreen_types.QScreen, slot: QScree
   var tmp = new QScreenphysicalDotsPerInchChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_physicalDotsPerInchChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_physicalDotsPerInchChanged(self.h, cast[int](addr tmp[]))
 
 proc logicalDotsPerInchChanged*(self: gen_qscreen_types.QScreen, dpi: float64): void =
   fcQScreen_logicalDotsPerInchChanged(self.h, dpi)
 
 type QScreenlogicalDotsPerInchChangedSlot* = proc(dpi: float64)
-proc miqt_exec_callback_QScreen_logicalDotsPerInchChanged(slot: int, dpi: float64) {.exportc.} =
+proc miqt_exec_callback_cQScreen_logicalDotsPerInchChanged(slot: int, dpi: float64) {.exportc: "miqt_exec_callback_QScreen_logicalDotsPerInchChanged".} =
   let nimfunc = cast[ptr QScreenlogicalDotsPerInchChangedSlot](cast[pointer](slot))
   let slotval1 = dpi
 
@@ -349,15 +345,15 @@ proc onlogicalDotsPerInchChanged*(self: gen_qscreen_types.QScreen, slot: QScreen
   var tmp = new QScreenlogicalDotsPerInchChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_logicalDotsPerInchChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_logicalDotsPerInchChanged(self.h, cast[int](addr tmp[]))
 
-proc virtualGeometryChanged*(self: gen_qscreen_types.QScreen, rect: gen_qrect.QRect): void =
+proc virtualGeometryChanged*(self: gen_qscreen_types.QScreen, rect: gen_qrect_types.QRect): void =
   fcQScreen_virtualGeometryChanged(self.h, rect.h)
 
-type QScreenvirtualGeometryChangedSlot* = proc(rect: gen_qrect.QRect)
-proc miqt_exec_callback_QScreen_virtualGeometryChanged(slot: int, rect: pointer) {.exportc.} =
+type QScreenvirtualGeometryChangedSlot* = proc(rect: gen_qrect_types.QRect)
+proc miqt_exec_callback_cQScreen_virtualGeometryChanged(slot: int, rect: pointer) {.exportc: "miqt_exec_callback_QScreen_virtualGeometryChanged".} =
   let nimfunc = cast[ptr QScreenvirtualGeometryChangedSlot](cast[pointer](slot))
-  let slotval1 = gen_qrect.QRect(h: rect)
+  let slotval1 = gen_qrect_types.QRect(h: rect)
 
   nimfunc[](slotval1)
 
@@ -365,13 +361,13 @@ proc onvirtualGeometryChanged*(self: gen_qscreen_types.QScreen, slot: QScreenvir
   var tmp = new QScreenvirtualGeometryChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_virtualGeometryChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_virtualGeometryChanged(self.h, cast[int](addr tmp[]))
 
 proc primaryOrientationChanged*(self: gen_qscreen_types.QScreen, orientation: cint): void =
   fcQScreen_primaryOrientationChanged(self.h, cint(orientation))
 
 type QScreenprimaryOrientationChangedSlot* = proc(orientation: cint)
-proc miqt_exec_callback_QScreen_primaryOrientationChanged(slot: int, orientation: cint) {.exportc.} =
+proc miqt_exec_callback_cQScreen_primaryOrientationChanged(slot: int, orientation: cint) {.exportc: "miqt_exec_callback_QScreen_primaryOrientationChanged".} =
   let nimfunc = cast[ptr QScreenprimaryOrientationChangedSlot](cast[pointer](slot))
   let slotval1 = cint(orientation)
 
@@ -381,13 +377,13 @@ proc onprimaryOrientationChanged*(self: gen_qscreen_types.QScreen, slot: QScreen
   var tmp = new QScreenprimaryOrientationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_primaryOrientationChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_primaryOrientationChanged(self.h, cast[int](addr tmp[]))
 
 proc orientationChanged*(self: gen_qscreen_types.QScreen, orientation: cint): void =
   fcQScreen_orientationChanged(self.h, cint(orientation))
 
 type QScreenorientationChangedSlot* = proc(orientation: cint)
-proc miqt_exec_callback_QScreen_orientationChanged(slot: int, orientation: cint) {.exportc.} =
+proc miqt_exec_callback_cQScreen_orientationChanged(slot: int, orientation: cint) {.exportc: "miqt_exec_callback_QScreen_orientationChanged".} =
   let nimfunc = cast[ptr QScreenorientationChangedSlot](cast[pointer](slot))
   let slotval1 = cint(orientation)
 
@@ -397,13 +393,13 @@ proc onorientationChanged*(self: gen_qscreen_types.QScreen, slot: QScreenorienta
   var tmp = new QScreenorientationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_orientationChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_orientationChanged(self.h, cast[int](addr tmp[]))
 
 proc refreshRateChanged*(self: gen_qscreen_types.QScreen, refreshRate: float64): void =
   fcQScreen_refreshRateChanged(self.h, refreshRate)
 
 type QScreenrefreshRateChangedSlot* = proc(refreshRate: float64)
-proc miqt_exec_callback_QScreen_refreshRateChanged(slot: int, refreshRate: float64) {.exportc.} =
+proc miqt_exec_callback_cQScreen_refreshRateChanged(slot: int, refreshRate: float64) {.exportc: "miqt_exec_callback_QScreen_refreshRateChanged".} =
   let nimfunc = cast[ptr QScreenrefreshRateChangedSlot](cast[pointer](slot))
   let slotval1 = refreshRate
 
@@ -413,7 +409,7 @@ proc onrefreshRateChanged*(self: gen_qscreen_types.QScreen, slot: QScreenrefresh
   var tmp = new QScreenrefreshRateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScreen_connect_refreshRateChanged(self.h, cast[int](addr tmp[]))
+  fcQScreen_connect_refreshRateChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qscreen_types.QScreen, s: cstring, c: cstring): string =
   let v_ms = fcQScreen_tr2(s, c)
@@ -439,19 +435,19 @@ proc trUtf8*(_: type gen_qscreen_types.QScreen, s: cstring, c: cstring, n: cint)
   c_free(v_ms.data)
   vx_ret
 
-proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint): gen_qpixmap.QPixmap =
-  gen_qpixmap.QPixmap(h: fcQScreen_grabWindow2(self.h, window, x))
+proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQScreen_grabWindow2(self.h, window, x))
 
-proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint): gen_qpixmap.QPixmap =
-  gen_qpixmap.QPixmap(h: fcQScreen_grabWindow3(self.h, window, x, y))
+proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQScreen_grabWindow3(self.h, window, x, y))
 
-proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint, w: cint): gen_qpixmap.QPixmap =
-  gen_qpixmap.QPixmap(h: fcQScreen_grabWindow4(self.h, window, x, y, w))
+proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint, w: cint): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQScreen_grabWindow4(self.h, window, x, y, w))
 
-proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint, w: cint, h: cint): gen_qpixmap.QPixmap =
-  gen_qpixmap.QPixmap(h: fcQScreen_grabWindow5(self.h, window, x, y, w, h))
+proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint, w: cint, h: cint): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQScreen_grabWindow5(self.h, window, x, y, w, h))
 
-proc staticMetaObject*(_: type gen_qscreen_types.QScreen): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQScreen_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscreen_types.QScreen): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScreen_staticMetaObject())
 proc delete*(self: gen_qscreen_types.QScreen) =
   fcQScreen_delete(self.h)

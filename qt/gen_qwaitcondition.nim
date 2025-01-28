@@ -33,22 +33,20 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qwaitcondition.cpp", cflags).}
 
-
 import gen_qwaitcondition_types
 export gen_qwaitcondition_types
 
 import
-  gen_qdeadlinetimer,
-  gen_qmutex,
-  gen_qreadwritelock
+  gen_qdeadlinetimer_types,
+  gen_qmutex_types,
+  gen_qreadwritelock_types
 export
-  gen_qdeadlinetimer,
-  gen_qmutex,
-  gen_qreadwritelock
+  gen_qdeadlinetimer_types,
+  gen_qmutex_types,
+  gen_qreadwritelock_types
 
 type cQWaitCondition*{.exportc: "QWaitCondition", incompleteStruct.} = object
 
-proc fcQWaitCondition_new(): ptr cQWaitCondition {.importc: "QWaitCondition_new".}
 proc fcQWaitCondition_wait(self: pointer, lockedMutex: pointer): bool {.importc: "QWaitCondition_wait".}
 proc fcQWaitCondition_wait2(self: pointer, lockedMutex: pointer, time: culong): bool {.importc: "QWaitCondition_wait2".}
 proc fcQWaitCondition_waitWithLockedReadWriteLock(self: pointer, lockedReadWriteLock: pointer): bool {.importc: "QWaitCondition_waitWithLockedReadWriteLock".}
@@ -59,24 +57,19 @@ proc fcQWaitCondition_notifyOne(self: pointer, ): void {.importc: "QWaitConditio
 proc fcQWaitCondition_notifyAll(self: pointer, ): void {.importc: "QWaitCondition_notifyAll".}
 proc fcQWaitCondition_wait22(self: pointer, lockedMutex: pointer, deadline: pointer): bool {.importc: "QWaitCondition_wait22".}
 proc fcQWaitCondition_wait23(self: pointer, lockedReadWriteLock: pointer, deadline: pointer): bool {.importc: "QWaitCondition_wait23".}
+proc fcQWaitCondition_new(): ptr cQWaitCondition {.importc: "QWaitCondition_new".}
 proc fcQWaitCondition_delete(self: pointer) {.importc: "QWaitCondition_delete".}
 
-
-func init*(T: type gen_qwaitcondition_types.QWaitCondition, h: ptr cQWaitCondition): gen_qwaitcondition_types.QWaitCondition =
-  T(h: h)
-proc create*(T: type gen_qwaitcondition_types.QWaitCondition, ): gen_qwaitcondition_types.QWaitCondition =
-  gen_qwaitcondition_types.QWaitCondition.init(fcQWaitCondition_new())
-
-proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedMutex: gen_qmutex.QMutex): bool =
+proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedMutex: gen_qmutex_types.QMutex): bool =
   fcQWaitCondition_wait(self.h, lockedMutex.h)
 
-proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedMutex: gen_qmutex.QMutex, time: culong): bool =
+proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedMutex: gen_qmutex_types.QMutex, time: culong): bool =
   fcQWaitCondition_wait2(self.h, lockedMutex.h, time)
 
-proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedReadWriteLock: gen_qreadwritelock.QReadWriteLock): bool =
+proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedReadWriteLock: gen_qreadwritelock_types.QReadWriteLock): bool =
   fcQWaitCondition_waitWithLockedReadWriteLock(self.h, lockedReadWriteLock.h)
 
-proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedReadWriteLock: gen_qreadwritelock.QReadWriteLock, time: culong): bool =
+proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedReadWriteLock: gen_qreadwritelock_types.QReadWriteLock, time: culong): bool =
   fcQWaitCondition_wait3(self.h, lockedReadWriteLock.h, time)
 
 proc wakeOne*(self: gen_qwaitcondition_types.QWaitCondition, ): void =
@@ -91,11 +84,14 @@ proc notifyOne*(self: gen_qwaitcondition_types.QWaitCondition, ): void =
 proc notifyAll*(self: gen_qwaitcondition_types.QWaitCondition, ): void =
   fcQWaitCondition_notifyAll(self.h)
 
-proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedMutex: gen_qmutex.QMutex, deadline: gen_qdeadlinetimer.QDeadlineTimer): bool =
+proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedMutex: gen_qmutex_types.QMutex, deadline: gen_qdeadlinetimer_types.QDeadlineTimer): bool =
   fcQWaitCondition_wait22(self.h, lockedMutex.h, deadline.h)
 
-proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedReadWriteLock: gen_qreadwritelock.QReadWriteLock, deadline: gen_qdeadlinetimer.QDeadlineTimer): bool =
+proc wait*(self: gen_qwaitcondition_types.QWaitCondition, lockedReadWriteLock: gen_qreadwritelock_types.QReadWriteLock, deadline: gen_qdeadlinetimer_types.QDeadlineTimer): bool =
   fcQWaitCondition_wait23(self.h, lockedReadWriteLock.h, deadline.h)
+
+proc create*(T: type gen_qwaitcondition_types.QWaitCondition): gen_qwaitcondition_types.QWaitCondition =
+  gen_qwaitcondition_types.QWaitCondition(h: fcQWaitCondition_new())
 
 proc delete*(self: gen_qwaitcondition_types.QWaitCondition) =
   fcQWaitCondition_delete(self.h)

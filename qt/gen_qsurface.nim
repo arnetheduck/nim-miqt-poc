@@ -47,18 +47,17 @@ template OpenVGSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 3
 template VulkanSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 4
 template MetalSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 5
 
-
 import gen_qsurface_types
 export gen_qsurface_types
 
 import
-  gen_qobjectdefs,
-  gen_qsize,
-  gen_qsurfaceformat
+  gen_qobjectdefs_types,
+  gen_qsize_types,
+  gen_qsurfaceformat_types
 export
-  gen_qobjectdefs,
-  gen_qsize,
-  gen_qsurfaceformat
+  gen_qobjectdefs_types,
+  gen_qsize_types,
+  gen_qsurfaceformat_types
 
 type cQSurface*{.exportc: "QSurface", incompleteStruct.} = object
 
@@ -70,14 +69,11 @@ proc fcQSurface_size(self: pointer, ): pointer {.importc: "QSurface_size".}
 proc fcQSurface_staticMetaObject(): pointer {.importc: "QSurface_staticMetaObject".}
 proc fcQSurface_delete(self: pointer) {.importc: "QSurface_delete".}
 
-
-func init*(T: type gen_qsurface_types.QSurface, h: ptr cQSurface): gen_qsurface_types.QSurface =
-  T(h: h)
 proc surfaceClass*(self: gen_qsurface_types.QSurface, ): cint =
   cint(fcQSurface_surfaceClass(self.h))
 
-proc format*(self: gen_qsurface_types.QSurface, ): gen_qsurfaceformat.QSurfaceFormat =
-  gen_qsurfaceformat.QSurfaceFormat(h: fcQSurface_format(self.h))
+proc format*(self: gen_qsurface_types.QSurface, ): gen_qsurfaceformat_types.QSurfaceFormat =
+  gen_qsurfaceformat_types.QSurfaceFormat(h: fcQSurface_format(self.h))
 
 proc surfaceType*(self: gen_qsurface_types.QSurface, ): cint =
   cint(fcQSurface_surfaceType(self.h))
@@ -85,10 +81,10 @@ proc surfaceType*(self: gen_qsurface_types.QSurface, ): cint =
 proc supportsOpenGL*(self: gen_qsurface_types.QSurface, ): bool =
   fcQSurface_supportsOpenGL(self.h)
 
-proc size*(self: gen_qsurface_types.QSurface, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQSurface_size(self.h))
+proc size*(self: gen_qsurface_types.QSurface, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSurface_size(self.h))
 
-proc staticMetaObject*(_: type gen_qsurface_types.QSurface): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSurface_staticMetaObject())
+proc staticMetaObject*(_: type gen_qsurface_types.QSurface): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSurface_staticMetaObject())
 proc delete*(self: gen_qsurface_types.QSurface) =
   fcQSurface_delete(self.h)

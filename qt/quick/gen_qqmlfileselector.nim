@@ -33,29 +33,28 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qqmlfileselector.cpp", cflags).}
 
-
 import gen_qqmlfileselector_types
 export gen_qqmlfileselector_types
 
 import
-  gen_qcoreevent,
-  gen_qfileselector,
-  gen_qmetaobject,
+  gen_qcoreevent_types,
+  gen_qfileselector_types,
+  gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qqmlengine
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qqmlengine_types
 export
-  gen_qcoreevent,
-  gen_qfileselector,
-  gen_qmetaobject,
+  gen_qcoreevent_types,
+  gen_qfileselector_types,
+  gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qqmlengine
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qqmlengine_types
 
 type cQQmlFileSelector*{.exportc: "QQmlFileSelector", incompleteStruct.} = object
 
-proc fcQQmlFileSelector_new(engine: pointer): ptr cQQmlFileSelector {.importc: "QQmlFileSelector_new".}
-proc fcQQmlFileSelector_new2(engine: pointer, parent: pointer): ptr cQQmlFileSelector {.importc: "QQmlFileSelector_new2".}
 proc fcQQmlFileSelector_metaObject(self: pointer, ): pointer {.importc: "QQmlFileSelector_metaObject".}
 proc fcQQmlFileSelector_metacast(self: pointer, param1: cstring): pointer {.importc: "QQmlFileSelector_metacast".}
 proc fcQQmlFileSelector_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QQmlFileSelector_metacall".}
@@ -70,40 +69,35 @@ proc fcQQmlFileSelector_tr2(s: cstring, c: cstring): struct_miqt_string {.import
 proc fcQQmlFileSelector_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlFileSelector_tr3".}
 proc fcQQmlFileSelector_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQmlFileSelector_trUtf82".}
 proc fcQQmlFileSelector_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlFileSelector_trUtf83".}
-proc fQQmlFileSelector_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQmlFileSelector_virtualbase_metaObject".}
-proc fcQQmlFileSelector_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_metaObject".}
-proc fQQmlFileSelector_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQmlFileSelector_virtualbase_metacast".}
-proc fcQQmlFileSelector_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_metacast".}
-proc fQQmlFileSelector_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQmlFileSelector_virtualbase_metacall".}
-proc fcQQmlFileSelector_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_metacall".}
-proc fQQmlFileSelector_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QQmlFileSelector_virtualbase_event".}
-proc fcQQmlFileSelector_override_virtual_event(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_event".}
-proc fQQmlFileSelector_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QQmlFileSelector_virtualbase_eventFilter".}
-proc fcQQmlFileSelector_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_eventFilter".}
-proc fQQmlFileSelector_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QQmlFileSelector_virtualbase_timerEvent".}
-proc fcQQmlFileSelector_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_timerEvent".}
-proc fQQmlFileSelector_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QQmlFileSelector_virtualbase_childEvent".}
-proc fcQQmlFileSelector_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_childEvent".}
-proc fQQmlFileSelector_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QQmlFileSelector_virtualbase_customEvent".}
-proc fcQQmlFileSelector_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_customEvent".}
-proc fQQmlFileSelector_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QQmlFileSelector_virtualbase_connectNotify".}
-proc fcQQmlFileSelector_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_connectNotify".}
-proc fQQmlFileSelector_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlFileSelector_virtualbase_disconnectNotify".}
-proc fcQQmlFileSelector_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_disconnectNotify".}
+type cQQmlFileSelectorVTable = object
+  destructor*: proc(vtbl: ptr cQQmlFileSelectorVTable, self: ptr cQQmlFileSelector) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQQmlFileSelector_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QQmlFileSelector_virtualbase_metaObject".}
+proc fcQQmlFileSelector_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QQmlFileSelector_virtualbase_metacast".}
+proc fcQQmlFileSelector_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QQmlFileSelector_virtualbase_metacall".}
+proc fcQQmlFileSelector_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QQmlFileSelector_virtualbase_event".}
+proc fcQQmlFileSelector_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QQmlFileSelector_virtualbase_eventFilter".}
+proc fcQQmlFileSelector_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QQmlFileSelector_virtualbase_timerEvent".}
+proc fcQQmlFileSelector_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QQmlFileSelector_virtualbase_childEvent".}
+proc fcQQmlFileSelector_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QQmlFileSelector_virtualbase_customEvent".}
+proc fcQQmlFileSelector_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QQmlFileSelector_virtualbase_connectNotify".}
+proc fcQQmlFileSelector_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QQmlFileSelector_virtualbase_disconnectNotify".}
+proc fcQQmlFileSelector_new(vtbl: pointer, engine: pointer): ptr cQQmlFileSelector {.importc: "QQmlFileSelector_new".}
+proc fcQQmlFileSelector_new2(vtbl: pointer, engine: pointer, parent: pointer): ptr cQQmlFileSelector {.importc: "QQmlFileSelector_new2".}
 proc fcQQmlFileSelector_staticMetaObject(): pointer {.importc: "QQmlFileSelector_staticMetaObject".}
 proc fcQQmlFileSelector_delete(self: pointer) {.importc: "QQmlFileSelector_delete".}
 
-
-func init*(T: type gen_qqmlfileselector_types.QQmlFileSelector, h: ptr cQQmlFileSelector): gen_qqmlfileselector_types.QQmlFileSelector =
-  T(h: h)
-proc create*(T: type gen_qqmlfileselector_types.QQmlFileSelector, engine: gen_qqmlengine.QQmlEngine): gen_qqmlfileselector_types.QQmlFileSelector =
-  gen_qqmlfileselector_types.QQmlFileSelector.init(fcQQmlFileSelector_new(engine.h))
-
-proc create*(T: type gen_qqmlfileselector_types.QQmlFileSelector, engine: gen_qqmlengine.QQmlEngine, parent: gen_qobject.QObject): gen_qqmlfileselector_types.QQmlFileSelector =
-  gen_qqmlfileselector_types.QQmlFileSelector.init(fcQQmlFileSelector_new2(engine.h, parent.h))
-
-proc metaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQQmlFileSelector_metaObject(self.h))
+proc metaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQmlFileSelector_metaObject(self.h))
 
 proc metacast*(self: gen_qqmlfileselector_types.QQmlFileSelector, param1: cstring): pointer =
   fcQQmlFileSelector_metacast(self.h, param1)
@@ -123,10 +117,10 @@ proc trUtf8*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring): s
   c_free(v_ms.data)
   vx_ret
 
-proc selector*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qfileselector.QFileSelector =
-  gen_qfileselector.QFileSelector(h: fcQQmlFileSelector_selector(self.h))
+proc selector*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qfileselector_types.QFileSelector =
+  gen_qfileselector_types.QFileSelector(h: fcQQmlFileSelector_selector(self.h))
 
-proc setSelector*(self: gen_qqmlfileselector_types.QQmlFileSelector, selector: gen_qfileselector.QFileSelector): void =
+proc setSelector*(self: gen_qqmlfileselector_types.QQmlFileSelector, selector: gen_qfileselector_types.QFileSelector): void =
   fcQQmlFileSelector_setSelector(self.h, selector.h)
 
 proc setExtraSelectors*(self: gen_qqmlfileselector_types.QQmlFileSelector, strings: seq[string]): void =
@@ -143,7 +137,7 @@ proc setExtraSelectors2*(self: gen_qqmlfileselector_types.QQmlFileSelector, stri
 
   fcQQmlFileSelector_setExtraSelectorsWithStrings(self.h, struct_miqt_array(len: csize_t(len(strings)), data: if len(strings) == 0: nil else: addr(strings_CArray[0])))
 
-proc get*(_: type gen_qqmlfileselector_types.QQmlFileSelector, param1: gen_qqmlengine.QQmlEngine): gen_qqmlfileselector_types.QQmlFileSelector =
+proc get*(_: type gen_qqmlfileselector_types.QQmlFileSelector, param1: gen_qqmlengine_types.QQmlEngine): gen_qqmlfileselector_types.QQmlFileSelector =
   gen_qqmlfileselector_types.QQmlFileSelector(h: fcQQmlFileSelector_get(param1.h))
 
 proc tr*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring): string =
@@ -170,191 +164,186 @@ proc trUtf8*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c:
   c_free(v_ms.data)
   vx_ret
 
-proc QQmlFileSelectormetaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQQmlFileSelector_virtualbase_metaObject(self.h))
+type QQmlFileSelectormetaObjectProc* = proc(self: QQmlFileSelector): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QQmlFileSelectormetacastProc* = proc(self: QQmlFileSelector, param1: cstring): pointer {.raises: [], gcsafe.}
+type QQmlFileSelectormetacallProc* = proc(self: QQmlFileSelector, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QQmlFileSelectoreventProc* = proc(self: QQmlFileSelector, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QQmlFileSelectoreventFilterProc* = proc(self: QQmlFileSelector, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QQmlFileSelectortimerEventProc* = proc(self: QQmlFileSelector, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QQmlFileSelectorchildEventProc* = proc(self: QQmlFileSelector, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QQmlFileSelectorcustomEventProc* = proc(self: QQmlFileSelector, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QQmlFileSelectorconnectNotifyProc* = proc(self: QQmlFileSelector, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QQmlFileSelectordisconnectNotifyProc* = proc(self: QQmlFileSelector, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QQmlFileSelectorVTable* = object
+  vtbl: cQQmlFileSelectorVTable
+  metaObject*: QQmlFileSelectormetaObjectProc
+  metacast*: QQmlFileSelectormetacastProc
+  metacall*: QQmlFileSelectormetacallProc
+  event*: QQmlFileSelectoreventProc
+  eventFilter*: QQmlFileSelectoreventFilterProc
+  timerEvent*: QQmlFileSelectortimerEventProc
+  childEvent*: QQmlFileSelectorchildEventProc
+  customEvent*: QQmlFileSelectorcustomEventProc
+  connectNotify*: QQmlFileSelectorconnectNotifyProc
+  disconnectNotify*: QQmlFileSelectordisconnectNotifyProc
+proc QQmlFileSelectormetaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQmlFileSelector_virtualbase_metaObject(self.h))
 
-type QQmlFileSelectormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectormetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectormetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QQmlFileSelector_metaObject(self: ptr cQQmlFileSelector, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlFileSelector_metaObject ".} =
-  var nimfunc = cast[ptr QQmlFileSelectormetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQQmlFileSelector_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QQmlFileSelectormetacast*(self: gen_qqmlfileselector_types.QQmlFileSelector, param1: cstring): pointer =
-  fQQmlFileSelector_virtualbase_metacast(self.h, param1)
+  fcQQmlFileSelector_virtualbase_metacast(self.h, param1)
 
-type QQmlFileSelectormetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectormetacastProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectormetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QQmlFileSelector_metacast(self: ptr cQQmlFileSelector, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlFileSelector_metacast ".} =
-  var nimfunc = cast[ptr QQmlFileSelectormetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQQmlFileSelector_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QQmlFileSelectormetacall*(self: gen_qqmlfileselector_types.QQmlFileSelector, param1: cint, param2: cint, param3: pointer): cint =
-  fQQmlFileSelector_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQQmlFileSelector_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQmlFileSelectormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectormetacallProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectormetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QQmlFileSelector_metacall(self: ptr cQQmlFileSelector, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQmlFileSelector_metacall ".} =
-  var nimfunc = cast[ptr QQmlFileSelectormetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQQmlFileSelector_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QQmlFileSelectorevent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QEvent): bool =
-  fQQmlFileSelector_virtualbase_event(self.h, event.h)
 
-type QQmlFileSelectoreventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectoreventProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectoreventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QQmlFileSelectorevent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent_types.QEvent): bool =
+  fcQQmlFileSelector_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QQmlFileSelector_event(self: ptr cQQmlFileSelector, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QQmlFileSelector_event ".} =
-  var nimfunc = cast[ptr QQmlFileSelectoreventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQQmlFileSelector_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QQmlFileSelectoreventFilter*(self: gen_qqmlfileselector_types.QQmlFileSelector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQQmlFileSelector_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQmlFileSelectoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectoreventFilterProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectoreventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QQmlFileSelectoreventFilter*(self: gen_qqmlfileselector_types.QQmlFileSelector, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQQmlFileSelector_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QQmlFileSelector_eventFilter(self: ptr cQQmlFileSelector, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQmlFileSelector_eventFilter ".} =
-  var nimfunc = cast[ptr QQmlFileSelectoreventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQQmlFileSelector_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QQmlFileSelectortimerEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QTimerEvent): void =
-  fQQmlFileSelector_virtualbase_timerEvent(self.h, event.h)
 
-type QQmlFileSelectortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectortimerEventProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectortimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QQmlFileSelectortimerEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQQmlFileSelector_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QQmlFileSelector_timerEvent(self: ptr cQQmlFileSelector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlFileSelector_timerEvent ".} =
-  var nimfunc = cast[ptr QQmlFileSelectortimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQQmlFileSelector_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QQmlFileSelectorchildEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQQmlFileSelector_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QQmlFileSelectorchildEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QChildEvent): void =
-  fQQmlFileSelector_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQQmlFileSelector_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QQmlFileSelectorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectorchildEventProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectorchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QQmlFileSelectorcustomEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent_types.QEvent): void =
+  fcQQmlFileSelector_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QQmlFileSelector_childEvent(self: ptr cQQmlFileSelector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlFileSelector_childEvent ".} =
-  var nimfunc = cast[ptr QQmlFileSelectorchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQQmlFileSelector_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QQmlFileSelectorconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQQmlFileSelector_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QQmlFileSelectorcustomEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QEvent): void =
-  fQQmlFileSelector_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQQmlFileSelector_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QQmlFileSelectorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectorcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectorcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QQmlFileSelectordisconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQQmlFileSelector_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QQmlFileSelector_customEvent(self: ptr cQQmlFileSelector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlFileSelector_customEvent ".} =
-  var nimfunc = cast[ptr QQmlFileSelectorcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQQmlFileSelector_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QQmlFileSelectorVTable](vtbl)
+  let self = QQmlFileSelector(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qqmlfileselector_types.QQmlFileSelector,
+    engine: gen_qqmlengine_types.QQmlEngine,
+    vtbl: ref QQmlFileSelectorVTable = nil): gen_qqmlfileselector_types.QQmlFileSelector =
+  let vtbl = if vtbl == nil: new QQmlFileSelectorVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQQmlFileSelectorVTable, _: ptr cQQmlFileSelector) {.cdecl.} =
+    let vtbl = cast[ref QQmlFileSelectorVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQQmlFileSelector_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQQmlFileSelector_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQQmlFileSelector_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQQmlFileSelector_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQQmlFileSelector_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQQmlFileSelector_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQQmlFileSelector_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQQmlFileSelector_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQQmlFileSelector_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQQmlFileSelector_disconnectNotify
+  gen_qqmlfileselector_types.QQmlFileSelector(h: fcQQmlFileSelector_new(addr(vtbl[]), engine.h))
 
-  nimfunc[](slotval1)
-proc QQmlFileSelectorconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-  fQQmlFileSelector_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qqmlfileselector_types.QQmlFileSelector,
+    engine: gen_qqmlengine_types.QQmlEngine, parent: gen_qobject_types.QObject,
+    vtbl: ref QQmlFileSelectorVTable = nil): gen_qqmlfileselector_types.QQmlFileSelector =
+  let vtbl = if vtbl == nil: new QQmlFileSelectorVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQQmlFileSelectorVTable, _: ptr cQQmlFileSelector) {.cdecl.} =
+    let vtbl = cast[ref QQmlFileSelectorVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQQmlFileSelector_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQQmlFileSelector_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQQmlFileSelector_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQQmlFileSelector_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQQmlFileSelector_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQQmlFileSelector_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQQmlFileSelector_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQQmlFileSelector_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQQmlFileSelector_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQQmlFileSelector_disconnectNotify
+  gen_qqmlfileselector_types.QQmlFileSelector(h: fcQQmlFileSelector_new2(addr(vtbl[]), engine.h, parent.h))
 
-type QQmlFileSelectorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectorconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectorconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QQmlFileSelector_connectNotify(self: ptr cQQmlFileSelector, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQmlFileSelector_connectNotify ".} =
-  var nimfunc = cast[ptr QQmlFileSelectorconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QQmlFileSelectordisconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-  fQQmlFileSelector_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QQmlFileSelectordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, slot: QQmlFileSelectordisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QQmlFileSelectordisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQQmlFileSelector_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QQmlFileSelector_disconnectNotify(self: ptr cQQmlFileSelector, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQmlFileSelector_disconnectNotify ".} =
-  var nimfunc = cast[ptr QQmlFileSelectordisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qqmlfileselector_types.QQmlFileSelector): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQQmlFileSelector_staticMetaObject())
+proc staticMetaObject*(_: type gen_qqmlfileselector_types.QQmlFileSelector): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQmlFileSelector_staticMetaObject())
 proc delete*(self: gen_qqmlfileselector_types.QQmlFileSelector) =
   fcQQmlFileSelector_delete(self.h)

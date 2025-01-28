@@ -51,7 +51,6 @@ template QmlUnitCacheHookRegistration*(_: type QQmlPrivateRegistrationTypeEnum):
 template TypeAndRevisionsRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 7
 template SingletonAndRevisionsRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 8
 
-
 import gen_qqmlprivate_types
 export gen_qqmlprivate_types
 

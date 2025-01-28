@@ -33,16 +33,15 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qcameraflashcontrol.cpp", cflags).}
 
-
 import gen_qcameraflashcontrol_types
 export gen_qcameraflashcontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQCameraFlashControl*{.exportc: "QCameraFlashControl", incompleteStruct.} = object
 
@@ -56,7 +55,7 @@ proc fcQCameraFlashControl_setFlashMode(self: pointer, mode: cint): void {.impor
 proc fcQCameraFlashControl_isFlashModeSupported(self: pointer, mode: cint): bool {.importc: "QCameraFlashControl_isFlashModeSupported".}
 proc fcQCameraFlashControl_isFlashReady(self: pointer, ): bool {.importc: "QCameraFlashControl_isFlashReady".}
 proc fcQCameraFlashControl_flashReady(self: pointer, param1: bool): void {.importc: "QCameraFlashControl_flashReady".}
-proc fQCameraFlashControl_connect_flashReady(self: pointer, slot: int) {.importc: "QCameraFlashControl_connect_flashReady".}
+proc fcQCameraFlashControl_connect_flashReady(self: pointer, slot: int) {.importc: "QCameraFlashControl_connect_flashReady".}
 proc fcQCameraFlashControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFlashControl_tr2".}
 proc fcQCameraFlashControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFlashControl_tr3".}
 proc fcQCameraFlashControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFlashControl_trUtf82".}
@@ -64,11 +63,8 @@ proc fcQCameraFlashControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt
 proc fcQCameraFlashControl_staticMetaObject(): pointer {.importc: "QCameraFlashControl_staticMetaObject".}
 proc fcQCameraFlashControl_delete(self: pointer) {.importc: "QCameraFlashControl_delete".}
 
-
-func init*(T: type gen_qcameraflashcontrol_types.QCameraFlashControl, h: ptr cQCameraFlashControl): gen_qcameraflashcontrol_types.QCameraFlashControl =
-  T(h: h)
-proc metaObject*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraFlashControl_metaObject(self.h))
+proc metaObject*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraFlashControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, param1: cstring): pointer =
   fcQCameraFlashControl_metacast(self.h, param1)
@@ -104,7 +100,7 @@ proc flashReady*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, param1
   fcQCameraFlashControl_flashReady(self.h, param1)
 
 type QCameraFlashControlflashReadySlot* = proc(param1: bool)
-proc miqt_exec_callback_QCameraFlashControl_flashReady(slot: int, param1: bool) {.exportc.} =
+proc miqt_exec_callback_cQCameraFlashControl_flashReady(slot: int, param1: bool) {.exportc: "miqt_exec_callback_QCameraFlashControl_flashReady".} =
   let nimfunc = cast[ptr QCameraFlashControlflashReadySlot](cast[pointer](slot))
   let slotval1 = param1
 
@@ -114,7 +110,7 @@ proc onflashReady*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, slot
   var tmp = new QCameraFlashControlflashReadySlot
   tmp[] = slot
   GC_ref(tmp)
-  fQCameraFlashControl_connect_flashReady(self.h, cast[int](addr tmp[]))
+  fcQCameraFlashControl_connect_flashReady(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraFlashControl_tr2(s, c)
@@ -140,7 +136,7 @@ proc trUtf8*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstri
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraFlashControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraFlashControl_staticMetaObject())
 proc delete*(self: gen_qcameraflashcontrol_types.QCameraFlashControl) =
   fcQCameraFlashControl_delete(self.h)

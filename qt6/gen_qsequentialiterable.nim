@@ -39,7 +39,6 @@ template Unspecified*(_: type QSequentialIterablePositionEnum): untyped = 0
 template AtBegin*(_: type QSequentialIterablePositionEnum): untyped = 1
 template AtEnd*(_: type QSequentialIterablePositionEnum): untyped = 2
 
-
 import gen_qsequentialiterable_types
 export gen_qsequentialiterable_types
 

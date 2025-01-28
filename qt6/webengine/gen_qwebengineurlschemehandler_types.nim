@@ -1,4 +1,4 @@
 import gen_qobject_types
 export gen_qobject_types
-type QWebEngineUrlSchemeHandler*  = object of gen_qobject_types.QObject
 
+type QWebEngineUrlSchemeHandler* = object of gen_qobject_types.QObject

@@ -58,35 +58,32 @@ template KeywordSet8*(_: type QsciLexerSQLEnumEnum): untyped = 22
 template QuotedIdentifier*(_: type QsciLexerSQLEnumEnum): untyped = 23
 template QuotedOperator*(_: type QsciLexerSQLEnumEnum): untyped = 24
 
-
 import gen_qscilexersql_types
 export gen_qscilexersql_types
 
 import
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 export
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 
 type cQsciLexerSQL*{.exportc: "QsciLexerSQL", incompleteStruct.} = object
 
-proc fcQsciLexerSQL_new(): ptr cQsciLexerSQL {.importc: "QsciLexerSQL_new".}
-proc fcQsciLexerSQL_new2(parent: pointer): ptr cQsciLexerSQL {.importc: "QsciLexerSQL_new2".}
 proc fcQsciLexerSQL_metaObject(self: pointer, ): pointer {.importc: "QsciLexerSQL_metaObject".}
 proc fcQsciLexerSQL_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerSQL_metacast".}
 proc fcQsciLexerSQL_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerSQL_metacall".}
@@ -119,112 +116,107 @@ proc fcQsciLexerSQL_setFoldComments(self: pointer, fold: bool): void {.importc: 
 proc fcQsciLexerSQL_setFoldCompact(self: pointer, fold: bool): void {.importc: "QsciLexerSQL_setFoldCompact".}
 proc fcQsciLexerSQL_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerSQL_tr2".}
 proc fcQsciLexerSQL_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerSQL_tr3".}
-proc fQsciLexerSQL_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerSQL_virtualbase_metaObject".}
-proc fcQsciLexerSQL_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_metaObject".}
-proc fQsciLexerSQL_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerSQL_virtualbase_metacast".}
-proc fcQsciLexerSQL_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_metacast".}
-proc fQsciLexerSQL_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerSQL_virtualbase_metacall".}
-proc fcQsciLexerSQL_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_metacall".}
-proc fQsciLexerSQL_virtualbase_setBackslashEscapes(self: pointer, enable: bool): void{.importc: "QsciLexerSQL_virtualbase_setBackslashEscapes".}
-proc fcQsciLexerSQL_override_virtual_setBackslashEscapes(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setBackslashEscapes".}
-proc fQsciLexerSQL_virtualbase_setFoldComments(self: pointer, fold: bool): void{.importc: "QsciLexerSQL_virtualbase_setFoldComments".}
-proc fcQsciLexerSQL_override_virtual_setFoldComments(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setFoldComments".}
-proc fQsciLexerSQL_virtualbase_setFoldCompact(self: pointer, fold: bool): void{.importc: "QsciLexerSQL_virtualbase_setFoldCompact".}
-proc fcQsciLexerSQL_override_virtual_setFoldCompact(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setFoldCompact".}
-proc fcQsciLexerSQL_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_language".}
-proc fQsciLexerSQL_virtualbase_lexer(self: pointer, ): cstring{.importc: "QsciLexerSQL_virtualbase_lexer".}
-proc fcQsciLexerSQL_override_virtual_lexer(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_lexer".}
-proc fQsciLexerSQL_virtualbase_lexerId(self: pointer, ): cint{.importc: "QsciLexerSQL_virtualbase_lexerId".}
-proc fcQsciLexerSQL_override_virtual_lexerId(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_lexerId".}
-proc fQsciLexerSQL_virtualbase_autoCompletionFillups(self: pointer, ): cstring{.importc: "QsciLexerSQL_virtualbase_autoCompletionFillups".}
-proc fcQsciLexerSQL_override_virtual_autoCompletionFillups(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_autoCompletionFillups".}
-proc fQsciLexerSQL_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array{.importc: "QsciLexerSQL_virtualbase_autoCompletionWordSeparators".}
-proc fcQsciLexerSQL_override_virtual_autoCompletionWordSeparators(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_autoCompletionWordSeparators".}
-proc fQsciLexerSQL_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerSQL_virtualbase_blockEnd".}
-proc fcQsciLexerSQL_override_virtual_blockEnd(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_blockEnd".}
-proc fQsciLexerSQL_virtualbase_blockLookback(self: pointer, ): cint{.importc: "QsciLexerSQL_virtualbase_blockLookback".}
-proc fcQsciLexerSQL_override_virtual_blockLookback(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_blockLookback".}
-proc fQsciLexerSQL_virtualbase_blockStart(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerSQL_virtualbase_blockStart".}
-proc fcQsciLexerSQL_override_virtual_blockStart(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_blockStart".}
-proc fQsciLexerSQL_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerSQL_virtualbase_blockStartKeyword".}
-proc fcQsciLexerSQL_override_virtual_blockStartKeyword(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_blockStartKeyword".}
-proc fQsciLexerSQL_virtualbase_braceStyle(self: pointer, ): cint{.importc: "QsciLexerSQL_virtualbase_braceStyle".}
-proc fcQsciLexerSQL_override_virtual_braceStyle(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_braceStyle".}
-proc fQsciLexerSQL_virtualbase_caseSensitive(self: pointer, ): bool{.importc: "QsciLexerSQL_virtualbase_caseSensitive".}
-proc fcQsciLexerSQL_override_virtual_caseSensitive(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_caseSensitive".}
-proc fQsciLexerSQL_virtualbase_color(self: pointer, style: cint): pointer{.importc: "QsciLexerSQL_virtualbase_color".}
-proc fcQsciLexerSQL_override_virtual_color(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_color".}
-proc fQsciLexerSQL_virtualbase_eolFill(self: pointer, style: cint): bool{.importc: "QsciLexerSQL_virtualbase_eolFill".}
-proc fcQsciLexerSQL_override_virtual_eolFill(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_eolFill".}
-proc fQsciLexerSQL_virtualbase_font(self: pointer, style: cint): pointer{.importc: "QsciLexerSQL_virtualbase_font".}
-proc fcQsciLexerSQL_override_virtual_font(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_font".}
-proc fQsciLexerSQL_virtualbase_indentationGuideView(self: pointer, ): cint{.importc: "QsciLexerSQL_virtualbase_indentationGuideView".}
-proc fcQsciLexerSQL_override_virtual_indentationGuideView(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_indentationGuideView".}
-proc fQsciLexerSQL_virtualbase_keywords(self: pointer, set: cint): cstring{.importc: "QsciLexerSQL_virtualbase_keywords".}
-proc fcQsciLexerSQL_override_virtual_keywords(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_keywords".}
-proc fQsciLexerSQL_virtualbase_defaultStyle(self: pointer, ): cint{.importc: "QsciLexerSQL_virtualbase_defaultStyle".}
-proc fcQsciLexerSQL_override_virtual_defaultStyle(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_defaultStyle".}
-proc fcQsciLexerSQL_override_virtual_description(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_description".}
-proc fQsciLexerSQL_virtualbase_paper(self: pointer, style: cint): pointer{.importc: "QsciLexerSQL_virtualbase_paper".}
-proc fcQsciLexerSQL_override_virtual_paper(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_paper".}
-proc fQsciLexerSQL_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerSQL_virtualbase_defaultColorWithStyle".}
-proc fcQsciLexerSQL_override_virtual_defaultColorWithStyle(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_defaultColorWithStyle".}
-proc fQsciLexerSQL_virtualbase_defaultEolFill(self: pointer, style: cint): bool{.importc: "QsciLexerSQL_virtualbase_defaultEolFill".}
-proc fcQsciLexerSQL_override_virtual_defaultEolFill(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_defaultEolFill".}
-proc fQsciLexerSQL_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerSQL_virtualbase_defaultFontWithStyle".}
-proc fcQsciLexerSQL_override_virtual_defaultFontWithStyle(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_defaultFontWithStyle".}
-proc fQsciLexerSQL_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerSQL_virtualbase_defaultPaperWithStyle".}
-proc fcQsciLexerSQL_override_virtual_defaultPaperWithStyle(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_defaultPaperWithStyle".}
-proc fQsciLexerSQL_virtualbase_setEditor(self: pointer, editor: pointer): void{.importc: "QsciLexerSQL_virtualbase_setEditor".}
-proc fcQsciLexerSQL_override_virtual_setEditor(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setEditor".}
-proc fQsciLexerSQL_virtualbase_refreshProperties(self: pointer, ): void{.importc: "QsciLexerSQL_virtualbase_refreshProperties".}
-proc fcQsciLexerSQL_override_virtual_refreshProperties(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_refreshProperties".}
-proc fQsciLexerSQL_virtualbase_styleBitsNeeded(self: pointer, ): cint{.importc: "QsciLexerSQL_virtualbase_styleBitsNeeded".}
-proc fcQsciLexerSQL_override_virtual_styleBitsNeeded(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_styleBitsNeeded".}
-proc fQsciLexerSQL_virtualbase_wordCharacters(self: pointer, ): cstring{.importc: "QsciLexerSQL_virtualbase_wordCharacters".}
-proc fcQsciLexerSQL_override_virtual_wordCharacters(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_wordCharacters".}
-proc fQsciLexerSQL_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void{.importc: "QsciLexerSQL_virtualbase_setAutoIndentStyle".}
-proc fcQsciLexerSQL_override_virtual_setAutoIndentStyle(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setAutoIndentStyle".}
-proc fQsciLexerSQL_virtualbase_setColor(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerSQL_virtualbase_setColor".}
-proc fcQsciLexerSQL_override_virtual_setColor(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setColor".}
-proc fQsciLexerSQL_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void{.importc: "QsciLexerSQL_virtualbase_setEolFill".}
-proc fcQsciLexerSQL_override_virtual_setEolFill(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setEolFill".}
-proc fQsciLexerSQL_virtualbase_setFont(self: pointer, f: pointer, style: cint): void{.importc: "QsciLexerSQL_virtualbase_setFont".}
-proc fcQsciLexerSQL_override_virtual_setFont(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setFont".}
-proc fQsciLexerSQL_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerSQL_virtualbase_setPaper".}
-proc fcQsciLexerSQL_override_virtual_setPaper(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_setPaper".}
-proc fQsciLexerSQL_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerSQL_virtualbase_readProperties".}
-proc fcQsciLexerSQL_override_virtual_readProperties(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_readProperties".}
-proc fQsciLexerSQL_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerSQL_virtualbase_writeProperties".}
-proc fcQsciLexerSQL_override_virtual_writeProperties(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_writeProperties".}
-proc fQsciLexerSQL_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QsciLexerSQL_virtualbase_event".}
-proc fcQsciLexerSQL_override_virtual_event(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_event".}
-proc fQsciLexerSQL_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QsciLexerSQL_virtualbase_eventFilter".}
-proc fcQsciLexerSQL_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_eventFilter".}
-proc fQsciLexerSQL_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QsciLexerSQL_virtualbase_timerEvent".}
-proc fcQsciLexerSQL_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_timerEvent".}
-proc fQsciLexerSQL_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QsciLexerSQL_virtualbase_childEvent".}
-proc fcQsciLexerSQL_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_childEvent".}
-proc fQsciLexerSQL_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QsciLexerSQL_virtualbase_customEvent".}
-proc fcQsciLexerSQL_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_customEvent".}
-proc fQsciLexerSQL_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerSQL_virtualbase_connectNotify".}
-proc fcQsciLexerSQL_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_connectNotify".}
-proc fQsciLexerSQL_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerSQL_virtualbase_disconnectNotify".}
-proc fcQsciLexerSQL_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerSQL_override_virtual_disconnectNotify".}
+type cQsciLexerSQLVTable = object
+  destructor*: proc(vtbl: ptr cQsciLexerSQLVTable, self: ptr cQsciLexerSQL) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  setBackslashEscapes*: proc(vtbl, self: pointer, enable: bool): void {.cdecl, raises: [], gcsafe.}
+  setFoldComments*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  setFoldCompact*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  language*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexer*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexerId*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  autoCompletionFillups*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  autoCompletionWordSeparators*: proc(vtbl, self: pointer, ): struct_miqt_array {.cdecl, raises: [], gcsafe.}
+  blockEnd*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockLookback*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  blockStart*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockStartKeyword*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  braceStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  caseSensitive*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  color*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  eolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  font*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  indentationGuideView*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  keywords*: proc(vtbl, self: pointer, set: cint): cstring {.cdecl, raises: [], gcsafe.}
+  defaultStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  description*: proc(vtbl, self: pointer, style: cint): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  paper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultColor*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultEolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  defaultFont*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultPaper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  setEditor*: proc(vtbl, self: pointer, editor: pointer): void {.cdecl, raises: [], gcsafe.}
+  refreshProperties*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  styleBitsNeeded*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  wordCharacters*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  setAutoIndentStyle*: proc(vtbl, self: pointer, autoindentstyle: cint): void {.cdecl, raises: [], gcsafe.}
+  setColor*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setEolFill*: proc(vtbl, self: pointer, eoffill: bool, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setFont*: proc(vtbl, self: pointer, f: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setPaper*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  readProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  writeProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQsciLexerSQL_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QsciLexerSQL_virtualbase_metaObject".}
+proc fcQsciLexerSQL_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerSQL_virtualbase_metacast".}
+proc fcQsciLexerSQL_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerSQL_virtualbase_metacall".}
+proc fcQsciLexerSQL_virtualbase_setBackslashEscapes(self: pointer, enable: bool): void {.importc: "QsciLexerSQL_virtualbase_setBackslashEscapes".}
+proc fcQsciLexerSQL_virtualbase_setFoldComments(self: pointer, fold: bool): void {.importc: "QsciLexerSQL_virtualbase_setFoldComments".}
+proc fcQsciLexerSQL_virtualbase_setFoldCompact(self: pointer, fold: bool): void {.importc: "QsciLexerSQL_virtualbase_setFoldCompact".}
+proc fcQsciLexerSQL_virtualbase_lexer(self: pointer, ): cstring {.importc: "QsciLexerSQL_virtualbase_lexer".}
+proc fcQsciLexerSQL_virtualbase_lexerId(self: pointer, ): cint {.importc: "QsciLexerSQL_virtualbase_lexerId".}
+proc fcQsciLexerSQL_virtualbase_autoCompletionFillups(self: pointer, ): cstring {.importc: "QsciLexerSQL_virtualbase_autoCompletionFillups".}
+proc fcQsciLexerSQL_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array {.importc: "QsciLexerSQL_virtualbase_autoCompletionWordSeparators".}
+proc fcQsciLexerSQL_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerSQL_virtualbase_blockEnd".}
+proc fcQsciLexerSQL_virtualbase_blockLookback(self: pointer, ): cint {.importc: "QsciLexerSQL_virtualbase_blockLookback".}
+proc fcQsciLexerSQL_virtualbase_blockStart(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerSQL_virtualbase_blockStart".}
+proc fcQsciLexerSQL_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerSQL_virtualbase_blockStartKeyword".}
+proc fcQsciLexerSQL_virtualbase_braceStyle(self: pointer, ): cint {.importc: "QsciLexerSQL_virtualbase_braceStyle".}
+proc fcQsciLexerSQL_virtualbase_caseSensitive(self: pointer, ): bool {.importc: "QsciLexerSQL_virtualbase_caseSensitive".}
+proc fcQsciLexerSQL_virtualbase_color(self: pointer, style: cint): pointer {.importc: "QsciLexerSQL_virtualbase_color".}
+proc fcQsciLexerSQL_virtualbase_eolFill(self: pointer, style: cint): bool {.importc: "QsciLexerSQL_virtualbase_eolFill".}
+proc fcQsciLexerSQL_virtualbase_font(self: pointer, style: cint): pointer {.importc: "QsciLexerSQL_virtualbase_font".}
+proc fcQsciLexerSQL_virtualbase_indentationGuideView(self: pointer, ): cint {.importc: "QsciLexerSQL_virtualbase_indentationGuideView".}
+proc fcQsciLexerSQL_virtualbase_keywords(self: pointer, set: cint): cstring {.importc: "QsciLexerSQL_virtualbase_keywords".}
+proc fcQsciLexerSQL_virtualbase_defaultStyle(self: pointer, ): cint {.importc: "QsciLexerSQL_virtualbase_defaultStyle".}
+proc fcQsciLexerSQL_virtualbase_paper(self: pointer, style: cint): pointer {.importc: "QsciLexerSQL_virtualbase_paper".}
+proc fcQsciLexerSQL_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerSQL_virtualbase_defaultColorWithStyle".}
+proc fcQsciLexerSQL_virtualbase_defaultEolFill(self: pointer, style: cint): bool {.importc: "QsciLexerSQL_virtualbase_defaultEolFill".}
+proc fcQsciLexerSQL_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerSQL_virtualbase_defaultFontWithStyle".}
+proc fcQsciLexerSQL_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerSQL_virtualbase_defaultPaperWithStyle".}
+proc fcQsciLexerSQL_virtualbase_setEditor(self: pointer, editor: pointer): void {.importc: "QsciLexerSQL_virtualbase_setEditor".}
+proc fcQsciLexerSQL_virtualbase_refreshProperties(self: pointer, ): void {.importc: "QsciLexerSQL_virtualbase_refreshProperties".}
+proc fcQsciLexerSQL_virtualbase_styleBitsNeeded(self: pointer, ): cint {.importc: "QsciLexerSQL_virtualbase_styleBitsNeeded".}
+proc fcQsciLexerSQL_virtualbase_wordCharacters(self: pointer, ): cstring {.importc: "QsciLexerSQL_virtualbase_wordCharacters".}
+proc fcQsciLexerSQL_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void {.importc: "QsciLexerSQL_virtualbase_setAutoIndentStyle".}
+proc fcQsciLexerSQL_virtualbase_setColor(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerSQL_virtualbase_setColor".}
+proc fcQsciLexerSQL_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void {.importc: "QsciLexerSQL_virtualbase_setEolFill".}
+proc fcQsciLexerSQL_virtualbase_setFont(self: pointer, f: pointer, style: cint): void {.importc: "QsciLexerSQL_virtualbase_setFont".}
+proc fcQsciLexerSQL_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerSQL_virtualbase_setPaper".}
+proc fcQsciLexerSQL_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerSQL_virtualbase_readProperties".}
+proc fcQsciLexerSQL_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerSQL_virtualbase_writeProperties".}
+proc fcQsciLexerSQL_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QsciLexerSQL_virtualbase_event".}
+proc fcQsciLexerSQL_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QsciLexerSQL_virtualbase_eventFilter".}
+proc fcQsciLexerSQL_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QsciLexerSQL_virtualbase_timerEvent".}
+proc fcQsciLexerSQL_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QsciLexerSQL_virtualbase_childEvent".}
+proc fcQsciLexerSQL_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerSQL_virtualbase_customEvent".}
+proc fcQsciLexerSQL_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerSQL_virtualbase_connectNotify".}
+proc fcQsciLexerSQL_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerSQL_virtualbase_disconnectNotify".}
+proc fcQsciLexerSQL_new(vtbl: pointer, ): ptr cQsciLexerSQL {.importc: "QsciLexerSQL_new".}
+proc fcQsciLexerSQL_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerSQL {.importc: "QsciLexerSQL_new2".}
 proc fcQsciLexerSQL_staticMetaObject(): pointer {.importc: "QsciLexerSQL_staticMetaObject".}
 proc fcQsciLexerSQL_delete(self: pointer) {.importc: "QsciLexerSQL_delete".}
 
-
-func init*(T: type gen_qscilexersql_types.QsciLexerSQL, h: ptr cQsciLexerSQL): gen_qscilexersql_types.QsciLexerSQL =
-  T(h: h)
-proc create*(T: type gen_qscilexersql_types.QsciLexerSQL, ): gen_qscilexersql_types.QsciLexerSQL =
-  gen_qscilexersql_types.QsciLexerSQL.init(fcQsciLexerSQL_new())
-
-proc create*(T: type gen_qscilexersql_types.QsciLexerSQL, parent: gen_qobject.QObject): gen_qscilexersql_types.QsciLexerSQL =
-  gen_qscilexersql_types.QsciLexerSQL.init(fcQsciLexerSQL_new2(parent.h))
-
-proc metaObject*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerSQL_metaObject(self.h))
+proc metaObject*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerSQL_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexersql_types.QsciLexerSQL, param1: cstring): pointer =
   fcQsciLexerSQL_metacast(self.h, param1)
@@ -247,17 +239,17 @@ proc lexer*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
 proc braceStyle*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
   fcQsciLexerSQL_braceStyle(self.h)
 
-proc defaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerSQL_defaultColor(self.h, style))
+proc defaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerSQL_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): bool =
   fcQsciLexerSQL_defaultEolFill(self.h, style)
 
-proc defaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fcQsciLexerSQL_defaultFont(self.h, style))
+proc defaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerSQL_defaultFont(self.h, style))
 
-proc defaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerSQL_defaultPaper(self.h, style))
+proc defaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerSQL_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexersql_types.QsciLexerSQL, set: cint): cstring =
   (fcQsciLexerSQL_keywords(self.h, set))
@@ -331,183 +323,195 @@ proc tr*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
-proc QsciLexerSQLmetaObject*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQsciLexerSQL_virtualbase_metaObject(self.h))
+type QsciLexerSQLmetaObjectProc* = proc(self: QsciLexerSQL): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QsciLexerSQLmetacastProc* = proc(self: QsciLexerSQL, param1: cstring): pointer {.raises: [], gcsafe.}
+type QsciLexerSQLmetacallProc* = proc(self: QsciLexerSQL, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QsciLexerSQLsetBackslashEscapesProc* = proc(self: QsciLexerSQL, enable: bool): void {.raises: [], gcsafe.}
+type QsciLexerSQLsetFoldCommentsProc* = proc(self: QsciLexerSQL, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerSQLsetFoldCompactProc* = proc(self: QsciLexerSQL, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerSQLlanguageProc* = proc(self: QsciLexerSQL): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLlexerProc* = proc(self: QsciLexerSQL): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLlexerIdProc* = proc(self: QsciLexerSQL): cint {.raises: [], gcsafe.}
+type QsciLexerSQLautoCompletionFillupsProc* = proc(self: QsciLexerSQL): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLautoCompletionWordSeparatorsProc* = proc(self: QsciLexerSQL): seq[string] {.raises: [], gcsafe.}
+type QsciLexerSQLblockEndProc* = proc(self: QsciLexerSQL, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLblockLookbackProc* = proc(self: QsciLexerSQL): cint {.raises: [], gcsafe.}
+type QsciLexerSQLblockStartProc* = proc(self: QsciLexerSQL, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLblockStartKeywordProc* = proc(self: QsciLexerSQL, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLbraceStyleProc* = proc(self: QsciLexerSQL): cint {.raises: [], gcsafe.}
+type QsciLexerSQLcaseSensitiveProc* = proc(self: QsciLexerSQL): bool {.raises: [], gcsafe.}
+type QsciLexerSQLcolorProc* = proc(self: QsciLexerSQL, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerSQLeolFillProc* = proc(self: QsciLexerSQL, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerSQLfontProc* = proc(self: QsciLexerSQL, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerSQLindentationGuideViewProc* = proc(self: QsciLexerSQL): cint {.raises: [], gcsafe.}
+type QsciLexerSQLkeywordsProc* = proc(self: QsciLexerSQL, set: cint): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLdefaultStyleProc* = proc(self: QsciLexerSQL): cint {.raises: [], gcsafe.}
+type QsciLexerSQLdescriptionProc* = proc(self: QsciLexerSQL, style: cint): string {.raises: [], gcsafe.}
+type QsciLexerSQLpaperProc* = proc(self: QsciLexerSQL, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerSQLdefaultColorProc* = proc(self: QsciLexerSQL, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerSQLdefaultEolFillProc* = proc(self: QsciLexerSQL, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerSQLdefaultFontProc* = proc(self: QsciLexerSQL, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerSQLdefaultPaperProc* = proc(self: QsciLexerSQL, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerSQLsetEditorProc* = proc(self: QsciLexerSQL, editor: gen_qsciscintilla_types.QsciScintilla): void {.raises: [], gcsafe.}
+type QsciLexerSQLrefreshPropertiesProc* = proc(self: QsciLexerSQL): void {.raises: [], gcsafe.}
+type QsciLexerSQLstyleBitsNeededProc* = proc(self: QsciLexerSQL): cint {.raises: [], gcsafe.}
+type QsciLexerSQLwordCharactersProc* = proc(self: QsciLexerSQL): cstring {.raises: [], gcsafe.}
+type QsciLexerSQLsetAutoIndentStyleProc* = proc(self: QsciLexerSQL, autoindentstyle: cint): void {.raises: [], gcsafe.}
+type QsciLexerSQLsetColorProc* = proc(self: QsciLexerSQL, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerSQLsetEolFillProc* = proc(self: QsciLexerSQL, eoffill: bool, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerSQLsetFontProc* = proc(self: QsciLexerSQL, f: gen_qfont_types.QFont, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerSQLsetPaperProc* = proc(self: QsciLexerSQL, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerSQLreadPropertiesProc* = proc(self: QsciLexerSQL, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerSQLwritePropertiesProc* = proc(self: QsciLexerSQL, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerSQLeventProc* = proc(self: QsciLexerSQL, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerSQLeventFilterProc* = proc(self: QsciLexerSQL, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerSQLtimerEventProc* = proc(self: QsciLexerSQL, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QsciLexerSQLchildEventProc* = proc(self: QsciLexerSQL, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QsciLexerSQLcustomEventProc* = proc(self: QsciLexerSQL, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciLexerSQLconnectNotifyProc* = proc(self: QsciLexerSQL, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerSQLdisconnectNotifyProc* = proc(self: QsciLexerSQL, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerSQLVTable* = object
+  vtbl: cQsciLexerSQLVTable
+  metaObject*: QsciLexerSQLmetaObjectProc
+  metacast*: QsciLexerSQLmetacastProc
+  metacall*: QsciLexerSQLmetacallProc
+  setBackslashEscapes*: QsciLexerSQLsetBackslashEscapesProc
+  setFoldComments*: QsciLexerSQLsetFoldCommentsProc
+  setFoldCompact*: QsciLexerSQLsetFoldCompactProc
+  language*: QsciLexerSQLlanguageProc
+  lexer*: QsciLexerSQLlexerProc
+  lexerId*: QsciLexerSQLlexerIdProc
+  autoCompletionFillups*: QsciLexerSQLautoCompletionFillupsProc
+  autoCompletionWordSeparators*: QsciLexerSQLautoCompletionWordSeparatorsProc
+  blockEnd*: QsciLexerSQLblockEndProc
+  blockLookback*: QsciLexerSQLblockLookbackProc
+  blockStart*: QsciLexerSQLblockStartProc
+  blockStartKeyword*: QsciLexerSQLblockStartKeywordProc
+  braceStyle*: QsciLexerSQLbraceStyleProc
+  caseSensitive*: QsciLexerSQLcaseSensitiveProc
+  color*: QsciLexerSQLcolorProc
+  eolFill*: QsciLexerSQLeolFillProc
+  font*: QsciLexerSQLfontProc
+  indentationGuideView*: QsciLexerSQLindentationGuideViewProc
+  keywords*: QsciLexerSQLkeywordsProc
+  defaultStyle*: QsciLexerSQLdefaultStyleProc
+  description*: QsciLexerSQLdescriptionProc
+  paper*: QsciLexerSQLpaperProc
+  defaultColor*: QsciLexerSQLdefaultColorProc
+  defaultEolFill*: QsciLexerSQLdefaultEolFillProc
+  defaultFont*: QsciLexerSQLdefaultFontProc
+  defaultPaper*: QsciLexerSQLdefaultPaperProc
+  setEditor*: QsciLexerSQLsetEditorProc
+  refreshProperties*: QsciLexerSQLrefreshPropertiesProc
+  styleBitsNeeded*: QsciLexerSQLstyleBitsNeededProc
+  wordCharacters*: QsciLexerSQLwordCharactersProc
+  setAutoIndentStyle*: QsciLexerSQLsetAutoIndentStyleProc
+  setColor*: QsciLexerSQLsetColorProc
+  setEolFill*: QsciLexerSQLsetEolFillProc
+  setFont*: QsciLexerSQLsetFontProc
+  setPaper*: QsciLexerSQLsetPaperProc
+  readProperties*: QsciLexerSQLreadPropertiesProc
+  writeProperties*: QsciLexerSQLwritePropertiesProc
+  event*: QsciLexerSQLeventProc
+  eventFilter*: QsciLexerSQLeventFilterProc
+  timerEvent*: QsciLexerSQLtimerEventProc
+  childEvent*: QsciLexerSQLchildEventProc
+  customEvent*: QsciLexerSQLcustomEventProc
+  connectNotify*: QsciLexerSQLconnectNotifyProc
+  disconnectNotify*: QsciLexerSQLdisconnectNotifyProc
+proc QsciLexerSQLmetaObject*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerSQL_virtualbase_metaObject(self.h))
 
-type QsciLexerSQLmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_metaObject(self: ptr cQsciLexerSQL, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_metaObject ".} =
-  var nimfunc = cast[ptr QsciLexerSQLmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QsciLexerSQLmetacast*(self: gen_qscilexersql_types.QsciLexerSQL, param1: cstring): pointer =
-  fQsciLexerSQL_virtualbase_metacast(self.h, param1)
+  fcQsciLexerSQL_virtualbase_metacast(self.h, param1)
 
-type QsciLexerSQLmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLmetacastProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_metacast(self: ptr cQsciLexerSQL, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_metacast ".} =
-  var nimfunc = cast[ptr QsciLexerSQLmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QsciLexerSQLmetacall*(self: gen_qscilexersql_types.QsciLexerSQL, param1: cint, param2: cint, param3: pointer): cint =
-  fQsciLexerSQL_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQsciLexerSQL_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciLexerSQLmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLmetacallProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_metacall(self: ptr cQsciLexerSQL, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciLexerSQL_metacall ".} =
-  var nimfunc = cast[ptr QsciLexerSQLmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QsciLexerSQLsetBackslashEscapes*(self: gen_qscilexersql_types.QsciLexerSQL, enable: bool): void =
-  fQsciLexerSQL_virtualbase_setBackslashEscapes(self.h, enable)
+  fcQsciLexerSQL_virtualbase_setBackslashEscapes(self.h, enable)
 
-type QsciLexerSQLsetBackslashEscapesProc* = proc(enable: bool): void
-proc onsetBackslashEscapes*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetBackslashEscapesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetBackslashEscapesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setBackslashEscapes(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setBackslashEscapes(self: ptr cQsciLexerSQL, slot: int, enable: bool): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setBackslashEscapes ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetBackslashEscapesProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_setBackslashEscapes(vtbl: pointer, self: pointer, enable: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = enable
+  vtbl[].setBackslashEscapes(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerSQLsetFoldComments*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-  fQsciLexerSQL_virtualbase_setFoldComments(self.h, fold)
+  fcQsciLexerSQL_virtualbase_setFoldComments(self.h, fold)
 
-type QsciLexerSQLsetFoldCommentsProc* = proc(fold: bool): void
-proc onsetFoldComments*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetFoldCommentsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetFoldCommentsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setFoldComments(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setFoldComments(self: ptr cQsciLexerSQL, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setFoldComments ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetFoldCommentsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_setFoldComments(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = fold
+  vtbl[].setFoldComments(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerSQLsetFoldCompact*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-  fQsciLexerSQL_virtualbase_setFoldCompact(self.h, fold)
+  fcQsciLexerSQL_virtualbase_setFoldCompact(self.h, fold)
 
-type QsciLexerSQLsetFoldCompactProc* = proc(fold: bool): void
-proc onsetFoldCompact*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetFoldCompactProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetFoldCompactProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setFoldCompact(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setFoldCompact(self: ptr cQsciLexerSQL, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setFoldCompact ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetFoldCompactProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_setFoldCompact(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = fold
+  vtbl[].setFoldCompact(self, slotval1)
 
-
-  nimfunc[](slotval1)
-type QsciLexerSQLlanguageProc* = proc(): cstring
-proc onlanguage*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLlanguageProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLlanguageProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_language(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_language(self: ptr cQsciLexerSQL, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_language ".} =
-  var nimfunc = cast[ptr QsciLexerSQLlanguageProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_language(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].language(self)
   virtualReturn
+
 proc QsciLexerSQLlexer*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-  (fQsciLexerSQL_virtualbase_lexer(self.h))
+  (fcQsciLexerSQL_virtualbase_lexer(self.h))
 
-type QsciLexerSQLlexerProc* = proc(): cstring
-proc onlexer*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLlexerProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLlexerProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_lexer(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_lexer(self: ptr cQsciLexerSQL, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_lexer ".} =
-  var nimfunc = cast[ptr QsciLexerSQLlexerProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_lexer(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].lexer(self)
   virtualReturn
+
 proc QsciLexerSQLlexerId*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-  fQsciLexerSQL_virtualbase_lexerId(self.h)
+  fcQsciLexerSQL_virtualbase_lexerId(self.h)
 
-type QsciLexerSQLlexerIdProc* = proc(): cint
-proc onlexerId*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLlexerIdProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLlexerIdProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_lexerId(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_lexerId(self: ptr cQsciLexerSQL, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerSQL_lexerId ".} =
-  var nimfunc = cast[ptr QsciLexerSQLlexerIdProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_lexerId(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].lexerId(self)
   virtualReturn
+
 proc QsciLexerSQLautoCompletionFillups*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-  (fQsciLexerSQL_virtualbase_autoCompletionFillups(self.h))
+  (fcQsciLexerSQL_virtualbase_autoCompletionFillups(self.h))
 
-type QsciLexerSQLautoCompletionFillupsProc* = proc(): cstring
-proc onautoCompletionFillups*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLautoCompletionFillupsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLautoCompletionFillupsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_autoCompletionFillups(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_autoCompletionFillups(self: ptr cQsciLexerSQL, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_autoCompletionFillups ".} =
-  var nimfunc = cast[ptr QsciLexerSQLautoCompletionFillupsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_autoCompletionFillups(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].autoCompletionFillups(self)
   virtualReturn
+
 proc QsciLexerSQLautoCompletionWordSeparators*(self: gen_qscilexersql_types.QsciLexerSQL, ): seq[string] =
-  var v_ma = fQsciLexerSQL_virtualbase_autoCompletionWordSeparators(self.h)
+  var v_ma = fcQsciLexerSQL_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
   for i in 0 ..< v_ma.len:
@@ -517,686 +521,574 @@ proc QsciLexerSQLautoCompletionWordSeparators*(self: gen_qscilexersql_types.Qsci
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciLexerSQLautoCompletionWordSeparatorsProc* = proc(): seq[string]
-proc onautoCompletionWordSeparators*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLautoCompletionWordSeparatorsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLautoCompletionWordSeparatorsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_autoCompletionWordSeparators(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_autoCompletionWordSeparators(self: ptr cQsciLexerSQL, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QsciLexerSQL_autoCompletionWordSeparators ".} =
-  var nimfunc = cast[ptr QsciLexerSQLautoCompletionWordSeparatorsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
+proc miqt_exec_callback_cQsciLexerSQL_autoCompletionWordSeparators(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].autoCompletionWordSeparators(self)
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
-
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
+
 proc QsciLexerSQLblockEnd*(self: gen_qscilexersql_types.QsciLexerSQL, style: ptr cint): cstring =
-  (fQsciLexerSQL_virtualbase_blockEnd(self.h, style))
+  (fcQsciLexerSQL_virtualbase_blockEnd(self.h, style))
 
-type QsciLexerSQLblockEndProc* = proc(style: ptr cint): cstring
-proc onblockEnd*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLblockEndProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLblockEndProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_blockEnd(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_blockEnd(self: ptr cQsciLexerSQL, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_blockEnd ".} =
-  var nimfunc = cast[ptr QsciLexerSQLblockEndProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_blockEnd(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockEnd(self, slotval1)
   virtualReturn
+
 proc QsciLexerSQLblockLookback*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-  fQsciLexerSQL_virtualbase_blockLookback(self.h)
+  fcQsciLexerSQL_virtualbase_blockLookback(self.h)
 
-type QsciLexerSQLblockLookbackProc* = proc(): cint
-proc onblockLookback*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLblockLookbackProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLblockLookbackProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_blockLookback(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_blockLookback(self: ptr cQsciLexerSQL, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerSQL_blockLookback ".} =
-  var nimfunc = cast[ptr QsciLexerSQLblockLookbackProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_blockLookback(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].blockLookback(self)
   virtualReturn
+
 proc QsciLexerSQLblockStart*(self: gen_qscilexersql_types.QsciLexerSQL, style: ptr cint): cstring =
-  (fQsciLexerSQL_virtualbase_blockStart(self.h, style))
+  (fcQsciLexerSQL_virtualbase_blockStart(self.h, style))
 
-type QsciLexerSQLblockStartProc* = proc(style: ptr cint): cstring
-proc onblockStart*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLblockStartProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLblockStartProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_blockStart(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_blockStart(self: ptr cQsciLexerSQL, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_blockStart ".} =
-  var nimfunc = cast[ptr QsciLexerSQLblockStartProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_blockStart(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStart(self, slotval1)
   virtualReturn
+
 proc QsciLexerSQLblockStartKeyword*(self: gen_qscilexersql_types.QsciLexerSQL, style: ptr cint): cstring =
-  (fQsciLexerSQL_virtualbase_blockStartKeyword(self.h, style))
+  (fcQsciLexerSQL_virtualbase_blockStartKeyword(self.h, style))
 
-type QsciLexerSQLblockStartKeywordProc* = proc(style: ptr cint): cstring
-proc onblockStartKeyword*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLblockStartKeywordProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLblockStartKeywordProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_blockStartKeyword(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_blockStartKeyword(self: ptr cQsciLexerSQL, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_blockStartKeyword ".} =
-  var nimfunc = cast[ptr QsciLexerSQLblockStartKeywordProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_blockStartKeyword(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStartKeyword(self, slotval1)
   virtualReturn
+
 proc QsciLexerSQLbraceStyle*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-  fQsciLexerSQL_virtualbase_braceStyle(self.h)
+  fcQsciLexerSQL_virtualbase_braceStyle(self.h)
 
-type QsciLexerSQLbraceStyleProc* = proc(): cint
-proc onbraceStyle*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLbraceStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLbraceStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_braceStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_braceStyle(self: ptr cQsciLexerSQL, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerSQL_braceStyle ".} =
-  var nimfunc = cast[ptr QsciLexerSQLbraceStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_braceStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].braceStyle(self)
   virtualReturn
+
 proc QsciLexerSQLcaseSensitive*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-  fQsciLexerSQL_virtualbase_caseSensitive(self.h)
+  fcQsciLexerSQL_virtualbase_caseSensitive(self.h)
 
-type QsciLexerSQLcaseSensitiveProc* = proc(): bool
-proc oncaseSensitive*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLcaseSensitiveProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLcaseSensitiveProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_caseSensitive(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_caseSensitive(self: ptr cQsciLexerSQL, slot: int): bool {.exportc: "miqt_exec_callback_QsciLexerSQL_caseSensitive ".} =
-  var nimfunc = cast[ptr QsciLexerSQLcaseSensitiveProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_caseSensitive(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].caseSensitive(self)
   virtualReturn
-proc QsciLexerSQLcolor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_color(self.h, style))
 
-type QsciLexerSQLcolorProc* = proc(style: cint): gen_qcolor.QColor
-proc oncolor*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLcolorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLcolorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_color(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLcolor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerSQL_virtualbase_color(self.h, style))
 
-proc miqt_exec_callback_QsciLexerSQL_color(self: ptr cQsciLexerSQL, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_color ".} =
-  var nimfunc = cast[ptr QsciLexerSQLcolorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_color(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].color(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerSQLeolFill*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): bool =
-  fQsciLexerSQL_virtualbase_eolFill(self.h, style)
+  fcQsciLexerSQL_virtualbase_eolFill(self.h, style)
 
-type QsciLexerSQLeolFillProc* = proc(style: cint): bool
-proc oneolFill*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLeolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLeolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_eolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_eolFill(self: ptr cQsciLexerSQL, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerSQL_eolFill ".} =
-  var nimfunc = cast[ptr QsciLexerSQLeolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_eolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].eolFill(self, slotval1)
   virtualReturn
-proc QsciLexerSQLfont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerSQL_virtualbase_font(self.h, style))
 
-type QsciLexerSQLfontProc* = proc(style: cint): gen_qfont.QFont
-proc onfont*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLfontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLfontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_font(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLfont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerSQL_virtualbase_font(self.h, style))
 
-proc miqt_exec_callback_QsciLexerSQL_font(self: ptr cQsciLexerSQL, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_font ".} =
-  var nimfunc = cast[ptr QsciLexerSQLfontProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_font(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].font(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerSQLindentationGuideView*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-  fQsciLexerSQL_virtualbase_indentationGuideView(self.h)
+  fcQsciLexerSQL_virtualbase_indentationGuideView(self.h)
 
-type QsciLexerSQLindentationGuideViewProc* = proc(): cint
-proc onindentationGuideView*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLindentationGuideViewProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLindentationGuideViewProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_indentationGuideView(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_indentationGuideView(self: ptr cQsciLexerSQL, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerSQL_indentationGuideView ".} =
-  var nimfunc = cast[ptr QsciLexerSQLindentationGuideViewProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_indentationGuideView(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].indentationGuideView(self)
   virtualReturn
+
 proc QsciLexerSQLkeywords*(self: gen_qscilexersql_types.QsciLexerSQL, set: cint): cstring =
-  (fQsciLexerSQL_virtualbase_keywords(self.h, set))
+  (fcQsciLexerSQL_virtualbase_keywords(self.h, set))
 
-type QsciLexerSQLkeywordsProc* = proc(set: cint): cstring
-proc onkeywords*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLkeywordsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLkeywordsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_keywords(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_keywords(self: ptr cQsciLexerSQL, slot: int, set: cint): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_keywords ".} =
-  var nimfunc = cast[ptr QsciLexerSQLkeywordsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_keywords(vtbl: pointer, self: pointer, set: cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = set
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].keywords(self, slotval1)
   virtualReturn
+
 proc QsciLexerSQLdefaultStyle*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-  fQsciLexerSQL_virtualbase_defaultStyle(self.h)
+  fcQsciLexerSQL_virtualbase_defaultStyle(self.h)
 
-type QsciLexerSQLdefaultStyleProc* = proc(): cint
-proc ondefaultStyle*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLdefaultStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_defaultStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_defaultStyle(self: ptr cQsciLexerSQL, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerSQL_defaultStyle ".} =
-  var nimfunc = cast[ptr QsciLexerSQLdefaultStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_defaultStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].defaultStyle(self)
   virtualReturn
-type QsciLexerSQLdescriptionProc* = proc(style: cint): string
-proc ondescription*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdescriptionProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLdescriptionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_description(self.h, cast[int](addr tmp[]))
 
-proc miqt_exec_callback_QsciLexerSQL_description(self: ptr cQsciLexerSQL, slot: int, style: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QsciLexerSQL_description ".} =
-  var nimfunc = cast[ptr QsciLexerSQLdescriptionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_description(vtbl: pointer, self: pointer, style: cint): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].description(self, slotval1)
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QsciLexerSQLpaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_paper(self.h, style))
 
-type QsciLexerSQLpaperProc* = proc(style: cint): gen_qcolor.QColor
-proc onpaper*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLpaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLpaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_paper(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLpaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerSQL_virtualbase_paper(self.h, style))
 
-proc miqt_exec_callback_QsciLexerSQL_paper(self: ptr cQsciLexerSQL, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_paper ".} =
-  var nimfunc = cast[ptr QsciLexerSQLpaperProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_paper(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].paper(self, slotval1)
   virtualReturn.h
-proc QsciLexerSQLdefaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_defaultColorWithStyle(self.h, style))
 
-type QsciLexerSQLdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultColorWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLdefaultColorWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_defaultColorWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLdefaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerSQL_virtualbase_defaultColorWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerSQL_defaultColorWithStyle(self: ptr cQsciLexerSQL, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_defaultColorWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerSQLdefaultColorWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_defaultColorWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultColor(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerSQLdefaultEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): bool =
-  fQsciLexerSQL_virtualbase_defaultEolFill(self.h, style)
+  fcQsciLexerSQL_virtualbase_defaultEolFill(self.h, style)
 
-type QsciLexerSQLdefaultEolFillProc* = proc(style: cint): bool
-proc ondefaultEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLdefaultEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_defaultEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_defaultEolFill(self: ptr cQsciLexerSQL, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerSQL_defaultEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerSQLdefaultEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_defaultEolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultEolFill(self, slotval1)
   virtualReturn
-proc QsciLexerSQLdefaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerSQL_virtualbase_defaultFontWithStyle(self.h, style))
 
-type QsciLexerSQLdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultFontWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLdefaultFontWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_defaultFontWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLdefaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerSQL_virtualbase_defaultFontWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerSQL_defaultFontWithStyle(self: ptr cQsciLexerSQL, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_defaultFontWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerSQLdefaultFontWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_defaultFontWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultFont(self, slotval1)
   virtualReturn.h
-proc QsciLexerSQLdefaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_defaultPaperWithStyle(self.h, style))
 
-type QsciLexerSQLdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultPaperWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLdefaultPaperWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_defaultPaperWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLdefaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerSQL_virtualbase_defaultPaperWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerSQL_defaultPaperWithStyle(self: ptr cQsciLexerSQL, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerSQL_defaultPaperWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerSQLdefaultPaperWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_defaultPaperWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultPaper(self, slotval1)
   virtualReturn.h
-proc QsciLexerSQLsetEditor*(self: gen_qscilexersql_types.QsciLexerSQL, editor: gen_qsciscintilla.QsciScintilla): void =
-  fQsciLexerSQL_virtualbase_setEditor(self.h, editor.h)
 
-type QsciLexerSQLsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
-proc onsetEditor*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetEditorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetEditorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setEditor(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLsetEditor*(self: gen_qscilexersql_types.QsciLexerSQL, editor: gen_qsciscintilla_types.QsciScintilla): void =
+  fcQsciLexerSQL_virtualbase_setEditor(self.h, editor.h)
 
-proc miqt_exec_callback_QsciLexerSQL_setEditor(self: ptr cQsciLexerSQL, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setEditor ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetEditorProc](cast[pointer](slot))
-  let slotval1 = gen_qsciscintilla.QsciScintilla(h: editor)
+proc miqt_exec_callback_cQsciLexerSQL_setEditor(vtbl: pointer, self: pointer, editor: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qsciscintilla_types.QsciScintilla(h: editor)
+  vtbl[].setEditor(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerSQLrefreshProperties*(self: gen_qscilexersql_types.QsciLexerSQL, ): void =
-  fQsciLexerSQL_virtualbase_refreshProperties(self.h)
+  fcQsciLexerSQL_virtualbase_refreshProperties(self.h)
 
-type QsciLexerSQLrefreshPropertiesProc* = proc(): void
-proc onrefreshProperties*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLrefreshPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLrefreshPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_refreshProperties(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciLexerSQL_refreshProperties(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  vtbl[].refreshProperties(self)
 
-proc miqt_exec_callback_QsciLexerSQL_refreshProperties(self: ptr cQsciLexerSQL, slot: int): void {.exportc: "miqt_exec_callback_QsciLexerSQL_refreshProperties ".} =
-  var nimfunc = cast[ptr QsciLexerSQLrefreshPropertiesProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciLexerSQLstyleBitsNeeded*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-  fQsciLexerSQL_virtualbase_styleBitsNeeded(self.h)
+  fcQsciLexerSQL_virtualbase_styleBitsNeeded(self.h)
 
-type QsciLexerSQLstyleBitsNeededProc* = proc(): cint
-proc onstyleBitsNeeded*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLstyleBitsNeededProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLstyleBitsNeededProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_styleBitsNeeded(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_styleBitsNeeded(self: ptr cQsciLexerSQL, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerSQL_styleBitsNeeded ".} =
-  var nimfunc = cast[ptr QsciLexerSQLstyleBitsNeededProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_styleBitsNeeded(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].styleBitsNeeded(self)
   virtualReturn
+
 proc QsciLexerSQLwordCharacters*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-  (fQsciLexerSQL_virtualbase_wordCharacters(self.h))
+  (fcQsciLexerSQL_virtualbase_wordCharacters(self.h))
 
-type QsciLexerSQLwordCharactersProc* = proc(): cstring
-proc onwordCharacters*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLwordCharactersProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLwordCharactersProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_wordCharacters(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_wordCharacters(self: ptr cQsciLexerSQL, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerSQL_wordCharacters ".} =
-  var nimfunc = cast[ptr QsciLexerSQLwordCharactersProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerSQL_wordCharacters(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let virtualReturn = vtbl[].wordCharacters(self)
   virtualReturn
+
 proc QsciLexerSQLsetAutoIndentStyle*(self: gen_qscilexersql_types.QsciLexerSQL, autoindentstyle: cint): void =
-  fQsciLexerSQL_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
+  fcQsciLexerSQL_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
-type QsciLexerSQLsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
-proc onsetAutoIndentStyle*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetAutoIndentStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetAutoIndentStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setAutoIndentStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setAutoIndentStyle(self: ptr cQsciLexerSQL, slot: int, autoindentstyle: cint): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setAutoIndentStyle ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetAutoIndentStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_setAutoIndentStyle(vtbl: pointer, self: pointer, autoindentstyle: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = autoindentstyle
+  vtbl[].setAutoIndentStyle(self, slotval1)
 
+proc QsciLexerSQLsetColor*(self: gen_qscilexersql_types.QsciLexerSQL, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerSQL_virtualbase_setColor(self.h, c.h, style)
 
-  nimfunc[](slotval1)
-proc QsciLexerSQLsetColor*(self: gen_qscilexersql_types.QsciLexerSQL, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerSQL_virtualbase_setColor(self.h, c.h, style)
-
-type QsciLexerSQLsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetColor*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetColorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setColor(self: ptr cQsciLexerSQL, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setColor ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerSQL_setColor(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setColor(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciLexerSQLsetEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, eoffill: bool, style: cint): void =
-  fQsciLexerSQL_virtualbase_setEolFill(self.h, eoffill, style)
+  fcQsciLexerSQL_virtualbase_setEolFill(self.h, eoffill, style)
 
-type QsciLexerSQLsetEolFillProc* = proc(eoffill: bool, style: cint): void
-proc onsetEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setEolFill(self: ptr cQsciLexerSQL, slot: int, eoffill: bool, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerSQL_setEolFill(vtbl: pointer, self: pointer, eoffill: bool, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
   let slotval1 = eoffill
-
   let slotval2 = style
+  vtbl[].setEolFill(self, slotval1, slotval2)
 
+proc QsciLexerSQLsetFont*(self: gen_qscilexersql_types.QsciLexerSQL, f: gen_qfont_types.QFont, style: cint): void =
+  fcQsciLexerSQL_virtualbase_setFont(self.h, f.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerSQLsetFont*(self: gen_qscilexersql_types.QsciLexerSQL, f: gen_qfont.QFont, style: cint): void =
-  fQsciLexerSQL_virtualbase_setFont(self.h, f.h, style)
-
-type QsciLexerSQLsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
-proc onsetFont*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetFontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetFontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setFont(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setFont(self: ptr cQsciLexerSQL, slot: int, f: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setFont ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetFontProc](cast[pointer](slot))
-  let slotval1 = gen_qfont.QFont(h: f)
-
+proc miqt_exec_callback_cQsciLexerSQL_setFont(vtbl: pointer, self: pointer, f: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qfont_types.QFont(h: f)
   let slotval2 = style
+  vtbl[].setFont(self, slotval1, slotval2)
 
+proc QsciLexerSQLsetPaper*(self: gen_qscilexersql_types.QsciLexerSQL, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerSQL_virtualbase_setPaper(self.h, c.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerSQLsetPaper*(self: gen_qscilexersql_types.QsciLexerSQL, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerSQL_virtualbase_setPaper(self.h, c.h, style)
-
-type QsciLexerSQLsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetPaper*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLsetPaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLsetPaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_setPaper(self: ptr cQsciLexerSQL, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerSQL_setPaper ".} =
-  var nimfunc = cast[ptr QsciLexerSQLsetPaperProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerSQL_setPaper(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setPaper(self, slotval1, slotval2)
 
+proc QsciLexerSQLreadProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerSQL_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerSQLreadProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerSQL_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
-
-type QsciLexerSQLreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onreadProperties*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLreadPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLreadPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_readProperties(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_readProperties(self: ptr cQsciLexerSQL, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerSQL_readProperties ".} =
-  var nimfunc = cast[ptr QsciLexerSQLreadPropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerSQL_readProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].readProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerSQLwriteProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerSQL_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerSQLwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onwriteProperties*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLwritePropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLwritePropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_writeProperties(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLwriteProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerSQL_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc miqt_exec_callback_QsciLexerSQL_writeProperties(self: ptr cQsciLexerSQL, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerSQL_writeProperties ".} =
-  var nimfunc = cast[ptr QsciLexerSQLwritePropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerSQL_writeProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].writeProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerSQLevent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerSQL_virtualbase_event(self.h, event.h)
 
-type QsciLexerSQLeventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLeventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLevent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerSQL_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerSQL_event(self: ptr cQsciLexerSQL, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerSQL_event ".} =
-  var nimfunc = cast[ptr QsciLexerSQLeventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciLexerSQL_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QsciLexerSQLeventFilter*(self: gen_qscilexersql_types.QsciLexerSQL, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerSQL_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciLexerSQLeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLeventFilter*(self: gen_qscilexersql_types.QsciLexerSQL, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerSQL_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QsciLexerSQL_eventFilter(self: ptr cQsciLexerSQL, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerSQL_eventFilter ".} =
-  var nimfunc = cast[ptr QsciLexerSQLeventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQsciLexerSQL_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerSQLtimerEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QTimerEvent): void =
-  fQsciLexerSQL_virtualbase_timerEvent(self.h, event.h)
 
-type QsciLexerSQLtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLtimerEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLtimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLtimerEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQsciLexerSQL_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerSQL_timerEvent(self: ptr cQsciLexerSQL, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerSQL_timerEvent ".} =
-  var nimfunc = cast[ptr QsciLexerSQLtimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQsciLexerSQL_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QsciLexerSQLchildEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQsciLexerSQL_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerSQLchildEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QChildEvent): void =
-  fQsciLexerSQL_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerSQL_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QsciLexerSQLchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLchildEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLcustomEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciLexerSQL_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerSQL_childEvent(self: ptr cQsciLexerSQL, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerSQL_childEvent ".} =
-  var nimfunc = cast[ptr QsciLexerSQLchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQsciLexerSQL_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QsciLexerSQLconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerSQL_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerSQLcustomEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QEvent): void =
-  fQsciLexerSQL_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerSQL_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QsciLexerSQLcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerSQLdisconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerSQL_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QsciLexerSQL_customEvent(self: ptr cQsciLexerSQL, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerSQL_customEvent ".} =
-  var nimfunc = cast[ptr QsciLexerSQLcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciLexerSQL_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerSQLVTable](vtbl)
+  let self = QsciLexerSQL(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qscilexersql_types.QsciLexerSQL,
+    vtbl: ref QsciLexerSQLVTable = nil): gen_qscilexersql_types.QsciLexerSQL =
+  let vtbl = if vtbl == nil: new QsciLexerSQLVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerSQLVTable, _: ptr cQsciLexerSQL) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerSQLVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerSQL_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerSQL_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerSQL_metacall
+  if not isNil(vtbl.setBackslashEscapes):
+    vtbl[].vtbl.setBackslashEscapes = miqt_exec_callback_cQsciLexerSQL_setBackslashEscapes
+  if not isNil(vtbl.setFoldComments):
+    vtbl[].vtbl.setFoldComments = miqt_exec_callback_cQsciLexerSQL_setFoldComments
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerSQL_setFoldCompact
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerSQL_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerSQL_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerSQL_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerSQL_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerSQL_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerSQL_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerSQL_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerSQL_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerSQL_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerSQL_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerSQL_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerSQL_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerSQL_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerSQL_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerSQL_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerSQL_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerSQL_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerSQL_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerSQL_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerSQL_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerSQL_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerSQL_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerSQL_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerSQL_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerSQL_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerSQL_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerSQL_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerSQL_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerSQL_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerSQL_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerSQL_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerSQL_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerSQL_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerSQL_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerSQL_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerSQL_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerSQL_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerSQL_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerSQL_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerSQL_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerSQL_disconnectNotify
+  gen_qscilexersql_types.QsciLexerSQL(h: fcQsciLexerSQL_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QsciLexerSQLconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerSQL_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qscilexersql_types.QsciLexerSQL,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QsciLexerSQLVTable = nil): gen_qscilexersql_types.QsciLexerSQL =
+  let vtbl = if vtbl == nil: new QsciLexerSQLVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerSQLVTable, _: ptr cQsciLexerSQL) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerSQLVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerSQL_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerSQL_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerSQL_metacall
+  if not isNil(vtbl.setBackslashEscapes):
+    vtbl[].vtbl.setBackslashEscapes = miqt_exec_callback_cQsciLexerSQL_setBackslashEscapes
+  if not isNil(vtbl.setFoldComments):
+    vtbl[].vtbl.setFoldComments = miqt_exec_callback_cQsciLexerSQL_setFoldComments
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerSQL_setFoldCompact
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerSQL_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerSQL_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerSQL_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerSQL_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerSQL_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerSQL_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerSQL_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerSQL_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerSQL_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerSQL_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerSQL_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerSQL_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerSQL_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerSQL_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerSQL_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerSQL_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerSQL_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerSQL_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerSQL_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerSQL_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerSQL_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerSQL_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerSQL_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerSQL_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerSQL_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerSQL_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerSQL_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerSQL_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerSQL_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerSQL_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerSQL_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerSQL_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerSQL_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerSQL_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerSQL_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerSQL_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerSQL_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerSQL_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerSQL_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerSQL_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerSQL_disconnectNotify
+  gen_qscilexersql_types.QsciLexerSQL(h: fcQsciLexerSQL_new2(addr(vtbl[]), parent.h))
 
-type QsciLexerSQLconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_connectNotify(self: ptr cQsciLexerSQL, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerSQL_connectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerSQLconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QsciLexerSQLdisconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerSQL_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QsciLexerSQLdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerSQLdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerSQL_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerSQL_disconnectNotify(self: ptr cQsciLexerSQL, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerSQL_disconnectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerSQLdisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qscilexersql_types.QsciLexerSQL): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerSQL_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscilexersql_types.QsciLexerSQL): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerSQL_staticMetaObject())
 proc delete*(self: gen_qscilexersql_types.QsciLexerSQL) =
   fcQsciLexerSQL_delete(self.h)

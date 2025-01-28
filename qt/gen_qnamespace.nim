@@ -1535,7 +1535,6 @@ type QInternalCallbackEnum* = distinct cint
 template EventNotifyCallback*(_: type QInternalCallbackEnum): untyped = 0
 template LastCallback*(_: type QInternalCallbackEnum): untyped = 1
 
-
 import gen_qnamespace_types
 export gen_qnamespace_types
 
@@ -1545,9 +1544,6 @@ type cQInternal*{.exportc: "QInternal", incompleteStruct.} = object
 proc fcQInternal_activateCallbacks(param1: cint, param2: pointer): bool {.importc: "QInternal_activateCallbacks".}
 proc fcQInternal_delete(self: pointer) {.importc: "QInternal_delete".}
 
-
-func init*(T: type gen_qnamespace_types.QInternal, h: ptr cQInternal): gen_qnamespace_types.QInternal =
-  T(h: h)
 proc activateCallbacks*(_: type gen_qnamespace_types.QInternal, param1: cint, param2: pointer): bool =
   fcQInternal_activateCallbacks(cint(param1), param2)
 

@@ -1,4 +1,4 @@
 import gen_qdialog_types
 export gen_qdialog_types
-type QFileDialog*  = object of gen_qdialog_types.QDialog
 
+type QFileDialog* = object of gen_qdialog_types.QDialog

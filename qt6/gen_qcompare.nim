@@ -44,7 +44,6 @@ template Greater*(_: type QtPrivateOrderingEnum): untyped = 1
 type QtPrivateUncomparableEnum* = distinct cschar
 template Unordered*(_: type QtPrivateUncomparableEnum): untyped = -127
 
-
 import gen_qcompare_types
 export gen_qcompare_types
 
@@ -54,11 +53,9 @@ type cQPartialOrdering*{.exportc: "QPartialOrdering", incompleteStruct.} = objec
 proc fcQPartialOrdering_new(param1: pointer): ptr cQPartialOrdering {.importc: "QPartialOrdering_new".}
 proc fcQPartialOrdering_delete(self: pointer) {.importc: "QPartialOrdering_delete".}
 
-
-func init*(T: type gen_qcompare_types.QPartialOrdering, h: ptr cQPartialOrdering): gen_qcompare_types.QPartialOrdering =
-  T(h: h)
-proc create*(T: type gen_qcompare_types.QPartialOrdering, param1: gen_qcompare_types.QPartialOrdering): gen_qcompare_types.QPartialOrdering =
-  gen_qcompare_types.QPartialOrdering.init(fcQPartialOrdering_new(param1.h))
+proc create*(T: type gen_qcompare_types.QPartialOrdering,
+    param1: gen_qcompare_types.QPartialOrdering): gen_qcompare_types.QPartialOrdering =
+  gen_qcompare_types.QPartialOrdering(h: fcQPartialOrdering_new(param1.h))
 
 proc delete*(self: gen_qcompare_types.QPartialOrdering) =
   fcQPartialOrdering_delete(self.h)

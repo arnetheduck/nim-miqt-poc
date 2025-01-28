@@ -110,18 +110,17 @@ template AlwaysAllowThirdPartyCookies*(_: type QWebSettingsThirdPartyCookiePolic
 template AlwaysBlockThirdPartyCookies*(_: type QWebSettingsThirdPartyCookiePolicyEnum): untyped = 1
 template AllowThirdPartyWithExistingCookies*(_: type QWebSettingsThirdPartyCookiePolicyEnum): untyped = 2
 
-
 import gen_qwebsettings_types
 export gen_qwebsettings_types
 
 import
-  gen_qicon,
-  gen_qpixmap,
-  gen_qurl
+  gen_qicon_types,
+  gen_qpixmap_types,
+  gen_qurl_types
 export
-  gen_qicon,
-  gen_qpixmap,
-  gen_qurl
+  gen_qicon_types,
+  gen_qpixmap_types,
+  gen_qurl_types
 
 type cQWebSettings*{.exportc: "QWebSettings", incompleteStruct.} = object
 
@@ -168,9 +167,6 @@ proc fcQWebSettings_setCSSMediaType(self: pointer, cSSMediaType: struct_miqt_str
 proc fcQWebSettings_cssMediaType(self: pointer, ): struct_miqt_string {.importc: "QWebSettings_cssMediaType".}
 proc fcQWebSettings_enablePersistentStorage1(path: struct_miqt_string): void {.importc: "QWebSettings_enablePersistentStorage1".}
 
-
-func init*(T: type gen_qwebsettings_types.QWebSettings, h: ptr cQWebSettings): gen_qwebsettings_types.QWebSettings =
-  T(h: h)
 proc globalSettings*(_: type gen_qwebsettings_types.QWebSettings, ): gen_qwebsettings_types.QWebSettings =
   gen_qwebsettings_types.QWebSettings(h: fcQWebSettings_globalSettings())
 
@@ -204,11 +200,11 @@ proc testAttribute*(self: gen_qwebsettings_types.QWebSettings, attr: cint): bool
 proc resetAttribute*(self: gen_qwebsettings_types.QWebSettings, attr: cint): void =
   fcQWebSettings_resetAttribute(self.h, cint(attr))
 
-proc setUserStyleSheetUrl*(self: gen_qwebsettings_types.QWebSettings, location: gen_qurl.QUrl): void =
+proc setUserStyleSheetUrl*(self: gen_qwebsettings_types.QWebSettings, location: gen_qurl_types.QUrl): void =
   fcQWebSettings_setUserStyleSheetUrl(self.h, location.h)
 
-proc userStyleSheetUrl*(self: gen_qwebsettings_types.QWebSettings, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebSettings_userStyleSheetUrl(self.h))
+proc userStyleSheetUrl*(self: gen_qwebsettings_types.QWebSettings, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebSettings_userStyleSheetUrl(self.h))
 
 proc setDefaultTextEncoding*(self: gen_qwebsettings_types.QWebSettings, encoding: string): void =
   fcQWebSettings_setDefaultTextEncoding(self.h, struct_miqt_string(data: encoding, len: csize_t(len(encoding))))
@@ -231,8 +227,8 @@ proc iconDatabasePath*(_: type gen_qwebsettings_types.QWebSettings, ): string =
 proc clearIconDatabase*(_: type gen_qwebsettings_types.QWebSettings, ): void =
   fcQWebSettings_clearIconDatabase()
 
-proc iconForUrl*(_: type gen_qwebsettings_types.QWebSettings, url: gen_qurl.QUrl): gen_qicon.QIcon =
-  gen_qicon.QIcon(h: fcQWebSettings_iconForUrl(url.h))
+proc iconForUrl*(_: type gen_qwebsettings_types.QWebSettings, url: gen_qurl_types.QUrl): gen_qicon_types.QIcon =
+  gen_qicon_types.QIcon(h: fcQWebSettings_iconForUrl(url.h))
 
 proc setPluginSearchPaths*(_: type gen_qwebsettings_types.QWebSettings, paths: seq[string]): void =
   var paths_CArray = newSeq[struct_miqt_string](len(paths))
@@ -252,11 +248,11 @@ proc pluginSearchPaths*(_: type gen_qwebsettings_types.QWebSettings, ): seq[stri
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc setWebGraphic*(_: type gen_qwebsettings_types.QWebSettings, typeVal: cint, graphic: gen_qpixmap.QPixmap): void =
+proc setWebGraphic*(_: type gen_qwebsettings_types.QWebSettings, typeVal: cint, graphic: gen_qpixmap_types.QPixmap): void =
   fcQWebSettings_setWebGraphic(cint(typeVal), graphic.h)
 
-proc webGraphic*(_: type gen_qwebsettings_types.QWebSettings, typeVal: cint): gen_qpixmap.QPixmap =
-  gen_qpixmap.QPixmap(h: fcQWebSettings_webGraphic(cint(typeVal)))
+proc webGraphic*(_: type gen_qwebsettings_types.QWebSettings, typeVal: cint): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQWebSettings_webGraphic(cint(typeVal)))
 
 proc setMaximumPagesInCache*(_: type gen_qwebsettings_types.QWebSettings, pages: cint): void =
   fcQWebSettings_setMaximumPagesInCache(pages)

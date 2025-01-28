@@ -10,5 +10,5 @@ type QDnsTextRecord* {.inheritable, pure.} = object
   h*: pointer
 import gen_qobject_types
 export gen_qobject_types
-type QDnsLookup*  = object of gen_qobject_types.QObject
 
+type QDnsLookup* = object of gen_qobject_types.QObject

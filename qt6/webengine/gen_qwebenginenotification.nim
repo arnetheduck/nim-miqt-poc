@@ -33,20 +33,19 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebenginenotification.cpp", cflags).}
 
-
 import gen_qwebenginenotification_types
 export gen_qwebenginenotification_types
 
 import
-  gen_qimage,
+  gen_qimage_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qurl
+  gen_qobjectdefs_types,
+  gen_qurl_types
 export
-  gen_qimage,
+  gen_qimage_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qurl
+  gen_qobjectdefs_types,
+  gen_qurl_types
 
 type cQWebEngineNotification*{.exportc: "QWebEngineNotification", incompleteStruct.} = object
 
@@ -66,17 +65,14 @@ proc fcQWebEngineNotification_show(self: pointer, ): void {.importc: "QWebEngine
 proc fcQWebEngineNotification_click(self: pointer, ): void {.importc: "QWebEngineNotification_click".}
 proc fcQWebEngineNotification_close(self: pointer, ): void {.importc: "QWebEngineNotification_close".}
 proc fcQWebEngineNotification_closed(self: pointer, ): void {.importc: "QWebEngineNotification_closed".}
-proc fQWebEngineNotification_connect_closed(self: pointer, slot: int) {.importc: "QWebEngineNotification_connect_closed".}
+proc fcQWebEngineNotification_connect_closed(self: pointer, slot: int) {.importc: "QWebEngineNotification_connect_closed".}
 proc fcQWebEngineNotification_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineNotification_tr2".}
 proc fcQWebEngineNotification_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNotification_tr3".}
 proc fcQWebEngineNotification_staticMetaObject(): pointer {.importc: "QWebEngineNotification_staticMetaObject".}
 proc fcQWebEngineNotification_delete(self: pointer) {.importc: "QWebEngineNotification_delete".}
 
-
-func init*(T: type gen_qwebenginenotification_types.QWebEngineNotification, h: ptr cQWebEngineNotification): gen_qwebenginenotification_types.QWebEngineNotification =
-  T(h: h)
-proc metaObject*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebEngineNotification_metaObject(self.h))
+proc metaObject*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineNotification_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginenotification_types.QWebEngineNotification, param1: cstring): pointer =
   fcQWebEngineNotification_metacast(self.h, param1)
@@ -93,11 +89,11 @@ proc tr*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cst
 proc matches*(self: gen_qwebenginenotification_types.QWebEngineNotification, other: gen_qwebenginenotification_types.QWebEngineNotification): bool =
   fcQWebEngineNotification_matches(self.h, other.h)
 
-proc origin*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebEngineNotification_origin(self.h))
+proc origin*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineNotification_origin(self.h))
 
-proc icon*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qimage.QImage =
-  gen_qimage.QImage(h: fcQWebEngineNotification_icon(self.h))
+proc icon*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qimage_types.QImage =
+  gen_qimage_types.QImage(h: fcQWebEngineNotification_icon(self.h))
 
 proc title*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): string =
   let v_ms = fcQWebEngineNotification_title(self.h)
@@ -139,7 +135,7 @@ proc closed*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): v
   fcQWebEngineNotification_closed(self.h)
 
 type QWebEngineNotificationclosedSlot* = proc()
-proc miqt_exec_callback_QWebEngineNotification_closed(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebEngineNotification_closed(slot: int) {.exportc: "miqt_exec_callback_QWebEngineNotification_closed".} =
   let nimfunc = cast[ptr QWebEngineNotificationclosedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -147,7 +143,7 @@ proc onclosed*(self: gen_qwebenginenotification_types.QWebEngineNotification, sl
   var tmp = new QWebEngineNotificationclosedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebEngineNotification_connect_closed(self.h, cast[int](addr tmp[]))
+  fcQWebEngineNotification_connect_closed(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineNotification_tr2(s, c)
@@ -161,7 +157,7 @@ proc tr*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cst
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qwebenginenotification_types.QWebEngineNotification): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebEngineNotification_staticMetaObject())
+proc staticMetaObject*(_: type gen_qwebenginenotification_types.QWebEngineNotification): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineNotification_staticMetaObject())
 proc delete*(self: gen_qwebenginenotification_types.QWebEngineNotification) =
   fcQWebEngineNotification_delete(self.h)

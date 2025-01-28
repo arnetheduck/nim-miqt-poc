@@ -33,36 +33,26 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qvector3d.cpp", cflags).}
 
-
 import gen_qvector3d_types
 export gen_qvector3d_types
 
 import
-  gen_qmatrix4x4,
-  gen_qpoint,
-  gen_qrect,
-  gen_qvariant,
-  gen_qvector2d,
-  gen_qvector4d
+  gen_qmatrix4x4_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qvariant_types,
+  gen_qvector2d_types,
+  gen_qvector4d_types
 export
-  gen_qmatrix4x4,
-  gen_qpoint,
-  gen_qrect,
-  gen_qvariant,
-  gen_qvector2d,
-  gen_qvector4d
+  gen_qmatrix4x4_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qvariant_types,
+  gen_qvector2d_types,
+  gen_qvector4d_types
 
 type cQVector3D*{.exportc: "QVector3D", incompleteStruct.} = object
 
-proc fcQVector3D_new(): ptr cQVector3D {.importc: "QVector3D_new".}
-proc fcQVector3D_new2(param1: cint): ptr cQVector3D {.importc: "QVector3D_new2".}
-proc fcQVector3D_new3(xpos: float32, ypos: float32, zpos: float32): ptr cQVector3D {.importc: "QVector3D_new3".}
-proc fcQVector3D_new4(point: pointer): ptr cQVector3D {.importc: "QVector3D_new4".}
-proc fcQVector3D_new5(point: pointer): ptr cQVector3D {.importc: "QVector3D_new5".}
-proc fcQVector3D_new6(vector: pointer): ptr cQVector3D {.importc: "QVector3D_new6".}
-proc fcQVector3D_new7(vector: pointer, zpos: float32): ptr cQVector3D {.importc: "QVector3D_new7".}
-proc fcQVector3D_new8(vector: pointer): ptr cQVector3D {.importc: "QVector3D_new8".}
-proc fcQVector3D_new9(param1: pointer): ptr cQVector3D {.importc: "QVector3D_new9".}
 proc fcQVector3D_isNull(self: pointer, ): bool {.importc: "QVector3D_isNull".}
 proc fcQVector3D_x(self: pointer, ): float32 {.importc: "QVector3D_x".}
 proc fcQVector3D_y(self: pointer, ): float32 {.importc: "QVector3D_y".}
@@ -96,37 +86,16 @@ proc fcQVector3D_toVector4D(self: pointer, ): pointer {.importc: "QVector3D_toVe
 proc fcQVector3D_toPoint(self: pointer, ): pointer {.importc: "QVector3D_toPoint".}
 proc fcQVector3D_toPointF(self: pointer, ): pointer {.importc: "QVector3D_toPointF".}
 proc fcQVector3D_ToQVariant(self: pointer, ): pointer {.importc: "QVector3D_ToQVariant".}
+proc fcQVector3D_new(): ptr cQVector3D {.importc: "QVector3D_new".}
+proc fcQVector3D_new2(param1: cint): ptr cQVector3D {.importc: "QVector3D_new2".}
+proc fcQVector3D_new3(xpos: float32, ypos: float32, zpos: float32): ptr cQVector3D {.importc: "QVector3D_new3".}
+proc fcQVector3D_new4(point: pointer): ptr cQVector3D {.importc: "QVector3D_new4".}
+proc fcQVector3D_new5(point: pointer): ptr cQVector3D {.importc: "QVector3D_new5".}
+proc fcQVector3D_new6(vector: pointer): ptr cQVector3D {.importc: "QVector3D_new6".}
+proc fcQVector3D_new7(vector: pointer, zpos: float32): ptr cQVector3D {.importc: "QVector3D_new7".}
+proc fcQVector3D_new8(vector: pointer): ptr cQVector3D {.importc: "QVector3D_new8".}
+proc fcQVector3D_new9(param1: pointer): ptr cQVector3D {.importc: "QVector3D_new9".}
 proc fcQVector3D_delete(self: pointer) {.importc: "QVector3D_delete".}
-
-
-func init*(T: type gen_qvector3d_types.QVector3D, h: ptr cQVector3D): gen_qvector3d_types.QVector3D =
-  T(h: h)
-proc create*(T: type gen_qvector3d_types.QVector3D, ): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new())
-
-proc create*(T: type gen_qvector3d_types.QVector3D, param1: cint): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new2(cint(param1)))
-
-proc create*(T: type gen_qvector3d_types.QVector3D, xpos: float32, ypos: float32, zpos: float32): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new3(xpos, ypos, zpos))
-
-proc create*(T: type gen_qvector3d_types.QVector3D, point: gen_qpoint.QPoint): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new4(point.h))
-
-proc create*(T: type gen_qvector3d_types.QVector3D, point: gen_qpoint.QPointF): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new5(point.h))
-
-proc create*(T: type gen_qvector3d_types.QVector3D, vector: gen_qvector2d.QVector2D): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new6(vector.h))
-
-proc create*(T: type gen_qvector3d_types.QVector3D, vector: gen_qvector2d.QVector2D, zpos: float32): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new7(vector.h, zpos))
-
-proc create*(T: type gen_qvector3d_types.QVector3D, vector: gen_qvector4d.QVector4D): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new8(vector.h))
-
-proc create*(T: type gen_qvector3d_types.QVector3D, param1: gen_qvector3d_types.QVector3D): gen_qvector3d_types.QVector3D =
-  gen_qvector3d_types.QVector3D.init(fcQVector3D_new9(param1.h))
 
 proc isNull*(self: gen_qvector3d_types.QVector3D, ): bool =
   fcQVector3D_isNull(self.h)
@@ -194,10 +163,10 @@ proc normal*(_: type gen_qvector3d_types.QVector3D, v1: gen_qvector3d_types.QVec
 proc normal*(_: type gen_qvector3d_types.QVector3D, v1: gen_qvector3d_types.QVector3D, v2: gen_qvector3d_types.QVector3D, v3: gen_qvector3d_types.QVector3D): gen_qvector3d_types.QVector3D =
   gen_qvector3d_types.QVector3D(h: fcQVector3D_normal2(v1.h, v2.h, v3.h))
 
-proc project*(self: gen_qvector3d_types.QVector3D, modelView: gen_qmatrix4x4.QMatrix4x4, projection: gen_qmatrix4x4.QMatrix4x4, viewport: gen_qrect.QRect): gen_qvector3d_types.QVector3D =
+proc project*(self: gen_qvector3d_types.QVector3D, modelView: gen_qmatrix4x4_types.QMatrix4x4, projection: gen_qmatrix4x4_types.QMatrix4x4, viewport: gen_qrect_types.QRect): gen_qvector3d_types.QVector3D =
   gen_qvector3d_types.QVector3D(h: fcQVector3D_project(self.h, modelView.h, projection.h, viewport.h))
 
-proc unproject*(self: gen_qvector3d_types.QVector3D, modelView: gen_qmatrix4x4.QMatrix4x4, projection: gen_qmatrix4x4.QMatrix4x4, viewport: gen_qrect.QRect): gen_qvector3d_types.QVector3D =
+proc unproject*(self: gen_qvector3d_types.QVector3D, modelView: gen_qmatrix4x4_types.QMatrix4x4, projection: gen_qmatrix4x4_types.QMatrix4x4, viewport: gen_qrect_types.QRect): gen_qvector3d_types.QVector3D =
   gen_qvector3d_types.QVector3D(h: fcQVector3D_unproject(self.h, modelView.h, projection.h, viewport.h))
 
 proc distanceToPoint*(self: gen_qvector3d_types.QVector3D, point: gen_qvector3d_types.QVector3D): float32 =
@@ -212,20 +181,55 @@ proc distanceToPlane*(self: gen_qvector3d_types.QVector3D, plane1: gen_qvector3d
 proc distanceToLine*(self: gen_qvector3d_types.QVector3D, point: gen_qvector3d_types.QVector3D, direction: gen_qvector3d_types.QVector3D): float32 =
   fcQVector3D_distanceToLine(self.h, point.h, direction.h)
 
-proc toVector2D*(self: gen_qvector3d_types.QVector3D, ): gen_qvector2d.QVector2D =
-  gen_qvector2d.QVector2D(h: fcQVector3D_toVector2D(self.h))
+proc toVector2D*(self: gen_qvector3d_types.QVector3D, ): gen_qvector2d_types.QVector2D =
+  gen_qvector2d_types.QVector2D(h: fcQVector3D_toVector2D(self.h))
 
-proc toVector4D*(self: gen_qvector3d_types.QVector3D, ): gen_qvector4d.QVector4D =
-  gen_qvector4d.QVector4D(h: fcQVector3D_toVector4D(self.h))
+proc toVector4D*(self: gen_qvector3d_types.QVector3D, ): gen_qvector4d_types.QVector4D =
+  gen_qvector4d_types.QVector4D(h: fcQVector3D_toVector4D(self.h))
 
-proc toPoint*(self: gen_qvector3d_types.QVector3D, ): gen_qpoint.QPoint =
-  gen_qpoint.QPoint(h: fcQVector3D_toPoint(self.h))
+proc toPoint*(self: gen_qvector3d_types.QVector3D, ): gen_qpoint_types.QPoint =
+  gen_qpoint_types.QPoint(h: fcQVector3D_toPoint(self.h))
 
-proc toPointF*(self: gen_qvector3d_types.QVector3D, ): gen_qpoint.QPointF =
-  gen_qpoint.QPointF(h: fcQVector3D_toPointF(self.h))
+proc toPointF*(self: gen_qvector3d_types.QVector3D, ): gen_qpoint_types.QPointF =
+  gen_qpoint_types.QPointF(h: fcQVector3D_toPointF(self.h))
 
-proc ToQVariant*(self: gen_qvector3d_types.QVector3D, ): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQVector3D_ToQVariant(self.h))
+proc ToQVariant*(self: gen_qvector3d_types.QVector3D, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQVector3D_ToQVariant(self.h))
+
+proc create*(T: type gen_qvector3d_types.QVector3D): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new())
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    param1: cint): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new2(cint(param1)))
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    xpos: float32, ypos: float32, zpos: float32): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new3(xpos, ypos, zpos))
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    point: gen_qpoint_types.QPoint): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new4(point.h))
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    point: gen_qpoint_types.QPointF): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new5(point.h))
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    vector: gen_qvector2d_types.QVector2D): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new6(vector.h))
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    vector: gen_qvector2d_types.QVector2D, zpos: float32): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new7(vector.h, zpos))
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    vector: gen_qvector4d_types.QVector4D): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new8(vector.h))
+
+proc create*(T: type gen_qvector3d_types.QVector3D,
+    param1: gen_qvector3d_types.QVector3D): gen_qvector3d_types.QVector3D =
+  gen_qvector3d_types.QVector3D(h: fcQVector3D_new9(param1.h))
 
 proc delete*(self: gen_qvector3d_types.QVector3D) =
   fcQVector3D_delete(self.h)

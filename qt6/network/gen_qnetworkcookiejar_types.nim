@@ -1,4 +1,4 @@
 import gen_qobject_types
 export gen_qobject_types
-type QNetworkCookieJar*  = object of gen_qobject_types.QObject
 
+type QNetworkCookieJar* = object of gen_qobject_types.QObject

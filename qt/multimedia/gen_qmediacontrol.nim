@@ -33,16 +33,15 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qmediacontrol.cpp", cflags).}
 
-
 import gen_qmediacontrol_types
 export gen_qmediacontrol_types
 
 import
   gen_qobject,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
   gen_qobject,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQMediaControl*{.exportc: "QMediaControl", incompleteStruct.} = object
 
@@ -58,11 +57,8 @@ proc fcQMediaControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_strin
 proc fcQMediaControl_staticMetaObject(): pointer {.importc: "QMediaControl_staticMetaObject".}
 proc fcQMediaControl_delete(self: pointer) {.importc: "QMediaControl_delete".}
 
-
-func init*(T: type gen_qmediacontrol_types.QMediaControl, h: ptr cQMediaControl): gen_qmediacontrol_types.QMediaControl =
-  T(h: h)
-proc metaObject*(self: gen_qmediacontrol_types.QMediaControl, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMediaControl_metaObject(self.h))
+proc metaObject*(self: gen_qmediacontrol_types.QMediaControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaControl_metaObject(self.h))
 
 proc metacast*(self: gen_qmediacontrol_types.QMediaControl, param1: cstring): pointer =
   fcQMediaControl_metacast(self.h, param1)
@@ -106,7 +102,7 @@ proc trUtf8*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstri
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qmediacontrol_types.QMediaControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMediaControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qmediacontrol_types.QMediaControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaControl_staticMetaObject())
 proc delete*(self: gen_qmediacontrol_types.QMediaControl) =
   fcQMediaControl_delete(self.h)

@@ -41,23 +41,20 @@ template StrikeOut*(_: type QGlyphRunGlyphRunFlagEnum): untyped = 4
 template RightToLeft*(_: type QGlyphRunGlyphRunFlagEnum): untyped = 8
 template SplitLigature*(_: type QGlyphRunGlyphRunFlagEnum): untyped = 16
 
-
 import gen_qglyphrun_types
 export gen_qglyphrun_types
 
 import
-  gen_qpoint,
-  gen_qrawfont,
-  gen_qrect
+  gen_qpoint_types,
+  gen_qrawfont_types,
+  gen_qrect_types
 export
-  gen_qpoint,
-  gen_qrawfont,
-  gen_qrect
+  gen_qpoint_types,
+  gen_qrawfont_types,
+  gen_qrect_types
 
 type cQGlyphRun*{.exportc: "QGlyphRun", incompleteStruct.} = object
 
-proc fcQGlyphRun_new(): ptr cQGlyphRun {.importc: "QGlyphRun_new".}
-proc fcQGlyphRun_new2(other: pointer): ptr cQGlyphRun {.importc: "QGlyphRun_new2".}
 proc fcQGlyphRun_operatorAssign(self: pointer, other: pointer): void {.importc: "QGlyphRun_operatorAssign".}
 proc fcQGlyphRun_swap(self: pointer, other: pointer): void {.importc: "QGlyphRun_swap".}
 proc fcQGlyphRun_rawFont(self: pointer, ): pointer {.importc: "QGlyphRun_rawFont".}
@@ -85,16 +82,9 @@ proc fcQGlyphRun_setBoundingRect(self: pointer, boundingRect: pointer): void {.i
 proc fcQGlyphRun_boundingRect(self: pointer, ): pointer {.importc: "QGlyphRun_boundingRect".}
 proc fcQGlyphRun_isEmpty(self: pointer, ): bool {.importc: "QGlyphRun_isEmpty".}
 proc fcQGlyphRun_setFlag2(self: pointer, flag: cint, enabled: bool): void {.importc: "QGlyphRun_setFlag2".}
+proc fcQGlyphRun_new(): ptr cQGlyphRun {.importc: "QGlyphRun_new".}
+proc fcQGlyphRun_new2(other: pointer): ptr cQGlyphRun {.importc: "QGlyphRun_new2".}
 proc fcQGlyphRun_delete(self: pointer) {.importc: "QGlyphRun_delete".}
-
-
-func init*(T: type gen_qglyphrun_types.QGlyphRun, h: ptr cQGlyphRun): gen_qglyphrun_types.QGlyphRun =
-  T(h: h)
-proc create*(T: type gen_qglyphrun_types.QGlyphRun, ): gen_qglyphrun_types.QGlyphRun =
-  gen_qglyphrun_types.QGlyphRun.init(fcQGlyphRun_new())
-
-proc create*(T: type gen_qglyphrun_types.QGlyphRun, other: gen_qglyphrun_types.QGlyphRun): gen_qglyphrun_types.QGlyphRun =
-  gen_qglyphrun_types.QGlyphRun.init(fcQGlyphRun_new2(other.h))
 
 proc operatorAssign*(self: gen_qglyphrun_types.QGlyphRun, other: gen_qglyphrun_types.QGlyphRun): void =
   fcQGlyphRun_operatorAssign(self.h, other.h)
@@ -102,13 +92,13 @@ proc operatorAssign*(self: gen_qglyphrun_types.QGlyphRun, other: gen_qglyphrun_t
 proc swap*(self: gen_qglyphrun_types.QGlyphRun, other: gen_qglyphrun_types.QGlyphRun): void =
   fcQGlyphRun_swap(self.h, other.h)
 
-proc rawFont*(self: gen_qglyphrun_types.QGlyphRun, ): gen_qrawfont.QRawFont =
-  gen_qrawfont.QRawFont(h: fcQGlyphRun_rawFont(self.h))
+proc rawFont*(self: gen_qglyphrun_types.QGlyphRun, ): gen_qrawfont_types.QRawFont =
+  gen_qrawfont_types.QRawFont(h: fcQGlyphRun_rawFont(self.h))
 
-proc setRawFont*(self: gen_qglyphrun_types.QGlyphRun, rawFont: gen_qrawfont.QRawFont): void =
+proc setRawFont*(self: gen_qglyphrun_types.QGlyphRun, rawFont: gen_qrawfont_types.QRawFont): void =
   fcQGlyphRun_setRawFont(self.h, rawFont.h)
 
-proc setRawData*(self: gen_qglyphrun_types.QGlyphRun, glyphIndexArray: ptr cuint, glyphPositionArray: gen_qpoint.QPointF, size: cint): void =
+proc setRawData*(self: gen_qglyphrun_types.QGlyphRun, glyphIndexArray: ptr cuint, glyphPositionArray: gen_qpoint_types.QPointF, size: cint): void =
   fcQGlyphRun_setRawData(self.h, glyphIndexArray, glyphPositionArray.h, size)
 
 proc glyphIndexes*(self: gen_qglyphrun_types.QGlyphRun, ): seq[cuint] =
@@ -126,15 +116,15 @@ proc setGlyphIndexes*(self: gen_qglyphrun_types.QGlyphRun, glyphIndexes: seq[cui
 
   fcQGlyphRun_setGlyphIndexes(self.h, struct_miqt_array(len: csize_t(len(glyphIndexes)), data: if len(glyphIndexes) == 0: nil else: addr(glyphIndexes_CArray[0])))
 
-proc positions*(self: gen_qglyphrun_types.QGlyphRun, ): seq[gen_qpoint.QPointF] =
+proc positions*(self: gen_qglyphrun_types.QGlyphRun, ): seq[gen_qpoint_types.QPointF] =
   var v_ma = fcQGlyphRun_positions(self.h)
-  var vx_ret = newSeq[gen_qpoint.QPointF](int(v_ma.len))
+  var vx_ret = newSeq[gen_qpoint_types.QPointF](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qpoint.QPointF(h: v_outCast[i])
+    vx_ret[i] = gen_qpoint_types.QPointF(h: v_outCast[i])
   vx_ret
 
-proc setPositions*(self: gen_qglyphrun_types.QGlyphRun, positions: seq[gen_qpoint.QPointF]): void =
+proc setPositions*(self: gen_qglyphrun_types.QGlyphRun, positions: seq[gen_qpoint_types.QPointF]): void =
   var positions_CArray = newSeq[pointer](len(positions))
   for i in 0..<len(positions):
     positions_CArray[i] = positions[i].h
@@ -183,17 +173,24 @@ proc setFlags*(self: gen_qglyphrun_types.QGlyphRun, flags: cint): void =
 proc flags*(self: gen_qglyphrun_types.QGlyphRun, ): cint =
   cint(fcQGlyphRun_flags(self.h))
 
-proc setBoundingRect*(self: gen_qglyphrun_types.QGlyphRun, boundingRect: gen_qrect.QRectF): void =
+proc setBoundingRect*(self: gen_qglyphrun_types.QGlyphRun, boundingRect: gen_qrect_types.QRectF): void =
   fcQGlyphRun_setBoundingRect(self.h, boundingRect.h)
 
-proc boundingRect*(self: gen_qglyphrun_types.QGlyphRun, ): gen_qrect.QRectF =
-  gen_qrect.QRectF(h: fcQGlyphRun_boundingRect(self.h))
+proc boundingRect*(self: gen_qglyphrun_types.QGlyphRun, ): gen_qrect_types.QRectF =
+  gen_qrect_types.QRectF(h: fcQGlyphRun_boundingRect(self.h))
 
 proc isEmpty*(self: gen_qglyphrun_types.QGlyphRun, ): bool =
   fcQGlyphRun_isEmpty(self.h)
 
 proc setFlag*(self: gen_qglyphrun_types.QGlyphRun, flag: cint, enabled: bool): void =
   fcQGlyphRun_setFlag2(self.h, cint(flag), enabled)
+
+proc create*(T: type gen_qglyphrun_types.QGlyphRun): gen_qglyphrun_types.QGlyphRun =
+  gen_qglyphrun_types.QGlyphRun(h: fcQGlyphRun_new())
+
+proc create*(T: type gen_qglyphrun_types.QGlyphRun,
+    other: gen_qglyphrun_types.QGlyphRun): gen_qglyphrun_types.QGlyphRun =
+  gen_qglyphrun_types.QGlyphRun(h: fcQGlyphRun_new2(other.h))
 
 proc delete*(self: gen_qglyphrun_types.QGlyphRun) =
   fcQGlyphRun_delete(self.h)

@@ -33,16 +33,15 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qqmlnetworkaccessmanagerfactory.cpp", cflags).}
 
-
 import gen_qqmlnetworkaccessmanagerfactory_types
 export gen_qqmlnetworkaccessmanagerfactory_types
 
 import
-  gen_qnetworkaccessmanager,
-  gen_qobject
+  gen_qnetworkaccessmanager_types,
+  gen_qobject_types
 export
-  gen_qnetworkaccessmanager,
-  gen_qobject
+  gen_qnetworkaccessmanager_types,
+  gen_qobject_types
 
 type cQQmlNetworkAccessManagerFactory*{.exportc: "QQmlNetworkAccessManagerFactory", incompleteStruct.} = object
 
@@ -50,11 +49,8 @@ proc fcQQmlNetworkAccessManagerFactory_create(self: pointer, parent: pointer): p
 proc fcQQmlNetworkAccessManagerFactory_operatorAssign(self: pointer, param1: pointer): void {.importc: "QQmlNetworkAccessManagerFactory_operatorAssign".}
 proc fcQQmlNetworkAccessManagerFactory_delete(self: pointer) {.importc: "QQmlNetworkAccessManagerFactory_delete".}
 
-
-func init*(T: type gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, h: ptr cQQmlNetworkAccessManagerFactory): gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory =
-  T(h: h)
-proc create*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, parent: gen_qobject.QObject): gen_qnetworkaccessmanager.QNetworkAccessManager =
-  gen_qnetworkaccessmanager.QNetworkAccessManager(h: fcQQmlNetworkAccessManagerFactory_create(self.h, parent.h))
+proc create*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, parent: gen_qobject_types.QObject): gen_qnetworkaccessmanager_types.QNetworkAccessManager =
+  gen_qnetworkaccessmanager_types.QNetworkAccessManager(h: fcQQmlNetworkAccessManagerFactory_create(self.h, parent.h))
 
 proc operatorAssign*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, param1: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory): void =
   fcQQmlNetworkAccessManagerFactory_operatorAssign(self.h, param1.h)

@@ -50,55 +50,54 @@ template AdjustToContentsOnFirstShow*(_: type QComboBoxSizeAdjustPolicyEnum): un
 template AdjustToMinimumContentsLength*(_: type QComboBoxSizeAdjustPolicyEnum): untyped = 2
 template AdjustToMinimumContentsLengthWithIcon*(_: type QComboBoxSizeAdjustPolicyEnum): untyped = 3
 
-
 import gen_qcombobox_types
 export gen_qcombobox_types
 
 import
-  gen_qabstractitemdelegate,
-  gen_qabstractitemmodel,
-  gen_qabstractitemview,
-  gen_qcompleter,
-  gen_qcoreevent,
-  gen_qevent,
-  gen_qicon,
-  gen_qlineedit,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
-  gen_qpaintdevice,
-  gen_qpaintengine,
-  gen_qpainter,
-  gen_qpoint,
-  gen_qsize,
-  gen_qvalidator,
-  gen_qvariant,
-  gen_qwidget
+  gen_qabstractitemdelegate_types,
+  gen_qabstractitemmodel_types,
+  gen_qabstractitemview_types,
+  gen_qcompleter_types,
+  gen_qcoreevent_types,
+  gen_qevent_types,
+  gen_qicon_types,
+  gen_qlineedit_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpaintdevice_types,
+  gen_qpaintengine_types,
+  gen_qpainter_types,
+  gen_qpoint_types,
+  gen_qsize_types,
+  gen_qvalidator_types,
+  gen_qvariant_types,
+  gen_qwidget,
+  gen_qwidget_types
 export
-  gen_qabstractitemdelegate,
-  gen_qabstractitemmodel,
-  gen_qabstractitemview,
-  gen_qcompleter,
-  gen_qcoreevent,
-  gen_qevent,
-  gen_qicon,
-  gen_qlineedit,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
-  gen_qpaintdevice,
-  gen_qpaintengine,
-  gen_qpainter,
-  gen_qpoint,
-  gen_qsize,
-  gen_qvalidator,
-  gen_qvariant,
-  gen_qwidget
+  gen_qabstractitemdelegate_types,
+  gen_qabstractitemmodel_types,
+  gen_qabstractitemview_types,
+  gen_qcompleter_types,
+  gen_qcoreevent_types,
+  gen_qevent_types,
+  gen_qicon_types,
+  gen_qlineedit_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpaintdevice_types,
+  gen_qpaintengine_types,
+  gen_qpainter_types,
+  gen_qpoint_types,
+  gen_qsize_types,
+  gen_qvalidator_types,
+  gen_qvariant_types,
+  gen_qwidget,
+  gen_qwidget_types
 
 type cQComboBox*{.exportc: "QComboBox", incompleteStruct.} = object
 
-proc fcQComboBox_new(parent: pointer): ptr cQComboBox {.importc: "QComboBox_new".}
-proc fcQComboBox_new2(): ptr cQComboBox {.importc: "QComboBox_new2".}
 proc fcQComboBox_metaObject(self: pointer, ): pointer {.importc: "QComboBox_metaObject".}
 proc fcQComboBox_metacast(self: pointer, param1: cstring): pointer {.importc: "QComboBox_metacast".}
 proc fcQComboBox_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QComboBox_metacall".}
@@ -177,25 +176,25 @@ proc fcQComboBox_setEditText(self: pointer, text: struct_miqt_string): void {.im
 proc fcQComboBox_setCurrentIndex(self: pointer, index: cint): void {.importc: "QComboBox_setCurrentIndex".}
 proc fcQComboBox_setCurrentText(self: pointer, text: struct_miqt_string): void {.importc: "QComboBox_setCurrentText".}
 proc fcQComboBox_editTextChanged(self: pointer, param1: struct_miqt_string): void {.importc: "QComboBox_editTextChanged".}
-proc fQComboBox_connect_editTextChanged(self: pointer, slot: int) {.importc: "QComboBox_connect_editTextChanged".}
+proc fcQComboBox_connect_editTextChanged(self: pointer, slot: int) {.importc: "QComboBox_connect_editTextChanged".}
 proc fcQComboBox_activated(self: pointer, index: cint): void {.importc: "QComboBox_activated".}
-proc fQComboBox_connect_activated(self: pointer, slot: int) {.importc: "QComboBox_connect_activated".}
+proc fcQComboBox_connect_activated(self: pointer, slot: int) {.importc: "QComboBox_connect_activated".}
 proc fcQComboBox_textActivated(self: pointer, param1: struct_miqt_string): void {.importc: "QComboBox_textActivated".}
-proc fQComboBox_connect_textActivated(self: pointer, slot: int) {.importc: "QComboBox_connect_textActivated".}
+proc fcQComboBox_connect_textActivated(self: pointer, slot: int) {.importc: "QComboBox_connect_textActivated".}
 proc fcQComboBox_highlighted(self: pointer, index: cint): void {.importc: "QComboBox_highlighted".}
-proc fQComboBox_connect_highlighted(self: pointer, slot: int) {.importc: "QComboBox_connect_highlighted".}
+proc fcQComboBox_connect_highlighted(self: pointer, slot: int) {.importc: "QComboBox_connect_highlighted".}
 proc fcQComboBox_textHighlighted(self: pointer, param1: struct_miqt_string): void {.importc: "QComboBox_textHighlighted".}
-proc fQComboBox_connect_textHighlighted(self: pointer, slot: int) {.importc: "QComboBox_connect_textHighlighted".}
+proc fcQComboBox_connect_textHighlighted(self: pointer, slot: int) {.importc: "QComboBox_connect_textHighlighted".}
 proc fcQComboBox_currentIndexChanged(self: pointer, index: cint): void {.importc: "QComboBox_currentIndexChanged".}
-proc fQComboBox_connect_currentIndexChanged(self: pointer, slot: int) {.importc: "QComboBox_connect_currentIndexChanged".}
+proc fcQComboBox_connect_currentIndexChanged(self: pointer, slot: int) {.importc: "QComboBox_connect_currentIndexChanged".}
 proc fcQComboBox_currentIndexChangedWithQString(self: pointer, param1: struct_miqt_string): void {.importc: "QComboBox_currentIndexChangedWithQString".}
-proc fQComboBox_connect_currentIndexChangedWithQString(self: pointer, slot: int) {.importc: "QComboBox_connect_currentIndexChangedWithQString".}
+proc fcQComboBox_connect_currentIndexChangedWithQString(self: pointer, slot: int) {.importc: "QComboBox_connect_currentIndexChangedWithQString".}
 proc fcQComboBox_currentTextChanged(self: pointer, param1: struct_miqt_string): void {.importc: "QComboBox_currentTextChanged".}
-proc fQComboBox_connect_currentTextChanged(self: pointer, slot: int) {.importc: "QComboBox_connect_currentTextChanged".}
+proc fcQComboBox_connect_currentTextChanged(self: pointer, slot: int) {.importc: "QComboBox_connect_currentTextChanged".}
 proc fcQComboBox_activatedWithQString(self: pointer, param1: struct_miqt_string): void {.importc: "QComboBox_activatedWithQString".}
-proc fQComboBox_connect_activatedWithQString(self: pointer, slot: int) {.importc: "QComboBox_connect_activatedWithQString".}
+proc fcQComboBox_connect_activatedWithQString(self: pointer, slot: int) {.importc: "QComboBox_connect_activatedWithQString".}
 proc fcQComboBox_highlightedWithQString(self: pointer, param1: struct_miqt_string): void {.importc: "QComboBox_highlightedWithQString".}
-proc fQComboBox_connect_highlightedWithQString(self: pointer, slot: int) {.importc: "QComboBox_connect_highlightedWithQString".}
+proc fcQComboBox_connect_highlightedWithQString(self: pointer, slot: int) {.importc: "QComboBox_connect_highlightedWithQString".}
 proc fcQComboBox_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QComboBox_tr2".}
 proc fcQComboBox_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QComboBox_tr3".}
 proc fcQComboBox_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QComboBox_trUtf82".}
@@ -210,124 +209,119 @@ proc fcQComboBox_addItem3(self: pointer, icon: pointer, text: struct_miqt_string
 proc fcQComboBox_insertItem3(self: pointer, index: cint, text: struct_miqt_string, userData: pointer): void {.importc: "QComboBox_insertItem3".}
 proc fcQComboBox_insertItem4(self: pointer, index: cint, icon: pointer, text: struct_miqt_string, userData: pointer): void {.importc: "QComboBox_insertItem4".}
 proc fcQComboBox_setItemData3(self: pointer, index: cint, value: pointer, role: cint): void {.importc: "QComboBox_setItemData3".}
-proc fQComboBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QComboBox_virtualbase_metaObject".}
-proc fcQComboBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_metaObject".}
-proc fQComboBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QComboBox_virtualbase_metacast".}
-proc fcQComboBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_metacast".}
-proc fQComboBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QComboBox_virtualbase_metacall".}
-proc fcQComboBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_metacall".}
-proc fQComboBox_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QComboBox_virtualbase_sizeHint".}
-proc fcQComboBox_override_virtual_sizeHint(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_sizeHint".}
-proc fQComboBox_virtualbase_minimumSizeHint(self: pointer, ): pointer{.importc: "QComboBox_virtualbase_minimumSizeHint".}
-proc fcQComboBox_override_virtual_minimumSizeHint(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_minimumSizeHint".}
-proc fQComboBox_virtualbase_showPopup(self: pointer, ): void{.importc: "QComboBox_virtualbase_showPopup".}
-proc fcQComboBox_override_virtual_showPopup(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_showPopup".}
-proc fQComboBox_virtualbase_hidePopup(self: pointer, ): void{.importc: "QComboBox_virtualbase_hidePopup".}
-proc fcQComboBox_override_virtual_hidePopup(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_hidePopup".}
-proc fQComboBox_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QComboBox_virtualbase_event".}
-proc fcQComboBox_override_virtual_event(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_event".}
-proc fQComboBox_virtualbase_inputMethodQuery(self: pointer, param1: cint): pointer{.importc: "QComboBox_virtualbase_inputMethodQuery".}
-proc fcQComboBox_override_virtual_inputMethodQuery(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_inputMethodQuery".}
-proc fQComboBox_virtualbase_focusInEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_focusInEvent".}
-proc fcQComboBox_override_virtual_focusInEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_focusInEvent".}
-proc fQComboBox_virtualbase_focusOutEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_focusOutEvent".}
-proc fcQComboBox_override_virtual_focusOutEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_focusOutEvent".}
-proc fQComboBox_virtualbase_changeEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_changeEvent".}
-proc fcQComboBox_override_virtual_changeEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_changeEvent".}
-proc fQComboBox_virtualbase_resizeEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_resizeEvent".}
-proc fcQComboBox_override_virtual_resizeEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_resizeEvent".}
-proc fQComboBox_virtualbase_paintEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_paintEvent".}
-proc fcQComboBox_override_virtual_paintEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_paintEvent".}
-proc fQComboBox_virtualbase_showEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_showEvent".}
-proc fcQComboBox_override_virtual_showEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_showEvent".}
-proc fQComboBox_virtualbase_hideEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_hideEvent".}
-proc fcQComboBox_override_virtual_hideEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_hideEvent".}
-proc fQComboBox_virtualbase_mousePressEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_mousePressEvent".}
-proc fcQComboBox_override_virtual_mousePressEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_mousePressEvent".}
-proc fQComboBox_virtualbase_mouseReleaseEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_mouseReleaseEvent".}
-proc fcQComboBox_override_virtual_mouseReleaseEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_mouseReleaseEvent".}
-proc fQComboBox_virtualbase_keyPressEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_keyPressEvent".}
-proc fcQComboBox_override_virtual_keyPressEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_keyPressEvent".}
-proc fQComboBox_virtualbase_keyReleaseEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_keyReleaseEvent".}
-proc fcQComboBox_override_virtual_keyReleaseEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_keyReleaseEvent".}
-proc fQComboBox_virtualbase_wheelEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_wheelEvent".}
-proc fcQComboBox_override_virtual_wheelEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_wheelEvent".}
-proc fQComboBox_virtualbase_contextMenuEvent(self: pointer, e: pointer): void{.importc: "QComboBox_virtualbase_contextMenuEvent".}
-proc fcQComboBox_override_virtual_contextMenuEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_contextMenuEvent".}
-proc fQComboBox_virtualbase_inputMethodEvent(self: pointer, param1: pointer): void{.importc: "QComboBox_virtualbase_inputMethodEvent".}
-proc fcQComboBox_override_virtual_inputMethodEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_inputMethodEvent".}
-proc fQComboBox_virtualbase_devType(self: pointer, ): cint{.importc: "QComboBox_virtualbase_devType".}
-proc fcQComboBox_override_virtual_devType(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_devType".}
-proc fQComboBox_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QComboBox_virtualbase_setVisible".}
-proc fcQComboBox_override_virtual_setVisible(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_setVisible".}
-proc fQComboBox_virtualbase_heightForWidth(self: pointer, param1: cint): cint{.importc: "QComboBox_virtualbase_heightForWidth".}
-proc fcQComboBox_override_virtual_heightForWidth(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_heightForWidth".}
-proc fQComboBox_virtualbase_hasHeightForWidth(self: pointer, ): bool{.importc: "QComboBox_virtualbase_hasHeightForWidth".}
-proc fcQComboBox_override_virtual_hasHeightForWidth(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_hasHeightForWidth".}
-proc fQComboBox_virtualbase_paintEngine(self: pointer, ): pointer{.importc: "QComboBox_virtualbase_paintEngine".}
-proc fcQComboBox_override_virtual_paintEngine(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_paintEngine".}
-proc fQComboBox_virtualbase_mouseDoubleClickEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_mouseDoubleClickEvent".}
-proc fcQComboBox_override_virtual_mouseDoubleClickEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_mouseDoubleClickEvent".}
-proc fQComboBox_virtualbase_mouseMoveEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_mouseMoveEvent".}
-proc fcQComboBox_override_virtual_mouseMoveEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_mouseMoveEvent".}
-proc fQComboBox_virtualbase_enterEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_enterEvent".}
-proc fcQComboBox_override_virtual_enterEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_enterEvent".}
-proc fQComboBox_virtualbase_leaveEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_leaveEvent".}
-proc fcQComboBox_override_virtual_leaveEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_leaveEvent".}
-proc fQComboBox_virtualbase_moveEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_moveEvent".}
-proc fcQComboBox_override_virtual_moveEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_moveEvent".}
-proc fQComboBox_virtualbase_closeEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_closeEvent".}
-proc fcQComboBox_override_virtual_closeEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_closeEvent".}
-proc fQComboBox_virtualbase_tabletEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_tabletEvent".}
-proc fcQComboBox_override_virtual_tabletEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_tabletEvent".}
-proc fQComboBox_virtualbase_actionEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_actionEvent".}
-proc fcQComboBox_override_virtual_actionEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_actionEvent".}
-proc fQComboBox_virtualbase_dragEnterEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_dragEnterEvent".}
-proc fcQComboBox_override_virtual_dragEnterEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_dragEnterEvent".}
-proc fQComboBox_virtualbase_dragMoveEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_dragMoveEvent".}
-proc fcQComboBox_override_virtual_dragMoveEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_dragMoveEvent".}
-proc fQComboBox_virtualbase_dragLeaveEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_dragLeaveEvent".}
-proc fcQComboBox_override_virtual_dragLeaveEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_dragLeaveEvent".}
-proc fQComboBox_virtualbase_dropEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_dropEvent".}
-proc fcQComboBox_override_virtual_dropEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_dropEvent".}
-proc fQComboBox_virtualbase_nativeEvent(self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool{.importc: "QComboBox_virtualbase_nativeEvent".}
-proc fcQComboBox_override_virtual_nativeEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_nativeEvent".}
-proc fQComboBox_virtualbase_metric(self: pointer, param1: cint): cint{.importc: "QComboBox_virtualbase_metric".}
-proc fcQComboBox_override_virtual_metric(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_metric".}
-proc fQComboBox_virtualbase_initPainter(self: pointer, painter: pointer): void{.importc: "QComboBox_virtualbase_initPainter".}
-proc fcQComboBox_override_virtual_initPainter(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_initPainter".}
-proc fQComboBox_virtualbase_redirected(self: pointer, offset: pointer): pointer{.importc: "QComboBox_virtualbase_redirected".}
-proc fcQComboBox_override_virtual_redirected(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_redirected".}
-proc fQComboBox_virtualbase_sharedPainter(self: pointer, ): pointer{.importc: "QComboBox_virtualbase_sharedPainter".}
-proc fcQComboBox_override_virtual_sharedPainter(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_sharedPainter".}
-proc fQComboBox_virtualbase_focusNextPrevChild(self: pointer, next: bool): bool{.importc: "QComboBox_virtualbase_focusNextPrevChild".}
-proc fcQComboBox_override_virtual_focusNextPrevChild(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_focusNextPrevChild".}
-proc fQComboBox_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QComboBox_virtualbase_eventFilter".}
-proc fcQComboBox_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_eventFilter".}
-proc fQComboBox_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_timerEvent".}
-proc fcQComboBox_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_timerEvent".}
-proc fQComboBox_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_childEvent".}
-proc fcQComboBox_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_childEvent".}
-proc fQComboBox_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QComboBox_virtualbase_customEvent".}
-proc fcQComboBox_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_customEvent".}
-proc fQComboBox_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QComboBox_virtualbase_connectNotify".}
-proc fcQComboBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_connectNotify".}
-proc fQComboBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QComboBox_virtualbase_disconnectNotify".}
-proc fcQComboBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_disconnectNotify".}
+type cQComboBoxVTable = object
+  destructor*: proc(vtbl: ptr cQComboBoxVTable, self: ptr cQComboBox) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  sizeHint*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  minimumSizeHint*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  showPopup*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  hidePopup*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  inputMethodQuery*: proc(vtbl, self: pointer, param1: cint): pointer {.cdecl, raises: [], gcsafe.}
+  focusInEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  focusOutEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  changeEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  resizeEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  paintEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  showEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  hideEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  mousePressEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  mouseReleaseEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  keyPressEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  keyReleaseEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  wheelEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  contextMenuEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  inputMethodEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  devType*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  setVisible*: proc(vtbl, self: pointer, visible: bool): void {.cdecl, raises: [], gcsafe.}
+  heightForWidth*: proc(vtbl, self: pointer, param1: cint): cint {.cdecl, raises: [], gcsafe.}
+  hasHeightForWidth*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  paintEngine*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  mouseDoubleClickEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  mouseMoveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  enterEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  leaveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  moveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  closeEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  tabletEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  actionEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragEnterEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragMoveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragLeaveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dropEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  nativeEvent*: proc(vtbl, self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.cdecl, raises: [], gcsafe.}
+  metric*: proc(vtbl, self: pointer, param1: cint): cint {.cdecl, raises: [], gcsafe.}
+  initPainter*: proc(vtbl, self: pointer, painter: pointer): void {.cdecl, raises: [], gcsafe.}
+  redirected*: proc(vtbl, self: pointer, offset: pointer): pointer {.cdecl, raises: [], gcsafe.}
+  sharedPainter*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  focusNextPrevChild*: proc(vtbl, self: pointer, next: bool): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQComboBox_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QComboBox_virtualbase_metaObject".}
+proc fcQComboBox_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QComboBox_virtualbase_metacast".}
+proc fcQComboBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QComboBox_virtualbase_metacall".}
+proc fcQComboBox_virtualbase_sizeHint(self: pointer, ): pointer {.importc: "QComboBox_virtualbase_sizeHint".}
+proc fcQComboBox_virtualbase_minimumSizeHint(self: pointer, ): pointer {.importc: "QComboBox_virtualbase_minimumSizeHint".}
+proc fcQComboBox_virtualbase_showPopup(self: pointer, ): void {.importc: "QComboBox_virtualbase_showPopup".}
+proc fcQComboBox_virtualbase_hidePopup(self: pointer, ): void {.importc: "QComboBox_virtualbase_hidePopup".}
+proc fcQComboBox_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QComboBox_virtualbase_event".}
+proc fcQComboBox_virtualbase_inputMethodQuery(self: pointer, param1: cint): pointer {.importc: "QComboBox_virtualbase_inputMethodQuery".}
+proc fcQComboBox_virtualbase_focusInEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_focusInEvent".}
+proc fcQComboBox_virtualbase_focusOutEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_focusOutEvent".}
+proc fcQComboBox_virtualbase_changeEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_changeEvent".}
+proc fcQComboBox_virtualbase_resizeEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_resizeEvent".}
+proc fcQComboBox_virtualbase_paintEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_paintEvent".}
+proc fcQComboBox_virtualbase_showEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_showEvent".}
+proc fcQComboBox_virtualbase_hideEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_hideEvent".}
+proc fcQComboBox_virtualbase_mousePressEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_mousePressEvent".}
+proc fcQComboBox_virtualbase_mouseReleaseEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_mouseReleaseEvent".}
+proc fcQComboBox_virtualbase_keyPressEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_keyPressEvent".}
+proc fcQComboBox_virtualbase_keyReleaseEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_keyReleaseEvent".}
+proc fcQComboBox_virtualbase_wheelEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_wheelEvent".}
+proc fcQComboBox_virtualbase_contextMenuEvent(self: pointer, e: pointer): void {.importc: "QComboBox_virtualbase_contextMenuEvent".}
+proc fcQComboBox_virtualbase_inputMethodEvent(self: pointer, param1: pointer): void {.importc: "QComboBox_virtualbase_inputMethodEvent".}
+proc fcQComboBox_virtualbase_devType(self: pointer, ): cint {.importc: "QComboBox_virtualbase_devType".}
+proc fcQComboBox_virtualbase_setVisible(self: pointer, visible: bool): void {.importc: "QComboBox_virtualbase_setVisible".}
+proc fcQComboBox_virtualbase_heightForWidth(self: pointer, param1: cint): cint {.importc: "QComboBox_virtualbase_heightForWidth".}
+proc fcQComboBox_virtualbase_hasHeightForWidth(self: pointer, ): bool {.importc: "QComboBox_virtualbase_hasHeightForWidth".}
+proc fcQComboBox_virtualbase_paintEngine(self: pointer, ): pointer {.importc: "QComboBox_virtualbase_paintEngine".}
+proc fcQComboBox_virtualbase_mouseDoubleClickEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_mouseDoubleClickEvent".}
+proc fcQComboBox_virtualbase_mouseMoveEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_mouseMoveEvent".}
+proc fcQComboBox_virtualbase_enterEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_enterEvent".}
+proc fcQComboBox_virtualbase_leaveEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_leaveEvent".}
+proc fcQComboBox_virtualbase_moveEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_moveEvent".}
+proc fcQComboBox_virtualbase_closeEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_closeEvent".}
+proc fcQComboBox_virtualbase_tabletEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_tabletEvent".}
+proc fcQComboBox_virtualbase_actionEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_actionEvent".}
+proc fcQComboBox_virtualbase_dragEnterEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_dragEnterEvent".}
+proc fcQComboBox_virtualbase_dragMoveEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_dragMoveEvent".}
+proc fcQComboBox_virtualbase_dragLeaveEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_dragLeaveEvent".}
+proc fcQComboBox_virtualbase_dropEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_dropEvent".}
+proc fcQComboBox_virtualbase_nativeEvent(self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.importc: "QComboBox_virtualbase_nativeEvent".}
+proc fcQComboBox_virtualbase_metric(self: pointer, param1: cint): cint {.importc: "QComboBox_virtualbase_metric".}
+proc fcQComboBox_virtualbase_initPainter(self: pointer, painter: pointer): void {.importc: "QComboBox_virtualbase_initPainter".}
+proc fcQComboBox_virtualbase_redirected(self: pointer, offset: pointer): pointer {.importc: "QComboBox_virtualbase_redirected".}
+proc fcQComboBox_virtualbase_sharedPainter(self: pointer, ): pointer {.importc: "QComboBox_virtualbase_sharedPainter".}
+proc fcQComboBox_virtualbase_focusNextPrevChild(self: pointer, next: bool): bool {.importc: "QComboBox_virtualbase_focusNextPrevChild".}
+proc fcQComboBox_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QComboBox_virtualbase_eventFilter".}
+proc fcQComboBox_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_timerEvent".}
+proc fcQComboBox_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_childEvent".}
+proc fcQComboBox_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QComboBox_virtualbase_customEvent".}
+proc fcQComboBox_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QComboBox_virtualbase_connectNotify".}
+proc fcQComboBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QComboBox_virtualbase_disconnectNotify".}
+proc fcQComboBox_new(vtbl: pointer, parent: pointer): ptr cQComboBox {.importc: "QComboBox_new".}
+proc fcQComboBox_new2(vtbl: pointer, ): ptr cQComboBox {.importc: "QComboBox_new2".}
 proc fcQComboBox_staticMetaObject(): pointer {.importc: "QComboBox_staticMetaObject".}
 proc fcQComboBox_delete(self: pointer) {.importc: "QComboBox_delete".}
 
-
-func init*(T: type gen_qcombobox_types.QComboBox, h: ptr cQComboBox): gen_qcombobox_types.QComboBox =
-  T(h: h)
-proc create*(T: type gen_qcombobox_types.QComboBox, parent: gen_qwidget.QWidget): gen_qcombobox_types.QComboBox =
-  gen_qcombobox_types.QComboBox.init(fcQComboBox_new(parent.h))
-
-proc create*(T: type gen_qcombobox_types.QComboBox, ): gen_qcombobox_types.QComboBox =
-  gen_qcombobox_types.QComboBox.init(fcQComboBox_new2())
-
-proc metaObject*(self: gen_qcombobox_types.QComboBox, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQComboBox_metaObject(self.h))
+proc metaObject*(self: gen_qcombobox_types.QComboBox, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQComboBox_metaObject(self.h))
 
 proc metacast*(self: gen_qcombobox_types.QComboBox, param1: cstring): pointer =
   fcQComboBox_metacast(self.h, param1)
@@ -389,7 +383,7 @@ proc hasFrame*(self: gen_qcombobox_types.QComboBox, ): bool =
 proc findText*(self: gen_qcombobox_types.QComboBox, text: string): cint =
   fcQComboBox_findText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc findData*(self: gen_qcombobox_types.QComboBox, data: gen_qvariant.QVariant): cint =
+proc findData*(self: gen_qcombobox_types.QComboBox, data: gen_qvariant_types.QVariant): cint =
   fcQComboBox_findData(self.h, data.h)
 
 proc insertPolicy*(self: gen_qcombobox_types.QComboBox, ): cint =
@@ -410,10 +404,10 @@ proc minimumContentsLength*(self: gen_qcombobox_types.QComboBox, ): cint =
 proc setMinimumContentsLength*(self: gen_qcombobox_types.QComboBox, characters: cint): void =
   fcQComboBox_setMinimumContentsLength(self.h, characters)
 
-proc iconSize*(self: gen_qcombobox_types.QComboBox, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQComboBox_iconSize(self.h))
+proc iconSize*(self: gen_qcombobox_types.QComboBox, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQComboBox_iconSize(self.h))
 
-proc setIconSize*(self: gen_qcombobox_types.QComboBox, size: gen_qsize.QSize): void =
+proc setIconSize*(self: gen_qcombobox_types.QComboBox, size: gen_qsize_types.QSize): void =
   fcQComboBox_setIconSize(self.h, size.h)
 
 proc setPlaceholderText*(self: gen_qcombobox_types.QComboBox, placeholderText: string): void =
@@ -431,40 +425,40 @@ proc isEditable*(self: gen_qcombobox_types.QComboBox, ): bool =
 proc setEditable*(self: gen_qcombobox_types.QComboBox, editable: bool): void =
   fcQComboBox_setEditable(self.h, editable)
 
-proc setLineEdit*(self: gen_qcombobox_types.QComboBox, edit: gen_qlineedit.QLineEdit): void =
+proc setLineEdit*(self: gen_qcombobox_types.QComboBox, edit: gen_qlineedit_types.QLineEdit): void =
   fcQComboBox_setLineEdit(self.h, edit.h)
 
-proc lineEdit*(self: gen_qcombobox_types.QComboBox, ): gen_qlineedit.QLineEdit =
-  gen_qlineedit.QLineEdit(h: fcQComboBox_lineEdit(self.h))
+proc lineEdit*(self: gen_qcombobox_types.QComboBox, ): gen_qlineedit_types.QLineEdit =
+  gen_qlineedit_types.QLineEdit(h: fcQComboBox_lineEdit(self.h))
 
-proc setValidator*(self: gen_qcombobox_types.QComboBox, v: gen_qvalidator.QValidator): void =
+proc setValidator*(self: gen_qcombobox_types.QComboBox, v: gen_qvalidator_types.QValidator): void =
   fcQComboBox_setValidator(self.h, v.h)
 
-proc validator*(self: gen_qcombobox_types.QComboBox, ): gen_qvalidator.QValidator =
-  gen_qvalidator.QValidator(h: fcQComboBox_validator(self.h))
+proc validator*(self: gen_qcombobox_types.QComboBox, ): gen_qvalidator_types.QValidator =
+  gen_qvalidator_types.QValidator(h: fcQComboBox_validator(self.h))
 
-proc setCompleter*(self: gen_qcombobox_types.QComboBox, c: gen_qcompleter.QCompleter): void =
+proc setCompleter*(self: gen_qcombobox_types.QComboBox, c: gen_qcompleter_types.QCompleter): void =
   fcQComboBox_setCompleter(self.h, c.h)
 
-proc completer*(self: gen_qcombobox_types.QComboBox, ): gen_qcompleter.QCompleter =
-  gen_qcompleter.QCompleter(h: fcQComboBox_completer(self.h))
+proc completer*(self: gen_qcombobox_types.QComboBox, ): gen_qcompleter_types.QCompleter =
+  gen_qcompleter_types.QCompleter(h: fcQComboBox_completer(self.h))
 
-proc itemDelegate*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemdelegate.QAbstractItemDelegate =
-  gen_qabstractitemdelegate.QAbstractItemDelegate(h: fcQComboBox_itemDelegate(self.h))
+proc itemDelegate*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemdelegate_types.QAbstractItemDelegate =
+  gen_qabstractitemdelegate_types.QAbstractItemDelegate(h: fcQComboBox_itemDelegate(self.h))
 
-proc setItemDelegate*(self: gen_qcombobox_types.QComboBox, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
+proc setItemDelegate*(self: gen_qcombobox_types.QComboBox, delegate: gen_qabstractitemdelegate_types.QAbstractItemDelegate): void =
   fcQComboBox_setItemDelegate(self.h, delegate.h)
 
-proc model*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemmodel.QAbstractItemModel =
-  gen_qabstractitemmodel.QAbstractItemModel(h: fcQComboBox_model(self.h))
+proc model*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemmodel_types.QAbstractItemModel =
+  gen_qabstractitemmodel_types.QAbstractItemModel(h: fcQComboBox_model(self.h))
 
-proc setModel*(self: gen_qcombobox_types.QComboBox, model: gen_qabstractitemmodel.QAbstractItemModel): void =
+proc setModel*(self: gen_qcombobox_types.QComboBox, model: gen_qabstractitemmodel_types.QAbstractItemModel): void =
   fcQComboBox_setModel(self.h, model.h)
 
-proc rootModelIndex*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemmodel.QModelIndex =
-  gen_qabstractitemmodel.QModelIndex(h: fcQComboBox_rootModelIndex(self.h))
+proc rootModelIndex*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemmodel_types.QModelIndex =
+  gen_qabstractitemmodel_types.QModelIndex(h: fcQComboBox_rootModelIndex(self.h))
 
-proc setRootModelIndex*(self: gen_qcombobox_types.QComboBox, index: gen_qabstractitemmodel.QModelIndex): void =
+proc setRootModelIndex*(self: gen_qcombobox_types.QComboBox, index: gen_qabstractitemmodel_types.QModelIndex): void =
   fcQComboBox_setRootModelIndex(self.h, index.h)
 
 proc modelColumn*(self: gen_qcombobox_types.QComboBox, ): cint =
@@ -482,8 +476,8 @@ proc currentText*(self: gen_qcombobox_types.QComboBox, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc currentData*(self: gen_qcombobox_types.QComboBox, ): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQComboBox_currentData(self.h))
+proc currentData*(self: gen_qcombobox_types.QComboBox, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQComboBox_currentData(self.h))
 
 proc itemText*(self: gen_qcombobox_types.QComboBox, index: cint): string =
   let v_ms = fcQComboBox_itemText(self.h, index)
@@ -491,16 +485,16 @@ proc itemText*(self: gen_qcombobox_types.QComboBox, index: cint): string =
   c_free(v_ms.data)
   vx_ret
 
-proc itemIcon*(self: gen_qcombobox_types.QComboBox, index: cint): gen_qicon.QIcon =
-  gen_qicon.QIcon(h: fcQComboBox_itemIcon(self.h, index))
+proc itemIcon*(self: gen_qcombobox_types.QComboBox, index: cint): gen_qicon_types.QIcon =
+  gen_qicon_types.QIcon(h: fcQComboBox_itemIcon(self.h, index))
 
-proc itemData*(self: gen_qcombobox_types.QComboBox, index: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQComboBox_itemData(self.h, index))
+proc itemData*(self: gen_qcombobox_types.QComboBox, index: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQComboBox_itemData(self.h, index))
 
 proc addItem*(self: gen_qcombobox_types.QComboBox, text: string): void =
   fcQComboBox_addItem(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc addItem*(self: gen_qcombobox_types.QComboBox, icon: gen_qicon.QIcon, text: string): void =
+proc addItem*(self: gen_qcombobox_types.QComboBox, icon: gen_qicon_types.QIcon, text: string): void =
   fcQComboBox_addItem2(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc addItems*(self: gen_qcombobox_types.QComboBox, texts: seq[string]): void =
@@ -513,7 +507,7 @@ proc addItems*(self: gen_qcombobox_types.QComboBox, texts: seq[string]): void =
 proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, text: string): void =
   fcQComboBox_insertItem(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, icon: gen_qicon.QIcon, text: string): void =
+proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, icon: gen_qicon_types.QIcon, text: string): void =
   fcQComboBox_insertItem2(self.h, index, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc insertItems*(self: gen_qcombobox_types.QComboBox, index: cint, texts: seq[string]): void =
@@ -532,23 +526,23 @@ proc removeItem*(self: gen_qcombobox_types.QComboBox, index: cint): void =
 proc setItemText*(self: gen_qcombobox_types.QComboBox, index: cint, text: string): void =
   fcQComboBox_setItemText(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc setItemIcon*(self: gen_qcombobox_types.QComboBox, index: cint, icon: gen_qicon.QIcon): void =
+proc setItemIcon*(self: gen_qcombobox_types.QComboBox, index: cint, icon: gen_qicon_types.QIcon): void =
   fcQComboBox_setItemIcon(self.h, index, icon.h)
 
-proc setItemData*(self: gen_qcombobox_types.QComboBox, index: cint, value: gen_qvariant.QVariant): void =
+proc setItemData*(self: gen_qcombobox_types.QComboBox, index: cint, value: gen_qvariant_types.QVariant): void =
   fcQComboBox_setItemData(self.h, index, value.h)
 
-proc view*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemview.QAbstractItemView =
-  gen_qabstractitemview.QAbstractItemView(h: fcQComboBox_view(self.h))
+proc view*(self: gen_qcombobox_types.QComboBox, ): gen_qabstractitemview_types.QAbstractItemView =
+  gen_qabstractitemview_types.QAbstractItemView(h: fcQComboBox_view(self.h))
 
-proc setView*(self: gen_qcombobox_types.QComboBox, itemView: gen_qabstractitemview.QAbstractItemView): void =
+proc setView*(self: gen_qcombobox_types.QComboBox, itemView: gen_qabstractitemview_types.QAbstractItemView): void =
   fcQComboBox_setView(self.h, itemView.h)
 
-proc sizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQComboBox_sizeHint(self.h))
+proc sizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQComboBox_sizeHint(self.h))
 
-proc minimumSizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQComboBox_minimumSizeHint(self.h))
+proc minimumSizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQComboBox_minimumSizeHint(self.h))
 
 proc showPopup*(self: gen_qcombobox_types.QComboBox, ): void =
   fcQComboBox_showPopup(self.h)
@@ -556,14 +550,14 @@ proc showPopup*(self: gen_qcombobox_types.QComboBox, ): void =
 proc hidePopup*(self: gen_qcombobox_types.QComboBox, ): void =
   fcQComboBox_hidePopup(self.h)
 
-proc event*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent_types.QEvent): bool =
   fcQComboBox_event(self.h, event.h)
 
-proc inputMethodQuery*(self: gen_qcombobox_types.QComboBox, param1: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQComboBox_inputMethodQuery(self.h, cint(param1)))
+proc inputMethodQuery*(self: gen_qcombobox_types.QComboBox, param1: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQComboBox_inputMethodQuery(self.h, cint(param1)))
 
-proc inputMethodQuery*(self: gen_qcombobox_types.QComboBox, query: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQComboBox_inputMethodQuery2(self.h, cint(query), argument.h))
+proc inputMethodQuery*(self: gen_qcombobox_types.QComboBox, query: cint, argument: gen_qvariant_types.QVariant): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQComboBox_inputMethodQuery2(self.h, cint(query), argument.h))
 
 proc clear*(self: gen_qcombobox_types.QComboBox, ): void =
   fcQComboBox_clear(self.h)
@@ -584,7 +578,7 @@ proc editTextChanged*(self: gen_qcombobox_types.QComboBox, param1: string): void
   fcQComboBox_editTextChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 type QComboBoxeditTextChangedSlot* = proc(param1: string)
-proc miqt_exec_callback_QComboBox_editTextChanged(slot: int, param1: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_editTextChanged(slot: int, param1: struct_miqt_string) {.exportc: "miqt_exec_callback_QComboBox_editTextChanged".} =
   let nimfunc = cast[ptr QComboBoxeditTextChangedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
@@ -597,13 +591,13 @@ proc oneditTextChanged*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxedit
   var tmp = new QComboBoxeditTextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_editTextChanged(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_editTextChanged(self.h, cast[int](addr tmp[]))
 
 proc activated*(self: gen_qcombobox_types.QComboBox, index: cint): void =
   fcQComboBox_activated(self.h, index)
 
 type QComboBoxactivatedSlot* = proc(index: cint)
-proc miqt_exec_callback_QComboBox_activated(slot: int, index: cint) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_activated(slot: int, index: cint) {.exportc: "miqt_exec_callback_QComboBox_activated".} =
   let nimfunc = cast[ptr QComboBoxactivatedSlot](cast[pointer](slot))
   let slotval1 = index
 
@@ -613,13 +607,13 @@ proc onactivated*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxactivatedS
   var tmp = new QComboBoxactivatedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_activated(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_activated(self.h, cast[int](addr tmp[]))
 
 proc textActivated*(self: gen_qcombobox_types.QComboBox, param1: string): void =
   fcQComboBox_textActivated(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 type QComboBoxtextActivatedSlot* = proc(param1: string)
-proc miqt_exec_callback_QComboBox_textActivated(slot: int, param1: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_textActivated(slot: int, param1: struct_miqt_string) {.exportc: "miqt_exec_callback_QComboBox_textActivated".} =
   let nimfunc = cast[ptr QComboBoxtextActivatedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
@@ -632,13 +626,13 @@ proc ontextActivated*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxtextAc
   var tmp = new QComboBoxtextActivatedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_textActivated(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_textActivated(self.h, cast[int](addr tmp[]))
 
 proc highlighted*(self: gen_qcombobox_types.QComboBox, index: cint): void =
   fcQComboBox_highlighted(self.h, index)
 
 type QComboBoxhighlightedSlot* = proc(index: cint)
-proc miqt_exec_callback_QComboBox_highlighted(slot: int, index: cint) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_highlighted(slot: int, index: cint) {.exportc: "miqt_exec_callback_QComboBox_highlighted".} =
   let nimfunc = cast[ptr QComboBoxhighlightedSlot](cast[pointer](slot))
   let slotval1 = index
 
@@ -648,13 +642,13 @@ proc onhighlighted*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxhighligh
   var tmp = new QComboBoxhighlightedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_highlighted(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_highlighted(self.h, cast[int](addr tmp[]))
 
 proc textHighlighted*(self: gen_qcombobox_types.QComboBox, param1: string): void =
   fcQComboBox_textHighlighted(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 type QComboBoxtextHighlightedSlot* = proc(param1: string)
-proc miqt_exec_callback_QComboBox_textHighlighted(slot: int, param1: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_textHighlighted(slot: int, param1: struct_miqt_string) {.exportc: "miqt_exec_callback_QComboBox_textHighlighted".} =
   let nimfunc = cast[ptr QComboBoxtextHighlightedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
@@ -667,13 +661,13 @@ proc ontextHighlighted*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxtext
   var tmp = new QComboBoxtextHighlightedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_textHighlighted(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_textHighlighted(self.h, cast[int](addr tmp[]))
 
 proc currentIndexChanged*(self: gen_qcombobox_types.QComboBox, index: cint): void =
   fcQComboBox_currentIndexChanged(self.h, index)
 
 type QComboBoxcurrentIndexChangedSlot* = proc(index: cint)
-proc miqt_exec_callback_QComboBox_currentIndexChanged(slot: int, index: cint) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_currentIndexChanged(slot: int, index: cint) {.exportc: "miqt_exec_callback_QComboBox_currentIndexChanged".} =
   let nimfunc = cast[ptr QComboBoxcurrentIndexChangedSlot](cast[pointer](slot))
   let slotval1 = index
 
@@ -683,13 +677,13 @@ proc oncurrentIndexChanged*(self: gen_qcombobox_types.QComboBox, slot: QComboBox
   var tmp = new QComboBoxcurrentIndexChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_currentIndexChanged(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_currentIndexChanged(self.h, cast[int](addr tmp[]))
 
 proc currentIndexChanged*(self: gen_qcombobox_types.QComboBox, param1: string): void =
   fcQComboBox_currentIndexChangedWithQString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 type QComboBoxcurrentIndexChangedWithQStringSlot* = proc(param1: string)
-proc miqt_exec_callback_QComboBox_currentIndexChangedWithQString(slot: int, param1: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_currentIndexChangedWithQString(slot: int, param1: struct_miqt_string) {.exportc: "miqt_exec_callback_QComboBox_currentIndexChangedWithQString".} =
   let nimfunc = cast[ptr QComboBoxcurrentIndexChangedWithQStringSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
@@ -702,13 +696,13 @@ proc oncurrentIndexChanged*(self: gen_qcombobox_types.QComboBox, slot: QComboBox
   var tmp = new QComboBoxcurrentIndexChangedWithQStringSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_currentIndexChangedWithQString(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_currentIndexChangedWithQString(self.h, cast[int](addr tmp[]))
 
 proc currentTextChanged*(self: gen_qcombobox_types.QComboBox, param1: string): void =
   fcQComboBox_currentTextChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 type QComboBoxcurrentTextChangedSlot* = proc(param1: string)
-proc miqt_exec_callback_QComboBox_currentTextChanged(slot: int, param1: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_currentTextChanged(slot: int, param1: struct_miqt_string) {.exportc: "miqt_exec_callback_QComboBox_currentTextChanged".} =
   let nimfunc = cast[ptr QComboBoxcurrentTextChangedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
@@ -721,13 +715,13 @@ proc oncurrentTextChanged*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxc
   var tmp = new QComboBoxcurrentTextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_currentTextChanged(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_currentTextChanged(self.h, cast[int](addr tmp[]))
 
 proc activated*(self: gen_qcombobox_types.QComboBox, param1: string): void =
   fcQComboBox_activatedWithQString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 type QComboBoxactivatedWithQStringSlot* = proc(param1: string)
-proc miqt_exec_callback_QComboBox_activatedWithQString(slot: int, param1: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_activatedWithQString(slot: int, param1: struct_miqt_string) {.exportc: "miqt_exec_callback_QComboBox_activatedWithQString".} =
   let nimfunc = cast[ptr QComboBoxactivatedWithQStringSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
@@ -740,13 +734,13 @@ proc onactivated*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxactivatedW
   var tmp = new QComboBoxactivatedWithQStringSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_activatedWithQString(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_activatedWithQString(self.h, cast[int](addr tmp[]))
 
 proc highlighted*(self: gen_qcombobox_types.QComboBox, param1: string): void =
   fcQComboBox_highlightedWithQString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 type QComboBoxhighlightedWithQStringSlot* = proc(param1: string)
-proc miqt_exec_callback_QComboBox_highlightedWithQString(slot: int, param1: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQComboBox_highlightedWithQString(slot: int, param1: struct_miqt_string) {.exportc: "miqt_exec_callback_QComboBox_highlightedWithQString".} =
   let nimfunc = cast[ptr QComboBoxhighlightedWithQStringSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
@@ -759,7 +753,7 @@ proc onhighlighted*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxhighligh
   var tmp = new QComboBoxhighlightedWithQStringSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQComboBox_connect_highlightedWithQString(self.h, cast[int](addr tmp[]))
+  fcQComboBox_connect_highlightedWithQString(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qcombobox_types.QComboBox, s: cstring, c: cstring): string =
   let v_ms = fcQComboBox_tr2(s, c)
@@ -788,947 +782,851 @@ proc trUtf8*(_: type gen_qcombobox_types.QComboBox, s: cstring, c: cstring, n: c
 proc findText*(self: gen_qcombobox_types.QComboBox, text: string, flags: cint): cint =
   fcQComboBox_findText2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(flags))
 
-proc findData*(self: gen_qcombobox_types.QComboBox, data: gen_qvariant.QVariant, role: cint): cint =
+proc findData*(self: gen_qcombobox_types.QComboBox, data: gen_qvariant_types.QVariant, role: cint): cint =
   fcQComboBox_findData2(self.h, data.h, role)
 
-proc findData*(self: gen_qcombobox_types.QComboBox, data: gen_qvariant.QVariant, role: cint, flags: cint): cint =
+proc findData*(self: gen_qcombobox_types.QComboBox, data: gen_qvariant_types.QVariant, role: cint, flags: cint): cint =
   fcQComboBox_findData3(self.h, data.h, role, cint(flags))
 
-proc currentData*(self: gen_qcombobox_types.QComboBox, role: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQComboBox_currentData1(self.h, role))
+proc currentData*(self: gen_qcombobox_types.QComboBox, role: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQComboBox_currentData1(self.h, role))
 
-proc itemData*(self: gen_qcombobox_types.QComboBox, index: cint, role: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQComboBox_itemData2(self.h, index, role))
+proc itemData*(self: gen_qcombobox_types.QComboBox, index: cint, role: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQComboBox_itemData2(self.h, index, role))
 
-proc addItem*(self: gen_qcombobox_types.QComboBox, text: string, userData: gen_qvariant.QVariant): void =
+proc addItem*(self: gen_qcombobox_types.QComboBox, text: string, userData: gen_qvariant_types.QVariant): void =
   fcQComboBox_addItem22(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), userData.h)
 
-proc addItem*(self: gen_qcombobox_types.QComboBox, icon: gen_qicon.QIcon, text: string, userData: gen_qvariant.QVariant): void =
+proc addItem*(self: gen_qcombobox_types.QComboBox, icon: gen_qicon_types.QIcon, text: string, userData: gen_qvariant_types.QVariant): void =
   fcQComboBox_addItem3(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), userData.h)
 
-proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, text: string, userData: gen_qvariant.QVariant): void =
+proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, text: string, userData: gen_qvariant_types.QVariant): void =
   fcQComboBox_insertItem3(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))), userData.h)
 
-proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, icon: gen_qicon.QIcon, text: string, userData: gen_qvariant.QVariant): void =
+proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, icon: gen_qicon_types.QIcon, text: string, userData: gen_qvariant_types.QVariant): void =
   fcQComboBox_insertItem4(self.h, index, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), userData.h)
 
-proc setItemData*(self: gen_qcombobox_types.QComboBox, index: cint, value: gen_qvariant.QVariant, role: cint): void =
+proc setItemData*(self: gen_qcombobox_types.QComboBox, index: cint, value: gen_qvariant_types.QVariant, role: cint): void =
   fcQComboBox_setItemData3(self.h, index, value.h, role)
 
-proc QComboBoxmetaObject*(self: gen_qcombobox_types.QComboBox, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQComboBox_virtualbase_metaObject(self.h))
+type QComboBoxmetaObjectProc* = proc(self: QComboBox): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QComboBoxmetacastProc* = proc(self: QComboBox, param1: cstring): pointer {.raises: [], gcsafe.}
+type QComboBoxmetacallProc* = proc(self: QComboBox, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QComboBoxsizeHintProc* = proc(self: QComboBox): gen_qsize_types.QSize {.raises: [], gcsafe.}
+type QComboBoxminimumSizeHintProc* = proc(self: QComboBox): gen_qsize_types.QSize {.raises: [], gcsafe.}
+type QComboBoxshowPopupProc* = proc(self: QComboBox): void {.raises: [], gcsafe.}
+type QComboBoxhidePopupProc* = proc(self: QComboBox): void {.raises: [], gcsafe.}
+type QComboBoxeventProc* = proc(self: QComboBox, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QComboBoxinputMethodQueryProc* = proc(self: QComboBox, param1: cint): gen_qvariant_types.QVariant {.raises: [], gcsafe.}
+type QComboBoxfocusInEventProc* = proc(self: QComboBox, e: gen_qevent_types.QFocusEvent): void {.raises: [], gcsafe.}
+type QComboBoxfocusOutEventProc* = proc(self: QComboBox, e: gen_qevent_types.QFocusEvent): void {.raises: [], gcsafe.}
+type QComboBoxchangeEventProc* = proc(self: QComboBox, e: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QComboBoxresizeEventProc* = proc(self: QComboBox, e: gen_qevent_types.QResizeEvent): void {.raises: [], gcsafe.}
+type QComboBoxpaintEventProc* = proc(self: QComboBox, e: gen_qevent_types.QPaintEvent): void {.raises: [], gcsafe.}
+type QComboBoxshowEventProc* = proc(self: QComboBox, e: gen_qevent_types.QShowEvent): void {.raises: [], gcsafe.}
+type QComboBoxhideEventProc* = proc(self: QComboBox, e: gen_qevent_types.QHideEvent): void {.raises: [], gcsafe.}
+type QComboBoxmousePressEventProc* = proc(self: QComboBox, e: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QComboBoxmouseReleaseEventProc* = proc(self: QComboBox, e: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QComboBoxkeyPressEventProc* = proc(self: QComboBox, e: gen_qevent_types.QKeyEvent): void {.raises: [], gcsafe.}
+type QComboBoxkeyReleaseEventProc* = proc(self: QComboBox, e: gen_qevent_types.QKeyEvent): void {.raises: [], gcsafe.}
+type QComboBoxwheelEventProc* = proc(self: QComboBox, e: gen_qevent_types.QWheelEvent): void {.raises: [], gcsafe.}
+type QComboBoxcontextMenuEventProc* = proc(self: QComboBox, e: gen_qevent_types.QContextMenuEvent): void {.raises: [], gcsafe.}
+type QComboBoxinputMethodEventProc* = proc(self: QComboBox, param1: gen_qevent_types.QInputMethodEvent): void {.raises: [], gcsafe.}
+type QComboBoxdevTypeProc* = proc(self: QComboBox): cint {.raises: [], gcsafe.}
+type QComboBoxsetVisibleProc* = proc(self: QComboBox, visible: bool): void {.raises: [], gcsafe.}
+type QComboBoxheightForWidthProc* = proc(self: QComboBox, param1: cint): cint {.raises: [], gcsafe.}
+type QComboBoxhasHeightForWidthProc* = proc(self: QComboBox): bool {.raises: [], gcsafe.}
+type QComboBoxpaintEngineProc* = proc(self: QComboBox): gen_qpaintengine_types.QPaintEngine {.raises: [], gcsafe.}
+type QComboBoxmouseDoubleClickEventProc* = proc(self: QComboBox, event: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QComboBoxmouseMoveEventProc* = proc(self: QComboBox, event: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QComboBoxenterEventProc* = proc(self: QComboBox, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QComboBoxleaveEventProc* = proc(self: QComboBox, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QComboBoxmoveEventProc* = proc(self: QComboBox, event: gen_qevent_types.QMoveEvent): void {.raises: [], gcsafe.}
+type QComboBoxcloseEventProc* = proc(self: QComboBox, event: gen_qevent_types.QCloseEvent): void {.raises: [], gcsafe.}
+type QComboBoxtabletEventProc* = proc(self: QComboBox, event: gen_qevent_types.QTabletEvent): void {.raises: [], gcsafe.}
+type QComboBoxactionEventProc* = proc(self: QComboBox, event: gen_qevent_types.QActionEvent): void {.raises: [], gcsafe.}
+type QComboBoxdragEnterEventProc* = proc(self: QComboBox, event: gen_qevent_types.QDragEnterEvent): void {.raises: [], gcsafe.}
+type QComboBoxdragMoveEventProc* = proc(self: QComboBox, event: gen_qevent_types.QDragMoveEvent): void {.raises: [], gcsafe.}
+type QComboBoxdragLeaveEventProc* = proc(self: QComboBox, event: gen_qevent_types.QDragLeaveEvent): void {.raises: [], gcsafe.}
+type QComboBoxdropEventProc* = proc(self: QComboBox, event: gen_qevent_types.QDropEvent): void {.raises: [], gcsafe.}
+type QComboBoxnativeEventProc* = proc(self: QComboBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool {.raises: [], gcsafe.}
+type QComboBoxmetricProc* = proc(self: QComboBox, param1: cint): cint {.raises: [], gcsafe.}
+type QComboBoxinitPainterProc* = proc(self: QComboBox, painter: gen_qpainter_types.QPainter): void {.raises: [], gcsafe.}
+type QComboBoxredirectedProc* = proc(self: QComboBox, offset: gen_qpoint_types.QPoint): gen_qpaintdevice_types.QPaintDevice {.raises: [], gcsafe.}
+type QComboBoxsharedPainterProc* = proc(self: QComboBox): gen_qpainter_types.QPainter {.raises: [], gcsafe.}
+type QComboBoxfocusNextPrevChildProc* = proc(self: QComboBox, next: bool): bool {.raises: [], gcsafe.}
+type QComboBoxeventFilterProc* = proc(self: QComboBox, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QComboBoxtimerEventProc* = proc(self: QComboBox, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QComboBoxchildEventProc* = proc(self: QComboBox, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QComboBoxcustomEventProc* = proc(self: QComboBox, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QComboBoxconnectNotifyProc* = proc(self: QComboBox, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QComboBoxdisconnectNotifyProc* = proc(self: QComboBox, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QComboBoxVTable* = object
+  vtbl: cQComboBoxVTable
+  metaObject*: QComboBoxmetaObjectProc
+  metacast*: QComboBoxmetacastProc
+  metacall*: QComboBoxmetacallProc
+  sizeHint*: QComboBoxsizeHintProc
+  minimumSizeHint*: QComboBoxminimumSizeHintProc
+  showPopup*: QComboBoxshowPopupProc
+  hidePopup*: QComboBoxhidePopupProc
+  event*: QComboBoxeventProc
+  inputMethodQuery*: QComboBoxinputMethodQueryProc
+  focusInEvent*: QComboBoxfocusInEventProc
+  focusOutEvent*: QComboBoxfocusOutEventProc
+  changeEvent*: QComboBoxchangeEventProc
+  resizeEvent*: QComboBoxresizeEventProc
+  paintEvent*: QComboBoxpaintEventProc
+  showEvent*: QComboBoxshowEventProc
+  hideEvent*: QComboBoxhideEventProc
+  mousePressEvent*: QComboBoxmousePressEventProc
+  mouseReleaseEvent*: QComboBoxmouseReleaseEventProc
+  keyPressEvent*: QComboBoxkeyPressEventProc
+  keyReleaseEvent*: QComboBoxkeyReleaseEventProc
+  wheelEvent*: QComboBoxwheelEventProc
+  contextMenuEvent*: QComboBoxcontextMenuEventProc
+  inputMethodEvent*: QComboBoxinputMethodEventProc
+  devType*: QComboBoxdevTypeProc
+  setVisible*: QComboBoxsetVisibleProc
+  heightForWidth*: QComboBoxheightForWidthProc
+  hasHeightForWidth*: QComboBoxhasHeightForWidthProc
+  paintEngine*: QComboBoxpaintEngineProc
+  mouseDoubleClickEvent*: QComboBoxmouseDoubleClickEventProc
+  mouseMoveEvent*: QComboBoxmouseMoveEventProc
+  enterEvent*: QComboBoxenterEventProc
+  leaveEvent*: QComboBoxleaveEventProc
+  moveEvent*: QComboBoxmoveEventProc
+  closeEvent*: QComboBoxcloseEventProc
+  tabletEvent*: QComboBoxtabletEventProc
+  actionEvent*: QComboBoxactionEventProc
+  dragEnterEvent*: QComboBoxdragEnterEventProc
+  dragMoveEvent*: QComboBoxdragMoveEventProc
+  dragLeaveEvent*: QComboBoxdragLeaveEventProc
+  dropEvent*: QComboBoxdropEventProc
+  nativeEvent*: QComboBoxnativeEventProc
+  metric*: QComboBoxmetricProc
+  initPainter*: QComboBoxinitPainterProc
+  redirected*: QComboBoxredirectedProc
+  sharedPainter*: QComboBoxsharedPainterProc
+  focusNextPrevChild*: QComboBoxfocusNextPrevChildProc
+  eventFilter*: QComboBoxeventFilterProc
+  timerEvent*: QComboBoxtimerEventProc
+  childEvent*: QComboBoxchildEventProc
+  customEvent*: QComboBoxcustomEventProc
+  connectNotify*: QComboBoxconnectNotifyProc
+  disconnectNotify*: QComboBoxdisconnectNotifyProc
+proc QComboBoxmetaObject*(self: gen_qcombobox_types.QComboBox, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQComboBox_virtualbase_metaObject(self.h))
 
-type QComboBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_metaObject(self: ptr cQComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QComboBox_metaObject ".} =
-  var nimfunc = cast[ptr QComboBoxmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQComboBox_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QComboBoxmetacast*(self: gen_qcombobox_types.QComboBox, param1: cstring): pointer =
-  fQComboBox_virtualbase_metacast(self.h, param1)
+  fcQComboBox_virtualbase_metacast(self.h, param1)
 
-type QComboBoxmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmetacastProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_metacast(self: ptr cQComboBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QComboBox_metacast ".} =
-  var nimfunc = cast[ptr QComboBoxmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QComboBoxmetacall*(self: gen_qcombobox_types.QComboBox, param1: cint, param2: cint, param3: pointer): cint =
-  fQComboBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQComboBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QComboBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmetacallProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_metacall(self: ptr cQComboBox, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QComboBox_metacall ".} =
-  var nimfunc = cast[ptr QComboBoxmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QComboBoxsizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fQComboBox_virtualbase_sizeHint(self.h))
 
-type QComboBoxsizeHintProc* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxsizeHintProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxsizeHintProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
+proc QComboBoxsizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQComboBox_virtualbase_sizeHint(self.h))
 
-proc miqt_exec_callback_QComboBox_sizeHint(self: ptr cQComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QComboBox_sizeHint ".} =
-  var nimfunc = cast[ptr QComboBoxsizeHintProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQComboBox_sizeHint(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let virtualReturn = vtbl[].sizeHint(self)
   virtualReturn.h
-proc QComboBoxminimumSizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fQComboBox_virtualbase_minimumSizeHint(self.h))
 
-type QComboBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxminimumSizeHintProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxminimumSizeHintProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
+proc QComboBoxminimumSizeHint*(self: gen_qcombobox_types.QComboBox, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQComboBox_virtualbase_minimumSizeHint(self.h))
 
-proc miqt_exec_callback_QComboBox_minimumSizeHint(self: ptr cQComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QComboBox_minimumSizeHint ".} =
-  var nimfunc = cast[ptr QComboBoxminimumSizeHintProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQComboBox_minimumSizeHint(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let virtualReturn = vtbl[].minimumSizeHint(self)
   virtualReturn.h
+
 proc QComboBoxshowPopup*(self: gen_qcombobox_types.QComboBox, ): void =
-  fQComboBox_virtualbase_showPopup(self.h)
+  fcQComboBox_virtualbase_showPopup(self.h)
 
-type QComboBoxshowPopupProc* = proc(): void
-proc onshowPopup*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxshowPopupProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxshowPopupProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_showPopup(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQComboBox_showPopup(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  vtbl[].showPopup(self)
 
-proc miqt_exec_callback_QComboBox_showPopup(self: ptr cQComboBox, slot: int): void {.exportc: "miqt_exec_callback_QComboBox_showPopup ".} =
-  var nimfunc = cast[ptr QComboBoxshowPopupProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QComboBoxhidePopup*(self: gen_qcombobox_types.QComboBox, ): void =
-  fQComboBox_virtualbase_hidePopup(self.h)
+  fcQComboBox_virtualbase_hidePopup(self.h)
 
-type QComboBoxhidePopupProc* = proc(): void
-proc onhidePopup*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxhidePopupProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxhidePopupProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_hidePopup(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQComboBox_hidePopup(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  vtbl[].hidePopup(self)
 
-proc miqt_exec_callback_QComboBox_hidePopup(self: ptr cQComboBox, slot: int): void {.exportc: "miqt_exec_callback_QComboBox_hidePopup ".} =
-  var nimfunc = cast[ptr QComboBoxhidePopupProc](cast[pointer](slot))
+proc QComboBoxevent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent_types.QEvent): bool =
+  fcQComboBox_virtualbase_event(self.h, event.h)
 
-  nimfunc[]()
-proc QComboBoxevent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent.QEvent): bool =
-  fQComboBox_virtualbase_event(self.h, event.h)
-
-type QComboBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxeventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_event(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_event(self: ptr cQComboBox, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QComboBox_event ".} =
-  var nimfunc = cast[ptr QComboBoxeventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQComboBox_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QComboBoxinputMethodQuery*(self: gen_qcombobox_types.QComboBox, param1: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fQComboBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QComboBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxinputMethodQueryProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxinputMethodQueryProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
+proc QComboBoxinputMethodQuery*(self: gen_qcombobox_types.QComboBox, param1: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQComboBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-proc miqt_exec_callback_QComboBox_inputMethodQuery(self: ptr cQComboBox, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QComboBox_inputMethodQuery ".} =
-  var nimfunc = cast[ptr QComboBoxinputMethodQueryProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_inputMethodQuery(vtbl: pointer, self: pointer, param1: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   let slotval1 = cint(param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].inputMethodQuery(self, slotval1)
   virtualReturn.h
-proc QComboBoxfocusInEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QFocusEvent): void =
-  fQComboBox_virtualbase_focusInEvent(self.h, e.h)
 
-type QComboBoxfocusInEventProc* = proc(e: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxfocusInEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxfocusInEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxfocusInEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QFocusEvent): void =
+  fcQComboBox_virtualbase_focusInEvent(self.h, e.h)
 
-proc miqt_exec_callback_QComboBox_focusInEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_focusInEvent ".} =
-  var nimfunc = cast[ptr QComboBoxfocusInEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QFocusEvent(h: e)
+proc miqt_exec_callback_cQComboBox_focusInEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QFocusEvent(h: e)
+  vtbl[].focusInEvent(self, slotval1)
 
+proc QComboBoxfocusOutEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QFocusEvent): void =
+  fcQComboBox_virtualbase_focusOutEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxfocusOutEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QFocusEvent): void =
-  fQComboBox_virtualbase_focusOutEvent(self.h, e.h)
+proc miqt_exec_callback_cQComboBox_focusOutEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QFocusEvent(h: e)
+  vtbl[].focusOutEvent(self, slotval1)
 
-type QComboBoxfocusOutEventProc* = proc(e: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxfocusOutEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxfocusOutEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxchangeEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qcoreevent_types.QEvent): void =
+  fcQComboBox_virtualbase_changeEvent(self.h, e.h)
 
-proc miqt_exec_callback_QComboBox_focusOutEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_focusOutEvent ".} =
-  var nimfunc = cast[ptr QComboBoxfocusOutEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QFocusEvent(h: e)
+proc miqt_exec_callback_cQComboBox_changeEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: e)
+  vtbl[].changeEvent(self, slotval1)
 
+proc QComboBoxresizeEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QResizeEvent): void =
+  fcQComboBox_virtualbase_resizeEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxchangeEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qcoreevent.QEvent): void =
-  fQComboBox_virtualbase_changeEvent(self.h, e.h)
+proc miqt_exec_callback_cQComboBox_resizeEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QResizeEvent(h: e)
+  vtbl[].resizeEvent(self, slotval1)
 
-type QComboBoxchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxchangeEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxchangeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxpaintEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QPaintEvent): void =
+  fcQComboBox_virtualbase_paintEvent(self.h, e.h)
 
-proc miqt_exec_callback_QComboBox_changeEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_changeEvent ".} =
-  var nimfunc = cast[ptr QComboBoxchangeEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: e)
+proc miqt_exec_callback_cQComboBox_paintEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QPaintEvent(h: e)
+  vtbl[].paintEvent(self, slotval1)
 
+proc QComboBoxshowEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QShowEvent): void =
+  fcQComboBox_virtualbase_showEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxresizeEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QResizeEvent): void =
-  fQComboBox_virtualbase_resizeEvent(self.h, e.h)
+proc miqt_exec_callback_cQComboBox_showEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QShowEvent(h: e)
+  vtbl[].showEvent(self, slotval1)
 
-type QComboBoxresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxresizeEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxresizeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxhideEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QHideEvent): void =
+  fcQComboBox_virtualbase_hideEvent(self.h, e.h)
 
-proc miqt_exec_callback_QComboBox_resizeEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_resizeEvent ".} =
-  var nimfunc = cast[ptr QComboBoxresizeEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QResizeEvent(h: e)
+proc miqt_exec_callback_cQComboBox_hideEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QHideEvent(h: e)
+  vtbl[].hideEvent(self, slotval1)
 
+proc QComboBoxmousePressEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QMouseEvent): void =
+  fcQComboBox_virtualbase_mousePressEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxpaintEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QPaintEvent): void =
-  fQComboBox_virtualbase_paintEvent(self.h, e.h)
+proc miqt_exec_callback_cQComboBox_mousePressEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: e)
+  vtbl[].mousePressEvent(self, slotval1)
 
-type QComboBoxpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxpaintEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxpaintEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxmouseReleaseEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QMouseEvent): void =
+  fcQComboBox_virtualbase_mouseReleaseEvent(self.h, e.h)
 
-proc miqt_exec_callback_QComboBox_paintEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_paintEvent ".} =
-  var nimfunc = cast[ptr QComboBoxpaintEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QPaintEvent(h: e)
+proc miqt_exec_callback_cQComboBox_mouseReleaseEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: e)
+  vtbl[].mouseReleaseEvent(self, slotval1)
 
+proc QComboBoxkeyPressEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QKeyEvent): void =
+  fcQComboBox_virtualbase_keyPressEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxshowEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QShowEvent): void =
-  fQComboBox_virtualbase_showEvent(self.h, e.h)
+proc miqt_exec_callback_cQComboBox_keyPressEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QKeyEvent(h: e)
+  vtbl[].keyPressEvent(self, slotval1)
 
-type QComboBoxshowEventProc* = proc(e: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxshowEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxshowEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxkeyReleaseEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QKeyEvent): void =
+  fcQComboBox_virtualbase_keyReleaseEvent(self.h, e.h)
 
-proc miqt_exec_callback_QComboBox_showEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_showEvent ".} =
-  var nimfunc = cast[ptr QComboBoxshowEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QShowEvent(h: e)
+proc miqt_exec_callback_cQComboBox_keyReleaseEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QKeyEvent(h: e)
+  vtbl[].keyReleaseEvent(self, slotval1)
 
+proc QComboBoxwheelEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QWheelEvent): void =
+  fcQComboBox_virtualbase_wheelEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxhideEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QHideEvent): void =
-  fQComboBox_virtualbase_hideEvent(self.h, e.h)
+proc miqt_exec_callback_cQComboBox_wheelEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QWheelEvent(h: e)
+  vtbl[].wheelEvent(self, slotval1)
 
-type QComboBoxhideEventProc* = proc(e: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxhideEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxhideEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxcontextMenuEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent_types.QContextMenuEvent): void =
+  fcQComboBox_virtualbase_contextMenuEvent(self.h, e.h)
 
-proc miqt_exec_callback_QComboBox_hideEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_hideEvent ".} =
-  var nimfunc = cast[ptr QComboBoxhideEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QHideEvent(h: e)
+proc miqt_exec_callback_cQComboBox_contextMenuEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QContextMenuEvent(h: e)
+  vtbl[].contextMenuEvent(self, slotval1)
 
+proc QComboBoxinputMethodEvent*(self: gen_qcombobox_types.QComboBox, param1: gen_qevent_types.QInputMethodEvent): void =
+  fcQComboBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxmousePressEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QMouseEvent): void =
-  fQComboBox_virtualbase_mousePressEvent(self.h, e.h)
+proc miqt_exec_callback_cQComboBox_inputMethodEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QInputMethodEvent(h: param1)
+  vtbl[].inputMethodEvent(self, slotval1)
 
-type QComboBoxmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmousePressEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmousePressEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_mousePressEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_mousePressEvent ".} =
-  var nimfunc = cast[ptr QComboBoxmousePressEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxmouseReleaseEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QMouseEvent): void =
-  fQComboBox_virtualbase_mouseReleaseEvent(self.h, e.h)
-
-type QComboBoxmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmouseReleaseEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmouseReleaseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_mouseReleaseEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_mouseReleaseEvent ".} =
-  var nimfunc = cast[ptr QComboBoxmouseReleaseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxkeyPressEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QKeyEvent): void =
-  fQComboBox_virtualbase_keyPressEvent(self.h, e.h)
-
-type QComboBoxkeyPressEventProc* = proc(e: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxkeyPressEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxkeyPressEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_keyPressEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_keyPressEvent ".} =
-  var nimfunc = cast[ptr QComboBoxkeyPressEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QKeyEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxkeyReleaseEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QKeyEvent): void =
-  fQComboBox_virtualbase_keyReleaseEvent(self.h, e.h)
-
-type QComboBoxkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxkeyReleaseEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxkeyReleaseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_keyReleaseEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_keyReleaseEvent ".} =
-  var nimfunc = cast[ptr QComboBoxkeyReleaseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QKeyEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxwheelEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QWheelEvent): void =
-  fQComboBox_virtualbase_wheelEvent(self.h, e.h)
-
-type QComboBoxwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxwheelEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxwheelEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_wheelEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_wheelEvent ".} =
-  var nimfunc = cast[ptr QComboBoxwheelEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QWheelEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxcontextMenuEvent*(self: gen_qcombobox_types.QComboBox, e: gen_qevent.QContextMenuEvent): void =
-  fQComboBox_virtualbase_contextMenuEvent(self.h, e.h)
-
-type QComboBoxcontextMenuEventProc* = proc(e: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxcontextMenuEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxcontextMenuEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_contextMenuEvent(self: ptr cQComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QComboBox_contextMenuEvent ".} =
-  var nimfunc = cast[ptr QComboBoxcontextMenuEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QContextMenuEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxinputMethodEvent*(self: gen_qcombobox_types.QComboBox, param1: gen_qevent.QInputMethodEvent): void =
-  fQComboBox_virtualbase_inputMethodEvent(self.h, param1.h)
-
-type QComboBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxinputMethodEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxinputMethodEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_inputMethodEvent(self: ptr cQComboBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QComboBox_inputMethodEvent ".} =
-  var nimfunc = cast[ptr QComboBoxinputMethodEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
-
-
-  nimfunc[](slotval1)
 proc QComboBoxdevType*(self: gen_qcombobox_types.QComboBox, ): cint =
-  fQComboBox_virtualbase_devType(self.h)
+  fcQComboBox_virtualbase_devType(self.h)
 
-type QComboBoxdevTypeProc* = proc(): cint
-proc ondevType*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxdevTypeProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxdevTypeProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_devType(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_devType(self: ptr cQComboBox, slot: int): cint {.exportc: "miqt_exec_callback_QComboBox_devType ".} =
-  var nimfunc = cast[ptr QComboBoxdevTypeProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQComboBox_devType(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let virtualReturn = vtbl[].devType(self)
   virtualReturn
+
 proc QComboBoxsetVisible*(self: gen_qcombobox_types.QComboBox, visible: bool): void =
-  fQComboBox_virtualbase_setVisible(self.h, visible)
+  fcQComboBox_virtualbase_setVisible(self.h, visible)
 
-type QComboBoxsetVisibleProc* = proc(visible: bool): void
-proc onsetVisible*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxsetVisibleProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxsetVisibleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_setVisible(self: ptr cQComboBox, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QComboBox_setVisible ".} =
-  var nimfunc = cast[ptr QComboBoxsetVisibleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_setVisible(vtbl: pointer, self: pointer, visible: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   let slotval1 = visible
+  vtbl[].setVisible(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QComboBoxheightForWidth*(self: gen_qcombobox_types.QComboBox, param1: cint): cint =
-  fQComboBox_virtualbase_heightForWidth(self.h, param1)
+  fcQComboBox_virtualbase_heightForWidth(self.h, param1)
 
-type QComboBoxheightForWidthProc* = proc(param1: cint): cint
-proc onheightForWidth*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxheightForWidthProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxheightForWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_heightForWidth(self: ptr cQComboBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QComboBox_heightForWidth ".} =
-  var nimfunc = cast[ptr QComboBoxheightForWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_heightForWidth(vtbl: pointer, self: pointer, param1: cint): cint {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   let slotval1 = param1
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].heightForWidth(self, slotval1)
   virtualReturn
+
 proc QComboBoxhasHeightForWidth*(self: gen_qcombobox_types.QComboBox, ): bool =
-  fQComboBox_virtualbase_hasHeightForWidth(self.h)
+  fcQComboBox_virtualbase_hasHeightForWidth(self.h)
 
-type QComboBoxhasHeightForWidthProc* = proc(): bool
-proc onhasHeightForWidth*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxhasHeightForWidthProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxhasHeightForWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_hasHeightForWidth(self: ptr cQComboBox, slot: int): bool {.exportc: "miqt_exec_callback_QComboBox_hasHeightForWidth ".} =
-  var nimfunc = cast[ptr QComboBoxhasHeightForWidthProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQComboBox_hasHeightForWidth(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let virtualReturn = vtbl[].hasHeightForWidth(self)
   virtualReturn
-proc QComboBoxpaintEngine*(self: gen_qcombobox_types.QComboBox, ): gen_qpaintengine.QPaintEngine =
-  gen_qpaintengine.QPaintEngine(h: fQComboBox_virtualbase_paintEngine(self.h))
 
-type QComboBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxpaintEngineProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxpaintEngineProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
+proc QComboBoxpaintEngine*(self: gen_qcombobox_types.QComboBox, ): gen_qpaintengine_types.QPaintEngine =
+  gen_qpaintengine_types.QPaintEngine(h: fcQComboBox_virtualbase_paintEngine(self.h))
 
-proc miqt_exec_callback_QComboBox_paintEngine(self: ptr cQComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QComboBox_paintEngine ".} =
-  var nimfunc = cast[ptr QComboBoxpaintEngineProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQComboBox_paintEngine(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let virtualReturn = vtbl[].paintEngine(self)
   virtualReturn.h
-proc QComboBoxmouseDoubleClickEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QMouseEvent): void =
-  fQComboBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QComboBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmouseDoubleClickEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmouseDoubleClickEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxmouseDoubleClickEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QMouseEvent): void =
+  fcQComboBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_mouseDoubleClickEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_mouseDoubleClickEvent ".} =
-  var nimfunc = cast[ptr QComboBoxmouseDoubleClickEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: event)
+proc miqt_exec_callback_cQComboBox_mouseDoubleClickEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: event)
+  vtbl[].mouseDoubleClickEvent(self, slotval1)
 
+proc QComboBoxmouseMoveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QMouseEvent): void =
+  fcQComboBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxmouseMoveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QMouseEvent): void =
-  fQComboBox_virtualbase_mouseMoveEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_mouseMoveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: event)
+  vtbl[].mouseMoveEvent(self, slotval1)
 
-type QComboBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmouseMoveEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmouseMoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxenterEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent_types.QEvent): void =
+  fcQComboBox_virtualbase_enterEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_mouseMoveEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_mouseMoveEvent ".} =
-  var nimfunc = cast[ptr QComboBoxmouseMoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: event)
+proc miqt_exec_callback_cQComboBox_enterEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].enterEvent(self, slotval1)
 
+proc QComboBoxleaveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent_types.QEvent): void =
+  fcQComboBox_virtualbase_leaveEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxenterEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent.QEvent): void =
-  fQComboBox_virtualbase_enterEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_leaveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].leaveEvent(self, slotval1)
 
-type QComboBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxenterEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxenterEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxmoveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QMoveEvent): void =
+  fcQComboBox_virtualbase_moveEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_enterEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_enterEvent ".} =
-  var nimfunc = cast[ptr QComboBoxenterEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQComboBox_moveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QMoveEvent(h: event)
+  vtbl[].moveEvent(self, slotval1)
 
+proc QComboBoxcloseEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QCloseEvent): void =
+  fcQComboBox_virtualbase_closeEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxleaveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent.QEvent): void =
-  fQComboBox_virtualbase_leaveEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_closeEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QCloseEvent(h: event)
+  vtbl[].closeEvent(self, slotval1)
 
-type QComboBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxleaveEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxleaveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxtabletEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QTabletEvent): void =
+  fcQComboBox_virtualbase_tabletEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_leaveEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_leaveEvent ".} =
-  var nimfunc = cast[ptr QComboBoxleaveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQComboBox_tabletEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QTabletEvent(h: event)
+  vtbl[].tabletEvent(self, slotval1)
 
+proc QComboBoxactionEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QActionEvent): void =
+  fcQComboBox_virtualbase_actionEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxmoveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QMoveEvent): void =
-  fQComboBox_virtualbase_moveEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_actionEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QActionEvent(h: event)
+  vtbl[].actionEvent(self, slotval1)
 
-type QComboBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmoveEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxdragEnterEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QDragEnterEvent): void =
+  fcQComboBox_virtualbase_dragEnterEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_moveEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_moveEvent ".} =
-  var nimfunc = cast[ptr QComboBoxmoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMoveEvent(h: event)
+proc miqt_exec_callback_cQComboBox_dragEnterEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QDragEnterEvent(h: event)
+  vtbl[].dragEnterEvent(self, slotval1)
 
+proc QComboBoxdragMoveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QDragMoveEvent): void =
+  fcQComboBox_virtualbase_dragMoveEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxcloseEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QCloseEvent): void =
-  fQComboBox_virtualbase_closeEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_dragMoveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QDragMoveEvent(h: event)
+  vtbl[].dragMoveEvent(self, slotval1)
 
-type QComboBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxcloseEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxcloseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxdragLeaveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QDragLeaveEvent): void =
+  fcQComboBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_closeEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_closeEvent ".} =
-  var nimfunc = cast[ptr QComboBoxcloseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QCloseEvent(h: event)
+proc miqt_exec_callback_cQComboBox_dragLeaveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QDragLeaveEvent(h: event)
+  vtbl[].dragLeaveEvent(self, slotval1)
 
+proc QComboBoxdropEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent_types.QDropEvent): void =
+  fcQComboBox_virtualbase_dropEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxtabletEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QTabletEvent): void =
-  fQComboBox_virtualbase_tabletEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_dropEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qevent_types.QDropEvent(h: event)
+  vtbl[].dropEvent(self, slotval1)
 
-type QComboBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxtabletEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxtabletEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_tabletEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_tabletEvent ".} =
-  var nimfunc = cast[ptr QComboBoxtabletEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QTabletEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxactionEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QActionEvent): void =
-  fQComboBox_virtualbase_actionEvent(self.h, event.h)
-
-type QComboBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxactionEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxactionEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_actionEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_actionEvent ".} =
-  var nimfunc = cast[ptr QComboBoxactionEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QActionEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxdragEnterEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QDragEnterEvent): void =
-  fQComboBox_virtualbase_dragEnterEvent(self.h, event.h)
-
-type QComboBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxdragEnterEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxdragEnterEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_dragEnterEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_dragEnterEvent ".} =
-  var nimfunc = cast[ptr QComboBoxdragEnterEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragEnterEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxdragMoveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QDragMoveEvent): void =
-  fQComboBox_virtualbase_dragMoveEvent(self.h, event.h)
-
-type QComboBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxdragMoveEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxdragMoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_dragMoveEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_dragMoveEvent ".} =
-  var nimfunc = cast[ptr QComboBoxdragMoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragMoveEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxdragLeaveEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QDragLeaveEvent): void =
-  fQComboBox_virtualbase_dragLeaveEvent(self.h, event.h)
-
-type QComboBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxdragLeaveEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxdragLeaveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_dragLeaveEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_dragLeaveEvent ".} =
-  var nimfunc = cast[ptr QComboBoxdragLeaveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxdropEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qevent.QDropEvent): void =
-  fQComboBox_virtualbase_dropEvent(self.h, event.h)
-
-type QComboBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxdropEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxdropEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_dropEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_dropEvent ".} =
-  var nimfunc = cast[ptr QComboBoxdropEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDropEvent(h: event)
-
-
-  nimfunc[](slotval1)
 proc QComboBoxnativeEvent*(self: gen_qcombobox_types.QComboBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-  fQComboBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
+  fcQComboBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QComboBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxnativeEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxnativeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_nativeEvent(self: ptr cQComboBox, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QComboBox_nativeEvent ".} =
-  var nimfunc = cast[ptr QComboBoxnativeEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_nativeEvent(vtbl: pointer, self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
   let slotval1 = veventTypex_ret
-
   let slotval2 = message
-
   let slotval3 = resultVal
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].nativeEvent(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QComboBoxmetric*(self: gen_qcombobox_types.QComboBox, param1: cint): cint =
-  fQComboBox_virtualbase_metric(self.h, cint(param1))
+  fcQComboBox_virtualbase_metric(self.h, cint(param1))
 
-type QComboBoxmetricProc* = proc(param1: cint): cint
-proc onmetric*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmetricProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxmetricProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_metric(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_metric(self: ptr cQComboBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QComboBox_metric ".} =
-  var nimfunc = cast[ptr QComboBoxmetricProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_metric(vtbl: pointer, self: pointer, param1: cint): cint {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   let slotval1 = cint(param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metric(self, slotval1)
   virtualReturn
-proc QComboBoxinitPainter*(self: gen_qcombobox_types.QComboBox, painter: gen_qpainter.QPainter): void =
-  fQComboBox_virtualbase_initPainter(self.h, painter.h)
 
-type QComboBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxinitPainterProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxinitPainterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
+proc QComboBoxinitPainter*(self: gen_qcombobox_types.QComboBox, painter: gen_qpainter_types.QPainter): void =
+  fcQComboBox_virtualbase_initPainter(self.h, painter.h)
 
-proc miqt_exec_callback_QComboBox_initPainter(self: ptr cQComboBox, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QComboBox_initPainter ".} =
-  var nimfunc = cast[ptr QComboBoxinitPainterProc](cast[pointer](slot))
-  let slotval1 = gen_qpainter.QPainter(h: painter)
+proc miqt_exec_callback_cQComboBox_initPainter(vtbl: pointer, self: pointer, painter: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qpainter_types.QPainter(h: painter)
+  vtbl[].initPainter(self, slotval1)
 
+proc QComboBoxredirected*(self: gen_qcombobox_types.QComboBox, offset: gen_qpoint_types.QPoint): gen_qpaintdevice_types.QPaintDevice =
+  gen_qpaintdevice_types.QPaintDevice(h: fcQComboBox_virtualbase_redirected(self.h, offset.h))
 
-  nimfunc[](slotval1)
-proc QComboBoxredirected*(self: gen_qcombobox_types.QComboBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-  gen_qpaintdevice.QPaintDevice(h: fQComboBox_virtualbase_redirected(self.h, offset.h))
-
-type QComboBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxredirectedProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxredirectedProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_redirected(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_redirected(self: ptr cQComboBox, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QComboBox_redirected ".} =
-  var nimfunc = cast[ptr QComboBoxredirectedProc](cast[pointer](slot))
-  let slotval1 = gen_qpoint.QPoint(h: offset)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQComboBox_redirected(vtbl: pointer, self: pointer, offset: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qpoint_types.QPoint(h: offset)
+  let virtualReturn = vtbl[].redirected(self, slotval1)
   virtualReturn.h
-proc QComboBoxsharedPainter*(self: gen_qcombobox_types.QComboBox, ): gen_qpainter.QPainter =
-  gen_qpainter.QPainter(h: fQComboBox_virtualbase_sharedPainter(self.h))
 
-type QComboBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxsharedPainterProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxsharedPainterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
+proc QComboBoxsharedPainter*(self: gen_qcombobox_types.QComboBox, ): gen_qpainter_types.QPainter =
+  gen_qpainter_types.QPainter(h: fcQComboBox_virtualbase_sharedPainter(self.h))
 
-proc miqt_exec_callback_QComboBox_sharedPainter(self: ptr cQComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QComboBox_sharedPainter ".} =
-  var nimfunc = cast[ptr QComboBoxsharedPainterProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQComboBox_sharedPainter(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let virtualReturn = vtbl[].sharedPainter(self)
   virtualReturn.h
+
 proc QComboBoxfocusNextPrevChild*(self: gen_qcombobox_types.QComboBox, next: bool): bool =
-  fQComboBox_virtualbase_focusNextPrevChild(self.h, next)
+  fcQComboBox_virtualbase_focusNextPrevChild(self.h, next)
 
-type QComboBoxfocusNextPrevChildProc* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxfocusNextPrevChildProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxfocusNextPrevChildProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_focusNextPrevChild(self: ptr cQComboBox, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QComboBox_focusNextPrevChild ".} =
-  var nimfunc = cast[ptr QComboBoxfocusNextPrevChildProc](cast[pointer](slot))
+proc miqt_exec_callback_cQComboBox_focusNextPrevChild(vtbl: pointer, self: pointer, next: bool): bool {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
   let slotval1 = next
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].focusNextPrevChild(self, slotval1)
   virtualReturn
-proc QComboBoxeventFilter*(self: gen_qcombobox_types.QComboBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQComboBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QComboBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QComboBoxeventFilter*(self: gen_qcombobox_types.QComboBox, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQComboBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QComboBox_eventFilter(self: ptr cQComboBox, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QComboBox_eventFilter ".} =
-  var nimfunc = cast[ptr QComboBoxeventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQComboBox_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QComboBoxtimerEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent.QTimerEvent): void =
-  fQComboBox_virtualbase_timerEvent(self.h, event.h)
 
-type QComboBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxtimerEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxtimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxtimerEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQComboBox_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_timerEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_timerEvent ".} =
-  var nimfunc = cast[ptr QComboBoxtimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQComboBox_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QComboBoxchildEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQComboBox_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxchildEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent.QChildEvent): void =
-  fQComboBox_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QComboBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxchildEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxcustomEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent_types.QEvent): void =
+  fcQComboBox_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QComboBox_childEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_childEvent ".} =
-  var nimfunc = cast[ptr QComboBoxchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQComboBox_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QComboBoxconnectNotify*(self: gen_qcombobox_types.QComboBox, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQComboBox_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QComboBoxcustomEvent*(self: gen_qcombobox_types.QComboBox, event: gen_qcoreevent.QEvent): void =
-  fQComboBox_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQComboBox_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QComboBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QComboBoxdisconnectNotify*(self: gen_qcombobox_types.QComboBox, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQComboBox_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QComboBox_customEvent(self: ptr cQComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QComboBox_customEvent ".} =
-  var nimfunc = cast[ptr QComboBoxcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQComboBox_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QComboBoxVTable](vtbl)
+  let self = QComboBox(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qcombobox_types.QComboBox,
+    parent: gen_qwidget_types.QWidget,
+    vtbl: ref QComboBoxVTable = nil): gen_qcombobox_types.QComboBox =
+  let vtbl = if vtbl == nil: new QComboBoxVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQComboBoxVTable, _: ptr cQComboBox) {.cdecl.} =
+    let vtbl = cast[ref QComboBoxVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQComboBox_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQComboBox_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQComboBox_metacall
+  if not isNil(vtbl.sizeHint):
+    vtbl[].vtbl.sizeHint = miqt_exec_callback_cQComboBox_sizeHint
+  if not isNil(vtbl.minimumSizeHint):
+    vtbl[].vtbl.minimumSizeHint = miqt_exec_callback_cQComboBox_minimumSizeHint
+  if not isNil(vtbl.showPopup):
+    vtbl[].vtbl.showPopup = miqt_exec_callback_cQComboBox_showPopup
+  if not isNil(vtbl.hidePopup):
+    vtbl[].vtbl.hidePopup = miqt_exec_callback_cQComboBox_hidePopup
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQComboBox_event
+  if not isNil(vtbl.inputMethodQuery):
+    vtbl[].vtbl.inputMethodQuery = miqt_exec_callback_cQComboBox_inputMethodQuery
+  if not isNil(vtbl.focusInEvent):
+    vtbl[].vtbl.focusInEvent = miqt_exec_callback_cQComboBox_focusInEvent
+  if not isNil(vtbl.focusOutEvent):
+    vtbl[].vtbl.focusOutEvent = miqt_exec_callback_cQComboBox_focusOutEvent
+  if not isNil(vtbl.changeEvent):
+    vtbl[].vtbl.changeEvent = miqt_exec_callback_cQComboBox_changeEvent
+  if not isNil(vtbl.resizeEvent):
+    vtbl[].vtbl.resizeEvent = miqt_exec_callback_cQComboBox_resizeEvent
+  if not isNil(vtbl.paintEvent):
+    vtbl[].vtbl.paintEvent = miqt_exec_callback_cQComboBox_paintEvent
+  if not isNil(vtbl.showEvent):
+    vtbl[].vtbl.showEvent = miqt_exec_callback_cQComboBox_showEvent
+  if not isNil(vtbl.hideEvent):
+    vtbl[].vtbl.hideEvent = miqt_exec_callback_cQComboBox_hideEvent
+  if not isNil(vtbl.mousePressEvent):
+    vtbl[].vtbl.mousePressEvent = miqt_exec_callback_cQComboBox_mousePressEvent
+  if not isNil(vtbl.mouseReleaseEvent):
+    vtbl[].vtbl.mouseReleaseEvent = miqt_exec_callback_cQComboBox_mouseReleaseEvent
+  if not isNil(vtbl.keyPressEvent):
+    vtbl[].vtbl.keyPressEvent = miqt_exec_callback_cQComboBox_keyPressEvent
+  if not isNil(vtbl.keyReleaseEvent):
+    vtbl[].vtbl.keyReleaseEvent = miqt_exec_callback_cQComboBox_keyReleaseEvent
+  if not isNil(vtbl.wheelEvent):
+    vtbl[].vtbl.wheelEvent = miqt_exec_callback_cQComboBox_wheelEvent
+  if not isNil(vtbl.contextMenuEvent):
+    vtbl[].vtbl.contextMenuEvent = miqt_exec_callback_cQComboBox_contextMenuEvent
+  if not isNil(vtbl.inputMethodEvent):
+    vtbl[].vtbl.inputMethodEvent = miqt_exec_callback_cQComboBox_inputMethodEvent
+  if not isNil(vtbl.devType):
+    vtbl[].vtbl.devType = miqt_exec_callback_cQComboBox_devType
+  if not isNil(vtbl.setVisible):
+    vtbl[].vtbl.setVisible = miqt_exec_callback_cQComboBox_setVisible
+  if not isNil(vtbl.heightForWidth):
+    vtbl[].vtbl.heightForWidth = miqt_exec_callback_cQComboBox_heightForWidth
+  if not isNil(vtbl.hasHeightForWidth):
+    vtbl[].vtbl.hasHeightForWidth = miqt_exec_callback_cQComboBox_hasHeightForWidth
+  if not isNil(vtbl.paintEngine):
+    vtbl[].vtbl.paintEngine = miqt_exec_callback_cQComboBox_paintEngine
+  if not isNil(vtbl.mouseDoubleClickEvent):
+    vtbl[].vtbl.mouseDoubleClickEvent = miqt_exec_callback_cQComboBox_mouseDoubleClickEvent
+  if not isNil(vtbl.mouseMoveEvent):
+    vtbl[].vtbl.mouseMoveEvent = miqt_exec_callback_cQComboBox_mouseMoveEvent
+  if not isNil(vtbl.enterEvent):
+    vtbl[].vtbl.enterEvent = miqt_exec_callback_cQComboBox_enterEvent
+  if not isNil(vtbl.leaveEvent):
+    vtbl[].vtbl.leaveEvent = miqt_exec_callback_cQComboBox_leaveEvent
+  if not isNil(vtbl.moveEvent):
+    vtbl[].vtbl.moveEvent = miqt_exec_callback_cQComboBox_moveEvent
+  if not isNil(vtbl.closeEvent):
+    vtbl[].vtbl.closeEvent = miqt_exec_callback_cQComboBox_closeEvent
+  if not isNil(vtbl.tabletEvent):
+    vtbl[].vtbl.tabletEvent = miqt_exec_callback_cQComboBox_tabletEvent
+  if not isNil(vtbl.actionEvent):
+    vtbl[].vtbl.actionEvent = miqt_exec_callback_cQComboBox_actionEvent
+  if not isNil(vtbl.dragEnterEvent):
+    vtbl[].vtbl.dragEnterEvent = miqt_exec_callback_cQComboBox_dragEnterEvent
+  if not isNil(vtbl.dragMoveEvent):
+    vtbl[].vtbl.dragMoveEvent = miqt_exec_callback_cQComboBox_dragMoveEvent
+  if not isNil(vtbl.dragLeaveEvent):
+    vtbl[].vtbl.dragLeaveEvent = miqt_exec_callback_cQComboBox_dragLeaveEvent
+  if not isNil(vtbl.dropEvent):
+    vtbl[].vtbl.dropEvent = miqt_exec_callback_cQComboBox_dropEvent
+  if not isNil(vtbl.nativeEvent):
+    vtbl[].vtbl.nativeEvent = miqt_exec_callback_cQComboBox_nativeEvent
+  if not isNil(vtbl.metric):
+    vtbl[].vtbl.metric = miqt_exec_callback_cQComboBox_metric
+  if not isNil(vtbl.initPainter):
+    vtbl[].vtbl.initPainter = miqt_exec_callback_cQComboBox_initPainter
+  if not isNil(vtbl.redirected):
+    vtbl[].vtbl.redirected = miqt_exec_callback_cQComboBox_redirected
+  if not isNil(vtbl.sharedPainter):
+    vtbl[].vtbl.sharedPainter = miqt_exec_callback_cQComboBox_sharedPainter
+  if not isNil(vtbl.focusNextPrevChild):
+    vtbl[].vtbl.focusNextPrevChild = miqt_exec_callback_cQComboBox_focusNextPrevChild
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQComboBox_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQComboBox_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQComboBox_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQComboBox_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQComboBox_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQComboBox_disconnectNotify
+  gen_qcombobox_types.QComboBox(h: fcQComboBox_new(addr(vtbl[]), parent.h))
 
-  nimfunc[](slotval1)
-proc QComboBoxconnectNotify*(self: gen_qcombobox_types.QComboBox, signal: gen_qmetaobject.QMetaMethod): void =
-  fQComboBox_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qcombobox_types.QComboBox,
+    vtbl: ref QComboBoxVTable = nil): gen_qcombobox_types.QComboBox =
+  let vtbl = if vtbl == nil: new QComboBoxVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQComboBoxVTable, _: ptr cQComboBox) {.cdecl.} =
+    let vtbl = cast[ref QComboBoxVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQComboBox_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQComboBox_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQComboBox_metacall
+  if not isNil(vtbl.sizeHint):
+    vtbl[].vtbl.sizeHint = miqt_exec_callback_cQComboBox_sizeHint
+  if not isNil(vtbl.minimumSizeHint):
+    vtbl[].vtbl.minimumSizeHint = miqt_exec_callback_cQComboBox_minimumSizeHint
+  if not isNil(vtbl.showPopup):
+    vtbl[].vtbl.showPopup = miqt_exec_callback_cQComboBox_showPopup
+  if not isNil(vtbl.hidePopup):
+    vtbl[].vtbl.hidePopup = miqt_exec_callback_cQComboBox_hidePopup
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQComboBox_event
+  if not isNil(vtbl.inputMethodQuery):
+    vtbl[].vtbl.inputMethodQuery = miqt_exec_callback_cQComboBox_inputMethodQuery
+  if not isNil(vtbl.focusInEvent):
+    vtbl[].vtbl.focusInEvent = miqt_exec_callback_cQComboBox_focusInEvent
+  if not isNil(vtbl.focusOutEvent):
+    vtbl[].vtbl.focusOutEvent = miqt_exec_callback_cQComboBox_focusOutEvent
+  if not isNil(vtbl.changeEvent):
+    vtbl[].vtbl.changeEvent = miqt_exec_callback_cQComboBox_changeEvent
+  if not isNil(vtbl.resizeEvent):
+    vtbl[].vtbl.resizeEvent = miqt_exec_callback_cQComboBox_resizeEvent
+  if not isNil(vtbl.paintEvent):
+    vtbl[].vtbl.paintEvent = miqt_exec_callback_cQComboBox_paintEvent
+  if not isNil(vtbl.showEvent):
+    vtbl[].vtbl.showEvent = miqt_exec_callback_cQComboBox_showEvent
+  if not isNil(vtbl.hideEvent):
+    vtbl[].vtbl.hideEvent = miqt_exec_callback_cQComboBox_hideEvent
+  if not isNil(vtbl.mousePressEvent):
+    vtbl[].vtbl.mousePressEvent = miqt_exec_callback_cQComboBox_mousePressEvent
+  if not isNil(vtbl.mouseReleaseEvent):
+    vtbl[].vtbl.mouseReleaseEvent = miqt_exec_callback_cQComboBox_mouseReleaseEvent
+  if not isNil(vtbl.keyPressEvent):
+    vtbl[].vtbl.keyPressEvent = miqt_exec_callback_cQComboBox_keyPressEvent
+  if not isNil(vtbl.keyReleaseEvent):
+    vtbl[].vtbl.keyReleaseEvent = miqt_exec_callback_cQComboBox_keyReleaseEvent
+  if not isNil(vtbl.wheelEvent):
+    vtbl[].vtbl.wheelEvent = miqt_exec_callback_cQComboBox_wheelEvent
+  if not isNil(vtbl.contextMenuEvent):
+    vtbl[].vtbl.contextMenuEvent = miqt_exec_callback_cQComboBox_contextMenuEvent
+  if not isNil(vtbl.inputMethodEvent):
+    vtbl[].vtbl.inputMethodEvent = miqt_exec_callback_cQComboBox_inputMethodEvent
+  if not isNil(vtbl.devType):
+    vtbl[].vtbl.devType = miqt_exec_callback_cQComboBox_devType
+  if not isNil(vtbl.setVisible):
+    vtbl[].vtbl.setVisible = miqt_exec_callback_cQComboBox_setVisible
+  if not isNil(vtbl.heightForWidth):
+    vtbl[].vtbl.heightForWidth = miqt_exec_callback_cQComboBox_heightForWidth
+  if not isNil(vtbl.hasHeightForWidth):
+    vtbl[].vtbl.hasHeightForWidth = miqt_exec_callback_cQComboBox_hasHeightForWidth
+  if not isNil(vtbl.paintEngine):
+    vtbl[].vtbl.paintEngine = miqt_exec_callback_cQComboBox_paintEngine
+  if not isNil(vtbl.mouseDoubleClickEvent):
+    vtbl[].vtbl.mouseDoubleClickEvent = miqt_exec_callback_cQComboBox_mouseDoubleClickEvent
+  if not isNil(vtbl.mouseMoveEvent):
+    vtbl[].vtbl.mouseMoveEvent = miqt_exec_callback_cQComboBox_mouseMoveEvent
+  if not isNil(vtbl.enterEvent):
+    vtbl[].vtbl.enterEvent = miqt_exec_callback_cQComboBox_enterEvent
+  if not isNil(vtbl.leaveEvent):
+    vtbl[].vtbl.leaveEvent = miqt_exec_callback_cQComboBox_leaveEvent
+  if not isNil(vtbl.moveEvent):
+    vtbl[].vtbl.moveEvent = miqt_exec_callback_cQComboBox_moveEvent
+  if not isNil(vtbl.closeEvent):
+    vtbl[].vtbl.closeEvent = miqt_exec_callback_cQComboBox_closeEvent
+  if not isNil(vtbl.tabletEvent):
+    vtbl[].vtbl.tabletEvent = miqt_exec_callback_cQComboBox_tabletEvent
+  if not isNil(vtbl.actionEvent):
+    vtbl[].vtbl.actionEvent = miqt_exec_callback_cQComboBox_actionEvent
+  if not isNil(vtbl.dragEnterEvent):
+    vtbl[].vtbl.dragEnterEvent = miqt_exec_callback_cQComboBox_dragEnterEvent
+  if not isNil(vtbl.dragMoveEvent):
+    vtbl[].vtbl.dragMoveEvent = miqt_exec_callback_cQComboBox_dragMoveEvent
+  if not isNil(vtbl.dragLeaveEvent):
+    vtbl[].vtbl.dragLeaveEvent = miqt_exec_callback_cQComboBox_dragLeaveEvent
+  if not isNil(vtbl.dropEvent):
+    vtbl[].vtbl.dropEvent = miqt_exec_callback_cQComboBox_dropEvent
+  if not isNil(vtbl.nativeEvent):
+    vtbl[].vtbl.nativeEvent = miqt_exec_callback_cQComboBox_nativeEvent
+  if not isNil(vtbl.metric):
+    vtbl[].vtbl.metric = miqt_exec_callback_cQComboBox_metric
+  if not isNil(vtbl.initPainter):
+    vtbl[].vtbl.initPainter = miqt_exec_callback_cQComboBox_initPainter
+  if not isNil(vtbl.redirected):
+    vtbl[].vtbl.redirected = miqt_exec_callback_cQComboBox_redirected
+  if not isNil(vtbl.sharedPainter):
+    vtbl[].vtbl.sharedPainter = miqt_exec_callback_cQComboBox_sharedPainter
+  if not isNil(vtbl.focusNextPrevChild):
+    vtbl[].vtbl.focusNextPrevChild = miqt_exec_callback_cQComboBox_focusNextPrevChild
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQComboBox_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQComboBox_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQComboBox_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQComboBox_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQComboBox_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQComboBox_disconnectNotify
+  gen_qcombobox_types.QComboBox(h: fcQComboBox_new2(addr(vtbl[]), ))
 
-type QComboBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_connectNotify(self: ptr cQComboBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QComboBox_connectNotify ".} =
-  var nimfunc = cast[ptr QComboBoxconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QComboBoxdisconnectNotify*(self: gen_qcombobox_types.QComboBox, signal: gen_qmetaobject.QMetaMethod): void =
-  fQComboBox_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QComboBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QComboBoxdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQComboBox_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QComboBox_disconnectNotify(self: ptr cQComboBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QComboBox_disconnectNotify ".} =
-  var nimfunc = cast[ptr QComboBoxdisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qcombobox_types.QComboBox): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQComboBox_staticMetaObject())
+proc staticMetaObject*(_: type gen_qcombobox_types.QComboBox): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQComboBox_staticMetaObject())
 proc delete*(self: gen_qcombobox_types.QComboBox) =
   fcQComboBox_delete(self.h)

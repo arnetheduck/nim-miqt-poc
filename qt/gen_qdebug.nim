@@ -39,23 +39,20 @@ template MinimumVerbosity*(_: type QDebugVerbosityLevelEnum): untyped = 0
 template DefaultVerbosity*(_: type QDebugVerbosityLevelEnum): untyped = 2
 template MaximumVerbosity*(_: type QDebugVerbosityLevelEnum): untyped = 7
 
-
 import gen_qdebug_types
 export gen_qdebug_types
 
 import
-  gen_qchar,
-  gen_qiodevice
+  gen_qchar_types,
+  gen_qiodevice_types
 export
-  gen_qchar,
-  gen_qiodevice
+  gen_qchar_types,
+  gen_qiodevice_types
 
 type cQDebug*{.exportc: "QDebug", incompleteStruct.} = object
 type cQDebugStateSaver*{.exportc: "QDebugStateSaver", incompleteStruct.} = object
 type cQNoDebug*{.exportc: "QNoDebug", incompleteStruct.} = object
 
-proc fcQDebug_new(device: pointer): ptr cQDebug {.importc: "QDebug_new".}
-proc fcQDebug_new2(o: pointer): ptr cQDebug {.importc: "QDebug_new2".}
 proc fcQDebug_operatorAssign(self: pointer, other: pointer): void {.importc: "QDebug_operatorAssign".}
 proc fcQDebug_swap(self: pointer, other: pointer): void {.importc: "QDebug_swap".}
 proc fcQDebug_resetFormat(self: pointer, ): pointer {.importc: "QDebug_resetFormat".}
@@ -88,6 +85,8 @@ proc fcQDebug_operatorShiftLeftWithQString(self: pointer, t: struct_miqt_string)
 proc fcQDebug_operatorShiftLeftWithQByteArray(self: pointer, t: struct_miqt_string): pointer {.importc: "QDebug_operatorShiftLeftWithQByteArray".}
 proc fcQDebug_operatorShiftLeftWithVoid(self: pointer, t: pointer): pointer {.importc: "QDebug_operatorShiftLeftWithVoid".}
 proc fcQDebug_maybeQuote1(self: pointer, c: cchar): pointer {.importc: "QDebug_maybeQuote1".}
+proc fcQDebug_new(device: pointer): ptr cQDebug {.importc: "QDebug_new".}
+proc fcQDebug_new2(o: pointer): ptr cQDebug {.importc: "QDebug_new2".}
 proc fcQDebug_delete(self: pointer) {.importc: "QDebug_delete".}
 proc fcQDebugStateSaver_new(dbg: pointer): ptr cQDebugStateSaver {.importc: "QDebugStateSaver_new".}
 proc fcQDebugStateSaver_delete(self: pointer) {.importc: "QDebugStateSaver_delete".}
@@ -100,15 +99,6 @@ proc fcQNoDebug_maybeQuote(self: pointer, ): pointer {.importc: "QNoDebug_maybeQ
 proc fcQNoDebug_verbosity(self: pointer, param1: cint): pointer {.importc: "QNoDebug_verbosity".}
 proc fcQNoDebug_maybeQuote1(self: pointer, param1: cchar): pointer {.importc: "QNoDebug_maybeQuote1".}
 proc fcQNoDebug_delete(self: pointer) {.importc: "QNoDebug_delete".}
-
-
-func init*(T: type gen_qdebug_types.QDebug, h: ptr cQDebug): gen_qdebug_types.QDebug =
-  T(h: h)
-proc create*(T: type gen_qdebug_types.QDebug, device: gen_qiodevice.QIODevice): gen_qdebug_types.QDebug =
-  gen_qdebug_types.QDebug.init(fcQDebug_new(device.h))
-
-proc create*(T: type gen_qdebug_types.QDebug, o: gen_qdebug_types.QDebug): gen_qdebug_types.QDebug =
-  gen_qdebug_types.QDebug.init(fcQDebug_new2(o.h))
 
 proc operatorAssign*(self: gen_qdebug_types.QDebug, other: gen_qdebug_types.QDebug): void =
   fcQDebug_operatorAssign(self.h, other.h)
@@ -152,7 +142,7 @@ proc noquote*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
 proc maybeQuote*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_maybeQuote(self.h))
 
-proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: gen_qchar.QChar): gen_qdebug_types.QDebug =
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: gen_qchar_types.QChar): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeft(self.h, t.h))
 
 proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: bool): gen_qdebug_types.QDebug =
@@ -206,19 +196,22 @@ proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: pointer): gen_qdebug_t
 proc maybeQuote*(self: gen_qdebug_types.QDebug, c: cchar): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_maybeQuote1(self.h, c))
 
+proc create*(T: type gen_qdebug_types.QDebug,
+    device: gen_qiodevice_types.QIODevice): gen_qdebug_types.QDebug =
+  gen_qdebug_types.QDebug(h: fcQDebug_new(device.h))
+
+proc create*(T: type gen_qdebug_types.QDebug,
+    o: gen_qdebug_types.QDebug): gen_qdebug_types.QDebug =
+  gen_qdebug_types.QDebug(h: fcQDebug_new2(o.h))
+
 proc delete*(self: gen_qdebug_types.QDebug) =
   fcQDebug_delete(self.h)
-
-func init*(T: type gen_qdebug_types.QDebugStateSaver, h: ptr cQDebugStateSaver): gen_qdebug_types.QDebugStateSaver =
-  T(h: h)
-proc create*(T: type gen_qdebug_types.QDebugStateSaver, dbg: gen_qdebug_types.QDebug): gen_qdebug_types.QDebugStateSaver =
-  gen_qdebug_types.QDebugStateSaver.init(fcQDebugStateSaver_new(dbg.h))
+proc create*(T: type gen_qdebug_types.QDebugStateSaver,
+    dbg: gen_qdebug_types.QDebug): gen_qdebug_types.QDebugStateSaver =
+  gen_qdebug_types.QDebugStateSaver(h: fcQDebugStateSaver_new(dbg.h))
 
 proc delete*(self: gen_qdebug_types.QDebugStateSaver) =
   fcQDebugStateSaver_delete(self.h)
-
-func init*(T: type gen_qdebug_types.QNoDebug, h: ptr cQNoDebug): gen_qdebug_types.QNoDebug =
-  T(h: h)
 proc space*(self: gen_qdebug_types.QNoDebug, ): gen_qdebug_types.QNoDebug =
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_space(self.h))
 

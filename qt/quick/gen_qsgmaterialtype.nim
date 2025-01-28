@@ -33,7 +33,6 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qsgmaterialtype.cpp", cflags).}
 
-
 import gen_qsgmaterialtype_types
 export gen_qsgmaterialtype_types
 
@@ -42,8 +41,5 @@ type cQSGMaterialType*{.exportc: "QSGMaterialType", incompleteStruct.} = object
 
 proc fcQSGMaterialType_delete(self: pointer) {.importc: "QSGMaterialType_delete".}
 
-
-func init*(T: type gen_qsgmaterialtype_types.QSGMaterialType, h: ptr cQSGMaterialType): gen_qsgmaterialtype_types.QSGMaterialType =
-  T(h: h)
 proc delete*(self: gen_qsgmaterialtype_types.QSGMaterialType) =
   fcQSGMaterialType_delete(self.h)

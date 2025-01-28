@@ -33,7 +33,6 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qstringbuilder.cpp", cflags).}
 
-
 import gen_qstringbuilder_types
 export gen_qstringbuilder_types
 
@@ -42,8 +41,5 @@ type cQAbstractConcatenable*{.exportc: "QAbstractConcatenable", incompleteStruct
 
 proc fcQAbstractConcatenable_delete(self: pointer) {.importc: "QAbstractConcatenable_delete".}
 
-
-func init*(T: type gen_qstringbuilder_types.QAbstractConcatenable, h: ptr cQAbstractConcatenable): gen_qstringbuilder_types.QAbstractConcatenable =
-  T(h: h)
 proc delete*(self: gen_qstringbuilder_types.QAbstractConcatenable) =
   fcQAbstractConcatenable_delete(self.h)

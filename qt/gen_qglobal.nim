@@ -35,7 +35,6 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 
 
 type QtPrivateDeprecated_tEnum* = distinct cint
-
 import gen_qglobal_types
 export gen_qglobal_types
 

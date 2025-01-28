@@ -6,4 +6,3 @@ type QWebElementCollectionconst_iterator* {.inheritable, pure.} = object
   h*: pointer
 type QWebElementCollectioniterator* {.inheritable, pure.} = object
   h*: pointer
-

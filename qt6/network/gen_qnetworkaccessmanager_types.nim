@@ -1,4 +1,4 @@
 import gen_qobject_types
 export gen_qobject_types
-type QNetworkAccessManager*  = object of gen_qobject_types.QObject
 
+type QNetworkAccessManager* = object of gen_qobject_types.QObject

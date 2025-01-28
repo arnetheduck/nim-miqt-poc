@@ -39,22 +39,18 @@ template NoCompression*(_: type QResourceCompressionEnum): untyped = 0
 template ZlibCompression*(_: type QResourceCompressionEnum): untyped = 1
 template ZstdCompression*(_: type QResourceCompressionEnum): untyped = 2
 
-
 import gen_qresource_types
 export gen_qresource_types
 
 import
-  gen_qdatetime,
-  gen_qlocale
+  gen_qdatetime_types,
+  gen_qlocale_types
 export
-  gen_qdatetime,
-  gen_qlocale
+  gen_qdatetime_types,
+  gen_qlocale_types
 
 type cQResource*{.exportc: "QResource", incompleteStruct.} = object
 
-proc fcQResource_new(): ptr cQResource {.importc: "QResource_new".}
-proc fcQResource_new2(file: struct_miqt_string): ptr cQResource {.importc: "QResource_new2".}
-proc fcQResource_new3(file: struct_miqt_string, locale: pointer): ptr cQResource {.importc: "QResource_new3".}
 proc fcQResource_setFileName(self: pointer, file: struct_miqt_string): void {.importc: "QResource_setFileName".}
 proc fcQResource_fileName(self: pointer, ): struct_miqt_string {.importc: "QResource_fileName".}
 proc fcQResource_absoluteFilePath(self: pointer, ): struct_miqt_string {.importc: "QResource_absoluteFilePath".}
@@ -78,19 +74,10 @@ proc fcQResource_registerResource2(rccFilename: struct_miqt_string, resourceRoot
 proc fcQResource_unregisterResource2(rccFilename: struct_miqt_string, resourceRoot: struct_miqt_string): bool {.importc: "QResource_unregisterResource2".}
 proc fcQResource_registerResource22(rccData: ptr uint8, resourceRoot: struct_miqt_string): bool {.importc: "QResource_registerResource22".}
 proc fcQResource_unregisterResource22(rccData: ptr uint8, resourceRoot: struct_miqt_string): bool {.importc: "QResource_unregisterResource22".}
+proc fcQResource_new(): ptr cQResource {.importc: "QResource_new".}
+proc fcQResource_new2(file: struct_miqt_string): ptr cQResource {.importc: "QResource_new2".}
+proc fcQResource_new3(file: struct_miqt_string, locale: pointer): ptr cQResource {.importc: "QResource_new3".}
 proc fcQResource_delete(self: pointer) {.importc: "QResource_delete".}
-
-
-func init*(T: type gen_qresource_types.QResource, h: ptr cQResource): gen_qresource_types.QResource =
-  T(h: h)
-proc create*(T: type gen_qresource_types.QResource, ): gen_qresource_types.QResource =
-  gen_qresource_types.QResource.init(fcQResource_new())
-
-proc create*(T: type gen_qresource_types.QResource, file: string): gen_qresource_types.QResource =
-  gen_qresource_types.QResource.init(fcQResource_new2(struct_miqt_string(data: file, len: csize_t(len(file)))))
-
-proc create*(T: type gen_qresource_types.QResource, file: string, locale: gen_qlocale.QLocale): gen_qresource_types.QResource =
-  gen_qresource_types.QResource.init(fcQResource_new3(struct_miqt_string(data: file, len: csize_t(len(file))), locale.h))
 
 proc setFileName*(self: gen_qresource_types.QResource, file: string): void =
   fcQResource_setFileName(self.h, struct_miqt_string(data: file, len: csize_t(len(file))))
@@ -107,11 +94,11 @@ proc absoluteFilePath*(self: gen_qresource_types.QResource, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc setLocale*(self: gen_qresource_types.QResource, locale: gen_qlocale.QLocale): void =
+proc setLocale*(self: gen_qresource_types.QResource, locale: gen_qlocale_types.QLocale): void =
   fcQResource_setLocale(self.h, locale.h)
 
-proc locale*(self: gen_qresource_types.QResource, ): gen_qlocale.QLocale =
-  gen_qlocale.QLocale(h: fcQResource_locale(self.h))
+proc locale*(self: gen_qresource_types.QResource, ): gen_qlocale_types.QLocale =
+  gen_qlocale_types.QLocale(h: fcQResource_locale(self.h))
 
 proc isValid*(self: gen_qresource_types.QResource, ): bool =
   fcQResource_isValid(self.h)
@@ -134,8 +121,8 @@ proc uncompressedData*(self: gen_qresource_types.QResource, ): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc lastModified*(self: gen_qresource_types.QResource, ): gen_qdatetime.QDateTime =
-  gen_qdatetime.QDateTime(h: fcQResource_lastModified(self.h))
+proc lastModified*(self: gen_qresource_types.QResource, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQResource_lastModified(self.h))
 
 proc addSearchPath*(_: type gen_qresource_types.QResource, path: string): void =
   fcQResource_addSearchPath(struct_miqt_string(data: path, len: csize_t(len(path))))
@@ -177,6 +164,17 @@ proc registerResource*(_: type gen_qresource_types.QResource, rccData: ptr uint8
 
 proc unregisterResource*(_: type gen_qresource_types.QResource, rccData: ptr uint8, resourceRoot: string): bool =
   fcQResource_unregisterResource22(rccData, struct_miqt_string(data: resourceRoot, len: csize_t(len(resourceRoot))))
+
+proc create*(T: type gen_qresource_types.QResource): gen_qresource_types.QResource =
+  gen_qresource_types.QResource(h: fcQResource_new())
+
+proc create*(T: type gen_qresource_types.QResource,
+    file: string): gen_qresource_types.QResource =
+  gen_qresource_types.QResource(h: fcQResource_new2(struct_miqt_string(data: file, len: csize_t(len(file)))))
+
+proc create*(T: type gen_qresource_types.QResource,
+    file: string, locale: gen_qlocale_types.QLocale): gen_qresource_types.QResource =
+  gen_qresource_types.QResource(h: fcQResource_new3(struct_miqt_string(data: file, len: csize_t(len(file))), locale.h))
 
 proc delete*(self: gen_qresource_types.QResource) =
   fcQResource_delete(self.h)

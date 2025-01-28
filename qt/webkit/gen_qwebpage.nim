@@ -200,62 +200,63 @@ template QtNetwork*(_: type QWebPageErrorDomainEnum): untyped = 0
 template Http*(_: type QWebPageErrorDomainEnum): untyped = 1
 template WebKit*(_: type QWebPageErrorDomainEnum): untyped = 2
 
-
 import gen_qwebpage_types
 export gen_qwebpage_types
 
 import
-  gen_qaction,
-  gen_qcoreevent,
-  gen_qevent,
-  gen_qmenu,
-  gen_qmetaobject,
-  gen_qnetworkaccessmanager,
-  gen_qnetworkreply,
-  gen_qnetworkrequest,
+  gen_qaction_types,
+  gen_qcoreevent_types,
+  gen_qevent_types,
+  gen_qmenu_types,
+  gen_qmetaobject_types,
+  gen_qnetworkaccessmanager_types,
+  gen_qnetworkreply_types,
+  gen_qnetworkrequest_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qpalette,
-  gen_qpoint,
-  gen_qrect,
-  gen_qsize,
-  gen_qundostack,
-  gen_qurl,
-  gen_qvariant,
-  gen_qwebelement,
-  gen_qwebframe,
-  gen_qwebfullscreenrequest,
-  gen_qwebhistory,
-  gen_qwebpluginfactory,
-  gen_qwebsecurityorigin,
-  gen_qwebsettings,
-  gen_qwidget
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpalette_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qsize_types,
+  gen_qundostack_types,
+  gen_qurl_types,
+  gen_qvariant_types,
+  gen_qwebelement_types,
+  gen_qwebframe_types,
+  gen_qwebfullscreenrequest_types,
+  gen_qwebhistory_types,
+  gen_qwebpluginfactory_types,
+  gen_qwebsecurityorigin_types,
+  gen_qwebsettings_types,
+  gen_qwidget_types
 export
-  gen_qaction,
-  gen_qcoreevent,
-  gen_qevent,
-  gen_qmenu,
-  gen_qmetaobject,
-  gen_qnetworkaccessmanager,
-  gen_qnetworkreply,
-  gen_qnetworkrequest,
+  gen_qaction_types,
+  gen_qcoreevent_types,
+  gen_qevent_types,
+  gen_qmenu_types,
+  gen_qmetaobject_types,
+  gen_qnetworkaccessmanager_types,
+  gen_qnetworkreply_types,
+  gen_qnetworkrequest_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qpalette,
-  gen_qpoint,
-  gen_qrect,
-  gen_qsize,
-  gen_qundostack,
-  gen_qurl,
-  gen_qvariant,
-  gen_qwebelement,
-  gen_qwebframe,
-  gen_qwebfullscreenrequest,
-  gen_qwebhistory,
-  gen_qwebpluginfactory,
-  gen_qwebsecurityorigin,
-  gen_qwebsettings,
-  gen_qwidget
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpalette_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qsize_types,
+  gen_qundostack_types,
+  gen_qurl_types,
+  gen_qvariant_types,
+  gen_qwebelement_types,
+  gen_qwebframe_types,
+  gen_qwebfullscreenrequest_types,
+  gen_qwebhistory_types,
+  gen_qwebpluginfactory_types,
+  gen_qwebsecurityorigin_types,
+  gen_qwebsettings_types,
+  gen_qwidget_types
 
 type cQWebPage*{.exportc: "QWebPage", incompleteStruct.} = object
 type cQWebPageViewportAttributes*{.exportc: "QWebPage__ViewportAttributes", incompleteStruct.} = object
@@ -266,8 +267,6 @@ type cQWebPageChooseMultipleFilesExtensionReturn*{.exportc: "QWebPage__ChooseMul
 type cQWebPageErrorPageExtensionOption*{.exportc: "QWebPage__ErrorPageExtensionOption", incompleteStruct.} = object
 type cQWebPageErrorPageExtensionReturn*{.exportc: "QWebPage__ErrorPageExtensionReturn", incompleteStruct.} = object
 
-proc fcQWebPage_new(): ptr cQWebPage {.importc: "QWebPage_new".}
-proc fcQWebPage_new2(parent: pointer): ptr cQWebPage {.importc: "QWebPage_new2".}
 proc fcQWebPage_metaObject(self: pointer, ): pointer {.importc: "QWebPage_metaObject".}
 proc fcQWebPage_metacast(self: pointer, param1: cstring): pointer {.importc: "QWebPage_metacast".}
 proc fcQWebPage_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QWebPage_metacall".}
@@ -328,120 +327,122 @@ proc fcQWebPage_extension(self: pointer, extension: cint, option: pointer, outpu
 proc fcQWebPage_supportsExtension(self: pointer, extension: cint): bool {.importc: "QWebPage_supportsExtension".}
 proc fcQWebPage_shouldInterruptJavaScript(self: pointer, ): bool {.importc: "QWebPage_shouldInterruptJavaScript".}
 proc fcQWebPage_loadStarted(self: pointer, ): void {.importc: "QWebPage_loadStarted".}
-proc fQWebPage_connect_loadStarted(self: pointer, slot: int) {.importc: "QWebPage_connect_loadStarted".}
+proc fcQWebPage_connect_loadStarted(self: pointer, slot: int) {.importc: "QWebPage_connect_loadStarted".}
 proc fcQWebPage_loadProgress(self: pointer, progress: cint): void {.importc: "QWebPage_loadProgress".}
-proc fQWebPage_connect_loadProgress(self: pointer, slot: int) {.importc: "QWebPage_connect_loadProgress".}
+proc fcQWebPage_connect_loadProgress(self: pointer, slot: int) {.importc: "QWebPage_connect_loadProgress".}
 proc fcQWebPage_loadFinished(self: pointer, ok: bool): void {.importc: "QWebPage_loadFinished".}
-proc fQWebPage_connect_loadFinished(self: pointer, slot: int) {.importc: "QWebPage_connect_loadFinished".}
+proc fcQWebPage_connect_loadFinished(self: pointer, slot: int) {.importc: "QWebPage_connect_loadFinished".}
 proc fcQWebPage_linkHovered(self: pointer, link: struct_miqt_string, title: struct_miqt_string, textContent: struct_miqt_string): void {.importc: "QWebPage_linkHovered".}
-proc fQWebPage_connect_linkHovered(self: pointer, slot: int) {.importc: "QWebPage_connect_linkHovered".}
+proc fcQWebPage_connect_linkHovered(self: pointer, slot: int) {.importc: "QWebPage_connect_linkHovered".}
 proc fcQWebPage_statusBarMessage(self: pointer, text: struct_miqt_string): void {.importc: "QWebPage_statusBarMessage".}
-proc fQWebPage_connect_statusBarMessage(self: pointer, slot: int) {.importc: "QWebPage_connect_statusBarMessage".}
+proc fcQWebPage_connect_statusBarMessage(self: pointer, slot: int) {.importc: "QWebPage_connect_statusBarMessage".}
 proc fcQWebPage_selectionChanged(self: pointer, ): void {.importc: "QWebPage_selectionChanged".}
-proc fQWebPage_connect_selectionChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_selectionChanged".}
+proc fcQWebPage_connect_selectionChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_selectionChanged".}
 proc fcQWebPage_frameCreated(self: pointer, frame: pointer): void {.importc: "QWebPage_frameCreated".}
-proc fQWebPage_connect_frameCreated(self: pointer, slot: int) {.importc: "QWebPage_connect_frameCreated".}
+proc fcQWebPage_connect_frameCreated(self: pointer, slot: int) {.importc: "QWebPage_connect_frameCreated".}
 proc fcQWebPage_geometryChangeRequested(self: pointer, geom: pointer): void {.importc: "QWebPage_geometryChangeRequested".}
-proc fQWebPage_connect_geometryChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_geometryChangeRequested".}
+proc fcQWebPage_connect_geometryChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_geometryChangeRequested".}
 proc fcQWebPage_repaintRequested(self: pointer, dirtyRect: pointer): void {.importc: "QWebPage_repaintRequested".}
-proc fQWebPage_connect_repaintRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_repaintRequested".}
+proc fcQWebPage_connect_repaintRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_repaintRequested".}
 proc fcQWebPage_scrollRequested(self: pointer, dx: cint, dy: cint, scrollViewRect: pointer): void {.importc: "QWebPage_scrollRequested".}
-proc fQWebPage_connect_scrollRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_scrollRequested".}
+proc fcQWebPage_connect_scrollRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_scrollRequested".}
 proc fcQWebPage_windowCloseRequested(self: pointer, ): void {.importc: "QWebPage_windowCloseRequested".}
-proc fQWebPage_connect_windowCloseRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_windowCloseRequested".}
+proc fcQWebPage_connect_windowCloseRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_windowCloseRequested".}
 proc fcQWebPage_printRequested(self: pointer, frame: pointer): void {.importc: "QWebPage_printRequested".}
-proc fQWebPage_connect_printRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_printRequested".}
+proc fcQWebPage_connect_printRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_printRequested".}
 proc fcQWebPage_linkClicked(self: pointer, url: pointer): void {.importc: "QWebPage_linkClicked".}
-proc fQWebPage_connect_linkClicked(self: pointer, slot: int) {.importc: "QWebPage_connect_linkClicked".}
+proc fcQWebPage_connect_linkClicked(self: pointer, slot: int) {.importc: "QWebPage_connect_linkClicked".}
 proc fcQWebPage_toolBarVisibilityChangeRequested(self: pointer, visible: bool): void {.importc: "QWebPage_toolBarVisibilityChangeRequested".}
-proc fQWebPage_connect_toolBarVisibilityChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_toolBarVisibilityChangeRequested".}
+proc fcQWebPage_connect_toolBarVisibilityChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_toolBarVisibilityChangeRequested".}
 proc fcQWebPage_statusBarVisibilityChangeRequested(self: pointer, visible: bool): void {.importc: "QWebPage_statusBarVisibilityChangeRequested".}
-proc fQWebPage_connect_statusBarVisibilityChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_statusBarVisibilityChangeRequested".}
+proc fcQWebPage_connect_statusBarVisibilityChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_statusBarVisibilityChangeRequested".}
 proc fcQWebPage_menuBarVisibilityChangeRequested(self: pointer, visible: bool): void {.importc: "QWebPage_menuBarVisibilityChangeRequested".}
-proc fQWebPage_connect_menuBarVisibilityChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_menuBarVisibilityChangeRequested".}
+proc fcQWebPage_connect_menuBarVisibilityChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_menuBarVisibilityChangeRequested".}
 proc fcQWebPage_unsupportedContent(self: pointer, reply: pointer): void {.importc: "QWebPage_unsupportedContent".}
-proc fQWebPage_connect_unsupportedContent(self: pointer, slot: int) {.importc: "QWebPage_connect_unsupportedContent".}
+proc fcQWebPage_connect_unsupportedContent(self: pointer, slot: int) {.importc: "QWebPage_connect_unsupportedContent".}
 proc fcQWebPage_downloadRequested(self: pointer, request: pointer): void {.importc: "QWebPage_downloadRequested".}
-proc fQWebPage_connect_downloadRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_downloadRequested".}
+proc fcQWebPage_connect_downloadRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_downloadRequested".}
 proc fcQWebPage_focusedElementChanged(self: pointer, element: pointer): void {.importc: "QWebPage_focusedElementChanged".}
-proc fQWebPage_connect_focusedElementChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_focusedElementChanged".}
+proc fcQWebPage_connect_focusedElementChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_focusedElementChanged".}
 proc fcQWebPage_microFocusChanged(self: pointer, ): void {.importc: "QWebPage_microFocusChanged".}
-proc fQWebPage_connect_microFocusChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_microFocusChanged".}
+proc fcQWebPage_connect_microFocusChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_microFocusChanged".}
 proc fcQWebPage_contentsChanged(self: pointer, ): void {.importc: "QWebPage_contentsChanged".}
-proc fQWebPage_connect_contentsChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_contentsChanged".}
+proc fcQWebPage_connect_contentsChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_contentsChanged".}
 proc fcQWebPage_databaseQuotaExceeded(self: pointer, frame: pointer, databaseName: struct_miqt_string): void {.importc: "QWebPage_databaseQuotaExceeded".}
-proc fQWebPage_connect_databaseQuotaExceeded(self: pointer, slot: int) {.importc: "QWebPage_connect_databaseQuotaExceeded".}
+proc fcQWebPage_connect_databaseQuotaExceeded(self: pointer, slot: int) {.importc: "QWebPage_connect_databaseQuotaExceeded".}
 proc fcQWebPage_applicationCacheQuotaExceeded(self: pointer, origin: pointer, defaultOriginQuota: culonglong, totalSpaceNeeded: culonglong): void {.importc: "QWebPage_applicationCacheQuotaExceeded".}
-proc fQWebPage_connect_applicationCacheQuotaExceeded(self: pointer, slot: int) {.importc: "QWebPage_connect_applicationCacheQuotaExceeded".}
+proc fcQWebPage_connect_applicationCacheQuotaExceeded(self: pointer, slot: int) {.importc: "QWebPage_connect_applicationCacheQuotaExceeded".}
 proc fcQWebPage_saveFrameStateRequested(self: pointer, frame: pointer, item: pointer): void {.importc: "QWebPage_saveFrameStateRequested".}
-proc fQWebPage_connect_saveFrameStateRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_saveFrameStateRequested".}
+proc fcQWebPage_connect_saveFrameStateRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_saveFrameStateRequested".}
 proc fcQWebPage_restoreFrameStateRequested(self: pointer, frame: pointer): void {.importc: "QWebPage_restoreFrameStateRequested".}
-proc fQWebPage_connect_restoreFrameStateRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_restoreFrameStateRequested".}
+proc fcQWebPage_connect_restoreFrameStateRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_restoreFrameStateRequested".}
 proc fcQWebPage_viewportChangeRequested(self: pointer, ): void {.importc: "QWebPage_viewportChangeRequested".}
-proc fQWebPage_connect_viewportChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_viewportChangeRequested".}
+proc fcQWebPage_connect_viewportChangeRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_viewportChangeRequested".}
 proc fcQWebPage_featurePermissionRequested(self: pointer, frame: pointer, feature: cint): void {.importc: "QWebPage_featurePermissionRequested".}
-proc fQWebPage_connect_featurePermissionRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_featurePermissionRequested".}
+proc fcQWebPage_connect_featurePermissionRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_featurePermissionRequested".}
 proc fcQWebPage_featurePermissionRequestCanceled(self: pointer, frame: pointer, feature: cint): void {.importc: "QWebPage_featurePermissionRequestCanceled".}
-proc fQWebPage_connect_featurePermissionRequestCanceled(self: pointer, slot: int) {.importc: "QWebPage_connect_featurePermissionRequestCanceled".}
+proc fcQWebPage_connect_featurePermissionRequestCanceled(self: pointer, slot: int) {.importc: "QWebPage_connect_featurePermissionRequestCanceled".}
 proc fcQWebPage_fullScreenRequested(self: pointer, fullScreenRequest: pointer): void {.importc: "QWebPage_fullScreenRequested".}
-proc fQWebPage_connect_fullScreenRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_fullScreenRequested".}
+proc fcQWebPage_connect_fullScreenRequested(self: pointer, slot: int) {.importc: "QWebPage_connect_fullScreenRequested".}
 proc fcQWebPage_consoleMessageReceived(self: pointer, source: cint, level: cint, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string): void {.importc: "QWebPage_consoleMessageReceived".}
-proc fQWebPage_connect_consoleMessageReceived(self: pointer, slot: int) {.importc: "QWebPage_connect_consoleMessageReceived".}
+proc fcQWebPage_connect_consoleMessageReceived(self: pointer, slot: int) {.importc: "QWebPage_connect_consoleMessageReceived".}
 proc fcQWebPage_recentlyAudibleChanged(self: pointer, recentlyAudible: bool): void {.importc: "QWebPage_recentlyAudibleChanged".}
-proc fQWebPage_connect_recentlyAudibleChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_recentlyAudibleChanged".}
+proc fcQWebPage_connect_recentlyAudibleChanged(self: pointer, slot: int) {.importc: "QWebPage_connect_recentlyAudibleChanged".}
 proc fcQWebPage_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebPage_tr2".}
 proc fcQWebPage_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebPage_tr3".}
 proc fcQWebPage_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebPage_trUtf82".}
 proc fcQWebPage_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebPage_trUtf83".}
 proc fcQWebPage_findText2(self: pointer, subString: struct_miqt_string, options: cint): bool {.importc: "QWebPage_findText2".}
-proc fQWebPage_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebPage_virtualbase_metaObject".}
-proc fcQWebPage_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_metaObject".}
-proc fQWebPage_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebPage_virtualbase_metacast".}
-proc fcQWebPage_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_metacast".}
-proc fQWebPage_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebPage_virtualbase_metacall".}
-proc fcQWebPage_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_metacall".}
-proc fQWebPage_virtualbase_triggerAction(self: pointer, action: cint, checked: bool): void{.importc: "QWebPage_virtualbase_triggerAction".}
-proc fcQWebPage_override_virtual_triggerAction(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_triggerAction".}
-proc fQWebPage_virtualbase_event(self: pointer, param1: pointer): bool{.importc: "QWebPage_virtualbase_event".}
-proc fcQWebPage_override_virtual_event(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_event".}
-proc fQWebPage_virtualbase_extension(self: pointer, extension: cint, option: pointer, output: pointer): bool{.importc: "QWebPage_virtualbase_extension".}
-proc fcQWebPage_override_virtual_extension(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_extension".}
-proc fQWebPage_virtualbase_supportsExtension(self: pointer, extension: cint): bool{.importc: "QWebPage_virtualbase_supportsExtension".}
-proc fcQWebPage_override_virtual_supportsExtension(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_supportsExtension".}
-proc fQWebPage_virtualbase_shouldInterruptJavaScript(self: pointer, ): bool{.importc: "QWebPage_virtualbase_shouldInterruptJavaScript".}
-proc fcQWebPage_override_virtual_shouldInterruptJavaScript(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_shouldInterruptJavaScript".}
-proc fQWebPage_virtualbase_createWindow(self: pointer, typeVal: cint): pointer{.importc: "QWebPage_virtualbase_createWindow".}
-proc fcQWebPage_override_virtual_createWindow(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_createWindow".}
-proc fQWebPage_virtualbase_createPlugin(self: pointer, classid: struct_miqt_string, url: pointer, paramNames: struct_miqt_array, paramValues: struct_miqt_array): pointer{.importc: "QWebPage_virtualbase_createPlugin".}
-proc fcQWebPage_override_virtual_createPlugin(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_createPlugin".}
-proc fQWebPage_virtualbase_acceptNavigationRequest(self: pointer, frame: pointer, request: pointer, typeVal: cint): bool{.importc: "QWebPage_virtualbase_acceptNavigationRequest".}
-proc fcQWebPage_override_virtual_acceptNavigationRequest(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_acceptNavigationRequest".}
-proc fQWebPage_virtualbase_chooseFile(self: pointer, originatingFrame: pointer, oldFile: struct_miqt_string): struct_miqt_string{.importc: "QWebPage_virtualbase_chooseFile".}
-proc fcQWebPage_override_virtual_chooseFile(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_chooseFile".}
-proc fQWebPage_virtualbase_javaScriptAlert(self: pointer, originatingFrame: pointer, msg: struct_miqt_string): void{.importc: "QWebPage_virtualbase_javaScriptAlert".}
-proc fcQWebPage_override_virtual_javaScriptAlert(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_javaScriptAlert".}
-proc fQWebPage_virtualbase_javaScriptConfirm(self: pointer, originatingFrame: pointer, msg: struct_miqt_string): bool{.importc: "QWebPage_virtualbase_javaScriptConfirm".}
-proc fcQWebPage_override_virtual_javaScriptConfirm(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_javaScriptConfirm".}
-proc fQWebPage_virtualbase_javaScriptConsoleMessage(self: pointer, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string): void{.importc: "QWebPage_virtualbase_javaScriptConsoleMessage".}
-proc fcQWebPage_override_virtual_javaScriptConsoleMessage(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_javaScriptConsoleMessage".}
-proc fQWebPage_virtualbase_userAgentForUrl(self: pointer, url: pointer): struct_miqt_string{.importc: "QWebPage_virtualbase_userAgentForUrl".}
-proc fcQWebPage_override_virtual_userAgentForUrl(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_userAgentForUrl".}
-proc fQWebPage_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QWebPage_virtualbase_eventFilter".}
-proc fcQWebPage_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_eventFilter".}
-proc fQWebPage_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QWebPage_virtualbase_timerEvent".}
-proc fcQWebPage_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_timerEvent".}
-proc fQWebPage_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QWebPage_virtualbase_childEvent".}
-proc fcQWebPage_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_childEvent".}
-proc fQWebPage_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QWebPage_virtualbase_customEvent".}
-proc fcQWebPage_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_customEvent".}
-proc fQWebPage_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QWebPage_virtualbase_connectNotify".}
-proc fcQWebPage_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_connectNotify".}
-proc fQWebPage_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebPage_virtualbase_disconnectNotify".}
-proc fcQWebPage_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_disconnectNotify".}
+type cQWebPageVTable = object
+  destructor*: proc(vtbl: ptr cQWebPageVTable, self: ptr cQWebPage) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  triggerAction*: proc(vtbl, self: pointer, action: cint, checked: bool): void {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, param1: pointer): bool {.cdecl, raises: [], gcsafe.}
+  extension*: proc(vtbl, self: pointer, extension: cint, option: pointer, output: pointer): bool {.cdecl, raises: [], gcsafe.}
+  supportsExtension*: proc(vtbl, self: pointer, extension: cint): bool {.cdecl, raises: [], gcsafe.}
+  shouldInterruptJavaScript*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  createWindow*: proc(vtbl, self: pointer, typeVal: cint): pointer {.cdecl, raises: [], gcsafe.}
+  createPlugin*: proc(vtbl, self: pointer, classid: struct_miqt_string, url: pointer, paramNames: struct_miqt_array, paramValues: struct_miqt_array): pointer {.cdecl, raises: [], gcsafe.}
+  acceptNavigationRequest*: proc(vtbl, self: pointer, frame: pointer, request: pointer, typeVal: cint): bool {.cdecl, raises: [], gcsafe.}
+  chooseFile*: proc(vtbl, self: pointer, originatingFrame: pointer, oldFile: struct_miqt_string): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  javaScriptAlert*: proc(vtbl, self: pointer, originatingFrame: pointer, msg: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  javaScriptConfirm*: proc(vtbl, self: pointer, originatingFrame: pointer, msg: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  javaScriptConsoleMessage*: proc(vtbl, self: pointer, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  userAgentForUrl*: proc(vtbl, self: pointer, url: pointer): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQWebPage_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QWebPage_virtualbase_metaObject".}
+proc fcQWebPage_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QWebPage_virtualbase_metacast".}
+proc fcQWebPage_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QWebPage_virtualbase_metacall".}
+proc fcQWebPage_virtualbase_triggerAction(self: pointer, action: cint, checked: bool): void {.importc: "QWebPage_virtualbase_triggerAction".}
+proc fcQWebPage_virtualbase_event(self: pointer, param1: pointer): bool {.importc: "QWebPage_virtualbase_event".}
+proc fcQWebPage_virtualbase_extension(self: pointer, extension: cint, option: pointer, output: pointer): bool {.importc: "QWebPage_virtualbase_extension".}
+proc fcQWebPage_virtualbase_supportsExtension(self: pointer, extension: cint): bool {.importc: "QWebPage_virtualbase_supportsExtension".}
+proc fcQWebPage_virtualbase_shouldInterruptJavaScript(self: pointer, ): bool {.importc: "QWebPage_virtualbase_shouldInterruptJavaScript".}
+proc fcQWebPage_virtualbase_createWindow(self: pointer, typeVal: cint): pointer {.importc: "QWebPage_virtualbase_createWindow".}
+proc fcQWebPage_virtualbase_createPlugin(self: pointer, classid: struct_miqt_string, url: pointer, paramNames: struct_miqt_array, paramValues: struct_miqt_array): pointer {.importc: "QWebPage_virtualbase_createPlugin".}
+proc fcQWebPage_virtualbase_acceptNavigationRequest(self: pointer, frame: pointer, request: pointer, typeVal: cint): bool {.importc: "QWebPage_virtualbase_acceptNavigationRequest".}
+proc fcQWebPage_virtualbase_chooseFile(self: pointer, originatingFrame: pointer, oldFile: struct_miqt_string): struct_miqt_string {.importc: "QWebPage_virtualbase_chooseFile".}
+proc fcQWebPage_virtualbase_javaScriptAlert(self: pointer, originatingFrame: pointer, msg: struct_miqt_string): void {.importc: "QWebPage_virtualbase_javaScriptAlert".}
+proc fcQWebPage_virtualbase_javaScriptConfirm(self: pointer, originatingFrame: pointer, msg: struct_miqt_string): bool {.importc: "QWebPage_virtualbase_javaScriptConfirm".}
+proc fcQWebPage_virtualbase_javaScriptConsoleMessage(self: pointer, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string): void {.importc: "QWebPage_virtualbase_javaScriptConsoleMessage".}
+proc fcQWebPage_virtualbase_userAgentForUrl(self: pointer, url: pointer): struct_miqt_string {.importc: "QWebPage_virtualbase_userAgentForUrl".}
+proc fcQWebPage_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QWebPage_virtualbase_eventFilter".}
+proc fcQWebPage_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QWebPage_virtualbase_timerEvent".}
+proc fcQWebPage_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QWebPage_virtualbase_childEvent".}
+proc fcQWebPage_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QWebPage_virtualbase_customEvent".}
+proc fcQWebPage_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QWebPage_virtualbase_connectNotify".}
+proc fcQWebPage_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QWebPage_virtualbase_disconnectNotify".}
+proc fcQWebPage_new(vtbl: pointer, ): ptr cQWebPage {.importc: "QWebPage_new".}
+proc fcQWebPage_new2(vtbl: pointer, parent: pointer): ptr cQWebPage {.importc: "QWebPage_new2".}
 proc fcQWebPage_staticMetaObject(): pointer {.importc: "QWebPage_staticMetaObject".}
 proc fcQWebPage_delete(self: pointer) {.importc: "QWebPage_delete".}
-proc fcQWebPageViewportAttributes_new(): ptr cQWebPageViewportAttributes {.importc: "QWebPage__ViewportAttributes_new".}
-proc fcQWebPageViewportAttributes_new2(other: pointer): ptr cQWebPageViewportAttributes {.importc: "QWebPage__ViewportAttributes_new2".}
 proc fcQWebPageViewportAttributes_operatorAssign(self: pointer, other: pointer): void {.importc: "QWebPage__ViewportAttributes_operatorAssign".}
 proc fcQWebPageViewportAttributes_initialScaleFactor(self: pointer, ): float64 {.importc: "QWebPage__ViewportAttributes_initialScaleFactor".}
 proc fcQWebPageViewportAttributes_minimumScaleFactor(self: pointer, ): float64 {.importc: "QWebPage__ViewportAttributes_minimumScaleFactor".}
@@ -450,6 +451,8 @@ proc fcQWebPageViewportAttributes_devicePixelRatio(self: pointer, ): float64 {.i
 proc fcQWebPageViewportAttributes_isUserScalable(self: pointer, ): bool {.importc: "QWebPage__ViewportAttributes_isUserScalable".}
 proc fcQWebPageViewportAttributes_isValid(self: pointer, ): bool {.importc: "QWebPage__ViewportAttributes_isValid".}
 proc fcQWebPageViewportAttributes_size(self: pointer, ): pointer {.importc: "QWebPage__ViewportAttributes_size".}
+proc fcQWebPageViewportAttributes_new(): ptr cQWebPageViewportAttributes {.importc: "QWebPage__ViewportAttributes_new".}
+proc fcQWebPageViewportAttributes_new2(other: pointer): ptr cQWebPageViewportAttributes {.importc: "QWebPage__ViewportAttributes_new2".}
 proc fcQWebPageViewportAttributes_delete(self: pointer) {.importc: "QWebPage__ViewportAttributes_delete".}
 proc fcQWebPageExtensionOption_new(param1: pointer): ptr cQWebPageExtensionOption {.importc: "QWebPage__ExtensionOption_new".}
 proc fcQWebPageExtensionOption_delete(self: pointer) {.importc: "QWebPage__ExtensionOption_delete".}
@@ -458,25 +461,16 @@ proc fcQWebPageExtensionReturn_new2(): ptr cQWebPageExtensionReturn {.importc: "
 proc fcQWebPageExtensionReturn_delete(self: pointer) {.importc: "QWebPage__ExtensionReturn_delete".}
 proc fcQWebPageChooseMultipleFilesExtensionOption_delete(self: pointer) {.importc: "QWebPage__ChooseMultipleFilesExtensionOption_delete".}
 proc fcQWebPageChooseMultipleFilesExtensionReturn_delete(self: pointer) {.importc: "QWebPage__ChooseMultipleFilesExtensionReturn_delete".}
-proc fcQWebPageErrorPageExtensionOption_new(param1: pointer): ptr cQWebPageErrorPageExtensionOption {.importc: "QWebPage__ErrorPageExtensionOption_new".}
 proc fcQWebPageErrorPageExtensionOption_operatorAssign(self: pointer, param1: pointer): void {.importc: "QWebPage__ErrorPageExtensionOption_operatorAssign".}
+proc fcQWebPageErrorPageExtensionOption_new(param1: pointer): ptr cQWebPageErrorPageExtensionOption {.importc: "QWebPage__ErrorPageExtensionOption_new".}
 proc fcQWebPageErrorPageExtensionOption_delete(self: pointer) {.importc: "QWebPage__ErrorPageExtensionOption_delete".}
+proc fcQWebPageErrorPageExtensionReturn_operatorAssign(self: pointer, param1: pointer): void {.importc: "QWebPage__ErrorPageExtensionReturn_operatorAssign".}
 proc fcQWebPageErrorPageExtensionReturn_new(): ptr cQWebPageErrorPageExtensionReturn {.importc: "QWebPage__ErrorPageExtensionReturn_new".}
 proc fcQWebPageErrorPageExtensionReturn_new2(param1: pointer): ptr cQWebPageErrorPageExtensionReturn {.importc: "QWebPage__ErrorPageExtensionReturn_new2".}
-proc fcQWebPageErrorPageExtensionReturn_operatorAssign(self: pointer, param1: pointer): void {.importc: "QWebPage__ErrorPageExtensionReturn_operatorAssign".}
 proc fcQWebPageErrorPageExtensionReturn_delete(self: pointer) {.importc: "QWebPage__ErrorPageExtensionReturn_delete".}
 
-
-func init*(T: type gen_qwebpage_types.QWebPage, h: ptr cQWebPage): gen_qwebpage_types.QWebPage =
-  T(h: h)
-proc create*(T: type gen_qwebpage_types.QWebPage, ): gen_qwebpage_types.QWebPage =
-  gen_qwebpage_types.QWebPage.init(fcQWebPage_new())
-
-proc create*(T: type gen_qwebpage_types.QWebPage, parent: gen_qobject.QObject): gen_qwebpage_types.QWebPage =
-  gen_qwebpage_types.QWebPage.init(fcQWebPage_new2(parent.h))
-
-proc metaObject*(self: gen_qwebpage_types.QWebPage, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebPage_metaObject(self.h))
+proc metaObject*(self: gen_qwebpage_types.QWebPage, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebPage_metaObject(self.h))
 
 proc metacast*(self: gen_qwebpage_types.QWebPage, param1: cstring): pointer =
   fcQWebPage_metacast(self.h, param1)
@@ -496,44 +490,44 @@ proc trUtf8*(_: type gen_qwebpage_types.QWebPage, s: cstring): string =
   c_free(v_ms.data)
   vx_ret
 
-proc mainFrame*(self: gen_qwebpage_types.QWebPage, ): gen_qwebframe.QWebFrame =
-  gen_qwebframe.QWebFrame(h: fcQWebPage_mainFrame(self.h))
+proc mainFrame*(self: gen_qwebpage_types.QWebPage, ): gen_qwebframe_types.QWebFrame =
+  gen_qwebframe_types.QWebFrame(h: fcQWebPage_mainFrame(self.h))
 
-proc currentFrame*(self: gen_qwebpage_types.QWebPage, ): gen_qwebframe.QWebFrame =
-  gen_qwebframe.QWebFrame(h: fcQWebPage_currentFrame(self.h))
+proc currentFrame*(self: gen_qwebpage_types.QWebPage, ): gen_qwebframe_types.QWebFrame =
+  gen_qwebframe_types.QWebFrame(h: fcQWebPage_currentFrame(self.h))
 
-proc frameAt*(self: gen_qwebpage_types.QWebPage, pos: gen_qpoint.QPoint): gen_qwebframe.QWebFrame =
-  gen_qwebframe.QWebFrame(h: fcQWebPage_frameAt(self.h, pos.h))
+proc frameAt*(self: gen_qwebpage_types.QWebPage, pos: gen_qpoint_types.QPoint): gen_qwebframe_types.QWebFrame =
+  gen_qwebframe_types.QWebFrame(h: fcQWebPage_frameAt(self.h, pos.h))
 
-proc history*(self: gen_qwebpage_types.QWebPage, ): gen_qwebhistory.QWebHistory =
-  gen_qwebhistory.QWebHistory(h: fcQWebPage_history(self.h))
+proc history*(self: gen_qwebpage_types.QWebPage, ): gen_qwebhistory_types.QWebHistory =
+  gen_qwebhistory_types.QWebHistory(h: fcQWebPage_history(self.h))
 
-proc settings*(self: gen_qwebpage_types.QWebPage, ): gen_qwebsettings.QWebSettings =
-  gen_qwebsettings.QWebSettings(h: fcQWebPage_settings(self.h))
+proc settings*(self: gen_qwebpage_types.QWebPage, ): gen_qwebsettings_types.QWebSettings =
+  gen_qwebsettings_types.QWebSettings(h: fcQWebPage_settings(self.h))
 
-proc setView*(self: gen_qwebpage_types.QWebPage, view: gen_qwidget.QWidget): void =
+proc setView*(self: gen_qwebpage_types.QWebPage, view: gen_qwidget_types.QWidget): void =
   fcQWebPage_setView(self.h, view.h)
 
-proc view*(self: gen_qwebpage_types.QWebPage, ): gen_qwidget.QWidget =
-  gen_qwidget.QWidget(h: fcQWebPage_view(self.h))
+proc view*(self: gen_qwebpage_types.QWebPage, ): gen_qwidget_types.QWidget =
+  gen_qwidget_types.QWidget(h: fcQWebPage_view(self.h))
 
 proc isModified*(self: gen_qwebpage_types.QWebPage, ): bool =
   fcQWebPage_isModified(self.h)
 
-proc undoStack*(self: gen_qwebpage_types.QWebPage, ): gen_qundostack.QUndoStack =
-  gen_qundostack.QUndoStack(h: fcQWebPage_undoStack(self.h))
+proc undoStack*(self: gen_qwebpage_types.QWebPage, ): gen_qundostack_types.QUndoStack =
+  gen_qundostack_types.QUndoStack(h: fcQWebPage_undoStack(self.h))
 
-proc setNetworkAccessManager*(self: gen_qwebpage_types.QWebPage, manager: gen_qnetworkaccessmanager.QNetworkAccessManager): void =
+proc setNetworkAccessManager*(self: gen_qwebpage_types.QWebPage, manager: gen_qnetworkaccessmanager_types.QNetworkAccessManager): void =
   fcQWebPage_setNetworkAccessManager(self.h, manager.h)
 
-proc networkAccessManager*(self: gen_qwebpage_types.QWebPage, ): gen_qnetworkaccessmanager.QNetworkAccessManager =
-  gen_qnetworkaccessmanager.QNetworkAccessManager(h: fcQWebPage_networkAccessManager(self.h))
+proc networkAccessManager*(self: gen_qwebpage_types.QWebPage, ): gen_qnetworkaccessmanager_types.QNetworkAccessManager =
+  gen_qnetworkaccessmanager_types.QNetworkAccessManager(h: fcQWebPage_networkAccessManager(self.h))
 
-proc setPluginFactory*(self: gen_qwebpage_types.QWebPage, factory: gen_qwebpluginfactory.QWebPluginFactory): void =
+proc setPluginFactory*(self: gen_qwebpage_types.QWebPage, factory: gen_qwebpluginfactory_types.QWebPluginFactory): void =
   fcQWebPage_setPluginFactory(self.h, factory.h)
 
-proc pluginFactory*(self: gen_qwebpage_types.QWebPage, ): gen_qwebpluginfactory.QWebPluginFactory =
-  gen_qwebpluginfactory.QWebPluginFactory(h: fcQWebPage_pluginFactory(self.h))
+proc pluginFactory*(self: gen_qwebpage_types.QWebPage, ): gen_qwebpluginfactory_types.QWebPluginFactory =
+  gen_qwebpluginfactory_types.QWebPluginFactory(h: fcQWebPage_pluginFactory(self.h))
 
 proc totalBytes*(self: gen_qwebpage_types.QWebPage, ): culonglong =
   fcQWebPage_totalBytes(self.h)
@@ -565,11 +559,11 @@ proc selectedHtml*(self: gen_qwebpage_types.QWebPage, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc action*(self: gen_qwebpage_types.QWebPage, action: cint): gen_qaction.QAction =
-  gen_qaction.QAction(h: fcQWebPage_action(self.h, cint(action)))
+proc action*(self: gen_qwebpage_types.QWebPage, action: cint): gen_qaction_types.QAction =
+  gen_qaction_types.QAction(h: fcQWebPage_action(self.h, cint(action)))
 
-proc customAction*(self: gen_qwebpage_types.QWebPage, action: cint): gen_qaction.QAction =
-  gen_qaction.QAction(h: fcQWebPage_customAction(self.h, action))
+proc customAction*(self: gen_qwebpage_types.QWebPage, action: cint): gen_qaction_types.QAction =
+  gen_qaction_types.QAction(h: fcQWebPage_customAction(self.h, action))
 
 proc triggerAction*(self: gen_qwebpage_types.QWebPage, action: cint, checked: bool): void =
   fcQWebPage_triggerAction(self.h, cint(action), checked)
@@ -583,32 +577,32 @@ proc devicePixelRatio*(self: gen_qwebpage_types.QWebPage, ): float64 =
 proc resetDevicePixelRatio*(self: gen_qwebpage_types.QWebPage, ): void =
   fcQWebPage_resetDevicePixelRatio(self.h)
 
-proc viewportSize*(self: gen_qwebpage_types.QWebPage, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQWebPage_viewportSize(self.h))
+proc viewportSize*(self: gen_qwebpage_types.QWebPage, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQWebPage_viewportSize(self.h))
 
-proc setViewportSize*(self: gen_qwebpage_types.QWebPage, size: gen_qsize.QSize): void =
+proc setViewportSize*(self: gen_qwebpage_types.QWebPage, size: gen_qsize_types.QSize): void =
   fcQWebPage_setViewportSize(self.h, size.h)
 
-proc viewportAttributesForSize*(self: gen_qwebpage_types.QWebPage, availableSize: gen_qsize.QSize): gen_qwebpage_types.QWebPageViewportAttributes =
+proc viewportAttributesForSize*(self: gen_qwebpage_types.QWebPage, availableSize: gen_qsize_types.QSize): gen_qwebpage_types.QWebPageViewportAttributes =
   gen_qwebpage_types.QWebPageViewportAttributes(h: fcQWebPage_viewportAttributesForSize(self.h, availableSize.h))
 
-proc preferredContentsSize*(self: gen_qwebpage_types.QWebPage, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQWebPage_preferredContentsSize(self.h))
+proc preferredContentsSize*(self: gen_qwebpage_types.QWebPage, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQWebPage_preferredContentsSize(self.h))
 
-proc setPreferredContentsSize*(self: gen_qwebpage_types.QWebPage, size: gen_qsize.QSize): void =
+proc setPreferredContentsSize*(self: gen_qwebpage_types.QWebPage, size: gen_qsize_types.QSize): void =
   fcQWebPage_setPreferredContentsSize(self.h, size.h)
 
-proc setActualVisibleContentRect*(self: gen_qwebpage_types.QWebPage, rect: gen_qrect.QRect): void =
+proc setActualVisibleContentRect*(self: gen_qwebpage_types.QWebPage, rect: gen_qrect_types.QRect): void =
   fcQWebPage_setActualVisibleContentRect(self.h, rect.h)
 
-proc event*(self: gen_qwebpage_types.QWebPage, param1: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qwebpage_types.QWebPage, param1: gen_qcoreevent_types.QEvent): bool =
   fcQWebPage_event(self.h, param1.h)
 
 proc focusNextPrevChild*(self: gen_qwebpage_types.QWebPage, next: bool): bool =
   fcQWebPage_focusNextPrevChild(self.h, next)
 
-proc inputMethodQuery*(self: gen_qwebpage_types.QWebPage, property: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQWebPage_inputMethodQuery(self.h, cint(property)))
+proc inputMethodQuery*(self: gen_qwebpage_types.QWebPage, property: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQWebPage_inputMethodQuery(self.h, cint(property)))
 
 proc findText*(self: gen_qwebpage_types.QWebPage, subString: string): bool =
   fcQWebPage_findText(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))))
@@ -625,11 +619,11 @@ proc setLinkDelegationPolicy*(self: gen_qwebpage_types.QWebPage, policy: cint): 
 proc linkDelegationPolicy*(self: gen_qwebpage_types.QWebPage, ): cint =
   cint(fcQWebPage_linkDelegationPolicy(self.h))
 
-proc setPalette*(self: gen_qwebpage_types.QWebPage, palette: gen_qpalette.QPalette): void =
+proc setPalette*(self: gen_qwebpage_types.QWebPage, palette: gen_qpalette_types.QPalette): void =
   fcQWebPage_setPalette(self.h, palette.h)
 
-proc palette*(self: gen_qwebpage_types.QWebPage, ): gen_qpalette.QPalette =
-  gen_qpalette.QPalette(h: fcQWebPage_palette(self.h))
+proc palette*(self: gen_qwebpage_types.QWebPage, ): gen_qpalette_types.QPalette =
+  gen_qpalette_types.QPalette(h: fcQWebPage_palette(self.h))
 
 proc setContentEditable*(self: gen_qwebpage_types.QWebPage, editable: bool): void =
   fcQWebPage_setContentEditable(self.h, editable)
@@ -637,16 +631,16 @@ proc setContentEditable*(self: gen_qwebpage_types.QWebPage, editable: bool): voi
 proc isContentEditable*(self: gen_qwebpage_types.QWebPage, ): bool =
   fcQWebPage_isContentEditable(self.h)
 
-proc swallowContextMenuEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qevent.QContextMenuEvent): bool =
+proc swallowContextMenuEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qevent_types.QContextMenuEvent): bool =
   fcQWebPage_swallowContextMenuEvent(self.h, event.h)
 
-proc updatePositionDependentActions*(self: gen_qwebpage_types.QWebPage, pos: gen_qpoint.QPoint): void =
+proc updatePositionDependentActions*(self: gen_qwebpage_types.QWebPage, pos: gen_qpoint_types.QPoint): void =
   fcQWebPage_updatePositionDependentActions(self.h, pos.h)
 
-proc createStandardContextMenu*(self: gen_qwebpage_types.QWebPage, ): gen_qmenu.QMenu =
-  gen_qmenu.QMenu(h: fcQWebPage_createStandardContextMenu(self.h))
+proc createStandardContextMenu*(self: gen_qwebpage_types.QWebPage, ): gen_qmenu_types.QMenu =
+  gen_qmenu_types.QMenu(h: fcQWebPage_createStandardContextMenu(self.h))
 
-proc setFeaturePermission*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame, feature: cint, policy: cint): void =
+proc setFeaturePermission*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame, feature: cint, policy: cint): void =
   fcQWebPage_setFeaturePermission(self.h, frame.h, cint(feature), cint(policy))
 
 proc supportedContentTypes*(self: gen_qwebpage_types.QWebPage, ): seq[string] =
@@ -676,7 +670,7 @@ proc loadStarted*(self: gen_qwebpage_types.QWebPage, ): void =
   fcQWebPage_loadStarted(self.h)
 
 type QWebPageloadStartedSlot* = proc()
-proc miqt_exec_callback_QWebPage_loadStarted(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_loadStarted(slot: int) {.exportc: "miqt_exec_callback_QWebPage_loadStarted".} =
   let nimfunc = cast[ptr QWebPageloadStartedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -684,13 +678,13 @@ proc onloadStarted*(self: gen_qwebpage_types.QWebPage, slot: QWebPageloadStarted
   var tmp = new QWebPageloadStartedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_loadStarted(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_loadStarted(self.h, cast[int](addr tmp[]))
 
 proc loadProgress*(self: gen_qwebpage_types.QWebPage, progress: cint): void =
   fcQWebPage_loadProgress(self.h, progress)
 
 type QWebPageloadProgressSlot* = proc(progress: cint)
-proc miqt_exec_callback_QWebPage_loadProgress(slot: int, progress: cint) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_loadProgress(slot: int, progress: cint) {.exportc: "miqt_exec_callback_QWebPage_loadProgress".} =
   let nimfunc = cast[ptr QWebPageloadProgressSlot](cast[pointer](slot))
   let slotval1 = progress
 
@@ -700,13 +694,13 @@ proc onloadProgress*(self: gen_qwebpage_types.QWebPage, slot: QWebPageloadProgre
   var tmp = new QWebPageloadProgressSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_loadProgress(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_loadProgress(self.h, cast[int](addr tmp[]))
 
 proc loadFinished*(self: gen_qwebpage_types.QWebPage, ok: bool): void =
   fcQWebPage_loadFinished(self.h, ok)
 
 type QWebPageloadFinishedSlot* = proc(ok: bool)
-proc miqt_exec_callback_QWebPage_loadFinished(slot: int, ok: bool) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_loadFinished(slot: int, ok: bool) {.exportc: "miqt_exec_callback_QWebPage_loadFinished".} =
   let nimfunc = cast[ptr QWebPageloadFinishedSlot](cast[pointer](slot))
   let slotval1 = ok
 
@@ -716,13 +710,13 @@ proc onloadFinished*(self: gen_qwebpage_types.QWebPage, slot: QWebPageloadFinish
   var tmp = new QWebPageloadFinishedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_loadFinished(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_loadFinished(self.h, cast[int](addr tmp[]))
 
 proc linkHovered*(self: gen_qwebpage_types.QWebPage, link: string, title: string, textContent: string): void =
   fcQWebPage_linkHovered(self.h, struct_miqt_string(data: link, len: csize_t(len(link))), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: textContent, len: csize_t(len(textContent))))
 
 type QWebPagelinkHoveredSlot* = proc(link: string, title: string, textContent: string)
-proc miqt_exec_callback_QWebPage_linkHovered(slot: int, link: struct_miqt_string, title: struct_miqt_string, textContent: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_linkHovered(slot: int, link: struct_miqt_string, title: struct_miqt_string, textContent: struct_miqt_string) {.exportc: "miqt_exec_callback_QWebPage_linkHovered".} =
   let nimfunc = cast[ptr QWebPagelinkHoveredSlot](cast[pointer](slot))
   let vlink_ms = link
   let vlinkx_ret = string.fromBytes(toOpenArrayByte(vlink_ms.data, 0, int(vlink_ms.len)-1))
@@ -745,13 +739,13 @@ proc onlinkHovered*(self: gen_qwebpage_types.QWebPage, slot: QWebPagelinkHovered
   var tmp = new QWebPagelinkHoveredSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_linkHovered(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_linkHovered(self.h, cast[int](addr tmp[]))
 
 proc statusBarMessage*(self: gen_qwebpage_types.QWebPage, text: string): void =
   fcQWebPage_statusBarMessage(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 type QWebPagestatusBarMessageSlot* = proc(text: string)
-proc miqt_exec_callback_QWebPage_statusBarMessage(slot: int, text: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_statusBarMessage(slot: int, text: struct_miqt_string) {.exportc: "miqt_exec_callback_QWebPage_statusBarMessage".} =
   let nimfunc = cast[ptr QWebPagestatusBarMessageSlot](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
@@ -764,13 +758,13 @@ proc onstatusBarMessage*(self: gen_qwebpage_types.QWebPage, slot: QWebPagestatus
   var tmp = new QWebPagestatusBarMessageSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_statusBarMessage(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_statusBarMessage(self.h, cast[int](addr tmp[]))
 
 proc selectionChanged*(self: gen_qwebpage_types.QWebPage, ): void =
   fcQWebPage_selectionChanged(self.h)
 
 type QWebPageselectionChangedSlot* = proc()
-proc miqt_exec_callback_QWebPage_selectionChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_selectionChanged(slot: int) {.exportc: "miqt_exec_callback_QWebPage_selectionChanged".} =
   let nimfunc = cast[ptr QWebPageselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -778,15 +772,15 @@ proc onselectionChanged*(self: gen_qwebpage_types.QWebPage, slot: QWebPageselect
   var tmp = new QWebPageselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_selectionChanged(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_selectionChanged(self.h, cast[int](addr tmp[]))
 
-proc frameCreated*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame): void =
+proc frameCreated*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame): void =
   fcQWebPage_frameCreated(self.h, frame.h)
 
-type QWebPageframeCreatedSlot* = proc(frame: gen_qwebframe.QWebFrame)
-proc miqt_exec_callback_QWebPage_frameCreated(slot: int, frame: pointer) {.exportc.} =
+type QWebPageframeCreatedSlot* = proc(frame: gen_qwebframe_types.QWebFrame)
+proc miqt_exec_callback_cQWebPage_frameCreated(slot: int, frame: pointer) {.exportc: "miqt_exec_callback_QWebPage_frameCreated".} =
   let nimfunc = cast[ptr QWebPageframeCreatedSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
 
   nimfunc[](slotval1)
 
@@ -794,15 +788,15 @@ proc onframeCreated*(self: gen_qwebpage_types.QWebPage, slot: QWebPageframeCreat
   var tmp = new QWebPageframeCreatedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_frameCreated(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_frameCreated(self.h, cast[int](addr tmp[]))
 
-proc geometryChangeRequested*(self: gen_qwebpage_types.QWebPage, geom: gen_qrect.QRect): void =
+proc geometryChangeRequested*(self: gen_qwebpage_types.QWebPage, geom: gen_qrect_types.QRect): void =
   fcQWebPage_geometryChangeRequested(self.h, geom.h)
 
-type QWebPagegeometryChangeRequestedSlot* = proc(geom: gen_qrect.QRect)
-proc miqt_exec_callback_QWebPage_geometryChangeRequested(slot: int, geom: pointer) {.exportc.} =
+type QWebPagegeometryChangeRequestedSlot* = proc(geom: gen_qrect_types.QRect)
+proc miqt_exec_callback_cQWebPage_geometryChangeRequested(slot: int, geom: pointer) {.exportc: "miqt_exec_callback_QWebPage_geometryChangeRequested".} =
   let nimfunc = cast[ptr QWebPagegeometryChangeRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qrect.QRect(h: geom)
+  let slotval1 = gen_qrect_types.QRect(h: geom)
 
   nimfunc[](slotval1)
 
@@ -810,15 +804,15 @@ proc ongeometryChangeRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPag
   var tmp = new QWebPagegeometryChangeRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_geometryChangeRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_geometryChangeRequested(self.h, cast[int](addr tmp[]))
 
-proc repaintRequested*(self: gen_qwebpage_types.QWebPage, dirtyRect: gen_qrect.QRect): void =
+proc repaintRequested*(self: gen_qwebpage_types.QWebPage, dirtyRect: gen_qrect_types.QRect): void =
   fcQWebPage_repaintRequested(self.h, dirtyRect.h)
 
-type QWebPagerepaintRequestedSlot* = proc(dirtyRect: gen_qrect.QRect)
-proc miqt_exec_callback_QWebPage_repaintRequested(slot: int, dirtyRect: pointer) {.exportc.} =
+type QWebPagerepaintRequestedSlot* = proc(dirtyRect: gen_qrect_types.QRect)
+proc miqt_exec_callback_cQWebPage_repaintRequested(slot: int, dirtyRect: pointer) {.exportc: "miqt_exec_callback_QWebPage_repaintRequested".} =
   let nimfunc = cast[ptr QWebPagerepaintRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qrect.QRect(h: dirtyRect)
+  let slotval1 = gen_qrect_types.QRect(h: dirtyRect)
 
   nimfunc[](slotval1)
 
@@ -826,19 +820,19 @@ proc onrepaintRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPagerepain
   var tmp = new QWebPagerepaintRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_repaintRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_repaintRequested(self.h, cast[int](addr tmp[]))
 
-proc scrollRequested*(self: gen_qwebpage_types.QWebPage, dx: cint, dy: cint, scrollViewRect: gen_qrect.QRect): void =
+proc scrollRequested*(self: gen_qwebpage_types.QWebPage, dx: cint, dy: cint, scrollViewRect: gen_qrect_types.QRect): void =
   fcQWebPage_scrollRequested(self.h, dx, dy, scrollViewRect.h)
 
-type QWebPagescrollRequestedSlot* = proc(dx: cint, dy: cint, scrollViewRect: gen_qrect.QRect)
-proc miqt_exec_callback_QWebPage_scrollRequested(slot: int, dx: cint, dy: cint, scrollViewRect: pointer) {.exportc.} =
+type QWebPagescrollRequestedSlot* = proc(dx: cint, dy: cint, scrollViewRect: gen_qrect_types.QRect)
+proc miqt_exec_callback_cQWebPage_scrollRequested(slot: int, dx: cint, dy: cint, scrollViewRect: pointer) {.exportc: "miqt_exec_callback_QWebPage_scrollRequested".} =
   let nimfunc = cast[ptr QWebPagescrollRequestedSlot](cast[pointer](slot))
   let slotval1 = dx
 
   let slotval2 = dy
 
-  let slotval3 = gen_qrect.QRect(h: scrollViewRect)
+  let slotval3 = gen_qrect_types.QRect(h: scrollViewRect)
 
   nimfunc[](slotval1, slotval2, slotval3)
 
@@ -846,13 +840,13 @@ proc onscrollRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPagescrollR
   var tmp = new QWebPagescrollRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_scrollRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_scrollRequested(self.h, cast[int](addr tmp[]))
 
 proc windowCloseRequested*(self: gen_qwebpage_types.QWebPage, ): void =
   fcQWebPage_windowCloseRequested(self.h)
 
 type QWebPagewindowCloseRequestedSlot* = proc()
-proc miqt_exec_callback_QWebPage_windowCloseRequested(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_windowCloseRequested(slot: int) {.exportc: "miqt_exec_callback_QWebPage_windowCloseRequested".} =
   let nimfunc = cast[ptr QWebPagewindowCloseRequestedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -860,15 +854,15 @@ proc onwindowCloseRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPagewi
   var tmp = new QWebPagewindowCloseRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_windowCloseRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_windowCloseRequested(self.h, cast[int](addr tmp[]))
 
-proc printRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame): void =
+proc printRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame): void =
   fcQWebPage_printRequested(self.h, frame.h)
 
-type QWebPageprintRequestedSlot* = proc(frame: gen_qwebframe.QWebFrame)
-proc miqt_exec_callback_QWebPage_printRequested(slot: int, frame: pointer) {.exportc.} =
+type QWebPageprintRequestedSlot* = proc(frame: gen_qwebframe_types.QWebFrame)
+proc miqt_exec_callback_cQWebPage_printRequested(slot: int, frame: pointer) {.exportc: "miqt_exec_callback_QWebPage_printRequested".} =
   let nimfunc = cast[ptr QWebPageprintRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
 
   nimfunc[](slotval1)
 
@@ -876,15 +870,15 @@ proc onprintRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPageprintReq
   var tmp = new QWebPageprintRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_printRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_printRequested(self.h, cast[int](addr tmp[]))
 
-proc linkClicked*(self: gen_qwebpage_types.QWebPage, url: gen_qurl.QUrl): void =
+proc linkClicked*(self: gen_qwebpage_types.QWebPage, url: gen_qurl_types.QUrl): void =
   fcQWebPage_linkClicked(self.h, url.h)
 
-type QWebPagelinkClickedSlot* = proc(url: gen_qurl.QUrl)
-proc miqt_exec_callback_QWebPage_linkClicked(slot: int, url: pointer) {.exportc.} =
+type QWebPagelinkClickedSlot* = proc(url: gen_qurl_types.QUrl)
+proc miqt_exec_callback_cQWebPage_linkClicked(slot: int, url: pointer) {.exportc: "miqt_exec_callback_QWebPage_linkClicked".} =
   let nimfunc = cast[ptr QWebPagelinkClickedSlot](cast[pointer](slot))
-  let slotval1 = gen_qurl.QUrl(h: url)
+  let slotval1 = gen_qurl_types.QUrl(h: url)
 
   nimfunc[](slotval1)
 
@@ -892,13 +886,13 @@ proc onlinkClicked*(self: gen_qwebpage_types.QWebPage, slot: QWebPagelinkClicked
   var tmp = new QWebPagelinkClickedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_linkClicked(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_linkClicked(self.h, cast[int](addr tmp[]))
 
 proc toolBarVisibilityChangeRequested*(self: gen_qwebpage_types.QWebPage, visible: bool): void =
   fcQWebPage_toolBarVisibilityChangeRequested(self.h, visible)
 
 type QWebPagetoolBarVisibilityChangeRequestedSlot* = proc(visible: bool)
-proc miqt_exec_callback_QWebPage_toolBarVisibilityChangeRequested(slot: int, visible: bool) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_toolBarVisibilityChangeRequested(slot: int, visible: bool) {.exportc: "miqt_exec_callback_QWebPage_toolBarVisibilityChangeRequested".} =
   let nimfunc = cast[ptr QWebPagetoolBarVisibilityChangeRequestedSlot](cast[pointer](slot))
   let slotval1 = visible
 
@@ -908,13 +902,13 @@ proc ontoolBarVisibilityChangeRequested*(self: gen_qwebpage_types.QWebPage, slot
   var tmp = new QWebPagetoolBarVisibilityChangeRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_toolBarVisibilityChangeRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_toolBarVisibilityChangeRequested(self.h, cast[int](addr tmp[]))
 
 proc statusBarVisibilityChangeRequested*(self: gen_qwebpage_types.QWebPage, visible: bool): void =
   fcQWebPage_statusBarVisibilityChangeRequested(self.h, visible)
 
 type QWebPagestatusBarVisibilityChangeRequestedSlot* = proc(visible: bool)
-proc miqt_exec_callback_QWebPage_statusBarVisibilityChangeRequested(slot: int, visible: bool) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_statusBarVisibilityChangeRequested(slot: int, visible: bool) {.exportc: "miqt_exec_callback_QWebPage_statusBarVisibilityChangeRequested".} =
   let nimfunc = cast[ptr QWebPagestatusBarVisibilityChangeRequestedSlot](cast[pointer](slot))
   let slotval1 = visible
 
@@ -924,13 +918,13 @@ proc onstatusBarVisibilityChangeRequested*(self: gen_qwebpage_types.QWebPage, sl
   var tmp = new QWebPagestatusBarVisibilityChangeRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_statusBarVisibilityChangeRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_statusBarVisibilityChangeRequested(self.h, cast[int](addr tmp[]))
 
 proc menuBarVisibilityChangeRequested*(self: gen_qwebpage_types.QWebPage, visible: bool): void =
   fcQWebPage_menuBarVisibilityChangeRequested(self.h, visible)
 
 type QWebPagemenuBarVisibilityChangeRequestedSlot* = proc(visible: bool)
-proc miqt_exec_callback_QWebPage_menuBarVisibilityChangeRequested(slot: int, visible: bool) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_menuBarVisibilityChangeRequested(slot: int, visible: bool) {.exportc: "miqt_exec_callback_QWebPage_menuBarVisibilityChangeRequested".} =
   let nimfunc = cast[ptr QWebPagemenuBarVisibilityChangeRequestedSlot](cast[pointer](slot))
   let slotval1 = visible
 
@@ -940,15 +934,15 @@ proc onmenuBarVisibilityChangeRequested*(self: gen_qwebpage_types.QWebPage, slot
   var tmp = new QWebPagemenuBarVisibilityChangeRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_menuBarVisibilityChangeRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_menuBarVisibilityChangeRequested(self.h, cast[int](addr tmp[]))
 
-proc unsupportedContent*(self: gen_qwebpage_types.QWebPage, reply: gen_qnetworkreply.QNetworkReply): void =
+proc unsupportedContent*(self: gen_qwebpage_types.QWebPage, reply: gen_qnetworkreply_types.QNetworkReply): void =
   fcQWebPage_unsupportedContent(self.h, reply.h)
 
-type QWebPageunsupportedContentSlot* = proc(reply: gen_qnetworkreply.QNetworkReply)
-proc miqt_exec_callback_QWebPage_unsupportedContent(slot: int, reply: pointer) {.exportc.} =
+type QWebPageunsupportedContentSlot* = proc(reply: gen_qnetworkreply_types.QNetworkReply)
+proc miqt_exec_callback_cQWebPage_unsupportedContent(slot: int, reply: pointer) {.exportc: "miqt_exec_callback_QWebPage_unsupportedContent".} =
   let nimfunc = cast[ptr QWebPageunsupportedContentSlot](cast[pointer](slot))
-  let slotval1 = gen_qnetworkreply.QNetworkReply(h: reply)
+  let slotval1 = gen_qnetworkreply_types.QNetworkReply(h: reply)
 
   nimfunc[](slotval1)
 
@@ -956,15 +950,15 @@ proc onunsupportedContent*(self: gen_qwebpage_types.QWebPage, slot: QWebPageunsu
   var tmp = new QWebPageunsupportedContentSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_unsupportedContent(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_unsupportedContent(self.h, cast[int](addr tmp[]))
 
-proc downloadRequested*(self: gen_qwebpage_types.QWebPage, request: gen_qnetworkrequest.QNetworkRequest): void =
+proc downloadRequested*(self: gen_qwebpage_types.QWebPage, request: gen_qnetworkrequest_types.QNetworkRequest): void =
   fcQWebPage_downloadRequested(self.h, request.h)
 
-type QWebPagedownloadRequestedSlot* = proc(request: gen_qnetworkrequest.QNetworkRequest)
-proc miqt_exec_callback_QWebPage_downloadRequested(slot: int, request: pointer) {.exportc.} =
+type QWebPagedownloadRequestedSlot* = proc(request: gen_qnetworkrequest_types.QNetworkRequest)
+proc miqt_exec_callback_cQWebPage_downloadRequested(slot: int, request: pointer) {.exportc: "miqt_exec_callback_QWebPage_downloadRequested".} =
   let nimfunc = cast[ptr QWebPagedownloadRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qnetworkrequest.QNetworkRequest(h: request)
+  let slotval1 = gen_qnetworkrequest_types.QNetworkRequest(h: request)
 
   nimfunc[](slotval1)
 
@@ -972,15 +966,15 @@ proc ondownloadRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPagedownl
   var tmp = new QWebPagedownloadRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_downloadRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_downloadRequested(self.h, cast[int](addr tmp[]))
 
-proc focusedElementChanged*(self: gen_qwebpage_types.QWebPage, element: gen_qwebelement.QWebElement): void =
+proc focusedElementChanged*(self: gen_qwebpage_types.QWebPage, element: gen_qwebelement_types.QWebElement): void =
   fcQWebPage_focusedElementChanged(self.h, element.h)
 
-type QWebPagefocusedElementChangedSlot* = proc(element: gen_qwebelement.QWebElement)
-proc miqt_exec_callback_QWebPage_focusedElementChanged(slot: int, element: pointer) {.exportc.} =
+type QWebPagefocusedElementChangedSlot* = proc(element: gen_qwebelement_types.QWebElement)
+proc miqt_exec_callback_cQWebPage_focusedElementChanged(slot: int, element: pointer) {.exportc: "miqt_exec_callback_QWebPage_focusedElementChanged".} =
   let nimfunc = cast[ptr QWebPagefocusedElementChangedSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebelement.QWebElement(h: element)
+  let slotval1 = gen_qwebelement_types.QWebElement(h: element)
 
   nimfunc[](slotval1)
 
@@ -988,13 +982,13 @@ proc onfocusedElementChanged*(self: gen_qwebpage_types.QWebPage, slot: QWebPagef
   var tmp = new QWebPagefocusedElementChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_focusedElementChanged(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_focusedElementChanged(self.h, cast[int](addr tmp[]))
 
 proc microFocusChanged*(self: gen_qwebpage_types.QWebPage, ): void =
   fcQWebPage_microFocusChanged(self.h)
 
 type QWebPagemicroFocusChangedSlot* = proc()
-proc miqt_exec_callback_QWebPage_microFocusChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_microFocusChanged(slot: int) {.exportc: "miqt_exec_callback_QWebPage_microFocusChanged".} =
   let nimfunc = cast[ptr QWebPagemicroFocusChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -1002,13 +996,13 @@ proc onmicroFocusChanged*(self: gen_qwebpage_types.QWebPage, slot: QWebPagemicro
   var tmp = new QWebPagemicroFocusChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_microFocusChanged(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_microFocusChanged(self.h, cast[int](addr tmp[]))
 
 proc contentsChanged*(self: gen_qwebpage_types.QWebPage, ): void =
   fcQWebPage_contentsChanged(self.h)
 
 type QWebPagecontentsChangedSlot* = proc()
-proc miqt_exec_callback_QWebPage_contentsChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_contentsChanged(slot: int) {.exportc: "miqt_exec_callback_QWebPage_contentsChanged".} =
   let nimfunc = cast[ptr QWebPagecontentsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -1016,15 +1010,15 @@ proc oncontentsChanged*(self: gen_qwebpage_types.QWebPage, slot: QWebPagecontent
   var tmp = new QWebPagecontentsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_contentsChanged(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_contentsChanged(self.h, cast[int](addr tmp[]))
 
-proc databaseQuotaExceeded*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame, databaseName: string): void =
+proc databaseQuotaExceeded*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame, databaseName: string): void =
   fcQWebPage_databaseQuotaExceeded(self.h, frame.h, struct_miqt_string(data: databaseName, len: csize_t(len(databaseName))))
 
-type QWebPagedatabaseQuotaExceededSlot* = proc(frame: gen_qwebframe.QWebFrame, databaseName: string)
-proc miqt_exec_callback_QWebPage_databaseQuotaExceeded(slot: int, frame: pointer, databaseName: struct_miqt_string) {.exportc.} =
+type QWebPagedatabaseQuotaExceededSlot* = proc(frame: gen_qwebframe_types.QWebFrame, databaseName: string)
+proc miqt_exec_callback_cQWebPage_databaseQuotaExceeded(slot: int, frame: pointer, databaseName: struct_miqt_string) {.exportc: "miqt_exec_callback_QWebPage_databaseQuotaExceeded".} =
   let nimfunc = cast[ptr QWebPagedatabaseQuotaExceededSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
 
   let vdatabaseName_ms = databaseName
   let vdatabaseNamex_ret = string.fromBytes(toOpenArrayByte(vdatabaseName_ms.data, 0, int(vdatabaseName_ms.len)-1))
@@ -1037,15 +1031,15 @@ proc ondatabaseQuotaExceeded*(self: gen_qwebpage_types.QWebPage, slot: QWebPaged
   var tmp = new QWebPagedatabaseQuotaExceededSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_databaseQuotaExceeded(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_databaseQuotaExceeded(self.h, cast[int](addr tmp[]))
 
-proc applicationCacheQuotaExceeded*(self: gen_qwebpage_types.QWebPage, origin: gen_qwebsecurityorigin.QWebSecurityOrigin, defaultOriginQuota: culonglong, totalSpaceNeeded: culonglong): void =
+proc applicationCacheQuotaExceeded*(self: gen_qwebpage_types.QWebPage, origin: gen_qwebsecurityorigin_types.QWebSecurityOrigin, defaultOriginQuota: culonglong, totalSpaceNeeded: culonglong): void =
   fcQWebPage_applicationCacheQuotaExceeded(self.h, origin.h, defaultOriginQuota, totalSpaceNeeded)
 
-type QWebPageapplicationCacheQuotaExceededSlot* = proc(origin: gen_qwebsecurityorigin.QWebSecurityOrigin, defaultOriginQuota: culonglong, totalSpaceNeeded: culonglong)
-proc miqt_exec_callback_QWebPage_applicationCacheQuotaExceeded(slot: int, origin: pointer, defaultOriginQuota: culonglong, totalSpaceNeeded: culonglong) {.exportc.} =
+type QWebPageapplicationCacheQuotaExceededSlot* = proc(origin: gen_qwebsecurityorigin_types.QWebSecurityOrigin, defaultOriginQuota: culonglong, totalSpaceNeeded: culonglong)
+proc miqt_exec_callback_cQWebPage_applicationCacheQuotaExceeded(slot: int, origin: pointer, defaultOriginQuota: culonglong, totalSpaceNeeded: culonglong) {.exportc: "miqt_exec_callback_QWebPage_applicationCacheQuotaExceeded".} =
   let nimfunc = cast[ptr QWebPageapplicationCacheQuotaExceededSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebsecurityorigin.QWebSecurityOrigin(h: origin)
+  let slotval1 = gen_qwebsecurityorigin_types.QWebSecurityOrigin(h: origin)
 
   let slotval2 = defaultOriginQuota
 
@@ -1057,17 +1051,17 @@ proc onapplicationCacheQuotaExceeded*(self: gen_qwebpage_types.QWebPage, slot: Q
   var tmp = new QWebPageapplicationCacheQuotaExceededSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_applicationCacheQuotaExceeded(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_applicationCacheQuotaExceeded(self.h, cast[int](addr tmp[]))
 
-proc saveFrameStateRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame, item: gen_qwebhistory.QWebHistoryItem): void =
+proc saveFrameStateRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame, item: gen_qwebhistory_types.QWebHistoryItem): void =
   fcQWebPage_saveFrameStateRequested(self.h, frame.h, item.h)
 
-type QWebPagesaveFrameStateRequestedSlot* = proc(frame: gen_qwebframe.QWebFrame, item: gen_qwebhistory.QWebHistoryItem)
-proc miqt_exec_callback_QWebPage_saveFrameStateRequested(slot: int, frame: pointer, item: pointer) {.exportc.} =
+type QWebPagesaveFrameStateRequestedSlot* = proc(frame: gen_qwebframe_types.QWebFrame, item: gen_qwebhistory_types.QWebHistoryItem)
+proc miqt_exec_callback_cQWebPage_saveFrameStateRequested(slot: int, frame: pointer, item: pointer) {.exportc: "miqt_exec_callback_QWebPage_saveFrameStateRequested".} =
   let nimfunc = cast[ptr QWebPagesaveFrameStateRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
 
-  let slotval2 = gen_qwebhistory.QWebHistoryItem(h: item)
+  let slotval2 = gen_qwebhistory_types.QWebHistoryItem(h: item)
 
   nimfunc[](slotval1, slotval2)
 
@@ -1075,15 +1069,15 @@ proc onsaveFrameStateRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPag
   var tmp = new QWebPagesaveFrameStateRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_saveFrameStateRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_saveFrameStateRequested(self.h, cast[int](addr tmp[]))
 
-proc restoreFrameStateRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame): void =
+proc restoreFrameStateRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame): void =
   fcQWebPage_restoreFrameStateRequested(self.h, frame.h)
 
-type QWebPagerestoreFrameStateRequestedSlot* = proc(frame: gen_qwebframe.QWebFrame)
-proc miqt_exec_callback_QWebPage_restoreFrameStateRequested(slot: int, frame: pointer) {.exportc.} =
+type QWebPagerestoreFrameStateRequestedSlot* = proc(frame: gen_qwebframe_types.QWebFrame)
+proc miqt_exec_callback_cQWebPage_restoreFrameStateRequested(slot: int, frame: pointer) {.exportc: "miqt_exec_callback_QWebPage_restoreFrameStateRequested".} =
   let nimfunc = cast[ptr QWebPagerestoreFrameStateRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
 
   nimfunc[](slotval1)
 
@@ -1091,13 +1085,13 @@ proc onrestoreFrameStateRequested*(self: gen_qwebpage_types.QWebPage, slot: QWeb
   var tmp = new QWebPagerestoreFrameStateRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_restoreFrameStateRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_restoreFrameStateRequested(self.h, cast[int](addr tmp[]))
 
 proc viewportChangeRequested*(self: gen_qwebpage_types.QWebPage, ): void =
   fcQWebPage_viewportChangeRequested(self.h)
 
 type QWebPageviewportChangeRequestedSlot* = proc()
-proc miqt_exec_callback_QWebPage_viewportChangeRequested(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_viewportChangeRequested(slot: int) {.exportc: "miqt_exec_callback_QWebPage_viewportChangeRequested".} =
   let nimfunc = cast[ptr QWebPageviewportChangeRequestedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -1105,15 +1099,15 @@ proc onviewportChangeRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPag
   var tmp = new QWebPageviewportChangeRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_viewportChangeRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_viewportChangeRequested(self.h, cast[int](addr tmp[]))
 
-proc featurePermissionRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame, feature: cint): void =
+proc featurePermissionRequested*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame, feature: cint): void =
   fcQWebPage_featurePermissionRequested(self.h, frame.h, cint(feature))
 
-type QWebPagefeaturePermissionRequestedSlot* = proc(frame: gen_qwebframe.QWebFrame, feature: cint)
-proc miqt_exec_callback_QWebPage_featurePermissionRequested(slot: int, frame: pointer, feature: cint) {.exportc.} =
+type QWebPagefeaturePermissionRequestedSlot* = proc(frame: gen_qwebframe_types.QWebFrame, feature: cint)
+proc miqt_exec_callback_cQWebPage_featurePermissionRequested(slot: int, frame: pointer, feature: cint) {.exportc: "miqt_exec_callback_QWebPage_featurePermissionRequested".} =
   let nimfunc = cast[ptr QWebPagefeaturePermissionRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
 
   let slotval2 = cint(feature)
 
@@ -1123,15 +1117,15 @@ proc onfeaturePermissionRequested*(self: gen_qwebpage_types.QWebPage, slot: QWeb
   var tmp = new QWebPagefeaturePermissionRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_featurePermissionRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_featurePermissionRequested(self.h, cast[int](addr tmp[]))
 
-proc featurePermissionRequestCanceled*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame, feature: cint): void =
+proc featurePermissionRequestCanceled*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame, feature: cint): void =
   fcQWebPage_featurePermissionRequestCanceled(self.h, frame.h, cint(feature))
 
-type QWebPagefeaturePermissionRequestCanceledSlot* = proc(frame: gen_qwebframe.QWebFrame, feature: cint)
-proc miqt_exec_callback_QWebPage_featurePermissionRequestCanceled(slot: int, frame: pointer, feature: cint) {.exportc.} =
+type QWebPagefeaturePermissionRequestCanceledSlot* = proc(frame: gen_qwebframe_types.QWebFrame, feature: cint)
+proc miqt_exec_callback_cQWebPage_featurePermissionRequestCanceled(slot: int, frame: pointer, feature: cint) {.exportc: "miqt_exec_callback_QWebPage_featurePermissionRequestCanceled".} =
   let nimfunc = cast[ptr QWebPagefeaturePermissionRequestCanceledSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
 
   let slotval2 = cint(feature)
 
@@ -1141,15 +1135,15 @@ proc onfeaturePermissionRequestCanceled*(self: gen_qwebpage_types.QWebPage, slot
   var tmp = new QWebPagefeaturePermissionRequestCanceledSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_featurePermissionRequestCanceled(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_featurePermissionRequestCanceled(self.h, cast[int](addr tmp[]))
 
-proc fullScreenRequested*(self: gen_qwebpage_types.QWebPage, fullScreenRequest: gen_qwebfullscreenrequest.QWebFullScreenRequest): void =
+proc fullScreenRequested*(self: gen_qwebpage_types.QWebPage, fullScreenRequest: gen_qwebfullscreenrequest_types.QWebFullScreenRequest): void =
   fcQWebPage_fullScreenRequested(self.h, fullScreenRequest.h)
 
-type QWebPagefullScreenRequestedSlot* = proc(fullScreenRequest: gen_qwebfullscreenrequest.QWebFullScreenRequest)
-proc miqt_exec_callback_QWebPage_fullScreenRequested(slot: int, fullScreenRequest: pointer) {.exportc.} =
+type QWebPagefullScreenRequestedSlot* = proc(fullScreenRequest: gen_qwebfullscreenrequest_types.QWebFullScreenRequest)
+proc miqt_exec_callback_cQWebPage_fullScreenRequested(slot: int, fullScreenRequest: pointer) {.exportc: "miqt_exec_callback_QWebPage_fullScreenRequested".} =
   let nimfunc = cast[ptr QWebPagefullScreenRequestedSlot](cast[pointer](slot))
-  let slotval1 = gen_qwebfullscreenrequest.QWebFullScreenRequest(h: fullScreenRequest)
+  let slotval1 = gen_qwebfullscreenrequest_types.QWebFullScreenRequest(h: fullScreenRequest)
 
   nimfunc[](slotval1)
 
@@ -1157,13 +1151,13 @@ proc onfullScreenRequested*(self: gen_qwebpage_types.QWebPage, slot: QWebPageful
   var tmp = new QWebPagefullScreenRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_fullScreenRequested(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_fullScreenRequested(self.h, cast[int](addr tmp[]))
 
 proc consoleMessageReceived*(self: gen_qwebpage_types.QWebPage, source: cint, level: cint, message: string, lineNumber: cint, sourceID: string): void =
   fcQWebPage_consoleMessageReceived(self.h, cint(source), cint(level), struct_miqt_string(data: message, len: csize_t(len(message))), lineNumber, struct_miqt_string(data: sourceID, len: csize_t(len(sourceID))))
 
 type QWebPageconsoleMessageReceivedSlot* = proc(source: cint, level: cint, message: string, lineNumber: cint, sourceID: string)
-proc miqt_exec_callback_QWebPage_consoleMessageReceived(slot: int, source: cint, level: cint, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_consoleMessageReceived(slot: int, source: cint, level: cint, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string) {.exportc: "miqt_exec_callback_QWebPage_consoleMessageReceived".} =
   let nimfunc = cast[ptr QWebPageconsoleMessageReceivedSlot](cast[pointer](slot))
   let slotval1 = cint(source)
 
@@ -1187,13 +1181,13 @@ proc onconsoleMessageReceived*(self: gen_qwebpage_types.QWebPage, slot: QWebPage
   var tmp = new QWebPageconsoleMessageReceivedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_consoleMessageReceived(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_consoleMessageReceived(self.h, cast[int](addr tmp[]))
 
 proc recentlyAudibleChanged*(self: gen_qwebpage_types.QWebPage, recentlyAudible: bool): void =
   fcQWebPage_recentlyAudibleChanged(self.h, recentlyAudible)
 
 type QWebPagerecentlyAudibleChangedSlot* = proc(recentlyAudible: bool)
-proc miqt_exec_callback_QWebPage_recentlyAudibleChanged(slot: int, recentlyAudible: bool) {.exportc.} =
+proc miqt_exec_callback_cQWebPage_recentlyAudibleChanged(slot: int, recentlyAudible: bool) {.exportc: "miqt_exec_callback_QWebPage_recentlyAudibleChanged".} =
   let nimfunc = cast[ptr QWebPagerecentlyAudibleChangedSlot](cast[pointer](slot))
   let slotval1 = recentlyAudible
 
@@ -1203,7 +1197,7 @@ proc onrecentlyAudibleChanged*(self: gen_qwebpage_types.QWebPage, slot: QWebPage
   var tmp = new QWebPagerecentlyAudibleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebPage_connect_recentlyAudibleChanged(self.h, cast[int](addr tmp[]))
+  fcQWebPage_connect_recentlyAudibleChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qwebpage_types.QWebPage, s: cstring, c: cstring): string =
   let v_ms = fcQWebPage_tr2(s, c)
@@ -1232,182 +1226,145 @@ proc trUtf8*(_: type gen_qwebpage_types.QWebPage, s: cstring, c: cstring, n: cin
 proc findText*(self: gen_qwebpage_types.QWebPage, subString: string, options: cint): bool =
   fcQWebPage_findText2(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), cint(options))
 
-proc QWebPagemetaObject*(self: gen_qwebpage_types.QWebPage, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQWebPage_virtualbase_metaObject(self.h))
+type QWebPagemetaObjectProc* = proc(self: QWebPage): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QWebPagemetacastProc* = proc(self: QWebPage, param1: cstring): pointer {.raises: [], gcsafe.}
+type QWebPagemetacallProc* = proc(self: QWebPage, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QWebPagetriggerActionProc* = proc(self: QWebPage, action: cint, checked: bool): void {.raises: [], gcsafe.}
+type QWebPageeventProc* = proc(self: QWebPage, param1: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QWebPageextensionProc* = proc(self: QWebPage, extension: cint, option: gen_qwebpage_types.QWebPageExtensionOption, output: gen_qwebpage_types.QWebPageExtensionReturn): bool {.raises: [], gcsafe.}
+type QWebPagesupportsExtensionProc* = proc(self: QWebPage, extension: cint): bool {.raises: [], gcsafe.}
+type QWebPageshouldInterruptJavaScriptProc* = proc(self: QWebPage): bool {.raises: [], gcsafe.}
+type QWebPagecreateWindowProc* = proc(self: QWebPage, typeVal: cint): gen_qwebpage_types.QWebPage {.raises: [], gcsafe.}
+type QWebPagecreatePluginProc* = proc(self: QWebPage, classid: string, url: gen_qurl_types.QUrl, paramNames: seq[string], paramValues: seq[string]): gen_qobject_types.QObject {.raises: [], gcsafe.}
+type QWebPageacceptNavigationRequestProc* = proc(self: QWebPage, frame: gen_qwebframe_types.QWebFrame, request: gen_qnetworkrequest_types.QNetworkRequest, typeVal: cint): bool {.raises: [], gcsafe.}
+type QWebPagechooseFileProc* = proc(self: QWebPage, originatingFrame: gen_qwebframe_types.QWebFrame, oldFile: string): string {.raises: [], gcsafe.}
+type QWebPagejavaScriptAlertProc* = proc(self: QWebPage, originatingFrame: gen_qwebframe_types.QWebFrame, msg: string): void {.raises: [], gcsafe.}
+type QWebPagejavaScriptConfirmProc* = proc(self: QWebPage, originatingFrame: gen_qwebframe_types.QWebFrame, msg: string): bool {.raises: [], gcsafe.}
+type QWebPagejavaScriptConsoleMessageProc* = proc(self: QWebPage, message: string, lineNumber: cint, sourceID: string): void {.raises: [], gcsafe.}
+type QWebPageuserAgentForUrlProc* = proc(self: QWebPage, url: gen_qurl_types.QUrl): string {.raises: [], gcsafe.}
+type QWebPageeventFilterProc* = proc(self: QWebPage, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QWebPagetimerEventProc* = proc(self: QWebPage, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QWebPagechildEventProc* = proc(self: QWebPage, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QWebPagecustomEventProc* = proc(self: QWebPage, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QWebPageconnectNotifyProc* = proc(self: QWebPage, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QWebPagedisconnectNotifyProc* = proc(self: QWebPage, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QWebPageVTable* = object
+  vtbl: cQWebPageVTable
+  metaObject*: QWebPagemetaObjectProc
+  metacast*: QWebPagemetacastProc
+  metacall*: QWebPagemetacallProc
+  triggerAction*: QWebPagetriggerActionProc
+  event*: QWebPageeventProc
+  extension*: QWebPageextensionProc
+  supportsExtension*: QWebPagesupportsExtensionProc
+  shouldInterruptJavaScript*: QWebPageshouldInterruptJavaScriptProc
+  createWindow*: QWebPagecreateWindowProc
+  createPlugin*: QWebPagecreatePluginProc
+  acceptNavigationRequest*: QWebPageacceptNavigationRequestProc
+  chooseFile*: QWebPagechooseFileProc
+  javaScriptAlert*: QWebPagejavaScriptAlertProc
+  javaScriptConfirm*: QWebPagejavaScriptConfirmProc
+  javaScriptConsoleMessage*: QWebPagejavaScriptConsoleMessageProc
+  userAgentForUrl*: QWebPageuserAgentForUrlProc
+  eventFilter*: QWebPageeventFilterProc
+  timerEvent*: QWebPagetimerEventProc
+  childEvent*: QWebPagechildEventProc
+  customEvent*: QWebPagecustomEventProc
+  connectNotify*: QWebPageconnectNotifyProc
+  disconnectNotify*: QWebPagedisconnectNotifyProc
+proc QWebPagemetaObject*(self: gen_qwebpage_types.QWebPage, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebPage_virtualbase_metaObject(self.h))
 
-type QWebPagemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qwebpage_types.QWebPage, slot: QWebPagemetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QWebPagemetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_metaObject(self: ptr cQWebPage, slot: int): pointer {.exportc: "miqt_exec_callback_QWebPage_metaObject ".} =
-  var nimfunc = cast[ptr QWebPagemetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQWebPage_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QWebPagemetacast*(self: gen_qwebpage_types.QWebPage, param1: cstring): pointer =
-  fQWebPage_virtualbase_metacast(self.h, param1)
+  fcQWebPage_virtualbase_metacast(self.h, param1)
 
-type QWebPagemetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qwebpage_types.QWebPage, slot: QWebPagemetacastProc) =
-  # TODO check subclass
-  var tmp = new QWebPagemetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_metacast(self: ptr cQWebPage, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebPage_metacast ".} =
-  var nimfunc = cast[ptr QWebPagemetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QWebPagemetacall*(self: gen_qwebpage_types.QWebPage, param1: cint, param2: cint, param3: pointer): cint =
-  fQWebPage_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQWebPage_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebPagemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qwebpage_types.QWebPage, slot: QWebPagemetacallProc) =
-  # TODO check subclass
-  var tmp = new QWebPagemetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_metacall(self: ptr cQWebPage, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebPage_metacall ".} =
-  var nimfunc = cast[ptr QWebPagemetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QWebPagetriggerAction*(self: gen_qwebpage_types.QWebPage, action: cint, checked: bool): void =
-  fQWebPage_virtualbase_triggerAction(self.h, cint(action), checked)
+  fcQWebPage_virtualbase_triggerAction(self.h, cint(action), checked)
 
-type QWebPagetriggerActionProc* = proc(action: cint, checked: bool): void
-proc ontriggerAction*(self: gen_qwebpage_types.QWebPage, slot: QWebPagetriggerActionProc) =
-  # TODO check subclass
-  var tmp = new QWebPagetriggerActionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_triggerAction(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_triggerAction(self: ptr cQWebPage, slot: int, action: cint, checked: bool): void {.exportc: "miqt_exec_callback_QWebPage_triggerAction ".} =
-  var nimfunc = cast[ptr QWebPagetriggerActionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_triggerAction(vtbl: pointer, self: pointer, action: cint, checked: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let slotval1 = cint(action)
-
   let slotval2 = checked
+  vtbl[].triggerAction(self, slotval1, slotval2)
 
+proc QWebPageevent*(self: gen_qwebpage_types.QWebPage, param1: gen_qcoreevent_types.QEvent): bool =
+  fcQWebPage_virtualbase_event(self.h, param1.h)
 
-  nimfunc[](slotval1, slotval2)
-proc QWebPageevent*(self: gen_qwebpage_types.QWebPage, param1: gen_qcoreevent.QEvent): bool =
-  fQWebPage_virtualbase_event(self.h, param1.h)
-
-type QWebPageeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qwebpage_types.QWebPage, slot: QWebPageeventProc) =
-  # TODO check subclass
-  var tmp = new QWebPageeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_event(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_event(self: ptr cQWebPage, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QWebPage_event ".} =
-  var nimfunc = cast[ptr QWebPageeventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQWebPage_event(vtbl: pointer, self: pointer, param1: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: param1)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
+
 proc QWebPageextension*(self: gen_qwebpage_types.QWebPage, extension: cint, option: gen_qwebpage_types.QWebPageExtensionOption, output: gen_qwebpage_types.QWebPageExtensionReturn): bool =
-  fQWebPage_virtualbase_extension(self.h, cint(extension), option.h, output.h)
+  fcQWebPage_virtualbase_extension(self.h, cint(extension), option.h, output.h)
 
-type QWebPageextensionProc* = proc(extension: cint, option: gen_qwebpage_types.QWebPageExtensionOption, output: gen_qwebpage_types.QWebPageExtensionReturn): bool
-proc onextension*(self: gen_qwebpage_types.QWebPage, slot: QWebPageextensionProc) =
-  # TODO check subclass
-  var tmp = new QWebPageextensionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_extension(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_extension(self: ptr cQWebPage, slot: int, extension: cint, option: pointer, output: pointer): bool {.exportc: "miqt_exec_callback_QWebPage_extension ".} =
-  var nimfunc = cast[ptr QWebPageextensionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_extension(vtbl: pointer, self: pointer, extension: cint, option: pointer, output: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let slotval1 = cint(extension)
-
   let slotval2 = gen_qwebpage_types.QWebPageExtensionOption(h: option)
-
   let slotval3 = gen_qwebpage_types.QWebPageExtensionReturn(h: output)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].extension(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QWebPagesupportsExtension*(self: gen_qwebpage_types.QWebPage, extension: cint): bool =
-  fQWebPage_virtualbase_supportsExtension(self.h, cint(extension))
+  fcQWebPage_virtualbase_supportsExtension(self.h, cint(extension))
 
-type QWebPagesupportsExtensionProc* = proc(extension: cint): bool
-proc onsupportsExtension*(self: gen_qwebpage_types.QWebPage, slot: QWebPagesupportsExtensionProc) =
-  # TODO check subclass
-  var tmp = new QWebPagesupportsExtensionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_supportsExtension(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_supportsExtension(self: ptr cQWebPage, slot: int, extension: cint): bool {.exportc: "miqt_exec_callback_QWebPage_supportsExtension ".} =
-  var nimfunc = cast[ptr QWebPagesupportsExtensionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_supportsExtension(vtbl: pointer, self: pointer, extension: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let slotval1 = cint(extension)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].supportsExtension(self, slotval1)
   virtualReturn
+
 proc QWebPageshouldInterruptJavaScript*(self: gen_qwebpage_types.QWebPage, ): bool =
-  fQWebPage_virtualbase_shouldInterruptJavaScript(self.h)
+  fcQWebPage_virtualbase_shouldInterruptJavaScript(self.h)
 
-type QWebPageshouldInterruptJavaScriptProc* = proc(): bool
-proc onshouldInterruptJavaScript*(self: gen_qwebpage_types.QWebPage, slot: QWebPageshouldInterruptJavaScriptProc) =
-  # TODO check subclass
-  var tmp = new QWebPageshouldInterruptJavaScriptProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_shouldInterruptJavaScript(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_shouldInterruptJavaScript(self: ptr cQWebPage, slot: int): bool {.exportc: "miqt_exec_callback_QWebPage_shouldInterruptJavaScript ".} =
-  var nimfunc = cast[ptr QWebPageshouldInterruptJavaScriptProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQWebPage_shouldInterruptJavaScript(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let virtualReturn = vtbl[].shouldInterruptJavaScript(self)
   virtualReturn
+
 proc QWebPagecreateWindow*(self: gen_qwebpage_types.QWebPage, typeVal: cint): gen_qwebpage_types.QWebPage =
-  gen_qwebpage_types.QWebPage(h: fQWebPage_virtualbase_createWindow(self.h, cint(typeVal)))
+  gen_qwebpage_types.QWebPage(h: fcQWebPage_virtualbase_createWindow(self.h, cint(typeVal)))
 
-type QWebPagecreateWindowProc* = proc(typeVal: cint): gen_qwebpage_types.QWebPage
-proc oncreateWindow*(self: gen_qwebpage_types.QWebPage, slot: QWebPagecreateWindowProc) =
-  # TODO check subclass
-  var tmp = new QWebPagecreateWindowProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_createWindow(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_createWindow(self: ptr cQWebPage, slot: int, typeVal: cint): pointer {.exportc: "miqt_exec_callback_QWebPage_createWindow ".} =
-  var nimfunc = cast[ptr QWebPagecreateWindowProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_createWindow(vtbl: pointer, self: pointer, typeVal: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let slotval1 = cint(typeVal)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].createWindow(self, slotval1)
   virtualReturn.h
-proc QWebPagecreatePlugin*(self: gen_qwebpage_types.QWebPage, classid: string, url: gen_qurl.QUrl, paramNames: seq[string], paramValues: seq[string]): gen_qobject.QObject =
+
+proc QWebPagecreatePlugin*(self: gen_qwebpage_types.QWebPage, classid: string, url: gen_qurl_types.QUrl, paramNames: seq[string], paramValues: seq[string]): gen_qobject_types.QObject =
   var paramNames_CArray = newSeq[struct_miqt_string](len(paramNames))
   for i in 0..<len(paramNames):
     paramNames_CArray[i] = struct_miqt_string(data: paramNames[i], len: csize_t(len(paramNames[i])))
@@ -1416,25 +1373,16 @@ proc QWebPagecreatePlugin*(self: gen_qwebpage_types.QWebPage, classid: string, u
   for i in 0..<len(paramValues):
     paramValues_CArray[i] = struct_miqt_string(data: paramValues[i], len: csize_t(len(paramValues[i])))
 
-  gen_qobject.QObject(h: fQWebPage_virtualbase_createPlugin(self.h, struct_miqt_string(data: classid, len: csize_t(len(classid))), url.h, struct_miqt_array(len: csize_t(len(paramNames)), data: if len(paramNames) == 0: nil else: addr(paramNames_CArray[0])), struct_miqt_array(len: csize_t(len(paramValues)), data: if len(paramValues) == 0: nil else: addr(paramValues_CArray[0]))))
+  gen_qobject_types.QObject(h: fcQWebPage_virtualbase_createPlugin(self.h, struct_miqt_string(data: classid, len: csize_t(len(classid))), url.h, struct_miqt_array(len: csize_t(len(paramNames)), data: if len(paramNames) == 0: nil else: addr(paramNames_CArray[0])), struct_miqt_array(len: csize_t(len(paramValues)), data: if len(paramValues) == 0: nil else: addr(paramValues_CArray[0]))))
 
-type QWebPagecreatePluginProc* = proc(classid: string, url: gen_qurl.QUrl, paramNames: seq[string], paramValues: seq[string]): gen_qobject.QObject
-proc oncreatePlugin*(self: gen_qwebpage_types.QWebPage, slot: QWebPagecreatePluginProc) =
-  # TODO check subclass
-  var tmp = new QWebPagecreatePluginProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_createPlugin(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_createPlugin(self: ptr cQWebPage, slot: int, classid: struct_miqt_string, url: pointer, paramNames: struct_miqt_array, paramValues: struct_miqt_array): pointer {.exportc: "miqt_exec_callback_QWebPage_createPlugin ".} =
-  var nimfunc = cast[ptr QWebPagecreatePluginProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_createPlugin(vtbl: pointer, self: pointer, classid: struct_miqt_string, url: pointer, paramNames: struct_miqt_array, paramValues: struct_miqt_array): pointer {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let vclassid_ms = classid
   let vclassidx_ret = string.fromBytes(toOpenArrayByte(vclassid_ms.data, 0, int(vclassid_ms.len)-1))
   c_free(vclassid_ms.data)
   let slotval1 = vclassidx_ret
-
-  let slotval2 = gen_qurl.QUrl(h: url)
-
+  let slotval2 = gen_qurl_types.QUrl(h: url)
   var vparamNames_ma = paramNames
   var vparamNamesx_ret = newSeq[string](int(vparamNames_ma.len))
   let vparamNames_outCast = cast[ptr UncheckedArray[struct_miqt_string]](vparamNames_ma.data)
@@ -1444,7 +1392,6 @@ proc miqt_exec_callback_QWebPage_createPlugin(self: ptr cQWebPage, slot: int, cl
     c_free(vparamNames_lv_ms.data)
     vparamNamesx_ret[i] = vparamNames_lvx_ret
   let slotval3 = vparamNamesx_ret
-
   var vparamValues_ma = paramValues
   var vparamValuesx_ret = newSeq[string](int(vparamValues_ma.len))
   let vparamValues_outCast = cast[ptr UncheckedArray[struct_miqt_string]](vparamValues_ma.data)
@@ -1454,275 +1401,262 @@ proc miqt_exec_callback_QWebPage_createPlugin(self: ptr cQWebPage, slot: int, cl
     c_free(vparamValues_lv_ms.data)
     vparamValuesx_ret[i] = vparamValues_lvx_ret
   let slotval4 = vparamValuesx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
-
+  let virtualReturn = vtbl[].createPlugin(self, slotval1, slotval2, slotval3, slotval4)
   virtualReturn.h
-proc QWebPageacceptNavigationRequest*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe.QWebFrame, request: gen_qnetworkrequest.QNetworkRequest, typeVal: cint): bool =
-  fQWebPage_virtualbase_acceptNavigationRequest(self.h, frame.h, request.h, cint(typeVal))
 
-type QWebPageacceptNavigationRequestProc* = proc(frame: gen_qwebframe.QWebFrame, request: gen_qnetworkrequest.QNetworkRequest, typeVal: cint): bool
-proc onacceptNavigationRequest*(self: gen_qwebpage_types.QWebPage, slot: QWebPageacceptNavigationRequestProc) =
-  # TODO check subclass
-  var tmp = new QWebPageacceptNavigationRequestProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_acceptNavigationRequest(self.h, cast[int](addr tmp[]))
+proc QWebPageacceptNavigationRequest*(self: gen_qwebpage_types.QWebPage, frame: gen_qwebframe_types.QWebFrame, request: gen_qnetworkrequest_types.QNetworkRequest, typeVal: cint): bool =
+  fcQWebPage_virtualbase_acceptNavigationRequest(self.h, frame.h, request.h, cint(typeVal))
 
-proc miqt_exec_callback_QWebPage_acceptNavigationRequest(self: ptr cQWebPage, slot: int, frame: pointer, request: pointer, typeVal: cint): bool {.exportc: "miqt_exec_callback_QWebPage_acceptNavigationRequest ".} =
-  var nimfunc = cast[ptr QWebPageacceptNavigationRequestProc](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: frame)
-
-  let slotval2 = gen_qnetworkrequest.QNetworkRequest(h: request)
-
+proc miqt_exec_callback_cQWebPage_acceptNavigationRequest(vtbl: pointer, self: pointer, frame: pointer, request: pointer, typeVal: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: frame)
+  let slotval2 = gen_qnetworkrequest_types.QNetworkRequest(h: request)
   let slotval3 = cint(typeVal)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].acceptNavigationRequest(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QWebPagechooseFile*(self: gen_qwebpage_types.QWebPage, originatingFrame: gen_qwebframe.QWebFrame, oldFile: string): string =
-  let v_ms = fQWebPage_virtualbase_chooseFile(self.h, originatingFrame.h, struct_miqt_string(data: oldFile, len: csize_t(len(oldFile))))
+
+proc QWebPagechooseFile*(self: gen_qwebpage_types.QWebPage, originatingFrame: gen_qwebframe_types.QWebFrame, oldFile: string): string =
+  let v_ms = fcQWebPage_virtualbase_chooseFile(self.h, originatingFrame.h, struct_miqt_string(data: oldFile, len: csize_t(len(oldFile))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QWebPagechooseFileProc* = proc(originatingFrame: gen_qwebframe.QWebFrame, oldFile: string): string
-proc onchooseFile*(self: gen_qwebpage_types.QWebPage, slot: QWebPagechooseFileProc) =
-  # TODO check subclass
-  var tmp = new QWebPagechooseFileProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_chooseFile(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_chooseFile(self: ptr cQWebPage, slot: int, originatingFrame: pointer, oldFile: struct_miqt_string): struct_miqt_string {.exportc: "miqt_exec_callback_QWebPage_chooseFile ".} =
-  var nimfunc = cast[ptr QWebPagechooseFileProc](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: originatingFrame)
-
+proc miqt_exec_callback_cQWebPage_chooseFile(vtbl: pointer, self: pointer, originatingFrame: pointer, oldFile: struct_miqt_string): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: originatingFrame)
   let voldFile_ms = oldFile
   let voldFilex_ret = string.fromBytes(toOpenArrayByte(voldFile_ms.data, 0, int(voldFile_ms.len)-1))
   c_free(voldFile_ms.data)
   let slotval2 = voldFilex_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].chooseFile(self, slotval1, slotval2)
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QWebPagejavaScriptAlert*(self: gen_qwebpage_types.QWebPage, originatingFrame: gen_qwebframe.QWebFrame, msg: string): void =
-  fQWebPage_virtualbase_javaScriptAlert(self.h, originatingFrame.h, struct_miqt_string(data: msg, len: csize_t(len(msg))))
 
-type QWebPagejavaScriptAlertProc* = proc(originatingFrame: gen_qwebframe.QWebFrame, msg: string): void
-proc onjavaScriptAlert*(self: gen_qwebpage_types.QWebPage, slot: QWebPagejavaScriptAlertProc) =
-  # TODO check subclass
-  var tmp = new QWebPagejavaScriptAlertProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_javaScriptAlert(self.h, cast[int](addr tmp[]))
+proc QWebPagejavaScriptAlert*(self: gen_qwebpage_types.QWebPage, originatingFrame: gen_qwebframe_types.QWebFrame, msg: string): void =
+  fcQWebPage_virtualbase_javaScriptAlert(self.h, originatingFrame.h, struct_miqt_string(data: msg, len: csize_t(len(msg))))
 
-proc miqt_exec_callback_QWebPage_javaScriptAlert(self: ptr cQWebPage, slot: int, originatingFrame: pointer, msg: struct_miqt_string): void {.exportc: "miqt_exec_callback_QWebPage_javaScriptAlert ".} =
-  var nimfunc = cast[ptr QWebPagejavaScriptAlertProc](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: originatingFrame)
-
+proc miqt_exec_callback_cQWebPage_javaScriptAlert(vtbl: pointer, self: pointer, originatingFrame: pointer, msg: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: originatingFrame)
   let vmsg_ms = msg
   let vmsgx_ret = string.fromBytes(toOpenArrayByte(vmsg_ms.data, 0, int(vmsg_ms.len)-1))
   c_free(vmsg_ms.data)
   let slotval2 = vmsgx_ret
+  vtbl[].javaScriptAlert(self, slotval1, slotval2)
 
+proc QWebPagejavaScriptConfirm*(self: gen_qwebpage_types.QWebPage, originatingFrame: gen_qwebframe_types.QWebFrame, msg: string): bool =
+  fcQWebPage_virtualbase_javaScriptConfirm(self.h, originatingFrame.h, struct_miqt_string(data: msg, len: csize_t(len(msg))))
 
-  nimfunc[](slotval1, slotval2)
-proc QWebPagejavaScriptConfirm*(self: gen_qwebpage_types.QWebPage, originatingFrame: gen_qwebframe.QWebFrame, msg: string): bool =
-  fQWebPage_virtualbase_javaScriptConfirm(self.h, originatingFrame.h, struct_miqt_string(data: msg, len: csize_t(len(msg))))
-
-type QWebPagejavaScriptConfirmProc* = proc(originatingFrame: gen_qwebframe.QWebFrame, msg: string): bool
-proc onjavaScriptConfirm*(self: gen_qwebpage_types.QWebPage, slot: QWebPagejavaScriptConfirmProc) =
-  # TODO check subclass
-  var tmp = new QWebPagejavaScriptConfirmProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_javaScriptConfirm(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_javaScriptConfirm(self: ptr cQWebPage, slot: int, originatingFrame: pointer, msg: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QWebPage_javaScriptConfirm ".} =
-  var nimfunc = cast[ptr QWebPagejavaScriptConfirmProc](cast[pointer](slot))
-  let slotval1 = gen_qwebframe.QWebFrame(h: originatingFrame)
-
+proc miqt_exec_callback_cQWebPage_javaScriptConfirm(vtbl: pointer, self: pointer, originatingFrame: pointer, msg: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qwebframe_types.QWebFrame(h: originatingFrame)
   let vmsg_ms = msg
   let vmsgx_ret = string.fromBytes(toOpenArrayByte(vmsg_ms.data, 0, int(vmsg_ms.len)-1))
   c_free(vmsg_ms.data)
   let slotval2 = vmsgx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].javaScriptConfirm(self, slotval1, slotval2)
   virtualReturn
+
 proc QWebPagejavaScriptConsoleMessage*(self: gen_qwebpage_types.QWebPage, message: string, lineNumber: cint, sourceID: string): void =
-  fQWebPage_virtualbase_javaScriptConsoleMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), lineNumber, struct_miqt_string(data: sourceID, len: csize_t(len(sourceID))))
+  fcQWebPage_virtualbase_javaScriptConsoleMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), lineNumber, struct_miqt_string(data: sourceID, len: csize_t(len(sourceID))))
 
-type QWebPagejavaScriptConsoleMessageProc* = proc(message: string, lineNumber: cint, sourceID: string): void
-proc onjavaScriptConsoleMessage*(self: gen_qwebpage_types.QWebPage, slot: QWebPagejavaScriptConsoleMessageProc) =
-  # TODO check subclass
-  var tmp = new QWebPagejavaScriptConsoleMessageProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_javaScriptConsoleMessage(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_javaScriptConsoleMessage(self: ptr cQWebPage, slot: int, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string): void {.exportc: "miqt_exec_callback_QWebPage_javaScriptConsoleMessage ".} =
-  var nimfunc = cast[ptr QWebPagejavaScriptConsoleMessageProc](cast[pointer](slot))
+proc miqt_exec_callback_cQWebPage_javaScriptConsoleMessage(vtbl: pointer, self: pointer, message: struct_miqt_string, lineNumber: cint, sourceID: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
   let vmessage_ms = message
   let vmessagex_ret = string.fromBytes(toOpenArrayByte(vmessage_ms.data, 0, int(vmessage_ms.len)-1))
   c_free(vmessage_ms.data)
   let slotval1 = vmessagex_ret
-
   let slotval2 = lineNumber
-
   let vsourceID_ms = sourceID
   let vsourceIDx_ret = string.fromBytes(toOpenArrayByte(vsourceID_ms.data, 0, int(vsourceID_ms.len)-1))
   c_free(vsourceID_ms.data)
   let slotval3 = vsourceIDx_ret
+  vtbl[].javaScriptConsoleMessage(self, slotval1, slotval2, slotval3)
 
-
-  nimfunc[](slotval1, slotval2, slotval3)
-proc QWebPageuserAgentForUrl*(self: gen_qwebpage_types.QWebPage, url: gen_qurl.QUrl): string =
-  let v_ms = fQWebPage_virtualbase_userAgentForUrl(self.h, url.h)
+proc QWebPageuserAgentForUrl*(self: gen_qwebpage_types.QWebPage, url: gen_qurl_types.QUrl): string =
+  let v_ms = fcQWebPage_virtualbase_userAgentForUrl(self.h, url.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QWebPageuserAgentForUrlProc* = proc(url: gen_qurl.QUrl): string
-proc onuserAgentForUrl*(self: gen_qwebpage_types.QWebPage, slot: QWebPageuserAgentForUrlProc) =
-  # TODO check subclass
-  var tmp = new QWebPageuserAgentForUrlProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_userAgentForUrl(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_userAgentForUrl(self: ptr cQWebPage, slot: int, url: pointer): struct_miqt_string {.exportc: "miqt_exec_callback_QWebPage_userAgentForUrl ".} =
-  var nimfunc = cast[ptr QWebPageuserAgentForUrlProc](cast[pointer](slot))
-  let slotval1 = gen_qurl.QUrl(h: url)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQWebPage_userAgentForUrl(vtbl: pointer, self: pointer, url: pointer): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qurl_types.QUrl(h: url)
+  let virtualReturn = vtbl[].userAgentForUrl(self, slotval1)
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QWebPageeventFilter*(self: gen_qwebpage_types.QWebPage, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQWebPage_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebPageeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qwebpage_types.QWebPage, slot: QWebPageeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QWebPageeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QWebPageeventFilter*(self: gen_qwebpage_types.QWebPage, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQWebPage_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QWebPage_eventFilter(self: ptr cQWebPage, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebPage_eventFilter ".} =
-  var nimfunc = cast[ptr QWebPageeventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQWebPage_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QWebPagetimerEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qcoreevent.QTimerEvent): void =
-  fQWebPage_virtualbase_timerEvent(self.h, event.h)
 
-type QWebPagetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qwebpage_types.QWebPage, slot: QWebPagetimerEventProc) =
-  # TODO check subclass
-  var tmp = new QWebPagetimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QWebPagetimerEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQWebPage_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QWebPage_timerEvent(self: ptr cQWebPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebPage_timerEvent ".} =
-  var nimfunc = cast[ptr QWebPagetimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQWebPage_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QWebPagechildEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQWebPage_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QWebPagechildEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qcoreevent.QChildEvent): void =
-  fQWebPage_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQWebPage_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QWebPagechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qwebpage_types.QWebPage, slot: QWebPagechildEventProc) =
-  # TODO check subclass
-  var tmp = new QWebPagechildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QWebPagecustomEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qcoreevent_types.QEvent): void =
+  fcQWebPage_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QWebPage_childEvent(self: ptr cQWebPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebPage_childEvent ".} =
-  var nimfunc = cast[ptr QWebPagechildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQWebPage_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QWebPageconnectNotify*(self: gen_qwebpage_types.QWebPage, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQWebPage_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QWebPagecustomEvent*(self: gen_qwebpage_types.QWebPage, event: gen_qcoreevent.QEvent): void =
-  fQWebPage_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQWebPage_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QWebPagecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qwebpage_types.QWebPage, slot: QWebPagecustomEventProc) =
-  # TODO check subclass
-  var tmp = new QWebPagecustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QWebPagedisconnectNotify*(self: gen_qwebpage_types.QWebPage, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQWebPage_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QWebPage_customEvent(self: ptr cQWebPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebPage_customEvent ".} =
-  var nimfunc = cast[ptr QWebPagecustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQWebPage_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QWebPageVTable](vtbl)
+  let self = QWebPage(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qwebpage_types.QWebPage,
+    vtbl: ref QWebPageVTable = nil): gen_qwebpage_types.QWebPage =
+  let vtbl = if vtbl == nil: new QWebPageVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQWebPageVTable, _: ptr cQWebPage) {.cdecl.} =
+    let vtbl = cast[ref QWebPageVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQWebPage_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQWebPage_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQWebPage_metacall
+  if not isNil(vtbl.triggerAction):
+    vtbl[].vtbl.triggerAction = miqt_exec_callback_cQWebPage_triggerAction
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQWebPage_event
+  if not isNil(vtbl.extension):
+    vtbl[].vtbl.extension = miqt_exec_callback_cQWebPage_extension
+  if not isNil(vtbl.supportsExtension):
+    vtbl[].vtbl.supportsExtension = miqt_exec_callback_cQWebPage_supportsExtension
+  if not isNil(vtbl.shouldInterruptJavaScript):
+    vtbl[].vtbl.shouldInterruptJavaScript = miqt_exec_callback_cQWebPage_shouldInterruptJavaScript
+  if not isNil(vtbl.createWindow):
+    vtbl[].vtbl.createWindow = miqt_exec_callback_cQWebPage_createWindow
+  if not isNil(vtbl.createPlugin):
+    vtbl[].vtbl.createPlugin = miqt_exec_callback_cQWebPage_createPlugin
+  if not isNil(vtbl.acceptNavigationRequest):
+    vtbl[].vtbl.acceptNavigationRequest = miqt_exec_callback_cQWebPage_acceptNavigationRequest
+  if not isNil(vtbl.chooseFile):
+    vtbl[].vtbl.chooseFile = miqt_exec_callback_cQWebPage_chooseFile
+  if not isNil(vtbl.javaScriptAlert):
+    vtbl[].vtbl.javaScriptAlert = miqt_exec_callback_cQWebPage_javaScriptAlert
+  if not isNil(vtbl.javaScriptConfirm):
+    vtbl[].vtbl.javaScriptConfirm = miqt_exec_callback_cQWebPage_javaScriptConfirm
+  if not isNil(vtbl.javaScriptConsoleMessage):
+    vtbl[].vtbl.javaScriptConsoleMessage = miqt_exec_callback_cQWebPage_javaScriptConsoleMessage
+  if not isNil(vtbl.userAgentForUrl):
+    vtbl[].vtbl.userAgentForUrl = miqt_exec_callback_cQWebPage_userAgentForUrl
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQWebPage_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQWebPage_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQWebPage_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQWebPage_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQWebPage_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQWebPage_disconnectNotify
+  gen_qwebpage_types.QWebPage(h: fcQWebPage_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QWebPageconnectNotify*(self: gen_qwebpage_types.QWebPage, signal: gen_qmetaobject.QMetaMethod): void =
-  fQWebPage_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qwebpage_types.QWebPage,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QWebPageVTable = nil): gen_qwebpage_types.QWebPage =
+  let vtbl = if vtbl == nil: new QWebPageVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQWebPageVTable, _: ptr cQWebPage) {.cdecl.} =
+    let vtbl = cast[ref QWebPageVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQWebPage_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQWebPage_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQWebPage_metacall
+  if not isNil(vtbl.triggerAction):
+    vtbl[].vtbl.triggerAction = miqt_exec_callback_cQWebPage_triggerAction
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQWebPage_event
+  if not isNil(vtbl.extension):
+    vtbl[].vtbl.extension = miqt_exec_callback_cQWebPage_extension
+  if not isNil(vtbl.supportsExtension):
+    vtbl[].vtbl.supportsExtension = miqt_exec_callback_cQWebPage_supportsExtension
+  if not isNil(vtbl.shouldInterruptJavaScript):
+    vtbl[].vtbl.shouldInterruptJavaScript = miqt_exec_callback_cQWebPage_shouldInterruptJavaScript
+  if not isNil(vtbl.createWindow):
+    vtbl[].vtbl.createWindow = miqt_exec_callback_cQWebPage_createWindow
+  if not isNil(vtbl.createPlugin):
+    vtbl[].vtbl.createPlugin = miqt_exec_callback_cQWebPage_createPlugin
+  if not isNil(vtbl.acceptNavigationRequest):
+    vtbl[].vtbl.acceptNavigationRequest = miqt_exec_callback_cQWebPage_acceptNavigationRequest
+  if not isNil(vtbl.chooseFile):
+    vtbl[].vtbl.chooseFile = miqt_exec_callback_cQWebPage_chooseFile
+  if not isNil(vtbl.javaScriptAlert):
+    vtbl[].vtbl.javaScriptAlert = miqt_exec_callback_cQWebPage_javaScriptAlert
+  if not isNil(vtbl.javaScriptConfirm):
+    vtbl[].vtbl.javaScriptConfirm = miqt_exec_callback_cQWebPage_javaScriptConfirm
+  if not isNil(vtbl.javaScriptConsoleMessage):
+    vtbl[].vtbl.javaScriptConsoleMessage = miqt_exec_callback_cQWebPage_javaScriptConsoleMessage
+  if not isNil(vtbl.userAgentForUrl):
+    vtbl[].vtbl.userAgentForUrl = miqt_exec_callback_cQWebPage_userAgentForUrl
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQWebPage_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQWebPage_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQWebPage_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQWebPage_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQWebPage_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQWebPage_disconnectNotify
+  gen_qwebpage_types.QWebPage(h: fcQWebPage_new2(addr(vtbl[]), parent.h))
 
-type QWebPageconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qwebpage_types.QWebPage, slot: QWebPageconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QWebPageconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_connectNotify(self: ptr cQWebPage, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebPage_connectNotify ".} =
-  var nimfunc = cast[ptr QWebPageconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QWebPagedisconnectNotify*(self: gen_qwebpage_types.QWebPage, signal: gen_qmetaobject.QMetaMethod): void =
-  fQWebPage_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QWebPagedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qwebpage_types.QWebPage, slot: QWebPagedisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QWebPagedisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQWebPage_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QWebPage_disconnectNotify(self: ptr cQWebPage, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebPage_disconnectNotify ".} =
-  var nimfunc = cast[ptr QWebPagedisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qwebpage_types.QWebPage): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebPage_staticMetaObject())
+proc staticMetaObject*(_: type gen_qwebpage_types.QWebPage): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebPage_staticMetaObject())
 proc delete*(self: gen_qwebpage_types.QWebPage) =
   fcQWebPage_delete(self.h)
-
-func init*(T: type gen_qwebpage_types.QWebPageViewportAttributes, h: ptr cQWebPageViewportAttributes): gen_qwebpage_types.QWebPageViewportAttributes =
-  T(h: h)
-proc create*(T: type gen_qwebpage_types.QWebPageViewportAttributes, ): gen_qwebpage_types.QWebPageViewportAttributes =
-  gen_qwebpage_types.QWebPageViewportAttributes.init(fcQWebPageViewportAttributes_new())
-
-proc create*(T: type gen_qwebpage_types.QWebPageViewportAttributes, other: gen_qwebpage_types.QWebPageViewportAttributes): gen_qwebpage_types.QWebPageViewportAttributes =
-  gen_qwebpage_types.QWebPageViewportAttributes.init(fcQWebPageViewportAttributes_new2(other.h))
-
 proc operatorAssign*(self: gen_qwebpage_types.QWebPageViewportAttributes, other: gen_qwebpage_types.QWebPageViewportAttributes): void =
   fcQWebPageViewportAttributes_operatorAssign(self.h, other.h)
 
@@ -1744,62 +1678,55 @@ proc isUserScalable*(self: gen_qwebpage_types.QWebPageViewportAttributes, ): boo
 proc isValid*(self: gen_qwebpage_types.QWebPageViewportAttributes, ): bool =
   fcQWebPageViewportAttributes_isValid(self.h)
 
-proc size*(self: gen_qwebpage_types.QWebPageViewportAttributes, ): gen_qsize.QSizeF =
-  gen_qsize.QSizeF(h: fcQWebPageViewportAttributes_size(self.h))
+proc size*(self: gen_qwebpage_types.QWebPageViewportAttributes, ): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQWebPageViewportAttributes_size(self.h))
+
+proc create*(T: type gen_qwebpage_types.QWebPageViewportAttributes): gen_qwebpage_types.QWebPageViewportAttributes =
+  gen_qwebpage_types.QWebPageViewportAttributes(h: fcQWebPageViewportAttributes_new())
+
+proc create*(T: type gen_qwebpage_types.QWebPageViewportAttributes,
+    other: gen_qwebpage_types.QWebPageViewportAttributes): gen_qwebpage_types.QWebPageViewportAttributes =
+  gen_qwebpage_types.QWebPageViewportAttributes(h: fcQWebPageViewportAttributes_new2(other.h))
 
 proc delete*(self: gen_qwebpage_types.QWebPageViewportAttributes) =
   fcQWebPageViewportAttributes_delete(self.h)
-
-func init*(T: type gen_qwebpage_types.QWebPageExtensionOption, h: ptr cQWebPageExtensionOption): gen_qwebpage_types.QWebPageExtensionOption =
-  T(h: h)
-proc create*(T: type gen_qwebpage_types.QWebPageExtensionOption, param1: gen_qwebpage_types.QWebPageExtensionOption): gen_qwebpage_types.QWebPageExtensionOption =
-  gen_qwebpage_types.QWebPageExtensionOption.init(fcQWebPageExtensionOption_new(param1.h))
+proc create*(T: type gen_qwebpage_types.QWebPageExtensionOption,
+    param1: gen_qwebpage_types.QWebPageExtensionOption): gen_qwebpage_types.QWebPageExtensionOption =
+  gen_qwebpage_types.QWebPageExtensionOption(h: fcQWebPageExtensionOption_new(param1.h))
 
 proc delete*(self: gen_qwebpage_types.QWebPageExtensionOption) =
   fcQWebPageExtensionOption_delete(self.h)
+proc create*(T: type gen_qwebpage_types.QWebPageExtensionReturn,
+    param1: gen_qwebpage_types.QWebPageExtensionReturn): gen_qwebpage_types.QWebPageExtensionReturn =
+  gen_qwebpage_types.QWebPageExtensionReturn(h: fcQWebPageExtensionReturn_new(param1.h))
 
-func init*(T: type gen_qwebpage_types.QWebPageExtensionReturn, h: ptr cQWebPageExtensionReturn): gen_qwebpage_types.QWebPageExtensionReturn =
-  T(h: h)
-proc create*(T: type gen_qwebpage_types.QWebPageExtensionReturn, param1: gen_qwebpage_types.QWebPageExtensionReturn): gen_qwebpage_types.QWebPageExtensionReturn =
-  gen_qwebpage_types.QWebPageExtensionReturn.init(fcQWebPageExtensionReturn_new(param1.h))
-
-proc create*(T: type gen_qwebpage_types.QWebPageExtensionReturn, ): gen_qwebpage_types.QWebPageExtensionReturn =
-  gen_qwebpage_types.QWebPageExtensionReturn.init(fcQWebPageExtensionReturn_new2())
+proc create*(T: type gen_qwebpage_types.QWebPageExtensionReturn): gen_qwebpage_types.QWebPageExtensionReturn =
+  gen_qwebpage_types.QWebPageExtensionReturn(h: fcQWebPageExtensionReturn_new2())
 
 proc delete*(self: gen_qwebpage_types.QWebPageExtensionReturn) =
   fcQWebPageExtensionReturn_delete(self.h)
-
-func init*(T: type gen_qwebpage_types.QWebPageChooseMultipleFilesExtensionOption, h: ptr cQWebPageChooseMultipleFilesExtensionOption): gen_qwebpage_types.QWebPageChooseMultipleFilesExtensionOption =
-  T(h: h)
 proc delete*(self: gen_qwebpage_types.QWebPageChooseMultipleFilesExtensionOption) =
   fcQWebPageChooseMultipleFilesExtensionOption_delete(self.h)
-
-func init*(T: type gen_qwebpage_types.QWebPageChooseMultipleFilesExtensionReturn, h: ptr cQWebPageChooseMultipleFilesExtensionReturn): gen_qwebpage_types.QWebPageChooseMultipleFilesExtensionReturn =
-  T(h: h)
 proc delete*(self: gen_qwebpage_types.QWebPageChooseMultipleFilesExtensionReturn) =
   fcQWebPageChooseMultipleFilesExtensionReturn_delete(self.h)
-
-func init*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionOption, h: ptr cQWebPageErrorPageExtensionOption): gen_qwebpage_types.QWebPageErrorPageExtensionOption =
-  T(h: h)
-proc create*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionOption, param1: gen_qwebpage_types.QWebPageErrorPageExtensionOption): gen_qwebpage_types.QWebPageErrorPageExtensionOption =
-  gen_qwebpage_types.QWebPageErrorPageExtensionOption.init(fcQWebPageErrorPageExtensionOption_new(param1.h))
-
 proc operatorAssign*(self: gen_qwebpage_types.QWebPageErrorPageExtensionOption, param1: gen_qwebpage_types.QWebPageErrorPageExtensionOption): void =
   fcQWebPageErrorPageExtensionOption_operatorAssign(self.h, param1.h)
 
+proc create*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionOption,
+    param1: gen_qwebpage_types.QWebPageErrorPageExtensionOption): gen_qwebpage_types.QWebPageErrorPageExtensionOption =
+  gen_qwebpage_types.QWebPageErrorPageExtensionOption(h: fcQWebPageErrorPageExtensionOption_new(param1.h))
+
 proc delete*(self: gen_qwebpage_types.QWebPageErrorPageExtensionOption) =
   fcQWebPageErrorPageExtensionOption_delete(self.h)
-
-func init*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionReturn, h: ptr cQWebPageErrorPageExtensionReturn): gen_qwebpage_types.QWebPageErrorPageExtensionReturn =
-  T(h: h)
-proc create*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionReturn, ): gen_qwebpage_types.QWebPageErrorPageExtensionReturn =
-  gen_qwebpage_types.QWebPageErrorPageExtensionReturn.init(fcQWebPageErrorPageExtensionReturn_new())
-
-proc create*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionReturn, param1: gen_qwebpage_types.QWebPageErrorPageExtensionReturn): gen_qwebpage_types.QWebPageErrorPageExtensionReturn =
-  gen_qwebpage_types.QWebPageErrorPageExtensionReturn.init(fcQWebPageErrorPageExtensionReturn_new2(param1.h))
-
 proc operatorAssign*(self: gen_qwebpage_types.QWebPageErrorPageExtensionReturn, param1: gen_qwebpage_types.QWebPageErrorPageExtensionReturn): void =
   fcQWebPageErrorPageExtensionReturn_operatorAssign(self.h, param1.h)
+
+proc create*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionReturn): gen_qwebpage_types.QWebPageErrorPageExtensionReturn =
+  gen_qwebpage_types.QWebPageErrorPageExtensionReturn(h: fcQWebPageErrorPageExtensionReturn_new())
+
+proc create*(T: type gen_qwebpage_types.QWebPageErrorPageExtensionReturn,
+    param1: gen_qwebpage_types.QWebPageErrorPageExtensionReturn): gen_qwebpage_types.QWebPageErrorPageExtensionReturn =
+  gen_qwebpage_types.QWebPageErrorPageExtensionReturn(h: fcQWebPageErrorPageExtensionReturn_new2(param1.h))
 
 proc delete*(self: gen_qwebpage_types.QWebPageErrorPageExtensionReturn) =
   fcQWebPageErrorPageExtensionReturn_delete(self.h)

@@ -40,23 +40,18 @@ template DeviceError*(_: type QImageWriterImageWriterErrorEnum): untyped = 1
 template UnsupportedFormatError*(_: type QImageWriterImageWriterErrorEnum): untyped = 2
 template InvalidImageError*(_: type QImageWriterImageWriterErrorEnum): untyped = 3
 
-
 import gen_qimagewriter_types
 export gen_qimagewriter_types
 
 import
-  gen_qimage,
-  gen_qiodevice
+  gen_qimage_types,
+  gen_qiodevice_types
 export
-  gen_qimage,
-  gen_qiodevice
+  gen_qimage_types,
+  gen_qiodevice_types
 
 type cQImageWriter*{.exportc: "QImageWriter", incompleteStruct.} = object
 
-proc fcQImageWriter_new(): ptr cQImageWriter {.importc: "QImageWriter_new".}
-proc fcQImageWriter_new2(device: pointer, format: struct_miqt_string): ptr cQImageWriter {.importc: "QImageWriter_new2".}
-proc fcQImageWriter_new3(fileName: struct_miqt_string): ptr cQImageWriter {.importc: "QImageWriter_new3".}
-proc fcQImageWriter_new4(fileName: struct_miqt_string, format: struct_miqt_string): ptr cQImageWriter {.importc: "QImageWriter_new4".}
 proc fcQImageWriter_tr(sourceText: cstring): struct_miqt_string {.importc: "QImageWriter_tr".}
 proc fcQImageWriter_trUtf8(sourceText: cstring): struct_miqt_string {.importc: "QImageWriter_trUtf8".}
 proc fcQImageWriter_setFormat(self: pointer, format: struct_miqt_string): void {.importc: "QImageWriter_setFormat".}
@@ -95,22 +90,11 @@ proc fcQImageWriter_tr2(sourceText: cstring, disambiguation: cstring): struct_mi
 proc fcQImageWriter_tr3(sourceText: cstring, disambiguation: cstring, n: cint): struct_miqt_string {.importc: "QImageWriter_tr3".}
 proc fcQImageWriter_trUtf82(sourceText: cstring, disambiguation: cstring): struct_miqt_string {.importc: "QImageWriter_trUtf82".}
 proc fcQImageWriter_trUtf83(sourceText: cstring, disambiguation: cstring, n: cint): struct_miqt_string {.importc: "QImageWriter_trUtf83".}
+proc fcQImageWriter_new(): ptr cQImageWriter {.importc: "QImageWriter_new".}
+proc fcQImageWriter_new2(device: pointer, format: struct_miqt_string): ptr cQImageWriter {.importc: "QImageWriter_new2".}
+proc fcQImageWriter_new3(fileName: struct_miqt_string): ptr cQImageWriter {.importc: "QImageWriter_new3".}
+proc fcQImageWriter_new4(fileName: struct_miqt_string, format: struct_miqt_string): ptr cQImageWriter {.importc: "QImageWriter_new4".}
 proc fcQImageWriter_delete(self: pointer) {.importc: "QImageWriter_delete".}
-
-
-func init*(T: type gen_qimagewriter_types.QImageWriter, h: ptr cQImageWriter): gen_qimagewriter_types.QImageWriter =
-  T(h: h)
-proc create*(T: type gen_qimagewriter_types.QImageWriter, ): gen_qimagewriter_types.QImageWriter =
-  gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new())
-
-proc create*(T: type gen_qimagewriter_types.QImageWriter, device: gen_qiodevice.QIODevice, format: seq[byte]): gen_qimagewriter_types.QImageWriter =
-  gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new2(device.h, struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
-
-proc create*(T: type gen_qimagewriter_types.QImageWriter, fileName: string): gen_qimagewriter_types.QImageWriter =
-  gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new3(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-
-proc create*(T: type gen_qimagewriter_types.QImageWriter, fileName: string, format: seq[byte]): gen_qimagewriter_types.QImageWriter =
-  gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
 
 proc tr*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring): string =
   let v_ms = fcQImageWriter_tr(sourceText)
@@ -133,11 +117,11 @@ proc format*(self: gen_qimagewriter_types.QImageWriter, ): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc setDevice*(self: gen_qimagewriter_types.QImageWriter, device: gen_qiodevice.QIODevice): void =
+proc setDevice*(self: gen_qimagewriter_types.QImageWriter, device: gen_qiodevice_types.QIODevice): void =
   fcQImageWriter_setDevice(self.h, device.h)
 
-proc device*(self: gen_qimagewriter_types.QImageWriter, ): gen_qiodevice.QIODevice =
-  gen_qiodevice.QIODevice(h: fcQImageWriter_device(self.h))
+proc device*(self: gen_qimagewriter_types.QImageWriter, ): gen_qiodevice_types.QIODevice =
+  gen_qiodevice_types.QIODevice(h: fcQImageWriter_device(self.h))
 
 proc setFileName*(self: gen_qimagewriter_types.QImageWriter, fileName: string): void =
   fcQImageWriter_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
@@ -219,7 +203,7 @@ proc setText*(self: gen_qimagewriter_types.QImageWriter, key: string, text: stri
 proc canWrite*(self: gen_qimagewriter_types.QImageWriter, ): bool =
   fcQImageWriter_canWrite(self.h)
 
-proc write*(self: gen_qimagewriter_types.QImageWriter, image: gen_qimage.QImage): bool =
+proc write*(self: gen_qimagewriter_types.QImageWriter, image: gen_qimage_types.QImage): bool =
   fcQImageWriter_write(self.h, image.h)
 
 proc error*(self: gen_qimagewriter_types.QImageWriter, ): cint =
@@ -290,6 +274,21 @@ proc trUtf8*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, d
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
+
+proc create*(T: type gen_qimagewriter_types.QImageWriter): gen_qimagewriter_types.QImageWriter =
+  gen_qimagewriter_types.QImageWriter(h: fcQImageWriter_new())
+
+proc create*(T: type gen_qimagewriter_types.QImageWriter,
+    device: gen_qiodevice_types.QIODevice, format: seq[byte]): gen_qimagewriter_types.QImageWriter =
+  gen_qimagewriter_types.QImageWriter(h: fcQImageWriter_new2(device.h, struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
+
+proc create*(T: type gen_qimagewriter_types.QImageWriter,
+    fileName: string): gen_qimagewriter_types.QImageWriter =
+  gen_qimagewriter_types.QImageWriter(h: fcQImageWriter_new3(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+
+proc create*(T: type gen_qimagewriter_types.QImageWriter,
+    fileName: string, format: seq[byte]): gen_qimagewriter_types.QImageWriter =
+  gen_qimagewriter_types.QImageWriter(h: fcQImageWriter_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
 
 proc delete*(self: gen_qimagewriter_types.QImageWriter) =
   fcQImageWriter_delete(self.h)

@@ -69,142 +69,27 @@
 extern "C" {
 #endif
 
-QInputEvent* miqt_exec_callback_QInputEvent_clone(const QInputEvent*, intptr_t);
-void miqt_exec_callback_QInputEvent_setTimestamp(QInputEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QInputEvent_setAccepted(QInputEvent*, intptr_t, bool);
-QPointerEvent* miqt_exec_callback_QPointerEvent_clone(const QPointerEvent*, intptr_t);
-void miqt_exec_callback_QPointerEvent_setTimestamp(QPointerEvent*, intptr_t, unsigned long long);
-bool miqt_exec_callback_QPointerEvent_isBeginEvent(const QPointerEvent*, intptr_t);
-bool miqt_exec_callback_QPointerEvent_isUpdateEvent(const QPointerEvent*, intptr_t);
-bool miqt_exec_callback_QPointerEvent_isEndEvent(const QPointerEvent*, intptr_t);
-void miqt_exec_callback_QPointerEvent_setAccepted(QPointerEvent*, intptr_t, bool);
-QEnterEvent* miqt_exec_callback_QEnterEvent_clone(const QEnterEvent*, intptr_t);
-bool miqt_exec_callback_QEnterEvent_isBeginEvent(const QEnterEvent*, intptr_t);
-bool miqt_exec_callback_QEnterEvent_isUpdateEvent(const QEnterEvent*, intptr_t);
-bool miqt_exec_callback_QEnterEvent_isEndEvent(const QEnterEvent*, intptr_t);
-void miqt_exec_callback_QEnterEvent_setTimestamp(QEnterEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QEnterEvent_setAccepted(QEnterEvent*, intptr_t, bool);
-QMouseEvent* miqt_exec_callback_QMouseEvent_clone(const QMouseEvent*, intptr_t);
-bool miqt_exec_callback_QMouseEvent_isBeginEvent(const QMouseEvent*, intptr_t);
-bool miqt_exec_callback_QMouseEvent_isUpdateEvent(const QMouseEvent*, intptr_t);
-bool miqt_exec_callback_QMouseEvent_isEndEvent(const QMouseEvent*, intptr_t);
-void miqt_exec_callback_QMouseEvent_setTimestamp(QMouseEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QMouseEvent_setAccepted(QMouseEvent*, intptr_t, bool);
-QHoverEvent* miqt_exec_callback_QHoverEvent_clone(const QHoverEvent*, intptr_t);
-bool miqt_exec_callback_QHoverEvent_isUpdateEvent(const QHoverEvent*, intptr_t);
-bool miqt_exec_callback_QHoverEvent_isBeginEvent(const QHoverEvent*, intptr_t);
-bool miqt_exec_callback_QHoverEvent_isEndEvent(const QHoverEvent*, intptr_t);
-void miqt_exec_callback_QHoverEvent_setTimestamp(QHoverEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QHoverEvent_setAccepted(QHoverEvent*, intptr_t, bool);
-QWheelEvent* miqt_exec_callback_QWheelEvent_clone(const QWheelEvent*, intptr_t);
-bool miqt_exec_callback_QWheelEvent_isBeginEvent(const QWheelEvent*, intptr_t);
-bool miqt_exec_callback_QWheelEvent_isUpdateEvent(const QWheelEvent*, intptr_t);
-bool miqt_exec_callback_QWheelEvent_isEndEvent(const QWheelEvent*, intptr_t);
-void miqt_exec_callback_QWheelEvent_setTimestamp(QWheelEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QWheelEvent_setAccepted(QWheelEvent*, intptr_t, bool);
-QTabletEvent* miqt_exec_callback_QTabletEvent_clone(const QTabletEvent*, intptr_t);
-bool miqt_exec_callback_QTabletEvent_isBeginEvent(const QTabletEvent*, intptr_t);
-bool miqt_exec_callback_QTabletEvent_isUpdateEvent(const QTabletEvent*, intptr_t);
-bool miqt_exec_callback_QTabletEvent_isEndEvent(const QTabletEvent*, intptr_t);
-void miqt_exec_callback_QTabletEvent_setTimestamp(QTabletEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QTabletEvent_setAccepted(QTabletEvent*, intptr_t, bool);
-QNativeGestureEvent* miqt_exec_callback_QNativeGestureEvent_clone(const QNativeGestureEvent*, intptr_t);
-bool miqt_exec_callback_QNativeGestureEvent_isBeginEvent(const QNativeGestureEvent*, intptr_t);
-bool miqt_exec_callback_QNativeGestureEvent_isUpdateEvent(const QNativeGestureEvent*, intptr_t);
-bool miqt_exec_callback_QNativeGestureEvent_isEndEvent(const QNativeGestureEvent*, intptr_t);
-void miqt_exec_callback_QNativeGestureEvent_setTimestamp(QNativeGestureEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QNativeGestureEvent_setAccepted(QNativeGestureEvent*, intptr_t, bool);
-QKeyEvent* miqt_exec_callback_QKeyEvent_clone(const QKeyEvent*, intptr_t);
-void miqt_exec_callback_QKeyEvent_setTimestamp(QKeyEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QKeyEvent_setAccepted(QKeyEvent*, intptr_t, bool);
-QFocusEvent* miqt_exec_callback_QFocusEvent_clone(const QFocusEvent*, intptr_t);
-void miqt_exec_callback_QFocusEvent_setAccepted(QFocusEvent*, intptr_t, bool);
-QPaintEvent* miqt_exec_callback_QPaintEvent_clone(const QPaintEvent*, intptr_t);
-void miqt_exec_callback_QPaintEvent_setAccepted(QPaintEvent*, intptr_t, bool);
-QMoveEvent* miqt_exec_callback_QMoveEvent_clone(const QMoveEvent*, intptr_t);
-void miqt_exec_callback_QMoveEvent_setAccepted(QMoveEvent*, intptr_t, bool);
-QExposeEvent* miqt_exec_callback_QExposeEvent_clone(const QExposeEvent*, intptr_t);
-void miqt_exec_callback_QExposeEvent_setAccepted(QExposeEvent*, intptr_t, bool);
-QPlatformSurfaceEvent* miqt_exec_callback_QPlatformSurfaceEvent_clone(const QPlatformSurfaceEvent*, intptr_t);
-void miqt_exec_callback_QPlatformSurfaceEvent_setAccepted(QPlatformSurfaceEvent*, intptr_t, bool);
-QResizeEvent* miqt_exec_callback_QResizeEvent_clone(const QResizeEvent*, intptr_t);
-void miqt_exec_callback_QResizeEvent_setAccepted(QResizeEvent*, intptr_t, bool);
-QCloseEvent* miqt_exec_callback_QCloseEvent_clone(const QCloseEvent*, intptr_t);
-void miqt_exec_callback_QCloseEvent_setAccepted(QCloseEvent*, intptr_t, bool);
-QIconDragEvent* miqt_exec_callback_QIconDragEvent_clone(const QIconDragEvent*, intptr_t);
-void miqt_exec_callback_QIconDragEvent_setAccepted(QIconDragEvent*, intptr_t, bool);
-QShowEvent* miqt_exec_callback_QShowEvent_clone(const QShowEvent*, intptr_t);
-void miqt_exec_callback_QShowEvent_setAccepted(QShowEvent*, intptr_t, bool);
-QHideEvent* miqt_exec_callback_QHideEvent_clone(const QHideEvent*, intptr_t);
-void miqt_exec_callback_QHideEvent_setAccepted(QHideEvent*, intptr_t, bool);
-QContextMenuEvent* miqt_exec_callback_QContextMenuEvent_clone(const QContextMenuEvent*, intptr_t);
-void miqt_exec_callback_QContextMenuEvent_setTimestamp(QContextMenuEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QContextMenuEvent_setAccepted(QContextMenuEvent*, intptr_t, bool);
-QInputMethodEvent* miqt_exec_callback_QInputMethodEvent_clone(const QInputMethodEvent*, intptr_t);
-void miqt_exec_callback_QInputMethodEvent_setAccepted(QInputMethodEvent*, intptr_t, bool);
-QInputMethodQueryEvent* miqt_exec_callback_QInputMethodQueryEvent_clone(const QInputMethodQueryEvent*, intptr_t);
-void miqt_exec_callback_QInputMethodQueryEvent_setAccepted(QInputMethodQueryEvent*, intptr_t, bool);
-QDropEvent* miqt_exec_callback_QDropEvent_clone(const QDropEvent*, intptr_t);
-void miqt_exec_callback_QDropEvent_setAccepted(QDropEvent*, intptr_t, bool);
-QDragMoveEvent* miqt_exec_callback_QDragMoveEvent_clone(const QDragMoveEvent*, intptr_t);
-void miqt_exec_callback_QDragMoveEvent_setAccepted(QDragMoveEvent*, intptr_t, bool);
-QDragEnterEvent* miqt_exec_callback_QDragEnterEvent_clone(const QDragEnterEvent*, intptr_t);
-void miqt_exec_callback_QDragEnterEvent_setAccepted(QDragEnterEvent*, intptr_t, bool);
-QDragLeaveEvent* miqt_exec_callback_QDragLeaveEvent_clone(const QDragLeaveEvent*, intptr_t);
-void miqt_exec_callback_QDragLeaveEvent_setAccepted(QDragLeaveEvent*, intptr_t, bool);
-QHelpEvent* miqt_exec_callback_QHelpEvent_clone(const QHelpEvent*, intptr_t);
-void miqt_exec_callback_QHelpEvent_setAccepted(QHelpEvent*, intptr_t, bool);
-QStatusTipEvent* miqt_exec_callback_QStatusTipEvent_clone(const QStatusTipEvent*, intptr_t);
-void miqt_exec_callback_QStatusTipEvent_setAccepted(QStatusTipEvent*, intptr_t, bool);
-QWhatsThisClickedEvent* miqt_exec_callback_QWhatsThisClickedEvent_clone(const QWhatsThisClickedEvent*, intptr_t);
-void miqt_exec_callback_QWhatsThisClickedEvent_setAccepted(QWhatsThisClickedEvent*, intptr_t, bool);
-QActionEvent* miqt_exec_callback_QActionEvent_clone(const QActionEvent*, intptr_t);
-void miqt_exec_callback_QActionEvent_setAccepted(QActionEvent*, intptr_t, bool);
-QFileOpenEvent* miqt_exec_callback_QFileOpenEvent_clone(const QFileOpenEvent*, intptr_t);
-void miqt_exec_callback_QFileOpenEvent_setAccepted(QFileOpenEvent*, intptr_t, bool);
-QToolBarChangeEvent* miqt_exec_callback_QToolBarChangeEvent_clone(const QToolBarChangeEvent*, intptr_t);
-void miqt_exec_callback_QToolBarChangeEvent_setAccepted(QToolBarChangeEvent*, intptr_t, bool);
-QShortcutEvent* miqt_exec_callback_QShortcutEvent_clone(const QShortcutEvent*, intptr_t);
-void miqt_exec_callback_QShortcutEvent_setAccepted(QShortcutEvent*, intptr_t, bool);
-QWindowStateChangeEvent* miqt_exec_callback_QWindowStateChangeEvent_clone(const QWindowStateChangeEvent*, intptr_t);
-void miqt_exec_callback_QWindowStateChangeEvent_setAccepted(QWindowStateChangeEvent*, intptr_t, bool);
-QTouchEvent* miqt_exec_callback_QTouchEvent_clone(const QTouchEvent*, intptr_t);
-bool miqt_exec_callback_QTouchEvent_isBeginEvent(const QTouchEvent*, intptr_t);
-bool miqt_exec_callback_QTouchEvent_isUpdateEvent(const QTouchEvent*, intptr_t);
-bool miqt_exec_callback_QTouchEvent_isEndEvent(const QTouchEvent*, intptr_t);
-void miqt_exec_callback_QTouchEvent_setTimestamp(QTouchEvent*, intptr_t, unsigned long long);
-void miqt_exec_callback_QTouchEvent_setAccepted(QTouchEvent*, intptr_t, bool);
-QScrollPrepareEvent* miqt_exec_callback_QScrollPrepareEvent_clone(const QScrollPrepareEvent*, intptr_t);
-void miqt_exec_callback_QScrollPrepareEvent_setAccepted(QScrollPrepareEvent*, intptr_t, bool);
-QScrollEvent* miqt_exec_callback_QScrollEvent_clone(const QScrollEvent*, intptr_t);
-void miqt_exec_callback_QScrollEvent_setAccepted(QScrollEvent*, intptr_t, bool);
-QScreenOrientationChangeEvent* miqt_exec_callback_QScreenOrientationChangeEvent_clone(const QScreenOrientationChangeEvent*, intptr_t);
-void miqt_exec_callback_QScreenOrientationChangeEvent_setAccepted(QScreenOrientationChangeEvent*, intptr_t, bool);
-QApplicationStateChangeEvent* miqt_exec_callback_QApplicationStateChangeEvent_clone(const QApplicationStateChangeEvent*, intptr_t);
-void miqt_exec_callback_QApplicationStateChangeEvent_setAccepted(QApplicationStateChangeEvent*, intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQInputEvent final : public QInputEvent {
+	struct QInputEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQInputEvent(QEvent::Type type, const QInputDevice* m_dev): QInputEvent(type, m_dev) {};
-	MiqtVirtualQInputEvent(QEvent::Type type, const QInputDevice* m_dev, Qt::KeyboardModifiers modifiers): QInputEvent(type, m_dev, modifiers) {};
+	MiqtVirtualQInputEvent(struct QInputEvent_VTable* vtbl, QEvent::Type type, const QInputDevice* m_dev): QInputEvent(type, m_dev), vtbl(vtbl) {};
+	MiqtVirtualQInputEvent(struct QInputEvent_VTable* vtbl, QEvent::Type type, const QInputDevice* m_dev, Qt::KeyboardModifiers modifiers): QInputEvent(type, m_dev, modifiers), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQInputEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQInputEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QInputEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QInputEvent::clone();
 		}
-		
 
-		QInputEvent* callback_return_value = miqt_exec_callback_QInputEvent_clone(this, handle__clone);
+
+		QInputEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -216,22 +101,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QInputEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QInputEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -241,21 +122,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QInputEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QInputEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -267,12 +144,12 @@ public:
 
 };
 
-QInputEvent* QInputEvent_new(int type, QInputDevice* m_dev) {
-	return new MiqtVirtualQInputEvent(static_cast<QEvent::Type>(type), m_dev);
+QInputEvent* QInputEvent_new(struct QInputEvent_VTable* vtbl, int type, QInputDevice* m_dev) {
+	return new MiqtVirtualQInputEvent(vtbl, static_cast<QEvent::Type>(type), m_dev);
 }
 
-QInputEvent* QInputEvent_new2(int type, QInputDevice* m_dev, int modifiers) {
-	return new MiqtVirtualQInputEvent(static_cast<QEvent::Type>(type), m_dev, static_cast<Qt::KeyboardModifiers>(modifiers));
+QInputEvent* QInputEvent_new2(struct QInputEvent_VTable* vtbl, int type, QInputDevice* m_dev, int modifiers) {
+	return new MiqtVirtualQInputEvent(vtbl, static_cast<QEvent::Type>(type), m_dev, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
 void QInputEvent_virtbase(QInputEvent* src, QEvent** outptr_QEvent) {
@@ -310,42 +187,12 @@ void QInputEvent_setTimestamp(QInputEvent* self, unsigned long long timestamp) {
 	self->setTimestamp(static_cast<quint64>(timestamp));
 }
 
-bool QInputEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQInputEvent* self_cast = dynamic_cast<MiqtVirtualQInputEvent*>( (QInputEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QInputEvent* QInputEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQInputEvent*)(self) )->virtualbase_clone();
 }
 
-bool QInputEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQInputEvent* self_cast = dynamic_cast<MiqtVirtualQInputEvent*>( (QInputEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QInputEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQInputEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QInputEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQInputEvent* self_cast = dynamic_cast<MiqtVirtualQInputEvent*>( (QInputEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QInputEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -357,25 +204,23 @@ void QInputEvent_delete(QInputEvent* self) {
 }
 
 class MiqtVirtualQPointerEvent final : public QPointerEvent {
+	struct QPointerEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQPointerEvent(QEvent::Type type, const QPointingDevice* dev): QPointerEvent(type, dev) {};
-	MiqtVirtualQPointerEvent(QEvent::Type type, const QPointingDevice* dev, Qt::KeyboardModifiers modifiers): QPointerEvent(type, dev, modifiers) {};
-	MiqtVirtualQPointerEvent(QEvent::Type type, const QPointingDevice* dev, Qt::KeyboardModifiers modifiers, const QList<QEventPoint>& points): QPointerEvent(type, dev, modifiers, points) {};
+	MiqtVirtualQPointerEvent(struct QPointerEvent_VTable* vtbl, QEvent::Type type, const QPointingDevice* dev): QPointerEvent(type, dev), vtbl(vtbl) {};
+	MiqtVirtualQPointerEvent(struct QPointerEvent_VTable* vtbl, QEvent::Type type, const QPointingDevice* dev, Qt::KeyboardModifiers modifiers): QPointerEvent(type, dev, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQPointerEvent(struct QPointerEvent_VTable* vtbl, QEvent::Type type, const QPointingDevice* dev, Qt::KeyboardModifiers modifiers, const QList<QEventPoint>& points): QPointerEvent(type, dev, modifiers, points), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQPointerEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQPointerEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QPointerEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QPointerEvent::clone();
 		}
-		
 
-		QPointerEvent* callback_return_value = miqt_exec_callback_QPointerEvent_clone(this, handle__clone);
+
+		QPointerEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -387,22 +232,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QPointerEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QPointerEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -412,17 +253,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QPointerEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QPointerEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -434,17 +272,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QPointerEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QPointerEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -456,17 +291,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QPointerEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QPointerEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -478,21 +310,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QPointerEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QPointerEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -504,22 +332,22 @@ public:
 
 };
 
-QPointerEvent* QPointerEvent_new(int type, QPointingDevice* dev) {
-	return new MiqtVirtualQPointerEvent(static_cast<QEvent::Type>(type), dev);
+QPointerEvent* QPointerEvent_new(struct QPointerEvent_VTable* vtbl, int type, QPointingDevice* dev) {
+	return new MiqtVirtualQPointerEvent(vtbl, static_cast<QEvent::Type>(type), dev);
 }
 
-QPointerEvent* QPointerEvent_new2(int type, QPointingDevice* dev, int modifiers) {
-	return new MiqtVirtualQPointerEvent(static_cast<QEvent::Type>(type), dev, static_cast<Qt::KeyboardModifiers>(modifiers));
+QPointerEvent* QPointerEvent_new2(struct QPointerEvent_VTable* vtbl, int type, QPointingDevice* dev, int modifiers) {
+	return new MiqtVirtualQPointerEvent(vtbl, static_cast<QEvent::Type>(type), dev, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QPointerEvent* QPointerEvent_new3(int type, QPointingDevice* dev, int modifiers, struct miqt_array /* of QEventPoint* */  points) {
+QPointerEvent* QPointerEvent_new3(struct QPointerEvent_VTable* vtbl, int type, QPointingDevice* dev, int modifiers, struct miqt_array /* of QEventPoint* */  points) {
 	QList<QEventPoint> points_QList;
 	points_QList.reserve(points.len);
 	QEventPoint** points_arr = static_cast<QEventPoint**>(points.data);
 	for(size_t i = 0; i < points.len; ++i) {
 		points_QList.push_back(*(points_arr[i]));
 	}
-	return new MiqtVirtualQPointerEvent(static_cast<QEvent::Type>(type), dev, static_cast<Qt::KeyboardModifiers>(modifiers), points_QList);
+	return new MiqtVirtualQPointerEvent(vtbl, static_cast<QEvent::Type>(type), dev, static_cast<Qt::KeyboardModifiers>(modifiers), points_QList);
 }
 
 void QPointerEvent_virtbase(QPointerEvent* src, QInputEvent** outptr_QInputEvent) {
@@ -615,84 +443,24 @@ bool QPointerEvent_removePassiveGrabber(QPointerEvent* self, QEventPoint* point,
 	return self->removePassiveGrabber(*point, grabber);
 }
 
-bool QPointerEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQPointerEvent* self_cast = dynamic_cast<MiqtVirtualQPointerEvent*>( (QPointerEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QPointerEvent* QPointerEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_clone();
-}
-
-bool QPointerEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQPointerEvent* self_cast = dynamic_cast<MiqtVirtualQPointerEvent*>( (QPointerEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
 }
 
 void QPointerEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQPointerEvent*)(self) )->virtualbase_setTimestamp(timestamp);
 }
 
-bool QPointerEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQPointerEvent* self_cast = dynamic_cast<MiqtVirtualQPointerEvent*>( (QPointerEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
-}
-
 bool QPointerEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_isBeginEvent();
-}
-
-bool QPointerEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQPointerEvent* self_cast = dynamic_cast<MiqtVirtualQPointerEvent*>( (QPointerEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
 }
 
 bool QPointerEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_isUpdateEvent();
 }
 
-bool QPointerEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQPointerEvent* self_cast = dynamic_cast<MiqtVirtualQPointerEvent*>( (QPointerEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
-}
-
 bool QPointerEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_isEndEvent();
-}
-
-bool QPointerEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQPointerEvent* self_cast = dynamic_cast<MiqtVirtualQPointerEvent*>( (QPointerEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QPointerEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -759,24 +527,22 @@ void QSinglePointEvent_delete(QSinglePointEvent* self) {
 }
 
 class MiqtVirtualQEnterEvent final : public QEnterEvent {
+	struct QEnterEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQEnterEvent(const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos): QEnterEvent(localPos, scenePos, globalPos) {};
-	MiqtVirtualQEnterEvent(const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, const QPointingDevice* device): QEnterEvent(localPos, scenePos, globalPos, device) {};
+	MiqtVirtualQEnterEvent(struct QEnterEvent_VTable* vtbl, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos): QEnterEvent(localPos, scenePos, globalPos), vtbl(vtbl) {};
+	MiqtVirtualQEnterEvent(struct QEnterEvent_VTable* vtbl, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, const QPointingDevice* device): QEnterEvent(localPos, scenePos, globalPos, device), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQEnterEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQEnterEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QEnterEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QEnterEvent::clone();
 		}
-		
 
-		QEnterEvent* callback_return_value = miqt_exec_callback_QEnterEvent_clone(this, handle__clone);
+
+		QEnterEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -788,17 +554,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QEnterEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QEnterEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -810,17 +573,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QEnterEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QEnterEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -832,17 +592,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QEnterEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QEnterEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -854,22 +611,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QEnterEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QEnterEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -879,21 +632,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QEnterEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QEnterEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -905,12 +654,12 @@ public:
 
 };
 
-QEnterEvent* QEnterEvent_new(QPointF* localPos, QPointF* scenePos, QPointF* globalPos) {
-	return new MiqtVirtualQEnterEvent(*localPos, *scenePos, *globalPos);
+QEnterEvent* QEnterEvent_new(struct QEnterEvent_VTable* vtbl, QPointF* localPos, QPointF* scenePos, QPointF* globalPos) {
+	return new MiqtVirtualQEnterEvent(vtbl, *localPos, *scenePos, *globalPos);
 }
 
-QEnterEvent* QEnterEvent_new2(QPointF* localPos, QPointF* scenePos, QPointF* globalPos, QPointingDevice* device) {
-	return new MiqtVirtualQEnterEvent(*localPos, *scenePos, *globalPos, device);
+QEnterEvent* QEnterEvent_new2(struct QEnterEvent_VTable* vtbl, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, QPointingDevice* device) {
+	return new MiqtVirtualQEnterEvent(vtbl, *localPos, *scenePos, *globalPos, device);
 }
 
 void QEnterEvent_virtbase(QEnterEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -957,84 +706,24 @@ QPointF* QEnterEvent_screenPos(const QEnterEvent* self) {
 	return new QPointF(self->screenPos());
 }
 
-bool QEnterEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QEnterEvent* QEnterEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_clone();
-}
-
-bool QEnterEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
 }
 
 bool QEnterEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_isBeginEvent();
 }
 
-bool QEnterEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
-}
-
 bool QEnterEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_isUpdateEvent();
-}
-
-bool QEnterEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
 }
 
 bool QEnterEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_isEndEvent();
 }
 
-bool QEnterEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QEnterEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQEnterEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QEnterEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -1046,30 +735,28 @@ void QEnterEvent_delete(QEnterEvent* self) {
 }
 
 class MiqtVirtualQMouseEvent final : public QMouseEvent {
+	struct QMouseEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QMouseEvent(type, localPos, button, buttons, modifiers) {};
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QMouseEvent(type, localPos, globalPos, button, buttons, modifiers) {};
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers) {};
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::MouseEventSource source): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers, source) {};
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QMouseEvent(type, localPos, button, buttons, modifiers, device) {};
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QMouseEvent(type, localPos, globalPos, button, buttons, modifiers, device) {};
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers, device) {};
-	MiqtVirtualQMouseEvent(QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::MouseEventSource source, const QPointingDevice* device): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers, source, device) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QMouseEvent(type, localPos, button, buttons, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QMouseEvent(type, localPos, globalPos, button, buttons, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::MouseEventSource source): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers, source), vtbl(vtbl) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QMouseEvent(type, localPos, button, buttons, modifiers, device), vtbl(vtbl) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QMouseEvent(type, localPos, globalPos, button, buttons, modifiers, device), vtbl(vtbl) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers, device), vtbl(vtbl) {};
+	MiqtVirtualQMouseEvent(struct QMouseEvent_VTable* vtbl, QEvent::Type type, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, Qt::MouseButton button, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::MouseEventSource source, const QPointingDevice* device): QMouseEvent(type, localPos, scenePos, globalPos, button, buttons, modifiers, source, device), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQMouseEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQMouseEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QMouseEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QMouseEvent::clone();
 		}
-		
 
-		QMouseEvent* callback_return_value = miqt_exec_callback_QMouseEvent_clone(this, handle__clone);
+
+		QMouseEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1081,17 +768,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QMouseEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QMouseEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1103,17 +787,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QMouseEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QMouseEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1125,17 +806,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QMouseEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QMouseEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1147,22 +825,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QMouseEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QMouseEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1172,21 +846,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QMouseEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QMouseEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1198,36 +868,36 @@ public:
 
 };
 
-QMouseEvent* QMouseEvent_new(int type, QPointF* localPos, int button, int buttons, int modifiers) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QMouseEvent* QMouseEvent_new(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, int button, int buttons, int modifiers) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QMouseEvent* QMouseEvent_new2(int type, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QMouseEvent* QMouseEvent_new2(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QMouseEvent* QMouseEvent_new3(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QMouseEvent* QMouseEvent_new3(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QMouseEvent* QMouseEvent_new4(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source));
+QMouseEvent* QMouseEvent_new4(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source));
 }
 
-QMouseEvent* QMouseEvent_new5(int type, QPointF* localPos, int button, int buttons, int modifiers, QPointingDevice* device) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QMouseEvent* QMouseEvent_new5(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, int button, int buttons, int modifiers, QPointingDevice* device) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QMouseEvent* QMouseEvent_new6(int type, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QMouseEvent* QMouseEvent_new6(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QMouseEvent* QMouseEvent_new7(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QMouseEvent* QMouseEvent_new7(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QMouseEvent* QMouseEvent_new8(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source, QPointingDevice* device) {
-	return new MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source), device);
+QMouseEvent* QMouseEvent_new8(struct QMouseEvent_VTable* vtbl, int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source, QPointingDevice* device) {
+	return new MiqtVirtualQMouseEvent(vtbl, static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source), device);
 }
 
 void QMouseEvent_virtbase(QMouseEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -1284,84 +954,24 @@ int QMouseEvent_flags(const QMouseEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QMouseEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QMouseEvent* QMouseEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_clone();
-}
-
-bool QMouseEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
 }
 
 bool QMouseEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_isBeginEvent();
 }
 
-bool QMouseEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
-}
-
 bool QMouseEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_isUpdateEvent();
-}
-
-bool QMouseEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
 }
 
 bool QMouseEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_isEndEvent();
 }
 
-bool QMouseEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QMouseEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQMouseEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QMouseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QMouseEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -1373,28 +983,26 @@ void QMouseEvent_delete(QMouseEvent* self) {
 }
 
 class MiqtVirtualQHoverEvent final : public QHoverEvent {
+	struct QHoverEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQHoverEvent(QEvent::Type type, const QPointF& scenePos, const QPointF& globalPos, const QPointF& oldPos): QHoverEvent(type, scenePos, globalPos, oldPos) {};
-	MiqtVirtualQHoverEvent(QEvent::Type type, const QPointF& pos, const QPointF& oldPos): QHoverEvent(type, pos, oldPos) {};
-	MiqtVirtualQHoverEvent(QEvent::Type type, const QPointF& scenePos, const QPointF& globalPos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers): QHoverEvent(type, scenePos, globalPos, oldPos, modifiers) {};
-	MiqtVirtualQHoverEvent(QEvent::Type type, const QPointF& scenePos, const QPointF& globalPos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QHoverEvent(type, scenePos, globalPos, oldPos, modifiers, device) {};
-	MiqtVirtualQHoverEvent(QEvent::Type type, const QPointF& pos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers): QHoverEvent(type, pos, oldPos, modifiers) {};
-	MiqtVirtualQHoverEvent(QEvent::Type type, const QPointF& pos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QHoverEvent(type, pos, oldPos, modifiers, device) {};
+	MiqtVirtualQHoverEvent(struct QHoverEvent_VTable* vtbl, QEvent::Type type, const QPointF& scenePos, const QPointF& globalPos, const QPointF& oldPos): QHoverEvent(type, scenePos, globalPos, oldPos), vtbl(vtbl) {};
+	MiqtVirtualQHoverEvent(struct QHoverEvent_VTable* vtbl, QEvent::Type type, const QPointF& pos, const QPointF& oldPos): QHoverEvent(type, pos, oldPos), vtbl(vtbl) {};
+	MiqtVirtualQHoverEvent(struct QHoverEvent_VTable* vtbl, QEvent::Type type, const QPointF& scenePos, const QPointF& globalPos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers): QHoverEvent(type, scenePos, globalPos, oldPos, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQHoverEvent(struct QHoverEvent_VTable* vtbl, QEvent::Type type, const QPointF& scenePos, const QPointF& globalPos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QHoverEvent(type, scenePos, globalPos, oldPos, modifiers, device), vtbl(vtbl) {};
+	MiqtVirtualQHoverEvent(struct QHoverEvent_VTable* vtbl, QEvent::Type type, const QPointF& pos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers): QHoverEvent(type, pos, oldPos, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQHoverEvent(struct QHoverEvent_VTable* vtbl, QEvent::Type type, const QPointF& pos, const QPointF& oldPos, Qt::KeyboardModifiers modifiers, const QPointingDevice* device): QHoverEvent(type, pos, oldPos, modifiers, device), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQHoverEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQHoverEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QHoverEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QHoverEvent::clone();
 		}
-		
 
-		QHoverEvent* callback_return_value = miqt_exec_callback_QHoverEvent_clone(this, handle__clone);
+
+		QHoverEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1406,17 +1014,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QHoverEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QHoverEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1428,17 +1033,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QHoverEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QHoverEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1450,17 +1052,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QHoverEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QHoverEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1472,22 +1071,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QHoverEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QHoverEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1497,21 +1092,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QHoverEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QHoverEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1523,28 +1114,28 @@ public:
 
 };
 
-QHoverEvent* QHoverEvent_new(int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos) {
-	return new MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos);
+QHoverEvent* QHoverEvent_new(struct QHoverEvent_VTable* vtbl, int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos) {
+	return new MiqtVirtualQHoverEvent(vtbl, static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos);
 }
 
-QHoverEvent* QHoverEvent_new2(int type, QPointF* pos, QPointF* oldPos) {
-	return new MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *pos, *oldPos);
+QHoverEvent* QHoverEvent_new2(struct QHoverEvent_VTable* vtbl, int type, QPointF* pos, QPointF* oldPos) {
+	return new MiqtVirtualQHoverEvent(vtbl, static_cast<QEvent::Type>(type), *pos, *oldPos);
 }
 
-QHoverEvent* QHoverEvent_new3(int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers) {
-	return new MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
+QHoverEvent* QHoverEvent_new3(struct QHoverEvent_VTable* vtbl, int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers) {
+	return new MiqtVirtualQHoverEvent(vtbl, static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QHoverEvent* QHoverEvent_new4(int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers, QPointingDevice* device) {
-	return new MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QHoverEvent* QHoverEvent_new4(struct QHoverEvent_VTable* vtbl, int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers, QPointingDevice* device) {
+	return new MiqtVirtualQHoverEvent(vtbl, static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QHoverEvent* QHoverEvent_new5(int type, QPointF* pos, QPointF* oldPos, int modifiers) {
-	return new MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
+QHoverEvent* QHoverEvent_new5(struct QHoverEvent_VTable* vtbl, int type, QPointF* pos, QPointF* oldPos, int modifiers) {
+	return new MiqtVirtualQHoverEvent(vtbl, static_cast<QEvent::Type>(type), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QHoverEvent* QHoverEvent_new6(int type, QPointF* pos, QPointF* oldPos, int modifiers, QPointingDevice* device) {
-	return new MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QHoverEvent* QHoverEvent_new6(struct QHoverEvent_VTable* vtbl, int type, QPointF* pos, QPointF* oldPos, int modifiers, QPointingDevice* device) {
+	return new MiqtVirtualQHoverEvent(vtbl, static_cast<QEvent::Type>(type), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
 void QHoverEvent_virtbase(QHoverEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -1575,84 +1166,24 @@ QPointF* QHoverEvent_oldPosF(const QHoverEvent* self) {
 	return new QPointF(self->oldPosF());
 }
 
-bool QHoverEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QHoverEvent* QHoverEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_clone();
-}
-
-bool QHoverEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
 }
 
 bool QHoverEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_isUpdateEvent();
 }
 
-bool QHoverEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
-}
-
 bool QHoverEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_isBeginEvent();
-}
-
-bool QHoverEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
 }
 
 bool QHoverEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_isEndEvent();
 }
 
-bool QHoverEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QHoverEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQHoverEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QHoverEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QHoverEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -1664,25 +1195,23 @@ void QHoverEvent_delete(QHoverEvent* self) {
 }
 
 class MiqtVirtualQWheelEvent final : public QWheelEvent {
+	struct QWheelEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQWheelEvent(const QPointF& pos, const QPointF& globalPos, QPoint pixelDelta, QPoint angleDelta, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::ScrollPhase phase, bool inverted): QWheelEvent(pos, globalPos, pixelDelta, angleDelta, buttons, modifiers, phase, inverted) {};
-	MiqtVirtualQWheelEvent(const QPointF& pos, const QPointF& globalPos, QPoint pixelDelta, QPoint angleDelta, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::ScrollPhase phase, bool inverted, Qt::MouseEventSource source): QWheelEvent(pos, globalPos, pixelDelta, angleDelta, buttons, modifiers, phase, inverted, source) {};
-	MiqtVirtualQWheelEvent(const QPointF& pos, const QPointF& globalPos, QPoint pixelDelta, QPoint angleDelta, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::ScrollPhase phase, bool inverted, Qt::MouseEventSource source, const QPointingDevice* device): QWheelEvent(pos, globalPos, pixelDelta, angleDelta, buttons, modifiers, phase, inverted, source, device) {};
+	MiqtVirtualQWheelEvent(struct QWheelEvent_VTable* vtbl, const QPointF& pos, const QPointF& globalPos, QPoint pixelDelta, QPoint angleDelta, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::ScrollPhase phase, bool inverted): QWheelEvent(pos, globalPos, pixelDelta, angleDelta, buttons, modifiers, phase, inverted), vtbl(vtbl) {};
+	MiqtVirtualQWheelEvent(struct QWheelEvent_VTable* vtbl, const QPointF& pos, const QPointF& globalPos, QPoint pixelDelta, QPoint angleDelta, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::ScrollPhase phase, bool inverted, Qt::MouseEventSource source): QWheelEvent(pos, globalPos, pixelDelta, angleDelta, buttons, modifiers, phase, inverted, source), vtbl(vtbl) {};
+	MiqtVirtualQWheelEvent(struct QWheelEvent_VTable* vtbl, const QPointF& pos, const QPointF& globalPos, QPoint pixelDelta, QPoint angleDelta, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Qt::ScrollPhase phase, bool inverted, Qt::MouseEventSource source, const QPointingDevice* device): QWheelEvent(pos, globalPos, pixelDelta, angleDelta, buttons, modifiers, phase, inverted, source, device), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQWheelEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQWheelEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QWheelEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QWheelEvent::clone();
 		}
-		
 
-		QWheelEvent* callback_return_value = miqt_exec_callback_QWheelEvent_clone(this, handle__clone);
+
+		QWheelEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1694,17 +1223,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QWheelEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QWheelEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1716,17 +1242,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QWheelEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QWheelEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1738,17 +1261,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QWheelEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QWheelEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1760,22 +1280,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QWheelEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QWheelEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1785,21 +1301,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QWheelEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QWheelEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1811,16 +1323,16 @@ public:
 
 };
 
-QWheelEvent* QWheelEvent_new(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted) {
-	return new MiqtVirtualQWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted);
+QWheelEvent* QWheelEvent_new(struct QWheelEvent_VTable* vtbl, QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted) {
+	return new MiqtVirtualQWheelEvent(vtbl, *pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted);
 }
 
-QWheelEvent* QWheelEvent_new2(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source) {
-	return new MiqtVirtualQWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source));
+QWheelEvent* QWheelEvent_new2(struct QWheelEvent_VTable* vtbl, QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source) {
+	return new MiqtVirtualQWheelEvent(vtbl, *pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source));
 }
 
-QWheelEvent* QWheelEvent_new3(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QPointingDevice* device) {
-	return new MiqtVirtualQWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source), device);
+QWheelEvent* QWheelEvent_new3(struct QWheelEvent_VTable* vtbl, QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QPointingDevice* device) {
+	return new MiqtVirtualQWheelEvent(vtbl, *pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source), device);
 }
 
 void QWheelEvent_virtbase(QWheelEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -1873,84 +1385,24 @@ int QWheelEvent_source(const QWheelEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QWheelEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QWheelEvent* QWheelEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_clone();
-}
-
-bool QWheelEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
 }
 
 bool QWheelEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_isBeginEvent();
 }
 
-bool QWheelEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
-}
-
 bool QWheelEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_isUpdateEvent();
-}
-
-bool QWheelEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
 }
 
 bool QWheelEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_isEndEvent();
 }
 
-bool QWheelEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QWheelEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQWheelEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QWheelEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QWheelEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -1963,23 +1415,21 @@ void QWheelEvent_delete(QWheelEvent* self) {
 }
 
 class MiqtVirtualQTabletEvent final : public QTabletEvent {
+	struct QTabletEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQTabletEvent(QEvent::Type t, const QPointingDevice* device, const QPointF& pos, const QPointF& globalPos, qreal pressure, float xTilt, float yTilt, float tangentialPressure, qreal rotation, float z, Qt::KeyboardModifiers keyState, Qt::MouseButton button, Qt::MouseButtons buttons): QTabletEvent(t, device, pos, globalPos, pressure, xTilt, yTilt, tangentialPressure, rotation, z, keyState, button, buttons) {};
+	MiqtVirtualQTabletEvent(struct QTabletEvent_VTable* vtbl, QEvent::Type t, const QPointingDevice* device, const QPointF& pos, const QPointF& globalPos, qreal pressure, float xTilt, float yTilt, float tangentialPressure, qreal rotation, float z, Qt::KeyboardModifiers keyState, Qt::MouseButton button, Qt::MouseButtons buttons): QTabletEvent(t, device, pos, globalPos, pressure, xTilt, yTilt, tangentialPressure, rotation, z, keyState, button, buttons), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQTabletEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQTabletEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QTabletEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QTabletEvent::clone();
 		}
-		
 
-		QTabletEvent* callback_return_value = miqt_exec_callback_QTabletEvent_clone(this, handle__clone);
+
+		QTabletEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1991,17 +1441,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QTabletEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QTabletEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2013,17 +1460,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QTabletEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QTabletEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2035,17 +1479,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QTabletEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QTabletEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2057,22 +1498,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QTabletEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QTabletEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2082,21 +1519,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QTabletEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QTabletEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2108,8 +1541,8 @@ public:
 
 };
 
-QTabletEvent* QTabletEvent_new(int t, QPointingDevice* device, QPointF* pos, QPointF* globalPos, double pressure, float xTilt, float yTilt, float tangentialPressure, double rotation, float z, int keyState, int button, int buttons) {
-	return new MiqtVirtualQTabletEvent(static_cast<QEvent::Type>(t), device, *pos, *globalPos, static_cast<qreal>(pressure), static_cast<float>(xTilt), static_cast<float>(yTilt), static_cast<float>(tangentialPressure), static_cast<qreal>(rotation), static_cast<float>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons));
+QTabletEvent* QTabletEvent_new(struct QTabletEvent_VTable* vtbl, int t, QPointingDevice* device, QPointF* pos, QPointF* globalPos, double pressure, float xTilt, float yTilt, float tangentialPressure, double rotation, float z, int keyState, int button, int buttons) {
+	return new MiqtVirtualQTabletEvent(vtbl, static_cast<QEvent::Type>(t), device, *pos, *globalPos, static_cast<qreal>(pressure), static_cast<float>(xTilt), static_cast<float>(yTilt), static_cast<float>(tangentialPressure), static_cast<qreal>(rotation), static_cast<float>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons));
 }
 
 void QTabletEvent_virtbase(QTabletEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -2197,84 +1630,24 @@ double QTabletEvent_yTilt(const QTabletEvent* self) {
 	return static_cast<double>(_ret);
 }
 
-bool QTabletEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QTabletEvent* QTabletEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_clone();
-}
-
-bool QTabletEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
 }
 
 bool QTabletEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_isBeginEvent();
 }
 
-bool QTabletEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
-}
-
 bool QTabletEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_isUpdateEvent();
-}
-
-bool QTabletEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
 }
 
 bool QTabletEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_isEndEvent();
 }
 
-bool QTabletEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QTabletEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQTabletEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QTabletEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QTabletEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -2286,25 +1659,23 @@ void QTabletEvent_delete(QTabletEvent* self) {
 }
 
 class MiqtVirtualQNativeGestureEvent final : public QNativeGestureEvent {
+	struct QNativeGestureEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQNativeGestureEvent(Qt::NativeGestureType type, const QPointingDevice* dev, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, qreal value, quint64 sequenceId, quint64 intArgument): QNativeGestureEvent(type, dev, localPos, scenePos, globalPos, value, sequenceId, intArgument) {};
-	MiqtVirtualQNativeGestureEvent(Qt::NativeGestureType type, const QPointingDevice* dev, int fingerCount, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, qreal value, const QPointF& delta): QNativeGestureEvent(type, dev, fingerCount, localPos, scenePos, globalPos, value, delta) {};
-	MiqtVirtualQNativeGestureEvent(Qt::NativeGestureType type, const QPointingDevice* dev, int fingerCount, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, qreal value, const QPointF& delta, quint64 sequenceId): QNativeGestureEvent(type, dev, fingerCount, localPos, scenePos, globalPos, value, delta, sequenceId) {};
+	MiqtVirtualQNativeGestureEvent(struct QNativeGestureEvent_VTable* vtbl, Qt::NativeGestureType type, const QPointingDevice* dev, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, qreal value, quint64 sequenceId, quint64 intArgument): QNativeGestureEvent(type, dev, localPos, scenePos, globalPos, value, sequenceId, intArgument), vtbl(vtbl) {};
+	MiqtVirtualQNativeGestureEvent(struct QNativeGestureEvent_VTable* vtbl, Qt::NativeGestureType type, const QPointingDevice* dev, int fingerCount, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, qreal value, const QPointF& delta): QNativeGestureEvent(type, dev, fingerCount, localPos, scenePos, globalPos, value, delta), vtbl(vtbl) {};
+	MiqtVirtualQNativeGestureEvent(struct QNativeGestureEvent_VTable* vtbl, Qt::NativeGestureType type, const QPointingDevice* dev, int fingerCount, const QPointF& localPos, const QPointF& scenePos, const QPointF& globalPos, qreal value, const QPointF& delta, quint64 sequenceId): QNativeGestureEvent(type, dev, fingerCount, localPos, scenePos, globalPos, value, delta, sequenceId), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQNativeGestureEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQNativeGestureEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QNativeGestureEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QNativeGestureEvent::clone();
 		}
-		
 
-		QNativeGestureEvent* callback_return_value = miqt_exec_callback_QNativeGestureEvent_clone(this, handle__clone);
+
+		QNativeGestureEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2316,17 +1687,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QNativeGestureEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QNativeGestureEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2338,17 +1706,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QNativeGestureEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QNativeGestureEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2360,17 +1725,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QNativeGestureEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QNativeGestureEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2382,22 +1744,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QNativeGestureEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QNativeGestureEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2407,21 +1765,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QNativeGestureEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QNativeGestureEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2433,16 +1787,16 @@ public:
 
 };
 
-QNativeGestureEvent* QNativeGestureEvent_new(int type, QPointingDevice* dev, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, unsigned long long sequenceId, unsigned long long intArgument) {
-	return new MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, *localPos, *scenePos, *globalPos, static_cast<qreal>(value), static_cast<quint64>(sequenceId), static_cast<quint64>(intArgument));
+QNativeGestureEvent* QNativeGestureEvent_new(struct QNativeGestureEvent_VTable* vtbl, int type, QPointingDevice* dev, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, unsigned long long sequenceId, unsigned long long intArgument) {
+	return new MiqtVirtualQNativeGestureEvent(vtbl, static_cast<Qt::NativeGestureType>(type), dev, *localPos, *scenePos, *globalPos, static_cast<qreal>(value), static_cast<quint64>(sequenceId), static_cast<quint64>(intArgument));
 }
 
-QNativeGestureEvent* QNativeGestureEvent_new2(int type, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta) {
-	return new MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), *localPos, *scenePos, *globalPos, static_cast<qreal>(value), *delta);
+QNativeGestureEvent* QNativeGestureEvent_new2(struct QNativeGestureEvent_VTable* vtbl, int type, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta) {
+	return new MiqtVirtualQNativeGestureEvent(vtbl, static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), *localPos, *scenePos, *globalPos, static_cast<qreal>(value), *delta);
 }
 
-QNativeGestureEvent* QNativeGestureEvent_new3(int type, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta, unsigned long long sequenceId) {
-	return new MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), *localPos, *scenePos, *globalPos, static_cast<qreal>(value), *delta, static_cast<quint64>(sequenceId));
+QNativeGestureEvent* QNativeGestureEvent_new3(struct QNativeGestureEvent_VTable* vtbl, int type, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta, unsigned long long sequenceId) {
+	return new MiqtVirtualQNativeGestureEvent(vtbl, static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), *localPos, *scenePos, *globalPos, static_cast<qreal>(value), *delta, static_cast<quint64>(sequenceId));
 }
 
 void QNativeGestureEvent_virtbase(QNativeGestureEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -2491,84 +1845,24 @@ QPointF* QNativeGestureEvent_screenPos(const QNativeGestureEvent* self) {
 	return new QPointF(self->screenPos());
 }
 
-bool QNativeGestureEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QNativeGestureEvent* QNativeGestureEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_clone();
-}
-
-bool QNativeGestureEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
 }
 
 bool QNativeGestureEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_isBeginEvent();
 }
 
-bool QNativeGestureEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
-}
-
 bool QNativeGestureEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_isUpdateEvent();
-}
-
-bool QNativeGestureEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
 }
 
 bool QNativeGestureEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_isEndEvent();
 }
 
-bool QNativeGestureEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QNativeGestureEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QNativeGestureEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QNativeGestureEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -2580,31 +1874,29 @@ void QNativeGestureEvent_delete(QNativeGestureEvent* self) {
 }
 
 class MiqtVirtualQKeyEvent final : public QKeyEvent {
+	struct QKeyEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers): QKeyEvent(type, key, modifiers) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const QString& text): QKeyEvent(type, key, modifiers, text) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const QString& text, bool autorep): QKeyEvent(type, key, modifiers, text, autorep) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const QString& text, bool autorep, quint16 count): QKeyEvent(type, key, modifiers, text, autorep, count) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text, bool autorep): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text, bool autorep, quint16 count): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep, count) {};
-	MiqtVirtualQKeyEvent(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text, bool autorep, quint16 count, const QInputDevice* device): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep, count, device) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers): QKeyEvent(type, key, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const QString& text): QKeyEvent(type, key, modifiers, text), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const QString& text, bool autorep): QKeyEvent(type, key, modifiers, text, autorep), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const QString& text, bool autorep, quint16 count): QKeyEvent(type, key, modifiers, text, autorep, count), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text, bool autorep): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text, bool autorep, quint16 count): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep, count), vtbl(vtbl) {};
+	MiqtVirtualQKeyEvent(struct QKeyEvent_VTable* vtbl, QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const QString& text, bool autorep, quint16 count, const QInputDevice* device): QKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep, count, device), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQKeyEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQKeyEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QKeyEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QKeyEvent::clone();
 		}
-		
 
-		QKeyEvent* callback_return_value = miqt_exec_callback_QKeyEvent_clone(this, handle__clone);
+
+		QKeyEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2616,22 +1908,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QKeyEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QKeyEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2641,21 +1929,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QKeyEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QKeyEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2667,47 +1951,47 @@ public:
 
 };
 
-QKeyEvent* QKeyEvent_new(int type, int key, int modifiers) {
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers));
+QKeyEvent* QKeyEvent_new(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers) {
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QKeyEvent* QKeyEvent_new2(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers) {
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers));
+QKeyEvent* QKeyEvent_new2(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers) {
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers));
 }
 
-QKeyEvent* QKeyEvent_new3(int type, int key, int modifiers, struct miqt_string text) {
+QKeyEvent* QKeyEvent_new3(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString);
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString);
 }
 
-QKeyEvent* QKeyEvent_new4(int type, int key, int modifiers, struct miqt_string text, bool autorep) {
+QKeyEvent* QKeyEvent_new4(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, struct miqt_string text, bool autorep) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep);
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep);
 }
 
-QKeyEvent* QKeyEvent_new5(int type, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count) {
+QKeyEvent* QKeyEvent_new5(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep, static_cast<quint16>(count));
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep, static_cast<quint16>(count));
 }
 
-QKeyEvent* QKeyEvent_new6(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text) {
+QKeyEvent* QKeyEvent_new6(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString);
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString);
 }
 
-QKeyEvent* QKeyEvent_new7(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep) {
+QKeyEvent* QKeyEvent_new7(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep);
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep);
 }
 
-QKeyEvent* QKeyEvent_new8(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count) {
+QKeyEvent* QKeyEvent_new8(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<quint16>(count));
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<quint16>(count));
 }
 
-QKeyEvent* QKeyEvent_new9(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count, QInputDevice* device) {
+QKeyEvent* QKeyEvent_new9(struct QKeyEvent_VTable* vtbl, int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count, QInputDevice* device) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<quint16>(count), device);
+	return new MiqtVirtualQKeyEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<quint16>(count), device);
 }
 
 void QKeyEvent_virtbase(QKeyEvent* src, QInputEvent** outptr_QInputEvent) {
@@ -2769,42 +2053,12 @@ unsigned int QKeyEvent_nativeModifiers(const QKeyEvent* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-bool QKeyEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQKeyEvent* self_cast = dynamic_cast<MiqtVirtualQKeyEvent*>( (QKeyEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QKeyEvent* QKeyEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQKeyEvent*)(self) )->virtualbase_clone();
 }
 
-bool QKeyEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQKeyEvent* self_cast = dynamic_cast<MiqtVirtualQKeyEvent*>( (QKeyEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QKeyEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQKeyEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QKeyEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQKeyEvent* self_cast = dynamic_cast<MiqtVirtualQKeyEvent*>( (QKeyEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QKeyEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -2816,24 +2070,22 @@ void QKeyEvent_delete(QKeyEvent* self) {
 }
 
 class MiqtVirtualQFocusEvent final : public QFocusEvent {
+	struct QFocusEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQFocusEvent(QEvent::Type type): QFocusEvent(type) {};
-	MiqtVirtualQFocusEvent(QEvent::Type type, Qt::FocusReason reason): QFocusEvent(type, reason) {};
+	MiqtVirtualQFocusEvent(struct QFocusEvent_VTable* vtbl, QEvent::Type type): QFocusEvent(type), vtbl(vtbl) {};
+	MiqtVirtualQFocusEvent(struct QFocusEvent_VTable* vtbl, QEvent::Type type, Qt::FocusReason reason): QFocusEvent(type, reason), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQFocusEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQFocusEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QFocusEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QFocusEvent::clone();
 		}
-		
 
-		QFocusEvent* callback_return_value = miqt_exec_callback_QFocusEvent_clone(this, handle__clone);
+
+		QFocusEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2845,21 +2097,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QFocusEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QFocusEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2871,12 +2119,12 @@ public:
 
 };
 
-QFocusEvent* QFocusEvent_new(int type) {
-	return new MiqtVirtualQFocusEvent(static_cast<QEvent::Type>(type));
+QFocusEvent* QFocusEvent_new(struct QFocusEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQFocusEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
-QFocusEvent* QFocusEvent_new2(int type, int reason) {
-	return new MiqtVirtualQFocusEvent(static_cast<QEvent::Type>(type), static_cast<Qt::FocusReason>(reason));
+QFocusEvent* QFocusEvent_new2(struct QFocusEvent_VTable* vtbl, int type, int reason) {
+	return new MiqtVirtualQFocusEvent(vtbl, static_cast<QEvent::Type>(type), static_cast<Qt::FocusReason>(reason));
 }
 
 void QFocusEvent_virtbase(QFocusEvent* src, QEvent** outptr_QEvent) {
@@ -2900,28 +2148,8 @@ int QFocusEvent_reason(const QFocusEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QFocusEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQFocusEvent* self_cast = dynamic_cast<MiqtVirtualQFocusEvent*>( (QFocusEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QFocusEvent* QFocusEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQFocusEvent*)(self) )->virtualbase_clone();
-}
-
-bool QFocusEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQFocusEvent* self_cast = dynamic_cast<MiqtVirtualQFocusEvent*>( (QFocusEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QFocusEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -2933,24 +2161,22 @@ void QFocusEvent_delete(QFocusEvent* self) {
 }
 
 class MiqtVirtualQPaintEvent final : public QPaintEvent {
+	struct QPaintEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQPaintEvent(const QRegion& paintRegion): QPaintEvent(paintRegion) {};
-	MiqtVirtualQPaintEvent(const QRect& paintRect): QPaintEvent(paintRect) {};
+	MiqtVirtualQPaintEvent(struct QPaintEvent_VTable* vtbl, const QRegion& paintRegion): QPaintEvent(paintRegion), vtbl(vtbl) {};
+	MiqtVirtualQPaintEvent(struct QPaintEvent_VTable* vtbl, const QRect& paintRect): QPaintEvent(paintRect), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQPaintEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQPaintEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QPaintEvent::clone();
 		}
-		
 
-		QPaintEvent* callback_return_value = miqt_exec_callback_QPaintEvent_clone(this, handle__clone);
+
+		QPaintEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -2962,21 +2188,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QPaintEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QPaintEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -2988,12 +2210,12 @@ public:
 
 };
 
-QPaintEvent* QPaintEvent_new(QRegion* paintRegion) {
-	return new MiqtVirtualQPaintEvent(*paintRegion);
+QPaintEvent* QPaintEvent_new(struct QPaintEvent_VTable* vtbl, QRegion* paintRegion) {
+	return new MiqtVirtualQPaintEvent(vtbl, *paintRegion);
 }
 
-QPaintEvent* QPaintEvent_new2(QRect* paintRect) {
-	return new MiqtVirtualQPaintEvent(*paintRect);
+QPaintEvent* QPaintEvent_new2(struct QPaintEvent_VTable* vtbl, QRect* paintRect) {
+	return new MiqtVirtualQPaintEvent(vtbl, *paintRect);
 }
 
 void QPaintEvent_virtbase(QPaintEvent* src, QEvent** outptr_QEvent) {
@@ -3016,28 +2238,8 @@ QRegion* QPaintEvent_region(const QPaintEvent* self) {
 	return const_cast<QRegion*>(&_ret);
 }
 
-bool QPaintEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQPaintEvent* self_cast = dynamic_cast<MiqtVirtualQPaintEvent*>( (QPaintEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QPaintEvent* QPaintEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQPaintEvent*)(self) )->virtualbase_clone();
-}
-
-bool QPaintEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQPaintEvent* self_cast = dynamic_cast<MiqtVirtualQPaintEvent*>( (QPaintEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QPaintEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3049,23 +2251,21 @@ void QPaintEvent_delete(QPaintEvent* self) {
 }
 
 class MiqtVirtualQMoveEvent final : public QMoveEvent {
+	struct QMoveEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQMoveEvent(const QPoint& pos, const QPoint& oldPos): QMoveEvent(pos, oldPos) {};
+	MiqtVirtualQMoveEvent(struct QMoveEvent_VTable* vtbl, const QPoint& pos, const QPoint& oldPos): QMoveEvent(pos, oldPos), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQMoveEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQMoveEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QMoveEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QMoveEvent::clone();
 		}
-		
 
-		QMoveEvent* callback_return_value = miqt_exec_callback_QMoveEvent_clone(this, handle__clone);
+
+		QMoveEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3077,21 +2277,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QMoveEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QMoveEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3103,8 +2299,8 @@ public:
 
 };
 
-QMoveEvent* QMoveEvent_new(QPoint* pos, QPoint* oldPos) {
-	return new MiqtVirtualQMoveEvent(*pos, *oldPos);
+QMoveEvent* QMoveEvent_new(struct QMoveEvent_VTable* vtbl, QPoint* pos, QPoint* oldPos) {
+	return new MiqtVirtualQMoveEvent(vtbl, *pos, *oldPos);
 }
 
 void QMoveEvent_virtbase(QMoveEvent* src, QEvent** outptr_QEvent) {
@@ -3127,28 +2323,8 @@ QPoint* QMoveEvent_oldPos(const QMoveEvent* self) {
 	return const_cast<QPoint*>(&_ret);
 }
 
-bool QMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQMoveEvent* self_cast = dynamic_cast<MiqtVirtualQMoveEvent*>( (QMoveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QMoveEvent* QMoveEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQMoveEvent*)(self) )->virtualbase_clone();
-}
-
-bool QMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQMoveEvent* self_cast = dynamic_cast<MiqtVirtualQMoveEvent*>( (QMoveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QMoveEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3160,23 +2336,21 @@ void QMoveEvent_delete(QMoveEvent* self) {
 }
 
 class MiqtVirtualQExposeEvent final : public QExposeEvent {
+	struct QExposeEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQExposeEvent(const QRegion& m_region): QExposeEvent(m_region) {};
+	MiqtVirtualQExposeEvent(struct QExposeEvent_VTable* vtbl, const QRegion& m_region): QExposeEvent(m_region), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQExposeEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQExposeEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QExposeEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QExposeEvent::clone();
 		}
-		
 
-		QExposeEvent* callback_return_value = miqt_exec_callback_QExposeEvent_clone(this, handle__clone);
+
+		QExposeEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3188,21 +2362,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QExposeEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QExposeEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3214,8 +2384,8 @@ public:
 
 };
 
-QExposeEvent* QExposeEvent_new(QRegion* m_region) {
-	return new MiqtVirtualQExposeEvent(*m_region);
+QExposeEvent* QExposeEvent_new(struct QExposeEvent_VTable* vtbl, QRegion* m_region) {
+	return new MiqtVirtualQExposeEvent(vtbl, *m_region);
 }
 
 void QExposeEvent_virtbase(QExposeEvent* src, QEvent** outptr_QEvent) {
@@ -3232,28 +2402,8 @@ QRegion* QExposeEvent_region(const QExposeEvent* self) {
 	return const_cast<QRegion*>(&_ret);
 }
 
-bool QExposeEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQExposeEvent* self_cast = dynamic_cast<MiqtVirtualQExposeEvent*>( (QExposeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QExposeEvent* QExposeEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQExposeEvent*)(self) )->virtualbase_clone();
-}
-
-bool QExposeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQExposeEvent* self_cast = dynamic_cast<MiqtVirtualQExposeEvent*>( (QExposeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QExposeEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3265,23 +2415,21 @@ void QExposeEvent_delete(QExposeEvent* self) {
 }
 
 class MiqtVirtualQPlatformSurfaceEvent final : public QPlatformSurfaceEvent {
+	struct QPlatformSurfaceEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQPlatformSurfaceEvent(QPlatformSurfaceEvent::SurfaceEventType surfaceEventType): QPlatformSurfaceEvent(surfaceEventType) {};
+	MiqtVirtualQPlatformSurfaceEvent(struct QPlatformSurfaceEvent_VTable* vtbl, QPlatformSurfaceEvent::SurfaceEventType surfaceEventType): QPlatformSurfaceEvent(surfaceEventType), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQPlatformSurfaceEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQPlatformSurfaceEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QPlatformSurfaceEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QPlatformSurfaceEvent::clone();
 		}
-		
 
-		QPlatformSurfaceEvent* callback_return_value = miqt_exec_callback_QPlatformSurfaceEvent_clone(this, handle__clone);
+
+		QPlatformSurfaceEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3293,21 +2441,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QPlatformSurfaceEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QPlatformSurfaceEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3319,8 +2463,8 @@ public:
 
 };
 
-QPlatformSurfaceEvent* QPlatformSurfaceEvent_new(int surfaceEventType) {
-	return new MiqtVirtualQPlatformSurfaceEvent(static_cast<QPlatformSurfaceEvent::SurfaceEventType>(surfaceEventType));
+QPlatformSurfaceEvent* QPlatformSurfaceEvent_new(struct QPlatformSurfaceEvent_VTable* vtbl, int surfaceEventType) {
+	return new MiqtVirtualQPlatformSurfaceEvent(vtbl, static_cast<QPlatformSurfaceEvent::SurfaceEventType>(surfaceEventType));
 }
 
 void QPlatformSurfaceEvent_virtbase(QPlatformSurfaceEvent* src, QEvent** outptr_QEvent) {
@@ -3336,28 +2480,8 @@ int QPlatformSurfaceEvent_surfaceEventType(const QPlatformSurfaceEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QPlatformSurfaceEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQPlatformSurfaceEvent* self_cast = dynamic_cast<MiqtVirtualQPlatformSurfaceEvent*>( (QPlatformSurfaceEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QPlatformSurfaceEvent* QPlatformSurfaceEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQPlatformSurfaceEvent*)(self) )->virtualbase_clone();
-}
-
-bool QPlatformSurfaceEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQPlatformSurfaceEvent* self_cast = dynamic_cast<MiqtVirtualQPlatformSurfaceEvent*>( (QPlatformSurfaceEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QPlatformSurfaceEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3369,23 +2493,21 @@ void QPlatformSurfaceEvent_delete(QPlatformSurfaceEvent* self) {
 }
 
 class MiqtVirtualQResizeEvent final : public QResizeEvent {
+	struct QResizeEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQResizeEvent(const QSize& size, const QSize& oldSize): QResizeEvent(size, oldSize) {};
+	MiqtVirtualQResizeEvent(struct QResizeEvent_VTable* vtbl, const QSize& size, const QSize& oldSize): QResizeEvent(size, oldSize), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQResizeEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQResizeEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QResizeEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QResizeEvent::clone();
 		}
-		
 
-		QResizeEvent* callback_return_value = miqt_exec_callback_QResizeEvent_clone(this, handle__clone);
+
+		QResizeEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3397,21 +2519,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QResizeEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QResizeEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3423,8 +2541,8 @@ public:
 
 };
 
-QResizeEvent* QResizeEvent_new(QSize* size, QSize* oldSize) {
-	return new MiqtVirtualQResizeEvent(*size, *oldSize);
+QResizeEvent* QResizeEvent_new(struct QResizeEvent_VTable* vtbl, QSize* size, QSize* oldSize) {
+	return new MiqtVirtualQResizeEvent(vtbl, *size, *oldSize);
 }
 
 void QResizeEvent_virtbase(QResizeEvent* src, QEvent** outptr_QEvent) {
@@ -3447,28 +2565,8 @@ QSize* QResizeEvent_oldSize(const QResizeEvent* self) {
 	return const_cast<QSize*>(&_ret);
 }
 
-bool QResizeEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQResizeEvent* self_cast = dynamic_cast<MiqtVirtualQResizeEvent*>( (QResizeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QResizeEvent* QResizeEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQResizeEvent*)(self) )->virtualbase_clone();
-}
-
-bool QResizeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQResizeEvent* self_cast = dynamic_cast<MiqtVirtualQResizeEvent*>( (QResizeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QResizeEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3480,23 +2578,21 @@ void QResizeEvent_delete(QResizeEvent* self) {
 }
 
 class MiqtVirtualQCloseEvent final : public QCloseEvent {
+	struct QCloseEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQCloseEvent(): QCloseEvent() {};
+	MiqtVirtualQCloseEvent(struct QCloseEvent_VTable* vtbl): QCloseEvent(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQCloseEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQCloseEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QCloseEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QCloseEvent::clone();
 		}
-		
 
-		QCloseEvent* callback_return_value = miqt_exec_callback_QCloseEvent_clone(this, handle__clone);
+
+		QCloseEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3508,21 +2604,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QCloseEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QCloseEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3534,8 +2626,8 @@ public:
 
 };
 
-QCloseEvent* QCloseEvent_new() {
-	return new MiqtVirtualQCloseEvent();
+QCloseEvent* QCloseEvent_new(struct QCloseEvent_VTable* vtbl) {
+	return new MiqtVirtualQCloseEvent(vtbl);
 }
 
 void QCloseEvent_virtbase(QCloseEvent* src, QEvent** outptr_QEvent) {
@@ -3546,28 +2638,8 @@ QCloseEvent* QCloseEvent_clone(const QCloseEvent* self) {
 	return self->clone();
 }
 
-bool QCloseEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQCloseEvent* self_cast = dynamic_cast<MiqtVirtualQCloseEvent*>( (QCloseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QCloseEvent* QCloseEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQCloseEvent*)(self) )->virtualbase_clone();
-}
-
-bool QCloseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQCloseEvent* self_cast = dynamic_cast<MiqtVirtualQCloseEvent*>( (QCloseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QCloseEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3579,23 +2651,21 @@ void QCloseEvent_delete(QCloseEvent* self) {
 }
 
 class MiqtVirtualQIconDragEvent final : public QIconDragEvent {
+	struct QIconDragEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQIconDragEvent(): QIconDragEvent() {};
+	MiqtVirtualQIconDragEvent(struct QIconDragEvent_VTable* vtbl): QIconDragEvent(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQIconDragEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQIconDragEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QIconDragEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QIconDragEvent::clone();
 		}
-		
 
-		QIconDragEvent* callback_return_value = miqt_exec_callback_QIconDragEvent_clone(this, handle__clone);
+
+		QIconDragEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3607,21 +2677,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QIconDragEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QIconDragEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3633,8 +2699,8 @@ public:
 
 };
 
-QIconDragEvent* QIconDragEvent_new() {
-	return new MiqtVirtualQIconDragEvent();
+QIconDragEvent* QIconDragEvent_new(struct QIconDragEvent_VTable* vtbl) {
+	return new MiqtVirtualQIconDragEvent(vtbl);
 }
 
 void QIconDragEvent_virtbase(QIconDragEvent* src, QEvent** outptr_QEvent) {
@@ -3645,28 +2711,8 @@ QIconDragEvent* QIconDragEvent_clone(const QIconDragEvent* self) {
 	return self->clone();
 }
 
-bool QIconDragEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQIconDragEvent* self_cast = dynamic_cast<MiqtVirtualQIconDragEvent*>( (QIconDragEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QIconDragEvent* QIconDragEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQIconDragEvent*)(self) )->virtualbase_clone();
-}
-
-bool QIconDragEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQIconDragEvent* self_cast = dynamic_cast<MiqtVirtualQIconDragEvent*>( (QIconDragEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QIconDragEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3678,23 +2724,21 @@ void QIconDragEvent_delete(QIconDragEvent* self) {
 }
 
 class MiqtVirtualQShowEvent final : public QShowEvent {
+	struct QShowEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQShowEvent(): QShowEvent() {};
+	MiqtVirtualQShowEvent(struct QShowEvent_VTable* vtbl): QShowEvent(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQShowEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQShowEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QShowEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QShowEvent::clone();
 		}
-		
 
-		QShowEvent* callback_return_value = miqt_exec_callback_QShowEvent_clone(this, handle__clone);
+
+		QShowEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3706,21 +2750,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QShowEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QShowEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3732,8 +2772,8 @@ public:
 
 };
 
-QShowEvent* QShowEvent_new() {
-	return new MiqtVirtualQShowEvent();
+QShowEvent* QShowEvent_new(struct QShowEvent_VTable* vtbl) {
+	return new MiqtVirtualQShowEvent(vtbl);
 }
 
 void QShowEvent_virtbase(QShowEvent* src, QEvent** outptr_QEvent) {
@@ -3744,28 +2784,8 @@ QShowEvent* QShowEvent_clone(const QShowEvent* self) {
 	return self->clone();
 }
 
-bool QShowEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQShowEvent* self_cast = dynamic_cast<MiqtVirtualQShowEvent*>( (QShowEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QShowEvent* QShowEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQShowEvent*)(self) )->virtualbase_clone();
-}
-
-bool QShowEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQShowEvent* self_cast = dynamic_cast<MiqtVirtualQShowEvent*>( (QShowEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QShowEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3777,23 +2797,21 @@ void QShowEvent_delete(QShowEvent* self) {
 }
 
 class MiqtVirtualQHideEvent final : public QHideEvent {
+	struct QHideEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQHideEvent(): QHideEvent() {};
+	MiqtVirtualQHideEvent(struct QHideEvent_VTable* vtbl): QHideEvent(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQHideEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQHideEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QHideEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QHideEvent::clone();
 		}
-		
 
-		QHideEvent* callback_return_value = miqt_exec_callback_QHideEvent_clone(this, handle__clone);
+
+		QHideEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3805,21 +2823,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QHideEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QHideEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3831,8 +2845,8 @@ public:
 
 };
 
-QHideEvent* QHideEvent_new() {
-	return new MiqtVirtualQHideEvent();
+QHideEvent* QHideEvent_new(struct QHideEvent_VTable* vtbl) {
+	return new MiqtVirtualQHideEvent(vtbl);
 }
 
 void QHideEvent_virtbase(QHideEvent* src, QEvent** outptr_QEvent) {
@@ -3843,28 +2857,8 @@ QHideEvent* QHideEvent_clone(const QHideEvent* self) {
 	return self->clone();
 }
 
-bool QHideEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQHideEvent* self_cast = dynamic_cast<MiqtVirtualQHideEvent*>( (QHideEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QHideEvent* QHideEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQHideEvent*)(self) )->virtualbase_clone();
-}
-
-bool QHideEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQHideEvent* self_cast = dynamic_cast<MiqtVirtualQHideEvent*>( (QHideEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QHideEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -3876,25 +2870,23 @@ void QHideEvent_delete(QHideEvent* self) {
 }
 
 class MiqtVirtualQContextMenuEvent final : public QContextMenuEvent {
+	struct QContextMenuEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQContextMenuEvent(QContextMenuEvent::Reason reason, const QPoint& pos, const QPoint& globalPos): QContextMenuEvent(reason, pos, globalPos) {};
-	MiqtVirtualQContextMenuEvent(QContextMenuEvent::Reason reason, const QPoint& pos): QContextMenuEvent(reason, pos) {};
-	MiqtVirtualQContextMenuEvent(QContextMenuEvent::Reason reason, const QPoint& pos, const QPoint& globalPos, Qt::KeyboardModifiers modifiers): QContextMenuEvent(reason, pos, globalPos, modifiers) {};
+	MiqtVirtualQContextMenuEvent(struct QContextMenuEvent_VTable* vtbl, QContextMenuEvent::Reason reason, const QPoint& pos, const QPoint& globalPos): QContextMenuEvent(reason, pos, globalPos), vtbl(vtbl) {};
+	MiqtVirtualQContextMenuEvent(struct QContextMenuEvent_VTable* vtbl, QContextMenuEvent::Reason reason, const QPoint& pos): QContextMenuEvent(reason, pos), vtbl(vtbl) {};
+	MiqtVirtualQContextMenuEvent(struct QContextMenuEvent_VTable* vtbl, QContextMenuEvent::Reason reason, const QPoint& pos, const QPoint& globalPos, Qt::KeyboardModifiers modifiers): QContextMenuEvent(reason, pos, globalPos, modifiers), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQContextMenuEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQContextMenuEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QContextMenuEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QContextMenuEvent::clone();
 		}
-		
 
-		QContextMenuEvent* callback_return_value = miqt_exec_callback_QContextMenuEvent_clone(this, handle__clone);
+
+		QContextMenuEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -3906,22 +2898,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QContextMenuEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QContextMenuEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3931,21 +2919,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QContextMenuEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QContextMenuEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -3957,16 +2941,16 @@ public:
 
 };
 
-QContextMenuEvent* QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos) {
-	return new MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos);
+QContextMenuEvent* QContextMenuEvent_new(struct QContextMenuEvent_VTable* vtbl, int reason, QPoint* pos, QPoint* globalPos) {
+	return new MiqtVirtualQContextMenuEvent(vtbl, static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos);
 }
 
-QContextMenuEvent* QContextMenuEvent_new2(int reason, QPoint* pos) {
-	return new MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos);
+QContextMenuEvent* QContextMenuEvent_new2(struct QContextMenuEvent_VTable* vtbl, int reason, QPoint* pos) {
+	return new MiqtVirtualQContextMenuEvent(vtbl, static_cast<QContextMenuEvent::Reason>(reason), *pos);
 }
 
-QContextMenuEvent* QContextMenuEvent_new3(int reason, QPoint* pos, QPoint* globalPos, int modifiers) {
-	return new MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos, static_cast<Qt::KeyboardModifiers>(modifiers));
+QContextMenuEvent* QContextMenuEvent_new3(struct QContextMenuEvent_VTable* vtbl, int reason, QPoint* pos, QPoint* globalPos, int modifiers) {
+	return new MiqtVirtualQContextMenuEvent(vtbl, static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
 void QContextMenuEvent_virtbase(QContextMenuEvent* src, QInputEvent** outptr_QInputEvent) {
@@ -4010,42 +2994,12 @@ int QContextMenuEvent_reason(const QContextMenuEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QContextMenuEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQContextMenuEvent* self_cast = dynamic_cast<MiqtVirtualQContextMenuEvent*>( (QContextMenuEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QContextMenuEvent* QContextMenuEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQContextMenuEvent*)(self) )->virtualbase_clone();
 }
 
-bool QContextMenuEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQContextMenuEvent* self_cast = dynamic_cast<MiqtVirtualQContextMenuEvent*>( (QContextMenuEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QContextMenuEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQContextMenuEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QContextMenuEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQContextMenuEvent* self_cast = dynamic_cast<MiqtVirtualQContextMenuEvent*>( (QContextMenuEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QContextMenuEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4057,24 +3011,22 @@ void QContextMenuEvent_delete(QContextMenuEvent* self) {
 }
 
 class MiqtVirtualQInputMethodEvent final : public QInputMethodEvent {
+	struct QInputMethodEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQInputMethodEvent(): QInputMethodEvent() {};
-	MiqtVirtualQInputMethodEvent(const QString& preeditText, const QList<QInputMethodEvent::Attribute>& attributes): QInputMethodEvent(preeditText, attributes) {};
+	MiqtVirtualQInputMethodEvent(struct QInputMethodEvent_VTable* vtbl): QInputMethodEvent(), vtbl(vtbl) {};
+	MiqtVirtualQInputMethodEvent(struct QInputMethodEvent_VTable* vtbl, const QString& preeditText, const QList<QInputMethodEvent::Attribute>& attributes): QInputMethodEvent(preeditText, attributes), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQInputMethodEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQInputMethodEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QInputMethodEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QInputMethodEvent::clone();
 		}
-		
 
-		QInputMethodEvent* callback_return_value = miqt_exec_callback_QInputMethodEvent_clone(this, handle__clone);
+
+		QInputMethodEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4086,21 +3038,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QInputMethodEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QInputMethodEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -4112,11 +3060,11 @@ public:
 
 };
 
-QInputMethodEvent* QInputMethodEvent_new() {
-	return new MiqtVirtualQInputMethodEvent();
+QInputMethodEvent* QInputMethodEvent_new(struct QInputMethodEvent_VTable* vtbl) {
+	return new MiqtVirtualQInputMethodEvent(vtbl);
 }
 
-QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */  attributes) {
+QInputMethodEvent* QInputMethodEvent_new2(struct QInputMethodEvent_VTable* vtbl, struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */  attributes) {
 	QString preeditText_QString = QString::fromUtf8(preeditText.data, preeditText.len);
 	QList<QInputMethodEvent::Attribute> attributes_QList;
 	attributes_QList.reserve(attributes.len);
@@ -4124,7 +3072,7 @@ QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string preeditText, struct
 	for(size_t i = 0; i < attributes.len; ++i) {
 		attributes_QList.push_back(*(attributes_arr[i]));
 	}
-	return new MiqtVirtualQInputMethodEvent(preeditText_QString, attributes_QList);
+	return new MiqtVirtualQInputMethodEvent(vtbl, preeditText_QString, attributes_QList);
 }
 
 void QInputMethodEvent_virtbase(QInputMethodEvent* src, QEvent** outptr_QEvent) {
@@ -4193,28 +3141,8 @@ void QInputMethodEvent_setCommitString3(QInputMethodEvent* self, struct miqt_str
 	self->setCommitString(commitString_QString, static_cast<int>(replaceFrom), static_cast<int>(replaceLength));
 }
 
-bool QInputMethodEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQInputMethodEvent* self_cast = dynamic_cast<MiqtVirtualQInputMethodEvent*>( (QInputMethodEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QInputMethodEvent* QInputMethodEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQInputMethodEvent*)(self) )->virtualbase_clone();
-}
-
-bool QInputMethodEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQInputMethodEvent* self_cast = dynamic_cast<MiqtVirtualQInputMethodEvent*>( (QInputMethodEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QInputMethodEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4226,23 +3154,21 @@ void QInputMethodEvent_delete(QInputMethodEvent* self) {
 }
 
 class MiqtVirtualQInputMethodQueryEvent final : public QInputMethodQueryEvent {
+	struct QInputMethodQueryEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQInputMethodQueryEvent(Qt::InputMethodQueries queries): QInputMethodQueryEvent(queries) {};
+	MiqtVirtualQInputMethodQueryEvent(struct QInputMethodQueryEvent_VTable* vtbl, Qt::InputMethodQueries queries): QInputMethodQueryEvent(queries), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQInputMethodQueryEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQInputMethodQueryEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QInputMethodQueryEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QInputMethodQueryEvent::clone();
 		}
-		
 
-		QInputMethodQueryEvent* callback_return_value = miqt_exec_callback_QInputMethodQueryEvent_clone(this, handle__clone);
+
+		QInputMethodQueryEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4254,21 +3180,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QInputMethodQueryEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QInputMethodQueryEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -4280,8 +3202,8 @@ public:
 
 };
 
-QInputMethodQueryEvent* QInputMethodQueryEvent_new(int queries) {
-	return new MiqtVirtualQInputMethodQueryEvent(static_cast<Qt::InputMethodQueries>(queries));
+QInputMethodQueryEvent* QInputMethodQueryEvent_new(struct QInputMethodQueryEvent_VTable* vtbl, int queries) {
+	return new MiqtVirtualQInputMethodQueryEvent(vtbl, static_cast<Qt::InputMethodQueries>(queries));
 }
 
 void QInputMethodQueryEvent_virtbase(QInputMethodQueryEvent* src, QEvent** outptr_QEvent) {
@@ -4305,28 +3227,8 @@ QVariant* QInputMethodQueryEvent_value(const QInputMethodQueryEvent* self, int q
 	return new QVariant(self->value(static_cast<Qt::InputMethodQuery>(query)));
 }
 
-bool QInputMethodQueryEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQInputMethodQueryEvent* self_cast = dynamic_cast<MiqtVirtualQInputMethodQueryEvent*>( (QInputMethodQueryEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QInputMethodQueryEvent* QInputMethodQueryEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQInputMethodQueryEvent*)(self) )->virtualbase_clone();
-}
-
-bool QInputMethodQueryEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQInputMethodQueryEvent* self_cast = dynamic_cast<MiqtVirtualQInputMethodQueryEvent*>( (QInputMethodQueryEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QInputMethodQueryEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4338,24 +3240,22 @@ void QInputMethodQueryEvent_delete(QInputMethodQueryEvent* self) {
 }
 
 class MiqtVirtualQDropEvent final : public QDropEvent {
+	struct QDropEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQDropEvent(const QPointF& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QDropEvent(pos, actions, data, buttons, modifiers) {};
-	MiqtVirtualQDropEvent(const QPointF& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, QEvent::Type type): QDropEvent(pos, actions, data, buttons, modifiers, type) {};
+	MiqtVirtualQDropEvent(struct QDropEvent_VTable* vtbl, const QPointF& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QDropEvent(pos, actions, data, buttons, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQDropEvent(struct QDropEvent_VTable* vtbl, const QPointF& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, QEvent::Type type): QDropEvent(pos, actions, data, buttons, modifiers, type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQDropEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQDropEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QDropEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QDropEvent::clone();
 		}
-		
 
-		QDropEvent* callback_return_value = miqt_exec_callback_QDropEvent_clone(this, handle__clone);
+
+		QDropEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4367,21 +3267,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QDropEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QDropEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -4393,12 +3289,12 @@ public:
 
 };
 
-QDropEvent* QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers) {
-	return new MiqtVirtualQDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QDropEvent* QDropEvent_new(struct QDropEvent_VTable* vtbl, QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new MiqtVirtualQDropEvent(vtbl, *pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QDropEvent* QDropEvent_new2(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
-	return new MiqtVirtualQDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
+QDropEvent* QDropEvent_new2(struct QDropEvent_VTable* vtbl, QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
+	return new MiqtVirtualQDropEvent(vtbl, *pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
 }
 
 void QDropEvent_virtbase(QDropEvent* src, QEvent** outptr_QEvent) {
@@ -4472,28 +3368,8 @@ QMimeData* QDropEvent_mimeData(const QDropEvent* self) {
 	return (QMimeData*) self->mimeData();
 }
 
-bool QDropEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQDropEvent* self_cast = dynamic_cast<MiqtVirtualQDropEvent*>( (QDropEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QDropEvent* QDropEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQDropEvent*)(self) )->virtualbase_clone();
-}
-
-bool QDropEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQDropEvent* self_cast = dynamic_cast<MiqtVirtualQDropEvent*>( (QDropEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QDropEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4505,24 +3381,22 @@ void QDropEvent_delete(QDropEvent* self) {
 }
 
 class MiqtVirtualQDragMoveEvent final : public QDragMoveEvent {
+	struct QDragMoveEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQDragMoveEvent(const QPoint& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QDragMoveEvent(pos, actions, data, buttons, modifiers) {};
-	MiqtVirtualQDragMoveEvent(const QPoint& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, QEvent::Type type): QDragMoveEvent(pos, actions, data, buttons, modifiers, type) {};
+	MiqtVirtualQDragMoveEvent(struct QDragMoveEvent_VTable* vtbl, const QPoint& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QDragMoveEvent(pos, actions, data, buttons, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQDragMoveEvent(struct QDragMoveEvent_VTable* vtbl, const QPoint& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, QEvent::Type type): QDragMoveEvent(pos, actions, data, buttons, modifiers, type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQDragMoveEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQDragMoveEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QDragMoveEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QDragMoveEvent::clone();
 		}
-		
 
-		QDragMoveEvent* callback_return_value = miqt_exec_callback_QDragMoveEvent_clone(this, handle__clone);
+
+		QDragMoveEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4534,21 +3408,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QDragMoveEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QDragMoveEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -4560,12 +3430,12 @@ public:
 
 };
 
-QDragMoveEvent* QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
-	return new MiqtVirtualQDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QDragMoveEvent* QDragMoveEvent_new(struct QDragMoveEvent_VTable* vtbl, QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new MiqtVirtualQDragMoveEvent(vtbl, *pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QDragMoveEvent* QDragMoveEvent_new2(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
-	return new MiqtVirtualQDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
+QDragMoveEvent* QDragMoveEvent_new2(struct QDragMoveEvent_VTable* vtbl, QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
+	return new MiqtVirtualQDragMoveEvent(vtbl, *pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
 }
 
 void QDragMoveEvent_virtbase(QDragMoveEvent* src, QDropEvent** outptr_QDropEvent) {
@@ -4596,28 +3466,8 @@ void QDragMoveEvent_ignoreWithQRect(QDragMoveEvent* self, QRect* r) {
 	self->ignore(*r);
 }
 
-bool QDragMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQDragMoveEvent* self_cast = dynamic_cast<MiqtVirtualQDragMoveEvent*>( (QDragMoveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QDragMoveEvent* QDragMoveEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQDragMoveEvent*)(self) )->virtualbase_clone();
-}
-
-bool QDragMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQDragMoveEvent* self_cast = dynamic_cast<MiqtVirtualQDragMoveEvent*>( (QDragMoveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QDragMoveEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4629,23 +3479,21 @@ void QDragMoveEvent_delete(QDragMoveEvent* self) {
 }
 
 class MiqtVirtualQDragEnterEvent final : public QDragEnterEvent {
+	struct QDragEnterEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQDragEnterEvent(const QPoint& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QDragEnterEvent(pos, actions, data, buttons, modifiers) {};
+	MiqtVirtualQDragEnterEvent(struct QDragEnterEvent_VTable* vtbl, const QPoint& pos, Qt::DropActions actions, const QMimeData* data, Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers): QDragEnterEvent(pos, actions, data, buttons, modifiers), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQDragEnterEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQDragEnterEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QDragEnterEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QDragEnterEvent::clone();
 		}
-		
 
-		QDragEnterEvent* callback_return_value = miqt_exec_callback_QDragEnterEvent_clone(this, handle__clone);
+
+		QDragEnterEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4657,21 +3505,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QDragEnterEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QDragEnterEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -4683,8 +3527,8 @@ public:
 
 };
 
-QDragEnterEvent* QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
-	return new MiqtVirtualQDragEnterEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QDragEnterEvent* QDragEnterEvent_new(struct QDragEnterEvent_VTable* vtbl, QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new MiqtVirtualQDragEnterEvent(vtbl, *pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
 void QDragEnterEvent_virtbase(QDragEnterEvent* src, QDragMoveEvent** outptr_QDragMoveEvent) {
@@ -4695,28 +3539,8 @@ QDragEnterEvent* QDragEnterEvent_clone(const QDragEnterEvent* self) {
 	return self->clone();
 }
 
-bool QDragEnterEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQDragEnterEvent* self_cast = dynamic_cast<MiqtVirtualQDragEnterEvent*>( (QDragEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QDragEnterEvent* QDragEnterEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQDragEnterEvent*)(self) )->virtualbase_clone();
-}
-
-bool QDragEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQDragEnterEvent* self_cast = dynamic_cast<MiqtVirtualQDragEnterEvent*>( (QDragEnterEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QDragEnterEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4728,23 +3552,21 @@ void QDragEnterEvent_delete(QDragEnterEvent* self) {
 }
 
 class MiqtVirtualQDragLeaveEvent final : public QDragLeaveEvent {
+	struct QDragLeaveEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQDragLeaveEvent(): QDragLeaveEvent() {};
+	MiqtVirtualQDragLeaveEvent(struct QDragLeaveEvent_VTable* vtbl): QDragLeaveEvent(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQDragLeaveEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQDragLeaveEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QDragLeaveEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QDragLeaveEvent::clone();
 		}
-		
 
-		QDragLeaveEvent* callback_return_value = miqt_exec_callback_QDragLeaveEvent_clone(this, handle__clone);
+
+		QDragLeaveEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4756,21 +3578,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QDragLeaveEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QDragLeaveEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -4782,8 +3600,8 @@ public:
 
 };
 
-QDragLeaveEvent* QDragLeaveEvent_new() {
-	return new MiqtVirtualQDragLeaveEvent();
+QDragLeaveEvent* QDragLeaveEvent_new(struct QDragLeaveEvent_VTable* vtbl) {
+	return new MiqtVirtualQDragLeaveEvent(vtbl);
 }
 
 void QDragLeaveEvent_virtbase(QDragLeaveEvent* src, QEvent** outptr_QEvent) {
@@ -4794,28 +3612,8 @@ QDragLeaveEvent* QDragLeaveEvent_clone(const QDragLeaveEvent* self) {
 	return self->clone();
 }
 
-bool QDragLeaveEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQDragLeaveEvent* self_cast = dynamic_cast<MiqtVirtualQDragLeaveEvent*>( (QDragLeaveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QDragLeaveEvent* QDragLeaveEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQDragLeaveEvent*)(self) )->virtualbase_clone();
-}
-
-bool QDragLeaveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQDragLeaveEvent* self_cast = dynamic_cast<MiqtVirtualQDragLeaveEvent*>( (QDragLeaveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QDragLeaveEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4827,23 +3625,21 @@ void QDragLeaveEvent_delete(QDragLeaveEvent* self) {
 }
 
 class MiqtVirtualQHelpEvent final : public QHelpEvent {
+	struct QHelpEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQHelpEvent(QEvent::Type type, const QPoint& pos, const QPoint& globalPos): QHelpEvent(type, pos, globalPos) {};
+	MiqtVirtualQHelpEvent(struct QHelpEvent_VTable* vtbl, QEvent::Type type, const QPoint& pos, const QPoint& globalPos): QHelpEvent(type, pos, globalPos), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQHelpEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQHelpEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QHelpEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QHelpEvent::clone();
 		}
-		
 
-		QHelpEvent* callback_return_value = miqt_exec_callback_QHelpEvent_clone(this, handle__clone);
+
+		QHelpEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4855,21 +3651,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QHelpEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QHelpEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -4881,8 +3673,8 @@ public:
 
 };
 
-QHelpEvent* QHelpEvent_new(int type, QPoint* pos, QPoint* globalPos) {
-	return new MiqtVirtualQHelpEvent(static_cast<QEvent::Type>(type), *pos, *globalPos);
+QHelpEvent* QHelpEvent_new(struct QHelpEvent_VTable* vtbl, int type, QPoint* pos, QPoint* globalPos) {
+	return new MiqtVirtualQHelpEvent(vtbl, static_cast<QEvent::Type>(type), *pos, *globalPos);
 }
 
 void QHelpEvent_virtbase(QHelpEvent* src, QEvent** outptr_QEvent) {
@@ -4921,28 +3713,8 @@ QPoint* QHelpEvent_globalPos(const QHelpEvent* self) {
 	return const_cast<QPoint*>(&_ret);
 }
 
-bool QHelpEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQHelpEvent* self_cast = dynamic_cast<MiqtVirtualQHelpEvent*>( (QHelpEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QHelpEvent* QHelpEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQHelpEvent*)(self) )->virtualbase_clone();
-}
-
-bool QHelpEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQHelpEvent* self_cast = dynamic_cast<MiqtVirtualQHelpEvent*>( (QHelpEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QHelpEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -4954,23 +3726,21 @@ void QHelpEvent_delete(QHelpEvent* self) {
 }
 
 class MiqtVirtualQStatusTipEvent final : public QStatusTipEvent {
+	struct QStatusTipEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQStatusTipEvent(const QString& tip): QStatusTipEvent(tip) {};
+	MiqtVirtualQStatusTipEvent(struct QStatusTipEvent_VTable* vtbl, const QString& tip): QStatusTipEvent(tip), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQStatusTipEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQStatusTipEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QStatusTipEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QStatusTipEvent::clone();
 		}
-		
 
-		QStatusTipEvent* callback_return_value = miqt_exec_callback_QStatusTipEvent_clone(this, handle__clone);
+
+		QStatusTipEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -4982,21 +3752,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QStatusTipEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QStatusTipEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5008,9 +3774,9 @@ public:
 
 };
 
-QStatusTipEvent* QStatusTipEvent_new(struct miqt_string tip) {
+QStatusTipEvent* QStatusTipEvent_new(struct QStatusTipEvent_VTable* vtbl, struct miqt_string tip) {
 	QString tip_QString = QString::fromUtf8(tip.data, tip.len);
-	return new MiqtVirtualQStatusTipEvent(tip_QString);
+	return new MiqtVirtualQStatusTipEvent(vtbl, tip_QString);
 }
 
 void QStatusTipEvent_virtbase(QStatusTipEvent* src, QEvent** outptr_QEvent) {
@@ -5032,28 +3798,8 @@ struct miqt_string QStatusTipEvent_tip(const QStatusTipEvent* self) {
 	return _ms;
 }
 
-bool QStatusTipEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQStatusTipEvent* self_cast = dynamic_cast<MiqtVirtualQStatusTipEvent*>( (QStatusTipEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QStatusTipEvent* QStatusTipEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQStatusTipEvent*)(self) )->virtualbase_clone();
-}
-
-bool QStatusTipEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQStatusTipEvent* self_cast = dynamic_cast<MiqtVirtualQStatusTipEvent*>( (QStatusTipEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QStatusTipEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -5065,23 +3811,21 @@ void QStatusTipEvent_delete(QStatusTipEvent* self) {
 }
 
 class MiqtVirtualQWhatsThisClickedEvent final : public QWhatsThisClickedEvent {
+	struct QWhatsThisClickedEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQWhatsThisClickedEvent(const QString& href): QWhatsThisClickedEvent(href) {};
+	MiqtVirtualQWhatsThisClickedEvent(struct QWhatsThisClickedEvent_VTable* vtbl, const QString& href): QWhatsThisClickedEvent(href), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQWhatsThisClickedEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQWhatsThisClickedEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QWhatsThisClickedEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QWhatsThisClickedEvent::clone();
 		}
-		
 
-		QWhatsThisClickedEvent* callback_return_value = miqt_exec_callback_QWhatsThisClickedEvent_clone(this, handle__clone);
+
+		QWhatsThisClickedEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5093,21 +3837,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QWhatsThisClickedEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QWhatsThisClickedEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5119,9 +3859,9 @@ public:
 
 };
 
-QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct miqt_string href) {
+QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct QWhatsThisClickedEvent_VTable* vtbl, struct miqt_string href) {
 	QString href_QString = QString::fromUtf8(href.data, href.len);
-	return new MiqtVirtualQWhatsThisClickedEvent(href_QString);
+	return new MiqtVirtualQWhatsThisClickedEvent(vtbl, href_QString);
 }
 
 void QWhatsThisClickedEvent_virtbase(QWhatsThisClickedEvent* src, QEvent** outptr_QEvent) {
@@ -5143,28 +3883,8 @@ struct miqt_string QWhatsThisClickedEvent_href(const QWhatsThisClickedEvent* sel
 	return _ms;
 }
 
-bool QWhatsThisClickedEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQWhatsThisClickedEvent* self_cast = dynamic_cast<MiqtVirtualQWhatsThisClickedEvent*>( (QWhatsThisClickedEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QWhatsThisClickedEvent* QWhatsThisClickedEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQWhatsThisClickedEvent*)(self) )->virtualbase_clone();
-}
-
-bool QWhatsThisClickedEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQWhatsThisClickedEvent* self_cast = dynamic_cast<MiqtVirtualQWhatsThisClickedEvent*>( (QWhatsThisClickedEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QWhatsThisClickedEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -5176,24 +3896,22 @@ void QWhatsThisClickedEvent_delete(QWhatsThisClickedEvent* self) {
 }
 
 class MiqtVirtualQActionEvent final : public QActionEvent {
+	struct QActionEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQActionEvent(int type, QAction* action): QActionEvent(type, action) {};
-	MiqtVirtualQActionEvent(int type, QAction* action, QAction* before): QActionEvent(type, action, before) {};
+	MiqtVirtualQActionEvent(struct QActionEvent_VTable* vtbl, int type, QAction* action): QActionEvent(type, action), vtbl(vtbl) {};
+	MiqtVirtualQActionEvent(struct QActionEvent_VTable* vtbl, int type, QAction* action, QAction* before): QActionEvent(type, action, before), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQActionEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQActionEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QActionEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QActionEvent::clone();
 		}
-		
 
-		QActionEvent* callback_return_value = miqt_exec_callback_QActionEvent_clone(this, handle__clone);
+
+		QActionEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5205,21 +3923,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QActionEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QActionEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5231,12 +3945,12 @@ public:
 
 };
 
-QActionEvent* QActionEvent_new(int type, QAction* action) {
-	return new MiqtVirtualQActionEvent(static_cast<int>(type), action);
+QActionEvent* QActionEvent_new(struct QActionEvent_VTable* vtbl, int type, QAction* action) {
+	return new MiqtVirtualQActionEvent(vtbl, static_cast<int>(type), action);
 }
 
-QActionEvent* QActionEvent_new2(int type, QAction* action, QAction* before) {
-	return new MiqtVirtualQActionEvent(static_cast<int>(type), action, before);
+QActionEvent* QActionEvent_new2(struct QActionEvent_VTable* vtbl, int type, QAction* action, QAction* before) {
+	return new MiqtVirtualQActionEvent(vtbl, static_cast<int>(type), action, before);
 }
 
 void QActionEvent_virtbase(QActionEvent* src, QEvent** outptr_QEvent) {
@@ -5255,28 +3969,8 @@ QAction* QActionEvent_before(const QActionEvent* self) {
 	return self->before();
 }
 
-bool QActionEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQActionEvent* self_cast = dynamic_cast<MiqtVirtualQActionEvent*>( (QActionEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QActionEvent* QActionEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQActionEvent*)(self) )->virtualbase_clone();
-}
-
-bool QActionEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQActionEvent* self_cast = dynamic_cast<MiqtVirtualQActionEvent*>( (QActionEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QActionEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -5288,24 +3982,22 @@ void QActionEvent_delete(QActionEvent* self) {
 }
 
 class MiqtVirtualQFileOpenEvent final : public QFileOpenEvent {
+	struct QFileOpenEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQFileOpenEvent(const QString& file): QFileOpenEvent(file) {};
-	MiqtVirtualQFileOpenEvent(const QUrl& url): QFileOpenEvent(url) {};
+	MiqtVirtualQFileOpenEvent(struct QFileOpenEvent_VTable* vtbl, const QString& file): QFileOpenEvent(file), vtbl(vtbl) {};
+	MiqtVirtualQFileOpenEvent(struct QFileOpenEvent_VTable* vtbl, const QUrl& url): QFileOpenEvent(url), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQFileOpenEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQFileOpenEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QFileOpenEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QFileOpenEvent::clone();
 		}
-		
 
-		QFileOpenEvent* callback_return_value = miqt_exec_callback_QFileOpenEvent_clone(this, handle__clone);
+
+		QFileOpenEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5317,21 +4009,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QFileOpenEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QFileOpenEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5343,13 +4031,13 @@ public:
 
 };
 
-QFileOpenEvent* QFileOpenEvent_new(struct miqt_string file) {
+QFileOpenEvent* QFileOpenEvent_new(struct QFileOpenEvent_VTable* vtbl, struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	return new MiqtVirtualQFileOpenEvent(file_QString);
+	return new MiqtVirtualQFileOpenEvent(vtbl, file_QString);
 }
 
-QFileOpenEvent* QFileOpenEvent_new2(QUrl* url) {
-	return new MiqtVirtualQFileOpenEvent(*url);
+QFileOpenEvent* QFileOpenEvent_new2(struct QFileOpenEvent_VTable* vtbl, QUrl* url) {
+	return new MiqtVirtualQFileOpenEvent(vtbl, *url);
 }
 
 void QFileOpenEvent_virtbase(QFileOpenEvent* src, QEvent** outptr_QEvent) {
@@ -5379,28 +4067,8 @@ bool QFileOpenEvent_openFile(const QFileOpenEvent* self, QFile* file, int flags)
 	return self->openFile(*file, static_cast<QIODevice::OpenMode>(flags));
 }
 
-bool QFileOpenEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQFileOpenEvent* self_cast = dynamic_cast<MiqtVirtualQFileOpenEvent*>( (QFileOpenEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QFileOpenEvent* QFileOpenEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQFileOpenEvent*)(self) )->virtualbase_clone();
-}
-
-bool QFileOpenEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQFileOpenEvent* self_cast = dynamic_cast<MiqtVirtualQFileOpenEvent*>( (QFileOpenEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QFileOpenEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -5412,23 +4080,21 @@ void QFileOpenEvent_delete(QFileOpenEvent* self) {
 }
 
 class MiqtVirtualQToolBarChangeEvent final : public QToolBarChangeEvent {
+	struct QToolBarChangeEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQToolBarChangeEvent(bool t): QToolBarChangeEvent(t) {};
+	MiqtVirtualQToolBarChangeEvent(struct QToolBarChangeEvent_VTable* vtbl, bool t): QToolBarChangeEvent(t), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQToolBarChangeEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQToolBarChangeEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QToolBarChangeEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QToolBarChangeEvent::clone();
 		}
-		
 
-		QToolBarChangeEvent* callback_return_value = miqt_exec_callback_QToolBarChangeEvent_clone(this, handle__clone);
+
+		QToolBarChangeEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5440,21 +4106,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QToolBarChangeEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QToolBarChangeEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5466,8 +4128,8 @@ public:
 
 };
 
-QToolBarChangeEvent* QToolBarChangeEvent_new(bool t) {
-	return new MiqtVirtualQToolBarChangeEvent(t);
+QToolBarChangeEvent* QToolBarChangeEvent_new(struct QToolBarChangeEvent_VTable* vtbl, bool t) {
+	return new MiqtVirtualQToolBarChangeEvent(vtbl, t);
 }
 
 void QToolBarChangeEvent_virtbase(QToolBarChangeEvent* src, QEvent** outptr_QEvent) {
@@ -5482,28 +4144,8 @@ bool QToolBarChangeEvent_toggle(const QToolBarChangeEvent* self) {
 	return self->toggle();
 }
 
-bool QToolBarChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQToolBarChangeEvent* self_cast = dynamic_cast<MiqtVirtualQToolBarChangeEvent*>( (QToolBarChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QToolBarChangeEvent* QToolBarChangeEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQToolBarChangeEvent*)(self) )->virtualbase_clone();
-}
-
-bool QToolBarChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQToolBarChangeEvent* self_cast = dynamic_cast<MiqtVirtualQToolBarChangeEvent*>( (QToolBarChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QToolBarChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -5515,24 +4157,22 @@ void QToolBarChangeEvent_delete(QToolBarChangeEvent* self) {
 }
 
 class MiqtVirtualQShortcutEvent final : public QShortcutEvent {
+	struct QShortcutEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQShortcutEvent(const QKeySequence& key, int id): QShortcutEvent(key, id) {};
-	MiqtVirtualQShortcutEvent(const QKeySequence& key, int id, bool ambiguous): QShortcutEvent(key, id, ambiguous) {};
+	MiqtVirtualQShortcutEvent(struct QShortcutEvent_VTable* vtbl, const QKeySequence& key, int id): QShortcutEvent(key, id), vtbl(vtbl) {};
+	MiqtVirtualQShortcutEvent(struct QShortcutEvent_VTable* vtbl, const QKeySequence& key, int id, bool ambiguous): QShortcutEvent(key, id, ambiguous), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQShortcutEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQShortcutEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QShortcutEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QShortcutEvent::clone();
 		}
-		
 
-		QShortcutEvent* callback_return_value = miqt_exec_callback_QShortcutEvent_clone(this, handle__clone);
+
+		QShortcutEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5544,21 +4184,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QShortcutEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QShortcutEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5570,12 +4206,12 @@ public:
 
 };
 
-QShortcutEvent* QShortcutEvent_new(QKeySequence* key, int id) {
-	return new MiqtVirtualQShortcutEvent(*key, static_cast<int>(id));
+QShortcutEvent* QShortcutEvent_new(struct QShortcutEvent_VTable* vtbl, QKeySequence* key, int id) {
+	return new MiqtVirtualQShortcutEvent(vtbl, *key, static_cast<int>(id));
 }
 
-QShortcutEvent* QShortcutEvent_new2(QKeySequence* key, int id, bool ambiguous) {
-	return new MiqtVirtualQShortcutEvent(*key, static_cast<int>(id), ambiguous);
+QShortcutEvent* QShortcutEvent_new2(struct QShortcutEvent_VTable* vtbl, QKeySequence* key, int id, bool ambiguous) {
+	return new MiqtVirtualQShortcutEvent(vtbl, *key, static_cast<int>(id), ambiguous);
 }
 
 void QShortcutEvent_virtbase(QShortcutEvent* src, QEvent** outptr_QEvent) {
@@ -5600,28 +4236,8 @@ bool QShortcutEvent_isAmbiguous(const QShortcutEvent* self) {
 	return self->isAmbiguous();
 }
 
-bool QShortcutEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQShortcutEvent* self_cast = dynamic_cast<MiqtVirtualQShortcutEvent*>( (QShortcutEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QShortcutEvent* QShortcutEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQShortcutEvent*)(self) )->virtualbase_clone();
-}
-
-bool QShortcutEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQShortcutEvent* self_cast = dynamic_cast<MiqtVirtualQShortcutEvent*>( (QShortcutEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QShortcutEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -5633,24 +4249,22 @@ void QShortcutEvent_delete(QShortcutEvent* self) {
 }
 
 class MiqtVirtualQWindowStateChangeEvent final : public QWindowStateChangeEvent {
+	struct QWindowStateChangeEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQWindowStateChangeEvent(Qt::WindowStates oldState): QWindowStateChangeEvent(oldState) {};
-	MiqtVirtualQWindowStateChangeEvent(Qt::WindowStates oldState, bool isOverride): QWindowStateChangeEvent(oldState, isOverride) {};
+	MiqtVirtualQWindowStateChangeEvent(struct QWindowStateChangeEvent_VTable* vtbl, Qt::WindowStates oldState): QWindowStateChangeEvent(oldState), vtbl(vtbl) {};
+	MiqtVirtualQWindowStateChangeEvent(struct QWindowStateChangeEvent_VTable* vtbl, Qt::WindowStates oldState, bool isOverride): QWindowStateChangeEvent(oldState, isOverride), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQWindowStateChangeEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQWindowStateChangeEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QWindowStateChangeEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QWindowStateChangeEvent::clone();
 		}
-		
 
-		QWindowStateChangeEvent* callback_return_value = miqt_exec_callback_QWindowStateChangeEvent_clone(this, handle__clone);
+
+		QWindowStateChangeEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5662,21 +4276,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QWindowStateChangeEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QWindowStateChangeEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5688,12 +4298,12 @@ public:
 
 };
 
-QWindowStateChangeEvent* QWindowStateChangeEvent_new(int oldState) {
-	return new MiqtVirtualQWindowStateChangeEvent(static_cast<Qt::WindowStates>(oldState));
+QWindowStateChangeEvent* QWindowStateChangeEvent_new(struct QWindowStateChangeEvent_VTable* vtbl, int oldState) {
+	return new MiqtVirtualQWindowStateChangeEvent(vtbl, static_cast<Qt::WindowStates>(oldState));
 }
 
-QWindowStateChangeEvent* QWindowStateChangeEvent_new2(int oldState, bool isOverride) {
-	return new MiqtVirtualQWindowStateChangeEvent(static_cast<Qt::WindowStates>(oldState), isOverride);
+QWindowStateChangeEvent* QWindowStateChangeEvent_new2(struct QWindowStateChangeEvent_VTable* vtbl, int oldState, bool isOverride) {
+	return new MiqtVirtualQWindowStateChangeEvent(vtbl, static_cast<Qt::WindowStates>(oldState), isOverride);
 }
 
 void QWindowStateChangeEvent_virtbase(QWindowStateChangeEvent* src, QEvent** outptr_QEvent) {
@@ -5713,28 +4323,8 @@ bool QWindowStateChangeEvent_isOverride(const QWindowStateChangeEvent* self) {
 	return self->isOverride();
 }
 
-bool QWindowStateChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQWindowStateChangeEvent* self_cast = dynamic_cast<MiqtVirtualQWindowStateChangeEvent*>( (QWindowStateChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QWindowStateChangeEvent* QWindowStateChangeEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQWindowStateChangeEvent*)(self) )->virtualbase_clone();
-}
-
-bool QWindowStateChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQWindowStateChangeEvent* self_cast = dynamic_cast<MiqtVirtualQWindowStateChangeEvent*>( (QWindowStateChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QWindowStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -5746,28 +4336,26 @@ void QWindowStateChangeEvent_delete(QWindowStateChangeEvent* self) {
 }
 
 class MiqtVirtualQTouchEvent final : public QTouchEvent {
+	struct QTouchEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQTouchEvent(QEvent::Type eventType): QTouchEvent(eventType) {};
-	MiqtVirtualQTouchEvent(QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers, QEventPoint::States touchPointStates): QTouchEvent(eventType, device, modifiers, touchPointStates) {};
-	MiqtVirtualQTouchEvent(QEvent::Type eventType, const QPointingDevice* device): QTouchEvent(eventType, device) {};
-	MiqtVirtualQTouchEvent(QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers): QTouchEvent(eventType, device, modifiers) {};
-	MiqtVirtualQTouchEvent(QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers, const QList<QEventPoint>& touchPoints): QTouchEvent(eventType, device, modifiers, touchPoints) {};
-	MiqtVirtualQTouchEvent(QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers, QEventPoint::States touchPointStates, const QList<QEventPoint>& touchPoints): QTouchEvent(eventType, device, modifiers, touchPointStates, touchPoints) {};
+	MiqtVirtualQTouchEvent(struct QTouchEvent_VTable* vtbl, QEvent::Type eventType): QTouchEvent(eventType), vtbl(vtbl) {};
+	MiqtVirtualQTouchEvent(struct QTouchEvent_VTable* vtbl, QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers, QEventPoint::States touchPointStates): QTouchEvent(eventType, device, modifiers, touchPointStates), vtbl(vtbl) {};
+	MiqtVirtualQTouchEvent(struct QTouchEvent_VTable* vtbl, QEvent::Type eventType, const QPointingDevice* device): QTouchEvent(eventType, device), vtbl(vtbl) {};
+	MiqtVirtualQTouchEvent(struct QTouchEvent_VTable* vtbl, QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers): QTouchEvent(eventType, device, modifiers), vtbl(vtbl) {};
+	MiqtVirtualQTouchEvent(struct QTouchEvent_VTable* vtbl, QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers, const QList<QEventPoint>& touchPoints): QTouchEvent(eventType, device, modifiers, touchPoints), vtbl(vtbl) {};
+	MiqtVirtualQTouchEvent(struct QTouchEvent_VTable* vtbl, QEvent::Type eventType, const QPointingDevice* device, Qt::KeyboardModifiers modifiers, QEventPoint::States touchPointStates, const QList<QEventPoint>& touchPoints): QTouchEvent(eventType, device, modifiers, touchPointStates, touchPoints), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQTouchEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQTouchEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QTouchEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QTouchEvent::clone();
 		}
-		
 
-		QTouchEvent* callback_return_value = miqt_exec_callback_QTouchEvent_clone(this, handle__clone);
+
+		QTouchEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5779,17 +4367,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isBeginEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isBeginEvent() const override {
-		if (handle__isBeginEvent == 0) {
+		if (vtbl->isBeginEvent == 0) {
 			return QTouchEvent::isBeginEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QTouchEvent_isBeginEvent(this, handle__isBeginEvent);
+
+		bool callback_return_value = vtbl->isBeginEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5801,17 +4386,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isUpdateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isUpdateEvent() const override {
-		if (handle__isUpdateEvent == 0) {
+		if (vtbl->isUpdateEvent == 0) {
 			return QTouchEvent::isUpdateEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QTouchEvent_isUpdateEvent(this, handle__isUpdateEvent);
+
+		bool callback_return_value = vtbl->isUpdateEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5823,17 +4405,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isEndEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isEndEvent() const override {
-		if (handle__isEndEvent == 0) {
+		if (vtbl->isEndEvent == 0) {
 			return QTouchEvent::isEndEvent();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QTouchEvent_isEndEvent(this, handle__isEndEvent);
+
+		bool callback_return_value = vtbl->isEndEvent(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -5845,22 +4424,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setTimestamp = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setTimestamp(quint64 timestamp) override {
-		if (handle__setTimestamp == 0) {
+		if (vtbl->setTimestamp == 0) {
 			QTouchEvent::setTimestamp(timestamp);
 			return;
 		}
-		
+
 		quint64 timestamp_ret = timestamp;
 		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
 
-		miqt_exec_callback_QTouchEvent_setTimestamp(this, handle__setTimestamp, sigval1);
+		vtbl->setTimestamp(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5870,21 +4445,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QTouchEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QTouchEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -5896,40 +4467,40 @@ public:
 
 };
 
-QTouchEvent* QTouchEvent_new(int eventType) {
-	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType));
+QTouchEvent* QTouchEvent_new(struct QTouchEvent_VTable* vtbl, int eventType) {
+	return new MiqtVirtualQTouchEvent(vtbl, static_cast<QEvent::Type>(eventType));
 }
 
-QTouchEvent* QTouchEvent_new2(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates) {
-	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEventPoint::States>(touchPointStates));
+QTouchEvent* QTouchEvent_new2(struct QTouchEvent_VTable* vtbl, int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates) {
+	return new MiqtVirtualQTouchEvent(vtbl, static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEventPoint::States>(touchPointStates));
 }
 
-QTouchEvent* QTouchEvent_new3(int eventType, QPointingDevice* device) {
-	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType), device);
+QTouchEvent* QTouchEvent_new3(struct QTouchEvent_VTable* vtbl, int eventType, QPointingDevice* device) {
+	return new MiqtVirtualQTouchEvent(vtbl, static_cast<QEvent::Type>(eventType), device);
 }
 
-QTouchEvent* QTouchEvent_new4(int eventType, QPointingDevice* device, int modifiers) {
-	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers));
+QTouchEvent* QTouchEvent_new4(struct QTouchEvent_VTable* vtbl, int eventType, QPointingDevice* device, int modifiers) {
+	return new MiqtVirtualQTouchEvent(vtbl, static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QTouchEvent* QTouchEvent_new5(int eventType, QPointingDevice* device, int modifiers, struct miqt_array /* of QEventPoint* */  touchPoints) {
+QTouchEvent* QTouchEvent_new5(struct QTouchEvent_VTable* vtbl, int eventType, QPointingDevice* device, int modifiers, struct miqt_array /* of QEventPoint* */  touchPoints) {
 	QList<QEventPoint> touchPoints_QList;
 	touchPoints_QList.reserve(touchPoints.len);
 	QEventPoint** touchPoints_arr = static_cast<QEventPoint**>(touchPoints.data);
 	for(size_t i = 0; i < touchPoints.len; ++i) {
 		touchPoints_QList.push_back(*(touchPoints_arr[i]));
 	}
-	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), touchPoints_QList);
+	return new MiqtVirtualQTouchEvent(vtbl, static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), touchPoints_QList);
 }
 
-QTouchEvent* QTouchEvent_new6(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, struct miqt_array /* of QEventPoint* */  touchPoints) {
+QTouchEvent* QTouchEvent_new6(struct QTouchEvent_VTable* vtbl, int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, struct miqt_array /* of QEventPoint* */  touchPoints) {
 	QList<QEventPoint> touchPoints_QList;
 	touchPoints_QList.reserve(touchPoints.len);
 	QEventPoint** touchPoints_arr = static_cast<QEventPoint**>(touchPoints.data);
 	for(size_t i = 0; i < touchPoints.len; ++i) {
 		touchPoints_QList.push_back(*(touchPoints_arr[i]));
 	}
-	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEventPoint::States>(touchPointStates), touchPoints_QList);
+	return new MiqtVirtualQTouchEvent(vtbl, static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEventPoint::States>(touchPointStates), touchPoints_QList);
 }
 
 void QTouchEvent_virtbase(QTouchEvent* src, QPointerEvent** outptr_QPointerEvent) {
@@ -5974,84 +4545,24 @@ bool QTouchEvent_isEndEvent(const QTouchEvent* self) {
 	return self->isEndEvent();
 }
 
-bool QTouchEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQTouchEvent* self_cast = dynamic_cast<MiqtVirtualQTouchEvent*>( (QTouchEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QTouchEvent* QTouchEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_clone();
-}
-
-bool QTouchEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
-	MiqtVirtualQTouchEvent* self_cast = dynamic_cast<MiqtVirtualQTouchEvent*>( (QTouchEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isBeginEvent = slot;
-	return true;
 }
 
 bool QTouchEvent_virtualbase_isBeginEvent(const void* self) {
 	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_isBeginEvent();
 }
 
-bool QTouchEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQTouchEvent* self_cast = dynamic_cast<MiqtVirtualQTouchEvent*>( (QTouchEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isUpdateEvent = slot;
-	return true;
-}
-
 bool QTouchEvent_virtualbase_isUpdateEvent(const void* self) {
 	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_isUpdateEvent();
-}
-
-bool QTouchEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
-	MiqtVirtualQTouchEvent* self_cast = dynamic_cast<MiqtVirtualQTouchEvent*>( (QTouchEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isEndEvent = slot;
-	return true;
 }
 
 bool QTouchEvent_virtualbase_isEndEvent(const void* self) {
 	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_isEndEvent();
 }
 
-bool QTouchEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
-	MiqtVirtualQTouchEvent* self_cast = dynamic_cast<MiqtVirtualQTouchEvent*>( (QTouchEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setTimestamp = slot;
-	return true;
-}
-
 void QTouchEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQTouchEvent*)(self) )->virtualbase_setTimestamp(timestamp);
-}
-
-bool QTouchEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQTouchEvent* self_cast = dynamic_cast<MiqtVirtualQTouchEvent*>( (QTouchEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QTouchEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -6063,23 +4574,21 @@ void QTouchEvent_delete(QTouchEvent* self) {
 }
 
 class MiqtVirtualQScrollPrepareEvent final : public QScrollPrepareEvent {
+	struct QScrollPrepareEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQScrollPrepareEvent(const QPointF& startPos): QScrollPrepareEvent(startPos) {};
+	MiqtVirtualQScrollPrepareEvent(struct QScrollPrepareEvent_VTable* vtbl, const QPointF& startPos): QScrollPrepareEvent(startPos), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQScrollPrepareEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQScrollPrepareEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QScrollPrepareEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QScrollPrepareEvent::clone();
 		}
-		
 
-		QScrollPrepareEvent* callback_return_value = miqt_exec_callback_QScrollPrepareEvent_clone(this, handle__clone);
+
+		QScrollPrepareEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -6091,21 +4600,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QScrollPrepareEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QScrollPrepareEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -6117,8 +4622,8 @@ public:
 
 };
 
-QScrollPrepareEvent* QScrollPrepareEvent_new(QPointF* startPos) {
-	return new MiqtVirtualQScrollPrepareEvent(*startPos);
+QScrollPrepareEvent* QScrollPrepareEvent_new(struct QScrollPrepareEvent_VTable* vtbl, QPointF* startPos) {
+	return new MiqtVirtualQScrollPrepareEvent(vtbl, *startPos);
 }
 
 void QScrollPrepareEvent_virtbase(QScrollPrepareEvent* src, QEvent** outptr_QEvent) {
@@ -6157,28 +4662,8 @@ void QScrollPrepareEvent_setContentPos(QScrollPrepareEvent* self, QPointF* pos) 
 	self->setContentPos(*pos);
 }
 
-bool QScrollPrepareEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQScrollPrepareEvent* self_cast = dynamic_cast<MiqtVirtualQScrollPrepareEvent*>( (QScrollPrepareEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QScrollPrepareEvent* QScrollPrepareEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQScrollPrepareEvent*)(self) )->virtualbase_clone();
-}
-
-bool QScrollPrepareEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQScrollPrepareEvent* self_cast = dynamic_cast<MiqtVirtualQScrollPrepareEvent*>( (QScrollPrepareEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QScrollPrepareEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -6190,23 +4675,21 @@ void QScrollPrepareEvent_delete(QScrollPrepareEvent* self) {
 }
 
 class MiqtVirtualQScrollEvent final : public QScrollEvent {
+	struct QScrollEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQScrollEvent(const QPointF& contentPos, const QPointF& overshoot, QScrollEvent::ScrollState scrollState): QScrollEvent(contentPos, overshoot, scrollState) {};
+	MiqtVirtualQScrollEvent(struct QScrollEvent_VTable* vtbl, const QPointF& contentPos, const QPointF& overshoot, QScrollEvent::ScrollState scrollState): QScrollEvent(contentPos, overshoot, scrollState), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQScrollEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQScrollEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QScrollEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QScrollEvent::clone();
 		}
-		
 
-		QScrollEvent* callback_return_value = miqt_exec_callback_QScrollEvent_clone(this, handle__clone);
+
+		QScrollEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -6218,21 +4701,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QScrollEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QScrollEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -6244,8 +4723,8 @@ public:
 
 };
 
-QScrollEvent* QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState) {
-	return new MiqtVirtualQScrollEvent(*contentPos, *overshoot, static_cast<QScrollEvent::ScrollState>(scrollState));
+QScrollEvent* QScrollEvent_new(struct QScrollEvent_VTable* vtbl, QPointF* contentPos, QPointF* overshoot, int scrollState) {
+	return new MiqtVirtualQScrollEvent(vtbl, *contentPos, *overshoot, static_cast<QScrollEvent::ScrollState>(scrollState));
 }
 
 void QScrollEvent_virtbase(QScrollEvent* src, QEvent** outptr_QEvent) {
@@ -6269,28 +4748,8 @@ int QScrollEvent_scrollState(const QScrollEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QScrollEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQScrollEvent* self_cast = dynamic_cast<MiqtVirtualQScrollEvent*>( (QScrollEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QScrollEvent* QScrollEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQScrollEvent*)(self) )->virtualbase_clone();
-}
-
-bool QScrollEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQScrollEvent* self_cast = dynamic_cast<MiqtVirtualQScrollEvent*>( (QScrollEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QScrollEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -6302,23 +4761,21 @@ void QScrollEvent_delete(QScrollEvent* self) {
 }
 
 class MiqtVirtualQScreenOrientationChangeEvent final : public QScreenOrientationChangeEvent {
+	struct QScreenOrientationChangeEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQScreenOrientationChangeEvent(QScreen* screen, Qt::ScreenOrientation orientation): QScreenOrientationChangeEvent(screen, orientation) {};
+	MiqtVirtualQScreenOrientationChangeEvent(struct QScreenOrientationChangeEvent_VTable* vtbl, QScreen* screen, Qt::ScreenOrientation orientation): QScreenOrientationChangeEvent(screen, orientation), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQScreenOrientationChangeEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQScreenOrientationChangeEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QScreenOrientationChangeEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QScreenOrientationChangeEvent::clone();
 		}
-		
 
-		QScreenOrientationChangeEvent* callback_return_value = miqt_exec_callback_QScreenOrientationChangeEvent_clone(this, handle__clone);
+
+		QScreenOrientationChangeEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -6330,21 +4787,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QScreenOrientationChangeEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QScreenOrientationChangeEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -6356,8 +4809,8 @@ public:
 
 };
 
-QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_new(QScreen* screen, int orientation) {
-	return new MiqtVirtualQScreenOrientationChangeEvent(screen, static_cast<Qt::ScreenOrientation>(orientation));
+QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_new(struct QScreenOrientationChangeEvent_VTable* vtbl, QScreen* screen, int orientation) {
+	return new MiqtVirtualQScreenOrientationChangeEvent(vtbl, screen, static_cast<Qt::ScreenOrientation>(orientation));
 }
 
 void QScreenOrientationChangeEvent_virtbase(QScreenOrientationChangeEvent* src, QEvent** outptr_QEvent) {
@@ -6377,28 +4830,8 @@ int QScreenOrientationChangeEvent_orientation(const QScreenOrientationChangeEven
 	return static_cast<int>(_ret);
 }
 
-bool QScreenOrientationChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQScreenOrientationChangeEvent* self_cast = dynamic_cast<MiqtVirtualQScreenOrientationChangeEvent*>( (QScreenOrientationChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQScreenOrientationChangeEvent*)(self) )->virtualbase_clone();
-}
-
-bool QScreenOrientationChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQScreenOrientationChangeEvent* self_cast = dynamic_cast<MiqtVirtualQScreenOrientationChangeEvent*>( (QScreenOrientationChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QScreenOrientationChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
@@ -6410,23 +4843,21 @@ void QScreenOrientationChangeEvent_delete(QScreenOrientationChangeEvent* self) {
 }
 
 class MiqtVirtualQApplicationStateChangeEvent final : public QApplicationStateChangeEvent {
+	struct QApplicationStateChangeEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQApplicationStateChangeEvent(Qt::ApplicationState state): QApplicationStateChangeEvent(state) {};
+	MiqtVirtualQApplicationStateChangeEvent(struct QApplicationStateChangeEvent_VTable* vtbl, Qt::ApplicationState state): QApplicationStateChangeEvent(state), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQApplicationStateChangeEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
+	virtual ~MiqtVirtualQApplicationStateChangeEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QApplicationStateChangeEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QApplicationStateChangeEvent::clone();
 		}
-		
 
-		QApplicationStateChangeEvent* callback_return_value = miqt_exec_callback_QApplicationStateChangeEvent_clone(this, handle__clone);
+
+		QApplicationStateChangeEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -6438,21 +4869,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QApplicationStateChangeEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QApplicationStateChangeEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -6464,8 +4891,8 @@ public:
 
 };
 
-QApplicationStateChangeEvent* QApplicationStateChangeEvent_new(int state) {
-	return new MiqtVirtualQApplicationStateChangeEvent(static_cast<Qt::ApplicationState>(state));
+QApplicationStateChangeEvent* QApplicationStateChangeEvent_new(struct QApplicationStateChangeEvent_VTable* vtbl, int state) {
+	return new MiqtVirtualQApplicationStateChangeEvent(vtbl, static_cast<Qt::ApplicationState>(state));
 }
 
 void QApplicationStateChangeEvent_virtbase(QApplicationStateChangeEvent* src, QEvent** outptr_QEvent) {
@@ -6481,28 +4908,8 @@ int QApplicationStateChangeEvent_applicationState(const QApplicationStateChangeE
 	return static_cast<int>(_ret);
 }
 
-bool QApplicationStateChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQApplicationStateChangeEvent* self_cast = dynamic_cast<MiqtVirtualQApplicationStateChangeEvent*>( (QApplicationStateChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
 QApplicationStateChangeEvent* QApplicationStateChangeEvent_virtualbase_clone(const void* self) {
 	return ( (const MiqtVirtualQApplicationStateChangeEvent*)(self) )->virtualbase_clone();
-}
-
-bool QApplicationStateChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQApplicationStateChangeEvent* self_cast = dynamic_cast<MiqtVirtualQApplicationStateChangeEvent*>( (QApplicationStateChangeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
 }
 
 void QApplicationStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {

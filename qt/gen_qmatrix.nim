@@ -33,31 +33,26 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qmatrix.cpp", cflags).}
 
-
 import gen_qmatrix_types
 export gen_qmatrix_types
 
 import
-  gen_qline,
-  gen_qpainterpath,
-  gen_qpoint,
-  gen_qrect,
-  gen_qregion,
-  gen_qvariant
+  gen_qline_types,
+  gen_qpainterpath_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qregion_types,
+  gen_qvariant_types
 export
-  gen_qline,
-  gen_qpainterpath,
-  gen_qpoint,
-  gen_qrect,
-  gen_qregion,
-  gen_qvariant
+  gen_qline_types,
+  gen_qpainterpath_types,
+  gen_qpoint_types,
+  gen_qrect_types,
+  gen_qregion_types,
+  gen_qvariant_types
 
 type cQMatrix*{.exportc: "QMatrix", incompleteStruct.} = object
 
-proc fcQMatrix_new(param1: cint): ptr cQMatrix {.importc: "QMatrix_new".}
-proc fcQMatrix_new2(): ptr cQMatrix {.importc: "QMatrix_new2".}
-proc fcQMatrix_new3(m11: float64, m12: float64, m21: float64, m22: float64, dx: float64, dy: float64): ptr cQMatrix {.importc: "QMatrix_new3".}
-proc fcQMatrix_new4(other: pointer): ptr cQMatrix {.importc: "QMatrix_new4".}
 proc fcQMatrix_operatorAssign(self: pointer, param1: pointer): void {.importc: "QMatrix_operatorAssign".}
 proc fcQMatrix_setMatrix(self: pointer, m11: float64, m12: float64, m21: float64, m22: float64, dx: float64, dy: float64): void {.importc: "QMatrix_setMatrix".}
 proc fcQMatrix_m11(self: pointer, ): float64 {.importc: "QMatrix_m11".}
@@ -91,22 +86,11 @@ proc fcQMatrix_operatorMultiplyAssign(self: pointer, param1: pointer): pointer {
 proc fcQMatrix_operatorMultiply(self: pointer, o: pointer): pointer {.importc: "QMatrix_operatorMultiply".}
 proc fcQMatrix_ToQVariant(self: pointer, ): pointer {.importc: "QMatrix_ToQVariant".}
 proc fcQMatrix_inverted1(self: pointer, invertible: ptr bool): pointer {.importc: "QMatrix_inverted1".}
+proc fcQMatrix_new(param1: cint): ptr cQMatrix {.importc: "QMatrix_new".}
+proc fcQMatrix_new2(): ptr cQMatrix {.importc: "QMatrix_new2".}
+proc fcQMatrix_new3(m11: float64, m12: float64, m21: float64, m22: float64, dx: float64, dy: float64): ptr cQMatrix {.importc: "QMatrix_new3".}
+proc fcQMatrix_new4(other: pointer): ptr cQMatrix {.importc: "QMatrix_new4".}
 proc fcQMatrix_delete(self: pointer) {.importc: "QMatrix_delete".}
-
-
-func init*(T: type gen_qmatrix_types.QMatrix, h: ptr cQMatrix): gen_qmatrix_types.QMatrix =
-  T(h: h)
-proc create*(T: type gen_qmatrix_types.QMatrix, param1: cint): gen_qmatrix_types.QMatrix =
-  gen_qmatrix_types.QMatrix.init(fcQMatrix_new(cint(param1)))
-
-proc create*(T: type gen_qmatrix_types.QMatrix, ): gen_qmatrix_types.QMatrix =
-  gen_qmatrix_types.QMatrix.init(fcQMatrix_new2())
-
-proc create*(T: type gen_qmatrix_types.QMatrix, m11: float64, m12: float64, m21: float64, m22: float64, dx: float64, dy: float64): gen_qmatrix_types.QMatrix =
-  gen_qmatrix_types.QMatrix.init(fcQMatrix_new3(m11, m12, m21, m22, dx, dy))
-
-proc create*(T: type gen_qmatrix_types.QMatrix, other: gen_qmatrix_types.QMatrix): gen_qmatrix_types.QMatrix =
-  gen_qmatrix_types.QMatrix.init(fcQMatrix_new4(other.h))
 
 proc operatorAssign*(self: gen_qmatrix_types.QMatrix, param1: gen_qmatrix_types.QMatrix): void =
   fcQMatrix_operatorAssign(self.h, param1.h)
@@ -138,29 +122,29 @@ proc map*(self: gen_qmatrix_types.QMatrix, x: cint, y: cint, tx: ptr cint, ty: p
 proc map*(self: gen_qmatrix_types.QMatrix, x: float64, y: float64, tx: ptr float64, ty: ptr float64): void =
   fcQMatrix_map2(self.h, x, y, tx, ty)
 
-proc mapRect*(self: gen_qmatrix_types.QMatrix, param1: gen_qrect.QRect): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQMatrix_mapRect(self.h, param1.h))
+proc mapRect*(self: gen_qmatrix_types.QMatrix, param1: gen_qrect_types.QRect): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQMatrix_mapRect(self.h, param1.h))
 
-proc mapRect*(self: gen_qmatrix_types.QMatrix, param1: gen_qrect.QRectF): gen_qrect.QRectF =
-  gen_qrect.QRectF(h: fcQMatrix_mapRectWithQRectF(self.h, param1.h))
+proc mapRect*(self: gen_qmatrix_types.QMatrix, param1: gen_qrect_types.QRectF): gen_qrect_types.QRectF =
+  gen_qrect_types.QRectF(h: fcQMatrix_mapRectWithQRectF(self.h, param1.h))
 
-proc map*(self: gen_qmatrix_types.QMatrix, p: gen_qpoint.QPoint): gen_qpoint.QPoint =
-  gen_qpoint.QPoint(h: fcQMatrix_mapWithQPoint(self.h, p.h))
+proc map*(self: gen_qmatrix_types.QMatrix, p: gen_qpoint_types.QPoint): gen_qpoint_types.QPoint =
+  gen_qpoint_types.QPoint(h: fcQMatrix_mapWithQPoint(self.h, p.h))
 
-proc map*(self: gen_qmatrix_types.QMatrix, p: gen_qpoint.QPointF): gen_qpoint.QPointF =
-  gen_qpoint.QPointF(h: fcQMatrix_mapWithQPointF(self.h, p.h))
+proc map*(self: gen_qmatrix_types.QMatrix, p: gen_qpoint_types.QPointF): gen_qpoint_types.QPointF =
+  gen_qpoint_types.QPointF(h: fcQMatrix_mapWithQPointF(self.h, p.h))
 
-proc map*(self: gen_qmatrix_types.QMatrix, l: gen_qline.QLine): gen_qline.QLine =
-  gen_qline.QLine(h: fcQMatrix_mapWithQLine(self.h, l.h))
+proc map*(self: gen_qmatrix_types.QMatrix, l: gen_qline_types.QLine): gen_qline_types.QLine =
+  gen_qline_types.QLine(h: fcQMatrix_mapWithQLine(self.h, l.h))
 
-proc map*(self: gen_qmatrix_types.QMatrix, l: gen_qline.QLineF): gen_qline.QLineF =
-  gen_qline.QLineF(h: fcQMatrix_mapWithQLineF(self.h, l.h))
+proc map*(self: gen_qmatrix_types.QMatrix, l: gen_qline_types.QLineF): gen_qline_types.QLineF =
+  gen_qline_types.QLineF(h: fcQMatrix_mapWithQLineF(self.h, l.h))
 
-proc map*(self: gen_qmatrix_types.QMatrix, r: gen_qregion.QRegion): gen_qregion.QRegion =
-  gen_qregion.QRegion(h: fcQMatrix_mapWithQRegion(self.h, r.h))
+proc map*(self: gen_qmatrix_types.QMatrix, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
+  gen_qregion_types.QRegion(h: fcQMatrix_mapWithQRegion(self.h, r.h))
 
-proc map*(self: gen_qmatrix_types.QMatrix, p: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
-  gen_qpainterpath.QPainterPath(h: fcQMatrix_mapWithQPainterPath(self.h, p.h))
+proc map*(self: gen_qmatrix_types.QMatrix, p: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
+  gen_qpainterpath_types.QPainterPath(h: fcQMatrix_mapWithQPainterPath(self.h, p.h))
 
 proc reset*(self: gen_qmatrix_types.QMatrix, ): void =
   fcQMatrix_reset(self.h)
@@ -201,11 +185,26 @@ proc operatorMultiplyAssign*(self: gen_qmatrix_types.QMatrix, param1: gen_qmatri
 proc operatorMultiply*(self: gen_qmatrix_types.QMatrix, o: gen_qmatrix_types.QMatrix): gen_qmatrix_types.QMatrix =
   gen_qmatrix_types.QMatrix(h: fcQMatrix_operatorMultiply(self.h, o.h))
 
-proc ToQVariant*(self: gen_qmatrix_types.QMatrix, ): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQMatrix_ToQVariant(self.h))
+proc ToQVariant*(self: gen_qmatrix_types.QMatrix, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQMatrix_ToQVariant(self.h))
 
 proc inverted*(self: gen_qmatrix_types.QMatrix, invertible: ptr bool): gen_qmatrix_types.QMatrix =
   gen_qmatrix_types.QMatrix(h: fcQMatrix_inverted1(self.h, invertible))
+
+proc create*(T: type gen_qmatrix_types.QMatrix,
+    param1: cint): gen_qmatrix_types.QMatrix =
+  gen_qmatrix_types.QMatrix(h: fcQMatrix_new(cint(param1)))
+
+proc create*(T: type gen_qmatrix_types.QMatrix): gen_qmatrix_types.QMatrix =
+  gen_qmatrix_types.QMatrix(h: fcQMatrix_new2())
+
+proc create*(T: type gen_qmatrix_types.QMatrix,
+    m11: float64, m12: float64, m21: float64, m22: float64, dx: float64, dy: float64): gen_qmatrix_types.QMatrix =
+  gen_qmatrix_types.QMatrix(h: fcQMatrix_new3(m11, m12, m21, m22, dx, dy))
+
+proc create*(T: type gen_qmatrix_types.QMatrix,
+    other: gen_qmatrix_types.QMatrix): gen_qmatrix_types.QMatrix =
+  gen_qmatrix_types.QMatrix(h: fcQMatrix_new4(other.h))
 
 proc delete*(self: gen_qmatrix_types.QMatrix) =
   fcQMatrix_delete(self.h)

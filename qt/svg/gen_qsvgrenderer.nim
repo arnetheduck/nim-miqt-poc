@@ -33,43 +33,36 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Svg")
 {.compile("gen_qsvgrenderer.cpp", cflags).}
 
-
 import gen_qsvgrenderer_types
 export gen_qsvgrenderer_types
 
 import
-  gen_qcoreevent,
-  gen_qmatrix,
-  gen_qmetaobject,
+  gen_qcoreevent_types,
+  gen_qmatrix_types,
+  gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qpainter,
-  gen_qrect,
-  gen_qsize,
-  gen_qtransform,
-  gen_qxmlstream
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpainter_types,
+  gen_qrect_types,
+  gen_qsize_types,
+  gen_qtransform_types,
+  gen_qxmlstream_types
 export
-  gen_qcoreevent,
-  gen_qmatrix,
-  gen_qmetaobject,
+  gen_qcoreevent_types,
+  gen_qmatrix_types,
+  gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qpainter,
-  gen_qrect,
-  gen_qsize,
-  gen_qtransform,
-  gen_qxmlstream
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpainter_types,
+  gen_qrect_types,
+  gen_qsize_types,
+  gen_qtransform_types,
+  gen_qxmlstream_types
 
 type cQSvgRenderer*{.exportc: "QSvgRenderer", incompleteStruct.} = object
 
-proc fcQSvgRenderer_new(): ptr cQSvgRenderer {.importc: "QSvgRenderer_new".}
-proc fcQSvgRenderer_new2(filename: struct_miqt_string): ptr cQSvgRenderer {.importc: "QSvgRenderer_new2".}
-proc fcQSvgRenderer_new3(contents: struct_miqt_string): ptr cQSvgRenderer {.importc: "QSvgRenderer_new3".}
-proc fcQSvgRenderer_new4(contents: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new4".}
-proc fcQSvgRenderer_new5(parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new5".}
-proc fcQSvgRenderer_new6(filename: struct_miqt_string, parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new6".}
-proc fcQSvgRenderer_new7(contents: struct_miqt_string, parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new7".}
-proc fcQSvgRenderer_new8(contents: pointer, parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new8".}
 proc fcQSvgRenderer_metaObject(self: pointer, ): pointer {.importc: "QSvgRenderer_metaObject".}
 proc fcQSvgRenderer_metacast(self: pointer, param1: cstring): pointer {.importc: "QSvgRenderer_metacast".}
 proc fcQSvgRenderer_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QSvgRenderer_metacall".}
@@ -100,64 +93,47 @@ proc fcQSvgRenderer_render(self: pointer, p: pointer): void {.importc: "QSvgRend
 proc fcQSvgRenderer_render2(self: pointer, p: pointer, bounds: pointer): void {.importc: "QSvgRenderer_render2".}
 proc fcQSvgRenderer_render3(self: pointer, p: pointer, elementId: struct_miqt_string): void {.importc: "QSvgRenderer_render3".}
 proc fcQSvgRenderer_repaintNeeded(self: pointer, ): void {.importc: "QSvgRenderer_repaintNeeded".}
-proc fQSvgRenderer_connect_repaintNeeded(self: pointer, slot: int) {.importc: "QSvgRenderer_connect_repaintNeeded".}
+proc fcQSvgRenderer_connect_repaintNeeded(self: pointer, slot: int) {.importc: "QSvgRenderer_connect_repaintNeeded".}
 proc fcQSvgRenderer_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSvgRenderer_tr2".}
 proc fcQSvgRenderer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSvgRenderer_tr3".}
 proc fcQSvgRenderer_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSvgRenderer_trUtf82".}
 proc fcQSvgRenderer_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSvgRenderer_trUtf83".}
 proc fcQSvgRenderer_render32(self: pointer, p: pointer, elementId: struct_miqt_string, bounds: pointer): void {.importc: "QSvgRenderer_render32".}
-proc fQSvgRenderer_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSvgRenderer_virtualbase_metaObject".}
-proc fcQSvgRenderer_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_metaObject".}
-proc fQSvgRenderer_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSvgRenderer_virtualbase_metacast".}
-proc fcQSvgRenderer_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_metacast".}
-proc fQSvgRenderer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSvgRenderer_virtualbase_metacall".}
-proc fcQSvgRenderer_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_metacall".}
-proc fQSvgRenderer_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSvgRenderer_virtualbase_event".}
-proc fcQSvgRenderer_override_virtual_event(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_event".}
-proc fQSvgRenderer_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QSvgRenderer_virtualbase_eventFilter".}
-proc fcQSvgRenderer_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_eventFilter".}
-proc fQSvgRenderer_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QSvgRenderer_virtualbase_timerEvent".}
-proc fcQSvgRenderer_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_timerEvent".}
-proc fQSvgRenderer_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QSvgRenderer_virtualbase_childEvent".}
-proc fcQSvgRenderer_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_childEvent".}
-proc fQSvgRenderer_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QSvgRenderer_virtualbase_customEvent".}
-proc fcQSvgRenderer_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_customEvent".}
-proc fQSvgRenderer_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QSvgRenderer_virtualbase_connectNotify".}
-proc fcQSvgRenderer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_connectNotify".}
-proc fQSvgRenderer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSvgRenderer_virtualbase_disconnectNotify".}
-proc fcQSvgRenderer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_disconnectNotify".}
+type cQSvgRendererVTable = object
+  destructor*: proc(vtbl: ptr cQSvgRendererVTable, self: ptr cQSvgRenderer) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQSvgRenderer_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QSvgRenderer_virtualbase_metaObject".}
+proc fcQSvgRenderer_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QSvgRenderer_virtualbase_metacast".}
+proc fcQSvgRenderer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QSvgRenderer_virtualbase_metacall".}
+proc fcQSvgRenderer_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QSvgRenderer_virtualbase_event".}
+proc fcQSvgRenderer_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QSvgRenderer_virtualbase_eventFilter".}
+proc fcQSvgRenderer_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QSvgRenderer_virtualbase_timerEvent".}
+proc fcQSvgRenderer_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QSvgRenderer_virtualbase_childEvent".}
+proc fcQSvgRenderer_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QSvgRenderer_virtualbase_customEvent".}
+proc fcQSvgRenderer_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QSvgRenderer_virtualbase_connectNotify".}
+proc fcQSvgRenderer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QSvgRenderer_virtualbase_disconnectNotify".}
+proc fcQSvgRenderer_new(vtbl: pointer, ): ptr cQSvgRenderer {.importc: "QSvgRenderer_new".}
+proc fcQSvgRenderer_new2(vtbl: pointer, filename: struct_miqt_string): ptr cQSvgRenderer {.importc: "QSvgRenderer_new2".}
+proc fcQSvgRenderer_new3(vtbl: pointer, contents: struct_miqt_string): ptr cQSvgRenderer {.importc: "QSvgRenderer_new3".}
+proc fcQSvgRenderer_new4(vtbl: pointer, contents: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new4".}
+proc fcQSvgRenderer_new5(vtbl: pointer, parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new5".}
+proc fcQSvgRenderer_new6(vtbl: pointer, filename: struct_miqt_string, parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new6".}
+proc fcQSvgRenderer_new7(vtbl: pointer, contents: struct_miqt_string, parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new7".}
+proc fcQSvgRenderer_new8(vtbl: pointer, contents: pointer, parent: pointer): ptr cQSvgRenderer {.importc: "QSvgRenderer_new8".}
 proc fcQSvgRenderer_staticMetaObject(): pointer {.importc: "QSvgRenderer_staticMetaObject".}
 proc fcQSvgRenderer_delete(self: pointer) {.importc: "QSvgRenderer_delete".}
 
-
-func init*(T: type gen_qsvgrenderer_types.QSvgRenderer, h: ptr cQSvgRenderer): gen_qsvgrenderer_types.QSvgRenderer =
-  T(h: h)
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, ): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new())
-
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, filename: string): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new2(struct_miqt_string(data: filename, len: csize_t(len(filename)))))
-
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte]): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new3(struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents)))))
-
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream.QXmlStreamReader): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new4(contents.h))
-
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new5(parent.h))
-
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, filename: string, parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new6(struct_miqt_string(data: filename, len: csize_t(len(filename))), parent.h))
-
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte], parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new7(struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents))), parent.h))
-
-proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream.QXmlStreamReader, parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
-  gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new8(contents.h, parent.h))
-
-proc metaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSvgRenderer_metaObject(self.h))
+proc metaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSvgRenderer_metaObject(self.h))
 
 proc metacast*(self: gen_qsvgrenderer_types.QSvgRenderer, param1: cstring): pointer =
   fcQSvgRenderer_metacast(self.h, param1)
@@ -180,19 +156,19 @@ proc trUtf8*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring): string =
 proc isValid*(self: gen_qsvgrenderer_types.QSvgRenderer, ): bool =
   fcQSvgRenderer_isValid(self.h)
 
-proc defaultSize*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQSvgRenderer_defaultSize(self.h))
+proc defaultSize*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSvgRenderer_defaultSize(self.h))
 
-proc viewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQSvgRenderer_viewBox(self.h))
+proc viewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQSvgRenderer_viewBox(self.h))
 
-proc viewBoxF*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qrect.QRectF =
-  gen_qrect.QRectF(h: fcQSvgRenderer_viewBoxF(self.h))
+proc viewBoxF*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qrect_types.QRectF =
+  gen_qrect_types.QRectF(h: fcQSvgRenderer_viewBoxF(self.h))
 
-proc setViewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, viewbox: gen_qrect.QRect): void =
+proc setViewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, viewbox: gen_qrect_types.QRect): void =
   fcQSvgRenderer_setViewBox(self.h, viewbox.h)
 
-proc setViewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, viewbox: gen_qrect.QRectF): void =
+proc setViewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, viewbox: gen_qrect_types.QRectF): void =
   fcQSvgRenderer_setViewBoxWithViewbox(self.h, viewbox.h)
 
 proc aspectRatioMode*(self: gen_qsvgrenderer_types.QSvgRenderer, ): cint =
@@ -219,17 +195,17 @@ proc setCurrentFrame*(self: gen_qsvgrenderer_types.QSvgRenderer, currentFrame: c
 proc animationDuration*(self: gen_qsvgrenderer_types.QSvgRenderer, ): cint =
   fcQSvgRenderer_animationDuration(self.h)
 
-proc boundsOnElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qrect.QRectF =
-  gen_qrect.QRectF(h: fcQSvgRenderer_boundsOnElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
+proc boundsOnElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qrect_types.QRectF =
+  gen_qrect_types.QRectF(h: fcQSvgRenderer_boundsOnElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
 
 proc elementExists*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): bool =
   fcQSvgRenderer_elementExists(self.h, struct_miqt_string(data: id, len: csize_t(len(id))))
 
-proc matrixForElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qmatrix.QMatrix =
-  gen_qmatrix.QMatrix(h: fcQSvgRenderer_matrixForElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
+proc matrixForElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qmatrix_types.QMatrix =
+  gen_qmatrix_types.QMatrix(h: fcQSvgRenderer_matrixForElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
 
-proc transformForElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qtransform.QTransform =
-  gen_qtransform.QTransform(h: fcQSvgRenderer_transformForElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
+proc transformForElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qtransform_types.QTransform =
+  gen_qtransform_types.QTransform(h: fcQSvgRenderer_transformForElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
 
 proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, filename: string): bool =
   fcQSvgRenderer_load(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
@@ -237,23 +213,23 @@ proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, filename: string): bool =
 proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte]): bool =
   fcQSvgRenderer_loadWithContents(self.h, struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents))))
 
-proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream.QXmlStreamReader): bool =
+proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream_types.QXmlStreamReader): bool =
   fcQSvgRenderer_load2(self.h, contents.h)
 
-proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter): void =
+proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter_types.QPainter): void =
   fcQSvgRenderer_render(self.h, p.h)
 
-proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, bounds: gen_qrect.QRectF): void =
+proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter_types.QPainter, bounds: gen_qrect_types.QRectF): void =
   fcQSvgRenderer_render2(self.h, p.h, bounds.h)
 
-proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, elementId: string): void =
+proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter_types.QPainter, elementId: string): void =
   fcQSvgRenderer_render3(self.h, p.h, struct_miqt_string(data: elementId, len: csize_t(len(elementId))))
 
 proc repaintNeeded*(self: gen_qsvgrenderer_types.QSvgRenderer, ): void =
   fcQSvgRenderer_repaintNeeded(self.h)
 
 type QSvgRendererrepaintNeededSlot* = proc()
-proc miqt_exec_callback_QSvgRenderer_repaintNeeded(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSvgRenderer_repaintNeeded(slot: int) {.exportc: "miqt_exec_callback_QSvgRenderer_repaintNeeded".} =
   let nimfunc = cast[ptr QSvgRendererrepaintNeededSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -261,7 +237,7 @@ proc onrepaintNeeded*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRende
   var tmp = new QSvgRendererrepaintNeededSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSvgRenderer_connect_repaintNeeded(self.h, cast[int](addr tmp[]))
+  fcQSvgRenderer_connect_repaintNeeded(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring, c: cstring): string =
   let v_ms = fcQSvgRenderer_tr2(s, c)
@@ -287,194 +263,368 @@ proc trUtf8*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring, c: cstring
   c_free(v_ms.data)
   vx_ret
 
-proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, elementId: string, bounds: gen_qrect.QRectF): void =
+proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter_types.QPainter, elementId: string, bounds: gen_qrect_types.QRectF): void =
   fcQSvgRenderer_render32(self.h, p.h, struct_miqt_string(data: elementId, len: csize_t(len(elementId))), bounds.h)
 
-proc QSvgRenderermetaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQSvgRenderer_virtualbase_metaObject(self.h))
+type QSvgRenderermetaObjectProc* = proc(self: QSvgRenderer): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QSvgRenderermetacastProc* = proc(self: QSvgRenderer, param1: cstring): pointer {.raises: [], gcsafe.}
+type QSvgRenderermetacallProc* = proc(self: QSvgRenderer, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QSvgRenderereventProc* = proc(self: QSvgRenderer, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QSvgRenderereventFilterProc* = proc(self: QSvgRenderer, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QSvgRenderertimerEventProc* = proc(self: QSvgRenderer, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QSvgRendererchildEventProc* = proc(self: QSvgRenderer, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QSvgRenderercustomEventProc* = proc(self: QSvgRenderer, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QSvgRendererconnectNotifyProc* = proc(self: QSvgRenderer, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QSvgRendererdisconnectNotifyProc* = proc(self: QSvgRenderer, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QSvgRendererVTable* = object
+  vtbl: cQSvgRendererVTable
+  metaObject*: QSvgRenderermetaObjectProc
+  metacast*: QSvgRenderermetacastProc
+  metacall*: QSvgRenderermetacallProc
+  event*: QSvgRenderereventProc
+  eventFilter*: QSvgRenderereventFilterProc
+  timerEvent*: QSvgRenderertimerEventProc
+  childEvent*: QSvgRendererchildEventProc
+  customEvent*: QSvgRenderercustomEventProc
+  connectNotify*: QSvgRendererconnectNotifyProc
+  disconnectNotify*: QSvgRendererdisconnectNotifyProc
+proc QSvgRenderermetaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSvgRenderer_virtualbase_metaObject(self.h))
 
-type QSvgRenderermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRenderermetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QSvgRenderermetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSvgRenderer_metaObject(self: ptr cQSvgRenderer, slot: int): pointer {.exportc: "miqt_exec_callback_QSvgRenderer_metaObject ".} =
-  var nimfunc = cast[ptr QSvgRenderermetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQSvgRenderer_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QSvgRenderermetacast*(self: gen_qsvgrenderer_types.QSvgRenderer, param1: cstring): pointer =
-  fQSvgRenderer_virtualbase_metacast(self.h, param1)
+  fcQSvgRenderer_virtualbase_metacast(self.h, param1)
 
-type QSvgRenderermetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRenderermetacastProc) =
-  # TODO check subclass
-  var tmp = new QSvgRenderermetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSvgRenderer_metacast(self: ptr cQSvgRenderer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSvgRenderer_metacast ".} =
-  var nimfunc = cast[ptr QSvgRenderermetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSvgRenderer_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QSvgRenderermetacall*(self: gen_qsvgrenderer_types.QSvgRenderer, param1: cint, param2: cint, param3: pointer): cint =
-  fQSvgRenderer_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQSvgRenderer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSvgRenderermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRenderermetacallProc) =
-  # TODO check subclass
-  var tmp = new QSvgRenderermetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSvgRenderer_metacall(self: ptr cQSvgRenderer, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSvgRenderer_metacall ".} =
-  var nimfunc = cast[ptr QSvgRenderermetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSvgRenderer_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QSvgRendererevent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QEvent): bool =
-  fQSvgRenderer_virtualbase_event(self.h, event.h)
 
-type QSvgRenderereventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRenderereventProc) =
-  # TODO check subclass
-  var tmp = new QSvgRenderereventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QSvgRendererevent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent_types.QEvent): bool =
+  fcQSvgRenderer_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QSvgRenderer_event(self: ptr cQSvgRenderer, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSvgRenderer_event ".} =
-  var nimfunc = cast[ptr QSvgRenderereventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQSvgRenderer_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QSvgRenderereventFilter*(self: gen_qsvgrenderer_types.QSvgRenderer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQSvgRenderer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSvgRenderereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRenderereventFilterProc) =
-  # TODO check subclass
-  var tmp = new QSvgRenderereventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QSvgRenderereventFilter*(self: gen_qsvgrenderer_types.QSvgRenderer, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQSvgRenderer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QSvgRenderer_eventFilter(self: ptr cQSvgRenderer, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSvgRenderer_eventFilter ".} =
-  var nimfunc = cast[ptr QSvgRenderereventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQSvgRenderer_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QSvgRenderertimerEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QTimerEvent): void =
-  fQSvgRenderer_virtualbase_timerEvent(self.h, event.h)
 
-type QSvgRenderertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRenderertimerEventProc) =
-  # TODO check subclass
-  var tmp = new QSvgRenderertimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QSvgRenderertimerEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQSvgRenderer_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QSvgRenderer_timerEvent(self: ptr cQSvgRenderer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSvgRenderer_timerEvent ".} =
-  var nimfunc = cast[ptr QSvgRenderertimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQSvgRenderer_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QSvgRendererchildEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQSvgRenderer_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QSvgRendererchildEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QChildEvent): void =
-  fQSvgRenderer_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQSvgRenderer_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QSvgRendererchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRendererchildEventProc) =
-  # TODO check subclass
-  var tmp = new QSvgRendererchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QSvgRenderercustomEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent_types.QEvent): void =
+  fcQSvgRenderer_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QSvgRenderer_childEvent(self: ptr cQSvgRenderer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSvgRenderer_childEvent ".} =
-  var nimfunc = cast[ptr QSvgRendererchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQSvgRenderer_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QSvgRendererconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQSvgRenderer_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QSvgRenderercustomEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QEvent): void =
-  fQSvgRenderer_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQSvgRenderer_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QSvgRenderercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRenderercustomEventProc) =
-  # TODO check subclass
-  var tmp = new QSvgRenderercustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QSvgRendererdisconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQSvgRenderer_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QSvgRenderer_customEvent(self: ptr cQSvgRenderer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSvgRenderer_customEvent ".} =
-  var nimfunc = cast[ptr QSvgRenderercustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQSvgRenderer_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSvgRendererVTable](vtbl)
+  let self = QSvgRenderer(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QSvgRendererconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, signal: gen_qmetaobject.QMetaMethod): void =
-  fQSvgRenderer_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    filename: string,
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new2(addr(vtbl[]), struct_miqt_string(data: filename, len: csize_t(len(filename)))))
 
-type QSvgRendererconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRendererconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QSvgRendererconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    contents: seq[byte],
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new3(addr(vtbl[]), struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents)))))
 
-proc miqt_exec_callback_QSvgRenderer_connectNotify(self: ptr cQSvgRenderer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSvgRenderer_connectNotify ".} =
-  var nimfunc = cast[ptr QSvgRendererconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    contents: gen_qxmlstream_types.QXmlStreamReader,
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new4(addr(vtbl[]), contents.h))
 
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new5(addr(vtbl[]), parent.h))
 
-  nimfunc[](slotval1)
-proc QSvgRendererdisconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, signal: gen_qmetaobject.QMetaMethod): void =
-  fQSvgRenderer_virtualbase_disconnectNotify(self.h, signal.h)
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    filename: string, parent: gen_qobject_types.QObject,
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new6(addr(vtbl[]), struct_miqt_string(data: filename, len: csize_t(len(filename))), parent.h))
 
-type QSvgRendererdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRendererdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QSvgRendererdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSvgRenderer_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    contents: seq[byte], parent: gen_qobject_types.QObject,
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new7(addr(vtbl[]), struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents))), parent.h))
 
-proc miqt_exec_callback_QSvgRenderer_disconnectNotify(self: ptr cQSvgRenderer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSvgRenderer_disconnectNotify ".} =
-  var nimfunc = cast[ptr QSvgRendererdisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer,
+    contents: gen_qxmlstream_types.QXmlStreamReader, parent: gen_qobject_types.QObject,
+    vtbl: ref QSvgRendererVTable = nil): gen_qsvgrenderer_types.QSvgRenderer =
+  let vtbl = if vtbl == nil: new QSvgRendererVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSvgRendererVTable, _: ptr cQSvgRenderer) {.cdecl.} =
+    let vtbl = cast[ref QSvgRendererVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSvgRenderer_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSvgRenderer_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSvgRenderer_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSvgRenderer_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSvgRenderer_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSvgRenderer_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSvgRenderer_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSvgRenderer_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSvgRenderer_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSvgRenderer_disconnectNotify
+  gen_qsvgrenderer_types.QSvgRenderer(h: fcQSvgRenderer_new8(addr(vtbl[]), contents.h, parent.h))
 
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qsvgrenderer_types.QSvgRenderer): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSvgRenderer_staticMetaObject())
+proc staticMetaObject*(_: type gen_qsvgrenderer_types.QSvgRenderer): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSvgRenderer_staticMetaObject())
 proc delete*(self: gen_qsvgrenderer_types.QSvgRenderer) =
   fcQSvgRenderer_delete(self.h)

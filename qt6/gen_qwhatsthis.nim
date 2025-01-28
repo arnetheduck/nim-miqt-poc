@@ -33,20 +33,19 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qwhatsthis.cpp", cflags).}
 
-
 import gen_qwhatsthis_types
 export gen_qwhatsthis_types
 
 import
-  gen_qaction,
-  gen_qobject,
-  gen_qpoint,
-  gen_qwidget
+  gen_qaction_types,
+  gen_qobject_types,
+  gen_qpoint_types,
+  gen_qwidget_types
 export
-  gen_qaction,
-  gen_qobject,
-  gen_qpoint,
-  gen_qwidget
+  gen_qaction_types,
+  gen_qobject_types,
+  gen_qpoint_types,
+  gen_qwidget_types
 
 type cQWhatsThis*{.exportc: "QWhatsThis", incompleteStruct.} = object
 
@@ -60,9 +59,6 @@ proc fcQWhatsThis_showText3(pos: pointer, text: struct_miqt_string, w: pointer):
 proc fcQWhatsThis_createAction1(parent: pointer): pointer {.importc: "QWhatsThis_createAction1".}
 proc fcQWhatsThis_delete(self: pointer) {.importc: "QWhatsThis_delete".}
 
-
-func init*(T: type gen_qwhatsthis_types.QWhatsThis, h: ptr cQWhatsThis): gen_qwhatsthis_types.QWhatsThis =
-  T(h: h)
 proc enterWhatsThisMode*(_: type gen_qwhatsthis_types.QWhatsThis, ): void =
   fcQWhatsThis_enterWhatsThisMode()
 
@@ -72,20 +68,20 @@ proc inWhatsThisMode*(_: type gen_qwhatsthis_types.QWhatsThis, ): bool =
 proc leaveWhatsThisMode*(_: type gen_qwhatsthis_types.QWhatsThis, ): void =
   fcQWhatsThis_leaveWhatsThisMode()
 
-proc showText*(_: type gen_qwhatsthis_types.QWhatsThis, pos: gen_qpoint.QPoint, text: string): void =
+proc showText*(_: type gen_qwhatsthis_types.QWhatsThis, pos: gen_qpoint_types.QPoint, text: string): void =
   fcQWhatsThis_showText(pos.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc hideText*(_: type gen_qwhatsthis_types.QWhatsThis, ): void =
   fcQWhatsThis_hideText()
 
-proc createAction*(_: type gen_qwhatsthis_types.QWhatsThis, ): gen_qaction.QAction =
-  gen_qaction.QAction(h: fcQWhatsThis_createAction())
+proc createAction*(_: type gen_qwhatsthis_types.QWhatsThis, ): gen_qaction_types.QAction =
+  gen_qaction_types.QAction(h: fcQWhatsThis_createAction())
 
-proc showText*(_: type gen_qwhatsthis_types.QWhatsThis, pos: gen_qpoint.QPoint, text: string, w: gen_qwidget.QWidget): void =
+proc showText*(_: type gen_qwhatsthis_types.QWhatsThis, pos: gen_qpoint_types.QPoint, text: string, w: gen_qwidget_types.QWidget): void =
   fcQWhatsThis_showText3(pos.h, struct_miqt_string(data: text, len: csize_t(len(text))), w.h)
 
-proc createAction*(_: type gen_qwhatsthis_types.QWhatsThis, parent: gen_qobject.QObject): gen_qaction.QAction =
-  gen_qaction.QAction(h: fcQWhatsThis_createAction1(parent.h))
+proc createAction*(_: type gen_qwhatsthis_types.QWhatsThis, parent: gen_qobject_types.QObject): gen_qaction_types.QAction =
+  gen_qaction_types.QAction(h: fcQWhatsThis_createAction1(parent.h))
 
 proc delete*(self: gen_qwhatsthis_types.QWhatsThis) =
   fcQWhatsThis_delete(self.h)

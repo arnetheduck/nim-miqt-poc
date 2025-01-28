@@ -55,7 +55,6 @@ template CubicVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 1
 template LogarithmicVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 2
 template DecibelVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 3
 
-
 import gen_qaudio_types
 export gen_qaudio_types
 

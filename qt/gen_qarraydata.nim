@@ -48,7 +48,6 @@ template Empty*(_: type QtPrivateQContainerImplHelperCutResultEnum): untyped = 1
 template Full*(_: type QtPrivateQContainerImplHelperCutResultEnum): untyped = 2
 template Subset*(_: type QtPrivateQContainerImplHelperCutResultEnum): untyped = 3
 
-
 import gen_qarraydata_types
 export gen_qarraydata_types
 
@@ -69,9 +68,6 @@ proc fcQArrayData_allocate4(objectSize: csize_t, alignment: csize_t, capacity: c
 proc fcQArrayData_reallocateUnaligned4(data: pointer, objectSize: csize_t, newCapacity: csize_t, newOptions: cint): pointer {.importc: "QArrayData_reallocateUnaligned4".}
 proc fcQArrayData_delete(self: pointer) {.importc: "QArrayData_delete".}
 
-
-func init*(T: type gen_qarraydata_types.QArrayData, h: ptr cQArrayData): gen_qarraydata_types.QArrayData =
-  T(h: h)
 proc data*(self: gen_qarraydata_types.QArrayData, ): pointer =
   fcQArrayData_data(self.h)
 

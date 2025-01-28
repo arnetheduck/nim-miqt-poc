@@ -33,30 +33,26 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qaccessiblewidget.cpp", cflags).}
 
-
 import gen_qaccessiblewidget_types
 export gen_qaccessiblewidget_types
 
 import
-  gen_qaccessible,
+  gen_qaccessible_types,
   gen_qaccessibleobject,
-  gen_qcolor,
-  gen_qrect,
-  gen_qwidget,
-  gen_qwindow
+  gen_qcolor_types,
+  gen_qrect_types,
+  gen_qwidget_types,
+  gen_qwindow_types
 export
-  gen_qaccessible,
+  gen_qaccessible_types,
   gen_qaccessibleobject,
-  gen_qcolor,
-  gen_qrect,
-  gen_qwidget,
-  gen_qwindow
+  gen_qcolor_types,
+  gen_qrect_types,
+  gen_qwidget_types,
+  gen_qwindow_types
 
 type cQAccessibleWidget*{.exportc: "QAccessibleWidget", incompleteStruct.} = object
 
-proc fcQAccessibleWidget_new(o: pointer): ptr cQAccessibleWidget {.importc: "QAccessibleWidget_new".}
-proc fcQAccessibleWidget_new2(o: pointer, r: cint): ptr cQAccessibleWidget {.importc: "QAccessibleWidget_new2".}
-proc fcQAccessibleWidget_new3(o: pointer, r: cint, name: struct_miqt_string): ptr cQAccessibleWidget {.importc: "QAccessibleWidget_new3".}
 proc fcQAccessibleWidget_isValid(self: pointer, ): bool {.importc: "QAccessibleWidget_isValid".}
 proc fcQAccessibleWidget_window(self: pointer, ): pointer {.importc: "QAccessibleWidget_window".}
 proc fcQAccessibleWidget_childCount(self: pointer, ): cint {.importc: "QAccessibleWidget_childCount".}
@@ -75,57 +71,48 @@ proc fcQAccessibleWidget_interfaceCast(self: pointer, t: cint): pointer {.import
 proc fcQAccessibleWidget_actionNames(self: pointer, ): struct_miqt_array {.importc: "QAccessibleWidget_actionNames".}
 proc fcQAccessibleWidget_doAction(self: pointer, actionName: struct_miqt_string): void {.importc: "QAccessibleWidget_doAction".}
 proc fcQAccessibleWidget_keyBindingsForAction(self: pointer, actionName: struct_miqt_string): struct_miqt_array {.importc: "QAccessibleWidget_keyBindingsForAction".}
-
-
-func init*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, h: ptr cQAccessibleWidget): gen_qaccessiblewidget_types.QAccessibleWidget =
-  T(h: h)
-proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, o: gen_qwidget.QWidget): gen_qaccessiblewidget_types.QAccessibleWidget =
-  gen_qaccessiblewidget_types.QAccessibleWidget.init(fcQAccessibleWidget_new(o.h))
-
-proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, o: gen_qwidget.QWidget, r: cint): gen_qaccessiblewidget_types.QAccessibleWidget =
-  gen_qaccessiblewidget_types.QAccessibleWidget.init(fcQAccessibleWidget_new2(o.h, cint(r)))
-
-proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, o: gen_qwidget.QWidget, r: cint, name: string): gen_qaccessiblewidget_types.QAccessibleWidget =
-  gen_qaccessiblewidget_types.QAccessibleWidget.init(fcQAccessibleWidget_new3(o.h, cint(r), struct_miqt_string(data: name, len: csize_t(len(name)))))
+proc fcQAccessibleWidget_new(o: pointer): ptr cQAccessibleWidget {.importc: "QAccessibleWidget_new".}
+proc fcQAccessibleWidget_new2(o: pointer, r: cint): ptr cQAccessibleWidget {.importc: "QAccessibleWidget_new2".}
+proc fcQAccessibleWidget_new3(o: pointer, r: cint, name: struct_miqt_string): ptr cQAccessibleWidget {.importc: "QAccessibleWidget_new3".}
 
 proc isValid*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): bool =
   fcQAccessibleWidget_isValid(self.h)
 
-proc window*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qwindow.QWindow =
-  gen_qwindow.QWindow(h: fcQAccessibleWidget_window(self.h))
+proc window*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qwindow_types.QWindow =
+  gen_qwindow_types.QWindow(h: fcQAccessibleWidget_window(self.h))
 
 proc childCount*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): cint =
   fcQAccessibleWidget_childCount(self.h)
 
-proc indexOfChild*(self: gen_qaccessiblewidget_types.QAccessibleWidget, child: gen_qaccessible.QAccessibleInterface): cint =
+proc indexOfChild*(self: gen_qaccessiblewidget_types.QAccessibleWidget, child: gen_qaccessible_types.QAccessibleInterface): cint =
   fcQAccessibleWidget_indexOfChild(self.h, child.h)
 
-proc relations*(self: gen_qaccessiblewidget_types.QAccessibleWidget, match: cint): seq[tuple[first: gen_qaccessible.QAccessibleInterface, second: cint]] =
+proc relations*(self: gen_qaccessiblewidget_types.QAccessibleWidget, match: cint): seq[tuple[first: gen_qaccessible_types.QAccessibleInterface, second: cint]] =
   var v_ma = fcQAccessibleWidget_relations(self.h, cint(match))
-  var vx_ret = newSeq[tuple[first: gen_qaccessible.QAccessibleInterface, second: cint]](int(v_ma.len))
+  var vx_ret = newSeq[tuple[first: gen_qaccessible_types.QAccessibleInterface, second: cint]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
   for i in 0 ..< v_ma.len:
     var vx_vv_mm = v_outCast[i]
     var vx_vv_First_CArray = cast[ptr UncheckedArray[pointer]](vx_vv_mm.keys)
     var vx_vv_Second_CArray = cast[ptr UncheckedArray[cint]](vx_vv_mm.values)
-    var vx_vv_entry_First = gen_qaccessible.QAccessibleInterface(h: vx_vv_First_CArray[0])
+    var vx_vv_entry_First = gen_qaccessible_types.QAccessibleInterface(h: vx_vv_First_CArray[0])
 
     var vx_vv_entry_Second = cint(vx_vv_Second_CArray[0])
 
     vx_ret[i] = (first: vx_vv_entry_First , second: vx_vv_entry_Second )
   vx_ret
 
-proc focusChild*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible.QAccessibleInterface =
-  gen_qaccessible.QAccessibleInterface(h: fcQAccessibleWidget_focusChild(self.h))
+proc focusChild*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible_types.QAccessibleInterface =
+  gen_qaccessible_types.QAccessibleInterface(h: fcQAccessibleWidget_focusChild(self.h))
 
-proc rect*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qrect.QRect =
-  gen_qrect.QRect(h: fcQAccessibleWidget_rect(self.h))
+proc rect*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQAccessibleWidget_rect(self.h))
 
-proc parent*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible.QAccessibleInterface =
-  gen_qaccessible.QAccessibleInterface(h: fcQAccessibleWidget_parent(self.h))
+proc parent*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible_types.QAccessibleInterface =
+  gen_qaccessible_types.QAccessibleInterface(h: fcQAccessibleWidget_parent(self.h))
 
-proc child*(self: gen_qaccessiblewidget_types.QAccessibleWidget, index: cint): gen_qaccessible.QAccessibleInterface =
-  gen_qaccessible.QAccessibleInterface(h: fcQAccessibleWidget_child(self.h, index))
+proc child*(self: gen_qaccessiblewidget_types.QAccessibleWidget, index: cint): gen_qaccessible_types.QAccessibleInterface =
+  gen_qaccessible_types.QAccessibleInterface(h: fcQAccessibleWidget_child(self.h, index))
 
 proc text*(self: gen_qaccessiblewidget_types.QAccessibleWidget, t: cint): string =
   let v_ms = fcQAccessibleWidget_text(self.h, cint(t))
@@ -136,14 +123,14 @@ proc text*(self: gen_qaccessiblewidget_types.QAccessibleWidget, t: cint): string
 proc role*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): cint =
   cint(fcQAccessibleWidget_role(self.h))
 
-proc state*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible.QAccessibleState =
-  gen_qaccessible.QAccessibleState(h: fcQAccessibleWidget_state(self.h))
+proc state*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible_types.QAccessibleState =
+  gen_qaccessible_types.QAccessibleState(h: fcQAccessibleWidget_state(self.h))
 
-proc foregroundColor*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQAccessibleWidget_foregroundColor(self.h))
+proc foregroundColor*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQAccessibleWidget_foregroundColor(self.h))
 
-proc backgroundColor*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQAccessibleWidget_backgroundColor(self.h))
+proc backgroundColor*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQAccessibleWidget_backgroundColor(self.h))
 
 proc interfaceCast*(self: gen_qaccessiblewidget_types.QAccessibleWidget, t: cint): pointer =
   fcQAccessibleWidget_interfaceCast(self.h, cint(t))
@@ -172,4 +159,16 @@ proc keyBindingsForAction*(self: gen_qaccessiblewidget_types.QAccessibleWidget, 
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
   vx_ret
+
+proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget,
+    o: gen_qwidget_types.QWidget): gen_qaccessiblewidget_types.QAccessibleWidget =
+  gen_qaccessiblewidget_types.QAccessibleWidget(h: fcQAccessibleWidget_new(o.h))
+
+proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget,
+    o: gen_qwidget_types.QWidget, r: cint): gen_qaccessiblewidget_types.QAccessibleWidget =
+  gen_qaccessiblewidget_types.QAccessibleWidget(h: fcQAccessibleWidget_new2(o.h, cint(r)))
+
+proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget,
+    o: gen_qwidget_types.QWidget, r: cint, name: string): gen_qaccessiblewidget_types.QAccessibleWidget =
+  gen_qaccessiblewidget_types.QAccessibleWidget(h: fcQAccessibleWidget_new3(o.h, cint(r), struct_miqt_string(data: name, len: csize_t(len(name)))))
 

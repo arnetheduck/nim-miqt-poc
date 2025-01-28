@@ -33,18 +33,17 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qvideorenderercontrol.cpp", cflags).}
 
-
 import gen_qvideorenderercontrol_types
 export gen_qvideorenderercontrol_types
 
 import
-  gen_qabstractvideosurface,
+  gen_qabstractvideosurface_types,
   gen_qmediacontrol,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
-  gen_qabstractvideosurface,
+  gen_qabstractvideosurface_types,
   gen_qmediacontrol,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQVideoRendererControl*{.exportc: "QVideoRendererControl", incompleteStruct.} = object
 
@@ -62,11 +61,8 @@ proc fcQVideoRendererControl_trUtf83(s: cstring, c: cstring, n: cint): struct_mi
 proc fcQVideoRendererControl_staticMetaObject(): pointer {.importc: "QVideoRendererControl_staticMetaObject".}
 proc fcQVideoRendererControl_delete(self: pointer) {.importc: "QVideoRendererControl_delete".}
 
-
-func init*(T: type gen_qvideorenderercontrol_types.QVideoRendererControl, h: ptr cQVideoRendererControl): gen_qvideorenderercontrol_types.QVideoRendererControl =
-  T(h: h)
-proc metaObject*(self: gen_qvideorenderercontrol_types.QVideoRendererControl, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQVideoRendererControl_metaObject(self.h))
+proc metaObject*(self: gen_qvideorenderercontrol_types.QVideoRendererControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQVideoRendererControl_metaObject(self.h))
 
 proc metacast*(self: gen_qvideorenderercontrol_types.QVideoRendererControl, param1: cstring): pointer =
   fcQVideoRendererControl_metacast(self.h, param1)
@@ -86,10 +82,10 @@ proc trUtf8*(_: type gen_qvideorenderercontrol_types.QVideoRendererControl, s: c
   c_free(v_ms.data)
   vx_ret
 
-proc surface*(self: gen_qvideorenderercontrol_types.QVideoRendererControl, ): gen_qabstractvideosurface.QAbstractVideoSurface =
-  gen_qabstractvideosurface.QAbstractVideoSurface(h: fcQVideoRendererControl_surface(self.h))
+proc surface*(self: gen_qvideorenderercontrol_types.QVideoRendererControl, ): gen_qabstractvideosurface_types.QAbstractVideoSurface =
+  gen_qabstractvideosurface_types.QAbstractVideoSurface(h: fcQVideoRendererControl_surface(self.h))
 
-proc setSurface*(self: gen_qvideorenderercontrol_types.QVideoRendererControl, surface: gen_qabstractvideosurface.QAbstractVideoSurface): void =
+proc setSurface*(self: gen_qvideorenderercontrol_types.QVideoRendererControl, surface: gen_qabstractvideosurface_types.QAbstractVideoSurface): void =
   fcQVideoRendererControl_setSurface(self.h, surface.h)
 
 proc tr*(_: type gen_qvideorenderercontrol_types.QVideoRendererControl, s: cstring, c: cstring): string =
@@ -116,7 +112,7 @@ proc trUtf8*(_: type gen_qvideorenderercontrol_types.QVideoRendererControl, s: c
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qvideorenderercontrol_types.QVideoRendererControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQVideoRendererControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qvideorenderercontrol_types.QVideoRendererControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQVideoRendererControl_staticMetaObject())
 proc delete*(self: gen_qvideorenderercontrol_types.QVideoRendererControl) =
   fcQVideoRendererControl_delete(self.h)

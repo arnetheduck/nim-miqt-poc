@@ -51,35 +51,32 @@ template Character*(_: type QsciLexerPascalEnumEnum): untyped = 12
 template Operator*(_: type QsciLexerPascalEnumEnum): untyped = 13
 template Asm*(_: type QsciLexerPascalEnumEnum): untyped = 14
 
-
 import gen_qscilexerpascal_types
 export gen_qscilexerpascal_types
 
 import
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 export
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 
 type cQsciLexerPascal*{.exportc: "QsciLexerPascal", incompleteStruct.} = object
 
-proc fcQsciLexerPascal_new(): ptr cQsciLexerPascal {.importc: "QsciLexerPascal_new".}
-proc fcQsciLexerPascal_new2(parent: pointer): ptr cQsciLexerPascal {.importc: "QsciLexerPascal_new2".}
 proc fcQsciLexerPascal_metaObject(self: pointer, ): pointer {.importc: "QsciLexerPascal_metaObject".}
 proc fcQsciLexerPascal_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerPascal_metacast".}
 proc fcQsciLexerPascal_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerPascal_metacall".}
@@ -114,112 +111,107 @@ proc fcQsciLexerPascal_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_str
 proc fcQsciLexerPascal_blockEnd1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_blockEnd1".}
 proc fcQsciLexerPascal_blockStart1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_blockStart1".}
 proc fcQsciLexerPascal_blockStartKeyword1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_blockStartKeyword1".}
-proc fQsciLexerPascal_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerPascal_virtualbase_metaObject".}
-proc fcQsciLexerPascal_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_metaObject".}
-proc fQsciLexerPascal_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerPascal_virtualbase_metacast".}
-proc fcQsciLexerPascal_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_metacast".}
-proc fQsciLexerPascal_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerPascal_virtualbase_metacall".}
-proc fcQsciLexerPascal_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_metacall".}
-proc fQsciLexerPascal_virtualbase_setFoldComments(self: pointer, fold: bool): void{.importc: "QsciLexerPascal_virtualbase_setFoldComments".}
-proc fcQsciLexerPascal_override_virtual_setFoldComments(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setFoldComments".}
-proc fQsciLexerPascal_virtualbase_setFoldCompact(self: pointer, fold: bool): void{.importc: "QsciLexerPascal_virtualbase_setFoldCompact".}
-proc fcQsciLexerPascal_override_virtual_setFoldCompact(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setFoldCompact".}
-proc fQsciLexerPascal_virtualbase_setFoldPreprocessor(self: pointer, fold: bool): void{.importc: "QsciLexerPascal_virtualbase_setFoldPreprocessor".}
-proc fcQsciLexerPascal_override_virtual_setFoldPreprocessor(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setFoldPreprocessor".}
-proc fcQsciLexerPascal_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_language".}
-proc fQsciLexerPascal_virtualbase_lexer(self: pointer, ): cstring{.importc: "QsciLexerPascal_virtualbase_lexer".}
-proc fcQsciLexerPascal_override_virtual_lexer(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_lexer".}
-proc fQsciLexerPascal_virtualbase_lexerId(self: pointer, ): cint{.importc: "QsciLexerPascal_virtualbase_lexerId".}
-proc fcQsciLexerPascal_override_virtual_lexerId(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_lexerId".}
-proc fQsciLexerPascal_virtualbase_autoCompletionFillups(self: pointer, ): cstring{.importc: "QsciLexerPascal_virtualbase_autoCompletionFillups".}
-proc fcQsciLexerPascal_override_virtual_autoCompletionFillups(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_autoCompletionFillups".}
-proc fQsciLexerPascal_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array{.importc: "QsciLexerPascal_virtualbase_autoCompletionWordSeparators".}
-proc fcQsciLexerPascal_override_virtual_autoCompletionWordSeparators(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_autoCompletionWordSeparators".}
-proc fQsciLexerPascal_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerPascal_virtualbase_blockEnd".}
-proc fcQsciLexerPascal_override_virtual_blockEnd(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_blockEnd".}
-proc fQsciLexerPascal_virtualbase_blockLookback(self: pointer, ): cint{.importc: "QsciLexerPascal_virtualbase_blockLookback".}
-proc fcQsciLexerPascal_override_virtual_blockLookback(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_blockLookback".}
-proc fQsciLexerPascal_virtualbase_blockStart(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerPascal_virtualbase_blockStart".}
-proc fcQsciLexerPascal_override_virtual_blockStart(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_blockStart".}
-proc fQsciLexerPascal_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerPascal_virtualbase_blockStartKeyword".}
-proc fcQsciLexerPascal_override_virtual_blockStartKeyword(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_blockStartKeyword".}
-proc fQsciLexerPascal_virtualbase_braceStyle(self: pointer, ): cint{.importc: "QsciLexerPascal_virtualbase_braceStyle".}
-proc fcQsciLexerPascal_override_virtual_braceStyle(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_braceStyle".}
-proc fQsciLexerPascal_virtualbase_caseSensitive(self: pointer, ): bool{.importc: "QsciLexerPascal_virtualbase_caseSensitive".}
-proc fcQsciLexerPascal_override_virtual_caseSensitive(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_caseSensitive".}
-proc fQsciLexerPascal_virtualbase_color(self: pointer, style: cint): pointer{.importc: "QsciLexerPascal_virtualbase_color".}
-proc fcQsciLexerPascal_override_virtual_color(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_color".}
-proc fQsciLexerPascal_virtualbase_eolFill(self: pointer, style: cint): bool{.importc: "QsciLexerPascal_virtualbase_eolFill".}
-proc fcQsciLexerPascal_override_virtual_eolFill(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_eolFill".}
-proc fQsciLexerPascal_virtualbase_font(self: pointer, style: cint): pointer{.importc: "QsciLexerPascal_virtualbase_font".}
-proc fcQsciLexerPascal_override_virtual_font(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_font".}
-proc fQsciLexerPascal_virtualbase_indentationGuideView(self: pointer, ): cint{.importc: "QsciLexerPascal_virtualbase_indentationGuideView".}
-proc fcQsciLexerPascal_override_virtual_indentationGuideView(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_indentationGuideView".}
-proc fQsciLexerPascal_virtualbase_keywords(self: pointer, set: cint): cstring{.importc: "QsciLexerPascal_virtualbase_keywords".}
-proc fcQsciLexerPascal_override_virtual_keywords(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_keywords".}
-proc fQsciLexerPascal_virtualbase_defaultStyle(self: pointer, ): cint{.importc: "QsciLexerPascal_virtualbase_defaultStyle".}
-proc fcQsciLexerPascal_override_virtual_defaultStyle(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_defaultStyle".}
-proc fcQsciLexerPascal_override_virtual_description(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_description".}
-proc fQsciLexerPascal_virtualbase_paper(self: pointer, style: cint): pointer{.importc: "QsciLexerPascal_virtualbase_paper".}
-proc fcQsciLexerPascal_override_virtual_paper(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_paper".}
-proc fQsciLexerPascal_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerPascal_virtualbase_defaultColorWithStyle".}
-proc fcQsciLexerPascal_override_virtual_defaultColorWithStyle(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_defaultColorWithStyle".}
-proc fQsciLexerPascal_virtualbase_defaultEolFill(self: pointer, style: cint): bool{.importc: "QsciLexerPascal_virtualbase_defaultEolFill".}
-proc fcQsciLexerPascal_override_virtual_defaultEolFill(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_defaultEolFill".}
-proc fQsciLexerPascal_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerPascal_virtualbase_defaultFontWithStyle".}
-proc fcQsciLexerPascal_override_virtual_defaultFontWithStyle(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_defaultFontWithStyle".}
-proc fQsciLexerPascal_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerPascal_virtualbase_defaultPaperWithStyle".}
-proc fcQsciLexerPascal_override_virtual_defaultPaperWithStyle(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_defaultPaperWithStyle".}
-proc fQsciLexerPascal_virtualbase_setEditor(self: pointer, editor: pointer): void{.importc: "QsciLexerPascal_virtualbase_setEditor".}
-proc fcQsciLexerPascal_override_virtual_setEditor(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setEditor".}
-proc fQsciLexerPascal_virtualbase_refreshProperties(self: pointer, ): void{.importc: "QsciLexerPascal_virtualbase_refreshProperties".}
-proc fcQsciLexerPascal_override_virtual_refreshProperties(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_refreshProperties".}
-proc fQsciLexerPascal_virtualbase_styleBitsNeeded(self: pointer, ): cint{.importc: "QsciLexerPascal_virtualbase_styleBitsNeeded".}
-proc fcQsciLexerPascal_override_virtual_styleBitsNeeded(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_styleBitsNeeded".}
-proc fQsciLexerPascal_virtualbase_wordCharacters(self: pointer, ): cstring{.importc: "QsciLexerPascal_virtualbase_wordCharacters".}
-proc fcQsciLexerPascal_override_virtual_wordCharacters(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_wordCharacters".}
-proc fQsciLexerPascal_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void{.importc: "QsciLexerPascal_virtualbase_setAutoIndentStyle".}
-proc fcQsciLexerPascal_override_virtual_setAutoIndentStyle(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setAutoIndentStyle".}
-proc fQsciLexerPascal_virtualbase_setColor(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerPascal_virtualbase_setColor".}
-proc fcQsciLexerPascal_override_virtual_setColor(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setColor".}
-proc fQsciLexerPascal_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void{.importc: "QsciLexerPascal_virtualbase_setEolFill".}
-proc fcQsciLexerPascal_override_virtual_setEolFill(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setEolFill".}
-proc fQsciLexerPascal_virtualbase_setFont(self: pointer, f: pointer, style: cint): void{.importc: "QsciLexerPascal_virtualbase_setFont".}
-proc fcQsciLexerPascal_override_virtual_setFont(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setFont".}
-proc fQsciLexerPascal_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerPascal_virtualbase_setPaper".}
-proc fcQsciLexerPascal_override_virtual_setPaper(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_setPaper".}
-proc fQsciLexerPascal_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerPascal_virtualbase_readProperties".}
-proc fcQsciLexerPascal_override_virtual_readProperties(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_readProperties".}
-proc fQsciLexerPascal_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerPascal_virtualbase_writeProperties".}
-proc fcQsciLexerPascal_override_virtual_writeProperties(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_writeProperties".}
-proc fQsciLexerPascal_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QsciLexerPascal_virtualbase_event".}
-proc fcQsciLexerPascal_override_virtual_event(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_event".}
-proc fQsciLexerPascal_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QsciLexerPascal_virtualbase_eventFilter".}
-proc fcQsciLexerPascal_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_eventFilter".}
-proc fQsciLexerPascal_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QsciLexerPascal_virtualbase_timerEvent".}
-proc fcQsciLexerPascal_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_timerEvent".}
-proc fQsciLexerPascal_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QsciLexerPascal_virtualbase_childEvent".}
-proc fcQsciLexerPascal_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_childEvent".}
-proc fQsciLexerPascal_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QsciLexerPascal_virtualbase_customEvent".}
-proc fcQsciLexerPascal_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_customEvent".}
-proc fQsciLexerPascal_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerPascal_virtualbase_connectNotify".}
-proc fcQsciLexerPascal_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_connectNotify".}
-proc fQsciLexerPascal_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerPascal_virtualbase_disconnectNotify".}
-proc fcQsciLexerPascal_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_disconnectNotify".}
+type cQsciLexerPascalVTable = object
+  destructor*: proc(vtbl: ptr cQsciLexerPascalVTable, self: ptr cQsciLexerPascal) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  setFoldComments*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  setFoldCompact*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  setFoldPreprocessor*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  language*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexer*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexerId*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  autoCompletionFillups*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  autoCompletionWordSeparators*: proc(vtbl, self: pointer, ): struct_miqt_array {.cdecl, raises: [], gcsafe.}
+  blockEnd*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockLookback*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  blockStart*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockStartKeyword*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  braceStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  caseSensitive*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  color*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  eolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  font*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  indentationGuideView*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  keywords*: proc(vtbl, self: pointer, set: cint): cstring {.cdecl, raises: [], gcsafe.}
+  defaultStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  description*: proc(vtbl, self: pointer, style: cint): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  paper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultColor*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultEolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  defaultFont*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultPaper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  setEditor*: proc(vtbl, self: pointer, editor: pointer): void {.cdecl, raises: [], gcsafe.}
+  refreshProperties*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  styleBitsNeeded*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  wordCharacters*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  setAutoIndentStyle*: proc(vtbl, self: pointer, autoindentstyle: cint): void {.cdecl, raises: [], gcsafe.}
+  setColor*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setEolFill*: proc(vtbl, self: pointer, eoffill: bool, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setFont*: proc(vtbl, self: pointer, f: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setPaper*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  readProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  writeProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQsciLexerPascal_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QsciLexerPascal_virtualbase_metaObject".}
+proc fcQsciLexerPascal_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerPascal_virtualbase_metacast".}
+proc fcQsciLexerPascal_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerPascal_virtualbase_metacall".}
+proc fcQsciLexerPascal_virtualbase_setFoldComments(self: pointer, fold: bool): void {.importc: "QsciLexerPascal_virtualbase_setFoldComments".}
+proc fcQsciLexerPascal_virtualbase_setFoldCompact(self: pointer, fold: bool): void {.importc: "QsciLexerPascal_virtualbase_setFoldCompact".}
+proc fcQsciLexerPascal_virtualbase_setFoldPreprocessor(self: pointer, fold: bool): void {.importc: "QsciLexerPascal_virtualbase_setFoldPreprocessor".}
+proc fcQsciLexerPascal_virtualbase_lexer(self: pointer, ): cstring {.importc: "QsciLexerPascal_virtualbase_lexer".}
+proc fcQsciLexerPascal_virtualbase_lexerId(self: pointer, ): cint {.importc: "QsciLexerPascal_virtualbase_lexerId".}
+proc fcQsciLexerPascal_virtualbase_autoCompletionFillups(self: pointer, ): cstring {.importc: "QsciLexerPascal_virtualbase_autoCompletionFillups".}
+proc fcQsciLexerPascal_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array {.importc: "QsciLexerPascal_virtualbase_autoCompletionWordSeparators".}
+proc fcQsciLexerPascal_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_virtualbase_blockEnd".}
+proc fcQsciLexerPascal_virtualbase_blockLookback(self: pointer, ): cint {.importc: "QsciLexerPascal_virtualbase_blockLookback".}
+proc fcQsciLexerPascal_virtualbase_blockStart(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_virtualbase_blockStart".}
+proc fcQsciLexerPascal_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_virtualbase_blockStartKeyword".}
+proc fcQsciLexerPascal_virtualbase_braceStyle(self: pointer, ): cint {.importc: "QsciLexerPascal_virtualbase_braceStyle".}
+proc fcQsciLexerPascal_virtualbase_caseSensitive(self: pointer, ): bool {.importc: "QsciLexerPascal_virtualbase_caseSensitive".}
+proc fcQsciLexerPascal_virtualbase_color(self: pointer, style: cint): pointer {.importc: "QsciLexerPascal_virtualbase_color".}
+proc fcQsciLexerPascal_virtualbase_eolFill(self: pointer, style: cint): bool {.importc: "QsciLexerPascal_virtualbase_eolFill".}
+proc fcQsciLexerPascal_virtualbase_font(self: pointer, style: cint): pointer {.importc: "QsciLexerPascal_virtualbase_font".}
+proc fcQsciLexerPascal_virtualbase_indentationGuideView(self: pointer, ): cint {.importc: "QsciLexerPascal_virtualbase_indentationGuideView".}
+proc fcQsciLexerPascal_virtualbase_keywords(self: pointer, set: cint): cstring {.importc: "QsciLexerPascal_virtualbase_keywords".}
+proc fcQsciLexerPascal_virtualbase_defaultStyle(self: pointer, ): cint {.importc: "QsciLexerPascal_virtualbase_defaultStyle".}
+proc fcQsciLexerPascal_virtualbase_paper(self: pointer, style: cint): pointer {.importc: "QsciLexerPascal_virtualbase_paper".}
+proc fcQsciLexerPascal_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerPascal_virtualbase_defaultColorWithStyle".}
+proc fcQsciLexerPascal_virtualbase_defaultEolFill(self: pointer, style: cint): bool {.importc: "QsciLexerPascal_virtualbase_defaultEolFill".}
+proc fcQsciLexerPascal_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerPascal_virtualbase_defaultFontWithStyle".}
+proc fcQsciLexerPascal_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerPascal_virtualbase_defaultPaperWithStyle".}
+proc fcQsciLexerPascal_virtualbase_setEditor(self: pointer, editor: pointer): void {.importc: "QsciLexerPascal_virtualbase_setEditor".}
+proc fcQsciLexerPascal_virtualbase_refreshProperties(self: pointer, ): void {.importc: "QsciLexerPascal_virtualbase_refreshProperties".}
+proc fcQsciLexerPascal_virtualbase_styleBitsNeeded(self: pointer, ): cint {.importc: "QsciLexerPascal_virtualbase_styleBitsNeeded".}
+proc fcQsciLexerPascal_virtualbase_wordCharacters(self: pointer, ): cstring {.importc: "QsciLexerPascal_virtualbase_wordCharacters".}
+proc fcQsciLexerPascal_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void {.importc: "QsciLexerPascal_virtualbase_setAutoIndentStyle".}
+proc fcQsciLexerPascal_virtualbase_setColor(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerPascal_virtualbase_setColor".}
+proc fcQsciLexerPascal_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void {.importc: "QsciLexerPascal_virtualbase_setEolFill".}
+proc fcQsciLexerPascal_virtualbase_setFont(self: pointer, f: pointer, style: cint): void {.importc: "QsciLexerPascal_virtualbase_setFont".}
+proc fcQsciLexerPascal_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerPascal_virtualbase_setPaper".}
+proc fcQsciLexerPascal_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerPascal_virtualbase_readProperties".}
+proc fcQsciLexerPascal_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerPascal_virtualbase_writeProperties".}
+proc fcQsciLexerPascal_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QsciLexerPascal_virtualbase_event".}
+proc fcQsciLexerPascal_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QsciLexerPascal_virtualbase_eventFilter".}
+proc fcQsciLexerPascal_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QsciLexerPascal_virtualbase_timerEvent".}
+proc fcQsciLexerPascal_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QsciLexerPascal_virtualbase_childEvent".}
+proc fcQsciLexerPascal_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerPascal_virtualbase_customEvent".}
+proc fcQsciLexerPascal_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerPascal_virtualbase_connectNotify".}
+proc fcQsciLexerPascal_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerPascal_virtualbase_disconnectNotify".}
+proc fcQsciLexerPascal_new(vtbl: pointer, ): ptr cQsciLexerPascal {.importc: "QsciLexerPascal_new".}
+proc fcQsciLexerPascal_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerPascal {.importc: "QsciLexerPascal_new2".}
 proc fcQsciLexerPascal_staticMetaObject(): pointer {.importc: "QsciLexerPascal_staticMetaObject".}
 proc fcQsciLexerPascal_delete(self: pointer) {.importc: "QsciLexerPascal_delete".}
 
-
-func init*(T: type gen_qscilexerpascal_types.QsciLexerPascal, h: ptr cQsciLexerPascal): gen_qscilexerpascal_types.QsciLexerPascal =
-  T(h: h)
-proc create*(T: type gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qscilexerpascal_types.QsciLexerPascal =
-  gen_qscilexerpascal_types.QsciLexerPascal.init(fcQsciLexerPascal_new())
-
-proc create*(T: type gen_qscilexerpascal_types.QsciLexerPascal, parent: gen_qobject.QObject): gen_qscilexerpascal_types.QsciLexerPascal =
-  gen_qscilexerpascal_types.QsciLexerPascal.init(fcQsciLexerPascal_new2(parent.h))
-
-proc metaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerPascal_metaObject(self.h))
+proc metaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerPascal_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerpascal_types.QsciLexerPascal, param1: cstring): pointer =
   fcQsciLexerPascal_metacast(self.h, param1)
@@ -268,17 +260,17 @@ proc blockStartKeyword*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstr
 proc braceStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
   fcQsciLexerPascal_braceStyle(self.h)
 
-proc defaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerPascal_defaultColor(self.h, style))
+proc defaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPascal_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): bool =
   fcQsciLexerPascal_defaultEolFill(self.h, style)
 
-proc defaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fcQsciLexerPascal_defaultFont(self.h, style))
+proc defaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerPascal_defaultFont(self.h, style))
 
-proc defaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerPascal_defaultPaper(self.h, style))
+proc defaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPascal_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerpascal_types.QsciLexerPascal, set: cint): cstring =
   (fcQsciLexerPascal_keywords(self.h, set))
@@ -349,183 +341,195 @@ proc blockStart*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cin
 proc blockStartKeyword*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
   (fcQsciLexerPascal_blockStartKeyword1(self.h, style))
 
-proc QsciLexerPascalmetaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQsciLexerPascal_virtualbase_metaObject(self.h))
+type QsciLexerPascalmetaObjectProc* = proc(self: QsciLexerPascal): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QsciLexerPascalmetacastProc* = proc(self: QsciLexerPascal, param1: cstring): pointer {.raises: [], gcsafe.}
+type QsciLexerPascalmetacallProc* = proc(self: QsciLexerPascal, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QsciLexerPascalsetFoldCommentsProc* = proc(self: QsciLexerPascal, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerPascalsetFoldCompactProc* = proc(self: QsciLexerPascal, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerPascalsetFoldPreprocessorProc* = proc(self: QsciLexerPascal, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerPascallanguageProc* = proc(self: QsciLexerPascal): cstring {.raises: [], gcsafe.}
+type QsciLexerPascallexerProc* = proc(self: QsciLexerPascal): cstring {.raises: [], gcsafe.}
+type QsciLexerPascallexerIdProc* = proc(self: QsciLexerPascal): cint {.raises: [], gcsafe.}
+type QsciLexerPascalautoCompletionFillupsProc* = proc(self: QsciLexerPascal): cstring {.raises: [], gcsafe.}
+type QsciLexerPascalautoCompletionWordSeparatorsProc* = proc(self: QsciLexerPascal): seq[string] {.raises: [], gcsafe.}
+type QsciLexerPascalblockEndProc* = proc(self: QsciLexerPascal, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPascalblockLookbackProc* = proc(self: QsciLexerPascal): cint {.raises: [], gcsafe.}
+type QsciLexerPascalblockStartProc* = proc(self: QsciLexerPascal, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPascalblockStartKeywordProc* = proc(self: QsciLexerPascal, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPascalbraceStyleProc* = proc(self: QsciLexerPascal): cint {.raises: [], gcsafe.}
+type QsciLexerPascalcaseSensitiveProc* = proc(self: QsciLexerPascal): bool {.raises: [], gcsafe.}
+type QsciLexerPascalcolorProc* = proc(self: QsciLexerPascal, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPascaleolFillProc* = proc(self: QsciLexerPascal, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerPascalfontProc* = proc(self: QsciLexerPascal, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerPascalindentationGuideViewProc* = proc(self: QsciLexerPascal): cint {.raises: [], gcsafe.}
+type QsciLexerPascalkeywordsProc* = proc(self: QsciLexerPascal, set: cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPascaldefaultStyleProc* = proc(self: QsciLexerPascal): cint {.raises: [], gcsafe.}
+type QsciLexerPascaldescriptionProc* = proc(self: QsciLexerPascal, style: cint): string {.raises: [], gcsafe.}
+type QsciLexerPascalpaperProc* = proc(self: QsciLexerPascal, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPascaldefaultColorProc* = proc(self: QsciLexerPascal, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPascaldefaultEolFillProc* = proc(self: QsciLexerPascal, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerPascaldefaultFontProc* = proc(self: QsciLexerPascal, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerPascaldefaultPaperProc* = proc(self: QsciLexerPascal, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPascalsetEditorProc* = proc(self: QsciLexerPascal, editor: gen_qsciscintilla_types.QsciScintilla): void {.raises: [], gcsafe.}
+type QsciLexerPascalrefreshPropertiesProc* = proc(self: QsciLexerPascal): void {.raises: [], gcsafe.}
+type QsciLexerPascalstyleBitsNeededProc* = proc(self: QsciLexerPascal): cint {.raises: [], gcsafe.}
+type QsciLexerPascalwordCharactersProc* = proc(self: QsciLexerPascal): cstring {.raises: [], gcsafe.}
+type QsciLexerPascalsetAutoIndentStyleProc* = proc(self: QsciLexerPascal, autoindentstyle: cint): void {.raises: [], gcsafe.}
+type QsciLexerPascalsetColorProc* = proc(self: QsciLexerPascal, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPascalsetEolFillProc* = proc(self: QsciLexerPascal, eoffill: bool, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPascalsetFontProc* = proc(self: QsciLexerPascal, f: gen_qfont_types.QFont, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPascalsetPaperProc* = proc(self: QsciLexerPascal, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPascalreadPropertiesProc* = proc(self: QsciLexerPascal, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerPascalwritePropertiesProc* = proc(self: QsciLexerPascal, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerPascaleventProc* = proc(self: QsciLexerPascal, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerPascaleventFilterProc* = proc(self: QsciLexerPascal, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerPascaltimerEventProc* = proc(self: QsciLexerPascal, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QsciLexerPascalchildEventProc* = proc(self: QsciLexerPascal, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QsciLexerPascalcustomEventProc* = proc(self: QsciLexerPascal, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciLexerPascalconnectNotifyProc* = proc(self: QsciLexerPascal, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerPascaldisconnectNotifyProc* = proc(self: QsciLexerPascal, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerPascalVTable* = object
+  vtbl: cQsciLexerPascalVTable
+  metaObject*: QsciLexerPascalmetaObjectProc
+  metacast*: QsciLexerPascalmetacastProc
+  metacall*: QsciLexerPascalmetacallProc
+  setFoldComments*: QsciLexerPascalsetFoldCommentsProc
+  setFoldCompact*: QsciLexerPascalsetFoldCompactProc
+  setFoldPreprocessor*: QsciLexerPascalsetFoldPreprocessorProc
+  language*: QsciLexerPascallanguageProc
+  lexer*: QsciLexerPascallexerProc
+  lexerId*: QsciLexerPascallexerIdProc
+  autoCompletionFillups*: QsciLexerPascalautoCompletionFillupsProc
+  autoCompletionWordSeparators*: QsciLexerPascalautoCompletionWordSeparatorsProc
+  blockEnd*: QsciLexerPascalblockEndProc
+  blockLookback*: QsciLexerPascalblockLookbackProc
+  blockStart*: QsciLexerPascalblockStartProc
+  blockStartKeyword*: QsciLexerPascalblockStartKeywordProc
+  braceStyle*: QsciLexerPascalbraceStyleProc
+  caseSensitive*: QsciLexerPascalcaseSensitiveProc
+  color*: QsciLexerPascalcolorProc
+  eolFill*: QsciLexerPascaleolFillProc
+  font*: QsciLexerPascalfontProc
+  indentationGuideView*: QsciLexerPascalindentationGuideViewProc
+  keywords*: QsciLexerPascalkeywordsProc
+  defaultStyle*: QsciLexerPascaldefaultStyleProc
+  description*: QsciLexerPascaldescriptionProc
+  paper*: QsciLexerPascalpaperProc
+  defaultColor*: QsciLexerPascaldefaultColorProc
+  defaultEolFill*: QsciLexerPascaldefaultEolFillProc
+  defaultFont*: QsciLexerPascaldefaultFontProc
+  defaultPaper*: QsciLexerPascaldefaultPaperProc
+  setEditor*: QsciLexerPascalsetEditorProc
+  refreshProperties*: QsciLexerPascalrefreshPropertiesProc
+  styleBitsNeeded*: QsciLexerPascalstyleBitsNeededProc
+  wordCharacters*: QsciLexerPascalwordCharactersProc
+  setAutoIndentStyle*: QsciLexerPascalsetAutoIndentStyleProc
+  setColor*: QsciLexerPascalsetColorProc
+  setEolFill*: QsciLexerPascalsetEolFillProc
+  setFont*: QsciLexerPascalsetFontProc
+  setPaper*: QsciLexerPascalsetPaperProc
+  readProperties*: QsciLexerPascalreadPropertiesProc
+  writeProperties*: QsciLexerPascalwritePropertiesProc
+  event*: QsciLexerPascaleventProc
+  eventFilter*: QsciLexerPascaleventFilterProc
+  timerEvent*: QsciLexerPascaltimerEventProc
+  childEvent*: QsciLexerPascalchildEventProc
+  customEvent*: QsciLexerPascalcustomEventProc
+  connectNotify*: QsciLexerPascalconnectNotifyProc
+  disconnectNotify*: QsciLexerPascaldisconnectNotifyProc
+proc QsciLexerPascalmetaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerPascal_virtualbase_metaObject(self.h))
 
-type QsciLexerPascalmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_metaObject(self: ptr cQsciLexerPascal, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_metaObject ".} =
-  var nimfunc = cast[ptr QsciLexerPascalmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QsciLexerPascalmetacast*(self: gen_qscilexerpascal_types.QsciLexerPascal, param1: cstring): pointer =
-  fQsciLexerPascal_virtualbase_metacast(self.h, param1)
+  fcQsciLexerPascal_virtualbase_metacast(self.h, param1)
 
-type QsciLexerPascalmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalmetacastProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_metacast(self: ptr cQsciLexerPascal, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_metacast ".} =
-  var nimfunc = cast[ptr QsciLexerPascalmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QsciLexerPascalmetacall*(self: gen_qscilexerpascal_types.QsciLexerPascal, param1: cint, param2: cint, param3: pointer): cint =
-  fQsciLexerPascal_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQsciLexerPascal_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciLexerPascalmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalmetacallProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_metacall(self: ptr cQsciLexerPascal, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciLexerPascal_metacall ".} =
-  var nimfunc = cast[ptr QsciLexerPascalmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QsciLexerPascalsetFoldComments*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-  fQsciLexerPascal_virtualbase_setFoldComments(self.h, fold)
+  fcQsciLexerPascal_virtualbase_setFoldComments(self.h, fold)
 
-type QsciLexerPascalsetFoldCommentsProc* = proc(fold: bool): void
-proc onsetFoldComments*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetFoldCommentsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetFoldCommentsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setFoldComments(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setFoldComments(self: ptr cQsciLexerPascal, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setFoldComments ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetFoldCommentsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_setFoldComments(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = fold
+  vtbl[].setFoldComments(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerPascalsetFoldCompact*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-  fQsciLexerPascal_virtualbase_setFoldCompact(self.h, fold)
+  fcQsciLexerPascal_virtualbase_setFoldCompact(self.h, fold)
 
-type QsciLexerPascalsetFoldCompactProc* = proc(fold: bool): void
-proc onsetFoldCompact*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetFoldCompactProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetFoldCompactProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setFoldCompact(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setFoldCompact(self: ptr cQsciLexerPascal, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setFoldCompact ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetFoldCompactProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_setFoldCompact(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = fold
+  vtbl[].setFoldCompact(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerPascalsetFoldPreprocessor*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-  fQsciLexerPascal_virtualbase_setFoldPreprocessor(self.h, fold)
+  fcQsciLexerPascal_virtualbase_setFoldPreprocessor(self.h, fold)
 
-type QsciLexerPascalsetFoldPreprocessorProc* = proc(fold: bool): void
-proc onsetFoldPreprocessor*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetFoldPreprocessorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetFoldPreprocessorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setFoldPreprocessor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setFoldPreprocessor(self: ptr cQsciLexerPascal, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setFoldPreprocessor ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetFoldPreprocessorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_setFoldPreprocessor(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = fold
+  vtbl[].setFoldPreprocessor(self, slotval1)
 
-
-  nimfunc[](slotval1)
-type QsciLexerPascallanguageProc* = proc(): cstring
-proc onlanguage*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascallanguageProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascallanguageProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_language(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_language(self: ptr cQsciLexerPascal, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_language ".} =
-  var nimfunc = cast[ptr QsciLexerPascallanguageProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_language(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].language(self)
   virtualReturn
+
 proc QsciLexerPascallexer*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-  (fQsciLexerPascal_virtualbase_lexer(self.h))
+  (fcQsciLexerPascal_virtualbase_lexer(self.h))
 
-type QsciLexerPascallexerProc* = proc(): cstring
-proc onlexer*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascallexerProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascallexerProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_lexer(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_lexer(self: ptr cQsciLexerPascal, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_lexer ".} =
-  var nimfunc = cast[ptr QsciLexerPascallexerProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_lexer(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].lexer(self)
   virtualReturn
+
 proc QsciLexerPascallexerId*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-  fQsciLexerPascal_virtualbase_lexerId(self.h)
+  fcQsciLexerPascal_virtualbase_lexerId(self.h)
 
-type QsciLexerPascallexerIdProc* = proc(): cint
-proc onlexerId*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascallexerIdProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascallexerIdProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_lexerId(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_lexerId(self: ptr cQsciLexerPascal, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPascal_lexerId ".} =
-  var nimfunc = cast[ptr QsciLexerPascallexerIdProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_lexerId(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].lexerId(self)
   virtualReturn
+
 proc QsciLexerPascalautoCompletionFillups*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-  (fQsciLexerPascal_virtualbase_autoCompletionFillups(self.h))
+  (fcQsciLexerPascal_virtualbase_autoCompletionFillups(self.h))
 
-type QsciLexerPascalautoCompletionFillupsProc* = proc(): cstring
-proc onautoCompletionFillups*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalautoCompletionFillupsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalautoCompletionFillupsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_autoCompletionFillups(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_autoCompletionFillups(self: ptr cQsciLexerPascal, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_autoCompletionFillups ".} =
-  var nimfunc = cast[ptr QsciLexerPascalautoCompletionFillupsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_autoCompletionFillups(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].autoCompletionFillups(self)
   virtualReturn
+
 proc QsciLexerPascalautoCompletionWordSeparators*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): seq[string] =
-  var v_ma = fQsciLexerPascal_virtualbase_autoCompletionWordSeparators(self.h)
+  var v_ma = fcQsciLexerPascal_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
   for i in 0 ..< v_ma.len:
@@ -535,686 +539,574 @@ proc QsciLexerPascalautoCompletionWordSeparators*(self: gen_qscilexerpascal_type
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciLexerPascalautoCompletionWordSeparatorsProc* = proc(): seq[string]
-proc onautoCompletionWordSeparators*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalautoCompletionWordSeparatorsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalautoCompletionWordSeparatorsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_autoCompletionWordSeparators(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_autoCompletionWordSeparators(self: ptr cQsciLexerPascal, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QsciLexerPascal_autoCompletionWordSeparators ".} =
-  var nimfunc = cast[ptr QsciLexerPascalautoCompletionWordSeparatorsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
+proc miqt_exec_callback_cQsciLexerPascal_autoCompletionWordSeparators(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].autoCompletionWordSeparators(self)
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
-
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
+
 proc QsciLexerPascalblockEnd*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-  (fQsciLexerPascal_virtualbase_blockEnd(self.h, style))
+  (fcQsciLexerPascal_virtualbase_blockEnd(self.h, style))
 
-type QsciLexerPascalblockEndProc* = proc(style: ptr cint): cstring
-proc onblockEnd*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalblockEndProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalblockEndProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_blockEnd(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_blockEnd(self: ptr cQsciLexerPascal, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_blockEnd ".} =
-  var nimfunc = cast[ptr QsciLexerPascalblockEndProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_blockEnd(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockEnd(self, slotval1)
   virtualReturn
+
 proc QsciLexerPascalblockLookback*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-  fQsciLexerPascal_virtualbase_blockLookback(self.h)
+  fcQsciLexerPascal_virtualbase_blockLookback(self.h)
 
-type QsciLexerPascalblockLookbackProc* = proc(): cint
-proc onblockLookback*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalblockLookbackProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalblockLookbackProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_blockLookback(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_blockLookback(self: ptr cQsciLexerPascal, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPascal_blockLookback ".} =
-  var nimfunc = cast[ptr QsciLexerPascalblockLookbackProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_blockLookback(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].blockLookback(self)
   virtualReturn
+
 proc QsciLexerPascalblockStart*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-  (fQsciLexerPascal_virtualbase_blockStart(self.h, style))
+  (fcQsciLexerPascal_virtualbase_blockStart(self.h, style))
 
-type QsciLexerPascalblockStartProc* = proc(style: ptr cint): cstring
-proc onblockStart*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalblockStartProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalblockStartProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_blockStart(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_blockStart(self: ptr cQsciLexerPascal, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_blockStart ".} =
-  var nimfunc = cast[ptr QsciLexerPascalblockStartProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_blockStart(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStart(self, slotval1)
   virtualReturn
+
 proc QsciLexerPascalblockStartKeyword*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-  (fQsciLexerPascal_virtualbase_blockStartKeyword(self.h, style))
+  (fcQsciLexerPascal_virtualbase_blockStartKeyword(self.h, style))
 
-type QsciLexerPascalblockStartKeywordProc* = proc(style: ptr cint): cstring
-proc onblockStartKeyword*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalblockStartKeywordProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalblockStartKeywordProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_blockStartKeyword(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_blockStartKeyword(self: ptr cQsciLexerPascal, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_blockStartKeyword ".} =
-  var nimfunc = cast[ptr QsciLexerPascalblockStartKeywordProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_blockStartKeyword(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStartKeyword(self, slotval1)
   virtualReturn
+
 proc QsciLexerPascalbraceStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-  fQsciLexerPascal_virtualbase_braceStyle(self.h)
+  fcQsciLexerPascal_virtualbase_braceStyle(self.h)
 
-type QsciLexerPascalbraceStyleProc* = proc(): cint
-proc onbraceStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalbraceStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalbraceStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_braceStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_braceStyle(self: ptr cQsciLexerPascal, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPascal_braceStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPascalbraceStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_braceStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].braceStyle(self)
   virtualReturn
+
 proc QsciLexerPascalcaseSensitive*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): bool =
-  fQsciLexerPascal_virtualbase_caseSensitive(self.h)
+  fcQsciLexerPascal_virtualbase_caseSensitive(self.h)
 
-type QsciLexerPascalcaseSensitiveProc* = proc(): bool
-proc oncaseSensitive*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalcaseSensitiveProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalcaseSensitiveProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_caseSensitive(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_caseSensitive(self: ptr cQsciLexerPascal, slot: int): bool {.exportc: "miqt_exec_callback_QsciLexerPascal_caseSensitive ".} =
-  var nimfunc = cast[ptr QsciLexerPascalcaseSensitiveProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_caseSensitive(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].caseSensitive(self)
   virtualReturn
-proc QsciLexerPascalcolor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_color(self.h, style))
 
-type QsciLexerPascalcolorProc* = proc(style: cint): gen_qcolor.QColor
-proc oncolor*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalcolorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalcolorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_color(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascalcolor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPascal_virtualbase_color(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPascal_color(self: ptr cQsciLexerPascal, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_color ".} =
-  var nimfunc = cast[ptr QsciLexerPascalcolorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_color(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].color(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerPascaleolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): bool =
-  fQsciLexerPascal_virtualbase_eolFill(self.h, style)
+  fcQsciLexerPascal_virtualbase_eolFill(self.h, style)
 
-type QsciLexerPascaleolFillProc* = proc(style: cint): bool
-proc oneolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaleolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaleolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_eolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_eolFill(self: ptr cQsciLexerPascal, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerPascal_eolFill ".} =
-  var nimfunc = cast[ptr QsciLexerPascaleolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_eolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].eolFill(self, slotval1)
   virtualReturn
-proc QsciLexerPascalfont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerPascal_virtualbase_font(self.h, style))
 
-type QsciLexerPascalfontProc* = proc(style: cint): gen_qfont.QFont
-proc onfont*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalfontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalfontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_font(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascalfont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerPascal_virtualbase_font(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPascal_font(self: ptr cQsciLexerPascal, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_font ".} =
-  var nimfunc = cast[ptr QsciLexerPascalfontProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_font(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].font(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerPascalindentationGuideView*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-  fQsciLexerPascal_virtualbase_indentationGuideView(self.h)
+  fcQsciLexerPascal_virtualbase_indentationGuideView(self.h)
 
-type QsciLexerPascalindentationGuideViewProc* = proc(): cint
-proc onindentationGuideView*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalindentationGuideViewProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalindentationGuideViewProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_indentationGuideView(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_indentationGuideView(self: ptr cQsciLexerPascal, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPascal_indentationGuideView ".} =
-  var nimfunc = cast[ptr QsciLexerPascalindentationGuideViewProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_indentationGuideView(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].indentationGuideView(self)
   virtualReturn
+
 proc QsciLexerPascalkeywords*(self: gen_qscilexerpascal_types.QsciLexerPascal, set: cint): cstring =
-  (fQsciLexerPascal_virtualbase_keywords(self.h, set))
+  (fcQsciLexerPascal_virtualbase_keywords(self.h, set))
 
-type QsciLexerPascalkeywordsProc* = proc(set: cint): cstring
-proc onkeywords*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalkeywordsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalkeywordsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_keywords(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_keywords(self: ptr cQsciLexerPascal, slot: int, set: cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_keywords ".} =
-  var nimfunc = cast[ptr QsciLexerPascalkeywordsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_keywords(vtbl: pointer, self: pointer, set: cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = set
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].keywords(self, slotval1)
   virtualReturn
+
 proc QsciLexerPascaldefaultStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-  fQsciLexerPascal_virtualbase_defaultStyle(self.h)
+  fcQsciLexerPascal_virtualbase_defaultStyle(self.h)
 
-type QsciLexerPascaldefaultStyleProc* = proc(): cint
-proc ondefaultStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaldefaultStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_defaultStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_defaultStyle(self: ptr cQsciLexerPascal, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPascal_defaultStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPascaldefaultStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_defaultStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].defaultStyle(self)
   virtualReturn
-type QsciLexerPascaldescriptionProc* = proc(style: cint): string
-proc ondescription*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldescriptionProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaldescriptionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_description(self.h, cast[int](addr tmp[]))
 
-proc miqt_exec_callback_QsciLexerPascal_description(self: ptr cQsciLexerPascal, slot: int, style: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QsciLexerPascal_description ".} =
-  var nimfunc = cast[ptr QsciLexerPascaldescriptionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_description(vtbl: pointer, self: pointer, style: cint): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].description(self, slotval1)
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QsciLexerPascalpaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_paper(self.h, style))
 
-type QsciLexerPascalpaperProc* = proc(style: cint): gen_qcolor.QColor
-proc onpaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalpaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalpaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_paper(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascalpaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPascal_virtualbase_paper(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPascal_paper(self: ptr cQsciLexerPascal, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_paper ".} =
-  var nimfunc = cast[ptr QsciLexerPascalpaperProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_paper(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].paper(self, slotval1)
   virtualReturn.h
-proc QsciLexerPascaldefaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_defaultColorWithStyle(self.h, style))
 
-type QsciLexerPascaldefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultColorWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaldefaultColorWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_defaultColorWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascaldefaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPascal_virtualbase_defaultColorWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPascal_defaultColorWithStyle(self: ptr cQsciLexerPascal, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_defaultColorWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPascaldefaultColorWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_defaultColorWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultColor(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerPascaldefaultEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): bool =
-  fQsciLexerPascal_virtualbase_defaultEolFill(self.h, style)
+  fcQsciLexerPascal_virtualbase_defaultEolFill(self.h, style)
 
-type QsciLexerPascaldefaultEolFillProc* = proc(style: cint): bool
-proc ondefaultEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaldefaultEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_defaultEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_defaultEolFill(self: ptr cQsciLexerPascal, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerPascal_defaultEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerPascaldefaultEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_defaultEolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultEolFill(self, slotval1)
   virtualReturn
-proc QsciLexerPascaldefaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerPascal_virtualbase_defaultFontWithStyle(self.h, style))
 
-type QsciLexerPascaldefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultFontWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaldefaultFontWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_defaultFontWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascaldefaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerPascal_virtualbase_defaultFontWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPascal_defaultFontWithStyle(self: ptr cQsciLexerPascal, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_defaultFontWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPascaldefaultFontWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_defaultFontWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultFont(self, slotval1)
   virtualReturn.h
-proc QsciLexerPascaldefaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_defaultPaperWithStyle(self.h, style))
 
-type QsciLexerPascaldefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultPaperWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaldefaultPaperWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_defaultPaperWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascaldefaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPascal_virtualbase_defaultPaperWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPascal_defaultPaperWithStyle(self: ptr cQsciLexerPascal, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_defaultPaperWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPascaldefaultPaperWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_defaultPaperWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultPaper(self, slotval1)
   virtualReturn.h
-proc QsciLexerPascalsetEditor*(self: gen_qscilexerpascal_types.QsciLexerPascal, editor: gen_qsciscintilla.QsciScintilla): void =
-  fQsciLexerPascal_virtualbase_setEditor(self.h, editor.h)
 
-type QsciLexerPascalsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
-proc onsetEditor*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetEditorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetEditorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setEditor(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascalsetEditor*(self: gen_qscilexerpascal_types.QsciLexerPascal, editor: gen_qsciscintilla_types.QsciScintilla): void =
+  fcQsciLexerPascal_virtualbase_setEditor(self.h, editor.h)
 
-proc miqt_exec_callback_QsciLexerPascal_setEditor(self: ptr cQsciLexerPascal, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setEditor ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetEditorProc](cast[pointer](slot))
-  let slotval1 = gen_qsciscintilla.QsciScintilla(h: editor)
+proc miqt_exec_callback_cQsciLexerPascal_setEditor(vtbl: pointer, self: pointer, editor: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qsciscintilla_types.QsciScintilla(h: editor)
+  vtbl[].setEditor(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerPascalrefreshProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): void =
-  fQsciLexerPascal_virtualbase_refreshProperties(self.h)
+  fcQsciLexerPascal_virtualbase_refreshProperties(self.h)
 
-type QsciLexerPascalrefreshPropertiesProc* = proc(): void
-proc onrefreshProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalrefreshPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalrefreshPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_refreshProperties(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciLexerPascal_refreshProperties(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  vtbl[].refreshProperties(self)
 
-proc miqt_exec_callback_QsciLexerPascal_refreshProperties(self: ptr cQsciLexerPascal, slot: int): void {.exportc: "miqt_exec_callback_QsciLexerPascal_refreshProperties ".} =
-  var nimfunc = cast[ptr QsciLexerPascalrefreshPropertiesProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciLexerPascalstyleBitsNeeded*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-  fQsciLexerPascal_virtualbase_styleBitsNeeded(self.h)
+  fcQsciLexerPascal_virtualbase_styleBitsNeeded(self.h)
 
-type QsciLexerPascalstyleBitsNeededProc* = proc(): cint
-proc onstyleBitsNeeded*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalstyleBitsNeededProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalstyleBitsNeededProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_styleBitsNeeded(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_styleBitsNeeded(self: ptr cQsciLexerPascal, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPascal_styleBitsNeeded ".} =
-  var nimfunc = cast[ptr QsciLexerPascalstyleBitsNeededProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_styleBitsNeeded(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].styleBitsNeeded(self)
   virtualReturn
+
 proc QsciLexerPascalwordCharacters*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-  (fQsciLexerPascal_virtualbase_wordCharacters(self.h))
+  (fcQsciLexerPascal_virtualbase_wordCharacters(self.h))
 
-type QsciLexerPascalwordCharactersProc* = proc(): cstring
-proc onwordCharacters*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalwordCharactersProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalwordCharactersProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_wordCharacters(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_wordCharacters(self: ptr cQsciLexerPascal, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPascal_wordCharacters ".} =
-  var nimfunc = cast[ptr QsciLexerPascalwordCharactersProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPascal_wordCharacters(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let virtualReturn = vtbl[].wordCharacters(self)
   virtualReturn
+
 proc QsciLexerPascalsetAutoIndentStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, autoindentstyle: cint): void =
-  fQsciLexerPascal_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
+  fcQsciLexerPascal_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
-type QsciLexerPascalsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
-proc onsetAutoIndentStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetAutoIndentStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetAutoIndentStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setAutoIndentStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setAutoIndentStyle(self: ptr cQsciLexerPascal, slot: int, autoindentstyle: cint): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setAutoIndentStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetAutoIndentStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_setAutoIndentStyle(vtbl: pointer, self: pointer, autoindentstyle: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = autoindentstyle
+  vtbl[].setAutoIndentStyle(self, slotval1)
 
+proc QsciLexerPascalsetColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerPascal_virtualbase_setColor(self.h, c.h, style)
 
-  nimfunc[](slotval1)
-proc QsciLexerPascalsetColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerPascal_virtualbase_setColor(self.h, c.h, style)
-
-type QsciLexerPascalsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetColorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setColor(self: ptr cQsciLexerPascal, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setColor ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerPascal_setColor(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setColor(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciLexerPascalsetEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, eoffill: bool, style: cint): void =
-  fQsciLexerPascal_virtualbase_setEolFill(self.h, eoffill, style)
+  fcQsciLexerPascal_virtualbase_setEolFill(self.h, eoffill, style)
 
-type QsciLexerPascalsetEolFillProc* = proc(eoffill: bool, style: cint): void
-proc onsetEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setEolFill(self: ptr cQsciLexerPascal, slot: int, eoffill: bool, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPascal_setEolFill(vtbl: pointer, self: pointer, eoffill: bool, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
   let slotval1 = eoffill
-
   let slotval2 = style
+  vtbl[].setEolFill(self, slotval1, slotval2)
 
+proc QsciLexerPascalsetFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, f: gen_qfont_types.QFont, style: cint): void =
+  fcQsciLexerPascal_virtualbase_setFont(self.h, f.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerPascalsetFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, f: gen_qfont.QFont, style: cint): void =
-  fQsciLexerPascal_virtualbase_setFont(self.h, f.h, style)
-
-type QsciLexerPascalsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
-proc onsetFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetFontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetFontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setFont(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setFont(self: ptr cQsciLexerPascal, slot: int, f: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setFont ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetFontProc](cast[pointer](slot))
-  let slotval1 = gen_qfont.QFont(h: f)
-
+proc miqt_exec_callback_cQsciLexerPascal_setFont(vtbl: pointer, self: pointer, f: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qfont_types.QFont(h: f)
   let slotval2 = style
+  vtbl[].setFont(self, slotval1, slotval2)
 
+proc QsciLexerPascalsetPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerPascal_virtualbase_setPaper(self.h, c.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerPascalsetPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerPascal_virtualbase_setPaper(self.h, c.h, style)
-
-type QsciLexerPascalsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalsetPaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalsetPaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_setPaper(self: ptr cQsciLexerPascal, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPascal_setPaper ".} =
-  var nimfunc = cast[ptr QsciLexerPascalsetPaperProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerPascal_setPaper(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setPaper(self, slotval1, slotval2)
 
+proc QsciLexerPascalreadProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerPascal_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerPascalreadProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerPascal_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
-
-type QsciLexerPascalreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onreadProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalreadPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalreadPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_readProperties(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_readProperties(self: ptr cQsciLexerPascal, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerPascal_readProperties ".} =
-  var nimfunc = cast[ptr QsciLexerPascalreadPropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerPascal_readProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].readProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerPascalwriteProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerPascal_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerPascalwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onwriteProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalwritePropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalwritePropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_writeProperties(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascalwriteProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerPascal_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc miqt_exec_callback_QsciLexerPascal_writeProperties(self: ptr cQsciLexerPascal, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerPascal_writeProperties ".} =
-  var nimfunc = cast[ptr QsciLexerPascalwritePropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerPascal_writeProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].writeProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerPascalevent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerPascal_virtualbase_event(self.h, event.h)
 
-type QsciLexerPascaleventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaleventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaleventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascalevent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerPascal_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPascal_event(self: ptr cQsciLexerPascal, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerPascal_event ".} =
-  var nimfunc = cast[ptr QsciLexerPascaleventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciLexerPascal_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QsciLexerPascaleventFilter*(self: gen_qscilexerpascal_types.QsciLexerPascal, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerPascal_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciLexerPascaleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaleventFilterProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaleventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascaleventFilter*(self: gen_qscilexerpascal_types.QsciLexerPascal, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerPascal_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPascal_eventFilter(self: ptr cQsciLexerPascal, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerPascal_eventFilter ".} =
-  var nimfunc = cast[ptr QsciLexerPascaleventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQsciLexerPascal_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerPascaltimerEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QTimerEvent): void =
-  fQsciLexerPascal_virtualbase_timerEvent(self.h, event.h)
 
-type QsciLexerPascaltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaltimerEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaltimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascaltimerEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQsciLexerPascal_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPascal_timerEvent(self: ptr cQsciLexerPascal, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPascal_timerEvent ".} =
-  var nimfunc = cast[ptr QsciLexerPascaltimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQsciLexerPascal_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QsciLexerPascalchildEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQsciLexerPascal_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerPascalchildEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QChildEvent): void =
-  fQsciLexerPascal_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerPascal_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QsciLexerPascalchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalchildEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascalcustomEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciLexerPascal_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPascal_childEvent(self: ptr cQsciLexerPascal, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPascal_childEvent ".} =
-  var nimfunc = cast[ptr QsciLexerPascalchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQsciLexerPascal_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QsciLexerPascalconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerPascal_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerPascalcustomEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QEvent): void =
-  fQsciLexerPascal_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerPascal_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QsciLexerPascalcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerPascaldisconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerPascal_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QsciLexerPascal_customEvent(self: ptr cQsciLexerPascal, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPascal_customEvent ".} =
-  var nimfunc = cast[ptr QsciLexerPascalcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciLexerPascal_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPascalVTable](vtbl)
+  let self = QsciLexerPascal(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qscilexerpascal_types.QsciLexerPascal,
+    vtbl: ref QsciLexerPascalVTable = nil): gen_qscilexerpascal_types.QsciLexerPascal =
+  let vtbl = if vtbl == nil: new QsciLexerPascalVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerPascalVTable, _: ptr cQsciLexerPascal) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerPascalVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerPascal_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerPascal_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerPascal_metacall
+  if not isNil(vtbl.setFoldComments):
+    vtbl[].vtbl.setFoldComments = miqt_exec_callback_cQsciLexerPascal_setFoldComments
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerPascal_setFoldCompact
+  if not isNil(vtbl.setFoldPreprocessor):
+    vtbl[].vtbl.setFoldPreprocessor = miqt_exec_callback_cQsciLexerPascal_setFoldPreprocessor
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerPascal_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerPascal_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerPascal_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerPascal_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerPascal_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerPascal_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerPascal_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerPascal_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerPascal_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerPascal_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerPascal_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerPascal_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerPascal_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerPascal_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerPascal_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerPascal_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerPascal_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerPascal_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerPascal_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerPascal_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerPascal_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerPascal_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerPascal_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerPascal_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerPascal_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerPascal_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerPascal_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerPascal_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerPascal_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerPascal_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerPascal_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerPascal_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerPascal_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerPascal_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerPascal_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerPascal_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerPascal_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerPascal_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerPascal_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerPascal_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerPascal_disconnectNotify
+  gen_qscilexerpascal_types.QsciLexerPascal(h: fcQsciLexerPascal_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QsciLexerPascalconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerPascal_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qscilexerpascal_types.QsciLexerPascal,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QsciLexerPascalVTable = nil): gen_qscilexerpascal_types.QsciLexerPascal =
+  let vtbl = if vtbl == nil: new QsciLexerPascalVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerPascalVTable, _: ptr cQsciLexerPascal) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerPascalVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerPascal_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerPascal_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerPascal_metacall
+  if not isNil(vtbl.setFoldComments):
+    vtbl[].vtbl.setFoldComments = miqt_exec_callback_cQsciLexerPascal_setFoldComments
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerPascal_setFoldCompact
+  if not isNil(vtbl.setFoldPreprocessor):
+    vtbl[].vtbl.setFoldPreprocessor = miqt_exec_callback_cQsciLexerPascal_setFoldPreprocessor
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerPascal_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerPascal_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerPascal_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerPascal_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerPascal_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerPascal_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerPascal_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerPascal_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerPascal_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerPascal_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerPascal_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerPascal_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerPascal_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerPascal_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerPascal_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerPascal_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerPascal_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerPascal_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerPascal_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerPascal_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerPascal_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerPascal_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerPascal_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerPascal_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerPascal_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerPascal_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerPascal_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerPascal_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerPascal_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerPascal_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerPascal_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerPascal_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerPascal_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerPascal_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerPascal_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerPascal_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerPascal_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerPascal_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerPascal_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerPascal_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerPascal_disconnectNotify
+  gen_qscilexerpascal_types.QsciLexerPascal(h: fcQsciLexerPascal_new2(addr(vtbl[]), parent.h))
 
-type QsciLexerPascalconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascalconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascalconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_connectNotify(self: ptr cQsciLexerPascal, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPascal_connectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerPascalconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QsciLexerPascaldisconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerPascal_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QsciLexerPascaldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPascaldisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPascal_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPascal_disconnectNotify(self: ptr cQsciLexerPascal, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPascal_disconnectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerPascaldisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qscilexerpascal_types.QsciLexerPascal): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerPascal_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscilexerpascal_types.QsciLexerPascal): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerPascal_staticMetaObject())
 proc delete*(self: gen_qscilexerpascal_types.QsciLexerPascal) =
   fcQsciLexerPascal_delete(self.h)

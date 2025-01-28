@@ -33,29 +33,26 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5PrintSupport")
 {.compile("gen_qscidocument.cpp", cflags).}
 
-
 import gen_qscidocument_types
 export gen_qscidocument_types
 
 
 type cQsciDocument*{.exportc: "QsciDocument", incompleteStruct.} = object
 
+proc fcQsciDocument_operatorAssign(self: pointer, param1: pointer): void {.importc: "QsciDocument_operatorAssign".}
 proc fcQsciDocument_new(): ptr cQsciDocument {.importc: "QsciDocument_new".}
 proc fcQsciDocument_new2(param1: pointer): ptr cQsciDocument {.importc: "QsciDocument_new2".}
-proc fcQsciDocument_operatorAssign(self: pointer, param1: pointer): void {.importc: "QsciDocument_operatorAssign".}
 proc fcQsciDocument_delete(self: pointer) {.importc: "QsciDocument_delete".}
-
-
-func init*(T: type gen_qscidocument_types.QsciDocument, h: ptr cQsciDocument): gen_qscidocument_types.QsciDocument =
-  T(h: h)
-proc create*(T: type gen_qscidocument_types.QsciDocument, ): gen_qscidocument_types.QsciDocument =
-  gen_qscidocument_types.QsciDocument.init(fcQsciDocument_new())
-
-proc create*(T: type gen_qscidocument_types.QsciDocument, param1: gen_qscidocument_types.QsciDocument): gen_qscidocument_types.QsciDocument =
-  gen_qscidocument_types.QsciDocument.init(fcQsciDocument_new2(param1.h))
 
 proc operatorAssign*(self: gen_qscidocument_types.QsciDocument, param1: gen_qscidocument_types.QsciDocument): void =
   fcQsciDocument_operatorAssign(self.h, param1.h)
+
+proc create*(T: type gen_qscidocument_types.QsciDocument): gen_qscidocument_types.QsciDocument =
+  gen_qscidocument_types.QsciDocument(h: fcQsciDocument_new())
+
+proc create*(T: type gen_qscidocument_types.QsciDocument,
+    param1: gen_qscidocument_types.QsciDocument): gen_qscidocument_types.QsciDocument =
+  gen_qscidocument_types.QsciDocument(h: fcQsciDocument_new2(param1.h))
 
 proc delete*(self: gen_qscidocument_types.QsciDocument) =
   fcQsciDocument_delete(self.h)

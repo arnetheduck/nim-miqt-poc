@@ -33,20 +33,19 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qvideoencodersettingscontrol.cpp", cflags).}
 
-
 import gen_qvideoencodersettingscontrol_types
 export gen_qvideoencodersettingscontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qmediaencodersettings,
-  gen_qobjectdefs,
-  gen_qsize
+  gen_qmediaencodersettings_types,
+  gen_qobjectdefs_types,
+  gen_qsize_types
 export
   gen_qmediacontrol,
-  gen_qmediaencodersettings,
-  gen_qobjectdefs,
-  gen_qsize
+  gen_qmediaencodersettings_types,
+  gen_qobjectdefs_types,
+  gen_qsize_types
 
 type cQVideoEncoderSettingsControl*{.exportc: "QVideoEncoderSettingsControl", incompleteStruct.} = object
 
@@ -68,11 +67,8 @@ proc fcQVideoEncoderSettingsControl_trUtf83(s: cstring, c: cstring, n: cint): st
 proc fcQVideoEncoderSettingsControl_staticMetaObject(): pointer {.importc: "QVideoEncoderSettingsControl_staticMetaObject".}
 proc fcQVideoEncoderSettingsControl_delete(self: pointer) {.importc: "QVideoEncoderSettingsControl_delete".}
 
-
-func init*(T: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, h: ptr cQVideoEncoderSettingsControl): gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl =
-  T(h: h)
-proc metaObject*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQVideoEncoderSettingsControl_metaObject(self.h))
+proc metaObject*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQVideoEncoderSettingsControl_metaObject(self.h))
 
 proc metacast*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, param1: cstring): pointer =
   fcQVideoEncoderSettingsControl_metacast(self.h, param1)
@@ -92,15 +88,15 @@ proc trUtf8*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSetting
   c_free(v_ms.data)
   vx_ret
 
-proc supportedResolutions*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, settings: gen_qmediaencodersettings.QVideoEncoderSettings, continuous: ptr bool): seq[gen_qsize.QSize] =
+proc supportedResolutions*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, settings: gen_qmediaencodersettings_types.QVideoEncoderSettings, continuous: ptr bool): seq[gen_qsize_types.QSize] =
   var v_ma = fcQVideoEncoderSettingsControl_supportedResolutions(self.h, settings.h, continuous)
-  var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
+  var vx_ret = newSeq[gen_qsize_types.QSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
+    vx_ret[i] = gen_qsize_types.QSize(h: v_outCast[i])
   vx_ret
 
-proc supportedFrameRates*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, settings: gen_qmediaencodersettings.QVideoEncoderSettings, continuous: ptr bool): seq[float64] =
+proc supportedFrameRates*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, settings: gen_qmediaencodersettings_types.QVideoEncoderSettings, continuous: ptr bool): seq[float64] =
   var v_ma = fcQVideoEncoderSettingsControl_supportedFrameRates(self.h, settings.h, continuous)
   var vx_ret = newSeq[float64](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[float64]](v_ma.data)
@@ -125,10 +121,10 @@ proc videoCodecDescription*(self: gen_qvideoencodersettingscontrol_types.QVideoE
   c_free(v_ms.data)
   vx_ret
 
-proc videoSettings*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, ): gen_qmediaencodersettings.QVideoEncoderSettings =
-  gen_qmediaencodersettings.QVideoEncoderSettings(h: fcQVideoEncoderSettingsControl_videoSettings(self.h))
+proc videoSettings*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, ): gen_qmediaencodersettings_types.QVideoEncoderSettings =
+  gen_qmediaencodersettings_types.QVideoEncoderSettings(h: fcQVideoEncoderSettingsControl_videoSettings(self.h))
 
-proc setVideoSettings*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, settings: gen_qmediaencodersettings.QVideoEncoderSettings): void =
+proc setVideoSettings*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, settings: gen_qmediaencodersettings_types.QVideoEncoderSettings): void =
   fcQVideoEncoderSettingsControl_setVideoSettings(self.h, settings.h)
 
 proc tr*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, s: cstring, c: cstring): string =
@@ -155,7 +151,7 @@ proc trUtf8*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSetting
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQVideoEncoderSettingsControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQVideoEncoderSettingsControl_staticMetaObject())
 proc delete*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl) =
   fcQVideoEncoderSettingsControl_delete(self.h)

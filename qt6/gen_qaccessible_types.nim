@@ -18,12 +18,11 @@ type QAccessibleHyperlinkInterface* {.inheritable, pure.} = object
   h*: pointer
 type QAccessibleEvent* {.inheritable, pure.} = object
   h*: pointer
-type QAccessibleStateChangeEvent*  = object of QAccessibleEvent
-type QAccessibleTextCursorEvent*  = object of QAccessibleEvent
-type QAccessibleTextSelectionEvent*  = object of QAccessibleTextCursorEvent
-type QAccessibleTextInsertEvent*  = object of QAccessibleTextCursorEvent
-type QAccessibleTextRemoveEvent*  = object of QAccessibleTextCursorEvent
-type QAccessibleTextUpdateEvent*  = object of QAccessibleTextCursorEvent
-type QAccessibleValueChangeEvent*  = object of QAccessibleEvent
-type QAccessibleTableModelChangeEvent*  = object of QAccessibleEvent
-
+type QAccessibleStateChangeEvent* = object of QAccessibleEvent
+type QAccessibleTextCursorEvent* = object of QAccessibleEvent
+type QAccessibleTextSelectionEvent* = object of QAccessibleTextCursorEvent
+type QAccessibleTextInsertEvent* = object of QAccessibleTextCursorEvent
+type QAccessibleTextRemoveEvent* = object of QAccessibleTextCursorEvent
+type QAccessibleTextUpdateEvent* = object of QAccessibleTextCursorEvent
+type QAccessibleValueChangeEvent* = object of QAccessibleEvent
+type QAccessibleTableModelChangeEvent* = object of QAccessibleEvent

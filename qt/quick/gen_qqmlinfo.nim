@@ -33,22 +33,20 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qqmlinfo.cpp", cflags).}
 
-
 import gen_qqmlinfo_types
 export gen_qqmlinfo_types
 
 import
-  gen_qchar,
+  gen_qchar_types,
   gen_qdebug,
-  gen_qurl
+  gen_qurl_types
 export
-  gen_qchar,
+  gen_qchar_types,
   gen_qdebug,
-  gen_qurl
+  gen_qurl_types
 
 type cQQmlInfo*{.exportc: "QQmlInfo", incompleteStruct.} = object
 
-proc fcQQmlInfo_new(param1: pointer): ptr cQQmlInfo {.importc: "QQmlInfo_new".}
 proc fcQQmlInfo_operatorShiftLeft(self: pointer, t: pointer): pointer {.importc: "QQmlInfo_operatorShiftLeft".}
 proc fcQQmlInfo_operatorShiftLeftWithBool(self: pointer, t: bool): pointer {.importc: "QQmlInfo_operatorShiftLeftWithBool".}
 proc fcQQmlInfo_operatorShiftLeftWithChar(self: pointer, t: cchar): pointer {.importc: "QQmlInfo_operatorShiftLeftWithChar".}
@@ -67,15 +65,10 @@ proc fcQQmlInfo_operatorShiftLeftWithQString(self: pointer, t: struct_miqt_strin
 proc fcQQmlInfo_operatorShiftLeftWithQByteArray(self: pointer, t: struct_miqt_string): pointer {.importc: "QQmlInfo_operatorShiftLeftWithQByteArray".}
 proc fcQQmlInfo_operatorShiftLeftWithVoid(self: pointer, t: pointer): pointer {.importc: "QQmlInfo_operatorShiftLeftWithVoid".}
 proc fcQQmlInfo_operatorShiftLeftWithQUrl(self: pointer, t: pointer): pointer {.importc: "QQmlInfo_operatorShiftLeftWithQUrl".}
+proc fcQQmlInfo_new(param1: pointer): ptr cQQmlInfo {.importc: "QQmlInfo_new".}
 proc fcQQmlInfo_delete(self: pointer) {.importc: "QQmlInfo_delete".}
 
-
-func init*(T: type gen_qqmlinfo_types.QQmlInfo, h: ptr cQQmlInfo): gen_qqmlinfo_types.QQmlInfo =
-  T(h: h)
-proc create*(T: type gen_qqmlinfo_types.QQmlInfo, param1: gen_qqmlinfo_types.QQmlInfo): gen_qqmlinfo_types.QQmlInfo =
-  gen_qqmlinfo_types.QQmlInfo.init(fcQQmlInfo_new(param1.h))
-
-proc operatorShiftLeft*(self: gen_qqmlinfo_types.QQmlInfo, t: gen_qchar.QChar): gen_qqmlinfo_types.QQmlInfo =
+proc operatorShiftLeft*(self: gen_qqmlinfo_types.QQmlInfo, t: gen_qchar_types.QChar): gen_qqmlinfo_types.QQmlInfo =
   gen_qqmlinfo_types.QQmlInfo(h: fcQQmlInfo_operatorShiftLeft(self.h, t.h))
 
 proc operatorShiftLeft*(self: gen_qqmlinfo_types.QQmlInfo, t: bool): gen_qqmlinfo_types.QQmlInfo =
@@ -126,8 +119,12 @@ proc operatorShiftLeft*(self: gen_qqmlinfo_types.QQmlInfo, t: seq[byte]): gen_qq
 proc operatorShiftLeft*(self: gen_qqmlinfo_types.QQmlInfo, t: pointer): gen_qqmlinfo_types.QQmlInfo =
   gen_qqmlinfo_types.QQmlInfo(h: fcQQmlInfo_operatorShiftLeftWithVoid(self.h, t))
 
-proc operatorShiftLeft*(self: gen_qqmlinfo_types.QQmlInfo, t: gen_qurl.QUrl): gen_qqmlinfo_types.QQmlInfo =
+proc operatorShiftLeft*(self: gen_qqmlinfo_types.QQmlInfo, t: gen_qurl_types.QUrl): gen_qqmlinfo_types.QQmlInfo =
   gen_qqmlinfo_types.QQmlInfo(h: fcQQmlInfo_operatorShiftLeftWithQUrl(self.h, t.h))
+
+proc create*(T: type gen_qqmlinfo_types.QQmlInfo,
+    param1: gen_qqmlinfo_types.QQmlInfo): gen_qqmlinfo_types.QQmlInfo =
+  gen_qqmlinfo_types.QQmlInfo(h: fcQQmlInfo_new(param1.h))
 
 proc delete*(self: gen_qqmlinfo_types.QQmlInfo) =
   fcQQmlInfo_delete(self.h)

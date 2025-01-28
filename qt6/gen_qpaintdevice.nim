@@ -48,14 +48,13 @@ template PdmPhysicalDpiY*(_: type QPaintDevicePaintDeviceMetricEnum): untyped = 
 template PdmDevicePixelRatio*(_: type QPaintDevicePaintDeviceMetricEnum): untyped = 11
 template PdmDevicePixelRatioScaled*(_: type QPaintDevicePaintDeviceMetricEnum): untyped = 12
 
-
 import gen_qpaintdevice_types
 export gen_qpaintdevice_types
 
 import
-  gen_qpaintengine
+  gen_qpaintengine_types
 export
-  gen_qpaintengine
+  gen_qpaintengine_types
 
 type cQPaintDevice*{.exportc: "QPaintDevice", incompleteStruct.} = object
 
@@ -77,17 +76,14 @@ proc fcQPaintDevice_depth(self: pointer, ): cint {.importc: "QPaintDevice_depth"
 proc fcQPaintDevice_devicePixelRatioFScale(): float64 {.importc: "QPaintDevice_devicePixelRatioFScale".}
 proc fcQPaintDevice_delete(self: pointer) {.importc: "QPaintDevice_delete".}
 
-
-func init*(T: type gen_qpaintdevice_types.QPaintDevice, h: ptr cQPaintDevice): gen_qpaintdevice_types.QPaintDevice =
-  T(h: h)
 proc devType*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
   fcQPaintDevice_devType(self.h)
 
 proc paintingActive*(self: gen_qpaintdevice_types.QPaintDevice, ): bool =
   fcQPaintDevice_paintingActive(self.h)
 
-proc paintEngine*(self: gen_qpaintdevice_types.QPaintDevice, ): gen_qpaintengine.QPaintEngine =
-  gen_qpaintengine.QPaintEngine(h: fcQPaintDevice_paintEngine(self.h))
+proc paintEngine*(self: gen_qpaintdevice_types.QPaintDevice, ): gen_qpaintengine_types.QPaintEngine =
+  gen_qpaintengine_types.QPaintEngine(h: fcQPaintDevice_paintEngine(self.h))
 
 proc width*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
   fcQPaintDevice_width(self.h)

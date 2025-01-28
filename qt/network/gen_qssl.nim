@@ -89,7 +89,6 @@ template SslOptionDisableSessionSharing*(_: type QSslSslOptionEnum): untyped = 3
 template SslOptionDisableSessionPersistence*(_: type QSslSslOptionEnum): untyped = 64
 template SslOptionDisableServerCipherPreference*(_: type QSslSslOptionEnum): untyped = 128
 
-
 import gen_qssl_types
 export gen_qssl_types
 

@@ -74,23 +74,18 @@ template OcspResponseExpired*(_: type QSslErrorSslErrorEnum): untyped = 35
 template OcspStatusUnknown*(_: type QSslErrorSslErrorEnum): untyped = 36
 template UnspecifiedError*(_: type QSslErrorSslErrorEnum): untyped = -1
 
-
 import gen_qsslerror_types
 export gen_qsslerror_types
 
 import
-  gen_qobjectdefs,
-  gen_qsslcertificate
+  gen_qobjectdefs_types,
+  gen_qsslcertificate_types
 export
-  gen_qobjectdefs,
-  gen_qsslcertificate
+  gen_qobjectdefs_types,
+  gen_qsslcertificate_types
 
 type cQSslError*{.exportc: "QSslError", incompleteStruct.} = object
 
-proc fcQSslError_new(): ptr cQSslError {.importc: "QSslError_new".}
-proc fcQSslError_new2(error: cint): ptr cQSslError {.importc: "QSslError_new2".}
-proc fcQSslError_new3(error: cint, certificate: pointer): ptr cQSslError {.importc: "QSslError_new3".}
-proc fcQSslError_new4(other: pointer): ptr cQSslError {.importc: "QSslError_new4".}
 proc fcQSslError_swap(self: pointer, other: pointer): void {.importc: "QSslError_swap".}
 proc fcQSslError_operatorAssign(self: pointer, other: pointer): void {.importc: "QSslError_operatorAssign".}
 proc fcQSslError_operatorEqual(self: pointer, other: pointer): bool {.importc: "QSslError_operatorEqual".}
@@ -98,23 +93,12 @@ proc fcQSslError_operatorNotEqual(self: pointer, other: pointer): bool {.importc
 proc fcQSslError_error(self: pointer, ): cint {.importc: "QSslError_error".}
 proc fcQSslError_errorString(self: pointer, ): struct_miqt_string {.importc: "QSslError_errorString".}
 proc fcQSslError_certificate(self: pointer, ): pointer {.importc: "QSslError_certificate".}
+proc fcQSslError_new(): ptr cQSslError {.importc: "QSslError_new".}
+proc fcQSslError_new2(error: cint): ptr cQSslError {.importc: "QSslError_new2".}
+proc fcQSslError_new3(error: cint, certificate: pointer): ptr cQSslError {.importc: "QSslError_new3".}
+proc fcQSslError_new4(other: pointer): ptr cQSslError {.importc: "QSslError_new4".}
 proc fcQSslError_staticMetaObject(): pointer {.importc: "QSslError_staticMetaObject".}
 proc fcQSslError_delete(self: pointer) {.importc: "QSslError_delete".}
-
-
-func init*(T: type gen_qsslerror_types.QSslError, h: ptr cQSslError): gen_qsslerror_types.QSslError =
-  T(h: h)
-proc create*(T: type gen_qsslerror_types.QSslError, ): gen_qsslerror_types.QSslError =
-  gen_qsslerror_types.QSslError.init(fcQSslError_new())
-
-proc create*(T: type gen_qsslerror_types.QSslError, error: cint): gen_qsslerror_types.QSslError =
-  gen_qsslerror_types.QSslError.init(fcQSslError_new2(cint(error)))
-
-proc create*(T: type gen_qsslerror_types.QSslError, error: cint, certificate: gen_qsslcertificate.QSslCertificate): gen_qsslerror_types.QSslError =
-  gen_qsslerror_types.QSslError.init(fcQSslError_new3(cint(error), certificate.h))
-
-proc create*(T: type gen_qsslerror_types.QSslError, other: gen_qsslerror_types.QSslError): gen_qsslerror_types.QSslError =
-  gen_qsslerror_types.QSslError.init(fcQSslError_new4(other.h))
 
 proc swap*(self: gen_qsslerror_types.QSslError, other: gen_qsslerror_types.QSslError): void =
   fcQSslError_swap(self.h, other.h)
@@ -137,10 +121,25 @@ proc errorString*(self: gen_qsslerror_types.QSslError, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc certificate*(self: gen_qsslerror_types.QSslError, ): gen_qsslcertificate.QSslCertificate =
-  gen_qsslcertificate.QSslCertificate(h: fcQSslError_certificate(self.h))
+proc certificate*(self: gen_qsslerror_types.QSslError, ): gen_qsslcertificate_types.QSslCertificate =
+  gen_qsslcertificate_types.QSslCertificate(h: fcQSslError_certificate(self.h))
 
-proc staticMetaObject*(_: type gen_qsslerror_types.QSslError): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSslError_staticMetaObject())
+proc create*(T: type gen_qsslerror_types.QSslError): gen_qsslerror_types.QSslError =
+  gen_qsslerror_types.QSslError(h: fcQSslError_new())
+
+proc create*(T: type gen_qsslerror_types.QSslError,
+    error: cint): gen_qsslerror_types.QSslError =
+  gen_qsslerror_types.QSslError(h: fcQSslError_new2(cint(error)))
+
+proc create*(T: type gen_qsslerror_types.QSslError,
+    error: cint, certificate: gen_qsslcertificate_types.QSslCertificate): gen_qsslerror_types.QSslError =
+  gen_qsslerror_types.QSslError(h: fcQSslError_new3(cint(error), certificate.h))
+
+proc create*(T: type gen_qsslerror_types.QSslError,
+    other: gen_qsslerror_types.QSslError): gen_qsslerror_types.QSslError =
+  gen_qsslerror_types.QSslError(h: fcQSslError_new4(other.h))
+
+proc staticMetaObject*(_: type gen_qsslerror_types.QSslError): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSslError_staticMetaObject())
 proc delete*(self: gen_qsslerror_types.QSslError) =
   fcQSslError_delete(self.h)

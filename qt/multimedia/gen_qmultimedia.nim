@@ -62,7 +62,6 @@ template ServiceMissing*(_: type QMultimediaAvailabilityStatusEnum): untyped = 1
 template Busy*(_: type QMultimediaAvailabilityStatusEnum): untyped = 2
 template ResourceError*(_: type QMultimediaAvailabilityStatusEnum): untyped = 3
 
-
 import gen_qmultimedia_types
 export gen_qmultimedia_types
 

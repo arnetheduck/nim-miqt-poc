@@ -71,21 +71,16 @@ type QUrlUserInputResolutionOptionEnum* = distinct cint
 template DefaultResolution*(_: type QUrlUserInputResolutionOptionEnum): untyped = 0
 template AssumeLocalFile*(_: type QUrlUserInputResolutionOptionEnum): untyped = 1
 
-
 import gen_qurl_types
 export gen_qurl_types
 
 import
-  gen_qurlquery
+  gen_qurlquery_types
 export
-  gen_qurlquery
+  gen_qurlquery_types
 
 type cQUrl*{.exportc: "QUrl", incompleteStruct.} = object
 
-proc fcQUrl_new(): ptr cQUrl {.importc: "QUrl_new".}
-proc fcQUrl_new2(copy: pointer): ptr cQUrl {.importc: "QUrl_new2".}
-proc fcQUrl_new3(url: struct_miqt_string): ptr cQUrl {.importc: "QUrl_new3".}
-proc fcQUrl_new4(url: struct_miqt_string, mode: cint): ptr cQUrl {.importc: "QUrl_new4".}
 proc fcQUrl_operatorAssign(self: pointer, copy: pointer): void {.importc: "QUrl_operatorAssign".}
 proc fcQUrl_operatorAssignWithUrl(self: pointer, url: struct_miqt_string): void {.importc: "QUrl_operatorAssignWithUrl".}
 proc fcQUrl_swap(self: pointer, other: pointer): void {.importc: "QUrl_swap".}
@@ -170,22 +165,11 @@ proc fcQUrl_setFragment2(self: pointer, fragment: struct_miqt_string, mode: cint
 proc fcQUrl_toPercentEncoding2(param1: struct_miqt_string, exclude: struct_miqt_string): struct_miqt_string {.importc: "QUrl_toPercentEncoding2".}
 proc fcQUrl_toPercentEncoding3(param1: struct_miqt_string, exclude: struct_miqt_string, includeVal: struct_miqt_string): struct_miqt_string {.importc: "QUrl_toPercentEncoding3".}
 proc fcQUrl_fromStringList2(uris: struct_miqt_array, mode: cint): struct_miqt_array {.importc: "QUrl_fromStringList2".}
+proc fcQUrl_new(): ptr cQUrl {.importc: "QUrl_new".}
+proc fcQUrl_new2(copy: pointer): ptr cQUrl {.importc: "QUrl_new2".}
+proc fcQUrl_new3(url: struct_miqt_string): ptr cQUrl {.importc: "QUrl_new3".}
+proc fcQUrl_new4(url: struct_miqt_string, mode: cint): ptr cQUrl {.importc: "QUrl_new4".}
 proc fcQUrl_delete(self: pointer) {.importc: "QUrl_delete".}
-
-
-func init*(T: type gen_qurl_types.QUrl, h: ptr cQUrl): gen_qurl_types.QUrl =
-  T(h: h)
-proc create*(T: type gen_qurl_types.QUrl, ): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new())
-
-proc create*(T: type gen_qurl_types.QUrl, copy: gen_qurl_types.QUrl): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new2(copy.h))
-
-proc create*(T: type gen_qurl_types.QUrl, url: string): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new3(struct_miqt_string(data: url, len: csize_t(len(url)))))
-
-proc create*(T: type gen_qurl_types.QUrl, url: string, mode: cint): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new4(struct_miqt_string(data: url, len: csize_t(len(url))), cint(mode)))
 
 proc operatorAssign*(self: gen_qurl_types.QUrl, copy: gen_qurl_types.QUrl): void =
   fcQUrl_operatorAssign(self.h, copy.h)
@@ -334,7 +318,7 @@ proc hasQuery*(self: gen_qurl_types.QUrl, ): bool =
 proc setQuery*(self: gen_qurl_types.QUrl, query: string): void =
   fcQUrl_setQuery(self.h, struct_miqt_string(data: query, len: csize_t(len(query))))
 
-proc setQuery*(self: gen_qurl_types.QUrl, query: gen_qurlquery.QUrlQuery): void =
+proc setQuery*(self: gen_qurl_types.QUrl, query: gen_qurlquery_types.QUrlQuery): void =
   fcQUrl_setQueryWithQuery(self.h, query.h)
 
 proc query*(self: gen_qurl_types.QUrl, ): string =
@@ -579,6 +563,21 @@ proc fromStringList*(_: type gen_qurl_types.QUrl, uris: seq[string], mode: cint)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qurl_types.QUrl(h: v_outCast[i])
   vx_ret
+
+proc create*(T: type gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new())
+
+proc create*(T: type gen_qurl_types.QUrl,
+    copy: gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new2(copy.h))
+
+proc create*(T: type gen_qurl_types.QUrl,
+    url: string): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new3(struct_miqt_string(data: url, len: csize_t(len(url)))))
+
+proc create*(T: type gen_qurl_types.QUrl,
+    url: string, mode: cint): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new4(struct_miqt_string(data: url, len: csize_t(len(url))), cint(mode)))
 
 proc delete*(self: gen_qurl_types.QUrl) =
   fcQUrl_delete(self.h)

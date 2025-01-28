@@ -14,42 +14,27 @@
 extern "C" {
 #endif
 
-QMetaObject* miqt_exec_callback_QsciMacro_metaObject(const QsciMacro*, intptr_t);
-void* miqt_exec_callback_QsciMacro_metacast(QsciMacro*, intptr_t, const char*);
-int miqt_exec_callback_QsciMacro_metacall(QsciMacro*, intptr_t, int, int, void**);
-void miqt_exec_callback_QsciMacro_play(QsciMacro*, intptr_t);
-void miqt_exec_callback_QsciMacro_startRecording(QsciMacro*, intptr_t);
-void miqt_exec_callback_QsciMacro_endRecording(QsciMacro*, intptr_t);
-bool miqt_exec_callback_QsciMacro_event(QsciMacro*, intptr_t, QEvent*);
-bool miqt_exec_callback_QsciMacro_eventFilter(QsciMacro*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QsciMacro_timerEvent(QsciMacro*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QsciMacro_childEvent(QsciMacro*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QsciMacro_customEvent(QsciMacro*, intptr_t, QEvent*);
-void miqt_exec_callback_QsciMacro_connectNotify(QsciMacro*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QsciMacro_disconnectNotify(QsciMacro*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQsciMacro final : public QsciMacro {
+	struct QsciMacro_VTable* vtbl;
 public:
 
-	MiqtVirtualQsciMacro(QsciScintilla* parent): QsciMacro(parent) {};
-	MiqtVirtualQsciMacro(const QString& asc, QsciScintilla* parent): QsciMacro(asc, parent) {};
+	MiqtVirtualQsciMacro(struct QsciMacro_VTable* vtbl, QsciScintilla* parent): QsciMacro(parent), vtbl(vtbl) {};
+	MiqtVirtualQsciMacro(struct QsciMacro_VTable* vtbl, const QString& asc, QsciScintilla* parent): QsciMacro(asc, parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQsciMacro() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQsciMacro() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QsciMacro::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QsciMacro_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -61,18 +46,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QsciMacro::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QsciMacro_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -84,21 +66,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QsciMacro::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QsciMacro_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -110,20 +89,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__play = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void play() override {
-		if (handle__play == 0) {
+		if (vtbl->play == 0) {
 			QsciMacro::play();
 			return;
 		}
-		
 
-		miqt_exec_callback_QsciMacro_play(this, handle__play);
 
-		
+		vtbl->play(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -133,20 +108,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__startRecording = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void startRecording() override {
-		if (handle__startRecording == 0) {
+		if (vtbl->startRecording == 0) {
 			QsciMacro::startRecording();
 			return;
 		}
-		
 
-		miqt_exec_callback_QsciMacro_startRecording(this, handle__startRecording);
 
-		
+		vtbl->startRecording(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -156,20 +127,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__endRecording = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void endRecording() override {
-		if (handle__endRecording == 0) {
+		if (vtbl->endRecording == 0) {
 			QsciMacro::endRecording();
 			return;
 		}
-		
 
-		miqt_exec_callback_QsciMacro_endRecording(this, handle__endRecording);
 
-		
+		vtbl->endRecording(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -179,18 +146,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QsciMacro::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QsciMacro_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -202,19 +166,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QsciMacro::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QsciMacro_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -226,21 +187,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QsciMacro::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QsciMacro_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -250,21 +207,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QsciMacro::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QsciMacro_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -274,21 +227,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QsciMacro::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QsciMacro_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -298,23 +247,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QsciMacro::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QsciMacro_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -324,23 +269,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QsciMacro::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QsciMacro_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -352,13 +293,13 @@ public:
 
 };
 
-QsciMacro* QsciMacro_new(QsciScintilla* parent) {
-	return new MiqtVirtualQsciMacro(parent);
+QsciMacro* QsciMacro_new(struct QsciMacro_VTable* vtbl, QsciScintilla* parent) {
+	return new MiqtVirtualQsciMacro(vtbl, parent);
 }
 
-QsciMacro* QsciMacro_new2(struct miqt_string asc, QsciScintilla* parent) {
+QsciMacro* QsciMacro_new2(struct QsciMacro_VTable* vtbl, struct miqt_string asc, QsciScintilla* parent) {
 	QString asc_QString = QString::fromUtf8(asc.data, asc.len);
-	return new MiqtVirtualQsciMacro(asc_QString, parent);
+	return new MiqtVirtualQsciMacro(vtbl, asc_QString, parent);
 }
 
 void QsciMacro_virtbase(QsciMacro* src, QObject** outptr_QObject) {
@@ -442,182 +383,52 @@ struct miqt_string QsciMacro_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QsciMacro_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QsciMacro_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQsciMacro*)(self) )->virtualbase_metaObject();
-}
-
-bool QsciMacro_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QsciMacro_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQsciMacro*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QsciMacro_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QsciMacro_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQsciMacro*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QsciMacro_override_virtual_play(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__play = slot;
-	return true;
 }
 
 void QsciMacro_virtualbase_play(void* self) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_play();
 }
 
-bool QsciMacro_override_virtual_startRecording(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__startRecording = slot;
-	return true;
-}
-
 void QsciMacro_virtualbase_startRecording(void* self) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_startRecording();
-}
-
-bool QsciMacro_override_virtual_endRecording(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__endRecording = slot;
-	return true;
 }
 
 void QsciMacro_virtualbase_endRecording(void* self) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_endRecording();
 }
 
-bool QsciMacro_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
-}
-
 bool QsciMacro_virtualbase_event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQsciMacro*)(self) )->virtualbase_event(event);
-}
-
-bool QsciMacro_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QsciMacro_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQsciMacro*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QsciMacro_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
-}
-
 void QsciMacro_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_timerEvent(event);
-}
-
-bool QsciMacro_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
 }
 
 void QsciMacro_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QsciMacro_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
-}
-
 void QsciMacro_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QsciMacro_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QsciMacro_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QsciMacro_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QsciMacro_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

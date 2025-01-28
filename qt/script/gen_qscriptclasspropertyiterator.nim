@@ -33,16 +33,15 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Script")
 {.compile("gen_qscriptclasspropertyiterator.cpp", cflags).}
 
-
 import gen_qscriptclasspropertyiterator_types
 export gen_qscriptclasspropertyiterator_types
 
 import
-  gen_qscriptstring,
-  gen_qscriptvalue
+  gen_qscriptstring_types,
+  gen_qscriptvalue_types
 export
-  gen_qscriptstring,
-  gen_qscriptvalue
+  gen_qscriptstring_types,
+  gen_qscriptvalue_types
 
 type cQScriptClassPropertyIterator*{.exportc: "QScriptClassPropertyIterator", incompleteStruct.} = object
 
@@ -58,11 +57,8 @@ proc fcQScriptClassPropertyIterator_id(self: pointer, ): cuint {.importc: "QScri
 proc fcQScriptClassPropertyIterator_flags(self: pointer, ): cint {.importc: "QScriptClassPropertyIterator_flags".}
 proc fcQScriptClassPropertyIterator_delete(self: pointer) {.importc: "QScriptClassPropertyIterator_delete".}
 
-
-func init*(T: type gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, h: ptr cQScriptClassPropertyIterator): gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator =
-  T(h: h)
-proc objectX*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptClassPropertyIterator_objectX(self.h))
+proc objectX*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptClassPropertyIterator_objectX(self.h))
 
 proc hasNext*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): bool =
   fcQScriptClassPropertyIterator_hasNext(self.h)
@@ -82,8 +78,8 @@ proc toFront*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyI
 proc toBack*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): void =
   fcQScriptClassPropertyIterator_toBack(self.h)
 
-proc name*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): gen_qscriptstring.QScriptString =
-  gen_qscriptstring.QScriptString(h: fcQScriptClassPropertyIterator_name(self.h))
+proc name*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): gen_qscriptstring_types.QScriptString =
+  gen_qscriptstring_types.QScriptString(h: fcQScriptClassPropertyIterator_name(self.h))
 
 proc id*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): cuint =
   fcQScriptClassPropertyIterator_id(self.h)

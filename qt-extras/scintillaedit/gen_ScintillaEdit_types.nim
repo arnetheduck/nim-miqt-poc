@@ -56,7 +56,7 @@ type ScintillaInternalIListBoxDelegate* {.inheritable, pure.} = object
   h*: pointer
 type ScintillaInternalListOptions* {.inheritable, pure.} = object
   h*: pointer
-type ScintillaInternalListBox*  = object of ScintillaInternalWindow
+type ScintillaInternalListBox* = object of ScintillaInternalWindow
 type ScintillaInternalMenu* {.inheritable, pure.} = object
   h*: pointer
 type Sci_CharacterRange* {.inheritable, pure.} = object
@@ -83,9 +83,10 @@ type SCNotification* {.inheritable, pure.} = object
   h*: pointer
 import gen_qabstractscrollarea_types
 export gen_qabstractscrollarea_types
-type ScintillaEditBase*  = object of gen_qabstractscrollarea_types.QAbstractScrollArea
+
+type ScintillaEditBase* = object of gen_qabstractscrollarea_types.QAbstractScrollArea
 import gen_qobject_types
 export gen_qobject_types
-type ScintillaDocument*  = object of gen_qobject_types.QObject
-type ScintillaEdit*  = object of ScintillaEditBase
 
+type ScintillaDocument* = object of gen_qobject_types.QObject
+type ScintillaEdit* = object of ScintillaEditBase

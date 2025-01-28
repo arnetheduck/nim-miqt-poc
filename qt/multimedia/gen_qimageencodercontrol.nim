@@ -33,20 +33,19 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qimageencodercontrol.cpp", cflags).}
 
-
 import gen_qimageencodercontrol_types
 export gen_qimageencodercontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qmediaencodersettings,
-  gen_qobjectdefs,
-  gen_qsize
+  gen_qmediaencodersettings_types,
+  gen_qobjectdefs_types,
+  gen_qsize_types
 export
   gen_qmediacontrol,
-  gen_qmediaencodersettings,
-  gen_qobjectdefs,
-  gen_qsize
+  gen_qmediaencodersettings_types,
+  gen_qobjectdefs_types,
+  gen_qsize_types
 
 type cQImageEncoderControl*{.exportc: "QImageEncoderControl", incompleteStruct.} = object
 
@@ -67,11 +66,8 @@ proc fcQImageEncoderControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miq
 proc fcQImageEncoderControl_staticMetaObject(): pointer {.importc: "QImageEncoderControl_staticMetaObject".}
 proc fcQImageEncoderControl_delete(self: pointer) {.importc: "QImageEncoderControl_delete".}
 
-
-func init*(T: type gen_qimageencodercontrol_types.QImageEncoderControl, h: ptr cQImageEncoderControl): gen_qimageencodercontrol_types.QImageEncoderControl =
-  T(h: h)
-proc metaObject*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQImageEncoderControl_metaObject(self.h))
+proc metaObject*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQImageEncoderControl_metaObject(self.h))
 
 proc metacast*(self: gen_qimageencodercontrol_types.QImageEncoderControl, param1: cstring): pointer =
   fcQImageEncoderControl_metacast(self.h, param1)
@@ -108,18 +104,18 @@ proc imageCodecDescription*(self: gen_qimageencodercontrol_types.QImageEncoderCo
   c_free(v_ms.data)
   vx_ret
 
-proc supportedResolutions*(self: gen_qimageencodercontrol_types.QImageEncoderControl, settings: gen_qmediaencodersettings.QImageEncoderSettings, continuous: ptr bool): seq[gen_qsize.QSize] =
+proc supportedResolutions*(self: gen_qimageencodercontrol_types.QImageEncoderControl, settings: gen_qmediaencodersettings_types.QImageEncoderSettings, continuous: ptr bool): seq[gen_qsize_types.QSize] =
   var v_ma = fcQImageEncoderControl_supportedResolutions(self.h, settings.h, continuous)
-  var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
+  var vx_ret = newSeq[gen_qsize_types.QSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
+    vx_ret[i] = gen_qsize_types.QSize(h: v_outCast[i])
   vx_ret
 
-proc imageSettings*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): gen_qmediaencodersettings.QImageEncoderSettings =
-  gen_qmediaencodersettings.QImageEncoderSettings(h: fcQImageEncoderControl_imageSettings(self.h))
+proc imageSettings*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): gen_qmediaencodersettings_types.QImageEncoderSettings =
+  gen_qmediaencodersettings_types.QImageEncoderSettings(h: fcQImageEncoderControl_imageSettings(self.h))
 
-proc setImageSettings*(self: gen_qimageencodercontrol_types.QImageEncoderControl, settings: gen_qmediaencodersettings.QImageEncoderSettings): void =
+proc setImageSettings*(self: gen_qimageencodercontrol_types.QImageEncoderControl, settings: gen_qmediaencodersettings_types.QImageEncoderSettings): void =
   fcQImageEncoderControl_setImageSettings(self.h, settings.h)
 
 proc tr*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring): string =
@@ -146,7 +142,7 @@ proc trUtf8*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cst
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qimageencodercontrol_types.QImageEncoderControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQImageEncoderControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qimageencodercontrol_types.QImageEncoderControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQImageEncoderControl_staticMetaObject())
 proc delete*(self: gen_qimageencodercontrol_types.QImageEncoderControl) =
   fcQImageEncoderControl_delete(self.h)

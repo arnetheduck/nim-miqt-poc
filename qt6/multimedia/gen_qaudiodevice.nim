@@ -39,21 +39,18 @@ template Null*(_: type QAudioDeviceModeEnum): untyped = 0
 template Input*(_: type QAudioDeviceModeEnum): untyped = 1
 template Output*(_: type QAudioDeviceModeEnum): untyped = 2
 
-
 import gen_qaudiodevice_types
 export gen_qaudiodevice_types
 
 import
-  gen_qaudioformat,
-  gen_qobjectdefs
+  gen_qaudioformat_types,
+  gen_qobjectdefs_types
 export
-  gen_qaudioformat,
-  gen_qobjectdefs
+  gen_qaudioformat_types,
+  gen_qobjectdefs_types
 
 type cQAudioDevice*{.exportc: "QAudioDevice", incompleteStruct.} = object
 
-proc fcQAudioDevice_new(): ptr cQAudioDevice {.importc: "QAudioDevice_new".}
-proc fcQAudioDevice_new2(other: pointer): ptr cQAudioDevice {.importc: "QAudioDevice_new2".}
 proc fcQAudioDevice_swap(self: pointer, other: pointer): void {.importc: "QAudioDevice_swap".}
 proc fcQAudioDevice_operatorAssign(self: pointer, other: pointer): void {.importc: "QAudioDevice_operatorAssign".}
 proc fcQAudioDevice_operatorEqual(self: pointer, other: pointer): bool {.importc: "QAudioDevice_operatorEqual".}
@@ -71,17 +68,10 @@ proc fcQAudioDevice_minimumChannelCount(self: pointer, ): cint {.importc: "QAudi
 proc fcQAudioDevice_maximumChannelCount(self: pointer, ): cint {.importc: "QAudioDevice_maximumChannelCount".}
 proc fcQAudioDevice_supportedSampleFormats(self: pointer, ): struct_miqt_array {.importc: "QAudioDevice_supportedSampleFormats".}
 proc fcQAudioDevice_channelConfiguration(self: pointer, ): cint {.importc: "QAudioDevice_channelConfiguration".}
+proc fcQAudioDevice_new(): ptr cQAudioDevice {.importc: "QAudioDevice_new".}
+proc fcQAudioDevice_new2(other: pointer): ptr cQAudioDevice {.importc: "QAudioDevice_new2".}
 proc fcQAudioDevice_staticMetaObject(): pointer {.importc: "QAudioDevice_staticMetaObject".}
 proc fcQAudioDevice_delete(self: pointer) {.importc: "QAudioDevice_delete".}
-
-
-func init*(T: type gen_qaudiodevice_types.QAudioDevice, h: ptr cQAudioDevice): gen_qaudiodevice_types.QAudioDevice =
-  T(h: h)
-proc create*(T: type gen_qaudiodevice_types.QAudioDevice, ): gen_qaudiodevice_types.QAudioDevice =
-  gen_qaudiodevice_types.QAudioDevice.init(fcQAudioDevice_new())
-
-proc create*(T: type gen_qaudiodevice_types.QAudioDevice, other: gen_qaudiodevice_types.QAudioDevice): gen_qaudiodevice_types.QAudioDevice =
-  gen_qaudiodevice_types.QAudioDevice.init(fcQAudioDevice_new2(other.h))
 
 proc swap*(self: gen_qaudiodevice_types.QAudioDevice, other: gen_qaudiodevice_types.QAudioDevice): void =
   fcQAudioDevice_swap(self.h, other.h)
@@ -116,11 +106,11 @@ proc isDefault*(self: gen_qaudiodevice_types.QAudioDevice, ): bool =
 proc mode*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
   cint(fcQAudioDevice_mode(self.h))
 
-proc isFormatSupported*(self: gen_qaudiodevice_types.QAudioDevice, format: gen_qaudioformat.QAudioFormat): bool =
+proc isFormatSupported*(self: gen_qaudiodevice_types.QAudioDevice, format: gen_qaudioformat_types.QAudioFormat): bool =
   fcQAudioDevice_isFormatSupported(self.h, format.h)
 
-proc preferredFormat*(self: gen_qaudiodevice_types.QAudioDevice, ): gen_qaudioformat.QAudioFormat =
-  gen_qaudioformat.QAudioFormat(h: fcQAudioDevice_preferredFormat(self.h))
+proc preferredFormat*(self: gen_qaudiodevice_types.QAudioDevice, ): gen_qaudioformat_types.QAudioFormat =
+  gen_qaudioformat_types.QAudioFormat(h: fcQAudioDevice_preferredFormat(self.h))
 
 proc minimumSampleRate*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
   fcQAudioDevice_minimumSampleRate(self.h)
@@ -145,7 +135,14 @@ proc supportedSampleFormats*(self: gen_qaudiodevice_types.QAudioDevice, ): seq[c
 proc channelConfiguration*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
   cint(fcQAudioDevice_channelConfiguration(self.h))
 
-proc staticMetaObject*(_: type gen_qaudiodevice_types.QAudioDevice): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQAudioDevice_staticMetaObject())
+proc create*(T: type gen_qaudiodevice_types.QAudioDevice): gen_qaudiodevice_types.QAudioDevice =
+  gen_qaudiodevice_types.QAudioDevice(h: fcQAudioDevice_new())
+
+proc create*(T: type gen_qaudiodevice_types.QAudioDevice,
+    other: gen_qaudiodevice_types.QAudioDevice): gen_qaudiodevice_types.QAudioDevice =
+  gen_qaudiodevice_types.QAudioDevice(h: fcQAudioDevice_new2(other.h))
+
+proc staticMetaObject*(_: type gen_qaudiodevice_types.QAudioDevice): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAudioDevice_staticMetaObject())
 proc delete*(self: gen_qaudiodevice_types.QAudioDevice) =
   fcQAudioDevice_delete(self.h)

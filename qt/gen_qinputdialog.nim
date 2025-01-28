@@ -45,44 +45,40 @@ template TextInput*(_: type QInputDialogInputModeEnum): untyped = 0
 template IntInput*(_: type QInputDialogInputModeEnum): untyped = 1
 template DoubleInput*(_: type QInputDialogInputModeEnum): untyped = 2
 
-
 import gen_qinputdialog_types
 export gen_qinputdialog_types
 
 import
-  gen_qcoreevent,
+  gen_qcoreevent_types,
   gen_qdialog,
-  gen_qevent,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
-  gen_qpaintdevice,
-  gen_qpaintengine,
-  gen_qpainter,
-  gen_qpoint,
-  gen_qsize,
-  gen_qvariant,
-  gen_qwidget
+  gen_qevent_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpaintdevice_types,
+  gen_qpaintengine_types,
+  gen_qpainter_types,
+  gen_qpoint_types,
+  gen_qsize_types,
+  gen_qvariant_types,
+  gen_qwidget_types
 export
-  gen_qcoreevent,
+  gen_qcoreevent_types,
   gen_qdialog,
-  gen_qevent,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
-  gen_qpaintdevice,
-  gen_qpaintengine,
-  gen_qpainter,
-  gen_qpoint,
-  gen_qsize,
-  gen_qvariant,
-  gen_qwidget
+  gen_qevent_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpaintdevice_types,
+  gen_qpaintengine_types,
+  gen_qpainter_types,
+  gen_qpoint_types,
+  gen_qsize_types,
+  gen_qvariant_types,
+  gen_qwidget_types
 
 type cQInputDialog*{.exportc: "QInputDialog", incompleteStruct.} = object
 
-proc fcQInputDialog_new(parent: pointer): ptr cQInputDialog {.importc: "QInputDialog_new".}
-proc fcQInputDialog_new2(): ptr cQInputDialog {.importc: "QInputDialog_new2".}
-proc fcQInputDialog_new3(parent: pointer, flags: cint): ptr cQInputDialog {.importc: "QInputDialog_new3".}
 proc fcQInputDialog_metaObject(self: pointer, ): pointer {.importc: "QInputDialog_metaObject".}
 proc fcQInputDialog_metacast(self: pointer, param1: cstring): pointer {.importc: "QInputDialog_metacast".}
 proc fcQInputDialog_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QInputDialog_metacall".}
@@ -138,17 +134,17 @@ proc fcQInputDialog_getDouble2(parent: pointer, title: struct_miqt_string, label
 proc fcQInputDialog_setDoubleStep(self: pointer, step: float64): void {.importc: "QInputDialog_setDoubleStep".}
 proc fcQInputDialog_doubleStep(self: pointer, ): float64 {.importc: "QInputDialog_doubleStep".}
 proc fcQInputDialog_textValueChanged(self: pointer, text: struct_miqt_string): void {.importc: "QInputDialog_textValueChanged".}
-proc fQInputDialog_connect_textValueChanged(self: pointer, slot: int) {.importc: "QInputDialog_connect_textValueChanged".}
+proc fcQInputDialog_connect_textValueChanged(self: pointer, slot: int) {.importc: "QInputDialog_connect_textValueChanged".}
 proc fcQInputDialog_textValueSelected(self: pointer, text: struct_miqt_string): void {.importc: "QInputDialog_textValueSelected".}
-proc fQInputDialog_connect_textValueSelected(self: pointer, slot: int) {.importc: "QInputDialog_connect_textValueSelected".}
+proc fcQInputDialog_connect_textValueSelected(self: pointer, slot: int) {.importc: "QInputDialog_connect_textValueSelected".}
 proc fcQInputDialog_intValueChanged(self: pointer, value: cint): void {.importc: "QInputDialog_intValueChanged".}
-proc fQInputDialog_connect_intValueChanged(self: pointer, slot: int) {.importc: "QInputDialog_connect_intValueChanged".}
+proc fcQInputDialog_connect_intValueChanged(self: pointer, slot: int) {.importc: "QInputDialog_connect_intValueChanged".}
 proc fcQInputDialog_intValueSelected(self: pointer, value: cint): void {.importc: "QInputDialog_intValueSelected".}
-proc fQInputDialog_connect_intValueSelected(self: pointer, slot: int) {.importc: "QInputDialog_connect_intValueSelected".}
+proc fcQInputDialog_connect_intValueSelected(self: pointer, slot: int) {.importc: "QInputDialog_connect_intValueSelected".}
 proc fcQInputDialog_doubleValueChanged(self: pointer, value: float64): void {.importc: "QInputDialog_doubleValueChanged".}
-proc fQInputDialog_connect_doubleValueChanged(self: pointer, slot: int) {.importc: "QInputDialog_connect_doubleValueChanged".}
+proc fcQInputDialog_connect_doubleValueChanged(self: pointer, slot: int) {.importc: "QInputDialog_connect_doubleValueChanged".}
 proc fcQInputDialog_doubleValueSelected(self: pointer, value: float64): void {.importc: "QInputDialog_doubleValueSelected".}
-proc fQInputDialog_connect_doubleValueSelected(self: pointer, slot: int) {.importc: "QInputDialog_connect_doubleValueSelected".}
+proc fcQInputDialog_connect_doubleValueSelected(self: pointer, slot: int) {.importc: "QInputDialog_connect_doubleValueSelected".}
 proc fcQInputDialog_done(self: pointer, resultVal: cint): void {.importc: "QInputDialog_done".}
 proc fcQInputDialog_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QInputDialog_tr2".}
 proc fcQInputDialog_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QInputDialog_tr3".}
@@ -181,133 +177,126 @@ proc fcQInputDialog_getDouble6(parent: pointer, title: struct_miqt_string, label
 proc fcQInputDialog_getDouble7(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint): float64 {.importc: "QInputDialog_getDouble7".}
 proc fcQInputDialog_getDouble8(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool): float64 {.importc: "QInputDialog_getDouble8".}
 proc fcQInputDialog_getDouble9(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint): float64 {.importc: "QInputDialog_getDouble9".}
-proc fQInputDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_metaObject".}
-proc fcQInputDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metaObject".}
-proc fQInputDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QInputDialog_virtualbase_metacast".}
-proc fcQInputDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metacast".}
-proc fQInputDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QInputDialog_virtualbase_metacall".}
-proc fcQInputDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metacall".}
-proc fQInputDialog_virtualbase_minimumSizeHint(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_minimumSizeHint".}
-proc fcQInputDialog_override_virtual_minimumSizeHint(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_minimumSizeHint".}
-proc fQInputDialog_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_sizeHint".}
-proc fcQInputDialog_override_virtual_sizeHint(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_sizeHint".}
-proc fQInputDialog_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QInputDialog_virtualbase_setVisible".}
-proc fcQInputDialog_override_virtual_setVisible(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_setVisible".}
-proc fQInputDialog_virtualbase_done(self: pointer, resultVal: cint): void{.importc: "QInputDialog_virtualbase_done".}
-proc fcQInputDialog_override_virtual_done(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_done".}
-proc fQInputDialog_virtualbase_open(self: pointer, ): void{.importc: "QInputDialog_virtualbase_open".}
-proc fcQInputDialog_override_virtual_open(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_open".}
-proc fQInputDialog_virtualbase_exec(self: pointer, ): cint{.importc: "QInputDialog_virtualbase_exec".}
-proc fcQInputDialog_override_virtual_exec(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_exec".}
-proc fQInputDialog_virtualbase_accept(self: pointer, ): void{.importc: "QInputDialog_virtualbase_accept".}
-proc fcQInputDialog_override_virtual_accept(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_accept".}
-proc fQInputDialog_virtualbase_reject(self: pointer, ): void{.importc: "QInputDialog_virtualbase_reject".}
-proc fcQInputDialog_override_virtual_reject(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_reject".}
-proc fQInputDialog_virtualbase_keyPressEvent(self: pointer, param1: pointer): void{.importc: "QInputDialog_virtualbase_keyPressEvent".}
-proc fcQInputDialog_override_virtual_keyPressEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_keyPressEvent".}
-proc fQInputDialog_virtualbase_closeEvent(self: pointer, param1: pointer): void{.importc: "QInputDialog_virtualbase_closeEvent".}
-proc fcQInputDialog_override_virtual_closeEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_closeEvent".}
-proc fQInputDialog_virtualbase_showEvent(self: pointer, param1: pointer): void{.importc: "QInputDialog_virtualbase_showEvent".}
-proc fcQInputDialog_override_virtual_showEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_showEvent".}
-proc fQInputDialog_virtualbase_resizeEvent(self: pointer, param1: pointer): void{.importc: "QInputDialog_virtualbase_resizeEvent".}
-proc fcQInputDialog_override_virtual_resizeEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_resizeEvent".}
-proc fQInputDialog_virtualbase_contextMenuEvent(self: pointer, param1: pointer): void{.importc: "QInputDialog_virtualbase_contextMenuEvent".}
-proc fcQInputDialog_override_virtual_contextMenuEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_contextMenuEvent".}
-proc fQInputDialog_virtualbase_eventFilter(self: pointer, param1: pointer, param2: pointer): bool{.importc: "QInputDialog_virtualbase_eventFilter".}
-proc fcQInputDialog_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_eventFilter".}
-proc fQInputDialog_virtualbase_devType(self: pointer, ): cint{.importc: "QInputDialog_virtualbase_devType".}
-proc fcQInputDialog_override_virtual_devType(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_devType".}
-proc fQInputDialog_virtualbase_heightForWidth(self: pointer, param1: cint): cint{.importc: "QInputDialog_virtualbase_heightForWidth".}
-proc fcQInputDialog_override_virtual_heightForWidth(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_heightForWidth".}
-proc fQInputDialog_virtualbase_hasHeightForWidth(self: pointer, ): bool{.importc: "QInputDialog_virtualbase_hasHeightForWidth".}
-proc fcQInputDialog_override_virtual_hasHeightForWidth(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_hasHeightForWidth".}
-proc fQInputDialog_virtualbase_paintEngine(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_paintEngine".}
-proc fcQInputDialog_override_virtual_paintEngine(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_paintEngine".}
-proc fQInputDialog_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QInputDialog_virtualbase_event".}
-proc fcQInputDialog_override_virtual_event(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_event".}
-proc fQInputDialog_virtualbase_mousePressEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_mousePressEvent".}
-proc fcQInputDialog_override_virtual_mousePressEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_mousePressEvent".}
-proc fQInputDialog_virtualbase_mouseReleaseEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_mouseReleaseEvent".}
-proc fcQInputDialog_override_virtual_mouseReleaseEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_mouseReleaseEvent".}
-proc fQInputDialog_virtualbase_mouseDoubleClickEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_mouseDoubleClickEvent".}
-proc fcQInputDialog_override_virtual_mouseDoubleClickEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_mouseDoubleClickEvent".}
-proc fQInputDialog_virtualbase_mouseMoveEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_mouseMoveEvent".}
-proc fcQInputDialog_override_virtual_mouseMoveEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_mouseMoveEvent".}
-proc fQInputDialog_virtualbase_wheelEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_wheelEvent".}
-proc fcQInputDialog_override_virtual_wheelEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_wheelEvent".}
-proc fQInputDialog_virtualbase_keyReleaseEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_keyReleaseEvent".}
-proc fcQInputDialog_override_virtual_keyReleaseEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_keyReleaseEvent".}
-proc fQInputDialog_virtualbase_focusInEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_focusInEvent".}
-proc fcQInputDialog_override_virtual_focusInEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_focusInEvent".}
-proc fQInputDialog_virtualbase_focusOutEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_focusOutEvent".}
-proc fcQInputDialog_override_virtual_focusOutEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_focusOutEvent".}
-proc fQInputDialog_virtualbase_enterEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_enterEvent".}
-proc fcQInputDialog_override_virtual_enterEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_enterEvent".}
-proc fQInputDialog_virtualbase_leaveEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_leaveEvent".}
-proc fcQInputDialog_override_virtual_leaveEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_leaveEvent".}
-proc fQInputDialog_virtualbase_paintEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_paintEvent".}
-proc fcQInputDialog_override_virtual_paintEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_paintEvent".}
-proc fQInputDialog_virtualbase_moveEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_moveEvent".}
-proc fcQInputDialog_override_virtual_moveEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_moveEvent".}
-proc fQInputDialog_virtualbase_tabletEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_tabletEvent".}
-proc fcQInputDialog_override_virtual_tabletEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_tabletEvent".}
-proc fQInputDialog_virtualbase_actionEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_actionEvent".}
-proc fcQInputDialog_override_virtual_actionEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_actionEvent".}
-proc fQInputDialog_virtualbase_dragEnterEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_dragEnterEvent".}
-proc fcQInputDialog_override_virtual_dragEnterEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_dragEnterEvent".}
-proc fQInputDialog_virtualbase_dragMoveEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_dragMoveEvent".}
-proc fcQInputDialog_override_virtual_dragMoveEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_dragMoveEvent".}
-proc fQInputDialog_virtualbase_dragLeaveEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_dragLeaveEvent".}
-proc fcQInputDialog_override_virtual_dragLeaveEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_dragLeaveEvent".}
-proc fQInputDialog_virtualbase_dropEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_dropEvent".}
-proc fcQInputDialog_override_virtual_dropEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_dropEvent".}
-proc fQInputDialog_virtualbase_hideEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_hideEvent".}
-proc fcQInputDialog_override_virtual_hideEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_hideEvent".}
-proc fQInputDialog_virtualbase_nativeEvent(self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool{.importc: "QInputDialog_virtualbase_nativeEvent".}
-proc fcQInputDialog_override_virtual_nativeEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_nativeEvent".}
-proc fQInputDialog_virtualbase_changeEvent(self: pointer, param1: pointer): void{.importc: "QInputDialog_virtualbase_changeEvent".}
-proc fcQInputDialog_override_virtual_changeEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_changeEvent".}
-proc fQInputDialog_virtualbase_metric(self: pointer, param1: cint): cint{.importc: "QInputDialog_virtualbase_metric".}
-proc fcQInputDialog_override_virtual_metric(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metric".}
-proc fQInputDialog_virtualbase_initPainter(self: pointer, painter: pointer): void{.importc: "QInputDialog_virtualbase_initPainter".}
-proc fcQInputDialog_override_virtual_initPainter(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_initPainter".}
-proc fQInputDialog_virtualbase_redirected(self: pointer, offset: pointer): pointer{.importc: "QInputDialog_virtualbase_redirected".}
-proc fcQInputDialog_override_virtual_redirected(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_redirected".}
-proc fQInputDialog_virtualbase_sharedPainter(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_sharedPainter".}
-proc fcQInputDialog_override_virtual_sharedPainter(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_sharedPainter".}
-proc fQInputDialog_virtualbase_inputMethodEvent(self: pointer, param1: pointer): void{.importc: "QInputDialog_virtualbase_inputMethodEvent".}
-proc fcQInputDialog_override_virtual_inputMethodEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_inputMethodEvent".}
-proc fQInputDialog_virtualbase_inputMethodQuery(self: pointer, param1: cint): pointer{.importc: "QInputDialog_virtualbase_inputMethodQuery".}
-proc fcQInputDialog_override_virtual_inputMethodQuery(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_inputMethodQuery".}
-proc fQInputDialog_virtualbase_focusNextPrevChild(self: pointer, next: bool): bool{.importc: "QInputDialog_virtualbase_focusNextPrevChild".}
-proc fcQInputDialog_override_virtual_focusNextPrevChild(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_focusNextPrevChild".}
-proc fQInputDialog_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_timerEvent".}
-proc fcQInputDialog_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_timerEvent".}
-proc fQInputDialog_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_childEvent".}
-proc fcQInputDialog_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_childEvent".}
-proc fQInputDialog_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QInputDialog_virtualbase_customEvent".}
-proc fcQInputDialog_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_customEvent".}
-proc fQInputDialog_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QInputDialog_virtualbase_connectNotify".}
-proc fcQInputDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_connectNotify".}
-proc fQInputDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QInputDialog_virtualbase_disconnectNotify".}
-proc fcQInputDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_disconnectNotify".}
+type cQInputDialogVTable = object
+  destructor*: proc(vtbl: ptr cQInputDialogVTable, self: ptr cQInputDialog) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  minimumSizeHint*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  sizeHint*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  setVisible*: proc(vtbl, self: pointer, visible: bool): void {.cdecl, raises: [], gcsafe.}
+  done*: proc(vtbl, self: pointer, resultVal: cint): void {.cdecl, raises: [], gcsafe.}
+  open*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  exec*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  accept*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  reject*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  keyPressEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  closeEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  showEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  resizeEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  contextMenuEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, param1: pointer, param2: pointer): bool {.cdecl, raises: [], gcsafe.}
+  devType*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  heightForWidth*: proc(vtbl, self: pointer, param1: cint): cint {.cdecl, raises: [], gcsafe.}
+  hasHeightForWidth*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  paintEngine*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  mousePressEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  mouseReleaseEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  mouseDoubleClickEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  mouseMoveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  wheelEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  keyReleaseEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  focusInEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  focusOutEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  enterEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  leaveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  paintEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  moveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  tabletEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  actionEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragEnterEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragMoveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragLeaveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  dropEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  hideEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  nativeEvent*: proc(vtbl, self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.cdecl, raises: [], gcsafe.}
+  changeEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  metric*: proc(vtbl, self: pointer, param1: cint): cint {.cdecl, raises: [], gcsafe.}
+  initPainter*: proc(vtbl, self: pointer, painter: pointer): void {.cdecl, raises: [], gcsafe.}
+  redirected*: proc(vtbl, self: pointer, offset: pointer): pointer {.cdecl, raises: [], gcsafe.}
+  sharedPainter*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  inputMethodEvent*: proc(vtbl, self: pointer, param1: pointer): void {.cdecl, raises: [], gcsafe.}
+  inputMethodQuery*: proc(vtbl, self: pointer, param1: cint): pointer {.cdecl, raises: [], gcsafe.}
+  focusNextPrevChild*: proc(vtbl, self: pointer, next: bool): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQInputDialog_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QInputDialog_virtualbase_metaObject".}
+proc fcQInputDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QInputDialog_virtualbase_metacast".}
+proc fcQInputDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QInputDialog_virtualbase_metacall".}
+proc fcQInputDialog_virtualbase_minimumSizeHint(self: pointer, ): pointer {.importc: "QInputDialog_virtualbase_minimumSizeHint".}
+proc fcQInputDialog_virtualbase_sizeHint(self: pointer, ): pointer {.importc: "QInputDialog_virtualbase_sizeHint".}
+proc fcQInputDialog_virtualbase_setVisible(self: pointer, visible: bool): void {.importc: "QInputDialog_virtualbase_setVisible".}
+proc fcQInputDialog_virtualbase_done(self: pointer, resultVal: cint): void {.importc: "QInputDialog_virtualbase_done".}
+proc fcQInputDialog_virtualbase_open(self: pointer, ): void {.importc: "QInputDialog_virtualbase_open".}
+proc fcQInputDialog_virtualbase_exec(self: pointer, ): cint {.importc: "QInputDialog_virtualbase_exec".}
+proc fcQInputDialog_virtualbase_accept(self: pointer, ): void {.importc: "QInputDialog_virtualbase_accept".}
+proc fcQInputDialog_virtualbase_reject(self: pointer, ): void {.importc: "QInputDialog_virtualbase_reject".}
+proc fcQInputDialog_virtualbase_keyPressEvent(self: pointer, param1: pointer): void {.importc: "QInputDialog_virtualbase_keyPressEvent".}
+proc fcQInputDialog_virtualbase_closeEvent(self: pointer, param1: pointer): void {.importc: "QInputDialog_virtualbase_closeEvent".}
+proc fcQInputDialog_virtualbase_showEvent(self: pointer, param1: pointer): void {.importc: "QInputDialog_virtualbase_showEvent".}
+proc fcQInputDialog_virtualbase_resizeEvent(self: pointer, param1: pointer): void {.importc: "QInputDialog_virtualbase_resizeEvent".}
+proc fcQInputDialog_virtualbase_contextMenuEvent(self: pointer, param1: pointer): void {.importc: "QInputDialog_virtualbase_contextMenuEvent".}
+proc fcQInputDialog_virtualbase_eventFilter(self: pointer, param1: pointer, param2: pointer): bool {.importc: "QInputDialog_virtualbase_eventFilter".}
+proc fcQInputDialog_virtualbase_devType(self: pointer, ): cint {.importc: "QInputDialog_virtualbase_devType".}
+proc fcQInputDialog_virtualbase_heightForWidth(self: pointer, param1: cint): cint {.importc: "QInputDialog_virtualbase_heightForWidth".}
+proc fcQInputDialog_virtualbase_hasHeightForWidth(self: pointer, ): bool {.importc: "QInputDialog_virtualbase_hasHeightForWidth".}
+proc fcQInputDialog_virtualbase_paintEngine(self: pointer, ): pointer {.importc: "QInputDialog_virtualbase_paintEngine".}
+proc fcQInputDialog_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QInputDialog_virtualbase_event".}
+proc fcQInputDialog_virtualbase_mousePressEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_mousePressEvent".}
+proc fcQInputDialog_virtualbase_mouseReleaseEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_mouseReleaseEvent".}
+proc fcQInputDialog_virtualbase_mouseDoubleClickEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_mouseDoubleClickEvent".}
+proc fcQInputDialog_virtualbase_mouseMoveEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_mouseMoveEvent".}
+proc fcQInputDialog_virtualbase_wheelEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_wheelEvent".}
+proc fcQInputDialog_virtualbase_keyReleaseEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_keyReleaseEvent".}
+proc fcQInputDialog_virtualbase_focusInEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_focusInEvent".}
+proc fcQInputDialog_virtualbase_focusOutEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_focusOutEvent".}
+proc fcQInputDialog_virtualbase_enterEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_enterEvent".}
+proc fcQInputDialog_virtualbase_leaveEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_leaveEvent".}
+proc fcQInputDialog_virtualbase_paintEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_paintEvent".}
+proc fcQInputDialog_virtualbase_moveEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_moveEvent".}
+proc fcQInputDialog_virtualbase_tabletEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_tabletEvent".}
+proc fcQInputDialog_virtualbase_actionEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_actionEvent".}
+proc fcQInputDialog_virtualbase_dragEnterEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_dragEnterEvent".}
+proc fcQInputDialog_virtualbase_dragMoveEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_dragMoveEvent".}
+proc fcQInputDialog_virtualbase_dragLeaveEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_dragLeaveEvent".}
+proc fcQInputDialog_virtualbase_dropEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_dropEvent".}
+proc fcQInputDialog_virtualbase_hideEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_hideEvent".}
+proc fcQInputDialog_virtualbase_nativeEvent(self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.importc: "QInputDialog_virtualbase_nativeEvent".}
+proc fcQInputDialog_virtualbase_changeEvent(self: pointer, param1: pointer): void {.importc: "QInputDialog_virtualbase_changeEvent".}
+proc fcQInputDialog_virtualbase_metric(self: pointer, param1: cint): cint {.importc: "QInputDialog_virtualbase_metric".}
+proc fcQInputDialog_virtualbase_initPainter(self: pointer, painter: pointer): void {.importc: "QInputDialog_virtualbase_initPainter".}
+proc fcQInputDialog_virtualbase_redirected(self: pointer, offset: pointer): pointer {.importc: "QInputDialog_virtualbase_redirected".}
+proc fcQInputDialog_virtualbase_sharedPainter(self: pointer, ): pointer {.importc: "QInputDialog_virtualbase_sharedPainter".}
+proc fcQInputDialog_virtualbase_inputMethodEvent(self: pointer, param1: pointer): void {.importc: "QInputDialog_virtualbase_inputMethodEvent".}
+proc fcQInputDialog_virtualbase_inputMethodQuery(self: pointer, param1: cint): pointer {.importc: "QInputDialog_virtualbase_inputMethodQuery".}
+proc fcQInputDialog_virtualbase_focusNextPrevChild(self: pointer, next: bool): bool {.importc: "QInputDialog_virtualbase_focusNextPrevChild".}
+proc fcQInputDialog_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_timerEvent".}
+proc fcQInputDialog_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_childEvent".}
+proc fcQInputDialog_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QInputDialog_virtualbase_customEvent".}
+proc fcQInputDialog_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QInputDialog_virtualbase_connectNotify".}
+proc fcQInputDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QInputDialog_virtualbase_disconnectNotify".}
+proc fcQInputDialog_new(vtbl: pointer, parent: pointer): ptr cQInputDialog {.importc: "QInputDialog_new".}
+proc fcQInputDialog_new2(vtbl: pointer, ): ptr cQInputDialog {.importc: "QInputDialog_new2".}
+proc fcQInputDialog_new3(vtbl: pointer, parent: pointer, flags: cint): ptr cQInputDialog {.importc: "QInputDialog_new3".}
 proc fcQInputDialog_staticMetaObject(): pointer {.importc: "QInputDialog_staticMetaObject".}
 proc fcQInputDialog_delete(self: pointer) {.importc: "QInputDialog_delete".}
 
-
-func init*(T: type gen_qinputdialog_types.QInputDialog, h: ptr cQInputDialog): gen_qinputdialog_types.QInputDialog =
-  T(h: h)
-proc create*(T: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget): gen_qinputdialog_types.QInputDialog =
-  gen_qinputdialog_types.QInputDialog.init(fcQInputDialog_new(parent.h))
-
-proc create*(T: type gen_qinputdialog_types.QInputDialog, ): gen_qinputdialog_types.QInputDialog =
-  gen_qinputdialog_types.QInputDialog.init(fcQInputDialog_new2())
-
-proc create*(T: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, flags: cint): gen_qinputdialog_types.QInputDialog =
-  gen_qinputdialog_types.QInputDialog.init(fcQInputDialog_new3(parent.h, cint(flags)))
-
-proc metaObject*(self: gen_qinputdialog_types.QInputDialog, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQInputDialog_metaObject(self.h))
+proc metaObject*(self: gen_qinputdialog_types.QInputDialog, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQInputDialog_metaObject(self.h))
 
 proc metacast*(self: gen_qinputdialog_types.QInputDialog, param1: cstring): pointer =
   fcQInputDialog_metacast(self.h, param1)
@@ -465,28 +454,28 @@ proc cancelButtonText*(self: gen_qinputdialog_types.QInputDialog, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc minimumSizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQInputDialog_minimumSizeHint(self.h))
+proc minimumSizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQInputDialog_minimumSizeHint(self.h))
 
-proc sizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fcQInputDialog_sizeHint(self.h))
+proc sizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQInputDialog_sizeHint(self.h))
 
 proc setVisible*(self: gen_qinputdialog_types.QInputDialog, visible: bool): void =
   fcQInputDialog_setVisible(self.h, visible)
 
-proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string): string =
+proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string): string =
   let v_ms = fcQInputDialog_getText(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string): string =
+proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string): string =
   let v_ms = fcQInputDialog_getMultiLineText(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, items: seq[string]): string =
+proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, items: seq[string]): string =
   var items_CArray = newSeq[struct_miqt_string](len(items))
   for i in 0..<len(items):
     items_CArray[i] = struct_miqt_string(data: items[i], len: csize_t(len(items[i])))
@@ -496,13 +485,13 @@ proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.Q
   c_free(v_ms.data)
   vx_ret
 
-proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string): cint =
+proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string): cint =
   fcQInputDialog_getInt(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))))
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string): float64 =
   fcQInputDialog_getDouble(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))))
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint, step: float64): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint, step: float64): float64 =
   fcQInputDialog_getDouble2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, decimals, ok, cint(flags), step)
 
 proc setDoubleStep*(self: gen_qinputdialog_types.QInputDialog, step: float64): void =
@@ -515,7 +504,7 @@ proc textValueChanged*(self: gen_qinputdialog_types.QInputDialog, text: string):
   fcQInputDialog_textValueChanged(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 type QInputDialogtextValueChangedSlot* = proc(text: string)
-proc miqt_exec_callback_QInputDialog_textValueChanged(slot: int, text: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQInputDialog_textValueChanged(slot: int, text: struct_miqt_string) {.exportc: "miqt_exec_callback_QInputDialog_textValueChanged".} =
   let nimfunc = cast[ptr QInputDialogtextValueChangedSlot](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
@@ -528,13 +517,13 @@ proc ontextValueChanged*(self: gen_qinputdialog_types.QInputDialog, slot: QInput
   var tmp = new QInputDialogtextValueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQInputDialog_connect_textValueChanged(self.h, cast[int](addr tmp[]))
+  fcQInputDialog_connect_textValueChanged(self.h, cast[int](addr tmp[]))
 
 proc textValueSelected*(self: gen_qinputdialog_types.QInputDialog, text: string): void =
   fcQInputDialog_textValueSelected(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 type QInputDialogtextValueSelectedSlot* = proc(text: string)
-proc miqt_exec_callback_QInputDialog_textValueSelected(slot: int, text: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQInputDialog_textValueSelected(slot: int, text: struct_miqt_string) {.exportc: "miqt_exec_callback_QInputDialog_textValueSelected".} =
   let nimfunc = cast[ptr QInputDialogtextValueSelectedSlot](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
@@ -547,13 +536,13 @@ proc ontextValueSelected*(self: gen_qinputdialog_types.QInputDialog, slot: QInpu
   var tmp = new QInputDialogtextValueSelectedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQInputDialog_connect_textValueSelected(self.h, cast[int](addr tmp[]))
+  fcQInputDialog_connect_textValueSelected(self.h, cast[int](addr tmp[]))
 
 proc intValueChanged*(self: gen_qinputdialog_types.QInputDialog, value: cint): void =
   fcQInputDialog_intValueChanged(self.h, value)
 
 type QInputDialogintValueChangedSlot* = proc(value: cint)
-proc miqt_exec_callback_QInputDialog_intValueChanged(slot: int, value: cint) {.exportc.} =
+proc miqt_exec_callback_cQInputDialog_intValueChanged(slot: int, value: cint) {.exportc: "miqt_exec_callback_QInputDialog_intValueChanged".} =
   let nimfunc = cast[ptr QInputDialogintValueChangedSlot](cast[pointer](slot))
   let slotval1 = value
 
@@ -563,13 +552,13 @@ proc onintValueChanged*(self: gen_qinputdialog_types.QInputDialog, slot: QInputD
   var tmp = new QInputDialogintValueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQInputDialog_connect_intValueChanged(self.h, cast[int](addr tmp[]))
+  fcQInputDialog_connect_intValueChanged(self.h, cast[int](addr tmp[]))
 
 proc intValueSelected*(self: gen_qinputdialog_types.QInputDialog, value: cint): void =
   fcQInputDialog_intValueSelected(self.h, value)
 
 type QInputDialogintValueSelectedSlot* = proc(value: cint)
-proc miqt_exec_callback_QInputDialog_intValueSelected(slot: int, value: cint) {.exportc.} =
+proc miqt_exec_callback_cQInputDialog_intValueSelected(slot: int, value: cint) {.exportc: "miqt_exec_callback_QInputDialog_intValueSelected".} =
   let nimfunc = cast[ptr QInputDialogintValueSelectedSlot](cast[pointer](slot))
   let slotval1 = value
 
@@ -579,13 +568,13 @@ proc onintValueSelected*(self: gen_qinputdialog_types.QInputDialog, slot: QInput
   var tmp = new QInputDialogintValueSelectedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQInputDialog_connect_intValueSelected(self.h, cast[int](addr tmp[]))
+  fcQInputDialog_connect_intValueSelected(self.h, cast[int](addr tmp[]))
 
 proc doubleValueChanged*(self: gen_qinputdialog_types.QInputDialog, value: float64): void =
   fcQInputDialog_doubleValueChanged(self.h, value)
 
 type QInputDialogdoubleValueChangedSlot* = proc(value: float64)
-proc miqt_exec_callback_QInputDialog_doubleValueChanged(slot: int, value: float64) {.exportc.} =
+proc miqt_exec_callback_cQInputDialog_doubleValueChanged(slot: int, value: float64) {.exportc: "miqt_exec_callback_QInputDialog_doubleValueChanged".} =
   let nimfunc = cast[ptr QInputDialogdoubleValueChangedSlot](cast[pointer](slot))
   let slotval1 = value
 
@@ -595,13 +584,13 @@ proc ondoubleValueChanged*(self: gen_qinputdialog_types.QInputDialog, slot: QInp
   var tmp = new QInputDialogdoubleValueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQInputDialog_connect_doubleValueChanged(self.h, cast[int](addr tmp[]))
+  fcQInputDialog_connect_doubleValueChanged(self.h, cast[int](addr tmp[]))
 
 proc doubleValueSelected*(self: gen_qinputdialog_types.QInputDialog, value: float64): void =
   fcQInputDialog_doubleValueSelected(self.h, value)
 
 type QInputDialogdoubleValueSelectedSlot* = proc(value: float64)
-proc miqt_exec_callback_QInputDialog_doubleValueSelected(slot: int, value: float64) {.exportc.} =
+proc miqt_exec_callback_cQInputDialog_doubleValueSelected(slot: int, value: float64) {.exportc: "miqt_exec_callback_QInputDialog_doubleValueSelected".} =
   let nimfunc = cast[ptr QInputDialogdoubleValueSelectedSlot](cast[pointer](slot))
   let slotval1 = value
 
@@ -611,7 +600,7 @@ proc ondoubleValueSelected*(self: gen_qinputdialog_types.QInputDialog, slot: QIn
   var tmp = new QInputDialogdoubleValueSelectedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQInputDialog_connect_doubleValueSelected(self.h, cast[int](addr tmp[]))
+  fcQInputDialog_connect_doubleValueSelected(self.h, cast[int](addr tmp[]))
 
 proc done*(self: gen_qinputdialog_types.QInputDialog, resultVal: cint): void =
   fcQInputDialog_done(self.h, resultVal)
@@ -643,61 +632,61 @@ proc trUtf8*(_: type gen_qinputdialog_types.QInputDialog, s: cstring, c: cstring
 proc setOption*(self: gen_qinputdialog_types.QInputDialog, option: cint, on: bool): void =
   fcQInputDialog_setOption2(self.h, cint(option), on)
 
-proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, echo: cint): string =
+proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, echo: cint): string =
   let v_ms = fcQInputDialog_getText4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), cint(echo))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, echo: cint, text: string): string =
+proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, echo: cint, text: string): string =
   let v_ms = fcQInputDialog_getText5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), cint(echo), struct_miqt_string(data: text, len: csize_t(len(text))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, echo: cint, text: string, ok: ptr bool): string =
+proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, echo: cint, text: string, ok: ptr bool): string =
   let v_ms = fcQInputDialog_getText6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), cint(echo), struct_miqt_string(data: text, len: csize_t(len(text))), ok)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, echo: cint, text: string, ok: ptr bool, flags: cint): string =
+proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, echo: cint, text: string, ok: ptr bool, flags: cint): string =
   let v_ms = fcQInputDialog_getText7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), cint(echo), struct_miqt_string(data: text, len: csize_t(len(text))), ok, cint(flags))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, echo: cint, text: string, ok: ptr bool, flags: cint, inputMethodHints: cint): string =
+proc getText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, echo: cint, text: string, ok: ptr bool, flags: cint, inputMethodHints: cint): string =
   let v_ms = fcQInputDialog_getText8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), cint(echo), struct_miqt_string(data: text, len: csize_t(len(text))), ok, cint(flags), cint(inputMethodHints))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, text: string): string =
+proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, text: string): string =
   let v_ms = fcQInputDialog_getMultiLineText4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), struct_miqt_string(data: text, len: csize_t(len(text))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, text: string, ok: ptr bool): string =
+proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, text: string, ok: ptr bool): string =
   let v_ms = fcQInputDialog_getMultiLineText5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), struct_miqt_string(data: text, len: csize_t(len(text))), ok)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, text: string, ok: ptr bool, flags: cint): string =
+proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, text: string, ok: ptr bool, flags: cint): string =
   let v_ms = fcQInputDialog_getMultiLineText6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), struct_miqt_string(data: text, len: csize_t(len(text))), ok, cint(flags))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, text: string, ok: ptr bool, flags: cint, inputMethodHints: cint): string =
+proc getMultiLineText*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, text: string, ok: ptr bool, flags: cint, inputMethodHints: cint): string =
   let v_ms = fcQInputDialog_getMultiLineText7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), struct_miqt_string(data: text, len: csize_t(len(text))), ok, cint(flags), cint(inputMethodHints))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, items: seq[string], current: cint): string =
+proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, items: seq[string], current: cint): string =
   var items_CArray = newSeq[struct_miqt_string](len(items))
   for i in 0..<len(items):
     items_CArray[i] = struct_miqt_string(data: items[i], len: csize_t(len(items[i])))
@@ -707,7 +696,7 @@ proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.Q
   c_free(v_ms.data)
   vx_ret
 
-proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool): string =
+proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool): string =
   var items_CArray = newSeq[struct_miqt_string](len(items))
   for i in 0..<len(items):
     items_CArray[i] = struct_miqt_string(data: items[i], len: csize_t(len(items[i])))
@@ -717,7 +706,7 @@ proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.Q
   c_free(v_ms.data)
   vx_ret
 
-proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool, ok: ptr bool): string =
+proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool, ok: ptr bool): string =
   var items_CArray = newSeq[struct_miqt_string](len(items))
   for i in 0..<len(items):
     items_CArray[i] = struct_miqt_string(data: items[i], len: csize_t(len(items[i])))
@@ -727,7 +716,7 @@ proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.Q
   c_free(v_ms.data)
   vx_ret
 
-proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool, ok: ptr bool, flags: cint): string =
+proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool, ok: ptr bool, flags: cint): string =
   var items_CArray = newSeq[struct_miqt_string](len(items))
   for i in 0..<len(items):
     items_CArray[i] = struct_miqt_string(data: items[i], len: csize_t(len(items[i])))
@@ -737,7 +726,7 @@ proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.Q
   c_free(v_ms.data)
   vx_ret
 
-proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool, ok: ptr bool, flags: cint, inputMethodHints: cint): string =
+proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, items: seq[string], current: cint, editable: bool, ok: ptr bool, flags: cint, inputMethodHints: cint): string =
   var items_CArray = newSeq[struct_miqt_string](len(items))
   for i in 0..<len(items):
     items_CArray[i] = struct_miqt_string(data: items[i], len: csize_t(len(items[i])))
@@ -747,1005 +736,1024 @@ proc getItem*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.Q
   c_free(v_ms.data)
   vx_ret
 
-proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: cint): cint =
+proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: cint): cint =
   fcQInputDialog_getInt4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value)
 
-proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: cint, minValue: cint): cint =
+proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: cint, minValue: cint): cint =
   fcQInputDialog_getInt5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue)
 
-proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint): cint =
+proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint): cint =
   fcQInputDialog_getInt6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue)
 
-proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint, step: cint): cint =
+proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint, step: cint): cint =
   fcQInputDialog_getInt7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, step)
 
-proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint, step: cint, ok: ptr bool): cint =
+proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint, step: cint, ok: ptr bool): cint =
   fcQInputDialog_getInt8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, step, ok)
 
-proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint, step: cint, ok: ptr bool, flags: cint): cint =
+proc getInt*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: cint, minValue: cint, maxValue: cint, step: cint, ok: ptr bool, flags: cint): cint =
   fcQInputDialog_getInt9(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, step, ok, cint(flags))
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: float64): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64): float64 =
   fcQInputDialog_getDouble4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value)
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: float64, minValue: float64): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64, minValue: float64): float64 =
   fcQInputDialog_getDouble5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue)
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64): float64 =
   fcQInputDialog_getDouble6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue)
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint): float64 =
   fcQInputDialog_getDouble7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, decimals)
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool): float64 =
   fcQInputDialog_getDouble8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, decimals, ok)
 
-proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint): float64 =
+proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint): float64 =
   fcQInputDialog_getDouble9(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, decimals, ok, cint(flags))
 
-proc QInputDialogmetaObject*(self: gen_qinputdialog_types.QInputDialog, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQInputDialog_virtualbase_metaObject(self.h))
+type QInputDialogmetaObjectProc* = proc(self: QInputDialog): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QInputDialogmetacastProc* = proc(self: QInputDialog, param1: cstring): pointer {.raises: [], gcsafe.}
+type QInputDialogmetacallProc* = proc(self: QInputDialog, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QInputDialogminimumSizeHintProc* = proc(self: QInputDialog): gen_qsize_types.QSize {.raises: [], gcsafe.}
+type QInputDialogsizeHintProc* = proc(self: QInputDialog): gen_qsize_types.QSize {.raises: [], gcsafe.}
+type QInputDialogsetVisibleProc* = proc(self: QInputDialog, visible: bool): void {.raises: [], gcsafe.}
+type QInputDialogdoneProc* = proc(self: QInputDialog, resultVal: cint): void {.raises: [], gcsafe.}
+type QInputDialogopenProc* = proc(self: QInputDialog): void {.raises: [], gcsafe.}
+type QInputDialogexecProc* = proc(self: QInputDialog): cint {.raises: [], gcsafe.}
+type QInputDialogacceptProc* = proc(self: QInputDialog): void {.raises: [], gcsafe.}
+type QInputDialogrejectProc* = proc(self: QInputDialog): void {.raises: [], gcsafe.}
+type QInputDialogkeyPressEventProc* = proc(self: QInputDialog, param1: gen_qevent_types.QKeyEvent): void {.raises: [], gcsafe.}
+type QInputDialogcloseEventProc* = proc(self: QInputDialog, param1: gen_qevent_types.QCloseEvent): void {.raises: [], gcsafe.}
+type QInputDialogshowEventProc* = proc(self: QInputDialog, param1: gen_qevent_types.QShowEvent): void {.raises: [], gcsafe.}
+type QInputDialogresizeEventProc* = proc(self: QInputDialog, param1: gen_qevent_types.QResizeEvent): void {.raises: [], gcsafe.}
+type QInputDialogcontextMenuEventProc* = proc(self: QInputDialog, param1: gen_qevent_types.QContextMenuEvent): void {.raises: [], gcsafe.}
+type QInputDialogeventFilterProc* = proc(self: QInputDialog, param1: gen_qobject_types.QObject, param2: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QInputDialogdevTypeProc* = proc(self: QInputDialog): cint {.raises: [], gcsafe.}
+type QInputDialogheightForWidthProc* = proc(self: QInputDialog, param1: cint): cint {.raises: [], gcsafe.}
+type QInputDialoghasHeightForWidthProc* = proc(self: QInputDialog): bool {.raises: [], gcsafe.}
+type QInputDialogpaintEngineProc* = proc(self: QInputDialog): gen_qpaintengine_types.QPaintEngine {.raises: [], gcsafe.}
+type QInputDialogeventProc* = proc(self: QInputDialog, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QInputDialogmousePressEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QInputDialogmouseReleaseEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QInputDialogmouseDoubleClickEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QInputDialogmouseMoveEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QInputDialogwheelEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QWheelEvent): void {.raises: [], gcsafe.}
+type QInputDialogkeyReleaseEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QKeyEvent): void {.raises: [], gcsafe.}
+type QInputDialogfocusInEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QFocusEvent): void {.raises: [], gcsafe.}
+type QInputDialogfocusOutEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QFocusEvent): void {.raises: [], gcsafe.}
+type QInputDialogenterEventProc* = proc(self: QInputDialog, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QInputDialogleaveEventProc* = proc(self: QInputDialog, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QInputDialogpaintEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QPaintEvent): void {.raises: [], gcsafe.}
+type QInputDialogmoveEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QMoveEvent): void {.raises: [], gcsafe.}
+type QInputDialogtabletEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QTabletEvent): void {.raises: [], gcsafe.}
+type QInputDialogactionEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QActionEvent): void {.raises: [], gcsafe.}
+type QInputDialogdragEnterEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QDragEnterEvent): void {.raises: [], gcsafe.}
+type QInputDialogdragMoveEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QDragMoveEvent): void {.raises: [], gcsafe.}
+type QInputDialogdragLeaveEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QDragLeaveEvent): void {.raises: [], gcsafe.}
+type QInputDialogdropEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QDropEvent): void {.raises: [], gcsafe.}
+type QInputDialoghideEventProc* = proc(self: QInputDialog, event: gen_qevent_types.QHideEvent): void {.raises: [], gcsafe.}
+type QInputDialognativeEventProc* = proc(self: QInputDialog, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool {.raises: [], gcsafe.}
+type QInputDialogchangeEventProc* = proc(self: QInputDialog, param1: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QInputDialogmetricProc* = proc(self: QInputDialog, param1: cint): cint {.raises: [], gcsafe.}
+type QInputDialoginitPainterProc* = proc(self: QInputDialog, painter: gen_qpainter_types.QPainter): void {.raises: [], gcsafe.}
+type QInputDialogredirectedProc* = proc(self: QInputDialog, offset: gen_qpoint_types.QPoint): gen_qpaintdevice_types.QPaintDevice {.raises: [], gcsafe.}
+type QInputDialogsharedPainterProc* = proc(self: QInputDialog): gen_qpainter_types.QPainter {.raises: [], gcsafe.}
+type QInputDialoginputMethodEventProc* = proc(self: QInputDialog, param1: gen_qevent_types.QInputMethodEvent): void {.raises: [], gcsafe.}
+type QInputDialoginputMethodQueryProc* = proc(self: QInputDialog, param1: cint): gen_qvariant_types.QVariant {.raises: [], gcsafe.}
+type QInputDialogfocusNextPrevChildProc* = proc(self: QInputDialog, next: bool): bool {.raises: [], gcsafe.}
+type QInputDialogtimerEventProc* = proc(self: QInputDialog, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QInputDialogchildEventProc* = proc(self: QInputDialog, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QInputDialogcustomEventProc* = proc(self: QInputDialog, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QInputDialogconnectNotifyProc* = proc(self: QInputDialog, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QInputDialogdisconnectNotifyProc* = proc(self: QInputDialog, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QInputDialogVTable* = object
+  vtbl: cQInputDialogVTable
+  metaObject*: QInputDialogmetaObjectProc
+  metacast*: QInputDialogmetacastProc
+  metacall*: QInputDialogmetacallProc
+  minimumSizeHint*: QInputDialogminimumSizeHintProc
+  sizeHint*: QInputDialogsizeHintProc
+  setVisible*: QInputDialogsetVisibleProc
+  done*: QInputDialogdoneProc
+  open*: QInputDialogopenProc
+  exec*: QInputDialogexecProc
+  accept*: QInputDialogacceptProc
+  reject*: QInputDialogrejectProc
+  keyPressEvent*: QInputDialogkeyPressEventProc
+  closeEvent*: QInputDialogcloseEventProc
+  showEvent*: QInputDialogshowEventProc
+  resizeEvent*: QInputDialogresizeEventProc
+  contextMenuEvent*: QInputDialogcontextMenuEventProc
+  eventFilter*: QInputDialogeventFilterProc
+  devType*: QInputDialogdevTypeProc
+  heightForWidth*: QInputDialogheightForWidthProc
+  hasHeightForWidth*: QInputDialoghasHeightForWidthProc
+  paintEngine*: QInputDialogpaintEngineProc
+  event*: QInputDialogeventProc
+  mousePressEvent*: QInputDialogmousePressEventProc
+  mouseReleaseEvent*: QInputDialogmouseReleaseEventProc
+  mouseDoubleClickEvent*: QInputDialogmouseDoubleClickEventProc
+  mouseMoveEvent*: QInputDialogmouseMoveEventProc
+  wheelEvent*: QInputDialogwheelEventProc
+  keyReleaseEvent*: QInputDialogkeyReleaseEventProc
+  focusInEvent*: QInputDialogfocusInEventProc
+  focusOutEvent*: QInputDialogfocusOutEventProc
+  enterEvent*: QInputDialogenterEventProc
+  leaveEvent*: QInputDialogleaveEventProc
+  paintEvent*: QInputDialogpaintEventProc
+  moveEvent*: QInputDialogmoveEventProc
+  tabletEvent*: QInputDialogtabletEventProc
+  actionEvent*: QInputDialogactionEventProc
+  dragEnterEvent*: QInputDialogdragEnterEventProc
+  dragMoveEvent*: QInputDialogdragMoveEventProc
+  dragLeaveEvent*: QInputDialogdragLeaveEventProc
+  dropEvent*: QInputDialogdropEventProc
+  hideEvent*: QInputDialoghideEventProc
+  nativeEvent*: QInputDialognativeEventProc
+  changeEvent*: QInputDialogchangeEventProc
+  metric*: QInputDialogmetricProc
+  initPainter*: QInputDialoginitPainterProc
+  redirected*: QInputDialogredirectedProc
+  sharedPainter*: QInputDialogsharedPainterProc
+  inputMethodEvent*: QInputDialoginputMethodEventProc
+  inputMethodQuery*: QInputDialoginputMethodQueryProc
+  focusNextPrevChild*: QInputDialogfocusNextPrevChildProc
+  timerEvent*: QInputDialogtimerEventProc
+  childEvent*: QInputDialogchildEventProc
+  customEvent*: QInputDialogcustomEventProc
+  connectNotify*: QInputDialogconnectNotifyProc
+  disconnectNotify*: QInputDialogdisconnectNotifyProc
+proc QInputDialogmetaObject*(self: gen_qinputdialog_types.QInputDialog, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQInputDialog_virtualbase_metaObject(self.h))
 
-type QInputDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_metaObject(self: ptr cQInputDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QInputDialog_metaObject ".} =
-  var nimfunc = cast[ptr QInputDialogmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QInputDialogmetacast*(self: gen_qinputdialog_types.QInputDialog, param1: cstring): pointer =
-  fQInputDialog_virtualbase_metacast(self.h, param1)
+  fcQInputDialog_virtualbase_metacast(self.h, param1)
 
-type QInputDialogmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmetacastProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_metacast(self: ptr cQInputDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QInputDialog_metacast ".} =
-  var nimfunc = cast[ptr QInputDialogmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QInputDialogmetacall*(self: gen_qinputdialog_types.QInputDialog, param1: cint, param2: cint, param3: pointer): cint =
-  fQInputDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQInputDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QInputDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmetacallProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_metacall(self: ptr cQInputDialog, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QInputDialog_metacall ".} =
-  var nimfunc = cast[ptr QInputDialogmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QInputDialogminimumSizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fQInputDialog_virtualbase_minimumSizeHint(self.h))
 
-type QInputDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogminimumSizeHintProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogminimumSizeHintProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
+proc QInputDialogminimumSizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQInputDialog_virtualbase_minimumSizeHint(self.h))
 
-proc miqt_exec_callback_QInputDialog_minimumSizeHint(self: ptr cQInputDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QInputDialog_minimumSizeHint ".} =
-  var nimfunc = cast[ptr QInputDialogminimumSizeHintProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_minimumSizeHint(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].minimumSizeHint(self)
   virtualReturn.h
-proc QInputDialogsizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fQInputDialog_virtualbase_sizeHint(self.h))
 
-type QInputDialogsizeHintProc* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogsizeHintProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogsizeHintProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
+proc QInputDialogsizeHint*(self: gen_qinputdialog_types.QInputDialog, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQInputDialog_virtualbase_sizeHint(self.h))
 
-proc miqt_exec_callback_QInputDialog_sizeHint(self: ptr cQInputDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QInputDialog_sizeHint ".} =
-  var nimfunc = cast[ptr QInputDialogsizeHintProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_sizeHint(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].sizeHint(self)
   virtualReturn.h
+
 proc QInputDialogsetVisible*(self: gen_qinputdialog_types.QInputDialog, visible: bool): void =
-  fQInputDialog_virtualbase_setVisible(self.h, visible)
+  fcQInputDialog_virtualbase_setVisible(self.h, visible)
 
-type QInputDialogsetVisibleProc* = proc(visible: bool): void
-proc onsetVisible*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogsetVisibleProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogsetVisibleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_setVisible(self: ptr cQInputDialog, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QInputDialog_setVisible ".} =
-  var nimfunc = cast[ptr QInputDialogsetVisibleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_setVisible(vtbl: pointer, self: pointer, visible: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = visible
+  vtbl[].setVisible(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QInputDialogdone*(self: gen_qinputdialog_types.QInputDialog, resultVal: cint): void =
-  fQInputDialog_virtualbase_done(self.h, resultVal)
+  fcQInputDialog_virtualbase_done(self.h, resultVal)
 
-type QInputDialogdoneProc* = proc(resultVal: cint): void
-proc ondone*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdoneProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogdoneProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_done(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_done(self: ptr cQInputDialog, slot: int, resultVal: cint): void {.exportc: "miqt_exec_callback_QInputDialog_done ".} =
-  var nimfunc = cast[ptr QInputDialogdoneProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_done(vtbl: pointer, self: pointer, resultVal: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = resultVal
+  vtbl[].done(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QInputDialogopen*(self: gen_qinputdialog_types.QInputDialog, ): void =
-  fQInputDialog_virtualbase_open(self.h)
+  fcQInputDialog_virtualbase_open(self.h)
 
-type QInputDialogopenProc* = proc(): void
-proc onopen*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogopenProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogopenProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_open(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQInputDialog_open(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  vtbl[].open(self)
 
-proc miqt_exec_callback_QInputDialog_open(self: ptr cQInputDialog, slot: int): void {.exportc: "miqt_exec_callback_QInputDialog_open ".} =
-  var nimfunc = cast[ptr QInputDialogopenProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QInputDialogexec*(self: gen_qinputdialog_types.QInputDialog, ): cint =
-  fQInputDialog_virtualbase_exec(self.h)
+  fcQInputDialog_virtualbase_exec(self.h)
 
-type QInputDialogexecProc* = proc(): cint
-proc onexec*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogexecProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogexecProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_exec(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_exec(self: ptr cQInputDialog, slot: int): cint {.exportc: "miqt_exec_callback_QInputDialog_exec ".} =
-  var nimfunc = cast[ptr QInputDialogexecProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_exec(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].exec(self)
   virtualReturn
+
 proc QInputDialogaccept*(self: gen_qinputdialog_types.QInputDialog, ): void =
-  fQInputDialog_virtualbase_accept(self.h)
+  fcQInputDialog_virtualbase_accept(self.h)
 
-type QInputDialogacceptProc* = proc(): void
-proc onaccept*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogacceptProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogacceptProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_accept(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQInputDialog_accept(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  vtbl[].accept(self)
 
-proc miqt_exec_callback_QInputDialog_accept(self: ptr cQInputDialog, slot: int): void {.exportc: "miqt_exec_callback_QInputDialog_accept ".} =
-  var nimfunc = cast[ptr QInputDialogacceptProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QInputDialogreject*(self: gen_qinputdialog_types.QInputDialog, ): void =
-  fQInputDialog_virtualbase_reject(self.h)
+  fcQInputDialog_virtualbase_reject(self.h)
 
-type QInputDialogrejectProc* = proc(): void
-proc onreject*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogrejectProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogrejectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_reject(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQInputDialog_reject(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  vtbl[].reject(self)
 
-proc miqt_exec_callback_QInputDialog_reject(self: ptr cQInputDialog, slot: int): void {.exportc: "miqt_exec_callback_QInputDialog_reject ".} =
-  var nimfunc = cast[ptr QInputDialogrejectProc](cast[pointer](slot))
+proc QInputDialogkeyPressEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent_types.QKeyEvent): void =
+  fcQInputDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
-  nimfunc[]()
-proc QInputDialogkeyPressEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent.QKeyEvent): void =
-  fQInputDialog_virtualbase_keyPressEvent(self.h, param1.h)
+proc miqt_exec_callback_cQInputDialog_keyPressEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QKeyEvent(h: param1)
+  vtbl[].keyPressEvent(self, slotval1)
 
-type QInputDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogkeyPressEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogkeyPressEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialogcloseEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent_types.QCloseEvent): void =
+  fcQInputDialog_virtualbase_closeEvent(self.h, param1.h)
 
-proc miqt_exec_callback_QInputDialog_keyPressEvent(self: ptr cQInputDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_keyPressEvent ".} =
-  var nimfunc = cast[ptr QInputDialogkeyPressEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QKeyEvent(h: param1)
+proc miqt_exec_callback_cQInputDialog_closeEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QCloseEvent(h: param1)
+  vtbl[].closeEvent(self, slotval1)
 
+proc QInputDialogshowEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent_types.QShowEvent): void =
+  fcQInputDialog_virtualbase_showEvent(self.h, param1.h)
 
-  nimfunc[](slotval1)
-proc QInputDialogcloseEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent.QCloseEvent): void =
-  fQInputDialog_virtualbase_closeEvent(self.h, param1.h)
+proc miqt_exec_callback_cQInputDialog_showEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QShowEvent(h: param1)
+  vtbl[].showEvent(self, slotval1)
 
-type QInputDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogcloseEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogcloseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialogresizeEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent_types.QResizeEvent): void =
+  fcQInputDialog_virtualbase_resizeEvent(self.h, param1.h)
 
-proc miqt_exec_callback_QInputDialog_closeEvent(self: ptr cQInputDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_closeEvent ".} =
-  var nimfunc = cast[ptr QInputDialogcloseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QCloseEvent(h: param1)
+proc miqt_exec_callback_cQInputDialog_resizeEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QResizeEvent(h: param1)
+  vtbl[].resizeEvent(self, slotval1)
 
+proc QInputDialogcontextMenuEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent_types.QContextMenuEvent): void =
+  fcQInputDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
-  nimfunc[](slotval1)
-proc QInputDialogshowEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent.QShowEvent): void =
-  fQInputDialog_virtualbase_showEvent(self.h, param1.h)
+proc miqt_exec_callback_cQInputDialog_contextMenuEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QContextMenuEvent(h: param1)
+  vtbl[].contextMenuEvent(self, slotval1)
 
-type QInputDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogshowEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogshowEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialogeventFilter*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qobject_types.QObject, param2: gen_qcoreevent_types.QEvent): bool =
+  fcQInputDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-proc miqt_exec_callback_QInputDialog_showEvent(self: ptr cQInputDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_showEvent ".} =
-  var nimfunc = cast[ptr QInputDialogshowEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QShowEvent(h: param1)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogresizeEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent.QResizeEvent): void =
-  fQInputDialog_virtualbase_resizeEvent(self.h, param1.h)
-
-type QInputDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogresizeEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogresizeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_resizeEvent(self: ptr cQInputDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_resizeEvent ".} =
-  var nimfunc = cast[ptr QInputDialogresizeEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QResizeEvent(h: param1)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogcontextMenuEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent.QContextMenuEvent): void =
-  fQInputDialog_virtualbase_contextMenuEvent(self.h, param1.h)
-
-type QInputDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogcontextMenuEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogcontextMenuEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_contextMenuEvent(self: ptr cQInputDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_contextMenuEvent ".} =
-  var nimfunc = cast[ptr QInputDialogcontextMenuEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogeventFilter*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-  fQInputDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
-
-type QInputDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_eventFilter(self: ptr cQInputDialog, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QInputDialog_eventFilter ".} =
-  var nimfunc = cast[ptr QInputDialogeventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: param1)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: param2)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQInputDialog_eventFilter(vtbl: pointer, self: pointer, param1: pointer, param2: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: param1)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: param2)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
+
 proc QInputDialogdevType*(self: gen_qinputdialog_types.QInputDialog, ): cint =
-  fQInputDialog_virtualbase_devType(self.h)
+  fcQInputDialog_virtualbase_devType(self.h)
 
-type QInputDialogdevTypeProc* = proc(): cint
-proc ondevType*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdevTypeProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogdevTypeProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_devType(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_devType(self: ptr cQInputDialog, slot: int): cint {.exportc: "miqt_exec_callback_QInputDialog_devType ".} =
-  var nimfunc = cast[ptr QInputDialogdevTypeProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_devType(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].devType(self)
   virtualReturn
+
 proc QInputDialogheightForWidth*(self: gen_qinputdialog_types.QInputDialog, param1: cint): cint =
-  fQInputDialog_virtualbase_heightForWidth(self.h, param1)
+  fcQInputDialog_virtualbase_heightForWidth(self.h, param1)
 
-type QInputDialogheightForWidthProc* = proc(param1: cint): cint
-proc onheightForWidth*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogheightForWidthProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogheightForWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_heightForWidth(self: ptr cQInputDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QInputDialog_heightForWidth ".} =
-  var nimfunc = cast[ptr QInputDialogheightForWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_heightForWidth(vtbl: pointer, self: pointer, param1: cint): cint {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = param1
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].heightForWidth(self, slotval1)
   virtualReturn
+
 proc QInputDialoghasHeightForWidth*(self: gen_qinputdialog_types.QInputDialog, ): bool =
-  fQInputDialog_virtualbase_hasHeightForWidth(self.h)
+  fcQInputDialog_virtualbase_hasHeightForWidth(self.h)
 
-type QInputDialoghasHeightForWidthProc* = proc(): bool
-proc onhasHeightForWidth*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialoghasHeightForWidthProc) =
-  # TODO check subclass
-  var tmp = new QInputDialoghasHeightForWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_hasHeightForWidth(self: ptr cQInputDialog, slot: int): bool {.exportc: "miqt_exec_callback_QInputDialog_hasHeightForWidth ".} =
-  var nimfunc = cast[ptr QInputDialoghasHeightForWidthProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_hasHeightForWidth(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].hasHeightForWidth(self)
   virtualReturn
-proc QInputDialogpaintEngine*(self: gen_qinputdialog_types.QInputDialog, ): gen_qpaintengine.QPaintEngine =
-  gen_qpaintengine.QPaintEngine(h: fQInputDialog_virtualbase_paintEngine(self.h))
 
-type QInputDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogpaintEngineProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogpaintEngineProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
+proc QInputDialogpaintEngine*(self: gen_qinputdialog_types.QInputDialog, ): gen_qpaintengine_types.QPaintEngine =
+  gen_qpaintengine_types.QPaintEngine(h: fcQInputDialog_virtualbase_paintEngine(self.h))
 
-proc miqt_exec_callback_QInputDialog_paintEngine(self: ptr cQInputDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QInputDialog_paintEngine ".} =
-  var nimfunc = cast[ptr QInputDialogpaintEngineProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_paintEngine(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].paintEngine(self)
   virtualReturn.h
-proc QInputDialogevent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent.QEvent): bool =
-  fQInputDialog_virtualbase_event(self.h, event.h)
 
-type QInputDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogeventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QInputDialogevent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent_types.QEvent): bool =
+  fcQInputDialog_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QInputDialog_event(self: ptr cQInputDialog, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QInputDialog_event ".} =
-  var nimfunc = cast[ptr QInputDialogeventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQInputDialog_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QInputDialogmousePressEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QMouseEvent): void =
-  fQInputDialog_virtualbase_mousePressEvent(self.h, event.h)
-
-type QInputDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmousePressEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmousePressEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_mousePressEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_mousePressEvent ".} =
-  var nimfunc = cast[ptr QInputDialogmousePressEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogmouseReleaseEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QMouseEvent): void =
-  fQInputDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
-
-type QInputDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmouseReleaseEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmouseReleaseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_mouseReleaseEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_mouseReleaseEvent ".} =
-  var nimfunc = cast[ptr QInputDialogmouseReleaseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogmouseDoubleClickEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QMouseEvent): void =
-  fQInputDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
-
-type QInputDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmouseDoubleClickEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmouseDoubleClickEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_mouseDoubleClickEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_mouseDoubleClickEvent ".} =
-  var nimfunc = cast[ptr QInputDialogmouseDoubleClickEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogmouseMoveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QMouseEvent): void =
-  fQInputDialog_virtualbase_mouseMoveEvent(self.h, event.h)
-
-type QInputDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmouseMoveEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmouseMoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_mouseMoveEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_mouseMoveEvent ".} =
-  var nimfunc = cast[ptr QInputDialogmouseMoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogwheelEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QWheelEvent): void =
-  fQInputDialog_virtualbase_wheelEvent(self.h, event.h)
-
-type QInputDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogwheelEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogwheelEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_wheelEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_wheelEvent ".} =
-  var nimfunc = cast[ptr QInputDialogwheelEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QWheelEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogkeyReleaseEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QKeyEvent): void =
-  fQInputDialog_virtualbase_keyReleaseEvent(self.h, event.h)
-
-type QInputDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogkeyReleaseEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogkeyReleaseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_keyReleaseEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_keyReleaseEvent ".} =
-  var nimfunc = cast[ptr QInputDialogkeyReleaseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QKeyEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogfocusInEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QFocusEvent): void =
-  fQInputDialog_virtualbase_focusInEvent(self.h, event.h)
-
-type QInputDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogfocusInEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogfocusInEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_focusInEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_focusInEvent ".} =
-  var nimfunc = cast[ptr QInputDialogfocusInEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QFocusEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogfocusOutEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QFocusEvent): void =
-  fQInputDialog_virtualbase_focusOutEvent(self.h, event.h)
-
-type QInputDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogfocusOutEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogfocusOutEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_focusOutEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_focusOutEvent ".} =
-  var nimfunc = cast[ptr QInputDialogfocusOutEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QFocusEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogenterEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent.QEvent): void =
-  fQInputDialog_virtualbase_enterEvent(self.h, event.h)
-
-type QInputDialogenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogenterEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogenterEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_enterEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_enterEvent ".} =
-  var nimfunc = cast[ptr QInputDialogenterEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogleaveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent.QEvent): void =
-  fQInputDialog_virtualbase_leaveEvent(self.h, event.h)
-
-type QInputDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogleaveEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogleaveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_leaveEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_leaveEvent ".} =
-  var nimfunc = cast[ptr QInputDialogleaveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogpaintEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QPaintEvent): void =
-  fQInputDialog_virtualbase_paintEvent(self.h, event.h)
-
-type QInputDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogpaintEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogpaintEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_paintEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_paintEvent ".} =
-  var nimfunc = cast[ptr QInputDialogpaintEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QPaintEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogmoveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QMoveEvent): void =
-  fQInputDialog_virtualbase_moveEvent(self.h, event.h)
-
-type QInputDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmoveEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_moveEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_moveEvent ".} =
-  var nimfunc = cast[ptr QInputDialogmoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMoveEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogtabletEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QTabletEvent): void =
-  fQInputDialog_virtualbase_tabletEvent(self.h, event.h)
-
-type QInputDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogtabletEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogtabletEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_tabletEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_tabletEvent ".} =
-  var nimfunc = cast[ptr QInputDialogtabletEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QTabletEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogactionEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QActionEvent): void =
-  fQInputDialog_virtualbase_actionEvent(self.h, event.h)
-
-type QInputDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogactionEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogactionEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_actionEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_actionEvent ".} =
-  var nimfunc = cast[ptr QInputDialogactionEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QActionEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogdragEnterEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QDragEnterEvent): void =
-  fQInputDialog_virtualbase_dragEnterEvent(self.h, event.h)
-
-type QInputDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdragEnterEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogdragEnterEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_dragEnterEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_dragEnterEvent ".} =
-  var nimfunc = cast[ptr QInputDialogdragEnterEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragEnterEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogdragMoveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QDragMoveEvent): void =
-  fQInputDialog_virtualbase_dragMoveEvent(self.h, event.h)
-
-type QInputDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdragMoveEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogdragMoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_dragMoveEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_dragMoveEvent ".} =
-  var nimfunc = cast[ptr QInputDialogdragMoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragMoveEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogdragLeaveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QDragLeaveEvent): void =
-  fQInputDialog_virtualbase_dragLeaveEvent(self.h, event.h)
-
-type QInputDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdragLeaveEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogdragLeaveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_dragLeaveEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_dragLeaveEvent ".} =
-  var nimfunc = cast[ptr QInputDialogdragLeaveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogdropEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QDropEvent): void =
-  fQInputDialog_virtualbase_dropEvent(self.h, event.h)
-
-type QInputDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdropEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogdropEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_dropEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_dropEvent ".} =
-  var nimfunc = cast[ptr QInputDialogdropEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDropEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QInputDialoghideEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent.QHideEvent): void =
-  fQInputDialog_virtualbase_hideEvent(self.h, event.h)
-
-type QInputDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialoghideEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialoghideEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_hideEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_hideEvent ".} =
-  var nimfunc = cast[ptr QInputDialoghideEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QHideEvent(h: event)
-
-
-  nimfunc[](slotval1)
+
+proc QInputDialogmousePressEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QMouseEvent): void =
+  fcQInputDialog_virtualbase_mousePressEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_mousePressEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: event)
+  vtbl[].mousePressEvent(self, slotval1)
+
+proc QInputDialogmouseReleaseEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QMouseEvent): void =
+  fcQInputDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_mouseReleaseEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: event)
+  vtbl[].mouseReleaseEvent(self, slotval1)
+
+proc QInputDialogmouseDoubleClickEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QMouseEvent): void =
+  fcQInputDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_mouseDoubleClickEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: event)
+  vtbl[].mouseDoubleClickEvent(self, slotval1)
+
+proc QInputDialogmouseMoveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QMouseEvent): void =
+  fcQInputDialog_virtualbase_mouseMoveEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_mouseMoveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: event)
+  vtbl[].mouseMoveEvent(self, slotval1)
+
+proc QInputDialogwheelEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QWheelEvent): void =
+  fcQInputDialog_virtualbase_wheelEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_wheelEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QWheelEvent(h: event)
+  vtbl[].wheelEvent(self, slotval1)
+
+proc QInputDialogkeyReleaseEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QKeyEvent): void =
+  fcQInputDialog_virtualbase_keyReleaseEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_keyReleaseEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QKeyEvent(h: event)
+  vtbl[].keyReleaseEvent(self, slotval1)
+
+proc QInputDialogfocusInEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QFocusEvent): void =
+  fcQInputDialog_virtualbase_focusInEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_focusInEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QFocusEvent(h: event)
+  vtbl[].focusInEvent(self, slotval1)
+
+proc QInputDialogfocusOutEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QFocusEvent): void =
+  fcQInputDialog_virtualbase_focusOutEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_focusOutEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QFocusEvent(h: event)
+  vtbl[].focusOutEvent(self, slotval1)
+
+proc QInputDialogenterEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent_types.QEvent): void =
+  fcQInputDialog_virtualbase_enterEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_enterEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].enterEvent(self, slotval1)
+
+proc QInputDialogleaveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent_types.QEvent): void =
+  fcQInputDialog_virtualbase_leaveEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_leaveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].leaveEvent(self, slotval1)
+
+proc QInputDialogpaintEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QPaintEvent): void =
+  fcQInputDialog_virtualbase_paintEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_paintEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QPaintEvent(h: event)
+  vtbl[].paintEvent(self, slotval1)
+
+proc QInputDialogmoveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QMoveEvent): void =
+  fcQInputDialog_virtualbase_moveEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_moveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QMoveEvent(h: event)
+  vtbl[].moveEvent(self, slotval1)
+
+proc QInputDialogtabletEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QTabletEvent): void =
+  fcQInputDialog_virtualbase_tabletEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_tabletEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QTabletEvent(h: event)
+  vtbl[].tabletEvent(self, slotval1)
+
+proc QInputDialogactionEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QActionEvent): void =
+  fcQInputDialog_virtualbase_actionEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_actionEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QActionEvent(h: event)
+  vtbl[].actionEvent(self, slotval1)
+
+proc QInputDialogdragEnterEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QDragEnterEvent): void =
+  fcQInputDialog_virtualbase_dragEnterEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_dragEnterEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QDragEnterEvent(h: event)
+  vtbl[].dragEnterEvent(self, slotval1)
+
+proc QInputDialogdragMoveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QDragMoveEvent): void =
+  fcQInputDialog_virtualbase_dragMoveEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_dragMoveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QDragMoveEvent(h: event)
+  vtbl[].dragMoveEvent(self, slotval1)
+
+proc QInputDialogdragLeaveEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QDragLeaveEvent): void =
+  fcQInputDialog_virtualbase_dragLeaveEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_dragLeaveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QDragLeaveEvent(h: event)
+  vtbl[].dragLeaveEvent(self, slotval1)
+
+proc QInputDialogdropEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QDropEvent): void =
+  fcQInputDialog_virtualbase_dropEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_dropEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QDropEvent(h: event)
+  vtbl[].dropEvent(self, slotval1)
+
+proc QInputDialoghideEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qevent_types.QHideEvent): void =
+  fcQInputDialog_virtualbase_hideEvent(self.h, event.h)
+
+proc miqt_exec_callback_cQInputDialog_hideEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QHideEvent(h: event)
+  vtbl[].hideEvent(self, slotval1)
+
 proc QInputDialognativeEvent*(self: gen_qinputdialog_types.QInputDialog, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-  fQInputDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
+  fcQInputDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QInputDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialognativeEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialognativeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_nativeEvent(self: ptr cQInputDialog, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QInputDialog_nativeEvent ".} =
-  var nimfunc = cast[ptr QInputDialognativeEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_nativeEvent(vtbl: pointer, self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
   let slotval1 = veventTypex_ret
-
   let slotval2 = message
-
   let slotval3 = resultVal
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].nativeEvent(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QInputDialogchangeEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qcoreevent.QEvent): void =
-  fQInputDialog_virtualbase_changeEvent(self.h, param1.h)
 
-type QInputDialogchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogchangeEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogchangeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialogchangeEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qcoreevent_types.QEvent): void =
+  fcQInputDialog_virtualbase_changeEvent(self.h, param1.h)
 
-proc miqt_exec_callback_QInputDialog_changeEvent(self: ptr cQInputDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_changeEvent ".} =
-  var nimfunc = cast[ptr QInputDialogchangeEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: param1)
+proc miqt_exec_callback_cQInputDialog_changeEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: param1)
+  vtbl[].changeEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QInputDialogmetric*(self: gen_qinputdialog_types.QInputDialog, param1: cint): cint =
-  fQInputDialog_virtualbase_metric(self.h, cint(param1))
+  fcQInputDialog_virtualbase_metric(self.h, cint(param1))
 
-type QInputDialogmetricProc* = proc(param1: cint): cint
-proc onmetric*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmetricProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogmetricProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_metric(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_metric(self: ptr cQInputDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QInputDialog_metric ".} =
-  var nimfunc = cast[ptr QInputDialogmetricProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_metric(vtbl: pointer, self: pointer, param1: cint): cint {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = cint(param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metric(self, slotval1)
   virtualReturn
-proc QInputDialoginitPainter*(self: gen_qinputdialog_types.QInputDialog, painter: gen_qpainter.QPainter): void =
-  fQInputDialog_virtualbase_initPainter(self.h, painter.h)
 
-type QInputDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialoginitPainterProc) =
-  # TODO check subclass
-  var tmp = new QInputDialoginitPainterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
+proc QInputDialoginitPainter*(self: gen_qinputdialog_types.QInputDialog, painter: gen_qpainter_types.QPainter): void =
+  fcQInputDialog_virtualbase_initPainter(self.h, painter.h)
 
-proc miqt_exec_callback_QInputDialog_initPainter(self: ptr cQInputDialog, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_initPainter ".} =
-  var nimfunc = cast[ptr QInputDialoginitPainterProc](cast[pointer](slot))
-  let slotval1 = gen_qpainter.QPainter(h: painter)
+proc miqt_exec_callback_cQInputDialog_initPainter(vtbl: pointer, self: pointer, painter: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qpainter_types.QPainter(h: painter)
+  vtbl[].initPainter(self, slotval1)
 
+proc QInputDialogredirected*(self: gen_qinputdialog_types.QInputDialog, offset: gen_qpoint_types.QPoint): gen_qpaintdevice_types.QPaintDevice =
+  gen_qpaintdevice_types.QPaintDevice(h: fcQInputDialog_virtualbase_redirected(self.h, offset.h))
 
-  nimfunc[](slotval1)
-proc QInputDialogredirected*(self: gen_qinputdialog_types.QInputDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-  gen_qpaintdevice.QPaintDevice(h: fQInputDialog_virtualbase_redirected(self.h, offset.h))
-
-type QInputDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogredirectedProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogredirectedProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_redirected(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_redirected(self: ptr cQInputDialog, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QInputDialog_redirected ".} =
-  var nimfunc = cast[ptr QInputDialogredirectedProc](cast[pointer](slot))
-  let slotval1 = gen_qpoint.QPoint(h: offset)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQInputDialog_redirected(vtbl: pointer, self: pointer, offset: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qpoint_types.QPoint(h: offset)
+  let virtualReturn = vtbl[].redirected(self, slotval1)
   virtualReturn.h
-proc QInputDialogsharedPainter*(self: gen_qinputdialog_types.QInputDialog, ): gen_qpainter.QPainter =
-  gen_qpainter.QPainter(h: fQInputDialog_virtualbase_sharedPainter(self.h))
 
-type QInputDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogsharedPainterProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogsharedPainterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
+proc QInputDialogsharedPainter*(self: gen_qinputdialog_types.QInputDialog, ): gen_qpainter_types.QPainter =
+  gen_qpainter_types.QPainter(h: fcQInputDialog_virtualbase_sharedPainter(self.h))
 
-proc miqt_exec_callback_QInputDialog_sharedPainter(self: ptr cQInputDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QInputDialog_sharedPainter ".} =
-  var nimfunc = cast[ptr QInputDialogsharedPainterProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQInputDialog_sharedPainter(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let virtualReturn = vtbl[].sharedPainter(self)
   virtualReturn.h
-proc QInputDialoginputMethodEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent.QInputMethodEvent): void =
-  fQInputDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QInputDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialoginputMethodEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialoginputMethodEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialoginputMethodEvent*(self: gen_qinputdialog_types.QInputDialog, param1: gen_qevent_types.QInputMethodEvent): void =
+  fcQInputDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
-proc miqt_exec_callback_QInputDialog_inputMethodEvent(self: ptr cQInputDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_inputMethodEvent ".} =
-  var nimfunc = cast[ptr QInputDialoginputMethodEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
+proc miqt_exec_callback_cQInputDialog_inputMethodEvent(vtbl: pointer, self: pointer, param1: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qevent_types.QInputMethodEvent(h: param1)
+  vtbl[].inputMethodEvent(self, slotval1)
 
+proc QInputDialoginputMethodQuery*(self: gen_qinputdialog_types.QInputDialog, param1: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQInputDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-  nimfunc[](slotval1)
-proc QInputDialoginputMethodQuery*(self: gen_qinputdialog_types.QInputDialog, param1: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fQInputDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
-
-type QInputDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialoginputMethodQueryProc) =
-  # TODO check subclass
-  var tmp = new QInputDialoginputMethodQueryProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_inputMethodQuery(self: ptr cQInputDialog, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QInputDialog_inputMethodQuery ".} =
-  var nimfunc = cast[ptr QInputDialoginputMethodQueryProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_inputMethodQuery(vtbl: pointer, self: pointer, param1: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = cint(param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].inputMethodQuery(self, slotval1)
   virtualReturn.h
+
 proc QInputDialogfocusNextPrevChild*(self: gen_qinputdialog_types.QInputDialog, next: bool): bool =
-  fQInputDialog_virtualbase_focusNextPrevChild(self.h, next)
+  fcQInputDialog_virtualbase_focusNextPrevChild(self.h, next)
 
-type QInputDialogfocusNextPrevChildProc* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogfocusNextPrevChildProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogfocusNextPrevChildProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_focusNextPrevChild(self: ptr cQInputDialog, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QInputDialog_focusNextPrevChild ".} =
-  var nimfunc = cast[ptr QInputDialogfocusNextPrevChildProc](cast[pointer](slot))
+proc miqt_exec_callback_cQInputDialog_focusNextPrevChild(vtbl: pointer, self: pointer, next: bool): bool {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
   let slotval1 = next
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].focusNextPrevChild(self, slotval1)
   virtualReturn
-proc QInputDialogtimerEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent.QTimerEvent): void =
-  fQInputDialog_virtualbase_timerEvent(self.h, event.h)
 
-type QInputDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogtimerEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogtimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialogtimerEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQInputDialog_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QInputDialog_timerEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_timerEvent ".} =
-  var nimfunc = cast[ptr QInputDialogtimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQInputDialog_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QInputDialogchildEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQInputDialog_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QInputDialogchildEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent.QChildEvent): void =
-  fQInputDialog_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQInputDialog_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QInputDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogchildEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialogcustomEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent_types.QEvent): void =
+  fcQInputDialog_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QInputDialog_childEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_childEvent ".} =
-  var nimfunc = cast[ptr QInputDialogchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQInputDialog_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QInputDialogconnectNotify*(self: gen_qinputdialog_types.QInputDialog, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQInputDialog_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QInputDialogcustomEvent*(self: gen_qinputdialog_types.QInputDialog, event: gen_qcoreevent.QEvent): void =
-  fQInputDialog_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQInputDialog_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QInputDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QInputDialogdisconnectNotify*(self: gen_qinputdialog_types.QInputDialog, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQInputDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QInputDialog_customEvent(self: ptr cQInputDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_customEvent ".} =
-  var nimfunc = cast[ptr QInputDialogcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQInputDialog_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QInputDialogVTable](vtbl)
+  let self = QInputDialog(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qinputdialog_types.QInputDialog,
+    parent: gen_qwidget_types.QWidget,
+    vtbl: ref QInputDialogVTable = nil): gen_qinputdialog_types.QInputDialog =
+  let vtbl = if vtbl == nil: new QInputDialogVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQInputDialogVTable, _: ptr cQInputDialog) {.cdecl.} =
+    let vtbl = cast[ref QInputDialogVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQInputDialog_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQInputDialog_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQInputDialog_metacall
+  if not isNil(vtbl.minimumSizeHint):
+    vtbl[].vtbl.minimumSizeHint = miqt_exec_callback_cQInputDialog_minimumSizeHint
+  if not isNil(vtbl.sizeHint):
+    vtbl[].vtbl.sizeHint = miqt_exec_callback_cQInputDialog_sizeHint
+  if not isNil(vtbl.setVisible):
+    vtbl[].vtbl.setVisible = miqt_exec_callback_cQInputDialog_setVisible
+  if not isNil(vtbl.done):
+    vtbl[].vtbl.done = miqt_exec_callback_cQInputDialog_done
+  if not isNil(vtbl.open):
+    vtbl[].vtbl.open = miqt_exec_callback_cQInputDialog_open
+  if not isNil(vtbl.exec):
+    vtbl[].vtbl.exec = miqt_exec_callback_cQInputDialog_exec
+  if not isNil(vtbl.accept):
+    vtbl[].vtbl.accept = miqt_exec_callback_cQInputDialog_accept
+  if not isNil(vtbl.reject):
+    vtbl[].vtbl.reject = miqt_exec_callback_cQInputDialog_reject
+  if not isNil(vtbl.keyPressEvent):
+    vtbl[].vtbl.keyPressEvent = miqt_exec_callback_cQInputDialog_keyPressEvent
+  if not isNil(vtbl.closeEvent):
+    vtbl[].vtbl.closeEvent = miqt_exec_callback_cQInputDialog_closeEvent
+  if not isNil(vtbl.showEvent):
+    vtbl[].vtbl.showEvent = miqt_exec_callback_cQInputDialog_showEvent
+  if not isNil(vtbl.resizeEvent):
+    vtbl[].vtbl.resizeEvent = miqt_exec_callback_cQInputDialog_resizeEvent
+  if not isNil(vtbl.contextMenuEvent):
+    vtbl[].vtbl.contextMenuEvent = miqt_exec_callback_cQInputDialog_contextMenuEvent
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQInputDialog_eventFilter
+  if not isNil(vtbl.devType):
+    vtbl[].vtbl.devType = miqt_exec_callback_cQInputDialog_devType
+  if not isNil(vtbl.heightForWidth):
+    vtbl[].vtbl.heightForWidth = miqt_exec_callback_cQInputDialog_heightForWidth
+  if not isNil(vtbl.hasHeightForWidth):
+    vtbl[].vtbl.hasHeightForWidth = miqt_exec_callback_cQInputDialog_hasHeightForWidth
+  if not isNil(vtbl.paintEngine):
+    vtbl[].vtbl.paintEngine = miqt_exec_callback_cQInputDialog_paintEngine
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQInputDialog_event
+  if not isNil(vtbl.mousePressEvent):
+    vtbl[].vtbl.mousePressEvent = miqt_exec_callback_cQInputDialog_mousePressEvent
+  if not isNil(vtbl.mouseReleaseEvent):
+    vtbl[].vtbl.mouseReleaseEvent = miqt_exec_callback_cQInputDialog_mouseReleaseEvent
+  if not isNil(vtbl.mouseDoubleClickEvent):
+    vtbl[].vtbl.mouseDoubleClickEvent = miqt_exec_callback_cQInputDialog_mouseDoubleClickEvent
+  if not isNil(vtbl.mouseMoveEvent):
+    vtbl[].vtbl.mouseMoveEvent = miqt_exec_callback_cQInputDialog_mouseMoveEvent
+  if not isNil(vtbl.wheelEvent):
+    vtbl[].vtbl.wheelEvent = miqt_exec_callback_cQInputDialog_wheelEvent
+  if not isNil(vtbl.keyReleaseEvent):
+    vtbl[].vtbl.keyReleaseEvent = miqt_exec_callback_cQInputDialog_keyReleaseEvent
+  if not isNil(vtbl.focusInEvent):
+    vtbl[].vtbl.focusInEvent = miqt_exec_callback_cQInputDialog_focusInEvent
+  if not isNil(vtbl.focusOutEvent):
+    vtbl[].vtbl.focusOutEvent = miqt_exec_callback_cQInputDialog_focusOutEvent
+  if not isNil(vtbl.enterEvent):
+    vtbl[].vtbl.enterEvent = miqt_exec_callback_cQInputDialog_enterEvent
+  if not isNil(vtbl.leaveEvent):
+    vtbl[].vtbl.leaveEvent = miqt_exec_callback_cQInputDialog_leaveEvent
+  if not isNil(vtbl.paintEvent):
+    vtbl[].vtbl.paintEvent = miqt_exec_callback_cQInputDialog_paintEvent
+  if not isNil(vtbl.moveEvent):
+    vtbl[].vtbl.moveEvent = miqt_exec_callback_cQInputDialog_moveEvent
+  if not isNil(vtbl.tabletEvent):
+    vtbl[].vtbl.tabletEvent = miqt_exec_callback_cQInputDialog_tabletEvent
+  if not isNil(vtbl.actionEvent):
+    vtbl[].vtbl.actionEvent = miqt_exec_callback_cQInputDialog_actionEvent
+  if not isNil(vtbl.dragEnterEvent):
+    vtbl[].vtbl.dragEnterEvent = miqt_exec_callback_cQInputDialog_dragEnterEvent
+  if not isNil(vtbl.dragMoveEvent):
+    vtbl[].vtbl.dragMoveEvent = miqt_exec_callback_cQInputDialog_dragMoveEvent
+  if not isNil(vtbl.dragLeaveEvent):
+    vtbl[].vtbl.dragLeaveEvent = miqt_exec_callback_cQInputDialog_dragLeaveEvent
+  if not isNil(vtbl.dropEvent):
+    vtbl[].vtbl.dropEvent = miqt_exec_callback_cQInputDialog_dropEvent
+  if not isNil(vtbl.hideEvent):
+    vtbl[].vtbl.hideEvent = miqt_exec_callback_cQInputDialog_hideEvent
+  if not isNil(vtbl.nativeEvent):
+    vtbl[].vtbl.nativeEvent = miqt_exec_callback_cQInputDialog_nativeEvent
+  if not isNil(vtbl.changeEvent):
+    vtbl[].vtbl.changeEvent = miqt_exec_callback_cQInputDialog_changeEvent
+  if not isNil(vtbl.metric):
+    vtbl[].vtbl.metric = miqt_exec_callback_cQInputDialog_metric
+  if not isNil(vtbl.initPainter):
+    vtbl[].vtbl.initPainter = miqt_exec_callback_cQInputDialog_initPainter
+  if not isNil(vtbl.redirected):
+    vtbl[].vtbl.redirected = miqt_exec_callback_cQInputDialog_redirected
+  if not isNil(vtbl.sharedPainter):
+    vtbl[].vtbl.sharedPainter = miqt_exec_callback_cQInputDialog_sharedPainter
+  if not isNil(vtbl.inputMethodEvent):
+    vtbl[].vtbl.inputMethodEvent = miqt_exec_callback_cQInputDialog_inputMethodEvent
+  if not isNil(vtbl.inputMethodQuery):
+    vtbl[].vtbl.inputMethodQuery = miqt_exec_callback_cQInputDialog_inputMethodQuery
+  if not isNil(vtbl.focusNextPrevChild):
+    vtbl[].vtbl.focusNextPrevChild = miqt_exec_callback_cQInputDialog_focusNextPrevChild
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQInputDialog_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQInputDialog_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQInputDialog_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQInputDialog_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQInputDialog_disconnectNotify
+  gen_qinputdialog_types.QInputDialog(h: fcQInputDialog_new(addr(vtbl[]), parent.h))
 
-  nimfunc[](slotval1)
-proc QInputDialogconnectNotify*(self: gen_qinputdialog_types.QInputDialog, signal: gen_qmetaobject.QMetaMethod): void =
-  fQInputDialog_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qinputdialog_types.QInputDialog,
+    vtbl: ref QInputDialogVTable = nil): gen_qinputdialog_types.QInputDialog =
+  let vtbl = if vtbl == nil: new QInputDialogVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQInputDialogVTable, _: ptr cQInputDialog) {.cdecl.} =
+    let vtbl = cast[ref QInputDialogVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQInputDialog_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQInputDialog_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQInputDialog_metacall
+  if not isNil(vtbl.minimumSizeHint):
+    vtbl[].vtbl.minimumSizeHint = miqt_exec_callback_cQInputDialog_minimumSizeHint
+  if not isNil(vtbl.sizeHint):
+    vtbl[].vtbl.sizeHint = miqt_exec_callback_cQInputDialog_sizeHint
+  if not isNil(vtbl.setVisible):
+    vtbl[].vtbl.setVisible = miqt_exec_callback_cQInputDialog_setVisible
+  if not isNil(vtbl.done):
+    vtbl[].vtbl.done = miqt_exec_callback_cQInputDialog_done
+  if not isNil(vtbl.open):
+    vtbl[].vtbl.open = miqt_exec_callback_cQInputDialog_open
+  if not isNil(vtbl.exec):
+    vtbl[].vtbl.exec = miqt_exec_callback_cQInputDialog_exec
+  if not isNil(vtbl.accept):
+    vtbl[].vtbl.accept = miqt_exec_callback_cQInputDialog_accept
+  if not isNil(vtbl.reject):
+    vtbl[].vtbl.reject = miqt_exec_callback_cQInputDialog_reject
+  if not isNil(vtbl.keyPressEvent):
+    vtbl[].vtbl.keyPressEvent = miqt_exec_callback_cQInputDialog_keyPressEvent
+  if not isNil(vtbl.closeEvent):
+    vtbl[].vtbl.closeEvent = miqt_exec_callback_cQInputDialog_closeEvent
+  if not isNil(vtbl.showEvent):
+    vtbl[].vtbl.showEvent = miqt_exec_callback_cQInputDialog_showEvent
+  if not isNil(vtbl.resizeEvent):
+    vtbl[].vtbl.resizeEvent = miqt_exec_callback_cQInputDialog_resizeEvent
+  if not isNil(vtbl.contextMenuEvent):
+    vtbl[].vtbl.contextMenuEvent = miqt_exec_callback_cQInputDialog_contextMenuEvent
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQInputDialog_eventFilter
+  if not isNil(vtbl.devType):
+    vtbl[].vtbl.devType = miqt_exec_callback_cQInputDialog_devType
+  if not isNil(vtbl.heightForWidth):
+    vtbl[].vtbl.heightForWidth = miqt_exec_callback_cQInputDialog_heightForWidth
+  if not isNil(vtbl.hasHeightForWidth):
+    vtbl[].vtbl.hasHeightForWidth = miqt_exec_callback_cQInputDialog_hasHeightForWidth
+  if not isNil(vtbl.paintEngine):
+    vtbl[].vtbl.paintEngine = miqt_exec_callback_cQInputDialog_paintEngine
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQInputDialog_event
+  if not isNil(vtbl.mousePressEvent):
+    vtbl[].vtbl.mousePressEvent = miqt_exec_callback_cQInputDialog_mousePressEvent
+  if not isNil(vtbl.mouseReleaseEvent):
+    vtbl[].vtbl.mouseReleaseEvent = miqt_exec_callback_cQInputDialog_mouseReleaseEvent
+  if not isNil(vtbl.mouseDoubleClickEvent):
+    vtbl[].vtbl.mouseDoubleClickEvent = miqt_exec_callback_cQInputDialog_mouseDoubleClickEvent
+  if not isNil(vtbl.mouseMoveEvent):
+    vtbl[].vtbl.mouseMoveEvent = miqt_exec_callback_cQInputDialog_mouseMoveEvent
+  if not isNil(vtbl.wheelEvent):
+    vtbl[].vtbl.wheelEvent = miqt_exec_callback_cQInputDialog_wheelEvent
+  if not isNil(vtbl.keyReleaseEvent):
+    vtbl[].vtbl.keyReleaseEvent = miqt_exec_callback_cQInputDialog_keyReleaseEvent
+  if not isNil(vtbl.focusInEvent):
+    vtbl[].vtbl.focusInEvent = miqt_exec_callback_cQInputDialog_focusInEvent
+  if not isNil(vtbl.focusOutEvent):
+    vtbl[].vtbl.focusOutEvent = miqt_exec_callback_cQInputDialog_focusOutEvent
+  if not isNil(vtbl.enterEvent):
+    vtbl[].vtbl.enterEvent = miqt_exec_callback_cQInputDialog_enterEvent
+  if not isNil(vtbl.leaveEvent):
+    vtbl[].vtbl.leaveEvent = miqt_exec_callback_cQInputDialog_leaveEvent
+  if not isNil(vtbl.paintEvent):
+    vtbl[].vtbl.paintEvent = miqt_exec_callback_cQInputDialog_paintEvent
+  if not isNil(vtbl.moveEvent):
+    vtbl[].vtbl.moveEvent = miqt_exec_callback_cQInputDialog_moveEvent
+  if not isNil(vtbl.tabletEvent):
+    vtbl[].vtbl.tabletEvent = miqt_exec_callback_cQInputDialog_tabletEvent
+  if not isNil(vtbl.actionEvent):
+    vtbl[].vtbl.actionEvent = miqt_exec_callback_cQInputDialog_actionEvent
+  if not isNil(vtbl.dragEnterEvent):
+    vtbl[].vtbl.dragEnterEvent = miqt_exec_callback_cQInputDialog_dragEnterEvent
+  if not isNil(vtbl.dragMoveEvent):
+    vtbl[].vtbl.dragMoveEvent = miqt_exec_callback_cQInputDialog_dragMoveEvent
+  if not isNil(vtbl.dragLeaveEvent):
+    vtbl[].vtbl.dragLeaveEvent = miqt_exec_callback_cQInputDialog_dragLeaveEvent
+  if not isNil(vtbl.dropEvent):
+    vtbl[].vtbl.dropEvent = miqt_exec_callback_cQInputDialog_dropEvent
+  if not isNil(vtbl.hideEvent):
+    vtbl[].vtbl.hideEvent = miqt_exec_callback_cQInputDialog_hideEvent
+  if not isNil(vtbl.nativeEvent):
+    vtbl[].vtbl.nativeEvent = miqt_exec_callback_cQInputDialog_nativeEvent
+  if not isNil(vtbl.changeEvent):
+    vtbl[].vtbl.changeEvent = miqt_exec_callback_cQInputDialog_changeEvent
+  if not isNil(vtbl.metric):
+    vtbl[].vtbl.metric = miqt_exec_callback_cQInputDialog_metric
+  if not isNil(vtbl.initPainter):
+    vtbl[].vtbl.initPainter = miqt_exec_callback_cQInputDialog_initPainter
+  if not isNil(vtbl.redirected):
+    vtbl[].vtbl.redirected = miqt_exec_callback_cQInputDialog_redirected
+  if not isNil(vtbl.sharedPainter):
+    vtbl[].vtbl.sharedPainter = miqt_exec_callback_cQInputDialog_sharedPainter
+  if not isNil(vtbl.inputMethodEvent):
+    vtbl[].vtbl.inputMethodEvent = miqt_exec_callback_cQInputDialog_inputMethodEvent
+  if not isNil(vtbl.inputMethodQuery):
+    vtbl[].vtbl.inputMethodQuery = miqt_exec_callback_cQInputDialog_inputMethodQuery
+  if not isNil(vtbl.focusNextPrevChild):
+    vtbl[].vtbl.focusNextPrevChild = miqt_exec_callback_cQInputDialog_focusNextPrevChild
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQInputDialog_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQInputDialog_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQInputDialog_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQInputDialog_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQInputDialog_disconnectNotify
+  gen_qinputdialog_types.QInputDialog(h: fcQInputDialog_new2(addr(vtbl[]), ))
 
-type QInputDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
+proc create*(T: type gen_qinputdialog_types.QInputDialog,
+    parent: gen_qwidget_types.QWidget, flags: cint,
+    vtbl: ref QInputDialogVTable = nil): gen_qinputdialog_types.QInputDialog =
+  let vtbl = if vtbl == nil: new QInputDialogVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQInputDialogVTable, _: ptr cQInputDialog) {.cdecl.} =
+    let vtbl = cast[ref QInputDialogVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQInputDialog_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQInputDialog_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQInputDialog_metacall
+  if not isNil(vtbl.minimumSizeHint):
+    vtbl[].vtbl.minimumSizeHint = miqt_exec_callback_cQInputDialog_minimumSizeHint
+  if not isNil(vtbl.sizeHint):
+    vtbl[].vtbl.sizeHint = miqt_exec_callback_cQInputDialog_sizeHint
+  if not isNil(vtbl.setVisible):
+    vtbl[].vtbl.setVisible = miqt_exec_callback_cQInputDialog_setVisible
+  if not isNil(vtbl.done):
+    vtbl[].vtbl.done = miqt_exec_callback_cQInputDialog_done
+  if not isNil(vtbl.open):
+    vtbl[].vtbl.open = miqt_exec_callback_cQInputDialog_open
+  if not isNil(vtbl.exec):
+    vtbl[].vtbl.exec = miqt_exec_callback_cQInputDialog_exec
+  if not isNil(vtbl.accept):
+    vtbl[].vtbl.accept = miqt_exec_callback_cQInputDialog_accept
+  if not isNil(vtbl.reject):
+    vtbl[].vtbl.reject = miqt_exec_callback_cQInputDialog_reject
+  if not isNil(vtbl.keyPressEvent):
+    vtbl[].vtbl.keyPressEvent = miqt_exec_callback_cQInputDialog_keyPressEvent
+  if not isNil(vtbl.closeEvent):
+    vtbl[].vtbl.closeEvent = miqt_exec_callback_cQInputDialog_closeEvent
+  if not isNil(vtbl.showEvent):
+    vtbl[].vtbl.showEvent = miqt_exec_callback_cQInputDialog_showEvent
+  if not isNil(vtbl.resizeEvent):
+    vtbl[].vtbl.resizeEvent = miqt_exec_callback_cQInputDialog_resizeEvent
+  if not isNil(vtbl.contextMenuEvent):
+    vtbl[].vtbl.contextMenuEvent = miqt_exec_callback_cQInputDialog_contextMenuEvent
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQInputDialog_eventFilter
+  if not isNil(vtbl.devType):
+    vtbl[].vtbl.devType = miqt_exec_callback_cQInputDialog_devType
+  if not isNil(vtbl.heightForWidth):
+    vtbl[].vtbl.heightForWidth = miqt_exec_callback_cQInputDialog_heightForWidth
+  if not isNil(vtbl.hasHeightForWidth):
+    vtbl[].vtbl.hasHeightForWidth = miqt_exec_callback_cQInputDialog_hasHeightForWidth
+  if not isNil(vtbl.paintEngine):
+    vtbl[].vtbl.paintEngine = miqt_exec_callback_cQInputDialog_paintEngine
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQInputDialog_event
+  if not isNil(vtbl.mousePressEvent):
+    vtbl[].vtbl.mousePressEvent = miqt_exec_callback_cQInputDialog_mousePressEvent
+  if not isNil(vtbl.mouseReleaseEvent):
+    vtbl[].vtbl.mouseReleaseEvent = miqt_exec_callback_cQInputDialog_mouseReleaseEvent
+  if not isNil(vtbl.mouseDoubleClickEvent):
+    vtbl[].vtbl.mouseDoubleClickEvent = miqt_exec_callback_cQInputDialog_mouseDoubleClickEvent
+  if not isNil(vtbl.mouseMoveEvent):
+    vtbl[].vtbl.mouseMoveEvent = miqt_exec_callback_cQInputDialog_mouseMoveEvent
+  if not isNil(vtbl.wheelEvent):
+    vtbl[].vtbl.wheelEvent = miqt_exec_callback_cQInputDialog_wheelEvent
+  if not isNil(vtbl.keyReleaseEvent):
+    vtbl[].vtbl.keyReleaseEvent = miqt_exec_callback_cQInputDialog_keyReleaseEvent
+  if not isNil(vtbl.focusInEvent):
+    vtbl[].vtbl.focusInEvent = miqt_exec_callback_cQInputDialog_focusInEvent
+  if not isNil(vtbl.focusOutEvent):
+    vtbl[].vtbl.focusOutEvent = miqt_exec_callback_cQInputDialog_focusOutEvent
+  if not isNil(vtbl.enterEvent):
+    vtbl[].vtbl.enterEvent = miqt_exec_callback_cQInputDialog_enterEvent
+  if not isNil(vtbl.leaveEvent):
+    vtbl[].vtbl.leaveEvent = miqt_exec_callback_cQInputDialog_leaveEvent
+  if not isNil(vtbl.paintEvent):
+    vtbl[].vtbl.paintEvent = miqt_exec_callback_cQInputDialog_paintEvent
+  if not isNil(vtbl.moveEvent):
+    vtbl[].vtbl.moveEvent = miqt_exec_callback_cQInputDialog_moveEvent
+  if not isNil(vtbl.tabletEvent):
+    vtbl[].vtbl.tabletEvent = miqt_exec_callback_cQInputDialog_tabletEvent
+  if not isNil(vtbl.actionEvent):
+    vtbl[].vtbl.actionEvent = miqt_exec_callback_cQInputDialog_actionEvent
+  if not isNil(vtbl.dragEnterEvent):
+    vtbl[].vtbl.dragEnterEvent = miqt_exec_callback_cQInputDialog_dragEnterEvent
+  if not isNil(vtbl.dragMoveEvent):
+    vtbl[].vtbl.dragMoveEvent = miqt_exec_callback_cQInputDialog_dragMoveEvent
+  if not isNil(vtbl.dragLeaveEvent):
+    vtbl[].vtbl.dragLeaveEvent = miqt_exec_callback_cQInputDialog_dragLeaveEvent
+  if not isNil(vtbl.dropEvent):
+    vtbl[].vtbl.dropEvent = miqt_exec_callback_cQInputDialog_dropEvent
+  if not isNil(vtbl.hideEvent):
+    vtbl[].vtbl.hideEvent = miqt_exec_callback_cQInputDialog_hideEvent
+  if not isNil(vtbl.nativeEvent):
+    vtbl[].vtbl.nativeEvent = miqt_exec_callback_cQInputDialog_nativeEvent
+  if not isNil(vtbl.changeEvent):
+    vtbl[].vtbl.changeEvent = miqt_exec_callback_cQInputDialog_changeEvent
+  if not isNil(vtbl.metric):
+    vtbl[].vtbl.metric = miqt_exec_callback_cQInputDialog_metric
+  if not isNil(vtbl.initPainter):
+    vtbl[].vtbl.initPainter = miqt_exec_callback_cQInputDialog_initPainter
+  if not isNil(vtbl.redirected):
+    vtbl[].vtbl.redirected = miqt_exec_callback_cQInputDialog_redirected
+  if not isNil(vtbl.sharedPainter):
+    vtbl[].vtbl.sharedPainter = miqt_exec_callback_cQInputDialog_sharedPainter
+  if not isNil(vtbl.inputMethodEvent):
+    vtbl[].vtbl.inputMethodEvent = miqt_exec_callback_cQInputDialog_inputMethodEvent
+  if not isNil(vtbl.inputMethodQuery):
+    vtbl[].vtbl.inputMethodQuery = miqt_exec_callback_cQInputDialog_inputMethodQuery
+  if not isNil(vtbl.focusNextPrevChild):
+    vtbl[].vtbl.focusNextPrevChild = miqt_exec_callback_cQInputDialog_focusNextPrevChild
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQInputDialog_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQInputDialog_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQInputDialog_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQInputDialog_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQInputDialog_disconnectNotify
+  gen_qinputdialog_types.QInputDialog(h: fcQInputDialog_new3(addr(vtbl[]), parent.h, cint(flags)))
 
-proc miqt_exec_callback_QInputDialog_connectNotify(self: ptr cQInputDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_connectNotify ".} =
-  var nimfunc = cast[ptr QInputDialogconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QInputDialogdisconnectNotify*(self: gen_qinputdialog_types.QInputDialog, signal: gen_qmetaobject.QMetaMethod): void =
-  fQInputDialog_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QInputDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QInputDialogdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQInputDialog_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QInputDialog_disconnectNotify(self: ptr cQInputDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QInputDialog_disconnectNotify ".} =
-  var nimfunc = cast[ptr QInputDialogdisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qinputdialog_types.QInputDialog): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQInputDialog_staticMetaObject())
+proc staticMetaObject*(_: type gen_qinputdialog_types.QInputDialog): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQInputDialog_staticMetaObject())
 proc delete*(self: gen_qinputdialog_types.QInputDialog) =
   fcQInputDialog_delete(self.h)

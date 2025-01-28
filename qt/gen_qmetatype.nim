@@ -157,23 +157,20 @@ type QtMetaTypePrivateQSequentialIterableImplPositionEnum* = distinct cint
 template ToBegin*(_: type QtMetaTypePrivateQSequentialIterableImplPositionEnum): untyped = 0
 template ToEnd*(_: type QtMetaTypePrivateQSequentialIterableImplPositionEnum): untyped = 1
 
-
 import gen_qmetatype_types
 export gen_qmetatype_types
 
 import
-  gen_qdatastream,
-  gen_qdebug,
-  gen_qobjectdefs
+  gen_qdatastream_types,
+  gen_qdebug_types,
+  gen_qobjectdefs_types
 export
-  gen_qdatastream,
-  gen_qdebug,
-  gen_qobjectdefs
+  gen_qdatastream_types,
+  gen_qdebug_types,
+  gen_qobjectdefs_types
 
 type cQMetaType*{.exportc: "QMetaType", incompleteStruct.} = object
 
-proc fcQMetaType_new(): ptr cQMetaType {.importc: "QMetaType_new".}
-proc fcQMetaType_new2(typeVal: cint): ptr cQMetaType {.importc: "QMetaType_new2".}
 proc fcQMetaType_unregisterType(typeVal: cint): bool {.importc: "QMetaType_unregisterType".}
 proc fcQMetaType_registerTypedef(typeName: cstring, aliasId: cint): cint {.importc: "QMetaType_registerTypedef".}
 proc fcQMetaType_registerNormalizedTypedef(normalizedTypeName: struct_miqt_string, aliasId: cint): cint {.importc: "QMetaType_registerNormalizedTypedef".}
@@ -211,16 +208,9 @@ proc fcQMetaType_hasRegisteredConverterFunction(fromTypeId: cint, toTypeId: cint
 proc fcQMetaType_create22(typeVal: cint, copy: pointer): pointer {.importc: "QMetaType_create22".}
 proc fcQMetaType_create1(self: pointer, copy: pointer): pointer {.importc: "QMetaType_create1".}
 proc fcQMetaType_construct2(self: pointer, where: pointer, copy: pointer): pointer {.importc: "QMetaType_construct2".}
+proc fcQMetaType_new(): ptr cQMetaType {.importc: "QMetaType_new".}
+proc fcQMetaType_new2(typeVal: cint): ptr cQMetaType {.importc: "QMetaType_new2".}
 proc fcQMetaType_delete(self: pointer) {.importc: "QMetaType_delete".}
-
-
-func init*(T: type gen_qmetatype_types.QMetaType, h: ptr cQMetaType): gen_qmetatype_types.QMetaType =
-  T(h: h)
-proc create*(T: type gen_qmetatype_types.QMetaType, ): gen_qmetatype_types.QMetaType =
-  gen_qmetatype_types.QMetaType.init(fcQMetaType_new())
-
-proc create*(T: type gen_qmetatype_types.QMetaType, typeVal: cint): gen_qmetatype_types.QMetaType =
-  gen_qmetatype_types.QMetaType.init(fcQMetaType_new2(typeVal))
 
 proc unregisterType*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): bool =
   fcQMetaType_unregisterType(typeVal)
@@ -246,8 +236,8 @@ proc sizeOf*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): cint =
 proc typeFlags*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): cint =
   cint(fcQMetaType_typeFlags(typeVal))
 
-proc metaObjectForType*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMetaType_metaObjectForType(typeVal))
+proc metaObjectForType*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMetaType_metaObjectForType(typeVal))
 
 proc isRegistered*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): bool =
   fcQMetaType_isRegistered(typeVal)
@@ -264,10 +254,10 @@ proc construct*(_: type gen_qmetatype_types.QMetaType, typeVal: cint, where: poi
 proc destruct*(_: type gen_qmetatype_types.QMetaType, typeVal: cint, where: pointer): void =
   fcQMetaType_destruct(typeVal, where)
 
-proc save*(_: type gen_qmetatype_types.QMetaType, stream: gen_qdatastream.QDataStream, typeVal: cint, data: pointer): bool =
+proc save*(_: type gen_qmetatype_types.QMetaType, stream: gen_qdatastream_types.QDataStream, typeVal: cint, data: pointer): bool =
   fcQMetaType_save(stream.h, typeVal, data)
 
-proc load*(_: type gen_qmetatype_types.QMetaType, stream: gen_qdatastream.QDataStream, typeVal: cint, data: pointer): bool =
+proc load*(_: type gen_qmetatype_types.QMetaType, stream: gen_qdatastream_types.QDataStream, typeVal: cint, data: pointer): bool =
   fcQMetaType_load(stream.h, typeVal, data)
 
 proc isValid*(self: gen_qmetatype_types.QMetaType, ): bool =
@@ -285,8 +275,8 @@ proc sizeOf*(self: gen_qmetatype_types.QMetaType, ): cint =
 proc flags*(self: gen_qmetatype_types.QMetaType, ): cint =
   cint(fcQMetaType_flags(self.h))
 
-proc metaObject*(self: gen_qmetatype_types.QMetaType, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMetaType_metaObject(self.h))
+proc metaObject*(self: gen_qmetatype_types.QMetaType, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMetaType_metaObject(self.h))
 
 proc name*(self: gen_qmetatype_types.QMetaType, ): seq[byte] =
   var v_bytearray = fcQMetaType_name(self.h)
@@ -321,7 +311,7 @@ proc compare*(_: type gen_qmetatype_types.QMetaType, lhs: pointer, rhs: pointer,
 proc equals*(_: type gen_qmetatype_types.QMetaType, lhs: pointer, rhs: pointer, typeId: cint, resultVal: ptr cint): bool =
   fcQMetaType_equals(lhs, rhs, typeId, resultVal)
 
-proc debugStream*(_: type gen_qmetatype_types.QMetaType, dbg: gen_qdebug.QDebug, rhs: pointer, typeId: cint): bool =
+proc debugStream*(_: type gen_qmetatype_types.QMetaType, dbg: gen_qdebug_types.QDebug, rhs: pointer, typeId: cint): bool =
   fcQMetaType_debugStream(dbg.h, rhs, typeId)
 
 proc hasRegisteredConverterFunction*(_: type gen_qmetatype_types.QMetaType, fromTypeId: cint, toTypeId: cint): bool =
@@ -335,6 +325,13 @@ proc create*(self: gen_qmetatype_types.QMetaType, copy: pointer): pointer =
 
 proc construct*(self: gen_qmetatype_types.QMetaType, where: pointer, copy: pointer): pointer =
   fcQMetaType_construct2(self.h, where, copy)
+
+proc create*(T: type gen_qmetatype_types.QMetaType): gen_qmetatype_types.QMetaType =
+  gen_qmetatype_types.QMetaType(h: fcQMetaType_new())
+
+proc create*(T: type gen_qmetatype_types.QMetaType,
+    typeVal: cint): gen_qmetatype_types.QMetaType =
+  gen_qmetatype_types.QMetaType(h: fcQMetaType_new2(typeVal))
 
 proc delete*(self: gen_qmetatype_types.QMetaType) =
   fcQMetaType_delete(self.h)

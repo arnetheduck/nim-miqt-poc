@@ -52,35 +52,32 @@ template HexString*(_: type QsciLexerPostScriptEnumEnum): untyped = 13
 template Base85String*(_: type QsciLexerPostScriptEnumEnum): untyped = 14
 template BadStringCharacter*(_: type QsciLexerPostScriptEnumEnum): untyped = 15
 
-
 import gen_qscilexerpostscript_types
 export gen_qscilexerpostscript_types
 
 import
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 export
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 
 type cQsciLexerPostScript*{.exportc: "QsciLexerPostScript", incompleteStruct.} = object
 
-proc fcQsciLexerPostScript_new(): ptr cQsciLexerPostScript {.importc: "QsciLexerPostScript_new".}
-proc fcQsciLexerPostScript_new2(parent: pointer): ptr cQsciLexerPostScript {.importc: "QsciLexerPostScript_new2".}
 proc fcQsciLexerPostScript_metaObject(self: pointer, ): pointer {.importc: "QsciLexerPostScript_metaObject".}
 proc fcQsciLexerPostScript_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerPostScript_metacast".}
 proc fcQsciLexerPostScript_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerPostScript_metacall".}
@@ -107,114 +104,109 @@ proc fcQsciLexerPostScript_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQsciLexerPostScript_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerPostScript_tr3".}
 proc fcQsciLexerPostScript_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerPostScript_trUtf82".}
 proc fcQsciLexerPostScript_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerPostScript_trUtf83".}
-proc fQsciLexerPostScript_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerPostScript_virtualbase_metaObject".}
-proc fcQsciLexerPostScript_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_metaObject".}
-proc fQsciLexerPostScript_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerPostScript_virtualbase_metacast".}
-proc fcQsciLexerPostScript_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_metacast".}
-proc fQsciLexerPostScript_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerPostScript_virtualbase_metacall".}
-proc fcQsciLexerPostScript_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_metacall".}
-proc fQsciLexerPostScript_virtualbase_setTokenize(self: pointer, tokenize: bool): void{.importc: "QsciLexerPostScript_virtualbase_setTokenize".}
-proc fcQsciLexerPostScript_override_virtual_setTokenize(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setTokenize".}
-proc fQsciLexerPostScript_virtualbase_setLevel(self: pointer, level: cint): void{.importc: "QsciLexerPostScript_virtualbase_setLevel".}
-proc fcQsciLexerPostScript_override_virtual_setLevel(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setLevel".}
-proc fQsciLexerPostScript_virtualbase_setFoldCompact(self: pointer, fold: bool): void{.importc: "QsciLexerPostScript_virtualbase_setFoldCompact".}
-proc fcQsciLexerPostScript_override_virtual_setFoldCompact(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setFoldCompact".}
-proc fQsciLexerPostScript_virtualbase_setFoldAtElse(self: pointer, fold: bool): void{.importc: "QsciLexerPostScript_virtualbase_setFoldAtElse".}
-proc fcQsciLexerPostScript_override_virtual_setFoldAtElse(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setFoldAtElse".}
-proc fcQsciLexerPostScript_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_language".}
-proc fQsciLexerPostScript_virtualbase_lexer(self: pointer, ): cstring{.importc: "QsciLexerPostScript_virtualbase_lexer".}
-proc fcQsciLexerPostScript_override_virtual_lexer(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_lexer".}
-proc fQsciLexerPostScript_virtualbase_lexerId(self: pointer, ): cint{.importc: "QsciLexerPostScript_virtualbase_lexerId".}
-proc fcQsciLexerPostScript_override_virtual_lexerId(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_lexerId".}
-proc fQsciLexerPostScript_virtualbase_autoCompletionFillups(self: pointer, ): cstring{.importc: "QsciLexerPostScript_virtualbase_autoCompletionFillups".}
-proc fcQsciLexerPostScript_override_virtual_autoCompletionFillups(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_autoCompletionFillups".}
-proc fQsciLexerPostScript_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array{.importc: "QsciLexerPostScript_virtualbase_autoCompletionWordSeparators".}
-proc fcQsciLexerPostScript_override_virtual_autoCompletionWordSeparators(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_autoCompletionWordSeparators".}
-proc fQsciLexerPostScript_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerPostScript_virtualbase_blockEnd".}
-proc fcQsciLexerPostScript_override_virtual_blockEnd(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_blockEnd".}
-proc fQsciLexerPostScript_virtualbase_blockLookback(self: pointer, ): cint{.importc: "QsciLexerPostScript_virtualbase_blockLookback".}
-proc fcQsciLexerPostScript_override_virtual_blockLookback(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_blockLookback".}
-proc fQsciLexerPostScript_virtualbase_blockStart(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerPostScript_virtualbase_blockStart".}
-proc fcQsciLexerPostScript_override_virtual_blockStart(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_blockStart".}
-proc fQsciLexerPostScript_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerPostScript_virtualbase_blockStartKeyword".}
-proc fcQsciLexerPostScript_override_virtual_blockStartKeyword(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_blockStartKeyword".}
-proc fQsciLexerPostScript_virtualbase_braceStyle(self: pointer, ): cint{.importc: "QsciLexerPostScript_virtualbase_braceStyle".}
-proc fcQsciLexerPostScript_override_virtual_braceStyle(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_braceStyle".}
-proc fQsciLexerPostScript_virtualbase_caseSensitive(self: pointer, ): bool{.importc: "QsciLexerPostScript_virtualbase_caseSensitive".}
-proc fcQsciLexerPostScript_override_virtual_caseSensitive(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_caseSensitive".}
-proc fQsciLexerPostScript_virtualbase_color(self: pointer, style: cint): pointer{.importc: "QsciLexerPostScript_virtualbase_color".}
-proc fcQsciLexerPostScript_override_virtual_color(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_color".}
-proc fQsciLexerPostScript_virtualbase_eolFill(self: pointer, style: cint): bool{.importc: "QsciLexerPostScript_virtualbase_eolFill".}
-proc fcQsciLexerPostScript_override_virtual_eolFill(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_eolFill".}
-proc fQsciLexerPostScript_virtualbase_font(self: pointer, style: cint): pointer{.importc: "QsciLexerPostScript_virtualbase_font".}
-proc fcQsciLexerPostScript_override_virtual_font(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_font".}
-proc fQsciLexerPostScript_virtualbase_indentationGuideView(self: pointer, ): cint{.importc: "QsciLexerPostScript_virtualbase_indentationGuideView".}
-proc fcQsciLexerPostScript_override_virtual_indentationGuideView(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_indentationGuideView".}
-proc fQsciLexerPostScript_virtualbase_keywords(self: pointer, set: cint): cstring{.importc: "QsciLexerPostScript_virtualbase_keywords".}
-proc fcQsciLexerPostScript_override_virtual_keywords(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_keywords".}
-proc fQsciLexerPostScript_virtualbase_defaultStyle(self: pointer, ): cint{.importc: "QsciLexerPostScript_virtualbase_defaultStyle".}
-proc fcQsciLexerPostScript_override_virtual_defaultStyle(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_defaultStyle".}
-proc fcQsciLexerPostScript_override_virtual_description(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_description".}
-proc fQsciLexerPostScript_virtualbase_paper(self: pointer, style: cint): pointer{.importc: "QsciLexerPostScript_virtualbase_paper".}
-proc fcQsciLexerPostScript_override_virtual_paper(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_paper".}
-proc fQsciLexerPostScript_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerPostScript_virtualbase_defaultColorWithStyle".}
-proc fcQsciLexerPostScript_override_virtual_defaultColorWithStyle(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_defaultColorWithStyle".}
-proc fQsciLexerPostScript_virtualbase_defaultEolFill(self: pointer, style: cint): bool{.importc: "QsciLexerPostScript_virtualbase_defaultEolFill".}
-proc fcQsciLexerPostScript_override_virtual_defaultEolFill(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_defaultEolFill".}
-proc fQsciLexerPostScript_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerPostScript_virtualbase_defaultFontWithStyle".}
-proc fcQsciLexerPostScript_override_virtual_defaultFontWithStyle(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_defaultFontWithStyle".}
-proc fQsciLexerPostScript_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerPostScript_virtualbase_defaultPaperWithStyle".}
-proc fcQsciLexerPostScript_override_virtual_defaultPaperWithStyle(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_defaultPaperWithStyle".}
-proc fQsciLexerPostScript_virtualbase_setEditor(self: pointer, editor: pointer): void{.importc: "QsciLexerPostScript_virtualbase_setEditor".}
-proc fcQsciLexerPostScript_override_virtual_setEditor(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setEditor".}
-proc fQsciLexerPostScript_virtualbase_refreshProperties(self: pointer, ): void{.importc: "QsciLexerPostScript_virtualbase_refreshProperties".}
-proc fcQsciLexerPostScript_override_virtual_refreshProperties(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_refreshProperties".}
-proc fQsciLexerPostScript_virtualbase_styleBitsNeeded(self: pointer, ): cint{.importc: "QsciLexerPostScript_virtualbase_styleBitsNeeded".}
-proc fcQsciLexerPostScript_override_virtual_styleBitsNeeded(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_styleBitsNeeded".}
-proc fQsciLexerPostScript_virtualbase_wordCharacters(self: pointer, ): cstring{.importc: "QsciLexerPostScript_virtualbase_wordCharacters".}
-proc fcQsciLexerPostScript_override_virtual_wordCharacters(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_wordCharacters".}
-proc fQsciLexerPostScript_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void{.importc: "QsciLexerPostScript_virtualbase_setAutoIndentStyle".}
-proc fcQsciLexerPostScript_override_virtual_setAutoIndentStyle(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setAutoIndentStyle".}
-proc fQsciLexerPostScript_virtualbase_setColor(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerPostScript_virtualbase_setColor".}
-proc fcQsciLexerPostScript_override_virtual_setColor(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setColor".}
-proc fQsciLexerPostScript_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void{.importc: "QsciLexerPostScript_virtualbase_setEolFill".}
-proc fcQsciLexerPostScript_override_virtual_setEolFill(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setEolFill".}
-proc fQsciLexerPostScript_virtualbase_setFont(self: pointer, f: pointer, style: cint): void{.importc: "QsciLexerPostScript_virtualbase_setFont".}
-proc fcQsciLexerPostScript_override_virtual_setFont(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setFont".}
-proc fQsciLexerPostScript_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerPostScript_virtualbase_setPaper".}
-proc fcQsciLexerPostScript_override_virtual_setPaper(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_setPaper".}
-proc fQsciLexerPostScript_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerPostScript_virtualbase_readProperties".}
-proc fcQsciLexerPostScript_override_virtual_readProperties(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_readProperties".}
-proc fQsciLexerPostScript_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerPostScript_virtualbase_writeProperties".}
-proc fcQsciLexerPostScript_override_virtual_writeProperties(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_writeProperties".}
-proc fQsciLexerPostScript_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QsciLexerPostScript_virtualbase_event".}
-proc fcQsciLexerPostScript_override_virtual_event(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_event".}
-proc fQsciLexerPostScript_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QsciLexerPostScript_virtualbase_eventFilter".}
-proc fcQsciLexerPostScript_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_eventFilter".}
-proc fQsciLexerPostScript_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QsciLexerPostScript_virtualbase_timerEvent".}
-proc fcQsciLexerPostScript_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_timerEvent".}
-proc fQsciLexerPostScript_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QsciLexerPostScript_virtualbase_childEvent".}
-proc fcQsciLexerPostScript_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_childEvent".}
-proc fQsciLexerPostScript_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QsciLexerPostScript_virtualbase_customEvent".}
-proc fcQsciLexerPostScript_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_customEvent".}
-proc fQsciLexerPostScript_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerPostScript_virtualbase_connectNotify".}
-proc fcQsciLexerPostScript_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_connectNotify".}
-proc fQsciLexerPostScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerPostScript_virtualbase_disconnectNotify".}
-proc fcQsciLexerPostScript_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_disconnectNotify".}
+type cQsciLexerPostScriptVTable = object
+  destructor*: proc(vtbl: ptr cQsciLexerPostScriptVTable, self: ptr cQsciLexerPostScript) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  setTokenize*: proc(vtbl, self: pointer, tokenize: bool): void {.cdecl, raises: [], gcsafe.}
+  setLevel*: proc(vtbl, self: pointer, level: cint): void {.cdecl, raises: [], gcsafe.}
+  setFoldCompact*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  setFoldAtElse*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  language*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexer*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexerId*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  autoCompletionFillups*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  autoCompletionWordSeparators*: proc(vtbl, self: pointer, ): struct_miqt_array {.cdecl, raises: [], gcsafe.}
+  blockEnd*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockLookback*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  blockStart*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockStartKeyword*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  braceStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  caseSensitive*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  color*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  eolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  font*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  indentationGuideView*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  keywords*: proc(vtbl, self: pointer, set: cint): cstring {.cdecl, raises: [], gcsafe.}
+  defaultStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  description*: proc(vtbl, self: pointer, style: cint): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  paper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultColor*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultEolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  defaultFont*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultPaper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  setEditor*: proc(vtbl, self: pointer, editor: pointer): void {.cdecl, raises: [], gcsafe.}
+  refreshProperties*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  styleBitsNeeded*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  wordCharacters*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  setAutoIndentStyle*: proc(vtbl, self: pointer, autoindentstyle: cint): void {.cdecl, raises: [], gcsafe.}
+  setColor*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setEolFill*: proc(vtbl, self: pointer, eoffill: bool, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setFont*: proc(vtbl, self: pointer, f: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setPaper*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  readProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  writeProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQsciLexerPostScript_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QsciLexerPostScript_virtualbase_metaObject".}
+proc fcQsciLexerPostScript_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerPostScript_virtualbase_metacast".}
+proc fcQsciLexerPostScript_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerPostScript_virtualbase_metacall".}
+proc fcQsciLexerPostScript_virtualbase_setTokenize(self: pointer, tokenize: bool): void {.importc: "QsciLexerPostScript_virtualbase_setTokenize".}
+proc fcQsciLexerPostScript_virtualbase_setLevel(self: pointer, level: cint): void {.importc: "QsciLexerPostScript_virtualbase_setLevel".}
+proc fcQsciLexerPostScript_virtualbase_setFoldCompact(self: pointer, fold: bool): void {.importc: "QsciLexerPostScript_virtualbase_setFoldCompact".}
+proc fcQsciLexerPostScript_virtualbase_setFoldAtElse(self: pointer, fold: bool): void {.importc: "QsciLexerPostScript_virtualbase_setFoldAtElse".}
+proc fcQsciLexerPostScript_virtualbase_lexer(self: pointer, ): cstring {.importc: "QsciLexerPostScript_virtualbase_lexer".}
+proc fcQsciLexerPostScript_virtualbase_lexerId(self: pointer, ): cint {.importc: "QsciLexerPostScript_virtualbase_lexerId".}
+proc fcQsciLexerPostScript_virtualbase_autoCompletionFillups(self: pointer, ): cstring {.importc: "QsciLexerPostScript_virtualbase_autoCompletionFillups".}
+proc fcQsciLexerPostScript_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array {.importc: "QsciLexerPostScript_virtualbase_autoCompletionWordSeparators".}
+proc fcQsciLexerPostScript_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPostScript_virtualbase_blockEnd".}
+proc fcQsciLexerPostScript_virtualbase_blockLookback(self: pointer, ): cint {.importc: "QsciLexerPostScript_virtualbase_blockLookback".}
+proc fcQsciLexerPostScript_virtualbase_blockStart(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPostScript_virtualbase_blockStart".}
+proc fcQsciLexerPostScript_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPostScript_virtualbase_blockStartKeyword".}
+proc fcQsciLexerPostScript_virtualbase_braceStyle(self: pointer, ): cint {.importc: "QsciLexerPostScript_virtualbase_braceStyle".}
+proc fcQsciLexerPostScript_virtualbase_caseSensitive(self: pointer, ): bool {.importc: "QsciLexerPostScript_virtualbase_caseSensitive".}
+proc fcQsciLexerPostScript_virtualbase_color(self: pointer, style: cint): pointer {.importc: "QsciLexerPostScript_virtualbase_color".}
+proc fcQsciLexerPostScript_virtualbase_eolFill(self: pointer, style: cint): bool {.importc: "QsciLexerPostScript_virtualbase_eolFill".}
+proc fcQsciLexerPostScript_virtualbase_font(self: pointer, style: cint): pointer {.importc: "QsciLexerPostScript_virtualbase_font".}
+proc fcQsciLexerPostScript_virtualbase_indentationGuideView(self: pointer, ): cint {.importc: "QsciLexerPostScript_virtualbase_indentationGuideView".}
+proc fcQsciLexerPostScript_virtualbase_keywords(self: pointer, set: cint): cstring {.importc: "QsciLexerPostScript_virtualbase_keywords".}
+proc fcQsciLexerPostScript_virtualbase_defaultStyle(self: pointer, ): cint {.importc: "QsciLexerPostScript_virtualbase_defaultStyle".}
+proc fcQsciLexerPostScript_virtualbase_paper(self: pointer, style: cint): pointer {.importc: "QsciLexerPostScript_virtualbase_paper".}
+proc fcQsciLexerPostScript_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerPostScript_virtualbase_defaultColorWithStyle".}
+proc fcQsciLexerPostScript_virtualbase_defaultEolFill(self: pointer, style: cint): bool {.importc: "QsciLexerPostScript_virtualbase_defaultEolFill".}
+proc fcQsciLexerPostScript_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerPostScript_virtualbase_defaultFontWithStyle".}
+proc fcQsciLexerPostScript_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerPostScript_virtualbase_defaultPaperWithStyle".}
+proc fcQsciLexerPostScript_virtualbase_setEditor(self: pointer, editor: pointer): void {.importc: "QsciLexerPostScript_virtualbase_setEditor".}
+proc fcQsciLexerPostScript_virtualbase_refreshProperties(self: pointer, ): void {.importc: "QsciLexerPostScript_virtualbase_refreshProperties".}
+proc fcQsciLexerPostScript_virtualbase_styleBitsNeeded(self: pointer, ): cint {.importc: "QsciLexerPostScript_virtualbase_styleBitsNeeded".}
+proc fcQsciLexerPostScript_virtualbase_wordCharacters(self: pointer, ): cstring {.importc: "QsciLexerPostScript_virtualbase_wordCharacters".}
+proc fcQsciLexerPostScript_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void {.importc: "QsciLexerPostScript_virtualbase_setAutoIndentStyle".}
+proc fcQsciLexerPostScript_virtualbase_setColor(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerPostScript_virtualbase_setColor".}
+proc fcQsciLexerPostScript_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void {.importc: "QsciLexerPostScript_virtualbase_setEolFill".}
+proc fcQsciLexerPostScript_virtualbase_setFont(self: pointer, f: pointer, style: cint): void {.importc: "QsciLexerPostScript_virtualbase_setFont".}
+proc fcQsciLexerPostScript_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerPostScript_virtualbase_setPaper".}
+proc fcQsciLexerPostScript_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerPostScript_virtualbase_readProperties".}
+proc fcQsciLexerPostScript_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerPostScript_virtualbase_writeProperties".}
+proc fcQsciLexerPostScript_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QsciLexerPostScript_virtualbase_event".}
+proc fcQsciLexerPostScript_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QsciLexerPostScript_virtualbase_eventFilter".}
+proc fcQsciLexerPostScript_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QsciLexerPostScript_virtualbase_timerEvent".}
+proc fcQsciLexerPostScript_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QsciLexerPostScript_virtualbase_childEvent".}
+proc fcQsciLexerPostScript_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerPostScript_virtualbase_customEvent".}
+proc fcQsciLexerPostScript_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerPostScript_virtualbase_connectNotify".}
+proc fcQsciLexerPostScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerPostScript_virtualbase_disconnectNotify".}
+proc fcQsciLexerPostScript_new(vtbl: pointer, ): ptr cQsciLexerPostScript {.importc: "QsciLexerPostScript_new".}
+proc fcQsciLexerPostScript_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerPostScript {.importc: "QsciLexerPostScript_new2".}
 proc fcQsciLexerPostScript_staticMetaObject(): pointer {.importc: "QsciLexerPostScript_staticMetaObject".}
 proc fcQsciLexerPostScript_delete(self: pointer) {.importc: "QsciLexerPostScript_delete".}
 
-
-func init*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript, h: ptr cQsciLexerPostScript): gen_qscilexerpostscript_types.QsciLexerPostScript =
-  T(h: h)
-proc create*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qscilexerpostscript_types.QsciLexerPostScript =
-  gen_qscilexerpostscript_types.QsciLexerPostScript.init(fcQsciLexerPostScript_new())
-
-proc create*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript, parent: gen_qobject.QObject): gen_qscilexerpostscript_types.QsciLexerPostScript =
-  gen_qscilexerpostscript_types.QsciLexerPostScript.init(fcQsciLexerPostScript_new2(parent.h))
-
-proc metaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerPostScript_metaObject(self.h))
+proc metaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerPostScript_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, param1: cstring): pointer =
   fcQsciLexerPostScript_metacast(self.h, param1)
@@ -243,14 +235,14 @@ proc lexer*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring 
 proc braceStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
   fcQsciLexerPostScript_braceStyle(self.h)
 
-proc defaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerPostScript_defaultColor(self.h, style))
+proc defaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPostScript_defaultColor(self.h, style))
 
-proc defaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fcQsciLexerPostScript_defaultFont(self.h, style))
+proc defaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerPostScript_defaultFont(self.h, style))
 
-proc defaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerPostScript_defaultPaper(self.h, style))
+proc defaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPostScript_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, set: cint): cstring =
   (fcQsciLexerPostScript_keywords(self.h, set))
@@ -312,200 +304,206 @@ proc trUtf8*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript, s: cstri
   c_free(v_ms.data)
   vx_ret
 
-proc QsciLexerPostScriptmetaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQsciLexerPostScript_virtualbase_metaObject(self.h))
+type QsciLexerPostScriptmetaObjectProc* = proc(self: QsciLexerPostScript): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QsciLexerPostScriptmetacastProc* = proc(self: QsciLexerPostScript, param1: cstring): pointer {.raises: [], gcsafe.}
+type QsciLexerPostScriptmetacallProc* = proc(self: QsciLexerPostScript, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetTokenizeProc* = proc(self: QsciLexerPostScript, tokenize: bool): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetLevelProc* = proc(self: QsciLexerPostScript, level: cint): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetFoldCompactProc* = proc(self: QsciLexerPostScript, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetFoldAtElseProc* = proc(self: QsciLexerPostScript, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptlanguageProc* = proc(self: QsciLexerPostScript): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptlexerProc* = proc(self: QsciLexerPostScript): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptlexerIdProc* = proc(self: QsciLexerPostScript): cint {.raises: [], gcsafe.}
+type QsciLexerPostScriptautoCompletionFillupsProc* = proc(self: QsciLexerPostScript): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptautoCompletionWordSeparatorsProc* = proc(self: QsciLexerPostScript): seq[string] {.raises: [], gcsafe.}
+type QsciLexerPostScriptblockEndProc* = proc(self: QsciLexerPostScript, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptblockLookbackProc* = proc(self: QsciLexerPostScript): cint {.raises: [], gcsafe.}
+type QsciLexerPostScriptblockStartProc* = proc(self: QsciLexerPostScript, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptblockStartKeywordProc* = proc(self: QsciLexerPostScript, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptbraceStyleProc* = proc(self: QsciLexerPostScript): cint {.raises: [], gcsafe.}
+type QsciLexerPostScriptcaseSensitiveProc* = proc(self: QsciLexerPostScript): bool {.raises: [], gcsafe.}
+type QsciLexerPostScriptcolorProc* = proc(self: QsciLexerPostScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPostScripteolFillProc* = proc(self: QsciLexerPostScript, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerPostScriptfontProc* = proc(self: QsciLexerPostScript, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerPostScriptindentationGuideViewProc* = proc(self: QsciLexerPostScript): cint {.raises: [], gcsafe.}
+type QsciLexerPostScriptkeywordsProc* = proc(self: QsciLexerPostScript, set: cint): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptdefaultStyleProc* = proc(self: QsciLexerPostScript): cint {.raises: [], gcsafe.}
+type QsciLexerPostScriptdescriptionProc* = proc(self: QsciLexerPostScript, style: cint): string {.raises: [], gcsafe.}
+type QsciLexerPostScriptpaperProc* = proc(self: QsciLexerPostScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPostScriptdefaultColorProc* = proc(self: QsciLexerPostScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPostScriptdefaultEolFillProc* = proc(self: QsciLexerPostScript, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerPostScriptdefaultFontProc* = proc(self: QsciLexerPostScript, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerPostScriptdefaultPaperProc* = proc(self: QsciLexerPostScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetEditorProc* = proc(self: QsciLexerPostScript, editor: gen_qsciscintilla_types.QsciScintilla): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptrefreshPropertiesProc* = proc(self: QsciLexerPostScript): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptstyleBitsNeededProc* = proc(self: QsciLexerPostScript): cint {.raises: [], gcsafe.}
+type QsciLexerPostScriptwordCharactersProc* = proc(self: QsciLexerPostScript): cstring {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetAutoIndentStyleProc* = proc(self: QsciLexerPostScript, autoindentstyle: cint): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetColorProc* = proc(self: QsciLexerPostScript, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetEolFillProc* = proc(self: QsciLexerPostScript, eoffill: bool, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetFontProc* = proc(self: QsciLexerPostScript, f: gen_qfont_types.QFont, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptsetPaperProc* = proc(self: QsciLexerPostScript, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptreadPropertiesProc* = proc(self: QsciLexerPostScript, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerPostScriptwritePropertiesProc* = proc(self: QsciLexerPostScript, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerPostScripteventProc* = proc(self: QsciLexerPostScript, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerPostScripteventFilterProc* = proc(self: QsciLexerPostScript, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerPostScripttimerEventProc* = proc(self: QsciLexerPostScript, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptchildEventProc* = proc(self: QsciLexerPostScript, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptcustomEventProc* = proc(self: QsciLexerPostScript, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptconnectNotifyProc* = proc(self: QsciLexerPostScript, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptdisconnectNotifyProc* = proc(self: QsciLexerPostScript, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerPostScriptVTable* = object
+  vtbl: cQsciLexerPostScriptVTable
+  metaObject*: QsciLexerPostScriptmetaObjectProc
+  metacast*: QsciLexerPostScriptmetacastProc
+  metacall*: QsciLexerPostScriptmetacallProc
+  setTokenize*: QsciLexerPostScriptsetTokenizeProc
+  setLevel*: QsciLexerPostScriptsetLevelProc
+  setFoldCompact*: QsciLexerPostScriptsetFoldCompactProc
+  setFoldAtElse*: QsciLexerPostScriptsetFoldAtElseProc
+  language*: QsciLexerPostScriptlanguageProc
+  lexer*: QsciLexerPostScriptlexerProc
+  lexerId*: QsciLexerPostScriptlexerIdProc
+  autoCompletionFillups*: QsciLexerPostScriptautoCompletionFillupsProc
+  autoCompletionWordSeparators*: QsciLexerPostScriptautoCompletionWordSeparatorsProc
+  blockEnd*: QsciLexerPostScriptblockEndProc
+  blockLookback*: QsciLexerPostScriptblockLookbackProc
+  blockStart*: QsciLexerPostScriptblockStartProc
+  blockStartKeyword*: QsciLexerPostScriptblockStartKeywordProc
+  braceStyle*: QsciLexerPostScriptbraceStyleProc
+  caseSensitive*: QsciLexerPostScriptcaseSensitiveProc
+  color*: QsciLexerPostScriptcolorProc
+  eolFill*: QsciLexerPostScripteolFillProc
+  font*: QsciLexerPostScriptfontProc
+  indentationGuideView*: QsciLexerPostScriptindentationGuideViewProc
+  keywords*: QsciLexerPostScriptkeywordsProc
+  defaultStyle*: QsciLexerPostScriptdefaultStyleProc
+  description*: QsciLexerPostScriptdescriptionProc
+  paper*: QsciLexerPostScriptpaperProc
+  defaultColor*: QsciLexerPostScriptdefaultColorProc
+  defaultEolFill*: QsciLexerPostScriptdefaultEolFillProc
+  defaultFont*: QsciLexerPostScriptdefaultFontProc
+  defaultPaper*: QsciLexerPostScriptdefaultPaperProc
+  setEditor*: QsciLexerPostScriptsetEditorProc
+  refreshProperties*: QsciLexerPostScriptrefreshPropertiesProc
+  styleBitsNeeded*: QsciLexerPostScriptstyleBitsNeededProc
+  wordCharacters*: QsciLexerPostScriptwordCharactersProc
+  setAutoIndentStyle*: QsciLexerPostScriptsetAutoIndentStyleProc
+  setColor*: QsciLexerPostScriptsetColorProc
+  setEolFill*: QsciLexerPostScriptsetEolFillProc
+  setFont*: QsciLexerPostScriptsetFontProc
+  setPaper*: QsciLexerPostScriptsetPaperProc
+  readProperties*: QsciLexerPostScriptreadPropertiesProc
+  writeProperties*: QsciLexerPostScriptwritePropertiesProc
+  event*: QsciLexerPostScripteventProc
+  eventFilter*: QsciLexerPostScripteventFilterProc
+  timerEvent*: QsciLexerPostScripttimerEventProc
+  childEvent*: QsciLexerPostScriptchildEventProc
+  customEvent*: QsciLexerPostScriptcustomEventProc
+  connectNotify*: QsciLexerPostScriptconnectNotifyProc
+  disconnectNotify*: QsciLexerPostScriptdisconnectNotifyProc
+proc QsciLexerPostScriptmetaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerPostScript_virtualbase_metaObject(self.h))
 
-type QsciLexerPostScriptmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_metaObject(self: ptr cQsciLexerPostScript, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_metaObject ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QsciLexerPostScriptmetacast*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, param1: cstring): pointer =
-  fQsciLexerPostScript_virtualbase_metacast(self.h, param1)
+  fcQsciLexerPostScript_virtualbase_metacast(self.h, param1)
 
-type QsciLexerPostScriptmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptmetacastProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_metacast(self: ptr cQsciLexerPostScript, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_metacast ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QsciLexerPostScriptmetacall*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, param1: cint, param2: cint, param3: pointer): cint =
-  fQsciLexerPostScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQsciLexerPostScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciLexerPostScriptmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptmetacallProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_metacall(self: ptr cQsciLexerPostScript, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciLexerPostScript_metacall ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QsciLexerPostScriptsetTokenize*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, tokenize: bool): void =
-  fQsciLexerPostScript_virtualbase_setTokenize(self.h, tokenize)
+  fcQsciLexerPostScript_virtualbase_setTokenize(self.h, tokenize)
 
-type QsciLexerPostScriptsetTokenizeProc* = proc(tokenize: bool): void
-proc onsetTokenize*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetTokenizeProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetTokenizeProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setTokenize(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setTokenize(self: ptr cQsciLexerPostScript, slot: int, tokenize: bool): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setTokenize ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetTokenizeProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_setTokenize(vtbl: pointer, self: pointer, tokenize: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = tokenize
+  vtbl[].setTokenize(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerPostScriptsetLevel*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, level: cint): void =
-  fQsciLexerPostScript_virtualbase_setLevel(self.h, level)
+  fcQsciLexerPostScript_virtualbase_setLevel(self.h, level)
 
-type QsciLexerPostScriptsetLevelProc* = proc(level: cint): void
-proc onsetLevel*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetLevelProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetLevelProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setLevel(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setLevel(self: ptr cQsciLexerPostScript, slot: int, level: cint): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setLevel ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetLevelProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_setLevel(vtbl: pointer, self: pointer, level: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = level
+  vtbl[].setLevel(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerPostScriptsetFoldCompact*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, fold: bool): void =
-  fQsciLexerPostScript_virtualbase_setFoldCompact(self.h, fold)
+  fcQsciLexerPostScript_virtualbase_setFoldCompact(self.h, fold)
 
-type QsciLexerPostScriptsetFoldCompactProc* = proc(fold: bool): void
-proc onsetFoldCompact*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetFoldCompactProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetFoldCompactProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setFoldCompact(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setFoldCompact(self: ptr cQsciLexerPostScript, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setFoldCompact ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetFoldCompactProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_setFoldCompact(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = fold
+  vtbl[].setFoldCompact(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerPostScriptsetFoldAtElse*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, fold: bool): void =
-  fQsciLexerPostScript_virtualbase_setFoldAtElse(self.h, fold)
+  fcQsciLexerPostScript_virtualbase_setFoldAtElse(self.h, fold)
 
-type QsciLexerPostScriptsetFoldAtElseProc* = proc(fold: bool): void
-proc onsetFoldAtElse*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetFoldAtElseProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetFoldAtElseProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setFoldAtElse(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setFoldAtElse(self: ptr cQsciLexerPostScript, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setFoldAtElse ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetFoldAtElseProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_setFoldAtElse(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = fold
+  vtbl[].setFoldAtElse(self, slotval1)
 
-
-  nimfunc[](slotval1)
-type QsciLexerPostScriptlanguageProc* = proc(): cstring
-proc onlanguage*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptlanguageProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptlanguageProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_language(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_language(self: ptr cQsciLexerPostScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_language ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptlanguageProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_language(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].language(self)
   virtualReturn
+
 proc QsciLexerPostScriptlexer*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-  (fQsciLexerPostScript_virtualbase_lexer(self.h))
+  (fcQsciLexerPostScript_virtualbase_lexer(self.h))
 
-type QsciLexerPostScriptlexerProc* = proc(): cstring
-proc onlexer*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptlexerProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptlexerProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_lexer(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_lexer(self: ptr cQsciLexerPostScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_lexer ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptlexerProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_lexer(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].lexer(self)
   virtualReturn
+
 proc QsciLexerPostScriptlexerId*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-  fQsciLexerPostScript_virtualbase_lexerId(self.h)
+  fcQsciLexerPostScript_virtualbase_lexerId(self.h)
 
-type QsciLexerPostScriptlexerIdProc* = proc(): cint
-proc onlexerId*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptlexerIdProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptlexerIdProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_lexerId(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_lexerId(self: ptr cQsciLexerPostScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPostScript_lexerId ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptlexerIdProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_lexerId(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].lexerId(self)
   virtualReturn
+
 proc QsciLexerPostScriptautoCompletionFillups*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-  (fQsciLexerPostScript_virtualbase_autoCompletionFillups(self.h))
+  (fcQsciLexerPostScript_virtualbase_autoCompletionFillups(self.h))
 
-type QsciLexerPostScriptautoCompletionFillupsProc* = proc(): cstring
-proc onautoCompletionFillups*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptautoCompletionFillupsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptautoCompletionFillupsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_autoCompletionFillups(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_autoCompletionFillups(self: ptr cQsciLexerPostScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_autoCompletionFillups ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptautoCompletionFillupsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_autoCompletionFillups(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].autoCompletionFillups(self)
   virtualReturn
+
 proc QsciLexerPostScriptautoCompletionWordSeparators*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): seq[string] =
-  var v_ma = fQsciLexerPostScript_virtualbase_autoCompletionWordSeparators(self.h)
+  var v_ma = fcQsciLexerPostScript_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
   for i in 0 ..< v_ma.len:
@@ -515,686 +513,578 @@ proc QsciLexerPostScriptautoCompletionWordSeparators*(self: gen_qscilexerpostscr
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciLexerPostScriptautoCompletionWordSeparatorsProc* = proc(): seq[string]
-proc onautoCompletionWordSeparators*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptautoCompletionWordSeparatorsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptautoCompletionWordSeparatorsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_autoCompletionWordSeparators(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_autoCompletionWordSeparators(self: ptr cQsciLexerPostScript, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QsciLexerPostScript_autoCompletionWordSeparators ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptautoCompletionWordSeparatorsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
+proc miqt_exec_callback_cQsciLexerPostScript_autoCompletionWordSeparators(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].autoCompletionWordSeparators(self)
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
-
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
+
 proc QsciLexerPostScriptblockEnd*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: ptr cint): cstring =
-  (fQsciLexerPostScript_virtualbase_blockEnd(self.h, style))
+  (fcQsciLexerPostScript_virtualbase_blockEnd(self.h, style))
 
-type QsciLexerPostScriptblockEndProc* = proc(style: ptr cint): cstring
-proc onblockEnd*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptblockEndProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptblockEndProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_blockEnd(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_blockEnd(self: ptr cQsciLexerPostScript, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_blockEnd ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptblockEndProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_blockEnd(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockEnd(self, slotval1)
   virtualReturn
+
 proc QsciLexerPostScriptblockLookback*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-  fQsciLexerPostScript_virtualbase_blockLookback(self.h)
+  fcQsciLexerPostScript_virtualbase_blockLookback(self.h)
 
-type QsciLexerPostScriptblockLookbackProc* = proc(): cint
-proc onblockLookback*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptblockLookbackProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptblockLookbackProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_blockLookback(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_blockLookback(self: ptr cQsciLexerPostScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPostScript_blockLookback ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptblockLookbackProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_blockLookback(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].blockLookback(self)
   virtualReturn
+
 proc QsciLexerPostScriptblockStart*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: ptr cint): cstring =
-  (fQsciLexerPostScript_virtualbase_blockStart(self.h, style))
+  (fcQsciLexerPostScript_virtualbase_blockStart(self.h, style))
 
-type QsciLexerPostScriptblockStartProc* = proc(style: ptr cint): cstring
-proc onblockStart*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptblockStartProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptblockStartProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_blockStart(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_blockStart(self: ptr cQsciLexerPostScript, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_blockStart ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptblockStartProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_blockStart(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStart(self, slotval1)
   virtualReturn
+
 proc QsciLexerPostScriptblockStartKeyword*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: ptr cint): cstring =
-  (fQsciLexerPostScript_virtualbase_blockStartKeyword(self.h, style))
+  (fcQsciLexerPostScript_virtualbase_blockStartKeyword(self.h, style))
 
-type QsciLexerPostScriptblockStartKeywordProc* = proc(style: ptr cint): cstring
-proc onblockStartKeyword*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptblockStartKeywordProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptblockStartKeywordProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_blockStartKeyword(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_blockStartKeyword(self: ptr cQsciLexerPostScript, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_blockStartKeyword ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptblockStartKeywordProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_blockStartKeyword(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStartKeyword(self, slotval1)
   virtualReturn
+
 proc QsciLexerPostScriptbraceStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-  fQsciLexerPostScript_virtualbase_braceStyle(self.h)
+  fcQsciLexerPostScript_virtualbase_braceStyle(self.h)
 
-type QsciLexerPostScriptbraceStyleProc* = proc(): cint
-proc onbraceStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptbraceStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptbraceStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_braceStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_braceStyle(self: ptr cQsciLexerPostScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPostScript_braceStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptbraceStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_braceStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].braceStyle(self)
   virtualReturn
+
 proc QsciLexerPostScriptcaseSensitive*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): bool =
-  fQsciLexerPostScript_virtualbase_caseSensitive(self.h)
+  fcQsciLexerPostScript_virtualbase_caseSensitive(self.h)
 
-type QsciLexerPostScriptcaseSensitiveProc* = proc(): bool
-proc oncaseSensitive*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptcaseSensitiveProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptcaseSensitiveProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_caseSensitive(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_caseSensitive(self: ptr cQsciLexerPostScript, slot: int): bool {.exportc: "miqt_exec_callback_QsciLexerPostScript_caseSensitive ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptcaseSensitiveProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_caseSensitive(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].caseSensitive(self)
   virtualReturn
-proc QsciLexerPostScriptcolor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_color(self.h, style))
 
-type QsciLexerPostScriptcolorProc* = proc(style: cint): gen_qcolor.QColor
-proc oncolor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptcolorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptcolorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_color(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptcolor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPostScript_virtualbase_color(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPostScript_color(self: ptr cQsciLexerPostScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_color ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptcolorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_color(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].color(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerPostScripteolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): bool =
-  fQsciLexerPostScript_virtualbase_eolFill(self.h, style)
+  fcQsciLexerPostScript_virtualbase_eolFill(self.h, style)
 
-type QsciLexerPostScripteolFillProc* = proc(style: cint): bool
-proc oneolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScripteolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScripteolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_eolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_eolFill(self: ptr cQsciLexerPostScript, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerPostScript_eolFill ".} =
-  var nimfunc = cast[ptr QsciLexerPostScripteolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_eolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].eolFill(self, slotval1)
   virtualReturn
-proc QsciLexerPostScriptfont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerPostScript_virtualbase_font(self.h, style))
 
-type QsciLexerPostScriptfontProc* = proc(style: cint): gen_qfont.QFont
-proc onfont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptfontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptfontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_font(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptfont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerPostScript_virtualbase_font(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPostScript_font(self: ptr cQsciLexerPostScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_font ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptfontProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_font(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].font(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerPostScriptindentationGuideView*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-  fQsciLexerPostScript_virtualbase_indentationGuideView(self.h)
+  fcQsciLexerPostScript_virtualbase_indentationGuideView(self.h)
 
-type QsciLexerPostScriptindentationGuideViewProc* = proc(): cint
-proc onindentationGuideView*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptindentationGuideViewProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptindentationGuideViewProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_indentationGuideView(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_indentationGuideView(self: ptr cQsciLexerPostScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPostScript_indentationGuideView ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptindentationGuideViewProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_indentationGuideView(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].indentationGuideView(self)
   virtualReturn
+
 proc QsciLexerPostScriptkeywords*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, set: cint): cstring =
-  (fQsciLexerPostScript_virtualbase_keywords(self.h, set))
+  (fcQsciLexerPostScript_virtualbase_keywords(self.h, set))
 
-type QsciLexerPostScriptkeywordsProc* = proc(set: cint): cstring
-proc onkeywords*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptkeywordsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptkeywordsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_keywords(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_keywords(self: ptr cQsciLexerPostScript, slot: int, set: cint): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_keywords ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptkeywordsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_keywords(vtbl: pointer, self: pointer, set: cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = set
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].keywords(self, slotval1)
   virtualReturn
+
 proc QsciLexerPostScriptdefaultStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-  fQsciLexerPostScript_virtualbase_defaultStyle(self.h)
+  fcQsciLexerPostScript_virtualbase_defaultStyle(self.h)
 
-type QsciLexerPostScriptdefaultStyleProc* = proc(): cint
-proc ondefaultStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptdefaultStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_defaultStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_defaultStyle(self: ptr cQsciLexerPostScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPostScript_defaultStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptdefaultStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_defaultStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].defaultStyle(self)
   virtualReturn
-type QsciLexerPostScriptdescriptionProc* = proc(style: cint): string
-proc ondescription*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdescriptionProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptdescriptionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_description(self.h, cast[int](addr tmp[]))
 
-proc miqt_exec_callback_QsciLexerPostScript_description(self: ptr cQsciLexerPostScript, slot: int, style: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QsciLexerPostScript_description ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptdescriptionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_description(vtbl: pointer, self: pointer, style: cint): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].description(self, slotval1)
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QsciLexerPostScriptpaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_paper(self.h, style))
 
-type QsciLexerPostScriptpaperProc* = proc(style: cint): gen_qcolor.QColor
-proc onpaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptpaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptpaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_paper(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptpaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPostScript_virtualbase_paper(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPostScript_paper(self: ptr cQsciLexerPostScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_paper ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptpaperProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_paper(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].paper(self, slotval1)
   virtualReturn.h
-proc QsciLexerPostScriptdefaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_defaultColorWithStyle(self.h, style))
 
-type QsciLexerPostScriptdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultColorWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptdefaultColorWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_defaultColorWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptdefaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPostScript_virtualbase_defaultColorWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPostScript_defaultColorWithStyle(self: ptr cQsciLexerPostScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_defaultColorWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptdefaultColorWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_defaultColorWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultColor(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerPostScriptdefaultEolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): bool =
-  fQsciLexerPostScript_virtualbase_defaultEolFill(self.h, style)
+  fcQsciLexerPostScript_virtualbase_defaultEolFill(self.h, style)
 
-type QsciLexerPostScriptdefaultEolFillProc* = proc(style: cint): bool
-proc ondefaultEolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptdefaultEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_defaultEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_defaultEolFill(self: ptr cQsciLexerPostScript, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerPostScript_defaultEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptdefaultEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_defaultEolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultEolFill(self, slotval1)
   virtualReturn
-proc QsciLexerPostScriptdefaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerPostScript_virtualbase_defaultFontWithStyle(self.h, style))
 
-type QsciLexerPostScriptdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultFontWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptdefaultFontWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_defaultFontWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptdefaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerPostScript_virtualbase_defaultFontWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPostScript_defaultFontWithStyle(self: ptr cQsciLexerPostScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_defaultFontWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptdefaultFontWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_defaultFontWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultFont(self, slotval1)
   virtualReturn.h
-proc QsciLexerPostScriptdefaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_defaultPaperWithStyle(self.h, style))
 
-type QsciLexerPostScriptdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultPaperWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptdefaultPaperWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_defaultPaperWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptdefaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerPostScript_virtualbase_defaultPaperWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerPostScript_defaultPaperWithStyle(self: ptr cQsciLexerPostScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerPostScript_defaultPaperWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptdefaultPaperWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_defaultPaperWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultPaper(self, slotval1)
   virtualReturn.h
-proc QsciLexerPostScriptsetEditor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, editor: gen_qsciscintilla.QsciScintilla): void =
-  fQsciLexerPostScript_virtualbase_setEditor(self.h, editor.h)
 
-type QsciLexerPostScriptsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
-proc onsetEditor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetEditorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetEditorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setEditor(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptsetEditor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, editor: gen_qsciscintilla_types.QsciScintilla): void =
+  fcQsciLexerPostScript_virtualbase_setEditor(self.h, editor.h)
 
-proc miqt_exec_callback_QsciLexerPostScript_setEditor(self: ptr cQsciLexerPostScript, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setEditor ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetEditorProc](cast[pointer](slot))
-  let slotval1 = gen_qsciscintilla.QsciScintilla(h: editor)
+proc miqt_exec_callback_cQsciLexerPostScript_setEditor(vtbl: pointer, self: pointer, editor: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qsciscintilla_types.QsciScintilla(h: editor)
+  vtbl[].setEditor(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerPostScriptrefreshProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): void =
-  fQsciLexerPostScript_virtualbase_refreshProperties(self.h)
+  fcQsciLexerPostScript_virtualbase_refreshProperties(self.h)
 
-type QsciLexerPostScriptrefreshPropertiesProc* = proc(): void
-proc onrefreshProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptrefreshPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptrefreshPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_refreshProperties(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciLexerPostScript_refreshProperties(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  vtbl[].refreshProperties(self)
 
-proc miqt_exec_callback_QsciLexerPostScript_refreshProperties(self: ptr cQsciLexerPostScript, slot: int): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_refreshProperties ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptrefreshPropertiesProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciLexerPostScriptstyleBitsNeeded*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-  fQsciLexerPostScript_virtualbase_styleBitsNeeded(self.h)
+  fcQsciLexerPostScript_virtualbase_styleBitsNeeded(self.h)
 
-type QsciLexerPostScriptstyleBitsNeededProc* = proc(): cint
-proc onstyleBitsNeeded*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptstyleBitsNeededProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptstyleBitsNeededProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_styleBitsNeeded(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_styleBitsNeeded(self: ptr cQsciLexerPostScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerPostScript_styleBitsNeeded ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptstyleBitsNeededProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_styleBitsNeeded(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].styleBitsNeeded(self)
   virtualReturn
+
 proc QsciLexerPostScriptwordCharacters*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-  (fQsciLexerPostScript_virtualbase_wordCharacters(self.h))
+  (fcQsciLexerPostScript_virtualbase_wordCharacters(self.h))
 
-type QsciLexerPostScriptwordCharactersProc* = proc(): cstring
-proc onwordCharacters*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptwordCharactersProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptwordCharactersProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_wordCharacters(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_wordCharacters(self: ptr cQsciLexerPostScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerPostScript_wordCharacters ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptwordCharactersProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerPostScript_wordCharacters(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let virtualReturn = vtbl[].wordCharacters(self)
   virtualReturn
+
 proc QsciLexerPostScriptsetAutoIndentStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, autoindentstyle: cint): void =
-  fQsciLexerPostScript_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
+  fcQsciLexerPostScript_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
-type QsciLexerPostScriptsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
-proc onsetAutoIndentStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetAutoIndentStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetAutoIndentStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setAutoIndentStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setAutoIndentStyle(self: ptr cQsciLexerPostScript, slot: int, autoindentstyle: cint): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setAutoIndentStyle ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetAutoIndentStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_setAutoIndentStyle(vtbl: pointer, self: pointer, autoindentstyle: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = autoindentstyle
+  vtbl[].setAutoIndentStyle(self, slotval1)
 
+proc QsciLexerPostScriptsetColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerPostScript_virtualbase_setColor(self.h, c.h, style)
 
-  nimfunc[](slotval1)
-proc QsciLexerPostScriptsetColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerPostScript_virtualbase_setColor(self.h, c.h, style)
-
-type QsciLexerPostScriptsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetColorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setColor(self: ptr cQsciLexerPostScript, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setColor ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerPostScript_setColor(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setColor(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciLexerPostScriptsetEolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, eoffill: bool, style: cint): void =
-  fQsciLexerPostScript_virtualbase_setEolFill(self.h, eoffill, style)
+  fcQsciLexerPostScript_virtualbase_setEolFill(self.h, eoffill, style)
 
-type QsciLexerPostScriptsetEolFillProc* = proc(eoffill: bool, style: cint): void
-proc onsetEolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setEolFill(self: ptr cQsciLexerPostScript, slot: int, eoffill: bool, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerPostScript_setEolFill(vtbl: pointer, self: pointer, eoffill: bool, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
   let slotval1 = eoffill
-
   let slotval2 = style
+  vtbl[].setEolFill(self, slotval1, slotval2)
 
+proc QsciLexerPostScriptsetFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, f: gen_qfont_types.QFont, style: cint): void =
+  fcQsciLexerPostScript_virtualbase_setFont(self.h, f.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerPostScriptsetFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, f: gen_qfont.QFont, style: cint): void =
-  fQsciLexerPostScript_virtualbase_setFont(self.h, f.h, style)
-
-type QsciLexerPostScriptsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
-proc onsetFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetFontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetFontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setFont(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setFont(self: ptr cQsciLexerPostScript, slot: int, f: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setFont ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetFontProc](cast[pointer](slot))
-  let slotval1 = gen_qfont.QFont(h: f)
-
+proc miqt_exec_callback_cQsciLexerPostScript_setFont(vtbl: pointer, self: pointer, f: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qfont_types.QFont(h: f)
   let slotval2 = style
+  vtbl[].setFont(self, slotval1, slotval2)
 
+proc QsciLexerPostScriptsetPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerPostScript_virtualbase_setPaper(self.h, c.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerPostScriptsetPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerPostScript_virtualbase_setPaper(self.h, c.h, style)
-
-type QsciLexerPostScriptsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptsetPaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptsetPaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_setPaper(self: ptr cQsciLexerPostScript, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_setPaper ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptsetPaperProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerPostScript_setPaper(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setPaper(self, slotval1, slotval2)
 
+proc QsciLexerPostScriptreadProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerPostScript_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerPostScriptreadProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerPostScript_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
-
-type QsciLexerPostScriptreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onreadProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptreadPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptreadPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_readProperties(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_readProperties(self: ptr cQsciLexerPostScript, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerPostScript_readProperties ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptreadPropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerPostScript_readProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].readProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerPostScriptwriteProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerPostScript_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerPostScriptwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onwriteProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptwritePropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptwritePropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_writeProperties(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptwriteProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerPostScript_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc miqt_exec_callback_QsciLexerPostScript_writeProperties(self: ptr cQsciLexerPostScript, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerPostScript_writeProperties ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptwritePropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerPostScript_writeProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].writeProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerPostScriptevent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerPostScript_virtualbase_event(self.h, event.h)
 
-type QsciLexerPostScripteventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScripteventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScripteventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptevent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerPostScript_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPostScript_event(self: ptr cQsciLexerPostScript, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerPostScript_event ".} =
-  var nimfunc = cast[ptr QsciLexerPostScripteventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciLexerPostScript_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QsciLexerPostScripteventFilter*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerPostScript_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciLexerPostScripteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScripteventFilterProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScripteventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScripteventFilter*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerPostScript_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPostScript_eventFilter(self: ptr cQsciLexerPostScript, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerPostScript_eventFilter ".} =
-  var nimfunc = cast[ptr QsciLexerPostScripteventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQsciLexerPostScript_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerPostScripttimerEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QTimerEvent): void =
-  fQsciLexerPostScript_virtualbase_timerEvent(self.h, event.h)
 
-type QsciLexerPostScripttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScripttimerEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScripttimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScripttimerEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQsciLexerPostScript_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPostScript_timerEvent(self: ptr cQsciLexerPostScript, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_timerEvent ".} =
-  var nimfunc = cast[ptr QsciLexerPostScripttimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQsciLexerPostScript_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QsciLexerPostScriptchildEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQsciLexerPostScript_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerPostScriptchildEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QChildEvent): void =
-  fQsciLexerPostScript_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerPostScript_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QsciLexerPostScriptchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptchildEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptcustomEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciLexerPostScript_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerPostScript_childEvent(self: ptr cQsciLexerPostScript, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_childEvent ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQsciLexerPostScript_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QsciLexerPostScriptconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerPostScript_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerPostScriptcustomEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QEvent): void =
-  fQsciLexerPostScript_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerPostScript_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QsciLexerPostScriptcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerPostScriptdisconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerPostScript_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QsciLexerPostScript_customEvent(self: ptr cQsciLexerPostScript, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_customEvent ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciLexerPostScript_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerPostScriptVTable](vtbl)
+  let self = QsciLexerPostScript(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript,
+    vtbl: ref QsciLexerPostScriptVTable = nil): gen_qscilexerpostscript_types.QsciLexerPostScript =
+  let vtbl = if vtbl == nil: new QsciLexerPostScriptVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerPostScriptVTable, _: ptr cQsciLexerPostScript) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerPostScriptVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerPostScript_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerPostScript_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerPostScript_metacall
+  if not isNil(vtbl.setTokenize):
+    vtbl[].vtbl.setTokenize = miqt_exec_callback_cQsciLexerPostScript_setTokenize
+  if not isNil(vtbl.setLevel):
+    vtbl[].vtbl.setLevel = miqt_exec_callback_cQsciLexerPostScript_setLevel
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerPostScript_setFoldCompact
+  if not isNil(vtbl.setFoldAtElse):
+    vtbl[].vtbl.setFoldAtElse = miqt_exec_callback_cQsciLexerPostScript_setFoldAtElse
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerPostScript_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerPostScript_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerPostScript_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerPostScript_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerPostScript_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerPostScript_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerPostScript_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerPostScript_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerPostScript_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerPostScript_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerPostScript_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerPostScript_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerPostScript_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerPostScript_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerPostScript_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerPostScript_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerPostScript_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerPostScript_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerPostScript_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerPostScript_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerPostScript_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerPostScript_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerPostScript_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerPostScript_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerPostScript_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerPostScript_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerPostScript_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerPostScript_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerPostScript_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerPostScript_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerPostScript_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerPostScript_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerPostScript_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerPostScript_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerPostScript_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerPostScript_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerPostScript_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerPostScript_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerPostScript_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerPostScript_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerPostScript_disconnectNotify
+  gen_qscilexerpostscript_types.QsciLexerPostScript(h: fcQsciLexerPostScript_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QsciLexerPostScriptconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerPostScript_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QsciLexerPostScriptVTable = nil): gen_qscilexerpostscript_types.QsciLexerPostScript =
+  let vtbl = if vtbl == nil: new QsciLexerPostScriptVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerPostScriptVTable, _: ptr cQsciLexerPostScript) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerPostScriptVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerPostScript_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerPostScript_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerPostScript_metacall
+  if not isNil(vtbl.setTokenize):
+    vtbl[].vtbl.setTokenize = miqt_exec_callback_cQsciLexerPostScript_setTokenize
+  if not isNil(vtbl.setLevel):
+    vtbl[].vtbl.setLevel = miqt_exec_callback_cQsciLexerPostScript_setLevel
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerPostScript_setFoldCompact
+  if not isNil(vtbl.setFoldAtElse):
+    vtbl[].vtbl.setFoldAtElse = miqt_exec_callback_cQsciLexerPostScript_setFoldAtElse
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerPostScript_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerPostScript_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerPostScript_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerPostScript_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerPostScript_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerPostScript_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerPostScript_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerPostScript_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerPostScript_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerPostScript_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerPostScript_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerPostScript_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerPostScript_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerPostScript_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerPostScript_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerPostScript_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerPostScript_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerPostScript_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerPostScript_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerPostScript_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerPostScript_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerPostScript_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerPostScript_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerPostScript_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerPostScript_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerPostScript_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerPostScript_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerPostScript_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerPostScript_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerPostScript_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerPostScript_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerPostScript_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerPostScript_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerPostScript_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerPostScript_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerPostScript_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerPostScript_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerPostScript_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerPostScript_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerPostScript_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerPostScript_disconnectNotify
+  gen_qscilexerpostscript_types.QsciLexerPostScript(h: fcQsciLexerPostScript_new2(addr(vtbl[]), parent.h))
 
-type QsciLexerPostScriptconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_connectNotify(self: ptr cQsciLexerPostScript, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_connectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QsciLexerPostScriptdisconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerPostScript_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QsciLexerPostScriptdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerPostScriptdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerPostScript_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerPostScript_disconnectNotify(self: ptr cQsciLexerPostScript, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerPostScript_disconnectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerPostScriptdisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerPostScript_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerPostScript_staticMetaObject())
 proc delete*(self: gen_qscilexerpostscript_types.QsciLexerPostScript) =
   fcQsciLexerPostScript_delete(self.h)

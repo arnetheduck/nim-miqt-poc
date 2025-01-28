@@ -57,51 +57,50 @@ template ExcludeSlots*(_: type QScriptEngineQObjectWrapOptionEnum): untyped = 32
 template AutoCreateDynamicProperties*(_: type QScriptEngineQObjectWrapOptionEnum): untyped = 256
 template PreferExistingWrapperObject*(_: type QScriptEngineQObjectWrapOptionEnum): untyped = 512
 
-
 import gen_qscriptengine_types
 export gen_qscriptengine_types
 
 import
-  gen_qcoreevent,
-  gen_qdatetime,
-  gen_qmetaobject,
+  gen_qcoreevent_types,
+  gen_qdatetime_types,
+  gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qregexp,
-  gen_qscriptclass,
-  gen_qscriptcontext,
-  gen_qscriptengineagent,
-  gen_qscriptprogram,
-  gen_qscriptstring,
-  gen_qscriptvalue,
-  gen_qvariant
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qregexp_types,
+  gen_qscriptclass_types,
+  gen_qscriptcontext_types,
+  gen_qscriptengineagent_types,
+  gen_qscriptprogram_types,
+  gen_qscriptstring_types,
+  gen_qscriptvalue_types,
+  gen_qvariant_types
 export
-  gen_qcoreevent,
-  gen_qdatetime,
-  gen_qmetaobject,
+  gen_qcoreevent_types,
+  gen_qdatetime_types,
+  gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
-  gen_qregexp,
-  gen_qscriptclass,
-  gen_qscriptcontext,
-  gen_qscriptengineagent,
-  gen_qscriptprogram,
-  gen_qscriptstring,
-  gen_qscriptvalue,
-  gen_qvariant
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qregexp_types,
+  gen_qscriptclass_types,
+  gen_qscriptcontext_types,
+  gen_qscriptengineagent_types,
+  gen_qscriptprogram_types,
+  gen_qscriptstring_types,
+  gen_qscriptvalue_types,
+  gen_qvariant_types
 
 type cQScriptSyntaxCheckResult*{.exportc: "QScriptSyntaxCheckResult", incompleteStruct.} = object
 type cQScriptEngine*{.exportc: "QScriptEngine", incompleteStruct.} = object
 
-proc fcQScriptSyntaxCheckResult_new(other: pointer): ptr cQScriptSyntaxCheckResult {.importc: "QScriptSyntaxCheckResult_new".}
 proc fcQScriptSyntaxCheckResult_state(self: pointer, ): cint {.importc: "QScriptSyntaxCheckResult_state".}
 proc fcQScriptSyntaxCheckResult_errorLineNumber(self: pointer, ): cint {.importc: "QScriptSyntaxCheckResult_errorLineNumber".}
 proc fcQScriptSyntaxCheckResult_errorColumnNumber(self: pointer, ): cint {.importc: "QScriptSyntaxCheckResult_errorColumnNumber".}
 proc fcQScriptSyntaxCheckResult_errorMessage(self: pointer, ): struct_miqt_string {.importc: "QScriptSyntaxCheckResult_errorMessage".}
 proc fcQScriptSyntaxCheckResult_operatorAssign(self: pointer, other: pointer): void {.importc: "QScriptSyntaxCheckResult_operatorAssign".}
+proc fcQScriptSyntaxCheckResult_new(other: pointer): ptr cQScriptSyntaxCheckResult {.importc: "QScriptSyntaxCheckResult_new".}
 proc fcQScriptSyntaxCheckResult_delete(self: pointer) {.importc: "QScriptSyntaxCheckResult_delete".}
-proc fcQScriptEngine_new(): ptr cQScriptEngine {.importc: "QScriptEngine_new".}
-proc fcQScriptEngine_new2(parent: pointer): ptr cQScriptEngine {.importc: "QScriptEngine_new2".}
 proc fcQScriptEngine_metaObject(self: pointer, ): pointer {.importc: "QScriptEngine_metaObject".}
 proc fcQScriptEngine_metacast(self: pointer, param1: cstring): pointer {.importc: "QScriptEngine_metacast".}
 proc fcQScriptEngine_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QScriptEngine_metacall".}
@@ -154,7 +153,7 @@ proc fcQScriptEngine_toStringHandle(self: pointer, str: struct_miqt_string): poi
 proc fcQScriptEngine_toObject(self: pointer, value: pointer): pointer {.importc: "QScriptEngine_toObject".}
 proc fcQScriptEngine_objectById(self: pointer, id: clonglong): pointer {.importc: "QScriptEngine_objectById".}
 proc fcQScriptEngine_signalHandlerException(self: pointer, exception: pointer): void {.importc: "QScriptEngine_signalHandlerException".}
-proc fQScriptEngine_connect_signalHandlerException(self: pointer, slot: int) {.importc: "QScriptEngine_connect_signalHandlerException".}
+proc fcQScriptEngine_connect_signalHandlerException(self: pointer, slot: int) {.importc: "QScriptEngine_connect_signalHandlerException".}
 proc fcQScriptEngine_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QScriptEngine_tr2".}
 proc fcQScriptEngine_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QScriptEngine_tr3".}
 proc fcQScriptEngine_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QScriptEngine_trUtf82".}
@@ -170,34 +169,32 @@ proc fcQScriptEngine_newQObject32(self: pointer, scriptObject: pointer, qtObject
 proc fcQScriptEngine_newQObject4(self: pointer, scriptObject: pointer, qtObject: pointer, ownership: cint, options: ptr cint): pointer {.importc: "QScriptEngine_newQObject4".}
 proc fcQScriptEngine_newQMetaObject2(self: pointer, metaObject: pointer, ctor: pointer): pointer {.importc: "QScriptEngine_newQMetaObject2".}
 proc fcQScriptEngine_installTranslatorFunctions1(self: pointer, objectVal: pointer): void {.importc: "QScriptEngine_installTranslatorFunctions1".}
-proc fQScriptEngine_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QScriptEngine_virtualbase_metaObject".}
-proc fcQScriptEngine_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_metaObject".}
-proc fQScriptEngine_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QScriptEngine_virtualbase_metacast".}
-proc fcQScriptEngine_override_virtual_metacast(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_metacast".}
-proc fQScriptEngine_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QScriptEngine_virtualbase_metacall".}
-proc fcQScriptEngine_override_virtual_metacall(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_metacall".}
-proc fQScriptEngine_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QScriptEngine_virtualbase_event".}
-proc fcQScriptEngine_override_virtual_event(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_event".}
-proc fQScriptEngine_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QScriptEngine_virtualbase_eventFilter".}
-proc fcQScriptEngine_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_eventFilter".}
-proc fQScriptEngine_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QScriptEngine_virtualbase_timerEvent".}
-proc fcQScriptEngine_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_timerEvent".}
-proc fQScriptEngine_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QScriptEngine_virtualbase_childEvent".}
-proc fcQScriptEngine_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_childEvent".}
-proc fQScriptEngine_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QScriptEngine_virtualbase_customEvent".}
-proc fcQScriptEngine_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_customEvent".}
-proc fQScriptEngine_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QScriptEngine_virtualbase_connectNotify".}
-proc fcQScriptEngine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_connectNotify".}
-proc fQScriptEngine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QScriptEngine_virtualbase_disconnectNotify".}
-proc fcQScriptEngine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_disconnectNotify".}
+type cQScriptEngineVTable = object
+  destructor*: proc(vtbl: ptr cQScriptEngineVTable, self: ptr cQScriptEngine) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQScriptEngine_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QScriptEngine_virtualbase_metaObject".}
+proc fcQScriptEngine_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QScriptEngine_virtualbase_metacast".}
+proc fcQScriptEngine_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QScriptEngine_virtualbase_metacall".}
+proc fcQScriptEngine_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QScriptEngine_virtualbase_event".}
+proc fcQScriptEngine_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QScriptEngine_virtualbase_eventFilter".}
+proc fcQScriptEngine_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QScriptEngine_virtualbase_timerEvent".}
+proc fcQScriptEngine_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QScriptEngine_virtualbase_childEvent".}
+proc fcQScriptEngine_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QScriptEngine_virtualbase_customEvent".}
+proc fcQScriptEngine_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QScriptEngine_virtualbase_connectNotify".}
+proc fcQScriptEngine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QScriptEngine_virtualbase_disconnectNotify".}
+proc fcQScriptEngine_new(vtbl: pointer, ): ptr cQScriptEngine {.importc: "QScriptEngine_new".}
+proc fcQScriptEngine_new2(vtbl: pointer, parent: pointer): ptr cQScriptEngine {.importc: "QScriptEngine_new2".}
 proc fcQScriptEngine_staticMetaObject(): pointer {.importc: "QScriptEngine_staticMetaObject".}
 proc fcQScriptEngine_delete(self: pointer) {.importc: "QScriptEngine_delete".}
-
-
-func init*(T: type gen_qscriptengine_types.QScriptSyntaxCheckResult, h: ptr cQScriptSyntaxCheckResult): gen_qscriptengine_types.QScriptSyntaxCheckResult =
-  T(h: h)
-proc create*(T: type gen_qscriptengine_types.QScriptSyntaxCheckResult, other: gen_qscriptengine_types.QScriptSyntaxCheckResult): gen_qscriptengine_types.QScriptSyntaxCheckResult =
-  gen_qscriptengine_types.QScriptSyntaxCheckResult.init(fcQScriptSyntaxCheckResult_new(other.h))
 
 proc state*(self: gen_qscriptengine_types.QScriptSyntaxCheckResult, ): cint =
   cint(fcQScriptSyntaxCheckResult_state(self.h))
@@ -217,19 +214,14 @@ proc errorMessage*(self: gen_qscriptengine_types.QScriptSyntaxCheckResult, ): st
 proc operatorAssign*(self: gen_qscriptengine_types.QScriptSyntaxCheckResult, other: gen_qscriptengine_types.QScriptSyntaxCheckResult): void =
   fcQScriptSyntaxCheckResult_operatorAssign(self.h, other.h)
 
+proc create*(T: type gen_qscriptengine_types.QScriptSyntaxCheckResult,
+    other: gen_qscriptengine_types.QScriptSyntaxCheckResult): gen_qscriptengine_types.QScriptSyntaxCheckResult =
+  gen_qscriptengine_types.QScriptSyntaxCheckResult(h: fcQScriptSyntaxCheckResult_new(other.h))
+
 proc delete*(self: gen_qscriptengine_types.QScriptSyntaxCheckResult) =
   fcQScriptSyntaxCheckResult_delete(self.h)
-
-func init*(T: type gen_qscriptengine_types.QScriptEngine, h: ptr cQScriptEngine): gen_qscriptengine_types.QScriptEngine =
-  T(h: h)
-proc create*(T: type gen_qscriptengine_types.QScriptEngine, ): gen_qscriptengine_types.QScriptEngine =
-  gen_qscriptengine_types.QScriptEngine.init(fcQScriptEngine_new())
-
-proc create*(T: type gen_qscriptengine_types.QScriptEngine, parent: gen_qobject.QObject): gen_qscriptengine_types.QScriptEngine =
-  gen_qscriptengine_types.QScriptEngine.init(fcQScriptEngine_new2(parent.h))
-
-proc metaObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQScriptEngine_metaObject(self.h))
+proc metaObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScriptEngine_metaObject(self.h))
 
 proc metacast*(self: gen_qscriptengine_types.QScriptEngine, param1: cstring): pointer =
   fcQScriptEngine_metacast(self.h, param1)
@@ -249,17 +241,17 @@ proc trUtf8*(_: type gen_qscriptengine_types.QScriptEngine, s: cstring): string 
   c_free(v_ms.data)
   vx_ret
 
-proc globalObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_globalObject(self.h))
+proc globalObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_globalObject(self.h))
 
-proc setGlobalObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qscriptvalue.QScriptValue): void =
+proc setGlobalObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qscriptvalue_types.QScriptValue): void =
   fcQScriptEngine_setGlobalObject(self.h, objectVal.h)
 
-proc currentContext*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptcontext.QScriptContext =
-  gen_qscriptcontext.QScriptContext(h: fcQScriptEngine_currentContext(self.h))
+proc currentContext*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptcontext_types.QScriptContext =
+  gen_qscriptcontext_types.QScriptContext(h: fcQScriptEngine_currentContext(self.h))
 
-proc pushContext*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptcontext.QScriptContext =
-  gen_qscriptcontext.QScriptContext(h: fcQScriptEngine_pushContext(self.h))
+proc pushContext*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptcontext_types.QScriptContext =
+  gen_qscriptcontext_types.QScriptContext(h: fcQScriptEngine_pushContext(self.h))
 
 proc popContext*(self: gen_qscriptengine_types.QScriptEngine, ): void =
   fcQScriptEngine_popContext(self.h)
@@ -270,11 +262,11 @@ proc canEvaluate*(self: gen_qscriptengine_types.QScriptEngine, program: string):
 proc checkSyntax*(_: type gen_qscriptengine_types.QScriptEngine, program: string): gen_qscriptengine_types.QScriptSyntaxCheckResult =
   gen_qscriptengine_types.QScriptSyntaxCheckResult(h: fcQScriptEngine_checkSyntax(struct_miqt_string(data: program, len: csize_t(len(program)))))
 
-proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: string): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_evaluate(self.h, struct_miqt_string(data: program, len: csize_t(len(program)))))
+proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: string): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_evaluate(self.h, struct_miqt_string(data: program, len: csize_t(len(program)))))
 
-proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: gen_qscriptprogram.QScriptProgram): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_evaluateWithProgram(self.h, program.h))
+proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: gen_qscriptprogram_types.QScriptProgram): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_evaluateWithProgram(self.h, program.h))
 
 proc isEvaluating*(self: gen_qscriptengine_types.QScriptEngine, ): bool =
   fcQScriptEngine_isEvaluating(self.h)
@@ -285,8 +277,8 @@ proc abortEvaluation*(self: gen_qscriptengine_types.QScriptEngine, ): void =
 proc hasUncaughtException*(self: gen_qscriptengine_types.QScriptEngine, ): bool =
   fcQScriptEngine_hasUncaughtException(self.h)
 
-proc uncaughtException*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_uncaughtException(self.h))
+proc uncaughtException*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_uncaughtException(self.h))
 
 proc uncaughtExceptionLineNumber*(self: gen_qscriptengine_types.QScriptEngine, ): cint =
   fcQScriptEngine_uncaughtExceptionLineNumber(self.h)
@@ -305,62 +297,62 @@ proc uncaughtExceptionBacktrace*(self: gen_qscriptengine_types.QScriptEngine, ):
 proc clearExceptions*(self: gen_qscriptengine_types.QScriptEngine, ): void =
   fcQScriptEngine_clearExceptions(self.h)
 
-proc nullValue*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_nullValue(self.h))
+proc nullValue*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_nullValue(self.h))
 
-proc undefinedValue*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_undefinedValue(self.h))
+proc undefinedValue*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_undefinedValue(self.h))
 
-proc newVariant*(self: gen_qscriptengine_types.QScriptEngine, value: gen_qvariant.QVariant): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newVariant(self.h, value.h))
+proc newVariant*(self: gen_qscriptengine_types.QScriptEngine, value: gen_qvariant_types.QVariant): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newVariant(self.h, value.h))
 
-proc newVariant*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qscriptvalue.QScriptValue, value: gen_qvariant.QVariant): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newVariant2(self.h, objectVal.h, value.h))
+proc newVariant*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qscriptvalue_types.QScriptValue, value: gen_qvariant_types.QVariant): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newVariant2(self.h, objectVal.h, value.h))
 
-proc newRegExp*(self: gen_qscriptengine_types.QScriptEngine, regexp: gen_qregexp.QRegExp): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newRegExp(self.h, regexp.h))
+proc newRegExp*(self: gen_qscriptengine_types.QScriptEngine, regexp: gen_qregexp_types.QRegExp): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newRegExp(self.h, regexp.h))
 
-proc newObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newObject(self.h))
+proc newObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newObject(self.h))
 
-proc newObject*(self: gen_qscriptengine_types.QScriptEngine, scriptClass: gen_qscriptclass.QScriptClass): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newObjectWithScriptClass(self.h, scriptClass.h))
+proc newObject*(self: gen_qscriptengine_types.QScriptEngine, scriptClass: gen_qscriptclass_types.QScriptClass): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newObjectWithScriptClass(self.h, scriptClass.h))
 
-proc newArray*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newArray(self.h))
+proc newArray*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newArray(self.h))
 
-proc newRegExp*(self: gen_qscriptengine_types.QScriptEngine, pattern: string, flags: string): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newRegExp2(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))), struct_miqt_string(data: flags, len: csize_t(len(flags)))))
+proc newRegExp*(self: gen_qscriptengine_types.QScriptEngine, pattern: string, flags: string): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newRegExp2(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))), struct_miqt_string(data: flags, len: csize_t(len(flags)))))
 
-proc newDate*(self: gen_qscriptengine_types.QScriptEngine, value: float64): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newDate(self.h, value))
+proc newDate*(self: gen_qscriptengine_types.QScriptEngine, value: float64): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newDate(self.h, value))
 
-proc newDate*(self: gen_qscriptengine_types.QScriptEngine, value: gen_qdatetime.QDateTime): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newDateWithValue(self.h, value.h))
+proc newDate*(self: gen_qscriptengine_types.QScriptEngine, value: gen_qdatetime_types.QDateTime): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newDateWithValue(self.h, value.h))
 
-proc newActivationObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newActivationObject(self.h))
+proc newActivationObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newActivationObject(self.h))
 
-proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qobject.QObject): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQObject(self.h, objectVal.h))
+proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qobject_types.QObject): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQObject(self.h, objectVal.h))
 
-proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, scriptObject: gen_qscriptvalue.QScriptValue, qtObject: gen_qobject.QObject): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQObject2(self.h, scriptObject.h, qtObject.h))
+proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, scriptObject: gen_qscriptvalue_types.QScriptValue, qtObject: gen_qobject_types.QObject): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQObject2(self.h, scriptObject.h, qtObject.h))
 
-proc newQMetaObject*(self: gen_qscriptengine_types.QScriptEngine, metaObject: gen_qobjectdefs.QMetaObject): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQMetaObject(self.h, metaObject.h))
+proc newQMetaObject*(self: gen_qscriptengine_types.QScriptEngine, metaObject: gen_qobjectdefs_types.QMetaObject): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQMetaObject(self.h, metaObject.h))
 
-proc defaultPrototype*(self: gen_qscriptengine_types.QScriptEngine, metaTypeId: cint): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_defaultPrototype(self.h, metaTypeId))
+proc defaultPrototype*(self: gen_qscriptengine_types.QScriptEngine, metaTypeId: cint): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_defaultPrototype(self.h, metaTypeId))
 
-proc setDefaultPrototype*(self: gen_qscriptengine_types.QScriptEngine, metaTypeId: cint, prototype: gen_qscriptvalue.QScriptValue): void =
+proc setDefaultPrototype*(self: gen_qscriptengine_types.QScriptEngine, metaTypeId: cint, prototype: gen_qscriptvalue_types.QScriptValue): void =
   fcQScriptEngine_setDefaultPrototype(self.h, metaTypeId, prototype.h)
 
 proc installTranslatorFunctions*(self: gen_qscriptengine_types.QScriptEngine, ): void =
   fcQScriptEngine_installTranslatorFunctions(self.h)
 
-proc importExtension*(self: gen_qscriptengine_types.QScriptEngine, extension: string): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_importExtension(self.h, struct_miqt_string(data: extension, len: csize_t(len(extension)))))
+proc importExtension*(self: gen_qscriptengine_types.QScriptEngine, extension: string): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_importExtension(self.h, struct_miqt_string(data: extension, len: csize_t(len(extension)))))
 
 proc availableExtensions*(self: gen_qscriptengine_types.QScriptEngine, ): seq[string] =
   var v_ma = fcQScriptEngine_availableExtensions(self.h)
@@ -396,28 +388,28 @@ proc setProcessEventsInterval*(self: gen_qscriptengine_types.QScriptEngine, inte
 proc processEventsInterval*(self: gen_qscriptengine_types.QScriptEngine, ): cint =
   fcQScriptEngine_processEventsInterval(self.h)
 
-proc setAgent*(self: gen_qscriptengine_types.QScriptEngine, agent: gen_qscriptengineagent.QScriptEngineAgent): void =
+proc setAgent*(self: gen_qscriptengine_types.QScriptEngine, agent: gen_qscriptengineagent_types.QScriptEngineAgent): void =
   fcQScriptEngine_setAgent(self.h, agent.h)
 
-proc agent*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptengineagent.QScriptEngineAgent =
-  gen_qscriptengineagent.QScriptEngineAgent(h: fcQScriptEngine_agent(self.h))
+proc agent*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qscriptengineagent_types.QScriptEngineAgent =
+  gen_qscriptengineagent_types.QScriptEngineAgent(h: fcQScriptEngine_agent(self.h))
 
-proc toStringHandle*(self: gen_qscriptengine_types.QScriptEngine, str: string): gen_qscriptstring.QScriptString =
-  gen_qscriptstring.QScriptString(h: fcQScriptEngine_toStringHandle(self.h, struct_miqt_string(data: str, len: csize_t(len(str)))))
+proc toStringHandle*(self: gen_qscriptengine_types.QScriptEngine, str: string): gen_qscriptstring_types.QScriptString =
+  gen_qscriptstring_types.QScriptString(h: fcQScriptEngine_toStringHandle(self.h, struct_miqt_string(data: str, len: csize_t(len(str)))))
 
-proc toObject*(self: gen_qscriptengine_types.QScriptEngine, value: gen_qscriptvalue.QScriptValue): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_toObject(self.h, value.h))
+proc toObject*(self: gen_qscriptengine_types.QScriptEngine, value: gen_qscriptvalue_types.QScriptValue): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_toObject(self.h, value.h))
 
-proc objectById*(self: gen_qscriptengine_types.QScriptEngine, id: clonglong): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_objectById(self.h, id))
+proc objectById*(self: gen_qscriptengine_types.QScriptEngine, id: clonglong): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_objectById(self.h, id))
 
-proc signalHandlerException*(self: gen_qscriptengine_types.QScriptEngine, exception: gen_qscriptvalue.QScriptValue): void =
+proc signalHandlerException*(self: gen_qscriptengine_types.QScriptEngine, exception: gen_qscriptvalue_types.QScriptValue): void =
   fcQScriptEngine_signalHandlerException(self.h, exception.h)
 
-type QScriptEnginesignalHandlerExceptionSlot* = proc(exception: gen_qscriptvalue.QScriptValue)
-proc miqt_exec_callback_QScriptEngine_signalHandlerException(slot: int, exception: pointer) {.exportc.} =
+type QScriptEnginesignalHandlerExceptionSlot* = proc(exception: gen_qscriptvalue_types.QScriptValue)
+proc miqt_exec_callback_cQScriptEngine_signalHandlerException(slot: int, exception: pointer) {.exportc: "miqt_exec_callback_QScriptEngine_signalHandlerException".} =
   let nimfunc = cast[ptr QScriptEnginesignalHandlerExceptionSlot](cast[pointer](slot))
-  let slotval1 = gen_qscriptvalue.QScriptValue(h: exception)
+  let slotval1 = gen_qscriptvalue_types.QScriptValue(h: exception)
 
   nimfunc[](slotval1)
 
@@ -425,7 +417,7 @@ proc onsignalHandlerException*(self: gen_qscriptengine_types.QScriptEngine, slot
   var tmp = new QScriptEnginesignalHandlerExceptionSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScriptEngine_connect_signalHandlerException(self.h, cast[int](addr tmp[]))
+  fcQScriptEngine_connect_signalHandlerException(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qscriptengine_types.QScriptEngine, s: cstring, c: cstring): string =
   let v_ms = fcQScriptEngine_tr2(s, c)
@@ -451,224 +443,218 @@ proc trUtf8*(_: type gen_qscriptengine_types.QScriptEngine, s: cstring, c: cstri
   c_free(v_ms.data)
   vx_ret
 
-proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: string, fileName: string): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_evaluate2(self.h, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: string, fileName: string): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_evaluate2(self.h, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
 
-proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: string, fileName: string, lineNumber: cint): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_evaluate3(self.h, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), lineNumber))
+proc evaluate*(self: gen_qscriptengine_types.QScriptEngine, program: string, fileName: string, lineNumber: cint): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_evaluate3(self.h, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), lineNumber))
 
-proc abortEvaluation*(self: gen_qscriptengine_types.QScriptEngine, resultVal: gen_qscriptvalue.QScriptValue): void =
+proc abortEvaluation*(self: gen_qscriptengine_types.QScriptEngine, resultVal: gen_qscriptvalue_types.QScriptValue): void =
   fcQScriptEngine_abortEvaluation1(self.h, resultVal.h)
 
-proc newObject*(self: gen_qscriptengine_types.QScriptEngine, scriptClass: gen_qscriptclass.QScriptClass, data: gen_qscriptvalue.QScriptValue): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newObject2(self.h, scriptClass.h, data.h))
+proc newObject*(self: gen_qscriptengine_types.QScriptEngine, scriptClass: gen_qscriptclass_types.QScriptClass, data: gen_qscriptvalue_types.QScriptValue): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newObject2(self.h, scriptClass.h, data.h))
 
-proc newArray*(self: gen_qscriptengine_types.QScriptEngine, length: cuint): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newArray1(self.h, length))
+proc newArray*(self: gen_qscriptengine_types.QScriptEngine, length: cuint): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newArray1(self.h, length))
 
-proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qobject.QObject, ownership: cint): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQObject22(self.h, objectVal.h, cint(ownership)))
+proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qobject_types.QObject, ownership: cint): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQObject22(self.h, objectVal.h, cint(ownership)))
 
-proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qobject.QObject, ownership: cint, options: ptr cint): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQObject3(self.h, objectVal.h, cint(ownership), options))
+proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qobject_types.QObject, ownership: cint, options: ptr cint): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQObject3(self.h, objectVal.h, cint(ownership), options))
 
-proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, scriptObject: gen_qscriptvalue.QScriptValue, qtObject: gen_qobject.QObject, ownership: cint): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQObject32(self.h, scriptObject.h, qtObject.h, cint(ownership)))
+proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, scriptObject: gen_qscriptvalue_types.QScriptValue, qtObject: gen_qobject_types.QObject, ownership: cint): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQObject32(self.h, scriptObject.h, qtObject.h, cint(ownership)))
 
-proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, scriptObject: gen_qscriptvalue.QScriptValue, qtObject: gen_qobject.QObject, ownership: cint, options: ptr cint): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQObject4(self.h, scriptObject.h, qtObject.h, cint(ownership), options))
+proc newQObject*(self: gen_qscriptengine_types.QScriptEngine, scriptObject: gen_qscriptvalue_types.QScriptValue, qtObject: gen_qobject_types.QObject, ownership: cint, options: ptr cint): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQObject4(self.h, scriptObject.h, qtObject.h, cint(ownership), options))
 
-proc newQMetaObject*(self: gen_qscriptengine_types.QScriptEngine, metaObject: gen_qobjectdefs.QMetaObject, ctor: gen_qscriptvalue.QScriptValue): gen_qscriptvalue.QScriptValue =
-  gen_qscriptvalue.QScriptValue(h: fcQScriptEngine_newQMetaObject2(self.h, metaObject.h, ctor.h))
+proc newQMetaObject*(self: gen_qscriptengine_types.QScriptEngine, metaObject: gen_qobjectdefs_types.QMetaObject, ctor: gen_qscriptvalue_types.QScriptValue): gen_qscriptvalue_types.QScriptValue =
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptEngine_newQMetaObject2(self.h, metaObject.h, ctor.h))
 
-proc installTranslatorFunctions*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qscriptvalue.QScriptValue): void =
+proc installTranslatorFunctions*(self: gen_qscriptengine_types.QScriptEngine, objectVal: gen_qscriptvalue_types.QScriptValue): void =
   fcQScriptEngine_installTranslatorFunctions1(self.h, objectVal.h)
 
-proc QScriptEnginemetaObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQScriptEngine_virtualbase_metaObject(self.h))
+type QScriptEnginemetaObjectProc* = proc(self: QScriptEngine): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QScriptEnginemetacastProc* = proc(self: QScriptEngine, param1: cstring): pointer {.raises: [], gcsafe.}
+type QScriptEnginemetacallProc* = proc(self: QScriptEngine, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QScriptEngineeventProc* = proc(self: QScriptEngine, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QScriptEngineeventFilterProc* = proc(self: QScriptEngine, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QScriptEnginetimerEventProc* = proc(self: QScriptEngine, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QScriptEnginechildEventProc* = proc(self: QScriptEngine, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QScriptEnginecustomEventProc* = proc(self: QScriptEngine, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QScriptEngineconnectNotifyProc* = proc(self: QScriptEngine, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QScriptEnginedisconnectNotifyProc* = proc(self: QScriptEngine, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QScriptEngineVTable* = object
+  vtbl: cQScriptEngineVTable
+  metaObject*: QScriptEnginemetaObjectProc
+  metacast*: QScriptEnginemetacastProc
+  metacall*: QScriptEnginemetacallProc
+  event*: QScriptEngineeventProc
+  eventFilter*: QScriptEngineeventFilterProc
+  timerEvent*: QScriptEnginetimerEventProc
+  childEvent*: QScriptEnginechildEventProc
+  customEvent*: QScriptEnginecustomEventProc
+  connectNotify*: QScriptEngineconnectNotifyProc
+  disconnectNotify*: QScriptEnginedisconnectNotifyProc
+proc QScriptEnginemetaObject*(self: gen_qscriptengine_types.QScriptEngine, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScriptEngine_virtualbase_metaObject(self.h))
 
-type QScriptEnginemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginemetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QScriptEnginemetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QScriptEngine_metaObject(self: ptr cQScriptEngine, slot: int): pointer {.exportc: "miqt_exec_callback_QScriptEngine_metaObject ".} =
-  var nimfunc = cast[ptr QScriptEnginemetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQScriptEngine_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QScriptEnginemetacast*(self: gen_qscriptengine_types.QScriptEngine, param1: cstring): pointer =
-  fQScriptEngine_virtualbase_metacast(self.h, param1)
+  fcQScriptEngine_virtualbase_metacast(self.h, param1)
 
-type QScriptEnginemetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginemetacastProc) =
-  # TODO check subclass
-  var tmp = new QScriptEnginemetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QScriptEngine_metacast(self: ptr cQScriptEngine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QScriptEngine_metacast ".} =
-  var nimfunc = cast[ptr QScriptEnginemetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQScriptEngine_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QScriptEnginemetacall*(self: gen_qscriptengine_types.QScriptEngine, param1: cint, param2: cint, param3: pointer): cint =
-  fQScriptEngine_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQScriptEngine_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QScriptEnginemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginemetacallProc) =
-  # TODO check subclass
-  var tmp = new QScriptEnginemetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QScriptEngine_metacall(self: ptr cQScriptEngine, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QScriptEngine_metacall ".} =
-  var nimfunc = cast[ptr QScriptEnginemetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQScriptEngine_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QScriptEngineevent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent.QEvent): bool =
-  fQScriptEngine_virtualbase_event(self.h, event.h)
 
-type QScriptEngineeventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEngineeventProc) =
-  # TODO check subclass
-  var tmp = new QScriptEngineeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QScriptEngineevent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent_types.QEvent): bool =
+  fcQScriptEngine_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QScriptEngine_event(self: ptr cQScriptEngine, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QScriptEngine_event ".} =
-  var nimfunc = cast[ptr QScriptEngineeventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQScriptEngine_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QScriptEngineeventFilter*(self: gen_qscriptengine_types.QScriptEngine, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQScriptEngine_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QScriptEngineeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEngineeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QScriptEngineeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QScriptEngineeventFilter*(self: gen_qscriptengine_types.QScriptEngine, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQScriptEngine_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QScriptEngine_eventFilter(self: ptr cQScriptEngine, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QScriptEngine_eventFilter ".} =
-  var nimfunc = cast[ptr QScriptEngineeventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQScriptEngine_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QScriptEnginetimerEvent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent.QTimerEvent): void =
-  fQScriptEngine_virtualbase_timerEvent(self.h, event.h)
 
-type QScriptEnginetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginetimerEventProc) =
-  # TODO check subclass
-  var tmp = new QScriptEnginetimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QScriptEnginetimerEvent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQScriptEngine_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QScriptEngine_timerEvent(self: ptr cQScriptEngine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScriptEngine_timerEvent ".} =
-  var nimfunc = cast[ptr QScriptEnginetimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQScriptEngine_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QScriptEnginechildEvent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQScriptEngine_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QScriptEnginechildEvent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent.QChildEvent): void =
-  fQScriptEngine_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQScriptEngine_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QScriptEnginechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginechildEventProc) =
-  # TODO check subclass
-  var tmp = new QScriptEnginechildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QScriptEnginecustomEvent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent_types.QEvent): void =
+  fcQScriptEngine_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QScriptEngine_childEvent(self: ptr cQScriptEngine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScriptEngine_childEvent ".} =
-  var nimfunc = cast[ptr QScriptEnginechildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQScriptEngine_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QScriptEngineconnectNotify*(self: gen_qscriptengine_types.QScriptEngine, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQScriptEngine_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QScriptEnginecustomEvent*(self: gen_qscriptengine_types.QScriptEngine, event: gen_qcoreevent.QEvent): void =
-  fQScriptEngine_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQScriptEngine_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QScriptEnginecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginecustomEventProc) =
-  # TODO check subclass
-  var tmp = new QScriptEnginecustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QScriptEnginedisconnectNotify*(self: gen_qscriptengine_types.QScriptEngine, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQScriptEngine_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QScriptEngine_customEvent(self: ptr cQScriptEngine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScriptEngine_customEvent ".} =
-  var nimfunc = cast[ptr QScriptEnginecustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQScriptEngine_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QScriptEngineVTable](vtbl)
+  let self = QScriptEngine(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qscriptengine_types.QScriptEngine,
+    vtbl: ref QScriptEngineVTable = nil): gen_qscriptengine_types.QScriptEngine =
+  let vtbl = if vtbl == nil: new QScriptEngineVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQScriptEngineVTable, _: ptr cQScriptEngine) {.cdecl.} =
+    let vtbl = cast[ref QScriptEngineVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQScriptEngine_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQScriptEngine_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQScriptEngine_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQScriptEngine_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQScriptEngine_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQScriptEngine_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQScriptEngine_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQScriptEngine_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQScriptEngine_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQScriptEngine_disconnectNotify
+  gen_qscriptengine_types.QScriptEngine(h: fcQScriptEngine_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QScriptEngineconnectNotify*(self: gen_qscriptengine_types.QScriptEngine, signal: gen_qmetaobject.QMetaMethod): void =
-  fQScriptEngine_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qscriptengine_types.QScriptEngine,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QScriptEngineVTable = nil): gen_qscriptengine_types.QScriptEngine =
+  let vtbl = if vtbl == nil: new QScriptEngineVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQScriptEngineVTable, _: ptr cQScriptEngine) {.cdecl.} =
+    let vtbl = cast[ref QScriptEngineVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQScriptEngine_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQScriptEngine_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQScriptEngine_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQScriptEngine_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQScriptEngine_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQScriptEngine_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQScriptEngine_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQScriptEngine_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQScriptEngine_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQScriptEngine_disconnectNotify
+  gen_qscriptengine_types.QScriptEngine(h: fcQScriptEngine_new2(addr(vtbl[]), parent.h))
 
-type QScriptEngineconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEngineconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QScriptEngineconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QScriptEngine_connectNotify(self: ptr cQScriptEngine, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QScriptEngine_connectNotify ".} =
-  var nimfunc = cast[ptr QScriptEngineconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QScriptEnginedisconnectNotify*(self: gen_qscriptengine_types.QScriptEngine, signal: gen_qmetaobject.QMetaMethod): void =
-  fQScriptEngine_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QScriptEnginedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginedisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QScriptEnginedisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQScriptEngine_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QScriptEngine_disconnectNotify(self: ptr cQScriptEngine, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QScriptEngine_disconnectNotify ".} =
-  var nimfunc = cast[ptr QScriptEnginedisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qscriptengine_types.QScriptEngine): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQScriptEngine_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscriptengine_types.QScriptEngine): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScriptEngine_staticMetaObject())
 proc delete*(self: gen_qscriptengine_types.QScriptEngine) =
   fcQScriptEngine_delete(self.h)

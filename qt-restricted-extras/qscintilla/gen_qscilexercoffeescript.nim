@@ -60,35 +60,32 @@ template BlockRegex*(_: type QsciLexerCoffeeScriptEnumEnum): untyped = 23
 template BlockRegexComment*(_: type QsciLexerCoffeeScriptEnumEnum): untyped = 24
 template InstanceProperty*(_: type QsciLexerCoffeeScriptEnumEnum): untyped = 25
 
-
 import gen_qscilexercoffeescript_types
 export gen_qscilexercoffeescript_types
 
 import
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 export
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 
 type cQsciLexerCoffeeScript*{.exportc: "QsciLexerCoffeeScript", incompleteStruct.} = object
 
-proc fcQsciLexerCoffeeScript_new(): ptr cQsciLexerCoffeeScript {.importc: "QsciLexerCoffeeScript_new".}
-proc fcQsciLexerCoffeeScript_new2(parent: pointer): ptr cQsciLexerCoffeeScript {.importc: "QsciLexerCoffeeScript_new2".}
 proc fcQsciLexerCoffeeScript_metaObject(self: pointer, ): pointer {.importc: "QsciLexerCoffeeScript_metaObject".}
 proc fcQsciLexerCoffeeScript_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerCoffeeScript_metacast".}
 proc fcQsciLexerCoffeeScript_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerCoffeeScript_metacall".}
@@ -124,106 +121,101 @@ proc fcQsciLexerCoffeeScript_trUtf83(s: cstring, c: cstring, n: cint): struct_mi
 proc fcQsciLexerCoffeeScript_blockEnd1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_blockEnd1".}
 proc fcQsciLexerCoffeeScript_blockStart1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_blockStart1".}
 proc fcQsciLexerCoffeeScript_blockStartKeyword1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_blockStartKeyword1".}
-proc fQsciLexerCoffeeScript_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_metaObject".}
-proc fcQsciLexerCoffeeScript_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_metaObject".}
-proc fQsciLexerCoffeeScript_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_metacast".}
-proc fcQsciLexerCoffeeScript_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_metacast".}
-proc fQsciLexerCoffeeScript_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerCoffeeScript_virtualbase_metacall".}
-proc fcQsciLexerCoffeeScript_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_metacall".}
-proc fcQsciLexerCoffeeScript_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_language".}
-proc fQsciLexerCoffeeScript_virtualbase_lexer(self: pointer, ): cstring{.importc: "QsciLexerCoffeeScript_virtualbase_lexer".}
-proc fcQsciLexerCoffeeScript_override_virtual_lexer(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_lexer".}
-proc fQsciLexerCoffeeScript_virtualbase_lexerId(self: pointer, ): cint{.importc: "QsciLexerCoffeeScript_virtualbase_lexerId".}
-proc fcQsciLexerCoffeeScript_override_virtual_lexerId(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_lexerId".}
-proc fQsciLexerCoffeeScript_virtualbase_autoCompletionFillups(self: pointer, ): cstring{.importc: "QsciLexerCoffeeScript_virtualbase_autoCompletionFillups".}
-proc fcQsciLexerCoffeeScript_override_virtual_autoCompletionFillups(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_autoCompletionFillups".}
-proc fQsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array{.importc: "QsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators".}
-proc fcQsciLexerCoffeeScript_override_virtual_autoCompletionWordSeparators(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_autoCompletionWordSeparators".}
-proc fQsciLexerCoffeeScript_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerCoffeeScript_virtualbase_blockEnd".}
-proc fcQsciLexerCoffeeScript_override_virtual_blockEnd(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_blockEnd".}
-proc fQsciLexerCoffeeScript_virtualbase_blockLookback(self: pointer, ): cint{.importc: "QsciLexerCoffeeScript_virtualbase_blockLookback".}
-proc fcQsciLexerCoffeeScript_override_virtual_blockLookback(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_blockLookback".}
-proc fQsciLexerCoffeeScript_virtualbase_blockStart(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerCoffeeScript_virtualbase_blockStart".}
-proc fcQsciLexerCoffeeScript_override_virtual_blockStart(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_blockStart".}
-proc fQsciLexerCoffeeScript_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerCoffeeScript_virtualbase_blockStartKeyword".}
-proc fcQsciLexerCoffeeScript_override_virtual_blockStartKeyword(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_blockStartKeyword".}
-proc fQsciLexerCoffeeScript_virtualbase_braceStyle(self: pointer, ): cint{.importc: "QsciLexerCoffeeScript_virtualbase_braceStyle".}
-proc fcQsciLexerCoffeeScript_override_virtual_braceStyle(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_braceStyle".}
-proc fQsciLexerCoffeeScript_virtualbase_caseSensitive(self: pointer, ): bool{.importc: "QsciLexerCoffeeScript_virtualbase_caseSensitive".}
-proc fcQsciLexerCoffeeScript_override_virtual_caseSensitive(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_caseSensitive".}
-proc fQsciLexerCoffeeScript_virtualbase_color(self: pointer, style: cint): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_color".}
-proc fcQsciLexerCoffeeScript_override_virtual_color(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_color".}
-proc fQsciLexerCoffeeScript_virtualbase_eolFill(self: pointer, style: cint): bool{.importc: "QsciLexerCoffeeScript_virtualbase_eolFill".}
-proc fcQsciLexerCoffeeScript_override_virtual_eolFill(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_eolFill".}
-proc fQsciLexerCoffeeScript_virtualbase_font(self: pointer, style: cint): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_font".}
-proc fcQsciLexerCoffeeScript_override_virtual_font(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_font".}
-proc fQsciLexerCoffeeScript_virtualbase_indentationGuideView(self: pointer, ): cint{.importc: "QsciLexerCoffeeScript_virtualbase_indentationGuideView".}
-proc fcQsciLexerCoffeeScript_override_virtual_indentationGuideView(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_indentationGuideView".}
-proc fQsciLexerCoffeeScript_virtualbase_keywords(self: pointer, set: cint): cstring{.importc: "QsciLexerCoffeeScript_virtualbase_keywords".}
-proc fcQsciLexerCoffeeScript_override_virtual_keywords(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_keywords".}
-proc fQsciLexerCoffeeScript_virtualbase_defaultStyle(self: pointer, ): cint{.importc: "QsciLexerCoffeeScript_virtualbase_defaultStyle".}
-proc fcQsciLexerCoffeeScript_override_virtual_defaultStyle(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_defaultStyle".}
-proc fcQsciLexerCoffeeScript_override_virtual_description(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_description".}
-proc fQsciLexerCoffeeScript_virtualbase_paper(self: pointer, style: cint): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_paper".}
-proc fcQsciLexerCoffeeScript_override_virtual_paper(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_paper".}
-proc fQsciLexerCoffeeScript_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_defaultColorWithStyle".}
-proc fcQsciLexerCoffeeScript_override_virtual_defaultColorWithStyle(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_defaultColorWithStyle".}
-proc fQsciLexerCoffeeScript_virtualbase_defaultEolFill(self: pointer, style: cint): bool{.importc: "QsciLexerCoffeeScript_virtualbase_defaultEolFill".}
-proc fcQsciLexerCoffeeScript_override_virtual_defaultEolFill(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_defaultEolFill".}
-proc fQsciLexerCoffeeScript_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_defaultFontWithStyle".}
-proc fcQsciLexerCoffeeScript_override_virtual_defaultFontWithStyle(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_defaultFontWithStyle".}
-proc fQsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle".}
-proc fcQsciLexerCoffeeScript_override_virtual_defaultPaperWithStyle(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_defaultPaperWithStyle".}
-proc fQsciLexerCoffeeScript_virtualbase_setEditor(self: pointer, editor: pointer): void{.importc: "QsciLexerCoffeeScript_virtualbase_setEditor".}
-proc fcQsciLexerCoffeeScript_override_virtual_setEditor(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_setEditor".}
-proc fQsciLexerCoffeeScript_virtualbase_refreshProperties(self: pointer, ): void{.importc: "QsciLexerCoffeeScript_virtualbase_refreshProperties".}
-proc fcQsciLexerCoffeeScript_override_virtual_refreshProperties(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_refreshProperties".}
-proc fQsciLexerCoffeeScript_virtualbase_styleBitsNeeded(self: pointer, ): cint{.importc: "QsciLexerCoffeeScript_virtualbase_styleBitsNeeded".}
-proc fcQsciLexerCoffeeScript_override_virtual_styleBitsNeeded(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_styleBitsNeeded".}
-proc fQsciLexerCoffeeScript_virtualbase_wordCharacters(self: pointer, ): cstring{.importc: "QsciLexerCoffeeScript_virtualbase_wordCharacters".}
-proc fcQsciLexerCoffeeScript_override_virtual_wordCharacters(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_wordCharacters".}
-proc fQsciLexerCoffeeScript_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void{.importc: "QsciLexerCoffeeScript_virtualbase_setAutoIndentStyle".}
-proc fcQsciLexerCoffeeScript_override_virtual_setAutoIndentStyle(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_setAutoIndentStyle".}
-proc fQsciLexerCoffeeScript_virtualbase_setColor(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerCoffeeScript_virtualbase_setColor".}
-proc fcQsciLexerCoffeeScript_override_virtual_setColor(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_setColor".}
-proc fQsciLexerCoffeeScript_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void{.importc: "QsciLexerCoffeeScript_virtualbase_setEolFill".}
-proc fcQsciLexerCoffeeScript_override_virtual_setEolFill(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_setEolFill".}
-proc fQsciLexerCoffeeScript_virtualbase_setFont(self: pointer, f: pointer, style: cint): void{.importc: "QsciLexerCoffeeScript_virtualbase_setFont".}
-proc fcQsciLexerCoffeeScript_override_virtual_setFont(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_setFont".}
-proc fQsciLexerCoffeeScript_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerCoffeeScript_virtualbase_setPaper".}
-proc fcQsciLexerCoffeeScript_override_virtual_setPaper(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_setPaper".}
-proc fQsciLexerCoffeeScript_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerCoffeeScript_virtualbase_readProperties".}
-proc fcQsciLexerCoffeeScript_override_virtual_readProperties(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_readProperties".}
-proc fQsciLexerCoffeeScript_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerCoffeeScript_virtualbase_writeProperties".}
-proc fcQsciLexerCoffeeScript_override_virtual_writeProperties(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_writeProperties".}
-proc fQsciLexerCoffeeScript_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QsciLexerCoffeeScript_virtualbase_event".}
-proc fcQsciLexerCoffeeScript_override_virtual_event(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_event".}
-proc fQsciLexerCoffeeScript_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QsciLexerCoffeeScript_virtualbase_eventFilter".}
-proc fcQsciLexerCoffeeScript_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_eventFilter".}
-proc fQsciLexerCoffeeScript_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QsciLexerCoffeeScript_virtualbase_timerEvent".}
-proc fcQsciLexerCoffeeScript_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_timerEvent".}
-proc fQsciLexerCoffeeScript_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QsciLexerCoffeeScript_virtualbase_childEvent".}
-proc fcQsciLexerCoffeeScript_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_childEvent".}
-proc fQsciLexerCoffeeScript_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QsciLexerCoffeeScript_virtualbase_customEvent".}
-proc fcQsciLexerCoffeeScript_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_customEvent".}
-proc fQsciLexerCoffeeScript_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerCoffeeScript_virtualbase_connectNotify".}
-proc fcQsciLexerCoffeeScript_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_connectNotify".}
-proc fQsciLexerCoffeeScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerCoffeeScript_virtualbase_disconnectNotify".}
-proc fcQsciLexerCoffeeScript_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_disconnectNotify".}
+type cQsciLexerCoffeeScriptVTable = object
+  destructor*: proc(vtbl: ptr cQsciLexerCoffeeScriptVTable, self: ptr cQsciLexerCoffeeScript) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  language*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexer*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexerId*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  autoCompletionFillups*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  autoCompletionWordSeparators*: proc(vtbl, self: pointer, ): struct_miqt_array {.cdecl, raises: [], gcsafe.}
+  blockEnd*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockLookback*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  blockStart*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockStartKeyword*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  braceStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  caseSensitive*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  color*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  eolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  font*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  indentationGuideView*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  keywords*: proc(vtbl, self: pointer, set: cint): cstring {.cdecl, raises: [], gcsafe.}
+  defaultStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  description*: proc(vtbl, self: pointer, style: cint): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  paper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultColor*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultEolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  defaultFont*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultPaper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  setEditor*: proc(vtbl, self: pointer, editor: pointer): void {.cdecl, raises: [], gcsafe.}
+  refreshProperties*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  styleBitsNeeded*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  wordCharacters*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  setAutoIndentStyle*: proc(vtbl, self: pointer, autoindentstyle: cint): void {.cdecl, raises: [], gcsafe.}
+  setColor*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setEolFill*: proc(vtbl, self: pointer, eoffill: bool, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setFont*: proc(vtbl, self: pointer, f: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setPaper*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  readProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  writeProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQsciLexerCoffeeScript_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_metaObject".}
+proc fcQsciLexerCoffeeScript_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_metacast".}
+proc fcQsciLexerCoffeeScript_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerCoffeeScript_virtualbase_metacall".}
+proc fcQsciLexerCoffeeScript_virtualbase_lexer(self: pointer, ): cstring {.importc: "QsciLexerCoffeeScript_virtualbase_lexer".}
+proc fcQsciLexerCoffeeScript_virtualbase_lexerId(self: pointer, ): cint {.importc: "QsciLexerCoffeeScript_virtualbase_lexerId".}
+proc fcQsciLexerCoffeeScript_virtualbase_autoCompletionFillups(self: pointer, ): cstring {.importc: "QsciLexerCoffeeScript_virtualbase_autoCompletionFillups".}
+proc fcQsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array {.importc: "QsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators".}
+proc fcQsciLexerCoffeeScript_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_virtualbase_blockEnd".}
+proc fcQsciLexerCoffeeScript_virtualbase_blockLookback(self: pointer, ): cint {.importc: "QsciLexerCoffeeScript_virtualbase_blockLookback".}
+proc fcQsciLexerCoffeeScript_virtualbase_blockStart(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_virtualbase_blockStart".}
+proc fcQsciLexerCoffeeScript_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_virtualbase_blockStartKeyword".}
+proc fcQsciLexerCoffeeScript_virtualbase_braceStyle(self: pointer, ): cint {.importc: "QsciLexerCoffeeScript_virtualbase_braceStyle".}
+proc fcQsciLexerCoffeeScript_virtualbase_caseSensitive(self: pointer, ): bool {.importc: "QsciLexerCoffeeScript_virtualbase_caseSensitive".}
+proc fcQsciLexerCoffeeScript_virtualbase_color(self: pointer, style: cint): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_color".}
+proc fcQsciLexerCoffeeScript_virtualbase_eolFill(self: pointer, style: cint): bool {.importc: "QsciLexerCoffeeScript_virtualbase_eolFill".}
+proc fcQsciLexerCoffeeScript_virtualbase_font(self: pointer, style: cint): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_font".}
+proc fcQsciLexerCoffeeScript_virtualbase_indentationGuideView(self: pointer, ): cint {.importc: "QsciLexerCoffeeScript_virtualbase_indentationGuideView".}
+proc fcQsciLexerCoffeeScript_virtualbase_keywords(self: pointer, set: cint): cstring {.importc: "QsciLexerCoffeeScript_virtualbase_keywords".}
+proc fcQsciLexerCoffeeScript_virtualbase_defaultStyle(self: pointer, ): cint {.importc: "QsciLexerCoffeeScript_virtualbase_defaultStyle".}
+proc fcQsciLexerCoffeeScript_virtualbase_paper(self: pointer, style: cint): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_paper".}
+proc fcQsciLexerCoffeeScript_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_defaultColorWithStyle".}
+proc fcQsciLexerCoffeeScript_virtualbase_defaultEolFill(self: pointer, style: cint): bool {.importc: "QsciLexerCoffeeScript_virtualbase_defaultEolFill".}
+proc fcQsciLexerCoffeeScript_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_defaultFontWithStyle".}
+proc fcQsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle".}
+proc fcQsciLexerCoffeeScript_virtualbase_setEditor(self: pointer, editor: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_setEditor".}
+proc fcQsciLexerCoffeeScript_virtualbase_refreshProperties(self: pointer, ): void {.importc: "QsciLexerCoffeeScript_virtualbase_refreshProperties".}
+proc fcQsciLexerCoffeeScript_virtualbase_styleBitsNeeded(self: pointer, ): cint {.importc: "QsciLexerCoffeeScript_virtualbase_styleBitsNeeded".}
+proc fcQsciLexerCoffeeScript_virtualbase_wordCharacters(self: pointer, ): cstring {.importc: "QsciLexerCoffeeScript_virtualbase_wordCharacters".}
+proc fcQsciLexerCoffeeScript_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void {.importc: "QsciLexerCoffeeScript_virtualbase_setAutoIndentStyle".}
+proc fcQsciLexerCoffeeScript_virtualbase_setColor(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerCoffeeScript_virtualbase_setColor".}
+proc fcQsciLexerCoffeeScript_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void {.importc: "QsciLexerCoffeeScript_virtualbase_setEolFill".}
+proc fcQsciLexerCoffeeScript_virtualbase_setFont(self: pointer, f: pointer, style: cint): void {.importc: "QsciLexerCoffeeScript_virtualbase_setFont".}
+proc fcQsciLexerCoffeeScript_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerCoffeeScript_virtualbase_setPaper".}
+proc fcQsciLexerCoffeeScript_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCoffeeScript_virtualbase_readProperties".}
+proc fcQsciLexerCoffeeScript_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCoffeeScript_virtualbase_writeProperties".}
+proc fcQsciLexerCoffeeScript_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QsciLexerCoffeeScript_virtualbase_event".}
+proc fcQsciLexerCoffeeScript_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QsciLexerCoffeeScript_virtualbase_eventFilter".}
+proc fcQsciLexerCoffeeScript_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_timerEvent".}
+proc fcQsciLexerCoffeeScript_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_childEvent".}
+proc fcQsciLexerCoffeeScript_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_customEvent".}
+proc fcQsciLexerCoffeeScript_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_connectNotify".}
+proc fcQsciLexerCoffeeScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_disconnectNotify".}
+proc fcQsciLexerCoffeeScript_new(vtbl: pointer, ): ptr cQsciLexerCoffeeScript {.importc: "QsciLexerCoffeeScript_new".}
+proc fcQsciLexerCoffeeScript_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerCoffeeScript {.importc: "QsciLexerCoffeeScript_new2".}
 proc fcQsciLexerCoffeeScript_staticMetaObject(): pointer {.importc: "QsciLexerCoffeeScript_staticMetaObject".}
 proc fcQsciLexerCoffeeScript_delete(self: pointer) {.importc: "QsciLexerCoffeeScript_delete".}
 
-
-func init*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, h: ptr cQsciLexerCoffeeScript): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
-  T(h: h)
-proc create*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
-  gen_qscilexercoffeescript_types.QsciLexerCoffeeScript.init(fcQsciLexerCoffeeScript_new())
-
-proc create*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, parent: gen_qobject.QObject): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
-  gen_qscilexercoffeescript_types.QsciLexerCoffeeScript.init(fcQsciLexerCoffeeScript_new2(parent.h))
-
-proc metaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerCoffeeScript_metaObject(self.h))
+proc metaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerCoffeeScript_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, param1: cstring): pointer =
   fcQsciLexerCoffeeScript_metacast(self.h, param1)
@@ -275,17 +267,17 @@ proc braceStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ):
 proc wordCharacters*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
   (fcQsciLexerCoffeeScript_wordCharacters(self.h))
 
-proc defaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerCoffeeScript_defaultColor(self.h, style))
+proc defaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerCoffeeScript_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): bool =
   fcQsciLexerCoffeeScript_defaultEolFill(self.h, style)
 
-proc defaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fcQsciLexerCoffeeScript_defaultFont(self.h, style))
+proc defaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerCoffeeScript_defaultFont(self.h, style))
 
-proc defaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerCoffeeScript_defaultPaper(self.h, style))
+proc defaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerCoffeeScript_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, set: cint): cstring =
   (fcQsciLexerCoffeeScript_keywords(self.h, set))
@@ -356,132 +348,162 @@ proc blockStart*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, st
 proc blockStartKeyword*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
   (fcQsciLexerCoffeeScript_blockStartKeyword1(self.h, style))
 
-proc QsciLexerCoffeeScriptmetaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQsciLexerCoffeeScript_virtualbase_metaObject(self.h))
+type QsciLexerCoffeeScriptmetaObjectProc* = proc(self: QsciLexerCoffeeScript): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptmetacastProc* = proc(self: QsciLexerCoffeeScript, param1: cstring): pointer {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptmetacallProc* = proc(self: QsciLexerCoffeeScript, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptlanguageProc* = proc(self: QsciLexerCoffeeScript): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptlexerProc* = proc(self: QsciLexerCoffeeScript): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptlexerIdProc* = proc(self: QsciLexerCoffeeScript): cint {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptautoCompletionFillupsProc* = proc(self: QsciLexerCoffeeScript): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptautoCompletionWordSeparatorsProc* = proc(self: QsciLexerCoffeeScript): seq[string] {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptblockEndProc* = proc(self: QsciLexerCoffeeScript, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptblockLookbackProc* = proc(self: QsciLexerCoffeeScript): cint {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptblockStartProc* = proc(self: QsciLexerCoffeeScript, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptblockStartKeywordProc* = proc(self: QsciLexerCoffeeScript, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptbraceStyleProc* = proc(self: QsciLexerCoffeeScript): cint {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptcaseSensitiveProc* = proc(self: QsciLexerCoffeeScript): bool {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptcolorProc* = proc(self: QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerCoffeeScripteolFillProc* = proc(self: QsciLexerCoffeeScript, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptfontProc* = proc(self: QsciLexerCoffeeScript, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptindentationGuideViewProc* = proc(self: QsciLexerCoffeeScript): cint {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptkeywordsProc* = proc(self: QsciLexerCoffeeScript, set: cint): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptdefaultStyleProc* = proc(self: QsciLexerCoffeeScript): cint {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptdescriptionProc* = proc(self: QsciLexerCoffeeScript, style: cint): string {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptpaperProc* = proc(self: QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptdefaultColorProc* = proc(self: QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptdefaultEolFillProc* = proc(self: QsciLexerCoffeeScript, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptdefaultFontProc* = proc(self: QsciLexerCoffeeScript, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptdefaultPaperProc* = proc(self: QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptsetEditorProc* = proc(self: QsciLexerCoffeeScript, editor: gen_qsciscintilla_types.QsciScintilla): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptrefreshPropertiesProc* = proc(self: QsciLexerCoffeeScript): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptstyleBitsNeededProc* = proc(self: QsciLexerCoffeeScript): cint {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptwordCharactersProc* = proc(self: QsciLexerCoffeeScript): cstring {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptsetAutoIndentStyleProc* = proc(self: QsciLexerCoffeeScript, autoindentstyle: cint): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptsetColorProc* = proc(self: QsciLexerCoffeeScript, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptsetEolFillProc* = proc(self: QsciLexerCoffeeScript, eoffill: bool, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptsetFontProc* = proc(self: QsciLexerCoffeeScript, f: gen_qfont_types.QFont, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptsetPaperProc* = proc(self: QsciLexerCoffeeScript, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptreadPropertiesProc* = proc(self: QsciLexerCoffeeScript, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptwritePropertiesProc* = proc(self: QsciLexerCoffeeScript, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerCoffeeScripteventProc* = proc(self: QsciLexerCoffeeScript, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerCoffeeScripteventFilterProc* = proc(self: QsciLexerCoffeeScript, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerCoffeeScripttimerEventProc* = proc(self: QsciLexerCoffeeScript, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptchildEventProc* = proc(self: QsciLexerCoffeeScript, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptcustomEventProc* = proc(self: QsciLexerCoffeeScript, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptconnectNotifyProc* = proc(self: QsciLexerCoffeeScript, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptdisconnectNotifyProc* = proc(self: QsciLexerCoffeeScript, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerCoffeeScriptVTable* = object
+  vtbl: cQsciLexerCoffeeScriptVTable
+  metaObject*: QsciLexerCoffeeScriptmetaObjectProc
+  metacast*: QsciLexerCoffeeScriptmetacastProc
+  metacall*: QsciLexerCoffeeScriptmetacallProc
+  language*: QsciLexerCoffeeScriptlanguageProc
+  lexer*: QsciLexerCoffeeScriptlexerProc
+  lexerId*: QsciLexerCoffeeScriptlexerIdProc
+  autoCompletionFillups*: QsciLexerCoffeeScriptautoCompletionFillupsProc
+  autoCompletionWordSeparators*: QsciLexerCoffeeScriptautoCompletionWordSeparatorsProc
+  blockEnd*: QsciLexerCoffeeScriptblockEndProc
+  blockLookback*: QsciLexerCoffeeScriptblockLookbackProc
+  blockStart*: QsciLexerCoffeeScriptblockStartProc
+  blockStartKeyword*: QsciLexerCoffeeScriptblockStartKeywordProc
+  braceStyle*: QsciLexerCoffeeScriptbraceStyleProc
+  caseSensitive*: QsciLexerCoffeeScriptcaseSensitiveProc
+  color*: QsciLexerCoffeeScriptcolorProc
+  eolFill*: QsciLexerCoffeeScripteolFillProc
+  font*: QsciLexerCoffeeScriptfontProc
+  indentationGuideView*: QsciLexerCoffeeScriptindentationGuideViewProc
+  keywords*: QsciLexerCoffeeScriptkeywordsProc
+  defaultStyle*: QsciLexerCoffeeScriptdefaultStyleProc
+  description*: QsciLexerCoffeeScriptdescriptionProc
+  paper*: QsciLexerCoffeeScriptpaperProc
+  defaultColor*: QsciLexerCoffeeScriptdefaultColorProc
+  defaultEolFill*: QsciLexerCoffeeScriptdefaultEolFillProc
+  defaultFont*: QsciLexerCoffeeScriptdefaultFontProc
+  defaultPaper*: QsciLexerCoffeeScriptdefaultPaperProc
+  setEditor*: QsciLexerCoffeeScriptsetEditorProc
+  refreshProperties*: QsciLexerCoffeeScriptrefreshPropertiesProc
+  styleBitsNeeded*: QsciLexerCoffeeScriptstyleBitsNeededProc
+  wordCharacters*: QsciLexerCoffeeScriptwordCharactersProc
+  setAutoIndentStyle*: QsciLexerCoffeeScriptsetAutoIndentStyleProc
+  setColor*: QsciLexerCoffeeScriptsetColorProc
+  setEolFill*: QsciLexerCoffeeScriptsetEolFillProc
+  setFont*: QsciLexerCoffeeScriptsetFontProc
+  setPaper*: QsciLexerCoffeeScriptsetPaperProc
+  readProperties*: QsciLexerCoffeeScriptreadPropertiesProc
+  writeProperties*: QsciLexerCoffeeScriptwritePropertiesProc
+  event*: QsciLexerCoffeeScripteventProc
+  eventFilter*: QsciLexerCoffeeScripteventFilterProc
+  timerEvent*: QsciLexerCoffeeScripttimerEventProc
+  childEvent*: QsciLexerCoffeeScriptchildEventProc
+  customEvent*: QsciLexerCoffeeScriptcustomEventProc
+  connectNotify*: QsciLexerCoffeeScriptconnectNotifyProc
+  disconnectNotify*: QsciLexerCoffeeScriptdisconnectNotifyProc
+proc QsciLexerCoffeeScriptmetaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerCoffeeScript_virtualbase_metaObject(self.h))
 
-type QsciLexerCoffeeScriptmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_metaObject(self: ptr cQsciLexerCoffeeScript, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_metaObject ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QsciLexerCoffeeScriptmetacast*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, param1: cstring): pointer =
-  fQsciLexerCoffeeScript_virtualbase_metacast(self.h, param1)
+  fcQsciLexerCoffeeScript_virtualbase_metacast(self.h, param1)
 
-type QsciLexerCoffeeScriptmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptmetacastProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_metacast(self: ptr cQsciLexerCoffeeScript, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_metacast ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QsciLexerCoffeeScriptmetacall*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, param1: cint, param2: cint, param3: pointer): cint =
-  fQsciLexerCoffeeScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQsciLexerCoffeeScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciLexerCoffeeScriptmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptmetacallProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_metacall(self: ptr cQsciLexerCoffeeScript, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_metacall ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
-type QsciLexerCoffeeScriptlanguageProc* = proc(): cstring
-proc onlanguage*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptlanguageProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptlanguageProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_language(self.h, cast[int](addr tmp[]))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_language(self: ptr cQsciLexerCoffeeScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_language ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptlanguageProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_language(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].language(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptlexer*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-  (fQsciLexerCoffeeScript_virtualbase_lexer(self.h))
+  (fcQsciLexerCoffeeScript_virtualbase_lexer(self.h))
 
-type QsciLexerCoffeeScriptlexerProc* = proc(): cstring
-proc onlexer*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptlexerProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptlexerProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_lexer(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_lexer(self: ptr cQsciLexerCoffeeScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_lexer ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptlexerProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_lexer(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].lexer(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptlexerId*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-  fQsciLexerCoffeeScript_virtualbase_lexerId(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_lexerId(self.h)
 
-type QsciLexerCoffeeScriptlexerIdProc* = proc(): cint
-proc onlexerId*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptlexerIdProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptlexerIdProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_lexerId(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_lexerId(self: ptr cQsciLexerCoffeeScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_lexerId ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptlexerIdProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_lexerId(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].lexerId(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptautoCompletionFillups*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-  (fQsciLexerCoffeeScript_virtualbase_autoCompletionFillups(self.h))
+  (fcQsciLexerCoffeeScript_virtualbase_autoCompletionFillups(self.h))
 
-type QsciLexerCoffeeScriptautoCompletionFillupsProc* = proc(): cstring
-proc onautoCompletionFillups*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptautoCompletionFillupsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptautoCompletionFillupsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_autoCompletionFillups(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_autoCompletionFillups(self: ptr cQsciLexerCoffeeScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_autoCompletionFillups ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptautoCompletionFillupsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_autoCompletionFillups(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].autoCompletionFillups(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptautoCompletionWordSeparators*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): seq[string] =
-  var v_ma = fQsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators(self.h)
+  var v_ma = fcQsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
   for i in 0 ..< v_ma.len:
@@ -491,686 +513,562 @@ proc QsciLexerCoffeeScriptautoCompletionWordSeparators*(self: gen_qscilexercoffe
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciLexerCoffeeScriptautoCompletionWordSeparatorsProc* = proc(): seq[string]
-proc onautoCompletionWordSeparators*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptautoCompletionWordSeparatorsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptautoCompletionWordSeparatorsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_autoCompletionWordSeparators(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_autoCompletionWordSeparators(self: ptr cQsciLexerCoffeeScript, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_autoCompletionWordSeparators ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptautoCompletionWordSeparatorsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
+proc miqt_exec_callback_cQsciLexerCoffeeScript_autoCompletionWordSeparators(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].autoCompletionWordSeparators(self)
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
-
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
+
 proc QsciLexerCoffeeScriptblockEnd*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-  (fQsciLexerCoffeeScript_virtualbase_blockEnd(self.h, style))
+  (fcQsciLexerCoffeeScript_virtualbase_blockEnd(self.h, style))
 
-type QsciLexerCoffeeScriptblockEndProc* = proc(style: ptr cint): cstring
-proc onblockEnd*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptblockEndProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptblockEndProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_blockEnd(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_blockEnd(self: ptr cQsciLexerCoffeeScript, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_blockEnd ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptblockEndProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_blockEnd(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockEnd(self, slotval1)
   virtualReturn
+
 proc QsciLexerCoffeeScriptblockLookback*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-  fQsciLexerCoffeeScript_virtualbase_blockLookback(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_blockLookback(self.h)
 
-type QsciLexerCoffeeScriptblockLookbackProc* = proc(): cint
-proc onblockLookback*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptblockLookbackProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptblockLookbackProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_blockLookback(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_blockLookback(self: ptr cQsciLexerCoffeeScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_blockLookback ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptblockLookbackProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_blockLookback(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].blockLookback(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptblockStart*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-  (fQsciLexerCoffeeScript_virtualbase_blockStart(self.h, style))
+  (fcQsciLexerCoffeeScript_virtualbase_blockStart(self.h, style))
 
-type QsciLexerCoffeeScriptblockStartProc* = proc(style: ptr cint): cstring
-proc onblockStart*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptblockStartProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptblockStartProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_blockStart(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_blockStart(self: ptr cQsciLexerCoffeeScript, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_blockStart ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptblockStartProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_blockStart(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStart(self, slotval1)
   virtualReturn
+
 proc QsciLexerCoffeeScriptblockStartKeyword*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-  (fQsciLexerCoffeeScript_virtualbase_blockStartKeyword(self.h, style))
+  (fcQsciLexerCoffeeScript_virtualbase_blockStartKeyword(self.h, style))
 
-type QsciLexerCoffeeScriptblockStartKeywordProc* = proc(style: ptr cint): cstring
-proc onblockStartKeyword*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptblockStartKeywordProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptblockStartKeywordProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_blockStartKeyword(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_blockStartKeyword(self: ptr cQsciLexerCoffeeScript, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_blockStartKeyword ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptblockStartKeywordProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_blockStartKeyword(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStartKeyword(self, slotval1)
   virtualReturn
+
 proc QsciLexerCoffeeScriptbraceStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-  fQsciLexerCoffeeScript_virtualbase_braceStyle(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_braceStyle(self.h)
 
-type QsciLexerCoffeeScriptbraceStyleProc* = proc(): cint
-proc onbraceStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptbraceStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptbraceStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_braceStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_braceStyle(self: ptr cQsciLexerCoffeeScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_braceStyle ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptbraceStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_braceStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].braceStyle(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptcaseSensitive*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): bool =
-  fQsciLexerCoffeeScript_virtualbase_caseSensitive(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_caseSensitive(self.h)
 
-type QsciLexerCoffeeScriptcaseSensitiveProc* = proc(): bool
-proc oncaseSensitive*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptcaseSensitiveProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptcaseSensitiveProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_caseSensitive(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_caseSensitive(self: ptr cQsciLexerCoffeeScript, slot: int): bool {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_caseSensitive ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptcaseSensitiveProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_caseSensitive(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].caseSensitive(self)
   virtualReturn
-proc QsciLexerCoffeeScriptcolor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_color(self.h, style))
 
-type QsciLexerCoffeeScriptcolorProc* = proc(style: cint): gen_qcolor.QColor
-proc oncolor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptcolorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptcolorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_color(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptcolor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerCoffeeScript_virtualbase_color(self.h, style))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_color(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_color ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptcolorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_color(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].color(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerCoffeeScripteolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): bool =
-  fQsciLexerCoffeeScript_virtualbase_eolFill(self.h, style)
+  fcQsciLexerCoffeeScript_virtualbase_eolFill(self.h, style)
 
-type QsciLexerCoffeeScripteolFillProc* = proc(style: cint): bool
-proc oneolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScripteolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScripteolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_eolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_eolFill(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_eolFill ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScripteolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_eolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].eolFill(self, slotval1)
   virtualReturn
-proc QsciLexerCoffeeScriptfont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerCoffeeScript_virtualbase_font(self.h, style))
 
-type QsciLexerCoffeeScriptfontProc* = proc(style: cint): gen_qfont.QFont
-proc onfont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptfontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptfontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_font(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptfont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerCoffeeScript_virtualbase_font(self.h, style))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_font(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_font ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptfontProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_font(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].font(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerCoffeeScriptindentationGuideView*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-  fQsciLexerCoffeeScript_virtualbase_indentationGuideView(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_indentationGuideView(self.h)
 
-type QsciLexerCoffeeScriptindentationGuideViewProc* = proc(): cint
-proc onindentationGuideView*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptindentationGuideViewProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptindentationGuideViewProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_indentationGuideView(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_indentationGuideView(self: ptr cQsciLexerCoffeeScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_indentationGuideView ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptindentationGuideViewProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_indentationGuideView(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].indentationGuideView(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptkeywords*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, set: cint): cstring =
-  (fQsciLexerCoffeeScript_virtualbase_keywords(self.h, set))
+  (fcQsciLexerCoffeeScript_virtualbase_keywords(self.h, set))
 
-type QsciLexerCoffeeScriptkeywordsProc* = proc(set: cint): cstring
-proc onkeywords*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptkeywordsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptkeywordsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_keywords(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_keywords(self: ptr cQsciLexerCoffeeScript, slot: int, set: cint): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_keywords ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptkeywordsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_keywords(vtbl: pointer, self: pointer, set: cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = set
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].keywords(self, slotval1)
   virtualReturn
+
 proc QsciLexerCoffeeScriptdefaultStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-  fQsciLexerCoffeeScript_virtualbase_defaultStyle(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_defaultStyle(self.h)
 
-type QsciLexerCoffeeScriptdefaultStyleProc* = proc(): cint
-proc ondefaultStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptdefaultStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_defaultStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_defaultStyle(self: ptr cQsciLexerCoffeeScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_defaultStyle ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptdefaultStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_defaultStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].defaultStyle(self)
   virtualReturn
-type QsciLexerCoffeeScriptdescriptionProc* = proc(style: cint): string
-proc ondescription*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdescriptionProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptdescriptionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_description(self.h, cast[int](addr tmp[]))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_description(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_description ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptdescriptionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_description(vtbl: pointer, self: pointer, style: cint): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].description(self, slotval1)
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QsciLexerCoffeeScriptpaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_paper(self.h, style))
 
-type QsciLexerCoffeeScriptpaperProc* = proc(style: cint): gen_qcolor.QColor
-proc onpaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptpaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptpaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_paper(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptpaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerCoffeeScript_virtualbase_paper(self.h, style))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_paper(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_paper ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptpaperProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_paper(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].paper(self, slotval1)
   virtualReturn.h
-proc QsciLexerCoffeeScriptdefaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_defaultColorWithStyle(self.h, style))
 
-type QsciLexerCoffeeScriptdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultColorWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptdefaultColorWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_defaultColorWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptdefaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerCoffeeScript_virtualbase_defaultColorWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_defaultColorWithStyle(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_defaultColorWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptdefaultColorWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_defaultColorWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultColor(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerCoffeeScriptdefaultEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): bool =
-  fQsciLexerCoffeeScript_virtualbase_defaultEolFill(self.h, style)
+  fcQsciLexerCoffeeScript_virtualbase_defaultEolFill(self.h, style)
 
-type QsciLexerCoffeeScriptdefaultEolFillProc* = proc(style: cint): bool
-proc ondefaultEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptdefaultEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_defaultEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_defaultEolFill(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_defaultEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptdefaultEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_defaultEolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultEolFill(self, slotval1)
   virtualReturn
-proc QsciLexerCoffeeScriptdefaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerCoffeeScript_virtualbase_defaultFontWithStyle(self.h, style))
 
-type QsciLexerCoffeeScriptdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultFontWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptdefaultFontWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_defaultFontWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptdefaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerCoffeeScript_virtualbase_defaultFontWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_defaultFontWithStyle(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_defaultFontWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptdefaultFontWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_defaultFontWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultFont(self, slotval1)
   virtualReturn.h
-proc QsciLexerCoffeeScriptdefaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle(self.h, style))
 
-type QsciLexerCoffeeScriptdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultPaperWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptdefaultPaperWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_defaultPaperWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptdefaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_defaultPaperWithStyle(self: ptr cQsciLexerCoffeeScript, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_defaultPaperWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptdefaultPaperWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_defaultPaperWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultPaper(self, slotval1)
   virtualReturn.h
-proc QsciLexerCoffeeScriptsetEditor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, editor: gen_qsciscintilla.QsciScintilla): void =
-  fQsciLexerCoffeeScript_virtualbase_setEditor(self.h, editor.h)
 
-type QsciLexerCoffeeScriptsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
-proc onsetEditor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptsetEditorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptsetEditorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_setEditor(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptsetEditor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, editor: gen_qsciscintilla_types.QsciScintilla): void =
+  fcQsciLexerCoffeeScript_virtualbase_setEditor(self.h, editor.h)
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_setEditor(self: ptr cQsciLexerCoffeeScript, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_setEditor ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptsetEditorProc](cast[pointer](slot))
-  let slotval1 = gen_qsciscintilla.QsciScintilla(h: editor)
+proc miqt_exec_callback_cQsciLexerCoffeeScript_setEditor(vtbl: pointer, self: pointer, editor: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qsciscintilla_types.QsciScintilla(h: editor)
+  vtbl[].setEditor(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerCoffeeScriptrefreshProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): void =
-  fQsciLexerCoffeeScript_virtualbase_refreshProperties(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_refreshProperties(self.h)
 
-type QsciLexerCoffeeScriptrefreshPropertiesProc* = proc(): void
-proc onrefreshProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptrefreshPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptrefreshPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_refreshProperties(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_refreshProperties(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  vtbl[].refreshProperties(self)
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_refreshProperties(self: ptr cQsciLexerCoffeeScript, slot: int): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_refreshProperties ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptrefreshPropertiesProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciLexerCoffeeScriptstyleBitsNeeded*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-  fQsciLexerCoffeeScript_virtualbase_styleBitsNeeded(self.h)
+  fcQsciLexerCoffeeScript_virtualbase_styleBitsNeeded(self.h)
 
-type QsciLexerCoffeeScriptstyleBitsNeededProc* = proc(): cint
-proc onstyleBitsNeeded*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptstyleBitsNeededProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptstyleBitsNeededProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_styleBitsNeeded(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_styleBitsNeeded(self: ptr cQsciLexerCoffeeScript, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_styleBitsNeeded ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptstyleBitsNeededProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_styleBitsNeeded(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].styleBitsNeeded(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptwordCharacters*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-  (fQsciLexerCoffeeScript_virtualbase_wordCharacters(self.h))
+  (fcQsciLexerCoffeeScript_virtualbase_wordCharacters(self.h))
 
-type QsciLexerCoffeeScriptwordCharactersProc* = proc(): cstring
-proc onwordCharacters*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptwordCharactersProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptwordCharactersProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_wordCharacters(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_wordCharacters(self: ptr cQsciLexerCoffeeScript, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_wordCharacters ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptwordCharactersProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_wordCharacters(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let virtualReturn = vtbl[].wordCharacters(self)
   virtualReturn
+
 proc QsciLexerCoffeeScriptsetAutoIndentStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, autoindentstyle: cint): void =
-  fQsciLexerCoffeeScript_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
+  fcQsciLexerCoffeeScript_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
-type QsciLexerCoffeeScriptsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
-proc onsetAutoIndentStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptsetAutoIndentStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptsetAutoIndentStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_setAutoIndentStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_setAutoIndentStyle(self: ptr cQsciLexerCoffeeScript, slot: int, autoindentstyle: cint): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_setAutoIndentStyle ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptsetAutoIndentStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_setAutoIndentStyle(vtbl: pointer, self: pointer, autoindentstyle: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = autoindentstyle
+  vtbl[].setAutoIndentStyle(self, slotval1)
 
+proc QsciLexerCoffeeScriptsetColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerCoffeeScript_virtualbase_setColor(self.h, c.h, style)
 
-  nimfunc[](slotval1)
-proc QsciLexerCoffeeScriptsetColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerCoffeeScript_virtualbase_setColor(self.h, c.h, style)
-
-type QsciLexerCoffeeScriptsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptsetColorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptsetColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_setColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_setColor(self: ptr cQsciLexerCoffeeScript, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_setColor ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptsetColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_setColor(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setColor(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciLexerCoffeeScriptsetEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, eoffill: bool, style: cint): void =
-  fQsciLexerCoffeeScript_virtualbase_setEolFill(self.h, eoffill, style)
+  fcQsciLexerCoffeeScript_virtualbase_setEolFill(self.h, eoffill, style)
 
-type QsciLexerCoffeeScriptsetEolFillProc* = proc(eoffill: bool, style: cint): void
-proc onsetEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptsetEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptsetEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_setEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_setEolFill(self: ptr cQsciLexerCoffeeScript, slot: int, eoffill: bool, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_setEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptsetEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerCoffeeScript_setEolFill(vtbl: pointer, self: pointer, eoffill: bool, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = eoffill
-
   let slotval2 = style
+  vtbl[].setEolFill(self, slotval1, slotval2)
 
+proc QsciLexerCoffeeScriptsetFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, f: gen_qfont_types.QFont, style: cint): void =
+  fcQsciLexerCoffeeScript_virtualbase_setFont(self.h, f.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerCoffeeScriptsetFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, f: gen_qfont.QFont, style: cint): void =
-  fQsciLexerCoffeeScript_virtualbase_setFont(self.h, f.h, style)
-
-type QsciLexerCoffeeScriptsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
-proc onsetFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptsetFontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptsetFontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_setFont(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_setFont(self: ptr cQsciLexerCoffeeScript, slot: int, f: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_setFont ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptsetFontProc](cast[pointer](slot))
-  let slotval1 = gen_qfont.QFont(h: f)
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_setFont(vtbl: pointer, self: pointer, f: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qfont_types.QFont(h: f)
   let slotval2 = style
+  vtbl[].setFont(self, slotval1, slotval2)
 
+proc QsciLexerCoffeeScriptsetPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerCoffeeScript_virtualbase_setPaper(self.h, c.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerCoffeeScriptsetPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerCoffeeScript_virtualbase_setPaper(self.h, c.h, style)
-
-type QsciLexerCoffeeScriptsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptsetPaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptsetPaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_setPaper(self: ptr cQsciLexerCoffeeScript, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_setPaper ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptsetPaperProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_setPaper(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setPaper(self, slotval1, slotval2)
 
+proc QsciLexerCoffeeScriptreadProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCoffeeScript_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerCoffeeScriptreadProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerCoffeeScript_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
-
-type QsciLexerCoffeeScriptreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onreadProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptreadPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptreadPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_readProperties(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_readProperties(self: ptr cQsciLexerCoffeeScript, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_readProperties ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptreadPropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_readProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].readProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerCoffeeScriptwriteProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerCoffeeScript_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerCoffeeScriptwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onwriteProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptwritePropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptwritePropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_writeProperties(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptwriteProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCoffeeScript_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_writeProperties(self: ptr cQsciLexerCoffeeScript, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_writeProperties ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptwritePropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_writeProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].writeProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerCoffeeScriptevent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerCoffeeScript_virtualbase_event(self.h, event.h)
 
-type QsciLexerCoffeeScripteventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScripteventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScripteventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptevent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerCoffeeScript_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_event(self: ptr cQsciLexerCoffeeScript, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_event ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScripteventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QsciLexerCoffeeScripteventFilter*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerCoffeeScript_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciLexerCoffeeScripteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScripteventFilterProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScripteventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScripteventFilter*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerCoffeeScript_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_eventFilter(self: ptr cQsciLexerCoffeeScript, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_eventFilter ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScripteventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQsciLexerCoffeeScript_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerCoffeeScripttimerEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QTimerEvent): void =
-  fQsciLexerCoffeeScript_virtualbase_timerEvent(self.h, event.h)
 
-type QsciLexerCoffeeScripttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScripttimerEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScripttimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScripttimerEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQsciLexerCoffeeScript_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_timerEvent(self: ptr cQsciLexerCoffeeScript, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_timerEvent ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScripttimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQsciLexerCoffeeScript_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QsciLexerCoffeeScriptchildEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQsciLexerCoffeeScript_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerCoffeeScriptchildEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QChildEvent): void =
-  fQsciLexerCoffeeScript_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerCoffeeScript_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QsciLexerCoffeeScriptchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptchildEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptcustomEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciLexerCoffeeScript_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_childEvent(self: ptr cQsciLexerCoffeeScript, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_childEvent ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQsciLexerCoffeeScript_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QsciLexerCoffeeScriptconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerCoffeeScript_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerCoffeeScriptcustomEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QEvent): void =
-  fQsciLexerCoffeeScript_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerCoffeeScript_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QsciLexerCoffeeScriptcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerCoffeeScriptdisconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerCoffeeScript_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QsciLexerCoffeeScript_customEvent(self: ptr cQsciLexerCoffeeScript, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_customEvent ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciLexerCoffeeScript_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerCoffeeScriptVTable](vtbl)
+  let self = QsciLexerCoffeeScript(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript,
+    vtbl: ref QsciLexerCoffeeScriptVTable = nil): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
+  let vtbl = if vtbl == nil: new QsciLexerCoffeeScriptVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerCoffeeScriptVTable, _: ptr cQsciLexerCoffeeScript) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerCoffeeScriptVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerCoffeeScript_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerCoffeeScript_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerCoffeeScript_metacall
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerCoffeeScript_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerCoffeeScript_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerCoffeeScript_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerCoffeeScript_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerCoffeeScript_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerCoffeeScript_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerCoffeeScript_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerCoffeeScript_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerCoffeeScript_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerCoffeeScript_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerCoffeeScript_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerCoffeeScript_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerCoffeeScript_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerCoffeeScript_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerCoffeeScript_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerCoffeeScript_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerCoffeeScript_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerCoffeeScript_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerCoffeeScript_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerCoffeeScript_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerCoffeeScript_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerCoffeeScript_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerCoffeeScript_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerCoffeeScript_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerCoffeeScript_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerCoffeeScript_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerCoffeeScript_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerCoffeeScript_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerCoffeeScript_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerCoffeeScript_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerCoffeeScript_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerCoffeeScript_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerCoffeeScript_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerCoffeeScript_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerCoffeeScript_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerCoffeeScript_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerCoffeeScript_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerCoffeeScript_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerCoffeeScript_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerCoffeeScript_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerCoffeeScript_disconnectNotify
+  gen_qscilexercoffeescript_types.QsciLexerCoffeeScript(h: fcQsciLexerCoffeeScript_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QsciLexerCoffeeScriptconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerCoffeeScript_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QsciLexerCoffeeScriptVTable = nil): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
+  let vtbl = if vtbl == nil: new QsciLexerCoffeeScriptVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerCoffeeScriptVTable, _: ptr cQsciLexerCoffeeScript) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerCoffeeScriptVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerCoffeeScript_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerCoffeeScript_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerCoffeeScript_metacall
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerCoffeeScript_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerCoffeeScript_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerCoffeeScript_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerCoffeeScript_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerCoffeeScript_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerCoffeeScript_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerCoffeeScript_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerCoffeeScript_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerCoffeeScript_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerCoffeeScript_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerCoffeeScript_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerCoffeeScript_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerCoffeeScript_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerCoffeeScript_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerCoffeeScript_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerCoffeeScript_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerCoffeeScript_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerCoffeeScript_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerCoffeeScript_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerCoffeeScript_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerCoffeeScript_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerCoffeeScript_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerCoffeeScript_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerCoffeeScript_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerCoffeeScript_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerCoffeeScript_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerCoffeeScript_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerCoffeeScript_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerCoffeeScript_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerCoffeeScript_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerCoffeeScript_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerCoffeeScript_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerCoffeeScript_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerCoffeeScript_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerCoffeeScript_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerCoffeeScript_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerCoffeeScript_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerCoffeeScript_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerCoffeeScript_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerCoffeeScript_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerCoffeeScript_disconnectNotify
+  gen_qscilexercoffeescript_types.QsciLexerCoffeeScript(h: fcQsciLexerCoffeeScript_new2(addr(vtbl[]), parent.h))
 
-type QsciLexerCoffeeScriptconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_connectNotify(self: ptr cQsciLexerCoffeeScript, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_connectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QsciLexerCoffeeScriptdisconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerCoffeeScript_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QsciLexerCoffeeScriptdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerCoffeeScriptdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerCoffeeScript_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerCoffeeScript_disconnectNotify(self: ptr cQsciLexerCoffeeScript, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_disconnectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerCoffeeScriptdisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerCoffeeScript_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerCoffeeScript_staticMetaObject())
 proc delete*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript) =
   fcQsciLexerCoffeeScript_delete(self.h)

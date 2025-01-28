@@ -68,14 +68,13 @@ template PPK_QPageLayout*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyp
 template PPK_PaperSize*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 10
 template PPK_CustomBase*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 65280
 
-
 import gen_qprintengine_types
 export gen_qprintengine_types
 
 import
-  gen_qvariant
+  gen_qvariant_types
 export
-  gen_qvariant
+  gen_qvariant_types
 
 type cQPrintEngine*{.exportc: "QPrintEngine", incompleteStruct.} = object
 
@@ -88,14 +87,11 @@ proc fcQPrintEngine_printerState(self: pointer, ): cint {.importc: "QPrintEngine
 proc fcQPrintEngine_operatorAssign(self: pointer, param1: pointer): void {.importc: "QPrintEngine_operatorAssign".}
 proc fcQPrintEngine_delete(self: pointer) {.importc: "QPrintEngine_delete".}
 
-
-func init*(T: type gen_qprintengine_types.QPrintEngine, h: ptr cQPrintEngine): gen_qprintengine_types.QPrintEngine =
-  T(h: h)
-proc setProperty*(self: gen_qprintengine_types.QPrintEngine, key: cint, value: gen_qvariant.QVariant): void =
+proc setProperty*(self: gen_qprintengine_types.QPrintEngine, key: cint, value: gen_qvariant_types.QVariant): void =
   fcQPrintEngine_setProperty(self.h, cint(key), value.h)
 
-proc property*(self: gen_qprintengine_types.QPrintEngine, key: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQPrintEngine_property(self.h, cint(key)))
+proc property*(self: gen_qprintengine_types.QPrintEngine, key: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQPrintEngine_property(self.h, cint(key)))
 
 proc newPage*(self: gen_qprintengine_types.QPrintEngine, ): bool =
   fcQPrintEngine_newPage(self.h)

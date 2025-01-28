@@ -33,21 +33,19 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5WebEngineWidgets")
 {.compile("gen_qwebenginehistory.cpp", cflags).}
 
-
 import gen_qwebenginehistory_types
 export gen_qwebenginehistory_types
 
 import
-  gen_qdatetime,
-  gen_qurl
+  gen_qdatetime_types,
+  gen_qurl_types
 export
-  gen_qdatetime,
-  gen_qurl
+  gen_qdatetime_types,
+  gen_qurl_types
 
 type cQWebEngineHistoryItem*{.exportc: "QWebEngineHistoryItem", incompleteStruct.} = object
 type cQWebEngineHistory*{.exportc: "QWebEngineHistory", incompleteStruct.} = object
 
-proc fcQWebEngineHistoryItem_new(other: pointer): ptr cQWebEngineHistoryItem {.importc: "QWebEngineHistoryItem_new".}
 proc fcQWebEngineHistoryItem_operatorAssign(self: pointer, other: pointer): void {.importc: "QWebEngineHistoryItem_operatorAssign".}
 proc fcQWebEngineHistoryItem_originalUrl(self: pointer, ): pointer {.importc: "QWebEngineHistoryItem_originalUrl".}
 proc fcQWebEngineHistoryItem_url(self: pointer, ): pointer {.importc: "QWebEngineHistoryItem_url".}
@@ -56,6 +54,7 @@ proc fcQWebEngineHistoryItem_lastVisited(self: pointer, ): pointer {.importc: "Q
 proc fcQWebEngineHistoryItem_iconUrl(self: pointer, ): pointer {.importc: "QWebEngineHistoryItem_iconUrl".}
 proc fcQWebEngineHistoryItem_isValid(self: pointer, ): bool {.importc: "QWebEngineHistoryItem_isValid".}
 proc fcQWebEngineHistoryItem_swap(self: pointer, other: pointer): void {.importc: "QWebEngineHistoryItem_swap".}
+proc fcQWebEngineHistoryItem_new(other: pointer): ptr cQWebEngineHistoryItem {.importc: "QWebEngineHistoryItem_new".}
 proc fcQWebEngineHistoryItem_delete(self: pointer) {.importc: "QWebEngineHistoryItem_delete".}
 proc fcQWebEngineHistory_clear(self: pointer, ): void {.importc: "QWebEngineHistory_clear".}
 proc fcQWebEngineHistory_items(self: pointer, ): struct_miqt_array {.importc: "QWebEngineHistory_items".}
@@ -73,20 +72,14 @@ proc fcQWebEngineHistory_itemAt(self: pointer, i: cint): pointer {.importc: "QWe
 proc fcQWebEngineHistory_currentItemIndex(self: pointer, ): cint {.importc: "QWebEngineHistory_currentItemIndex".}
 proc fcQWebEngineHistory_count(self: pointer, ): cint {.importc: "QWebEngineHistory_count".}
 
-
-func init*(T: type gen_qwebenginehistory_types.QWebEngineHistoryItem, h: ptr cQWebEngineHistoryItem): gen_qwebenginehistory_types.QWebEngineHistoryItem =
-  T(h: h)
-proc create*(T: type gen_qwebenginehistory_types.QWebEngineHistoryItem, other: gen_qwebenginehistory_types.QWebEngineHistoryItem): gen_qwebenginehistory_types.QWebEngineHistoryItem =
-  gen_qwebenginehistory_types.QWebEngineHistoryItem.init(fcQWebEngineHistoryItem_new(other.h))
-
 proc operatorAssign*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, other: gen_qwebenginehistory_types.QWebEngineHistoryItem): void =
   fcQWebEngineHistoryItem_operatorAssign(self.h, other.h)
 
-proc originalUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebEngineHistoryItem_originalUrl(self.h))
+proc originalUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineHistoryItem_originalUrl(self.h))
 
-proc url*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebEngineHistoryItem_url(self.h))
+proc url*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineHistoryItem_url(self.h))
 
 proc title*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): string =
   let v_ms = fcQWebEngineHistoryItem_title(self.h)
@@ -94,11 +87,11 @@ proc title*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc lastVisited*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qdatetime.QDateTime =
-  gen_qdatetime.QDateTime(h: fcQWebEngineHistoryItem_lastVisited(self.h))
+proc lastVisited*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQWebEngineHistoryItem_lastVisited(self.h))
 
-proc iconUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebEngineHistoryItem_iconUrl(self.h))
+proc iconUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineHistoryItem_iconUrl(self.h))
 
 proc isValid*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): bool =
   fcQWebEngineHistoryItem_isValid(self.h)
@@ -106,11 +99,12 @@ proc isValid*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): bool =
 proc swap*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, other: gen_qwebenginehistory_types.QWebEngineHistoryItem): void =
   fcQWebEngineHistoryItem_swap(self.h, other.h)
 
+proc create*(T: type gen_qwebenginehistory_types.QWebEngineHistoryItem,
+    other: gen_qwebenginehistory_types.QWebEngineHistoryItem): gen_qwebenginehistory_types.QWebEngineHistoryItem =
+  gen_qwebenginehistory_types.QWebEngineHistoryItem(h: fcQWebEngineHistoryItem_new(other.h))
+
 proc delete*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem) =
   fcQWebEngineHistoryItem_delete(self.h)
-
-func init*(T: type gen_qwebenginehistory_types.QWebEngineHistory, h: ptr cQWebEngineHistory): gen_qwebenginehistory_types.QWebEngineHistory =
-  T(h: h)
 proc clear*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): void =
   fcQWebEngineHistory_clear(self.h)
 

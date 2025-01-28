@@ -146,35 +146,32 @@ template PHPCommentLine*(_: type QsciLexerHTMLEnumEnum): untyped = 125
 template PHPDoubleQuotedVariable*(_: type QsciLexerHTMLEnumEnum): untyped = 126
 template PHPOperator*(_: type QsciLexerHTMLEnumEnum): untyped = 127
 
-
 import gen_qscilexerhtml_types
 export gen_qscilexerhtml_types
 
 import
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 export
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qfont,
-  gen_qmetaobject,
-  gen_qobject,
-  gen_qobjectdefs,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qfont_types,
+  gen_qmetaobject_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
   gen_qscilexer,
-  gen_qsciscintilla,
-  gen_qsettings
+  gen_qsciscintilla_types,
+  gen_qsettings_types
 
 type cQsciLexerHTML*{.exportc: "QsciLexerHTML", incompleteStruct.} = object
 
-proc fcQsciLexerHTML_new(): ptr cQsciLexerHTML {.importc: "QsciLexerHTML_new".}
-proc fcQsciLexerHTML_new2(parent: pointer): ptr cQsciLexerHTML {.importc: "QsciLexerHTML_new2".}
 proc fcQsciLexerHTML_metaObject(self: pointer, ): pointer {.importc: "QsciLexerHTML_metaObject".}
 proc fcQsciLexerHTML_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerHTML_metacast".}
 proc fcQsciLexerHTML_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerHTML_metacall".}
@@ -206,112 +203,107 @@ proc fcQsciLexerHTML_setFoldPreprocessor(self: pointer, fold: bool): void {.impo
 proc fcQsciLexerHTML_setCaseSensitiveTags(self: pointer, sens: bool): void {.importc: "QsciLexerHTML_setCaseSensitiveTags".}
 proc fcQsciLexerHTML_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerHTML_tr2".}
 proc fcQsciLexerHTML_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerHTML_tr3".}
-proc fQsciLexerHTML_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerHTML_virtualbase_metaObject".}
-proc fcQsciLexerHTML_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_metaObject".}
-proc fQsciLexerHTML_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerHTML_virtualbase_metacast".}
-proc fcQsciLexerHTML_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_metacast".}
-proc fQsciLexerHTML_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerHTML_virtualbase_metacall".}
-proc fcQsciLexerHTML_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_metacall".}
-proc fQsciLexerHTML_virtualbase_setFoldCompact(self: pointer, fold: bool): void{.importc: "QsciLexerHTML_virtualbase_setFoldCompact".}
-proc fcQsciLexerHTML_override_virtual_setFoldCompact(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setFoldCompact".}
-proc fQsciLexerHTML_virtualbase_setFoldPreprocessor(self: pointer, fold: bool): void{.importc: "QsciLexerHTML_virtualbase_setFoldPreprocessor".}
-proc fcQsciLexerHTML_override_virtual_setFoldPreprocessor(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setFoldPreprocessor".}
-proc fQsciLexerHTML_virtualbase_setCaseSensitiveTags(self: pointer, sens: bool): void{.importc: "QsciLexerHTML_virtualbase_setCaseSensitiveTags".}
-proc fcQsciLexerHTML_override_virtual_setCaseSensitiveTags(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setCaseSensitiveTags".}
-proc fcQsciLexerHTML_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_language".}
-proc fQsciLexerHTML_virtualbase_lexer(self: pointer, ): cstring{.importc: "QsciLexerHTML_virtualbase_lexer".}
-proc fcQsciLexerHTML_override_virtual_lexer(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_lexer".}
-proc fQsciLexerHTML_virtualbase_lexerId(self: pointer, ): cint{.importc: "QsciLexerHTML_virtualbase_lexerId".}
-proc fcQsciLexerHTML_override_virtual_lexerId(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_lexerId".}
-proc fQsciLexerHTML_virtualbase_autoCompletionFillups(self: pointer, ): cstring{.importc: "QsciLexerHTML_virtualbase_autoCompletionFillups".}
-proc fcQsciLexerHTML_override_virtual_autoCompletionFillups(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_autoCompletionFillups".}
-proc fQsciLexerHTML_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array{.importc: "QsciLexerHTML_virtualbase_autoCompletionWordSeparators".}
-proc fcQsciLexerHTML_override_virtual_autoCompletionWordSeparators(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_autoCompletionWordSeparators".}
-proc fQsciLexerHTML_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerHTML_virtualbase_blockEnd".}
-proc fcQsciLexerHTML_override_virtual_blockEnd(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_blockEnd".}
-proc fQsciLexerHTML_virtualbase_blockLookback(self: pointer, ): cint{.importc: "QsciLexerHTML_virtualbase_blockLookback".}
-proc fcQsciLexerHTML_override_virtual_blockLookback(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_blockLookback".}
-proc fQsciLexerHTML_virtualbase_blockStart(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerHTML_virtualbase_blockStart".}
-proc fcQsciLexerHTML_override_virtual_blockStart(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_blockStart".}
-proc fQsciLexerHTML_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring{.importc: "QsciLexerHTML_virtualbase_blockStartKeyword".}
-proc fcQsciLexerHTML_override_virtual_blockStartKeyword(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_blockStartKeyword".}
-proc fQsciLexerHTML_virtualbase_braceStyle(self: pointer, ): cint{.importc: "QsciLexerHTML_virtualbase_braceStyle".}
-proc fcQsciLexerHTML_override_virtual_braceStyle(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_braceStyle".}
-proc fQsciLexerHTML_virtualbase_caseSensitive(self: pointer, ): bool{.importc: "QsciLexerHTML_virtualbase_caseSensitive".}
-proc fcQsciLexerHTML_override_virtual_caseSensitive(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_caseSensitive".}
-proc fQsciLexerHTML_virtualbase_color(self: pointer, style: cint): pointer{.importc: "QsciLexerHTML_virtualbase_color".}
-proc fcQsciLexerHTML_override_virtual_color(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_color".}
-proc fQsciLexerHTML_virtualbase_eolFill(self: pointer, style: cint): bool{.importc: "QsciLexerHTML_virtualbase_eolFill".}
-proc fcQsciLexerHTML_override_virtual_eolFill(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_eolFill".}
-proc fQsciLexerHTML_virtualbase_font(self: pointer, style: cint): pointer{.importc: "QsciLexerHTML_virtualbase_font".}
-proc fcQsciLexerHTML_override_virtual_font(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_font".}
-proc fQsciLexerHTML_virtualbase_indentationGuideView(self: pointer, ): cint{.importc: "QsciLexerHTML_virtualbase_indentationGuideView".}
-proc fcQsciLexerHTML_override_virtual_indentationGuideView(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_indentationGuideView".}
-proc fQsciLexerHTML_virtualbase_keywords(self: pointer, set: cint): cstring{.importc: "QsciLexerHTML_virtualbase_keywords".}
-proc fcQsciLexerHTML_override_virtual_keywords(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_keywords".}
-proc fQsciLexerHTML_virtualbase_defaultStyle(self: pointer, ): cint{.importc: "QsciLexerHTML_virtualbase_defaultStyle".}
-proc fcQsciLexerHTML_override_virtual_defaultStyle(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_defaultStyle".}
-proc fcQsciLexerHTML_override_virtual_description(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_description".}
-proc fQsciLexerHTML_virtualbase_paper(self: pointer, style: cint): pointer{.importc: "QsciLexerHTML_virtualbase_paper".}
-proc fcQsciLexerHTML_override_virtual_paper(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_paper".}
-proc fQsciLexerHTML_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerHTML_virtualbase_defaultColorWithStyle".}
-proc fcQsciLexerHTML_override_virtual_defaultColorWithStyle(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_defaultColorWithStyle".}
-proc fQsciLexerHTML_virtualbase_defaultEolFill(self: pointer, style: cint): bool{.importc: "QsciLexerHTML_virtualbase_defaultEolFill".}
-proc fcQsciLexerHTML_override_virtual_defaultEolFill(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_defaultEolFill".}
-proc fQsciLexerHTML_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerHTML_virtualbase_defaultFontWithStyle".}
-proc fcQsciLexerHTML_override_virtual_defaultFontWithStyle(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_defaultFontWithStyle".}
-proc fQsciLexerHTML_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer{.importc: "QsciLexerHTML_virtualbase_defaultPaperWithStyle".}
-proc fcQsciLexerHTML_override_virtual_defaultPaperWithStyle(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_defaultPaperWithStyle".}
-proc fQsciLexerHTML_virtualbase_setEditor(self: pointer, editor: pointer): void{.importc: "QsciLexerHTML_virtualbase_setEditor".}
-proc fcQsciLexerHTML_override_virtual_setEditor(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setEditor".}
-proc fQsciLexerHTML_virtualbase_refreshProperties(self: pointer, ): void{.importc: "QsciLexerHTML_virtualbase_refreshProperties".}
-proc fcQsciLexerHTML_override_virtual_refreshProperties(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_refreshProperties".}
-proc fQsciLexerHTML_virtualbase_styleBitsNeeded(self: pointer, ): cint{.importc: "QsciLexerHTML_virtualbase_styleBitsNeeded".}
-proc fcQsciLexerHTML_override_virtual_styleBitsNeeded(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_styleBitsNeeded".}
-proc fQsciLexerHTML_virtualbase_wordCharacters(self: pointer, ): cstring{.importc: "QsciLexerHTML_virtualbase_wordCharacters".}
-proc fcQsciLexerHTML_override_virtual_wordCharacters(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_wordCharacters".}
-proc fQsciLexerHTML_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void{.importc: "QsciLexerHTML_virtualbase_setAutoIndentStyle".}
-proc fcQsciLexerHTML_override_virtual_setAutoIndentStyle(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setAutoIndentStyle".}
-proc fQsciLexerHTML_virtualbase_setColor(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerHTML_virtualbase_setColor".}
-proc fcQsciLexerHTML_override_virtual_setColor(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setColor".}
-proc fQsciLexerHTML_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void{.importc: "QsciLexerHTML_virtualbase_setEolFill".}
-proc fcQsciLexerHTML_override_virtual_setEolFill(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setEolFill".}
-proc fQsciLexerHTML_virtualbase_setFont(self: pointer, f: pointer, style: cint): void{.importc: "QsciLexerHTML_virtualbase_setFont".}
-proc fcQsciLexerHTML_override_virtual_setFont(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setFont".}
-proc fQsciLexerHTML_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void{.importc: "QsciLexerHTML_virtualbase_setPaper".}
-proc fcQsciLexerHTML_override_virtual_setPaper(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_setPaper".}
-proc fQsciLexerHTML_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerHTML_virtualbase_readProperties".}
-proc fcQsciLexerHTML_override_virtual_readProperties(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_readProperties".}
-proc fQsciLexerHTML_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool{.importc: "QsciLexerHTML_virtualbase_writeProperties".}
-proc fcQsciLexerHTML_override_virtual_writeProperties(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_writeProperties".}
-proc fQsciLexerHTML_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QsciLexerHTML_virtualbase_event".}
-proc fcQsciLexerHTML_override_virtual_event(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_event".}
-proc fQsciLexerHTML_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QsciLexerHTML_virtualbase_eventFilter".}
-proc fcQsciLexerHTML_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_eventFilter".}
-proc fQsciLexerHTML_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QsciLexerHTML_virtualbase_timerEvent".}
-proc fcQsciLexerHTML_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_timerEvent".}
-proc fQsciLexerHTML_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QsciLexerHTML_virtualbase_childEvent".}
-proc fcQsciLexerHTML_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_childEvent".}
-proc fQsciLexerHTML_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QsciLexerHTML_virtualbase_customEvent".}
-proc fcQsciLexerHTML_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_customEvent".}
-proc fQsciLexerHTML_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerHTML_virtualbase_connectNotify".}
-proc fcQsciLexerHTML_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_connectNotify".}
-proc fQsciLexerHTML_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerHTML_virtualbase_disconnectNotify".}
-proc fcQsciLexerHTML_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_disconnectNotify".}
+type cQsciLexerHTMLVTable = object
+  destructor*: proc(vtbl: ptr cQsciLexerHTMLVTable, self: ptr cQsciLexerHTML) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  setFoldCompact*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  setFoldPreprocessor*: proc(vtbl, self: pointer, fold: bool): void {.cdecl, raises: [], gcsafe.}
+  setCaseSensitiveTags*: proc(vtbl, self: pointer, sens: bool): void {.cdecl, raises: [], gcsafe.}
+  language*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexer*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  lexerId*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  autoCompletionFillups*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  autoCompletionWordSeparators*: proc(vtbl, self: pointer, ): struct_miqt_array {.cdecl, raises: [], gcsafe.}
+  blockEnd*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockLookback*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  blockStart*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  blockStartKeyword*: proc(vtbl, self: pointer, style: ptr cint): cstring {.cdecl, raises: [], gcsafe.}
+  braceStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  caseSensitive*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  color*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  eolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  font*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  indentationGuideView*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  keywords*: proc(vtbl, self: pointer, set: cint): cstring {.cdecl, raises: [], gcsafe.}
+  defaultStyle*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  description*: proc(vtbl, self: pointer, style: cint): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  paper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultColor*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultEolFill*: proc(vtbl, self: pointer, style: cint): bool {.cdecl, raises: [], gcsafe.}
+  defaultFont*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  defaultPaper*: proc(vtbl, self: pointer, style: cint): pointer {.cdecl, raises: [], gcsafe.}
+  setEditor*: proc(vtbl, self: pointer, editor: pointer): void {.cdecl, raises: [], gcsafe.}
+  refreshProperties*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  styleBitsNeeded*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  wordCharacters*: proc(vtbl, self: pointer, ): cstring {.cdecl, raises: [], gcsafe.}
+  setAutoIndentStyle*: proc(vtbl, self: pointer, autoindentstyle: cint): void {.cdecl, raises: [], gcsafe.}
+  setColor*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setEolFill*: proc(vtbl, self: pointer, eoffill: bool, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setFont*: proc(vtbl, self: pointer, f: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  setPaper*: proc(vtbl, self: pointer, c: pointer, style: cint): void {.cdecl, raises: [], gcsafe.}
+  readProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  writeProperties*: proc(vtbl, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQsciLexerHTML_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QsciLexerHTML_virtualbase_metaObject".}
+proc fcQsciLexerHTML_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciLexerHTML_virtualbase_metacast".}
+proc fcQsciLexerHTML_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciLexerHTML_virtualbase_metacall".}
+proc fcQsciLexerHTML_virtualbase_setFoldCompact(self: pointer, fold: bool): void {.importc: "QsciLexerHTML_virtualbase_setFoldCompact".}
+proc fcQsciLexerHTML_virtualbase_setFoldPreprocessor(self: pointer, fold: bool): void {.importc: "QsciLexerHTML_virtualbase_setFoldPreprocessor".}
+proc fcQsciLexerHTML_virtualbase_setCaseSensitiveTags(self: pointer, sens: bool): void {.importc: "QsciLexerHTML_virtualbase_setCaseSensitiveTags".}
+proc fcQsciLexerHTML_virtualbase_lexer(self: pointer, ): cstring {.importc: "QsciLexerHTML_virtualbase_lexer".}
+proc fcQsciLexerHTML_virtualbase_lexerId(self: pointer, ): cint {.importc: "QsciLexerHTML_virtualbase_lexerId".}
+proc fcQsciLexerHTML_virtualbase_autoCompletionFillups(self: pointer, ): cstring {.importc: "QsciLexerHTML_virtualbase_autoCompletionFillups".}
+proc fcQsciLexerHTML_virtualbase_autoCompletionWordSeparators(self: pointer, ): struct_miqt_array {.importc: "QsciLexerHTML_virtualbase_autoCompletionWordSeparators".}
+proc fcQsciLexerHTML_virtualbase_blockEnd(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerHTML_virtualbase_blockEnd".}
+proc fcQsciLexerHTML_virtualbase_blockLookback(self: pointer, ): cint {.importc: "QsciLexerHTML_virtualbase_blockLookback".}
+proc fcQsciLexerHTML_virtualbase_blockStart(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerHTML_virtualbase_blockStart".}
+proc fcQsciLexerHTML_virtualbase_blockStartKeyword(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerHTML_virtualbase_blockStartKeyword".}
+proc fcQsciLexerHTML_virtualbase_braceStyle(self: pointer, ): cint {.importc: "QsciLexerHTML_virtualbase_braceStyle".}
+proc fcQsciLexerHTML_virtualbase_caseSensitive(self: pointer, ): bool {.importc: "QsciLexerHTML_virtualbase_caseSensitive".}
+proc fcQsciLexerHTML_virtualbase_color(self: pointer, style: cint): pointer {.importc: "QsciLexerHTML_virtualbase_color".}
+proc fcQsciLexerHTML_virtualbase_eolFill(self: pointer, style: cint): bool {.importc: "QsciLexerHTML_virtualbase_eolFill".}
+proc fcQsciLexerHTML_virtualbase_font(self: pointer, style: cint): pointer {.importc: "QsciLexerHTML_virtualbase_font".}
+proc fcQsciLexerHTML_virtualbase_indentationGuideView(self: pointer, ): cint {.importc: "QsciLexerHTML_virtualbase_indentationGuideView".}
+proc fcQsciLexerHTML_virtualbase_keywords(self: pointer, set: cint): cstring {.importc: "QsciLexerHTML_virtualbase_keywords".}
+proc fcQsciLexerHTML_virtualbase_defaultStyle(self: pointer, ): cint {.importc: "QsciLexerHTML_virtualbase_defaultStyle".}
+proc fcQsciLexerHTML_virtualbase_paper(self: pointer, style: cint): pointer {.importc: "QsciLexerHTML_virtualbase_paper".}
+proc fcQsciLexerHTML_virtualbase_defaultColorWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerHTML_virtualbase_defaultColorWithStyle".}
+proc fcQsciLexerHTML_virtualbase_defaultEolFill(self: pointer, style: cint): bool {.importc: "QsciLexerHTML_virtualbase_defaultEolFill".}
+proc fcQsciLexerHTML_virtualbase_defaultFontWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerHTML_virtualbase_defaultFontWithStyle".}
+proc fcQsciLexerHTML_virtualbase_defaultPaperWithStyle(self: pointer, style: cint): pointer {.importc: "QsciLexerHTML_virtualbase_defaultPaperWithStyle".}
+proc fcQsciLexerHTML_virtualbase_setEditor(self: pointer, editor: pointer): void {.importc: "QsciLexerHTML_virtualbase_setEditor".}
+proc fcQsciLexerHTML_virtualbase_refreshProperties(self: pointer, ): void {.importc: "QsciLexerHTML_virtualbase_refreshProperties".}
+proc fcQsciLexerHTML_virtualbase_styleBitsNeeded(self: pointer, ): cint {.importc: "QsciLexerHTML_virtualbase_styleBitsNeeded".}
+proc fcQsciLexerHTML_virtualbase_wordCharacters(self: pointer, ): cstring {.importc: "QsciLexerHTML_virtualbase_wordCharacters".}
+proc fcQsciLexerHTML_virtualbase_setAutoIndentStyle(self: pointer, autoindentstyle: cint): void {.importc: "QsciLexerHTML_virtualbase_setAutoIndentStyle".}
+proc fcQsciLexerHTML_virtualbase_setColor(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerHTML_virtualbase_setColor".}
+proc fcQsciLexerHTML_virtualbase_setEolFill(self: pointer, eoffill: bool, style: cint): void {.importc: "QsciLexerHTML_virtualbase_setEolFill".}
+proc fcQsciLexerHTML_virtualbase_setFont(self: pointer, f: pointer, style: cint): void {.importc: "QsciLexerHTML_virtualbase_setFont".}
+proc fcQsciLexerHTML_virtualbase_setPaper(self: pointer, c: pointer, style: cint): void {.importc: "QsciLexerHTML_virtualbase_setPaper".}
+proc fcQsciLexerHTML_virtualbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerHTML_virtualbase_readProperties".}
+proc fcQsciLexerHTML_virtualbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerHTML_virtualbase_writeProperties".}
+proc fcQsciLexerHTML_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QsciLexerHTML_virtualbase_event".}
+proc fcQsciLexerHTML_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QsciLexerHTML_virtualbase_eventFilter".}
+proc fcQsciLexerHTML_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QsciLexerHTML_virtualbase_timerEvent".}
+proc fcQsciLexerHTML_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QsciLexerHTML_virtualbase_childEvent".}
+proc fcQsciLexerHTML_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerHTML_virtualbase_customEvent".}
+proc fcQsciLexerHTML_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerHTML_virtualbase_connectNotify".}
+proc fcQsciLexerHTML_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerHTML_virtualbase_disconnectNotify".}
+proc fcQsciLexerHTML_new(vtbl: pointer, ): ptr cQsciLexerHTML {.importc: "QsciLexerHTML_new".}
+proc fcQsciLexerHTML_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerHTML {.importc: "QsciLexerHTML_new2".}
 proc fcQsciLexerHTML_staticMetaObject(): pointer {.importc: "QsciLexerHTML_staticMetaObject".}
 proc fcQsciLexerHTML_delete(self: pointer) {.importc: "QsciLexerHTML_delete".}
 
-
-func init*(T: type gen_qscilexerhtml_types.QsciLexerHTML, h: ptr cQsciLexerHTML): gen_qscilexerhtml_types.QsciLexerHTML =
-  T(h: h)
-proc create*(T: type gen_qscilexerhtml_types.QsciLexerHTML, ): gen_qscilexerhtml_types.QsciLexerHTML =
-  gen_qscilexerhtml_types.QsciLexerHTML.init(fcQsciLexerHTML_new())
-
-proc create*(T: type gen_qscilexerhtml_types.QsciLexerHTML, parent: gen_qobject.QObject): gen_qscilexerhtml_types.QsciLexerHTML =
-  gen_qscilexerhtml_types.QsciLexerHTML.init(fcQsciLexerHTML_new2(parent.h))
-
-proc metaObject*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerHTML_metaObject(self.h))
+proc metaObject*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerHTML_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerhtml_types.QsciLexerHTML, param1: cstring): pointer =
   fcQsciLexerHTML_metacast(self.h, param1)
@@ -337,17 +329,17 @@ proc autoCompletionFillups*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cstr
 proc wordCharacters*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cstring =
   (fcQsciLexerHTML_wordCharacters(self.h))
 
-proc defaultColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerHTML_defaultColor(self.h, style))
+proc defaultColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerHTML_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): bool =
   fcQsciLexerHTML_defaultEolFill(self.h, style)
 
-proc defaultFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fcQsciLexerHTML_defaultFont(self.h, style))
+proc defaultFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerHTML_defaultFont(self.h, style))
 
-proc defaultPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciLexerHTML_defaultPaper(self.h, style))
+proc defaultPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerHTML_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerhtml_types.QsciLexerHTML, set: cint): cstring =
   (fcQsciLexerHTML_keywords(self.h, set))
@@ -415,183 +407,195 @@ proc tr*(_: type gen_qscilexerhtml_types.QsciLexerHTML, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
-proc QsciLexerHTMLmetaObject*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQsciLexerHTML_virtualbase_metaObject(self.h))
+type QsciLexerHTMLmetaObjectProc* = proc(self: QsciLexerHTML): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QsciLexerHTMLmetacastProc* = proc(self: QsciLexerHTML, param1: cstring): pointer {.raises: [], gcsafe.}
+type QsciLexerHTMLmetacallProc* = proc(self: QsciLexerHTML, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QsciLexerHTMLsetFoldCompactProc* = proc(self: QsciLexerHTML, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerHTMLsetFoldPreprocessorProc* = proc(self: QsciLexerHTML, fold: bool): void {.raises: [], gcsafe.}
+type QsciLexerHTMLsetCaseSensitiveTagsProc* = proc(self: QsciLexerHTML, sens: bool): void {.raises: [], gcsafe.}
+type QsciLexerHTMLlanguageProc* = proc(self: QsciLexerHTML): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLlexerProc* = proc(self: QsciLexerHTML): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLlexerIdProc* = proc(self: QsciLexerHTML): cint {.raises: [], gcsafe.}
+type QsciLexerHTMLautoCompletionFillupsProc* = proc(self: QsciLexerHTML): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLautoCompletionWordSeparatorsProc* = proc(self: QsciLexerHTML): seq[string] {.raises: [], gcsafe.}
+type QsciLexerHTMLblockEndProc* = proc(self: QsciLexerHTML, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLblockLookbackProc* = proc(self: QsciLexerHTML): cint {.raises: [], gcsafe.}
+type QsciLexerHTMLblockStartProc* = proc(self: QsciLexerHTML, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLblockStartKeywordProc* = proc(self: QsciLexerHTML, style: ptr cint): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLbraceStyleProc* = proc(self: QsciLexerHTML): cint {.raises: [], gcsafe.}
+type QsciLexerHTMLcaseSensitiveProc* = proc(self: QsciLexerHTML): bool {.raises: [], gcsafe.}
+type QsciLexerHTMLcolorProc* = proc(self: QsciLexerHTML, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerHTMLeolFillProc* = proc(self: QsciLexerHTML, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerHTMLfontProc* = proc(self: QsciLexerHTML, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerHTMLindentationGuideViewProc* = proc(self: QsciLexerHTML): cint {.raises: [], gcsafe.}
+type QsciLexerHTMLkeywordsProc* = proc(self: QsciLexerHTML, set: cint): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLdefaultStyleProc* = proc(self: QsciLexerHTML): cint {.raises: [], gcsafe.}
+type QsciLexerHTMLdescriptionProc* = proc(self: QsciLexerHTML, style: cint): string {.raises: [], gcsafe.}
+type QsciLexerHTMLpaperProc* = proc(self: QsciLexerHTML, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerHTMLdefaultColorProc* = proc(self: QsciLexerHTML, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerHTMLdefaultEolFillProc* = proc(self: QsciLexerHTML, style: cint): bool {.raises: [], gcsafe.}
+type QsciLexerHTMLdefaultFontProc* = proc(self: QsciLexerHTML, style: cint): gen_qfont_types.QFont {.raises: [], gcsafe.}
+type QsciLexerHTMLdefaultPaperProc* = proc(self: QsciLexerHTML, style: cint): gen_qcolor_types.QColor {.raises: [], gcsafe.}
+type QsciLexerHTMLsetEditorProc* = proc(self: QsciLexerHTML, editor: gen_qsciscintilla_types.QsciScintilla): void {.raises: [], gcsafe.}
+type QsciLexerHTMLrefreshPropertiesProc* = proc(self: QsciLexerHTML): void {.raises: [], gcsafe.}
+type QsciLexerHTMLstyleBitsNeededProc* = proc(self: QsciLexerHTML): cint {.raises: [], gcsafe.}
+type QsciLexerHTMLwordCharactersProc* = proc(self: QsciLexerHTML): cstring {.raises: [], gcsafe.}
+type QsciLexerHTMLsetAutoIndentStyleProc* = proc(self: QsciLexerHTML, autoindentstyle: cint): void {.raises: [], gcsafe.}
+type QsciLexerHTMLsetColorProc* = proc(self: QsciLexerHTML, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerHTMLsetEolFillProc* = proc(self: QsciLexerHTML, eoffill: bool, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerHTMLsetFontProc* = proc(self: QsciLexerHTML, f: gen_qfont_types.QFont, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerHTMLsetPaperProc* = proc(self: QsciLexerHTML, c: gen_qcolor_types.QColor, style: cint): void {.raises: [], gcsafe.}
+type QsciLexerHTMLreadPropertiesProc* = proc(self: QsciLexerHTML, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerHTMLwritePropertiesProc* = proc(self: QsciLexerHTML, qs: gen_qsettings_types.QSettings, prefix: string): bool {.raises: [], gcsafe.}
+type QsciLexerHTMLeventProc* = proc(self: QsciLexerHTML, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerHTMLeventFilterProc* = proc(self: QsciLexerHTML, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciLexerHTMLtimerEventProc* = proc(self: QsciLexerHTML, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QsciLexerHTMLchildEventProc* = proc(self: QsciLexerHTML, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QsciLexerHTMLcustomEventProc* = proc(self: QsciLexerHTML, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciLexerHTMLconnectNotifyProc* = proc(self: QsciLexerHTML, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerHTMLdisconnectNotifyProc* = proc(self: QsciLexerHTML, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciLexerHTMLVTable* = object
+  vtbl: cQsciLexerHTMLVTable
+  metaObject*: QsciLexerHTMLmetaObjectProc
+  metacast*: QsciLexerHTMLmetacastProc
+  metacall*: QsciLexerHTMLmetacallProc
+  setFoldCompact*: QsciLexerHTMLsetFoldCompactProc
+  setFoldPreprocessor*: QsciLexerHTMLsetFoldPreprocessorProc
+  setCaseSensitiveTags*: QsciLexerHTMLsetCaseSensitiveTagsProc
+  language*: QsciLexerHTMLlanguageProc
+  lexer*: QsciLexerHTMLlexerProc
+  lexerId*: QsciLexerHTMLlexerIdProc
+  autoCompletionFillups*: QsciLexerHTMLautoCompletionFillupsProc
+  autoCompletionWordSeparators*: QsciLexerHTMLautoCompletionWordSeparatorsProc
+  blockEnd*: QsciLexerHTMLblockEndProc
+  blockLookback*: QsciLexerHTMLblockLookbackProc
+  blockStart*: QsciLexerHTMLblockStartProc
+  blockStartKeyword*: QsciLexerHTMLblockStartKeywordProc
+  braceStyle*: QsciLexerHTMLbraceStyleProc
+  caseSensitive*: QsciLexerHTMLcaseSensitiveProc
+  color*: QsciLexerHTMLcolorProc
+  eolFill*: QsciLexerHTMLeolFillProc
+  font*: QsciLexerHTMLfontProc
+  indentationGuideView*: QsciLexerHTMLindentationGuideViewProc
+  keywords*: QsciLexerHTMLkeywordsProc
+  defaultStyle*: QsciLexerHTMLdefaultStyleProc
+  description*: QsciLexerHTMLdescriptionProc
+  paper*: QsciLexerHTMLpaperProc
+  defaultColor*: QsciLexerHTMLdefaultColorProc
+  defaultEolFill*: QsciLexerHTMLdefaultEolFillProc
+  defaultFont*: QsciLexerHTMLdefaultFontProc
+  defaultPaper*: QsciLexerHTMLdefaultPaperProc
+  setEditor*: QsciLexerHTMLsetEditorProc
+  refreshProperties*: QsciLexerHTMLrefreshPropertiesProc
+  styleBitsNeeded*: QsciLexerHTMLstyleBitsNeededProc
+  wordCharacters*: QsciLexerHTMLwordCharactersProc
+  setAutoIndentStyle*: QsciLexerHTMLsetAutoIndentStyleProc
+  setColor*: QsciLexerHTMLsetColorProc
+  setEolFill*: QsciLexerHTMLsetEolFillProc
+  setFont*: QsciLexerHTMLsetFontProc
+  setPaper*: QsciLexerHTMLsetPaperProc
+  readProperties*: QsciLexerHTMLreadPropertiesProc
+  writeProperties*: QsciLexerHTMLwritePropertiesProc
+  event*: QsciLexerHTMLeventProc
+  eventFilter*: QsciLexerHTMLeventFilterProc
+  timerEvent*: QsciLexerHTMLtimerEventProc
+  childEvent*: QsciLexerHTMLchildEventProc
+  customEvent*: QsciLexerHTMLcustomEventProc
+  connectNotify*: QsciLexerHTMLconnectNotifyProc
+  disconnectNotify*: QsciLexerHTMLdisconnectNotifyProc
+proc QsciLexerHTMLmetaObject*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerHTML_virtualbase_metaObject(self.h))
 
-type QsciLexerHTMLmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_metaObject(self: ptr cQsciLexerHTML, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_metaObject ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QsciLexerHTMLmetacast*(self: gen_qscilexerhtml_types.QsciLexerHTML, param1: cstring): pointer =
-  fQsciLexerHTML_virtualbase_metacast(self.h, param1)
+  fcQsciLexerHTML_virtualbase_metacast(self.h, param1)
 
-type QsciLexerHTMLmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLmetacastProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_metacast(self: ptr cQsciLexerHTML, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_metacast ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QsciLexerHTMLmetacall*(self: gen_qscilexerhtml_types.QsciLexerHTML, param1: cint, param2: cint, param3: pointer): cint =
-  fQsciLexerHTML_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQsciLexerHTML_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciLexerHTMLmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLmetacallProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_metacall(self: ptr cQsciLexerHTML, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciLexerHTML_metacall ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QsciLexerHTMLsetFoldCompact*(self: gen_qscilexerhtml_types.QsciLexerHTML, fold: bool): void =
-  fQsciLexerHTML_virtualbase_setFoldCompact(self.h, fold)
+  fcQsciLexerHTML_virtualbase_setFoldCompact(self.h, fold)
 
-type QsciLexerHTMLsetFoldCompactProc* = proc(fold: bool): void
-proc onsetFoldCompact*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetFoldCompactProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetFoldCompactProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setFoldCompact(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setFoldCompact(self: ptr cQsciLexerHTML, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setFoldCompact ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetFoldCompactProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_setFoldCompact(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = fold
+  vtbl[].setFoldCompact(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerHTMLsetFoldPreprocessor*(self: gen_qscilexerhtml_types.QsciLexerHTML, fold: bool): void =
-  fQsciLexerHTML_virtualbase_setFoldPreprocessor(self.h, fold)
+  fcQsciLexerHTML_virtualbase_setFoldPreprocessor(self.h, fold)
 
-type QsciLexerHTMLsetFoldPreprocessorProc* = proc(fold: bool): void
-proc onsetFoldPreprocessor*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetFoldPreprocessorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetFoldPreprocessorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setFoldPreprocessor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setFoldPreprocessor(self: ptr cQsciLexerHTML, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setFoldPreprocessor ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetFoldPreprocessorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_setFoldPreprocessor(vtbl: pointer, self: pointer, fold: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = fold
+  vtbl[].setFoldPreprocessor(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerHTMLsetCaseSensitiveTags*(self: gen_qscilexerhtml_types.QsciLexerHTML, sens: bool): void =
-  fQsciLexerHTML_virtualbase_setCaseSensitiveTags(self.h, sens)
+  fcQsciLexerHTML_virtualbase_setCaseSensitiveTags(self.h, sens)
 
-type QsciLexerHTMLsetCaseSensitiveTagsProc* = proc(sens: bool): void
-proc onsetCaseSensitiveTags*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetCaseSensitiveTagsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetCaseSensitiveTagsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setCaseSensitiveTags(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setCaseSensitiveTags(self: ptr cQsciLexerHTML, slot: int, sens: bool): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setCaseSensitiveTags ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetCaseSensitiveTagsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_setCaseSensitiveTags(vtbl: pointer, self: pointer, sens: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = sens
+  vtbl[].setCaseSensitiveTags(self, slotval1)
 
-
-  nimfunc[](slotval1)
-type QsciLexerHTMLlanguageProc* = proc(): cstring
-proc onlanguage*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLlanguageProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLlanguageProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_language(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_language(self: ptr cQsciLexerHTML, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_language ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLlanguageProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_language(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].language(self)
   virtualReturn
+
 proc QsciLexerHTMLlexer*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cstring =
-  (fQsciLexerHTML_virtualbase_lexer(self.h))
+  (fcQsciLexerHTML_virtualbase_lexer(self.h))
 
-type QsciLexerHTMLlexerProc* = proc(): cstring
-proc onlexer*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLlexerProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLlexerProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_lexer(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_lexer(self: ptr cQsciLexerHTML, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_lexer ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLlexerProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_lexer(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].lexer(self)
   virtualReturn
+
 proc QsciLexerHTMLlexerId*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cint =
-  fQsciLexerHTML_virtualbase_lexerId(self.h)
+  fcQsciLexerHTML_virtualbase_lexerId(self.h)
 
-type QsciLexerHTMLlexerIdProc* = proc(): cint
-proc onlexerId*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLlexerIdProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLlexerIdProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_lexerId(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_lexerId(self: ptr cQsciLexerHTML, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerHTML_lexerId ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLlexerIdProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_lexerId(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].lexerId(self)
   virtualReturn
+
 proc QsciLexerHTMLautoCompletionFillups*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cstring =
-  (fQsciLexerHTML_virtualbase_autoCompletionFillups(self.h))
+  (fcQsciLexerHTML_virtualbase_autoCompletionFillups(self.h))
 
-type QsciLexerHTMLautoCompletionFillupsProc* = proc(): cstring
-proc onautoCompletionFillups*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLautoCompletionFillupsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLautoCompletionFillupsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_autoCompletionFillups(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_autoCompletionFillups(self: ptr cQsciLexerHTML, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_autoCompletionFillups ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLautoCompletionFillupsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_autoCompletionFillups(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].autoCompletionFillups(self)
   virtualReturn
+
 proc QsciLexerHTMLautoCompletionWordSeparators*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): seq[string] =
-  var v_ma = fQsciLexerHTML_virtualbase_autoCompletionWordSeparators(self.h)
+  var v_ma = fcQsciLexerHTML_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
   for i in 0 ..< v_ma.len:
@@ -601,686 +605,574 @@ proc QsciLexerHTMLautoCompletionWordSeparators*(self: gen_qscilexerhtml_types.Qs
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciLexerHTMLautoCompletionWordSeparatorsProc* = proc(): seq[string]
-proc onautoCompletionWordSeparators*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLautoCompletionWordSeparatorsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLautoCompletionWordSeparatorsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_autoCompletionWordSeparators(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_autoCompletionWordSeparators(self: ptr cQsciLexerHTML, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QsciLexerHTML_autoCompletionWordSeparators ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLautoCompletionWordSeparatorsProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
+proc miqt_exec_callback_cQsciLexerHTML_autoCompletionWordSeparators(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].autoCompletionWordSeparators(self)
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
-
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
+
 proc QsciLexerHTMLblockEnd*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: ptr cint): cstring =
-  (fQsciLexerHTML_virtualbase_blockEnd(self.h, style))
+  (fcQsciLexerHTML_virtualbase_blockEnd(self.h, style))
 
-type QsciLexerHTMLblockEndProc* = proc(style: ptr cint): cstring
-proc onblockEnd*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLblockEndProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLblockEndProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_blockEnd(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_blockEnd(self: ptr cQsciLexerHTML, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_blockEnd ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLblockEndProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_blockEnd(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockEnd(self, slotval1)
   virtualReturn
+
 proc QsciLexerHTMLblockLookback*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cint =
-  fQsciLexerHTML_virtualbase_blockLookback(self.h)
+  fcQsciLexerHTML_virtualbase_blockLookback(self.h)
 
-type QsciLexerHTMLblockLookbackProc* = proc(): cint
-proc onblockLookback*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLblockLookbackProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLblockLookbackProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_blockLookback(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_blockLookback(self: ptr cQsciLexerHTML, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerHTML_blockLookback ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLblockLookbackProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_blockLookback(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].blockLookback(self)
   virtualReturn
+
 proc QsciLexerHTMLblockStart*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: ptr cint): cstring =
-  (fQsciLexerHTML_virtualbase_blockStart(self.h, style))
+  (fcQsciLexerHTML_virtualbase_blockStart(self.h, style))
 
-type QsciLexerHTMLblockStartProc* = proc(style: ptr cint): cstring
-proc onblockStart*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLblockStartProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLblockStartProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_blockStart(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_blockStart(self: ptr cQsciLexerHTML, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_blockStart ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLblockStartProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_blockStart(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStart(self, slotval1)
   virtualReturn
+
 proc QsciLexerHTMLblockStartKeyword*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: ptr cint): cstring =
-  (fQsciLexerHTML_virtualbase_blockStartKeyword(self.h, style))
+  (fcQsciLexerHTML_virtualbase_blockStartKeyword(self.h, style))
 
-type QsciLexerHTMLblockStartKeywordProc* = proc(style: ptr cint): cstring
-proc onblockStartKeyword*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLblockStartKeywordProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLblockStartKeywordProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_blockStartKeyword(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_blockStartKeyword(self: ptr cQsciLexerHTML, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_blockStartKeyword ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLblockStartKeywordProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_blockStartKeyword(vtbl: pointer, self: pointer, style: ptr cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].blockStartKeyword(self, slotval1)
   virtualReturn
+
 proc QsciLexerHTMLbraceStyle*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cint =
-  fQsciLexerHTML_virtualbase_braceStyle(self.h)
+  fcQsciLexerHTML_virtualbase_braceStyle(self.h)
 
-type QsciLexerHTMLbraceStyleProc* = proc(): cint
-proc onbraceStyle*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLbraceStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLbraceStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_braceStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_braceStyle(self: ptr cQsciLexerHTML, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerHTML_braceStyle ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLbraceStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_braceStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].braceStyle(self)
   virtualReturn
+
 proc QsciLexerHTMLcaseSensitive*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): bool =
-  fQsciLexerHTML_virtualbase_caseSensitive(self.h)
+  fcQsciLexerHTML_virtualbase_caseSensitive(self.h)
 
-type QsciLexerHTMLcaseSensitiveProc* = proc(): bool
-proc oncaseSensitive*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLcaseSensitiveProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLcaseSensitiveProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_caseSensitive(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_caseSensitive(self: ptr cQsciLexerHTML, slot: int): bool {.exportc: "miqt_exec_callback_QsciLexerHTML_caseSensitive ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLcaseSensitiveProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_caseSensitive(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].caseSensitive(self)
   virtualReturn
-proc QsciLexerHTMLcolor*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerHTML_virtualbase_color(self.h, style))
 
-type QsciLexerHTMLcolorProc* = proc(style: cint): gen_qcolor.QColor
-proc oncolor*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLcolorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLcolorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_color(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLcolor*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerHTML_virtualbase_color(self.h, style))
 
-proc miqt_exec_callback_QsciLexerHTML_color(self: ptr cQsciLexerHTML, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_color ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLcolorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_color(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].color(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerHTMLeolFill*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): bool =
-  fQsciLexerHTML_virtualbase_eolFill(self.h, style)
+  fcQsciLexerHTML_virtualbase_eolFill(self.h, style)
 
-type QsciLexerHTMLeolFillProc* = proc(style: cint): bool
-proc oneolFill*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLeolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLeolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_eolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_eolFill(self: ptr cQsciLexerHTML, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerHTML_eolFill ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLeolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_eolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].eolFill(self, slotval1)
   virtualReturn
-proc QsciLexerHTMLfont*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerHTML_virtualbase_font(self.h, style))
 
-type QsciLexerHTMLfontProc* = proc(style: cint): gen_qfont.QFont
-proc onfont*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLfontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLfontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_font(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLfont*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerHTML_virtualbase_font(self.h, style))
 
-proc miqt_exec_callback_QsciLexerHTML_font(self: ptr cQsciLexerHTML, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_font ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLfontProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_font(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].font(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerHTMLindentationGuideView*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cint =
-  fQsciLexerHTML_virtualbase_indentationGuideView(self.h)
+  fcQsciLexerHTML_virtualbase_indentationGuideView(self.h)
 
-type QsciLexerHTMLindentationGuideViewProc* = proc(): cint
-proc onindentationGuideView*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLindentationGuideViewProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLindentationGuideViewProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_indentationGuideView(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_indentationGuideView(self: ptr cQsciLexerHTML, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerHTML_indentationGuideView ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLindentationGuideViewProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_indentationGuideView(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].indentationGuideView(self)
   virtualReturn
+
 proc QsciLexerHTMLkeywords*(self: gen_qscilexerhtml_types.QsciLexerHTML, set: cint): cstring =
-  (fQsciLexerHTML_virtualbase_keywords(self.h, set))
+  (fcQsciLexerHTML_virtualbase_keywords(self.h, set))
 
-type QsciLexerHTMLkeywordsProc* = proc(set: cint): cstring
-proc onkeywords*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLkeywordsProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLkeywordsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_keywords(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_keywords(self: ptr cQsciLexerHTML, slot: int, set: cint): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_keywords ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLkeywordsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_keywords(vtbl: pointer, self: pointer, set: cint): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = set
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].keywords(self, slotval1)
   virtualReturn
+
 proc QsciLexerHTMLdefaultStyle*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cint =
-  fQsciLexerHTML_virtualbase_defaultStyle(self.h)
+  fcQsciLexerHTML_virtualbase_defaultStyle(self.h)
 
-type QsciLexerHTMLdefaultStyleProc* = proc(): cint
-proc ondefaultStyle*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLdefaultStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLdefaultStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_defaultStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_defaultStyle(self: ptr cQsciLexerHTML, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerHTML_defaultStyle ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLdefaultStyleProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_defaultStyle(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].defaultStyle(self)
   virtualReturn
-type QsciLexerHTMLdescriptionProc* = proc(style: cint): string
-proc ondescription*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLdescriptionProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLdescriptionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_description(self.h, cast[int](addr tmp[]))
 
-proc miqt_exec_callback_QsciLexerHTML_description(self: ptr cQsciLexerHTML, slot: int, style: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QsciLexerHTML_description ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLdescriptionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_description(vtbl: pointer, self: pointer, style: cint): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].description(self, slotval1)
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QsciLexerHTMLpaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerHTML_virtualbase_paper(self.h, style))
 
-type QsciLexerHTMLpaperProc* = proc(style: cint): gen_qcolor.QColor
-proc onpaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLpaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLpaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_paper(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLpaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerHTML_virtualbase_paper(self.h, style))
 
-proc miqt_exec_callback_QsciLexerHTML_paper(self: ptr cQsciLexerHTML, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_paper ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLpaperProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_paper(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].paper(self, slotval1)
   virtualReturn.h
-proc QsciLexerHTMLdefaultColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerHTML_virtualbase_defaultColorWithStyle(self.h, style))
 
-type QsciLexerHTMLdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLdefaultColorWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLdefaultColorWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_defaultColorWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLdefaultColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerHTML_virtualbase_defaultColorWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerHTML_defaultColorWithStyle(self: ptr cQsciLexerHTML, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_defaultColorWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLdefaultColorWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_defaultColorWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultColor(self, slotval1)
   virtualReturn.h
+
 proc QsciLexerHTMLdefaultEolFill*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): bool =
-  fQsciLexerHTML_virtualbase_defaultEolFill(self.h, style)
+  fcQsciLexerHTML_virtualbase_defaultEolFill(self.h, style)
 
-type QsciLexerHTMLdefaultEolFillProc* = proc(style: cint): bool
-proc ondefaultEolFill*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLdefaultEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLdefaultEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_defaultEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_defaultEolFill(self: ptr cQsciLexerHTML, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerHTML_defaultEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLdefaultEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_defaultEolFill(vtbl: pointer, self: pointer, style: cint): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultEolFill(self, slotval1)
   virtualReturn
-proc QsciLexerHTMLdefaultFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qfont.QFont =
-  gen_qfont.QFont(h: fQsciLexerHTML_virtualbase_defaultFontWithStyle(self.h, style))
 
-type QsciLexerHTMLdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLdefaultFontWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLdefaultFontWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_defaultFontWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLdefaultFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qfont_types.QFont =
+  gen_qfont_types.QFont(h: fcQsciLexerHTML_virtualbase_defaultFontWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerHTML_defaultFontWithStyle(self: ptr cQsciLexerHTML, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_defaultFontWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLdefaultFontWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_defaultFontWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultFont(self, slotval1)
   virtualReturn.h
-proc QsciLexerHTMLdefaultPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fQsciLexerHTML_virtualbase_defaultPaperWithStyle(self.h, style))
 
-type QsciLexerHTMLdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLdefaultPaperWithStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLdefaultPaperWithStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_defaultPaperWithStyle(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLdefaultPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, style: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciLexerHTML_virtualbase_defaultPaperWithStyle(self.h, style))
 
-proc miqt_exec_callback_QsciLexerHTML_defaultPaperWithStyle(self: ptr cQsciLexerHTML, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_defaultPaperWithStyle ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLdefaultPaperWithStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_defaultPaperWithStyle(vtbl: pointer, self: pointer, style: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = style
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].defaultPaper(self, slotval1)
   virtualReturn.h
-proc QsciLexerHTMLsetEditor*(self: gen_qscilexerhtml_types.QsciLexerHTML, editor: gen_qsciscintilla.QsciScintilla): void =
-  fQsciLexerHTML_virtualbase_setEditor(self.h, editor.h)
 
-type QsciLexerHTMLsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
-proc onsetEditor*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetEditorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetEditorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setEditor(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLsetEditor*(self: gen_qscilexerhtml_types.QsciLexerHTML, editor: gen_qsciscintilla_types.QsciScintilla): void =
+  fcQsciLexerHTML_virtualbase_setEditor(self.h, editor.h)
 
-proc miqt_exec_callback_QsciLexerHTML_setEditor(self: ptr cQsciLexerHTML, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setEditor ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetEditorProc](cast[pointer](slot))
-  let slotval1 = gen_qsciscintilla.QsciScintilla(h: editor)
+proc miqt_exec_callback_cQsciLexerHTML_setEditor(vtbl: pointer, self: pointer, editor: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qsciscintilla_types.QsciScintilla(h: editor)
+  vtbl[].setEditor(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciLexerHTMLrefreshProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): void =
-  fQsciLexerHTML_virtualbase_refreshProperties(self.h)
+  fcQsciLexerHTML_virtualbase_refreshProperties(self.h)
 
-type QsciLexerHTMLrefreshPropertiesProc* = proc(): void
-proc onrefreshProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLrefreshPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLrefreshPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_refreshProperties(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciLexerHTML_refreshProperties(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  vtbl[].refreshProperties(self)
 
-proc miqt_exec_callback_QsciLexerHTML_refreshProperties(self: ptr cQsciLexerHTML, slot: int): void {.exportc: "miqt_exec_callback_QsciLexerHTML_refreshProperties ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLrefreshPropertiesProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciLexerHTMLstyleBitsNeeded*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cint =
-  fQsciLexerHTML_virtualbase_styleBitsNeeded(self.h)
+  fcQsciLexerHTML_virtualbase_styleBitsNeeded(self.h)
 
-type QsciLexerHTMLstyleBitsNeededProc* = proc(): cint
-proc onstyleBitsNeeded*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLstyleBitsNeededProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLstyleBitsNeededProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_styleBitsNeeded(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_styleBitsNeeded(self: ptr cQsciLexerHTML, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerHTML_styleBitsNeeded ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLstyleBitsNeededProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_styleBitsNeeded(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].styleBitsNeeded(self)
   virtualReturn
+
 proc QsciLexerHTMLwordCharacters*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cstring =
-  (fQsciLexerHTML_virtualbase_wordCharacters(self.h))
+  (fcQsciLexerHTML_virtualbase_wordCharacters(self.h))
 
-type QsciLexerHTMLwordCharactersProc* = proc(): cstring
-proc onwordCharacters*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLwordCharactersProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLwordCharactersProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_wordCharacters(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_wordCharacters(self: ptr cQsciLexerHTML, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerHTML_wordCharacters ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLwordCharactersProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciLexerHTML_wordCharacters(vtbl: pointer, self: pointer): cstring {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let virtualReturn = vtbl[].wordCharacters(self)
   virtualReturn
+
 proc QsciLexerHTMLsetAutoIndentStyle*(self: gen_qscilexerhtml_types.QsciLexerHTML, autoindentstyle: cint): void =
-  fQsciLexerHTML_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
+  fcQsciLexerHTML_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
-type QsciLexerHTMLsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
-proc onsetAutoIndentStyle*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetAutoIndentStyleProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetAutoIndentStyleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setAutoIndentStyle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setAutoIndentStyle(self: ptr cQsciLexerHTML, slot: int, autoindentstyle: cint): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setAutoIndentStyle ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetAutoIndentStyleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_setAutoIndentStyle(vtbl: pointer, self: pointer, autoindentstyle: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = autoindentstyle
+  vtbl[].setAutoIndentStyle(self, slotval1)
 
+proc QsciLexerHTMLsetColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerHTML_virtualbase_setColor(self.h, c.h, style)
 
-  nimfunc[](slotval1)
-proc QsciLexerHTMLsetColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerHTML_virtualbase_setColor(self.h, c.h, style)
-
-type QsciLexerHTMLsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetColor*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetColorProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setColor(self: ptr cQsciLexerHTML, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setColor ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerHTML_setColor(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setColor(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciLexerHTMLsetEolFill*(self: gen_qscilexerhtml_types.QsciLexerHTML, eoffill: bool, style: cint): void =
-  fQsciLexerHTML_virtualbase_setEolFill(self.h, eoffill, style)
+  fcQsciLexerHTML_virtualbase_setEolFill(self.h, eoffill, style)
 
-type QsciLexerHTMLsetEolFillProc* = proc(eoffill: bool, style: cint): void
-proc onsetEolFill*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetEolFillProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetEolFillProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setEolFill(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setEolFill(self: ptr cQsciLexerHTML, slot: int, eoffill: bool, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setEolFill ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetEolFillProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciLexerHTML_setEolFill(vtbl: pointer, self: pointer, eoffill: bool, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
   let slotval1 = eoffill
-
   let slotval2 = style
+  vtbl[].setEolFill(self, slotval1, slotval2)
 
+proc QsciLexerHTMLsetFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, f: gen_qfont_types.QFont, style: cint): void =
+  fcQsciLexerHTML_virtualbase_setFont(self.h, f.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerHTMLsetFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, f: gen_qfont.QFont, style: cint): void =
-  fQsciLexerHTML_virtualbase_setFont(self.h, f.h, style)
-
-type QsciLexerHTMLsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
-proc onsetFont*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetFontProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetFontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setFont(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setFont(self: ptr cQsciLexerHTML, slot: int, f: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setFont ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetFontProc](cast[pointer](slot))
-  let slotval1 = gen_qfont.QFont(h: f)
-
+proc miqt_exec_callback_cQsciLexerHTML_setFont(vtbl: pointer, self: pointer, f: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qfont_types.QFont(h: f)
   let slotval2 = style
+  vtbl[].setFont(self, slotval1, slotval2)
 
+proc QsciLexerHTMLsetPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, c: gen_qcolor_types.QColor, style: cint): void =
+  fcQsciLexerHTML_virtualbase_setPaper(self.h, c.h, style)
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerHTMLsetPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, c: gen_qcolor.QColor, style: cint): void =
-  fQsciLexerHTML_virtualbase_setPaper(self.h, c.h, style)
-
-type QsciLexerHTMLsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetPaper*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLsetPaperProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLsetPaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_setPaper(self: ptr cQsciLexerHTML, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerHTML_setPaper ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLsetPaperProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
+proc miqt_exec_callback_cQsciLexerHTML_setPaper(vtbl: pointer, self: pointer, c: pointer, style: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
   let slotval2 = style
+  vtbl[].setPaper(self, slotval1, slotval2)
 
+proc QsciLexerHTMLreadProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerHTML_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-  nimfunc[](slotval1, slotval2)
-proc QsciLexerHTMLreadProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerHTML_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
-
-type QsciLexerHTMLreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onreadProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLreadPropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLreadPropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_readProperties(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_readProperties(self: ptr cQsciLexerHTML, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerHTML_readProperties ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLreadPropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerHTML_readProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].readProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerHTMLwriteProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, qs: gen_qsettings.QSettings, prefix: string): bool =
-  fQsciLexerHTML_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerHTMLwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onwriteProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLwritePropertiesProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLwritePropertiesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_writeProperties(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLwriteProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerHTML_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc miqt_exec_callback_QsciLexerHTML_writeProperties(self: ptr cQsciLexerHTML, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerHTML_writeProperties ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLwritePropertiesProc](cast[pointer](slot))
-  let slotval1 = gen_qsettings.QSettings(h: qs)
-
+proc miqt_exec_callback_cQsciLexerHTML_writeProperties(vtbl: pointer, self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qsettings_types.QSettings(h: qs)
   let vprefix_ms = prefix
   let vprefixx_ret = string.fromBytes(toOpenArrayByte(vprefix_ms.data, 0, int(vprefix_ms.len)-1))
   c_free(vprefix_ms.data)
   let slotval2 = vprefixx_ret
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].writeProperties(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerHTMLevent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerHTML_virtualbase_event(self.h, event.h)
 
-type QsciLexerHTMLeventProc* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLeventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_event(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLevent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerHTML_virtualbase_event(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerHTML_event(self: ptr cQsciLexerHTML, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerHTML_event ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLeventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciLexerHTML_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QsciLexerHTMLeventFilter*(self: gen_qscilexerhtml_types.QsciLexerHTML, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-  fQsciLexerHTML_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciLexerHTMLeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLeventFilter*(self: gen_qscilexerhtml_types.QsciLexerHTML, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
+  fcQsciLexerHTML_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-proc miqt_exec_callback_QsciLexerHTML_eventFilter(self: ptr cQsciLexerHTML, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerHTML_eventFilter ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLeventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: watched)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQsciLexerHTML_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: watched)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QsciLexerHTMLtimerEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent.QTimerEvent): void =
-  fQsciLexerHTML_virtualbase_timerEvent(self.h, event.h)
 
-type QsciLexerHTMLtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLtimerEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLtimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLtimerEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQsciLexerHTML_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerHTML_timerEvent(self: ptr cQsciLexerHTML, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerHTML_timerEvent ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLtimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQsciLexerHTML_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QsciLexerHTMLchildEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQsciLexerHTML_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerHTMLchildEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent.QChildEvent): void =
-  fQsciLexerHTML_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerHTML_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QsciLexerHTMLchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLchildEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLcustomEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciLexerHTML_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciLexerHTML_childEvent(self: ptr cQsciLexerHTML, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerHTML_childEvent ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLchildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQsciLexerHTML_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QsciLexerHTMLconnectNotify*(self: gen_qscilexerhtml_types.QsciLexerHTML, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerHTML_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QsciLexerHTMLcustomEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, event: gen_qcoreevent.QEvent): void =
-  fQsciLexerHTML_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciLexerHTML_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QsciLexerHTMLcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QsciLexerHTMLdisconnectNotify*(self: gen_qscilexerhtml_types.QsciLexerHTML, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciLexerHTML_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QsciLexerHTML_customEvent(self: ptr cQsciLexerHTML, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerHTML_customEvent ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLcustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciLexerHTML_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciLexerHTMLVTable](vtbl)
+  let self = QsciLexerHTML(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qscilexerhtml_types.QsciLexerHTML,
+    vtbl: ref QsciLexerHTMLVTable = nil): gen_qscilexerhtml_types.QsciLexerHTML =
+  let vtbl = if vtbl == nil: new QsciLexerHTMLVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerHTMLVTable, _: ptr cQsciLexerHTML) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerHTMLVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerHTML_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerHTML_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerHTML_metacall
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerHTML_setFoldCompact
+  if not isNil(vtbl.setFoldPreprocessor):
+    vtbl[].vtbl.setFoldPreprocessor = miqt_exec_callback_cQsciLexerHTML_setFoldPreprocessor
+  if not isNil(vtbl.setCaseSensitiveTags):
+    vtbl[].vtbl.setCaseSensitiveTags = miqt_exec_callback_cQsciLexerHTML_setCaseSensitiveTags
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerHTML_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerHTML_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerHTML_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerHTML_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerHTML_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerHTML_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerHTML_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerHTML_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerHTML_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerHTML_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerHTML_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerHTML_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerHTML_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerHTML_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerHTML_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerHTML_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerHTML_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerHTML_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerHTML_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerHTML_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerHTML_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerHTML_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerHTML_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerHTML_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerHTML_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerHTML_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerHTML_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerHTML_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerHTML_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerHTML_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerHTML_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerHTML_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerHTML_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerHTML_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerHTML_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerHTML_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerHTML_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerHTML_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerHTML_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerHTML_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerHTML_disconnectNotify
+  gen_qscilexerhtml_types.QsciLexerHTML(h: fcQsciLexerHTML_new(addr(vtbl[]), ))
 
-  nimfunc[](slotval1)
-proc QsciLexerHTMLconnectNotify*(self: gen_qscilexerhtml_types.QsciLexerHTML, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerHTML_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qscilexerhtml_types.QsciLexerHTML,
+    parent: gen_qobject_types.QObject,
+    vtbl: ref QsciLexerHTMLVTable = nil): gen_qscilexerhtml_types.QsciLexerHTML =
+  let vtbl = if vtbl == nil: new QsciLexerHTMLVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciLexerHTMLVTable, _: ptr cQsciLexerHTML) {.cdecl.} =
+    let vtbl = cast[ref QsciLexerHTMLVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciLexerHTML_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciLexerHTML_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciLexerHTML_metacall
+  if not isNil(vtbl.setFoldCompact):
+    vtbl[].vtbl.setFoldCompact = miqt_exec_callback_cQsciLexerHTML_setFoldCompact
+  if not isNil(vtbl.setFoldPreprocessor):
+    vtbl[].vtbl.setFoldPreprocessor = miqt_exec_callback_cQsciLexerHTML_setFoldPreprocessor
+  if not isNil(vtbl.setCaseSensitiveTags):
+    vtbl[].vtbl.setCaseSensitiveTags = miqt_exec_callback_cQsciLexerHTML_setCaseSensitiveTags
+  if not isNil(vtbl.language):
+    vtbl[].vtbl.language = miqt_exec_callback_cQsciLexerHTML_language
+  if not isNil(vtbl.lexer):
+    vtbl[].vtbl.lexer = miqt_exec_callback_cQsciLexerHTML_lexer
+  if not isNil(vtbl.lexerId):
+    vtbl[].vtbl.lexerId = miqt_exec_callback_cQsciLexerHTML_lexerId
+  if not isNil(vtbl.autoCompletionFillups):
+    vtbl[].vtbl.autoCompletionFillups = miqt_exec_callback_cQsciLexerHTML_autoCompletionFillups
+  if not isNil(vtbl.autoCompletionWordSeparators):
+    vtbl[].vtbl.autoCompletionWordSeparators = miqt_exec_callback_cQsciLexerHTML_autoCompletionWordSeparators
+  if not isNil(vtbl.blockEnd):
+    vtbl[].vtbl.blockEnd = miqt_exec_callback_cQsciLexerHTML_blockEnd
+  if not isNil(vtbl.blockLookback):
+    vtbl[].vtbl.blockLookback = miqt_exec_callback_cQsciLexerHTML_blockLookback
+  if not isNil(vtbl.blockStart):
+    vtbl[].vtbl.blockStart = miqt_exec_callback_cQsciLexerHTML_blockStart
+  if not isNil(vtbl.blockStartKeyword):
+    vtbl[].vtbl.blockStartKeyword = miqt_exec_callback_cQsciLexerHTML_blockStartKeyword
+  if not isNil(vtbl.braceStyle):
+    vtbl[].vtbl.braceStyle = miqt_exec_callback_cQsciLexerHTML_braceStyle
+  if not isNil(vtbl.caseSensitive):
+    vtbl[].vtbl.caseSensitive = miqt_exec_callback_cQsciLexerHTML_caseSensitive
+  if not isNil(vtbl.color):
+    vtbl[].vtbl.color = miqt_exec_callback_cQsciLexerHTML_color
+  if not isNil(vtbl.eolFill):
+    vtbl[].vtbl.eolFill = miqt_exec_callback_cQsciLexerHTML_eolFill
+  if not isNil(vtbl.font):
+    vtbl[].vtbl.font = miqt_exec_callback_cQsciLexerHTML_font
+  if not isNil(vtbl.indentationGuideView):
+    vtbl[].vtbl.indentationGuideView = miqt_exec_callback_cQsciLexerHTML_indentationGuideView
+  if not isNil(vtbl.keywords):
+    vtbl[].vtbl.keywords = miqt_exec_callback_cQsciLexerHTML_keywords
+  if not isNil(vtbl.defaultStyle):
+    vtbl[].vtbl.defaultStyle = miqt_exec_callback_cQsciLexerHTML_defaultStyle
+  if not isNil(vtbl.description):
+    vtbl[].vtbl.description = miqt_exec_callback_cQsciLexerHTML_description
+  if not isNil(vtbl.paper):
+    vtbl[].vtbl.paper = miqt_exec_callback_cQsciLexerHTML_paper
+  if not isNil(vtbl.defaultColor):
+    vtbl[].vtbl.defaultColor = miqt_exec_callback_cQsciLexerHTML_defaultColorWithStyle
+  if not isNil(vtbl.defaultEolFill):
+    vtbl[].vtbl.defaultEolFill = miqt_exec_callback_cQsciLexerHTML_defaultEolFill
+  if not isNil(vtbl.defaultFont):
+    vtbl[].vtbl.defaultFont = miqt_exec_callback_cQsciLexerHTML_defaultFontWithStyle
+  if not isNil(vtbl.defaultPaper):
+    vtbl[].vtbl.defaultPaper = miqt_exec_callback_cQsciLexerHTML_defaultPaperWithStyle
+  if not isNil(vtbl.setEditor):
+    vtbl[].vtbl.setEditor = miqt_exec_callback_cQsciLexerHTML_setEditor
+  if not isNil(vtbl.refreshProperties):
+    vtbl[].vtbl.refreshProperties = miqt_exec_callback_cQsciLexerHTML_refreshProperties
+  if not isNil(vtbl.styleBitsNeeded):
+    vtbl[].vtbl.styleBitsNeeded = miqt_exec_callback_cQsciLexerHTML_styleBitsNeeded
+  if not isNil(vtbl.wordCharacters):
+    vtbl[].vtbl.wordCharacters = miqt_exec_callback_cQsciLexerHTML_wordCharacters
+  if not isNil(vtbl.setAutoIndentStyle):
+    vtbl[].vtbl.setAutoIndentStyle = miqt_exec_callback_cQsciLexerHTML_setAutoIndentStyle
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciLexerHTML_setColor
+  if not isNil(vtbl.setEolFill):
+    vtbl[].vtbl.setEolFill = miqt_exec_callback_cQsciLexerHTML_setEolFill
+  if not isNil(vtbl.setFont):
+    vtbl[].vtbl.setFont = miqt_exec_callback_cQsciLexerHTML_setFont
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciLexerHTML_setPaper
+  if not isNil(vtbl.readProperties):
+    vtbl[].vtbl.readProperties = miqt_exec_callback_cQsciLexerHTML_readProperties
+  if not isNil(vtbl.writeProperties):
+    vtbl[].vtbl.writeProperties = miqt_exec_callback_cQsciLexerHTML_writeProperties
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciLexerHTML_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciLexerHTML_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciLexerHTML_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciLexerHTML_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciLexerHTML_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciLexerHTML_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciLexerHTML_disconnectNotify
+  gen_qscilexerhtml_types.QsciLexerHTML(h: fcQsciLexerHTML_new2(addr(vtbl[]), parent.h))
 
-type QsciLexerHTMLconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_connectNotify(self: ptr cQsciLexerHTML, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerHTML_connectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QsciLexerHTMLdisconnectNotify*(self: gen_qscilexerhtml_types.QsciLexerHTML, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciLexerHTML_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QsciLexerHTMLdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qscilexerhtml_types.QsciLexerHTML, slot: QsciLexerHTMLdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciLexerHTMLdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciLexerHTML_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciLexerHTML_disconnectNotify(self: ptr cQsciLexerHTML, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerHTML_disconnectNotify ".} =
-  var nimfunc = cast[ptr QsciLexerHTMLdisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qscilexerhtml_types.QsciLexerHTML): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciLexerHTML_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscilexerhtml_types.QsciLexerHTML): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciLexerHTML_staticMetaObject())
 proc delete*(self: gen_qscilexerhtml_types.QsciLexerHTML) =
   fcQsciLexerHTML_delete(self.h)

@@ -38,26 +38,22 @@ type QStaticTextPerformanceHintEnum* = distinct cint
 template ModerateCaching*(_: type QStaticTextPerformanceHintEnum): untyped = 0
 template AggressiveCaching*(_: type QStaticTextPerformanceHintEnum): untyped = 1
 
-
 import gen_qstatictext_types
 export gen_qstatictext_types
 
 import
-  gen_qfont,
-  gen_qsize,
-  gen_qtextoption,
-  gen_qtransform
+  gen_qfont_types,
+  gen_qsize_types,
+  gen_qtextoption_types,
+  gen_qtransform_types
 export
-  gen_qfont,
-  gen_qsize,
-  gen_qtextoption,
-  gen_qtransform
+  gen_qfont_types,
+  gen_qsize_types,
+  gen_qtextoption_types,
+  gen_qtransform_types
 
 type cQStaticText*{.exportc: "QStaticText", incompleteStruct.} = object
 
-proc fcQStaticText_new(): ptr cQStaticText {.importc: "QStaticText_new".}
-proc fcQStaticText_new2(text: struct_miqt_string): ptr cQStaticText {.importc: "QStaticText_new2".}
-proc fcQStaticText_new3(other: pointer): ptr cQStaticText {.importc: "QStaticText_new3".}
 proc fcQStaticText_operatorAssign(self: pointer, param1: pointer): void {.importc: "QStaticText_operatorAssign".}
 proc fcQStaticText_swap(self: pointer, other: pointer): void {.importc: "QStaticText_swap".}
 proc fcQStaticText_setText(self: pointer, text: struct_miqt_string): void {.importc: "QStaticText_setText".}
@@ -76,19 +72,10 @@ proc fcQStaticText_operatorEqual(self: pointer, param1: pointer): bool {.importc
 proc fcQStaticText_operatorNotEqual(self: pointer, param1: pointer): bool {.importc: "QStaticText_operatorNotEqual".}
 proc fcQStaticText_prepare1(self: pointer, matrix: pointer): void {.importc: "QStaticText_prepare1".}
 proc fcQStaticText_prepare2(self: pointer, matrix: pointer, font: pointer): void {.importc: "QStaticText_prepare2".}
+proc fcQStaticText_new(): ptr cQStaticText {.importc: "QStaticText_new".}
+proc fcQStaticText_new2(text: struct_miqt_string): ptr cQStaticText {.importc: "QStaticText_new2".}
+proc fcQStaticText_new3(other: pointer): ptr cQStaticText {.importc: "QStaticText_new3".}
 proc fcQStaticText_delete(self: pointer) {.importc: "QStaticText_delete".}
-
-
-func init*(T: type gen_qstatictext_types.QStaticText, h: ptr cQStaticText): gen_qstatictext_types.QStaticText =
-  T(h: h)
-proc create*(T: type gen_qstatictext_types.QStaticText, ): gen_qstatictext_types.QStaticText =
-  gen_qstatictext_types.QStaticText.init(fcQStaticText_new())
-
-proc create*(T: type gen_qstatictext_types.QStaticText, text: string): gen_qstatictext_types.QStaticText =
-  gen_qstatictext_types.QStaticText.init(fcQStaticText_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
-
-proc create*(T: type gen_qstatictext_types.QStaticText, other: gen_qstatictext_types.QStaticText): gen_qstatictext_types.QStaticText =
-  gen_qstatictext_types.QStaticText.init(fcQStaticText_new3(other.h))
 
 proc operatorAssign*(self: gen_qstatictext_types.QStaticText, param1: gen_qstatictext_types.QStaticText): void =
   fcQStaticText_operatorAssign(self.h, param1.h)
@@ -117,14 +104,14 @@ proc setTextWidth*(self: gen_qstatictext_types.QStaticText, textWidth: float64):
 proc textWidth*(self: gen_qstatictext_types.QStaticText, ): float64 =
   fcQStaticText_textWidth(self.h)
 
-proc setTextOption*(self: gen_qstatictext_types.QStaticText, textOption: gen_qtextoption.QTextOption): void =
+proc setTextOption*(self: gen_qstatictext_types.QStaticText, textOption: gen_qtextoption_types.QTextOption): void =
   fcQStaticText_setTextOption(self.h, textOption.h)
 
-proc textOption*(self: gen_qstatictext_types.QStaticText, ): gen_qtextoption.QTextOption =
-  gen_qtextoption.QTextOption(h: fcQStaticText_textOption(self.h))
+proc textOption*(self: gen_qstatictext_types.QStaticText, ): gen_qtextoption_types.QTextOption =
+  gen_qtextoption_types.QTextOption(h: fcQStaticText_textOption(self.h))
 
-proc size*(self: gen_qstatictext_types.QStaticText, ): gen_qsize.QSizeF =
-  gen_qsize.QSizeF(h: fcQStaticText_size(self.h))
+proc size*(self: gen_qstatictext_types.QStaticText, ): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQStaticText_size(self.h))
 
 proc prepare*(self: gen_qstatictext_types.QStaticText, ): void =
   fcQStaticText_prepare(self.h)
@@ -141,11 +128,22 @@ proc operatorEqual*(self: gen_qstatictext_types.QStaticText, param1: gen_qstatic
 proc operatorNotEqual*(self: gen_qstatictext_types.QStaticText, param1: gen_qstatictext_types.QStaticText): bool =
   fcQStaticText_operatorNotEqual(self.h, param1.h)
 
-proc prepare*(self: gen_qstatictext_types.QStaticText, matrix: gen_qtransform.QTransform): void =
+proc prepare*(self: gen_qstatictext_types.QStaticText, matrix: gen_qtransform_types.QTransform): void =
   fcQStaticText_prepare1(self.h, matrix.h)
 
-proc prepare*(self: gen_qstatictext_types.QStaticText, matrix: gen_qtransform.QTransform, font: gen_qfont.QFont): void =
+proc prepare*(self: gen_qstatictext_types.QStaticText, matrix: gen_qtransform_types.QTransform, font: gen_qfont_types.QFont): void =
   fcQStaticText_prepare2(self.h, matrix.h, font.h)
+
+proc create*(T: type gen_qstatictext_types.QStaticText): gen_qstatictext_types.QStaticText =
+  gen_qstatictext_types.QStaticText(h: fcQStaticText_new())
+
+proc create*(T: type gen_qstatictext_types.QStaticText,
+    text: string): gen_qstatictext_types.QStaticText =
+  gen_qstatictext_types.QStaticText(h: fcQStaticText_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
+proc create*(T: type gen_qstatictext_types.QStaticText,
+    other: gen_qstatictext_types.QStaticText): gen_qstatictext_types.QStaticText =
+  gen_qstatictext_types.QStaticText(h: fcQStaticText_new3(other.h))
 
 proc delete*(self: gen_qstatictext_types.QStaticText) =
   fcQStaticText_delete(self.h)

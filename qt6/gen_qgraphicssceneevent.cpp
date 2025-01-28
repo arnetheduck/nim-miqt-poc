@@ -20,50 +20,29 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsSceneEvent_setAccepted(QGraphicsSceneEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneEvent_clone(const QGraphicsSceneEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneMouseEvent_setAccepted(QGraphicsSceneMouseEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneMouseEvent_clone(const QGraphicsSceneMouseEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneWheelEvent_setAccepted(QGraphicsSceneWheelEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneWheelEvent_clone(const QGraphicsSceneWheelEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneContextMenuEvent_setAccepted(QGraphicsSceneContextMenuEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneContextMenuEvent_clone(const QGraphicsSceneContextMenuEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneHoverEvent_setAccepted(QGraphicsSceneHoverEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneHoverEvent_clone(const QGraphicsSceneHoverEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneHelpEvent_setAccepted(QGraphicsSceneHelpEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneHelpEvent_clone(const QGraphicsSceneHelpEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneDragDropEvent_setAccepted(QGraphicsSceneDragDropEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneDragDropEvent_clone(const QGraphicsSceneDragDropEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneResizeEvent_setAccepted(QGraphicsSceneResizeEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneResizeEvent_clone(const QGraphicsSceneResizeEvent*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneMoveEvent_setAccepted(QGraphicsSceneMoveEvent*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneMoveEvent_clone(const QGraphicsSceneMoveEvent*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQGraphicsSceneEvent final : public QGraphicsSceneEvent {
+	struct QGraphicsSceneEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneEvent(QEvent::Type type): QGraphicsSceneEvent(type) {};
+	MiqtVirtualQGraphicsSceneEvent(struct QGraphicsSceneEvent_VTable* vtbl, QEvent::Type type): QGraphicsSceneEvent(type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -73,17 +52,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -97,8 +73,8 @@ public:
 
 };
 
-QGraphicsSceneEvent* QGraphicsSceneEvent_new(int type) {
-	return new MiqtVirtualQGraphicsSceneEvent(static_cast<QEvent::Type>(type));
+QGraphicsSceneEvent* QGraphicsSceneEvent_new(struct QGraphicsSceneEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQGraphicsSceneEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneEvent_virtbase(QGraphicsSceneEvent* src, QEvent** outptr_QEvent) {
@@ -122,28 +98,8 @@ void QGraphicsSceneEvent_setTimestamp(QGraphicsSceneEvent* self, unsigned long l
 	self->setTimestamp(static_cast<quint64>(ts));
 }
 
-bool QGraphicsSceneEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneEvent_virtualbase_clone(const void* self) {
@@ -155,28 +111,25 @@ void QGraphicsSceneEvent_delete(QGraphicsSceneEvent* self) {
 }
 
 class MiqtVirtualQGraphicsSceneMouseEvent final : public QGraphicsSceneMouseEvent {
+	struct QGraphicsSceneMouseEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneMouseEvent(): QGraphicsSceneMouseEvent() {};
-	MiqtVirtualQGraphicsSceneMouseEvent(QEvent::Type type): QGraphicsSceneMouseEvent(type) {};
+	MiqtVirtualQGraphicsSceneMouseEvent(struct QGraphicsSceneMouseEvent_VTable* vtbl): QGraphicsSceneMouseEvent(), vtbl(vtbl) {};
+	MiqtVirtualQGraphicsSceneMouseEvent(struct QGraphicsSceneMouseEvent_VTable* vtbl, QEvent::Type type): QGraphicsSceneMouseEvent(type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneMouseEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneMouseEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneMouseEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneMouseEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -186,17 +139,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneMouseEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneMouseEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -210,12 +160,12 @@ public:
 
 };
 
-QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new() {
-	return new MiqtVirtualQGraphicsSceneMouseEvent();
+QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new(struct QGraphicsSceneMouseEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneMouseEvent(vtbl);
 }
 
-QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new2(int type) {
-	return new MiqtVirtualQGraphicsSceneMouseEvent(static_cast<QEvent::Type>(type));
+QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new2(struct QGraphicsSceneMouseEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQGraphicsSceneMouseEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneMouseEvent_virtbase(QGraphicsSceneMouseEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -339,28 +289,8 @@ void QGraphicsSceneMouseEvent_setFlags(QGraphicsSceneMouseEvent* self, int flags
 	self->setFlags(static_cast<Qt::MouseEventFlags>(flags));
 }
 
-bool QGraphicsSceneMouseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneMouseEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneMouseEvent*>( (QGraphicsSceneMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneMouseEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneMouseEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneMouseEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneMouseEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneMouseEvent*>( (QGraphicsSceneMouseEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneMouseEvent_virtualbase_clone(const void* self) {
@@ -372,28 +302,25 @@ void QGraphicsSceneMouseEvent_delete(QGraphicsSceneMouseEvent* self) {
 }
 
 class MiqtVirtualQGraphicsSceneWheelEvent final : public QGraphicsSceneWheelEvent {
+	struct QGraphicsSceneWheelEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneWheelEvent(): QGraphicsSceneWheelEvent() {};
-	MiqtVirtualQGraphicsSceneWheelEvent(QEvent::Type type): QGraphicsSceneWheelEvent(type) {};
+	MiqtVirtualQGraphicsSceneWheelEvent(struct QGraphicsSceneWheelEvent_VTable* vtbl): QGraphicsSceneWheelEvent(), vtbl(vtbl) {};
+	MiqtVirtualQGraphicsSceneWheelEvent(struct QGraphicsSceneWheelEvent_VTable* vtbl, QEvent::Type type): QGraphicsSceneWheelEvent(type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneWheelEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneWheelEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneWheelEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneWheelEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -403,17 +330,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneWheelEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneWheelEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -427,12 +351,12 @@ public:
 
 };
 
-QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new() {
-	return new MiqtVirtualQGraphicsSceneWheelEvent();
+QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new(struct QGraphicsSceneWheelEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneWheelEvent(vtbl);
 }
 
-QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new2(int type) {
-	return new MiqtVirtualQGraphicsSceneWheelEvent(static_cast<QEvent::Type>(type));
+QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new2(struct QGraphicsSceneWheelEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQGraphicsSceneWheelEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneWheelEvent_virtbase(QGraphicsSceneWheelEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -523,28 +447,8 @@ void QGraphicsSceneWheelEvent_setInverted(QGraphicsSceneWheelEvent* self, bool i
 	self->setInverted(inverted);
 }
 
-bool QGraphicsSceneWheelEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneWheelEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneWheelEvent*>( (QGraphicsSceneWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneWheelEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneWheelEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneWheelEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneWheelEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneWheelEvent*>( (QGraphicsSceneWheelEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneWheelEvent_virtualbase_clone(const void* self) {
@@ -556,28 +460,25 @@ void QGraphicsSceneWheelEvent_delete(QGraphicsSceneWheelEvent* self) {
 }
 
 class MiqtVirtualQGraphicsSceneContextMenuEvent final : public QGraphicsSceneContextMenuEvent {
+	struct QGraphicsSceneContextMenuEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneContextMenuEvent(): QGraphicsSceneContextMenuEvent() {};
-	MiqtVirtualQGraphicsSceneContextMenuEvent(QEvent::Type type): QGraphicsSceneContextMenuEvent(type) {};
+	MiqtVirtualQGraphicsSceneContextMenuEvent(struct QGraphicsSceneContextMenuEvent_VTable* vtbl): QGraphicsSceneContextMenuEvent(), vtbl(vtbl) {};
+	MiqtVirtualQGraphicsSceneContextMenuEvent(struct QGraphicsSceneContextMenuEvent_VTable* vtbl, QEvent::Type type): QGraphicsSceneContextMenuEvent(type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneContextMenuEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneContextMenuEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneContextMenuEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneContextMenuEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -587,17 +488,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneContextMenuEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneContextMenuEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -611,12 +509,12 @@ public:
 
 };
 
-QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new() {
-	return new MiqtVirtualQGraphicsSceneContextMenuEvent();
+QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new(struct QGraphicsSceneContextMenuEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneContextMenuEvent(vtbl);
 }
 
-QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new2(int type) {
-	return new MiqtVirtualQGraphicsSceneContextMenuEvent(static_cast<QEvent::Type>(type));
+QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new2(struct QGraphicsSceneContextMenuEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQGraphicsSceneContextMenuEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneContextMenuEvent_virtbase(QGraphicsSceneContextMenuEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -665,28 +563,8 @@ void QGraphicsSceneContextMenuEvent_setReason(QGraphicsSceneContextMenuEvent* se
 	self->setReason(static_cast<QGraphicsSceneContextMenuEvent::Reason>(reason));
 }
 
-bool QGraphicsSceneContextMenuEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneContextMenuEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneContextMenuEvent*>( (QGraphicsSceneContextMenuEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneContextMenuEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneContextMenuEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneContextMenuEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneContextMenuEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneContextMenuEvent*>( (QGraphicsSceneContextMenuEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneContextMenuEvent_virtualbase_clone(const void* self) {
@@ -698,28 +576,25 @@ void QGraphicsSceneContextMenuEvent_delete(QGraphicsSceneContextMenuEvent* self)
 }
 
 class MiqtVirtualQGraphicsSceneHoverEvent final : public QGraphicsSceneHoverEvent {
+	struct QGraphicsSceneHoverEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneHoverEvent(): QGraphicsSceneHoverEvent() {};
-	MiqtVirtualQGraphicsSceneHoverEvent(QEvent::Type type): QGraphicsSceneHoverEvent(type) {};
+	MiqtVirtualQGraphicsSceneHoverEvent(struct QGraphicsSceneHoverEvent_VTable* vtbl): QGraphicsSceneHoverEvent(), vtbl(vtbl) {};
+	MiqtVirtualQGraphicsSceneHoverEvent(struct QGraphicsSceneHoverEvent_VTable* vtbl, QEvent::Type type): QGraphicsSceneHoverEvent(type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneHoverEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneHoverEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneHoverEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneHoverEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -729,17 +604,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneHoverEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneHoverEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -753,12 +625,12 @@ public:
 
 };
 
-QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new() {
-	return new MiqtVirtualQGraphicsSceneHoverEvent();
+QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new(struct QGraphicsSceneHoverEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneHoverEvent(vtbl);
 }
 
-QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new2(int type) {
-	return new MiqtVirtualQGraphicsSceneHoverEvent(static_cast<QEvent::Type>(type));
+QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new2(struct QGraphicsSceneHoverEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQGraphicsSceneHoverEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneHoverEvent_virtbase(QGraphicsSceneHoverEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -822,28 +694,8 @@ void QGraphicsSceneHoverEvent_setModifiers(QGraphicsSceneHoverEvent* self, int m
 	self->setModifiers(static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-bool QGraphicsSceneHoverEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneHoverEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneHoverEvent*>( (QGraphicsSceneHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneHoverEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneHoverEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneHoverEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneHoverEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneHoverEvent*>( (QGraphicsSceneHoverEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneHoverEvent_virtualbase_clone(const void* self) {
@@ -855,28 +707,25 @@ void QGraphicsSceneHoverEvent_delete(QGraphicsSceneHoverEvent* self) {
 }
 
 class MiqtVirtualQGraphicsSceneHelpEvent final : public QGraphicsSceneHelpEvent {
+	struct QGraphicsSceneHelpEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneHelpEvent(): QGraphicsSceneHelpEvent() {};
-	MiqtVirtualQGraphicsSceneHelpEvent(QEvent::Type type): QGraphicsSceneHelpEvent(type) {};
+	MiqtVirtualQGraphicsSceneHelpEvent(struct QGraphicsSceneHelpEvent_VTable* vtbl): QGraphicsSceneHelpEvent(), vtbl(vtbl) {};
+	MiqtVirtualQGraphicsSceneHelpEvent(struct QGraphicsSceneHelpEvent_VTable* vtbl, QEvent::Type type): QGraphicsSceneHelpEvent(type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneHelpEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneHelpEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneHelpEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneHelpEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -886,17 +735,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneHelpEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneHelpEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -910,12 +756,12 @@ public:
 
 };
 
-QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new() {
-	return new MiqtVirtualQGraphicsSceneHelpEvent();
+QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new(struct QGraphicsSceneHelpEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneHelpEvent(vtbl);
 }
 
-QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new2(int type) {
-	return new MiqtVirtualQGraphicsSceneHelpEvent(static_cast<QEvent::Type>(type));
+QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new2(struct QGraphicsSceneHelpEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQGraphicsSceneHelpEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneHelpEvent_virtbase(QGraphicsSceneHelpEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -938,28 +784,8 @@ void QGraphicsSceneHelpEvent_setScreenPos(QGraphicsSceneHelpEvent* self, QPoint*
 	self->setScreenPos(*pos);
 }
 
-bool QGraphicsSceneHelpEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneHelpEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneHelpEvent*>( (QGraphicsSceneHelpEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneHelpEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneHelpEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneHelpEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneHelpEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneHelpEvent*>( (QGraphicsSceneHelpEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneHelpEvent_virtualbase_clone(const void* self) {
@@ -971,28 +797,25 @@ void QGraphicsSceneHelpEvent_delete(QGraphicsSceneHelpEvent* self) {
 }
 
 class MiqtVirtualQGraphicsSceneDragDropEvent final : public QGraphicsSceneDragDropEvent {
+	struct QGraphicsSceneDragDropEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneDragDropEvent(): QGraphicsSceneDragDropEvent() {};
-	MiqtVirtualQGraphicsSceneDragDropEvent(QEvent::Type type): QGraphicsSceneDragDropEvent(type) {};
+	MiqtVirtualQGraphicsSceneDragDropEvent(struct QGraphicsSceneDragDropEvent_VTable* vtbl): QGraphicsSceneDragDropEvent(), vtbl(vtbl) {};
+	MiqtVirtualQGraphicsSceneDragDropEvent(struct QGraphicsSceneDragDropEvent_VTable* vtbl, QEvent::Type type): QGraphicsSceneDragDropEvent(type), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneDragDropEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneDragDropEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneDragDropEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneDragDropEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1002,17 +825,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneDragDropEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneDragDropEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1026,12 +846,12 @@ public:
 
 };
 
-QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new() {
-	return new MiqtVirtualQGraphicsSceneDragDropEvent();
+QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new(struct QGraphicsSceneDragDropEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneDragDropEvent(vtbl);
 }
 
-QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new2(int type) {
-	return new MiqtVirtualQGraphicsSceneDragDropEvent(static_cast<QEvent::Type>(type));
+QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new2(struct QGraphicsSceneDragDropEvent_VTable* vtbl, int type) {
+	return new MiqtVirtualQGraphicsSceneDragDropEvent(vtbl, static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneDragDropEvent_virtbase(QGraphicsSceneDragDropEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -1127,28 +947,8 @@ void QGraphicsSceneDragDropEvent_setMimeData(QGraphicsSceneDragDropEvent* self, 
 	self->setMimeData(data);
 }
 
-bool QGraphicsSceneDragDropEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneDragDropEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneDragDropEvent*>( (QGraphicsSceneDragDropEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneDragDropEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneDragDropEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneDragDropEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneDragDropEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneDragDropEvent*>( (QGraphicsSceneDragDropEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneDragDropEvent_virtualbase_clone(const void* self) {
@@ -1160,27 +960,24 @@ void QGraphicsSceneDragDropEvent_delete(QGraphicsSceneDragDropEvent* self) {
 }
 
 class MiqtVirtualQGraphicsSceneResizeEvent final : public QGraphicsSceneResizeEvent {
+	struct QGraphicsSceneResizeEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneResizeEvent(): QGraphicsSceneResizeEvent() {};
+	MiqtVirtualQGraphicsSceneResizeEvent(struct QGraphicsSceneResizeEvent_VTable* vtbl): QGraphicsSceneResizeEvent(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneResizeEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneResizeEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneResizeEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneResizeEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1190,17 +987,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneResizeEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneResizeEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1214,8 +1008,8 @@ public:
 
 };
 
-QGraphicsSceneResizeEvent* QGraphicsSceneResizeEvent_new() {
-	return new MiqtVirtualQGraphicsSceneResizeEvent();
+QGraphicsSceneResizeEvent* QGraphicsSceneResizeEvent_new(struct QGraphicsSceneResizeEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneResizeEvent(vtbl);
 }
 
 void QGraphicsSceneResizeEvent_virtbase(QGraphicsSceneResizeEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -1238,28 +1032,8 @@ void QGraphicsSceneResizeEvent_setNewSize(QGraphicsSceneResizeEvent* self, QSize
 	self->setNewSize(*size);
 }
 
-bool QGraphicsSceneResizeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneResizeEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneResizeEvent*>( (QGraphicsSceneResizeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneResizeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneResizeEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneResizeEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneResizeEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneResizeEvent*>( (QGraphicsSceneResizeEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneResizeEvent_virtualbase_clone(const void* self) {
@@ -1271,27 +1045,24 @@ void QGraphicsSceneResizeEvent_delete(QGraphicsSceneResizeEvent* self) {
 }
 
 class MiqtVirtualQGraphicsSceneMoveEvent final : public QGraphicsSceneMoveEvent {
+	struct QGraphicsSceneMoveEvent_VTable* vtbl;
 public:
 
-	MiqtVirtualQGraphicsSceneMoveEvent(): QGraphicsSceneMoveEvent() {};
+	MiqtVirtualQGraphicsSceneMoveEvent(struct QGraphicsSceneMoveEvent_VTable* vtbl): QGraphicsSceneMoveEvent(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneMoveEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
+	virtual ~MiqtVirtualQGraphicsSceneMoveEvent() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
+		if (vtbl->setAccepted == 0) {
 			QGraphicsSceneMoveEvent::setAccepted(accepted);
 			return;
 		}
-		
+
 		bool sigval1 = accepted;
 
-		miqt_exec_callback_QGraphicsSceneMoveEvent_setAccepted(this, handle__setAccepted, sigval1);
+		vtbl->setAccepted(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1301,17 +1072,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QEvent* clone() const override {
-		if (handle__clone == 0) {
+		if (vtbl->clone == 0) {
 			return QGraphicsSceneMoveEvent::clone();
 		}
-		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneMoveEvent_clone(this, handle__clone);
+
+		QEvent* callback_return_value = vtbl->clone(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -1325,8 +1093,8 @@ public:
 
 };
 
-QGraphicsSceneMoveEvent* QGraphicsSceneMoveEvent_new() {
-	return new MiqtVirtualQGraphicsSceneMoveEvent();
+QGraphicsSceneMoveEvent* QGraphicsSceneMoveEvent_new(struct QGraphicsSceneMoveEvent_VTable* vtbl) {
+	return new MiqtVirtualQGraphicsSceneMoveEvent(vtbl);
 }
 
 void QGraphicsSceneMoveEvent_virtbase(QGraphicsSceneMoveEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -1349,28 +1117,8 @@ void QGraphicsSceneMoveEvent_setNewPos(QGraphicsSceneMoveEvent* self, QPointF* p
 	self->setNewPos(*pos);
 }
 
-bool QGraphicsSceneMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneMoveEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneMoveEvent*>( (QGraphicsSceneMoveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
 void QGraphicsSceneMoveEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneMoveEvent*)(self) )->virtualbase_setAccepted(accepted);
-}
-
-bool QGraphicsSceneMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQGraphicsSceneMoveEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneMoveEvent*>( (QGraphicsSceneMoveEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
 }
 
 QEvent* QGraphicsSceneMoveEvent_virtualbase_clone(const void* self) {

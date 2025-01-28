@@ -40,14 +40,12 @@ template MonotonicClock*(_: type QElapsedTimerClockTypeEnum): untyped = 1
 template MachAbsoluteTime*(_: type QElapsedTimerClockTypeEnum): untyped = 2
 template PerformanceCounter*(_: type QElapsedTimerClockTypeEnum): untyped = 3
 
-
 import gen_qelapsedtimer_types
 export gen_qelapsedtimer_types
 
 
 type cQElapsedTimer*{.exportc: "QElapsedTimer", incompleteStruct.} = object
 
-proc fcQElapsedTimer_new(): ptr cQElapsedTimer {.importc: "QElapsedTimer_new".}
 proc fcQElapsedTimer_clockType(): cint {.importc: "QElapsedTimer_clockType".}
 proc fcQElapsedTimer_isMonotonic(): bool {.importc: "QElapsedTimer_isMonotonic".}
 proc fcQElapsedTimer_start(self: pointer, ): void {.importc: "QElapsedTimer_start".}
@@ -60,13 +58,8 @@ proc fcQElapsedTimer_hasExpired(self: pointer, timeout: clonglong): bool {.impor
 proc fcQElapsedTimer_msecsSinceReference(self: pointer, ): clonglong {.importc: "QElapsedTimer_msecsSinceReference".}
 proc fcQElapsedTimer_msecsTo(self: pointer, other: pointer): clonglong {.importc: "QElapsedTimer_msecsTo".}
 proc fcQElapsedTimer_secsTo(self: pointer, other: pointer): clonglong {.importc: "QElapsedTimer_secsTo".}
+proc fcQElapsedTimer_new(): ptr cQElapsedTimer {.importc: "QElapsedTimer_new".}
 proc fcQElapsedTimer_delete(self: pointer) {.importc: "QElapsedTimer_delete".}
-
-
-func init*(T: type gen_qelapsedtimer_types.QElapsedTimer, h: ptr cQElapsedTimer): gen_qelapsedtimer_types.QElapsedTimer =
-  T(h: h)
-proc create*(T: type gen_qelapsedtimer_types.QElapsedTimer, ): gen_qelapsedtimer_types.QElapsedTimer =
-  gen_qelapsedtimer_types.QElapsedTimer.init(fcQElapsedTimer_new())
 
 proc clockType*(_: type gen_qelapsedtimer_types.QElapsedTimer, ): cint =
   cint(fcQElapsedTimer_clockType())
@@ -103,6 +96,9 @@ proc msecsTo*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedti
 
 proc secsTo*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedtimer_types.QElapsedTimer): clonglong =
   fcQElapsedTimer_secsTo(self.h, other.h)
+
+proc create*(T: type gen_qelapsedtimer_types.QElapsedTimer): gen_qelapsedtimer_types.QElapsedTimer =
+  gen_qelapsedtimer_types.QElapsedTimer(h: fcQElapsedTimer_new())
 
 proc delete*(self: gen_qelapsedtimer_types.QElapsedTimer) =
   fcQElapsedTimer_delete(self.h)

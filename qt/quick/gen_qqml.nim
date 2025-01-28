@@ -33,7 +33,6 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qqml.cpp", cflags).}
 
-
 import gen_qqml_types
 export gen_qqml_types
 

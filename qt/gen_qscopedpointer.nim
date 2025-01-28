@@ -33,7 +33,6 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qscopedpointer.cpp", cflags).}
 
-
 import gen_qscopedpointer_types
 export gen_qscopedpointer_types
 
@@ -43,9 +42,6 @@ type cQScopedPointerPodDeleter*{.exportc: "QScopedPointerPodDeleter", incomplete
 proc fcQScopedPointerPodDeleter_cleanup(pointer: pointer): void {.importc: "QScopedPointerPodDeleter_cleanup".}
 proc fcQScopedPointerPodDeleter_delete(self: pointer) {.importc: "QScopedPointerPodDeleter_delete".}
 
-
-func init*(T: type gen_qscopedpointer_types.QScopedPointerPodDeleter, h: ptr cQScopedPointerPodDeleter): gen_qscopedpointer_types.QScopedPointerPodDeleter =
-  T(h: h)
 proc cleanup*(_: type gen_qscopedpointer_types.QScopedPointerPodDeleter, pointer: pointer): void =
   fcQScopedPointerPodDeleter_cleanup(pointer)
 

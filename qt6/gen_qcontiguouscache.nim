@@ -33,7 +33,6 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qcontiguouscache.cpp", cflags).}
 
-
 import gen_qcontiguouscache_types
 export gen_qcontiguouscache_types
 
@@ -44,9 +43,6 @@ proc fcQContiguousCacheData_allocateData(size: int64, alignment: int64): pointer
 proc fcQContiguousCacheData_freeData(data: pointer): void {.importc: "QContiguousCacheData_freeData".}
 proc fcQContiguousCacheData_delete(self: pointer) {.importc: "QContiguousCacheData_delete".}
 
-
-func init*(T: type gen_qcontiguouscache_types.QContiguousCacheData, h: ptr cQContiguousCacheData): gen_qcontiguouscache_types.QContiguousCacheData =
-  T(h: h)
 proc allocateData*(_: type gen_qcontiguouscache_types.QContiguousCacheData, size: int64, alignment: int64): gen_qcontiguouscache_types.QContiguousCacheData =
   gen_qcontiguouscache_types.QContiguousCacheData(h: fcQContiguousCacheData_allocateData(size, alignment))
 

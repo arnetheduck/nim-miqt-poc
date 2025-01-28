@@ -68,14 +68,13 @@ template NavigationTypeReload*(_: type QWebEngineUrlRequestInfoNavigationTypeEnu
 template NavigationTypeOther*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 5
 template NavigationTypeRedirect*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 6
 
-
 import gen_qwebengineurlrequestinfo_types
 export gen_qwebengineurlrequestinfo_types
 
 import
-  gen_qurl
+  gen_qurl_types
 export
-  gen_qurl
+  gen_qurl_types
 
 type cQWebEngineUrlRequestInfo*{.exportc: "QWebEngineUrlRequestInfo", incompleteStruct.} = object
 
@@ -90,23 +89,20 @@ proc fcQWebEngineUrlRequestInfo_blockX(self: pointer, shouldBlock: bool): void {
 proc fcQWebEngineUrlRequestInfo_redirect(self: pointer, url: pointer): void {.importc: "QWebEngineUrlRequestInfo_redirect".}
 proc fcQWebEngineUrlRequestInfo_setHttpHeader(self: pointer, name: struct_miqt_string, value: struct_miqt_string): void {.importc: "QWebEngineUrlRequestInfo_setHttpHeader".}
 
-
-func init*(T: type gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, h: ptr cQWebEngineUrlRequestInfo): gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo =
-  T(h: h)
 proc resourceType*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): cint =
   cint(fcQWebEngineUrlRequestInfo_resourceType(self.h))
 
 proc navigationType*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): cint =
   cint(fcQWebEngineUrlRequestInfo_navigationType(self.h))
 
-proc requestUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_requestUrl(self.h))
+proc requestUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineUrlRequestInfo_requestUrl(self.h))
 
-proc firstPartyUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_firstPartyUrl(self.h))
+proc firstPartyUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineUrlRequestInfo_firstPartyUrl(self.h))
 
-proc initiator*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
-  gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_initiator(self.h))
+proc initiator*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineUrlRequestInfo_initiator(self.h))
 
 proc requestMethod*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): seq[byte] =
   var v_bytearray = fcQWebEngineUrlRequestInfo_requestMethod(self.h)
@@ -120,7 +116,7 @@ proc changed*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo,
 proc blockX*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, shouldBlock: bool): void =
   fcQWebEngineUrlRequestInfo_blockX(self.h, shouldBlock)
 
-proc redirect*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, url: gen_qurl.QUrl): void =
+proc redirect*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, url: gen_qurl_types.QUrl): void =
   fcQWebEngineUrlRequestInfo_redirect(self.h, url.h)
 
 proc setHttpHeader*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, name: seq[byte], value: seq[byte]): void =

@@ -41,18 +41,17 @@ template AudioStream*(_: type QMediaStreamsControlStreamTypeEnum): untyped = 2
 template SubPictureStream*(_: type QMediaStreamsControlStreamTypeEnum): untyped = 3
 template DataStream*(_: type QMediaStreamsControlStreamTypeEnum): untyped = 4
 
-
 import gen_qmediastreamscontrol_types
 export gen_qmediastreamscontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
-  gen_qvariant
+  gen_qobjectdefs_types,
+  gen_qvariant_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
-  gen_qvariant
+  gen_qobjectdefs_types,
+  gen_qvariant_types
 
 type cQMediaStreamsControl*{.exportc: "QMediaStreamsControl", incompleteStruct.} = object
 
@@ -67,9 +66,9 @@ proc fcQMediaStreamsControl_metaData(self: pointer, streamNumber: cint, key: str
 proc fcQMediaStreamsControl_isActive(self: pointer, streamNumber: cint): bool {.importc: "QMediaStreamsControl_isActive".}
 proc fcQMediaStreamsControl_setActive(self: pointer, streamNumber: cint, state: bool): void {.importc: "QMediaStreamsControl_setActive".}
 proc fcQMediaStreamsControl_streamsChanged(self: pointer, ): void {.importc: "QMediaStreamsControl_streamsChanged".}
-proc fQMediaStreamsControl_connect_streamsChanged(self: pointer, slot: int) {.importc: "QMediaStreamsControl_connect_streamsChanged".}
+proc fcQMediaStreamsControl_connect_streamsChanged(self: pointer, slot: int) {.importc: "QMediaStreamsControl_connect_streamsChanged".}
 proc fcQMediaStreamsControl_activeStreamsChanged(self: pointer, ): void {.importc: "QMediaStreamsControl_activeStreamsChanged".}
-proc fQMediaStreamsControl_connect_activeStreamsChanged(self: pointer, slot: int) {.importc: "QMediaStreamsControl_connect_activeStreamsChanged".}
+proc fcQMediaStreamsControl_connect_activeStreamsChanged(self: pointer, slot: int) {.importc: "QMediaStreamsControl_connect_activeStreamsChanged".}
 proc fcQMediaStreamsControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaStreamsControl_tr2".}
 proc fcQMediaStreamsControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaStreamsControl_tr3".}
 proc fcQMediaStreamsControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaStreamsControl_trUtf82".}
@@ -77,11 +76,8 @@ proc fcQMediaStreamsControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miq
 proc fcQMediaStreamsControl_staticMetaObject(): pointer {.importc: "QMediaStreamsControl_staticMetaObject".}
 proc fcQMediaStreamsControl_delete(self: pointer) {.importc: "QMediaStreamsControl_delete".}
 
-
-func init*(T: type gen_qmediastreamscontrol_types.QMediaStreamsControl, h: ptr cQMediaStreamsControl): gen_qmediastreamscontrol_types.QMediaStreamsControl =
-  T(h: h)
-proc metaObject*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMediaStreamsControl_metaObject(self.h))
+proc metaObject*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaStreamsControl_metaObject(self.h))
 
 proc metacast*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, param1: cstring): pointer =
   fcQMediaStreamsControl_metacast(self.h, param1)
@@ -107,8 +103,8 @@ proc streamCount*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, ): 
 proc streamType*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, streamNumber: cint): cint =
   cint(fcQMediaStreamsControl_streamType(self.h, streamNumber))
 
-proc metaData*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, streamNumber: cint, key: string): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fcQMediaStreamsControl_metaData(self.h, streamNumber, struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc metaData*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, streamNumber: cint, key: string): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQMediaStreamsControl_metaData(self.h, streamNumber, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
 proc isActive*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, streamNumber: cint): bool =
   fcQMediaStreamsControl_isActive(self.h, streamNumber)
@@ -120,7 +116,7 @@ proc streamsChanged*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, 
   fcQMediaStreamsControl_streamsChanged(self.h)
 
 type QMediaStreamsControlstreamsChangedSlot* = proc()
-proc miqt_exec_callback_QMediaStreamsControl_streamsChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQMediaStreamsControl_streamsChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaStreamsControl_streamsChanged".} =
   let nimfunc = cast[ptr QMediaStreamsControlstreamsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -128,13 +124,13 @@ proc onstreamsChanged*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl
   var tmp = new QMediaStreamsControlstreamsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQMediaStreamsControl_connect_streamsChanged(self.h, cast[int](addr tmp[]))
+  fcQMediaStreamsControl_connect_streamsChanged(self.h, cast[int](addr tmp[]))
 
 proc activeStreamsChanged*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, ): void =
   fcQMediaStreamsControl_activeStreamsChanged(self.h)
 
 type QMediaStreamsControlactiveStreamsChangedSlot* = proc()
-proc miqt_exec_callback_QMediaStreamsControl_activeStreamsChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQMediaStreamsControl_activeStreamsChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaStreamsControl_activeStreamsChanged".} =
   let nimfunc = cast[ptr QMediaStreamsControlactiveStreamsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -142,7 +138,7 @@ proc onactiveStreamsChanged*(self: gen_qmediastreamscontrol_types.QMediaStreamsC
   var tmp = new QMediaStreamsControlactiveStreamsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQMediaStreamsControl_connect_activeStreamsChanged(self.h, cast[int](addr tmp[]))
+  fcQMediaStreamsControl_connect_activeStreamsChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qmediastreamscontrol_types.QMediaStreamsControl, s: cstring, c: cstring): string =
   let v_ms = fcQMediaStreamsControl_tr2(s, c)
@@ -168,7 +164,7 @@ proc trUtf8*(_: type gen_qmediastreamscontrol_types.QMediaStreamsControl, s: cst
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qmediastreamscontrol_types.QMediaStreamsControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMediaStreamsControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qmediastreamscontrol_types.QMediaStreamsControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaStreamsControl_staticMetaObject())
 proc delete*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl) =
   fcQMediaStreamsControl_delete(self.h)

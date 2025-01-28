@@ -1,4 +1,4 @@
 import gen_qabstractslider_types
 export gen_qabstractslider_types
-type QScrollBar*  = object of gen_qabstractslider_types.QAbstractSlider
 
+type QScrollBar* = object of gen_qabstractslider_types.QAbstractSlider

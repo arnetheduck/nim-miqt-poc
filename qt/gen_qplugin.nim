@@ -33,25 +33,21 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qplugin.cpp", cflags).}
 
-
 import gen_qplugin_types
 export gen_qplugin_types
 
 import
-  gen_qjsonobject
+  gen_qjsonobject_types
 export
-  gen_qjsonobject
+  gen_qjsonobject_types
 
 type cQStaticPlugin*{.exportc: "QStaticPlugin", incompleteStruct.} = object
 
 proc fcQStaticPlugin_metaData(self: pointer, ): pointer {.importc: "QStaticPlugin_metaData".}
 proc fcQStaticPlugin_delete(self: pointer) {.importc: "QStaticPlugin_delete".}
 
-
-func init*(T: type gen_qplugin_types.QStaticPlugin, h: ptr cQStaticPlugin): gen_qplugin_types.QStaticPlugin =
-  T(h: h)
-proc metaData*(self: gen_qplugin_types.QStaticPlugin, ): gen_qjsonobject.QJsonObject =
-  gen_qjsonobject.QJsonObject(h: fcQStaticPlugin_metaData(self.h))
+proc metaData*(self: gen_qplugin_types.QStaticPlugin, ): gen_qjsonobject_types.QJsonObject =
+  gen_qjsonobject_types.QJsonObject(h: fcQStaticPlugin_metaData(self.h))
 
 proc delete*(self: gen_qplugin_types.QStaticPlugin) =
   fcQStaticPlugin_delete(self.h)

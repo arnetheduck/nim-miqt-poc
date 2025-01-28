@@ -83,18 +83,17 @@ type QFileDeviceMemoryMapFlagEnum* = distinct cint
 template NoOptions*(_: type QFileDeviceMemoryMapFlagEnum): untyped = 0
 template MapPrivateOption*(_: type QFileDeviceMemoryMapFlagEnum): untyped = 1
 
-
 import gen_qfiledevice_types
 export gen_qfiledevice_types
 
 import
-  gen_qdatetime,
+  gen_qdatetime_types,
   gen_qiodevice,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
-  gen_qdatetime,
+  gen_qdatetime_types,
   gen_qiodevice,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQFileDevice*{.exportc: "QFileDevice", incompleteStruct.} = object
 
@@ -126,11 +125,8 @@ proc fcQFileDevice_map3(self: pointer, offset: clonglong, size: clonglong, flags
 proc fcQFileDevice_staticMetaObject(): pointer {.importc: "QFileDevice_staticMetaObject".}
 proc fcQFileDevice_delete(self: pointer) {.importc: "QFileDevice_delete".}
 
-
-func init*(T: type gen_qfiledevice_types.QFileDevice, h: ptr cQFileDevice): gen_qfiledevice_types.QFileDevice =
-  T(h: h)
-proc metaObject*(self: gen_qfiledevice_types.QFileDevice, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQFileDevice_metaObject(self.h))
+proc metaObject*(self: gen_qfiledevice_types.QFileDevice, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQFileDevice_metaObject(self.h))
 
 proc metacast*(self: gen_qfiledevice_types.QFileDevice, param1: cstring): pointer =
   fcQFileDevice_metacast(self.h, param1)
@@ -195,10 +191,10 @@ proc map*(self: gen_qfiledevice_types.QFileDevice, offset: clonglong, size: clon
 proc unmap*(self: gen_qfiledevice_types.QFileDevice, address: ptr uint8): bool =
   fcQFileDevice_unmap(self.h, address)
 
-proc fileTime*(self: gen_qfiledevice_types.QFileDevice, time: cint): gen_qdatetime.QDateTime =
-  gen_qdatetime.QDateTime(h: fcQFileDevice_fileTime(self.h, cint(time)))
+proc fileTime*(self: gen_qfiledevice_types.QFileDevice, time: cint): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQFileDevice_fileTime(self.h, cint(time)))
 
-proc setFileTime*(self: gen_qfiledevice_types.QFileDevice, newDate: gen_qdatetime.QDateTime, fileTime: cint): bool =
+proc setFileTime*(self: gen_qfiledevice_types.QFileDevice, newDate: gen_qdatetime_types.QDateTime, fileTime: cint): bool =
   fcQFileDevice_setFileTime(self.h, newDate.h, cint(fileTime))
 
 proc tr*(_: type gen_qfiledevice_types.QFileDevice, s: cstring, c: cstring): string =
@@ -216,7 +212,7 @@ proc tr*(_: type gen_qfiledevice_types.QFileDevice, s: cstring, c: cstring, n: c
 proc map*(self: gen_qfiledevice_types.QFileDevice, offset: clonglong, size: clonglong, flags: cint): ptr uint8 =
   fcQFileDevice_map3(self.h, offset, size, cint(flags))
 
-proc staticMetaObject*(_: type gen_qfiledevice_types.QFileDevice): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQFileDevice_staticMetaObject())
+proc staticMetaObject*(_: type gen_qfiledevice_types.QFileDevice): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQFileDevice_staticMetaObject())
 proc delete*(self: gen_qfiledevice_types.QFileDevice) =
   fcQFileDevice_delete(self.h)

@@ -66,22 +66,18 @@ type QSurfaceFormatColorSpaceEnum* = distinct cint
 template DefaultColorSpace*(_: type QSurfaceFormatColorSpaceEnum): untyped = 0
 template sRGBColorSpace*(_: type QSurfaceFormatColorSpaceEnum): untyped = 1
 
-
 import gen_qsurfaceformat_types
 export gen_qsurfaceformat_types
 
 import
-  gen_qcolorspace,
-  gen_qobjectdefs
+  gen_qcolorspace_types,
+  gen_qobjectdefs_types
 export
-  gen_qcolorspace,
-  gen_qobjectdefs
+  gen_qcolorspace_types,
+  gen_qobjectdefs_types
 
 type cQSurfaceFormat*{.exportc: "QSurfaceFormat", incompleteStruct.} = object
 
-proc fcQSurfaceFormat_new(): ptr cQSurfaceFormat {.importc: "QSurfaceFormat_new".}
-proc fcQSurfaceFormat_new2(options: cint): ptr cQSurfaceFormat {.importc: "QSurfaceFormat_new2".}
-proc fcQSurfaceFormat_new3(other: pointer): ptr cQSurfaceFormat {.importc: "QSurfaceFormat_new3".}
 proc fcQSurfaceFormat_operatorAssign(self: pointer, other: pointer): void {.importc: "QSurfaceFormat_operatorAssign".}
 proc fcQSurfaceFormat_setDepthBufferSize(self: pointer, size: cint): void {.importc: "QSurfaceFormat_setDepthBufferSize".}
 proc fcQSurfaceFormat_depthBufferSize(self: pointer, ): cint {.importc: "QSurfaceFormat_depthBufferSize".}
@@ -124,20 +120,11 @@ proc fcQSurfaceFormat_setColorSpaceWithColorSpace(self: pointer, colorSpace: cin
 proc fcQSurfaceFormat_setDefaultFormat(format: pointer): void {.importc: "QSurfaceFormat_setDefaultFormat".}
 proc fcQSurfaceFormat_defaultFormat(): pointer {.importc: "QSurfaceFormat_defaultFormat".}
 proc fcQSurfaceFormat_setOption2(self: pointer, option: cint, on: bool): void {.importc: "QSurfaceFormat_setOption2".}
+proc fcQSurfaceFormat_new(): ptr cQSurfaceFormat {.importc: "QSurfaceFormat_new".}
+proc fcQSurfaceFormat_new2(options: cint): ptr cQSurfaceFormat {.importc: "QSurfaceFormat_new2".}
+proc fcQSurfaceFormat_new3(other: pointer): ptr cQSurfaceFormat {.importc: "QSurfaceFormat_new3".}
 proc fcQSurfaceFormat_staticMetaObject(): pointer {.importc: "QSurfaceFormat_staticMetaObject".}
 proc fcQSurfaceFormat_delete(self: pointer) {.importc: "QSurfaceFormat_delete".}
-
-
-func init*(T: type gen_qsurfaceformat_types.QSurfaceFormat, h: ptr cQSurfaceFormat): gen_qsurfaceformat_types.QSurfaceFormat =
-  T(h: h)
-proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat, ): gen_qsurfaceformat_types.QSurfaceFormat =
-  gen_qsurfaceformat_types.QSurfaceFormat.init(fcQSurfaceFormat_new())
-
-proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat, options: cint): gen_qsurfaceformat_types.QSurfaceFormat =
-  gen_qsurfaceformat_types.QSurfaceFormat.init(fcQSurfaceFormat_new2(cint(options)))
-
-proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat, other: gen_qsurfaceformat_types.QSurfaceFormat): gen_qsurfaceformat_types.QSurfaceFormat =
-  gen_qsurfaceformat_types.QSurfaceFormat.init(fcQSurfaceFormat_new3(other.h))
 
 proc operatorAssign*(self: gen_qsurfaceformat_types.QSurfaceFormat, other: gen_qsurfaceformat_types.QSurfaceFormat): void =
   fcQSurfaceFormat_operatorAssign(self.h, other.h)
@@ -254,10 +241,10 @@ proc swapInterval*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 proc setSwapInterval*(self: gen_qsurfaceformat_types.QSurfaceFormat, interval: cint): void =
   fcQSurfaceFormat_setSwapInterval(self.h, interval)
 
-proc colorSpace*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): gen_qcolorspace.QColorSpace =
-  gen_qcolorspace.QColorSpace(h: fcQSurfaceFormat_colorSpace(self.h))
+proc colorSpace*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): gen_qcolorspace_types.QColorSpace =
+  gen_qcolorspace_types.QColorSpace(h: fcQSurfaceFormat_colorSpace(self.h))
 
-proc setColorSpace*(self: gen_qsurfaceformat_types.QSurfaceFormat, colorSpace: gen_qcolorspace.QColorSpace): void =
+proc setColorSpace*(self: gen_qsurfaceformat_types.QSurfaceFormat, colorSpace: gen_qcolorspace_types.QColorSpace): void =
   fcQSurfaceFormat_setColorSpace(self.h, colorSpace.h)
 
 proc setColorSpace*(self: gen_qsurfaceformat_types.QSurfaceFormat, colorSpace: cint): void =
@@ -272,7 +259,18 @@ proc defaultFormat*(_: type gen_qsurfaceformat_types.QSurfaceFormat, ): gen_qsur
 proc setOption*(self: gen_qsurfaceformat_types.QSurfaceFormat, option: cint, on: bool): void =
   fcQSurfaceFormat_setOption2(self.h, cint(option), on)
 
-proc staticMetaObject*(_: type gen_qsurfaceformat_types.QSurfaceFormat): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSurfaceFormat_staticMetaObject())
+proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat): gen_qsurfaceformat_types.QSurfaceFormat =
+  gen_qsurfaceformat_types.QSurfaceFormat(h: fcQSurfaceFormat_new())
+
+proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat,
+    options: cint): gen_qsurfaceformat_types.QSurfaceFormat =
+  gen_qsurfaceformat_types.QSurfaceFormat(h: fcQSurfaceFormat_new2(cint(options)))
+
+proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat,
+    other: gen_qsurfaceformat_types.QSurfaceFormat): gen_qsurfaceformat_types.QSurfaceFormat =
+  gen_qsurfaceformat_types.QSurfaceFormat(h: fcQSurfaceFormat_new3(other.h))
+
+proc staticMetaObject*(_: type gen_qsurfaceformat_types.QSurfaceFormat): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSurfaceFormat_staticMetaObject())
 proc delete*(self: gen_qsurfaceformat_types.QSurfaceFormat) =
   fcQSurfaceFormat_delete(self.h)

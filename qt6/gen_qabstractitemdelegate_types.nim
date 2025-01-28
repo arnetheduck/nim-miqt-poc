@@ -1,4 +1,4 @@
 import gen_qobject_types
 export gen_qobject_types
-type QAbstractItemDelegate*  = object of gen_qobject_types.QObject
 
+type QAbstractItemDelegate* = object of gen_qobject_types.QObject

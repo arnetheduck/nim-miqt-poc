@@ -33,7 +33,6 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qqmlmoduleregistration.cpp", cflags).}
 
-
 import gen_qqmlmoduleregistration_types
 export gen_qqmlmoduleregistration_types
 
@@ -42,8 +41,5 @@ type cQQmlModuleRegistration*{.exportc: "QQmlModuleRegistration", incompleteStru
 
 proc fcQQmlModuleRegistration_delete(self: pointer) {.importc: "QQmlModuleRegistration_delete".}
 
-
-func init*(T: type gen_qqmlmoduleregistration_types.QQmlModuleRegistration, h: ptr cQQmlModuleRegistration): gen_qqmlmoduleregistration_types.QQmlModuleRegistration =
-  T(h: h)
 proc delete*(self: gen_qqmlmoduleregistration_types.QQmlModuleRegistration) =
   fcQQmlModuleRegistration_delete(self.h)

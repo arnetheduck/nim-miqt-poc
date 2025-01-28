@@ -59,16 +59,15 @@ template ColorFilterBlackboard*(_: type QCameraImageProcessingColorFilterEnum): 
 template ColorFilterAqua*(_: type QCameraImageProcessingColorFilterEnum): untyped = 8
 template ColorFilterVendor*(_: type QCameraImageProcessingColorFilterEnum): untyped = 1000
 
-
 import gen_qcameraimageprocessing_types
 export gen_qcameraimageprocessing_types
 
 import
   gen_qobject,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
   gen_qobject,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQCameraImageProcessing*{.exportc: "QCameraImageProcessing", incompleteStruct.} = object
 
@@ -102,11 +101,8 @@ proc fcQCameraImageProcessing_trUtf82(s: cstring, c: cstring): struct_miqt_strin
 proc fcQCameraImageProcessing_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraImageProcessing_trUtf83".}
 proc fcQCameraImageProcessing_staticMetaObject(): pointer {.importc: "QCameraImageProcessing_staticMetaObject".}
 
-
-func init*(T: type gen_qcameraimageprocessing_types.QCameraImageProcessing, h: ptr cQCameraImageProcessing): gen_qcameraimageprocessing_types.QCameraImageProcessing =
-  T(h: h)
-proc metaObject*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraImageProcessing_metaObject(self.h))
+proc metaObject*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraImageProcessing_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, param1: cstring): pointer =
   fcQCameraImageProcessing_metacast(self.h, param1)
@@ -207,5 +203,5 @@ proc trUtf8*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing, s:
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraImageProcessing_staticMetaObject())
+proc staticMetaObject*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraImageProcessing_staticMetaObject())

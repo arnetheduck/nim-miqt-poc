@@ -1,4 +1,4 @@
 import gen_qabstractscrollarea_types
 export gen_qabstractscrollarea_types
-type QsciScintillaBase*  = object of gen_qabstractscrollarea_types.QAbstractScrollArea
 
+type QsciScintillaBase* = object of gen_qabstractscrollarea_types.QAbstractScrollArea

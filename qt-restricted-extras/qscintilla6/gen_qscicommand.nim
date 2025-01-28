@@ -135,7 +135,6 @@ template ZoomIn*(_: type QsciCommandCommandEnum): untyped = 2333
 template ZoomOut*(_: type QsciCommandCommandEnum): untyped = 2334
 template ReverseLines*(_: type QsciCommandCommandEnum): untyped = 2354
 
-
 import gen_qscicommand_types
 export gen_qscicommand_types
 
@@ -152,9 +151,6 @@ proc fcQsciCommand_validKey(key: cint): bool {.importc: "QsciCommand_validKey".}
 proc fcQsciCommand_description(self: pointer, ): struct_miqt_string {.importc: "QsciCommand_description".}
 proc fcQsciCommand_delete(self: pointer) {.importc: "QsciCommand_delete".}
 
-
-func init*(T: type gen_qscicommand_types.QsciCommand, h: ptr cQsciCommand): gen_qscicommand_types.QsciCommand =
-  T(h: h)
 proc command*(self: gen_qscicommand_types.QsciCommand, ): cint =
   cint(fcQsciCommand_command(self.h))
 

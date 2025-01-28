@@ -39,20 +39,16 @@ template NoError*(_: type QHostInfoHostInfoErrorEnum): untyped = 0
 template HostNotFound*(_: type QHostInfoHostInfoErrorEnum): untyped = 1
 template UnknownError*(_: type QHostInfoHostInfoErrorEnum): untyped = 2
 
-
 import gen_qhostinfo_types
 export gen_qhostinfo_types
 
 import
-  gen_qhostaddress
+  gen_qhostaddress_types
 export
-  gen_qhostaddress
+  gen_qhostaddress_types
 
 type cQHostInfo*{.exportc: "QHostInfo", incompleteStruct.} = object
 
-proc fcQHostInfo_new(): ptr cQHostInfo {.importc: "QHostInfo_new".}
-proc fcQHostInfo_new2(d: pointer): ptr cQHostInfo {.importc: "QHostInfo_new2".}
-proc fcQHostInfo_new3(lookupId: cint): ptr cQHostInfo {.importc: "QHostInfo_new3".}
 proc fcQHostInfo_operatorAssign(self: pointer, d: pointer): void {.importc: "QHostInfo_operatorAssign".}
 proc fcQHostInfo_swap(self: pointer, other: pointer): void {.importc: "QHostInfo_swap".}
 proc fcQHostInfo_hostName(self: pointer, ): struct_miqt_string {.importc: "QHostInfo_hostName".}
@@ -69,19 +65,10 @@ proc fcQHostInfo_abortHostLookup(lookupId: cint): void {.importc: "QHostInfo_abo
 proc fcQHostInfo_fromName(name: struct_miqt_string): pointer {.importc: "QHostInfo_fromName".}
 proc fcQHostInfo_localHostName(): struct_miqt_string {.importc: "QHostInfo_localHostName".}
 proc fcQHostInfo_localDomainName(): struct_miqt_string {.importc: "QHostInfo_localDomainName".}
+proc fcQHostInfo_new(): ptr cQHostInfo {.importc: "QHostInfo_new".}
+proc fcQHostInfo_new2(d: pointer): ptr cQHostInfo {.importc: "QHostInfo_new2".}
+proc fcQHostInfo_new3(lookupId: cint): ptr cQHostInfo {.importc: "QHostInfo_new3".}
 proc fcQHostInfo_delete(self: pointer) {.importc: "QHostInfo_delete".}
-
-
-func init*(T: type gen_qhostinfo_types.QHostInfo, h: ptr cQHostInfo): gen_qhostinfo_types.QHostInfo =
-  T(h: h)
-proc create*(T: type gen_qhostinfo_types.QHostInfo, ): gen_qhostinfo_types.QHostInfo =
-  gen_qhostinfo_types.QHostInfo.init(fcQHostInfo_new())
-
-proc create*(T: type gen_qhostinfo_types.QHostInfo, d: gen_qhostinfo_types.QHostInfo): gen_qhostinfo_types.QHostInfo =
-  gen_qhostinfo_types.QHostInfo.init(fcQHostInfo_new2(d.h))
-
-proc create*(T: type gen_qhostinfo_types.QHostInfo, lookupId: cint): gen_qhostinfo_types.QHostInfo =
-  gen_qhostinfo_types.QHostInfo.init(fcQHostInfo_new3(lookupId))
 
 proc operatorAssign*(self: gen_qhostinfo_types.QHostInfo, d: gen_qhostinfo_types.QHostInfo): void =
   fcQHostInfo_operatorAssign(self.h, d.h)
@@ -98,15 +85,15 @@ proc hostName*(self: gen_qhostinfo_types.QHostInfo, ): string =
 proc setHostName*(self: gen_qhostinfo_types.QHostInfo, name: string): void =
   fcQHostInfo_setHostName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc addresses*(self: gen_qhostinfo_types.QHostInfo, ): seq[gen_qhostaddress.QHostAddress] =
+proc addresses*(self: gen_qhostinfo_types.QHostInfo, ): seq[gen_qhostaddress_types.QHostAddress] =
   var v_ma = fcQHostInfo_addresses(self.h)
-  var vx_ret = newSeq[gen_qhostaddress.QHostAddress](int(v_ma.len))
+  var vx_ret = newSeq[gen_qhostaddress_types.QHostAddress](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qhostaddress.QHostAddress(h: v_outCast[i])
+    vx_ret[i] = gen_qhostaddress_types.QHostAddress(h: v_outCast[i])
   vx_ret
 
-proc setAddresses*(self: gen_qhostinfo_types.QHostInfo, addresses: seq[gen_qhostaddress.QHostAddress]): void =
+proc setAddresses*(self: gen_qhostinfo_types.QHostInfo, addresses: seq[gen_qhostaddress_types.QHostAddress]): void =
   var addresses_CArray = newSeq[pointer](len(addresses))
   for i in 0..<len(addresses):
     addresses_CArray[i] = addresses[i].h
@@ -151,6 +138,17 @@ proc localDomainName*(_: type gen_qhostinfo_types.QHostInfo, ): string =
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
+
+proc create*(T: type gen_qhostinfo_types.QHostInfo): gen_qhostinfo_types.QHostInfo =
+  gen_qhostinfo_types.QHostInfo(h: fcQHostInfo_new())
+
+proc create*(T: type gen_qhostinfo_types.QHostInfo,
+    d: gen_qhostinfo_types.QHostInfo): gen_qhostinfo_types.QHostInfo =
+  gen_qhostinfo_types.QHostInfo(h: fcQHostInfo_new2(d.h))
+
+proc create*(T: type gen_qhostinfo_types.QHostInfo,
+    lookupId: cint): gen_qhostinfo_types.QHostInfo =
+  gen_qhostinfo_types.QHostInfo(h: fcQHostInfo_new3(lookupId))
 
 proc delete*(self: gen_qhostinfo_types.QHostInfo) =
   fcQHostInfo_delete(self.h)

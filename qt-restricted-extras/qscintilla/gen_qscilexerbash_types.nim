@@ -1,4 +1,4 @@
 import gen_qscilexer_types
 export gen_qscilexer_types
-type QsciLexerBash*  = object of gen_qscilexer_types.QsciLexer
 
+type QsciLexerBash* = object of gen_qscilexer_types.QsciLexer

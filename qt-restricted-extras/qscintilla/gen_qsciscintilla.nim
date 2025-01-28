@@ -201,67 +201,64 @@ template WrapIndentSame*(_: type QsciScintillaWrapIndentModeEnum): untyped = 1
 template WrapIndentIndented*(_: type QsciScintillaWrapIndentModeEnum): untyped = 2
 template WrapIndentDeeplyIndented*(_: type QsciScintillaWrapIndentModeEnum): untyped = 3
 
-
 import gen_qsciscintilla_types
 export gen_qsciscintilla_types
 
 import
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qevent,
-  gen_qfont,
-  gen_qimage,
-  gen_qiodevice,
-  gen_qmenu,
-  gen_qmetaobject,
-  gen_qmimedata,
-  gen_qobject,
-  gen_qobjectdefs,
-  gen_qpaintdevice,
-  gen_qpaintengine,
-  gen_qpainter,
-  gen_qpixmap,
-  gen_qpoint,
-  gen_qscicommandset,
-  gen_qscidocument,
-  gen_qscilexer,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qevent_types,
+  gen_qfont_types,
+  gen_qimage_types,
+  gen_qiodevice_types,
+  gen_qmenu_types,
+  gen_qmetaobject_types,
+  gen_qmimedata_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpaintdevice_types,
+  gen_qpaintengine_types,
+  gen_qpainter_types,
+  gen_qpixmap_types,
+  gen_qpoint_types,
+  gen_qscicommandset_types,
+  gen_qscidocument_types,
+  gen_qscilexer_types,
   gen_qsciscintillabase,
-  gen_qscistyle,
-  gen_qscistyledtext,
-  gen_qsize,
-  gen_qvariant,
-  gen_qwidget
+  gen_qscistyle_types,
+  gen_qscistyledtext_types,
+  gen_qsize_types,
+  gen_qvariant_types,
+  gen_qwidget_types
 export
-  gen_qcolor,
-  gen_qcoreevent,
-  gen_qevent,
-  gen_qfont,
-  gen_qimage,
-  gen_qiodevice,
-  gen_qmenu,
-  gen_qmetaobject,
-  gen_qmimedata,
-  gen_qobject,
-  gen_qobjectdefs,
-  gen_qpaintdevice,
-  gen_qpaintengine,
-  gen_qpainter,
-  gen_qpixmap,
-  gen_qpoint,
-  gen_qscicommandset,
-  gen_qscidocument,
-  gen_qscilexer,
+  gen_qcolor_types,
+  gen_qcoreevent_types,
+  gen_qevent_types,
+  gen_qfont_types,
+  gen_qimage_types,
+  gen_qiodevice_types,
+  gen_qmenu_types,
+  gen_qmetaobject_types,
+  gen_qmimedata_types,
+  gen_qobject_types,
+  gen_qobjectdefs_types,
+  gen_qpaintdevice_types,
+  gen_qpaintengine_types,
+  gen_qpainter_types,
+  gen_qpixmap_types,
+  gen_qpoint_types,
+  gen_qscicommandset_types,
+  gen_qscidocument_types,
+  gen_qscilexer_types,
   gen_qsciscintillabase,
-  gen_qscistyle,
-  gen_qscistyledtext,
-  gen_qsize,
-  gen_qvariant,
-  gen_qwidget
+  gen_qscistyle_types,
+  gen_qscistyledtext_types,
+  gen_qsize_types,
+  gen_qvariant_types,
+  gen_qwidget_types
 
 type cQsciScintilla*{.exportc: "QsciScintilla", incompleteStruct.} = object
 
-proc fcQsciScintilla_new(parent: pointer): ptr cQsciScintilla {.importc: "QsciScintilla_new".}
-proc fcQsciScintilla_new2(): ptr cQsciScintilla {.importc: "QsciScintilla_new2".}
 proc fcQsciScintilla_metaObject(self: pointer, ): pointer {.importc: "QsciScintilla_metaObject".}
 proc fcQsciScintilla_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciScintilla_metacast".}
 proc fcQsciScintilla_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciScintilla_metacall".}
@@ -527,29 +524,29 @@ proc fcQsciScintilla_zoomOut(self: pointer, range: cint): void {.importc: "QsciS
 proc fcQsciScintilla_zoomOut2(self: pointer, ): void {.importc: "QsciScintilla_zoomOut2".}
 proc fcQsciScintilla_zoomTo(self: pointer, size: cint): void {.importc: "QsciScintilla_zoomTo".}
 proc fcQsciScintilla_cursorPositionChanged(self: pointer, line: cint, index: cint): void {.importc: "QsciScintilla_cursorPositionChanged".}
-proc fQsciScintilla_connect_cursorPositionChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_cursorPositionChanged".}
+proc fcQsciScintilla_connect_cursorPositionChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_cursorPositionChanged".}
 proc fcQsciScintilla_copyAvailable(self: pointer, yes: bool): void {.importc: "QsciScintilla_copyAvailable".}
-proc fQsciScintilla_connect_copyAvailable(self: pointer, slot: int) {.importc: "QsciScintilla_connect_copyAvailable".}
+proc fcQsciScintilla_connect_copyAvailable(self: pointer, slot: int) {.importc: "QsciScintilla_connect_copyAvailable".}
 proc fcQsciScintilla_indicatorClicked(self: pointer, line: cint, index: cint, state: cint): void {.importc: "QsciScintilla_indicatorClicked".}
-proc fQsciScintilla_connect_indicatorClicked(self: pointer, slot: int) {.importc: "QsciScintilla_connect_indicatorClicked".}
+proc fcQsciScintilla_connect_indicatorClicked(self: pointer, slot: int) {.importc: "QsciScintilla_connect_indicatorClicked".}
 proc fcQsciScintilla_indicatorReleased(self: pointer, line: cint, index: cint, state: cint): void {.importc: "QsciScintilla_indicatorReleased".}
-proc fQsciScintilla_connect_indicatorReleased(self: pointer, slot: int) {.importc: "QsciScintilla_connect_indicatorReleased".}
+proc fcQsciScintilla_connect_indicatorReleased(self: pointer, slot: int) {.importc: "QsciScintilla_connect_indicatorReleased".}
 proc fcQsciScintilla_linesChanged(self: pointer, ): void {.importc: "QsciScintilla_linesChanged".}
-proc fQsciScintilla_connect_linesChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_linesChanged".}
+proc fcQsciScintilla_connect_linesChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_linesChanged".}
 proc fcQsciScintilla_marginClicked(self: pointer, margin: cint, line: cint, state: cint): void {.importc: "QsciScintilla_marginClicked".}
-proc fQsciScintilla_connect_marginClicked(self: pointer, slot: int) {.importc: "QsciScintilla_connect_marginClicked".}
+proc fcQsciScintilla_connect_marginClicked(self: pointer, slot: int) {.importc: "QsciScintilla_connect_marginClicked".}
 proc fcQsciScintilla_marginRightClicked(self: pointer, margin: cint, line: cint, state: cint): void {.importc: "QsciScintilla_marginRightClicked".}
-proc fQsciScintilla_connect_marginRightClicked(self: pointer, slot: int) {.importc: "QsciScintilla_connect_marginRightClicked".}
+proc fcQsciScintilla_connect_marginRightClicked(self: pointer, slot: int) {.importc: "QsciScintilla_connect_marginRightClicked".}
 proc fcQsciScintilla_modificationAttempted(self: pointer, ): void {.importc: "QsciScintilla_modificationAttempted".}
-proc fQsciScintilla_connect_modificationAttempted(self: pointer, slot: int) {.importc: "QsciScintilla_connect_modificationAttempted".}
+proc fcQsciScintilla_connect_modificationAttempted(self: pointer, slot: int) {.importc: "QsciScintilla_connect_modificationAttempted".}
 proc fcQsciScintilla_modificationChanged(self: pointer, m: bool): void {.importc: "QsciScintilla_modificationChanged".}
-proc fQsciScintilla_connect_modificationChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_modificationChanged".}
+proc fcQsciScintilla_connect_modificationChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_modificationChanged".}
 proc fcQsciScintilla_selectionChanged(self: pointer, ): void {.importc: "QsciScintilla_selectionChanged".}
-proc fQsciScintilla_connect_selectionChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_selectionChanged".}
+proc fcQsciScintilla_connect_selectionChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_selectionChanged".}
 proc fcQsciScintilla_textChanged(self: pointer, ): void {.importc: "QsciScintilla_textChanged".}
-proc fQsciScintilla_connect_textChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_textChanged".}
+proc fcQsciScintilla_connect_textChanged(self: pointer, slot: int) {.importc: "QsciScintilla_connect_textChanged".}
 proc fcQsciScintilla_userListActivated(self: pointer, id: cint, string: struct_miqt_string): void {.importc: "QsciScintilla_userListActivated".}
-proc fQsciScintilla_connect_userListActivated(self: pointer, slot: int) {.importc: "QsciScintilla_connect_userListActivated".}
+proc fcQsciScintilla_connect_userListActivated(self: pointer, slot: int) {.importc: "QsciScintilla_connect_userListActivated".}
 proc fcQsciScintilla_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciScintilla_tr2".}
 proc fcQsciScintilla_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciScintilla_tr3".}
 proc fcQsciScintilla_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciScintilla_trUtf82".}
@@ -572,300 +569,295 @@ proc fcQsciScintilla_setMarkerBackgroundColor2(self: pointer, col: pointer, mark
 proc fcQsciScintilla_setMarkerForegroundColor2(self: pointer, col: pointer, markerNumber: cint): void {.importc: "QsciScintilla_setMarkerForegroundColor2".}
 proc fcQsciScintilla_setWrapVisualFlags2(self: pointer, endFlag: cint, startFlag: cint): void {.importc: "QsciScintilla_setWrapVisualFlags2".}
 proc fcQsciScintilla_setWrapVisualFlags3(self: pointer, endFlag: cint, startFlag: cint, indent: cint): void {.importc: "QsciScintilla_setWrapVisualFlags3".}
-proc fQsciScintilla_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciScintilla_virtualbase_metaObject".}
-proc fcQsciScintilla_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_metaObject".}
-proc fQsciScintilla_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciScintilla_virtualbase_metacast".}
-proc fcQsciScintilla_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_metacast".}
-proc fQsciScintilla_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciScintilla_virtualbase_metacall".}
-proc fcQsciScintilla_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_metacall".}
-proc fQsciScintilla_virtualbase_apiContext(self: pointer, pos: cint, context_start: ptr cint, last_word_start: ptr cint): struct_miqt_array{.importc: "QsciScintilla_virtualbase_apiContext".}
-proc fcQsciScintilla_override_virtual_apiContext(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_apiContext".}
-proc fQsciScintilla_virtualbase_findFirst(self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool{.importc: "QsciScintilla_virtualbase_findFirst".}
-proc fcQsciScintilla_override_virtual_findFirst(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_findFirst".}
-proc fQsciScintilla_virtualbase_findFirstInSelection(self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool{.importc: "QsciScintilla_virtualbase_findFirstInSelection".}
-proc fcQsciScintilla_override_virtual_findFirstInSelection(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_findFirstInSelection".}
-proc fQsciScintilla_virtualbase_findNext(self: pointer, ): bool{.importc: "QsciScintilla_virtualbase_findNext".}
-proc fcQsciScintilla_override_virtual_findNext(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_findNext".}
-proc fQsciScintilla_virtualbase_recolor(self: pointer, start: cint, endVal: cint): void{.importc: "QsciScintilla_virtualbase_recolor".}
-proc fcQsciScintilla_override_virtual_recolor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_recolor".}
-proc fQsciScintilla_virtualbase_replace(self: pointer, replaceStr: struct_miqt_string): void{.importc: "QsciScintilla_virtualbase_replace".}
-proc fcQsciScintilla_override_virtual_replace(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_replace".}
-proc fQsciScintilla_virtualbase_append(self: pointer, text: struct_miqt_string): void{.importc: "QsciScintilla_virtualbase_append".}
-proc fcQsciScintilla_override_virtual_append(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_append".}
-proc fQsciScintilla_virtualbase_autoCompleteFromAll(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_autoCompleteFromAll".}
-proc fcQsciScintilla_override_virtual_autoCompleteFromAll(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_autoCompleteFromAll".}
-proc fQsciScintilla_virtualbase_autoCompleteFromAPIs(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_autoCompleteFromAPIs".}
-proc fcQsciScintilla_override_virtual_autoCompleteFromAPIs(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_autoCompleteFromAPIs".}
-proc fQsciScintilla_virtualbase_autoCompleteFromDocument(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_autoCompleteFromDocument".}
-proc fcQsciScintilla_override_virtual_autoCompleteFromDocument(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_autoCompleteFromDocument".}
-proc fQsciScintilla_virtualbase_callTip(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_callTip".}
-proc fcQsciScintilla_override_virtual_callTip(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_callTip".}
-proc fQsciScintilla_virtualbase_clear(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_clear".}
-proc fcQsciScintilla_override_virtual_clear(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_clear".}
-proc fQsciScintilla_virtualbase_copy(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_copy".}
-proc fcQsciScintilla_override_virtual_copy(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_copy".}
-proc fQsciScintilla_virtualbase_cut(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_cut".}
-proc fcQsciScintilla_override_virtual_cut(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_cut".}
-proc fQsciScintilla_virtualbase_ensureCursorVisible(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_ensureCursorVisible".}
-proc fcQsciScintilla_override_virtual_ensureCursorVisible(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_ensureCursorVisible".}
-proc fQsciScintilla_virtualbase_ensureLineVisible(self: pointer, line: cint): void{.importc: "QsciScintilla_virtualbase_ensureLineVisible".}
-proc fcQsciScintilla_override_virtual_ensureLineVisible(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_ensureLineVisible".}
-proc fQsciScintilla_virtualbase_foldAll(self: pointer, children: bool): void{.importc: "QsciScintilla_virtualbase_foldAll".}
-proc fcQsciScintilla_override_virtual_foldAll(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_foldAll".}
-proc fQsciScintilla_virtualbase_foldLine(self: pointer, line: cint): void{.importc: "QsciScintilla_virtualbase_foldLine".}
-proc fcQsciScintilla_override_virtual_foldLine(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_foldLine".}
-proc fQsciScintilla_virtualbase_indent(self: pointer, line: cint): void{.importc: "QsciScintilla_virtualbase_indent".}
-proc fcQsciScintilla_override_virtual_indent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_indent".}
-proc fQsciScintilla_virtualbase_insert(self: pointer, text: struct_miqt_string): void{.importc: "QsciScintilla_virtualbase_insert".}
-proc fcQsciScintilla_override_virtual_insert(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_insert".}
-proc fQsciScintilla_virtualbase_insertAt(self: pointer, text: struct_miqt_string, line: cint, index: cint): void{.importc: "QsciScintilla_virtualbase_insertAt".}
-proc fcQsciScintilla_override_virtual_insertAt(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_insertAt".}
-proc fQsciScintilla_virtualbase_moveToMatchingBrace(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_moveToMatchingBrace".}
-proc fcQsciScintilla_override_virtual_moveToMatchingBrace(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_moveToMatchingBrace".}
-proc fQsciScintilla_virtualbase_paste(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_paste".}
-proc fcQsciScintilla_override_virtual_paste(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_paste".}
-proc fQsciScintilla_virtualbase_redo(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_redo".}
-proc fcQsciScintilla_override_virtual_redo(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_redo".}
-proc fQsciScintilla_virtualbase_removeSelectedText(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_removeSelectedText".}
-proc fcQsciScintilla_override_virtual_removeSelectedText(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_removeSelectedText".}
-proc fQsciScintilla_virtualbase_replaceSelectedText(self: pointer, text: struct_miqt_string): void{.importc: "QsciScintilla_virtualbase_replaceSelectedText".}
-proc fcQsciScintilla_override_virtual_replaceSelectedText(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_replaceSelectedText".}
-proc fQsciScintilla_virtualbase_resetSelectionBackgroundColor(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_resetSelectionBackgroundColor".}
-proc fcQsciScintilla_override_virtual_resetSelectionBackgroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_resetSelectionBackgroundColor".}
-proc fQsciScintilla_virtualbase_resetSelectionForegroundColor(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_resetSelectionForegroundColor".}
-proc fcQsciScintilla_override_virtual_resetSelectionForegroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_resetSelectionForegroundColor".}
-proc fQsciScintilla_virtualbase_selectAll(self: pointer, select: bool): void{.importc: "QsciScintilla_virtualbase_selectAll".}
-proc fcQsciScintilla_override_virtual_selectAll(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_selectAll".}
-proc fQsciScintilla_virtualbase_selectToMatchingBrace(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_selectToMatchingBrace".}
-proc fcQsciScintilla_override_virtual_selectToMatchingBrace(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_selectToMatchingBrace".}
-proc fQsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(self: pointer, cs: bool): void{.importc: "QsciScintilla_virtualbase_setAutoCompletionCaseSensitivity".}
-proc fcQsciScintilla_override_virtual_setAutoCompletionCaseSensitivity(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setAutoCompletionCaseSensitivity".}
-proc fQsciScintilla_virtualbase_setAutoCompletionReplaceWord(self: pointer, replace: bool): void{.importc: "QsciScintilla_virtualbase_setAutoCompletionReplaceWord".}
-proc fcQsciScintilla_override_virtual_setAutoCompletionReplaceWord(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setAutoCompletionReplaceWord".}
-proc fQsciScintilla_virtualbase_setAutoCompletionShowSingle(self: pointer, single: bool): void{.importc: "QsciScintilla_virtualbase_setAutoCompletionShowSingle".}
-proc fcQsciScintilla_override_virtual_setAutoCompletionShowSingle(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setAutoCompletionShowSingle".}
-proc fQsciScintilla_virtualbase_setAutoCompletionSource(self: pointer, source: cint): void{.importc: "QsciScintilla_virtualbase_setAutoCompletionSource".}
-proc fcQsciScintilla_override_virtual_setAutoCompletionSource(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setAutoCompletionSource".}
-proc fQsciScintilla_virtualbase_setAutoCompletionThreshold(self: pointer, thresh: cint): void{.importc: "QsciScintilla_virtualbase_setAutoCompletionThreshold".}
-proc fcQsciScintilla_override_virtual_setAutoCompletionThreshold(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setAutoCompletionThreshold".}
-proc fQsciScintilla_virtualbase_setAutoCompletionUseSingle(self: pointer, single: cint): void{.importc: "QsciScintilla_virtualbase_setAutoCompletionUseSingle".}
-proc fcQsciScintilla_override_virtual_setAutoCompletionUseSingle(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setAutoCompletionUseSingle".}
-proc fQsciScintilla_virtualbase_setAutoIndent(self: pointer, autoindent: bool): void{.importc: "QsciScintilla_virtualbase_setAutoIndent".}
-proc fcQsciScintilla_override_virtual_setAutoIndent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setAutoIndent".}
-proc fQsciScintilla_virtualbase_setBraceMatching(self: pointer, bm: cint): void{.importc: "QsciScintilla_virtualbase_setBraceMatching".}
-proc fcQsciScintilla_override_virtual_setBraceMatching(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setBraceMatching".}
-proc fQsciScintilla_virtualbase_setBackspaceUnindents(self: pointer, unindent: bool): void{.importc: "QsciScintilla_virtualbase_setBackspaceUnindents".}
-proc fcQsciScintilla_override_virtual_setBackspaceUnindents(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setBackspaceUnindents".}
-proc fQsciScintilla_virtualbase_setCaretForegroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setCaretForegroundColor".}
-proc fcQsciScintilla_override_virtual_setCaretForegroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setCaretForegroundColor".}
-proc fQsciScintilla_virtualbase_setCaretLineBackgroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setCaretLineBackgroundColor".}
-proc fcQsciScintilla_override_virtual_setCaretLineBackgroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setCaretLineBackgroundColor".}
-proc fQsciScintilla_virtualbase_setCaretLineFrameWidth(self: pointer, width: cint): void{.importc: "QsciScintilla_virtualbase_setCaretLineFrameWidth".}
-proc fcQsciScintilla_override_virtual_setCaretLineFrameWidth(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setCaretLineFrameWidth".}
-proc fQsciScintilla_virtualbase_setCaretLineVisible(self: pointer, enable: bool): void{.importc: "QsciScintilla_virtualbase_setCaretLineVisible".}
-proc fcQsciScintilla_override_virtual_setCaretLineVisible(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setCaretLineVisible".}
-proc fQsciScintilla_virtualbase_setCaretWidth(self: pointer, width: cint): void{.importc: "QsciScintilla_virtualbase_setCaretWidth".}
-proc fcQsciScintilla_override_virtual_setCaretWidth(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setCaretWidth".}
-proc fQsciScintilla_virtualbase_setColor(self: pointer, c: pointer): void{.importc: "QsciScintilla_virtualbase_setColor".}
-proc fcQsciScintilla_override_virtual_setColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setColor".}
-proc fQsciScintilla_virtualbase_setCursorPosition(self: pointer, line: cint, index: cint): void{.importc: "QsciScintilla_virtualbase_setCursorPosition".}
-proc fcQsciScintilla_override_virtual_setCursorPosition(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setCursorPosition".}
-proc fQsciScintilla_virtualbase_setEolMode(self: pointer, mode: cint): void{.importc: "QsciScintilla_virtualbase_setEolMode".}
-proc fcQsciScintilla_override_virtual_setEolMode(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setEolMode".}
-proc fQsciScintilla_virtualbase_setEolVisibility(self: pointer, visible: bool): void{.importc: "QsciScintilla_virtualbase_setEolVisibility".}
-proc fcQsciScintilla_override_virtual_setEolVisibility(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setEolVisibility".}
-proc fQsciScintilla_virtualbase_setFolding(self: pointer, fold: cint, margin: cint): void{.importc: "QsciScintilla_virtualbase_setFolding".}
-proc fcQsciScintilla_override_virtual_setFolding(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setFolding".}
-proc fQsciScintilla_virtualbase_setIndentation(self: pointer, line: cint, indentation: cint): void{.importc: "QsciScintilla_virtualbase_setIndentation".}
-proc fcQsciScintilla_override_virtual_setIndentation(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setIndentation".}
-proc fQsciScintilla_virtualbase_setIndentationGuides(self: pointer, enable: bool): void{.importc: "QsciScintilla_virtualbase_setIndentationGuides".}
-proc fcQsciScintilla_override_virtual_setIndentationGuides(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setIndentationGuides".}
-proc fQsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor".}
-proc fcQsciScintilla_override_virtual_setIndentationGuidesBackgroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setIndentationGuidesBackgroundColor".}
-proc fQsciScintilla_virtualbase_setIndentationGuidesForegroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setIndentationGuidesForegroundColor".}
-proc fcQsciScintilla_override_virtual_setIndentationGuidesForegroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setIndentationGuidesForegroundColor".}
-proc fQsciScintilla_virtualbase_setIndentationsUseTabs(self: pointer, tabs: bool): void{.importc: "QsciScintilla_virtualbase_setIndentationsUseTabs".}
-proc fcQsciScintilla_override_virtual_setIndentationsUseTabs(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setIndentationsUseTabs".}
-proc fQsciScintilla_virtualbase_setIndentationWidth(self: pointer, width: cint): void{.importc: "QsciScintilla_virtualbase_setIndentationWidth".}
-proc fcQsciScintilla_override_virtual_setIndentationWidth(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setIndentationWidth".}
-proc fQsciScintilla_virtualbase_setLexer(self: pointer, lexer: pointer): void{.importc: "QsciScintilla_virtualbase_setLexer".}
-proc fcQsciScintilla_override_virtual_setLexer(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setLexer".}
-proc fQsciScintilla_virtualbase_setMarginsBackgroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setMarginsBackgroundColor".}
-proc fcQsciScintilla_override_virtual_setMarginsBackgroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginsBackgroundColor".}
-proc fQsciScintilla_virtualbase_setMarginsFont(self: pointer, f: pointer): void{.importc: "QsciScintilla_virtualbase_setMarginsFont".}
-proc fcQsciScintilla_override_virtual_setMarginsFont(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginsFont".}
-proc fQsciScintilla_virtualbase_setMarginsForegroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setMarginsForegroundColor".}
-proc fcQsciScintilla_override_virtual_setMarginsForegroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginsForegroundColor".}
-proc fQsciScintilla_virtualbase_setMarginLineNumbers(self: pointer, margin: cint, lnrs: bool): void{.importc: "QsciScintilla_virtualbase_setMarginLineNumbers".}
-proc fcQsciScintilla_override_virtual_setMarginLineNumbers(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginLineNumbers".}
-proc fQsciScintilla_virtualbase_setMarginMarkerMask(self: pointer, margin: cint, mask: cint): void{.importc: "QsciScintilla_virtualbase_setMarginMarkerMask".}
-proc fcQsciScintilla_override_virtual_setMarginMarkerMask(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginMarkerMask".}
-proc fQsciScintilla_virtualbase_setMarginSensitivity(self: pointer, margin: cint, sens: bool): void{.importc: "QsciScintilla_virtualbase_setMarginSensitivity".}
-proc fcQsciScintilla_override_virtual_setMarginSensitivity(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginSensitivity".}
-proc fQsciScintilla_virtualbase_setMarginWidth(self: pointer, margin: cint, width: cint): void{.importc: "QsciScintilla_virtualbase_setMarginWidth".}
-proc fcQsciScintilla_override_virtual_setMarginWidth(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginWidth".}
-proc fQsciScintilla_virtualbase_setMarginWidth2(self: pointer, margin: cint, s: struct_miqt_string): void{.importc: "QsciScintilla_virtualbase_setMarginWidth2".}
-proc fcQsciScintilla_override_virtual_setMarginWidth2(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setMarginWidth2".}
-proc fQsciScintilla_virtualbase_setModified(self: pointer, m: bool): void{.importc: "QsciScintilla_virtualbase_setModified".}
-proc fcQsciScintilla_override_virtual_setModified(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setModified".}
-proc fQsciScintilla_virtualbase_setPaper(self: pointer, c: pointer): void{.importc: "QsciScintilla_virtualbase_setPaper".}
-proc fcQsciScintilla_override_virtual_setPaper(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setPaper".}
-proc fQsciScintilla_virtualbase_setReadOnly(self: pointer, ro: bool): void{.importc: "QsciScintilla_virtualbase_setReadOnly".}
-proc fcQsciScintilla_override_virtual_setReadOnly(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setReadOnly".}
-proc fQsciScintilla_virtualbase_setSelection(self: pointer, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void{.importc: "QsciScintilla_virtualbase_setSelection".}
-proc fcQsciScintilla_override_virtual_setSelection(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setSelection".}
-proc fQsciScintilla_virtualbase_setSelectionBackgroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setSelectionBackgroundColor".}
-proc fcQsciScintilla_override_virtual_setSelectionBackgroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setSelectionBackgroundColor".}
-proc fQsciScintilla_virtualbase_setSelectionForegroundColor(self: pointer, col: pointer): void{.importc: "QsciScintilla_virtualbase_setSelectionForegroundColor".}
-proc fcQsciScintilla_override_virtual_setSelectionForegroundColor(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setSelectionForegroundColor".}
-proc fQsciScintilla_virtualbase_setTabIndents(self: pointer, indent: bool): void{.importc: "QsciScintilla_virtualbase_setTabIndents".}
-proc fcQsciScintilla_override_virtual_setTabIndents(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setTabIndents".}
-proc fQsciScintilla_virtualbase_setTabWidth(self: pointer, width: cint): void{.importc: "QsciScintilla_virtualbase_setTabWidth".}
-proc fcQsciScintilla_override_virtual_setTabWidth(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setTabWidth".}
-proc fQsciScintilla_virtualbase_setText(self: pointer, text: struct_miqt_string): void{.importc: "QsciScintilla_virtualbase_setText".}
-proc fcQsciScintilla_override_virtual_setText(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setText".}
-proc fQsciScintilla_virtualbase_setUtf8(self: pointer, cp: bool): void{.importc: "QsciScintilla_virtualbase_setUtf8".}
-proc fcQsciScintilla_override_virtual_setUtf8(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setUtf8".}
-proc fQsciScintilla_virtualbase_setWhitespaceVisibility(self: pointer, mode: cint): void{.importc: "QsciScintilla_virtualbase_setWhitespaceVisibility".}
-proc fcQsciScintilla_override_virtual_setWhitespaceVisibility(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setWhitespaceVisibility".}
-proc fQsciScintilla_virtualbase_setWrapMode(self: pointer, mode: cint): void{.importc: "QsciScintilla_virtualbase_setWrapMode".}
-proc fcQsciScintilla_override_virtual_setWrapMode(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setWrapMode".}
-proc fQsciScintilla_virtualbase_undo(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_undo".}
-proc fcQsciScintilla_override_virtual_undo(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_undo".}
-proc fQsciScintilla_virtualbase_unindent(self: pointer, line: cint): void{.importc: "QsciScintilla_virtualbase_unindent".}
-proc fcQsciScintilla_override_virtual_unindent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_unindent".}
-proc fQsciScintilla_virtualbase_zoomIn(self: pointer, range: cint): void{.importc: "QsciScintilla_virtualbase_zoomIn".}
-proc fcQsciScintilla_override_virtual_zoomIn(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_zoomIn".}
-proc fQsciScintilla_virtualbase_zoomIn2(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_zoomIn2".}
-proc fcQsciScintilla_override_virtual_zoomIn2(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_zoomIn2".}
-proc fQsciScintilla_virtualbase_zoomOut(self: pointer, range: cint): void{.importc: "QsciScintilla_virtualbase_zoomOut".}
-proc fcQsciScintilla_override_virtual_zoomOut(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_zoomOut".}
-proc fQsciScintilla_virtualbase_zoomOut2(self: pointer, ): void{.importc: "QsciScintilla_virtualbase_zoomOut2".}
-proc fcQsciScintilla_override_virtual_zoomOut2(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_zoomOut2".}
-proc fQsciScintilla_virtualbase_zoomTo(self: pointer, size: cint): void{.importc: "QsciScintilla_virtualbase_zoomTo".}
-proc fcQsciScintilla_override_virtual_zoomTo(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_zoomTo".}
-proc fQsciScintilla_virtualbase_event(self: pointer, e: pointer): bool{.importc: "QsciScintilla_virtualbase_event".}
-proc fcQsciScintilla_override_virtual_event(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_event".}
-proc fQsciScintilla_virtualbase_changeEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_changeEvent".}
-proc fcQsciScintilla_override_virtual_changeEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_changeEvent".}
-proc fQsciScintilla_virtualbase_contextMenuEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_contextMenuEvent".}
-proc fcQsciScintilla_override_virtual_contextMenuEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_contextMenuEvent".}
-proc fQsciScintilla_virtualbase_wheelEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_wheelEvent".}
-proc fcQsciScintilla_override_virtual_wheelEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_wheelEvent".}
-proc fQsciScintilla_virtualbase_canInsertFromMimeData(self: pointer, source: pointer): bool{.importc: "QsciScintilla_virtualbase_canInsertFromMimeData".}
-proc fcQsciScintilla_override_virtual_canInsertFromMimeData(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_canInsertFromMimeData".}
-proc fQsciScintilla_virtualbase_fromMimeData(self: pointer, source: pointer, rectangular: ptr bool): struct_miqt_string{.importc: "QsciScintilla_virtualbase_fromMimeData".}
-proc fcQsciScintilla_override_virtual_fromMimeData(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_fromMimeData".}
-proc fQsciScintilla_virtualbase_toMimeData(self: pointer, text: struct_miqt_string, rectangular: bool): pointer{.importc: "QsciScintilla_virtualbase_toMimeData".}
-proc fcQsciScintilla_override_virtual_toMimeData(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_toMimeData".}
-proc fQsciScintilla_virtualbase_dragEnterEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_dragEnterEvent".}
-proc fcQsciScintilla_override_virtual_dragEnterEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_dragEnterEvent".}
-proc fQsciScintilla_virtualbase_dragLeaveEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_dragLeaveEvent".}
-proc fcQsciScintilla_override_virtual_dragLeaveEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_dragLeaveEvent".}
-proc fQsciScintilla_virtualbase_dragMoveEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_dragMoveEvent".}
-proc fcQsciScintilla_override_virtual_dragMoveEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_dragMoveEvent".}
-proc fQsciScintilla_virtualbase_dropEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_dropEvent".}
-proc fcQsciScintilla_override_virtual_dropEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_dropEvent".}
-proc fQsciScintilla_virtualbase_focusInEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_focusInEvent".}
-proc fcQsciScintilla_override_virtual_focusInEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_focusInEvent".}
-proc fQsciScintilla_virtualbase_focusOutEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_focusOutEvent".}
-proc fcQsciScintilla_override_virtual_focusOutEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_focusOutEvent".}
-proc fQsciScintilla_virtualbase_focusNextPrevChild(self: pointer, next: bool): bool{.importc: "QsciScintilla_virtualbase_focusNextPrevChild".}
-proc fcQsciScintilla_override_virtual_focusNextPrevChild(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_focusNextPrevChild".}
-proc fQsciScintilla_virtualbase_keyPressEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_keyPressEvent".}
-proc fcQsciScintilla_override_virtual_keyPressEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_keyPressEvent".}
-proc fQsciScintilla_virtualbase_inputMethodEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_inputMethodEvent".}
-proc fcQsciScintilla_override_virtual_inputMethodEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_inputMethodEvent".}
-proc fQsciScintilla_virtualbase_inputMethodQuery(self: pointer, query: cint): pointer{.importc: "QsciScintilla_virtualbase_inputMethodQuery".}
-proc fcQsciScintilla_override_virtual_inputMethodQuery(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_inputMethodQuery".}
-proc fQsciScintilla_virtualbase_mouseDoubleClickEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_mouseDoubleClickEvent".}
-proc fcQsciScintilla_override_virtual_mouseDoubleClickEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_mouseDoubleClickEvent".}
-proc fQsciScintilla_virtualbase_mouseMoveEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_mouseMoveEvent".}
-proc fcQsciScintilla_override_virtual_mouseMoveEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_mouseMoveEvent".}
-proc fQsciScintilla_virtualbase_mousePressEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_mousePressEvent".}
-proc fcQsciScintilla_override_virtual_mousePressEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_mousePressEvent".}
-proc fQsciScintilla_virtualbase_mouseReleaseEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_mouseReleaseEvent".}
-proc fcQsciScintilla_override_virtual_mouseReleaseEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_mouseReleaseEvent".}
-proc fQsciScintilla_virtualbase_paintEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_paintEvent".}
-proc fcQsciScintilla_override_virtual_paintEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_paintEvent".}
-proc fQsciScintilla_virtualbase_resizeEvent(self: pointer, e: pointer): void{.importc: "QsciScintilla_virtualbase_resizeEvent".}
-proc fcQsciScintilla_override_virtual_resizeEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_resizeEvent".}
-proc fQsciScintilla_virtualbase_scrollContentsBy(self: pointer, dx: cint, dy: cint): void{.importc: "QsciScintilla_virtualbase_scrollContentsBy".}
-proc fcQsciScintilla_override_virtual_scrollContentsBy(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_scrollContentsBy".}
-proc fQsciScintilla_virtualbase_minimumSizeHint(self: pointer, ): pointer{.importc: "QsciScintilla_virtualbase_minimumSizeHint".}
-proc fcQsciScintilla_override_virtual_minimumSizeHint(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_minimumSizeHint".}
-proc fQsciScintilla_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QsciScintilla_virtualbase_sizeHint".}
-proc fcQsciScintilla_override_virtual_sizeHint(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_sizeHint".}
-proc fQsciScintilla_virtualbase_setupViewport(self: pointer, viewport: pointer): void{.importc: "QsciScintilla_virtualbase_setupViewport".}
-proc fcQsciScintilla_override_virtual_setupViewport(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setupViewport".}
-proc fQsciScintilla_virtualbase_eventFilter(self: pointer, param1: pointer, param2: pointer): bool{.importc: "QsciScintilla_virtualbase_eventFilter".}
-proc fcQsciScintilla_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_eventFilter".}
-proc fQsciScintilla_virtualbase_viewportEvent(self: pointer, param1: pointer): bool{.importc: "QsciScintilla_virtualbase_viewportEvent".}
-proc fcQsciScintilla_override_virtual_viewportEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_viewportEvent".}
-proc fQsciScintilla_virtualbase_viewportSizeHint(self: pointer, ): pointer{.importc: "QsciScintilla_virtualbase_viewportSizeHint".}
-proc fcQsciScintilla_override_virtual_viewportSizeHint(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_viewportSizeHint".}
-proc fQsciScintilla_virtualbase_devType(self: pointer, ): cint{.importc: "QsciScintilla_virtualbase_devType".}
-proc fcQsciScintilla_override_virtual_devType(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_devType".}
-proc fQsciScintilla_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QsciScintilla_virtualbase_setVisible".}
-proc fcQsciScintilla_override_virtual_setVisible(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_setVisible".}
-proc fQsciScintilla_virtualbase_heightForWidth(self: pointer, param1: cint): cint{.importc: "QsciScintilla_virtualbase_heightForWidth".}
-proc fcQsciScintilla_override_virtual_heightForWidth(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_heightForWidth".}
-proc fQsciScintilla_virtualbase_hasHeightForWidth(self: pointer, ): bool{.importc: "QsciScintilla_virtualbase_hasHeightForWidth".}
-proc fcQsciScintilla_override_virtual_hasHeightForWidth(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_hasHeightForWidth".}
-proc fQsciScintilla_virtualbase_paintEngine(self: pointer, ): pointer{.importc: "QsciScintilla_virtualbase_paintEngine".}
-proc fcQsciScintilla_override_virtual_paintEngine(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_paintEngine".}
-proc fQsciScintilla_virtualbase_keyReleaseEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_keyReleaseEvent".}
-proc fcQsciScintilla_override_virtual_keyReleaseEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_keyReleaseEvent".}
-proc fQsciScintilla_virtualbase_enterEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_enterEvent".}
-proc fcQsciScintilla_override_virtual_enterEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_enterEvent".}
-proc fQsciScintilla_virtualbase_leaveEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_leaveEvent".}
-proc fcQsciScintilla_override_virtual_leaveEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_leaveEvent".}
-proc fQsciScintilla_virtualbase_moveEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_moveEvent".}
-proc fcQsciScintilla_override_virtual_moveEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_moveEvent".}
-proc fQsciScintilla_virtualbase_closeEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_closeEvent".}
-proc fcQsciScintilla_override_virtual_closeEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_closeEvent".}
-proc fQsciScintilla_virtualbase_tabletEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_tabletEvent".}
-proc fcQsciScintilla_override_virtual_tabletEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_tabletEvent".}
-proc fQsciScintilla_virtualbase_actionEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_actionEvent".}
-proc fcQsciScintilla_override_virtual_actionEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_actionEvent".}
-proc fQsciScintilla_virtualbase_showEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_showEvent".}
-proc fcQsciScintilla_override_virtual_showEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_showEvent".}
-proc fQsciScintilla_virtualbase_hideEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_hideEvent".}
-proc fcQsciScintilla_override_virtual_hideEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_hideEvent".}
-proc fQsciScintilla_virtualbase_nativeEvent(self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool{.importc: "QsciScintilla_virtualbase_nativeEvent".}
-proc fcQsciScintilla_override_virtual_nativeEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_nativeEvent".}
-proc fQsciScintilla_virtualbase_metric(self: pointer, param1: cint): cint{.importc: "QsciScintilla_virtualbase_metric".}
-proc fcQsciScintilla_override_virtual_metric(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_metric".}
-proc fQsciScintilla_virtualbase_initPainter(self: pointer, painter: pointer): void{.importc: "QsciScintilla_virtualbase_initPainter".}
-proc fcQsciScintilla_override_virtual_initPainter(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_initPainter".}
-proc fQsciScintilla_virtualbase_redirected(self: pointer, offset: pointer): pointer{.importc: "QsciScintilla_virtualbase_redirected".}
-proc fcQsciScintilla_override_virtual_redirected(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_redirected".}
-proc fQsciScintilla_virtualbase_sharedPainter(self: pointer, ): pointer{.importc: "QsciScintilla_virtualbase_sharedPainter".}
-proc fcQsciScintilla_override_virtual_sharedPainter(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_sharedPainter".}
-proc fQsciScintilla_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_timerEvent".}
-proc fcQsciScintilla_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_timerEvent".}
-proc fQsciScintilla_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_childEvent".}
-proc fcQsciScintilla_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_childEvent".}
-proc fQsciScintilla_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QsciScintilla_virtualbase_customEvent".}
-proc fcQsciScintilla_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_customEvent".}
-proc fQsciScintilla_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QsciScintilla_virtualbase_connectNotify".}
-proc fcQsciScintilla_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_connectNotify".}
-proc fQsciScintilla_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciScintilla_virtualbase_disconnectNotify".}
-proc fcQsciScintilla_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_disconnectNotify".}
+type cQsciScintillaVTable = object
+  destructor*: proc(vtbl: ptr cQsciScintillaVTable, self: ptr cQsciScintilla) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  apiContext*: proc(vtbl, self: pointer, pos: cint, context_start: ptr cint, last_word_start: ptr cint): struct_miqt_array {.cdecl, raises: [], gcsafe.}
+  findFirst*: proc(vtbl, self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool {.cdecl, raises: [], gcsafe.}
+  findFirstInSelection*: proc(vtbl, self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool {.cdecl, raises: [], gcsafe.}
+  findNext*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  recolor*: proc(vtbl, self: pointer, start: cint, endVal: cint): void {.cdecl, raises: [], gcsafe.}
+  replace*: proc(vtbl, self: pointer, replaceStr: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  append*: proc(vtbl, self: pointer, text: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  autoCompleteFromAll*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  autoCompleteFromAPIs*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  autoCompleteFromDocument*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  callTip*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  clear*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  copy*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  cut*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  ensureCursorVisible*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  ensureLineVisible*: proc(vtbl, self: pointer, line: cint): void {.cdecl, raises: [], gcsafe.}
+  foldAll*: proc(vtbl, self: pointer, children: bool): void {.cdecl, raises: [], gcsafe.}
+  foldLine*: proc(vtbl, self: pointer, line: cint): void {.cdecl, raises: [], gcsafe.}
+  indent*: proc(vtbl, self: pointer, line: cint): void {.cdecl, raises: [], gcsafe.}
+  insert*: proc(vtbl, self: pointer, text: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  insertAt*: proc(vtbl, self: pointer, text: struct_miqt_string, line: cint, index: cint): void {.cdecl, raises: [], gcsafe.}
+  moveToMatchingBrace*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  paste*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  redo*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  removeSelectedText*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  replaceSelectedText*: proc(vtbl, self: pointer, text: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  resetSelectionBackgroundColor*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  resetSelectionForegroundColor*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  selectAll*: proc(vtbl, self: pointer, select: bool): void {.cdecl, raises: [], gcsafe.}
+  selectToMatchingBrace*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  setAutoCompletionCaseSensitivity*: proc(vtbl, self: pointer, cs: bool): void {.cdecl, raises: [], gcsafe.}
+  setAutoCompletionReplaceWord*: proc(vtbl, self: pointer, replace: bool): void {.cdecl, raises: [], gcsafe.}
+  setAutoCompletionShowSingle*: proc(vtbl, self: pointer, single: bool): void {.cdecl, raises: [], gcsafe.}
+  setAutoCompletionSource*: proc(vtbl, self: pointer, source: cint): void {.cdecl, raises: [], gcsafe.}
+  setAutoCompletionThreshold*: proc(vtbl, self: pointer, thresh: cint): void {.cdecl, raises: [], gcsafe.}
+  setAutoCompletionUseSingle*: proc(vtbl, self: pointer, single: cint): void {.cdecl, raises: [], gcsafe.}
+  setAutoIndent*: proc(vtbl, self: pointer, autoindent: bool): void {.cdecl, raises: [], gcsafe.}
+  setBraceMatching*: proc(vtbl, self: pointer, bm: cint): void {.cdecl, raises: [], gcsafe.}
+  setBackspaceUnindents*: proc(vtbl, self: pointer, unindent: bool): void {.cdecl, raises: [], gcsafe.}
+  setCaretForegroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setCaretLineBackgroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setCaretLineFrameWidth*: proc(vtbl, self: pointer, width: cint): void {.cdecl, raises: [], gcsafe.}
+  setCaretLineVisible*: proc(vtbl, self: pointer, enable: bool): void {.cdecl, raises: [], gcsafe.}
+  setCaretWidth*: proc(vtbl, self: pointer, width: cint): void {.cdecl, raises: [], gcsafe.}
+  setColor*: proc(vtbl, self: pointer, c: pointer): void {.cdecl, raises: [], gcsafe.}
+  setCursorPosition*: proc(vtbl, self: pointer, line: cint, index: cint): void {.cdecl, raises: [], gcsafe.}
+  setEolMode*: proc(vtbl, self: pointer, mode: cint): void {.cdecl, raises: [], gcsafe.}
+  setEolVisibility*: proc(vtbl, self: pointer, visible: bool): void {.cdecl, raises: [], gcsafe.}
+  setFolding*: proc(vtbl, self: pointer, fold: cint, margin: cint): void {.cdecl, raises: [], gcsafe.}
+  setIndentation*: proc(vtbl, self: pointer, line: cint, indentation: cint): void {.cdecl, raises: [], gcsafe.}
+  setIndentationGuides*: proc(vtbl, self: pointer, enable: bool): void {.cdecl, raises: [], gcsafe.}
+  setIndentationGuidesBackgroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setIndentationGuidesForegroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setIndentationsUseTabs*: proc(vtbl, self: pointer, tabs: bool): void {.cdecl, raises: [], gcsafe.}
+  setIndentationWidth*: proc(vtbl, self: pointer, width: cint): void {.cdecl, raises: [], gcsafe.}
+  setLexer*: proc(vtbl, self: pointer, lexer: pointer): void {.cdecl, raises: [], gcsafe.}
+  setMarginsBackgroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setMarginsFont*: proc(vtbl, self: pointer, f: pointer): void {.cdecl, raises: [], gcsafe.}
+  setMarginsForegroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setMarginLineNumbers*: proc(vtbl, self: pointer, margin: cint, lnrs: bool): void {.cdecl, raises: [], gcsafe.}
+  setMarginMarkerMask*: proc(vtbl, self: pointer, margin: cint, mask: cint): void {.cdecl, raises: [], gcsafe.}
+  setMarginSensitivity*: proc(vtbl, self: pointer, margin: cint, sens: bool): void {.cdecl, raises: [], gcsafe.}
+  setMarginWidth*: proc(vtbl, self: pointer, margin: cint, width: cint): void {.cdecl, raises: [], gcsafe.}
+  setMarginWidth*: proc(vtbl, self: pointer, margin: cint, s: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  setModified*: proc(vtbl, self: pointer, m: bool): void {.cdecl, raises: [], gcsafe.}
+  setPaper*: proc(vtbl, self: pointer, c: pointer): void {.cdecl, raises: [], gcsafe.}
+  setReadOnly*: proc(vtbl, self: pointer, ro: bool): void {.cdecl, raises: [], gcsafe.}
+  setSelection*: proc(vtbl, self: pointer, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void {.cdecl, raises: [], gcsafe.}
+  setSelectionBackgroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setSelectionForegroundColor*: proc(vtbl, self: pointer, col: pointer): void {.cdecl, raises: [], gcsafe.}
+  setTabIndents*: proc(vtbl, self: pointer, indent: bool): void {.cdecl, raises: [], gcsafe.}
+  setTabWidth*: proc(vtbl, self: pointer, width: cint): void {.cdecl, raises: [], gcsafe.}
+  setText*: proc(vtbl, self: pointer, text: struct_miqt_string): void {.cdecl, raises: [], gcsafe.}
+  setUtf8*: proc(vtbl, self: pointer, cp: bool): void {.cdecl, raises: [], gcsafe.}
+  setWhitespaceVisibility*: proc(vtbl, self: pointer, mode: cint): void {.cdecl, raises: [], gcsafe.}
+  setWrapMode*: proc(vtbl, self: pointer, mode: cint): void {.cdecl, raises: [], gcsafe.}
+  undo*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  unindent*: proc(vtbl, self: pointer, line: cint): void {.cdecl, raises: [], gcsafe.}
+  zoomIn*: proc(vtbl, self: pointer, range: cint): void {.cdecl, raises: [], gcsafe.}
+  zoomIn*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  zoomOut*: proc(vtbl, self: pointer, range: cint): void {.cdecl, raises: [], gcsafe.}
+  zoomOut*: proc(vtbl, self: pointer, ): void {.cdecl, raises: [], gcsafe.}
+  zoomTo*: proc(vtbl, self: pointer, size: cint): void {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, e: pointer): bool {.cdecl, raises: [], gcsafe.}
+  changeEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  contextMenuEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  wheelEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  canInsertFromMimeData*: proc(vtbl, self: pointer, source: pointer): bool {.cdecl, raises: [], gcsafe.}
+  fromMimeData*: proc(vtbl, self: pointer, source: pointer, rectangular: ptr bool): struct_miqt_string {.cdecl, raises: [], gcsafe.}
+  toMimeData*: proc(vtbl, self: pointer, text: struct_miqt_string, rectangular: bool): pointer {.cdecl, raises: [], gcsafe.}
+  dragEnterEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragLeaveEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  dragMoveEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  dropEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  focusInEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  focusOutEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  focusNextPrevChild*: proc(vtbl, self: pointer, next: bool): bool {.cdecl, raises: [], gcsafe.}
+  keyPressEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  inputMethodEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  inputMethodQuery*: proc(vtbl, self: pointer, query: cint): pointer {.cdecl, raises: [], gcsafe.}
+  mouseDoubleClickEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  mouseMoveEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  mousePressEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  mouseReleaseEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  paintEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  resizeEvent*: proc(vtbl, self: pointer, e: pointer): void {.cdecl, raises: [], gcsafe.}
+  scrollContentsBy*: proc(vtbl, self: pointer, dx: cint, dy: cint): void {.cdecl, raises: [], gcsafe.}
+  minimumSizeHint*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  sizeHint*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  setupViewport*: proc(vtbl, self: pointer, viewport: pointer): void {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, param1: pointer, param2: pointer): bool {.cdecl, raises: [], gcsafe.}
+  viewportEvent*: proc(vtbl, self: pointer, param1: pointer): bool {.cdecl, raises: [], gcsafe.}
+  viewportSizeHint*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  devType*: proc(vtbl, self: pointer, ): cint {.cdecl, raises: [], gcsafe.}
+  setVisible*: proc(vtbl, self: pointer, visible: bool): void {.cdecl, raises: [], gcsafe.}
+  heightForWidth*: proc(vtbl, self: pointer, param1: cint): cint {.cdecl, raises: [], gcsafe.}
+  hasHeightForWidth*: proc(vtbl, self: pointer, ): bool {.cdecl, raises: [], gcsafe.}
+  paintEngine*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  keyReleaseEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  enterEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  leaveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  moveEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  closeEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  tabletEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  actionEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  showEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  hideEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  nativeEvent*: proc(vtbl, self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.cdecl, raises: [], gcsafe.}
+  metric*: proc(vtbl, self: pointer, param1: cint): cint {.cdecl, raises: [], gcsafe.}
+  initPainter*: proc(vtbl, self: pointer, painter: pointer): void {.cdecl, raises: [], gcsafe.}
+  redirected*: proc(vtbl, self: pointer, offset: pointer): pointer {.cdecl, raises: [], gcsafe.}
+  sharedPainter*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQsciScintilla_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QsciScintilla_virtualbase_metaObject".}
+proc fcQsciScintilla_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QsciScintilla_virtualbase_metacast".}
+proc fcQsciScintilla_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QsciScintilla_virtualbase_metacall".}
+proc fcQsciScintilla_virtualbase_apiContext(self: pointer, pos: cint, context_start: ptr cint, last_word_start: ptr cint): struct_miqt_array {.importc: "QsciScintilla_virtualbase_apiContext".}
+proc fcQsciScintilla_virtualbase_findFirst(self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool {.importc: "QsciScintilla_virtualbase_findFirst".}
+proc fcQsciScintilla_virtualbase_findFirstInSelection(self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool {.importc: "QsciScintilla_virtualbase_findFirstInSelection".}
+proc fcQsciScintilla_virtualbase_findNext(self: pointer, ): bool {.importc: "QsciScintilla_virtualbase_findNext".}
+proc fcQsciScintilla_virtualbase_recolor(self: pointer, start: cint, endVal: cint): void {.importc: "QsciScintilla_virtualbase_recolor".}
+proc fcQsciScintilla_virtualbase_replace(self: pointer, replaceStr: struct_miqt_string): void {.importc: "QsciScintilla_virtualbase_replace".}
+proc fcQsciScintilla_virtualbase_append(self: pointer, text: struct_miqt_string): void {.importc: "QsciScintilla_virtualbase_append".}
+proc fcQsciScintilla_virtualbase_autoCompleteFromAll(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_autoCompleteFromAll".}
+proc fcQsciScintilla_virtualbase_autoCompleteFromAPIs(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_autoCompleteFromAPIs".}
+proc fcQsciScintilla_virtualbase_autoCompleteFromDocument(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_autoCompleteFromDocument".}
+proc fcQsciScintilla_virtualbase_callTip(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_callTip".}
+proc fcQsciScintilla_virtualbase_clear(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_clear".}
+proc fcQsciScintilla_virtualbase_copy(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_copy".}
+proc fcQsciScintilla_virtualbase_cut(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_cut".}
+proc fcQsciScintilla_virtualbase_ensureCursorVisible(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_ensureCursorVisible".}
+proc fcQsciScintilla_virtualbase_ensureLineVisible(self: pointer, line: cint): void {.importc: "QsciScintilla_virtualbase_ensureLineVisible".}
+proc fcQsciScintilla_virtualbase_foldAll(self: pointer, children: bool): void {.importc: "QsciScintilla_virtualbase_foldAll".}
+proc fcQsciScintilla_virtualbase_foldLine(self: pointer, line: cint): void {.importc: "QsciScintilla_virtualbase_foldLine".}
+proc fcQsciScintilla_virtualbase_indent(self: pointer, line: cint): void {.importc: "QsciScintilla_virtualbase_indent".}
+proc fcQsciScintilla_virtualbase_insert(self: pointer, text: struct_miqt_string): void {.importc: "QsciScintilla_virtualbase_insert".}
+proc fcQsciScintilla_virtualbase_insertAt(self: pointer, text: struct_miqt_string, line: cint, index: cint): void {.importc: "QsciScintilla_virtualbase_insertAt".}
+proc fcQsciScintilla_virtualbase_moveToMatchingBrace(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_moveToMatchingBrace".}
+proc fcQsciScintilla_virtualbase_paste(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_paste".}
+proc fcQsciScintilla_virtualbase_redo(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_redo".}
+proc fcQsciScintilla_virtualbase_removeSelectedText(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_removeSelectedText".}
+proc fcQsciScintilla_virtualbase_replaceSelectedText(self: pointer, text: struct_miqt_string): void {.importc: "QsciScintilla_virtualbase_replaceSelectedText".}
+proc fcQsciScintilla_virtualbase_resetSelectionBackgroundColor(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_resetSelectionBackgroundColor".}
+proc fcQsciScintilla_virtualbase_resetSelectionForegroundColor(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_resetSelectionForegroundColor".}
+proc fcQsciScintilla_virtualbase_selectAll(self: pointer, select: bool): void {.importc: "QsciScintilla_virtualbase_selectAll".}
+proc fcQsciScintilla_virtualbase_selectToMatchingBrace(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_selectToMatchingBrace".}
+proc fcQsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(self: pointer, cs: bool): void {.importc: "QsciScintilla_virtualbase_setAutoCompletionCaseSensitivity".}
+proc fcQsciScintilla_virtualbase_setAutoCompletionReplaceWord(self: pointer, replace: bool): void {.importc: "QsciScintilla_virtualbase_setAutoCompletionReplaceWord".}
+proc fcQsciScintilla_virtualbase_setAutoCompletionShowSingle(self: pointer, single: bool): void {.importc: "QsciScintilla_virtualbase_setAutoCompletionShowSingle".}
+proc fcQsciScintilla_virtualbase_setAutoCompletionSource(self: pointer, source: cint): void {.importc: "QsciScintilla_virtualbase_setAutoCompletionSource".}
+proc fcQsciScintilla_virtualbase_setAutoCompletionThreshold(self: pointer, thresh: cint): void {.importc: "QsciScintilla_virtualbase_setAutoCompletionThreshold".}
+proc fcQsciScintilla_virtualbase_setAutoCompletionUseSingle(self: pointer, single: cint): void {.importc: "QsciScintilla_virtualbase_setAutoCompletionUseSingle".}
+proc fcQsciScintilla_virtualbase_setAutoIndent(self: pointer, autoindent: bool): void {.importc: "QsciScintilla_virtualbase_setAutoIndent".}
+proc fcQsciScintilla_virtualbase_setBraceMatching(self: pointer, bm: cint): void {.importc: "QsciScintilla_virtualbase_setBraceMatching".}
+proc fcQsciScintilla_virtualbase_setBackspaceUnindents(self: pointer, unindent: bool): void {.importc: "QsciScintilla_virtualbase_setBackspaceUnindents".}
+proc fcQsciScintilla_virtualbase_setCaretForegroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setCaretForegroundColor".}
+proc fcQsciScintilla_virtualbase_setCaretLineBackgroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setCaretLineBackgroundColor".}
+proc fcQsciScintilla_virtualbase_setCaretLineFrameWidth(self: pointer, width: cint): void {.importc: "QsciScintilla_virtualbase_setCaretLineFrameWidth".}
+proc fcQsciScintilla_virtualbase_setCaretLineVisible(self: pointer, enable: bool): void {.importc: "QsciScintilla_virtualbase_setCaretLineVisible".}
+proc fcQsciScintilla_virtualbase_setCaretWidth(self: pointer, width: cint): void {.importc: "QsciScintilla_virtualbase_setCaretWidth".}
+proc fcQsciScintilla_virtualbase_setColor(self: pointer, c: pointer): void {.importc: "QsciScintilla_virtualbase_setColor".}
+proc fcQsciScintilla_virtualbase_setCursorPosition(self: pointer, line: cint, index: cint): void {.importc: "QsciScintilla_virtualbase_setCursorPosition".}
+proc fcQsciScintilla_virtualbase_setEolMode(self: pointer, mode: cint): void {.importc: "QsciScintilla_virtualbase_setEolMode".}
+proc fcQsciScintilla_virtualbase_setEolVisibility(self: pointer, visible: bool): void {.importc: "QsciScintilla_virtualbase_setEolVisibility".}
+proc fcQsciScintilla_virtualbase_setFolding(self: pointer, fold: cint, margin: cint): void {.importc: "QsciScintilla_virtualbase_setFolding".}
+proc fcQsciScintilla_virtualbase_setIndentation(self: pointer, line: cint, indentation: cint): void {.importc: "QsciScintilla_virtualbase_setIndentation".}
+proc fcQsciScintilla_virtualbase_setIndentationGuides(self: pointer, enable: bool): void {.importc: "QsciScintilla_virtualbase_setIndentationGuides".}
+proc fcQsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor".}
+proc fcQsciScintilla_virtualbase_setIndentationGuidesForegroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setIndentationGuidesForegroundColor".}
+proc fcQsciScintilla_virtualbase_setIndentationsUseTabs(self: pointer, tabs: bool): void {.importc: "QsciScintilla_virtualbase_setIndentationsUseTabs".}
+proc fcQsciScintilla_virtualbase_setIndentationWidth(self: pointer, width: cint): void {.importc: "QsciScintilla_virtualbase_setIndentationWidth".}
+proc fcQsciScintilla_virtualbase_setLexer(self: pointer, lexer: pointer): void {.importc: "QsciScintilla_virtualbase_setLexer".}
+proc fcQsciScintilla_virtualbase_setMarginsBackgroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setMarginsBackgroundColor".}
+proc fcQsciScintilla_virtualbase_setMarginsFont(self: pointer, f: pointer): void {.importc: "QsciScintilla_virtualbase_setMarginsFont".}
+proc fcQsciScintilla_virtualbase_setMarginsForegroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setMarginsForegroundColor".}
+proc fcQsciScintilla_virtualbase_setMarginLineNumbers(self: pointer, margin: cint, lnrs: bool): void {.importc: "QsciScintilla_virtualbase_setMarginLineNumbers".}
+proc fcQsciScintilla_virtualbase_setMarginMarkerMask(self: pointer, margin: cint, mask: cint): void {.importc: "QsciScintilla_virtualbase_setMarginMarkerMask".}
+proc fcQsciScintilla_virtualbase_setMarginSensitivity(self: pointer, margin: cint, sens: bool): void {.importc: "QsciScintilla_virtualbase_setMarginSensitivity".}
+proc fcQsciScintilla_virtualbase_setMarginWidth(self: pointer, margin: cint, width: cint): void {.importc: "QsciScintilla_virtualbase_setMarginWidth".}
+proc fcQsciScintilla_virtualbase_setMarginWidth2(self: pointer, margin: cint, s: struct_miqt_string): void {.importc: "QsciScintilla_virtualbase_setMarginWidth2".}
+proc fcQsciScintilla_virtualbase_setModified(self: pointer, m: bool): void {.importc: "QsciScintilla_virtualbase_setModified".}
+proc fcQsciScintilla_virtualbase_setPaper(self: pointer, c: pointer): void {.importc: "QsciScintilla_virtualbase_setPaper".}
+proc fcQsciScintilla_virtualbase_setReadOnly(self: pointer, ro: bool): void {.importc: "QsciScintilla_virtualbase_setReadOnly".}
+proc fcQsciScintilla_virtualbase_setSelection(self: pointer, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void {.importc: "QsciScintilla_virtualbase_setSelection".}
+proc fcQsciScintilla_virtualbase_setSelectionBackgroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setSelectionBackgroundColor".}
+proc fcQsciScintilla_virtualbase_setSelectionForegroundColor(self: pointer, col: pointer): void {.importc: "QsciScintilla_virtualbase_setSelectionForegroundColor".}
+proc fcQsciScintilla_virtualbase_setTabIndents(self: pointer, indent: bool): void {.importc: "QsciScintilla_virtualbase_setTabIndents".}
+proc fcQsciScintilla_virtualbase_setTabWidth(self: pointer, width: cint): void {.importc: "QsciScintilla_virtualbase_setTabWidth".}
+proc fcQsciScintilla_virtualbase_setText(self: pointer, text: struct_miqt_string): void {.importc: "QsciScintilla_virtualbase_setText".}
+proc fcQsciScintilla_virtualbase_setUtf8(self: pointer, cp: bool): void {.importc: "QsciScintilla_virtualbase_setUtf8".}
+proc fcQsciScintilla_virtualbase_setWhitespaceVisibility(self: pointer, mode: cint): void {.importc: "QsciScintilla_virtualbase_setWhitespaceVisibility".}
+proc fcQsciScintilla_virtualbase_setWrapMode(self: pointer, mode: cint): void {.importc: "QsciScintilla_virtualbase_setWrapMode".}
+proc fcQsciScintilla_virtualbase_undo(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_undo".}
+proc fcQsciScintilla_virtualbase_unindent(self: pointer, line: cint): void {.importc: "QsciScintilla_virtualbase_unindent".}
+proc fcQsciScintilla_virtualbase_zoomIn(self: pointer, range: cint): void {.importc: "QsciScintilla_virtualbase_zoomIn".}
+proc fcQsciScintilla_virtualbase_zoomIn2(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_zoomIn2".}
+proc fcQsciScintilla_virtualbase_zoomOut(self: pointer, range: cint): void {.importc: "QsciScintilla_virtualbase_zoomOut".}
+proc fcQsciScintilla_virtualbase_zoomOut2(self: pointer, ): void {.importc: "QsciScintilla_virtualbase_zoomOut2".}
+proc fcQsciScintilla_virtualbase_zoomTo(self: pointer, size: cint): void {.importc: "QsciScintilla_virtualbase_zoomTo".}
+proc fcQsciScintilla_virtualbase_event(self: pointer, e: pointer): bool {.importc: "QsciScintilla_virtualbase_event".}
+proc fcQsciScintilla_virtualbase_changeEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_changeEvent".}
+proc fcQsciScintilla_virtualbase_contextMenuEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_contextMenuEvent".}
+proc fcQsciScintilla_virtualbase_wheelEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_wheelEvent".}
+proc fcQsciScintilla_virtualbase_canInsertFromMimeData(self: pointer, source: pointer): bool {.importc: "QsciScintilla_virtualbase_canInsertFromMimeData".}
+proc fcQsciScintilla_virtualbase_fromMimeData(self: pointer, source: pointer, rectangular: ptr bool): struct_miqt_string {.importc: "QsciScintilla_virtualbase_fromMimeData".}
+proc fcQsciScintilla_virtualbase_toMimeData(self: pointer, text: struct_miqt_string, rectangular: bool): pointer {.importc: "QsciScintilla_virtualbase_toMimeData".}
+proc fcQsciScintilla_virtualbase_dragEnterEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_dragEnterEvent".}
+proc fcQsciScintilla_virtualbase_dragLeaveEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_dragLeaveEvent".}
+proc fcQsciScintilla_virtualbase_dragMoveEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_dragMoveEvent".}
+proc fcQsciScintilla_virtualbase_dropEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_dropEvent".}
+proc fcQsciScintilla_virtualbase_focusInEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_focusInEvent".}
+proc fcQsciScintilla_virtualbase_focusOutEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_focusOutEvent".}
+proc fcQsciScintilla_virtualbase_focusNextPrevChild(self: pointer, next: bool): bool {.importc: "QsciScintilla_virtualbase_focusNextPrevChild".}
+proc fcQsciScintilla_virtualbase_keyPressEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_keyPressEvent".}
+proc fcQsciScintilla_virtualbase_inputMethodEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_inputMethodEvent".}
+proc fcQsciScintilla_virtualbase_inputMethodQuery(self: pointer, query: cint): pointer {.importc: "QsciScintilla_virtualbase_inputMethodQuery".}
+proc fcQsciScintilla_virtualbase_mouseDoubleClickEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_mouseDoubleClickEvent".}
+proc fcQsciScintilla_virtualbase_mouseMoveEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_mouseMoveEvent".}
+proc fcQsciScintilla_virtualbase_mousePressEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_mousePressEvent".}
+proc fcQsciScintilla_virtualbase_mouseReleaseEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_mouseReleaseEvent".}
+proc fcQsciScintilla_virtualbase_paintEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_paintEvent".}
+proc fcQsciScintilla_virtualbase_resizeEvent(self: pointer, e: pointer): void {.importc: "QsciScintilla_virtualbase_resizeEvent".}
+proc fcQsciScintilla_virtualbase_scrollContentsBy(self: pointer, dx: cint, dy: cint): void {.importc: "QsciScintilla_virtualbase_scrollContentsBy".}
+proc fcQsciScintilla_virtualbase_minimumSizeHint(self: pointer, ): pointer {.importc: "QsciScintilla_virtualbase_minimumSizeHint".}
+proc fcQsciScintilla_virtualbase_sizeHint(self: pointer, ): pointer {.importc: "QsciScintilla_virtualbase_sizeHint".}
+proc fcQsciScintilla_virtualbase_setupViewport(self: pointer, viewport: pointer): void {.importc: "QsciScintilla_virtualbase_setupViewport".}
+proc fcQsciScintilla_virtualbase_eventFilter(self: pointer, param1: pointer, param2: pointer): bool {.importc: "QsciScintilla_virtualbase_eventFilter".}
+proc fcQsciScintilla_virtualbase_viewportEvent(self: pointer, param1: pointer): bool {.importc: "QsciScintilla_virtualbase_viewportEvent".}
+proc fcQsciScintilla_virtualbase_viewportSizeHint(self: pointer, ): pointer {.importc: "QsciScintilla_virtualbase_viewportSizeHint".}
+proc fcQsciScintilla_virtualbase_devType(self: pointer, ): cint {.importc: "QsciScintilla_virtualbase_devType".}
+proc fcQsciScintilla_virtualbase_setVisible(self: pointer, visible: bool): void {.importc: "QsciScintilla_virtualbase_setVisible".}
+proc fcQsciScintilla_virtualbase_heightForWidth(self: pointer, param1: cint): cint {.importc: "QsciScintilla_virtualbase_heightForWidth".}
+proc fcQsciScintilla_virtualbase_hasHeightForWidth(self: pointer, ): bool {.importc: "QsciScintilla_virtualbase_hasHeightForWidth".}
+proc fcQsciScintilla_virtualbase_paintEngine(self: pointer, ): pointer {.importc: "QsciScintilla_virtualbase_paintEngine".}
+proc fcQsciScintilla_virtualbase_keyReleaseEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_keyReleaseEvent".}
+proc fcQsciScintilla_virtualbase_enterEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_enterEvent".}
+proc fcQsciScintilla_virtualbase_leaveEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_leaveEvent".}
+proc fcQsciScintilla_virtualbase_moveEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_moveEvent".}
+proc fcQsciScintilla_virtualbase_closeEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_closeEvent".}
+proc fcQsciScintilla_virtualbase_tabletEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_tabletEvent".}
+proc fcQsciScintilla_virtualbase_actionEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_actionEvent".}
+proc fcQsciScintilla_virtualbase_showEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_showEvent".}
+proc fcQsciScintilla_virtualbase_hideEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_hideEvent".}
+proc fcQsciScintilla_virtualbase_nativeEvent(self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.importc: "QsciScintilla_virtualbase_nativeEvent".}
+proc fcQsciScintilla_virtualbase_metric(self: pointer, param1: cint): cint {.importc: "QsciScintilla_virtualbase_metric".}
+proc fcQsciScintilla_virtualbase_initPainter(self: pointer, painter: pointer): void {.importc: "QsciScintilla_virtualbase_initPainter".}
+proc fcQsciScintilla_virtualbase_redirected(self: pointer, offset: pointer): pointer {.importc: "QsciScintilla_virtualbase_redirected".}
+proc fcQsciScintilla_virtualbase_sharedPainter(self: pointer, ): pointer {.importc: "QsciScintilla_virtualbase_sharedPainter".}
+proc fcQsciScintilla_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_timerEvent".}
+proc fcQsciScintilla_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_childEvent".}
+proc fcQsciScintilla_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_customEvent".}
+proc fcQsciScintilla_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciScintilla_virtualbase_connectNotify".}
+proc fcQsciScintilla_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciScintilla_virtualbase_disconnectNotify".}
+proc fcQsciScintilla_new(vtbl: pointer, parent: pointer): ptr cQsciScintilla {.importc: "QsciScintilla_new".}
+proc fcQsciScintilla_new2(vtbl: pointer, ): ptr cQsciScintilla {.importc: "QsciScintilla_new2".}
 proc fcQsciScintilla_staticMetaObject(): pointer {.importc: "QsciScintilla_staticMetaObject".}
 proc fcQsciScintilla_delete(self: pointer) {.importc: "QsciScintilla_delete".}
 
-
-func init*(T: type gen_qsciscintilla_types.QsciScintilla, h: ptr cQsciScintilla): gen_qsciscintilla_types.QsciScintilla =
-  T(h: h)
-proc create*(T: type gen_qsciscintilla_types.QsciScintilla, parent: gen_qwidget.QWidget): gen_qsciscintilla_types.QsciScintilla =
-  gen_qsciscintilla_types.QsciScintilla.init(fcQsciScintilla_new(parent.h))
-
-proc create*(T: type gen_qsciscintilla_types.QsciScintilla, ): gen_qsciscintilla_types.QsciScintilla =
-  gen_qsciscintilla_types.QsciScintilla.init(fcQsciScintilla_new2())
-
-proc metaObject*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciScintilla_metaObject(self.h))
+proc metaObject*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciScintilla_metaObject(self.h))
 
 proc metacast*(self: gen_qsciscintilla_types.QsciScintilla, param1: cstring): pointer =
   fcQsciScintilla_metacast(self.h, param1)
@@ -899,10 +891,10 @@ proc apiContext*(self: gen_qsciscintilla_types.QsciScintilla, pos: cint, context
 proc annotate*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: string, style: cint): void =
   fcQsciScintilla_annotate(self.h, line, struct_miqt_string(data: text, len: csize_t(len(text))), style)
 
-proc annotate*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: string, style: gen_qscistyle.QsciStyle): void =
+proc annotate*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: string, style: gen_qscistyle_types.QsciStyle): void =
   fcQsciScintilla_annotate2(self.h, line, struct_miqt_string(data: text, len: csize_t(len(text))), style.h)
 
-proc annotate*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: gen_qscistyledtext.QsciStyledText): void =
+proc annotate*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: gen_qscistyledtext_types.QsciStyledText): void =
   fcQsciScintilla_annotate3(self.h, line, text.h)
 
 proc annotation*(self: gen_qsciscintilla_types.QsciScintilla, line: cint): string =
@@ -983,8 +975,8 @@ proc clearIndicatorRange*(self: gen_qsciscintilla_types.QsciScintilla, lineFrom:
 proc clearRegisteredImages*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
   fcQsciScintilla_clearRegisteredImages(self.h)
 
-proc color*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciScintilla_color(self.h))
+proc color*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciScintilla_color(self.h))
 
 proc contractedFolds*(self: gen_qsciscintilla_types.QsciScintilla, ): seq[cint] =
   var v_ma = fcQsciScintilla_contractedFolds(self.h)
@@ -997,17 +989,17 @@ proc contractedFolds*(self: gen_qsciscintilla_types.QsciScintilla, ): seq[cint] 
 proc convertEols*(self: gen_qsciscintilla_types.QsciScintilla, mode: cint): void =
   fcQsciScintilla_convertEols(self.h, cint(mode))
 
-proc createStandardContextMenu*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qmenu.QMenu =
-  gen_qmenu.QMenu(h: fcQsciScintilla_createStandardContextMenu(self.h))
+proc createStandardContextMenu*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qmenu_types.QMenu =
+  gen_qmenu_types.QMenu(h: fcQsciScintilla_createStandardContextMenu(self.h))
 
-proc document*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qscidocument.QsciDocument =
-  gen_qscidocument.QsciDocument(h: fcQsciScintilla_document(self.h))
+proc document*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qscidocument_types.QsciDocument =
+  gen_qscidocument_types.QsciDocument(h: fcQsciScintilla_document(self.h))
 
 proc endUndoAction*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
   fcQsciScintilla_endUndoAction(self.h)
 
-proc edgeColor*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciScintilla_edgeColor(self.h))
+proc edgeColor*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciScintilla_edgeColor(self.h))
 
 proc edgeColumn*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
   fcQsciScintilla_edgeColumn(self.h)
@@ -1015,7 +1007,7 @@ proc edgeColumn*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
 proc edgeMode*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
   cint(fcQsciScintilla_edgeMode(self.h))
 
-proc setFont*(self: gen_qsciscintilla_types.QsciScintilla, f: gen_qfont.QFont): void =
+proc setFont*(self: gen_qsciscintilla_types.QsciScintilla, f: gen_qfont_types.QFont): void =
   fcQsciScintilla_setFont(self.h, f.h)
 
 proc eolMode*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
@@ -1102,7 +1094,7 @@ proc isUtf8*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
 proc isWordCharacter*(self: gen_qsciscintilla_types.QsciScintilla, ch: cchar): bool =
   fcQsciScintilla_isWordCharacter(self.h, ch)
 
-proc lineAt*(self: gen_qsciscintilla_types.QsciScintilla, point: gen_qpoint.QPoint): cint =
+proc lineAt*(self: gen_qsciscintilla_types.QsciScintilla, point: gen_qpoint_types.QPoint): cint =
   fcQsciScintilla_lineAt(self.h, point.h)
 
 proc lineIndexFromPosition*(self: gen_qsciscintilla_types.QsciScintilla, position: cint, line: ptr cint, index: ptr cint): void =
@@ -1117,11 +1109,11 @@ proc lines*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
 proc length*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
   fcQsciScintilla_length(self.h)
 
-proc lexer*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qscilexer.QsciLexer =
-  gen_qscilexer.QsciLexer(h: fcQsciScintilla_lexer(self.h))
+proc lexer*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qscilexer_types.QsciLexer =
+  gen_qscilexer_types.QsciLexer(h: fcQsciScintilla_lexer(self.h))
 
-proc marginBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciScintilla_marginBackgroundColor(self.h, margin))
+proc marginBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciScintilla_marginBackgroundColor(self.h, margin))
 
 proc marginLineNumbers*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint): bool =
   fcQsciScintilla_marginLineNumbers(self.h, margin)
@@ -1150,10 +1142,10 @@ proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, sym: cint): cint
 proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, ch: cchar): cint =
   fcQsciScintilla_markerDefineWithCh(self.h, ch)
 
-proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, pm: gen_qpixmap.QPixmap): cint =
+proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, pm: gen_qpixmap_types.QPixmap): cint =
   fcQsciScintilla_markerDefineWithPm(self.h, pm.h)
 
-proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, im: gen_qimage.QImage): cint =
+proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, im: gen_qimage_types.QImage): cint =
   fcQsciScintilla_markerDefineWithIm(self.h, im.h)
 
 proc markerAdd*(self: gen_qsciscintilla_types.QsciScintilla, linenr: cint, markerNumber: cint): cint =
@@ -1183,22 +1175,22 @@ proc markerFindPrevious*(self: gen_qsciscintilla_types.QsciScintilla, linenr: ci
 proc overwriteMode*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
   fcQsciScintilla_overwriteMode(self.h)
 
-proc paper*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qcolor.QColor =
-  gen_qcolor.QColor(h: fcQsciScintilla_paper(self.h))
+proc paper*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQsciScintilla_paper(self.h))
 
 proc positionFromLineIndex*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, index: cint): cint =
   fcQsciScintilla_positionFromLineIndex(self.h, line, index)
 
-proc read*(self: gen_qsciscintilla_types.QsciScintilla, io: gen_qiodevice.QIODevice): bool =
+proc read*(self: gen_qsciscintilla_types.QsciScintilla, io: gen_qiodevice_types.QIODevice): bool =
   fcQsciScintilla_read(self.h, io.h)
 
 proc recolor*(self: gen_qsciscintilla_types.QsciScintilla, start: cint, endVal: cint): void =
   fcQsciScintilla_recolor(self.h, start, endVal)
 
-proc registerImage*(self: gen_qsciscintilla_types.QsciScintilla, id: cint, pm: gen_qpixmap.QPixmap): void =
+proc registerImage*(self: gen_qsciscintilla_types.QsciScintilla, id: cint, pm: gen_qpixmap_types.QPixmap): void =
   fcQsciScintilla_registerImage(self.h, id, pm.h)
 
-proc registerImage*(self: gen_qsciscintilla_types.QsciScintilla, id: cint, im: gen_qimage.QImage): void =
+proc registerImage*(self: gen_qsciscintilla_types.QsciScintilla, id: cint, im: gen_qimage_types.QImage): void =
   fcQsciScintilla_registerImage2(self.h, id, im.h)
 
 proc replace*(self: gen_qsciscintilla_types.QsciScintilla, replaceStr: string): void =
@@ -1219,7 +1211,7 @@ proc scrollWidth*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
 proc scrollWidthTracking*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
   fcQsciScintilla_scrollWidthTracking(self.h)
 
-proc setFoldMarginColors*(self: gen_qsciscintilla_types.QsciScintilla, fore: gen_qcolor.QColor, back: gen_qcolor.QColor): void =
+proc setFoldMarginColors*(self: gen_qsciscintilla_types.QsciScintilla, fore: gen_qcolor_types.QColor, back: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setFoldMarginColors(self.h, fore.h, back.h)
 
 proc setAnnotationDisplay*(self: gen_qsciscintilla_types.QsciScintilla, display: cint): void =
@@ -1238,13 +1230,13 @@ proc setAutoCompletionWordSeparators*(self: gen_qsciscintilla_types.QsciScintill
 
   fcQsciScintilla_setAutoCompletionWordSeparators(self.h, struct_miqt_array(len: csize_t(len(separators)), data: if len(separators) == 0: nil else: addr(separators_CArray[0])))
 
-proc setCallTipsBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setCallTipsBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setCallTipsBackgroundColor(self.h, col.h)
 
-proc setCallTipsForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setCallTipsForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setCallTipsForegroundColor(self.h, col.h)
 
-proc setCallTipsHighlightColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setCallTipsHighlightColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setCallTipsHighlightColor(self.h, col.h)
 
 proc setCallTipsPosition*(self: gen_qsciscintilla_types.QsciScintilla, position: cint): void =
@@ -1263,16 +1255,16 @@ proc setContractedFolds*(self: gen_qsciscintilla_types.QsciScintilla, folds: seq
 
   fcQsciScintilla_setContractedFolds(self.h, struct_miqt_array(len: csize_t(len(folds)), data: if len(folds) == 0: nil else: addr(folds_CArray[0])))
 
-proc setDocument*(self: gen_qsciscintilla_types.QsciScintilla, document: gen_qscidocument.QsciDocument): void =
+proc setDocument*(self: gen_qsciscintilla_types.QsciScintilla, document: gen_qscidocument_types.QsciDocument): void =
   fcQsciScintilla_setDocument(self.h, document.h)
 
-proc addEdgeColumn*(self: gen_qsciscintilla_types.QsciScintilla, colnr: cint, col: gen_qcolor.QColor): void =
+proc addEdgeColumn*(self: gen_qsciscintilla_types.QsciScintilla, colnr: cint, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_addEdgeColumn(self.h, colnr, col.h)
 
 proc clearEdgeColumns*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
   fcQsciScintilla_clearEdgeColumns(self.h)
 
-proc setEdgeColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setEdgeColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setEdgeColor(self.h, col.h)
 
 proc setEdgeColumn*(self: gen_qsciscintilla_types.QsciScintilla, colnr: cint): void =
@@ -1287,19 +1279,19 @@ proc setFirstVisibleLine*(self: gen_qsciscintilla_types.QsciScintilla, linenr: c
 proc setIndicatorDrawUnder*(self: gen_qsciscintilla_types.QsciScintilla, under: bool): void =
   fcQsciScintilla_setIndicatorDrawUnder(self.h, under)
 
-proc setIndicatorForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setIndicatorForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setIndicatorForegroundColor(self.h, col.h)
 
-proc setIndicatorHoverForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setIndicatorHoverForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setIndicatorHoverForegroundColor(self.h, col.h)
 
 proc setIndicatorHoverStyle*(self: gen_qsciscintilla_types.QsciScintilla, style: cint): void =
   fcQsciScintilla_setIndicatorHoverStyle(self.h, cint(style))
 
-proc setIndicatorOutlineColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setIndicatorOutlineColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setIndicatorOutlineColor(self.h, col.h)
 
-proc setMarginBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, col: gen_qcolor.QColor): void =
+proc setMarginBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setMarginBackgroundColor(self.h, margin, col.h)
 
 proc setMarginOptions*(self: gen_qsciscintilla_types.QsciScintilla, options: cint): void =
@@ -1308,10 +1300,10 @@ proc setMarginOptions*(self: gen_qsciscintilla_types.QsciScintilla, options: cin
 proc setMarginText*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: string, style: cint): void =
   fcQsciScintilla_setMarginText(self.h, line, struct_miqt_string(data: text, len: csize_t(len(text))), style)
 
-proc setMarginText*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: string, style: gen_qscistyle.QsciStyle): void =
+proc setMarginText*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: string, style: gen_qscistyle_types.QsciStyle): void =
   fcQsciScintilla_setMarginText2(self.h, line, struct_miqt_string(data: text, len: csize_t(len(text))), style.h)
 
-proc setMarginText*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: gen_qscistyledtext.QsciStyledText): void =
+proc setMarginText*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, text: gen_qscistyledtext_types.QsciStyledText): void =
   fcQsciScintilla_setMarginText3(self.h, line, text.h)
 
 proc setMarginType*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, typeVal: cint): void =
@@ -1323,16 +1315,16 @@ proc clearMarginText*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
 proc setMargins*(self: gen_qsciscintilla_types.QsciScintilla, margins: cint): void =
   fcQsciScintilla_setMargins(self.h, margins)
 
-proc setMarkerBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setMarkerBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setMarkerBackgroundColor(self.h, col.h)
 
-proc setMarkerForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setMarkerForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setMarkerForegroundColor(self.h, col.h)
 
-proc setMatchedBraceBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setMatchedBraceBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setMatchedBraceBackgroundColor(self.h, col.h)
 
-proc setMatchedBraceForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setMatchedBraceForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setMatchedBraceForegroundColor(self.h, col.h)
 
 proc setMatchedBraceIndicator*(self: gen_qsciscintilla_types.QsciScintilla, indicatorNumber: cint): void =
@@ -1350,10 +1342,10 @@ proc setScrollWidthTracking*(self: gen_qsciscintilla_types.QsciScintilla, enable
 proc setTabDrawMode*(self: gen_qsciscintilla_types.QsciScintilla, mode: cint): void =
   fcQsciScintilla_setTabDrawMode(self.h, cint(mode))
 
-proc setUnmatchedBraceBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setUnmatchedBraceBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setUnmatchedBraceBackgroundColor(self.h, col.h)
 
-proc setUnmatchedBraceForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setUnmatchedBraceForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setUnmatchedBraceForegroundColor(self.h, col.h)
 
 proc setUnmatchedBraceIndicator*(self: gen_qsciscintilla_types.QsciScintilla, indicatorNumber: cint): void =
@@ -1374,10 +1366,10 @@ proc selectedText*(self: gen_qsciscintilla_types.QsciScintilla, ): string =
 proc selectionToEol*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
   fcQsciScintilla_selectionToEol(self.h)
 
-proc setHotspotBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setHotspotBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setHotspotBackgroundColor(self.h, col.h)
 
-proc setHotspotForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setHotspotForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setHotspotForegroundColor(self.h, col.h)
 
 proc setHotspotUnderline*(self: gen_qsciscintilla_types.QsciScintilla, enable: bool): void =
@@ -1398,10 +1390,10 @@ proc setExtraDescent*(self: gen_qsciscintilla_types.QsciScintilla, extra: cint):
 proc setOverwriteMode*(self: gen_qsciscintilla_types.QsciScintilla, overwrite: bool): void =
   fcQsciScintilla_setOverwriteMode(self.h, overwrite)
 
-proc setWhitespaceBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setWhitespaceBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setWhitespaceBackgroundColor(self.h, col.h)
 
-proc setWhitespaceForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setWhitespaceForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setWhitespaceForegroundColor(self.h, col.h)
 
 proc setWhitespaceSize*(self: gen_qsciscintilla_types.QsciScintilla, size: cint): void =
@@ -1417,8 +1409,8 @@ proc showUserList*(self: gen_qsciscintilla_types.QsciScintilla, id: cint, list: 
 
   fcQsciScintilla_showUserList(self.h, id, struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
-proc standardCommands*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qscicommandset.QsciCommandSet =
-  gen_qscicommandset.QsciCommandSet(h: fcQsciScintilla_standardCommands(self.h))
+proc standardCommands*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qscicommandset_types.QsciCommandSet =
+  gen_qscicommandset_types.QsciCommandSet(h: fcQsciScintilla_standardCommands(self.h))
 
 proc tabDrawMode*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
   cint(fcQsciScintilla_tabDrawMode(self.h))
@@ -1462,7 +1454,7 @@ proc wordAtLineIndex*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, i
   c_free(v_ms.data)
   vx_ret
 
-proc wordAtPoint*(self: gen_qsciscintilla_types.QsciScintilla, point: gen_qpoint.QPoint): string =
+proc wordAtPoint*(self: gen_qsciscintilla_types.QsciScintilla, point: gen_qpoint_types.QPoint): string =
   let v_ms = fcQsciScintilla_wordAtPoint(self.h, point.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -1477,7 +1469,7 @@ proc wrapMode*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
 proc wrapIndentMode*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
   cint(fcQsciScintilla_wrapIndentMode(self.h))
 
-proc write*(self: gen_qsciscintilla_types.QsciScintilla, io: gen_qiodevice.QIODevice): bool =
+proc write*(self: gen_qsciscintilla_types.QsciScintilla, io: gen_qiodevice_types.QIODevice): bool =
   fcQsciScintilla_write(self.h, io.h)
 
 proc append*(self: gen_qsciscintilla_types.QsciScintilla, text: string): void =
@@ -1579,10 +1571,10 @@ proc setBraceMatching*(self: gen_qsciscintilla_types.QsciScintilla, bm: cint): v
 proc setBackspaceUnindents*(self: gen_qsciscintilla_types.QsciScintilla, unindent: bool): void =
   fcQsciScintilla_setBackspaceUnindents(self.h, unindent)
 
-proc setCaretForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setCaretForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setCaretForegroundColor(self.h, col.h)
 
-proc setCaretLineBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setCaretLineBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setCaretLineBackgroundColor(self.h, col.h)
 
 proc setCaretLineFrameWidth*(self: gen_qsciscintilla_types.QsciScintilla, width: cint): void =
@@ -1594,7 +1586,7 @@ proc setCaretLineVisible*(self: gen_qsciscintilla_types.QsciScintilla, enable: b
 proc setCaretWidth*(self: gen_qsciscintilla_types.QsciScintilla, width: cint): void =
   fcQsciScintilla_setCaretWidth(self.h, width)
 
-proc setColor*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor.QColor): void =
+proc setColor*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setColor(self.h, c.h)
 
 proc setCursorPosition*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, index: cint): void =
@@ -1615,10 +1607,10 @@ proc setIndentation*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, in
 proc setIndentationGuides*(self: gen_qsciscintilla_types.QsciScintilla, enable: bool): void =
   fcQsciScintilla_setIndentationGuides(self.h, enable)
 
-proc setIndentationGuidesBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setIndentationGuidesBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setIndentationGuidesBackgroundColor(self.h, col.h)
 
-proc setIndentationGuidesForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setIndentationGuidesForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setIndentationGuidesForegroundColor(self.h, col.h)
 
 proc setIndentationsUseTabs*(self: gen_qsciscintilla_types.QsciScintilla, tabs: bool): void =
@@ -1627,16 +1619,16 @@ proc setIndentationsUseTabs*(self: gen_qsciscintilla_types.QsciScintilla, tabs: 
 proc setIndentationWidth*(self: gen_qsciscintilla_types.QsciScintilla, width: cint): void =
   fcQsciScintilla_setIndentationWidth(self.h, width)
 
-proc setLexer*(self: gen_qsciscintilla_types.QsciScintilla, lexer: gen_qscilexer.QsciLexer): void =
+proc setLexer*(self: gen_qsciscintilla_types.QsciScintilla, lexer: gen_qscilexer_types.QsciLexer): void =
   fcQsciScintilla_setLexer(self.h, lexer.h)
 
-proc setMarginsBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setMarginsBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setMarginsBackgroundColor(self.h, col.h)
 
-proc setMarginsFont*(self: gen_qsciscintilla_types.QsciScintilla, f: gen_qfont.QFont): void =
+proc setMarginsFont*(self: gen_qsciscintilla_types.QsciScintilla, f: gen_qfont_types.QFont): void =
   fcQsciScintilla_setMarginsFont(self.h, f.h)
 
-proc setMarginsForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setMarginsForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setMarginsForegroundColor(self.h, col.h)
 
 proc setMarginLineNumbers*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, lnrs: bool): void =
@@ -1657,7 +1649,7 @@ proc setMarginWidth*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, 
 proc setModified*(self: gen_qsciscintilla_types.QsciScintilla, m: bool): void =
   fcQsciScintilla_setModified(self.h, m)
 
-proc setPaper*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor.QColor): void =
+proc setPaper*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setPaper(self.h, c.h)
 
 proc setReadOnly*(self: gen_qsciscintilla_types.QsciScintilla, ro: bool): void =
@@ -1666,10 +1658,10 @@ proc setReadOnly*(self: gen_qsciscintilla_types.QsciScintilla, ro: bool): void =
 proc setSelection*(self: gen_qsciscintilla_types.QsciScintilla, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void =
   fcQsciScintilla_setSelection(self.h, lineFrom, indexFrom, lineTo, indexTo)
 
-proc setSelectionBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setSelectionBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setSelectionBackgroundColor(self.h, col.h)
 
-proc setSelectionForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
+proc setSelectionForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
   fcQsciScintilla_setSelectionForegroundColor(self.h, col.h)
 
 proc setTabIndents*(self: gen_qsciscintilla_types.QsciScintilla, indent: bool): void =
@@ -1715,7 +1707,7 @@ proc cursorPositionChanged*(self: gen_qsciscintilla_types.QsciScintilla, line: c
   fcQsciScintilla_cursorPositionChanged(self.h, line, index)
 
 type QsciScintillacursorPositionChangedSlot* = proc(line: cint, index: cint)
-proc miqt_exec_callback_QsciScintilla_cursorPositionChanged(slot: int, line: cint, index: cint) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_cursorPositionChanged(slot: int, line: cint, index: cint) {.exportc: "miqt_exec_callback_QsciScintilla_cursorPositionChanged".} =
   let nimfunc = cast[ptr QsciScintillacursorPositionChangedSlot](cast[pointer](slot))
   let slotval1 = line
 
@@ -1727,13 +1719,13 @@ proc oncursorPositionChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot:
   var tmp = new QsciScintillacursorPositionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_cursorPositionChanged(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_cursorPositionChanged(self.h, cast[int](addr tmp[]))
 
 proc copyAvailable*(self: gen_qsciscintilla_types.QsciScintilla, yes: bool): void =
   fcQsciScintilla_copyAvailable(self.h, yes)
 
 type QsciScintillacopyAvailableSlot* = proc(yes: bool)
-proc miqt_exec_callback_QsciScintilla_copyAvailable(slot: int, yes: bool) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_copyAvailable(slot: int, yes: bool) {.exportc: "miqt_exec_callback_QsciScintilla_copyAvailable".} =
   let nimfunc = cast[ptr QsciScintillacopyAvailableSlot](cast[pointer](slot))
   let slotval1 = yes
 
@@ -1743,13 +1735,13 @@ proc oncopyAvailable*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciSci
   var tmp = new QsciScintillacopyAvailableSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_copyAvailable(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_copyAvailable(self.h, cast[int](addr tmp[]))
 
 proc indicatorClicked*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, index: cint, state: cint): void =
   fcQsciScintilla_indicatorClicked(self.h, line, index, cint(state))
 
 type QsciScintillaindicatorClickedSlot* = proc(line: cint, index: cint, state: cint)
-proc miqt_exec_callback_QsciScintilla_indicatorClicked(slot: int, line: cint, index: cint, state: cint) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_indicatorClicked(slot: int, line: cint, index: cint, state: cint) {.exportc: "miqt_exec_callback_QsciScintilla_indicatorClicked".} =
   let nimfunc = cast[ptr QsciScintillaindicatorClickedSlot](cast[pointer](slot))
   let slotval1 = line
 
@@ -1763,13 +1755,13 @@ proc onindicatorClicked*(self: gen_qsciscintilla_types.QsciScintilla, slot: Qsci
   var tmp = new QsciScintillaindicatorClickedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_indicatorClicked(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_indicatorClicked(self.h, cast[int](addr tmp[]))
 
 proc indicatorReleased*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, index: cint, state: cint): void =
   fcQsciScintilla_indicatorReleased(self.h, line, index, cint(state))
 
 type QsciScintillaindicatorReleasedSlot* = proc(line: cint, index: cint, state: cint)
-proc miqt_exec_callback_QsciScintilla_indicatorReleased(slot: int, line: cint, index: cint, state: cint) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_indicatorReleased(slot: int, line: cint, index: cint, state: cint) {.exportc: "miqt_exec_callback_QsciScintilla_indicatorReleased".} =
   let nimfunc = cast[ptr QsciScintillaindicatorReleasedSlot](cast[pointer](slot))
   let slotval1 = line
 
@@ -1783,13 +1775,13 @@ proc onindicatorReleased*(self: gen_qsciscintilla_types.QsciScintilla, slot: Qsc
   var tmp = new QsciScintillaindicatorReleasedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_indicatorReleased(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_indicatorReleased(self.h, cast[int](addr tmp[]))
 
 proc linesChanged*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
   fcQsciScintilla_linesChanged(self.h)
 
 type QsciScintillalinesChangedSlot* = proc()
-proc miqt_exec_callback_QsciScintilla_linesChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_linesChanged(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_linesChanged".} =
   let nimfunc = cast[ptr QsciScintillalinesChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -1797,13 +1789,13 @@ proc onlinesChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScin
   var tmp = new QsciScintillalinesChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_linesChanged(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_linesChanged(self.h, cast[int](addr tmp[]))
 
 proc marginClicked*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, line: cint, state: cint): void =
   fcQsciScintilla_marginClicked(self.h, margin, line, cint(state))
 
 type QsciScintillamarginClickedSlot* = proc(margin: cint, line: cint, state: cint)
-proc miqt_exec_callback_QsciScintilla_marginClicked(slot: int, margin: cint, line: cint, state: cint) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_marginClicked(slot: int, margin: cint, line: cint, state: cint) {.exportc: "miqt_exec_callback_QsciScintilla_marginClicked".} =
   let nimfunc = cast[ptr QsciScintillamarginClickedSlot](cast[pointer](slot))
   let slotval1 = margin
 
@@ -1817,13 +1809,13 @@ proc onmarginClicked*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciSci
   var tmp = new QsciScintillamarginClickedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_marginClicked(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_marginClicked(self.h, cast[int](addr tmp[]))
 
 proc marginRightClicked*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, line: cint, state: cint): void =
   fcQsciScintilla_marginRightClicked(self.h, margin, line, cint(state))
 
 type QsciScintillamarginRightClickedSlot* = proc(margin: cint, line: cint, state: cint)
-proc miqt_exec_callback_QsciScintilla_marginRightClicked(slot: int, margin: cint, line: cint, state: cint) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_marginRightClicked(slot: int, margin: cint, line: cint, state: cint) {.exportc: "miqt_exec_callback_QsciScintilla_marginRightClicked".} =
   let nimfunc = cast[ptr QsciScintillamarginRightClickedSlot](cast[pointer](slot))
   let slotval1 = margin
 
@@ -1837,13 +1829,13 @@ proc onmarginRightClicked*(self: gen_qsciscintilla_types.QsciScintilla, slot: Qs
   var tmp = new QsciScintillamarginRightClickedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_marginRightClicked(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_marginRightClicked(self.h, cast[int](addr tmp[]))
 
 proc modificationAttempted*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
   fcQsciScintilla_modificationAttempted(self.h)
 
 type QsciScintillamodificationAttemptedSlot* = proc()
-proc miqt_exec_callback_QsciScintilla_modificationAttempted(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_modificationAttempted(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_modificationAttempted".} =
   let nimfunc = cast[ptr QsciScintillamodificationAttemptedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -1851,13 +1843,13 @@ proc onmodificationAttempted*(self: gen_qsciscintilla_types.QsciScintilla, slot:
   var tmp = new QsciScintillamodificationAttemptedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_modificationAttempted(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_modificationAttempted(self.h, cast[int](addr tmp[]))
 
 proc modificationChanged*(self: gen_qsciscintilla_types.QsciScintilla, m: bool): void =
   fcQsciScintilla_modificationChanged(self.h, m)
 
 type QsciScintillamodificationChangedSlot* = proc(m: bool)
-proc miqt_exec_callback_QsciScintilla_modificationChanged(slot: int, m: bool) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_modificationChanged(slot: int, m: bool) {.exportc: "miqt_exec_callback_QsciScintilla_modificationChanged".} =
   let nimfunc = cast[ptr QsciScintillamodificationChangedSlot](cast[pointer](slot))
   let slotval1 = m
 
@@ -1867,13 +1859,13 @@ proc onmodificationChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: Q
   var tmp = new QsciScintillamodificationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_modificationChanged(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_modificationChanged(self.h, cast[int](addr tmp[]))
 
 proc selectionChanged*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
   fcQsciScintilla_selectionChanged(self.h)
 
 type QsciScintillaselectionChangedSlot* = proc()
-proc miqt_exec_callback_QsciScintilla_selectionChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_selectionChanged(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_selectionChanged".} =
   let nimfunc = cast[ptr QsciScintillaselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -1881,13 +1873,13 @@ proc onselectionChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: Qsci
   var tmp = new QsciScintillaselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_selectionChanged(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_selectionChanged(self.h, cast[int](addr tmp[]))
 
 proc textChanged*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
   fcQsciScintilla_textChanged(self.h)
 
 type QsciScintillatextChangedSlot* = proc()
-proc miqt_exec_callback_QsciScintilla_textChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_textChanged(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_textChanged".} =
   let nimfunc = cast[ptr QsciScintillatextChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -1895,13 +1887,13 @@ proc ontextChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScint
   var tmp = new QsciScintillatextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_textChanged(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_textChanged(self.h, cast[int](addr tmp[]))
 
 proc userListActivated*(self: gen_qsciscintilla_types.QsciScintilla, id: cint, string: string): void =
   fcQsciScintilla_userListActivated(self.h, id, struct_miqt_string(data: string, len: csize_t(len(string))))
 
 type QsciScintillauserListActivatedSlot* = proc(id: cint, string: string)
-proc miqt_exec_callback_QsciScintilla_userListActivated(slot: int, id: cint, string: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQsciScintilla_userListActivated(slot: int, id: cint, string: struct_miqt_string) {.exportc: "miqt_exec_callback_QsciScintilla_userListActivated".} =
   let nimfunc = cast[ptr QsciScintillauserListActivatedSlot](cast[pointer](slot))
   let slotval1 = id
 
@@ -1916,7 +1908,7 @@ proc onuserListActivated*(self: gen_qsciscintilla_types.QsciScintilla, slot: Qsc
   var tmp = new QsciScintillauserListActivatedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQsciScintilla_connect_userListActivated(self.h, cast[int](addr tmp[]))
+  fcQsciScintilla_connect_userListActivated(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qsciscintilla_types.QsciScintilla, s: cstring, c: cstring): string =
   let v_ms = fcQsciScintilla_tr2(s, c)
@@ -1954,10 +1946,10 @@ proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, sym: cint, marke
 proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, ch: cchar, markerNumber: cint): cint =
   fcQsciScintilla_markerDefine22(self.h, ch, markerNumber)
 
-proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, pm: gen_qpixmap.QPixmap, markerNumber: cint): cint =
+proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, pm: gen_qpixmap_types.QPixmap, markerNumber: cint): cint =
   fcQsciScintilla_markerDefine23(self.h, pm.h, markerNumber)
 
-proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, im: gen_qimage.QImage, markerNumber: cint): cint =
+proc markerDefine*(self: gen_qsciscintilla_types.QsciScintilla, im: gen_qimage_types.QImage, markerNumber: cint): cint =
   fcQsciScintilla_markerDefine24(self.h, im.h, markerNumber)
 
 proc markerDelete*(self: gen_qsciscintilla_types.QsciScintilla, linenr: cint, markerNumber: cint): void =
@@ -1969,25 +1961,25 @@ proc markerDeleteAll*(self: gen_qsciscintilla_types.QsciScintilla, markerNumber:
 proc setIndicatorDrawUnder*(self: gen_qsciscintilla_types.QsciScintilla, under: bool, indicatorNumber: cint): void =
   fcQsciScintilla_setIndicatorDrawUnder2(self.h, under, indicatorNumber)
 
-proc setIndicatorForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor, indicatorNumber: cint): void =
+proc setIndicatorForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor, indicatorNumber: cint): void =
   fcQsciScintilla_setIndicatorForegroundColor2(self.h, col.h, indicatorNumber)
 
-proc setIndicatorHoverForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor, indicatorNumber: cint): void =
+proc setIndicatorHoverForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor, indicatorNumber: cint): void =
   fcQsciScintilla_setIndicatorHoverForegroundColor2(self.h, col.h, indicatorNumber)
 
 proc setIndicatorHoverStyle*(self: gen_qsciscintilla_types.QsciScintilla, style: cint, indicatorNumber: cint): void =
   fcQsciScintilla_setIndicatorHoverStyle2(self.h, cint(style), indicatorNumber)
 
-proc setIndicatorOutlineColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor, indicatorNumber: cint): void =
+proc setIndicatorOutlineColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor, indicatorNumber: cint): void =
   fcQsciScintilla_setIndicatorOutlineColor2(self.h, col.h, indicatorNumber)
 
 proc clearMarginText*(self: gen_qsciscintilla_types.QsciScintilla, line: cint): void =
   fcQsciScintilla_clearMarginText1(self.h, line)
 
-proc setMarkerBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor, markerNumber: cint): void =
+proc setMarkerBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor, markerNumber: cint): void =
   fcQsciScintilla_setMarkerBackgroundColor2(self.h, col.h, markerNumber)
 
-proc setMarkerForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor, markerNumber: cint): void =
+proc setMarkerForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor, markerNumber: cint): void =
   fcQsciScintilla_setMarkerForegroundColor2(self.h, col.h, markerNumber)
 
 proc setWrapVisualFlags*(self: gen_qsciscintilla_types.QsciScintilla, endFlag: cint, startFlag: cint): void =
@@ -1996,67 +1988,321 @@ proc setWrapVisualFlags*(self: gen_qsciscintilla_types.QsciScintilla, endFlag: c
 proc setWrapVisualFlags*(self: gen_qsciscintilla_types.QsciScintilla, endFlag: cint, startFlag: cint, indent: cint): void =
   fcQsciScintilla_setWrapVisualFlags3(self.h, cint(endFlag), cint(startFlag), indent)
 
-proc QsciScintillametaObject*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fQsciScintilla_virtualbase_metaObject(self.h))
+type QsciScintillametaObjectProc* = proc(self: QsciScintilla): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QsciScintillametacastProc* = proc(self: QsciScintilla, param1: cstring): pointer {.raises: [], gcsafe.}
+type QsciScintillametacallProc* = proc(self: QsciScintilla, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QsciScintillaapiContextProc* = proc(self: QsciScintilla, pos: cint, context_start: ptr cint, last_word_start: ptr cint): seq[string] {.raises: [], gcsafe.}
+type QsciScintillafindFirstProc* = proc(self: QsciScintilla, expr: string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool {.raises: [], gcsafe.}
+type QsciScintillafindFirstInSelectionProc* = proc(self: QsciScintilla, expr: string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool {.raises: [], gcsafe.}
+type QsciScintillafindNextProc* = proc(self: QsciScintilla): bool {.raises: [], gcsafe.}
+type QsciScintillarecolorProc* = proc(self: QsciScintilla, start: cint, endVal: cint): void {.raises: [], gcsafe.}
+type QsciScintillareplaceProc* = proc(self: QsciScintilla, replaceStr: string): void {.raises: [], gcsafe.}
+type QsciScintillaappendProc* = proc(self: QsciScintilla, text: string): void {.raises: [], gcsafe.}
+type QsciScintillaautoCompleteFromAllProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaautoCompleteFromAPIsProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaautoCompleteFromDocumentProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillacallTipProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaclearProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillacopyProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillacutProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaensureCursorVisibleProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaensureLineVisibleProc* = proc(self: QsciScintilla, line: cint): void {.raises: [], gcsafe.}
+type QsciScintillafoldAllProc* = proc(self: QsciScintilla, children: bool): void {.raises: [], gcsafe.}
+type QsciScintillafoldLineProc* = proc(self: QsciScintilla, line: cint): void {.raises: [], gcsafe.}
+type QsciScintillaindentProc* = proc(self: QsciScintilla, line: cint): void {.raises: [], gcsafe.}
+type QsciScintillainsertProc* = proc(self: QsciScintilla, text: string): void {.raises: [], gcsafe.}
+type QsciScintillainsertAtProc* = proc(self: QsciScintilla, text: string, line: cint, index: cint): void {.raises: [], gcsafe.}
+type QsciScintillamoveToMatchingBraceProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillapasteProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaredoProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaremoveSelectedTextProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillareplaceSelectedTextProc* = proc(self: QsciScintilla, text: string): void {.raises: [], gcsafe.}
+type QsciScintillaresetSelectionBackgroundColorProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaresetSelectionForegroundColorProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaselectAllProc* = proc(self: QsciScintilla, select: bool): void {.raises: [], gcsafe.}
+type QsciScintillaselectToMatchingBraceProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillasetAutoCompletionCaseSensitivityProc* = proc(self: QsciScintilla, cs: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetAutoCompletionReplaceWordProc* = proc(self: QsciScintilla, replace: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetAutoCompletionShowSingleProc* = proc(self: QsciScintilla, single: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetAutoCompletionSourceProc* = proc(self: QsciScintilla, source: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetAutoCompletionThresholdProc* = proc(self: QsciScintilla, thresh: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetAutoCompletionUseSingleProc* = proc(self: QsciScintilla, single: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetAutoIndentProc* = proc(self: QsciScintilla, autoindent: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetBraceMatchingProc* = proc(self: QsciScintilla, bm: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetBackspaceUnindentsProc* = proc(self: QsciScintilla, unindent: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetCaretForegroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetCaretLineBackgroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetCaretLineFrameWidthProc* = proc(self: QsciScintilla, width: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetCaretLineVisibleProc* = proc(self: QsciScintilla, enable: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetCaretWidthProc* = proc(self: QsciScintilla, width: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetColorProc* = proc(self: QsciScintilla, c: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetCursorPositionProc* = proc(self: QsciScintilla, line: cint, index: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetEolModeProc* = proc(self: QsciScintilla, mode: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetEolVisibilityProc* = proc(self: QsciScintilla, visible: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetFoldingProc* = proc(self: QsciScintilla, fold: cint, margin: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetIndentationProc* = proc(self: QsciScintilla, line: cint, indentation: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetIndentationGuidesProc* = proc(self: QsciScintilla, enable: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetIndentationGuidesBackgroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetIndentationGuidesForegroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetIndentationsUseTabsProc* = proc(self: QsciScintilla, tabs: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetIndentationWidthProc* = proc(self: QsciScintilla, width: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetLexerProc* = proc(self: QsciScintilla, lexer: gen_qscilexer_types.QsciLexer): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginsBackgroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginsFontProc* = proc(self: QsciScintilla, f: gen_qfont_types.QFont): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginsForegroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginLineNumbersProc* = proc(self: QsciScintilla, margin: cint, lnrs: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginMarkerMaskProc* = proc(self: QsciScintilla, margin: cint, mask: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginSensitivityProc* = proc(self: QsciScintilla, margin: cint, sens: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginWidthProc* = proc(self: QsciScintilla, margin: cint, width: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetMarginWidthProc* = proc(self: QsciScintilla, margin: cint, s: string): void {.raises: [], gcsafe.}
+type QsciScintillasetModifiedProc* = proc(self: QsciScintilla, m: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetPaperProc* = proc(self: QsciScintilla, c: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetReadOnlyProc* = proc(self: QsciScintilla, ro: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetSelectionProc* = proc(self: QsciScintilla, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetSelectionBackgroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetSelectionForegroundColorProc* = proc(self: QsciScintilla, col: gen_qcolor_types.QColor): void {.raises: [], gcsafe.}
+type QsciScintillasetTabIndentsProc* = proc(self: QsciScintilla, indent: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetTabWidthProc* = proc(self: QsciScintilla, width: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetTextProc* = proc(self: QsciScintilla, text: string): void {.raises: [], gcsafe.}
+type QsciScintillasetUtf8Proc* = proc(self: QsciScintilla, cp: bool): void {.raises: [], gcsafe.}
+type QsciScintillasetWhitespaceVisibilityProc* = proc(self: QsciScintilla, mode: cint): void {.raises: [], gcsafe.}
+type QsciScintillasetWrapModeProc* = proc(self: QsciScintilla, mode: cint): void {.raises: [], gcsafe.}
+type QsciScintillaundoProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillaunindentProc* = proc(self: QsciScintilla, line: cint): void {.raises: [], gcsafe.}
+type QsciScintillazoomInProc* = proc(self: QsciScintilla, range: cint): void {.raises: [], gcsafe.}
+type QsciScintillazoomInProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillazoomOutProc* = proc(self: QsciScintilla, range: cint): void {.raises: [], gcsafe.}
+type QsciScintillazoomOutProc* = proc(self: QsciScintilla): void {.raises: [], gcsafe.}
+type QsciScintillazoomToProc* = proc(self: QsciScintilla, size: cint): void {.raises: [], gcsafe.}
+type QsciScintillaeventProc* = proc(self: QsciScintilla, e: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciScintillachangeEventProc* = proc(self: QsciScintilla, e: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciScintillacontextMenuEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QContextMenuEvent): void {.raises: [], gcsafe.}
+type QsciScintillawheelEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QWheelEvent): void {.raises: [], gcsafe.}
+type QsciScintillacanInsertFromMimeDataProc* = proc(self: QsciScintilla, source: gen_qmimedata_types.QMimeData): bool {.raises: [], gcsafe.}
+type QsciScintillafromMimeDataProc* = proc(self: QsciScintilla, source: gen_qmimedata_types.QMimeData, rectangular: ptr bool): seq[byte] {.raises: [], gcsafe.}
+type QsciScintillatoMimeDataProc* = proc(self: QsciScintilla, text: seq[byte], rectangular: bool): gen_qmimedata_types.QMimeData {.raises: [], gcsafe.}
+type QsciScintilladragEnterEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QDragEnterEvent): void {.raises: [], gcsafe.}
+type QsciScintilladragLeaveEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QDragLeaveEvent): void {.raises: [], gcsafe.}
+type QsciScintilladragMoveEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QDragMoveEvent): void {.raises: [], gcsafe.}
+type QsciScintilladropEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QDropEvent): void {.raises: [], gcsafe.}
+type QsciScintillafocusInEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QFocusEvent): void {.raises: [], gcsafe.}
+type QsciScintillafocusOutEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QFocusEvent): void {.raises: [], gcsafe.}
+type QsciScintillafocusNextPrevChildProc* = proc(self: QsciScintilla, next: bool): bool {.raises: [], gcsafe.}
+type QsciScintillakeyPressEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QKeyEvent): void {.raises: [], gcsafe.}
+type QsciScintillainputMethodEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QInputMethodEvent): void {.raises: [], gcsafe.}
+type QsciScintillainputMethodQueryProc* = proc(self: QsciScintilla, query: cint): gen_qvariant_types.QVariant {.raises: [], gcsafe.}
+type QsciScintillamouseDoubleClickEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QsciScintillamouseMoveEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QsciScintillamousePressEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QsciScintillamouseReleaseEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QMouseEvent): void {.raises: [], gcsafe.}
+type QsciScintillapaintEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QPaintEvent): void {.raises: [], gcsafe.}
+type QsciScintillaresizeEventProc* = proc(self: QsciScintilla, e: gen_qevent_types.QResizeEvent): void {.raises: [], gcsafe.}
+type QsciScintillascrollContentsByProc* = proc(self: QsciScintilla, dx: cint, dy: cint): void {.raises: [], gcsafe.}
+type QsciScintillaminimumSizeHintProc* = proc(self: QsciScintilla): gen_qsize_types.QSize {.raises: [], gcsafe.}
+type QsciScintillasizeHintProc* = proc(self: QsciScintilla): gen_qsize_types.QSize {.raises: [], gcsafe.}
+type QsciScintillasetupViewportProc* = proc(self: QsciScintilla, viewport: gen_qwidget_types.QWidget): void {.raises: [], gcsafe.}
+type QsciScintillaeventFilterProc* = proc(self: QsciScintilla, param1: gen_qobject_types.QObject, param2: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciScintillaviewportEventProc* = proc(self: QsciScintilla, param1: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QsciScintillaviewportSizeHintProc* = proc(self: QsciScintilla): gen_qsize_types.QSize {.raises: [], gcsafe.}
+type QsciScintilladevTypeProc* = proc(self: QsciScintilla): cint {.raises: [], gcsafe.}
+type QsciScintillasetVisibleProc* = proc(self: QsciScintilla, visible: bool): void {.raises: [], gcsafe.}
+type QsciScintillaheightForWidthProc* = proc(self: QsciScintilla, param1: cint): cint {.raises: [], gcsafe.}
+type QsciScintillahasHeightForWidthProc* = proc(self: QsciScintilla): bool {.raises: [], gcsafe.}
+type QsciScintillapaintEngineProc* = proc(self: QsciScintilla): gen_qpaintengine_types.QPaintEngine {.raises: [], gcsafe.}
+type QsciScintillakeyReleaseEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QKeyEvent): void {.raises: [], gcsafe.}
+type QsciScintillaenterEventProc* = proc(self: QsciScintilla, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciScintillaleaveEventProc* = proc(self: QsciScintilla, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciScintillamoveEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QMoveEvent): void {.raises: [], gcsafe.}
+type QsciScintillacloseEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QCloseEvent): void {.raises: [], gcsafe.}
+type QsciScintillatabletEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QTabletEvent): void {.raises: [], gcsafe.}
+type QsciScintillaactionEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QActionEvent): void {.raises: [], gcsafe.}
+type QsciScintillashowEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QShowEvent): void {.raises: [], gcsafe.}
+type QsciScintillahideEventProc* = proc(self: QsciScintilla, event: gen_qevent_types.QHideEvent): void {.raises: [], gcsafe.}
+type QsciScintillanativeEventProc* = proc(self: QsciScintilla, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool {.raises: [], gcsafe.}
+type QsciScintillametricProc* = proc(self: QsciScintilla, param1: cint): cint {.raises: [], gcsafe.}
+type QsciScintillainitPainterProc* = proc(self: QsciScintilla, painter: gen_qpainter_types.QPainter): void {.raises: [], gcsafe.}
+type QsciScintillaredirectedProc* = proc(self: QsciScintilla, offset: gen_qpoint_types.QPoint): gen_qpaintdevice_types.QPaintDevice {.raises: [], gcsafe.}
+type QsciScintillasharedPainterProc* = proc(self: QsciScintilla): gen_qpainter_types.QPainter {.raises: [], gcsafe.}
+type QsciScintillatimerEventProc* = proc(self: QsciScintilla, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QsciScintillachildEventProc* = proc(self: QsciScintilla, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QsciScintillacustomEventProc* = proc(self: QsciScintilla, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QsciScintillaconnectNotifyProc* = proc(self: QsciScintilla, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciScintilladisconnectNotifyProc* = proc(self: QsciScintilla, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QsciScintillaVTable* = object
+  vtbl: cQsciScintillaVTable
+  metaObject*: QsciScintillametaObjectProc
+  metacast*: QsciScintillametacastProc
+  metacall*: QsciScintillametacallProc
+  apiContext*: QsciScintillaapiContextProc
+  findFirst*: QsciScintillafindFirstProc
+  findFirstInSelection*: QsciScintillafindFirstInSelectionProc
+  findNext*: QsciScintillafindNextProc
+  recolor*: QsciScintillarecolorProc
+  replace*: QsciScintillareplaceProc
+  append*: QsciScintillaappendProc
+  autoCompleteFromAll*: QsciScintillaautoCompleteFromAllProc
+  autoCompleteFromAPIs*: QsciScintillaautoCompleteFromAPIsProc
+  autoCompleteFromDocument*: QsciScintillaautoCompleteFromDocumentProc
+  callTip*: QsciScintillacallTipProc
+  clear*: QsciScintillaclearProc
+  copy*: QsciScintillacopyProc
+  cut*: QsciScintillacutProc
+  ensureCursorVisible*: QsciScintillaensureCursorVisibleProc
+  ensureLineVisible*: QsciScintillaensureLineVisibleProc
+  foldAll*: QsciScintillafoldAllProc
+  foldLine*: QsciScintillafoldLineProc
+  indent*: QsciScintillaindentProc
+  insert*: QsciScintillainsertProc
+  insertAt*: QsciScintillainsertAtProc
+  moveToMatchingBrace*: QsciScintillamoveToMatchingBraceProc
+  paste*: QsciScintillapasteProc
+  redo*: QsciScintillaredoProc
+  removeSelectedText*: QsciScintillaremoveSelectedTextProc
+  replaceSelectedText*: QsciScintillareplaceSelectedTextProc
+  resetSelectionBackgroundColor*: QsciScintillaresetSelectionBackgroundColorProc
+  resetSelectionForegroundColor*: QsciScintillaresetSelectionForegroundColorProc
+  selectAll*: QsciScintillaselectAllProc
+  selectToMatchingBrace*: QsciScintillaselectToMatchingBraceProc
+  setAutoCompletionCaseSensitivity*: QsciScintillasetAutoCompletionCaseSensitivityProc
+  setAutoCompletionReplaceWord*: QsciScintillasetAutoCompletionReplaceWordProc
+  setAutoCompletionShowSingle*: QsciScintillasetAutoCompletionShowSingleProc
+  setAutoCompletionSource*: QsciScintillasetAutoCompletionSourceProc
+  setAutoCompletionThreshold*: QsciScintillasetAutoCompletionThresholdProc
+  setAutoCompletionUseSingle*: QsciScintillasetAutoCompletionUseSingleProc
+  setAutoIndent*: QsciScintillasetAutoIndentProc
+  setBraceMatching*: QsciScintillasetBraceMatchingProc
+  setBackspaceUnindents*: QsciScintillasetBackspaceUnindentsProc
+  setCaretForegroundColor*: QsciScintillasetCaretForegroundColorProc
+  setCaretLineBackgroundColor*: QsciScintillasetCaretLineBackgroundColorProc
+  setCaretLineFrameWidth*: QsciScintillasetCaretLineFrameWidthProc
+  setCaretLineVisible*: QsciScintillasetCaretLineVisibleProc
+  setCaretWidth*: QsciScintillasetCaretWidthProc
+  setColor*: QsciScintillasetColorProc
+  setCursorPosition*: QsciScintillasetCursorPositionProc
+  setEolMode*: QsciScintillasetEolModeProc
+  setEolVisibility*: QsciScintillasetEolVisibilityProc
+  setFolding*: QsciScintillasetFoldingProc
+  setIndentation*: QsciScintillasetIndentationProc
+  setIndentationGuides*: QsciScintillasetIndentationGuidesProc
+  setIndentationGuidesBackgroundColor*: QsciScintillasetIndentationGuidesBackgroundColorProc
+  setIndentationGuidesForegroundColor*: QsciScintillasetIndentationGuidesForegroundColorProc
+  setIndentationsUseTabs*: QsciScintillasetIndentationsUseTabsProc
+  setIndentationWidth*: QsciScintillasetIndentationWidthProc
+  setLexer*: QsciScintillasetLexerProc
+  setMarginsBackgroundColor*: QsciScintillasetMarginsBackgroundColorProc
+  setMarginsFont*: QsciScintillasetMarginsFontProc
+  setMarginsForegroundColor*: QsciScintillasetMarginsForegroundColorProc
+  setMarginLineNumbers*: QsciScintillasetMarginLineNumbersProc
+  setMarginMarkerMask*: QsciScintillasetMarginMarkerMaskProc
+  setMarginSensitivity*: QsciScintillasetMarginSensitivityProc
+  setMarginWidth*: QsciScintillasetMarginWidthProc
+  setMarginWidth*: QsciScintillasetMarginWidthProc
+  setModified*: QsciScintillasetModifiedProc
+  setPaper*: QsciScintillasetPaperProc
+  setReadOnly*: QsciScintillasetReadOnlyProc
+  setSelection*: QsciScintillasetSelectionProc
+  setSelectionBackgroundColor*: QsciScintillasetSelectionBackgroundColorProc
+  setSelectionForegroundColor*: QsciScintillasetSelectionForegroundColorProc
+  setTabIndents*: QsciScintillasetTabIndentsProc
+  setTabWidth*: QsciScintillasetTabWidthProc
+  setText*: QsciScintillasetTextProc
+  setUtf8*: QsciScintillasetUtf8Proc
+  setWhitespaceVisibility*: QsciScintillasetWhitespaceVisibilityProc
+  setWrapMode*: QsciScintillasetWrapModeProc
+  undo*: QsciScintillaundoProc
+  unindent*: QsciScintillaunindentProc
+  zoomIn*: QsciScintillazoomInProc
+  zoomIn*: QsciScintillazoomInProc
+  zoomOut*: QsciScintillazoomOutProc
+  zoomOut*: QsciScintillazoomOutProc
+  zoomTo*: QsciScintillazoomToProc
+  event*: QsciScintillaeventProc
+  changeEvent*: QsciScintillachangeEventProc
+  contextMenuEvent*: QsciScintillacontextMenuEventProc
+  wheelEvent*: QsciScintillawheelEventProc
+  canInsertFromMimeData*: QsciScintillacanInsertFromMimeDataProc
+  fromMimeData*: QsciScintillafromMimeDataProc
+  toMimeData*: QsciScintillatoMimeDataProc
+  dragEnterEvent*: QsciScintilladragEnterEventProc
+  dragLeaveEvent*: QsciScintilladragLeaveEventProc
+  dragMoveEvent*: QsciScintilladragMoveEventProc
+  dropEvent*: QsciScintilladropEventProc
+  focusInEvent*: QsciScintillafocusInEventProc
+  focusOutEvent*: QsciScintillafocusOutEventProc
+  focusNextPrevChild*: QsciScintillafocusNextPrevChildProc
+  keyPressEvent*: QsciScintillakeyPressEventProc
+  inputMethodEvent*: QsciScintillainputMethodEventProc
+  inputMethodQuery*: QsciScintillainputMethodQueryProc
+  mouseDoubleClickEvent*: QsciScintillamouseDoubleClickEventProc
+  mouseMoveEvent*: QsciScintillamouseMoveEventProc
+  mousePressEvent*: QsciScintillamousePressEventProc
+  mouseReleaseEvent*: QsciScintillamouseReleaseEventProc
+  paintEvent*: QsciScintillapaintEventProc
+  resizeEvent*: QsciScintillaresizeEventProc
+  scrollContentsBy*: QsciScintillascrollContentsByProc
+  minimumSizeHint*: QsciScintillaminimumSizeHintProc
+  sizeHint*: QsciScintillasizeHintProc
+  setupViewport*: QsciScintillasetupViewportProc
+  eventFilter*: QsciScintillaeventFilterProc
+  viewportEvent*: QsciScintillaviewportEventProc
+  viewportSizeHint*: QsciScintillaviewportSizeHintProc
+  devType*: QsciScintilladevTypeProc
+  setVisible*: QsciScintillasetVisibleProc
+  heightForWidth*: QsciScintillaheightForWidthProc
+  hasHeightForWidth*: QsciScintillahasHeightForWidthProc
+  paintEngine*: QsciScintillapaintEngineProc
+  keyReleaseEvent*: QsciScintillakeyReleaseEventProc
+  enterEvent*: QsciScintillaenterEventProc
+  leaveEvent*: QsciScintillaleaveEventProc
+  moveEvent*: QsciScintillamoveEventProc
+  closeEvent*: QsciScintillacloseEventProc
+  tabletEvent*: QsciScintillatabletEventProc
+  actionEvent*: QsciScintillaactionEventProc
+  showEvent*: QsciScintillashowEventProc
+  hideEvent*: QsciScintillahideEventProc
+  nativeEvent*: QsciScintillanativeEventProc
+  metric*: QsciScintillametricProc
+  initPainter*: QsciScintillainitPainterProc
+  redirected*: QsciScintillaredirectedProc
+  sharedPainter*: QsciScintillasharedPainterProc
+  timerEvent*: QsciScintillatimerEventProc
+  childEvent*: QsciScintillachildEventProc
+  customEvent*: QsciScintillacustomEventProc
+  connectNotify*: QsciScintillaconnectNotifyProc
+  disconnectNotify*: QsciScintilladisconnectNotifyProc
+proc QsciScintillametaObject*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciScintilla_virtualbase_metaObject(self.h))
 
-type QsciScintillametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillametaObjectProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillametaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_metaObject(self: ptr cQsciScintilla, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintilla_metaObject ".} =
-  var nimfunc = cast[ptr QsciScintillametaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QsciScintillametacast*(self: gen_qsciscintilla_types.QsciScintilla, param1: cstring): pointer =
-  fQsciScintilla_virtualbase_metacast(self.h, param1)
+  fcQsciScintilla_virtualbase_metacast(self.h, param1)
 
-type QsciScintillametacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillametacastProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillametacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_metacast(self: ptr cQsciScintilla, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciScintilla_metacast ".} =
-  var nimfunc = cast[ptr QsciScintillametacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QsciScintillametacall*(self: gen_qsciscintilla_types.QsciScintilla, param1: cint, param2: cint, param3: pointer): cint =
-  fQsciScintilla_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQsciScintilla_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciScintillametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillametacallProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillametacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_metacall(self: ptr cQsciScintilla, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciScintilla_metacall ".} =
-  var nimfunc = cast[ptr QsciScintillametacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QsciScintillaapiContext*(self: gen_qsciscintilla_types.QsciScintilla, pos: cint, context_start: ptr cint, last_word_start: ptr cint): seq[string] =
-  var v_ma = fQsciScintilla_virtualbase_apiContext(self.h, pos, context_start, last_word_start)
+  var v_ma = fcQsciScintilla_virtualbase_apiContext(self.h, pos, context_start, last_word_start)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
   for i in 0 ..< v_ma.len:
@@ -2066,2445 +2312,1892 @@ proc QsciScintillaapiContext*(self: gen_qsciscintilla_types.QsciScintilla, pos: 
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciScintillaapiContextProc* = proc(pos: cint, context_start: ptr cint, last_word_start: ptr cint): seq[string]
-proc onapiContext*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaapiContextProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaapiContextProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_apiContext(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_apiContext(self: ptr cQsciScintilla, slot: int, pos: cint, context_start: ptr cint, last_word_start: ptr cint): struct_miqt_array {.exportc: "miqt_exec_callback_QsciScintilla_apiContext ".} =
-  var nimfunc = cast[ptr QsciScintillaapiContextProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_apiContext(vtbl: pointer, self: pointer, pos: cint, context_start: ptr cint, last_word_start: ptr cint): struct_miqt_array {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = pos
-
   let slotval2 = context_start
-
   let slotval3 = last_word_start
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
+  let virtualReturn = vtbl[].apiContext(self, slotval1, slotval2, slotval3)
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
-
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
+
 proc QsciScintillafindFirst*(self: gen_qsciscintilla_types.QsciScintilla, expr: string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool =
-  fQsciScintilla_virtualbase_findFirst(self.h, struct_miqt_string(data: expr, len: csize_t(len(expr))), re, cs, wo, wrap, forward, line, index, show, posix, cxx11)
+  fcQsciScintilla_virtualbase_findFirst(self.h, struct_miqt_string(data: expr, len: csize_t(len(expr))), re, cs, wo, wrap, forward, line, index, show, posix, cxx11)
 
-type QsciScintillafindFirstProc* = proc(expr: string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool
-proc onfindFirst*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafindFirstProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafindFirstProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_findFirst(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_findFirst(self: ptr cQsciScintilla, slot: int, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool {.exportc: "miqt_exec_callback_QsciScintilla_findFirst ".} =
-  var nimfunc = cast[ptr QsciScintillafindFirstProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_findFirst(vtbl: pointer, self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, wrap: bool, forward: bool, line: cint, index: cint, show: bool, posix: bool, cxx11: bool): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vexpr_ms = expr
   let vexprx_ret = string.fromBytes(toOpenArrayByte(vexpr_ms.data, 0, int(vexpr_ms.len)-1))
   c_free(vexpr_ms.data)
   let slotval1 = vexprx_ret
-
   let slotval2 = re
-
   let slotval3 = cs
-
   let slotval4 = wo
-
   let slotval5 = wrap
-
   let slotval6 = forward
-
   let slotval7 = line
-
   let slotval8 = index
-
   let slotval9 = show
-
   let slotval10 = posix
-
   let slotval11 = cxx11
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8, slotval9, slotval10, slotval11 )
-
+  let virtualReturn = vtbl[].findFirst(self, slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8, slotval9, slotval10, slotval11)
   virtualReturn
+
 proc QsciScintillafindFirstInSelection*(self: gen_qsciscintilla_types.QsciScintilla, expr: string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool =
-  fQsciScintilla_virtualbase_findFirstInSelection(self.h, struct_miqt_string(data: expr, len: csize_t(len(expr))), re, cs, wo, forward, show, posix, cxx11)
+  fcQsciScintilla_virtualbase_findFirstInSelection(self.h, struct_miqt_string(data: expr, len: csize_t(len(expr))), re, cs, wo, forward, show, posix, cxx11)
 
-type QsciScintillafindFirstInSelectionProc* = proc(expr: string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool
-proc onfindFirstInSelection*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafindFirstInSelectionProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafindFirstInSelectionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_findFirstInSelection(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_findFirstInSelection(self: ptr cQsciScintilla, slot: int, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool {.exportc: "miqt_exec_callback_QsciScintilla_findFirstInSelection ".} =
-  var nimfunc = cast[ptr QsciScintillafindFirstInSelectionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_findFirstInSelection(vtbl: pointer, self: pointer, expr: struct_miqt_string, re: bool, cs: bool, wo: bool, forward: bool, show: bool, posix: bool, cxx11: bool): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vexpr_ms = expr
   let vexprx_ret = string.fromBytes(toOpenArrayByte(vexpr_ms.data, 0, int(vexpr_ms.len)-1))
   c_free(vexpr_ms.data)
   let slotval1 = vexprx_ret
-
   let slotval2 = re
-
   let slotval3 = cs
-
   let slotval4 = wo
-
   let slotval5 = forward
-
   let slotval6 = show
-
   let slotval7 = posix
-
   let slotval8 = cxx11
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8 )
-
+  let virtualReturn = vtbl[].findFirstInSelection(self, slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8)
   virtualReturn
+
 proc QsciScintillafindNext*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
-  fQsciScintilla_virtualbase_findNext(self.h)
+  fcQsciScintilla_virtualbase_findNext(self.h)
 
-type QsciScintillafindNextProc* = proc(): bool
-proc onfindNext*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafindNextProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafindNextProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_findNext(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_findNext(self: ptr cQsciScintilla, slot: int): bool {.exportc: "miqt_exec_callback_QsciScintilla_findNext ".} =
-  var nimfunc = cast[ptr QsciScintillafindNextProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_findNext(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].findNext(self)
   virtualReturn
+
 proc QsciScintillarecolor*(self: gen_qsciscintilla_types.QsciScintilla, start: cint, endVal: cint): void =
-  fQsciScintilla_virtualbase_recolor(self.h, start, endVal)
+  fcQsciScintilla_virtualbase_recolor(self.h, start, endVal)
 
-type QsciScintillarecolorProc* = proc(start: cint, endVal: cint): void
-proc onrecolor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillarecolorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillarecolorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_recolor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_recolor(self: ptr cQsciScintilla, slot: int, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_recolor ".} =
-  var nimfunc = cast[ptr QsciScintillarecolorProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_recolor(vtbl: pointer, self: pointer, start: cint, endVal: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = start
-
   let slotval2 = endVal
+  vtbl[].recolor(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillareplace*(self: gen_qsciscintilla_types.QsciScintilla, replaceStr: string): void =
-  fQsciScintilla_virtualbase_replace(self.h, struct_miqt_string(data: replaceStr, len: csize_t(len(replaceStr))))
+  fcQsciScintilla_virtualbase_replace(self.h, struct_miqt_string(data: replaceStr, len: csize_t(len(replaceStr))))
 
-type QsciScintillareplaceProc* = proc(replaceStr: string): void
-proc onreplace*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillareplaceProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillareplaceProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_replace(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_replace(self: ptr cQsciScintilla, slot: int, replaceStr: struct_miqt_string): void {.exportc: "miqt_exec_callback_QsciScintilla_replace ".} =
-  var nimfunc = cast[ptr QsciScintillareplaceProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_replace(vtbl: pointer, self: pointer, replaceStr: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vreplaceStr_ms = replaceStr
   let vreplaceStrx_ret = string.fromBytes(toOpenArrayByte(vreplaceStr_ms.data, 0, int(vreplaceStr_ms.len)-1))
   c_free(vreplaceStr_ms.data)
   let slotval1 = vreplaceStrx_ret
+  vtbl[].replace(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillaappend*(self: gen_qsciscintilla_types.QsciScintilla, text: string): void =
-  fQsciScintilla_virtualbase_append(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
+  fcQsciScintilla_virtualbase_append(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-type QsciScintillaappendProc* = proc(text: string): void
-proc onappend*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaappendProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaappendProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_append(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_append(self: ptr cQsciScintilla, slot: int, text: struct_miqt_string): void {.exportc: "miqt_exec_callback_QsciScintilla_append ".} =
-  var nimfunc = cast[ptr QsciScintillaappendProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_append(vtbl: pointer, self: pointer, text: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
+  vtbl[].append(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillaautoCompleteFromAll*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_autoCompleteFromAll(self.h)
+  fcQsciScintilla_virtualbase_autoCompleteFromAll(self.h)
 
-type QsciScintillaautoCompleteFromAllProc* = proc(): void
-proc onautoCompleteFromAll*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaautoCompleteFromAllProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaautoCompleteFromAllProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_autoCompleteFromAll(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_autoCompleteFromAll(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].autoCompleteFromAll(self)
 
-proc miqt_exec_callback_QsciScintilla_autoCompleteFromAll(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_autoCompleteFromAll ".} =
-  var nimfunc = cast[ptr QsciScintillaautoCompleteFromAllProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaautoCompleteFromAPIs*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_autoCompleteFromAPIs(self.h)
+  fcQsciScintilla_virtualbase_autoCompleteFromAPIs(self.h)
 
-type QsciScintillaautoCompleteFromAPIsProc* = proc(): void
-proc onautoCompleteFromAPIs*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaautoCompleteFromAPIsProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaautoCompleteFromAPIsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_autoCompleteFromAPIs(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_autoCompleteFromAPIs(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].autoCompleteFromAPIs(self)
 
-proc miqt_exec_callback_QsciScintilla_autoCompleteFromAPIs(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_autoCompleteFromAPIs ".} =
-  var nimfunc = cast[ptr QsciScintillaautoCompleteFromAPIsProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaautoCompleteFromDocument*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_autoCompleteFromDocument(self.h)
+  fcQsciScintilla_virtualbase_autoCompleteFromDocument(self.h)
 
-type QsciScintillaautoCompleteFromDocumentProc* = proc(): void
-proc onautoCompleteFromDocument*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaautoCompleteFromDocumentProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaautoCompleteFromDocumentProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_autoCompleteFromDocument(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_autoCompleteFromDocument(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].autoCompleteFromDocument(self)
 
-proc miqt_exec_callback_QsciScintilla_autoCompleteFromDocument(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_autoCompleteFromDocument ".} =
-  var nimfunc = cast[ptr QsciScintillaautoCompleteFromDocumentProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillacallTip*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_callTip(self.h)
+  fcQsciScintilla_virtualbase_callTip(self.h)
 
-type QsciScintillacallTipProc* = proc(): void
-proc oncallTip*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacallTipProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillacallTipProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_callTip(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_callTip(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].callTip(self)
 
-proc miqt_exec_callback_QsciScintilla_callTip(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_callTip ".} =
-  var nimfunc = cast[ptr QsciScintillacallTipProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaclear*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_clear(self.h)
+  fcQsciScintilla_virtualbase_clear(self.h)
 
-type QsciScintillaclearProc* = proc(): void
-proc onclear*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaclearProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaclearProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_clear(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_clear(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].clear(self)
 
-proc miqt_exec_callback_QsciScintilla_clear(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_clear ".} =
-  var nimfunc = cast[ptr QsciScintillaclearProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillacopy*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_copy(self.h)
+  fcQsciScintilla_virtualbase_copy(self.h)
 
-type QsciScintillacopyProc* = proc(): void
-proc oncopy*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacopyProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillacopyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_copy(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_copy(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].copy(self)
 
-proc miqt_exec_callback_QsciScintilla_copy(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_copy ".} =
-  var nimfunc = cast[ptr QsciScintillacopyProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillacut*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_cut(self.h)
+  fcQsciScintilla_virtualbase_cut(self.h)
 
-type QsciScintillacutProc* = proc(): void
-proc oncut*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacutProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillacutProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_cut(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_cut(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].cut(self)
 
-proc miqt_exec_callback_QsciScintilla_cut(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_cut ".} =
-  var nimfunc = cast[ptr QsciScintillacutProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaensureCursorVisible*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_ensureCursorVisible(self.h)
+  fcQsciScintilla_virtualbase_ensureCursorVisible(self.h)
 
-type QsciScintillaensureCursorVisibleProc* = proc(): void
-proc onensureCursorVisible*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaensureCursorVisibleProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaensureCursorVisibleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_ensureCursorVisible(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_ensureCursorVisible(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].ensureCursorVisible(self)
 
-proc miqt_exec_callback_QsciScintilla_ensureCursorVisible(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_ensureCursorVisible ".} =
-  var nimfunc = cast[ptr QsciScintillaensureCursorVisibleProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaensureLineVisible*(self: gen_qsciscintilla_types.QsciScintilla, line: cint): void =
-  fQsciScintilla_virtualbase_ensureLineVisible(self.h, line)
+  fcQsciScintilla_virtualbase_ensureLineVisible(self.h, line)
 
-type QsciScintillaensureLineVisibleProc* = proc(line: cint): void
-proc onensureLineVisible*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaensureLineVisibleProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaensureLineVisibleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_ensureLineVisible(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_ensureLineVisible(self: ptr cQsciScintilla, slot: int, line: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_ensureLineVisible ".} =
-  var nimfunc = cast[ptr QsciScintillaensureLineVisibleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_ensureLineVisible(vtbl: pointer, self: pointer, line: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = line
+  vtbl[].ensureLineVisible(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillafoldAll*(self: gen_qsciscintilla_types.QsciScintilla, children: bool): void =
-  fQsciScintilla_virtualbase_foldAll(self.h, children)
+  fcQsciScintilla_virtualbase_foldAll(self.h, children)
 
-type QsciScintillafoldAllProc* = proc(children: bool): void
-proc onfoldAll*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafoldAllProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafoldAllProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_foldAll(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_foldAll(self: ptr cQsciScintilla, slot: int, children: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_foldAll ".} =
-  var nimfunc = cast[ptr QsciScintillafoldAllProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_foldAll(vtbl: pointer, self: pointer, children: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = children
+  vtbl[].foldAll(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillafoldLine*(self: gen_qsciscintilla_types.QsciScintilla, line: cint): void =
-  fQsciScintilla_virtualbase_foldLine(self.h, line)
+  fcQsciScintilla_virtualbase_foldLine(self.h, line)
 
-type QsciScintillafoldLineProc* = proc(line: cint): void
-proc onfoldLine*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafoldLineProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafoldLineProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_foldLine(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_foldLine(self: ptr cQsciScintilla, slot: int, line: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_foldLine ".} =
-  var nimfunc = cast[ptr QsciScintillafoldLineProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_foldLine(vtbl: pointer, self: pointer, line: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = line
+  vtbl[].foldLine(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillaindent*(self: gen_qsciscintilla_types.QsciScintilla, line: cint): void =
-  fQsciScintilla_virtualbase_indent(self.h, line)
+  fcQsciScintilla_virtualbase_indent(self.h, line)
 
-type QsciScintillaindentProc* = proc(line: cint): void
-proc onindent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaindentProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaindentProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_indent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_indent(self: ptr cQsciScintilla, slot: int, line: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_indent ".} =
-  var nimfunc = cast[ptr QsciScintillaindentProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_indent(vtbl: pointer, self: pointer, line: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = line
+  vtbl[].indent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillainsert*(self: gen_qsciscintilla_types.QsciScintilla, text: string): void =
-  fQsciScintilla_virtualbase_insert(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
+  fcQsciScintilla_virtualbase_insert(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-type QsciScintillainsertProc* = proc(text: string): void
-proc oninsert*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillainsertProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillainsertProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_insert(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_insert(self: ptr cQsciScintilla, slot: int, text: struct_miqt_string): void {.exportc: "miqt_exec_callback_QsciScintilla_insert ".} =
-  var nimfunc = cast[ptr QsciScintillainsertProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_insert(vtbl: pointer, self: pointer, text: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
+  vtbl[].insert(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillainsertAt*(self: gen_qsciscintilla_types.QsciScintilla, text: string, line: cint, index: cint): void =
-  fQsciScintilla_virtualbase_insertAt(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), line, index)
+  fcQsciScintilla_virtualbase_insertAt(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), line, index)
 
-type QsciScintillainsertAtProc* = proc(text: string, line: cint, index: cint): void
-proc oninsertAt*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillainsertAtProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillainsertAtProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_insertAt(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_insertAt(self: ptr cQsciScintilla, slot: int, text: struct_miqt_string, line: cint, index: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_insertAt ".} =
-  var nimfunc = cast[ptr QsciScintillainsertAtProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_insertAt(vtbl: pointer, self: pointer, text: struct_miqt_string, line: cint, index: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
-
   let slotval2 = line
-
   let slotval3 = index
+  vtbl[].insertAt(self, slotval1, slotval2, slotval3)
 
-
-  nimfunc[](slotval1, slotval2, slotval3)
 proc QsciScintillamoveToMatchingBrace*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_moveToMatchingBrace(self.h)
+  fcQsciScintilla_virtualbase_moveToMatchingBrace(self.h)
 
-type QsciScintillamoveToMatchingBraceProc* = proc(): void
-proc onmoveToMatchingBrace*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamoveToMatchingBraceProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillamoveToMatchingBraceProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_moveToMatchingBrace(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_moveToMatchingBrace(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].moveToMatchingBrace(self)
 
-proc miqt_exec_callback_QsciScintilla_moveToMatchingBrace(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_moveToMatchingBrace ".} =
-  var nimfunc = cast[ptr QsciScintillamoveToMatchingBraceProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillapaste*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_paste(self.h)
+  fcQsciScintilla_virtualbase_paste(self.h)
 
-type QsciScintillapasteProc* = proc(): void
-proc onpaste*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillapasteProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillapasteProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_paste(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_paste(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].paste(self)
 
-proc miqt_exec_callback_QsciScintilla_paste(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_paste ".} =
-  var nimfunc = cast[ptr QsciScintillapasteProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaredo*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_redo(self.h)
+  fcQsciScintilla_virtualbase_redo(self.h)
 
-type QsciScintillaredoProc* = proc(): void
-proc onredo*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaredoProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaredoProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_redo(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_redo(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].redo(self)
 
-proc miqt_exec_callback_QsciScintilla_redo(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_redo ".} =
-  var nimfunc = cast[ptr QsciScintillaredoProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaremoveSelectedText*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_removeSelectedText(self.h)
+  fcQsciScintilla_virtualbase_removeSelectedText(self.h)
 
-type QsciScintillaremoveSelectedTextProc* = proc(): void
-proc onremoveSelectedText*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaremoveSelectedTextProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaremoveSelectedTextProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_removeSelectedText(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_removeSelectedText(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].removeSelectedText(self)
 
-proc miqt_exec_callback_QsciScintilla_removeSelectedText(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_removeSelectedText ".} =
-  var nimfunc = cast[ptr QsciScintillaremoveSelectedTextProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillareplaceSelectedText*(self: gen_qsciscintilla_types.QsciScintilla, text: string): void =
-  fQsciScintilla_virtualbase_replaceSelectedText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
+  fcQsciScintilla_virtualbase_replaceSelectedText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-type QsciScintillareplaceSelectedTextProc* = proc(text: string): void
-proc onreplaceSelectedText*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillareplaceSelectedTextProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillareplaceSelectedTextProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_replaceSelectedText(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_replaceSelectedText(self: ptr cQsciScintilla, slot: int, text: struct_miqt_string): void {.exportc: "miqt_exec_callback_QsciScintilla_replaceSelectedText ".} =
-  var nimfunc = cast[ptr QsciScintillareplaceSelectedTextProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_replaceSelectedText(vtbl: pointer, self: pointer, text: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
+  vtbl[].replaceSelectedText(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillaresetSelectionBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_resetSelectionBackgroundColor(self.h)
+  fcQsciScintilla_virtualbase_resetSelectionBackgroundColor(self.h)
 
-type QsciScintillaresetSelectionBackgroundColorProc* = proc(): void
-proc onresetSelectionBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaresetSelectionBackgroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaresetSelectionBackgroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_resetSelectionBackgroundColor(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_resetSelectionBackgroundColor(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].resetSelectionBackgroundColor(self)
 
-proc miqt_exec_callback_QsciScintilla_resetSelectionBackgroundColor(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_resetSelectionBackgroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillaresetSelectionBackgroundColorProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaresetSelectionForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_resetSelectionForegroundColor(self.h)
+  fcQsciScintilla_virtualbase_resetSelectionForegroundColor(self.h)
 
-type QsciScintillaresetSelectionForegroundColorProc* = proc(): void
-proc onresetSelectionForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaresetSelectionForegroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaresetSelectionForegroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_resetSelectionForegroundColor(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_resetSelectionForegroundColor(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].resetSelectionForegroundColor(self)
 
-proc miqt_exec_callback_QsciScintilla_resetSelectionForegroundColor(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_resetSelectionForegroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillaresetSelectionForegroundColorProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaselectAll*(self: gen_qsciscintilla_types.QsciScintilla, select: bool): void =
-  fQsciScintilla_virtualbase_selectAll(self.h, select)
+  fcQsciScintilla_virtualbase_selectAll(self.h, select)
 
-type QsciScintillaselectAllProc* = proc(select: bool): void
-proc onselectAll*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaselectAllProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaselectAllProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_selectAll(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_selectAll(self: ptr cQsciScintilla, slot: int, select: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_selectAll ".} =
-  var nimfunc = cast[ptr QsciScintillaselectAllProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_selectAll(vtbl: pointer, self: pointer, select: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = select
+  vtbl[].selectAll(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillaselectToMatchingBrace*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_selectToMatchingBrace(self.h)
+  fcQsciScintilla_virtualbase_selectToMatchingBrace(self.h)
 
-type QsciScintillaselectToMatchingBraceProc* = proc(): void
-proc onselectToMatchingBrace*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaselectToMatchingBraceProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaselectToMatchingBraceProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_selectToMatchingBrace(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_selectToMatchingBrace(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].selectToMatchingBrace(self)
 
-proc miqt_exec_callback_QsciScintilla_selectToMatchingBrace(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_selectToMatchingBrace ".} =
-  var nimfunc = cast[ptr QsciScintillaselectToMatchingBraceProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillasetAutoCompletionCaseSensitivity*(self: gen_qsciscintilla_types.QsciScintilla, cs: bool): void =
-  fQsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(self.h, cs)
+  fcQsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(self.h, cs)
 
-type QsciScintillasetAutoCompletionCaseSensitivityProc* = proc(cs: bool): void
-proc onsetAutoCompletionCaseSensitivity*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetAutoCompletionCaseSensitivityProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetAutoCompletionCaseSensitivityProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setAutoCompletionCaseSensitivity(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setAutoCompletionCaseSensitivity(self: ptr cQsciScintilla, slot: int, cs: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setAutoCompletionCaseSensitivity ".} =
-  var nimfunc = cast[ptr QsciScintillasetAutoCompletionCaseSensitivityProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setAutoCompletionCaseSensitivity(vtbl: pointer, self: pointer, cs: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cs
+  vtbl[].setAutoCompletionCaseSensitivity(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetAutoCompletionReplaceWord*(self: gen_qsciscintilla_types.QsciScintilla, replace: bool): void =
-  fQsciScintilla_virtualbase_setAutoCompletionReplaceWord(self.h, replace)
+  fcQsciScintilla_virtualbase_setAutoCompletionReplaceWord(self.h, replace)
 
-type QsciScintillasetAutoCompletionReplaceWordProc* = proc(replace: bool): void
-proc onsetAutoCompletionReplaceWord*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetAutoCompletionReplaceWordProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetAutoCompletionReplaceWordProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setAutoCompletionReplaceWord(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setAutoCompletionReplaceWord(self: ptr cQsciScintilla, slot: int, replace: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setAutoCompletionReplaceWord ".} =
-  var nimfunc = cast[ptr QsciScintillasetAutoCompletionReplaceWordProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setAutoCompletionReplaceWord(vtbl: pointer, self: pointer, replace: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = replace
+  vtbl[].setAutoCompletionReplaceWord(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetAutoCompletionShowSingle*(self: gen_qsciscintilla_types.QsciScintilla, single: bool): void =
-  fQsciScintilla_virtualbase_setAutoCompletionShowSingle(self.h, single)
+  fcQsciScintilla_virtualbase_setAutoCompletionShowSingle(self.h, single)
 
-type QsciScintillasetAutoCompletionShowSingleProc* = proc(single: bool): void
-proc onsetAutoCompletionShowSingle*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetAutoCompletionShowSingleProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetAutoCompletionShowSingleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setAutoCompletionShowSingle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setAutoCompletionShowSingle(self: ptr cQsciScintilla, slot: int, single: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setAutoCompletionShowSingle ".} =
-  var nimfunc = cast[ptr QsciScintillasetAutoCompletionShowSingleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setAutoCompletionShowSingle(vtbl: pointer, self: pointer, single: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = single
+  vtbl[].setAutoCompletionShowSingle(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetAutoCompletionSource*(self: gen_qsciscintilla_types.QsciScintilla, source: cint): void =
-  fQsciScintilla_virtualbase_setAutoCompletionSource(self.h, cint(source))
+  fcQsciScintilla_virtualbase_setAutoCompletionSource(self.h, cint(source))
 
-type QsciScintillasetAutoCompletionSourceProc* = proc(source: cint): void
-proc onsetAutoCompletionSource*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetAutoCompletionSourceProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetAutoCompletionSourceProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setAutoCompletionSource(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setAutoCompletionSource(self: ptr cQsciScintilla, slot: int, source: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setAutoCompletionSource ".} =
-  var nimfunc = cast[ptr QsciScintillasetAutoCompletionSourceProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setAutoCompletionSource(vtbl: pointer, self: pointer, source: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(source)
+  vtbl[].setAutoCompletionSource(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetAutoCompletionThreshold*(self: gen_qsciscintilla_types.QsciScintilla, thresh: cint): void =
-  fQsciScintilla_virtualbase_setAutoCompletionThreshold(self.h, thresh)
+  fcQsciScintilla_virtualbase_setAutoCompletionThreshold(self.h, thresh)
 
-type QsciScintillasetAutoCompletionThresholdProc* = proc(thresh: cint): void
-proc onsetAutoCompletionThreshold*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetAutoCompletionThresholdProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetAutoCompletionThresholdProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setAutoCompletionThreshold(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setAutoCompletionThreshold(self: ptr cQsciScintilla, slot: int, thresh: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setAutoCompletionThreshold ".} =
-  var nimfunc = cast[ptr QsciScintillasetAutoCompletionThresholdProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setAutoCompletionThreshold(vtbl: pointer, self: pointer, thresh: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = thresh
+  vtbl[].setAutoCompletionThreshold(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetAutoCompletionUseSingle*(self: gen_qsciscintilla_types.QsciScintilla, single: cint): void =
-  fQsciScintilla_virtualbase_setAutoCompletionUseSingle(self.h, cint(single))
+  fcQsciScintilla_virtualbase_setAutoCompletionUseSingle(self.h, cint(single))
 
-type QsciScintillasetAutoCompletionUseSingleProc* = proc(single: cint): void
-proc onsetAutoCompletionUseSingle*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetAutoCompletionUseSingleProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetAutoCompletionUseSingleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setAutoCompletionUseSingle(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setAutoCompletionUseSingle(self: ptr cQsciScintilla, slot: int, single: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setAutoCompletionUseSingle ".} =
-  var nimfunc = cast[ptr QsciScintillasetAutoCompletionUseSingleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setAutoCompletionUseSingle(vtbl: pointer, self: pointer, single: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(single)
+  vtbl[].setAutoCompletionUseSingle(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetAutoIndent*(self: gen_qsciscintilla_types.QsciScintilla, autoindent: bool): void =
-  fQsciScintilla_virtualbase_setAutoIndent(self.h, autoindent)
+  fcQsciScintilla_virtualbase_setAutoIndent(self.h, autoindent)
 
-type QsciScintillasetAutoIndentProc* = proc(autoindent: bool): void
-proc onsetAutoIndent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetAutoIndentProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetAutoIndentProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setAutoIndent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setAutoIndent(self: ptr cQsciScintilla, slot: int, autoindent: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setAutoIndent ".} =
-  var nimfunc = cast[ptr QsciScintillasetAutoIndentProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setAutoIndent(vtbl: pointer, self: pointer, autoindent: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = autoindent
+  vtbl[].setAutoIndent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetBraceMatching*(self: gen_qsciscintilla_types.QsciScintilla, bm: cint): void =
-  fQsciScintilla_virtualbase_setBraceMatching(self.h, cint(bm))
+  fcQsciScintilla_virtualbase_setBraceMatching(self.h, cint(bm))
 
-type QsciScintillasetBraceMatchingProc* = proc(bm: cint): void
-proc onsetBraceMatching*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetBraceMatchingProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetBraceMatchingProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setBraceMatching(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setBraceMatching(self: ptr cQsciScintilla, slot: int, bm: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setBraceMatching ".} =
-  var nimfunc = cast[ptr QsciScintillasetBraceMatchingProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setBraceMatching(vtbl: pointer, self: pointer, bm: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(bm)
+  vtbl[].setBraceMatching(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetBackspaceUnindents*(self: gen_qsciscintilla_types.QsciScintilla, unindent: bool): void =
-  fQsciScintilla_virtualbase_setBackspaceUnindents(self.h, unindent)
+  fcQsciScintilla_virtualbase_setBackspaceUnindents(self.h, unindent)
 
-type QsciScintillasetBackspaceUnindentsProc* = proc(unindent: bool): void
-proc onsetBackspaceUnindents*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetBackspaceUnindentsProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetBackspaceUnindentsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setBackspaceUnindents(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setBackspaceUnindents(self: ptr cQsciScintilla, slot: int, unindent: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setBackspaceUnindents ".} =
-  var nimfunc = cast[ptr QsciScintillasetBackspaceUnindentsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setBackspaceUnindents(vtbl: pointer, self: pointer, unindent: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = unindent
+  vtbl[].setBackspaceUnindents(self, slotval1)
 
+proc QsciScintillasetCaretForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setCaretForegroundColor(self.h, col.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillasetCaretForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setCaretForegroundColor(self.h, col.h)
+proc miqt_exec_callback_cQsciScintilla_setCaretForegroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setCaretForegroundColor(self, slotval1)
 
-type QsciScintillasetCaretForegroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetCaretForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetCaretForegroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetCaretForegroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setCaretForegroundColor(self.h, cast[int](addr tmp[]))
+proc QsciScintillasetCaretLineBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setCaretLineBackgroundColor(self.h, col.h)
 
-proc miqt_exec_callback_QsciScintilla_setCaretForegroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setCaretForegroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetCaretForegroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
+proc miqt_exec_callback_cQsciScintilla_setCaretLineBackgroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setCaretLineBackgroundColor(self, slotval1)
 
-
-  nimfunc[](slotval1)
-proc QsciScintillasetCaretLineBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setCaretLineBackgroundColor(self.h, col.h)
-
-type QsciScintillasetCaretLineBackgroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetCaretLineBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetCaretLineBackgroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetCaretLineBackgroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setCaretLineBackgroundColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetCaretLineBackgroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillasetCaretLineFrameWidth*(self: gen_qsciscintilla_types.QsciScintilla, width: cint): void =
-  fQsciScintilla_virtualbase_setCaretLineFrameWidth(self.h, width)
+  fcQsciScintilla_virtualbase_setCaretLineFrameWidth(self.h, width)
 
-type QsciScintillasetCaretLineFrameWidthProc* = proc(width: cint): void
-proc onsetCaretLineFrameWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetCaretLineFrameWidthProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetCaretLineFrameWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setCaretLineFrameWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setCaretLineFrameWidth(self: ptr cQsciScintilla, slot: int, width: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setCaretLineFrameWidth ".} =
-  var nimfunc = cast[ptr QsciScintillasetCaretLineFrameWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setCaretLineFrameWidth(vtbl: pointer, self: pointer, width: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = width
+  vtbl[].setCaretLineFrameWidth(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetCaretLineVisible*(self: gen_qsciscintilla_types.QsciScintilla, enable: bool): void =
-  fQsciScintilla_virtualbase_setCaretLineVisible(self.h, enable)
+  fcQsciScintilla_virtualbase_setCaretLineVisible(self.h, enable)
 
-type QsciScintillasetCaretLineVisibleProc* = proc(enable: bool): void
-proc onsetCaretLineVisible*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetCaretLineVisibleProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetCaretLineVisibleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setCaretLineVisible(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setCaretLineVisible(self: ptr cQsciScintilla, slot: int, enable: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setCaretLineVisible ".} =
-  var nimfunc = cast[ptr QsciScintillasetCaretLineVisibleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setCaretLineVisible(vtbl: pointer, self: pointer, enable: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = enable
+  vtbl[].setCaretLineVisible(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetCaretWidth*(self: gen_qsciscintilla_types.QsciScintilla, width: cint): void =
-  fQsciScintilla_virtualbase_setCaretWidth(self.h, width)
+  fcQsciScintilla_virtualbase_setCaretWidth(self.h, width)
 
-type QsciScintillasetCaretWidthProc* = proc(width: cint): void
-proc onsetCaretWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetCaretWidthProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetCaretWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setCaretWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setCaretWidth(self: ptr cQsciScintilla, slot: int, width: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setCaretWidth ".} =
-  var nimfunc = cast[ptr QsciScintillasetCaretWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setCaretWidth(vtbl: pointer, self: pointer, width: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = width
+  vtbl[].setCaretWidth(self, slotval1)
 
+proc QsciScintillasetColor*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setColor(self.h, c.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillasetColor*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setColor(self.h, c.h)
+proc miqt_exec_callback_cQsciScintilla_setColor(vtbl: pointer, self: pointer, c: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
+  vtbl[].setColor(self, slotval1)
 
-type QsciScintillasetColorProc* = proc(c: gen_qcolor.QColor): void
-proc onsetColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setColor(self: ptr cQsciScintilla, slot: int, c: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillasetCursorPosition*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, index: cint): void =
-  fQsciScintilla_virtualbase_setCursorPosition(self.h, line, index)
+  fcQsciScintilla_virtualbase_setCursorPosition(self.h, line, index)
 
-type QsciScintillasetCursorPositionProc* = proc(line: cint, index: cint): void
-proc onsetCursorPosition*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetCursorPositionProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetCursorPositionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setCursorPosition(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setCursorPosition(self: ptr cQsciScintilla, slot: int, line: cint, index: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setCursorPosition ".} =
-  var nimfunc = cast[ptr QsciScintillasetCursorPositionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setCursorPosition(vtbl: pointer, self: pointer, line: cint, index: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = line
-
   let slotval2 = index
+  vtbl[].setCursorPosition(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetEolMode*(self: gen_qsciscintilla_types.QsciScintilla, mode: cint): void =
-  fQsciScintilla_virtualbase_setEolMode(self.h, cint(mode))
+  fcQsciScintilla_virtualbase_setEolMode(self.h, cint(mode))
 
-type QsciScintillasetEolModeProc* = proc(mode: cint): void
-proc onsetEolMode*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetEolModeProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetEolModeProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setEolMode(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setEolMode(self: ptr cQsciScintilla, slot: int, mode: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setEolMode ".} =
-  var nimfunc = cast[ptr QsciScintillasetEolModeProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setEolMode(vtbl: pointer, self: pointer, mode: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(mode)
+  vtbl[].setEolMode(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetEolVisibility*(self: gen_qsciscintilla_types.QsciScintilla, visible: bool): void =
-  fQsciScintilla_virtualbase_setEolVisibility(self.h, visible)
+  fcQsciScintilla_virtualbase_setEolVisibility(self.h, visible)
 
-type QsciScintillasetEolVisibilityProc* = proc(visible: bool): void
-proc onsetEolVisibility*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetEolVisibilityProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetEolVisibilityProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setEolVisibility(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setEolVisibility(self: ptr cQsciScintilla, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setEolVisibility ".} =
-  var nimfunc = cast[ptr QsciScintillasetEolVisibilityProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setEolVisibility(vtbl: pointer, self: pointer, visible: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = visible
+  vtbl[].setEolVisibility(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetFolding*(self: gen_qsciscintilla_types.QsciScintilla, fold: cint, margin: cint): void =
-  fQsciScintilla_virtualbase_setFolding(self.h, cint(fold), margin)
+  fcQsciScintilla_virtualbase_setFolding(self.h, cint(fold), margin)
 
-type QsciScintillasetFoldingProc* = proc(fold: cint, margin: cint): void
-proc onsetFolding*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetFoldingProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetFoldingProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setFolding(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setFolding(self: ptr cQsciScintilla, slot: int, fold: cint, margin: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setFolding ".} =
-  var nimfunc = cast[ptr QsciScintillasetFoldingProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setFolding(vtbl: pointer, self: pointer, fold: cint, margin: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(fold)
-
   let slotval2 = margin
+  vtbl[].setFolding(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetIndentation*(self: gen_qsciscintilla_types.QsciScintilla, line: cint, indentation: cint): void =
-  fQsciScintilla_virtualbase_setIndentation(self.h, line, indentation)
+  fcQsciScintilla_virtualbase_setIndentation(self.h, line, indentation)
 
-type QsciScintillasetIndentationProc* = proc(line: cint, indentation: cint): void
-proc onsetIndentation*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetIndentationProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetIndentationProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setIndentation(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setIndentation(self: ptr cQsciScintilla, slot: int, line: cint, indentation: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setIndentation ".} =
-  var nimfunc = cast[ptr QsciScintillasetIndentationProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setIndentation(vtbl: pointer, self: pointer, line: cint, indentation: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = line
-
   let slotval2 = indentation
+  vtbl[].setIndentation(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetIndentationGuides*(self: gen_qsciscintilla_types.QsciScintilla, enable: bool): void =
-  fQsciScintilla_virtualbase_setIndentationGuides(self.h, enable)
+  fcQsciScintilla_virtualbase_setIndentationGuides(self.h, enable)
 
-type QsciScintillasetIndentationGuidesProc* = proc(enable: bool): void
-proc onsetIndentationGuides*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetIndentationGuidesProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetIndentationGuidesProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setIndentationGuides(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setIndentationGuides(self: ptr cQsciScintilla, slot: int, enable: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setIndentationGuides ".} =
-  var nimfunc = cast[ptr QsciScintillasetIndentationGuidesProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setIndentationGuides(vtbl: pointer, self: pointer, enable: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = enable
+  vtbl[].setIndentationGuides(self, slotval1)
 
+proc QsciScintillasetIndentationGuidesBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(self.h, col.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillasetIndentationGuidesBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(self.h, col.h)
+proc miqt_exec_callback_cQsciScintilla_setIndentationGuidesBackgroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setIndentationGuidesBackgroundColor(self, slotval1)
 
-type QsciScintillasetIndentationGuidesBackgroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetIndentationGuidesBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetIndentationGuidesBackgroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetIndentationGuidesBackgroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setIndentationGuidesBackgroundColor(self.h, cast[int](addr tmp[]))
+proc QsciScintillasetIndentationGuidesForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setIndentationGuidesForegroundColor(self.h, col.h)
 
-proc miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetIndentationGuidesBackgroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
+proc miqt_exec_callback_cQsciScintilla_setIndentationGuidesForegroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setIndentationGuidesForegroundColor(self, slotval1)
 
-
-  nimfunc[](slotval1)
-proc QsciScintillasetIndentationGuidesForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setIndentationGuidesForegroundColor(self.h, col.h)
-
-type QsciScintillasetIndentationGuidesForegroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetIndentationGuidesForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetIndentationGuidesForegroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetIndentationGuidesForegroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setIndentationGuidesForegroundColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetIndentationGuidesForegroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillasetIndentationsUseTabs*(self: gen_qsciscintilla_types.QsciScintilla, tabs: bool): void =
-  fQsciScintilla_virtualbase_setIndentationsUseTabs(self.h, tabs)
+  fcQsciScintilla_virtualbase_setIndentationsUseTabs(self.h, tabs)
 
-type QsciScintillasetIndentationsUseTabsProc* = proc(tabs: bool): void
-proc onsetIndentationsUseTabs*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetIndentationsUseTabsProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetIndentationsUseTabsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setIndentationsUseTabs(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setIndentationsUseTabs(self: ptr cQsciScintilla, slot: int, tabs: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setIndentationsUseTabs ".} =
-  var nimfunc = cast[ptr QsciScintillasetIndentationsUseTabsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setIndentationsUseTabs(vtbl: pointer, self: pointer, tabs: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = tabs
+  vtbl[].setIndentationsUseTabs(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetIndentationWidth*(self: gen_qsciscintilla_types.QsciScintilla, width: cint): void =
-  fQsciScintilla_virtualbase_setIndentationWidth(self.h, width)
+  fcQsciScintilla_virtualbase_setIndentationWidth(self.h, width)
 
-type QsciScintillasetIndentationWidthProc* = proc(width: cint): void
-proc onsetIndentationWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetIndentationWidthProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetIndentationWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setIndentationWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setIndentationWidth(self: ptr cQsciScintilla, slot: int, width: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setIndentationWidth ".} =
-  var nimfunc = cast[ptr QsciScintillasetIndentationWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setIndentationWidth(vtbl: pointer, self: pointer, width: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = width
+  vtbl[].setIndentationWidth(self, slotval1)
 
+proc QsciScintillasetLexer*(self: gen_qsciscintilla_types.QsciScintilla, lexer: gen_qscilexer_types.QsciLexer): void =
+  fcQsciScintilla_virtualbase_setLexer(self.h, lexer.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillasetLexer*(self: gen_qsciscintilla_types.QsciScintilla, lexer: gen_qscilexer.QsciLexer): void =
-  fQsciScintilla_virtualbase_setLexer(self.h, lexer.h)
+proc miqt_exec_callback_cQsciScintilla_setLexer(vtbl: pointer, self: pointer, lexer: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qscilexer_types.QsciLexer(h: lexer)
+  vtbl[].setLexer(self, slotval1)
 
-type QsciScintillasetLexerProc* = proc(lexer: gen_qscilexer.QsciLexer): void
-proc onsetLexer*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetLexerProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetLexerProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setLexer(self.h, cast[int](addr tmp[]))
+proc QsciScintillasetMarginsBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setMarginsBackgroundColor(self.h, col.h)
 
-proc miqt_exec_callback_QsciScintilla_setLexer(self: ptr cQsciScintilla, slot: int, lexer: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setLexer ".} =
-  var nimfunc = cast[ptr QsciScintillasetLexerProc](cast[pointer](slot))
-  let slotval1 = gen_qscilexer.QsciLexer(h: lexer)
+proc miqt_exec_callback_cQsciScintilla_setMarginsBackgroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setMarginsBackgroundColor(self, slotval1)
 
+proc QsciScintillasetMarginsFont*(self: gen_qsciscintilla_types.QsciScintilla, f: gen_qfont_types.QFont): void =
+  fcQsciScintilla_virtualbase_setMarginsFont(self.h, f.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillasetMarginsBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setMarginsBackgroundColor(self.h, col.h)
+proc miqt_exec_callback_cQsciScintilla_setMarginsFont(vtbl: pointer, self: pointer, f: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qfont_types.QFont(h: f)
+  vtbl[].setMarginsFont(self, slotval1)
 
-type QsciScintillasetMarginsBackgroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetMarginsBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginsBackgroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginsBackgroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginsBackgroundColor(self.h, cast[int](addr tmp[]))
+proc QsciScintillasetMarginsForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setMarginsForegroundColor(self.h, col.h)
 
-proc miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginsBackgroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
+proc miqt_exec_callback_cQsciScintilla_setMarginsForegroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setMarginsForegroundColor(self, slotval1)
 
-
-  nimfunc[](slotval1)
-proc QsciScintillasetMarginsFont*(self: gen_qsciscintilla_types.QsciScintilla, f: gen_qfont.QFont): void =
-  fQsciScintilla_virtualbase_setMarginsFont(self.h, f.h)
-
-type QsciScintillasetMarginsFontProc* = proc(f: gen_qfont.QFont): void
-proc onsetMarginsFont*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginsFontProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginsFontProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginsFont(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setMarginsFont(self: ptr cQsciScintilla, slot: int, f: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginsFont ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginsFontProc](cast[pointer](slot))
-  let slotval1 = gen_qfont.QFont(h: f)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillasetMarginsForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setMarginsForegroundColor(self.h, col.h)
-
-type QsciScintillasetMarginsForegroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetMarginsForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginsForegroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginsForegroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginsForegroundColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginsForegroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginsForegroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillasetMarginLineNumbers*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, lnrs: bool): void =
-  fQsciScintilla_virtualbase_setMarginLineNumbers(self.h, margin, lnrs)
+  fcQsciScintilla_virtualbase_setMarginLineNumbers(self.h, margin, lnrs)
 
-type QsciScintillasetMarginLineNumbersProc* = proc(margin: cint, lnrs: bool): void
-proc onsetMarginLineNumbers*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginLineNumbersProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginLineNumbersProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginLineNumbers(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setMarginLineNumbers(self: ptr cQsciScintilla, slot: int, margin: cint, lnrs: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginLineNumbers ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginLineNumbersProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setMarginLineNumbers(vtbl: pointer, self: pointer, margin: cint, lnrs: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = margin
-
   let slotval2 = lnrs
+  vtbl[].setMarginLineNumbers(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetMarginMarkerMask*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, mask: cint): void =
-  fQsciScintilla_virtualbase_setMarginMarkerMask(self.h, margin, mask)
+  fcQsciScintilla_virtualbase_setMarginMarkerMask(self.h, margin, mask)
 
-type QsciScintillasetMarginMarkerMaskProc* = proc(margin: cint, mask: cint): void
-proc onsetMarginMarkerMask*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginMarkerMaskProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginMarkerMaskProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginMarkerMask(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setMarginMarkerMask(self: ptr cQsciScintilla, slot: int, margin: cint, mask: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginMarkerMask ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginMarkerMaskProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setMarginMarkerMask(vtbl: pointer, self: pointer, margin: cint, mask: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = margin
-
   let slotval2 = mask
+  vtbl[].setMarginMarkerMask(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetMarginSensitivity*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, sens: bool): void =
-  fQsciScintilla_virtualbase_setMarginSensitivity(self.h, margin, sens)
+  fcQsciScintilla_virtualbase_setMarginSensitivity(self.h, margin, sens)
 
-type QsciScintillasetMarginSensitivityProc* = proc(margin: cint, sens: bool): void
-proc onsetMarginSensitivity*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginSensitivityProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginSensitivityProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginSensitivity(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setMarginSensitivity(self: ptr cQsciScintilla, slot: int, margin: cint, sens: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginSensitivity ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginSensitivityProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setMarginSensitivity(vtbl: pointer, self: pointer, margin: cint, sens: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = margin
-
   let slotval2 = sens
+  vtbl[].setMarginSensitivity(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetMarginWidth*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, width: cint): void =
-  fQsciScintilla_virtualbase_setMarginWidth(self.h, margin, width)
+  fcQsciScintilla_virtualbase_setMarginWidth(self.h, margin, width)
 
-type QsciScintillasetMarginWidthProc* = proc(margin: cint, width: cint): void
-proc onsetMarginWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginWidthProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setMarginWidth(self: ptr cQsciScintilla, slot: int, margin: cint, width: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginWidth ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setMarginWidth(vtbl: pointer, self: pointer, margin: cint, width: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = margin
-
   let slotval2 = width
+  vtbl[].setMarginWidth(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetMarginWidth*(self: gen_qsciscintilla_types.QsciScintilla, margin: cint, s: string): void =
-  fQsciScintilla_virtualbase_setMarginWidth2(self.h, margin, struct_miqt_string(data: s, len: csize_t(len(s))))
+  fcQsciScintilla_virtualbase_setMarginWidth2(self.h, margin, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-type QsciScintillasetMarginWidth2Proc* = proc(margin: cint, s: string): void
-proc onsetMarginWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetMarginWidth2Proc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetMarginWidth2Proc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setMarginWidth2(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setMarginWidth2(self: ptr cQsciScintilla, slot: int, margin: cint, s: struct_miqt_string): void {.exportc: "miqt_exec_callback_QsciScintilla_setMarginWidth2 ".} =
-  var nimfunc = cast[ptr QsciScintillasetMarginWidth2Proc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setMarginWidth2(vtbl: pointer, self: pointer, margin: cint, s: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = margin
-
   let vs_ms = s
   let vsx_ret = string.fromBytes(toOpenArrayByte(vs_ms.data, 0, int(vs_ms.len)-1))
   c_free(vs_ms.data)
   let slotval2 = vsx_ret
+  vtbl[].setMarginWidth(self, slotval1, slotval2)
 
-
-  nimfunc[](slotval1, slotval2)
 proc QsciScintillasetModified*(self: gen_qsciscintilla_types.QsciScintilla, m: bool): void =
-  fQsciScintilla_virtualbase_setModified(self.h, m)
+  fcQsciScintilla_virtualbase_setModified(self.h, m)
 
-type QsciScintillasetModifiedProc* = proc(m: bool): void
-proc onsetModified*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetModifiedProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetModifiedProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setModified(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setModified(self: ptr cQsciScintilla, slot: int, m: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setModified ".} =
-  var nimfunc = cast[ptr QsciScintillasetModifiedProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setModified(vtbl: pointer, self: pointer, m: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = m
+  vtbl[].setModified(self, slotval1)
 
+proc QsciScintillasetPaper*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setPaper(self.h, c.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillasetPaper*(self: gen_qsciscintilla_types.QsciScintilla, c: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setPaper(self.h, c.h)
+proc miqt_exec_callback_cQsciScintilla_setPaper(vtbl: pointer, self: pointer, c: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: c)
+  vtbl[].setPaper(self, slotval1)
 
-type QsciScintillasetPaperProc* = proc(c: gen_qcolor.QColor): void
-proc onsetPaper*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetPaperProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetPaperProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setPaper(self: ptr cQsciScintilla, slot: int, c: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setPaper ".} =
-  var nimfunc = cast[ptr QsciScintillasetPaperProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: c)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillasetReadOnly*(self: gen_qsciscintilla_types.QsciScintilla, ro: bool): void =
-  fQsciScintilla_virtualbase_setReadOnly(self.h, ro)
+  fcQsciScintilla_virtualbase_setReadOnly(self.h, ro)
 
-type QsciScintillasetReadOnlyProc* = proc(ro: bool): void
-proc onsetReadOnly*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetReadOnlyProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetReadOnlyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setReadOnly(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setReadOnly(self: ptr cQsciScintilla, slot: int, ro: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setReadOnly ".} =
-  var nimfunc = cast[ptr QsciScintillasetReadOnlyProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setReadOnly(vtbl: pointer, self: pointer, ro: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = ro
+  vtbl[].setReadOnly(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetSelection*(self: gen_qsciscintilla_types.QsciScintilla, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void =
-  fQsciScintilla_virtualbase_setSelection(self.h, lineFrom, indexFrom, lineTo, indexTo)
+  fcQsciScintilla_virtualbase_setSelection(self.h, lineFrom, indexFrom, lineTo, indexTo)
 
-type QsciScintillasetSelectionProc* = proc(lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void
-proc onsetSelection*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetSelectionProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetSelectionProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setSelection(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setSelection(self: ptr cQsciScintilla, slot: int, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setSelection ".} =
-  var nimfunc = cast[ptr QsciScintillasetSelectionProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setSelection(vtbl: pointer, self: pointer, lineFrom: cint, indexFrom: cint, lineTo: cint, indexTo: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = lineFrom
-
   let slotval2 = indexFrom
-
   let slotval3 = lineTo
-
   let slotval4 = indexTo
+  vtbl[].setSelection(self, slotval1, slotval2, slotval3, slotval4)
 
+proc QsciScintillasetSelectionBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setSelectionBackgroundColor(self.h, col.h)
 
-  nimfunc[](slotval1, slotval2, slotval3, slotval4)
-proc QsciScintillasetSelectionBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setSelectionBackgroundColor(self.h, col.h)
+proc miqt_exec_callback_cQsciScintilla_setSelectionBackgroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setSelectionBackgroundColor(self, slotval1)
 
-type QsciScintillasetSelectionBackgroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetSelectionBackgroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetSelectionBackgroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetSelectionBackgroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setSelectionBackgroundColor(self.h, cast[int](addr tmp[]))
+proc QsciScintillasetSelectionForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor_types.QColor): void =
+  fcQsciScintilla_virtualbase_setSelectionForegroundColor(self.h, col.h)
 
-proc miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetSelectionBackgroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
+proc miqt_exec_callback_cQsciScintilla_setSelectionForegroundColor(vtbl: pointer, self: pointer, col: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcolor_types.QColor(h: col)
+  vtbl[].setSelectionForegroundColor(self, slotval1)
 
-
-  nimfunc[](slotval1)
-proc QsciScintillasetSelectionForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, col: gen_qcolor.QColor): void =
-  fQsciScintilla_virtualbase_setSelectionForegroundColor(self.h, col.h)
-
-type QsciScintillasetSelectionForegroundColorProc* = proc(col: gen_qcolor.QColor): void
-proc onsetSelectionForegroundColor*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetSelectionForegroundColorProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetSelectionForegroundColorProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setSelectionForegroundColor(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(self: ptr cQsciScintilla, slot: int, col: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setSelectionForegroundColor ".} =
-  var nimfunc = cast[ptr QsciScintillasetSelectionForegroundColorProc](cast[pointer](slot))
-  let slotval1 = gen_qcolor.QColor(h: col)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillasetTabIndents*(self: gen_qsciscintilla_types.QsciScintilla, indent: bool): void =
-  fQsciScintilla_virtualbase_setTabIndents(self.h, indent)
+  fcQsciScintilla_virtualbase_setTabIndents(self.h, indent)
 
-type QsciScintillasetTabIndentsProc* = proc(indent: bool): void
-proc onsetTabIndents*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetTabIndentsProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetTabIndentsProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setTabIndents(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setTabIndents(self: ptr cQsciScintilla, slot: int, indent: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setTabIndents ".} =
-  var nimfunc = cast[ptr QsciScintillasetTabIndentsProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setTabIndents(vtbl: pointer, self: pointer, indent: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = indent
+  vtbl[].setTabIndents(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetTabWidth*(self: gen_qsciscintilla_types.QsciScintilla, width: cint): void =
-  fQsciScintilla_virtualbase_setTabWidth(self.h, width)
+  fcQsciScintilla_virtualbase_setTabWidth(self.h, width)
 
-type QsciScintillasetTabWidthProc* = proc(width: cint): void
-proc onsetTabWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetTabWidthProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetTabWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setTabWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setTabWidth(self: ptr cQsciScintilla, slot: int, width: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setTabWidth ".} =
-  var nimfunc = cast[ptr QsciScintillasetTabWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setTabWidth(vtbl: pointer, self: pointer, width: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = width
+  vtbl[].setTabWidth(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetText*(self: gen_qsciscintilla_types.QsciScintilla, text: string): void =
-  fQsciScintilla_virtualbase_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
+  fcQsciScintilla_virtualbase_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-type QsciScintillasetTextProc* = proc(text: string): void
-proc onsetText*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetTextProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetTextProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setText(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setText(self: ptr cQsciScintilla, slot: int, text: struct_miqt_string): void {.exportc: "miqt_exec_callback_QsciScintilla_setText ".} =
-  var nimfunc = cast[ptr QsciScintillasetTextProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setText(vtbl: pointer, self: pointer, text: struct_miqt_string): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
+  vtbl[].setText(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetUtf8*(self: gen_qsciscintilla_types.QsciScintilla, cp: bool): void =
-  fQsciScintilla_virtualbase_setUtf8(self.h, cp)
+  fcQsciScintilla_virtualbase_setUtf8(self.h, cp)
 
-type QsciScintillasetUtf8Proc* = proc(cp: bool): void
-proc onsetUtf8*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetUtf8Proc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetUtf8Proc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setUtf8(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setUtf8(self: ptr cQsciScintilla, slot: int, cp: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setUtf8 ".} =
-  var nimfunc = cast[ptr QsciScintillasetUtf8Proc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setUtf8(vtbl: pointer, self: pointer, cp: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cp
+  vtbl[].setUtf8(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetWhitespaceVisibility*(self: gen_qsciscintilla_types.QsciScintilla, mode: cint): void =
-  fQsciScintilla_virtualbase_setWhitespaceVisibility(self.h, cint(mode))
+  fcQsciScintilla_virtualbase_setWhitespaceVisibility(self.h, cint(mode))
 
-type QsciScintillasetWhitespaceVisibilityProc* = proc(mode: cint): void
-proc onsetWhitespaceVisibility*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetWhitespaceVisibilityProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetWhitespaceVisibilityProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setWhitespaceVisibility(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setWhitespaceVisibility(self: ptr cQsciScintilla, slot: int, mode: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setWhitespaceVisibility ".} =
-  var nimfunc = cast[ptr QsciScintillasetWhitespaceVisibilityProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setWhitespaceVisibility(vtbl: pointer, self: pointer, mode: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(mode)
+  vtbl[].setWhitespaceVisibility(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillasetWrapMode*(self: gen_qsciscintilla_types.QsciScintilla, mode: cint): void =
-  fQsciScintilla_virtualbase_setWrapMode(self.h, cint(mode))
+  fcQsciScintilla_virtualbase_setWrapMode(self.h, cint(mode))
 
-type QsciScintillasetWrapModeProc* = proc(mode: cint): void
-proc onsetWrapMode*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetWrapModeProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetWrapModeProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setWrapMode(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setWrapMode(self: ptr cQsciScintilla, slot: int, mode: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_setWrapMode ".} =
-  var nimfunc = cast[ptr QsciScintillasetWrapModeProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setWrapMode(vtbl: pointer, self: pointer, mode: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(mode)
+  vtbl[].setWrapMode(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillaundo*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_undo(self.h)
+  fcQsciScintilla_virtualbase_undo(self.h)
 
-type QsciScintillaundoProc* = proc(): void
-proc onundo*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaundoProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaundoProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_undo(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_undo(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].undo(self)
 
-proc miqt_exec_callback_QsciScintilla_undo(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_undo ".} =
-  var nimfunc = cast[ptr QsciScintillaundoProc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillaunindent*(self: gen_qsciscintilla_types.QsciScintilla, line: cint): void =
-  fQsciScintilla_virtualbase_unindent(self.h, line)
+  fcQsciScintilla_virtualbase_unindent(self.h, line)
 
-type QsciScintillaunindentProc* = proc(line: cint): void
-proc onunindent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaunindentProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaunindentProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_unindent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_unindent(self: ptr cQsciScintilla, slot: int, line: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_unindent ".} =
-  var nimfunc = cast[ptr QsciScintillaunindentProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_unindent(vtbl: pointer, self: pointer, line: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = line
+  vtbl[].unindent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillazoomIn*(self: gen_qsciscintilla_types.QsciScintilla, range: cint): void =
-  fQsciScintilla_virtualbase_zoomIn(self.h, range)
+  fcQsciScintilla_virtualbase_zoomIn(self.h, range)
 
-type QsciScintillazoomInProc* = proc(range: cint): void
-proc onzoomIn*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillazoomInProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillazoomInProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_zoomIn(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_zoomIn(self: ptr cQsciScintilla, slot: int, range: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_zoomIn ".} =
-  var nimfunc = cast[ptr QsciScintillazoomInProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_zoomIn(vtbl: pointer, self: pointer, range: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = range
+  vtbl[].zoomIn(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillazoomIn*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_zoomIn2(self.h)
+  fcQsciScintilla_virtualbase_zoomIn2(self.h)
 
-type QsciScintillazoomIn2Proc* = proc(): void
-proc onzoomIn*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillazoomIn2Proc) =
-  # TODO check subclass
-  var tmp = new QsciScintillazoomIn2Proc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_zoomIn2(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_zoomIn2(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].zoomIn(self)
 
-proc miqt_exec_callback_QsciScintilla_zoomIn2(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_zoomIn2 ".} =
-  var nimfunc = cast[ptr QsciScintillazoomIn2Proc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillazoomOut*(self: gen_qsciscintilla_types.QsciScintilla, range: cint): void =
-  fQsciScintilla_virtualbase_zoomOut(self.h, range)
+  fcQsciScintilla_virtualbase_zoomOut(self.h, range)
 
-type QsciScintillazoomOutProc* = proc(range: cint): void
-proc onzoomOut*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillazoomOutProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillazoomOutProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_zoomOut(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_zoomOut(self: ptr cQsciScintilla, slot: int, range: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_zoomOut ".} =
-  var nimfunc = cast[ptr QsciScintillazoomOutProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_zoomOut(vtbl: pointer, self: pointer, range: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = range
+  vtbl[].zoomOut(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillazoomOut*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
-  fQsciScintilla_virtualbase_zoomOut2(self.h)
+  fcQsciScintilla_virtualbase_zoomOut2(self.h)
 
-type QsciScintillazoomOut2Proc* = proc(): void
-proc onzoomOut*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillazoomOut2Proc) =
-  # TODO check subclass
-  var tmp = new QsciScintillazoomOut2Proc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_zoomOut2(self.h, cast[int](addr tmp[]))
+proc miqt_exec_callback_cQsciScintilla_zoomOut2(vtbl: pointer, self: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  vtbl[].zoomOut(self)
 
-proc miqt_exec_callback_QsciScintilla_zoomOut2(self: ptr cQsciScintilla, slot: int): void {.exportc: "miqt_exec_callback_QsciScintilla_zoomOut2 ".} =
-  var nimfunc = cast[ptr QsciScintillazoomOut2Proc](cast[pointer](slot))
-
-  nimfunc[]()
 proc QsciScintillazoomTo*(self: gen_qsciscintilla_types.QsciScintilla, size: cint): void =
-  fQsciScintilla_virtualbase_zoomTo(self.h, size)
+  fcQsciScintilla_virtualbase_zoomTo(self.h, size)
 
-type QsciScintillazoomToProc* = proc(size: cint): void
-proc onzoomTo*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillazoomToProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillazoomToProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_zoomTo(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_zoomTo(self: ptr cQsciScintilla, slot: int, size: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_zoomTo ".} =
-  var nimfunc = cast[ptr QsciScintillazoomToProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_zoomTo(vtbl: pointer, self: pointer, size: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = size
+  vtbl[].zoomTo(self, slotval1)
 
+proc QsciScintillaevent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qcoreevent_types.QEvent): bool =
+  fcQsciScintilla_virtualbase_event(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillaevent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qcoreevent.QEvent): bool =
-  fQsciScintilla_virtualbase_event(self.h, e.h)
-
-type QsciScintillaeventProc* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaeventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_event(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_event(self: ptr cQsciScintilla, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QsciScintilla_event ".} =
-  var nimfunc = cast[ptr QsciScintillaeventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: e)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciScintilla_event(vtbl: pointer, self: pointer, e: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: e)
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
-proc QsciScintillachangeEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qcoreevent.QEvent): void =
-  fQsciScintilla_virtualbase_changeEvent(self.h, e.h)
 
-type QsciScintillachangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillachangeEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillachangeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillachangeEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qcoreevent_types.QEvent): void =
+  fcQsciScintilla_virtualbase_changeEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_changeEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_changeEvent ".} =
-  var nimfunc = cast[ptr QsciScintillachangeEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_changeEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: e)
+  vtbl[].changeEvent(self, slotval1)
 
+proc QsciScintillacontextMenuEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QContextMenuEvent): void =
+  fcQsciScintilla_virtualbase_contextMenuEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillacontextMenuEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QContextMenuEvent): void =
-  fQsciScintilla_virtualbase_contextMenuEvent(self.h, e.h)
+proc miqt_exec_callback_cQsciScintilla_contextMenuEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QContextMenuEvent(h: e)
+  vtbl[].contextMenuEvent(self, slotval1)
 
-type QsciScintillacontextMenuEventProc* = proc(e: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacontextMenuEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillacontextMenuEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillawheelEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QWheelEvent): void =
+  fcQsciScintilla_virtualbase_wheelEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_contextMenuEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_contextMenuEvent ".} =
-  var nimfunc = cast[ptr QsciScintillacontextMenuEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QContextMenuEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_wheelEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QWheelEvent(h: e)
+  vtbl[].wheelEvent(self, slotval1)
 
+proc QsciScintillacanInsertFromMimeData*(self: gen_qsciscintilla_types.QsciScintilla, source: gen_qmimedata_types.QMimeData): bool =
+  fcQsciScintilla_virtualbase_canInsertFromMimeData(self.h, source.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillawheelEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QWheelEvent): void =
-  fQsciScintilla_virtualbase_wheelEvent(self.h, e.h)
-
-type QsciScintillawheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillawheelEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillawheelEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_wheelEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_wheelEvent ".} =
-  var nimfunc = cast[ptr QsciScintillawheelEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QWheelEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillacanInsertFromMimeData*(self: gen_qsciscintilla_types.QsciScintilla, source: gen_qmimedata.QMimeData): bool =
-  fQsciScintilla_virtualbase_canInsertFromMimeData(self.h, source.h)
-
-type QsciScintillacanInsertFromMimeDataProc* = proc(source: gen_qmimedata.QMimeData): bool
-proc oncanInsertFromMimeData*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacanInsertFromMimeDataProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillacanInsertFromMimeDataProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_canInsertFromMimeData(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_canInsertFromMimeData(self: ptr cQsciScintilla, slot: int, source: pointer): bool {.exportc: "miqt_exec_callback_QsciScintilla_canInsertFromMimeData ".} =
-  var nimfunc = cast[ptr QsciScintillacanInsertFromMimeDataProc](cast[pointer](slot))
-  let slotval1 = gen_qmimedata.QMimeData(h: source)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciScintilla_canInsertFromMimeData(vtbl: pointer, self: pointer, source: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qmimedata_types.QMimeData(h: source)
+  let virtualReturn = vtbl[].canInsertFromMimeData(self, slotval1)
   virtualReturn
-proc QsciScintillafromMimeData*(self: gen_qsciscintilla_types.QsciScintilla, source: gen_qmimedata.QMimeData, rectangular: ptr bool): seq[byte] =
-  var v_bytearray = fQsciScintilla_virtualbase_fromMimeData(self.h, source.h, rectangular)
+
+proc QsciScintillafromMimeData*(self: gen_qsciscintilla_types.QsciScintilla, source: gen_qmimedata_types.QMimeData, rectangular: ptr bool): seq[byte] =
+  var v_bytearray = fcQsciScintilla_virtualbase_fromMimeData(self.h, source.h, rectangular)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-type QsciScintillafromMimeDataProc* = proc(source: gen_qmimedata.QMimeData, rectangular: ptr bool): seq[byte]
-proc onfromMimeData*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafromMimeDataProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafromMimeDataProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_fromMimeData(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_fromMimeData(self: ptr cQsciScintilla, slot: int, source: pointer, rectangular: ptr bool): struct_miqt_string {.exportc: "miqt_exec_callback_QsciScintilla_fromMimeData ".} =
-  var nimfunc = cast[ptr QsciScintillafromMimeDataProc](cast[pointer](slot))
-  let slotval1 = gen_qmimedata.QMimeData(h: source)
-
+proc miqt_exec_callback_cQsciScintilla_fromMimeData(vtbl: pointer, self: pointer, source: pointer, rectangular: ptr bool): struct_miqt_string {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qmimedata_types.QMimeData(h: source)
   let slotval2 = rectangular
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].fromMimeData(self, slotval1, slotval2)
   struct_miqt_string(data: cast[cstring](if len(virtualReturn) == 0: nil else: unsafeAddr virtualReturn[0]), len: csize_t(len(virtualReturn)))
-proc QsciScintillatoMimeData*(self: gen_qsciscintilla_types.QsciScintilla, text: seq[byte], rectangular: bool): gen_qmimedata.QMimeData =
-  gen_qmimedata.QMimeData(h: fQsciScintilla_virtualbase_toMimeData(self.h, struct_miqt_string(data: cast[cstring](if len(text) == 0: nil else: unsafeAddr text[0]), len: csize_t(len(text))), rectangular))
 
-type QsciScintillatoMimeDataProc* = proc(text: seq[byte], rectangular: bool): gen_qmimedata.QMimeData
-proc ontoMimeData*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillatoMimeDataProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillatoMimeDataProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_toMimeData(self.h, cast[int](addr tmp[]))
+proc QsciScintillatoMimeData*(self: gen_qsciscintilla_types.QsciScintilla, text: seq[byte], rectangular: bool): gen_qmimedata_types.QMimeData =
+  gen_qmimedata_types.QMimeData(h: fcQsciScintilla_virtualbase_toMimeData(self.h, struct_miqt_string(data: cast[cstring](if len(text) == 0: nil else: unsafeAddr text[0]), len: csize_t(len(text))), rectangular))
 
-proc miqt_exec_callback_QsciScintilla_toMimeData(self: ptr cQsciScintilla, slot: int, text: struct_miqt_string, rectangular: bool): pointer {.exportc: "miqt_exec_callback_QsciScintilla_toMimeData ".} =
-  var nimfunc = cast[ptr QsciScintillatoMimeDataProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_toMimeData(vtbl: pointer, self: pointer, text: struct_miqt_string, rectangular: bool): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   var vtext_bytearray = text
   var vtextx_ret = @(toOpenArrayByte(vtext_bytearray.data, 0, int(vtext_bytearray.len)-1))
   c_free(vtext_bytearray.data)
   let slotval1 = vtextx_ret
-
   let slotval2 = rectangular
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].toMimeData(self, slotval1, slotval2)
   virtualReturn.h
-proc QsciScintilladragEnterEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QDragEnterEvent): void =
-  fQsciScintilla_virtualbase_dragEnterEvent(self.h, e.h)
 
-type QsciScintilladragEnterEventProc* = proc(e: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintilladragEnterEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintilladragEnterEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintilladragEnterEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QDragEnterEvent): void =
+  fcQsciScintilla_virtualbase_dragEnterEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_dragEnterEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_dragEnterEvent ".} =
-  var nimfunc = cast[ptr QsciScintilladragEnterEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragEnterEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_dragEnterEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QDragEnterEvent(h: e)
+  vtbl[].dragEnterEvent(self, slotval1)
 
+proc QsciScintilladragLeaveEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QDragLeaveEvent): void =
+  fcQsciScintilla_virtualbase_dragLeaveEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintilladragLeaveEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QDragLeaveEvent): void =
-  fQsciScintilla_virtualbase_dragLeaveEvent(self.h, e.h)
+proc miqt_exec_callback_cQsciScintilla_dragLeaveEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QDragLeaveEvent(h: e)
+  vtbl[].dragLeaveEvent(self, slotval1)
 
-type QsciScintilladragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintilladragLeaveEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintilladragLeaveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintilladragMoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QDragMoveEvent): void =
+  fcQsciScintilla_virtualbase_dragMoveEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_dragLeaveEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_dragLeaveEvent ".} =
-  var nimfunc = cast[ptr QsciScintilladragLeaveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragLeaveEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_dragMoveEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QDragMoveEvent(h: e)
+  vtbl[].dragMoveEvent(self, slotval1)
 
+proc QsciScintilladropEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QDropEvent): void =
+  fcQsciScintilla_virtualbase_dropEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintilladragMoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QDragMoveEvent): void =
-  fQsciScintilla_virtualbase_dragMoveEvent(self.h, e.h)
+proc miqt_exec_callback_cQsciScintilla_dropEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QDropEvent(h: e)
+  vtbl[].dropEvent(self, slotval1)
 
-type QsciScintilladragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintilladragMoveEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintilladragMoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillafocusInEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QFocusEvent): void =
+  fcQsciScintilla_virtualbase_focusInEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_dragMoveEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_dragMoveEvent ".} =
-  var nimfunc = cast[ptr QsciScintilladragMoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDragMoveEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_focusInEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QFocusEvent(h: e)
+  vtbl[].focusInEvent(self, slotval1)
 
+proc QsciScintillafocusOutEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QFocusEvent): void =
+  fcQsciScintilla_virtualbase_focusOutEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintilladropEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QDropEvent): void =
-  fQsciScintilla_virtualbase_dropEvent(self.h, e.h)
+proc miqt_exec_callback_cQsciScintilla_focusOutEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QFocusEvent(h: e)
+  vtbl[].focusOutEvent(self, slotval1)
 
-type QsciScintilladropEventProc* = proc(e: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintilladropEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintilladropEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_dropEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_dropEvent ".} =
-  var nimfunc = cast[ptr QsciScintilladropEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QDropEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillafocusInEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QFocusEvent): void =
-  fQsciScintilla_virtualbase_focusInEvent(self.h, e.h)
-
-type QsciScintillafocusInEventProc* = proc(e: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafocusInEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafocusInEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_focusInEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_focusInEvent ".} =
-  var nimfunc = cast[ptr QsciScintillafocusInEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QFocusEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillafocusOutEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QFocusEvent): void =
-  fQsciScintilla_virtualbase_focusOutEvent(self.h, e.h)
-
-type QsciScintillafocusOutEventProc* = proc(e: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafocusOutEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafocusOutEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_focusOutEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_focusOutEvent ".} =
-  var nimfunc = cast[ptr QsciScintillafocusOutEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QFocusEvent(h: e)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillafocusNextPrevChild*(self: gen_qsciscintilla_types.QsciScintilla, next: bool): bool =
-  fQsciScintilla_virtualbase_focusNextPrevChild(self.h, next)
+  fcQsciScintilla_virtualbase_focusNextPrevChild(self.h, next)
 
-type QsciScintillafocusNextPrevChildProc* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillafocusNextPrevChildProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillafocusNextPrevChildProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_focusNextPrevChild(self: ptr cQsciScintilla, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QsciScintilla_focusNextPrevChild ".} =
-  var nimfunc = cast[ptr QsciScintillafocusNextPrevChildProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_focusNextPrevChild(vtbl: pointer, self: pointer, next: bool): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = next
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].focusNextPrevChild(self, slotval1)
   virtualReturn
-proc QsciScintillakeyPressEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QKeyEvent): void =
-  fQsciScintilla_virtualbase_keyPressEvent(self.h, e.h)
 
-type QsciScintillakeyPressEventProc* = proc(e: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillakeyPressEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillakeyPressEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillakeyPressEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QKeyEvent): void =
+  fcQsciScintilla_virtualbase_keyPressEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_keyPressEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_keyPressEvent ".} =
-  var nimfunc = cast[ptr QsciScintillakeyPressEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QKeyEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_keyPressEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QKeyEvent(h: e)
+  vtbl[].keyPressEvent(self, slotval1)
 
+proc QsciScintillainputMethodEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QInputMethodEvent): void =
+  fcQsciScintilla_virtualbase_inputMethodEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillainputMethodEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QInputMethodEvent): void =
-  fQsciScintilla_virtualbase_inputMethodEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciScintilla_inputMethodEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QInputMethodEvent(h: event)
+  vtbl[].inputMethodEvent(self, slotval1)
 
-type QsciScintillainputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillainputMethodEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillainputMethodEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillainputMethodQuery*(self: gen_qsciscintilla_types.QsciScintilla, query: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQsciScintilla_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-proc miqt_exec_callback_QsciScintilla_inputMethodEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_inputMethodEvent ".} =
-  var nimfunc = cast[ptr QsciScintillainputMethodEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QInputMethodEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillainputMethodQuery*(self: gen_qsciscintilla_types.QsciScintilla, query: cint): gen_qvariant.QVariant =
-  gen_qvariant.QVariant(h: fQsciScintilla_virtualbase_inputMethodQuery(self.h, cint(query)))
-
-type QsciScintillainputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillainputMethodQueryProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillainputMethodQueryProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_inputMethodQuery(self: ptr cQsciScintilla, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_QsciScintilla_inputMethodQuery ".} =
-  var nimfunc = cast[ptr QsciScintillainputMethodQueryProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_inputMethodQuery(vtbl: pointer, self: pointer, query: cint): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(query)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].inputMethodQuery(self, slotval1)
   virtualReturn.h
-proc QsciScintillamouseDoubleClickEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QMouseEvent): void =
-  fQsciScintilla_virtualbase_mouseDoubleClickEvent(self.h, e.h)
 
-type QsciScintillamouseDoubleClickEventProc* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamouseDoubleClickEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillamouseDoubleClickEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillamouseDoubleClickEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QMouseEvent): void =
+  fcQsciScintilla_virtualbase_mouseDoubleClickEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_mouseDoubleClickEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_mouseDoubleClickEvent ".} =
-  var nimfunc = cast[ptr QsciScintillamouseDoubleClickEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_mouseDoubleClickEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: e)
+  vtbl[].mouseDoubleClickEvent(self, slotval1)
 
+proc QsciScintillamouseMoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QMouseEvent): void =
+  fcQsciScintilla_virtualbase_mouseMoveEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillamouseMoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QMouseEvent): void =
-  fQsciScintilla_virtualbase_mouseMoveEvent(self.h, e.h)
+proc miqt_exec_callback_cQsciScintilla_mouseMoveEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: e)
+  vtbl[].mouseMoveEvent(self, slotval1)
 
-type QsciScintillamouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamouseMoveEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillamouseMoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillamousePressEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QMouseEvent): void =
+  fcQsciScintilla_virtualbase_mousePressEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_mouseMoveEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_mouseMoveEvent ".} =
-  var nimfunc = cast[ptr QsciScintillamouseMoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_mousePressEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: e)
+  vtbl[].mousePressEvent(self, slotval1)
 
+proc QsciScintillamouseReleaseEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QMouseEvent): void =
+  fcQsciScintilla_virtualbase_mouseReleaseEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillamousePressEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QMouseEvent): void =
-  fQsciScintilla_virtualbase_mousePressEvent(self.h, e.h)
+proc miqt_exec_callback_cQsciScintilla_mouseReleaseEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QMouseEvent(h: e)
+  vtbl[].mouseReleaseEvent(self, slotval1)
 
-type QsciScintillamousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamousePressEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillamousePressEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillapaintEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QPaintEvent): void =
+  fcQsciScintilla_virtualbase_paintEvent(self.h, e.h)
 
-proc miqt_exec_callback_QsciScintilla_mousePressEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_mousePressEvent ".} =
-  var nimfunc = cast[ptr QsciScintillamousePressEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: e)
+proc miqt_exec_callback_cQsciScintilla_paintEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QPaintEvent(h: e)
+  vtbl[].paintEvent(self, slotval1)
 
+proc QsciScintillaresizeEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent_types.QResizeEvent): void =
+  fcQsciScintilla_virtualbase_resizeEvent(self.h, e.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillamouseReleaseEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QMouseEvent): void =
-  fQsciScintilla_virtualbase_mouseReleaseEvent(self.h, e.h)
+proc miqt_exec_callback_cQsciScintilla_resizeEvent(vtbl: pointer, self: pointer, e: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QResizeEvent(h: e)
+  vtbl[].resizeEvent(self, slotval1)
 
-type QsciScintillamouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamouseReleaseEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillamouseReleaseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_mouseReleaseEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_mouseReleaseEvent ".} =
-  var nimfunc = cast[ptr QsciScintillamouseReleaseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMouseEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillapaintEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QPaintEvent): void =
-  fQsciScintilla_virtualbase_paintEvent(self.h, e.h)
-
-type QsciScintillapaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillapaintEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillapaintEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_paintEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_paintEvent ".} =
-  var nimfunc = cast[ptr QsciScintillapaintEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QPaintEvent(h: e)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillaresizeEvent*(self: gen_qsciscintilla_types.QsciScintilla, e: gen_qevent.QResizeEvent): void =
-  fQsciScintilla_virtualbase_resizeEvent(self.h, e.h)
-
-type QsciScintillaresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaresizeEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaresizeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_resizeEvent(self: ptr cQsciScintilla, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_resizeEvent ".} =
-  var nimfunc = cast[ptr QsciScintillaresizeEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QResizeEvent(h: e)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillascrollContentsBy*(self: gen_qsciscintilla_types.QsciScintilla, dx: cint, dy: cint): void =
-  fQsciScintilla_virtualbase_scrollContentsBy(self.h, dx, dy)
+  fcQsciScintilla_virtualbase_scrollContentsBy(self.h, dx, dy)
 
-type QsciScintillascrollContentsByProc* = proc(dx: cint, dy: cint): void
-proc onscrollContentsBy*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillascrollContentsByProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillascrollContentsByProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_scrollContentsBy(self: ptr cQsciScintilla, slot: int, dx: cint, dy: cint): void {.exportc: "miqt_exec_callback_QsciScintilla_scrollContentsBy ".} =
-  var nimfunc = cast[ptr QsciScintillascrollContentsByProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_scrollContentsBy(vtbl: pointer, self: pointer, dx: cint, dy: cint): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = dx
-
   let slotval2 = dy
+  vtbl[].scrollContentsBy(self, slotval1, slotval2)
 
+proc QsciScintillaminimumSizeHint*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQsciScintilla_virtualbase_minimumSizeHint(self.h))
 
-  nimfunc[](slotval1, slotval2)
-proc QsciScintillaminimumSizeHint*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fQsciScintilla_virtualbase_minimumSizeHint(self.h))
-
-type QsciScintillaminimumSizeHintProc* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaminimumSizeHintProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaminimumSizeHintProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_minimumSizeHint(self: ptr cQsciScintilla, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintilla_minimumSizeHint ".} =
-  var nimfunc = cast[ptr QsciScintillaminimumSizeHintProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_minimumSizeHint(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].minimumSizeHint(self)
   virtualReturn.h
-proc QsciScintillasizeHint*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fQsciScintilla_virtualbase_sizeHint(self.h))
 
-type QsciScintillasizeHintProc* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasizeHintProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasizeHintProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
+proc QsciScintillasizeHint*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQsciScintilla_virtualbase_sizeHint(self.h))
 
-proc miqt_exec_callback_QsciScintilla_sizeHint(self: ptr cQsciScintilla, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintilla_sizeHint ".} =
-  var nimfunc = cast[ptr QsciScintillasizeHintProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_sizeHint(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].sizeHint(self)
   virtualReturn.h
-proc QsciScintillasetupViewport*(self: gen_qsciscintilla_types.QsciScintilla, viewport: gen_qwidget.QWidget): void =
-  fQsciScintilla_virtualbase_setupViewport(self.h, viewport.h)
 
-type QsciScintillasetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetupViewportProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetupViewportProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
+proc QsciScintillasetupViewport*(self: gen_qsciscintilla_types.QsciScintilla, viewport: gen_qwidget_types.QWidget): void =
+  fcQsciScintilla_virtualbase_setupViewport(self.h, viewport.h)
 
-proc miqt_exec_callback_QsciScintilla_setupViewport(self: ptr cQsciScintilla, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_setupViewport ".} =
-  var nimfunc = cast[ptr QsciScintillasetupViewportProc](cast[pointer](slot))
-  let slotval1 = gen_qwidget.QWidget(h: viewport)
+proc miqt_exec_callback_cQsciScintilla_setupViewport(vtbl: pointer, self: pointer, viewport: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qwidget_types.QWidget(h: viewport)
+  vtbl[].setupViewport(self, slotval1)
 
+proc QsciScintillaeventFilter*(self: gen_qsciscintilla_types.QsciScintilla, param1: gen_qobject_types.QObject, param2: gen_qcoreevent_types.QEvent): bool =
+  fcQsciScintilla_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillaeventFilter*(self: gen_qsciscintilla_types.QsciScintilla, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-  fQsciScintilla_virtualbase_eventFilter(self.h, param1.h, param2.h)
-
-type QsciScintillaeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_eventFilter(self: ptr cQsciScintilla, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QsciScintilla_eventFilter ".} =
-  var nimfunc = cast[ptr QsciScintillaeventFilterProc](cast[pointer](slot))
-  let slotval1 = gen_qobject.QObject(h: param1)
-
-  let slotval2 = gen_qcoreevent.QEvent(h: param2)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+proc miqt_exec_callback_cQsciScintilla_eventFilter(vtbl: pointer, self: pointer, param1: pointer, param2: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qobject_types.QObject(h: param1)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: param2)
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
-proc QsciScintillaviewportEvent*(self: gen_qsciscintilla_types.QsciScintilla, param1: gen_qcoreevent.QEvent): bool =
-  fQsciScintilla_virtualbase_viewportEvent(self.h, param1.h)
 
-type QsciScintillaviewportEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaviewportEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaviewportEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillaviewportEvent*(self: gen_qsciscintilla_types.QsciScintilla, param1: gen_qcoreevent_types.QEvent): bool =
+  fcQsciScintilla_virtualbase_viewportEvent(self.h, param1.h)
 
-proc miqt_exec_callback_QsciScintilla_viewportEvent(self: ptr cQsciScintilla, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QsciScintilla_viewportEvent ".} =
-  var nimfunc = cast[ptr QsciScintillaviewportEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciScintilla_viewportEvent(vtbl: pointer, self: pointer, param1: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: param1)
+  let virtualReturn = vtbl[].viewportEvent(self, slotval1)
   virtualReturn
-proc QsciScintillaviewportSizeHint*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qsize.QSize =
-  gen_qsize.QSize(h: fQsciScintilla_virtualbase_viewportSizeHint(self.h))
 
-type QsciScintillaviewportSizeHintProc* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaviewportSizeHintProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaviewportSizeHintProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
+proc QsciScintillaviewportSizeHint*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQsciScintilla_virtualbase_viewportSizeHint(self.h))
 
-proc miqt_exec_callback_QsciScintilla_viewportSizeHint(self: ptr cQsciScintilla, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintilla_viewportSizeHint ".} =
-  var nimfunc = cast[ptr QsciScintillaviewportSizeHintProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_viewportSizeHint(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].viewportSizeHint(self)
   virtualReturn.h
+
 proc QsciScintilladevType*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
-  fQsciScintilla_virtualbase_devType(self.h)
+  fcQsciScintilla_virtualbase_devType(self.h)
 
-type QsciScintilladevTypeProc* = proc(): cint
-proc ondevType*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintilladevTypeProc) =
-  # TODO check subclass
-  var tmp = new QsciScintilladevTypeProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_devType(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_devType(self: ptr cQsciScintilla, slot: int): cint {.exportc: "miqt_exec_callback_QsciScintilla_devType ".} =
-  var nimfunc = cast[ptr QsciScintilladevTypeProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_devType(vtbl: pointer, self: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].devType(self)
   virtualReturn
+
 proc QsciScintillasetVisible*(self: gen_qsciscintilla_types.QsciScintilla, visible: bool): void =
-  fQsciScintilla_virtualbase_setVisible(self.h, visible)
+  fcQsciScintilla_virtualbase_setVisible(self.h, visible)
 
-type QsciScintillasetVisibleProc* = proc(visible: bool): void
-proc onsetVisible*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasetVisibleProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasetVisibleProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_setVisible(self: ptr cQsciScintilla, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QsciScintilla_setVisible ".} =
-  var nimfunc = cast[ptr QsciScintillasetVisibleProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_setVisible(vtbl: pointer, self: pointer, visible: bool): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = visible
+  vtbl[].setVisible(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QsciScintillaheightForWidth*(self: gen_qsciscintilla_types.QsciScintilla, param1: cint): cint =
-  fQsciScintilla_virtualbase_heightForWidth(self.h, param1)
+  fcQsciScintilla_virtualbase_heightForWidth(self.h, param1)
 
-type QsciScintillaheightForWidthProc* = proc(param1: cint): cint
-proc onheightForWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaheightForWidthProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaheightForWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_heightForWidth(self: ptr cQsciScintilla, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QsciScintilla_heightForWidth ".} =
-  var nimfunc = cast[ptr QsciScintillaheightForWidthProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_heightForWidth(vtbl: pointer, self: pointer, param1: cint): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = param1
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].heightForWidth(self, slotval1)
   virtualReturn
+
 proc QsciScintillahasHeightForWidth*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
-  fQsciScintilla_virtualbase_hasHeightForWidth(self.h)
+  fcQsciScintilla_virtualbase_hasHeightForWidth(self.h)
 
-type QsciScintillahasHeightForWidthProc* = proc(): bool
-proc onhasHeightForWidth*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillahasHeightForWidthProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillahasHeightForWidthProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_hasHeightForWidth(self: ptr cQsciScintilla, slot: int): bool {.exportc: "miqt_exec_callback_QsciScintilla_hasHeightForWidth ".} =
-  var nimfunc = cast[ptr QsciScintillahasHeightForWidthProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_hasHeightForWidth(vtbl: pointer, self: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].hasHeightForWidth(self)
   virtualReturn
-proc QsciScintillapaintEngine*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qpaintengine.QPaintEngine =
-  gen_qpaintengine.QPaintEngine(h: fQsciScintilla_virtualbase_paintEngine(self.h))
 
-type QsciScintillapaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillapaintEngineProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillapaintEngineProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
+proc QsciScintillapaintEngine*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qpaintengine_types.QPaintEngine =
+  gen_qpaintengine_types.QPaintEngine(h: fcQsciScintilla_virtualbase_paintEngine(self.h))
 
-proc miqt_exec_callback_QsciScintilla_paintEngine(self: ptr cQsciScintilla, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintilla_paintEngine ".} =
-  var nimfunc = cast[ptr QsciScintillapaintEngineProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_paintEngine(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].paintEngine(self)
   virtualReturn.h
-proc QsciScintillakeyReleaseEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QKeyEvent): void =
-  fQsciScintilla_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QsciScintillakeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillakeyReleaseEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillakeyReleaseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillakeyReleaseEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QKeyEvent): void =
+  fcQsciScintilla_virtualbase_keyReleaseEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciScintilla_keyReleaseEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_keyReleaseEvent ".} =
-  var nimfunc = cast[ptr QsciScintillakeyReleaseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QKeyEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_keyReleaseEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QKeyEvent(h: event)
+  vtbl[].keyReleaseEvent(self, slotval1)
 
+proc QsciScintillaenterEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciScintilla_virtualbase_enterEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillaenterEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent.QEvent): void =
-  fQsciScintilla_virtualbase_enterEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciScintilla_enterEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].enterEvent(self, slotval1)
 
-type QsciScintillaenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaenterEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaenterEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillaleaveEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciScintilla_virtualbase_leaveEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciScintilla_enterEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_enterEvent ".} =
-  var nimfunc = cast[ptr QsciScintillaenterEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_leaveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].leaveEvent(self, slotval1)
 
+proc QsciScintillamoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QMoveEvent): void =
+  fcQsciScintilla_virtualbase_moveEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillaleaveEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent.QEvent): void =
-  fQsciScintilla_virtualbase_leaveEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciScintilla_moveEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QMoveEvent(h: event)
+  vtbl[].moveEvent(self, slotval1)
 
-type QsciScintillaleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaleaveEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaleaveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillacloseEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QCloseEvent): void =
+  fcQsciScintilla_virtualbase_closeEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciScintilla_leaveEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_leaveEvent ".} =
-  var nimfunc = cast[ptr QsciScintillaleaveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_closeEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QCloseEvent(h: event)
+  vtbl[].closeEvent(self, slotval1)
 
+proc QsciScintillatabletEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QTabletEvent): void =
+  fcQsciScintilla_virtualbase_tabletEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillamoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QMoveEvent): void =
-  fQsciScintilla_virtualbase_moveEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciScintilla_tabletEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QTabletEvent(h: event)
+  vtbl[].tabletEvent(self, slotval1)
 
-type QsciScintillamoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamoveEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillamoveEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillaactionEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QActionEvent): void =
+  fcQsciScintilla_virtualbase_actionEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciScintilla_moveEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_moveEvent ".} =
-  var nimfunc = cast[ptr QsciScintillamoveEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QMoveEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_actionEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QActionEvent(h: event)
+  vtbl[].actionEvent(self, slotval1)
 
+proc QsciScintillashowEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QShowEvent): void =
+  fcQsciScintilla_virtualbase_showEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillacloseEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QCloseEvent): void =
-  fQsciScintilla_virtualbase_closeEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciScintilla_showEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QShowEvent(h: event)
+  vtbl[].showEvent(self, slotval1)
 
-type QsciScintillacloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacloseEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillacloseEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillahideEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent_types.QHideEvent): void =
+  fcQsciScintilla_virtualbase_hideEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciScintilla_closeEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_closeEvent ".} =
-  var nimfunc = cast[ptr QsciScintillacloseEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QCloseEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_hideEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qevent_types.QHideEvent(h: event)
+  vtbl[].hideEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
-proc QsciScintillatabletEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QTabletEvent): void =
-  fQsciScintilla_virtualbase_tabletEvent(self.h, event.h)
-
-type QsciScintillatabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillatabletEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillatabletEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_tabletEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_tabletEvent ".} =
-  var nimfunc = cast[ptr QsciScintillatabletEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QTabletEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillaactionEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QActionEvent): void =
-  fQsciScintilla_virtualbase_actionEvent(self.h, event.h)
-
-type QsciScintillaactionEventProc* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaactionEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaactionEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_actionEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_actionEvent ".} =
-  var nimfunc = cast[ptr QsciScintillaactionEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QActionEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillashowEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QShowEvent): void =
-  fQsciScintilla_virtualbase_showEvent(self.h, event.h)
-
-type QsciScintillashowEventProc* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillashowEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillashowEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_showEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_showEvent ".} =
-  var nimfunc = cast[ptr QsciScintillashowEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QShowEvent(h: event)
-
-
-  nimfunc[](slotval1)
-proc QsciScintillahideEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qevent.QHideEvent): void =
-  fQsciScintilla_virtualbase_hideEvent(self.h, event.h)
-
-type QsciScintillahideEventProc* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillahideEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillahideEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_hideEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_hideEvent ".} =
-  var nimfunc = cast[ptr QsciScintillahideEventProc](cast[pointer](slot))
-  let slotval1 = gen_qevent.QHideEvent(h: event)
-
-
-  nimfunc[](slotval1)
 proc QsciScintillanativeEvent*(self: gen_qsciscintilla_types.QsciScintilla, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-  fQsciScintilla_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
+  fcQsciScintilla_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QsciScintillanativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillanativeEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillanativeEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_nativeEvent(self: ptr cQsciScintilla, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QsciScintilla_nativeEvent ".} =
-  var nimfunc = cast[ptr QsciScintillanativeEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_nativeEvent(vtbl: pointer, self: pointer, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
   let slotval1 = veventTypex_ret
-
   let slotval2 = message
-
   let slotval3 = resultVal
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].nativeEvent(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QsciScintillametric*(self: gen_qsciscintilla_types.QsciScintilla, param1: cint): cint =
-  fQsciScintilla_virtualbase_metric(self.h, cint(param1))
+  fcQsciScintilla_virtualbase_metric(self.h, cint(param1))
 
-type QsciScintillametricProc* = proc(param1: cint): cint
-proc onmetric*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillametricProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillametricProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_metric(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_metric(self: ptr cQsciScintilla, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QsciScintilla_metric ".} =
-  var nimfunc = cast[ptr QsciScintillametricProc](cast[pointer](slot))
+proc miqt_exec_callback_cQsciScintilla_metric(vtbl: pointer, self: pointer, param1: cint): cint {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
   let slotval1 = cint(param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metric(self, slotval1)
   virtualReturn
-proc QsciScintillainitPainter*(self: gen_qsciscintilla_types.QsciScintilla, painter: gen_qpainter.QPainter): void =
-  fQsciScintilla_virtualbase_initPainter(self.h, painter.h)
 
-type QsciScintillainitPainterProc* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillainitPainterProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillainitPainterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
+proc QsciScintillainitPainter*(self: gen_qsciscintilla_types.QsciScintilla, painter: gen_qpainter_types.QPainter): void =
+  fcQsciScintilla_virtualbase_initPainter(self.h, painter.h)
 
-proc miqt_exec_callback_QsciScintilla_initPainter(self: ptr cQsciScintilla, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_initPainter ".} =
-  var nimfunc = cast[ptr QsciScintillainitPainterProc](cast[pointer](slot))
-  let slotval1 = gen_qpainter.QPainter(h: painter)
+proc miqt_exec_callback_cQsciScintilla_initPainter(vtbl: pointer, self: pointer, painter: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qpainter_types.QPainter(h: painter)
+  vtbl[].initPainter(self, slotval1)
 
+proc QsciScintillaredirected*(self: gen_qsciscintilla_types.QsciScintilla, offset: gen_qpoint_types.QPoint): gen_qpaintdevice_types.QPaintDevice =
+  gen_qpaintdevice_types.QPaintDevice(h: fcQsciScintilla_virtualbase_redirected(self.h, offset.h))
 
-  nimfunc[](slotval1)
-proc QsciScintillaredirected*(self: gen_qsciscintilla_types.QsciScintilla, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-  gen_qpaintdevice.QPaintDevice(h: fQsciScintilla_virtualbase_redirected(self.h, offset.h))
-
-type QsciScintillaredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaredirectedProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaredirectedProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_redirected(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_redirected(self: ptr cQsciScintilla, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QsciScintilla_redirected ".} =
-  var nimfunc = cast[ptr QsciScintillaredirectedProc](cast[pointer](slot))
-  let slotval1 = gen_qpoint.QPoint(h: offset)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+proc miqt_exec_callback_cQsciScintilla_redirected(vtbl: pointer, self: pointer, offset: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qpoint_types.QPoint(h: offset)
+  let virtualReturn = vtbl[].redirected(self, slotval1)
   virtualReturn.h
-proc QsciScintillasharedPainter*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qpainter.QPainter =
-  gen_qpainter.QPainter(h: fQsciScintilla_virtualbase_sharedPainter(self.h))
 
-type QsciScintillasharedPainterProc* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillasharedPainterProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillasharedPainterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
+proc QsciScintillasharedPainter*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qpainter_types.QPainter =
+  gen_qpainter_types.QPainter(h: fcQsciScintilla_virtualbase_sharedPainter(self.h))
 
-proc miqt_exec_callback_QsciScintilla_sharedPainter(self: ptr cQsciScintilla, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintilla_sharedPainter ".} =
-  var nimfunc = cast[ptr QsciScintillasharedPainterProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQsciScintilla_sharedPainter(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let virtualReturn = vtbl[].sharedPainter(self)
   virtualReturn.h
-proc QsciScintillatimerEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent.QTimerEvent): void =
-  fQsciScintilla_virtualbase_timerEvent(self.h, event.h)
 
-type QsciScintillatimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillatimerEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillatimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillatimerEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent_types.QTimerEvent): void =
+  fcQsciScintilla_virtualbase_timerEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciScintilla_timerEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_timerEvent ".} =
-  var nimfunc = cast[ptr QsciScintillatimerEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
+proc QsciScintillachildEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent_types.QChildEvent): void =
+  fcQsciScintilla_virtualbase_childEvent(self.h, event.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillachildEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent.QChildEvent): void =
-  fQsciScintilla_virtualbase_childEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciScintilla_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-type QsciScintillachildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillachildEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillachildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintillacustomEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent_types.QEvent): void =
+  fcQsciScintilla_virtualbase_customEvent(self.h, event.h)
 
-proc miqt_exec_callback_QsciScintilla_childEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_childEvent ".} =
-  var nimfunc = cast[ptr QsciScintillachildEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QChildEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
+proc QsciScintillaconnectNotify*(self: gen_qsciscintilla_types.QsciScintilla, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciScintilla_virtualbase_connectNotify(self.h, signal.h)
 
-  nimfunc[](slotval1)
-proc QsciScintillacustomEvent*(self: gen_qsciscintilla_types.QsciScintilla, event: gen_qcoreevent.QEvent): void =
-  fQsciScintilla_virtualbase_customEvent(self.h, event.h)
+proc miqt_exec_callback_cQsciScintilla_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-type QsciScintillacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacustomEventProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillacustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
+proc QsciScintilladisconnectNotify*(self: gen_qsciscintilla_types.QsciScintilla, signal: gen_qmetaobject_types.QMetaMethod): void =
+  fcQsciScintilla_virtualbase_disconnectNotify(self.h, signal.h)
 
-proc miqt_exec_callback_QsciScintilla_customEvent(self: ptr cQsciScintilla, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_customEvent ".} =
-  var nimfunc = cast[ptr QsciScintillacustomEventProc](cast[pointer](slot))
-  let slotval1 = gen_qcoreevent.QEvent(h: event)
+proc miqt_exec_callback_cQsciScintilla_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QsciScintillaVTable](vtbl)
+  let self = QsciScintilla(h: self)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qsciscintilla_types.QsciScintilla,
+    parent: gen_qwidget_types.QWidget,
+    vtbl: ref QsciScintillaVTable = nil): gen_qsciscintilla_types.QsciScintilla =
+  let vtbl = if vtbl == nil: new QsciScintillaVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciScintillaVTable, _: ptr cQsciScintilla) {.cdecl.} =
+    let vtbl = cast[ref QsciScintillaVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciScintilla_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciScintilla_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciScintilla_metacall
+  if not isNil(vtbl.apiContext):
+    vtbl[].vtbl.apiContext = miqt_exec_callback_cQsciScintilla_apiContext
+  if not isNil(vtbl.findFirst):
+    vtbl[].vtbl.findFirst = miqt_exec_callback_cQsciScintilla_findFirst
+  if not isNil(vtbl.findFirstInSelection):
+    vtbl[].vtbl.findFirstInSelection = miqt_exec_callback_cQsciScintilla_findFirstInSelection
+  if not isNil(vtbl.findNext):
+    vtbl[].vtbl.findNext = miqt_exec_callback_cQsciScintilla_findNext
+  if not isNil(vtbl.recolor):
+    vtbl[].vtbl.recolor = miqt_exec_callback_cQsciScintilla_recolor
+  if not isNil(vtbl.replace):
+    vtbl[].vtbl.replace = miqt_exec_callback_cQsciScintilla_replace
+  if not isNil(vtbl.append):
+    vtbl[].vtbl.append = miqt_exec_callback_cQsciScintilla_append
+  if not isNil(vtbl.autoCompleteFromAll):
+    vtbl[].vtbl.autoCompleteFromAll = miqt_exec_callback_cQsciScintilla_autoCompleteFromAll
+  if not isNil(vtbl.autoCompleteFromAPIs):
+    vtbl[].vtbl.autoCompleteFromAPIs = miqt_exec_callback_cQsciScintilla_autoCompleteFromAPIs
+  if not isNil(vtbl.autoCompleteFromDocument):
+    vtbl[].vtbl.autoCompleteFromDocument = miqt_exec_callback_cQsciScintilla_autoCompleteFromDocument
+  if not isNil(vtbl.callTip):
+    vtbl[].vtbl.callTip = miqt_exec_callback_cQsciScintilla_callTip
+  if not isNil(vtbl.clear):
+    vtbl[].vtbl.clear = miqt_exec_callback_cQsciScintilla_clear
+  if not isNil(vtbl.copy):
+    vtbl[].vtbl.copy = miqt_exec_callback_cQsciScintilla_copy
+  if not isNil(vtbl.cut):
+    vtbl[].vtbl.cut = miqt_exec_callback_cQsciScintilla_cut
+  if not isNil(vtbl.ensureCursorVisible):
+    vtbl[].vtbl.ensureCursorVisible = miqt_exec_callback_cQsciScintilla_ensureCursorVisible
+  if not isNil(vtbl.ensureLineVisible):
+    vtbl[].vtbl.ensureLineVisible = miqt_exec_callback_cQsciScintilla_ensureLineVisible
+  if not isNil(vtbl.foldAll):
+    vtbl[].vtbl.foldAll = miqt_exec_callback_cQsciScintilla_foldAll
+  if not isNil(vtbl.foldLine):
+    vtbl[].vtbl.foldLine = miqt_exec_callback_cQsciScintilla_foldLine
+  if not isNil(vtbl.indent):
+    vtbl[].vtbl.indent = miqt_exec_callback_cQsciScintilla_indent
+  if not isNil(vtbl.insert):
+    vtbl[].vtbl.insert = miqt_exec_callback_cQsciScintilla_insert
+  if not isNil(vtbl.insertAt):
+    vtbl[].vtbl.insertAt = miqt_exec_callback_cQsciScintilla_insertAt
+  if not isNil(vtbl.moveToMatchingBrace):
+    vtbl[].vtbl.moveToMatchingBrace = miqt_exec_callback_cQsciScintilla_moveToMatchingBrace
+  if not isNil(vtbl.paste):
+    vtbl[].vtbl.paste = miqt_exec_callback_cQsciScintilla_paste
+  if not isNil(vtbl.redo):
+    vtbl[].vtbl.redo = miqt_exec_callback_cQsciScintilla_redo
+  if not isNil(vtbl.removeSelectedText):
+    vtbl[].vtbl.removeSelectedText = miqt_exec_callback_cQsciScintilla_removeSelectedText
+  if not isNil(vtbl.replaceSelectedText):
+    vtbl[].vtbl.replaceSelectedText = miqt_exec_callback_cQsciScintilla_replaceSelectedText
+  if not isNil(vtbl.resetSelectionBackgroundColor):
+    vtbl[].vtbl.resetSelectionBackgroundColor = miqt_exec_callback_cQsciScintilla_resetSelectionBackgroundColor
+  if not isNil(vtbl.resetSelectionForegroundColor):
+    vtbl[].vtbl.resetSelectionForegroundColor = miqt_exec_callback_cQsciScintilla_resetSelectionForegroundColor
+  if not isNil(vtbl.selectAll):
+    vtbl[].vtbl.selectAll = miqt_exec_callback_cQsciScintilla_selectAll
+  if not isNil(vtbl.selectToMatchingBrace):
+    vtbl[].vtbl.selectToMatchingBrace = miqt_exec_callback_cQsciScintilla_selectToMatchingBrace
+  if not isNil(vtbl.setAutoCompletionCaseSensitivity):
+    vtbl[].vtbl.setAutoCompletionCaseSensitivity = miqt_exec_callback_cQsciScintilla_setAutoCompletionCaseSensitivity
+  if not isNil(vtbl.setAutoCompletionReplaceWord):
+    vtbl[].vtbl.setAutoCompletionReplaceWord = miqt_exec_callback_cQsciScintilla_setAutoCompletionReplaceWord
+  if not isNil(vtbl.setAutoCompletionShowSingle):
+    vtbl[].vtbl.setAutoCompletionShowSingle = miqt_exec_callback_cQsciScintilla_setAutoCompletionShowSingle
+  if not isNil(vtbl.setAutoCompletionSource):
+    vtbl[].vtbl.setAutoCompletionSource = miqt_exec_callback_cQsciScintilla_setAutoCompletionSource
+  if not isNil(vtbl.setAutoCompletionThreshold):
+    vtbl[].vtbl.setAutoCompletionThreshold = miqt_exec_callback_cQsciScintilla_setAutoCompletionThreshold
+  if not isNil(vtbl.setAutoCompletionUseSingle):
+    vtbl[].vtbl.setAutoCompletionUseSingle = miqt_exec_callback_cQsciScintilla_setAutoCompletionUseSingle
+  if not isNil(vtbl.setAutoIndent):
+    vtbl[].vtbl.setAutoIndent = miqt_exec_callback_cQsciScintilla_setAutoIndent
+  if not isNil(vtbl.setBraceMatching):
+    vtbl[].vtbl.setBraceMatching = miqt_exec_callback_cQsciScintilla_setBraceMatching
+  if not isNil(vtbl.setBackspaceUnindents):
+    vtbl[].vtbl.setBackspaceUnindents = miqt_exec_callback_cQsciScintilla_setBackspaceUnindents
+  if not isNil(vtbl.setCaretForegroundColor):
+    vtbl[].vtbl.setCaretForegroundColor = miqt_exec_callback_cQsciScintilla_setCaretForegroundColor
+  if not isNil(vtbl.setCaretLineBackgroundColor):
+    vtbl[].vtbl.setCaretLineBackgroundColor = miqt_exec_callback_cQsciScintilla_setCaretLineBackgroundColor
+  if not isNil(vtbl.setCaretLineFrameWidth):
+    vtbl[].vtbl.setCaretLineFrameWidth = miqt_exec_callback_cQsciScintilla_setCaretLineFrameWidth
+  if not isNil(vtbl.setCaretLineVisible):
+    vtbl[].vtbl.setCaretLineVisible = miqt_exec_callback_cQsciScintilla_setCaretLineVisible
+  if not isNil(vtbl.setCaretWidth):
+    vtbl[].vtbl.setCaretWidth = miqt_exec_callback_cQsciScintilla_setCaretWidth
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciScintilla_setColor
+  if not isNil(vtbl.setCursorPosition):
+    vtbl[].vtbl.setCursorPosition = miqt_exec_callback_cQsciScintilla_setCursorPosition
+  if not isNil(vtbl.setEolMode):
+    vtbl[].vtbl.setEolMode = miqt_exec_callback_cQsciScintilla_setEolMode
+  if not isNil(vtbl.setEolVisibility):
+    vtbl[].vtbl.setEolVisibility = miqt_exec_callback_cQsciScintilla_setEolVisibility
+  if not isNil(vtbl.setFolding):
+    vtbl[].vtbl.setFolding = miqt_exec_callback_cQsciScintilla_setFolding
+  if not isNil(vtbl.setIndentation):
+    vtbl[].vtbl.setIndentation = miqt_exec_callback_cQsciScintilla_setIndentation
+  if not isNil(vtbl.setIndentationGuides):
+    vtbl[].vtbl.setIndentationGuides = miqt_exec_callback_cQsciScintilla_setIndentationGuides
+  if not isNil(vtbl.setIndentationGuidesBackgroundColor):
+    vtbl[].vtbl.setIndentationGuidesBackgroundColor = miqt_exec_callback_cQsciScintilla_setIndentationGuidesBackgroundColor
+  if not isNil(vtbl.setIndentationGuidesForegroundColor):
+    vtbl[].vtbl.setIndentationGuidesForegroundColor = miqt_exec_callback_cQsciScintilla_setIndentationGuidesForegroundColor
+  if not isNil(vtbl.setIndentationsUseTabs):
+    vtbl[].vtbl.setIndentationsUseTabs = miqt_exec_callback_cQsciScintilla_setIndentationsUseTabs
+  if not isNil(vtbl.setIndentationWidth):
+    vtbl[].vtbl.setIndentationWidth = miqt_exec_callback_cQsciScintilla_setIndentationWidth
+  if not isNil(vtbl.setLexer):
+    vtbl[].vtbl.setLexer = miqt_exec_callback_cQsciScintilla_setLexer
+  if not isNil(vtbl.setMarginsBackgroundColor):
+    vtbl[].vtbl.setMarginsBackgroundColor = miqt_exec_callback_cQsciScintilla_setMarginsBackgroundColor
+  if not isNil(vtbl.setMarginsFont):
+    vtbl[].vtbl.setMarginsFont = miqt_exec_callback_cQsciScintilla_setMarginsFont
+  if not isNil(vtbl.setMarginsForegroundColor):
+    vtbl[].vtbl.setMarginsForegroundColor = miqt_exec_callback_cQsciScintilla_setMarginsForegroundColor
+  if not isNil(vtbl.setMarginLineNumbers):
+    vtbl[].vtbl.setMarginLineNumbers = miqt_exec_callback_cQsciScintilla_setMarginLineNumbers
+  if not isNil(vtbl.setMarginMarkerMask):
+    vtbl[].vtbl.setMarginMarkerMask = miqt_exec_callback_cQsciScintilla_setMarginMarkerMask
+  if not isNil(vtbl.setMarginSensitivity):
+    vtbl[].vtbl.setMarginSensitivity = miqt_exec_callback_cQsciScintilla_setMarginSensitivity
+  if not isNil(vtbl.setMarginWidth):
+    vtbl[].vtbl.setMarginWidth = miqt_exec_callback_cQsciScintilla_setMarginWidth
+  if not isNil(vtbl.setMarginWidth):
+    vtbl[].vtbl.setMarginWidth = miqt_exec_callback_cQsciScintilla_setMarginWidth2
+  if not isNil(vtbl.setModified):
+    vtbl[].vtbl.setModified = miqt_exec_callback_cQsciScintilla_setModified
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciScintilla_setPaper
+  if not isNil(vtbl.setReadOnly):
+    vtbl[].vtbl.setReadOnly = miqt_exec_callback_cQsciScintilla_setReadOnly
+  if not isNil(vtbl.setSelection):
+    vtbl[].vtbl.setSelection = miqt_exec_callback_cQsciScintilla_setSelection
+  if not isNil(vtbl.setSelectionBackgroundColor):
+    vtbl[].vtbl.setSelectionBackgroundColor = miqt_exec_callback_cQsciScintilla_setSelectionBackgroundColor
+  if not isNil(vtbl.setSelectionForegroundColor):
+    vtbl[].vtbl.setSelectionForegroundColor = miqt_exec_callback_cQsciScintilla_setSelectionForegroundColor
+  if not isNil(vtbl.setTabIndents):
+    vtbl[].vtbl.setTabIndents = miqt_exec_callback_cQsciScintilla_setTabIndents
+  if not isNil(vtbl.setTabWidth):
+    vtbl[].vtbl.setTabWidth = miqt_exec_callback_cQsciScintilla_setTabWidth
+  if not isNil(vtbl.setText):
+    vtbl[].vtbl.setText = miqt_exec_callback_cQsciScintilla_setText
+  if not isNil(vtbl.setUtf8):
+    vtbl[].vtbl.setUtf8 = miqt_exec_callback_cQsciScintilla_setUtf8
+  if not isNil(vtbl.setWhitespaceVisibility):
+    vtbl[].vtbl.setWhitespaceVisibility = miqt_exec_callback_cQsciScintilla_setWhitespaceVisibility
+  if not isNil(vtbl.setWrapMode):
+    vtbl[].vtbl.setWrapMode = miqt_exec_callback_cQsciScintilla_setWrapMode
+  if not isNil(vtbl.undo):
+    vtbl[].vtbl.undo = miqt_exec_callback_cQsciScintilla_undo
+  if not isNil(vtbl.unindent):
+    vtbl[].vtbl.unindent = miqt_exec_callback_cQsciScintilla_unindent
+  if not isNil(vtbl.zoomIn):
+    vtbl[].vtbl.zoomIn = miqt_exec_callback_cQsciScintilla_zoomIn
+  if not isNil(vtbl.zoomIn):
+    vtbl[].vtbl.zoomIn = miqt_exec_callback_cQsciScintilla_zoomIn2
+  if not isNil(vtbl.zoomOut):
+    vtbl[].vtbl.zoomOut = miqt_exec_callback_cQsciScintilla_zoomOut
+  if not isNil(vtbl.zoomOut):
+    vtbl[].vtbl.zoomOut = miqt_exec_callback_cQsciScintilla_zoomOut2
+  if not isNil(vtbl.zoomTo):
+    vtbl[].vtbl.zoomTo = miqt_exec_callback_cQsciScintilla_zoomTo
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciScintilla_event
+  if not isNil(vtbl.changeEvent):
+    vtbl[].vtbl.changeEvent = miqt_exec_callback_cQsciScintilla_changeEvent
+  if not isNil(vtbl.contextMenuEvent):
+    vtbl[].vtbl.contextMenuEvent = miqt_exec_callback_cQsciScintilla_contextMenuEvent
+  if not isNil(vtbl.wheelEvent):
+    vtbl[].vtbl.wheelEvent = miqt_exec_callback_cQsciScintilla_wheelEvent
+  if not isNil(vtbl.canInsertFromMimeData):
+    vtbl[].vtbl.canInsertFromMimeData = miqt_exec_callback_cQsciScintilla_canInsertFromMimeData
+  if not isNil(vtbl.fromMimeData):
+    vtbl[].vtbl.fromMimeData = miqt_exec_callback_cQsciScintilla_fromMimeData
+  if not isNil(vtbl.toMimeData):
+    vtbl[].vtbl.toMimeData = miqt_exec_callback_cQsciScintilla_toMimeData
+  if not isNil(vtbl.dragEnterEvent):
+    vtbl[].vtbl.dragEnterEvent = miqt_exec_callback_cQsciScintilla_dragEnterEvent
+  if not isNil(vtbl.dragLeaveEvent):
+    vtbl[].vtbl.dragLeaveEvent = miqt_exec_callback_cQsciScintilla_dragLeaveEvent
+  if not isNil(vtbl.dragMoveEvent):
+    vtbl[].vtbl.dragMoveEvent = miqt_exec_callback_cQsciScintilla_dragMoveEvent
+  if not isNil(vtbl.dropEvent):
+    vtbl[].vtbl.dropEvent = miqt_exec_callback_cQsciScintilla_dropEvent
+  if not isNil(vtbl.focusInEvent):
+    vtbl[].vtbl.focusInEvent = miqt_exec_callback_cQsciScintilla_focusInEvent
+  if not isNil(vtbl.focusOutEvent):
+    vtbl[].vtbl.focusOutEvent = miqt_exec_callback_cQsciScintilla_focusOutEvent
+  if not isNil(vtbl.focusNextPrevChild):
+    vtbl[].vtbl.focusNextPrevChild = miqt_exec_callback_cQsciScintilla_focusNextPrevChild
+  if not isNil(vtbl.keyPressEvent):
+    vtbl[].vtbl.keyPressEvent = miqt_exec_callback_cQsciScintilla_keyPressEvent
+  if not isNil(vtbl.inputMethodEvent):
+    vtbl[].vtbl.inputMethodEvent = miqt_exec_callback_cQsciScintilla_inputMethodEvent
+  if not isNil(vtbl.inputMethodQuery):
+    vtbl[].vtbl.inputMethodQuery = miqt_exec_callback_cQsciScintilla_inputMethodQuery
+  if not isNil(vtbl.mouseDoubleClickEvent):
+    vtbl[].vtbl.mouseDoubleClickEvent = miqt_exec_callback_cQsciScintilla_mouseDoubleClickEvent
+  if not isNil(vtbl.mouseMoveEvent):
+    vtbl[].vtbl.mouseMoveEvent = miqt_exec_callback_cQsciScintilla_mouseMoveEvent
+  if not isNil(vtbl.mousePressEvent):
+    vtbl[].vtbl.mousePressEvent = miqt_exec_callback_cQsciScintilla_mousePressEvent
+  if not isNil(vtbl.mouseReleaseEvent):
+    vtbl[].vtbl.mouseReleaseEvent = miqt_exec_callback_cQsciScintilla_mouseReleaseEvent
+  if not isNil(vtbl.paintEvent):
+    vtbl[].vtbl.paintEvent = miqt_exec_callback_cQsciScintilla_paintEvent
+  if not isNil(vtbl.resizeEvent):
+    vtbl[].vtbl.resizeEvent = miqt_exec_callback_cQsciScintilla_resizeEvent
+  if not isNil(vtbl.scrollContentsBy):
+    vtbl[].vtbl.scrollContentsBy = miqt_exec_callback_cQsciScintilla_scrollContentsBy
+  if not isNil(vtbl.minimumSizeHint):
+    vtbl[].vtbl.minimumSizeHint = miqt_exec_callback_cQsciScintilla_minimumSizeHint
+  if not isNil(vtbl.sizeHint):
+    vtbl[].vtbl.sizeHint = miqt_exec_callback_cQsciScintilla_sizeHint
+  if not isNil(vtbl.setupViewport):
+    vtbl[].vtbl.setupViewport = miqt_exec_callback_cQsciScintilla_setupViewport
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciScintilla_eventFilter
+  if not isNil(vtbl.viewportEvent):
+    vtbl[].vtbl.viewportEvent = miqt_exec_callback_cQsciScintilla_viewportEvent
+  if not isNil(vtbl.viewportSizeHint):
+    vtbl[].vtbl.viewportSizeHint = miqt_exec_callback_cQsciScintilla_viewportSizeHint
+  if not isNil(vtbl.devType):
+    vtbl[].vtbl.devType = miqt_exec_callback_cQsciScintilla_devType
+  if not isNil(vtbl.setVisible):
+    vtbl[].vtbl.setVisible = miqt_exec_callback_cQsciScintilla_setVisible
+  if not isNil(vtbl.heightForWidth):
+    vtbl[].vtbl.heightForWidth = miqt_exec_callback_cQsciScintilla_heightForWidth
+  if not isNil(vtbl.hasHeightForWidth):
+    vtbl[].vtbl.hasHeightForWidth = miqt_exec_callback_cQsciScintilla_hasHeightForWidth
+  if not isNil(vtbl.paintEngine):
+    vtbl[].vtbl.paintEngine = miqt_exec_callback_cQsciScintilla_paintEngine
+  if not isNil(vtbl.keyReleaseEvent):
+    vtbl[].vtbl.keyReleaseEvent = miqt_exec_callback_cQsciScintilla_keyReleaseEvent
+  if not isNil(vtbl.enterEvent):
+    vtbl[].vtbl.enterEvent = miqt_exec_callback_cQsciScintilla_enterEvent
+  if not isNil(vtbl.leaveEvent):
+    vtbl[].vtbl.leaveEvent = miqt_exec_callback_cQsciScintilla_leaveEvent
+  if not isNil(vtbl.moveEvent):
+    vtbl[].vtbl.moveEvent = miqt_exec_callback_cQsciScintilla_moveEvent
+  if not isNil(vtbl.closeEvent):
+    vtbl[].vtbl.closeEvent = miqt_exec_callback_cQsciScintilla_closeEvent
+  if not isNil(vtbl.tabletEvent):
+    vtbl[].vtbl.tabletEvent = miqt_exec_callback_cQsciScintilla_tabletEvent
+  if not isNil(vtbl.actionEvent):
+    vtbl[].vtbl.actionEvent = miqt_exec_callback_cQsciScintilla_actionEvent
+  if not isNil(vtbl.showEvent):
+    vtbl[].vtbl.showEvent = miqt_exec_callback_cQsciScintilla_showEvent
+  if not isNil(vtbl.hideEvent):
+    vtbl[].vtbl.hideEvent = miqt_exec_callback_cQsciScintilla_hideEvent
+  if not isNil(vtbl.nativeEvent):
+    vtbl[].vtbl.nativeEvent = miqt_exec_callback_cQsciScintilla_nativeEvent
+  if not isNil(vtbl.metric):
+    vtbl[].vtbl.metric = miqt_exec_callback_cQsciScintilla_metric
+  if not isNil(vtbl.initPainter):
+    vtbl[].vtbl.initPainter = miqt_exec_callback_cQsciScintilla_initPainter
+  if not isNil(vtbl.redirected):
+    vtbl[].vtbl.redirected = miqt_exec_callback_cQsciScintilla_redirected
+  if not isNil(vtbl.sharedPainter):
+    vtbl[].vtbl.sharedPainter = miqt_exec_callback_cQsciScintilla_sharedPainter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciScintilla_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciScintilla_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciScintilla_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciScintilla_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciScintilla_disconnectNotify
+  gen_qsciscintilla_types.QsciScintilla(h: fcQsciScintilla_new(addr(vtbl[]), parent.h))
 
-  nimfunc[](slotval1)
-proc QsciScintillaconnectNotify*(self: gen_qsciscintilla_types.QsciScintilla, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciScintilla_virtualbase_connectNotify(self.h, signal.h)
+proc create*(T: type gen_qsciscintilla_types.QsciScintilla,
+    vtbl: ref QsciScintillaVTable = nil): gen_qsciscintilla_types.QsciScintilla =
+  let vtbl = if vtbl == nil: new QsciScintillaVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQsciScintillaVTable, _: ptr cQsciScintilla) {.cdecl.} =
+    let vtbl = cast[ref QsciScintillaVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQsciScintilla_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQsciScintilla_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQsciScintilla_metacall
+  if not isNil(vtbl.apiContext):
+    vtbl[].vtbl.apiContext = miqt_exec_callback_cQsciScintilla_apiContext
+  if not isNil(vtbl.findFirst):
+    vtbl[].vtbl.findFirst = miqt_exec_callback_cQsciScintilla_findFirst
+  if not isNil(vtbl.findFirstInSelection):
+    vtbl[].vtbl.findFirstInSelection = miqt_exec_callback_cQsciScintilla_findFirstInSelection
+  if not isNil(vtbl.findNext):
+    vtbl[].vtbl.findNext = miqt_exec_callback_cQsciScintilla_findNext
+  if not isNil(vtbl.recolor):
+    vtbl[].vtbl.recolor = miqt_exec_callback_cQsciScintilla_recolor
+  if not isNil(vtbl.replace):
+    vtbl[].vtbl.replace = miqt_exec_callback_cQsciScintilla_replace
+  if not isNil(vtbl.append):
+    vtbl[].vtbl.append = miqt_exec_callback_cQsciScintilla_append
+  if not isNil(vtbl.autoCompleteFromAll):
+    vtbl[].vtbl.autoCompleteFromAll = miqt_exec_callback_cQsciScintilla_autoCompleteFromAll
+  if not isNil(vtbl.autoCompleteFromAPIs):
+    vtbl[].vtbl.autoCompleteFromAPIs = miqt_exec_callback_cQsciScintilla_autoCompleteFromAPIs
+  if not isNil(vtbl.autoCompleteFromDocument):
+    vtbl[].vtbl.autoCompleteFromDocument = miqt_exec_callback_cQsciScintilla_autoCompleteFromDocument
+  if not isNil(vtbl.callTip):
+    vtbl[].vtbl.callTip = miqt_exec_callback_cQsciScintilla_callTip
+  if not isNil(vtbl.clear):
+    vtbl[].vtbl.clear = miqt_exec_callback_cQsciScintilla_clear
+  if not isNil(vtbl.copy):
+    vtbl[].vtbl.copy = miqt_exec_callback_cQsciScintilla_copy
+  if not isNil(vtbl.cut):
+    vtbl[].vtbl.cut = miqt_exec_callback_cQsciScintilla_cut
+  if not isNil(vtbl.ensureCursorVisible):
+    vtbl[].vtbl.ensureCursorVisible = miqt_exec_callback_cQsciScintilla_ensureCursorVisible
+  if not isNil(vtbl.ensureLineVisible):
+    vtbl[].vtbl.ensureLineVisible = miqt_exec_callback_cQsciScintilla_ensureLineVisible
+  if not isNil(vtbl.foldAll):
+    vtbl[].vtbl.foldAll = miqt_exec_callback_cQsciScintilla_foldAll
+  if not isNil(vtbl.foldLine):
+    vtbl[].vtbl.foldLine = miqt_exec_callback_cQsciScintilla_foldLine
+  if not isNil(vtbl.indent):
+    vtbl[].vtbl.indent = miqt_exec_callback_cQsciScintilla_indent
+  if not isNil(vtbl.insert):
+    vtbl[].vtbl.insert = miqt_exec_callback_cQsciScintilla_insert
+  if not isNil(vtbl.insertAt):
+    vtbl[].vtbl.insertAt = miqt_exec_callback_cQsciScintilla_insertAt
+  if not isNil(vtbl.moveToMatchingBrace):
+    vtbl[].vtbl.moveToMatchingBrace = miqt_exec_callback_cQsciScintilla_moveToMatchingBrace
+  if not isNil(vtbl.paste):
+    vtbl[].vtbl.paste = miqt_exec_callback_cQsciScintilla_paste
+  if not isNil(vtbl.redo):
+    vtbl[].vtbl.redo = miqt_exec_callback_cQsciScintilla_redo
+  if not isNil(vtbl.removeSelectedText):
+    vtbl[].vtbl.removeSelectedText = miqt_exec_callback_cQsciScintilla_removeSelectedText
+  if not isNil(vtbl.replaceSelectedText):
+    vtbl[].vtbl.replaceSelectedText = miqt_exec_callback_cQsciScintilla_replaceSelectedText
+  if not isNil(vtbl.resetSelectionBackgroundColor):
+    vtbl[].vtbl.resetSelectionBackgroundColor = miqt_exec_callback_cQsciScintilla_resetSelectionBackgroundColor
+  if not isNil(vtbl.resetSelectionForegroundColor):
+    vtbl[].vtbl.resetSelectionForegroundColor = miqt_exec_callback_cQsciScintilla_resetSelectionForegroundColor
+  if not isNil(vtbl.selectAll):
+    vtbl[].vtbl.selectAll = miqt_exec_callback_cQsciScintilla_selectAll
+  if not isNil(vtbl.selectToMatchingBrace):
+    vtbl[].vtbl.selectToMatchingBrace = miqt_exec_callback_cQsciScintilla_selectToMatchingBrace
+  if not isNil(vtbl.setAutoCompletionCaseSensitivity):
+    vtbl[].vtbl.setAutoCompletionCaseSensitivity = miqt_exec_callback_cQsciScintilla_setAutoCompletionCaseSensitivity
+  if not isNil(vtbl.setAutoCompletionReplaceWord):
+    vtbl[].vtbl.setAutoCompletionReplaceWord = miqt_exec_callback_cQsciScintilla_setAutoCompletionReplaceWord
+  if not isNil(vtbl.setAutoCompletionShowSingle):
+    vtbl[].vtbl.setAutoCompletionShowSingle = miqt_exec_callback_cQsciScintilla_setAutoCompletionShowSingle
+  if not isNil(vtbl.setAutoCompletionSource):
+    vtbl[].vtbl.setAutoCompletionSource = miqt_exec_callback_cQsciScintilla_setAutoCompletionSource
+  if not isNil(vtbl.setAutoCompletionThreshold):
+    vtbl[].vtbl.setAutoCompletionThreshold = miqt_exec_callback_cQsciScintilla_setAutoCompletionThreshold
+  if not isNil(vtbl.setAutoCompletionUseSingle):
+    vtbl[].vtbl.setAutoCompletionUseSingle = miqt_exec_callback_cQsciScintilla_setAutoCompletionUseSingle
+  if not isNil(vtbl.setAutoIndent):
+    vtbl[].vtbl.setAutoIndent = miqt_exec_callback_cQsciScintilla_setAutoIndent
+  if not isNil(vtbl.setBraceMatching):
+    vtbl[].vtbl.setBraceMatching = miqt_exec_callback_cQsciScintilla_setBraceMatching
+  if not isNil(vtbl.setBackspaceUnindents):
+    vtbl[].vtbl.setBackspaceUnindents = miqt_exec_callback_cQsciScintilla_setBackspaceUnindents
+  if not isNil(vtbl.setCaretForegroundColor):
+    vtbl[].vtbl.setCaretForegroundColor = miqt_exec_callback_cQsciScintilla_setCaretForegroundColor
+  if not isNil(vtbl.setCaretLineBackgroundColor):
+    vtbl[].vtbl.setCaretLineBackgroundColor = miqt_exec_callback_cQsciScintilla_setCaretLineBackgroundColor
+  if not isNil(vtbl.setCaretLineFrameWidth):
+    vtbl[].vtbl.setCaretLineFrameWidth = miqt_exec_callback_cQsciScintilla_setCaretLineFrameWidth
+  if not isNil(vtbl.setCaretLineVisible):
+    vtbl[].vtbl.setCaretLineVisible = miqt_exec_callback_cQsciScintilla_setCaretLineVisible
+  if not isNil(vtbl.setCaretWidth):
+    vtbl[].vtbl.setCaretWidth = miqt_exec_callback_cQsciScintilla_setCaretWidth
+  if not isNil(vtbl.setColor):
+    vtbl[].vtbl.setColor = miqt_exec_callback_cQsciScintilla_setColor
+  if not isNil(vtbl.setCursorPosition):
+    vtbl[].vtbl.setCursorPosition = miqt_exec_callback_cQsciScintilla_setCursorPosition
+  if not isNil(vtbl.setEolMode):
+    vtbl[].vtbl.setEolMode = miqt_exec_callback_cQsciScintilla_setEolMode
+  if not isNil(vtbl.setEolVisibility):
+    vtbl[].vtbl.setEolVisibility = miqt_exec_callback_cQsciScintilla_setEolVisibility
+  if not isNil(vtbl.setFolding):
+    vtbl[].vtbl.setFolding = miqt_exec_callback_cQsciScintilla_setFolding
+  if not isNil(vtbl.setIndentation):
+    vtbl[].vtbl.setIndentation = miqt_exec_callback_cQsciScintilla_setIndentation
+  if not isNil(vtbl.setIndentationGuides):
+    vtbl[].vtbl.setIndentationGuides = miqt_exec_callback_cQsciScintilla_setIndentationGuides
+  if not isNil(vtbl.setIndentationGuidesBackgroundColor):
+    vtbl[].vtbl.setIndentationGuidesBackgroundColor = miqt_exec_callback_cQsciScintilla_setIndentationGuidesBackgroundColor
+  if not isNil(vtbl.setIndentationGuidesForegroundColor):
+    vtbl[].vtbl.setIndentationGuidesForegroundColor = miqt_exec_callback_cQsciScintilla_setIndentationGuidesForegroundColor
+  if not isNil(vtbl.setIndentationsUseTabs):
+    vtbl[].vtbl.setIndentationsUseTabs = miqt_exec_callback_cQsciScintilla_setIndentationsUseTabs
+  if not isNil(vtbl.setIndentationWidth):
+    vtbl[].vtbl.setIndentationWidth = miqt_exec_callback_cQsciScintilla_setIndentationWidth
+  if not isNil(vtbl.setLexer):
+    vtbl[].vtbl.setLexer = miqt_exec_callback_cQsciScintilla_setLexer
+  if not isNil(vtbl.setMarginsBackgroundColor):
+    vtbl[].vtbl.setMarginsBackgroundColor = miqt_exec_callback_cQsciScintilla_setMarginsBackgroundColor
+  if not isNil(vtbl.setMarginsFont):
+    vtbl[].vtbl.setMarginsFont = miqt_exec_callback_cQsciScintilla_setMarginsFont
+  if not isNil(vtbl.setMarginsForegroundColor):
+    vtbl[].vtbl.setMarginsForegroundColor = miqt_exec_callback_cQsciScintilla_setMarginsForegroundColor
+  if not isNil(vtbl.setMarginLineNumbers):
+    vtbl[].vtbl.setMarginLineNumbers = miqt_exec_callback_cQsciScintilla_setMarginLineNumbers
+  if not isNil(vtbl.setMarginMarkerMask):
+    vtbl[].vtbl.setMarginMarkerMask = miqt_exec_callback_cQsciScintilla_setMarginMarkerMask
+  if not isNil(vtbl.setMarginSensitivity):
+    vtbl[].vtbl.setMarginSensitivity = miqt_exec_callback_cQsciScintilla_setMarginSensitivity
+  if not isNil(vtbl.setMarginWidth):
+    vtbl[].vtbl.setMarginWidth = miqt_exec_callback_cQsciScintilla_setMarginWidth
+  if not isNil(vtbl.setMarginWidth):
+    vtbl[].vtbl.setMarginWidth = miqt_exec_callback_cQsciScintilla_setMarginWidth2
+  if not isNil(vtbl.setModified):
+    vtbl[].vtbl.setModified = miqt_exec_callback_cQsciScintilla_setModified
+  if not isNil(vtbl.setPaper):
+    vtbl[].vtbl.setPaper = miqt_exec_callback_cQsciScintilla_setPaper
+  if not isNil(vtbl.setReadOnly):
+    vtbl[].vtbl.setReadOnly = miqt_exec_callback_cQsciScintilla_setReadOnly
+  if not isNil(vtbl.setSelection):
+    vtbl[].vtbl.setSelection = miqt_exec_callback_cQsciScintilla_setSelection
+  if not isNil(vtbl.setSelectionBackgroundColor):
+    vtbl[].vtbl.setSelectionBackgroundColor = miqt_exec_callback_cQsciScintilla_setSelectionBackgroundColor
+  if not isNil(vtbl.setSelectionForegroundColor):
+    vtbl[].vtbl.setSelectionForegroundColor = miqt_exec_callback_cQsciScintilla_setSelectionForegroundColor
+  if not isNil(vtbl.setTabIndents):
+    vtbl[].vtbl.setTabIndents = miqt_exec_callback_cQsciScintilla_setTabIndents
+  if not isNil(vtbl.setTabWidth):
+    vtbl[].vtbl.setTabWidth = miqt_exec_callback_cQsciScintilla_setTabWidth
+  if not isNil(vtbl.setText):
+    vtbl[].vtbl.setText = miqt_exec_callback_cQsciScintilla_setText
+  if not isNil(vtbl.setUtf8):
+    vtbl[].vtbl.setUtf8 = miqt_exec_callback_cQsciScintilla_setUtf8
+  if not isNil(vtbl.setWhitespaceVisibility):
+    vtbl[].vtbl.setWhitespaceVisibility = miqt_exec_callback_cQsciScintilla_setWhitespaceVisibility
+  if not isNil(vtbl.setWrapMode):
+    vtbl[].vtbl.setWrapMode = miqt_exec_callback_cQsciScintilla_setWrapMode
+  if not isNil(vtbl.undo):
+    vtbl[].vtbl.undo = miqt_exec_callback_cQsciScintilla_undo
+  if not isNil(vtbl.unindent):
+    vtbl[].vtbl.unindent = miqt_exec_callback_cQsciScintilla_unindent
+  if not isNil(vtbl.zoomIn):
+    vtbl[].vtbl.zoomIn = miqt_exec_callback_cQsciScintilla_zoomIn
+  if not isNil(vtbl.zoomIn):
+    vtbl[].vtbl.zoomIn = miqt_exec_callback_cQsciScintilla_zoomIn2
+  if not isNil(vtbl.zoomOut):
+    vtbl[].vtbl.zoomOut = miqt_exec_callback_cQsciScintilla_zoomOut
+  if not isNil(vtbl.zoomOut):
+    vtbl[].vtbl.zoomOut = miqt_exec_callback_cQsciScintilla_zoomOut2
+  if not isNil(vtbl.zoomTo):
+    vtbl[].vtbl.zoomTo = miqt_exec_callback_cQsciScintilla_zoomTo
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQsciScintilla_event
+  if not isNil(vtbl.changeEvent):
+    vtbl[].vtbl.changeEvent = miqt_exec_callback_cQsciScintilla_changeEvent
+  if not isNil(vtbl.contextMenuEvent):
+    vtbl[].vtbl.contextMenuEvent = miqt_exec_callback_cQsciScintilla_contextMenuEvent
+  if not isNil(vtbl.wheelEvent):
+    vtbl[].vtbl.wheelEvent = miqt_exec_callback_cQsciScintilla_wheelEvent
+  if not isNil(vtbl.canInsertFromMimeData):
+    vtbl[].vtbl.canInsertFromMimeData = miqt_exec_callback_cQsciScintilla_canInsertFromMimeData
+  if not isNil(vtbl.fromMimeData):
+    vtbl[].vtbl.fromMimeData = miqt_exec_callback_cQsciScintilla_fromMimeData
+  if not isNil(vtbl.toMimeData):
+    vtbl[].vtbl.toMimeData = miqt_exec_callback_cQsciScintilla_toMimeData
+  if not isNil(vtbl.dragEnterEvent):
+    vtbl[].vtbl.dragEnterEvent = miqt_exec_callback_cQsciScintilla_dragEnterEvent
+  if not isNil(vtbl.dragLeaveEvent):
+    vtbl[].vtbl.dragLeaveEvent = miqt_exec_callback_cQsciScintilla_dragLeaveEvent
+  if not isNil(vtbl.dragMoveEvent):
+    vtbl[].vtbl.dragMoveEvent = miqt_exec_callback_cQsciScintilla_dragMoveEvent
+  if not isNil(vtbl.dropEvent):
+    vtbl[].vtbl.dropEvent = miqt_exec_callback_cQsciScintilla_dropEvent
+  if not isNil(vtbl.focusInEvent):
+    vtbl[].vtbl.focusInEvent = miqt_exec_callback_cQsciScintilla_focusInEvent
+  if not isNil(vtbl.focusOutEvent):
+    vtbl[].vtbl.focusOutEvent = miqt_exec_callback_cQsciScintilla_focusOutEvent
+  if not isNil(vtbl.focusNextPrevChild):
+    vtbl[].vtbl.focusNextPrevChild = miqt_exec_callback_cQsciScintilla_focusNextPrevChild
+  if not isNil(vtbl.keyPressEvent):
+    vtbl[].vtbl.keyPressEvent = miqt_exec_callback_cQsciScintilla_keyPressEvent
+  if not isNil(vtbl.inputMethodEvent):
+    vtbl[].vtbl.inputMethodEvent = miqt_exec_callback_cQsciScintilla_inputMethodEvent
+  if not isNil(vtbl.inputMethodQuery):
+    vtbl[].vtbl.inputMethodQuery = miqt_exec_callback_cQsciScintilla_inputMethodQuery
+  if not isNil(vtbl.mouseDoubleClickEvent):
+    vtbl[].vtbl.mouseDoubleClickEvent = miqt_exec_callback_cQsciScintilla_mouseDoubleClickEvent
+  if not isNil(vtbl.mouseMoveEvent):
+    vtbl[].vtbl.mouseMoveEvent = miqt_exec_callback_cQsciScintilla_mouseMoveEvent
+  if not isNil(vtbl.mousePressEvent):
+    vtbl[].vtbl.mousePressEvent = miqt_exec_callback_cQsciScintilla_mousePressEvent
+  if not isNil(vtbl.mouseReleaseEvent):
+    vtbl[].vtbl.mouseReleaseEvent = miqt_exec_callback_cQsciScintilla_mouseReleaseEvent
+  if not isNil(vtbl.paintEvent):
+    vtbl[].vtbl.paintEvent = miqt_exec_callback_cQsciScintilla_paintEvent
+  if not isNil(vtbl.resizeEvent):
+    vtbl[].vtbl.resizeEvent = miqt_exec_callback_cQsciScintilla_resizeEvent
+  if not isNil(vtbl.scrollContentsBy):
+    vtbl[].vtbl.scrollContentsBy = miqt_exec_callback_cQsciScintilla_scrollContentsBy
+  if not isNil(vtbl.minimumSizeHint):
+    vtbl[].vtbl.minimumSizeHint = miqt_exec_callback_cQsciScintilla_minimumSizeHint
+  if not isNil(vtbl.sizeHint):
+    vtbl[].vtbl.sizeHint = miqt_exec_callback_cQsciScintilla_sizeHint
+  if not isNil(vtbl.setupViewport):
+    vtbl[].vtbl.setupViewport = miqt_exec_callback_cQsciScintilla_setupViewport
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQsciScintilla_eventFilter
+  if not isNil(vtbl.viewportEvent):
+    vtbl[].vtbl.viewportEvent = miqt_exec_callback_cQsciScintilla_viewportEvent
+  if not isNil(vtbl.viewportSizeHint):
+    vtbl[].vtbl.viewportSizeHint = miqt_exec_callback_cQsciScintilla_viewportSizeHint
+  if not isNil(vtbl.devType):
+    vtbl[].vtbl.devType = miqt_exec_callback_cQsciScintilla_devType
+  if not isNil(vtbl.setVisible):
+    vtbl[].vtbl.setVisible = miqt_exec_callback_cQsciScintilla_setVisible
+  if not isNil(vtbl.heightForWidth):
+    vtbl[].vtbl.heightForWidth = miqt_exec_callback_cQsciScintilla_heightForWidth
+  if not isNil(vtbl.hasHeightForWidth):
+    vtbl[].vtbl.hasHeightForWidth = miqt_exec_callback_cQsciScintilla_hasHeightForWidth
+  if not isNil(vtbl.paintEngine):
+    vtbl[].vtbl.paintEngine = miqt_exec_callback_cQsciScintilla_paintEngine
+  if not isNil(vtbl.keyReleaseEvent):
+    vtbl[].vtbl.keyReleaseEvent = miqt_exec_callback_cQsciScintilla_keyReleaseEvent
+  if not isNil(vtbl.enterEvent):
+    vtbl[].vtbl.enterEvent = miqt_exec_callback_cQsciScintilla_enterEvent
+  if not isNil(vtbl.leaveEvent):
+    vtbl[].vtbl.leaveEvent = miqt_exec_callback_cQsciScintilla_leaveEvent
+  if not isNil(vtbl.moveEvent):
+    vtbl[].vtbl.moveEvent = miqt_exec_callback_cQsciScintilla_moveEvent
+  if not isNil(vtbl.closeEvent):
+    vtbl[].vtbl.closeEvent = miqt_exec_callback_cQsciScintilla_closeEvent
+  if not isNil(vtbl.tabletEvent):
+    vtbl[].vtbl.tabletEvent = miqt_exec_callback_cQsciScintilla_tabletEvent
+  if not isNil(vtbl.actionEvent):
+    vtbl[].vtbl.actionEvent = miqt_exec_callback_cQsciScintilla_actionEvent
+  if not isNil(vtbl.showEvent):
+    vtbl[].vtbl.showEvent = miqt_exec_callback_cQsciScintilla_showEvent
+  if not isNil(vtbl.hideEvent):
+    vtbl[].vtbl.hideEvent = miqt_exec_callback_cQsciScintilla_hideEvent
+  if not isNil(vtbl.nativeEvent):
+    vtbl[].vtbl.nativeEvent = miqt_exec_callback_cQsciScintilla_nativeEvent
+  if not isNil(vtbl.metric):
+    vtbl[].vtbl.metric = miqt_exec_callback_cQsciScintilla_metric
+  if not isNil(vtbl.initPainter):
+    vtbl[].vtbl.initPainter = miqt_exec_callback_cQsciScintilla_initPainter
+  if not isNil(vtbl.redirected):
+    vtbl[].vtbl.redirected = miqt_exec_callback_cQsciScintilla_redirected
+  if not isNil(vtbl.sharedPainter):
+    vtbl[].vtbl.sharedPainter = miqt_exec_callback_cQsciScintilla_sharedPainter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQsciScintilla_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQsciScintilla_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQsciScintilla_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQsciScintilla_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQsciScintilla_disconnectNotify
+  gen_qsciscintilla_types.QsciScintilla(h: fcQsciScintilla_new2(addr(vtbl[]), ))
 
-type QsciScintillaconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciScintillaconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_connectNotify(self: ptr cQsciScintilla, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_connectNotify ".} =
-  var nimfunc = cast[ptr QsciScintillaconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc QsciScintilladisconnectNotify*(self: gen_qsciscintilla_types.QsciScintilla, signal: gen_qmetaobject.QMetaMethod): void =
-  fQsciScintilla_virtualbase_disconnectNotify(self.h, signal.h)
-
-type QsciScintilladisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintilladisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QsciScintilladisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQsciScintilla_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QsciScintilla_disconnectNotify(self: ptr cQsciScintilla, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciScintilla_disconnectNotify ".} =
-  var nimfunc = cast[ptr QsciScintilladisconnectNotifyProc](cast[pointer](slot))
-  let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
-
-
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qsciscintilla_types.QsciScintilla): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQsciScintilla_staticMetaObject())
+proc staticMetaObject*(_: type gen_qsciscintilla_types.QsciScintilla): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQsciScintilla_staticMetaObject())
 proc delete*(self: gen_qsciscintilla_types.QsciScintilla) =
   fcQsciScintilla_delete(self.h)

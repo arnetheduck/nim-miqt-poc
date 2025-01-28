@@ -6,4 +6,3 @@ type QTextDecoder* {.inheritable, pure.} = object
   h*: pointer
 type QTextCodecConverterState* {.inheritable, pure.} = object
   h*: pointer
-

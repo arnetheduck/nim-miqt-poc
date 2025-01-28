@@ -47,16 +47,15 @@ template AutoFocusInProgress*(_: type QCameraFeedbackControlEventTypeEnum): unty
 template AutoFocusLocked*(_: type QCameraFeedbackControlEventTypeEnum): untyped = 10
 template AutoFocusFailed*(_: type QCameraFeedbackControlEventTypeEnum): untyped = 11
 
-
 import gen_qcamerafeedbackcontrol_types
 export gen_qcamerafeedbackcontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQCameraFeedbackControl*{.exportc: "QCameraFeedbackControl", incompleteStruct.} = object
 
@@ -77,11 +76,8 @@ proc fcQCameraFeedbackControl_trUtf83(s: cstring, c: cstring, n: cint): struct_m
 proc fcQCameraFeedbackControl_staticMetaObject(): pointer {.importc: "QCameraFeedbackControl_staticMetaObject".}
 proc fcQCameraFeedbackControl_delete(self: pointer) {.importc: "QCameraFeedbackControl_delete".}
 
-
-func init*(T: type gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl, h: ptr cQCameraFeedbackControl): gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl =
-  T(h: h)
-proc metaObject*(self: gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl, ): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraFeedbackControl_metaObject(self.h))
+proc metaObject*(self: gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraFeedbackControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl, param1: cstring): pointer =
   fcQCameraFeedbackControl_metacast(self.h, param1)
@@ -140,7 +136,7 @@ proc trUtf8*(_: type gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl, s:
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraFeedbackControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraFeedbackControl_staticMetaObject())
 proc delete*(self: gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl) =
   fcQCameraFeedbackControl_delete(self.h)

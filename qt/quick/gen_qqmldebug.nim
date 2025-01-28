@@ -38,20 +38,17 @@ type QQmlDebuggingEnablerStartModeEnum* = distinct cint
 template DoNotWaitForClient*(_: type QQmlDebuggingEnablerStartModeEnum): untyped = 0
 template WaitForClient*(_: type QQmlDebuggingEnablerStartModeEnum): untyped = 1
 
-
 import gen_qqmldebug_types
 export gen_qqmldebug_types
 
 import
-  gen_qvariant,
+  gen_qvariant_types,
   std/tables
 export
-  gen_qvariant
+  gen_qvariant_types
 
 type cQQmlDebuggingEnabler*{.exportc: "QQmlDebuggingEnabler", incompleteStruct.} = object
 
-proc fcQQmlDebuggingEnabler_new(): ptr cQQmlDebuggingEnabler {.importc: "QQmlDebuggingEnabler_new".}
-proc fcQQmlDebuggingEnabler_new2(printWarning: bool): ptr cQQmlDebuggingEnabler {.importc: "QQmlDebuggingEnabler_new2".}
 proc fcQQmlDebuggingEnabler_debuggerServices(): struct_miqt_array {.importc: "QQmlDebuggingEnabler_debuggerServices".}
 proc fcQQmlDebuggingEnabler_inspectorServices(): struct_miqt_array {.importc: "QQmlDebuggingEnabler_inspectorServices".}
 proc fcQQmlDebuggingEnabler_profilerServices(): struct_miqt_array {.importc: "QQmlDebuggingEnabler_profilerServices".}
@@ -64,16 +61,9 @@ proc fcQQmlDebuggingEnabler_startTcpDebugServer2(port: cint, mode: cint): bool {
 proc fcQQmlDebuggingEnabler_startTcpDebugServer3(port: cint, mode: cint, hostName: struct_miqt_string): bool {.importc: "QQmlDebuggingEnabler_startTcpDebugServer3".}
 proc fcQQmlDebuggingEnabler_connectToLocalDebugger2(socketFileName: struct_miqt_string, mode: cint): bool {.importc: "QQmlDebuggingEnabler_connectToLocalDebugger2".}
 proc fcQQmlDebuggingEnabler_startDebugConnector2(pluginName: struct_miqt_string, configuration: struct_miqt_map): bool {.importc: "QQmlDebuggingEnabler_startDebugConnector2".}
+proc fcQQmlDebuggingEnabler_new(): ptr cQQmlDebuggingEnabler {.importc: "QQmlDebuggingEnabler_new".}
+proc fcQQmlDebuggingEnabler_new2(printWarning: bool): ptr cQQmlDebuggingEnabler {.importc: "QQmlDebuggingEnabler_new2".}
 proc fcQQmlDebuggingEnabler_delete(self: pointer) {.importc: "QQmlDebuggingEnabler_delete".}
-
-
-func init*(T: type gen_qqmldebug_types.QQmlDebuggingEnabler, h: ptr cQQmlDebuggingEnabler): gen_qqmldebug_types.QQmlDebuggingEnabler =
-  T(h: h)
-proc create*(T: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): gen_qqmldebug_types.QQmlDebuggingEnabler =
-  gen_qqmldebug_types.QQmlDebuggingEnabler.init(fcQQmlDebuggingEnabler_new())
-
-proc create*(T: type gen_qqmldebug_types.QQmlDebuggingEnabler, printWarning: bool): gen_qqmldebug_types.QQmlDebuggingEnabler =
-  gen_qqmldebug_types.QQmlDebuggingEnabler.init(fcQQmlDebuggingEnabler_new2(printWarning))
 
 proc debuggerServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): seq[string] =
   var v_ma = fcQQmlDebuggingEnabler_debuggerServices()
@@ -144,7 +134,7 @@ proc startTcpDebugServer*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, port
 proc connectToLocalDebugger*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, socketFileName: string, mode: cint): bool =
   fcQQmlDebuggingEnabler_connectToLocalDebugger2(struct_miqt_string(data: socketFileName, len: csize_t(len(socketFileName))), cint(mode))
 
-proc startDebugConnector*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, pluginName: string, configuration: Table[string,gen_qvariant.QVariant]): bool =
+proc startDebugConnector*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, pluginName: string, configuration: Table[string,gen_qvariant_types.QVariant]): bool =
   var configuration_Keys_CArray = newSeq[struct_miqt_string](len(configuration))
   var configuration_Values_CArray = newSeq[pointer](len(configuration))
   var configuration_ctr = 0
@@ -154,6 +144,13 @@ proc startDebugConnector*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, plug
     configuration_ctr += 1
 
   fcQQmlDebuggingEnabler_startDebugConnector2(struct_miqt_string(data: pluginName, len: csize_t(len(pluginName))), struct_miqt_map(len: csize_t(len(configuration)),keys: if len(configuration) == 0: nil else: addr(configuration_Keys_CArray[0]), values: if len(configuration) == 0: nil else: addr(configuration_Values_CArray[0]),))
+
+proc create*(T: type gen_qqmldebug_types.QQmlDebuggingEnabler): gen_qqmldebug_types.QQmlDebuggingEnabler =
+  gen_qqmldebug_types.QQmlDebuggingEnabler(h: fcQQmlDebuggingEnabler_new())
+
+proc create*(T: type gen_qqmldebug_types.QQmlDebuggingEnabler,
+    printWarning: bool): gen_qqmldebug_types.QQmlDebuggingEnabler =
+  gen_qqmldebug_types.QQmlDebuggingEnabler(h: fcQQmlDebuggingEnabler_new2(printWarning))
 
 proc delete*(self: gen_qqmldebug_types.QQmlDebuggingEnabler) =
   fcQQmlDebuggingEnabler_delete(self.h)
