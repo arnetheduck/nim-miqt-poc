@@ -977,6 +977,7 @@ extern "C" {
 				}
 				callback += ");\n"
 				ret.WriteString(callback)
+				ret.WriteString("void " + cabiCallbackName(c, m) + "_release(intptr_t);\n")
 			}
 		}
 	}
@@ -1284,18 +1285,27 @@ extern "C" {
 				var signalCode string
 
 				for i, p := range m.Parameters {
-					signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", p.RenderTypeCabi(), i+1), p, p.cParameterName())
+					signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t\t%s sigval%d = ", p.RenderTypeCabi(), i+1), p, p.cParameterName())
 					paramArgs = append(paramArgs, fmt.Sprintf("sigval%d", i+1))
 					paramArgDefs = append(paramArgDefs, p.RenderTypeCabi()+" "+p.cParameterName())
 				}
 
-				signalCode += "\t\t" + cabiCallbackName(c, m) + "(" + strings.Join(paramArgs, `, `) + ");\n"
+				signalCode += "\t\t\t" + cabiCallbackName(c, m) + "(" + strings.Join(paramArgs, `, `) + ");\n"
 
 				ret.WriteString(
-					`void ` + cabiConnectName(c, m) + `(` + methodPrefixName + `* self, intptr_t slot) {` + "\n" +
-						"\t" + cppClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m, "") + `) {` + "\n" +
-						signalCode +
-						"\t});\n" +
+					`void ` + cabiConnectName(c, m) + `(` + methodPrefixName + `* self, intptr_t slot) {` + `
+	struct caller {
+		intptr_t slot;
+		void operator()(` + emitParametersCpp(m, "") + `) {
+` + signalCode + `		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { ` + cabiCallbackName(c, m) + `_release(slot); }
+	};
+` +
+						"\t" + cppClassName + `::connect(self, ` + exactSignal + ", self, caller{slot});\n" +
 						"}\n" +
 						"\n",
 				)
