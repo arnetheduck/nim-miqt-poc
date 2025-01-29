@@ -67,14 +67,23 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QPlainTextEdit_textChanged(intptr_t);
+void miqt_exec_callback_QPlainTextEdit_textChanged_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_undoAvailable(intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_undoAvailable_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_redoAvailable(intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_redoAvailable_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_copyAvailable(intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_copyAvailable_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_selectionChanged(intptr_t);
+void miqt_exec_callback_QPlainTextEdit_selectionChanged_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_cursorPositionChanged(intptr_t);
+void miqt_exec_callback_QPlainTextEdit_cursorPositionChanged_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_updateRequest(intptr_t, QRect*, int);
+void miqt_exec_callback_QPlainTextEdit_updateRequest_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_blockCountChanged(intptr_t, int);
+void miqt_exec_callback_QPlainTextEdit_blockCountChanged_release(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_modificationChanged(intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_modificationChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1684,9 +1693,18 @@ void QPlainTextEdit_textChanged(QPlainTextEdit* self) {
 }
 
 void QPlainTextEdit_connect_textChanged(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)()>(&QPlainTextEdit::textChanged), self, [=]() {
-		miqt_exec_callback_QPlainTextEdit_textChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QPlainTextEdit_textChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_textChanged_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)()>(&QPlainTextEdit::textChanged), self, caller{slot});
 }
 
 void QPlainTextEdit_undoAvailable(QPlainTextEdit* self, bool b) {
@@ -1694,10 +1712,19 @@ void QPlainTextEdit_undoAvailable(QPlainTextEdit* self, bool b) {
 }
 
 void QPlainTextEdit_connect_undoAvailable(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::undoAvailable), self, [=](bool b) {
-		bool sigval1 = b;
-		miqt_exec_callback_QPlainTextEdit_undoAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool b) {
+			bool sigval1 = b;
+			miqt_exec_callback_QPlainTextEdit_undoAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_undoAvailable_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::undoAvailable), self, caller{slot});
 }
 
 void QPlainTextEdit_redoAvailable(QPlainTextEdit* self, bool b) {
@@ -1705,10 +1732,19 @@ void QPlainTextEdit_redoAvailable(QPlainTextEdit* self, bool b) {
 }
 
 void QPlainTextEdit_connect_redoAvailable(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::redoAvailable), self, [=](bool b) {
-		bool sigval1 = b;
-		miqt_exec_callback_QPlainTextEdit_redoAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool b) {
+			bool sigval1 = b;
+			miqt_exec_callback_QPlainTextEdit_redoAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_redoAvailable_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::redoAvailable), self, caller{slot});
 }
 
 void QPlainTextEdit_copyAvailable(QPlainTextEdit* self, bool b) {
@@ -1716,10 +1752,19 @@ void QPlainTextEdit_copyAvailable(QPlainTextEdit* self, bool b) {
 }
 
 void QPlainTextEdit_connect_copyAvailable(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::copyAvailable), self, [=](bool b) {
-		bool sigval1 = b;
-		miqt_exec_callback_QPlainTextEdit_copyAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool b) {
+			bool sigval1 = b;
+			miqt_exec_callback_QPlainTextEdit_copyAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_copyAvailable_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::copyAvailable), self, caller{slot});
 }
 
 void QPlainTextEdit_selectionChanged(QPlainTextEdit* self) {
@@ -1727,9 +1772,18 @@ void QPlainTextEdit_selectionChanged(QPlainTextEdit* self) {
 }
 
 void QPlainTextEdit_connect_selectionChanged(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)()>(&QPlainTextEdit::selectionChanged), self, [=]() {
-		miqt_exec_callback_QPlainTextEdit_selectionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QPlainTextEdit_selectionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_selectionChanged_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)()>(&QPlainTextEdit::selectionChanged), self, caller{slot});
 }
 
 void QPlainTextEdit_cursorPositionChanged(QPlainTextEdit* self) {
@@ -1737,9 +1791,18 @@ void QPlainTextEdit_cursorPositionChanged(QPlainTextEdit* self) {
 }
 
 void QPlainTextEdit_connect_cursorPositionChanged(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)()>(&QPlainTextEdit::cursorPositionChanged), self, [=]() {
-		miqt_exec_callback_QPlainTextEdit_cursorPositionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QPlainTextEdit_cursorPositionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_cursorPositionChanged_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)()>(&QPlainTextEdit::cursorPositionChanged), self, caller{slot});
 }
 
 void QPlainTextEdit_updateRequest(QPlainTextEdit* self, QRect* rect, int dy) {
@@ -1747,13 +1810,22 @@ void QPlainTextEdit_updateRequest(QPlainTextEdit* self, QRect* rect, int dy) {
 }
 
 void QPlainTextEdit_connect_updateRequest(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(const QRect&, int)>(&QPlainTextEdit::updateRequest), self, [=](const QRect& rect, int dy) {
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
-		int sigval2 = dy;
-		miqt_exec_callback_QPlainTextEdit_updateRequest(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QRect& rect, int dy) {
+			const QRect& rect_ret = rect;
+			// Cast returned reference into pointer
+			QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+			int sigval2 = dy;
+			miqt_exec_callback_QPlainTextEdit_updateRequest(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_updateRequest_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(const QRect&, int)>(&QPlainTextEdit::updateRequest), self, caller{slot});
 }
 
 void QPlainTextEdit_blockCountChanged(QPlainTextEdit* self, int newBlockCount) {
@@ -1761,10 +1833,19 @@ void QPlainTextEdit_blockCountChanged(QPlainTextEdit* self, int newBlockCount) {
 }
 
 void QPlainTextEdit_connect_blockCountChanged(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(int)>(&QPlainTextEdit::blockCountChanged), self, [=](int newBlockCount) {
-		int sigval1 = newBlockCount;
-		miqt_exec_callback_QPlainTextEdit_blockCountChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int newBlockCount) {
+			int sigval1 = newBlockCount;
+			miqt_exec_callback_QPlainTextEdit_blockCountChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_blockCountChanged_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(int)>(&QPlainTextEdit::blockCountChanged), self, caller{slot});
 }
 
 void QPlainTextEdit_modificationChanged(QPlainTextEdit* self, bool param1) {
@@ -1772,10 +1853,19 @@ void QPlainTextEdit_modificationChanged(QPlainTextEdit* self, bool param1) {
 }
 
 void QPlainTextEdit_connect_modificationChanged(QPlainTextEdit* self, intptr_t slot) {
-	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::modificationChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QPlainTextEdit_modificationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QPlainTextEdit_modificationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPlainTextEdit_modificationChanged_release(slot); }
+	};
+	MiqtVirtualQPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(bool)>(&QPlainTextEdit::modificationChanged), self, caller{slot});
 }
 
 struct miqt_string QPlainTextEdit_tr2(const char* s, const char* c) {

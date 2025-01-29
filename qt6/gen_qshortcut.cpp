@@ -18,7 +18,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QShortcut_activated(intptr_t);
+void miqt_exec_callback_QShortcut_activated_release(intptr_t);
 void miqt_exec_callback_QShortcut_activatedAmbiguously(intptr_t);
+void miqt_exec_callback_QShortcut_activatedAmbiguously_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -396,9 +398,18 @@ void QShortcut_activated(QShortcut* self) {
 }
 
 void QShortcut_connect_activated(QShortcut* self, intptr_t slot) {
-	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, [=]() {
-		miqt_exec_callback_QShortcut_activated(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QShortcut_activated(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QShortcut_activated_release(slot); }
+	};
+	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, caller{slot});
 }
 
 void QShortcut_activatedAmbiguously(QShortcut* self) {
@@ -406,9 +417,18 @@ void QShortcut_activatedAmbiguously(QShortcut* self) {
 }
 
 void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot) {
-	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, [=]() {
-		miqt_exec_callback_QShortcut_activatedAmbiguously(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QShortcut_activatedAmbiguously(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QShortcut_activatedAmbiguously_release(slot); }
+	};
+	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, caller{slot});
 }
 
 struct miqt_string QShortcut_tr2(const char* s, const char* c) {

@@ -14,12 +14,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCameraExposure_flashReady(intptr_t, bool);
+void miqt_exec_callback_QCameraExposure_flashReady_release(intptr_t);
 void miqt_exec_callback_QCameraExposure_apertureChanged(intptr_t, double);
+void miqt_exec_callback_QCameraExposure_apertureChanged_release(intptr_t);
 void miqt_exec_callback_QCameraExposure_apertureRangeChanged(intptr_t);
+void miqt_exec_callback_QCameraExposure_apertureRangeChanged_release(intptr_t);
 void miqt_exec_callback_QCameraExposure_shutterSpeedChanged(intptr_t, double);
+void miqt_exec_callback_QCameraExposure_shutterSpeedChanged_release(intptr_t);
 void miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged(intptr_t);
+void miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged_release(intptr_t);
 void miqt_exec_callback_QCameraExposure_isoSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QCameraExposure_isoSensitivityChanged_release(intptr_t);
 void miqt_exec_callback_QCameraExposure_exposureCompensationChanged(intptr_t, double);
+void miqt_exec_callback_QCameraExposure_exposureCompensationChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -222,10 +229,19 @@ void QCameraExposure_flashReady(QCameraExposure* self, bool param1) {
 }
 
 void QCameraExposure_connect_flashReady(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(bool)>(&QCameraExposure::flashReady), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QCameraExposure_flashReady(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QCameraExposure_flashReady(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraExposure_flashReady_release(slot); }
+	};
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(bool)>(&QCameraExposure::flashReady), self, caller{slot});
 }
 
 void QCameraExposure_apertureChanged(QCameraExposure* self, double param1) {
@@ -233,11 +249,20 @@ void QCameraExposure_apertureChanged(QCameraExposure* self, double param1) {
 }
 
 void QCameraExposure_connect_apertureChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::apertureChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraExposure_apertureChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal param1) {
+			qreal param1_ret = param1;
+			double sigval1 = static_cast<double>(param1_ret);
+			miqt_exec_callback_QCameraExposure_apertureChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraExposure_apertureChanged_release(slot); }
+	};
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::apertureChanged), self, caller{slot});
 }
 
 void QCameraExposure_apertureRangeChanged(QCameraExposure* self) {
@@ -245,9 +270,18 @@ void QCameraExposure_apertureRangeChanged(QCameraExposure* self) {
 }
 
 void QCameraExposure_connect_apertureRangeChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)()>(&QCameraExposure::apertureRangeChanged), self, [=]() {
-		miqt_exec_callback_QCameraExposure_apertureRangeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCameraExposure_apertureRangeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraExposure_apertureRangeChanged_release(slot); }
+	};
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)()>(&QCameraExposure::apertureRangeChanged), self, caller{slot});
 }
 
 void QCameraExposure_shutterSpeedChanged(QCameraExposure* self, double speed) {
@@ -255,11 +289,20 @@ void QCameraExposure_shutterSpeedChanged(QCameraExposure* self, double speed) {
 }
 
 void QCameraExposure_connect_shutterSpeedChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::shutterSpeedChanged), self, [=](qreal speed) {
-		qreal speed_ret = speed;
-		double sigval1 = static_cast<double>(speed_ret);
-		miqt_exec_callback_QCameraExposure_shutterSpeedChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal speed) {
+			qreal speed_ret = speed;
+			double sigval1 = static_cast<double>(speed_ret);
+			miqt_exec_callback_QCameraExposure_shutterSpeedChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraExposure_shutterSpeedChanged_release(slot); }
+	};
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::shutterSpeedChanged), self, caller{slot});
 }
 
 void QCameraExposure_shutterSpeedRangeChanged(QCameraExposure* self) {
@@ -267,9 +310,18 @@ void QCameraExposure_shutterSpeedRangeChanged(QCameraExposure* self) {
 }
 
 void QCameraExposure_connect_shutterSpeedRangeChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)()>(&QCameraExposure::shutterSpeedRangeChanged), self, [=]() {
-		miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged_release(slot); }
+	};
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)()>(&QCameraExposure::shutterSpeedRangeChanged), self, caller{slot});
 }
 
 void QCameraExposure_isoSensitivityChanged(QCameraExposure* self, int param1) {
@@ -277,10 +329,19 @@ void QCameraExposure_isoSensitivityChanged(QCameraExposure* self, int param1) {
 }
 
 void QCameraExposure_connect_isoSensitivityChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(int)>(&QCameraExposure::isoSensitivityChanged), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QCameraExposure_isoSensitivityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QCameraExposure_isoSensitivityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraExposure_isoSensitivityChanged_release(slot); }
+	};
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(int)>(&QCameraExposure::isoSensitivityChanged), self, caller{slot});
 }
 
 void QCameraExposure_exposureCompensationChanged(QCameraExposure* self, double param1) {
@@ -288,11 +349,20 @@ void QCameraExposure_exposureCompensationChanged(QCameraExposure* self, double p
 }
 
 void QCameraExposure_connect_exposureCompensationChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::exposureCompensationChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraExposure_exposureCompensationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal param1) {
+			qreal param1_ret = param1;
+			double sigval1 = static_cast<double>(param1_ret);
+			miqt_exec_callback_QCameraExposure_exposureCompensationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraExposure_exposureCompensationChanged_release(slot); }
+	};
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::exposureCompensationChanged), self, caller{slot});
 }
 
 struct miqt_string QCameraExposure_tr2(const char* s, const char* c) {

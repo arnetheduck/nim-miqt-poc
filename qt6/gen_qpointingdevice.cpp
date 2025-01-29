@@ -20,6 +20,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QPointingDevice_grabChanged(intptr_t, QObject*, int, QPointerEvent*, QEventPoint*);
+void miqt_exec_callback_QPointingDevice_grabChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -372,16 +373,25 @@ void QPointingDevice_grabChanged(const QPointingDevice* self, QObject* grabber, 
 }
 
 void QPointingDevice_connect_grabChanged(QPointingDevice* self, intptr_t slot) {
-	MiqtVirtualQPointingDevice::connect(self, static_cast<void (QPointingDevice::*)(QObject*, QPointingDevice::GrabTransition, const QPointerEvent*, const QEventPoint&) const>(&QPointingDevice::grabChanged), self, [=](QObject* grabber, QPointingDevice::GrabTransition transition, const QPointerEvent* event, const QEventPoint& point) {
-		QObject* sigval1 = grabber;
-		QPointingDevice::GrabTransition transition_ret = transition;
-		int sigval2 = static_cast<int>(transition_ret);
-		QPointerEvent* sigval3 = (QPointerEvent*) event;
-		const QEventPoint& point_ret = point;
-		// Cast returned reference into pointer
-		QEventPoint* sigval4 = const_cast<QEventPoint*>(&point_ret);
-		miqt_exec_callback_QPointingDevice_grabChanged(slot, sigval1, sigval2, sigval3, sigval4);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QObject* grabber, QPointingDevice::GrabTransition transition, const QPointerEvent* event, const QEventPoint& point) {
+			QObject* sigval1 = grabber;
+			QPointingDevice::GrabTransition transition_ret = transition;
+			int sigval2 = static_cast<int>(transition_ret);
+			QPointerEvent* sigval3 = (QPointerEvent*) event;
+			const QEventPoint& point_ret = point;
+			// Cast returned reference into pointer
+			QEventPoint* sigval4 = const_cast<QEventPoint*>(&point_ret);
+			miqt_exec_callback_QPointingDevice_grabChanged(slot, sigval1, sigval2, sigval3, sigval4);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPointingDevice_grabChanged_release(slot); }
+	};
+	MiqtVirtualQPointingDevice::connect(self, static_cast<void (QPointingDevice::*)(QObject*, QPointingDevice::GrabTransition, const QPointerEvent*, const QEventPoint&) const>(&QPointingDevice::grabChanged), self, caller{slot});
 }
 
 struct miqt_string QPointingDevice_tr2(const char* s, const char* c) {

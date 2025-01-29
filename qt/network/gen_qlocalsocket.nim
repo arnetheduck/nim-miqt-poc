@@ -291,6 +291,10 @@ proc miqt_exec_callback_cQLocalSocket_connected(slot: int) {.exportc: "miqt_exec
   let nimfunc = cast[ptr QLocalSocketconnectedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQLocalSocket_connected_release(slot: int) {.exportc: "miqt_exec_callback_QLocalSocket_connected_release".} =
+  let nimfunc = cast[ref QLocalSocketconnectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onconnected*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketconnectedSlot) =
   var tmp = new QLocalSocketconnectedSlot
   tmp[] = slot
@@ -304,6 +308,10 @@ type QLocalSocketdisconnectedSlot* = proc()
 proc miqt_exec_callback_cQLocalSocket_disconnected(slot: int) {.exportc: "miqt_exec_callback_QLocalSocket_disconnected".} =
   let nimfunc = cast[ptr QLocalSocketdisconnectedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQLocalSocket_disconnected_release(slot: int) {.exportc: "miqt_exec_callback_QLocalSocket_disconnected_release".} =
+  let nimfunc = cast[ref QLocalSocketdisconnectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondisconnected*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketdisconnectedSlot) =
   var tmp = new QLocalSocketdisconnectedSlot
@@ -321,6 +329,10 @@ proc miqt_exec_callback_cQLocalSocket_errorWithSocketError(slot: int, socketErro
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQLocalSocket_errorWithSocketError_release(slot: int) {.exportc: "miqt_exec_callback_QLocalSocket_errorWithSocketError_release".} =
+  let nimfunc = cast[ref QLocalSocketerrorWithSocketErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerror*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketerrorWithSocketErrorSlot) =
   var tmp = new QLocalSocketerrorWithSocketErrorSlot
   tmp[] = slot
@@ -337,6 +349,10 @@ proc miqt_exec_callback_cQLocalSocket_errorOccurred(slot: int, socketError: cint
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQLocalSocket_errorOccurred_release(slot: int) {.exportc: "miqt_exec_callback_QLocalSocket_errorOccurred_release".} =
+  let nimfunc = cast[ref QLocalSocketerrorOccurredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerrorOccurred*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketerrorOccurredSlot) =
   var tmp = new QLocalSocketerrorOccurredSlot
   tmp[] = slot
@@ -352,6 +368,10 @@ proc miqt_exec_callback_cQLocalSocket_stateChanged(slot: int, socketState: cint)
   let slotval1 = cint(socketState)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQLocalSocket_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QLocalSocket_stateChanged_release".} =
+  let nimfunc = cast[ref QLocalSocketstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstateChanged*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketstateChangedSlot) =
   var tmp = new QLocalSocketstateChangedSlot

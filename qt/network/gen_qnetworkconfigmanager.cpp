@@ -18,10 +18,15 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QNetworkConfigurationManager_configurationAdded(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_configurationAdded_release(intptr_t);
 void miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved_release(intptr_t);
 void miqt_exec_callback_QNetworkConfigurationManager_configurationChanged(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_configurationChanged_release(intptr_t);
 void miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged(intptr_t, bool);
+void miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged_release(intptr_t);
 void miqt_exec_callback_QNetworkConfigurationManager_updateCompleted(intptr_t);
+void miqt_exec_callback_QNetworkConfigurationManager_updateCompleted_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -330,12 +335,21 @@ void QNetworkConfigurationManager_configurationAdded(QNetworkConfigurationManage
 }
 
 void QNetworkConfigurationManager_connect_configurationAdded(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationAdded), self, [=](const QNetworkConfiguration& config) {
-		const QNetworkConfiguration& config_ret = config;
-		// Cast returned reference into pointer
-		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
-		miqt_exec_callback_QNetworkConfigurationManager_configurationAdded(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QNetworkConfiguration& config) {
+			const QNetworkConfiguration& config_ret = config;
+			// Cast returned reference into pointer
+			QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
+			miqt_exec_callback_QNetworkConfigurationManager_configurationAdded(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkConfigurationManager_configurationAdded_release(slot); }
+	};
+	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationAdded), self, caller{slot});
 }
 
 void QNetworkConfigurationManager_configurationRemoved(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
@@ -343,12 +357,21 @@ void QNetworkConfigurationManager_configurationRemoved(QNetworkConfigurationMana
 }
 
 void QNetworkConfigurationManager_connect_configurationRemoved(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationRemoved), self, [=](const QNetworkConfiguration& config) {
-		const QNetworkConfiguration& config_ret = config;
-		// Cast returned reference into pointer
-		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
-		miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QNetworkConfiguration& config) {
+			const QNetworkConfiguration& config_ret = config;
+			// Cast returned reference into pointer
+			QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
+			miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved_release(slot); }
+	};
+	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationRemoved), self, caller{slot});
 }
 
 void QNetworkConfigurationManager_configurationChanged(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
@@ -356,12 +379,21 @@ void QNetworkConfigurationManager_configurationChanged(QNetworkConfigurationMana
 }
 
 void QNetworkConfigurationManager_connect_configurationChanged(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationChanged), self, [=](const QNetworkConfiguration& config) {
-		const QNetworkConfiguration& config_ret = config;
-		// Cast returned reference into pointer
-		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
-		miqt_exec_callback_QNetworkConfigurationManager_configurationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QNetworkConfiguration& config) {
+			const QNetworkConfiguration& config_ret = config;
+			// Cast returned reference into pointer
+			QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
+			miqt_exec_callback_QNetworkConfigurationManager_configurationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkConfigurationManager_configurationChanged_release(slot); }
+	};
+	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationChanged), self, caller{slot});
 }
 
 void QNetworkConfigurationManager_onlineStateChanged(QNetworkConfigurationManager* self, bool isOnline) {
@@ -369,10 +401,19 @@ void QNetworkConfigurationManager_onlineStateChanged(QNetworkConfigurationManage
 }
 
 void QNetworkConfigurationManager_connect_onlineStateChanged(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(bool)>(&QNetworkConfigurationManager::onlineStateChanged), self, [=](bool isOnline) {
-		bool sigval1 = isOnline;
-		miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool isOnline) {
+			bool sigval1 = isOnline;
+			miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged_release(slot); }
+	};
+	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(bool)>(&QNetworkConfigurationManager::onlineStateChanged), self, caller{slot});
 }
 
 void QNetworkConfigurationManager_updateCompleted(QNetworkConfigurationManager* self) {
@@ -380,9 +421,18 @@ void QNetworkConfigurationManager_updateCompleted(QNetworkConfigurationManager* 
 }
 
 void QNetworkConfigurationManager_connect_updateCompleted(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)()>(&QNetworkConfigurationManager::updateCompleted), self, [=]() {
-		miqt_exec_callback_QNetworkConfigurationManager_updateCompleted(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QNetworkConfigurationManager_updateCompleted(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkConfigurationManager_updateCompleted_release(slot); }
+	};
+	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)()>(&QNetworkConfigurationManager::updateCompleted), self, caller{slot});
 }
 
 struct miqt_string QNetworkConfigurationManager_tr2(const char* s, const char* c) {

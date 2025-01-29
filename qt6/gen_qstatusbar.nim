@@ -258,6 +258,10 @@ proc miqt_exec_callback_cQStatusBar_messageChanged(slot: int, text: struct_miqt_
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQStatusBar_messageChanged_release(slot: int) {.exportc: "miqt_exec_callback_QStatusBar_messageChanged_release".} =
+  let nimfunc = cast[ref QStatusBarmessageChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmessageChanged*(self: gen_qstatusbar_types.QStatusBar, slot: QStatusBarmessageChangedSlot) =
   var tmp = new QStatusBarmessageChangedSlot
   tmp[] = slot

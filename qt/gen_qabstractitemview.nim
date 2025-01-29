@@ -669,6 +669,10 @@ proc miqt_exec_callback_cQAbstractItemView_pressed(slot: int, index: pointer) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractItemView_pressed_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_pressed_release".} =
+  let nimfunc = cast[ref QAbstractItemViewpressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpressed*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewpressedSlot) =
   var tmp = new QAbstractItemViewpressedSlot
   tmp[] = slot
@@ -684,6 +688,10 @@ proc miqt_exec_callback_cQAbstractItemView_clicked(slot: int, index: pointer) {.
   let slotval1 = gen_qabstractitemmodel_types.QModelIndex(h: index)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractItemView_clicked_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_clicked_release".} =
+  let nimfunc = cast[ref QAbstractItemViewclickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onclicked*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewclickedSlot) =
   var tmp = new QAbstractItemViewclickedSlot
@@ -701,6 +709,10 @@ proc miqt_exec_callback_cQAbstractItemView_doubleClicked(slot: int, index: point
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractItemView_doubleClicked_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_doubleClicked_release".} =
+  let nimfunc = cast[ref QAbstractItemViewdoubleClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondoubleClicked*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdoubleClickedSlot) =
   var tmp = new QAbstractItemViewdoubleClickedSlot
   tmp[] = slot
@@ -716,6 +728,10 @@ proc miqt_exec_callback_cQAbstractItemView_activated(slot: int, index: pointer) 
   let slotval1 = gen_qabstractitemmodel_types.QModelIndex(h: index)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractItemView_activated_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_activated_release".} =
+  let nimfunc = cast[ref QAbstractItemViewactivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactivated*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewactivatedSlot) =
   var tmp = new QAbstractItemViewactivatedSlot
@@ -733,6 +749,10 @@ proc miqt_exec_callback_cQAbstractItemView_entered(slot: int, index: pointer) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractItemView_entered_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_entered_release".} =
+  let nimfunc = cast[ref QAbstractItemViewenteredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onentered*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewenteredSlot) =
   var tmp = new QAbstractItemViewenteredSlot
   tmp[] = slot
@@ -746,6 +766,10 @@ type QAbstractItemViewviewportEnteredSlot* = proc()
 proc miqt_exec_callback_cQAbstractItemView_viewportEntered(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_viewportEntered".} =
   let nimfunc = cast[ptr QAbstractItemViewviewportEnteredSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractItemView_viewportEntered_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_viewportEntered_release".} =
+  let nimfunc = cast[ref QAbstractItemViewviewportEnteredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onviewportEntered*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewviewportEnteredSlot) =
   var tmp = new QAbstractItemViewviewportEnteredSlot
@@ -762,6 +786,10 @@ proc miqt_exec_callback_cQAbstractItemView_iconSizeChanged(slot: int, size: poin
   let slotval1 = gen_qsize_types.QSize(h: size)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractItemView_iconSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemView_iconSizeChanged_release".} =
+  let nimfunc = cast[ref QAbstractItemViewiconSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oniconSizeChanged*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewiconSizeChangedSlot) =
   var tmp = new QAbstractItemViewiconSizeChangedSlot

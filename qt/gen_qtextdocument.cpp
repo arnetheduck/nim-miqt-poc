@@ -36,15 +36,25 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QTextDocument_contentsChange(intptr_t, int, int, int);
+void miqt_exec_callback_QTextDocument_contentsChange_release(intptr_t);
 void miqt_exec_callback_QTextDocument_contentsChanged(intptr_t);
+void miqt_exec_callback_QTextDocument_contentsChanged_release(intptr_t);
 void miqt_exec_callback_QTextDocument_undoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextDocument_undoAvailable_release(intptr_t);
 void miqt_exec_callback_QTextDocument_redoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextDocument_redoAvailable_release(intptr_t);
 void miqt_exec_callback_QTextDocument_undoCommandAdded(intptr_t);
+void miqt_exec_callback_QTextDocument_undoCommandAdded_release(intptr_t);
 void miqt_exec_callback_QTextDocument_modificationChanged(intptr_t, bool);
+void miqt_exec_callback_QTextDocument_modificationChanged_release(intptr_t);
 void miqt_exec_callback_QTextDocument_cursorPositionChanged(intptr_t, QTextCursor*);
+void miqt_exec_callback_QTextDocument_cursorPositionChanged_release(intptr_t);
 void miqt_exec_callback_QTextDocument_blockCountChanged(intptr_t, int);
+void miqt_exec_callback_QTextDocument_blockCountChanged_release(intptr_t);
 void miqt_exec_callback_QTextDocument_baseUrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QTextDocument_baseUrlChanged_release(intptr_t);
 void miqt_exec_callback_QTextDocument_documentLayoutChanged(intptr_t);
+void miqt_exec_callback_QTextDocument_documentLayoutChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -785,12 +795,21 @@ void QTextDocument_contentsChange(QTextDocument* self, int from, int charsRemove
 }
 
 void QTextDocument_connect_contentsChange(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(int, int, int)>(&QTextDocument::contentsChange), self, [=](int from, int charsRemoved, int charsAdded) {
-		int sigval1 = from;
-		int sigval2 = charsRemoved;
-		int sigval3 = charsAdded;
-		miqt_exec_callback_QTextDocument_contentsChange(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int from, int charsRemoved, int charsAdded) {
+			int sigval1 = from;
+			int sigval2 = charsRemoved;
+			int sigval3 = charsAdded;
+			miqt_exec_callback_QTextDocument_contentsChange(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_contentsChange_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(int, int, int)>(&QTextDocument::contentsChange), self, caller{slot});
 }
 
 void QTextDocument_contentsChanged(QTextDocument* self) {
@@ -798,9 +817,18 @@ void QTextDocument_contentsChanged(QTextDocument* self) {
 }
 
 void QTextDocument_connect_contentsChanged(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::contentsChanged), self, [=]() {
-		miqt_exec_callback_QTextDocument_contentsChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTextDocument_contentsChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_contentsChanged_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::contentsChanged), self, caller{slot});
 }
 
 void QTextDocument_undoAvailable(QTextDocument* self, bool param1) {
@@ -808,10 +836,19 @@ void QTextDocument_undoAvailable(QTextDocument* self, bool param1) {
 }
 
 void QTextDocument_connect_undoAvailable(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::undoAvailable), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QTextDocument_undoAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QTextDocument_undoAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_undoAvailable_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::undoAvailable), self, caller{slot});
 }
 
 void QTextDocument_redoAvailable(QTextDocument* self, bool param1) {
@@ -819,10 +856,19 @@ void QTextDocument_redoAvailable(QTextDocument* self, bool param1) {
 }
 
 void QTextDocument_connect_redoAvailable(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::redoAvailable), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QTextDocument_redoAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QTextDocument_redoAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_redoAvailable_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::redoAvailable), self, caller{slot});
 }
 
 void QTextDocument_undoCommandAdded(QTextDocument* self) {
@@ -830,9 +876,18 @@ void QTextDocument_undoCommandAdded(QTextDocument* self) {
 }
 
 void QTextDocument_connect_undoCommandAdded(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::undoCommandAdded), self, [=]() {
-		miqt_exec_callback_QTextDocument_undoCommandAdded(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTextDocument_undoCommandAdded(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_undoCommandAdded_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::undoCommandAdded), self, caller{slot});
 }
 
 void QTextDocument_modificationChanged(QTextDocument* self, bool m) {
@@ -840,10 +895,19 @@ void QTextDocument_modificationChanged(QTextDocument* self, bool m) {
 }
 
 void QTextDocument_connect_modificationChanged(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::modificationChanged), self, [=](bool m) {
-		bool sigval1 = m;
-		miqt_exec_callback_QTextDocument_modificationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool m) {
+			bool sigval1 = m;
+			miqt_exec_callback_QTextDocument_modificationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_modificationChanged_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::modificationChanged), self, caller{slot});
 }
 
 void QTextDocument_cursorPositionChanged(QTextDocument* self, QTextCursor* cursor) {
@@ -851,12 +915,21 @@ void QTextDocument_cursorPositionChanged(QTextDocument* self, QTextCursor* curso
 }
 
 void QTextDocument_connect_cursorPositionChanged(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(const QTextCursor&)>(&QTextDocument::cursorPositionChanged), self, [=](const QTextCursor& cursor) {
-		const QTextCursor& cursor_ret = cursor;
-		// Cast returned reference into pointer
-		QTextCursor* sigval1 = const_cast<QTextCursor*>(&cursor_ret);
-		miqt_exec_callback_QTextDocument_cursorPositionChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QTextCursor& cursor) {
+			const QTextCursor& cursor_ret = cursor;
+			// Cast returned reference into pointer
+			QTextCursor* sigval1 = const_cast<QTextCursor*>(&cursor_ret);
+			miqt_exec_callback_QTextDocument_cursorPositionChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_cursorPositionChanged_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(const QTextCursor&)>(&QTextDocument::cursorPositionChanged), self, caller{slot});
 }
 
 void QTextDocument_blockCountChanged(QTextDocument* self, int newBlockCount) {
@@ -864,10 +937,19 @@ void QTextDocument_blockCountChanged(QTextDocument* self, int newBlockCount) {
 }
 
 void QTextDocument_connect_blockCountChanged(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(int)>(&QTextDocument::blockCountChanged), self, [=](int newBlockCount) {
-		int sigval1 = newBlockCount;
-		miqt_exec_callback_QTextDocument_blockCountChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int newBlockCount) {
+			int sigval1 = newBlockCount;
+			miqt_exec_callback_QTextDocument_blockCountChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_blockCountChanged_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(int)>(&QTextDocument::blockCountChanged), self, caller{slot});
 }
 
 void QTextDocument_baseUrlChanged(QTextDocument* self, QUrl* url) {
@@ -875,12 +957,21 @@ void QTextDocument_baseUrlChanged(QTextDocument* self, QUrl* url) {
 }
 
 void QTextDocument_connect_baseUrlChanged(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(const QUrl&)>(&QTextDocument::baseUrlChanged), self, [=](const QUrl& url) {
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QTextDocument_baseUrlChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& url) {
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
+			miqt_exec_callback_QTextDocument_baseUrlChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_baseUrlChanged_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)(const QUrl&)>(&QTextDocument::baseUrlChanged), self, caller{slot});
 }
 
 void QTextDocument_documentLayoutChanged(QTextDocument* self) {
@@ -888,9 +979,18 @@ void QTextDocument_documentLayoutChanged(QTextDocument* self) {
 }
 
 void QTextDocument_connect_documentLayoutChanged(QTextDocument* self, intptr_t slot) {
-	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::documentLayoutChanged), self, [=]() {
-		miqt_exec_callback_QTextDocument_documentLayoutChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTextDocument_documentLayoutChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextDocument_documentLayoutChanged_release(slot); }
+	};
+	MiqtVirtualQTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::documentLayoutChanged), self, caller{slot});
 }
 
 void QTextDocument_undo2(QTextDocument* self) {

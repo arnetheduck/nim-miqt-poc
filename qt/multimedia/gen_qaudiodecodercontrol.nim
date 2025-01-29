@@ -167,6 +167,10 @@ proc miqt_exec_callback_cQAudioDecoderControl_stateChanged(slot: int, newState: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioDecoderControl_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_stateChanged_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlstateChangedSlot) =
   var tmp = new QAudioDecoderControlstateChangedSlot
   tmp[] = slot
@@ -183,6 +187,10 @@ proc miqt_exec_callback_cQAudioDecoderControl_formatChanged(slot: int, format: p
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioDecoderControl_formatChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_formatChanged_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlformatChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onformatChanged*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlformatChangedSlot) =
   var tmp = new QAudioDecoderControlformatChangedSlot
   tmp[] = slot
@@ -196,6 +204,10 @@ type QAudioDecoderControlsourceChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioDecoderControl_sourceChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_sourceChanged".} =
   let nimfunc = cast[ptr QAudioDecoderControlsourceChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioDecoderControl_sourceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_sourceChanged_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlsourceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsourceChanged*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlsourceChangedSlot) =
   var tmp = new QAudioDecoderControlsourceChangedSlot
@@ -218,6 +230,10 @@ proc miqt_exec_callback_cQAudioDecoderControl_error(slot: int, error: cint, erro
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQAudioDecoderControl_error_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_error_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlerrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerror*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlerrorSlot) =
   var tmp = new QAudioDecoderControlerrorSlot
   tmp[] = slot
@@ -231,6 +247,10 @@ type QAudioDecoderControlbufferReadySlot* = proc()
 proc miqt_exec_callback_cQAudioDecoderControl_bufferReady(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_bufferReady".} =
   let nimfunc = cast[ptr QAudioDecoderControlbufferReadySlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioDecoderControl_bufferReady_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_bufferReady_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlbufferReadySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbufferReady*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlbufferReadySlot) =
   var tmp = new QAudioDecoderControlbufferReadySlot
@@ -248,6 +268,10 @@ proc miqt_exec_callback_cQAudioDecoderControl_bufferAvailableChanged(slot: int, 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioDecoderControl_bufferAvailableChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_bufferAvailableChanged_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlbufferAvailableChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbufferAvailableChanged*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlbufferAvailableChangedSlot) =
   var tmp = new QAudioDecoderControlbufferAvailableChangedSlot
   tmp[] = slot
@@ -261,6 +285,10 @@ type QAudioDecoderControlfinishedSlot* = proc()
 proc miqt_exec_callback_cQAudioDecoderControl_finished(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_finished".} =
   let nimfunc = cast[ptr QAudioDecoderControlfinishedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioDecoderControl_finished_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_finished_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlfinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfinished*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlfinishedSlot) =
   var tmp = new QAudioDecoderControlfinishedSlot
@@ -278,6 +306,10 @@ proc miqt_exec_callback_cQAudioDecoderControl_positionChanged(slot: int, positio
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioDecoderControl_positionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_positionChanged_release".} =
+  let nimfunc = cast[ref QAudioDecoderControlpositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpositionChanged*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControlpositionChangedSlot) =
   var tmp = new QAudioDecoderControlpositionChangedSlot
   tmp[] = slot
@@ -293,6 +325,10 @@ proc miqt_exec_callback_cQAudioDecoderControl_durationChanged(slot: int, duratio
   let slotval1 = duration
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAudioDecoderControl_durationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioDecoderControl_durationChanged_release".} =
+  let nimfunc = cast[ref QAudioDecoderControldurationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondurationChanged*(self: gen_qaudiodecodercontrol_types.QAudioDecoderControl, slot: QAudioDecoderControldurationChangedSlot) =
   var tmp = new QAudioDecoderControldurationChangedSlot

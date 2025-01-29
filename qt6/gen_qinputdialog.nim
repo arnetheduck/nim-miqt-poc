@@ -501,6 +501,10 @@ proc miqt_exec_callback_cQInputDialog_textValueChanged(slot: int, text: struct_m
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQInputDialog_textValueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputDialog_textValueChanged_release".} =
+  let nimfunc = cast[ref QInputDialogtextValueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontextValueChanged*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogtextValueChangedSlot) =
   var tmp = new QInputDialogtextValueChangedSlot
   tmp[] = slot
@@ -520,6 +524,10 @@ proc miqt_exec_callback_cQInputDialog_textValueSelected(slot: int, text: struct_
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQInputDialog_textValueSelected_release(slot: int) {.exportc: "miqt_exec_callback_QInputDialog_textValueSelected_release".} =
+  let nimfunc = cast[ref QInputDialogtextValueSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontextValueSelected*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogtextValueSelectedSlot) =
   var tmp = new QInputDialogtextValueSelectedSlot
   tmp[] = slot
@@ -535,6 +543,10 @@ proc miqt_exec_callback_cQInputDialog_intValueChanged(slot: int, value: cint) {.
   let slotval1 = value
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQInputDialog_intValueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputDialog_intValueChanged_release".} =
+  let nimfunc = cast[ref QInputDialogintValueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onintValueChanged*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogintValueChangedSlot) =
   var tmp = new QInputDialogintValueChangedSlot
@@ -552,6 +564,10 @@ proc miqt_exec_callback_cQInputDialog_intValueSelected(slot: int, value: cint) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQInputDialog_intValueSelected_release(slot: int) {.exportc: "miqt_exec_callback_QInputDialog_intValueSelected_release".} =
+  let nimfunc = cast[ref QInputDialogintValueSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onintValueSelected*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogintValueSelectedSlot) =
   var tmp = new QInputDialogintValueSelectedSlot
   tmp[] = slot
@@ -568,6 +584,10 @@ proc miqt_exec_callback_cQInputDialog_doubleValueChanged(slot: int, value: float
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQInputDialog_doubleValueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputDialog_doubleValueChanged_release".} =
+  let nimfunc = cast[ref QInputDialogdoubleValueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondoubleValueChanged*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdoubleValueChangedSlot) =
   var tmp = new QInputDialogdoubleValueChangedSlot
   tmp[] = slot
@@ -583,6 +603,10 @@ proc miqt_exec_callback_cQInputDialog_doubleValueSelected(slot: int, value: floa
   let slotval1 = value
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQInputDialog_doubleValueSelected_release(slot: int) {.exportc: "miqt_exec_callback_QInputDialog_doubleValueSelected_release".} =
+  let nimfunc = cast[ref QInputDialogdoubleValueSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondoubleValueSelected*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogdoubleValueSelectedSlot) =
   var tmp = new QInputDialogdoubleValueSelectedSlot

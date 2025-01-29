@@ -31,11 +31,17 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired(intptr_t, QNetworkProxy*, QAuthenticator*);
+void miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired_release(intptr_t);
 void miqt_exec_callback_QNetworkAccessManager_authenticationRequired(intptr_t, QNetworkReply*, QAuthenticator*);
+void miqt_exec_callback_QNetworkAccessManager_authenticationRequired_release(intptr_t);
 void miqt_exec_callback_QNetworkAccessManager_finished(intptr_t, QNetworkReply*);
+void miqt_exec_callback_QNetworkAccessManager_finished_release(intptr_t);
 void miqt_exec_callback_QNetworkAccessManager_encrypted(intptr_t, QNetworkReply*);
+void miqt_exec_callback_QNetworkAccessManager_encrypted_release(intptr_t);
 void miqt_exec_callback_QNetworkAccessManager_sslErrors(intptr_t, QNetworkReply*, struct miqt_array /* of QSslError* */ );
+void miqt_exec_callback_QNetworkAccessManager_sslErrors_release(intptr_t);
 void miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired(intptr_t, QNetworkReply*, QSslPreSharedKeyAuthenticator*);
+void miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -559,13 +565,22 @@ void QNetworkAccessManager_proxyAuthenticationRequired(QNetworkAccessManager* se
 }
 
 void QNetworkAccessManager_connect_proxyAuthenticationRequired(QNetworkAccessManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(const QNetworkProxy&, QAuthenticator*)>(&QNetworkAccessManager::proxyAuthenticationRequired), self, [=](const QNetworkProxy& proxy, QAuthenticator* authenticator) {
-		const QNetworkProxy& proxy_ret = proxy;
-		// Cast returned reference into pointer
-		QNetworkProxy* sigval1 = const_cast<QNetworkProxy*>(&proxy_ret);
-		QAuthenticator* sigval2 = authenticator;
-		miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QNetworkProxy& proxy, QAuthenticator* authenticator) {
+			const QNetworkProxy& proxy_ret = proxy;
+			// Cast returned reference into pointer
+			QNetworkProxy* sigval1 = const_cast<QNetworkProxy*>(&proxy_ret);
+			QAuthenticator* sigval2 = authenticator;
+			miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired_release(slot); }
+	};
+	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(const QNetworkProxy&, QAuthenticator*)>(&QNetworkAccessManager::proxyAuthenticationRequired), self, caller{slot});
 }
 
 void QNetworkAccessManager_authenticationRequired(QNetworkAccessManager* self, QNetworkReply* reply, QAuthenticator* authenticator) {
@@ -573,11 +588,20 @@ void QNetworkAccessManager_authenticationRequired(QNetworkAccessManager* self, Q
 }
 
 void QNetworkAccessManager_connect_authenticationRequired(QNetworkAccessManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*, QAuthenticator*)>(&QNetworkAccessManager::authenticationRequired), self, [=](QNetworkReply* reply, QAuthenticator* authenticator) {
-		QNetworkReply* sigval1 = reply;
-		QAuthenticator* sigval2 = authenticator;
-		miqt_exec_callback_QNetworkAccessManager_authenticationRequired(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QNetworkReply* reply, QAuthenticator* authenticator) {
+			QNetworkReply* sigval1 = reply;
+			QAuthenticator* sigval2 = authenticator;
+			miqt_exec_callback_QNetworkAccessManager_authenticationRequired(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkAccessManager_authenticationRequired_release(slot); }
+	};
+	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*, QAuthenticator*)>(&QNetworkAccessManager::authenticationRequired), self, caller{slot});
 }
 
 void QNetworkAccessManager_finished(QNetworkAccessManager* self, QNetworkReply* reply) {
@@ -585,10 +609,19 @@ void QNetworkAccessManager_finished(QNetworkAccessManager* self, QNetworkReply* 
 }
 
 void QNetworkAccessManager_connect_finished(QNetworkAccessManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*)>(&QNetworkAccessManager::finished), self, [=](QNetworkReply* reply) {
-		QNetworkReply* sigval1 = reply;
-		miqt_exec_callback_QNetworkAccessManager_finished(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QNetworkReply* reply) {
+			QNetworkReply* sigval1 = reply;
+			miqt_exec_callback_QNetworkAccessManager_finished(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkAccessManager_finished_release(slot); }
+	};
+	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*)>(&QNetworkAccessManager::finished), self, caller{slot});
 }
 
 void QNetworkAccessManager_encrypted(QNetworkAccessManager* self, QNetworkReply* reply) {
@@ -596,10 +629,19 @@ void QNetworkAccessManager_encrypted(QNetworkAccessManager* self, QNetworkReply*
 }
 
 void QNetworkAccessManager_connect_encrypted(QNetworkAccessManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*)>(&QNetworkAccessManager::encrypted), self, [=](QNetworkReply* reply) {
-		QNetworkReply* sigval1 = reply;
-		miqt_exec_callback_QNetworkAccessManager_encrypted(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QNetworkReply* reply) {
+			QNetworkReply* sigval1 = reply;
+			miqt_exec_callback_QNetworkAccessManager_encrypted(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkAccessManager_encrypted_release(slot); }
+	};
+	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*)>(&QNetworkAccessManager::encrypted), self, caller{slot});
 }
 
 void QNetworkAccessManager_sslErrors(QNetworkAccessManager* self, QNetworkReply* reply, struct miqt_array /* of QSslError* */  errors) {
@@ -613,20 +655,29 @@ void QNetworkAccessManager_sslErrors(QNetworkAccessManager* self, QNetworkReply*
 }
 
 void QNetworkAccessManager_connect_sslErrors(QNetworkAccessManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*, const QList<QSslError>&)>(&QNetworkAccessManager::sslErrors), self, [=](QNetworkReply* reply, const QList<QSslError>& errors) {
-		QNetworkReply* sigval1 = reply;
-		const QList<QSslError>& errors_ret = errors;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.length()));
-		for (size_t i = 0, e = errors_ret.length(); i < e; ++i) {
-			errors_arr[i] = new QSslError(errors_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(QNetworkReply* reply, const QList<QSslError>& errors) {
+			QNetworkReply* sigval1 = reply;
+			const QList<QSslError>& errors_ret = errors;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.length()));
+			for (size_t i = 0, e = errors_ret.length(); i < e; ++i) {
+				errors_arr[i] = new QSslError(errors_ret[i]);
+			}
+			struct miqt_array errors_out;
+			errors_out.len = errors_ret.length();
+			errors_out.data = static_cast<void*>(errors_arr);
+			struct miqt_array /* of QSslError* */  sigval2 = errors_out;
+			miqt_exec_callback_QNetworkAccessManager_sslErrors(slot, sigval1, sigval2);
 		}
-		struct miqt_array errors_out;
-		errors_out.len = errors_ret.length();
-		errors_out.data = static_cast<void*>(errors_arr);
-		struct miqt_array /* of QSslError* */  sigval2 = errors_out;
-		miqt_exec_callback_QNetworkAccessManager_sslErrors(slot, sigval1, sigval2);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkAccessManager_sslErrors_release(slot); }
+	};
+	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*, const QList<QSslError>&)>(&QNetworkAccessManager::sslErrors), self, caller{slot});
 }
 
 void QNetworkAccessManager_preSharedKeyAuthenticationRequired(QNetworkAccessManager* self, QNetworkReply* reply, QSslPreSharedKeyAuthenticator* authenticator) {
@@ -634,11 +685,20 @@ void QNetworkAccessManager_preSharedKeyAuthenticationRequired(QNetworkAccessMana
 }
 
 void QNetworkAccessManager_connect_preSharedKeyAuthenticationRequired(QNetworkAccessManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*, QSslPreSharedKeyAuthenticator*)>(&QNetworkAccessManager::preSharedKeyAuthenticationRequired), self, [=](QNetworkReply* reply, QSslPreSharedKeyAuthenticator* authenticator) {
-		QNetworkReply* sigval1 = reply;
-		QSslPreSharedKeyAuthenticator* sigval2 = authenticator;
-		miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QNetworkReply* reply, QSslPreSharedKeyAuthenticator* authenticator) {
+			QNetworkReply* sigval1 = reply;
+			QSslPreSharedKeyAuthenticator* sigval2 = authenticator;
+			miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired_release(slot); }
+	};
+	MiqtVirtualQNetworkAccessManager::connect(self, static_cast<void (QNetworkAccessManager::*)(QNetworkReply*, QSslPreSharedKeyAuthenticator*)>(&QNetworkAccessManager::preSharedKeyAuthenticationRequired), self, caller{slot});
 }
 
 struct miqt_string QNetworkAccessManager_tr2(const char* s, const char* c) {

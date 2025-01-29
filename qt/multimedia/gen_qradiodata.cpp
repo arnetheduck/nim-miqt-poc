@@ -18,12 +18,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QRadioData_stationIdChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_stationIdChanged_release(intptr_t);
 void miqt_exec_callback_QRadioData_programTypeChanged(intptr_t, int);
+void miqt_exec_callback_QRadioData_programTypeChanged_release(intptr_t);
 void miqt_exec_callback_QRadioData_programTypeNameChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_programTypeNameChanged_release(intptr_t);
 void miqt_exec_callback_QRadioData_stationNameChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_stationNameChanged_release(intptr_t);
 void miqt_exec_callback_QRadioData_radioTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_radioTextChanged_release(intptr_t);
 void miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged_release(intptr_t);
 void miqt_exec_callback_QRadioData_errorWithError(intptr_t, int);
+void miqt_exec_callback_QRadioData_errorWithError_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -420,17 +427,26 @@ void QRadioData_stationIdChanged(QRadioData* self, struct miqt_string stationId)
 }
 
 void QRadioData_connect_stationIdChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationIdChanged), self, [=](QString stationId) {
-		QString stationId_ret = stationId;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray stationId_b = stationId_ret.toUtf8();
-		struct miqt_string stationId_ms;
-		stationId_ms.len = stationId_b.length();
-		stationId_ms.data = static_cast<char*>(malloc(stationId_ms.len));
-		memcpy(stationId_ms.data, stationId_b.data(), stationId_ms.len);
-		struct miqt_string sigval1 = stationId_ms;
-		miqt_exec_callback_QRadioData_stationIdChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QString stationId) {
+			QString stationId_ret = stationId;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray stationId_b = stationId_ret.toUtf8();
+			struct miqt_string stationId_ms;
+			stationId_ms.len = stationId_b.length();
+			stationId_ms.data = static_cast<char*>(malloc(stationId_ms.len));
+			memcpy(stationId_ms.data, stationId_b.data(), stationId_ms.len);
+			struct miqt_string sigval1 = stationId_ms;
+			miqt_exec_callback_QRadioData_stationIdChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRadioData_stationIdChanged_release(slot); }
+	};
+	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationIdChanged), self, caller{slot});
 }
 
 void QRadioData_programTypeChanged(QRadioData* self, int programType) {
@@ -438,11 +454,20 @@ void QRadioData_programTypeChanged(QRadioData* self, int programType) {
 }
 
 void QRadioData_connect_programTypeChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::ProgramType)>(&QRadioData::programTypeChanged), self, [=](QRadioData::ProgramType programType) {
-		QRadioData::ProgramType programType_ret = programType;
-		int sigval1 = static_cast<int>(programType_ret);
-		miqt_exec_callback_QRadioData_programTypeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QRadioData::ProgramType programType) {
+			QRadioData::ProgramType programType_ret = programType;
+			int sigval1 = static_cast<int>(programType_ret);
+			miqt_exec_callback_QRadioData_programTypeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRadioData_programTypeChanged_release(slot); }
+	};
+	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::ProgramType)>(&QRadioData::programTypeChanged), self, caller{slot});
 }
 
 void QRadioData_programTypeNameChanged(QRadioData* self, struct miqt_string programTypeName) {
@@ -451,17 +476,26 @@ void QRadioData_programTypeNameChanged(QRadioData* self, struct miqt_string prog
 }
 
 void QRadioData_connect_programTypeNameChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::programTypeNameChanged), self, [=](QString programTypeName) {
-		QString programTypeName_ret = programTypeName;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray programTypeName_b = programTypeName_ret.toUtf8();
-		struct miqt_string programTypeName_ms;
-		programTypeName_ms.len = programTypeName_b.length();
-		programTypeName_ms.data = static_cast<char*>(malloc(programTypeName_ms.len));
-		memcpy(programTypeName_ms.data, programTypeName_b.data(), programTypeName_ms.len);
-		struct miqt_string sigval1 = programTypeName_ms;
-		miqt_exec_callback_QRadioData_programTypeNameChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QString programTypeName) {
+			QString programTypeName_ret = programTypeName;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray programTypeName_b = programTypeName_ret.toUtf8();
+			struct miqt_string programTypeName_ms;
+			programTypeName_ms.len = programTypeName_b.length();
+			programTypeName_ms.data = static_cast<char*>(malloc(programTypeName_ms.len));
+			memcpy(programTypeName_ms.data, programTypeName_b.data(), programTypeName_ms.len);
+			struct miqt_string sigval1 = programTypeName_ms;
+			miqt_exec_callback_QRadioData_programTypeNameChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRadioData_programTypeNameChanged_release(slot); }
+	};
+	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::programTypeNameChanged), self, caller{slot});
 }
 
 void QRadioData_stationNameChanged(QRadioData* self, struct miqt_string stationName) {
@@ -470,17 +504,26 @@ void QRadioData_stationNameChanged(QRadioData* self, struct miqt_string stationN
 }
 
 void QRadioData_connect_stationNameChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationNameChanged), self, [=](QString stationName) {
-		QString stationName_ret = stationName;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray stationName_b = stationName_ret.toUtf8();
-		struct miqt_string stationName_ms;
-		stationName_ms.len = stationName_b.length();
-		stationName_ms.data = static_cast<char*>(malloc(stationName_ms.len));
-		memcpy(stationName_ms.data, stationName_b.data(), stationName_ms.len);
-		struct miqt_string sigval1 = stationName_ms;
-		miqt_exec_callback_QRadioData_stationNameChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QString stationName) {
+			QString stationName_ret = stationName;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray stationName_b = stationName_ret.toUtf8();
+			struct miqt_string stationName_ms;
+			stationName_ms.len = stationName_b.length();
+			stationName_ms.data = static_cast<char*>(malloc(stationName_ms.len));
+			memcpy(stationName_ms.data, stationName_b.data(), stationName_ms.len);
+			struct miqt_string sigval1 = stationName_ms;
+			miqt_exec_callback_QRadioData_stationNameChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRadioData_stationNameChanged_release(slot); }
+	};
+	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationNameChanged), self, caller{slot});
 }
 
 void QRadioData_radioTextChanged(QRadioData* self, struct miqt_string radioText) {
@@ -489,17 +532,26 @@ void QRadioData_radioTextChanged(QRadioData* self, struct miqt_string radioText)
 }
 
 void QRadioData_connect_radioTextChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::radioTextChanged), self, [=](QString radioText) {
-		QString radioText_ret = radioText;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray radioText_b = radioText_ret.toUtf8();
-		struct miqt_string radioText_ms;
-		radioText_ms.len = radioText_b.length();
-		radioText_ms.data = static_cast<char*>(malloc(radioText_ms.len));
-		memcpy(radioText_ms.data, radioText_b.data(), radioText_ms.len);
-		struct miqt_string sigval1 = radioText_ms;
-		miqt_exec_callback_QRadioData_radioTextChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QString radioText) {
+			QString radioText_ret = radioText;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray radioText_b = radioText_ret.toUtf8();
+			struct miqt_string radioText_ms;
+			radioText_ms.len = radioText_b.length();
+			radioText_ms.data = static_cast<char*>(malloc(radioText_ms.len));
+			memcpy(radioText_ms.data, radioText_b.data(), radioText_ms.len);
+			struct miqt_string sigval1 = radioText_ms;
+			miqt_exec_callback_QRadioData_radioTextChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRadioData_radioTextChanged_release(slot); }
+	};
+	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::radioTextChanged), self, caller{slot});
 }
 
 void QRadioData_alternativeFrequenciesEnabledChanged(QRadioData* self, bool enabled) {
@@ -507,10 +559,19 @@ void QRadioData_alternativeFrequenciesEnabledChanged(QRadioData* self, bool enab
 }
 
 void QRadioData_connect_alternativeFrequenciesEnabledChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(bool)>(&QRadioData::alternativeFrequenciesEnabledChanged), self, [=](bool enabled) {
-		bool sigval1 = enabled;
-		miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool enabled) {
+			bool sigval1 = enabled;
+			miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged_release(slot); }
+	};
+	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(bool)>(&QRadioData::alternativeFrequenciesEnabledChanged), self, caller{slot});
 }
 
 void QRadioData_errorWithError(QRadioData* self, int error) {
@@ -518,11 +579,20 @@ void QRadioData_errorWithError(QRadioData* self, int error) {
 }
 
 void QRadioData_connect_errorWithError(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::Error)>(&QRadioData::error), self, [=](QRadioData::Error error) {
-		QRadioData::Error error_ret = error;
-		int sigval1 = static_cast<int>(error_ret);
-		miqt_exec_callback_QRadioData_errorWithError(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QRadioData::Error error) {
+			QRadioData::Error error_ret = error;
+			int sigval1 = static_cast<int>(error_ret);
+			miqt_exec_callback_QRadioData_errorWithError(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRadioData_errorWithError_release(slot); }
+	};
+	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::Error)>(&QRadioData::error), self, caller{slot});
 }
 
 struct miqt_string QRadioData_tr2(const char* s, const char* c) {

@@ -16,8 +16,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QsciAPIs_apiPreparationCancelled(intptr_t);
+void miqt_exec_callback_QsciAPIs_apiPreparationCancelled_release(intptr_t);
 void miqt_exec_callback_QsciAPIs_apiPreparationStarted(intptr_t);
+void miqt_exec_callback_QsciAPIs_apiPreparationStarted_release(intptr_t);
 void miqt_exec_callback_QsciAPIs_apiPreparationFinished(intptr_t);
+void miqt_exec_callback_QsciAPIs_apiPreparationFinished_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -596,9 +599,18 @@ void QsciAPIs_apiPreparationCancelled(QsciAPIs* self) {
 }
 
 void QsciAPIs_connect_apiPreparationCancelled(QsciAPIs* self, intptr_t slot) {
-	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationCancelled), self, [=]() {
-		miqt_exec_callback_QsciAPIs_apiPreparationCancelled(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciAPIs_apiPreparationCancelled(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciAPIs_apiPreparationCancelled_release(slot); }
+	};
+	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationCancelled), self, caller{slot});
 }
 
 void QsciAPIs_apiPreparationStarted(QsciAPIs* self) {
@@ -606,9 +618,18 @@ void QsciAPIs_apiPreparationStarted(QsciAPIs* self) {
 }
 
 void QsciAPIs_connect_apiPreparationStarted(QsciAPIs* self, intptr_t slot) {
-	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationStarted), self, [=]() {
-		miqt_exec_callback_QsciAPIs_apiPreparationStarted(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciAPIs_apiPreparationStarted(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciAPIs_apiPreparationStarted_release(slot); }
+	};
+	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationStarted), self, caller{slot});
 }
 
 void QsciAPIs_apiPreparationFinished(QsciAPIs* self) {
@@ -616,9 +637,18 @@ void QsciAPIs_apiPreparationFinished(QsciAPIs* self) {
 }
 
 void QsciAPIs_connect_apiPreparationFinished(QsciAPIs* self, intptr_t slot) {
-	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationFinished), self, [=]() {
-		miqt_exec_callback_QsciAPIs_apiPreparationFinished(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciAPIs_apiPreparationFinished(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciAPIs_apiPreparationFinished_release(slot); }
+	};
+	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationFinished), self, caller{slot});
 }
 
 struct miqt_string QsciAPIs_tr2(const char* s, const char* c) {

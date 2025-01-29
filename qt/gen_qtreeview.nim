@@ -542,6 +542,10 @@ proc miqt_exec_callback_cQTreeView_expanded(slot: int, index: pointer) {.exportc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTreeView_expanded_release(slot: int) {.exportc: "miqt_exec_callback_QTreeView_expanded_release".} =
+  let nimfunc = cast[ref QTreeViewexpandedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onexpanded*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewexpandedSlot) =
   var tmp = new QTreeViewexpandedSlot
   tmp[] = slot
@@ -557,6 +561,10 @@ proc miqt_exec_callback_cQTreeView_collapsed(slot: int, index: pointer) {.export
   let slotval1 = gen_qabstractitemmodel_types.QModelIndex(h: index)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTreeView_collapsed_release(slot: int) {.exportc: "miqt_exec_callback_QTreeView_collapsed_release".} =
+  let nimfunc = cast[ref QTreeViewcollapsedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncollapsed*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewcollapsedSlot) =
   var tmp = new QTreeViewcollapsedSlot

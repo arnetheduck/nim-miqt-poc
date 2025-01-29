@@ -19,10 +19,15 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QsciLexer_colorChanged(intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexer_colorChanged_release(intptr_t);
 void miqt_exec_callback_QsciLexer_eolFillChanged(intptr_t, bool, int);
+void miqt_exec_callback_QsciLexer_eolFillChanged_release(intptr_t);
 void miqt_exec_callback_QsciLexer_fontChanged(intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexer_fontChanged_release(intptr_t);
 void miqt_exec_callback_QsciLexer_paperChanged(intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexer_paperChanged_release(intptr_t);
 void miqt_exec_callback_QsciLexer_propertyChanged(intptr_t, const char*, const char*);
+void miqt_exec_callback_QsciLexer_propertyChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1204,13 +1209,22 @@ void QsciLexer_colorChanged(QsciLexer* self, QColor* c, int style) {
 }
 
 void QsciLexer_connect_colorChanged(QsciLexer* self, intptr_t slot) {
-	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const QColor&, int)>(&QsciLexer::colorChanged), self, [=](const QColor& c, int style) {
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
-		int sigval2 = style;
-		miqt_exec_callback_QsciLexer_colorChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QColor& c, int style) {
+			const QColor& c_ret = c;
+			// Cast returned reference into pointer
+			QColor* sigval1 = const_cast<QColor*>(&c_ret);
+			int sigval2 = style;
+			miqt_exec_callback_QsciLexer_colorChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciLexer_colorChanged_release(slot); }
+	};
+	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const QColor&, int)>(&QsciLexer::colorChanged), self, caller{slot});
 }
 
 void QsciLexer_eolFillChanged(QsciLexer* self, bool eolfilled, int style) {
@@ -1218,11 +1232,20 @@ void QsciLexer_eolFillChanged(QsciLexer* self, bool eolfilled, int style) {
 }
 
 void QsciLexer_connect_eolFillChanged(QsciLexer* self, intptr_t slot) {
-	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(bool, int)>(&QsciLexer::eolFillChanged), self, [=](bool eolfilled, int style) {
-		bool sigval1 = eolfilled;
-		int sigval2 = style;
-		miqt_exec_callback_QsciLexer_eolFillChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool eolfilled, int style) {
+			bool sigval1 = eolfilled;
+			int sigval2 = style;
+			miqt_exec_callback_QsciLexer_eolFillChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciLexer_eolFillChanged_release(slot); }
+	};
+	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(bool, int)>(&QsciLexer::eolFillChanged), self, caller{slot});
 }
 
 void QsciLexer_fontChanged(QsciLexer* self, QFont* f, int style) {
@@ -1230,13 +1253,22 @@ void QsciLexer_fontChanged(QsciLexer* self, QFont* f, int style) {
 }
 
 void QsciLexer_connect_fontChanged(QsciLexer* self, intptr_t slot) {
-	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const QFont&, int)>(&QsciLexer::fontChanged), self, [=](const QFont& f, int style) {
-		const QFont& f_ret = f;
-		// Cast returned reference into pointer
-		QFont* sigval1 = const_cast<QFont*>(&f_ret);
-		int sigval2 = style;
-		miqt_exec_callback_QsciLexer_fontChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QFont& f, int style) {
+			const QFont& f_ret = f;
+			// Cast returned reference into pointer
+			QFont* sigval1 = const_cast<QFont*>(&f_ret);
+			int sigval2 = style;
+			miqt_exec_callback_QsciLexer_fontChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciLexer_fontChanged_release(slot); }
+	};
+	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const QFont&, int)>(&QsciLexer::fontChanged), self, caller{slot});
 }
 
 void QsciLexer_paperChanged(QsciLexer* self, QColor* c, int style) {
@@ -1244,13 +1276,22 @@ void QsciLexer_paperChanged(QsciLexer* self, QColor* c, int style) {
 }
 
 void QsciLexer_connect_paperChanged(QsciLexer* self, intptr_t slot) {
-	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const QColor&, int)>(&QsciLexer::paperChanged), self, [=](const QColor& c, int style) {
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
-		int sigval2 = style;
-		miqt_exec_callback_QsciLexer_paperChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QColor& c, int style) {
+			const QColor& c_ret = c;
+			// Cast returned reference into pointer
+			QColor* sigval1 = const_cast<QColor*>(&c_ret);
+			int sigval2 = style;
+			miqt_exec_callback_QsciLexer_paperChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciLexer_paperChanged_release(slot); }
+	};
+	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const QColor&, int)>(&QsciLexer::paperChanged), self, caller{slot});
 }
 
 void QsciLexer_propertyChanged(QsciLexer* self, const char* prop, const char* val) {
@@ -1258,11 +1299,20 @@ void QsciLexer_propertyChanged(QsciLexer* self, const char* prop, const char* va
 }
 
 void QsciLexer_connect_propertyChanged(QsciLexer* self, intptr_t slot) {
-	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const char*, const char*)>(&QsciLexer::propertyChanged), self, [=](const char* prop, const char* val) {
-		const char* sigval1 = (const char*) prop;
-		const char* sigval2 = (const char*) val;
-		miqt_exec_callback_QsciLexer_propertyChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* prop, const char* val) {
+			const char* sigval1 = (const char*) prop;
+			const char* sigval2 = (const char*) val;
+			miqt_exec_callback_QsciLexer_propertyChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciLexer_propertyChanged_release(slot); }
+	};
+	MiqtVirtualQsciLexer::connect(self, static_cast<void (QsciLexer::*)(const char*, const char*)>(&QsciLexer::propertyChanged), self, caller{slot});
 }
 
 struct miqt_string QsciLexer_tr2(const char* s, const char* c) {

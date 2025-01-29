@@ -566,6 +566,10 @@ proc miqt_exec_callback_cQMessageBox_buttonClicked(slot: int, button: pointer) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMessageBox_buttonClicked_release(slot: int) {.exportc: "miqt_exec_callback_QMessageBox_buttonClicked_release".} =
+  let nimfunc = cast[ref QMessageBoxbuttonClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbuttonClicked*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxbuttonClickedSlot) =
   var tmp = new QMessageBoxbuttonClickedSlot
   tmp[] = slot

@@ -59,19 +59,33 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsObject_parentChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_parentChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_opacityChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_opacityChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_visibleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_visibleChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_enabledChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_enabledChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_xChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_xChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_yChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_yChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_zChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_zChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_rotationChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_rotationChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_scaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_scaleChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_childrenChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_childrenChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_widthChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_widthChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsObject_heightChanged(intptr_t);
+void miqt_exec_callback_QGraphicsObject_heightChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsTextItem_linkActivated(intptr_t, struct miqt_string);
+void miqt_exec_callback_QGraphicsTextItem_linkActivated_release(intptr_t);
 void miqt_exec_callback_QGraphicsTextItem_linkHovered(intptr_t, struct miqt_string);
+void miqt_exec_callback_QGraphicsTextItem_linkHovered_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2669,9 +2683,18 @@ void QGraphicsObject_parentChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_parentChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::parentChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_parentChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_parentChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_parentChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::parentChanged), self, caller{slot});
 }
 
 void QGraphicsObject_opacityChanged(QGraphicsObject* self) {
@@ -2679,9 +2702,18 @@ void QGraphicsObject_opacityChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_opacityChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::opacityChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_opacityChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_opacityChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_opacityChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::opacityChanged), self, caller{slot});
 }
 
 void QGraphicsObject_visibleChanged(QGraphicsObject* self) {
@@ -2689,9 +2721,18 @@ void QGraphicsObject_visibleChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_visibleChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::visibleChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_visibleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_visibleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_visibleChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::visibleChanged), self, caller{slot});
 }
 
 void QGraphicsObject_enabledChanged(QGraphicsObject* self) {
@@ -2699,9 +2740,18 @@ void QGraphicsObject_enabledChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_enabledChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::enabledChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_enabledChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_enabledChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_enabledChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::enabledChanged), self, caller{slot});
 }
 
 void QGraphicsObject_xChanged(QGraphicsObject* self) {
@@ -2709,9 +2759,18 @@ void QGraphicsObject_xChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_xChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::xChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_xChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_xChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_xChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::xChanged), self, caller{slot});
 }
 
 void QGraphicsObject_yChanged(QGraphicsObject* self) {
@@ -2719,9 +2778,18 @@ void QGraphicsObject_yChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_yChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::yChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_yChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_yChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_yChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::yChanged), self, caller{slot});
 }
 
 void QGraphicsObject_zChanged(QGraphicsObject* self) {
@@ -2729,9 +2797,18 @@ void QGraphicsObject_zChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_zChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::zChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_zChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_zChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_zChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::zChanged), self, caller{slot});
 }
 
 void QGraphicsObject_rotationChanged(QGraphicsObject* self) {
@@ -2739,9 +2816,18 @@ void QGraphicsObject_rotationChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_rotationChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::rotationChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_rotationChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_rotationChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_rotationChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::rotationChanged), self, caller{slot});
 }
 
 void QGraphicsObject_scaleChanged(QGraphicsObject* self) {
@@ -2749,9 +2835,18 @@ void QGraphicsObject_scaleChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_scaleChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::scaleChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_scaleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_scaleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_scaleChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::scaleChanged), self, caller{slot});
 }
 
 void QGraphicsObject_childrenChanged(QGraphicsObject* self) {
@@ -2759,9 +2854,18 @@ void QGraphicsObject_childrenChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_childrenChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::childrenChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_childrenChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_childrenChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_childrenChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::childrenChanged), self, caller{slot});
 }
 
 void QGraphicsObject_widthChanged(QGraphicsObject* self) {
@@ -2769,9 +2873,18 @@ void QGraphicsObject_widthChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_widthChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::widthChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_widthChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_widthChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_widthChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::widthChanged), self, caller{slot});
 }
 
 void QGraphicsObject_heightChanged(QGraphicsObject* self) {
@@ -2779,9 +2892,18 @@ void QGraphicsObject_heightChanged(QGraphicsObject* self) {
 }
 
 void QGraphicsObject_connect_heightChanged(QGraphicsObject* self, intptr_t slot) {
-	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::heightChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsObject_heightChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsObject_heightChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsObject_heightChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsObject::connect(self, static_cast<void (QGraphicsObject::*)()>(&QGraphicsObject::heightChanged), self, caller{slot});
 }
 
 struct miqt_string QGraphicsObject_tr2(const char* s, const char* c) {
@@ -10673,17 +10795,26 @@ void QGraphicsTextItem_linkActivated(QGraphicsTextItem* self, struct miqt_string
 }
 
 void QGraphicsTextItem_connect_linkActivated(QGraphicsTextItem* self, intptr_t slot) {
-	MiqtVirtualQGraphicsTextItem::connect(self, static_cast<void (QGraphicsTextItem::*)(const QString&)>(&QGraphicsTextItem::linkActivated), self, [=](const QString& param1) {
-		const QString param1_ret = param1;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string param1_ms;
-		param1_ms.len = param1_b.length();
-		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
-		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
-		struct miqt_string sigval1 = param1_ms;
-		miqt_exec_callback_QGraphicsTextItem_linkActivated(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& param1) {
+			const QString param1_ret = param1;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray param1_b = param1_ret.toUtf8();
+			struct miqt_string param1_ms;
+			param1_ms.len = param1_b.length();
+			param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+			memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+			struct miqt_string sigval1 = param1_ms;
+			miqt_exec_callback_QGraphicsTextItem_linkActivated(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsTextItem_linkActivated_release(slot); }
+	};
+	MiqtVirtualQGraphicsTextItem::connect(self, static_cast<void (QGraphicsTextItem::*)(const QString&)>(&QGraphicsTextItem::linkActivated), self, caller{slot});
 }
 
 void QGraphicsTextItem_linkHovered(QGraphicsTextItem* self, struct miqt_string param1) {
@@ -10692,17 +10823,26 @@ void QGraphicsTextItem_linkHovered(QGraphicsTextItem* self, struct miqt_string p
 }
 
 void QGraphicsTextItem_connect_linkHovered(QGraphicsTextItem* self, intptr_t slot) {
-	MiqtVirtualQGraphicsTextItem::connect(self, static_cast<void (QGraphicsTextItem::*)(const QString&)>(&QGraphicsTextItem::linkHovered), self, [=](const QString& param1) {
-		const QString param1_ret = param1;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string param1_ms;
-		param1_ms.len = param1_b.length();
-		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
-		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
-		struct miqt_string sigval1 = param1_ms;
-		miqt_exec_callback_QGraphicsTextItem_linkHovered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& param1) {
+			const QString param1_ret = param1;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray param1_b = param1_ret.toUtf8();
+			struct miqt_string param1_ms;
+			param1_ms.len = param1_b.length();
+			param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+			memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+			struct miqt_string sigval1 = param1_ms;
+			miqt_exec_callback_QGraphicsTextItem_linkHovered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsTextItem_linkHovered_release(slot); }
+	};
+	MiqtVirtualQGraphicsTextItem::connect(self, static_cast<void (QGraphicsTextItem::*)(const QString&)>(&QGraphicsTextItem::linkHovered), self, caller{slot});
 }
 
 struct miqt_string QGraphicsTextItem_tr2(const char* s, const char* c) {

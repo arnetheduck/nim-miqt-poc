@@ -490,6 +490,10 @@ proc miqt_exec_callback_cQQuickImageResponse_finished(slot: int) {.exportc: "miq
   let nimfunc = cast[ptr QQuickImageResponsefinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickImageResponse_finished_release(slot: int) {.exportc: "miqt_exec_callback_QQuickImageResponse_finished_release".} =
+  let nimfunc = cast[ref QQuickImageResponsefinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsefinishedSlot) =
   var tmp = new QQuickImageResponsefinishedSlot
   tmp[] = slot

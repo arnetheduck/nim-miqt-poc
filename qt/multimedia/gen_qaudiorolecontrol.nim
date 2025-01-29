@@ -107,6 +107,10 @@ proc miqt_exec_callback_cQAudioRoleControl_audioRoleChanged(slot: int, role: cin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioRoleControl_audioRoleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoleControl_audioRoleChanged_release".} =
+  let nimfunc = cast[ref QAudioRoleControlaudioRoleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaudioRoleChanged*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, slot: QAudioRoleControlaudioRoleChangedSlot) =
   var tmp = new QAudioRoleControlaudioRoleChangedSlot
   tmp[] = slot

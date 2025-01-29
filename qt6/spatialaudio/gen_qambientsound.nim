@@ -162,6 +162,10 @@ proc miqt_exec_callback_cQAmbientSound_sourceChanged(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QAmbientSoundsourceChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAmbientSound_sourceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAmbientSound_sourceChanged_release".} =
+  let nimfunc = cast[ref QAmbientSoundsourceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsourceChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundsourceChangedSlot) =
   var tmp = new QAmbientSoundsourceChangedSlot
   tmp[] = slot
@@ -175,6 +179,10 @@ type QAmbientSoundloopsChangedSlot* = proc()
 proc miqt_exec_callback_cQAmbientSound_loopsChanged(slot: int) {.exportc: "miqt_exec_callback_QAmbientSound_loopsChanged".} =
   let nimfunc = cast[ptr QAmbientSoundloopsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAmbientSound_loopsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAmbientSound_loopsChanged_release".} =
+  let nimfunc = cast[ref QAmbientSoundloopsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onloopsChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundloopsChangedSlot) =
   var tmp = new QAmbientSoundloopsChangedSlot
@@ -190,6 +198,10 @@ proc miqt_exec_callback_cQAmbientSound_autoPlayChanged(slot: int) {.exportc: "mi
   let nimfunc = cast[ptr QAmbientSoundautoPlayChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAmbientSound_autoPlayChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAmbientSound_autoPlayChanged_release".} =
+  let nimfunc = cast[ref QAmbientSoundautoPlayChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onautoPlayChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundautoPlayChangedSlot) =
   var tmp = new QAmbientSoundautoPlayChangedSlot
   tmp[] = slot
@@ -203,6 +215,10 @@ type QAmbientSoundvolumeChangedSlot* = proc()
 proc miqt_exec_callback_cQAmbientSound_volumeChanged(slot: int) {.exportc: "miqt_exec_callback_QAmbientSound_volumeChanged".} =
   let nimfunc = cast[ptr QAmbientSoundvolumeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAmbientSound_volumeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAmbientSound_volumeChanged_release".} =
+  let nimfunc = cast[ref QAmbientSoundvolumeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvolumeChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundvolumeChangedSlot) =
   var tmp = new QAmbientSoundvolumeChangedSlot

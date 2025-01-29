@@ -183,6 +183,10 @@ proc miqt_exec_callback_cQAudioEngine_outputModeChanged(slot: int) {.exportc: "m
   let nimfunc = cast[ptr QAudioEngineoutputModeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioEngine_outputModeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioEngine_outputModeChanged_release".} =
+  let nimfunc = cast[ref QAudioEngineoutputModeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onoutputModeChanged*(self: gen_qaudioengine_types.QAudioEngine, slot: QAudioEngineoutputModeChangedSlot) =
   var tmp = new QAudioEngineoutputModeChangedSlot
   tmp[] = slot
@@ -196,6 +200,10 @@ type QAudioEngineoutputDeviceChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioEngine_outputDeviceChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioEngine_outputDeviceChanged".} =
   let nimfunc = cast[ptr QAudioEngineoutputDeviceChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioEngine_outputDeviceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioEngine_outputDeviceChanged_release".} =
+  let nimfunc = cast[ref QAudioEngineoutputDeviceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onoutputDeviceChanged*(self: gen_qaudioengine_types.QAudioEngine, slot: QAudioEngineoutputDeviceChangedSlot) =
   var tmp = new QAudioEngineoutputDeviceChangedSlot
@@ -211,6 +219,10 @@ proc miqt_exec_callback_cQAudioEngine_masterVolumeChanged(slot: int) {.exportc: 
   let nimfunc = cast[ptr QAudioEnginemasterVolumeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioEngine_masterVolumeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioEngine_masterVolumeChanged_release".} =
+  let nimfunc = cast[ref QAudioEnginemasterVolumeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmasterVolumeChanged*(self: gen_qaudioengine_types.QAudioEngine, slot: QAudioEnginemasterVolumeChangedSlot) =
   var tmp = new QAudioEnginemasterVolumeChangedSlot
   tmp[] = slot
@@ -225,6 +237,10 @@ proc miqt_exec_callback_cQAudioEngine_pausedChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QAudioEnginepausedChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioEngine_pausedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioEngine_pausedChanged_release".} =
+  let nimfunc = cast[ref QAudioEnginepausedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpausedChanged*(self: gen_qaudioengine_types.QAudioEngine, slot: QAudioEnginepausedChangedSlot) =
   var tmp = new QAudioEnginepausedChangedSlot
   tmp[] = slot
@@ -238,6 +254,10 @@ type QAudioEnginedistanceScaleChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioEngine_distanceScaleChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioEngine_distanceScaleChanged".} =
   let nimfunc = cast[ptr QAudioEnginedistanceScaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioEngine_distanceScaleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioEngine_distanceScaleChanged_release".} =
+  let nimfunc = cast[ref QAudioEnginedistanceScaleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondistanceScaleChanged*(self: gen_qaudioengine_types.QAudioEngine, slot: QAudioEnginedistanceScaleChangedSlot) =
   var tmp = new QAudioEnginedistanceScaleChangedSlot

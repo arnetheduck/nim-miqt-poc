@@ -395,6 +395,10 @@ proc miqt_exec_callback_cQsciLexer_colorChanged(slot: int, c: pointer, style: ci
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciLexer_colorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciLexer_colorChanged_release".} =
+  let nimfunc = cast[ref QsciLexercolorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncolorChanged*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexercolorChangedSlot) =
   var tmp = new QsciLexercolorChangedSlot
   tmp[] = slot
@@ -412,6 +416,10 @@ proc miqt_exec_callback_cQsciLexer_eolFillChanged(slot: int, eolfilled: bool, st
   let slotval2 = style
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQsciLexer_eolFillChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciLexer_eolFillChanged_release".} =
+  let nimfunc = cast[ref QsciLexereolFillChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oneolFillChanged*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexereolFillChangedSlot) =
   var tmp = new QsciLexereolFillChangedSlot
@@ -431,6 +439,10 @@ proc miqt_exec_callback_cQsciLexer_fontChanged(slot: int, f: pointer, style: cin
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciLexer_fontChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciLexer_fontChanged_release".} =
+  let nimfunc = cast[ref QsciLexerfontChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfontChanged*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerfontChangedSlot) =
   var tmp = new QsciLexerfontChangedSlot
   tmp[] = slot
@@ -449,6 +461,10 @@ proc miqt_exec_callback_cQsciLexer_paperChanged(slot: int, c: pointer, style: ci
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciLexer_paperChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciLexer_paperChanged_release".} =
+  let nimfunc = cast[ref QsciLexerpaperChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpaperChanged*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerpaperChangedSlot) =
   var tmp = new QsciLexerpaperChangedSlot
   tmp[] = slot
@@ -466,6 +482,10 @@ proc miqt_exec_callback_cQsciLexer_propertyChanged(slot: int, prop: cstring, val
   let slotval2 = (val)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQsciLexer_propertyChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciLexer_propertyChanged_release".} =
+  let nimfunc = cast[ref QsciLexerpropertyChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpropertyChanged*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerpropertyChangedSlot) =
   var tmp = new QsciLexerpropertyChangedSlot

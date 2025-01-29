@@ -190,6 +190,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonClicked(slot: int, param1: pointer) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQButtonGroup_buttonClicked_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonClicked_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbuttonClicked*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonClickedSlot) =
   var tmp = new QButtonGroupbuttonClickedSlot
   tmp[] = slot
@@ -206,6 +210,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonPressed(slot: int, param1: pointer) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQButtonGroup_buttonPressed_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonPressed_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonPressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbuttonPressed*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonPressedSlot) =
   var tmp = new QButtonGroupbuttonPressedSlot
   tmp[] = slot
@@ -221,6 +229,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonReleased(slot: int, param1: pointer)
   let slotval1 = gen_qabstractbutton_types.QAbstractButton(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQButtonGroup_buttonReleased_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonReleased_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonReleasedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbuttonReleased*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonReleasedSlot) =
   var tmp = new QButtonGroupbuttonReleasedSlot
@@ -240,6 +252,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonToggled(slot: int, param1: pointer, 
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQButtonGroup_buttonToggled_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonToggled_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonToggledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbuttonToggled*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonToggledSlot) =
   var tmp = new QButtonGroupbuttonToggledSlot
   tmp[] = slot
@@ -255,6 +271,10 @@ proc miqt_exec_callback_cQButtonGroup_idClicked(slot: int, param1: cint) {.expor
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQButtonGroup_idClicked_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_idClicked_release".} =
+  let nimfunc = cast[ref QButtonGroupidClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onidClicked*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupidClickedSlot) =
   var tmp = new QButtonGroupidClickedSlot
@@ -272,6 +292,10 @@ proc miqt_exec_callback_cQButtonGroup_idPressed(slot: int, param1: cint) {.expor
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQButtonGroup_idPressed_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_idPressed_release".} =
+  let nimfunc = cast[ref QButtonGroupidPressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onidPressed*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupidPressedSlot) =
   var tmp = new QButtonGroupidPressedSlot
   tmp[] = slot
@@ -287,6 +311,10 @@ proc miqt_exec_callback_cQButtonGroup_idReleased(slot: int, param1: cint) {.expo
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQButtonGroup_idReleased_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_idReleased_release".} =
+  let nimfunc = cast[ref QButtonGroupidReleasedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onidReleased*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupidReleasedSlot) =
   var tmp = new QButtonGroupidReleasedSlot
@@ -306,6 +334,10 @@ proc miqt_exec_callback_cQButtonGroup_idToggled(slot: int, param1: cint, param2:
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQButtonGroup_idToggled_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_idToggled_release".} =
+  let nimfunc = cast[ref QButtonGroupidToggledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onidToggled*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupidToggledSlot) =
   var tmp = new QButtonGroupidToggledSlot
   tmp[] = slot
@@ -321,6 +353,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonClickedWithInt(slot: int, param1: ci
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQButtonGroup_buttonClickedWithInt_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonClickedWithInt_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonClickedWithIntSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbuttonClicked*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonClickedWithIntSlot) =
   var tmp = new QButtonGroupbuttonClickedWithIntSlot
@@ -338,6 +374,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonPressedWithInt(slot: int, param1: ci
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQButtonGroup_buttonPressedWithInt_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonPressedWithInt_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonPressedWithIntSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbuttonPressed*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonPressedWithIntSlot) =
   var tmp = new QButtonGroupbuttonPressedWithIntSlot
   tmp[] = slot
@@ -353,6 +393,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonReleasedWithInt(slot: int, param1: c
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQButtonGroup_buttonReleasedWithInt_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonReleasedWithInt_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonReleasedWithIntSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbuttonReleased*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonReleasedWithIntSlot) =
   var tmp = new QButtonGroupbuttonReleasedWithIntSlot
@@ -371,6 +415,10 @@ proc miqt_exec_callback_cQButtonGroup_buttonToggled2(slot: int, param1: cint, pa
   let slotval2 = param2
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQButtonGroup_buttonToggled2_release(slot: int) {.exportc: "miqt_exec_callback_QButtonGroup_buttonToggled2_release".} =
+  let nimfunc = cast[ref QButtonGroupbuttonToggled2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbuttonToggled*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupbuttonToggled2Slot) =
   var tmp = new QButtonGroupbuttonToggled2Slot

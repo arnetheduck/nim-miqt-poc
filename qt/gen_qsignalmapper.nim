@@ -174,6 +174,10 @@ proc miqt_exec_callback_cQSignalMapper_mapped(slot: int, param1: cint) {.exportc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSignalMapper_mapped_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mapped_release".} =
+  let nimfunc = cast[ref QSignalMappermappedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmapped*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedSlot) =
   var tmp = new QSignalMappermappedSlot
   tmp[] = slot
@@ -193,6 +197,10 @@ proc miqt_exec_callback_cQSignalMapper_mappedWithQString(slot: int, param1: stru
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSignalMapper_mappedWithQString_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mappedWithQString_release".} =
+  let nimfunc = cast[ref QSignalMappermappedWithQStringSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmapped*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedWithQStringSlot) =
   var tmp = new QSignalMappermappedWithQStringSlot
   tmp[] = slot
@@ -208,6 +216,10 @@ proc miqt_exec_callback_cQSignalMapper_mappedWithQWidget(slot: int, param1: poin
   let slotval1 = gen_qwidget_types.QWidget(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSignalMapper_mappedWithQWidget_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mappedWithQWidget_release".} =
+  let nimfunc = cast[ref QSignalMappermappedWithQWidgetSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmapped*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedWithQWidgetSlot) =
   var tmp = new QSignalMappermappedWithQWidgetSlot
@@ -225,6 +237,10 @@ proc miqt_exec_callback_cQSignalMapper_mappedWithQObject(slot: int, param1: poin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSignalMapper_mappedWithQObject_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mappedWithQObject_release".} =
+  let nimfunc = cast[ref QSignalMappermappedWithQObjectSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmapped*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedWithQObjectSlot) =
   var tmp = new QSignalMappermappedWithQObjectSlot
   tmp[] = slot
@@ -240,6 +256,10 @@ proc miqt_exec_callback_cQSignalMapper_mappedInt(slot: int, param1: cint) {.expo
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSignalMapper_mappedInt_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mappedInt_release".} =
+  let nimfunc = cast[ref QSignalMappermappedIntSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmappedInt*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedIntSlot) =
   var tmp = new QSignalMappermappedIntSlot
@@ -260,6 +280,10 @@ proc miqt_exec_callback_cQSignalMapper_mappedString(slot: int, param1: struct_mi
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSignalMapper_mappedString_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mappedString_release".} =
+  let nimfunc = cast[ref QSignalMappermappedStringSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmappedString*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedStringSlot) =
   var tmp = new QSignalMappermappedStringSlot
   tmp[] = slot
@@ -276,6 +300,10 @@ proc miqt_exec_callback_cQSignalMapper_mappedWidget(slot: int, param1: pointer) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSignalMapper_mappedWidget_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mappedWidget_release".} =
+  let nimfunc = cast[ref QSignalMappermappedWidgetSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmappedWidget*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedWidgetSlot) =
   var tmp = new QSignalMappermappedWidgetSlot
   tmp[] = slot
@@ -291,6 +319,10 @@ proc miqt_exec_callback_cQSignalMapper_mappedObject(slot: int, param1: pointer) 
   let slotval1 = gen_qobject_types.QObject(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSignalMapper_mappedObject_release(slot: int) {.exportc: "miqt_exec_callback_QSignalMapper_mappedObject_release".} =
+  let nimfunc = cast[ref QSignalMappermappedObjectSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmappedObject*(self: gen_qsignalmapper_types.QSignalMapper, slot: QSignalMappermappedObjectSlot) =
   var tmp = new QSignalMappermappedObjectSlot

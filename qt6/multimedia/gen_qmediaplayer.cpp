@@ -23,23 +23,41 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMediaPlayer_sourceChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QMediaPlayer_sourceChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_playbackStateChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_playbackStateChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_mediaStatusChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_mediaStatusChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_durationChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayer_durationChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_positionChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayer_positionChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_hasAudioChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_hasAudioChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_hasVideoChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_hasVideoChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_bufferProgressChanged(intptr_t, float);
+void miqt_exec_callback_QMediaPlayer_bufferProgressChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_seekableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_seekableChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_playbackRateChanged(intptr_t, double);
+void miqt_exec_callback_QMediaPlayer_playbackRateChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_loopsChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_loopsChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_metaDataChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_metaDataChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_videoOutputChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_videoOutputChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_audioOutputChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_audioOutputChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_tracksChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_tracksChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_activeTracksChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_activeTracksChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_errorChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_errorChanged_release(intptr_t);
 void miqt_exec_callback_QMediaPlayer_errorOccurred(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QMediaPlayer_errorOccurred_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -502,12 +520,21 @@ void QMediaPlayer_sourceChanged(QMediaPlayer* self, QUrl* media) {
 }
 
 void QMediaPlayer_connect_sourceChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QUrl&)>(&QMediaPlayer::sourceChanged), self, [=](const QUrl& media) {
-		const QUrl& media_ret = media;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&media_ret);
-		miqt_exec_callback_QMediaPlayer_sourceChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& media) {
+			const QUrl& media_ret = media;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&media_ret);
+			miqt_exec_callback_QMediaPlayer_sourceChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_sourceChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QUrl&)>(&QMediaPlayer::sourceChanged), self, caller{slot});
 }
 
 void QMediaPlayer_playbackStateChanged(QMediaPlayer* self, int newState) {
@@ -515,11 +542,20 @@ void QMediaPlayer_playbackStateChanged(QMediaPlayer* self, int newState) {
 }
 
 void QMediaPlayer_connect_playbackStateChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::PlaybackState)>(&QMediaPlayer::playbackStateChanged), self, [=](QMediaPlayer::PlaybackState newState) {
-		QMediaPlayer::PlaybackState newState_ret = newState;
-		int sigval1 = static_cast<int>(newState_ret);
-		miqt_exec_callback_QMediaPlayer_playbackStateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMediaPlayer::PlaybackState newState) {
+			QMediaPlayer::PlaybackState newState_ret = newState;
+			int sigval1 = static_cast<int>(newState_ret);
+			miqt_exec_callback_QMediaPlayer_playbackStateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_playbackStateChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::PlaybackState)>(&QMediaPlayer::playbackStateChanged), self, caller{slot});
 }
 
 void QMediaPlayer_mediaStatusChanged(QMediaPlayer* self, int status) {
@@ -527,11 +563,20 @@ void QMediaPlayer_mediaStatusChanged(QMediaPlayer* self, int status) {
 }
 
 void QMediaPlayer_connect_mediaStatusChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::MediaStatus)>(&QMediaPlayer::mediaStatusChanged), self, [=](QMediaPlayer::MediaStatus status) {
-		QMediaPlayer::MediaStatus status_ret = status;
-		int sigval1 = static_cast<int>(status_ret);
-		miqt_exec_callback_QMediaPlayer_mediaStatusChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMediaPlayer::MediaStatus status) {
+			QMediaPlayer::MediaStatus status_ret = status;
+			int sigval1 = static_cast<int>(status_ret);
+			miqt_exec_callback_QMediaPlayer_mediaStatusChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_mediaStatusChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::MediaStatus)>(&QMediaPlayer::mediaStatusChanged), self, caller{slot});
 }
 
 void QMediaPlayer_durationChanged(QMediaPlayer* self, long long duration) {
@@ -539,11 +584,20 @@ void QMediaPlayer_durationChanged(QMediaPlayer* self, long long duration) {
 }
 
 void QMediaPlayer_connect_durationChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::durationChanged), self, [=](qint64 duration) {
-		qint64 duration_ret = duration;
-		long long sigval1 = static_cast<long long>(duration_ret);
-		miqt_exec_callback_QMediaPlayer_durationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qint64 duration) {
+			qint64 duration_ret = duration;
+			long long sigval1 = static_cast<long long>(duration_ret);
+			miqt_exec_callback_QMediaPlayer_durationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_durationChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::durationChanged), self, caller{slot});
 }
 
 void QMediaPlayer_positionChanged(QMediaPlayer* self, long long position) {
@@ -551,11 +605,20 @@ void QMediaPlayer_positionChanged(QMediaPlayer* self, long long position) {
 }
 
 void QMediaPlayer_connect_positionChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::positionChanged), self, [=](qint64 position) {
-		qint64 position_ret = position;
-		long long sigval1 = static_cast<long long>(position_ret);
-		miqt_exec_callback_QMediaPlayer_positionChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qint64 position) {
+			qint64 position_ret = position;
+			long long sigval1 = static_cast<long long>(position_ret);
+			miqt_exec_callback_QMediaPlayer_positionChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_positionChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::positionChanged), self, caller{slot});
 }
 
 void QMediaPlayer_hasAudioChanged(QMediaPlayer* self, bool available) {
@@ -563,10 +626,19 @@ void QMediaPlayer_hasAudioChanged(QMediaPlayer* self, bool available) {
 }
 
 void QMediaPlayer_connect_hasAudioChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::hasAudioChanged), self, [=](bool available) {
-		bool sigval1 = available;
-		miqt_exec_callback_QMediaPlayer_hasAudioChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool available) {
+			bool sigval1 = available;
+			miqt_exec_callback_QMediaPlayer_hasAudioChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_hasAudioChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::hasAudioChanged), self, caller{slot});
 }
 
 void QMediaPlayer_hasVideoChanged(QMediaPlayer* self, bool videoAvailable) {
@@ -574,10 +646,19 @@ void QMediaPlayer_hasVideoChanged(QMediaPlayer* self, bool videoAvailable) {
 }
 
 void QMediaPlayer_connect_hasVideoChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::hasVideoChanged), self, [=](bool videoAvailable) {
-		bool sigval1 = videoAvailable;
-		miqt_exec_callback_QMediaPlayer_hasVideoChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool videoAvailable) {
+			bool sigval1 = videoAvailable;
+			miqt_exec_callback_QMediaPlayer_hasVideoChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_hasVideoChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::hasVideoChanged), self, caller{slot});
 }
 
 void QMediaPlayer_bufferProgressChanged(QMediaPlayer* self, float progress) {
@@ -585,10 +666,19 @@ void QMediaPlayer_bufferProgressChanged(QMediaPlayer* self, float progress) {
 }
 
 void QMediaPlayer_connect_bufferProgressChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(float)>(&QMediaPlayer::bufferProgressChanged), self, [=](float progress) {
-		float sigval1 = progress;
-		miqt_exec_callback_QMediaPlayer_bufferProgressChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float progress) {
+			float sigval1 = progress;
+			miqt_exec_callback_QMediaPlayer_bufferProgressChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_bufferProgressChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(float)>(&QMediaPlayer::bufferProgressChanged), self, caller{slot});
 }
 
 void QMediaPlayer_seekableChanged(QMediaPlayer* self, bool seekable) {
@@ -596,10 +686,19 @@ void QMediaPlayer_seekableChanged(QMediaPlayer* self, bool seekable) {
 }
 
 void QMediaPlayer_connect_seekableChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::seekableChanged), self, [=](bool seekable) {
-		bool sigval1 = seekable;
-		miqt_exec_callback_QMediaPlayer_seekableChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool seekable) {
+			bool sigval1 = seekable;
+			miqt_exec_callback_QMediaPlayer_seekableChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_seekableChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::seekableChanged), self, caller{slot});
 }
 
 void QMediaPlayer_playbackRateChanged(QMediaPlayer* self, double rate) {
@@ -607,11 +706,20 @@ void QMediaPlayer_playbackRateChanged(QMediaPlayer* self, double rate) {
 }
 
 void QMediaPlayer_connect_playbackRateChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qreal)>(&QMediaPlayer::playbackRateChanged), self, [=](qreal rate) {
-		qreal rate_ret = rate;
-		double sigval1 = static_cast<double>(rate_ret);
-		miqt_exec_callback_QMediaPlayer_playbackRateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal rate) {
+			qreal rate_ret = rate;
+			double sigval1 = static_cast<double>(rate_ret);
+			miqt_exec_callback_QMediaPlayer_playbackRateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_playbackRateChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qreal)>(&QMediaPlayer::playbackRateChanged), self, caller{slot});
 }
 
 void QMediaPlayer_loopsChanged(QMediaPlayer* self) {
@@ -619,9 +727,18 @@ void QMediaPlayer_loopsChanged(QMediaPlayer* self) {
 }
 
 void QMediaPlayer_connect_loopsChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::loopsChanged), self, [=]() {
-		miqt_exec_callback_QMediaPlayer_loopsChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaPlayer_loopsChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_loopsChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::loopsChanged), self, caller{slot});
 }
 
 void QMediaPlayer_metaDataChanged(QMediaPlayer* self) {
@@ -629,9 +746,18 @@ void QMediaPlayer_metaDataChanged(QMediaPlayer* self) {
 }
 
 void QMediaPlayer_connect_metaDataChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::metaDataChanged), self, [=]() {
-		miqt_exec_callback_QMediaPlayer_metaDataChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaPlayer_metaDataChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_metaDataChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::metaDataChanged), self, caller{slot});
 }
 
 void QMediaPlayer_videoOutputChanged(QMediaPlayer* self) {
@@ -639,9 +765,18 @@ void QMediaPlayer_videoOutputChanged(QMediaPlayer* self) {
 }
 
 void QMediaPlayer_connect_videoOutputChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::videoOutputChanged), self, [=]() {
-		miqt_exec_callback_QMediaPlayer_videoOutputChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaPlayer_videoOutputChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_videoOutputChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::videoOutputChanged), self, caller{slot});
 }
 
 void QMediaPlayer_audioOutputChanged(QMediaPlayer* self) {
@@ -649,9 +784,18 @@ void QMediaPlayer_audioOutputChanged(QMediaPlayer* self) {
 }
 
 void QMediaPlayer_connect_audioOutputChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::audioOutputChanged), self, [=]() {
-		miqt_exec_callback_QMediaPlayer_audioOutputChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaPlayer_audioOutputChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_audioOutputChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::audioOutputChanged), self, caller{slot});
 }
 
 void QMediaPlayer_tracksChanged(QMediaPlayer* self) {
@@ -659,9 +803,18 @@ void QMediaPlayer_tracksChanged(QMediaPlayer* self) {
 }
 
 void QMediaPlayer_connect_tracksChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::tracksChanged), self, [=]() {
-		miqt_exec_callback_QMediaPlayer_tracksChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaPlayer_tracksChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_tracksChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::tracksChanged), self, caller{slot});
 }
 
 void QMediaPlayer_activeTracksChanged(QMediaPlayer* self) {
@@ -669,9 +822,18 @@ void QMediaPlayer_activeTracksChanged(QMediaPlayer* self) {
 }
 
 void QMediaPlayer_connect_activeTracksChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::activeTracksChanged), self, [=]() {
-		miqt_exec_callback_QMediaPlayer_activeTracksChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaPlayer_activeTracksChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_activeTracksChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::activeTracksChanged), self, caller{slot});
 }
 
 void QMediaPlayer_errorChanged(QMediaPlayer* self) {
@@ -679,9 +841,18 @@ void QMediaPlayer_errorChanged(QMediaPlayer* self) {
 }
 
 void QMediaPlayer_connect_errorChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::errorChanged), self, [=]() {
-		miqt_exec_callback_QMediaPlayer_errorChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaPlayer_errorChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_errorChanged_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)()>(&QMediaPlayer::errorChanged), self, caller{slot});
 }
 
 void QMediaPlayer_errorOccurred(QMediaPlayer* self, int error, struct miqt_string errorString) {
@@ -690,19 +861,28 @@ void QMediaPlayer_errorOccurred(QMediaPlayer* self, int error, struct miqt_strin
 }
 
 void QMediaPlayer_connect_errorOccurred(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::Error, const QString&)>(&QMediaPlayer::errorOccurred), self, [=](QMediaPlayer::Error error, const QString& errorString) {
-		QMediaPlayer::Error error_ret = error;
-		int sigval1 = static_cast<int>(error_ret);
-		const QString errorString_ret = errorString;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray errorString_b = errorString_ret.toUtf8();
-		struct miqt_string errorString_ms;
-		errorString_ms.len = errorString_b.length();
-		errorString_ms.data = static_cast<char*>(malloc(errorString_ms.len));
-		memcpy(errorString_ms.data, errorString_b.data(), errorString_ms.len);
-		struct miqt_string sigval2 = errorString_ms;
-		miqt_exec_callback_QMediaPlayer_errorOccurred(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMediaPlayer::Error error, const QString& errorString) {
+			QMediaPlayer::Error error_ret = error;
+			int sigval1 = static_cast<int>(error_ret);
+			const QString errorString_ret = errorString;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray errorString_b = errorString_ret.toUtf8();
+			struct miqt_string errorString_ms;
+			errorString_ms.len = errorString_b.length();
+			errorString_ms.data = static_cast<char*>(malloc(errorString_ms.len));
+			memcpy(errorString_ms.data, errorString_b.data(), errorString_ms.len);
+			struct miqt_string sigval2 = errorString_ms;
+			miqt_exec_callback_QMediaPlayer_errorOccurred(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaPlayer_errorOccurred_release(slot); }
+	};
+	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::Error, const QString&)>(&QMediaPlayer::errorOccurred), self, caller{slot});
 }
 
 struct miqt_string QMediaPlayer_tr2(const char* s, const char* c) {

@@ -148,6 +148,10 @@ proc miqt_exec_callback_cQSequentialAnimationGroup_currentAnimationChanged(slot:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSequentialAnimationGroup_currentAnimationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSequentialAnimationGroup_currentAnimationChanged_release".} =
+  let nimfunc = cast[ref QSequentialAnimationGroupcurrentAnimationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentAnimationChanged*(self: gen_qsequentialanimationgroup_types.QSequentialAnimationGroup, slot: QSequentialAnimationGroupcurrentAnimationChangedSlot) =
   var tmp = new QSequentialAnimationGroupcurrentAnimationChangedSlot
   tmp[] = slot

@@ -53,17 +53,29 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QsciScintilla_cursorPositionChanged(intptr_t, int, int);
+void miqt_exec_callback_QsciScintilla_cursorPositionChanged_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_copyAvailable(intptr_t, bool);
+void miqt_exec_callback_QsciScintilla_copyAvailable_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_indicatorClicked(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintilla_indicatorClicked_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_indicatorReleased(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintilla_indicatorReleased_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_linesChanged(intptr_t);
+void miqt_exec_callback_QsciScintilla_linesChanged_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_marginClicked(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintilla_marginClicked_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_marginRightClicked(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintilla_marginRightClicked_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_modificationAttempted(intptr_t);
+void miqt_exec_callback_QsciScintilla_modificationAttempted_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_modificationChanged(intptr_t, bool);
+void miqt_exec_callback_QsciScintilla_modificationChanged_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_selectionChanged(intptr_t);
+void miqt_exec_callback_QsciScintilla_selectionChanged_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_textChanged(intptr_t);
+void miqt_exec_callback_QsciScintilla_textChanged_release(intptr_t);
 void miqt_exec_callback_QsciScintilla_userListActivated(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QsciScintilla_userListActivated_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -4265,11 +4277,20 @@ void QsciScintilla_cursorPositionChanged(QsciScintilla* self, int line, int inde
 }
 
 void QsciScintilla_connect_cursorPositionChanged(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int)>(&QsciScintilla::cursorPositionChanged), self, [=](int line, int index) {
-		int sigval1 = line;
-		int sigval2 = index;
-		miqt_exec_callback_QsciScintilla_cursorPositionChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int line, int index) {
+			int sigval1 = line;
+			int sigval2 = index;
+			miqt_exec_callback_QsciScintilla_cursorPositionChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_cursorPositionChanged_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int)>(&QsciScintilla::cursorPositionChanged), self, caller{slot});
 }
 
 void QsciScintilla_copyAvailable(QsciScintilla* self, bool yes) {
@@ -4277,10 +4298,19 @@ void QsciScintilla_copyAvailable(QsciScintilla* self, bool yes) {
 }
 
 void QsciScintilla_connect_copyAvailable(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(bool)>(&QsciScintilla::copyAvailable), self, [=](bool yes) {
-		bool sigval1 = yes;
-		miqt_exec_callback_QsciScintilla_copyAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool yes) {
+			bool sigval1 = yes;
+			miqt_exec_callback_QsciScintilla_copyAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_copyAvailable_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(bool)>(&QsciScintilla::copyAvailable), self, caller{slot});
 }
 
 void QsciScintilla_indicatorClicked(QsciScintilla* self, int line, int index, int state) {
@@ -4288,13 +4318,22 @@ void QsciScintilla_indicatorClicked(QsciScintilla* self, int line, int index, in
 }
 
 void QsciScintilla_connect_indicatorClicked(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::indicatorClicked), self, [=](int line, int index, Qt::KeyboardModifiers state) {
-		int sigval1 = line;
-		int sigval2 = index;
-		Qt::KeyboardModifiers state_ret = state;
-		int sigval3 = static_cast<int>(state_ret);
-		miqt_exec_callback_QsciScintilla_indicatorClicked(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int line, int index, Qt::KeyboardModifiers state) {
+			int sigval1 = line;
+			int sigval2 = index;
+			Qt::KeyboardModifiers state_ret = state;
+			int sigval3 = static_cast<int>(state_ret);
+			miqt_exec_callback_QsciScintilla_indicatorClicked(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_indicatorClicked_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::indicatorClicked), self, caller{slot});
 }
 
 void QsciScintilla_indicatorReleased(QsciScintilla* self, int line, int index, int state) {
@@ -4302,13 +4341,22 @@ void QsciScintilla_indicatorReleased(QsciScintilla* self, int line, int index, i
 }
 
 void QsciScintilla_connect_indicatorReleased(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::indicatorReleased), self, [=](int line, int index, Qt::KeyboardModifiers state) {
-		int sigval1 = line;
-		int sigval2 = index;
-		Qt::KeyboardModifiers state_ret = state;
-		int sigval3 = static_cast<int>(state_ret);
-		miqt_exec_callback_QsciScintilla_indicatorReleased(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int line, int index, Qt::KeyboardModifiers state) {
+			int sigval1 = line;
+			int sigval2 = index;
+			Qt::KeyboardModifiers state_ret = state;
+			int sigval3 = static_cast<int>(state_ret);
+			miqt_exec_callback_QsciScintilla_indicatorReleased(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_indicatorReleased_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::indicatorReleased), self, caller{slot});
 }
 
 void QsciScintilla_linesChanged(QsciScintilla* self) {
@@ -4316,9 +4364,18 @@ void QsciScintilla_linesChanged(QsciScintilla* self) {
 }
 
 void QsciScintilla_connect_linesChanged(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::linesChanged), self, [=]() {
-		miqt_exec_callback_QsciScintilla_linesChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintilla_linesChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_linesChanged_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::linesChanged), self, caller{slot});
 }
 
 void QsciScintilla_marginClicked(QsciScintilla* self, int margin, int line, int state) {
@@ -4326,13 +4383,22 @@ void QsciScintilla_marginClicked(QsciScintilla* self, int margin, int line, int 
 }
 
 void QsciScintilla_connect_marginClicked(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::marginClicked), self, [=](int margin, int line, Qt::KeyboardModifiers state) {
-		int sigval1 = margin;
-		int sigval2 = line;
-		Qt::KeyboardModifiers state_ret = state;
-		int sigval3 = static_cast<int>(state_ret);
-		miqt_exec_callback_QsciScintilla_marginClicked(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int margin, int line, Qt::KeyboardModifiers state) {
+			int sigval1 = margin;
+			int sigval2 = line;
+			Qt::KeyboardModifiers state_ret = state;
+			int sigval3 = static_cast<int>(state_ret);
+			miqt_exec_callback_QsciScintilla_marginClicked(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_marginClicked_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::marginClicked), self, caller{slot});
 }
 
 void QsciScintilla_marginRightClicked(QsciScintilla* self, int margin, int line, int state) {
@@ -4340,13 +4406,22 @@ void QsciScintilla_marginRightClicked(QsciScintilla* self, int margin, int line,
 }
 
 void QsciScintilla_connect_marginRightClicked(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::marginRightClicked), self, [=](int margin, int line, Qt::KeyboardModifiers state) {
-		int sigval1 = margin;
-		int sigval2 = line;
-		Qt::KeyboardModifiers state_ret = state;
-		int sigval3 = static_cast<int>(state_ret);
-		miqt_exec_callback_QsciScintilla_marginRightClicked(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int margin, int line, Qt::KeyboardModifiers state) {
+			int sigval1 = margin;
+			int sigval2 = line;
+			Qt::KeyboardModifiers state_ret = state;
+			int sigval3 = static_cast<int>(state_ret);
+			miqt_exec_callback_QsciScintilla_marginRightClicked(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_marginRightClicked_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, int, Qt::KeyboardModifiers)>(&QsciScintilla::marginRightClicked), self, caller{slot});
 }
 
 void QsciScintilla_modificationAttempted(QsciScintilla* self) {
@@ -4354,9 +4429,18 @@ void QsciScintilla_modificationAttempted(QsciScintilla* self) {
 }
 
 void QsciScintilla_connect_modificationAttempted(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::modificationAttempted), self, [=]() {
-		miqt_exec_callback_QsciScintilla_modificationAttempted(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintilla_modificationAttempted(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_modificationAttempted_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::modificationAttempted), self, caller{slot});
 }
 
 void QsciScintilla_modificationChanged(QsciScintilla* self, bool m) {
@@ -4364,10 +4448,19 @@ void QsciScintilla_modificationChanged(QsciScintilla* self, bool m) {
 }
 
 void QsciScintilla_connect_modificationChanged(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(bool)>(&QsciScintilla::modificationChanged), self, [=](bool m) {
-		bool sigval1 = m;
-		miqt_exec_callback_QsciScintilla_modificationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool m) {
+			bool sigval1 = m;
+			miqt_exec_callback_QsciScintilla_modificationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_modificationChanged_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(bool)>(&QsciScintilla::modificationChanged), self, caller{slot});
 }
 
 void QsciScintilla_selectionChanged(QsciScintilla* self) {
@@ -4375,9 +4468,18 @@ void QsciScintilla_selectionChanged(QsciScintilla* self) {
 }
 
 void QsciScintilla_connect_selectionChanged(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::selectionChanged), self, [=]() {
-		miqt_exec_callback_QsciScintilla_selectionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintilla_selectionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_selectionChanged_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::selectionChanged), self, caller{slot});
 }
 
 void QsciScintilla_textChanged(QsciScintilla* self) {
@@ -4385,9 +4487,18 @@ void QsciScintilla_textChanged(QsciScintilla* self) {
 }
 
 void QsciScintilla_connect_textChanged(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::textChanged), self, [=]() {
-		miqt_exec_callback_QsciScintilla_textChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintilla_textChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_textChanged_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)()>(&QsciScintilla::textChanged), self, caller{slot});
 }
 
 void QsciScintilla_userListActivated(QsciScintilla* self, int id, struct miqt_string string) {
@@ -4396,18 +4507,27 @@ void QsciScintilla_userListActivated(QsciScintilla* self, int id, struct miqt_st
 }
 
 void QsciScintilla_connect_userListActivated(QsciScintilla* self, intptr_t slot) {
-	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, const QString&)>(&QsciScintilla::userListActivated), self, [=](int id, const QString& string) {
-		int sigval1 = id;
-		const QString string_ret = string;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray string_b = string_ret.toUtf8();
-		struct miqt_string string_ms;
-		string_ms.len = string_b.length();
-		string_ms.data = static_cast<char*>(malloc(string_ms.len));
-		memcpy(string_ms.data, string_b.data(), string_ms.len);
-		struct miqt_string sigval2 = string_ms;
-		miqt_exec_callback_QsciScintilla_userListActivated(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int id, const QString& string) {
+			int sigval1 = id;
+			const QString string_ret = string;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray string_b = string_ret.toUtf8();
+			struct miqt_string string_ms;
+			string_ms.len = string_b.length();
+			string_ms.data = static_cast<char*>(malloc(string_ms.len));
+			memcpy(string_ms.data, string_b.data(), string_ms.len);
+			struct miqt_string sigval2 = string_ms;
+			miqt_exec_callback_QsciScintilla_userListActivated(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintilla_userListActivated_release(slot); }
+	};
+	MiqtVirtualQsciScintilla::connect(self, static_cast<void (QsciScintilla::*)(int, const QString&)>(&QsciScintilla::userListActivated), self, caller{slot});
 }
 
 struct miqt_string QsciScintilla_tr2(const char* s, const char* c) {

@@ -16,8 +16,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSignalMapper_mappedInt(intptr_t, int);
+void miqt_exec_callback_QSignalMapper_mappedInt_release(intptr_t);
 void miqt_exec_callback_QSignalMapper_mappedString(intptr_t, struct miqt_string);
+void miqt_exec_callback_QSignalMapper_mappedString_release(intptr_t);
 void miqt_exec_callback_QSignalMapper_mappedObject(intptr_t, QObject*);
+void miqt_exec_callback_QSignalMapper_mappedObject_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -310,10 +313,19 @@ void QSignalMapper_mappedInt(QSignalMapper* self, int param1) {
 }
 
 void QSignalMapper_connect_mappedInt(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mappedInt), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mappedInt(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QSignalMapper_mappedInt(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSignalMapper_mappedInt_release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mappedInt), self, caller{slot});
 }
 
 void QSignalMapper_mappedString(QSignalMapper* self, struct miqt_string param1) {
@@ -322,17 +334,26 @@ void QSignalMapper_mappedString(QSignalMapper* self, struct miqt_string param1) 
 }
 
 void QSignalMapper_connect_mappedString(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mappedString), self, [=](const QString& param1) {
-		const QString param1_ret = param1;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string param1_ms;
-		param1_ms.len = param1_b.length();
-		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
-		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
-		struct miqt_string sigval1 = param1_ms;
-		miqt_exec_callback_QSignalMapper_mappedString(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& param1) {
+			const QString param1_ret = param1;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray param1_b = param1_ret.toUtf8();
+			struct miqt_string param1_ms;
+			param1_ms.len = param1_b.length();
+			param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+			memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+			struct miqt_string sigval1 = param1_ms;
+			miqt_exec_callback_QSignalMapper_mappedString(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSignalMapper_mappedString_release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mappedString), self, caller{slot});
 }
 
 void QSignalMapper_mappedObject(QSignalMapper* self, QObject* param1) {
@@ -340,10 +361,19 @@ void QSignalMapper_mappedObject(QSignalMapper* self, QObject* param1) {
 }
 
 void QSignalMapper_connect_mappedObject(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mappedObject), self, [=](QObject* param1) {
-		QObject* sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mappedObject(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QObject* param1) {
+			QObject* sigval1 = param1;
+			miqt_exec_callback_QSignalMapper_mappedObject(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSignalMapper_mappedObject_release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mappedObject), self, caller{slot});
 }
 
 void QSignalMapper_map(QSignalMapper* self) {

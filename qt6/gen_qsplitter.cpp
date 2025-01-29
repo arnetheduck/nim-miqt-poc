@@ -47,6 +47,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSplitter_splitterMoved(intptr_t, int, int);
+void miqt_exec_callback_QSplitter_splitterMoved_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1289,11 +1290,20 @@ void QSplitter_splitterMoved(QSplitter* self, int pos, int index) {
 }
 
 void QSplitter_connect_splitterMoved(QSplitter* self, intptr_t slot) {
-	MiqtVirtualQSplitter::connect(self, static_cast<void (QSplitter::*)(int, int)>(&QSplitter::splitterMoved), self, [=](int pos, int index) {
-		int sigval1 = pos;
-		int sigval2 = index;
-		miqt_exec_callback_QSplitter_splitterMoved(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int pos, int index) {
+			int sigval1 = pos;
+			int sigval2 = index;
+			miqt_exec_callback_QSplitter_splitterMoved(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSplitter_splitterMoved_release(slot); }
+	};
+	MiqtVirtualQSplitter::connect(self, static_cast<void (QSplitter::*)(int, int)>(&QSplitter::splitterMoved), self, caller{slot});
 }
 
 struct miqt_string QSplitter_tr2(const char* s, const char* c) {

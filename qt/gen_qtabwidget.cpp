@@ -44,9 +44,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QTabWidget_currentChanged(intptr_t, int);
+void miqt_exec_callback_QTabWidget_currentChanged_release(intptr_t);
 void miqt_exec_callback_QTabWidget_tabCloseRequested(intptr_t, int);
+void miqt_exec_callback_QTabWidget_tabCloseRequested_release(intptr_t);
 void miqt_exec_callback_QTabWidget_tabBarClicked(intptr_t, int);
+void miqt_exec_callback_QTabWidget_tabBarClicked_release(intptr_t);
 void miqt_exec_callback_QTabWidget_tabBarDoubleClicked(intptr_t, int);
+void miqt_exec_callback_QTabWidget_tabBarDoubleClicked_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1395,10 +1399,19 @@ void QTabWidget_currentChanged(QTabWidget* self, int index) {
 }
 
 void QTabWidget_connect_currentChanged(QTabWidget* self, intptr_t slot) {
-	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::currentChanged), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QTabWidget_currentChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QTabWidget_currentChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTabWidget_currentChanged_release(slot); }
+	};
+	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::currentChanged), self, caller{slot});
 }
 
 void QTabWidget_tabCloseRequested(QTabWidget* self, int index) {
@@ -1406,10 +1419,19 @@ void QTabWidget_tabCloseRequested(QTabWidget* self, int index) {
 }
 
 void QTabWidget_connect_tabCloseRequested(QTabWidget* self, intptr_t slot) {
-	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::tabCloseRequested), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QTabWidget_tabCloseRequested(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QTabWidget_tabCloseRequested(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTabWidget_tabCloseRequested_release(slot); }
+	};
+	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::tabCloseRequested), self, caller{slot});
 }
 
 void QTabWidget_tabBarClicked(QTabWidget* self, int index) {
@@ -1417,10 +1439,19 @@ void QTabWidget_tabBarClicked(QTabWidget* self, int index) {
 }
 
 void QTabWidget_connect_tabBarClicked(QTabWidget* self, intptr_t slot) {
-	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::tabBarClicked), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QTabWidget_tabBarClicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QTabWidget_tabBarClicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTabWidget_tabBarClicked_release(slot); }
+	};
+	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::tabBarClicked), self, caller{slot});
 }
 
 void QTabWidget_tabBarDoubleClicked(QTabWidget* self, int index) {
@@ -1428,10 +1459,19 @@ void QTabWidget_tabBarDoubleClicked(QTabWidget* self, int index) {
 }
 
 void QTabWidget_connect_tabBarDoubleClicked(QTabWidget* self, intptr_t slot) {
-	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::tabBarDoubleClicked), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QTabWidget_tabBarDoubleClicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QTabWidget_tabBarDoubleClicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTabWidget_tabBarDoubleClicked_release(slot); }
+	};
+	MiqtVirtualQTabWidget::connect(self, static_cast<void (QTabWidget::*)(int)>(&QTabWidget::tabBarDoubleClicked), self, caller{slot});
 }
 
 struct miqt_string QTabWidget_tr2(const char* s, const char* c) {

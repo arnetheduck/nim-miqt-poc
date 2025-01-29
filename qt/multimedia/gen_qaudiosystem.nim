@@ -360,6 +360,10 @@ proc miqt_exec_callback_cQAbstractAudioOutput_errorChanged(slot: int, error: cin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractAudioOutput_errorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioOutput_errorChanged_release".} =
+  let nimfunc = cast[ref QAbstractAudioOutputerrorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerrorChanged*(self: gen_qaudiosystem_types.QAbstractAudioOutput, slot: QAbstractAudioOutputerrorChangedSlot) =
   var tmp = new QAbstractAudioOutputerrorChangedSlot
   tmp[] = slot
@@ -376,6 +380,10 @@ proc miqt_exec_callback_cQAbstractAudioOutput_stateChanged(slot: int, state: cin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractAudioOutput_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioOutput_stateChanged_release".} =
+  let nimfunc = cast[ref QAbstractAudioOutputstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qaudiosystem_types.QAbstractAudioOutput, slot: QAbstractAudioOutputstateChangedSlot) =
   var tmp = new QAbstractAudioOutputstateChangedSlot
   tmp[] = slot
@@ -389,6 +397,10 @@ type QAbstractAudioOutputnotifySlot* = proc()
 proc miqt_exec_callback_cQAbstractAudioOutput_notify(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioOutput_notify".} =
   let nimfunc = cast[ptr QAbstractAudioOutputnotifySlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractAudioOutput_notify_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioOutput_notify_release".} =
+  let nimfunc = cast[ref QAbstractAudioOutputnotifySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnotify*(self: gen_qaudiosystem_types.QAbstractAudioOutput, slot: QAbstractAudioOutputnotifySlot) =
   var tmp = new QAbstractAudioOutputnotifySlot
@@ -515,6 +527,10 @@ proc miqt_exec_callback_cQAbstractAudioInput_errorChanged(slot: int, error: cint
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractAudioInput_errorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioInput_errorChanged_release".} =
+  let nimfunc = cast[ref QAbstractAudioInputerrorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerrorChanged*(self: gen_qaudiosystem_types.QAbstractAudioInput, slot: QAbstractAudioInputerrorChangedSlot) =
   var tmp = new QAbstractAudioInputerrorChangedSlot
   tmp[] = slot
@@ -531,6 +547,10 @@ proc miqt_exec_callback_cQAbstractAudioInput_stateChanged(slot: int, state: cint
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractAudioInput_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioInput_stateChanged_release".} =
+  let nimfunc = cast[ref QAbstractAudioInputstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qaudiosystem_types.QAbstractAudioInput, slot: QAbstractAudioInputstateChangedSlot) =
   var tmp = new QAbstractAudioInputstateChangedSlot
   tmp[] = slot
@@ -544,6 +564,10 @@ type QAbstractAudioInputnotifySlot* = proc()
 proc miqt_exec_callback_cQAbstractAudioInput_notify(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioInput_notify".} =
   let nimfunc = cast[ptr QAbstractAudioInputnotifySlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractAudioInput_notify_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAudioInput_notify_release".} =
+  let nimfunc = cast[ref QAbstractAudioInputnotifySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnotify*(self: gen_qaudiosystem_types.QAbstractAudioInput, slot: QAbstractAudioInputnotifySlot) =
   var tmp = new QAbstractAudioInputnotifySlot

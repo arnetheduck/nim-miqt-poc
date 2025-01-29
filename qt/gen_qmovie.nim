@@ -285,6 +285,10 @@ proc miqt_exec_callback_cQMovie_started(slot: int) {.exportc: "miqt_exec_callbac
   let nimfunc = cast[ptr QMoviestartedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMovie_started_release(slot: int) {.exportc: "miqt_exec_callback_QMovie_started_release".} =
+  let nimfunc = cast[ref QMoviestartedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstarted*(self: gen_qmovie_types.QMovie, slot: QMoviestartedSlot) =
   var tmp = new QMoviestartedSlot
   tmp[] = slot
@@ -300,6 +304,10 @@ proc miqt_exec_callback_cQMovie_resized(slot: int, size: pointer) {.exportc: "mi
   let slotval1 = gen_qsize_types.QSize(h: size)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMovie_resized_release(slot: int) {.exportc: "miqt_exec_callback_QMovie_resized_release".} =
+  let nimfunc = cast[ref QMovieresizedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onresized*(self: gen_qmovie_types.QMovie, slot: QMovieresizedSlot) =
   var tmp = new QMovieresizedSlot
@@ -317,6 +325,10 @@ proc miqt_exec_callback_cQMovie_updated(slot: int, rect: pointer) {.exportc: "mi
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMovie_updated_release(slot: int) {.exportc: "miqt_exec_callback_QMovie_updated_release".} =
+  let nimfunc = cast[ref QMovieupdatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onupdated*(self: gen_qmovie_types.QMovie, slot: QMovieupdatedSlot) =
   var tmp = new QMovieupdatedSlot
   tmp[] = slot
@@ -332,6 +344,10 @@ proc miqt_exec_callback_cQMovie_stateChanged(slot: int, state: cint) {.exportc: 
   let slotval1 = cint(state)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMovie_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMovie_stateChanged_release".} =
+  let nimfunc = cast[ref QMoviestateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstateChanged*(self: gen_qmovie_types.QMovie, slot: QMoviestateChangedSlot) =
   var tmp = new QMoviestateChangedSlot
@@ -349,6 +365,10 @@ proc miqt_exec_callback_cQMovie_error(slot: int, error: cint) {.exportc: "miqt_e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMovie_error_release(slot: int) {.exportc: "miqt_exec_callback_QMovie_error_release".} =
+  let nimfunc = cast[ref QMovieerrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerror*(self: gen_qmovie_types.QMovie, slot: QMovieerrorSlot) =
   var tmp = new QMovieerrorSlot
   tmp[] = slot
@@ -362,6 +382,10 @@ type QMoviefinishedSlot* = proc()
 proc miqt_exec_callback_cQMovie_finished(slot: int) {.exportc: "miqt_exec_callback_QMovie_finished".} =
   let nimfunc = cast[ptr QMoviefinishedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMovie_finished_release(slot: int) {.exportc: "miqt_exec_callback_QMovie_finished_release".} =
+  let nimfunc = cast[ref QMoviefinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfinished*(self: gen_qmovie_types.QMovie, slot: QMoviefinishedSlot) =
   var tmp = new QMoviefinishedSlot
@@ -378,6 +402,10 @@ proc miqt_exec_callback_cQMovie_frameChanged(slot: int, frameNumber: cint) {.exp
   let slotval1 = frameNumber
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMovie_frameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMovie_frameChanged_release".} =
+  let nimfunc = cast[ref QMovieframeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onframeChanged*(self: gen_qmovie_types.QMovie, slot: QMovieframeChangedSlot) =
   var tmp = new QMovieframeChangedSlot

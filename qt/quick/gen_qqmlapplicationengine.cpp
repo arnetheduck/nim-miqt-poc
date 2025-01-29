@@ -23,6 +23,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQmlApplicationEngine_objectCreated(intptr_t, QObject*, QUrl*);
+void miqt_exec_callback_QQmlApplicationEngine_objectCreated_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -369,13 +370,22 @@ void QQmlApplicationEngine_objectCreated(QQmlApplicationEngine* self, QObject* o
 }
 
 void QQmlApplicationEngine_connect_objectCreated(QQmlApplicationEngine* self, intptr_t slot) {
-	MiqtVirtualQQmlApplicationEngine::connect(self, static_cast<void (QQmlApplicationEngine::*)(QObject*, const QUrl&)>(&QQmlApplicationEngine::objectCreated), self, [=](QObject* object, const QUrl& url) {
-		QObject* sigval1 = object;
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QQmlApplicationEngine_objectCreated(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QObject* object, const QUrl& url) {
+			QObject* sigval1 = object;
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
+			miqt_exec_callback_QQmlApplicationEngine_objectCreated(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQmlApplicationEngine_objectCreated_release(slot); }
+	};
+	MiqtVirtualQQmlApplicationEngine::connect(self, static_cast<void (QQmlApplicationEngine::*)(QObject*, const QUrl&)>(&QQmlApplicationEngine::objectCreated), self, caller{slot});
 }
 
 struct miqt_string QQmlApplicationEngine_tr2(const char* s, const char* c) {

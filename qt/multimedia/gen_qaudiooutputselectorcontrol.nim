@@ -132,6 +132,10 @@ proc miqt_exec_callback_cQAudioOutputSelectorControl_activeOutputChanged(slot: i
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioOutputSelectorControl_activeOutputChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioOutputSelectorControl_activeOutputChanged_release".} =
+  let nimfunc = cast[ref QAudioOutputSelectorControlactiveOutputChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactiveOutputChanged*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, slot: QAudioOutputSelectorControlactiveOutputChangedSlot) =
   var tmp = new QAudioOutputSelectorControlactiveOutputChangedSlot
   tmp[] = slot
@@ -145,6 +149,10 @@ type QAudioOutputSelectorControlavailableOutputsChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioOutputSelectorControl_availableOutputsChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioOutputSelectorControl_availableOutputsChanged".} =
   let nimfunc = cast[ptr QAudioOutputSelectorControlavailableOutputsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioOutputSelectorControl_availableOutputsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioOutputSelectorControl_availableOutputsChanged_release".} =
+  let nimfunc = cast[ref QAudioOutputSelectorControlavailableOutputsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onavailableOutputsChanged*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, slot: QAudioOutputSelectorControlavailableOutputsChangedSlot) =
   var tmp = new QAudioOutputSelectorControlavailableOutputsChangedSlot

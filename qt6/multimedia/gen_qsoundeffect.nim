@@ -212,6 +212,10 @@ proc miqt_exec_callback_cQSoundEffect_sourceChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QSoundEffectsourceChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSoundEffect_sourceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_sourceChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectsourceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsourceChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectsourceChangedSlot) =
   var tmp = new QSoundEffectsourceChangedSlot
   tmp[] = slot
@@ -225,6 +229,10 @@ type QSoundEffectloopCountChangedSlot* = proc()
 proc miqt_exec_callback_cQSoundEffect_loopCountChanged(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_loopCountChanged".} =
   let nimfunc = cast[ptr QSoundEffectloopCountChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSoundEffect_loopCountChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_loopCountChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectloopCountChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onloopCountChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectloopCountChangedSlot) =
   var tmp = new QSoundEffectloopCountChangedSlot
@@ -240,6 +248,10 @@ proc miqt_exec_callback_cQSoundEffect_loopsRemainingChanged(slot: int) {.exportc
   let nimfunc = cast[ptr QSoundEffectloopsRemainingChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSoundEffect_loopsRemainingChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_loopsRemainingChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectloopsRemainingChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onloopsRemainingChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectloopsRemainingChangedSlot) =
   var tmp = new QSoundEffectloopsRemainingChangedSlot
   tmp[] = slot
@@ -253,6 +265,10 @@ type QSoundEffectvolumeChangedSlot* = proc()
 proc miqt_exec_callback_cQSoundEffect_volumeChanged(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_volumeChanged".} =
   let nimfunc = cast[ptr QSoundEffectvolumeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSoundEffect_volumeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_volumeChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectvolumeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvolumeChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectvolumeChangedSlot) =
   var tmp = new QSoundEffectvolumeChangedSlot
@@ -268,6 +284,10 @@ proc miqt_exec_callback_cQSoundEffect_mutedChanged(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QSoundEffectmutedChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSoundEffect_mutedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_mutedChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectmutedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmutedChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectmutedChangedSlot) =
   var tmp = new QSoundEffectmutedChangedSlot
   tmp[] = slot
@@ -281,6 +301,10 @@ type QSoundEffectloadedChangedSlot* = proc()
 proc miqt_exec_callback_cQSoundEffect_loadedChanged(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_loadedChanged".} =
   let nimfunc = cast[ptr QSoundEffectloadedChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSoundEffect_loadedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_loadedChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectloadedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onloadedChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectloadedChangedSlot) =
   var tmp = new QSoundEffectloadedChangedSlot
@@ -296,6 +320,10 @@ proc miqt_exec_callback_cQSoundEffect_playingChanged(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QSoundEffectplayingChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSoundEffect_playingChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_playingChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectplayingChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onplayingChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectplayingChangedSlot) =
   var tmp = new QSoundEffectplayingChangedSlot
   tmp[] = slot
@@ -310,6 +338,10 @@ proc miqt_exec_callback_cQSoundEffect_statusChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QSoundEffectstatusChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSoundEffect_statusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_statusChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectstatusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstatusChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectstatusChangedSlot) =
   var tmp = new QSoundEffectstatusChangedSlot
   tmp[] = slot
@@ -323,6 +355,10 @@ type QSoundEffectaudioDeviceChangedSlot* = proc()
 proc miqt_exec_callback_cQSoundEffect_audioDeviceChanged(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_audioDeviceChanged".} =
   let nimfunc = cast[ptr QSoundEffectaudioDeviceChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSoundEffect_audioDeviceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSoundEffect_audioDeviceChanged_release".} =
+  let nimfunc = cast[ref QSoundEffectaudioDeviceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaudioDeviceChanged*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectaudioDeviceChangedSlot) =
   var tmp = new QSoundEffectaudioDeviceChangedSlot

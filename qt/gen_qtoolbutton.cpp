@@ -45,6 +45,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QToolButton_triggered(intptr_t, QAction*);
+void miqt_exec_callback_QToolButton_triggered_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1245,10 +1246,19 @@ void QToolButton_triggered(QToolButton* self, QAction* param1) {
 }
 
 void QToolButton_connect_triggered(QToolButton* self, intptr_t slot) {
-	MiqtVirtualQToolButton::connect(self, static_cast<void (QToolButton::*)(QAction*)>(&QToolButton::triggered), self, [=](QAction* param1) {
-		QAction* sigval1 = param1;
-		miqt_exec_callback_QToolButton_triggered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAction* param1) {
+			QAction* sigval1 = param1;
+			miqt_exec_callback_QToolButton_triggered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolButton_triggered_release(slot); }
+	};
+	MiqtVirtualQToolButton::connect(self, static_cast<void (QToolButton::*)(QAction*)>(&QToolButton::triggered), self, caller{slot});
 }
 
 struct miqt_string QToolButton_tr2(const char* s, const char* c) {

@@ -21,6 +21,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQmlExpression_valueChanged(intptr_t);
+void miqt_exec_callback_QQmlExpression_valueChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -397,9 +398,18 @@ void QQmlExpression_valueChanged(QQmlExpression* self) {
 }
 
 void QQmlExpression_connect_valueChanged(QQmlExpression* self, intptr_t slot) {
-	MiqtVirtualQQmlExpression::connect(self, static_cast<void (QQmlExpression::*)()>(&QQmlExpression::valueChanged), self, [=]() {
-		miqt_exec_callback_QQmlExpression_valueChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQmlExpression_valueChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQmlExpression_valueChanged_release(slot); }
+	};
+	MiqtVirtualQQmlExpression::connect(self, static_cast<void (QQmlExpression::*)()>(&QQmlExpression::valueChanged), self, caller{slot});
 }
 
 struct miqt_string QQmlExpression_tr2(const char* s, const char* c) {

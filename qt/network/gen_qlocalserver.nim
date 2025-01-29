@@ -153,6 +153,10 @@ proc miqt_exec_callback_cQLocalServer_newConnection(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QLocalServernewConnectionSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQLocalServer_newConnection_release(slot: int) {.exportc: "miqt_exec_callback_QLocalServer_newConnection_release".} =
+  let nimfunc = cast[ref QLocalServernewConnectionSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnewConnection*(self: gen_qlocalserver_types.QLocalServer, slot: QLocalServernewConnectionSlot) =
   var tmp = new QLocalServernewConnectionSlot
   tmp[] = slot

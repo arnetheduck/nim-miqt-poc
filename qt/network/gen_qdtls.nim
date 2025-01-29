@@ -580,6 +580,10 @@ proc miqt_exec_callback_cQDtls_pskRequired(slot: int, authenticator: pointer) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDtls_pskRequired_release(slot: int) {.exportc: "miqt_exec_callback_QDtls_pskRequired_release".} =
+  let nimfunc = cast[ref QDtlspskRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpskRequired*(self: gen_qdtls_types.QDtls, slot: QDtlspskRequiredSlot) =
   var tmp = new QDtlspskRequiredSlot
   tmp[] = slot
@@ -593,6 +597,10 @@ type QDtlshandshakeTimeoutSlot* = proc()
 proc miqt_exec_callback_cQDtls_handshakeTimeout(slot: int) {.exportc: "miqt_exec_callback_QDtls_handshakeTimeout".} =
   let nimfunc = cast[ptr QDtlshandshakeTimeoutSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQDtls_handshakeTimeout_release(slot: int) {.exportc: "miqt_exec_callback_QDtls_handshakeTimeout_release".} =
+  let nimfunc = cast[ref QDtlshandshakeTimeoutSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhandshakeTimeout*(self: gen_qdtls_types.QDtls, slot: QDtlshandshakeTimeoutSlot) =
   var tmp = new QDtlshandshakeTimeoutSlot

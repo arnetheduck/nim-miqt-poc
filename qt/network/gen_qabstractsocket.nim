@@ -431,6 +431,10 @@ proc miqt_exec_callback_cQAbstractSocket_hostFound(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QAbstractSockethostFoundSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractSocket_hostFound_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_hostFound_release".} =
+  let nimfunc = cast[ref QAbstractSockethostFoundSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhostFound*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSockethostFoundSlot) =
   var tmp = new QAbstractSockethostFoundSlot
   tmp[] = slot
@@ -445,6 +449,10 @@ proc miqt_exec_callback_cQAbstractSocket_connected(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QAbstractSocketconnectedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractSocket_connected_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_connected_release".} =
+  let nimfunc = cast[ref QAbstractSocketconnectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onconnected*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketconnectedSlot) =
   var tmp = new QAbstractSocketconnectedSlot
   tmp[] = slot
@@ -458,6 +466,10 @@ type QAbstractSocketdisconnectedSlot* = proc()
 proc miqt_exec_callback_cQAbstractSocket_disconnected(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_disconnected".} =
   let nimfunc = cast[ptr QAbstractSocketdisconnectedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractSocket_disconnected_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_disconnected_release".} =
+  let nimfunc = cast[ref QAbstractSocketdisconnectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondisconnected*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketdisconnectedSlot) =
   var tmp = new QAbstractSocketdisconnectedSlot
@@ -475,6 +487,10 @@ proc miqt_exec_callback_cQAbstractSocket_stateChanged(slot: int, param1: cint) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractSocket_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_stateChanged_release".} =
+  let nimfunc = cast[ref QAbstractSocketstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketstateChangedSlot) =
   var tmp = new QAbstractSocketstateChangedSlot
   tmp[] = slot
@@ -491,6 +507,10 @@ proc miqt_exec_callback_cQAbstractSocket_errorWithQAbstractSocketSocketError(slo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractSocket_errorWithQAbstractSocketSocketError_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_errorWithQAbstractSocketSocketError_release".} =
+  let nimfunc = cast[ref QAbstractSocketerrorWithQAbstractSocketSocketErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerror*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketerrorWithQAbstractSocketSocketErrorSlot) =
   var tmp = new QAbstractSocketerrorWithQAbstractSocketSocketErrorSlot
   tmp[] = slot
@@ -506,6 +526,10 @@ proc miqt_exec_callback_cQAbstractSocket_errorOccurred(slot: int, param1: cint) 
   let slotval1 = cint(param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractSocket_errorOccurred_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_errorOccurred_release".} =
+  let nimfunc = cast[ref QAbstractSocketerrorOccurredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onerrorOccurred*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketerrorOccurredSlot) =
   var tmp = new QAbstractSocketerrorOccurredSlot
@@ -524,6 +548,10 @@ proc miqt_exec_callback_cQAbstractSocket_proxyAuthenticationRequired(slot: int, 
   let slotval2 = gen_qauthenticator_types.QAuthenticator(h: authenticator)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQAbstractSocket_proxyAuthenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSocket_proxyAuthenticationRequired_release".} =
+  let nimfunc = cast[ref QAbstractSocketproxyAuthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onproxyAuthenticationRequired*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketproxyAuthenticationRequiredSlot) =
   var tmp = new QAbstractSocketproxyAuthenticationRequiredSlot

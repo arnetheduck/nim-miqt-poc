@@ -220,6 +220,10 @@ proc miqt_exec_callback_cQAbstractItemDelegate_commitData(slot: int, editor: poi
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractItemDelegate_commitData_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemDelegate_commitData_release".} =
+  let nimfunc = cast[ref QAbstractItemDelegatecommitDataSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncommitData*(self: gen_qabstractitemdelegate_types.QAbstractItemDelegate, slot: QAbstractItemDelegatecommitDataSlot) =
   var tmp = new QAbstractItemDelegatecommitDataSlot
   tmp[] = slot
@@ -236,6 +240,10 @@ proc miqt_exec_callback_cQAbstractItemDelegate_closeEditor(slot: int, editor: po
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractItemDelegate_closeEditor_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemDelegate_closeEditor_release".} =
+  let nimfunc = cast[ref QAbstractItemDelegatecloseEditorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncloseEditor*(self: gen_qabstractitemdelegate_types.QAbstractItemDelegate, slot: QAbstractItemDelegatecloseEditorSlot) =
   var tmp = new QAbstractItemDelegatecloseEditorSlot
   tmp[] = slot
@@ -251,6 +259,10 @@ proc miqt_exec_callback_cQAbstractItemDelegate_sizeHintChanged(slot: int, param1
   let slotval1 = gen_qabstractitemmodel_types.QModelIndex(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractItemDelegate_sizeHintChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged_release".} =
+  let nimfunc = cast[ref QAbstractItemDelegatesizeHintChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsizeHintChanged*(self: gen_qabstractitemdelegate_types.QAbstractItemDelegate, slot: QAbstractItemDelegatesizeHintChangedSlot) =
   var tmp = new QAbstractItemDelegatesizeHintChangedSlot
@@ -293,6 +305,10 @@ proc miqt_exec_callback_cQAbstractItemDelegate_closeEditor2(slot: int, editor: p
   let slotval2 = cint(hint)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQAbstractItemDelegate_closeEditor2_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemDelegate_closeEditor2_release".} =
+  let nimfunc = cast[ref QAbstractItemDelegatecloseEditor2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncloseEditor*(self: gen_qabstractitemdelegate_types.QAbstractItemDelegate, slot: QAbstractItemDelegatecloseEditor2Slot) =
   var tmp = new QAbstractItemDelegatecloseEditor2Slot

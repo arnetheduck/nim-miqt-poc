@@ -231,6 +231,10 @@ proc miqt_exec_callback_cQVideoWidget_fullScreenChanged(slot: int, fullScreen: b
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQVideoWidget_fullScreenChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVideoWidget_fullScreenChanged_release".} =
+  let nimfunc = cast[ref QVideoWidgetfullScreenChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfullScreenChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetfullScreenChangedSlot) =
   var tmp = new QVideoWidgetfullScreenChangedSlot
   tmp[] = slot
@@ -246,6 +250,10 @@ proc miqt_exec_callback_cQVideoWidget_aspectRatioModeChanged(slot: int, mode: ci
   let slotval1 = cint(mode)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQVideoWidget_aspectRatioModeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVideoWidget_aspectRatioModeChanged_release".} =
+  let nimfunc = cast[ref QVideoWidgetaspectRatioModeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaspectRatioModeChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetaspectRatioModeChangedSlot) =
   var tmp = new QVideoWidgetaspectRatioModeChangedSlot

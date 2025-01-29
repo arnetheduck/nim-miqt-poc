@@ -62,15 +62,25 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QListWidget_itemPressed(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_itemPressed_release(intptr_t);
 void miqt_exec_callback_QListWidget_itemClicked(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_itemClicked_release(intptr_t);
 void miqt_exec_callback_QListWidget_itemDoubleClicked(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_itemDoubleClicked_release(intptr_t);
 void miqt_exec_callback_QListWidget_itemActivated(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_itemActivated_release(intptr_t);
 void miqt_exec_callback_QListWidget_itemEntered(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_itemEntered_release(intptr_t);
 void miqt_exec_callback_QListWidget_itemChanged(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_itemChanged_release(intptr_t);
 void miqt_exec_callback_QListWidget_currentItemChanged(intptr_t, QListWidgetItem*, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_currentItemChanged_release(intptr_t);
 void miqt_exec_callback_QListWidget_currentTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QListWidget_currentTextChanged_release(intptr_t);
 void miqt_exec_callback_QListWidget_currentRowChanged(intptr_t, int);
+void miqt_exec_callback_QListWidget_currentRowChanged_release(intptr_t);
 void miqt_exec_callback_QListWidget_itemSelectionChanged(intptr_t);
+void miqt_exec_callback_QListWidget_itemSelectionChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2809,10 +2819,19 @@ void QListWidget_itemPressed(QListWidget* self, QListWidgetItem* item) {
 }
 
 void QListWidget_connect_itemPressed(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemPressed), self, [=](QListWidgetItem* item) {
-		QListWidgetItem* sigval1 = item;
-		miqt_exec_callback_QListWidget_itemPressed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QListWidgetItem* item) {
+			QListWidgetItem* sigval1 = item;
+			miqt_exec_callback_QListWidget_itemPressed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_itemPressed_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemPressed), self, caller{slot});
 }
 
 void QListWidget_itemClicked(QListWidget* self, QListWidgetItem* item) {
@@ -2820,10 +2839,19 @@ void QListWidget_itemClicked(QListWidget* self, QListWidgetItem* item) {
 }
 
 void QListWidget_connect_itemClicked(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemClicked), self, [=](QListWidgetItem* item) {
-		QListWidgetItem* sigval1 = item;
-		miqt_exec_callback_QListWidget_itemClicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QListWidgetItem* item) {
+			QListWidgetItem* sigval1 = item;
+			miqt_exec_callback_QListWidget_itemClicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_itemClicked_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemClicked), self, caller{slot});
 }
 
 void QListWidget_itemDoubleClicked(QListWidget* self, QListWidgetItem* item) {
@@ -2831,10 +2859,19 @@ void QListWidget_itemDoubleClicked(QListWidget* self, QListWidgetItem* item) {
 }
 
 void QListWidget_connect_itemDoubleClicked(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemDoubleClicked), self, [=](QListWidgetItem* item) {
-		QListWidgetItem* sigval1 = item;
-		miqt_exec_callback_QListWidget_itemDoubleClicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QListWidgetItem* item) {
+			QListWidgetItem* sigval1 = item;
+			miqt_exec_callback_QListWidget_itemDoubleClicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_itemDoubleClicked_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemDoubleClicked), self, caller{slot});
 }
 
 void QListWidget_itemActivated(QListWidget* self, QListWidgetItem* item) {
@@ -2842,10 +2879,19 @@ void QListWidget_itemActivated(QListWidget* self, QListWidgetItem* item) {
 }
 
 void QListWidget_connect_itemActivated(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemActivated), self, [=](QListWidgetItem* item) {
-		QListWidgetItem* sigval1 = item;
-		miqt_exec_callback_QListWidget_itemActivated(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QListWidgetItem* item) {
+			QListWidgetItem* sigval1 = item;
+			miqt_exec_callback_QListWidget_itemActivated(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_itemActivated_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemActivated), self, caller{slot});
 }
 
 void QListWidget_itemEntered(QListWidget* self, QListWidgetItem* item) {
@@ -2853,10 +2899,19 @@ void QListWidget_itemEntered(QListWidget* self, QListWidgetItem* item) {
 }
 
 void QListWidget_connect_itemEntered(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemEntered), self, [=](QListWidgetItem* item) {
-		QListWidgetItem* sigval1 = item;
-		miqt_exec_callback_QListWidget_itemEntered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QListWidgetItem* item) {
+			QListWidgetItem* sigval1 = item;
+			miqt_exec_callback_QListWidget_itemEntered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_itemEntered_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemEntered), self, caller{slot});
 }
 
 void QListWidget_itemChanged(QListWidget* self, QListWidgetItem* item) {
@@ -2864,10 +2919,19 @@ void QListWidget_itemChanged(QListWidget* self, QListWidgetItem* item) {
 }
 
 void QListWidget_connect_itemChanged(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemChanged), self, [=](QListWidgetItem* item) {
-		QListWidgetItem* sigval1 = item;
-		miqt_exec_callback_QListWidget_itemChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QListWidgetItem* item) {
+			QListWidgetItem* sigval1 = item;
+			miqt_exec_callback_QListWidget_itemChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_itemChanged_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemChanged), self, caller{slot});
 }
 
 void QListWidget_currentItemChanged(QListWidget* self, QListWidgetItem* current, QListWidgetItem* previous) {
@@ -2875,11 +2939,20 @@ void QListWidget_currentItemChanged(QListWidget* self, QListWidgetItem* current,
 }
 
 void QListWidget_connect_currentItemChanged(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*, QListWidgetItem*)>(&QListWidget::currentItemChanged), self, [=](QListWidgetItem* current, QListWidgetItem* previous) {
-		QListWidgetItem* sigval1 = current;
-		QListWidgetItem* sigval2 = previous;
-		miqt_exec_callback_QListWidget_currentItemChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QListWidgetItem* current, QListWidgetItem* previous) {
+			QListWidgetItem* sigval1 = current;
+			QListWidgetItem* sigval2 = previous;
+			miqt_exec_callback_QListWidget_currentItemChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_currentItemChanged_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*, QListWidgetItem*)>(&QListWidget::currentItemChanged), self, caller{slot});
 }
 
 void QListWidget_currentTextChanged(QListWidget* self, struct miqt_string currentText) {
@@ -2888,17 +2961,26 @@ void QListWidget_currentTextChanged(QListWidget* self, struct miqt_string curren
 }
 
 void QListWidget_connect_currentTextChanged(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(const QString&)>(&QListWidget::currentTextChanged), self, [=](const QString& currentText) {
-		const QString currentText_ret = currentText;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray currentText_b = currentText_ret.toUtf8();
-		struct miqt_string currentText_ms;
-		currentText_ms.len = currentText_b.length();
-		currentText_ms.data = static_cast<char*>(malloc(currentText_ms.len));
-		memcpy(currentText_ms.data, currentText_b.data(), currentText_ms.len);
-		struct miqt_string sigval1 = currentText_ms;
-		miqt_exec_callback_QListWidget_currentTextChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& currentText) {
+			const QString currentText_ret = currentText;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray currentText_b = currentText_ret.toUtf8();
+			struct miqt_string currentText_ms;
+			currentText_ms.len = currentText_b.length();
+			currentText_ms.data = static_cast<char*>(malloc(currentText_ms.len));
+			memcpy(currentText_ms.data, currentText_b.data(), currentText_ms.len);
+			struct miqt_string sigval1 = currentText_ms;
+			miqt_exec_callback_QListWidget_currentTextChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_currentTextChanged_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(const QString&)>(&QListWidget::currentTextChanged), self, caller{slot});
 }
 
 void QListWidget_currentRowChanged(QListWidget* self, int currentRow) {
@@ -2906,10 +2988,19 @@ void QListWidget_currentRowChanged(QListWidget* self, int currentRow) {
 }
 
 void QListWidget_connect_currentRowChanged(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(int)>(&QListWidget::currentRowChanged), self, [=](int currentRow) {
-		int sigval1 = currentRow;
-		miqt_exec_callback_QListWidget_currentRowChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int currentRow) {
+			int sigval1 = currentRow;
+			miqt_exec_callback_QListWidget_currentRowChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_currentRowChanged_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)(int)>(&QListWidget::currentRowChanged), self, caller{slot});
 }
 
 void QListWidget_itemSelectionChanged(QListWidget* self) {
@@ -2917,9 +3008,18 @@ void QListWidget_itemSelectionChanged(QListWidget* self) {
 }
 
 void QListWidget_connect_itemSelectionChanged(QListWidget* self, intptr_t slot) {
-	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)()>(&QListWidget::itemSelectionChanged), self, [=]() {
-		miqt_exec_callback_QListWidget_itemSelectionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QListWidget_itemSelectionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListWidget_itemSelectionChanged_release(slot); }
+	};
+	MiqtVirtualQListWidget::connect(self, static_cast<void (QListWidget::*)()>(&QListWidget::itemSelectionChanged), self, caller{slot});
 }
 
 struct miqt_string QListWidget_tr2(const char* s, const char* c) {

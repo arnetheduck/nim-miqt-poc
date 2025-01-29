@@ -45,13 +45,21 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QToolBar_actionTriggered(intptr_t, QAction*);
+void miqt_exec_callback_QToolBar_actionTriggered_release(intptr_t);
 void miqt_exec_callback_QToolBar_movableChanged(intptr_t, bool);
+void miqt_exec_callback_QToolBar_movableChanged_release(intptr_t);
 void miqt_exec_callback_QToolBar_allowedAreasChanged(intptr_t, int);
+void miqt_exec_callback_QToolBar_allowedAreasChanged_release(intptr_t);
 void miqt_exec_callback_QToolBar_orientationChanged(intptr_t, int);
+void miqt_exec_callback_QToolBar_orientationChanged_release(intptr_t);
 void miqt_exec_callback_QToolBar_iconSizeChanged(intptr_t, QSize*);
+void miqt_exec_callback_QToolBar_iconSizeChanged_release(intptr_t);
 void miqt_exec_callback_QToolBar_toolButtonStyleChanged(intptr_t, int);
+void miqt_exec_callback_QToolBar_toolButtonStyleChanged_release(intptr_t);
 void miqt_exec_callback_QToolBar_topLevelChanged(intptr_t, bool);
+void miqt_exec_callback_QToolBar_topLevelChanged_release(intptr_t);
 void miqt_exec_callback_QToolBar_visibilityChanged(intptr_t, bool);
+void miqt_exec_callback_QToolBar_visibilityChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1250,10 +1258,19 @@ void QToolBar_actionTriggered(QToolBar* self, QAction* action) {
 }
 
 void QToolBar_connect_actionTriggered(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(QAction*)>(&QToolBar::actionTriggered), self, [=](QAction* action) {
-		QAction* sigval1 = action;
-		miqt_exec_callback_QToolBar_actionTriggered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAction* action) {
+			QAction* sigval1 = action;
+			miqt_exec_callback_QToolBar_actionTriggered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_actionTriggered_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(QAction*)>(&QToolBar::actionTriggered), self, caller{slot});
 }
 
 void QToolBar_movableChanged(QToolBar* self, bool movable) {
@@ -1261,10 +1278,19 @@ void QToolBar_movableChanged(QToolBar* self, bool movable) {
 }
 
 void QToolBar_connect_movableChanged(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::movableChanged), self, [=](bool movable) {
-		bool sigval1 = movable;
-		miqt_exec_callback_QToolBar_movableChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool movable) {
+			bool sigval1 = movable;
+			miqt_exec_callback_QToolBar_movableChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_movableChanged_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::movableChanged), self, caller{slot});
 }
 
 void QToolBar_allowedAreasChanged(QToolBar* self, int allowedAreas) {
@@ -1272,11 +1298,20 @@ void QToolBar_allowedAreasChanged(QToolBar* self, int allowedAreas) {
 }
 
 void QToolBar_connect_allowedAreasChanged(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolBarAreas)>(&QToolBar::allowedAreasChanged), self, [=](Qt::ToolBarAreas allowedAreas) {
-		Qt::ToolBarAreas allowedAreas_ret = allowedAreas;
-		int sigval1 = static_cast<int>(allowedAreas_ret);
-		miqt_exec_callback_QToolBar_allowedAreasChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::ToolBarAreas allowedAreas) {
+			Qt::ToolBarAreas allowedAreas_ret = allowedAreas;
+			int sigval1 = static_cast<int>(allowedAreas_ret);
+			miqt_exec_callback_QToolBar_allowedAreasChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_allowedAreasChanged_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolBarAreas)>(&QToolBar::allowedAreasChanged), self, caller{slot});
 }
 
 void QToolBar_orientationChanged(QToolBar* self, int orientation) {
@@ -1284,11 +1319,20 @@ void QToolBar_orientationChanged(QToolBar* self, int orientation) {
 }
 
 void QToolBar_connect_orientationChanged(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::Orientation)>(&QToolBar::orientationChanged), self, [=](Qt::Orientation orientation) {
-		Qt::Orientation orientation_ret = orientation;
-		int sigval1 = static_cast<int>(orientation_ret);
-		miqt_exec_callback_QToolBar_orientationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::Orientation orientation) {
+			Qt::Orientation orientation_ret = orientation;
+			int sigval1 = static_cast<int>(orientation_ret);
+			miqt_exec_callback_QToolBar_orientationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_orientationChanged_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::Orientation)>(&QToolBar::orientationChanged), self, caller{slot});
 }
 
 void QToolBar_iconSizeChanged(QToolBar* self, QSize* iconSize) {
@@ -1296,12 +1340,21 @@ void QToolBar_iconSizeChanged(QToolBar* self, QSize* iconSize) {
 }
 
 void QToolBar_connect_iconSizeChanged(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(const QSize&)>(&QToolBar::iconSizeChanged), self, [=](const QSize& iconSize) {
-		const QSize& iconSize_ret = iconSize;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&iconSize_ret);
-		miqt_exec_callback_QToolBar_iconSizeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QSize& iconSize) {
+			const QSize& iconSize_ret = iconSize;
+			// Cast returned reference into pointer
+			QSize* sigval1 = const_cast<QSize*>(&iconSize_ret);
+			miqt_exec_callback_QToolBar_iconSizeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_iconSizeChanged_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(const QSize&)>(&QToolBar::iconSizeChanged), self, caller{slot});
 }
 
 void QToolBar_toolButtonStyleChanged(QToolBar* self, int toolButtonStyle) {
@@ -1309,11 +1362,20 @@ void QToolBar_toolButtonStyleChanged(QToolBar* self, int toolButtonStyle) {
 }
 
 void QToolBar_connect_toolButtonStyleChanged(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolButtonStyle)>(&QToolBar::toolButtonStyleChanged), self, [=](Qt::ToolButtonStyle toolButtonStyle) {
-		Qt::ToolButtonStyle toolButtonStyle_ret = toolButtonStyle;
-		int sigval1 = static_cast<int>(toolButtonStyle_ret);
-		miqt_exec_callback_QToolBar_toolButtonStyleChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::ToolButtonStyle toolButtonStyle) {
+			Qt::ToolButtonStyle toolButtonStyle_ret = toolButtonStyle;
+			int sigval1 = static_cast<int>(toolButtonStyle_ret);
+			miqt_exec_callback_QToolBar_toolButtonStyleChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_toolButtonStyleChanged_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolButtonStyle)>(&QToolBar::toolButtonStyleChanged), self, caller{slot});
 }
 
 void QToolBar_topLevelChanged(QToolBar* self, bool topLevel) {
@@ -1321,10 +1383,19 @@ void QToolBar_topLevelChanged(QToolBar* self, bool topLevel) {
 }
 
 void QToolBar_connect_topLevelChanged(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::topLevelChanged), self, [=](bool topLevel) {
-		bool sigval1 = topLevel;
-		miqt_exec_callback_QToolBar_topLevelChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool topLevel) {
+			bool sigval1 = topLevel;
+			miqt_exec_callback_QToolBar_topLevelChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_topLevelChanged_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::topLevelChanged), self, caller{slot});
 }
 
 void QToolBar_visibilityChanged(QToolBar* self, bool visible) {
@@ -1332,10 +1403,19 @@ void QToolBar_visibilityChanged(QToolBar* self, bool visible) {
 }
 
 void QToolBar_connect_visibilityChanged(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::visibilityChanged), self, [=](bool visible) {
-		bool sigval1 = visible;
-		miqt_exec_callback_QToolBar_visibilityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool visible) {
+			bool sigval1 = visible;
+			miqt_exec_callback_QToolBar_visibilityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBar_visibilityChanged_release(slot); }
+	};
+	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::visibilityChanged), self, caller{slot});
 }
 
 struct miqt_string QToolBar_tr2(const char* s, const char* c) {

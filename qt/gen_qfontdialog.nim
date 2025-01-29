@@ -286,6 +286,10 @@ proc miqt_exec_callback_cQFontDialog_currentFontChanged(slot: int, font: pointer
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFontDialog_currentFontChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFontDialog_currentFontChanged_release".} =
+  let nimfunc = cast[ref QFontDialogcurrentFontChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentFontChanged*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogcurrentFontChangedSlot) =
   var tmp = new QFontDialogcurrentFontChangedSlot
   tmp[] = slot
@@ -301,6 +305,10 @@ proc miqt_exec_callback_cQFontDialog_fontSelected(slot: int, font: pointer) {.ex
   let slotval1 = gen_qfont_types.QFont(h: font)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFontDialog_fontSelected_release(slot: int) {.exportc: "miqt_exec_callback_QFontDialog_fontSelected_release".} =
+  let nimfunc = cast[ref QFontDialogfontSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfontSelected*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogfontSelectedSlot) =
   var tmp = new QFontDialogfontSelectedSlot

@@ -428,6 +428,10 @@ proc miqt_exec_callback_cQUndoStack_indexChanged(slot: int, idx: cint) {.exportc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQUndoStack_indexChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoStack_indexChanged_release".} =
+  let nimfunc = cast[ref QUndoStackindexChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onindexChanged*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackindexChangedSlot) =
   var tmp = new QUndoStackindexChangedSlot
   tmp[] = slot
@@ -443,6 +447,10 @@ proc miqt_exec_callback_cQUndoStack_cleanChanged(slot: int, clean: bool) {.expor
   let slotval1 = clean
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQUndoStack_cleanChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoStack_cleanChanged_release".} =
+  let nimfunc = cast[ref QUndoStackcleanChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncleanChanged*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackcleanChangedSlot) =
   var tmp = new QUndoStackcleanChangedSlot
@@ -460,6 +468,10 @@ proc miqt_exec_callback_cQUndoStack_canUndoChanged(slot: int, canUndo: bool) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQUndoStack_canUndoChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoStack_canUndoChanged_release".} =
+  let nimfunc = cast[ref QUndoStackcanUndoChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncanUndoChanged*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackcanUndoChangedSlot) =
   var tmp = new QUndoStackcanUndoChangedSlot
   tmp[] = slot
@@ -475,6 +487,10 @@ proc miqt_exec_callback_cQUndoStack_canRedoChanged(slot: int, canRedo: bool) {.e
   let slotval1 = canRedo
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQUndoStack_canRedoChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoStack_canRedoChanged_release".} =
+  let nimfunc = cast[ref QUndoStackcanRedoChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncanRedoChanged*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackcanRedoChangedSlot) =
   var tmp = new QUndoStackcanRedoChangedSlot
@@ -495,6 +511,10 @@ proc miqt_exec_callback_cQUndoStack_undoTextChanged(slot: int, undoText: struct_
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQUndoStack_undoTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoStack_undoTextChanged_release".} =
+  let nimfunc = cast[ref QUndoStackundoTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onundoTextChanged*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackundoTextChangedSlot) =
   var tmp = new QUndoStackundoTextChangedSlot
   tmp[] = slot
@@ -513,6 +533,10 @@ proc miqt_exec_callback_cQUndoStack_redoTextChanged(slot: int, redoText: struct_
   let slotval1 = vredoTextx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQUndoStack_redoTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoStack_redoTextChanged_release".} =
+  let nimfunc = cast[ref QUndoStackredoTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onredoTextChanged*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackredoTextChangedSlot) =
   var tmp = new QUndoStackredoTextChangedSlot

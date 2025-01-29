@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(intptr_t);
+void miqt_exec_callback_QWebEngineNavigationRequest_actionChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -70,9 +71,18 @@ void QWebEngineNavigationRequest_actionChanged(QWebEngineNavigationRequest* self
 }
 
 void QWebEngineNavigationRequest_connect_actionChanged(QWebEngineNavigationRequest* self, intptr_t slot) {
-	QWebEngineNavigationRequest::connect(self, static_cast<void (QWebEngineNavigationRequest::*)()>(&QWebEngineNavigationRequest::actionChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineNavigationRequest_actionChanged_release(slot); }
+	};
+	QWebEngineNavigationRequest::connect(self, static_cast<void (QWebEngineNavigationRequest::*)()>(&QWebEngineNavigationRequest::actionChanged), self, caller{slot});
 }
 
 struct miqt_string QWebEngineNavigationRequest_tr2(const char* s, const char* c) {

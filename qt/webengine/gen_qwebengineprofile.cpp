@@ -26,6 +26,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QWebEngineProfile_downloadRequested(intptr_t, QWebEngineDownloadItem*);
+void miqt_exec_callback_QWebEngineProfile_downloadRequested_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -552,10 +553,19 @@ void QWebEngineProfile_downloadRequested(QWebEngineProfile* self, QWebEngineDown
 }
 
 void QWebEngineProfile_connect_downloadRequested(QWebEngineProfile* self, intptr_t slot) {
-	MiqtVirtualQWebEngineProfile::connect(self, static_cast<void (QWebEngineProfile::*)(QWebEngineDownloadItem*)>(&QWebEngineProfile::downloadRequested), self, [=](QWebEngineDownloadItem* download) {
-		QWebEngineDownloadItem* sigval1 = download;
-		miqt_exec_callback_QWebEngineProfile_downloadRequested(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWebEngineDownloadItem* download) {
+			QWebEngineDownloadItem* sigval1 = download;
+			miqt_exec_callback_QWebEngineProfile_downloadRequested(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineProfile_downloadRequested_release(slot); }
+	};
+	MiqtVirtualQWebEngineProfile::connect(self, static_cast<void (QWebEngineProfile::*)(QWebEngineDownloadItem*)>(&QWebEngineProfile::downloadRequested), self, caller{slot});
 }
 
 struct miqt_string QWebEngineProfile_tr2(const char* s, const char* c) {

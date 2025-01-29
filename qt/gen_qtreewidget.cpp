@@ -60,15 +60,25 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QTreeWidget_itemPressed(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_itemPressed_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemClicked(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_itemClicked_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemDoubleClicked(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_itemDoubleClicked_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemActivated(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_itemActivated_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemEntered(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_itemEntered_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemChanged(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_itemChanged_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemExpanded(intptr_t, QTreeWidgetItem*);
+void miqt_exec_callback_QTreeWidget_itemExpanded_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemCollapsed(intptr_t, QTreeWidgetItem*);
+void miqt_exec_callback_QTreeWidget_itemCollapsed_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_currentItemChanged(intptr_t, QTreeWidgetItem*, QTreeWidgetItem*);
+void miqt_exec_callback_QTreeWidget_currentItemChanged_release(intptr_t);
 void miqt_exec_callback_QTreeWidget_itemSelectionChanged(intptr_t);
+void miqt_exec_callback_QTreeWidget_itemSelectionChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -3057,11 +3067,20 @@ void QTreeWidget_itemPressed(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemPressed(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemPressed), self, [=](QTreeWidgetItem* item, int column) {
-		QTreeWidgetItem* sigval1 = item;
-		int sigval2 = column;
-		miqt_exec_callback_QTreeWidget_itemPressed(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item, int column) {
+			QTreeWidgetItem* sigval1 = item;
+			int sigval2 = column;
+			miqt_exec_callback_QTreeWidget_itemPressed(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemPressed_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemPressed), self, caller{slot});
 }
 
 void QTreeWidget_itemClicked(QTreeWidget* self, QTreeWidgetItem* item, int column) {
@@ -3069,11 +3088,20 @@ void QTreeWidget_itemClicked(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemClicked(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemClicked), self, [=](QTreeWidgetItem* item, int column) {
-		QTreeWidgetItem* sigval1 = item;
-		int sigval2 = column;
-		miqt_exec_callback_QTreeWidget_itemClicked(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item, int column) {
+			QTreeWidgetItem* sigval1 = item;
+			int sigval2 = column;
+			miqt_exec_callback_QTreeWidget_itemClicked(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemClicked_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemClicked), self, caller{slot});
 }
 
 void QTreeWidget_itemDoubleClicked(QTreeWidget* self, QTreeWidgetItem* item, int column) {
@@ -3081,11 +3109,20 @@ void QTreeWidget_itemDoubleClicked(QTreeWidget* self, QTreeWidgetItem* item, int
 }
 
 void QTreeWidget_connect_itemDoubleClicked(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemDoubleClicked), self, [=](QTreeWidgetItem* item, int column) {
-		QTreeWidgetItem* sigval1 = item;
-		int sigval2 = column;
-		miqt_exec_callback_QTreeWidget_itemDoubleClicked(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item, int column) {
+			QTreeWidgetItem* sigval1 = item;
+			int sigval2 = column;
+			miqt_exec_callback_QTreeWidget_itemDoubleClicked(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemDoubleClicked_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemDoubleClicked), self, caller{slot});
 }
 
 void QTreeWidget_itemActivated(QTreeWidget* self, QTreeWidgetItem* item, int column) {
@@ -3093,11 +3130,20 @@ void QTreeWidget_itemActivated(QTreeWidget* self, QTreeWidgetItem* item, int col
 }
 
 void QTreeWidget_connect_itemActivated(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemActivated), self, [=](QTreeWidgetItem* item, int column) {
-		QTreeWidgetItem* sigval1 = item;
-		int sigval2 = column;
-		miqt_exec_callback_QTreeWidget_itemActivated(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item, int column) {
+			QTreeWidgetItem* sigval1 = item;
+			int sigval2 = column;
+			miqt_exec_callback_QTreeWidget_itemActivated(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemActivated_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemActivated), self, caller{slot});
 }
 
 void QTreeWidget_itemEntered(QTreeWidget* self, QTreeWidgetItem* item, int column) {
@@ -3105,11 +3151,20 @@ void QTreeWidget_itemEntered(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemEntered(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemEntered), self, [=](QTreeWidgetItem* item, int column) {
-		QTreeWidgetItem* sigval1 = item;
-		int sigval2 = column;
-		miqt_exec_callback_QTreeWidget_itemEntered(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item, int column) {
+			QTreeWidgetItem* sigval1 = item;
+			int sigval2 = column;
+			miqt_exec_callback_QTreeWidget_itemEntered(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemEntered_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemEntered), self, caller{slot});
 }
 
 void QTreeWidget_itemChanged(QTreeWidget* self, QTreeWidgetItem* item, int column) {
@@ -3117,11 +3172,20 @@ void QTreeWidget_itemChanged(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemChanged(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemChanged), self, [=](QTreeWidgetItem* item, int column) {
-		QTreeWidgetItem* sigval1 = item;
-		int sigval2 = column;
-		miqt_exec_callback_QTreeWidget_itemChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item, int column) {
+			QTreeWidgetItem* sigval1 = item;
+			int sigval2 = column;
+			miqt_exec_callback_QTreeWidget_itemChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemChanged_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemChanged), self, caller{slot});
 }
 
 void QTreeWidget_itemExpanded(QTreeWidget* self, QTreeWidgetItem* item) {
@@ -3129,10 +3193,19 @@ void QTreeWidget_itemExpanded(QTreeWidget* self, QTreeWidgetItem* item) {
 }
 
 void QTreeWidget_connect_itemExpanded(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemExpanded), self, [=](QTreeWidgetItem* item) {
-		QTreeWidgetItem* sigval1 = item;
-		miqt_exec_callback_QTreeWidget_itemExpanded(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item) {
+			QTreeWidgetItem* sigval1 = item;
+			miqt_exec_callback_QTreeWidget_itemExpanded(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemExpanded_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemExpanded), self, caller{slot});
 }
 
 void QTreeWidget_itemCollapsed(QTreeWidget* self, QTreeWidgetItem* item) {
@@ -3140,10 +3213,19 @@ void QTreeWidget_itemCollapsed(QTreeWidget* self, QTreeWidgetItem* item) {
 }
 
 void QTreeWidget_connect_itemCollapsed(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemCollapsed), self, [=](QTreeWidgetItem* item) {
-		QTreeWidgetItem* sigval1 = item;
-		miqt_exec_callback_QTreeWidget_itemCollapsed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* item) {
+			QTreeWidgetItem* sigval1 = item;
+			miqt_exec_callback_QTreeWidget_itemCollapsed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemCollapsed_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemCollapsed), self, caller{slot});
 }
 
 void QTreeWidget_currentItemChanged(QTreeWidget* self, QTreeWidgetItem* current, QTreeWidgetItem* previous) {
@@ -3151,11 +3233,20 @@ void QTreeWidget_currentItemChanged(QTreeWidget* self, QTreeWidgetItem* current,
 }
 
 void QTreeWidget_connect_currentItemChanged(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, QTreeWidgetItem*)>(&QTreeWidget::currentItemChanged), self, [=](QTreeWidgetItem* current, QTreeWidgetItem* previous) {
-		QTreeWidgetItem* sigval1 = current;
-		QTreeWidgetItem* sigval2 = previous;
-		miqt_exec_callback_QTreeWidget_currentItemChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QTreeWidgetItem* current, QTreeWidgetItem* previous) {
+			QTreeWidgetItem* sigval1 = current;
+			QTreeWidgetItem* sigval2 = previous;
+			miqt_exec_callback_QTreeWidget_currentItemChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_currentItemChanged_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, QTreeWidgetItem*)>(&QTreeWidget::currentItemChanged), self, caller{slot});
 }
 
 void QTreeWidget_itemSelectionChanged(QTreeWidget* self) {
@@ -3163,9 +3254,18 @@ void QTreeWidget_itemSelectionChanged(QTreeWidget* self) {
 }
 
 void QTreeWidget_connect_itemSelectionChanged(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)()>(&QTreeWidget::itemSelectionChanged), self, [=]() {
-		miqt_exec_callback_QTreeWidget_itemSelectionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTreeWidget_itemSelectionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTreeWidget_itemSelectionChanged_release(slot); }
+	};
+	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)()>(&QTreeWidget::itemSelectionChanged), self, caller{slot});
 }
 
 struct miqt_string QTreeWidget_tr2(const char* s, const char* c) {

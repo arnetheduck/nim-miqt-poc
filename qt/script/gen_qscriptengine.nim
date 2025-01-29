@@ -413,6 +413,10 @@ proc miqt_exec_callback_cQScriptEngine_signalHandlerException(slot: int, excepti
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQScriptEngine_signalHandlerException_release(slot: int) {.exportc: "miqt_exec_callback_QScriptEngine_signalHandlerException_release".} =
+  let nimfunc = cast[ref QScriptEnginesignalHandlerExceptionSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsignalHandlerException*(self: gen_qscriptengine_types.QScriptEngine, slot: QScriptEnginesignalHandlerExceptionSlot) =
   var tmp = new QScriptEnginesignalHandlerExceptionSlot
   tmp[] = slot

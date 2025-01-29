@@ -94,6 +94,10 @@ proc miqt_exec_callback_cQMediaAudioProbeControl_audioBufferProbed(slot: int, bu
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaAudioProbeControl_audioBufferProbed_release(slot: int) {.exportc: "miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed_release".} =
+  let nimfunc = cast[ref QMediaAudioProbeControlaudioBufferProbedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaudioBufferProbed*(self: gen_qmediaaudioprobecontrol_types.QMediaAudioProbeControl, slot: QMediaAudioProbeControlaudioBufferProbedSlot) =
   var tmp = new QMediaAudioProbeControlaudioBufferProbedSlot
   tmp[] = slot
@@ -107,6 +111,10 @@ type QMediaAudioProbeControlflushSlot* = proc()
 proc miqt_exec_callback_cQMediaAudioProbeControl_flush(slot: int) {.exportc: "miqt_exec_callback_QMediaAudioProbeControl_flush".} =
   let nimfunc = cast[ptr QMediaAudioProbeControlflushSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaAudioProbeControl_flush_release(slot: int) {.exportc: "miqt_exec_callback_QMediaAudioProbeControl_flush_release".} =
+  let nimfunc = cast[ref QMediaAudioProbeControlflushSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onflush*(self: gen_qmediaaudioprobecontrol_types.QMediaAudioProbeControl, slot: QMediaAudioProbeControlflushSlot) =
   var tmp = new QMediaAudioProbeControlflushSlot

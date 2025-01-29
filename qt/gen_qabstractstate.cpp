@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractState_activeChanged(intptr_t, bool);
+void miqt_exec_callback_QAbstractState_activeChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -74,10 +75,19 @@ void QAbstractState_activeChanged(QAbstractState* self, bool active) {
 }
 
 void QAbstractState_connect_activeChanged(QAbstractState* self, intptr_t slot) {
-	QAbstractState::connect(self, static_cast<void (QAbstractState::*)(bool)>(&QAbstractState::activeChanged), self, [=](bool active) {
-		bool sigval1 = active;
-		miqt_exec_callback_QAbstractState_activeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool active) {
+			bool sigval1 = active;
+			miqt_exec_callback_QAbstractState_activeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractState_activeChanged_release(slot); }
+	};
+	QAbstractState::connect(self, static_cast<void (QAbstractState::*)(bool)>(&QAbstractState::activeChanged), self, caller{slot});
 }
 
 struct miqt_string QAbstractState_tr2(const char* s, const char* c) {

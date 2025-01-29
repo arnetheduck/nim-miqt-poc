@@ -44,7 +44,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QVideoWidget_fullScreenChanged(intptr_t, bool);
+void miqt_exec_callback_QVideoWidget_fullScreenChanged_release(intptr_t);
 void miqt_exec_callback_QVideoWidget_aspectRatioModeChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidget_aspectRatioModeChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1133,10 +1135,19 @@ void QVideoWidget_fullScreenChanged(QVideoWidget* self, bool fullScreen) {
 }
 
 void QVideoWidget_connect_fullScreenChanged(QVideoWidget* self, intptr_t slot) {
-	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(bool)>(&QVideoWidget::fullScreenChanged), self, [=](bool fullScreen) {
-		bool sigval1 = fullScreen;
-		miqt_exec_callback_QVideoWidget_fullScreenChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool fullScreen) {
+			bool sigval1 = fullScreen;
+			miqt_exec_callback_QVideoWidget_fullScreenChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoWidget_fullScreenChanged_release(slot); }
+	};
+	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(bool)>(&QVideoWidget::fullScreenChanged), self, caller{slot});
 }
 
 void QVideoWidget_aspectRatioModeChanged(QVideoWidget* self, int mode) {
@@ -1144,11 +1155,20 @@ void QVideoWidget_aspectRatioModeChanged(QVideoWidget* self, int mode) {
 }
 
 void QVideoWidget_connect_aspectRatioModeChanged(QVideoWidget* self, intptr_t slot) {
-	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(Qt::AspectRatioMode)>(&QVideoWidget::aspectRatioModeChanged), self, [=](Qt::AspectRatioMode mode) {
-		Qt::AspectRatioMode mode_ret = mode;
-		int sigval1 = static_cast<int>(mode_ret);
-		miqt_exec_callback_QVideoWidget_aspectRatioModeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::AspectRatioMode mode) {
+			Qt::AspectRatioMode mode_ret = mode;
+			int sigval1 = static_cast<int>(mode_ret);
+			miqt_exec_callback_QVideoWidget_aspectRatioModeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoWidget_aspectRatioModeChanged_release(slot); }
+	};
+	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(Qt::AspectRatioMode)>(&QVideoWidget::aspectRatioModeChanged), self, caller{slot});
 }
 
 struct miqt_string QVideoWidget_tr2(const char* s, const char* c) {

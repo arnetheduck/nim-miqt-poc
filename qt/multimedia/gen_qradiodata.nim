@@ -258,6 +258,10 @@ proc miqt_exec_callback_cQRadioData_stationIdChanged(slot: int, stationId: struc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioData_stationIdChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioData_stationIdChanged_release".} =
+  let nimfunc = cast[ref QRadioDatastationIdChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstationIdChanged*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatastationIdChangedSlot) =
   var tmp = new QRadioDatastationIdChangedSlot
   tmp[] = slot
@@ -273,6 +277,10 @@ proc miqt_exec_callback_cQRadioData_programTypeChanged(slot: int, programType: c
   let slotval1 = cint(programType)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQRadioData_programTypeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioData_programTypeChanged_release".} =
+  let nimfunc = cast[ref QRadioDataprogramTypeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onprogramTypeChanged*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataprogramTypeChangedSlot) =
   var tmp = new QRadioDataprogramTypeChangedSlot
@@ -293,6 +301,10 @@ proc miqt_exec_callback_cQRadioData_programTypeNameChanged(slot: int, programTyp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioData_programTypeNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioData_programTypeNameChanged_release".} =
+  let nimfunc = cast[ref QRadioDataprogramTypeNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onprogramTypeNameChanged*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataprogramTypeNameChangedSlot) =
   var tmp = new QRadioDataprogramTypeNameChangedSlot
   tmp[] = slot
@@ -311,6 +323,10 @@ proc miqt_exec_callback_cQRadioData_stationNameChanged(slot: int, stationName: s
   let slotval1 = vstationNamex_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQRadioData_stationNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioData_stationNameChanged_release".} =
+  let nimfunc = cast[ref QRadioDatastationNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstationNameChanged*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatastationNameChangedSlot) =
   var tmp = new QRadioDatastationNameChangedSlot
@@ -331,6 +347,10 @@ proc miqt_exec_callback_cQRadioData_radioTextChanged(slot: int, radioText: struc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioData_radioTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioData_radioTextChanged_release".} =
+  let nimfunc = cast[ref QRadioDataradioTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onradioTextChanged*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataradioTextChangedSlot) =
   var tmp = new QRadioDataradioTextChangedSlot
   tmp[] = slot
@@ -347,6 +367,10 @@ proc miqt_exec_callback_cQRadioData_alternativeFrequenciesEnabledChanged(slot: i
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioData_alternativeFrequenciesEnabledChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged_release".} =
+  let nimfunc = cast[ref QRadioDataalternativeFrequenciesEnabledChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onalternativeFrequenciesEnabledChanged*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataalternativeFrequenciesEnabledChangedSlot) =
   var tmp = new QRadioDataalternativeFrequenciesEnabledChangedSlot
   tmp[] = slot
@@ -362,6 +386,10 @@ proc miqt_exec_callback_cQRadioData_errorWithError(slot: int, error: cint) {.exp
   let slotval1 = cint(error)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQRadioData_errorWithError_release(slot: int) {.exportc: "miqt_exec_callback_QRadioData_errorWithError_release".} =
+  let nimfunc = cast[ref QRadioDataerrorWithErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onerror*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataerrorWithErrorSlot) =
   var tmp = new QRadioDataerrorWithErrorSlot

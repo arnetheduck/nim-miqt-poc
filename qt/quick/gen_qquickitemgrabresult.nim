@@ -108,6 +108,10 @@ proc miqt_exec_callback_cQQuickItemGrabResult_ready(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QQuickItemGrabResultreadySlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItemGrabResult_ready_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItemGrabResult_ready_release".} =
+  let nimfunc = cast[ref QQuickItemGrabResultreadySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onready*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, slot: QQuickItemGrabResultreadySlot) =
   var tmp = new QQuickItemGrabResultreadySlot
   tmp[] = slot

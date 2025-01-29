@@ -132,6 +132,10 @@ proc miqt_exec_callback_cQCameraControl_stateChanged(slot: int, param1: cint) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraControl_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraControl_stateChanged_release".} =
+  let nimfunc = cast[ref QCameraControlstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qcameracontrol_types.QCameraControl, slot: QCameraControlstateChangedSlot) =
   var tmp = new QCameraControlstateChangedSlot
   tmp[] = slot
@@ -147,6 +151,10 @@ proc miqt_exec_callback_cQCameraControl_statusChanged(slot: int, param1: cint) {
   let slotval1 = cint(param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCameraControl_statusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraControl_statusChanged_release".} =
+  let nimfunc = cast[ref QCameraControlstatusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstatusChanged*(self: gen_qcameracontrol_types.QCameraControl, slot: QCameraControlstatusChangedSlot) =
   var tmp = new QCameraControlstatusChangedSlot
@@ -169,6 +177,10 @@ proc miqt_exec_callback_cQCameraControl_error(slot: int, error: cint, errorStrin
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQCameraControl_error_release(slot: int) {.exportc: "miqt_exec_callback_QCameraControl_error_release".} =
+  let nimfunc = cast[ref QCameraControlerrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerror*(self: gen_qcameracontrol_types.QCameraControl, slot: QCameraControlerrorSlot) =
   var tmp = new QCameraControlerrorSlot
   tmp[] = slot
@@ -184,6 +196,10 @@ proc miqt_exec_callback_cQCameraControl_captureModeChanged(slot: int, mode: cint
   let slotval1 = cint(mode)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCameraControl_captureModeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraControl_captureModeChanged_release".} =
+  let nimfunc = cast[ref QCameraControlcaptureModeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncaptureModeChanged*(self: gen_qcameracontrol_types.QCameraControl, slot: QCameraControlcaptureModeChangedSlot) =
   var tmp = new QCameraControlcaptureModeChangedSlot

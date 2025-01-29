@@ -14,6 +14,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAudioRoleControl_audioRoleChanged(intptr_t, int);
+void miqt_exec_callback_QAudioRoleControl_audioRoleChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -84,11 +85,20 @@ void QAudioRoleControl_audioRoleChanged(QAudioRoleControl* self, int role) {
 }
 
 void QAudioRoleControl_connect_audioRoleChanged(QAudioRoleControl* self, intptr_t slot) {
-	QAudioRoleControl::connect(self, static_cast<void (QAudioRoleControl::*)(QAudio::Role)>(&QAudioRoleControl::audioRoleChanged), self, [=](QAudio::Role role) {
-		QAudio::Role role_ret = role;
-		int sigval1 = static_cast<int>(role_ret);
-		miqt_exec_callback_QAudioRoleControl_audioRoleChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAudio::Role role) {
+			QAudio::Role role_ret = role;
+			int sigval1 = static_cast<int>(role_ret);
+			miqt_exec_callback_QAudioRoleControl_audioRoleChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAudioRoleControl_audioRoleChanged_release(slot); }
+	};
+	QAudioRoleControl::connect(self, static_cast<void (QAudioRoleControl::*)(QAudio::Role)>(&QAudioRoleControl::audioRoleChanged), self, caller{slot});
 }
 
 struct miqt_string QAudioRoleControl_tr2(const char* s, const char* c) {

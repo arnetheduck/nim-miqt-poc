@@ -191,6 +191,10 @@ proc miqt_exec_callback_cQWaveDecoder_formatKnown(slot: int) {.exportc: "miqt_ex
   let nimfunc = cast[ptr QWaveDecoderformatKnownSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWaveDecoder_formatKnown_release(slot: int) {.exportc: "miqt_exec_callback_QWaveDecoder_formatKnown_release".} =
+  let nimfunc = cast[ref QWaveDecoderformatKnownSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onformatKnown*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderformatKnownSlot) =
   var tmp = new QWaveDecoderformatKnownSlot
   tmp[] = slot
@@ -204,6 +208,10 @@ type QWaveDecoderparsingErrorSlot* = proc()
 proc miqt_exec_callback_cQWaveDecoder_parsingError(slot: int) {.exportc: "miqt_exec_callback_QWaveDecoder_parsingError".} =
   let nimfunc = cast[ptr QWaveDecoderparsingErrorSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWaveDecoder_parsingError_release(slot: int) {.exportc: "miqt_exec_callback_QWaveDecoder_parsingError_release".} =
+  let nimfunc = cast[ref QWaveDecoderparsingErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onparsingError*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderparsingErrorSlot) =
   var tmp = new QWaveDecoderparsingErrorSlot

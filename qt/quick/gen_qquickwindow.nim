@@ -424,6 +424,10 @@ proc miqt_exec_callback_cQQuickWindow_frameSwapped(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QQuickWindowframeSwappedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWindow_frameSwapped_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_frameSwapped_release".} =
+  let nimfunc = cast[ref QQuickWindowframeSwappedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onframeSwapped*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowframeSwappedSlot) =
   var tmp = new QQuickWindowframeSwappedSlot
   tmp[] = slot
@@ -437,6 +441,10 @@ type QQuickWindowsceneGraphInitializedSlot* = proc()
 proc miqt_exec_callback_cQQuickWindow_sceneGraphInitialized(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_sceneGraphInitialized".} =
   let nimfunc = cast[ptr QQuickWindowsceneGraphInitializedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWindow_sceneGraphInitialized_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_sceneGraphInitialized_release".} =
+  let nimfunc = cast[ref QQuickWindowsceneGraphInitializedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsceneGraphInitialized*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphInitializedSlot) =
   var tmp = new QQuickWindowsceneGraphInitializedSlot
@@ -452,6 +460,10 @@ proc miqt_exec_callback_cQQuickWindow_sceneGraphInvalidated(slot: int) {.exportc
   let nimfunc = cast[ptr QQuickWindowsceneGraphInvalidatedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWindow_sceneGraphInvalidated_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_sceneGraphInvalidated_release".} =
+  let nimfunc = cast[ref QQuickWindowsceneGraphInvalidatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsceneGraphInvalidated*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphInvalidatedSlot) =
   var tmp = new QQuickWindowsceneGraphInvalidatedSlot
   tmp[] = slot
@@ -465,6 +477,10 @@ type QQuickWindowbeforeSynchronizingSlot* = proc()
 proc miqt_exec_callback_cQQuickWindow_beforeSynchronizing(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_beforeSynchronizing".} =
   let nimfunc = cast[ptr QQuickWindowbeforeSynchronizingSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWindow_beforeSynchronizing_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_beforeSynchronizing_release".} =
+  let nimfunc = cast[ref QQuickWindowbeforeSynchronizingSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbeforeSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowbeforeSynchronizingSlot) =
   var tmp = new QQuickWindowbeforeSynchronizingSlot
@@ -480,6 +496,10 @@ proc miqt_exec_callback_cQQuickWindow_afterSynchronizing(slot: int) {.exportc: "
   let nimfunc = cast[ptr QQuickWindowafterSynchronizingSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWindow_afterSynchronizing_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_afterSynchronizing_release".} =
+  let nimfunc = cast[ref QQuickWindowafterSynchronizingSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onafterSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterSynchronizingSlot) =
   var tmp = new QQuickWindowafterSynchronizingSlot
   tmp[] = slot
@@ -493,6 +513,10 @@ type QQuickWindowbeforeRenderingSlot* = proc()
 proc miqt_exec_callback_cQQuickWindow_beforeRendering(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_beforeRendering".} =
   let nimfunc = cast[ptr QQuickWindowbeforeRenderingSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWindow_beforeRendering_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_beforeRendering_release".} =
+  let nimfunc = cast[ref QQuickWindowbeforeRenderingSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbeforeRendering*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowbeforeRenderingSlot) =
   var tmp = new QQuickWindowbeforeRenderingSlot
@@ -508,6 +532,10 @@ proc miqt_exec_callback_cQQuickWindow_afterRendering(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QQuickWindowafterRenderingSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWindow_afterRendering_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_afterRendering_release".} =
+  let nimfunc = cast[ref QQuickWindowafterRenderingSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onafterRendering*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterRenderingSlot) =
   var tmp = new QQuickWindowafterRenderingSlot
   tmp[] = slot
@@ -522,6 +550,10 @@ proc miqt_exec_callback_cQQuickWindow_afterAnimating(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QQuickWindowafterAnimatingSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWindow_afterAnimating_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_afterAnimating_release".} =
+  let nimfunc = cast[ref QQuickWindowafterAnimatingSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onafterAnimating*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterAnimatingSlot) =
   var tmp = new QQuickWindowafterAnimatingSlot
   tmp[] = slot
@@ -535,6 +567,10 @@ type QQuickWindowsceneGraphAboutToStopSlot* = proc()
 proc miqt_exec_callback_cQQuickWindow_sceneGraphAboutToStop(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop".} =
   let nimfunc = cast[ptr QQuickWindowsceneGraphAboutToStopSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWindow_sceneGraphAboutToStop_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop_release".} =
+  let nimfunc = cast[ref QQuickWindowsceneGraphAboutToStopSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsceneGraphAboutToStop*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphAboutToStopSlot) =
   var tmp = new QQuickWindowsceneGraphAboutToStopSlot
@@ -552,6 +588,10 @@ proc miqt_exec_callback_cQQuickWindow_colorChanged(slot: int, param1: pointer) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickWindow_colorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_colorChanged_release".} =
+  let nimfunc = cast[ref QQuickWindowcolorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncolorChanged*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowcolorChangedSlot) =
   var tmp = new QQuickWindowcolorChangedSlot
   tmp[] = slot
@@ -565,6 +605,10 @@ type QQuickWindowactiveFocusItemChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickWindow_activeFocusItemChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_activeFocusItemChanged".} =
   let nimfunc = cast[ptr QQuickWindowactiveFocusItemChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWindow_activeFocusItemChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_activeFocusItemChanged_release".} =
+  let nimfunc = cast[ref QQuickWindowactiveFocusItemChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactiveFocusItemChanged*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowactiveFocusItemChangedSlot) =
   var tmp = new QQuickWindowactiveFocusItemChangedSlot
@@ -587,6 +631,10 @@ proc miqt_exec_callback_cQQuickWindow_sceneGraphError(slot: int, error: cint, me
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQQuickWindow_sceneGraphError_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_sceneGraphError_release".} =
+  let nimfunc = cast[ref QQuickWindowsceneGraphErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsceneGraphError*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphErrorSlot) =
   var tmp = new QQuickWindowsceneGraphErrorSlot
   tmp[] = slot
@@ -601,6 +649,10 @@ proc miqt_exec_callback_cQQuickWindow_beforeRenderPassRecording(slot: int) {.exp
   let nimfunc = cast[ptr QQuickWindowbeforeRenderPassRecordingSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWindow_beforeRenderPassRecording_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_beforeRenderPassRecording_release".} =
+  let nimfunc = cast[ref QQuickWindowbeforeRenderPassRecordingSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbeforeRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowbeforeRenderPassRecordingSlot) =
   var tmp = new QQuickWindowbeforeRenderPassRecordingSlot
   tmp[] = slot
@@ -614,6 +666,10 @@ type QQuickWindowafterRenderPassRecordingSlot* = proc()
 proc miqt_exec_callback_cQQuickWindow_afterRenderPassRecording(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_afterRenderPassRecording".} =
   let nimfunc = cast[ptr QQuickWindowafterRenderPassRecordingSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWindow_afterRenderPassRecording_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWindow_afterRenderPassRecording_release".} =
+  let nimfunc = cast[ref QQuickWindowafterRenderPassRecordingSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onafterRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterRenderPassRecordingSlot) =
   var tmp = new QQuickWindowafterRenderPassRecordingSlot

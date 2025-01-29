@@ -299,6 +299,10 @@ proc miqt_exec_callback_cQMdiSubWindow_windowStateChanged(slot: int, oldState: c
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQMdiSubWindow_windowStateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMdiSubWindow_windowStateChanged_release".} =
+  let nimfunc = cast[ref QMdiSubWindowwindowStateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onwindowStateChanged*(self: gen_qmdisubwindow_types.QMdiSubWindow, slot: QMdiSubWindowwindowStateChangedSlot) =
   var tmp = new QMdiSubWindowwindowStateChangedSlot
   tmp[] = slot
@@ -312,6 +316,10 @@ type QMdiSubWindowaboutToActivateSlot* = proc()
 proc miqt_exec_callback_cQMdiSubWindow_aboutToActivate(slot: int) {.exportc: "miqt_exec_callback_QMdiSubWindow_aboutToActivate".} =
   let nimfunc = cast[ptr QMdiSubWindowaboutToActivateSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMdiSubWindow_aboutToActivate_release(slot: int) {.exportc: "miqt_exec_callback_QMdiSubWindow_aboutToActivate_release".} =
+  let nimfunc = cast[ref QMdiSubWindowaboutToActivateSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaboutToActivate*(self: gen_qmdisubwindow_types.QMdiSubWindow, slot: QMdiSubWindowaboutToActivateSlot) =
   var tmp = new QMdiSubWindowaboutToActivateSlot

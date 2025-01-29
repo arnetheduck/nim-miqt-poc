@@ -189,6 +189,10 @@ proc miqt_exec_callback_cQAudioSource_stateChanged(slot: int, state: cint) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioSource_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioSource_stateChanged_release".} =
+  let nimfunc = cast[ref QAudioSourcestateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qaudiosource_types.QAudioSource, slot: QAudioSourcestateChangedSlot) =
   var tmp = new QAudioSourcestateChangedSlot
   tmp[] = slot

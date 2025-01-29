@@ -45,10 +45,15 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractButton_pressed(intptr_t);
+void miqt_exec_callback_QAbstractButton_pressed_release(intptr_t);
 void miqt_exec_callback_QAbstractButton_released(intptr_t);
+void miqt_exec_callback_QAbstractButton_released_release(intptr_t);
 void miqt_exec_callback_QAbstractButton_clicked(intptr_t);
+void miqt_exec_callback_QAbstractButton_clicked_release(intptr_t);
 void miqt_exec_callback_QAbstractButton_toggled(intptr_t, bool);
+void miqt_exec_callback_QAbstractButton_toggled_release(intptr_t);
 void miqt_exec_callback_QAbstractButton_clicked1(intptr_t, bool);
+void miqt_exec_callback_QAbstractButton_clicked1_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1290,9 +1295,18 @@ void QAbstractButton_pressed(QAbstractButton* self) {
 }
 
 void QAbstractButton_connect_pressed(QAbstractButton* self, intptr_t slot) {
-	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::pressed), self, [=]() {
-		miqt_exec_callback_QAbstractButton_pressed(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractButton_pressed(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractButton_pressed_release(slot); }
+	};
+	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::pressed), self, caller{slot});
 }
 
 void QAbstractButton_released(QAbstractButton* self) {
@@ -1300,9 +1314,18 @@ void QAbstractButton_released(QAbstractButton* self) {
 }
 
 void QAbstractButton_connect_released(QAbstractButton* self, intptr_t slot) {
-	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::released), self, [=]() {
-		miqt_exec_callback_QAbstractButton_released(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractButton_released(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractButton_released_release(slot); }
+	};
+	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::released), self, caller{slot});
 }
 
 void QAbstractButton_clicked(QAbstractButton* self) {
@@ -1310,9 +1333,18 @@ void QAbstractButton_clicked(QAbstractButton* self) {
 }
 
 void QAbstractButton_connect_clicked(QAbstractButton* self, intptr_t slot) {
-	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=]() {
-		miqt_exec_callback_QAbstractButton_clicked(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractButton_clicked(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractButton_clicked_release(slot); }
+	};
+	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, caller{slot});
 }
 
 void QAbstractButton_toggled(QAbstractButton* self, bool checked) {
@@ -1320,10 +1352,19 @@ void QAbstractButton_toggled(QAbstractButton* self, bool checked) {
 }
 
 void QAbstractButton_connect_toggled(QAbstractButton* self, intptr_t slot) {
-	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::toggled), self, [=](bool checked) {
-		bool sigval1 = checked;
-		miqt_exec_callback_QAbstractButton_toggled(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool checked) {
+			bool sigval1 = checked;
+			miqt_exec_callback_QAbstractButton_toggled(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractButton_toggled_release(slot); }
+	};
+	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::toggled), self, caller{slot});
 }
 
 struct miqt_string QAbstractButton_tr2(const char* s, const char* c) {
@@ -1379,10 +1420,19 @@ void QAbstractButton_clicked1(QAbstractButton* self, bool checked) {
 }
 
 void QAbstractButton_connect_clicked1(QAbstractButton* self, intptr_t slot) {
-	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=](bool checked) {
-		bool sigval1 = checked;
-		miqt_exec_callback_QAbstractButton_clicked1(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool checked) {
+			bool sigval1 = checked;
+			miqt_exec_callback_QAbstractButton_clicked1(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractButton_clicked1_release(slot); }
+	};
+	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, caller{slot});
 }
 
 QMetaObject* QAbstractButton_virtualbase_metaObject(const void* self) {

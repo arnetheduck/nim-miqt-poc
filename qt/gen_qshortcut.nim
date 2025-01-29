@@ -178,6 +178,10 @@ proc miqt_exec_callback_cQShortcut_activated(slot: int) {.exportc: "miqt_exec_ca
   let nimfunc = cast[ptr QShortcutactivatedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQShortcut_activated_release(slot: int) {.exportc: "miqt_exec_callback_QShortcut_activated_release".} =
+  let nimfunc = cast[ref QShortcutactivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactivated*(self: gen_qshortcut_types.QShortcut, slot: QShortcutactivatedSlot) =
   var tmp = new QShortcutactivatedSlot
   tmp[] = slot
@@ -191,6 +195,10 @@ type QShortcutactivatedAmbiguouslySlot* = proc()
 proc miqt_exec_callback_cQShortcut_activatedAmbiguously(slot: int) {.exportc: "miqt_exec_callback_QShortcut_activatedAmbiguously".} =
   let nimfunc = cast[ptr QShortcutactivatedAmbiguouslySlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQShortcut_activatedAmbiguously_release(slot: int) {.exportc: "miqt_exec_callback_QShortcut_activatedAmbiguously_release".} =
+  let nimfunc = cast[ref QShortcutactivatedAmbiguouslySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactivatedAmbiguously*(self: gen_qshortcut_types.QShortcut, slot: QShortcutactivatedAmbiguouslySlot) =
   var tmp = new QShortcutactivatedAmbiguouslySlot

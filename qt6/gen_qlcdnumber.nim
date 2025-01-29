@@ -304,6 +304,10 @@ proc miqt_exec_callback_cQLCDNumber_overflow(slot: int) {.exportc: "miqt_exec_ca
   let nimfunc = cast[ptr QLCDNumberoverflowSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQLCDNumber_overflow_release(slot: int) {.exportc: "miqt_exec_callback_QLCDNumber_overflow_release".} =
+  let nimfunc = cast[ref QLCDNumberoverflowSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onoverflow*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberoverflowSlot) =
   var tmp = new QLCDNumberoverflowSlot
   tmp[] = slot

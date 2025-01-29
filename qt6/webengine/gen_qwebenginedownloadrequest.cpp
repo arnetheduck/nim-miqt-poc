@@ -14,14 +14,23 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QWebEngineDownloadRequest_stateChanged(intptr_t, int);
+void miqt_exec_callback_QWebEngineDownloadRequest_stateChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -193,11 +202,20 @@ void QWebEngineDownloadRequest_stateChanged(QWebEngineDownloadRequest* self, int
 }
 
 void QWebEngineDownloadRequest_connect_stateChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)(QWebEngineDownloadRequest::DownloadState)>(&QWebEngineDownloadRequest::stateChanged), self, [=](QWebEngineDownloadRequest::DownloadState state) {
-		QWebEngineDownloadRequest::DownloadState state_ret = state;
-		int sigval1 = static_cast<int>(state_ret);
-		miqt_exec_callback_QWebEngineDownloadRequest_stateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWebEngineDownloadRequest::DownloadState state) {
+			QWebEngineDownloadRequest::DownloadState state_ret = state;
+			int sigval1 = static_cast<int>(state_ret);
+			miqt_exec_callback_QWebEngineDownloadRequest_stateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_stateChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)(QWebEngineDownloadRequest::DownloadState)>(&QWebEngineDownloadRequest::stateChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_savePageFormatChanged(QWebEngineDownloadRequest* self) {
@@ -205,9 +223,18 @@ void QWebEngineDownloadRequest_savePageFormatChanged(QWebEngineDownloadRequest* 
 }
 
 void QWebEngineDownloadRequest_connect_savePageFormatChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::savePageFormatChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::savePageFormatChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_receivedBytesChanged(QWebEngineDownloadRequest* self) {
@@ -215,9 +242,18 @@ void QWebEngineDownloadRequest_receivedBytesChanged(QWebEngineDownloadRequest* s
 }
 
 void QWebEngineDownloadRequest_connect_receivedBytesChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::receivedBytesChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::receivedBytesChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_totalBytesChanged(QWebEngineDownloadRequest* self) {
@@ -225,9 +261,18 @@ void QWebEngineDownloadRequest_totalBytesChanged(QWebEngineDownloadRequest* self
 }
 
 void QWebEngineDownloadRequest_connect_totalBytesChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::totalBytesChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::totalBytesChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_interruptReasonChanged(QWebEngineDownloadRequest* self) {
@@ -235,9 +280,18 @@ void QWebEngineDownloadRequest_interruptReasonChanged(QWebEngineDownloadRequest*
 }
 
 void QWebEngineDownloadRequest_connect_interruptReasonChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::interruptReasonChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::interruptReasonChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_isFinishedChanged(QWebEngineDownloadRequest* self) {
@@ -245,9 +299,18 @@ void QWebEngineDownloadRequest_isFinishedChanged(QWebEngineDownloadRequest* self
 }
 
 void QWebEngineDownloadRequest_connect_isFinishedChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::isFinishedChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::isFinishedChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_isPausedChanged(QWebEngineDownloadRequest* self) {
@@ -255,9 +318,18 @@ void QWebEngineDownloadRequest_isPausedChanged(QWebEngineDownloadRequest* self) 
 }
 
 void QWebEngineDownloadRequest_connect_isPausedChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::isPausedChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::isPausedChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_downloadDirectoryChanged(QWebEngineDownloadRequest* self) {
@@ -265,9 +337,18 @@ void QWebEngineDownloadRequest_downloadDirectoryChanged(QWebEngineDownloadReques
 }
 
 void QWebEngineDownloadRequest_connect_downloadDirectoryChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::downloadDirectoryChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::downloadDirectoryChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadRequest_downloadFileNameChanged(QWebEngineDownloadRequest* self) {
@@ -275,9 +356,18 @@ void QWebEngineDownloadRequest_downloadFileNameChanged(QWebEngineDownloadRequest
 }
 
 void QWebEngineDownloadRequest_connect_downloadFileNameChanged(QWebEngineDownloadRequest* self, intptr_t slot) {
-	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::downloadFileNameChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged_release(slot); }
+	};
+	QWebEngineDownloadRequest::connect(self, static_cast<void (QWebEngineDownloadRequest::*)()>(&QWebEngineDownloadRequest::downloadFileNameChanged), self, caller{slot});
 }
 
 struct miqt_string QWebEngineDownloadRequest_tr2(const char* s, const char* c) {

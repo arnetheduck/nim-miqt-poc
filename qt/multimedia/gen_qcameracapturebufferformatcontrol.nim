@@ -107,6 +107,10 @@ proc miqt_exec_callback_cQCameraCaptureBufferFormatControl_bufferFormatChanged(s
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraCaptureBufferFormatControl_bufferFormatChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraCaptureBufferFormatControl_bufferFormatChanged_release".} =
+  let nimfunc = cast[ref QCameraCaptureBufferFormatControlbufferFormatChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbufferFormatChanged*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, slot: QCameraCaptureBufferFormatControlbufferFormatChangedSlot) =
   var tmp = new QCameraCaptureBufferFormatControlbufferFormatChangedSlot
   tmp[] = slot

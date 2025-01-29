@@ -52,41 +52,77 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED(intptr_t, bool);
+void miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED(intptr_t, const char*, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION(intptr_t, const char*, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2(intptr_t, const char*, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(intptr_t, const char*, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD(intptr_t, unsigned int, unsigned long, void*);
+void miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED(intptr_t, int, int, const char*, int, int, int, int, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_PAINTED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_PAINTED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED(intptr_t, QUrl*);
+void miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION(intptr_t, const char*, int, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2(intptr_t, const char*, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3(intptr_t, const char*, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3_release(intptr_t);
 void miqt_exec_callback_QsciScintillaBase_SCN_ZOOM(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_ZOOM_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1400,10 +1436,19 @@ void QsciScintillaBase_QSCN_SELCHANGED(QsciScintillaBase* self, bool yes) {
 }
 
 void QsciScintillaBase_connect_QSCN_SELCHANGED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(bool)>(&QsciScintillaBase::QSCN_SELCHANGED), self, [=](bool yes) {
-		bool sigval1 = yes;
-		miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool yes) {
+			bool sigval1 = yes;
+			miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(bool)>(&QsciScintillaBase::QSCN_SELCHANGED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_AUTOCCANCELLED(QsciScintillaBase* self) {
@@ -1411,9 +1456,18 @@ void QsciScintillaBase_SCN_AUTOCCANCELLED(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_AUTOCCANCELLED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_AUTOCCANCELLED), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_AUTOCCANCELLED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_AUTOCCHARDELETED(QsciScintillaBase* self) {
@@ -1421,9 +1475,18 @@ void QsciScintillaBase_SCN_AUTOCCHARDELETED(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_AUTOCCHARDELETED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_AUTOCCHARDELETED), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_AUTOCCHARDELETED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_AUTOCCOMPLETED(QsciScintillaBase* self, const char* selection, int position, int ch, int method) {
@@ -1431,13 +1494,22 @@ void QsciScintillaBase_SCN_AUTOCCOMPLETED(QsciScintillaBase* self, const char* s
 }
 
 void QsciScintillaBase_connect_SCN_AUTOCCOMPLETED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int)>(&QsciScintillaBase::SCN_AUTOCCOMPLETED), self, [=](const char* selection, int position, int ch, int method) {
-		const char* sigval1 = (const char*) selection;
-		int sigval2 = position;
-		int sigval3 = ch;
-		int sigval4 = method;
-		miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED(slot, sigval1, sigval2, sigval3, sigval4);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* selection, int position, int ch, int method) {
+			const char* sigval1 = (const char*) selection;
+			int sigval2 = position;
+			int sigval3 = ch;
+			int sigval4 = method;
+			miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED(slot, sigval1, sigval2, sigval3, sigval4);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int)>(&QsciScintillaBase::SCN_AUTOCCOMPLETED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_AUTOCSELECTION(QsciScintillaBase* self, const char* selection, int position, int ch, int method) {
@@ -1445,13 +1517,22 @@ void QsciScintillaBase_SCN_AUTOCSELECTION(QsciScintillaBase* self, const char* s
 }
 
 void QsciScintillaBase_connect_SCN_AUTOCSELECTION(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int)>(&QsciScintillaBase::SCN_AUTOCSELECTION), self, [=](const char* selection, int position, int ch, int method) {
-		const char* sigval1 = (const char*) selection;
-		int sigval2 = position;
-		int sigval3 = ch;
-		int sigval4 = method;
-		miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION(slot, sigval1, sigval2, sigval3, sigval4);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* selection, int position, int ch, int method) {
+			const char* sigval1 = (const char*) selection;
+			int sigval2 = position;
+			int sigval3 = ch;
+			int sigval4 = method;
+			miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION(slot, sigval1, sigval2, sigval3, sigval4);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int)>(&QsciScintillaBase::SCN_AUTOCSELECTION), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_AUTOCSELECTION2(QsciScintillaBase* self, const char* selection, int position) {
@@ -1459,11 +1540,20 @@ void QsciScintillaBase_SCN_AUTOCSELECTION2(QsciScintillaBase* self, const char* 
 }
 
 void QsciScintillaBase_connect_SCN_AUTOCSELECTION2(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int)>(&QsciScintillaBase::SCN_AUTOCSELECTION), self, [=](const char* selection, int position) {
-		const char* sigval1 = (const char*) selection;
-		int sigval2 = position;
-		miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* selection, int position) {
+			const char* sigval1 = (const char*) selection;
+			int sigval2 = position;
+			miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int)>(&QsciScintillaBase::SCN_AUTOCSELECTION), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(QsciScintillaBase* self, const char* selection, int id, int position) {
@@ -1471,12 +1561,21 @@ void QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(QsciScintillaBase* self, const c
 }
 
 void QsciScintillaBase_connect_SCN_AUTOCSELECTIONCHANGE(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int)>(&QsciScintillaBase::SCN_AUTOCSELECTIONCHANGE), self, [=](const char* selection, int id, int position) {
-		const char* sigval1 = (const char*) selection;
-		int sigval2 = id;
-		int sigval3 = position;
-		miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* selection, int id, int position) {
+			const char* sigval1 = (const char*) selection;
+			int sigval2 = id;
+			int sigval3 = position;
+			miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int)>(&QsciScintillaBase::SCN_AUTOCSELECTIONCHANGE), self, caller{slot});
 }
 
 void QsciScintillaBase_SCEN_CHANGE(QsciScintillaBase* self) {
@@ -1484,9 +1583,18 @@ void QsciScintillaBase_SCEN_CHANGE(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCEN_CHANGE(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCEN_CHANGE), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCEN_CHANGE), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_CALLTIPCLICK(QsciScintillaBase* self, int direction) {
@@ -1494,10 +1602,19 @@ void QsciScintillaBase_SCN_CALLTIPCLICK(QsciScintillaBase* self, int direction) 
 }
 
 void QsciScintillaBase_connect_SCN_CALLTIPCLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_CALLTIPCLICK), self, [=](int direction) {
-		int sigval1 = direction;
-		miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int direction) {
+			int sigval1 = direction;
+			miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_CALLTIPCLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_CHARADDED(QsciScintillaBase* self, int charadded) {
@@ -1505,10 +1622,19 @@ void QsciScintillaBase_SCN_CHARADDED(QsciScintillaBase* self, int charadded) {
 }
 
 void QsciScintillaBase_connect_SCN_CHARADDED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_CHARADDED), self, [=](int charadded) {
-		int sigval1 = charadded;
-		miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int charadded) {
+			int sigval1 = charadded;
+			miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_CHARADDED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_DOUBLECLICK(QsciScintillaBase* self, int position, int line, int modifiers) {
@@ -1516,12 +1642,21 @@ void QsciScintillaBase_SCN_DOUBLECLICK(QsciScintillaBase* self, int position, in
 }
 
 void QsciScintillaBase_connect_SCN_DOUBLECLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_DOUBLECLICK), self, [=](int position, int line, int modifiers) {
-		int sigval1 = position;
-		int sigval2 = line;
-		int sigval3 = modifiers;
-		miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int line, int modifiers) {
+			int sigval1 = position;
+			int sigval2 = line;
+			int sigval3 = modifiers;
+			miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_DOUBLECLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_DWELLEND(QsciScintillaBase* self, int position, int x, int y) {
@@ -1529,12 +1664,21 @@ void QsciScintillaBase_SCN_DWELLEND(QsciScintillaBase* self, int position, int x
 }
 
 void QsciScintillaBase_connect_SCN_DWELLEND(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_DWELLEND), self, [=](int position, int x, int y) {
-		int sigval1 = position;
-		int sigval2 = x;
-		int sigval3 = y;
-		miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int x, int y) {
+			int sigval1 = position;
+			int sigval2 = x;
+			int sigval3 = y;
+			miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_DWELLEND), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_DWELLSTART(QsciScintillaBase* self, int position, int x, int y) {
@@ -1542,12 +1686,21 @@ void QsciScintillaBase_SCN_DWELLSTART(QsciScintillaBase* self, int position, int
 }
 
 void QsciScintillaBase_connect_SCN_DWELLSTART(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_DWELLSTART), self, [=](int position, int x, int y) {
-		int sigval1 = position;
-		int sigval2 = x;
-		int sigval3 = y;
-		miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int x, int y) {
+			int sigval1 = position;
+			int sigval2 = x;
+			int sigval3 = y;
+			miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_DWELLSTART), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_FOCUSIN(QsciScintillaBase* self) {
@@ -1555,9 +1708,18 @@ void QsciScintillaBase_SCN_FOCUSIN(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_FOCUSIN(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_FOCUSIN), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_FOCUSIN), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_FOCUSOUT(QsciScintillaBase* self) {
@@ -1565,9 +1727,18 @@ void QsciScintillaBase_SCN_FOCUSOUT(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_FOCUSOUT(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_FOCUSOUT), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_FOCUSOUT), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_HOTSPOTCLICK(QsciScintillaBase* self, int position, int modifiers) {
@@ -1575,11 +1746,20 @@ void QsciScintillaBase_SCN_HOTSPOTCLICK(QsciScintillaBase* self, int position, i
 }
 
 void QsciScintillaBase_connect_SCN_HOTSPOTCLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_HOTSPOTCLICK), self, [=](int position, int modifiers) {
-		int sigval1 = position;
-		int sigval2 = modifiers;
-		miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modifiers) {
+			int sigval1 = position;
+			int sigval2 = modifiers;
+			miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_HOTSPOTCLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(QsciScintillaBase* self, int position, int modifiers) {
@@ -1587,11 +1767,20 @@ void QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(QsciScintillaBase* self, int posit
 }
 
 void QsciScintillaBase_connect_SCN_HOTSPOTDOUBLECLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_HOTSPOTDOUBLECLICK), self, [=](int position, int modifiers) {
-		int sigval1 = position;
-		int sigval2 = modifiers;
-		miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modifiers) {
+			int sigval1 = position;
+			int sigval2 = modifiers;
+			miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_HOTSPOTDOUBLECLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_HOTSPOTRELEASECLICK(QsciScintillaBase* self, int position, int modifiers) {
@@ -1599,11 +1788,20 @@ void QsciScintillaBase_SCN_HOTSPOTRELEASECLICK(QsciScintillaBase* self, int posi
 }
 
 void QsciScintillaBase_connect_SCN_HOTSPOTRELEASECLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_HOTSPOTRELEASECLICK), self, [=](int position, int modifiers) {
-		int sigval1 = position;
-		int sigval2 = modifiers;
-		miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modifiers) {
+			int sigval1 = position;
+			int sigval2 = modifiers;
+			miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_HOTSPOTRELEASECLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_INDICATORCLICK(QsciScintillaBase* self, int position, int modifiers) {
@@ -1611,11 +1809,20 @@ void QsciScintillaBase_SCN_INDICATORCLICK(QsciScintillaBase* self, int position,
 }
 
 void QsciScintillaBase_connect_SCN_INDICATORCLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_INDICATORCLICK), self, [=](int position, int modifiers) {
-		int sigval1 = position;
-		int sigval2 = modifiers;
-		miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modifiers) {
+			int sigval1 = position;
+			int sigval2 = modifiers;
+			miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_INDICATORCLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_INDICATORRELEASE(QsciScintillaBase* self, int position, int modifiers) {
@@ -1623,11 +1830,20 @@ void QsciScintillaBase_SCN_INDICATORRELEASE(QsciScintillaBase* self, int positio
 }
 
 void QsciScintillaBase_connect_SCN_INDICATORRELEASE(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_INDICATORRELEASE), self, [=](int position, int modifiers) {
-		int sigval1 = position;
-		int sigval2 = modifiers;
-		miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modifiers) {
+			int sigval1 = position;
+			int sigval2 = modifiers;
+			miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_INDICATORRELEASE), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_MACRORECORD(QsciScintillaBase* self, unsigned int param1, unsigned long param2, void* param3) {
@@ -1635,12 +1851,21 @@ void QsciScintillaBase_SCN_MACRORECORD(QsciScintillaBase* self, unsigned int par
 }
 
 void QsciScintillaBase_connect_SCN_MACRORECORD(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(unsigned int, unsigned long, void*)>(&QsciScintillaBase::SCN_MACRORECORD), self, [=](unsigned int param1, unsigned long param2, void* param3) {
-		unsigned int sigval1 = param1;
-		unsigned long sigval2 = param2;
-		void* sigval3 = param3;
-		miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(unsigned int param1, unsigned long param2, void* param3) {
+			unsigned int sigval1 = param1;
+			unsigned long sigval2 = param2;
+			void* sigval3 = param3;
+			miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(unsigned int, unsigned long, void*)>(&QsciScintillaBase::SCN_MACRORECORD), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_MARGINCLICK(QsciScintillaBase* self, int position, int modifiers, int margin) {
@@ -1648,12 +1873,21 @@ void QsciScintillaBase_SCN_MARGINCLICK(QsciScintillaBase* self, int position, in
 }
 
 void QsciScintillaBase_connect_SCN_MARGINCLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_MARGINCLICK), self, [=](int position, int modifiers, int margin) {
-		int sigval1 = position;
-		int sigval2 = modifiers;
-		int sigval3 = margin;
-		miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modifiers, int margin) {
+			int sigval1 = position;
+			int sigval2 = modifiers;
+			int sigval3 = margin;
+			miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_MARGINCLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_MARGINRIGHTCLICK(QsciScintillaBase* self, int position, int modifiers, int margin) {
@@ -1661,12 +1895,21 @@ void QsciScintillaBase_SCN_MARGINRIGHTCLICK(QsciScintillaBase* self, int positio
 }
 
 void QsciScintillaBase_connect_SCN_MARGINRIGHTCLICK(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_MARGINRIGHTCLICK), self, [=](int position, int modifiers, int margin) {
-		int sigval1 = position;
-		int sigval2 = modifiers;
-		int sigval3 = margin;
-		miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modifiers, int margin) {
+			int sigval1 = position;
+			int sigval2 = modifiers;
+			int sigval3 = margin;
+			miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, int)>(&QsciScintillaBase::SCN_MARGINRIGHTCLICK), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_MODIFIED(QsciScintillaBase* self, int param1, int param2, const char* param3, int param4, int param5, int param6, int param7, int param8, int param9, int param10) {
@@ -1674,19 +1917,28 @@ void QsciScintillaBase_SCN_MODIFIED(QsciScintillaBase* self, int param1, int par
 }
 
 void QsciScintillaBase_connect_SCN_MODIFIED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, const char*, int, int, int, int, int, int, int)>(&QsciScintillaBase::SCN_MODIFIED), self, [=](int param1, int param2, const char* param3, int param4, int param5, int param6, int param7, int param8, int param9, int param10) {
-		int sigval1 = param1;
-		int sigval2 = param2;
-		const char* sigval3 = (const char*) param3;
-		int sigval4 = param4;
-		int sigval5 = param5;
-		int sigval6 = param6;
-		int sigval7 = param7;
-		int sigval8 = param8;
-		int sigval9 = param9;
-		int sigval10 = param10;
-		miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8, sigval9, sigval10);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1, int param2, const char* param3, int param4, int param5, int param6, int param7, int param8, int param9, int param10) {
+			int sigval1 = param1;
+			int sigval2 = param2;
+			const char* sigval3 = (const char*) param3;
+			int sigval4 = param4;
+			int sigval5 = param5;
+			int sigval6 = param6;
+			int sigval7 = param7;
+			int sigval8 = param8;
+			int sigval9 = param9;
+			int sigval10 = param10;
+			miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8, sigval9, sigval10);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int, const char*, int, int, int, int, int, int, int)>(&QsciScintillaBase::SCN_MODIFIED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_MODIFYATTEMPTRO(QsciScintillaBase* self) {
@@ -1694,9 +1946,18 @@ void QsciScintillaBase_SCN_MODIFYATTEMPTRO(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_MODIFYATTEMPTRO(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_MODIFYATTEMPTRO), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_MODIFYATTEMPTRO), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_NEEDSHOWN(QsciScintillaBase* self, int param1, int param2) {
@@ -1704,11 +1965,20 @@ void QsciScintillaBase_SCN_NEEDSHOWN(QsciScintillaBase* self, int param1, int pa
 }
 
 void QsciScintillaBase_connect_SCN_NEEDSHOWN(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_NEEDSHOWN), self, [=](int param1, int param2) {
-		int sigval1 = param1;
-		int sigval2 = param2;
-		miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1, int param2) {
+			int sigval1 = param1;
+			int sigval2 = param2;
+			miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int, int)>(&QsciScintillaBase::SCN_NEEDSHOWN), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_PAINTED(QsciScintillaBase* self) {
@@ -1716,9 +1986,18 @@ void QsciScintillaBase_SCN_PAINTED(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_PAINTED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_PAINTED), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_PAINTED(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_PAINTED(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_PAINTED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_PAINTED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_SAVEPOINTLEFT(QsciScintillaBase* self) {
@@ -1726,9 +2005,18 @@ void QsciScintillaBase_SCN_SAVEPOINTLEFT(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_SAVEPOINTLEFT(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_SAVEPOINTLEFT), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_SAVEPOINTLEFT), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_SAVEPOINTREACHED(QsciScintillaBase* self) {
@@ -1736,9 +2024,18 @@ void QsciScintillaBase_SCN_SAVEPOINTREACHED(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_SAVEPOINTREACHED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_SAVEPOINTREACHED), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_SAVEPOINTREACHED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_STYLENEEDED(QsciScintillaBase* self, int position) {
@@ -1746,10 +2043,19 @@ void QsciScintillaBase_SCN_STYLENEEDED(QsciScintillaBase* self, int position) {
 }
 
 void QsciScintillaBase_connect_SCN_STYLENEEDED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_STYLENEEDED), self, [=](int position) {
-		int sigval1 = position;
-		miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position) {
+			int sigval1 = position;
+			miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_STYLENEEDED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_URIDROPPED(QsciScintillaBase* self, QUrl* url) {
@@ -1757,12 +2063,21 @@ void QsciScintillaBase_SCN_URIDROPPED(QsciScintillaBase* self, QUrl* url) {
 }
 
 void QsciScintillaBase_connect_SCN_URIDROPPED(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const QUrl&)>(&QsciScintillaBase::SCN_URIDROPPED), self, [=](const QUrl& url) {
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& url) {
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
+			miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const QUrl&)>(&QsciScintillaBase::SCN_URIDROPPED), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_UPDATEUI(QsciScintillaBase* self, int updated) {
@@ -1770,10 +2085,19 @@ void QsciScintillaBase_SCN_UPDATEUI(QsciScintillaBase* self, int updated) {
 }
 
 void QsciScintillaBase_connect_SCN_UPDATEUI(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_UPDATEUI), self, [=](int updated) {
-		int sigval1 = updated;
-		miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int updated) {
+			int sigval1 = updated;
+			miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(int)>(&QsciScintillaBase::SCN_UPDATEUI), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_USERLISTSELECTION(QsciScintillaBase* self, const char* selection, int id, int ch, int method, int position) {
@@ -1781,14 +2105,23 @@ void QsciScintillaBase_SCN_USERLISTSELECTION(QsciScintillaBase* self, const char
 }
 
 void QsciScintillaBase_connect_SCN_USERLISTSELECTION(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int, int)>(&QsciScintillaBase::SCN_USERLISTSELECTION), self, [=](const char* selection, int id, int ch, int method, int position) {
-		const char* sigval1 = (const char*) selection;
-		int sigval2 = id;
-		int sigval3 = ch;
-		int sigval4 = method;
-		int sigval5 = position;
-		miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION(slot, sigval1, sigval2, sigval3, sigval4, sigval5);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* selection, int id, int ch, int method, int position) {
+			const char* sigval1 = (const char*) selection;
+			int sigval2 = id;
+			int sigval3 = ch;
+			int sigval4 = method;
+			int sigval5 = position;
+			miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION(slot, sigval1, sigval2, sigval3, sigval4, sigval5);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int, int)>(&QsciScintillaBase::SCN_USERLISTSELECTION), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_USERLISTSELECTION2(QsciScintillaBase* self, const char* selection, int id, int ch, int method) {
@@ -1796,13 +2129,22 @@ void QsciScintillaBase_SCN_USERLISTSELECTION2(QsciScintillaBase* self, const cha
 }
 
 void QsciScintillaBase_connect_SCN_USERLISTSELECTION2(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int)>(&QsciScintillaBase::SCN_USERLISTSELECTION), self, [=](const char* selection, int id, int ch, int method) {
-		const char* sigval1 = (const char*) selection;
-		int sigval2 = id;
-		int sigval3 = ch;
-		int sigval4 = method;
-		miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2(slot, sigval1, sigval2, sigval3, sigval4);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* selection, int id, int ch, int method) {
+			const char* sigval1 = (const char*) selection;
+			int sigval2 = id;
+			int sigval3 = ch;
+			int sigval4 = method;
+			miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2(slot, sigval1, sigval2, sigval3, sigval4);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int, int, int)>(&QsciScintillaBase::SCN_USERLISTSELECTION), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_USERLISTSELECTION3(QsciScintillaBase* self, const char* selection, int id) {
@@ -1810,11 +2152,20 @@ void QsciScintillaBase_SCN_USERLISTSELECTION3(QsciScintillaBase* self, const cha
 }
 
 void QsciScintillaBase_connect_SCN_USERLISTSELECTION3(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int)>(&QsciScintillaBase::SCN_USERLISTSELECTION), self, [=](const char* selection, int id) {
-		const char* sigval1 = (const char*) selection;
-		int sigval2 = id;
-		miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const char* selection, int id) {
+			const char* sigval1 = (const char*) selection;
+			int sigval2 = id;
+			miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)(const char*, int)>(&QsciScintillaBase::SCN_USERLISTSELECTION), self, caller{slot});
 }
 
 void QsciScintillaBase_SCN_ZOOM(QsciScintillaBase* self) {
@@ -1822,9 +2173,18 @@ void QsciScintillaBase_SCN_ZOOM(QsciScintillaBase* self) {
 }
 
 void QsciScintillaBase_connect_SCN_ZOOM(QsciScintillaBase* self, intptr_t slot) {
-	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_ZOOM), self, [=]() {
-		miqt_exec_callback_QsciScintillaBase_SCN_ZOOM(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QsciScintillaBase_SCN_ZOOM(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QsciScintillaBase_SCN_ZOOM_release(slot); }
+	};
+	MiqtVirtualQsciScintillaBase::connect(self, static_cast<void (QsciScintillaBase::*)()>(&QsciScintillaBase::SCN_ZOOM), self, caller{slot});
 }
 
 struct miqt_string QsciScintillaBase_tr2(const char* s, const char* c) {

@@ -386,6 +386,10 @@ proc miqt_exec_callback_cQGraphicsEffect_enabledChanged(slot: int, enabled: bool
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsEffect_enabledChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsEffect_enabledChanged_release".} =
+  let nimfunc = cast[ref QGraphicsEffectenabledChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onenabledChanged*(self: gen_qgraphicseffect_types.QGraphicsEffect, slot: QGraphicsEffectenabledChangedSlot) =
   var tmp = new QGraphicsEffectenabledChangedSlot
   tmp[] = slot
@@ -684,6 +688,10 @@ proc miqt_exec_callback_cQGraphicsColorizeEffect_colorChanged(slot: int, color: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsColorizeEffect_colorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsColorizeEffect_colorChanged_release".} =
+  let nimfunc = cast[ref QGraphicsColorizeEffectcolorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncolorChanged*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect, slot: QGraphicsColorizeEffectcolorChangedSlot) =
   var tmp = new QGraphicsColorizeEffectcolorChangedSlot
   tmp[] = slot
@@ -699,6 +707,10 @@ proc miqt_exec_callback_cQGraphicsColorizeEffect_strengthChanged(slot: int, stre
   let slotval1 = strength
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGraphicsColorizeEffect_strengthChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsColorizeEffect_strengthChanged_release".} =
+  let nimfunc = cast[ref QGraphicsColorizeEffectstrengthChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstrengthChanged*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect, slot: QGraphicsColorizeEffectstrengthChangedSlot) =
   var tmp = new QGraphicsColorizeEffectstrengthChangedSlot
@@ -1004,6 +1016,10 @@ proc miqt_exec_callback_cQGraphicsBlurEffect_blurRadiusChanged(slot: int, blurRa
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsBlurEffect_blurRadiusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsBlurEffect_blurRadiusChanged_release".} =
+  let nimfunc = cast[ref QGraphicsBlurEffectblurRadiusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onblurRadiusChanged*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect, slot: QGraphicsBlurEffectblurRadiusChangedSlot) =
   var tmp = new QGraphicsBlurEffectblurRadiusChangedSlot
   tmp[] = slot
@@ -1019,6 +1035,10 @@ proc miqt_exec_callback_cQGraphicsBlurEffect_blurHintsChanged(slot: int, hints: 
   let slotval1 = cint(hints)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGraphicsBlurEffect_blurHintsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsBlurEffect_blurHintsChanged_release".} =
+  let nimfunc = cast[ref QGraphicsBlurEffectblurHintsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onblurHintsChanged*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect, slot: QGraphicsBlurEffectblurHintsChangedSlot) =
   var tmp = new QGraphicsBlurEffectblurHintsChangedSlot
@@ -1348,6 +1368,10 @@ proc miqt_exec_callback_cQGraphicsDropShadowEffect_offsetChanged(slot: int, offs
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsDropShadowEffect_offsetChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged_release".} =
+  let nimfunc = cast[ref QGraphicsDropShadowEffectoffsetChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onoffsetChanged*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, slot: QGraphicsDropShadowEffectoffsetChangedSlot) =
   var tmp = new QGraphicsDropShadowEffectoffsetChangedSlot
   tmp[] = slot
@@ -1364,6 +1388,10 @@ proc miqt_exec_callback_cQGraphicsDropShadowEffect_blurRadiusChanged(slot: int, 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsDropShadowEffect_blurRadiusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsDropShadowEffect_blurRadiusChanged_release".} =
+  let nimfunc = cast[ref QGraphicsDropShadowEffectblurRadiusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onblurRadiusChanged*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, slot: QGraphicsDropShadowEffectblurRadiusChangedSlot) =
   var tmp = new QGraphicsDropShadowEffectblurRadiusChangedSlot
   tmp[] = slot
@@ -1379,6 +1407,10 @@ proc miqt_exec_callback_cQGraphicsDropShadowEffect_colorChanged(slot: int, color
   let slotval1 = gen_qcolor_types.QColor(h: color)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGraphicsDropShadowEffect_colorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsDropShadowEffect_colorChanged_release".} =
+  let nimfunc = cast[ref QGraphicsDropShadowEffectcolorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncolorChanged*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, slot: QGraphicsDropShadowEffectcolorChangedSlot) =
   var tmp = new QGraphicsDropShadowEffectcolorChangedSlot
@@ -1681,6 +1713,10 @@ proc miqt_exec_callback_cQGraphicsOpacityEffect_opacityChanged(slot: int, opacit
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsOpacityEffect_opacityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsOpacityEffect_opacityChanged_release".} =
+  let nimfunc = cast[ref QGraphicsOpacityEffectopacityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onopacityChanged*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect, slot: QGraphicsOpacityEffectopacityChangedSlot) =
   var tmp = new QGraphicsOpacityEffectopacityChangedSlot
   tmp[] = slot
@@ -1696,6 +1732,10 @@ proc miqt_exec_callback_cQGraphicsOpacityEffect_opacityMaskChanged(slot: int, ma
   let slotval1 = gen_qbrush_types.QBrush(h: mask)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGraphicsOpacityEffect_opacityMaskChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsOpacityEffect_opacityMaskChanged_release".} =
+  let nimfunc = cast[ref QGraphicsOpacityEffectopacityMaskChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onopacityMaskChanged*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect, slot: QGraphicsOpacityEffectopacityMaskChangedSlot) =
   var tmp = new QGraphicsOpacityEffectopacityMaskChangedSlot

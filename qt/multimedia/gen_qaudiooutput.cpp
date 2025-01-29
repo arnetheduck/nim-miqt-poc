@@ -19,7 +19,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAudioOutput_stateChanged(intptr_t, int);
+void miqt_exec_callback_QAudioOutput_stateChanged_release(intptr_t);
 void miqt_exec_callback_QAudioOutput_notify(intptr_t);
+void miqt_exec_callback_QAudioOutput_notify_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -410,11 +412,20 @@ void QAudioOutput_stateChanged(QAudioOutput* self, int state) {
 }
 
 void QAudioOutput_connect_stateChanged(QAudioOutput* self, intptr_t slot) {
-	MiqtVirtualQAudioOutput::connect(self, static_cast<void (QAudioOutput::*)(QAudio::State)>(&QAudioOutput::stateChanged), self, [=](QAudio::State state) {
-		QAudio::State state_ret = state;
-		int sigval1 = static_cast<int>(state_ret);
-		miqt_exec_callback_QAudioOutput_stateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAudio::State state) {
+			QAudio::State state_ret = state;
+			int sigval1 = static_cast<int>(state_ret);
+			miqt_exec_callback_QAudioOutput_stateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAudioOutput_stateChanged_release(slot); }
+	};
+	MiqtVirtualQAudioOutput::connect(self, static_cast<void (QAudioOutput::*)(QAudio::State)>(&QAudioOutput::stateChanged), self, caller{slot});
 }
 
 void QAudioOutput_notify(QAudioOutput* self) {
@@ -422,9 +433,18 @@ void QAudioOutput_notify(QAudioOutput* self) {
 }
 
 void QAudioOutput_connect_notify(QAudioOutput* self, intptr_t slot) {
-	MiqtVirtualQAudioOutput::connect(self, static_cast<void (QAudioOutput::*)()>(&QAudioOutput::notify), self, [=]() {
-		miqt_exec_callback_QAudioOutput_notify(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAudioOutput_notify(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAudioOutput_notify_release(slot); }
+	};
+	MiqtVirtualQAudioOutput::connect(self, static_cast<void (QAudioOutput::*)()>(&QAudioOutput::notify), self, caller{slot});
 }
 
 struct miqt_string QAudioOutput_tr2(const char* s, const char* c) {

@@ -345,6 +345,10 @@ proc miqt_exec_callback_cQWebEngineProfile_downloadRequested(slot: int, download
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEngineProfile_downloadRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineProfile_downloadRequested_release".} =
+  let nimfunc = cast[ref QWebEngineProfiledownloadRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondownloadRequested*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfiledownloadRequestedSlot) =
   var tmp = new QWebEngineProfiledownloadRequestedSlot
   tmp[] = slot

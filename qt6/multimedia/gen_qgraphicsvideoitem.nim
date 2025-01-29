@@ -253,6 +253,10 @@ proc miqt_exec_callback_cQGraphicsVideoItem_nativeSizeChanged(slot: int, size: p
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsVideoItem_nativeSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged_release".} =
+  let nimfunc = cast[ref QGraphicsVideoItemnativeSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnativeSizeChanged*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, slot: QGraphicsVideoItemnativeSizeChangedSlot) =
   var tmp = new QGraphicsVideoItemnativeSizeChangedSlot
   tmp[] = slot

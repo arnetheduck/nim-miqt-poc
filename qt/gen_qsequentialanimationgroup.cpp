@@ -19,6 +19,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSequentialAnimationGroup_currentAnimationChanged(intptr_t, QAbstractAnimation*);
+void miqt_exec_callback_QSequentialAnimationGroup_currentAnimationChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -391,10 +392,19 @@ void QSequentialAnimationGroup_currentAnimationChanged(QSequentialAnimationGroup
 }
 
 void QSequentialAnimationGroup_connect_currentAnimationChanged(QSequentialAnimationGroup* self, intptr_t slot) {
-	MiqtVirtualQSequentialAnimationGroup::connect(self, static_cast<void (QSequentialAnimationGroup::*)(QAbstractAnimation*)>(&QSequentialAnimationGroup::currentAnimationChanged), self, [=](QAbstractAnimation* current) {
-		QAbstractAnimation* sigval1 = current;
-		miqt_exec_callback_QSequentialAnimationGroup_currentAnimationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractAnimation* current) {
+			QAbstractAnimation* sigval1 = current;
+			miqt_exec_callback_QSequentialAnimationGroup_currentAnimationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSequentialAnimationGroup_currentAnimationChanged_release(slot); }
+	};
+	MiqtVirtualQSequentialAnimationGroup::connect(self, static_cast<void (QSequentialAnimationGroup::*)(QAbstractAnimation*)>(&QSequentialAnimationGroup::currentAnimationChanged), self, caller{slot});
 }
 
 struct miqt_string QSequentialAnimationGroup_tr2(const char* s, const char* c) {

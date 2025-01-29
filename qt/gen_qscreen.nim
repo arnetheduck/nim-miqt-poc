@@ -277,6 +277,10 @@ proc miqt_exec_callback_cQScreen_geometryChanged(slot: int, geometry: pointer) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQScreen_geometryChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_geometryChanged_release".} =
+  let nimfunc = cast[ref QScreengeometryChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ongeometryChanged*(self: gen_qscreen_types.QScreen, slot: QScreengeometryChangedSlot) =
   var tmp = new QScreengeometryChangedSlot
   tmp[] = slot
@@ -292,6 +296,10 @@ proc miqt_exec_callback_cQScreen_availableGeometryChanged(slot: int, geometry: p
   let slotval1 = gen_qrect_types.QRect(h: geometry)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQScreen_availableGeometryChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_availableGeometryChanged_release".} =
+  let nimfunc = cast[ref QScreenavailableGeometryChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onavailableGeometryChanged*(self: gen_qscreen_types.QScreen, slot: QScreenavailableGeometryChangedSlot) =
   var tmp = new QScreenavailableGeometryChangedSlot
@@ -309,6 +317,10 @@ proc miqt_exec_callback_cQScreen_physicalSizeChanged(slot: int, size: pointer) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQScreen_physicalSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_physicalSizeChanged_release".} =
+  let nimfunc = cast[ref QScreenphysicalSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onphysicalSizeChanged*(self: gen_qscreen_types.QScreen, slot: QScreenphysicalSizeChangedSlot) =
   var tmp = new QScreenphysicalSizeChangedSlot
   tmp[] = slot
@@ -324,6 +336,10 @@ proc miqt_exec_callback_cQScreen_physicalDotsPerInchChanged(slot: int, dpi: floa
   let slotval1 = dpi
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQScreen_physicalDotsPerInchChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_physicalDotsPerInchChanged_release".} =
+  let nimfunc = cast[ref QScreenphysicalDotsPerInchChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onphysicalDotsPerInchChanged*(self: gen_qscreen_types.QScreen, slot: QScreenphysicalDotsPerInchChangedSlot) =
   var tmp = new QScreenphysicalDotsPerInchChangedSlot
@@ -341,6 +357,10 @@ proc miqt_exec_callback_cQScreen_logicalDotsPerInchChanged(slot: int, dpi: float
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQScreen_logicalDotsPerInchChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_logicalDotsPerInchChanged_release".} =
+  let nimfunc = cast[ref QScreenlogicalDotsPerInchChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onlogicalDotsPerInchChanged*(self: gen_qscreen_types.QScreen, slot: QScreenlogicalDotsPerInchChangedSlot) =
   var tmp = new QScreenlogicalDotsPerInchChangedSlot
   tmp[] = slot
@@ -356,6 +376,10 @@ proc miqt_exec_callback_cQScreen_virtualGeometryChanged(slot: int, rect: pointer
   let slotval1 = gen_qrect_types.QRect(h: rect)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQScreen_virtualGeometryChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_virtualGeometryChanged_release".} =
+  let nimfunc = cast[ref QScreenvirtualGeometryChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvirtualGeometryChanged*(self: gen_qscreen_types.QScreen, slot: QScreenvirtualGeometryChangedSlot) =
   var tmp = new QScreenvirtualGeometryChangedSlot
@@ -373,6 +397,10 @@ proc miqt_exec_callback_cQScreen_primaryOrientationChanged(slot: int, orientatio
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQScreen_primaryOrientationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_primaryOrientationChanged_release".} =
+  let nimfunc = cast[ref QScreenprimaryOrientationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onprimaryOrientationChanged*(self: gen_qscreen_types.QScreen, slot: QScreenprimaryOrientationChangedSlot) =
   var tmp = new QScreenprimaryOrientationChangedSlot
   tmp[] = slot
@@ -389,6 +417,10 @@ proc miqt_exec_callback_cQScreen_orientationChanged(slot: int, orientation: cint
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQScreen_orientationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_orientationChanged_release".} =
+  let nimfunc = cast[ref QScreenorientationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onorientationChanged*(self: gen_qscreen_types.QScreen, slot: QScreenorientationChangedSlot) =
   var tmp = new QScreenorientationChangedSlot
   tmp[] = slot
@@ -404,6 +436,10 @@ proc miqt_exec_callback_cQScreen_refreshRateChanged(slot: int, refreshRate: floa
   let slotval1 = refreshRate
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQScreen_refreshRateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScreen_refreshRateChanged_release".} =
+  let nimfunc = cast[ref QScreenrefreshRateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onrefreshRateChanged*(self: gen_qscreen_types.QScreen, slot: QScreenrefreshRateChangedSlot) =
   var tmp = new QScreenrefreshRateChangedSlot

@@ -285,6 +285,10 @@ proc miqt_exec_callback_cQCameraExposure_flashReady(slot: int, param1: bool) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraExposure_flashReady_release(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_flashReady_release".} =
+  let nimfunc = cast[ref QCameraExposureflashReadySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onflashReady*(self: gen_qcameraexposure_types.QCameraExposure, slot: QCameraExposureflashReadySlot) =
   var tmp = new QCameraExposureflashReadySlot
   tmp[] = slot
@@ -301,6 +305,10 @@ proc miqt_exec_callback_cQCameraExposure_apertureChanged(slot: int, param1: floa
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraExposure_apertureChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_apertureChanged_release".} =
+  let nimfunc = cast[ref QCameraExposureapertureChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onapertureChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: QCameraExposureapertureChangedSlot) =
   var tmp = new QCameraExposureapertureChangedSlot
   tmp[] = slot
@@ -314,6 +322,10 @@ type QCameraExposureapertureRangeChangedSlot* = proc()
 proc miqt_exec_callback_cQCameraExposure_apertureRangeChanged(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_apertureRangeChanged".} =
   let nimfunc = cast[ptr QCameraExposureapertureRangeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQCameraExposure_apertureRangeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_apertureRangeChanged_release".} =
+  let nimfunc = cast[ref QCameraExposureapertureRangeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onapertureRangeChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: QCameraExposureapertureRangeChangedSlot) =
   var tmp = new QCameraExposureapertureRangeChangedSlot
@@ -331,6 +343,10 @@ proc miqt_exec_callback_cQCameraExposure_shutterSpeedChanged(slot: int, speed: f
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraExposure_shutterSpeedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_shutterSpeedChanged_release".} =
+  let nimfunc = cast[ref QCameraExposureshutterSpeedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onshutterSpeedChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: QCameraExposureshutterSpeedChangedSlot) =
   var tmp = new QCameraExposureshutterSpeedChangedSlot
   tmp[] = slot
@@ -344,6 +360,10 @@ type QCameraExposureshutterSpeedRangeChangedSlot* = proc()
 proc miqt_exec_callback_cQCameraExposure_shutterSpeedRangeChanged(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged".} =
   let nimfunc = cast[ptr QCameraExposureshutterSpeedRangeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQCameraExposure_shutterSpeedRangeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged_release".} =
+  let nimfunc = cast[ref QCameraExposureshutterSpeedRangeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onshutterSpeedRangeChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: QCameraExposureshutterSpeedRangeChangedSlot) =
   var tmp = new QCameraExposureshutterSpeedRangeChangedSlot
@@ -361,6 +381,10 @@ proc miqt_exec_callback_cQCameraExposure_isoSensitivityChanged(slot: int, param1
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraExposure_isoSensitivityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_isoSensitivityChanged_release".} =
+  let nimfunc = cast[ref QCameraExposureisoSensitivityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onisoSensitivityChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: QCameraExposureisoSensitivityChangedSlot) =
   var tmp = new QCameraExposureisoSensitivityChangedSlot
   tmp[] = slot
@@ -376,6 +400,10 @@ proc miqt_exec_callback_cQCameraExposure_exposureCompensationChanged(slot: int, 
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCameraExposure_exposureCompensationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraExposure_exposureCompensationChanged_release".} =
+  let nimfunc = cast[ref QCameraExposureexposureCompensationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onexposureCompensationChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: QCameraExposureexposureCompensationChangedSlot) =
   var tmp = new QCameraExposureexposureCompensationChangedSlot

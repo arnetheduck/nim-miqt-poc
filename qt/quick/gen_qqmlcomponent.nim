@@ -270,6 +270,10 @@ proc miqt_exec_callback_cQQmlComponent_statusChanged(slot: int, param1: cint) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQmlComponent_statusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQmlComponent_statusChanged_release".} =
+  let nimfunc = cast[ref QQmlComponentstatusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstatusChanged*(self: gen_qqmlcomponent_types.QQmlComponent, slot: QQmlComponentstatusChangedSlot) =
   var tmp = new QQmlComponentstatusChangedSlot
   tmp[] = slot
@@ -285,6 +289,10 @@ proc miqt_exec_callback_cQQmlComponent_progressChanged(slot: int, param1: float6
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQmlComponent_progressChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQmlComponent_progressChanged_release".} =
+  let nimfunc = cast[ref QQmlComponentprogressChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onprogressChanged*(self: gen_qqmlcomponent_types.QQmlComponent, slot: QQmlComponentprogressChangedSlot) =
   var tmp = new QQmlComponentprogressChangedSlot

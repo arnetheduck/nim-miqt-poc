@@ -283,6 +283,10 @@ proc miqt_exec_callback_cQObject_destroyed(slot: int) {.exportc: "miqt_exec_call
   let nimfunc = cast[ptr QObjectdestroyedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQObject_destroyed_release(slot: int) {.exportc: "miqt_exec_callback_QObject_destroyed_release".} =
+  let nimfunc = cast[ref QObjectdestroyedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondestroyed*(self: gen_qobject_types.QObject, slot: QObjectdestroyedSlot) =
   var tmp = new QObjectdestroyedSlot
   tmp[] = slot
@@ -340,6 +344,10 @@ proc miqt_exec_callback_cQObject_destroyed1(slot: int, param1: pointer) {.export
   let slotval1 = gen_qobject_types.QObject(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQObject_destroyed1_release(slot: int) {.exportc: "miqt_exec_callback_QObject_destroyed1_release".} =
+  let nimfunc = cast[ref QObjectdestroyed1Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondestroyed*(self: gen_qobject_types.QObject, slot: QObjectdestroyed1Slot) =
   var tmp = new QObjectdestroyed1Slot

@@ -4402,6 +4402,10 @@ proc miqt_exec_callback_cScintillaEditBase_horizontalScrolled(slot: int, value: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_horizontalScrolled_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_horizontalScrolled_release".} =
+  let nimfunc = cast[ref ScintillaEditBasehorizontalScrolledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhorizontalScrolled*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasehorizontalScrolledSlot) =
   var tmp = new ScintillaEditBasehorizontalScrolledSlot
   tmp[] = slot
@@ -4417,6 +4421,10 @@ proc miqt_exec_callback_cScintillaEditBase_verticalScrolled(slot: int, value: ci
   let slotval1 = value
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_verticalScrolled_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_verticalScrolled_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseverticalScrolledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onverticalScrolled*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseverticalScrolledSlot) =
   var tmp = new ScintillaEditBaseverticalScrolledSlot
@@ -4436,6 +4444,10 @@ proc miqt_exec_callback_cScintillaEditBase_horizontalRangeChanged(slot: int, max
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_horizontalRangeChanged_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged_release".} =
+  let nimfunc = cast[ref ScintillaEditBasehorizontalRangeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhorizontalRangeChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasehorizontalRangeChangedSlot) =
   var tmp = new ScintillaEditBasehorizontalRangeChangedSlot
   tmp[] = slot
@@ -4454,6 +4466,10 @@ proc miqt_exec_callback_cScintillaEditBase_verticalRangeChanged(slot: int, max: 
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_verticalRangeChanged_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_verticalRangeChanged_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseverticalRangeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onverticalRangeChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseverticalRangeChangedSlot) =
   var tmp = new ScintillaEditBaseverticalRangeChangedSlot
   tmp[] = slot
@@ -4467,6 +4483,10 @@ type ScintillaEditBasenotifyChangeSlot* = proc()
 proc miqt_exec_callback_cScintillaEditBase_notifyChange(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_notifyChange".} =
   let nimfunc = cast[ptr ScintillaEditBasenotifyChangeSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cScintillaEditBase_notifyChange_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_notifyChange_release".} =
+  let nimfunc = cast[ref ScintillaEditBasenotifyChangeSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnotifyChange*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasenotifyChangeSlot) =
   var tmp = new ScintillaEditBasenotifyChangeSlot
@@ -4484,6 +4504,10 @@ proc miqt_exec_callback_cScintillaEditBase_linesAdded(slot: int, linesAdded: miq
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_linesAdded_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_linesAdded_release".} =
+  let nimfunc = cast[ref ScintillaEditBaselinesAddedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onlinesAdded*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaselinesAddedSlot) =
   var tmp = new ScintillaEditBaselinesAddedSlot
   tmp[] = slot
@@ -4499,6 +4523,10 @@ proc miqt_exec_callback_cScintillaEditBase_aboutToCopy(slot: int, data: pointer)
   let slotval1 = gen_qmimedata_types.QMimeData(h: data)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_aboutToCopy_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_aboutToCopy_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseaboutToCopySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaboutToCopy*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseaboutToCopySlot) =
   var tmp = new ScintillaEditBaseaboutToCopySlot
@@ -4516,6 +4544,10 @@ proc miqt_exec_callback_cScintillaEditBase_styleNeeded(slot: int, position: miqt
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_styleNeeded_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_styleNeeded_release".} =
+  let nimfunc = cast[ref ScintillaEditBasestyleNeededSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstyleNeeded*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasestyleNeededSlot) =
   var tmp = new ScintillaEditBasestyleNeededSlot
   tmp[] = slot
@@ -4531,6 +4563,10 @@ proc miqt_exec_callback_cScintillaEditBase_charAdded(slot: int, ch: cint) {.expo
   let slotval1 = ch
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_charAdded_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_charAdded_release".} =
+  let nimfunc = cast[ref ScintillaEditBasecharAddedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncharAdded*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasecharAddedSlot) =
   var tmp = new ScintillaEditBasecharAddedSlot
@@ -4548,6 +4584,10 @@ proc miqt_exec_callback_cScintillaEditBase_savePointChanged(slot: int, dirty: bo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_savePointChanged_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_savePointChanged_release".} =
+  let nimfunc = cast[ref ScintillaEditBasesavePointChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsavePointChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasesavePointChangedSlot) =
   var tmp = new ScintillaEditBasesavePointChangedSlot
   tmp[] = slot
@@ -4561,6 +4601,10 @@ type ScintillaEditBasemodifyAttemptReadOnlySlot* = proc()
 proc miqt_exec_callback_cScintillaEditBase_modifyAttemptReadOnly(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly".} =
   let nimfunc = cast[ptr ScintillaEditBasemodifyAttemptReadOnlySlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cScintillaEditBase_modifyAttemptReadOnly_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly_release".} =
+  let nimfunc = cast[ref ScintillaEditBasemodifyAttemptReadOnlySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmodifyAttemptReadOnly*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemodifyAttemptReadOnlySlot) =
   var tmp = new ScintillaEditBasemodifyAttemptReadOnlySlot
@@ -4577,6 +4621,10 @@ proc miqt_exec_callback_cScintillaEditBase_key(slot: int, key: cint) {.exportc: 
   let slotval1 = key
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_key_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_key_release".} =
+  let nimfunc = cast[ref ScintillaEditBasekeySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onkey*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasekeySlot) =
   var tmp = new ScintillaEditBasekeySlot
@@ -4596,6 +4644,10 @@ proc miqt_exec_callback_cScintillaEditBase_doubleClick(slot: int, position: miqt
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_doubleClick_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_doubleClick_release".} =
+  let nimfunc = cast[ref ScintillaEditBasedoubleClickSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondoubleClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedoubleClickSlot) =
   var tmp = new ScintillaEditBasedoubleClickSlot
   tmp[] = slot
@@ -4611,6 +4663,10 @@ proc miqt_exec_callback_cScintillaEditBase_updateUi(slot: int, updated: cint) {.
   let slotval1 = cint(updated)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_updateUi_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_updateUi_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseupdateUiSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onupdateUi*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseupdateUiSlot) =
   var tmp = new ScintillaEditBaseupdateUiSlot
@@ -4645,6 +4701,10 @@ proc miqt_exec_callback_cScintillaEditBase_modified(slot: int, typeVal: cint, po
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8)
 
+proc miqt_exec_callback_cScintillaEditBase_modified_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_modified_release".} =
+  let nimfunc = cast[ref ScintillaEditBasemodifiedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmodified*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemodifiedSlot) =
   var tmp = new ScintillaEditBasemodifiedSlot
   tmp[] = slot
@@ -4664,6 +4724,10 @@ proc miqt_exec_callback_cScintillaEditBase_macroRecord(slot: int, message: cint,
   let slotval3 = lParam
 
   nimfunc[](slotval1, slotval2, slotval3)
+
+proc miqt_exec_callback_cScintillaEditBase_macroRecord_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_macroRecord_release".} =
+  let nimfunc = cast[ref ScintillaEditBasemacroRecordSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmacroRecord*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemacroRecordSlot) =
   var tmp = new ScintillaEditBasemacroRecordSlot
@@ -4685,6 +4749,10 @@ proc miqt_exec_callback_cScintillaEditBase_marginClicked(slot: int, position: mi
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cScintillaEditBase_marginClicked_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_marginClicked_release".} =
+  let nimfunc = cast[ref ScintillaEditBasemarginClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmarginClicked*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemarginClickedSlot) =
   var tmp = new ScintillaEditBasemarginClickedSlot
   tmp[] = slot
@@ -4702,6 +4770,10 @@ proc miqt_exec_callback_cScintillaEditBase_textAreaClicked(slot: int, line: miqt
   let slotval2 = modifiers
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cScintillaEditBase_textAreaClicked_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_textAreaClicked_release".} =
+  let nimfunc = cast[ref ScintillaEditBasetextAreaClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontextAreaClicked*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasetextAreaClickedSlot) =
   var tmp = new ScintillaEditBasetextAreaClickedSlot
@@ -4721,6 +4793,10 @@ proc miqt_exec_callback_cScintillaEditBase_needShown(slot: int, position: miqt_i
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_needShown_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_needShown_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseneedShownSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onneedShown*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseneedShownSlot) =
   var tmp = new ScintillaEditBaseneedShownSlot
   tmp[] = slot
@@ -4735,6 +4811,10 @@ proc miqt_exec_callback_cScintillaEditBase_painted(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr ScintillaEditBasepaintedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cScintillaEditBase_painted_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_painted_release".} =
+  let nimfunc = cast[ref ScintillaEditBasepaintedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpainted*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasepaintedSlot) =
   var tmp = new ScintillaEditBasepaintedSlot
   tmp[] = slot
@@ -4748,6 +4828,10 @@ type ScintillaEditBaseuserListSelectionSlot* = proc()
 proc miqt_exec_callback_cScintillaEditBase_userListSelection(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_userListSelection".} =
   let nimfunc = cast[ptr ScintillaEditBaseuserListSelectionSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cScintillaEditBase_userListSelection_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_userListSelection_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseuserListSelectionSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onuserListSelection*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseuserListSelectionSlot) =
   var tmp = new ScintillaEditBaseuserListSelectionSlot
@@ -4768,6 +4852,10 @@ proc miqt_exec_callback_cScintillaEditBase_uriDropped(slot: int, uri: struct_miq
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_uriDropped_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_uriDropped_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseuriDroppedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onuriDropped*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseuriDroppedSlot) =
   var tmp = new ScintillaEditBaseuriDroppedSlot
   tmp[] = slot
@@ -4785,6 +4873,10 @@ proc miqt_exec_callback_cScintillaEditBase_dwellStart(slot: int, x: cint, y: cin
   let slotval2 = y
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cScintillaEditBase_dwellStart_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_dwellStart_release".} =
+  let nimfunc = cast[ref ScintillaEditBasedwellStartSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondwellStart*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedwellStartSlot) =
   var tmp = new ScintillaEditBasedwellStartSlot
@@ -4804,6 +4896,10 @@ proc miqt_exec_callback_cScintillaEditBase_dwellEnd(slot: int, x: cint, y: cint)
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_dwellEnd_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_dwellEnd_release".} =
+  let nimfunc = cast[ref ScintillaEditBasedwellEndSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondwellEnd*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedwellEndSlot) =
   var tmp = new ScintillaEditBasedwellEndSlot
   tmp[] = slot
@@ -4819,6 +4915,10 @@ proc miqt_exec_callback_cScintillaEditBase_zoom(slot: int, zoom: cint) {.exportc
   let slotval1 = zoom
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_zoom_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_zoom_release".} =
+  let nimfunc = cast[ref ScintillaEditBasezoomSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onzoom*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasezoomSlot) =
   var tmp = new ScintillaEditBasezoomSlot
@@ -4838,6 +4938,10 @@ proc miqt_exec_callback_cScintillaEditBase_hotSpotClick(slot: int, position: miq
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_hotSpotClick_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_hotSpotClick_release".} =
+  let nimfunc = cast[ref ScintillaEditBasehotSpotClickSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhotSpotClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasehotSpotClickSlot) =
   var tmp = new ScintillaEditBasehotSpotClickSlot
   tmp[] = slot
@@ -4856,6 +4960,10 @@ proc miqt_exec_callback_cScintillaEditBase_hotSpotDoubleClick(slot: int, positio
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_hotSpotDoubleClick_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick_release".} =
+  let nimfunc = cast[ref ScintillaEditBasehotSpotDoubleClickSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhotSpotDoubleClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasehotSpotDoubleClickSlot) =
   var tmp = new ScintillaEditBasehotSpotDoubleClickSlot
   tmp[] = slot
@@ -4869,6 +4977,10 @@ type ScintillaEditBasecallTipClickSlot* = proc()
 proc miqt_exec_callback_cScintillaEditBase_callTipClick(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_callTipClick".} =
   let nimfunc = cast[ptr ScintillaEditBasecallTipClickSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cScintillaEditBase_callTipClick_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_callTipClick_release".} =
+  let nimfunc = cast[ref ScintillaEditBasecallTipClickSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncallTipClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasecallTipClickSlot) =
   var tmp = new ScintillaEditBasecallTipClickSlot
@@ -4891,6 +5003,10 @@ proc miqt_exec_callback_cScintillaEditBase_autoCompleteSelection(slot: int, posi
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_autoCompleteSelection_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_autoCompleteSelection_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseautoCompleteSelectionSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onautoCompleteSelection*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseautoCompleteSelectionSlot) =
   var tmp = new ScintillaEditBaseautoCompleteSelectionSlot
   tmp[] = slot
@@ -4904,6 +5020,10 @@ type ScintillaEditBaseautoCompleteCancelledSlot* = proc()
 proc miqt_exec_callback_cScintillaEditBase_autoCompleteCancelled(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled".} =
   let nimfunc = cast[ptr ScintillaEditBaseautoCompleteCancelledSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cScintillaEditBase_autoCompleteCancelled_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseautoCompleteCancelledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onautoCompleteCancelled*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseautoCompleteCancelledSlot) =
   var tmp = new ScintillaEditBaseautoCompleteCancelledSlot
@@ -4921,6 +5041,10 @@ proc miqt_exec_callback_cScintillaEditBase_focusChanged(slot: int, focused: bool
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_focusChanged_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_focusChanged_release".} =
+  let nimfunc = cast[ref ScintillaEditBasefocusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfocusChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasefocusChangedSlot) =
   var tmp = new ScintillaEditBasefocusChangedSlot
   tmp[] = slot
@@ -4936,6 +5060,10 @@ proc miqt_exec_callback_cScintillaEditBase_notify(slot: int, pscn: pointer) {.ex
   let slotval1 = gen_ScintillaEdit_types.ScintillaNotificationData(h: pscn)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_notify_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_notify_release".} =
+  let nimfunc = cast[ref ScintillaEditBasenotifySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnotify*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasenotifySlot) =
   var tmp = new ScintillaEditBasenotifySlot
@@ -4955,6 +5083,10 @@ proc miqt_exec_callback_cScintillaEditBase_command(slot: int, wParam: miqt_uintp
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cScintillaEditBase_command_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_command_release".} =
+  let nimfunc = cast[ref ScintillaEditBasecommandSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncommand*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasecommandSlot) =
   var tmp = new ScintillaEditBasecommandSlot
   tmp[] = slot
@@ -4970,6 +5102,10 @@ proc miqt_exec_callback_cScintillaEditBase_buttonPressed(slot: int, event: point
   let slotval1 = gen_qevent_types.QMouseEvent(h: event)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaEditBase_buttonPressed_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_buttonPressed_release".} =
+  let nimfunc = cast[ref ScintillaEditBasebuttonPressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbuttonPressed*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasebuttonPressedSlot) =
   var tmp = new ScintillaEditBasebuttonPressedSlot
@@ -4987,6 +5123,10 @@ proc miqt_exec_callback_cScintillaEditBase_buttonReleased(slot: int, event: poin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_buttonReleased_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_buttonReleased_release".} =
+  let nimfunc = cast[ref ScintillaEditBasebuttonReleasedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbuttonReleased*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasebuttonReleasedSlot) =
   var tmp = new ScintillaEditBasebuttonReleasedSlot
   tmp[] = slot
@@ -5003,6 +5143,10 @@ proc miqt_exec_callback_cScintillaEditBase_keyPressed(slot: int, event: pointer)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaEditBase_keyPressed_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_keyPressed_release".} =
+  let nimfunc = cast[ref ScintillaEditBasekeyPressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onkeyPressed*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasekeyPressedSlot) =
   var tmp = new ScintillaEditBasekeyPressedSlot
   tmp[] = slot
@@ -5016,6 +5160,10 @@ type ScintillaEditBaseresizedSlot* = proc()
 proc miqt_exec_callback_cScintillaEditBase_resized(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_resized".} =
   let nimfunc = cast[ptr ScintillaEditBaseresizedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cScintillaEditBase_resized_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaEditBase_resized_release".} =
+  let nimfunc = cast[ref ScintillaEditBaseresizedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onresized*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseresizedSlot) =
   var tmp = new ScintillaEditBaseresizedSlot
@@ -6090,6 +6238,10 @@ proc miqt_exec_callback_cScintillaDocument_modifyAttempt(slot: int) {.exportc: "
   let nimfunc = cast[ptr ScintillaDocumentmodifyAttemptSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cScintillaDocument_modifyAttempt_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaDocument_modifyAttempt_release".} =
+  let nimfunc = cast[ref ScintillaDocumentmodifyAttemptSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmodifyAttempt*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentmodifyAttemptSlot) =
   var tmp = new ScintillaDocumentmodifyAttemptSlot
   tmp[] = slot
@@ -6105,6 +6257,10 @@ proc miqt_exec_callback_cScintillaDocument_savePoint(slot: int, atSavePoint: boo
   let slotval1 = atSavePoint
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaDocument_savePoint_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaDocument_savePoint_release".} =
+  let nimfunc = cast[ref ScintillaDocumentsavePointSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsavePoint*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentsavePointSlot) =
   var tmp = new ScintillaDocumentsavePointSlot
@@ -6139,6 +6295,10 @@ proc miqt_exec_callback_cScintillaDocument_modified(slot: int, position: cint, m
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8)
 
+proc miqt_exec_callback_cScintillaDocument_modified_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaDocument_modified_release".} =
+  let nimfunc = cast[ref ScintillaDocumentmodifiedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmodified*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentmodifiedSlot) =
   var tmp = new ScintillaDocumentmodifiedSlot
   tmp[] = slot
@@ -6155,6 +6315,10 @@ proc miqt_exec_callback_cScintillaDocument_styleNeeded(slot: int, pos: cint) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cScintillaDocument_styleNeeded_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaDocument_styleNeeded_release".} =
+  let nimfunc = cast[ref ScintillaDocumentstyleNeededSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstyleNeeded*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentstyleNeededSlot) =
   var tmp = new ScintillaDocumentstyleNeededSlot
   tmp[] = slot
@@ -6170,6 +6334,10 @@ proc miqt_exec_callback_cScintillaDocument_errorOccurred(slot: int, status: cint
   let slotval1 = status
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cScintillaDocument_errorOccurred_release(slot: int) {.exportc: "miqt_exec_callback_ScintillaDocument_errorOccurred_release".} =
+  let nimfunc = cast[ref ScintillaDocumenterrorOccurredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onerrorOccurred*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumenterrorOccurredSlot) =
   var tmp = new ScintillaDocumenterrorOccurredSlot

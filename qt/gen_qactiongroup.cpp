@@ -19,7 +19,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QActionGroup_triggered(intptr_t, QAction*);
+void miqt_exec_callback_QActionGroup_triggered_release(intptr_t);
 void miqt_exec_callback_QActionGroup_hovered(intptr_t, QAction*);
+void miqt_exec_callback_QActionGroup_hovered_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -360,10 +362,19 @@ void QActionGroup_triggered(QActionGroup* self, QAction* param1) {
 }
 
 void QActionGroup_connect_triggered(QActionGroup* self, intptr_t slot) {
-	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::triggered), self, [=](QAction* param1) {
-		QAction* sigval1 = param1;
-		miqt_exec_callback_QActionGroup_triggered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAction* param1) {
+			QAction* sigval1 = param1;
+			miqt_exec_callback_QActionGroup_triggered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QActionGroup_triggered_release(slot); }
+	};
+	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::triggered), self, caller{slot});
 }
 
 void QActionGroup_hovered(QActionGroup* self, QAction* param1) {
@@ -371,10 +382,19 @@ void QActionGroup_hovered(QActionGroup* self, QAction* param1) {
 }
 
 void QActionGroup_connect_hovered(QActionGroup* self, intptr_t slot) {
-	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::hovered), self, [=](QAction* param1) {
-		QAction* sigval1 = param1;
-		miqt_exec_callback_QActionGroup_hovered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAction* param1) {
+			QAction* sigval1 = param1;
+			miqt_exec_callback_QActionGroup_hovered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QActionGroup_hovered_release(slot); }
+	};
+	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::hovered), self, caller{slot});
 }
 
 struct miqt_string QActionGroup_tr2(const char* s, const char* c) {

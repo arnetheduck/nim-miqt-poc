@@ -316,6 +316,10 @@ proc miqt_exec_callback_cQMenuBar_triggered(slot: int, action: pointer) {.export
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMenuBar_triggered_release(slot: int) {.exportc: "miqt_exec_callback_QMenuBar_triggered_release".} =
+  let nimfunc = cast[ref QMenuBartriggeredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontriggered*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBartriggeredSlot) =
   var tmp = new QMenuBartriggeredSlot
   tmp[] = slot
@@ -331,6 +335,10 @@ proc miqt_exec_callback_cQMenuBar_hovered(slot: int, action: pointer) {.exportc:
   let slotval1 = gen_qaction_types.QAction(h: action)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMenuBar_hovered_release(slot: int) {.exportc: "miqt_exec_callback_QMenuBar_hovered_release".} =
+  let nimfunc = cast[ref QMenuBarhoveredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhovered*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarhoveredSlot) =
   var tmp = new QMenuBarhoveredSlot

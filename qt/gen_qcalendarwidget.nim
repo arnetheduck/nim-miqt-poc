@@ -430,6 +430,10 @@ proc miqt_exec_callback_cQCalendarWidget_selectionChanged(slot: int) {.exportc: 
   let nimfunc = cast[ptr QCalendarWidgetselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQCalendarWidget_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCalendarWidget_selectionChanged_release".} =
+  let nimfunc = cast[ref QCalendarWidgetselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectionChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetselectionChangedSlot) =
   var tmp = new QCalendarWidgetselectionChangedSlot
   tmp[] = slot
@@ -446,6 +450,10 @@ proc miqt_exec_callback_cQCalendarWidget_clicked(slot: int, date: pointer) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCalendarWidget_clicked_release(slot: int) {.exportc: "miqt_exec_callback_QCalendarWidget_clicked_release".} =
+  let nimfunc = cast[ref QCalendarWidgetclickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onclicked*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetclickedSlot) =
   var tmp = new QCalendarWidgetclickedSlot
   tmp[] = slot
@@ -461,6 +469,10 @@ proc miqt_exec_callback_cQCalendarWidget_activated(slot: int, date: pointer) {.e
   let slotval1 = gen_qdatetime_types.QDate(h: date)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCalendarWidget_activated_release(slot: int) {.exportc: "miqt_exec_callback_QCalendarWidget_activated_release".} =
+  let nimfunc = cast[ref QCalendarWidgetactivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactivated*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetactivatedSlot) =
   var tmp = new QCalendarWidgetactivatedSlot
@@ -479,6 +491,10 @@ proc miqt_exec_callback_cQCalendarWidget_currentPageChanged(slot: int, year: cin
   let slotval2 = month
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQCalendarWidget_currentPageChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCalendarWidget_currentPageChanged_release".} =
+  let nimfunc = cast[ref QCalendarWidgetcurrentPageChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncurrentPageChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetcurrentPageChangedSlot) =
   var tmp = new QCalendarWidgetcurrentPageChangedSlot

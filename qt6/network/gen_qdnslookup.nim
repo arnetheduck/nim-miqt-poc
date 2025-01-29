@@ -470,6 +470,10 @@ proc miqt_exec_callback_cQDnsLookup_finished(slot: int) {.exportc: "miqt_exec_ca
   let nimfunc = cast[ptr QDnsLookupfinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQDnsLookup_finished_release(slot: int) {.exportc: "miqt_exec_callback_QDnsLookup_finished_release".} =
+  let nimfunc = cast[ref QDnsLookupfinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qdnslookup_types.QDnsLookup, slot: QDnsLookupfinishedSlot) =
   var tmp = new QDnsLookupfinishedSlot
   tmp[] = slot
@@ -489,6 +493,10 @@ proc miqt_exec_callback_cQDnsLookup_nameChanged(slot: int, name: struct_miqt_str
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDnsLookup_nameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDnsLookup_nameChanged_release".} =
+  let nimfunc = cast[ref QDnsLookupnameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnameChanged*(self: gen_qdnslookup_types.QDnsLookup, slot: QDnsLookupnameChangedSlot) =
   var tmp = new QDnsLookupnameChangedSlot
   tmp[] = slot
@@ -505,6 +513,10 @@ proc miqt_exec_callback_cQDnsLookup_typeChanged(slot: int, typeVal: cint) {.expo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDnsLookup_typeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDnsLookup_typeChanged_release".} =
+  let nimfunc = cast[ref QDnsLookuptypeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontypeChanged*(self: gen_qdnslookup_types.QDnsLookup, slot: QDnsLookuptypeChangedSlot) =
   var tmp = new QDnsLookuptypeChangedSlot
   tmp[] = slot
@@ -520,6 +532,10 @@ proc miqt_exec_callback_cQDnsLookup_nameserverChanged(slot: int, nameserver: poi
   let slotval1 = gen_qhostaddress_types.QHostAddress(h: nameserver)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDnsLookup_nameserverChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDnsLookup_nameserverChanged_release".} =
+  let nimfunc = cast[ref QDnsLookupnameserverChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnameserverChanged*(self: gen_qdnslookup_types.QDnsLookup, slot: QDnsLookupnameserverChangedSlot) =
   var tmp = new QDnsLookupnameserverChangedSlot

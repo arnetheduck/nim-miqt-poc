@@ -43,11 +43,17 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractSlider_valueChanged(intptr_t, int);
+void miqt_exec_callback_QAbstractSlider_valueChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractSlider_sliderPressed(intptr_t);
+void miqt_exec_callback_QAbstractSlider_sliderPressed_release(intptr_t);
 void miqt_exec_callback_QAbstractSlider_sliderMoved(intptr_t, int);
+void miqt_exec_callback_QAbstractSlider_sliderMoved_release(intptr_t);
 void miqt_exec_callback_QAbstractSlider_sliderReleased(intptr_t);
+void miqt_exec_callback_QAbstractSlider_sliderReleased_release(intptr_t);
 void miqt_exec_callback_QAbstractSlider_rangeChanged(intptr_t, int, int);
+void miqt_exec_callback_QAbstractSlider_rangeChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractSlider_actionTriggered(intptr_t, int);
+void miqt_exec_callback_QAbstractSlider_actionTriggered_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1233,10 +1239,19 @@ void QAbstractSlider_valueChanged(QAbstractSlider* self, int value) {
 }
 
 void QAbstractSlider_connect_valueChanged(QAbstractSlider* self, intptr_t slot) {
-	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::valueChanged), self, [=](int value) {
-		int sigval1 = value;
-		miqt_exec_callback_QAbstractSlider_valueChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int value) {
+			int sigval1 = value;
+			miqt_exec_callback_QAbstractSlider_valueChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractSlider_valueChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::valueChanged), self, caller{slot});
 }
 
 void QAbstractSlider_sliderPressed(QAbstractSlider* self) {
@@ -1244,9 +1259,18 @@ void QAbstractSlider_sliderPressed(QAbstractSlider* self) {
 }
 
 void QAbstractSlider_connect_sliderPressed(QAbstractSlider* self, intptr_t slot) {
-	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)()>(&QAbstractSlider::sliderPressed), self, [=]() {
-		miqt_exec_callback_QAbstractSlider_sliderPressed(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractSlider_sliderPressed(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractSlider_sliderPressed_release(slot); }
+	};
+	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)()>(&QAbstractSlider::sliderPressed), self, caller{slot});
 }
 
 void QAbstractSlider_sliderMoved(QAbstractSlider* self, int position) {
@@ -1254,10 +1278,19 @@ void QAbstractSlider_sliderMoved(QAbstractSlider* self, int position) {
 }
 
 void QAbstractSlider_connect_sliderMoved(QAbstractSlider* self, intptr_t slot) {
-	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::sliderMoved), self, [=](int position) {
-		int sigval1 = position;
-		miqt_exec_callback_QAbstractSlider_sliderMoved(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position) {
+			int sigval1 = position;
+			miqt_exec_callback_QAbstractSlider_sliderMoved(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractSlider_sliderMoved_release(slot); }
+	};
+	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::sliderMoved), self, caller{slot});
 }
 
 void QAbstractSlider_sliderReleased(QAbstractSlider* self) {
@@ -1265,9 +1298,18 @@ void QAbstractSlider_sliderReleased(QAbstractSlider* self) {
 }
 
 void QAbstractSlider_connect_sliderReleased(QAbstractSlider* self, intptr_t slot) {
-	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)()>(&QAbstractSlider::sliderReleased), self, [=]() {
-		miqt_exec_callback_QAbstractSlider_sliderReleased(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractSlider_sliderReleased(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractSlider_sliderReleased_release(slot); }
+	};
+	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)()>(&QAbstractSlider::sliderReleased), self, caller{slot});
 }
 
 void QAbstractSlider_rangeChanged(QAbstractSlider* self, int min, int max) {
@@ -1275,11 +1317,20 @@ void QAbstractSlider_rangeChanged(QAbstractSlider* self, int min, int max) {
 }
 
 void QAbstractSlider_connect_rangeChanged(QAbstractSlider* self, intptr_t slot) {
-	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int, int)>(&QAbstractSlider::rangeChanged), self, [=](int min, int max) {
-		int sigval1 = min;
-		int sigval2 = max;
-		miqt_exec_callback_QAbstractSlider_rangeChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int min, int max) {
+			int sigval1 = min;
+			int sigval2 = max;
+			miqt_exec_callback_QAbstractSlider_rangeChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractSlider_rangeChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int, int)>(&QAbstractSlider::rangeChanged), self, caller{slot});
 }
 
 void QAbstractSlider_actionTriggered(QAbstractSlider* self, int action) {
@@ -1287,10 +1338,19 @@ void QAbstractSlider_actionTriggered(QAbstractSlider* self, int action) {
 }
 
 void QAbstractSlider_connect_actionTriggered(QAbstractSlider* self, intptr_t slot) {
-	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::actionTriggered), self, [=](int action) {
-		int sigval1 = action;
-		miqt_exec_callback_QAbstractSlider_actionTriggered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int action) {
+			int sigval1 = action;
+			miqt_exec_callback_QAbstractSlider_actionTriggered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractSlider_actionTriggered_release(slot); }
+	};
+	MiqtVirtualQAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::actionTriggered), self, caller{slot});
 }
 
 struct miqt_string QAbstractSlider_tr2(const char* s, const char* c) {

@@ -240,6 +240,10 @@ proc miqt_exec_callback_cQCameraFocus_opticalZoomChanged(slot: int, param1: floa
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraFocus_opticalZoomChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraFocus_opticalZoomChanged_release".} =
+  let nimfunc = cast[ref QCameraFocusopticalZoomChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onopticalZoomChanged*(self: gen_qcamerafocus_types.QCameraFocus, slot: QCameraFocusopticalZoomChangedSlot) =
   var tmp = new QCameraFocusopticalZoomChangedSlot
   tmp[] = slot
@@ -256,6 +260,10 @@ proc miqt_exec_callback_cQCameraFocus_digitalZoomChanged(slot: int, param1: floa
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraFocus_digitalZoomChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraFocus_digitalZoomChanged_release".} =
+  let nimfunc = cast[ref QCameraFocusdigitalZoomChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondigitalZoomChanged*(self: gen_qcamerafocus_types.QCameraFocus, slot: QCameraFocusdigitalZoomChangedSlot) =
   var tmp = new QCameraFocusdigitalZoomChangedSlot
   tmp[] = slot
@@ -269,6 +277,10 @@ type QCameraFocusfocusZonesChangedSlot* = proc()
 proc miqt_exec_callback_cQCameraFocus_focusZonesChanged(slot: int) {.exportc: "miqt_exec_callback_QCameraFocus_focusZonesChanged".} =
   let nimfunc = cast[ptr QCameraFocusfocusZonesChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQCameraFocus_focusZonesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraFocus_focusZonesChanged_release".} =
+  let nimfunc = cast[ref QCameraFocusfocusZonesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfocusZonesChanged*(self: gen_qcamerafocus_types.QCameraFocus, slot: QCameraFocusfocusZonesChangedSlot) =
   var tmp = new QCameraFocusfocusZonesChangedSlot
@@ -286,6 +298,10 @@ proc miqt_exec_callback_cQCameraFocus_maximumOpticalZoomChanged(slot: int, param
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraFocus_maximumOpticalZoomChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraFocus_maximumOpticalZoomChanged_release".} =
+  let nimfunc = cast[ref QCameraFocusmaximumOpticalZoomChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmaximumOpticalZoomChanged*(self: gen_qcamerafocus_types.QCameraFocus, slot: QCameraFocusmaximumOpticalZoomChangedSlot) =
   var tmp = new QCameraFocusmaximumOpticalZoomChangedSlot
   tmp[] = slot
@@ -301,6 +317,10 @@ proc miqt_exec_callback_cQCameraFocus_maximumDigitalZoomChanged(slot: int, param
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCameraFocus_maximumDigitalZoomChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraFocus_maximumDigitalZoomChanged_release".} =
+  let nimfunc = cast[ref QCameraFocusmaximumDigitalZoomChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmaximumDigitalZoomChanged*(self: gen_qcamerafocus_types.QCameraFocus, slot: QCameraFocusmaximumDigitalZoomChangedSlot) =
   var tmp = new QCameraFocusmaximumDigitalZoomChangedSlot

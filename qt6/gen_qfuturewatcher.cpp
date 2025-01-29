@@ -14,17 +14,29 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QFutureWatcherBase_started(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_started_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_finished(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_finished_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_canceled(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_canceled_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_paused(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_paused_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_suspending(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_suspending_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_suspended(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_suspended_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_resumed(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_resumed_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_resultReadyAt(intptr_t, int);
+void miqt_exec_callback_QFutureWatcherBase_resultReadyAt_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_resultsReadyAt(intptr_t, int, int);
+void miqt_exec_callback_QFutureWatcherBase_resultsReadyAt_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_progressRangeChanged(intptr_t, int, int);
+void miqt_exec_callback_QFutureWatcherBase_progressRangeChanged_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_progressValueChanged(intptr_t, int);
+void miqt_exec_callback_QFutureWatcherBase_progressValueChanged_release(intptr_t);
 void miqt_exec_callback_QFutureWatcherBase_progressTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFutureWatcherBase_progressTextChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -124,9 +136,18 @@ void QFutureWatcherBase_started(QFutureWatcherBase* self) {
 }
 
 void QFutureWatcherBase_connect_started(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::started), self, [=]() {
-		miqt_exec_callback_QFutureWatcherBase_started(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QFutureWatcherBase_started(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_started_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::started), self, caller{slot});
 }
 
 void QFutureWatcherBase_finished(QFutureWatcherBase* self) {
@@ -134,9 +155,18 @@ void QFutureWatcherBase_finished(QFutureWatcherBase* self) {
 }
 
 void QFutureWatcherBase_connect_finished(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::finished), self, [=]() {
-		miqt_exec_callback_QFutureWatcherBase_finished(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QFutureWatcherBase_finished(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_finished_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::finished), self, caller{slot});
 }
 
 void QFutureWatcherBase_canceled(QFutureWatcherBase* self) {
@@ -144,9 +174,18 @@ void QFutureWatcherBase_canceled(QFutureWatcherBase* self) {
 }
 
 void QFutureWatcherBase_connect_canceled(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::canceled), self, [=]() {
-		miqt_exec_callback_QFutureWatcherBase_canceled(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QFutureWatcherBase_canceled(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_canceled_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::canceled), self, caller{slot});
 }
 
 void QFutureWatcherBase_paused(QFutureWatcherBase* self) {
@@ -154,9 +193,18 @@ void QFutureWatcherBase_paused(QFutureWatcherBase* self) {
 }
 
 void QFutureWatcherBase_connect_paused(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::paused), self, [=]() {
-		miqt_exec_callback_QFutureWatcherBase_paused(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QFutureWatcherBase_paused(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_paused_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::paused), self, caller{slot});
 }
 
 void QFutureWatcherBase_suspending(QFutureWatcherBase* self) {
@@ -164,9 +212,18 @@ void QFutureWatcherBase_suspending(QFutureWatcherBase* self) {
 }
 
 void QFutureWatcherBase_connect_suspending(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::suspending), self, [=]() {
-		miqt_exec_callback_QFutureWatcherBase_suspending(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QFutureWatcherBase_suspending(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_suspending_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::suspending), self, caller{slot});
 }
 
 void QFutureWatcherBase_suspended(QFutureWatcherBase* self) {
@@ -174,9 +231,18 @@ void QFutureWatcherBase_suspended(QFutureWatcherBase* self) {
 }
 
 void QFutureWatcherBase_connect_suspended(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::suspended), self, [=]() {
-		miqt_exec_callback_QFutureWatcherBase_suspended(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QFutureWatcherBase_suspended(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_suspended_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::suspended), self, caller{slot});
 }
 
 void QFutureWatcherBase_resumed(QFutureWatcherBase* self) {
@@ -184,9 +250,18 @@ void QFutureWatcherBase_resumed(QFutureWatcherBase* self) {
 }
 
 void QFutureWatcherBase_connect_resumed(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::resumed), self, [=]() {
-		miqt_exec_callback_QFutureWatcherBase_resumed(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QFutureWatcherBase_resumed(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_resumed_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::resumed), self, caller{slot});
 }
 
 void QFutureWatcherBase_resultReadyAt(QFutureWatcherBase* self, int resultIndex) {
@@ -194,10 +269,19 @@ void QFutureWatcherBase_resultReadyAt(QFutureWatcherBase* self, int resultIndex)
 }
 
 void QFutureWatcherBase_connect_resultReadyAt(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int)>(&QFutureWatcherBase::resultReadyAt), self, [=](int resultIndex) {
-		int sigval1 = resultIndex;
-		miqt_exec_callback_QFutureWatcherBase_resultReadyAt(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int resultIndex) {
+			int sigval1 = resultIndex;
+			miqt_exec_callback_QFutureWatcherBase_resultReadyAt(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_resultReadyAt_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int)>(&QFutureWatcherBase::resultReadyAt), self, caller{slot});
 }
 
 void QFutureWatcherBase_resultsReadyAt(QFutureWatcherBase* self, int beginIndex, int endIndex) {
@@ -205,11 +289,20 @@ void QFutureWatcherBase_resultsReadyAt(QFutureWatcherBase* self, int beginIndex,
 }
 
 void QFutureWatcherBase_connect_resultsReadyAt(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int, int)>(&QFutureWatcherBase::resultsReadyAt), self, [=](int beginIndex, int endIndex) {
-		int sigval1 = beginIndex;
-		int sigval2 = endIndex;
-		miqt_exec_callback_QFutureWatcherBase_resultsReadyAt(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int beginIndex, int endIndex) {
+			int sigval1 = beginIndex;
+			int sigval2 = endIndex;
+			miqt_exec_callback_QFutureWatcherBase_resultsReadyAt(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_resultsReadyAt_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int, int)>(&QFutureWatcherBase::resultsReadyAt), self, caller{slot});
 }
 
 void QFutureWatcherBase_progressRangeChanged(QFutureWatcherBase* self, int minimum, int maximum) {
@@ -217,11 +310,20 @@ void QFutureWatcherBase_progressRangeChanged(QFutureWatcherBase* self, int minim
 }
 
 void QFutureWatcherBase_connect_progressRangeChanged(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int, int)>(&QFutureWatcherBase::progressRangeChanged), self, [=](int minimum, int maximum) {
-		int sigval1 = minimum;
-		int sigval2 = maximum;
-		miqt_exec_callback_QFutureWatcherBase_progressRangeChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int minimum, int maximum) {
+			int sigval1 = minimum;
+			int sigval2 = maximum;
+			miqt_exec_callback_QFutureWatcherBase_progressRangeChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_progressRangeChanged_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int, int)>(&QFutureWatcherBase::progressRangeChanged), self, caller{slot});
 }
 
 void QFutureWatcherBase_progressValueChanged(QFutureWatcherBase* self, int progressValue) {
@@ -229,10 +331,19 @@ void QFutureWatcherBase_progressValueChanged(QFutureWatcherBase* self, int progr
 }
 
 void QFutureWatcherBase_connect_progressValueChanged(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int)>(&QFutureWatcherBase::progressValueChanged), self, [=](int progressValue) {
-		int sigval1 = progressValue;
-		miqt_exec_callback_QFutureWatcherBase_progressValueChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int progressValue) {
+			int sigval1 = progressValue;
+			miqt_exec_callback_QFutureWatcherBase_progressValueChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_progressValueChanged_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int)>(&QFutureWatcherBase::progressValueChanged), self, caller{slot});
 }
 
 void QFutureWatcherBase_progressTextChanged(QFutureWatcherBase* self, struct miqt_string progressText) {
@@ -241,17 +352,26 @@ void QFutureWatcherBase_progressTextChanged(QFutureWatcherBase* self, struct miq
 }
 
 void QFutureWatcherBase_connect_progressTextChanged(QFutureWatcherBase* self, intptr_t slot) {
-	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(const QString&)>(&QFutureWatcherBase::progressTextChanged), self, [=](const QString& progressText) {
-		const QString progressText_ret = progressText;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray progressText_b = progressText_ret.toUtf8();
-		struct miqt_string progressText_ms;
-		progressText_ms.len = progressText_b.length();
-		progressText_ms.data = static_cast<char*>(malloc(progressText_ms.len));
-		memcpy(progressText_ms.data, progressText_b.data(), progressText_ms.len);
-		struct miqt_string sigval1 = progressText_ms;
-		miqt_exec_callback_QFutureWatcherBase_progressTextChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& progressText) {
+			const QString progressText_ret = progressText;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray progressText_b = progressText_ret.toUtf8();
+			struct miqt_string progressText_ms;
+			progressText_ms.len = progressText_b.length();
+			progressText_ms.data = static_cast<char*>(malloc(progressText_ms.len));
+			memcpy(progressText_ms.data, progressText_b.data(), progressText_ms.len);
+			struct miqt_string sigval1 = progressText_ms;
+			miqt_exec_callback_QFutureWatcherBase_progressTextChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFutureWatcherBase_progressTextChanged_release(slot); }
+	};
+	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(const QString&)>(&QFutureWatcherBase::progressTextChanged), self, caller{slot});
 }
 
 void QFutureWatcherBase_cancel(QFutureWatcherBase* self) {

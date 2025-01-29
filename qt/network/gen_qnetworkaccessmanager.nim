@@ -375,6 +375,10 @@ proc miqt_exec_callback_cQNetworkAccessManager_proxyAuthenticationRequired(slot:
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQNetworkAccessManager_proxyAuthenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagerproxyAuthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onproxyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerproxyAuthenticationRequiredSlot) =
   var tmp = new QNetworkAccessManagerproxyAuthenticationRequiredSlot
   tmp[] = slot
@@ -393,6 +397,10 @@ proc miqt_exec_callback_cQNetworkAccessManager_authenticationRequired(slot: int,
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQNetworkAccessManager_authenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_authenticationRequired_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagerauthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onauthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerauthenticationRequiredSlot) =
   var tmp = new QNetworkAccessManagerauthenticationRequiredSlot
   tmp[] = slot
@@ -409,6 +417,10 @@ proc miqt_exec_callback_cQNetworkAccessManager_finished(slot: int, reply: pointe
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQNetworkAccessManager_finished_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_finished_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagerfinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerfinishedSlot) =
   var tmp = new QNetworkAccessManagerfinishedSlot
   tmp[] = slot
@@ -424,6 +436,10 @@ proc miqt_exec_callback_cQNetworkAccessManager_encrypted(slot: int, reply: point
   let slotval1 = gen_qnetworkreply_types.QNetworkReply(h: reply)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQNetworkAccessManager_encrypted_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_encrypted_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagerencryptedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onencrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerencryptedSlot) =
   var tmp = new QNetworkAccessManagerencryptedSlot
@@ -452,6 +468,10 @@ proc miqt_exec_callback_cQNetworkAccessManager_sslErrors(slot: int, reply: point
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQNetworkAccessManager_sslErrors_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_sslErrors_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagersslErrorsSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsslErrors*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagersslErrorsSlot) =
   var tmp = new QNetworkAccessManagersslErrorsSlot
   tmp[] = slot
@@ -470,6 +490,10 @@ proc miqt_exec_callback_cQNetworkAccessManager_preSharedKeyAuthenticationRequire
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQNetworkAccessManager_preSharedKeyAuthenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagerpreSharedKeyAuthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpreSharedKeyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerpreSharedKeyAuthenticationRequiredSlot) =
   var tmp = new QNetworkAccessManagerpreSharedKeyAuthenticationRequiredSlot
   tmp[] = slot
@@ -483,6 +507,10 @@ type QNetworkAccessManagernetworkSessionConnectedSlot* = proc()
 proc miqt_exec_callback_cQNetworkAccessManager_networkSessionConnected(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_networkSessionConnected".} =
   let nimfunc = cast[ptr QNetworkAccessManagernetworkSessionConnectedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQNetworkAccessManager_networkSessionConnected_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_networkSessionConnected_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagernetworkSessionConnectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnetworkSessionConnected*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagernetworkSessionConnectedSlot) =
   var tmp = new QNetworkAccessManagernetworkSessionConnectedSlot
@@ -499,6 +527,10 @@ proc miqt_exec_callback_cQNetworkAccessManager_networkAccessibleChanged(slot: in
   let slotval1 = cint(accessible)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQNetworkAccessManager_networkAccessibleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkAccessManager_networkAccessibleChanged_release".} =
+  let nimfunc = cast[ref QNetworkAccessManagernetworkAccessibleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnetworkAccessibleChanged*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagernetworkAccessibleChangedSlot) =
   var tmp = new QNetworkAccessManagernetworkAccessibleChangedSlot

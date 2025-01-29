@@ -210,6 +210,10 @@ proc miqt_exec_callback_cQPointingDevice_grabChanged(slot: int, grabber: pointer
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
+proc miqt_exec_callback_cQPointingDevice_grabChanged_release(slot: int) {.exportc: "miqt_exec_callback_QPointingDevice_grabChanged_release".} =
+  let nimfunc = cast[ref QPointingDevicegrabChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ongrabChanged*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicegrabChangedSlot) =
   var tmp = new QPointingDevicegrabChangedSlot
   tmp[] = slot

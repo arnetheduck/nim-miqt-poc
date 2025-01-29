@@ -264,6 +264,10 @@ proc miqt_exec_callback_cQDialog_finished(slot: int, resultVal: cint) {.exportc:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDialog_finished_release(slot: int) {.exportc: "miqt_exec_callback_QDialog_finished_release".} =
+  let nimfunc = cast[ref QDialogfinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qdialog_types.QDialog, slot: QDialogfinishedSlot) =
   var tmp = new QDialogfinishedSlot
   tmp[] = slot
@@ -278,6 +282,10 @@ proc miqt_exec_callback_cQDialog_accepted(slot: int) {.exportc: "miqt_exec_callb
   let nimfunc = cast[ptr QDialogacceptedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQDialog_accepted_release(slot: int) {.exportc: "miqt_exec_callback_QDialog_accepted_release".} =
+  let nimfunc = cast[ref QDialogacceptedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaccepted*(self: gen_qdialog_types.QDialog, slot: QDialogacceptedSlot) =
   var tmp = new QDialogacceptedSlot
   tmp[] = slot
@@ -291,6 +299,10 @@ type QDialogrejectedSlot* = proc()
 proc miqt_exec_callback_cQDialog_rejected(slot: int) {.exportc: "miqt_exec_callback_QDialog_rejected".} =
   let nimfunc = cast[ptr QDialogrejectedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQDialog_rejected_release(slot: int) {.exportc: "miqt_exec_callback_QDialog_rejected_release".} =
+  let nimfunc = cast[ref QDialogrejectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onrejected*(self: gen_qdialog_types.QDialog, slot: QDialogrejectedSlot) =
   var tmp = new QDialogrejectedSlot

@@ -493,6 +493,10 @@ proc miqt_exec_callback_cQListView_indexesMoved(slot: int, indexes: struct_miqt_
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQListView_indexesMoved_release(slot: int) {.exportc: "miqt_exec_callback_QListView_indexesMoved_release".} =
+  let nimfunc = cast[ref QListViewindexesMovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onindexesMoved*(self: gen_qlistview_types.QListView, slot: QListViewindexesMovedSlot) =
   var tmp = new QListViewindexesMovedSlot
   tmp[] = slot

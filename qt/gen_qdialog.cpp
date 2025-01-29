@@ -42,8 +42,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QDialog_finished(intptr_t, int);
+void miqt_exec_callback_QDialog_finished_release(intptr_t);
 void miqt_exec_callback_QDialog_accepted(intptr_t);
+void miqt_exec_callback_QDialog_accepted_release(intptr_t);
 void miqt_exec_callback_QDialog_rejected(intptr_t);
+void miqt_exec_callback_QDialog_rejected_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1271,10 +1274,19 @@ void QDialog_finished(QDialog* self, int result) {
 }
 
 void QDialog_connect_finished(QDialog* self, intptr_t slot) {
-	MiqtVirtualQDialog::connect(self, static_cast<void (QDialog::*)(int)>(&QDialog::finished), self, [=](int result) {
-		int sigval1 = result;
-		miqt_exec_callback_QDialog_finished(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int result) {
+			int sigval1 = result;
+			miqt_exec_callback_QDialog_finished(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDialog_finished_release(slot); }
+	};
+	MiqtVirtualQDialog::connect(self, static_cast<void (QDialog::*)(int)>(&QDialog::finished), self, caller{slot});
 }
 
 void QDialog_accepted(QDialog* self) {
@@ -1282,9 +1294,18 @@ void QDialog_accepted(QDialog* self) {
 }
 
 void QDialog_connect_accepted(QDialog* self, intptr_t slot) {
-	MiqtVirtualQDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::accepted), self, [=]() {
-		miqt_exec_callback_QDialog_accepted(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QDialog_accepted(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDialog_accepted_release(slot); }
+	};
+	MiqtVirtualQDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::accepted), self, caller{slot});
 }
 
 void QDialog_rejected(QDialog* self) {
@@ -1292,9 +1313,18 @@ void QDialog_rejected(QDialog* self) {
 }
 
 void QDialog_connect_rejected(QDialog* self, intptr_t slot) {
-	MiqtVirtualQDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::rejected), self, [=]() {
-		miqt_exec_callback_QDialog_rejected(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QDialog_rejected(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDialog_rejected_release(slot); }
+	};
+	MiqtVirtualQDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::rejected), self, caller{slot});
 }
 
 void QDialog_open(QDialog* self) {

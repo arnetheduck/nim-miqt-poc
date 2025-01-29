@@ -116,6 +116,10 @@ proc miqt_exec_callback_cQMediaGaplessPlaybackControl_crossfadeTimeChanged(slot:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaGaplessPlaybackControl_crossfadeTimeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged_release".} =
+  let nimfunc = cast[ref QMediaGaplessPlaybackControlcrossfadeTimeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncrossfadeTimeChanged*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, slot: QMediaGaplessPlaybackControlcrossfadeTimeChangedSlot) =
   var tmp = new QMediaGaplessPlaybackControlcrossfadeTimeChangedSlot
   tmp[] = slot
@@ -132,6 +136,10 @@ proc miqt_exec_callback_cQMediaGaplessPlaybackControl_nextMediaChanged(slot: int
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaGaplessPlaybackControl_nextMediaChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged_release".} =
+  let nimfunc = cast[ref QMediaGaplessPlaybackControlnextMediaChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnextMediaChanged*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, slot: QMediaGaplessPlaybackControlnextMediaChangedSlot) =
   var tmp = new QMediaGaplessPlaybackControlnextMediaChangedSlot
   tmp[] = slot
@@ -145,6 +153,10 @@ type QMediaGaplessPlaybackControladvancedToNextMediaSlot* = proc()
 proc miqt_exec_callback_cQMediaGaplessPlaybackControl_advancedToNextMedia(slot: int) {.exportc: "miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia".} =
   let nimfunc = cast[ptr QMediaGaplessPlaybackControladvancedToNextMediaSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaGaplessPlaybackControl_advancedToNextMedia_release(slot: int) {.exportc: "miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia_release".} =
+  let nimfunc = cast[ref QMediaGaplessPlaybackControladvancedToNextMediaSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onadvancedToNextMedia*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, slot: QMediaGaplessPlaybackControladvancedToNextMediaSlot) =
   var tmp = new QMediaGaplessPlaybackControladvancedToNextMediaSlot

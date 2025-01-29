@@ -13,8 +13,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged(intptr_t, int);
+void miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged_release(intptr_t);
 void miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName(intptr_t, struct miqt_string);
+void miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName_release(intptr_t);
 void miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged(intptr_t);
+void miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -100,10 +103,19 @@ void QVideoDeviceSelectorControl_selectedDeviceChanged(QVideoDeviceSelectorContr
 }
 
 void QVideoDeviceSelectorControl_connect_selectedDeviceChanged(QVideoDeviceSelectorControl* self, intptr_t slot) {
-	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)(int)>(&QVideoDeviceSelectorControl::selectedDeviceChanged), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged_release(slot); }
+	};
+	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)(int)>(&QVideoDeviceSelectorControl::selectedDeviceChanged), self, caller{slot});
 }
 
 void QVideoDeviceSelectorControl_selectedDeviceChangedWithName(QVideoDeviceSelectorControl* self, struct miqt_string name) {
@@ -112,17 +124,26 @@ void QVideoDeviceSelectorControl_selectedDeviceChangedWithName(QVideoDeviceSelec
 }
 
 void QVideoDeviceSelectorControl_connect_selectedDeviceChangedWithName(QVideoDeviceSelectorControl* self, intptr_t slot) {
-	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)(const QString&)>(&QVideoDeviceSelectorControl::selectedDeviceChanged), self, [=](const QString& name) {
-		const QString name_ret = name;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray name_b = name_ret.toUtf8();
-		struct miqt_string name_ms;
-		name_ms.len = name_b.length();
-		name_ms.data = static_cast<char*>(malloc(name_ms.len));
-		memcpy(name_ms.data, name_b.data(), name_ms.len);
-		struct miqt_string sigval1 = name_ms;
-		miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& name) {
+			const QString name_ret = name;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray name_b = name_ret.toUtf8();
+			struct miqt_string name_ms;
+			name_ms.len = name_b.length();
+			name_ms.data = static_cast<char*>(malloc(name_ms.len));
+			memcpy(name_ms.data, name_b.data(), name_ms.len);
+			struct miqt_string sigval1 = name_ms;
+			miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName_release(slot); }
+	};
+	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)(const QString&)>(&QVideoDeviceSelectorControl::selectedDeviceChanged), self, caller{slot});
 }
 
 void QVideoDeviceSelectorControl_devicesChanged(QVideoDeviceSelectorControl* self) {
@@ -130,9 +151,18 @@ void QVideoDeviceSelectorControl_devicesChanged(QVideoDeviceSelectorControl* sel
 }
 
 void QVideoDeviceSelectorControl_connect_devicesChanged(QVideoDeviceSelectorControl* self, intptr_t slot) {
-	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)()>(&QVideoDeviceSelectorControl::devicesChanged), self, [=]() {
-		miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged_release(slot); }
+	};
+	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)()>(&QVideoDeviceSelectorControl::devicesChanged), self, caller{slot});
 }
 
 struct miqt_string QVideoDeviceSelectorControl_tr2(const char* s, const char* c) {

@@ -168,6 +168,10 @@ proc miqt_exec_callback_cQNetworkInformation_reachabilityChanged(slot: int, newR
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQNetworkInformation_reachabilityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkInformation_reachabilityChanged_release".} =
+  let nimfunc = cast[ref QNetworkInformationreachabilityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onreachabilityChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: QNetworkInformationreachabilityChangedSlot) =
   var tmp = new QNetworkInformationreachabilityChangedSlot
   tmp[] = slot
@@ -183,6 +187,10 @@ proc miqt_exec_callback_cQNetworkInformation_isBehindCaptivePortalChanged(slot: 
   let slotval1 = state
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQNetworkInformation_isBehindCaptivePortalChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkInformation_isBehindCaptivePortalChanged_release".} =
+  let nimfunc = cast[ref QNetworkInformationisBehindCaptivePortalChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onisBehindCaptivePortalChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: QNetworkInformationisBehindCaptivePortalChangedSlot) =
   var tmp = new QNetworkInformationisBehindCaptivePortalChangedSlot
@@ -200,6 +208,10 @@ proc miqt_exec_callback_cQNetworkInformation_transportMediumChanged(slot: int, c
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQNetworkInformation_transportMediumChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkInformation_transportMediumChanged_release".} =
+  let nimfunc = cast[ref QNetworkInformationtransportMediumChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontransportMediumChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: QNetworkInformationtransportMediumChangedSlot) =
   var tmp = new QNetworkInformationtransportMediumChangedSlot
   tmp[] = slot
@@ -215,6 +227,10 @@ proc miqt_exec_callback_cQNetworkInformation_isMeteredChanged(slot: int, isMeter
   let slotval1 = isMetered
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQNetworkInformation_isMeteredChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkInformation_isMeteredChanged_release".} =
+  let nimfunc = cast[ref QNetworkInformationisMeteredChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onisMeteredChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: QNetworkInformationisMeteredChangedSlot) =
   var tmp = new QNetworkInformationisMeteredChangedSlot

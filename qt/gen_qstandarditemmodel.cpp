@@ -29,6 +29,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStandardItemModel_itemChanged(intptr_t, QStandardItem*);
+void miqt_exec_callback_QStandardItemModel_itemChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2233,10 +2234,19 @@ void QStandardItemModel_itemChanged(QStandardItemModel* self, QStandardItem* ite
 }
 
 void QStandardItemModel_connect_itemChanged(QStandardItemModel* self, intptr_t slot) {
-	MiqtVirtualQStandardItemModel::connect(self, static_cast<void (QStandardItemModel::*)(QStandardItem*)>(&QStandardItemModel::itemChanged), self, [=](QStandardItem* item) {
-		QStandardItem* sigval1 = item;
-		miqt_exec_callback_QStandardItemModel_itemChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QStandardItem* item) {
+			QStandardItem* sigval1 = item;
+			miqt_exec_callback_QStandardItemModel_itemChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QStandardItemModel_itemChanged_release(slot); }
+	};
+	MiqtVirtualQStandardItemModel::connect(self, static_cast<void (QStandardItemModel::*)(QStandardItem*)>(&QStandardItemModel::itemChanged), self, caller{slot});
 }
 
 struct miqt_string QStandardItemModel_tr2(const char* s, const char* c) {

@@ -320,6 +320,10 @@ proc miqt_exec_callback_cQProgressDialog_canceled(slot: int) {.exportc: "miqt_ex
   let nimfunc = cast[ptr QProgressDialogcanceledSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQProgressDialog_canceled_release(slot: int) {.exportc: "miqt_exec_callback_QProgressDialog_canceled_release".} =
+  let nimfunc = cast[ref QProgressDialogcanceledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncanceled*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogcanceledSlot) =
   var tmp = new QProgressDialogcanceledSlot
   tmp[] = slot

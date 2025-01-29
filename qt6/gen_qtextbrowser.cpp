@@ -51,11 +51,17 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QTextBrowser_backwardAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextBrowser_backwardAvailable_release(intptr_t);
 void miqt_exec_callback_QTextBrowser_forwardAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextBrowser_forwardAvailable_release(intptr_t);
 void miqt_exec_callback_QTextBrowser_historyChanged(intptr_t);
+void miqt_exec_callback_QTextBrowser_historyChanged_release(intptr_t);
 void miqt_exec_callback_QTextBrowser_sourceChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QTextBrowser_sourceChanged_release(intptr_t);
 void miqt_exec_callback_QTextBrowser_highlighted(intptr_t, QUrl*);
+void miqt_exec_callback_QTextBrowser_highlighted_release(intptr_t);
 void miqt_exec_callback_QTextBrowser_anchorClicked(intptr_t, QUrl*);
+void miqt_exec_callback_QTextBrowser_anchorClicked_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1542,10 +1548,19 @@ void QTextBrowser_backwardAvailable(QTextBrowser* self, bool param1) {
 }
 
 void QTextBrowser_connect_backwardAvailable(QTextBrowser* self, intptr_t slot) {
-	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(bool)>(&QTextBrowser::backwardAvailable), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QTextBrowser_backwardAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QTextBrowser_backwardAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextBrowser_backwardAvailable_release(slot); }
+	};
+	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(bool)>(&QTextBrowser::backwardAvailable), self, caller{slot});
 }
 
 void QTextBrowser_forwardAvailable(QTextBrowser* self, bool param1) {
@@ -1553,10 +1568,19 @@ void QTextBrowser_forwardAvailable(QTextBrowser* self, bool param1) {
 }
 
 void QTextBrowser_connect_forwardAvailable(QTextBrowser* self, intptr_t slot) {
-	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(bool)>(&QTextBrowser::forwardAvailable), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QTextBrowser_forwardAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QTextBrowser_forwardAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextBrowser_forwardAvailable_release(slot); }
+	};
+	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(bool)>(&QTextBrowser::forwardAvailable), self, caller{slot});
 }
 
 void QTextBrowser_historyChanged(QTextBrowser* self) {
@@ -1564,9 +1588,18 @@ void QTextBrowser_historyChanged(QTextBrowser* self) {
 }
 
 void QTextBrowser_connect_historyChanged(QTextBrowser* self, intptr_t slot) {
-	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)()>(&QTextBrowser::historyChanged), self, [=]() {
-		miqt_exec_callback_QTextBrowser_historyChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTextBrowser_historyChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextBrowser_historyChanged_release(slot); }
+	};
+	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)()>(&QTextBrowser::historyChanged), self, caller{slot});
 }
 
 void QTextBrowser_sourceChanged(QTextBrowser* self, QUrl* param1) {
@@ -1574,12 +1607,21 @@ void QTextBrowser_sourceChanged(QTextBrowser* self, QUrl* param1) {
 }
 
 void QTextBrowser_connect_sourceChanged(QTextBrowser* self, intptr_t slot) {
-	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::sourceChanged), self, [=](const QUrl& param1) {
-		const QUrl& param1_ret = param1;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
-		miqt_exec_callback_QTextBrowser_sourceChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& param1) {
+			const QUrl& param1_ret = param1;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+			miqt_exec_callback_QTextBrowser_sourceChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextBrowser_sourceChanged_release(slot); }
+	};
+	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::sourceChanged), self, caller{slot});
 }
 
 void QTextBrowser_highlighted(QTextBrowser* self, QUrl* param1) {
@@ -1587,12 +1629,21 @@ void QTextBrowser_highlighted(QTextBrowser* self, QUrl* param1) {
 }
 
 void QTextBrowser_connect_highlighted(QTextBrowser* self, intptr_t slot) {
-	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::highlighted), self, [=](const QUrl& param1) {
-		const QUrl& param1_ret = param1;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
-		miqt_exec_callback_QTextBrowser_highlighted(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& param1) {
+			const QUrl& param1_ret = param1;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+			miqt_exec_callback_QTextBrowser_highlighted(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextBrowser_highlighted_release(slot); }
+	};
+	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::highlighted), self, caller{slot});
 }
 
 void QTextBrowser_anchorClicked(QTextBrowser* self, QUrl* param1) {
@@ -1600,12 +1651,21 @@ void QTextBrowser_anchorClicked(QTextBrowser* self, QUrl* param1) {
 }
 
 void QTextBrowser_connect_anchorClicked(QTextBrowser* self, intptr_t slot) {
-	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::anchorClicked), self, [=](const QUrl& param1) {
-		const QUrl& param1_ret = param1;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
-		miqt_exec_callback_QTextBrowser_anchorClicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& param1) {
+			const QUrl& param1_ret = param1;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+			miqt_exec_callback_QTextBrowser_anchorClicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextBrowser_anchorClicked_release(slot); }
+	};
+	MiqtVirtualQTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::anchorClicked), self, caller{slot});
 }
 
 struct miqt_string QTextBrowser_tr2(const char* s, const char* c) {

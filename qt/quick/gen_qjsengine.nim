@@ -205,6 +205,10 @@ proc miqt_exec_callback_cQJSEngine_uiLanguageChanged(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QJSEngineuiLanguageChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQJSEngine_uiLanguageChanged_release(slot: int) {.exportc: "miqt_exec_callback_QJSEngine_uiLanguageChanged_release".} =
+  let nimfunc = cast[ref QJSEngineuiLanguageChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onuiLanguageChanged*(self: gen_qjsengine_types.QJSEngine, slot: QJSEngineuiLanguageChangedSlot) =
   var tmp = new QJSEngineuiLanguageChangedSlot
   tmp[] = slot

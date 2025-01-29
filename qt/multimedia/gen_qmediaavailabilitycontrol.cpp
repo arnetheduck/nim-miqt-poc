@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged(intptr_t, int);
+void miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -65,11 +66,20 @@ void QMediaAvailabilityControl_availabilityChanged(QMediaAvailabilityControl* se
 }
 
 void QMediaAvailabilityControl_connect_availabilityChanged(QMediaAvailabilityControl* self, intptr_t slot) {
-	QMediaAvailabilityControl::connect(self, static_cast<void (QMediaAvailabilityControl::*)(QMultimedia::AvailabilityStatus)>(&QMediaAvailabilityControl::availabilityChanged), self, [=](QMultimedia::AvailabilityStatus availability) {
-		QMultimedia::AvailabilityStatus availability_ret = availability;
-		int sigval1 = static_cast<int>(availability_ret);
-		miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMultimedia::AvailabilityStatus availability) {
+			QMultimedia::AvailabilityStatus availability_ret = availability;
+			int sigval1 = static_cast<int>(availability_ret);
+			miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged_release(slot); }
+	};
+	QMediaAvailabilityControl::connect(self, static_cast<void (QMediaAvailabilityControl::*)(QMultimedia::AvailabilityStatus)>(&QMediaAvailabilityControl::availabilityChanged), self, caller{slot});
 }
 
 struct miqt_string QMediaAvailabilityControl_tr2(const char* s, const char* c) {

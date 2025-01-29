@@ -389,6 +389,10 @@ proc miqt_exec_callback_cQLabel_linkActivated(slot: int, link: struct_miqt_strin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQLabel_linkActivated_release(slot: int) {.exportc: "miqt_exec_callback_QLabel_linkActivated_release".} =
+  let nimfunc = cast[ref QLabellinkActivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onlinkActivated*(self: gen_qlabel_types.QLabel, slot: QLabellinkActivatedSlot) =
   var tmp = new QLabellinkActivatedSlot
   tmp[] = slot
@@ -407,6 +411,10 @@ proc miqt_exec_callback_cQLabel_linkHovered(slot: int, link: struct_miqt_string)
   let slotval1 = vlinkx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQLabel_linkHovered_release(slot: int) {.exportc: "miqt_exec_callback_QLabel_linkHovered_release".} =
+  let nimfunc = cast[ref QLabellinkHoveredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlinkHovered*(self: gen_qlabel_types.QLabel, slot: QLabellinkHoveredSlot) =
   var tmp = new QLabellinkHoveredSlot

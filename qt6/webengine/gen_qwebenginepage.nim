@@ -572,6 +572,10 @@ proc miqt_exec_callback_cQWebEnginePage_loadStarted(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QWebEnginePageloadStartedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEnginePage_loadStarted_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_loadStarted_release".} =
+  let nimfunc = cast[ref QWebEnginePageloadStartedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onloadStarted*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageloadStartedSlot) =
   var tmp = new QWebEnginePageloadStartedSlot
   tmp[] = slot
@@ -587,6 +591,10 @@ proc miqt_exec_callback_cQWebEnginePage_loadProgress(slot: int, progress: cint) 
   let slotval1 = progress
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_loadProgress_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_loadProgress_release".} =
+  let nimfunc = cast[ref QWebEnginePageloadProgressSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onloadProgress*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageloadProgressSlot) =
   var tmp = new QWebEnginePageloadProgressSlot
@@ -604,6 +612,10 @@ proc miqt_exec_callback_cQWebEnginePage_loadFinished(slot: int, ok: bool) {.expo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_loadFinished_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_loadFinished_release".} =
+  let nimfunc = cast[ref QWebEnginePageloadFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onloadFinished*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageloadFinishedSlot) =
   var tmp = new QWebEnginePageloadFinishedSlot
   tmp[] = slot
@@ -619,6 +631,10 @@ proc miqt_exec_callback_cQWebEnginePage_loadingChanged(slot: int, loadingInfo: p
   let slotval1 = gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo(h: loadingInfo)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_loadingChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_loadingChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePageloadingChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onloadingChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageloadingChangedSlot) =
   var tmp = new QWebEnginePageloadingChangedSlot
@@ -639,6 +655,10 @@ proc miqt_exec_callback_cQWebEnginePage_linkHovered(slot: int, url: struct_miqt_
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_linkHovered_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_linkHovered_release".} =
+  let nimfunc = cast[ref QWebEnginePagelinkHoveredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onlinkHovered*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagelinkHoveredSlot) =
   var tmp = new QWebEnginePagelinkHoveredSlot
   tmp[] = slot
@@ -652,6 +672,10 @@ type QWebEnginePageselectionChangedSlot* = proc()
 proc miqt_exec_callback_cQWebEnginePage_selectionChanged(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_selectionChanged".} =
   let nimfunc = cast[ptr QWebEnginePageselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEnginePage_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_selectionChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePageselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onselectionChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageselectionChangedSlot) =
   var tmp = new QWebEnginePageselectionChangedSlot
@@ -669,6 +693,10 @@ proc miqt_exec_callback_cQWebEnginePage_geometryChangeRequested(slot: int, geom:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_geometryChangeRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_geometryChangeRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagegeometryChangeRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ongeometryChangeRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagegeometryChangeRequestedSlot) =
   var tmp = new QWebEnginePagegeometryChangeRequestedSlot
   tmp[] = slot
@@ -682,6 +710,10 @@ type QWebEnginePagewindowCloseRequestedSlot* = proc()
 proc miqt_exec_callback_cQWebEnginePage_windowCloseRequested(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_windowCloseRequested".} =
   let nimfunc = cast[ptr QWebEnginePagewindowCloseRequestedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEnginePage_windowCloseRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_windowCloseRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagewindowCloseRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onwindowCloseRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagewindowCloseRequestedSlot) =
   var tmp = new QWebEnginePagewindowCloseRequestedSlot
@@ -701,6 +733,10 @@ proc miqt_exec_callback_cQWebEnginePage_featurePermissionRequested(slot: int, se
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQWebEnginePage_featurePermissionRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_featurePermissionRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagefeaturePermissionRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfeaturePermissionRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagefeaturePermissionRequestedSlot) =
   var tmp = new QWebEnginePagefeaturePermissionRequestedSlot
   tmp[] = slot
@@ -719,6 +755,10 @@ proc miqt_exec_callback_cQWebEnginePage_featurePermissionRequestCanceled(slot: i
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQWebEnginePage_featurePermissionRequestCanceled_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_featurePermissionRequestCanceled_release".} =
+  let nimfunc = cast[ref QWebEnginePagefeaturePermissionRequestCanceledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfeaturePermissionRequestCanceled*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagefeaturePermissionRequestCanceledSlot) =
   var tmp = new QWebEnginePagefeaturePermissionRequestCanceledSlot
   tmp[] = slot
@@ -734,6 +774,10 @@ proc miqt_exec_callback_cQWebEnginePage_fullScreenRequested(slot: int, fullScree
   let slotval1 = gen_qwebenginefullscreenrequest_types.QWebEngineFullScreenRequest(h: fullScreenRequest)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_fullScreenRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_fullScreenRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagefullScreenRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfullScreenRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagefullScreenRequestedSlot) =
   var tmp = new QWebEnginePagefullScreenRequestedSlot
@@ -751,6 +795,10 @@ proc miqt_exec_callback_cQWebEnginePage_quotaRequested(slot: int, quotaRequest: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_quotaRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_quotaRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagequotaRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onquotaRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagequotaRequestedSlot) =
   var tmp = new QWebEnginePagequotaRequestedSlot
   tmp[] = slot
@@ -766,6 +814,10 @@ proc miqt_exec_callback_cQWebEnginePage_registerProtocolHandlerRequested(slot: i
   let slotval1 = gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest(h: request)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_registerProtocolHandlerRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_registerProtocolHandlerRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePageregisterProtocolHandlerRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onregisterProtocolHandlerRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageregisterProtocolHandlerRequestedSlot) =
   var tmp = new QWebEnginePageregisterProtocolHandlerRequestedSlot
@@ -783,6 +835,10 @@ proc miqt_exec_callback_cQWebEnginePage_fileSystemAccessRequested(slot: int, req
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_fileSystemAccessRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_fileSystemAccessRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagefileSystemAccessRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfileSystemAccessRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagefileSystemAccessRequestedSlot) =
   var tmp = new QWebEnginePagefileSystemAccessRequestedSlot
   tmp[] = slot
@@ -798,6 +854,10 @@ proc miqt_exec_callback_cQWebEnginePage_selectClientCertificate(slot: int, clien
   let slotval1 = gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection(h: clientCertSelection)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_selectClientCertificate_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_selectClientCertificate_release".} =
+  let nimfunc = cast[ref QWebEnginePageselectClientCertificateSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onselectClientCertificate*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageselectClientCertificateSlot) =
   var tmp = new QWebEnginePageselectClientCertificateSlot
@@ -816,6 +876,10 @@ proc miqt_exec_callback_cQWebEnginePage_authenticationRequired(slot: int, reques
   let slotval2 = gen_qauthenticator_types.QAuthenticator(h: authenticator)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQWebEnginePage_authenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_authenticationRequired_release".} =
+  let nimfunc = cast[ref QWebEnginePageauthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onauthenticationRequired*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageauthenticationRequiredSlot) =
   var tmp = new QWebEnginePageauthenticationRequiredSlot
@@ -840,6 +904,10 @@ proc miqt_exec_callback_cQWebEnginePage_proxyAuthenticationRequired(slot: int, r
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQWebEnginePage_proxyAuthenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_proxyAuthenticationRequired_release".} =
+  let nimfunc = cast[ref QWebEnginePageproxyAuthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onproxyAuthenticationRequired*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageproxyAuthenticationRequiredSlot) =
   var tmp = new QWebEnginePageproxyAuthenticationRequiredSlot
   tmp[] = slot
@@ -858,6 +926,10 @@ proc miqt_exec_callback_cQWebEnginePage_renderProcessTerminated(slot: int, termi
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQWebEnginePage_renderProcessTerminated_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_renderProcessTerminated_release".} =
+  let nimfunc = cast[ref QWebEnginePagerenderProcessTerminatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrenderProcessTerminated*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagerenderProcessTerminatedSlot) =
   var tmp = new QWebEnginePagerenderProcessTerminatedSlot
   tmp[] = slot
@@ -873,6 +945,10 @@ proc miqt_exec_callback_cQWebEnginePage_certificateError(slot: int, certificateE
   let slotval1 = gen_qwebenginecertificateerror_types.QWebEngineCertificateError(h: certificateError)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_certificateError_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_certificateError_release".} =
+  let nimfunc = cast[ref QWebEnginePagecertificateErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncertificateError*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagecertificateErrorSlot) =
   var tmp = new QWebEnginePagecertificateErrorSlot
@@ -890,6 +966,10 @@ proc miqt_exec_callback_cQWebEnginePage_navigationRequested(slot: int, request: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_navigationRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_navigationRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagenavigationRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnavigationRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagenavigationRequestedSlot) =
   var tmp = new QWebEnginePagenavigationRequestedSlot
   tmp[] = slot
@@ -905,6 +985,10 @@ proc miqt_exec_callback_cQWebEnginePage_newWindowRequested(slot: int, request: p
   let slotval1 = gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest(h: request)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_newWindowRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_newWindowRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePagenewWindowRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnewWindowRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagenewWindowRequestedSlot) =
   var tmp = new QWebEnginePagenewWindowRequestedSlot
@@ -925,6 +1009,10 @@ proc miqt_exec_callback_cQWebEnginePage_titleChanged(slot: int, title: struct_mi
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_titleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_titleChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagetitleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontitleChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagetitleChangedSlot) =
   var tmp = new QWebEnginePagetitleChangedSlot
   tmp[] = slot
@@ -940,6 +1028,10 @@ proc miqt_exec_callback_cQWebEnginePage_urlChanged(slot: int, url: pointer) {.ex
   let slotval1 = gen_qurl_types.QUrl(h: url)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_urlChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_urlChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePageurlChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onurlChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageurlChangedSlot) =
   var tmp = new QWebEnginePageurlChangedSlot
@@ -957,6 +1049,10 @@ proc miqt_exec_callback_cQWebEnginePage_iconUrlChanged(slot: int, url: pointer) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_iconUrlChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_iconUrlChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePageiconUrlChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oniconUrlChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageiconUrlChangedSlot) =
   var tmp = new QWebEnginePageiconUrlChangedSlot
   tmp[] = slot
@@ -972,6 +1068,10 @@ proc miqt_exec_callback_cQWebEnginePage_iconChanged(slot: int, icon: pointer) {.
   let slotval1 = gen_qicon_types.QIcon(h: icon)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_iconChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_iconChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePageiconChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oniconChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageiconChangedSlot) =
   var tmp = new QWebEnginePageiconChangedSlot
@@ -989,6 +1089,10 @@ proc miqt_exec_callback_cQWebEnginePage_scrollPositionChanged(slot: int, positio
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_scrollPositionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_scrollPositionChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagescrollPositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onscrollPositionChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagescrollPositionChangedSlot) =
   var tmp = new QWebEnginePagescrollPositionChangedSlot
   tmp[] = slot
@@ -1004,6 +1108,10 @@ proc miqt_exec_callback_cQWebEnginePage_contentsSizeChanged(slot: int, size: poi
   let slotval1 = gen_qsize_types.QSizeF(h: size)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_contentsSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_contentsSizeChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagecontentsSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncontentsSizeChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagecontentsSizeChangedSlot) =
   var tmp = new QWebEnginePagecontentsSizeChangedSlot
@@ -1021,6 +1129,10 @@ proc miqt_exec_callback_cQWebEnginePage_audioMutedChanged(slot: int, muted: bool
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_audioMutedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_audioMutedChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePageaudioMutedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaudioMutedChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageaudioMutedChangedSlot) =
   var tmp = new QWebEnginePageaudioMutedChangedSlot
   tmp[] = slot
@@ -1037,6 +1149,10 @@ proc miqt_exec_callback_cQWebEnginePage_recentlyAudibleChanged(slot: int, recent
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_recentlyAudibleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_recentlyAudibleChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagerecentlyAudibleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrecentlyAudibleChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagerecentlyAudibleChangedSlot) =
   var tmp = new QWebEnginePagerecentlyAudibleChangedSlot
   tmp[] = slot
@@ -1052,6 +1168,10 @@ proc miqt_exec_callback_cQWebEnginePage_renderProcessPidChanged(slot: int, pid: 
   let slotval1 = pid
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_renderProcessPidChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_renderProcessPidChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagerenderProcessPidChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onrenderProcessPidChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagerenderProcessPidChangedSlot) =
   var tmp = new QWebEnginePagerenderProcessPidChangedSlot
@@ -1074,6 +1194,10 @@ proc miqt_exec_callback_cQWebEnginePage_pdfPrintingFinished(slot: int, filePath:
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQWebEnginePage_pdfPrintingFinished_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_pdfPrintingFinished_release".} =
+  let nimfunc = cast[ref QWebEnginePagepdfPrintingFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpdfPrintingFinished*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagepdfPrintingFinishedSlot) =
   var tmp = new QWebEnginePagepdfPrintingFinishedSlot
   tmp[] = slot
@@ -1087,6 +1211,10 @@ type QWebEnginePageprintRequestedSlot* = proc()
 proc miqt_exec_callback_cQWebEnginePage_printRequested(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_printRequested".} =
   let nimfunc = cast[ptr QWebEnginePageprintRequestedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEnginePage_printRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_printRequested_release".} =
+  let nimfunc = cast[ref QWebEnginePageprintRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onprintRequested*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageprintRequestedSlot) =
   var tmp = new QWebEnginePageprintRequestedSlot
@@ -1104,6 +1232,10 @@ proc miqt_exec_callback_cQWebEnginePage_visibleChanged(slot: int, visible: bool)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_visibleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_visibleChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagevisibleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvisibleChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagevisibleChangedSlot) =
   var tmp = new QWebEnginePagevisibleChangedSlot
   tmp[] = slot
@@ -1119,6 +1251,10 @@ proc miqt_exec_callback_cQWebEnginePage_lifecycleStateChanged(slot: int, state: 
   let slotval1 = cint(state)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEnginePage_lifecycleStateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_lifecycleStateChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagelifecycleStateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlifecycleStateChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagelifecycleStateChangedSlot) =
   var tmp = new QWebEnginePagelifecycleStateChangedSlot
@@ -1136,6 +1272,10 @@ proc miqt_exec_callback_cQWebEnginePage_recommendedStateChanged(slot: int, state
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_recommendedStateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_recommendedStateChanged_release".} =
+  let nimfunc = cast[ref QWebEnginePagerecommendedStateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrecommendedStateChanged*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagerecommendedStateChangedSlot) =
   var tmp = new QWebEnginePagerecommendedStateChangedSlot
   tmp[] = slot
@@ -1152,6 +1292,10 @@ proc miqt_exec_callback_cQWebEnginePage_findTextFinished(slot: int, resultVal: p
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEnginePage_findTextFinished_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_findTextFinished_release".} =
+  let nimfunc = cast[ref QWebEnginePagefindTextFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfindTextFinished*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagefindTextFinishedSlot) =
   var tmp = new QWebEnginePagefindTextFinishedSlot
   tmp[] = slot
@@ -1165,6 +1309,10 @@ type QWebEnginePageQAboutToDeleteSlot* = proc()
 proc miqt_exec_callback_cQWebEnginePage_QAboutToDelete(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_QAboutToDelete".} =
   let nimfunc = cast[ptr QWebEnginePageQAboutToDeleteSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEnginePage_QAboutToDelete_release(slot: int) {.exportc: "miqt_exec_callback_QWebEnginePage_QAboutToDelete_release".} =
+  let nimfunc = cast[ref QWebEnginePageQAboutToDeleteSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onQAboutToDelete*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePageQAboutToDeleteSlot) =
   var tmp = new QWebEnginePageQAboutToDeleteSlot

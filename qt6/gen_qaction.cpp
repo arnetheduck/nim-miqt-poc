@@ -22,13 +22,21 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAction_changed(intptr_t);
+void miqt_exec_callback_QAction_changed_release(intptr_t);
 void miqt_exec_callback_QAction_enabledChanged(intptr_t, bool);
+void miqt_exec_callback_QAction_enabledChanged_release(intptr_t);
 void miqt_exec_callback_QAction_checkableChanged(intptr_t, bool);
+void miqt_exec_callback_QAction_checkableChanged_release(intptr_t);
 void miqt_exec_callback_QAction_visibleChanged(intptr_t);
+void miqt_exec_callback_QAction_visibleChanged_release(intptr_t);
 void miqt_exec_callback_QAction_triggered(intptr_t);
+void miqt_exec_callback_QAction_triggered_release(intptr_t);
 void miqt_exec_callback_QAction_hovered(intptr_t);
+void miqt_exec_callback_QAction_hovered_release(intptr_t);
 void miqt_exec_callback_QAction_toggled(intptr_t, bool);
+void miqt_exec_callback_QAction_toggled_release(intptr_t);
 void miqt_exec_callback_QAction_triggered1(intptr_t, bool);
+void miqt_exec_callback_QAction_triggered1_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -594,9 +602,18 @@ void QAction_changed(QAction* self) {
 }
 
 void QAction_connect_changed(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::changed), self, [=]() {
-		miqt_exec_callback_QAction_changed(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAction_changed(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_changed_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::changed), self, caller{slot});
 }
 
 void QAction_enabledChanged(QAction* self, bool enabled) {
@@ -604,10 +621,19 @@ void QAction_enabledChanged(QAction* self, bool enabled) {
 }
 
 void QAction_connect_enabledChanged(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::enabledChanged), self, [=](bool enabled) {
-		bool sigval1 = enabled;
-		miqt_exec_callback_QAction_enabledChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool enabled) {
+			bool sigval1 = enabled;
+			miqt_exec_callback_QAction_enabledChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_enabledChanged_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::enabledChanged), self, caller{slot});
 }
 
 void QAction_checkableChanged(QAction* self, bool checkable) {
@@ -615,10 +641,19 @@ void QAction_checkableChanged(QAction* self, bool checkable) {
 }
 
 void QAction_connect_checkableChanged(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::checkableChanged), self, [=](bool checkable) {
-		bool sigval1 = checkable;
-		miqt_exec_callback_QAction_checkableChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool checkable) {
+			bool sigval1 = checkable;
+			miqt_exec_callback_QAction_checkableChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_checkableChanged_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::checkableChanged), self, caller{slot});
 }
 
 void QAction_visibleChanged(QAction* self) {
@@ -626,9 +661,18 @@ void QAction_visibleChanged(QAction* self) {
 }
 
 void QAction_connect_visibleChanged(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::visibleChanged), self, [=]() {
-		miqt_exec_callback_QAction_visibleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAction_visibleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_visibleChanged_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::visibleChanged), self, caller{slot});
 }
 
 void QAction_triggered(QAction* self) {
@@ -636,9 +680,18 @@ void QAction_triggered(QAction* self) {
 }
 
 void QAction_connect_triggered(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=]() {
-		miqt_exec_callback_QAction_triggered(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAction_triggered(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_triggered_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, caller{slot});
 }
 
 void QAction_hovered(QAction* self) {
@@ -646,9 +699,18 @@ void QAction_hovered(QAction* self) {
 }
 
 void QAction_connect_hovered(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::hovered), self, [=]() {
-		miqt_exec_callback_QAction_hovered(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAction_hovered(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_hovered_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::hovered), self, caller{slot});
 }
 
 void QAction_toggled(QAction* self, bool param1) {
@@ -656,10 +718,19 @@ void QAction_toggled(QAction* self, bool param1) {
 }
 
 void QAction_connect_toggled(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::toggled), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QAction_toggled(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QAction_toggled(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_toggled_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::toggled), self, caller{slot});
 }
 
 struct miqt_string QAction_tr2(const char* s, const char* c) {
@@ -693,10 +764,19 @@ void QAction_triggered1(QAction* self, bool checked) {
 }
 
 void QAction_connect_triggered1(QAction* self, intptr_t slot) {
-	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=](bool checked) {
-		bool sigval1 = checked;
-		miqt_exec_callback_QAction_triggered1(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool checked) {
+			bool sigval1 = checked;
+			miqt_exec_callback_QAction_triggered1(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAction_triggered1_release(slot); }
+	};
+	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, caller{slot});
 }
 
 QMetaObject* QAction_virtualbase_metaObject(const void* self) {

@@ -141,6 +141,10 @@ proc miqt_exec_callback_cQAudioInput_deviceChanged(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QAudioInputdeviceChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioInput_deviceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioInput_deviceChanged_release".} =
+  let nimfunc = cast[ref QAudioInputdeviceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondeviceChanged*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputdeviceChangedSlot) =
   var tmp = new QAudioInputdeviceChangedSlot
   tmp[] = slot
@@ -157,6 +161,10 @@ proc miqt_exec_callback_cQAudioInput_volumeChanged(slot: int, volume: float32) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioInput_volumeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioInput_volumeChanged_release".} =
+  let nimfunc = cast[ref QAudioInputvolumeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvolumeChanged*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputvolumeChangedSlot) =
   var tmp = new QAudioInputvolumeChangedSlot
   tmp[] = slot
@@ -172,6 +180,10 @@ proc miqt_exec_callback_cQAudioInput_mutedChanged(slot: int, muted: bool) {.expo
   let slotval1 = muted
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAudioInput_mutedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioInput_mutedChanged_release".} =
+  let nimfunc = cast[ref QAudioInputmutedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmutedChanged*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputmutedChangedSlot) =
   var tmp = new QAudioInputmutedChangedSlot

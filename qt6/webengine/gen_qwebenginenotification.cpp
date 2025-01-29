@@ -14,6 +14,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QWebEngineNotification_closed(intptr_t);
+void miqt_exec_callback_QWebEngineNotification_closed_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -123,9 +124,18 @@ void QWebEngineNotification_closed(QWebEngineNotification* self) {
 }
 
 void QWebEngineNotification_connect_closed(QWebEngineNotification* self, intptr_t slot) {
-	QWebEngineNotification::connect(self, static_cast<void (QWebEngineNotification::*)()>(&QWebEngineNotification::closed), self, [=]() {
-		miqt_exec_callback_QWebEngineNotification_closed(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineNotification_closed(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineNotification_closed_release(slot); }
+	};
+	QWebEngineNotification::connect(self, static_cast<void (QWebEngineNotification::*)()>(&QWebEngineNotification::closed), self, caller{slot});
 }
 
 struct miqt_string QWebEngineNotification_tr2(const char* s, const char* c) {

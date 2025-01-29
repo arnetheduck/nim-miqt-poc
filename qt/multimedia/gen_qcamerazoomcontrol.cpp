@@ -13,11 +13,17 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCameraZoomControl_maximumOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_maximumOpticalZoomChanged_release(intptr_t);
 void miqt_exec_callback_QCameraZoomControl_maximumDigitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_maximumDigitalZoomChanged_release(intptr_t);
 void miqt_exec_callback_QCameraZoomControl_requestedOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_requestedOpticalZoomChanged_release(intptr_t);
 void miqt_exec_callback_QCameraZoomControl_requestedDigitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_requestedDigitalZoomChanged_release(intptr_t);
 void miqt_exec_callback_QCameraZoomControl_currentOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_currentOpticalZoomChanged_release(intptr_t);
 void miqt_exec_callback_QCameraZoomControl_currentDigitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_currentDigitalZoomChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -99,11 +105,20 @@ void QCameraZoomControl_maximumOpticalZoomChanged(QCameraZoomControl* self, doub
 }
 
 void QCameraZoomControl_connect_maximumOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::maximumOpticalZoomChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraZoomControl_maximumOpticalZoomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal param1) {
+			qreal param1_ret = param1;
+			double sigval1 = static_cast<double>(param1_ret);
+			miqt_exec_callback_QCameraZoomControl_maximumOpticalZoomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraZoomControl_maximumOpticalZoomChanged_release(slot); }
+	};
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::maximumOpticalZoomChanged), self, caller{slot});
 }
 
 void QCameraZoomControl_maximumDigitalZoomChanged(QCameraZoomControl* self, double param1) {
@@ -111,11 +126,20 @@ void QCameraZoomControl_maximumDigitalZoomChanged(QCameraZoomControl* self, doub
 }
 
 void QCameraZoomControl_connect_maximumDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::maximumDigitalZoomChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraZoomControl_maximumDigitalZoomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal param1) {
+			qreal param1_ret = param1;
+			double sigval1 = static_cast<double>(param1_ret);
+			miqt_exec_callback_QCameraZoomControl_maximumDigitalZoomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraZoomControl_maximumDigitalZoomChanged_release(slot); }
+	};
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::maximumDigitalZoomChanged), self, caller{slot});
 }
 
 void QCameraZoomControl_requestedOpticalZoomChanged(QCameraZoomControl* self, double opticalZoom) {
@@ -123,11 +147,20 @@ void QCameraZoomControl_requestedOpticalZoomChanged(QCameraZoomControl* self, do
 }
 
 void QCameraZoomControl_connect_requestedOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::requestedOpticalZoomChanged), self, [=](qreal opticalZoom) {
-		qreal opticalZoom_ret = opticalZoom;
-		double sigval1 = static_cast<double>(opticalZoom_ret);
-		miqt_exec_callback_QCameraZoomControl_requestedOpticalZoomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal opticalZoom) {
+			qreal opticalZoom_ret = opticalZoom;
+			double sigval1 = static_cast<double>(opticalZoom_ret);
+			miqt_exec_callback_QCameraZoomControl_requestedOpticalZoomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraZoomControl_requestedOpticalZoomChanged_release(slot); }
+	};
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::requestedOpticalZoomChanged), self, caller{slot});
 }
 
 void QCameraZoomControl_requestedDigitalZoomChanged(QCameraZoomControl* self, double digitalZoom) {
@@ -135,11 +168,20 @@ void QCameraZoomControl_requestedDigitalZoomChanged(QCameraZoomControl* self, do
 }
 
 void QCameraZoomControl_connect_requestedDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::requestedDigitalZoomChanged), self, [=](qreal digitalZoom) {
-		qreal digitalZoom_ret = digitalZoom;
-		double sigval1 = static_cast<double>(digitalZoom_ret);
-		miqt_exec_callback_QCameraZoomControl_requestedDigitalZoomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal digitalZoom) {
+			qreal digitalZoom_ret = digitalZoom;
+			double sigval1 = static_cast<double>(digitalZoom_ret);
+			miqt_exec_callback_QCameraZoomControl_requestedDigitalZoomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraZoomControl_requestedDigitalZoomChanged_release(slot); }
+	};
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::requestedDigitalZoomChanged), self, caller{slot});
 }
 
 void QCameraZoomControl_currentOpticalZoomChanged(QCameraZoomControl* self, double opticalZoom) {
@@ -147,11 +189,20 @@ void QCameraZoomControl_currentOpticalZoomChanged(QCameraZoomControl* self, doub
 }
 
 void QCameraZoomControl_connect_currentOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::currentOpticalZoomChanged), self, [=](qreal opticalZoom) {
-		qreal opticalZoom_ret = opticalZoom;
-		double sigval1 = static_cast<double>(opticalZoom_ret);
-		miqt_exec_callback_QCameraZoomControl_currentOpticalZoomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal opticalZoom) {
+			qreal opticalZoom_ret = opticalZoom;
+			double sigval1 = static_cast<double>(opticalZoom_ret);
+			miqt_exec_callback_QCameraZoomControl_currentOpticalZoomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraZoomControl_currentOpticalZoomChanged_release(slot); }
+	};
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::currentOpticalZoomChanged), self, caller{slot});
 }
 
 void QCameraZoomControl_currentDigitalZoomChanged(QCameraZoomControl* self, double digitalZoom) {
@@ -159,11 +210,20 @@ void QCameraZoomControl_currentDigitalZoomChanged(QCameraZoomControl* self, doub
 }
 
 void QCameraZoomControl_connect_currentDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::currentDigitalZoomChanged), self, [=](qreal digitalZoom) {
-		qreal digitalZoom_ret = digitalZoom;
-		double sigval1 = static_cast<double>(digitalZoom_ret);
-		miqt_exec_callback_QCameraZoomControl_currentDigitalZoomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal digitalZoom) {
+			qreal digitalZoom_ret = digitalZoom;
+			double sigval1 = static_cast<double>(digitalZoom_ret);
+			miqt_exec_callback_QCameraZoomControl_currentDigitalZoomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraZoomControl_currentDigitalZoomChanged_release(slot); }
+	};
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::currentDigitalZoomChanged), self, caller{slot});
 }
 
 struct miqt_string QCameraZoomControl_tr2(const char* s, const char* c) {

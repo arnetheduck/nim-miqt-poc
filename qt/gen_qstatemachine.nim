@@ -263,6 +263,10 @@ proc miqt_exec_callback_cQStateMachine_runningChanged(slot: int, running: bool) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQStateMachine_runningChanged_release(slot: int) {.exportc: "miqt_exec_callback_QStateMachine_runningChanged_release".} =
+  let nimfunc = cast[ref QStateMachinerunningChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrunningChanged*(self: gen_qstatemachine_types.QStateMachine, slot: QStateMachinerunningChangedSlot) =
   var tmp = new QStateMachinerunningChangedSlot
   tmp[] = slot

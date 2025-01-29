@@ -195,6 +195,10 @@ proc miqt_exec_callback_cQAbstractVideoSurface_activeChanged(slot: int, active: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractVideoSurface_activeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractVideoSurface_activeChanged_release".} =
+  let nimfunc = cast[ref QAbstractVideoSurfaceactiveChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactiveChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfaceactiveChangedSlot) =
   var tmp = new QAbstractVideoSurfaceactiveChangedSlot
   tmp[] = slot
@@ -211,6 +215,10 @@ proc miqt_exec_callback_cQAbstractVideoSurface_surfaceFormatChanged(slot: int, f
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractVideoSurface_surfaceFormatChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged_release".} =
+  let nimfunc = cast[ref QAbstractVideoSurfacesurfaceFormatChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsurfaceFormatChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfacesurfaceFormatChangedSlot) =
   var tmp = new QAbstractVideoSurfacesurfaceFormatChangedSlot
   tmp[] = slot
@@ -224,6 +232,10 @@ type QAbstractVideoSurfacesupportedFormatsChangedSlot* = proc()
 proc miqt_exec_callback_cQAbstractVideoSurface_supportedFormatsChanged(slot: int) {.exportc: "miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged".} =
   let nimfunc = cast[ptr QAbstractVideoSurfacesupportedFormatsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractVideoSurface_supportedFormatsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged_release".} =
+  let nimfunc = cast[ref QAbstractVideoSurfacesupportedFormatsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsupportedFormatsChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfacesupportedFormatsChangedSlot) =
   var tmp = new QAbstractVideoSurfacesupportedFormatsChangedSlot
@@ -240,6 +252,10 @@ proc miqt_exec_callback_cQAbstractVideoSurface_nativeResolutionChanged(slot: int
   let slotval1 = gen_qsize_types.QSize(h: resolution)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractVideoSurface_nativeResolutionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged_release".} =
+  let nimfunc = cast[ref QAbstractVideoSurfacenativeResolutionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnativeResolutionChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfacenativeResolutionChangedSlot) =
   var tmp = new QAbstractVideoSurfacenativeResolutionChangedSlot

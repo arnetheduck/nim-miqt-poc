@@ -18,13 +18,21 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QButtonGroup_buttonClicked(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_buttonClicked_release(intptr_t);
 void miqt_exec_callback_QButtonGroup_buttonPressed(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_buttonPressed_release(intptr_t);
 void miqt_exec_callback_QButtonGroup_buttonReleased(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_buttonReleased_release(intptr_t);
 void miqt_exec_callback_QButtonGroup_buttonToggled(intptr_t, QAbstractButton*, bool);
+void miqt_exec_callback_QButtonGroup_buttonToggled_release(intptr_t);
 void miqt_exec_callback_QButtonGroup_idClicked(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_idClicked_release(intptr_t);
 void miqt_exec_callback_QButtonGroup_idPressed(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_idPressed_release(intptr_t);
 void miqt_exec_callback_QButtonGroup_idReleased(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_idReleased_release(intptr_t);
 void miqt_exec_callback_QButtonGroup_idToggled(intptr_t, int, bool);
+void miqt_exec_callback_QButtonGroup_idToggled_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -336,10 +344,19 @@ void QButtonGroup_buttonClicked(QButtonGroup* self, QAbstractButton* param1) {
 }
 
 void QButtonGroup_connect_buttonClicked(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), self, [=](QAbstractButton* param1) {
-		QAbstractButton* sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_buttonClicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractButton* param1) {
+			QAbstractButton* sigval1 = param1;
+			miqt_exec_callback_QButtonGroup_buttonClicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_buttonClicked_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), self, caller{slot});
 }
 
 void QButtonGroup_buttonPressed(QButtonGroup* self, QAbstractButton* param1) {
@@ -347,10 +364,19 @@ void QButtonGroup_buttonPressed(QButtonGroup* self, QAbstractButton* param1) {
 }
 
 void QButtonGroup_connect_buttonPressed(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonPressed), self, [=](QAbstractButton* param1) {
-		QAbstractButton* sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_buttonPressed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractButton* param1) {
+			QAbstractButton* sigval1 = param1;
+			miqt_exec_callback_QButtonGroup_buttonPressed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_buttonPressed_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonPressed), self, caller{slot});
 }
 
 void QButtonGroup_buttonReleased(QButtonGroup* self, QAbstractButton* param1) {
@@ -358,10 +384,19 @@ void QButtonGroup_buttonReleased(QButtonGroup* self, QAbstractButton* param1) {
 }
 
 void QButtonGroup_connect_buttonReleased(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonReleased), self, [=](QAbstractButton* param1) {
-		QAbstractButton* sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_buttonReleased(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractButton* param1) {
+			QAbstractButton* sigval1 = param1;
+			miqt_exec_callback_QButtonGroup_buttonReleased(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_buttonReleased_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonReleased), self, caller{slot});
 }
 
 void QButtonGroup_buttonToggled(QButtonGroup* self, QAbstractButton* param1, bool param2) {
@@ -369,11 +404,20 @@ void QButtonGroup_buttonToggled(QButtonGroup* self, QAbstractButton* param1, boo
 }
 
 void QButtonGroup_connect_buttonToggled(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*, bool)>(&QButtonGroup::buttonToggled), self, [=](QAbstractButton* param1, bool param2) {
-		QAbstractButton* sigval1 = param1;
-		bool sigval2 = param2;
-		miqt_exec_callback_QButtonGroup_buttonToggled(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractButton* param1, bool param2) {
+			QAbstractButton* sigval1 = param1;
+			bool sigval2 = param2;
+			miqt_exec_callback_QButtonGroup_buttonToggled(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_buttonToggled_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*, bool)>(&QButtonGroup::buttonToggled), self, caller{slot});
 }
 
 void QButtonGroup_idClicked(QButtonGroup* self, int param1) {
@@ -381,10 +425,19 @@ void QButtonGroup_idClicked(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_idClicked(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_idClicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QButtonGroup_idClicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_idClicked_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), self, caller{slot});
 }
 
 void QButtonGroup_idPressed(QButtonGroup* self, int param1) {
@@ -392,10 +445,19 @@ void QButtonGroup_idPressed(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_idPressed(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idPressed), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_idPressed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QButtonGroup_idPressed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_idPressed_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idPressed), self, caller{slot});
 }
 
 void QButtonGroup_idReleased(QButtonGroup* self, int param1) {
@@ -403,10 +465,19 @@ void QButtonGroup_idReleased(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_idReleased(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idReleased), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_idReleased(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QButtonGroup_idReleased(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_idReleased_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idReleased), self, caller{slot});
 }
 
 void QButtonGroup_idToggled(QButtonGroup* self, int param1, bool param2) {
@@ -414,11 +485,20 @@ void QButtonGroup_idToggled(QButtonGroup* self, int param1, bool param2) {
 }
 
 void QButtonGroup_connect_idToggled(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::idToggled), self, [=](int param1, bool param2) {
-		int sigval1 = param1;
-		bool sigval2 = param2;
-		miqt_exec_callback_QButtonGroup_idToggled(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1, bool param2) {
+			int sigval1 = param1;
+			bool sigval2 = param2;
+			miqt_exec_callback_QButtonGroup_idToggled(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QButtonGroup_idToggled_release(slot); }
+	};
+	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::idToggled), self, caller{slot});
 }
 
 struct miqt_string QButtonGroup_tr2(const char* s, const char* c) {

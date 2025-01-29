@@ -187,6 +187,10 @@ proc miqt_exec_callback_cQActionGroup_triggered(slot: int, param1: pointer) {.ex
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQActionGroup_triggered_release(slot: int) {.exportc: "miqt_exec_callback_QActionGroup_triggered_release".} =
+  let nimfunc = cast[ref QActionGrouptriggeredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontriggered*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGrouptriggeredSlot) =
   var tmp = new QActionGrouptriggeredSlot
   tmp[] = slot
@@ -202,6 +206,10 @@ proc miqt_exec_callback_cQActionGroup_hovered(slot: int, param1: pointer) {.expo
   let slotval1 = gen_qaction_types.QAction(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQActionGroup_hovered_release(slot: int) {.exportc: "miqt_exec_callback_QActionGroup_hovered_release".} =
+  let nimfunc = cast[ref QActionGrouphoveredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhovered*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGrouphoveredSlot) =
   var tmp = new QActionGrouphoveredSlot

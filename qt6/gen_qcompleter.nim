@@ -298,6 +298,10 @@ proc miqt_exec_callback_cQCompleter_activated(slot: int, text: struct_miqt_strin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCompleter_activated_release(slot: int) {.exportc: "miqt_exec_callback_QCompleter_activated_release".} =
+  let nimfunc = cast[ref QCompleteractivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactivated*(self: gen_qcompleter_types.QCompleter, slot: QCompleteractivatedSlot) =
   var tmp = new QCompleteractivatedSlot
   tmp[] = slot
@@ -313,6 +317,10 @@ proc miqt_exec_callback_cQCompleter_activatedWithIndex(slot: int, index: pointer
   let slotval1 = gen_qabstractitemmodel_types.QModelIndex(h: index)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCompleter_activatedWithIndex_release(slot: int) {.exportc: "miqt_exec_callback_QCompleter_activatedWithIndex_release".} =
+  let nimfunc = cast[ref QCompleteractivatedWithIndexSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactivated*(self: gen_qcompleter_types.QCompleter, slot: QCompleteractivatedWithIndexSlot) =
   var tmp = new QCompleteractivatedWithIndexSlot
@@ -333,6 +341,10 @@ proc miqt_exec_callback_cQCompleter_highlighted(slot: int, text: struct_miqt_str
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCompleter_highlighted_release(slot: int) {.exportc: "miqt_exec_callback_QCompleter_highlighted_release".} =
+  let nimfunc = cast[ref QCompleterhighlightedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhighlighted*(self: gen_qcompleter_types.QCompleter, slot: QCompleterhighlightedSlot) =
   var tmp = new QCompleterhighlightedSlot
   tmp[] = slot
@@ -348,6 +360,10 @@ proc miqt_exec_callback_cQCompleter_highlightedWithIndex(slot: int, index: point
   let slotval1 = gen_qabstractitemmodel_types.QModelIndex(h: index)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCompleter_highlightedWithIndex_release(slot: int) {.exportc: "miqt_exec_callback_QCompleter_highlightedWithIndex_release".} =
+  let nimfunc = cast[ref QCompleterhighlightedWithIndexSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhighlighted*(self: gen_qcompleter_types.QCompleter, slot: QCompleterhighlightedWithIndexSlot) =
   var tmp = new QCompleterhighlightedWithIndexSlot

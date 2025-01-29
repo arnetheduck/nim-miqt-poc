@@ -233,6 +233,10 @@ proc miqt_exec_callback_cQSvgRenderer_repaintNeeded(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QSvgRendererrepaintNeededSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSvgRenderer_repaintNeeded_release(slot: int) {.exportc: "miqt_exec_callback_QSvgRenderer_repaintNeeded_release".} =
+  let nimfunc = cast[ref QSvgRendererrepaintNeededSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrepaintNeeded*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRendererrepaintNeededSlot) =
   var tmp = new QSvgRendererrepaintNeededSlot
   tmp[] = slot

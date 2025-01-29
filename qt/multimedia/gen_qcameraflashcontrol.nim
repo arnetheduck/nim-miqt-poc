@@ -106,6 +106,10 @@ proc miqt_exec_callback_cQCameraFlashControl_flashReady(slot: int, param1: bool)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraFlashControl_flashReady_release(slot: int) {.exportc: "miqt_exec_callback_QCameraFlashControl_flashReady_release".} =
+  let nimfunc = cast[ref QCameraFlashControlflashReadySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onflashReady*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, slot: QCameraFlashControlflashReadySlot) =
   var tmp = new QCameraFlashControlflashReadySlot
   tmp[] = slot

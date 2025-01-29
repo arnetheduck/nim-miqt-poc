@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCameraFlashControl_flashReady(intptr_t, bool);
+void miqt_exec_callback_QCameraFlashControl_flashReady_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -77,10 +78,19 @@ void QCameraFlashControl_flashReady(QCameraFlashControl* self, bool param1) {
 }
 
 void QCameraFlashControl_connect_flashReady(QCameraFlashControl* self, intptr_t slot) {
-	QCameraFlashControl::connect(self, static_cast<void (QCameraFlashControl::*)(bool)>(&QCameraFlashControl::flashReady), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QCameraFlashControl_flashReady(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QCameraFlashControl_flashReady(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCameraFlashControl_flashReady_release(slot); }
+	};
+	QCameraFlashControl::connect(self, static_cast<void (QCameraFlashControl::*)(bool)>(&QCameraFlashControl::flashReady), self, caller{slot});
 }
 
 struct miqt_string QCameraFlashControl_tr2(const char* s, const char* c) {

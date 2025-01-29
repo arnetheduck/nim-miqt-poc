@@ -1020,6 +1020,10 @@ proc %[3]s(%[4]s) {.exportc: "%[10]s".} =
   let nimfunc = cast[ptr %[1]s](cast[pointer](slot))
 %[5]s  nimfunc[](%[6]s)
 
+proc %[3]s_release(slot: int) {.exportc: "%[10]s_release".} =
+  let nimfunc = cast[ref %[1]s](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc on%[8]s*(self: %[9]s, slot: %[1]s) =
   var tmp = new %[1]s
   tmp[] = slot

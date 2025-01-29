@@ -1552,6 +1552,10 @@ proc miqt_exec_callback_cQsciScintillaBase_QSCN_SELCHANGED(slot: int, yes: bool)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQsciScintillaBase_QSCN_SELCHANGED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseQSCN_SELCHANGEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onQSCN_SELCHANGED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseQSCN_SELCHANGEDSlot) =
   var tmp = new QsciScintillaBaseQSCN_SELCHANGEDSlot
   tmp[] = slot
@@ -1566,6 +1570,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCCANCELLED(slot: int) {.expor
   let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCCANCELLEDSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCCANCELLED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_AUTOCCANCELLEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_AUTOCCANCELLED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCCANCELLEDSlot) =
   var tmp = new QsciScintillaBaseSCN_AUTOCCANCELLEDSlot
   tmp[] = slot
@@ -1579,6 +1587,10 @@ type QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot* = proc()
 proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCCHARDELETED(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED".} =
   let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCCHARDELETED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_AUTOCCHARDELETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot) =
   var tmp = new QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot
@@ -1602,6 +1614,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCCOMPLETED(slot: int, selecti
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCCOMPLETED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_AUTOCCOMPLETEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_AUTOCCOMPLETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCCOMPLETEDSlot) =
   var tmp = new QsciScintillaBaseSCN_AUTOCCOMPLETEDSlot
   tmp[] = slot
@@ -1624,6 +1640,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCSELECTION(slot: int, selecti
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCSELECTION_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_AUTOCSELECTIONSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCSELECTIONSlot) =
   var tmp = new QsciScintillaBaseSCN_AUTOCSELECTIONSlot
   tmp[] = slot
@@ -1641,6 +1661,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCSELECTION2(slot: int, select
   let slotval2 = position
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCSELECTION2_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_AUTOCSELECTION2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCSELECTION2Slot) =
   var tmp = new QsciScintillaBaseSCN_AUTOCSELECTION2Slot
@@ -1662,6 +1686,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(slot: int, s
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_AUTOCSELECTIONCHANGE_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_AUTOCSELECTIONCHANGESlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_AUTOCSELECTIONCHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCSELECTIONCHANGESlot) =
   var tmp = new QsciScintillaBaseSCN_AUTOCSELECTIONCHANGESlot
   tmp[] = slot
@@ -1675,6 +1703,10 @@ type QsciScintillaBaseSCEN_CHANGESlot* = proc()
 proc miqt_exec_callback_cQsciScintillaBase_SCEN_CHANGE(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE".} =
   let nimfunc = cast[ptr QsciScintillaBaseSCEN_CHANGESlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintillaBase_SCEN_CHANGE_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCEN_CHANGESlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCEN_CHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCEN_CHANGESlot) =
   var tmp = new QsciScintillaBaseSCEN_CHANGESlot
@@ -1692,6 +1724,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_CALLTIPCLICK(slot: int, direction
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_CALLTIPCLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_CALLTIPCLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_CALLTIPCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_CALLTIPCLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_CALLTIPCLICKSlot
   tmp[] = slot
@@ -1707,6 +1743,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_CHARADDED(slot: int, charadded: c
   let slotval1 = charadded
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_CHARADDED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_CHARADDEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_CHARADDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_CHARADDEDSlot) =
   var tmp = new QsciScintillaBaseSCN_CHARADDEDSlot
@@ -1728,6 +1768,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_DOUBLECLICK(slot: int, position: 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_DOUBLECLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_DOUBLECLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_DOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_DOUBLECLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_DOUBLECLICKSlot
   tmp[] = slot
@@ -1747,6 +1791,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_DWELLEND(slot: int, position: cin
   let slotval3 = y
 
   nimfunc[](slotval1, slotval2, slotval3)
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_DWELLEND_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_DWELLENDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_DWELLEND*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_DWELLENDSlot) =
   var tmp = new QsciScintillaBaseSCN_DWELLENDSlot
@@ -1768,6 +1816,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_DWELLSTART(slot: int, position: c
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_DWELLSTART_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_DWELLSTARTSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_DWELLSTART*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_DWELLSTARTSlot) =
   var tmp = new QsciScintillaBaseSCN_DWELLSTARTSlot
   tmp[] = slot
@@ -1782,6 +1834,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_FOCUSIN(slot: int) {.exportc: "mi
   let nimfunc = cast[ptr QsciScintillaBaseSCN_FOCUSINSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_FOCUSIN_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_FOCUSINSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_FOCUSIN*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_FOCUSINSlot) =
   var tmp = new QsciScintillaBaseSCN_FOCUSINSlot
   tmp[] = slot
@@ -1795,6 +1851,10 @@ type QsciScintillaBaseSCN_FOCUSOUTSlot* = proc()
 proc miqt_exec_callback_cQsciScintillaBase_SCN_FOCUSOUT(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT".} =
   let nimfunc = cast[ptr QsciScintillaBaseSCN_FOCUSOUTSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_FOCUSOUT_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_FOCUSOUTSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_FOCUSOUT*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_FOCUSOUTSlot) =
   var tmp = new QsciScintillaBaseSCN_FOCUSOUTSlot
@@ -1814,6 +1874,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_HOTSPOTCLICK(slot: int, position:
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_HOTSPOTCLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_HOTSPOTCLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_HOTSPOTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_HOTSPOTCLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_HOTSPOTCLICKSlot
   tmp[] = slot
@@ -1831,6 +1895,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(slot: int, pos
   let slotval2 = modifiers
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_HOTSPOTDOUBLECLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_HOTSPOTDOUBLECLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_HOTSPOTDOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_HOTSPOTDOUBLECLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_HOTSPOTDOUBLECLICKSlot
@@ -1850,6 +1918,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_HOTSPOTRELEASECLICK(slot: int, po
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_HOTSPOTRELEASECLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_HOTSPOTRELEASECLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_HOTSPOTRELEASECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_HOTSPOTRELEASECLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_HOTSPOTRELEASECLICKSlot
   tmp[] = slot
@@ -1868,6 +1940,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_INDICATORCLICK(slot: int, positio
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_INDICATORCLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_INDICATORCLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_INDICATORCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_INDICATORCLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_INDICATORCLICKSlot
   tmp[] = slot
@@ -1885,6 +1961,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_INDICATORRELEASE(slot: int, posit
   let slotval2 = modifiers
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_INDICATORRELEASE_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_INDICATORRELEASESlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_INDICATORRELEASE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_INDICATORRELEASESlot) =
   var tmp = new QsciScintillaBaseSCN_INDICATORRELEASESlot
@@ -1906,6 +1986,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_MACRORECORD(slot: int, param1: cu
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_MACRORECORD_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_MACRORECORDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_MACRORECORD*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MACRORECORDSlot) =
   var tmp = new QsciScintillaBaseSCN_MACRORECORDSlot
   tmp[] = slot
@@ -1926,6 +2010,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_MARGINCLICK(slot: int, position: 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_MARGINCLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_MARGINCLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_MARGINCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MARGINCLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_MARGINCLICKSlot
   tmp[] = slot
@@ -1945,6 +2033,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_MARGINRIGHTCLICK(slot: int, posit
   let slotval3 = margin
 
   nimfunc[](slotval1, slotval2, slotval3)
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_MARGINRIGHTCLICK_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_MARGINRIGHTCLICKSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_MARGINRIGHTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MARGINRIGHTCLICKSlot) =
   var tmp = new QsciScintillaBaseSCN_MARGINRIGHTCLICKSlot
@@ -1980,6 +2072,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_MODIFIED(slot: int, param1: cint,
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8, slotval9, slotval10)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_MODIFIED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_MODIFIEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_MODIFIED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MODIFIEDSlot) =
   var tmp = new QsciScintillaBaseSCN_MODIFIEDSlot
   tmp[] = slot
@@ -1993,6 +2089,10 @@ type QsciScintillaBaseSCN_MODIFYATTEMPTROSlot* = proc()
 proc miqt_exec_callback_cQsciScintillaBase_SCN_MODIFYATTEMPTRO(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO".} =
   let nimfunc = cast[ptr QsciScintillaBaseSCN_MODIFYATTEMPTROSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_MODIFYATTEMPTRO_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_MODIFYATTEMPTROSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_MODIFYATTEMPTRO*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MODIFYATTEMPTROSlot) =
   var tmp = new QsciScintillaBaseSCN_MODIFYATTEMPTROSlot
@@ -2012,6 +2112,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_NEEDSHOWN(slot: int, param1: cint
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_NEEDSHOWN_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_NEEDSHOWNSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_NEEDSHOWN*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_NEEDSHOWNSlot) =
   var tmp = new QsciScintillaBaseSCN_NEEDSHOWNSlot
   tmp[] = slot
@@ -2025,6 +2129,10 @@ type QsciScintillaBaseSCN_PAINTEDSlot* = proc()
 proc miqt_exec_callback_cQsciScintillaBase_SCN_PAINTED(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_PAINTED".} =
   let nimfunc = cast[ptr QsciScintillaBaseSCN_PAINTEDSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_PAINTED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_PAINTED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_PAINTEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_PAINTED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_PAINTEDSlot) =
   var tmp = new QsciScintillaBaseSCN_PAINTEDSlot
@@ -2040,6 +2148,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_SAVEPOINTLEFT(slot: int) {.export
   let nimfunc = cast[ptr QsciScintillaBaseSCN_SAVEPOINTLEFTSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_SAVEPOINTLEFT_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_SAVEPOINTLEFTSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_SAVEPOINTLEFT*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_SAVEPOINTLEFTSlot) =
   var tmp = new QsciScintillaBaseSCN_SAVEPOINTLEFTSlot
   tmp[] = slot
@@ -2053,6 +2165,10 @@ type QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot* = proc()
 proc miqt_exec_callback_cQsciScintillaBase_SCN_SAVEPOINTREACHED(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED".} =
   let nimfunc = cast[ptr QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_SAVEPOINTREACHED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_SAVEPOINTREACHED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot) =
   var tmp = new QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot
@@ -2070,6 +2186,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_STYLENEEDED(slot: int, position: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_STYLENEEDED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_STYLENEEDEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_STYLENEEDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_STYLENEEDEDSlot) =
   var tmp = new QsciScintillaBaseSCN_STYLENEEDEDSlot
   tmp[] = slot
@@ -2086,6 +2206,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_URIDROPPED(slot: int, url: pointe
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_URIDROPPED_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_URIDROPPEDSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_URIDROPPED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_URIDROPPEDSlot) =
   var tmp = new QsciScintillaBaseSCN_URIDROPPEDSlot
   tmp[] = slot
@@ -2101,6 +2225,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_UPDATEUI(slot: int, updated: cint
   let slotval1 = updated
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_UPDATEUI_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_UPDATEUISlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_UPDATEUI*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_UPDATEUISlot) =
   var tmp = new QsciScintillaBaseSCN_UPDATEUISlot
@@ -2126,6 +2254,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_USERLISTSELECTION(slot: int, sele
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_USERLISTSELECTION_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_USERLISTSELECTIONSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_USERLISTSELECTIONSlot) =
   var tmp = new QsciScintillaBaseSCN_USERLISTSELECTIONSlot
   tmp[] = slot
@@ -2148,6 +2280,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_USERLISTSELECTION2(slot: int, sel
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_USERLISTSELECTION2_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_USERLISTSELECTION2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_USERLISTSELECTION2Slot) =
   var tmp = new QsciScintillaBaseSCN_USERLISTSELECTION2Slot
   tmp[] = slot
@@ -2166,6 +2302,10 @@ proc miqt_exec_callback_cQsciScintillaBase_SCN_USERLISTSELECTION3(slot: int, sel
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciScintillaBase_SCN_USERLISTSELECTION3_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_USERLISTSELECTION3Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onSCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_USERLISTSELECTION3Slot) =
   var tmp = new QsciScintillaBaseSCN_USERLISTSELECTION3Slot
   tmp[] = slot
@@ -2179,6 +2319,10 @@ type QsciScintillaBaseSCN_ZOOMSlot* = proc()
 proc miqt_exec_callback_cQsciScintillaBase_SCN_ZOOM(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_ZOOM".} =
   let nimfunc = cast[ptr QsciScintillaBaseSCN_ZOOMSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintillaBase_SCN_ZOOM_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintillaBase_SCN_ZOOM_release".} =
+  let nimfunc = cast[ref QsciScintillaBaseSCN_ZOOMSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onSCN_ZOOM*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_ZOOMSlot) =
   var tmp = new QsciScintillaBaseSCN_ZOOMSlot

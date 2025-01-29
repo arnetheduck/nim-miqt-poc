@@ -77,47 +77,89 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_ScintillaEditBase_horizontalScrolled(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_horizontalScrolled_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_verticalScrolled(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_verticalScrolled_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_verticalRangeChanged_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_notifyChange(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_notifyChange_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_linesAdded(intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_linesAdded_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_aboutToCopy(intptr_t, QMimeData*);
+void miqt_exec_callback_ScintillaEditBase_aboutToCopy_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_styleNeeded(intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_styleNeeded_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_charAdded(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_charAdded_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_savePointChanged(intptr_t, bool);
+void miqt_exec_callback_ScintillaEditBase_savePointChanged_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_key(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_key_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_doubleClick(intptr_t, intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_doubleClick_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_updateUi(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_updateUi_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_modified(intptr_t, int, intptr_t, intptr_t, intptr_t, struct miqt_string, intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_modified_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_macroRecord(intptr_t, int, uintptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_macroRecord_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_marginClicked(intptr_t, intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_marginClicked_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_textAreaClicked(intptr_t, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_textAreaClicked_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_needShown(intptr_t, intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_needShown_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_painted(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_painted_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_userListSelection(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_userListSelection_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_uriDropped(intptr_t, struct miqt_string);
+void miqt_exec_callback_ScintillaEditBase_uriDropped_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_dwellStart(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_dwellStart_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_dwellEnd(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_dwellEnd_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_zoom(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_zoom_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_hotSpotClick(intptr_t, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_hotSpotClick_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(intptr_t, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_callTipClick(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_callTipClick_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(intptr_t, intptr_t, struct miqt_string);
+void miqt_exec_callback_ScintillaEditBase_autoCompleteSelection_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_focusChanged(intptr_t, bool);
+void miqt_exec_callback_ScintillaEditBase_focusChanged_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_notify(intptr_t, Scintilla__NotificationData*);
+void miqt_exec_callback_ScintillaEditBase_notify_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_command(intptr_t, uintptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_command_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_buttonPressed(intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_buttonPressed_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_buttonReleased(intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_buttonReleased_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_keyPressed(intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEditBase_keyPressed_release(intptr_t);
 void miqt_exec_callback_ScintillaEditBase_resized(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_resized_release(intptr_t);
 void miqt_exec_callback_ScintillaDocument_modifyAttempt(intptr_t);
+void miqt_exec_callback_ScintillaDocument_modifyAttempt_release(intptr_t);
 void miqt_exec_callback_ScintillaDocument_savePoint(intptr_t, bool);
+void miqt_exec_callback_ScintillaDocument_savePoint_release(intptr_t);
 void miqt_exec_callback_ScintillaDocument_modified(intptr_t, int, int, struct miqt_string, int, int, int, int, int);
+void miqt_exec_callback_ScintillaDocument_modified_release(intptr_t);
 void miqt_exec_callback_ScintillaDocument_styleNeeded(intptr_t, int);
+void miqt_exec_callback_ScintillaDocument_styleNeeded_release(intptr_t);
 void miqt_exec_callback_ScintillaDocument_errorOccurred(intptr_t, int);
+void miqt_exec_callback_ScintillaDocument_errorOccurred_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2917,10 +2959,19 @@ void ScintillaEditBase_horizontalScrolled(ScintillaEditBase* self, int value) {
 }
 
 void ScintillaEditBase_connect_horizontalScrolled(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::horizontalScrolled), self, [=](int value) {
-		int sigval1 = value;
-		miqt_exec_callback_ScintillaEditBase_horizontalScrolled(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int value) {
+			int sigval1 = value;
+			miqt_exec_callback_ScintillaEditBase_horizontalScrolled(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_horizontalScrolled_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::horizontalScrolled), self, caller{slot});
 }
 
 void ScintillaEditBase_verticalScrolled(ScintillaEditBase* self, int value) {
@@ -2928,10 +2979,19 @@ void ScintillaEditBase_verticalScrolled(ScintillaEditBase* self, int value) {
 }
 
 void ScintillaEditBase_connect_verticalScrolled(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::verticalScrolled), self, [=](int value) {
-		int sigval1 = value;
-		miqt_exec_callback_ScintillaEditBase_verticalScrolled(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int value) {
+			int sigval1 = value;
+			miqt_exec_callback_ScintillaEditBase_verticalScrolled(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_verticalScrolled_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::verticalScrolled), self, caller{slot});
 }
 
 void ScintillaEditBase_horizontalRangeChanged(ScintillaEditBase* self, int max, int page) {
@@ -2939,11 +2999,20 @@ void ScintillaEditBase_horizontalRangeChanged(ScintillaEditBase* self, int max, 
 }
 
 void ScintillaEditBase_connect_horizontalRangeChanged(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::horizontalRangeChanged), self, [=](int max, int page) {
-		int sigval1 = max;
-		int sigval2 = page;
-		miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int max, int page) {
+			int sigval1 = max;
+			int sigval2 = page;
+			miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::horizontalRangeChanged), self, caller{slot});
 }
 
 void ScintillaEditBase_verticalRangeChanged(ScintillaEditBase* self, int max, int page) {
@@ -2951,11 +3020,20 @@ void ScintillaEditBase_verticalRangeChanged(ScintillaEditBase* self, int max, in
 }
 
 void ScintillaEditBase_connect_verticalRangeChanged(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::verticalRangeChanged), self, [=](int max, int page) {
-		int sigval1 = max;
-		int sigval2 = page;
-		miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int max, int page) {
+			int sigval1 = max;
+			int sigval2 = page;
+			miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_verticalRangeChanged_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::verticalRangeChanged), self, caller{slot});
 }
 
 void ScintillaEditBase_notifyChange(ScintillaEditBase* self) {
@@ -2963,9 +3041,18 @@ void ScintillaEditBase_notifyChange(ScintillaEditBase* self) {
 }
 
 void ScintillaEditBase_connect_notifyChange(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::notifyChange), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_notifyChange(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaEditBase_notifyChange(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_notifyChange_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::notifyChange), self, caller{slot});
 }
 
 void ScintillaEditBase_linesAdded(ScintillaEditBase* self, intptr_t linesAdded) {
@@ -2973,11 +3060,20 @@ void ScintillaEditBase_linesAdded(ScintillaEditBase* self, intptr_t linesAdded) 
 }
 
 void ScintillaEditBase_connect_linesAdded(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position)>(&ScintillaEditBase::linesAdded), self, [=](Scintilla::Position linesAdded) {
-		Scintilla::Position linesAdded_ret = linesAdded;
-		intptr_t sigval1 = static_cast<intptr_t>(linesAdded_ret);
-		miqt_exec_callback_ScintillaEditBase_linesAdded(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position linesAdded) {
+			Scintilla::Position linesAdded_ret = linesAdded;
+			intptr_t sigval1 = static_cast<intptr_t>(linesAdded_ret);
+			miqt_exec_callback_ScintillaEditBase_linesAdded(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_linesAdded_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position)>(&ScintillaEditBase::linesAdded), self, caller{slot});
 }
 
 void ScintillaEditBase_aboutToCopy(ScintillaEditBase* self, QMimeData* data) {
@@ -2985,10 +3081,19 @@ void ScintillaEditBase_aboutToCopy(ScintillaEditBase* self, QMimeData* data) {
 }
 
 void ScintillaEditBase_connect_aboutToCopy(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMimeData*)>(&ScintillaEditBase::aboutToCopy), self, [=](QMimeData* data) {
-		QMimeData* sigval1 = data;
-		miqt_exec_callback_ScintillaEditBase_aboutToCopy(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMimeData* data) {
+			QMimeData* sigval1 = data;
+			miqt_exec_callback_ScintillaEditBase_aboutToCopy(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_aboutToCopy_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMimeData*)>(&ScintillaEditBase::aboutToCopy), self, caller{slot});
 }
 
 void ScintillaEditBase_styleNeeded(ScintillaEditBase* self, intptr_t position) {
@@ -2996,11 +3101,20 @@ void ScintillaEditBase_styleNeeded(ScintillaEditBase* self, intptr_t position) {
 }
 
 void ScintillaEditBase_connect_styleNeeded(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position)>(&ScintillaEditBase::styleNeeded), self, [=](Scintilla::Position position) {
-		Scintilla::Position position_ret = position;
-		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		miqt_exec_callback_ScintillaEditBase_styleNeeded(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position position) {
+			Scintilla::Position position_ret = position;
+			intptr_t sigval1 = static_cast<intptr_t>(position_ret);
+			miqt_exec_callback_ScintillaEditBase_styleNeeded(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_styleNeeded_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position)>(&ScintillaEditBase::styleNeeded), self, caller{slot});
 }
 
 void ScintillaEditBase_charAdded(ScintillaEditBase* self, int ch) {
@@ -3008,10 +3122,19 @@ void ScintillaEditBase_charAdded(ScintillaEditBase* self, int ch) {
 }
 
 void ScintillaEditBase_connect_charAdded(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::charAdded), self, [=](int ch) {
-		int sigval1 = ch;
-		miqt_exec_callback_ScintillaEditBase_charAdded(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int ch) {
+			int sigval1 = ch;
+			miqt_exec_callback_ScintillaEditBase_charAdded(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_charAdded_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::charAdded), self, caller{slot});
 }
 
 void ScintillaEditBase_savePointChanged(ScintillaEditBase* self, bool dirty) {
@@ -3019,10 +3142,19 @@ void ScintillaEditBase_savePointChanged(ScintillaEditBase* self, bool dirty) {
 }
 
 void ScintillaEditBase_connect_savePointChanged(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(bool)>(&ScintillaEditBase::savePointChanged), self, [=](bool dirty) {
-		bool sigval1 = dirty;
-		miqt_exec_callback_ScintillaEditBase_savePointChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool dirty) {
+			bool sigval1 = dirty;
+			miqt_exec_callback_ScintillaEditBase_savePointChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_savePointChanged_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(bool)>(&ScintillaEditBase::savePointChanged), self, caller{slot});
 }
 
 void ScintillaEditBase_modifyAttemptReadOnly(ScintillaEditBase* self) {
@@ -3030,9 +3162,18 @@ void ScintillaEditBase_modifyAttemptReadOnly(ScintillaEditBase* self) {
 }
 
 void ScintillaEditBase_connect_modifyAttemptReadOnly(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::modifyAttemptReadOnly), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::modifyAttemptReadOnly), self, caller{slot});
 }
 
 void ScintillaEditBase_key(ScintillaEditBase* self, int key) {
@@ -3040,10 +3181,19 @@ void ScintillaEditBase_key(ScintillaEditBase* self, int key) {
 }
 
 void ScintillaEditBase_connect_key(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::key), self, [=](int key) {
-		int sigval1 = key;
-		miqt_exec_callback_ScintillaEditBase_key(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int key) {
+			int sigval1 = key;
+			miqt_exec_callback_ScintillaEditBase_key(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_key_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::key), self, caller{slot});
 }
 
 void ScintillaEditBase_doubleClick(ScintillaEditBase* self, intptr_t position, intptr_t line) {
@@ -3051,13 +3201,22 @@ void ScintillaEditBase_doubleClick(ScintillaEditBase* self, intptr_t position, i
 }
 
 void ScintillaEditBase_connect_doubleClick(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::Position)>(&ScintillaEditBase::doubleClick), self, [=](Scintilla::Position position, Scintilla::Position line) {
-		Scintilla::Position position_ret = position;
-		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		Scintilla::Position line_ret = line;
-		intptr_t sigval2 = static_cast<intptr_t>(line_ret);
-		miqt_exec_callback_ScintillaEditBase_doubleClick(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position position, Scintilla::Position line) {
+			Scintilla::Position position_ret = position;
+			intptr_t sigval1 = static_cast<intptr_t>(position_ret);
+			Scintilla::Position line_ret = line;
+			intptr_t sigval2 = static_cast<intptr_t>(line_ret);
+			miqt_exec_callback_ScintillaEditBase_doubleClick(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_doubleClick_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::Position)>(&ScintillaEditBase::doubleClick), self, caller{slot});
 }
 
 void ScintillaEditBase_updateUi(ScintillaEditBase* self, int updated) {
@@ -3065,11 +3224,20 @@ void ScintillaEditBase_updateUi(ScintillaEditBase* self, int updated) {
 }
 
 void ScintillaEditBase_connect_updateUi(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Update)>(&ScintillaEditBase::updateUi), self, [=](Scintilla::Update updated) {
-		Scintilla::Update updated_ret = updated;
-		int sigval1 = static_cast<int>(updated_ret);
-		miqt_exec_callback_ScintillaEditBase_updateUi(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Update updated) {
+			Scintilla::Update updated_ret = updated;
+			int sigval1 = static_cast<int>(updated_ret);
+			miqt_exec_callback_ScintillaEditBase_updateUi(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_updateUi_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Update)>(&ScintillaEditBase::updateUi), self, caller{slot});
 }
 
 void ScintillaEditBase_modified(ScintillaEditBase* self, int type, intptr_t position, intptr_t length, intptr_t linesAdded, struct miqt_string text, intptr_t line, int foldNow, int foldPrev) {
@@ -3078,29 +3246,38 @@ void ScintillaEditBase_modified(ScintillaEditBase* self, int type, intptr_t posi
 }
 
 void ScintillaEditBase_connect_modified(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::ModificationFlags, Scintilla::Position, Scintilla::Position, Scintilla::Position, const QByteArray&, Scintilla::Position, Scintilla::FoldLevel, Scintilla::FoldLevel)>(&ScintillaEditBase::modified), self, [=](Scintilla::ModificationFlags type, Scintilla::Position position, Scintilla::Position length, Scintilla::Position linesAdded, const QByteArray& text, Scintilla::Position line, Scintilla::FoldLevel foldNow, Scintilla::FoldLevel foldPrev) {
-		Scintilla::ModificationFlags type_ret = type;
-		int sigval1 = static_cast<int>(type_ret);
-		Scintilla::Position position_ret = position;
-		intptr_t sigval2 = static_cast<intptr_t>(position_ret);
-		Scintilla::Position length_ret = length;
-		intptr_t sigval3 = static_cast<intptr_t>(length_ret);
-		Scintilla::Position linesAdded_ret = linesAdded;
-		intptr_t sigval4 = static_cast<intptr_t>(linesAdded_ret);
-		const QByteArray text_qb = text;
-		struct miqt_string text_ms;
-		text_ms.len = text_qb.length();
-		text_ms.data = static_cast<char*>(malloc(text_ms.len));
-		memcpy(text_ms.data, text_qb.data(), text_ms.len);
-		struct miqt_string sigval5 = text_ms;
-		Scintilla::Position line_ret = line;
-		intptr_t sigval6 = static_cast<intptr_t>(line_ret);
-		Scintilla::FoldLevel foldNow_ret = foldNow;
-		int sigval7 = static_cast<int>(foldNow_ret);
-		Scintilla::FoldLevel foldPrev_ret = foldPrev;
-		int sigval8 = static_cast<int>(foldPrev_ret);
-		miqt_exec_callback_ScintillaEditBase_modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::ModificationFlags type, Scintilla::Position position, Scintilla::Position length, Scintilla::Position linesAdded, const QByteArray& text, Scintilla::Position line, Scintilla::FoldLevel foldNow, Scintilla::FoldLevel foldPrev) {
+			Scintilla::ModificationFlags type_ret = type;
+			int sigval1 = static_cast<int>(type_ret);
+			Scintilla::Position position_ret = position;
+			intptr_t sigval2 = static_cast<intptr_t>(position_ret);
+			Scintilla::Position length_ret = length;
+			intptr_t sigval3 = static_cast<intptr_t>(length_ret);
+			Scintilla::Position linesAdded_ret = linesAdded;
+			intptr_t sigval4 = static_cast<intptr_t>(linesAdded_ret);
+			const QByteArray text_qb = text;
+			struct miqt_string text_ms;
+			text_ms.len = text_qb.length();
+			text_ms.data = static_cast<char*>(malloc(text_ms.len));
+			memcpy(text_ms.data, text_qb.data(), text_ms.len);
+			struct miqt_string sigval5 = text_ms;
+			Scintilla::Position line_ret = line;
+			intptr_t sigval6 = static_cast<intptr_t>(line_ret);
+			Scintilla::FoldLevel foldNow_ret = foldNow;
+			int sigval7 = static_cast<int>(foldNow_ret);
+			Scintilla::FoldLevel foldPrev_ret = foldPrev;
+			int sigval8 = static_cast<int>(foldPrev_ret);
+			miqt_exec_callback_ScintillaEditBase_modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_modified_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::ModificationFlags, Scintilla::Position, Scintilla::Position, Scintilla::Position, const QByteArray&, Scintilla::Position, Scintilla::FoldLevel, Scintilla::FoldLevel)>(&ScintillaEditBase::modified), self, caller{slot});
 }
 
 void ScintillaEditBase_macroRecord(ScintillaEditBase* self, int message, uintptr_t wParam, intptr_t lParam) {
@@ -3108,15 +3285,24 @@ void ScintillaEditBase_macroRecord(ScintillaEditBase* self, int message, uintptr
 }
 
 void ScintillaEditBase_connect_macroRecord(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Message, Scintilla::uptr_t, Scintilla::sptr_t)>(&ScintillaEditBase::macroRecord), self, [=](Scintilla::Message message, Scintilla::uptr_t wParam, Scintilla::sptr_t lParam) {
-		Scintilla::Message message_ret = message;
-		int sigval1 = static_cast<int>(message_ret);
-		Scintilla::uptr_t wParam_ret = wParam;
-		uintptr_t sigval2 = static_cast<uintptr_t>(wParam_ret);
-		Scintilla::sptr_t lParam_ret = lParam;
-		intptr_t sigval3 = static_cast<intptr_t>(lParam_ret);
-		miqt_exec_callback_ScintillaEditBase_macroRecord(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Message message, Scintilla::uptr_t wParam, Scintilla::sptr_t lParam) {
+			Scintilla::Message message_ret = message;
+			int sigval1 = static_cast<int>(message_ret);
+			Scintilla::uptr_t wParam_ret = wParam;
+			uintptr_t sigval2 = static_cast<uintptr_t>(wParam_ret);
+			Scintilla::sptr_t lParam_ret = lParam;
+			intptr_t sigval3 = static_cast<intptr_t>(lParam_ret);
+			miqt_exec_callback_ScintillaEditBase_macroRecord(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_macroRecord_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Message, Scintilla::uptr_t, Scintilla::sptr_t)>(&ScintillaEditBase::macroRecord), self, caller{slot});
 }
 
 void ScintillaEditBase_marginClicked(ScintillaEditBase* self, intptr_t position, int modifiers, int margin) {
@@ -3124,14 +3310,23 @@ void ScintillaEditBase_marginClicked(ScintillaEditBase* self, intptr_t position,
 }
 
 void ScintillaEditBase_connect_marginClicked(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod, int)>(&ScintillaEditBase::marginClicked), self, [=](Scintilla::Position position, Scintilla::KeyMod modifiers, int margin) {
-		Scintilla::Position position_ret = position;
-		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		Scintilla::KeyMod modifiers_ret = modifiers;
-		int sigval2 = static_cast<int>(modifiers_ret);
-		int sigval3 = margin;
-		miqt_exec_callback_ScintillaEditBase_marginClicked(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position position, Scintilla::KeyMod modifiers, int margin) {
+			Scintilla::Position position_ret = position;
+			intptr_t sigval1 = static_cast<intptr_t>(position_ret);
+			Scintilla::KeyMod modifiers_ret = modifiers;
+			int sigval2 = static_cast<int>(modifiers_ret);
+			int sigval3 = margin;
+			miqt_exec_callback_ScintillaEditBase_marginClicked(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_marginClicked_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod, int)>(&ScintillaEditBase::marginClicked), self, caller{slot});
 }
 
 void ScintillaEditBase_textAreaClicked(ScintillaEditBase* self, intptr_t line, int modifiers) {
@@ -3139,12 +3334,21 @@ void ScintillaEditBase_textAreaClicked(ScintillaEditBase* self, intptr_t line, i
 }
 
 void ScintillaEditBase_connect_textAreaClicked(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, int)>(&ScintillaEditBase::textAreaClicked), self, [=](Scintilla::Position line, int modifiers) {
-		Scintilla::Position line_ret = line;
-		intptr_t sigval1 = static_cast<intptr_t>(line_ret);
-		int sigval2 = modifiers;
-		miqt_exec_callback_ScintillaEditBase_textAreaClicked(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position line, int modifiers) {
+			Scintilla::Position line_ret = line;
+			intptr_t sigval1 = static_cast<intptr_t>(line_ret);
+			int sigval2 = modifiers;
+			miqt_exec_callback_ScintillaEditBase_textAreaClicked(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_textAreaClicked_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, int)>(&ScintillaEditBase::textAreaClicked), self, caller{slot});
 }
 
 void ScintillaEditBase_needShown(ScintillaEditBase* self, intptr_t position, intptr_t length) {
@@ -3152,13 +3356,22 @@ void ScintillaEditBase_needShown(ScintillaEditBase* self, intptr_t position, int
 }
 
 void ScintillaEditBase_connect_needShown(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::Position)>(&ScintillaEditBase::needShown), self, [=](Scintilla::Position position, Scintilla::Position length) {
-		Scintilla::Position position_ret = position;
-		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		Scintilla::Position length_ret = length;
-		intptr_t sigval2 = static_cast<intptr_t>(length_ret);
-		miqt_exec_callback_ScintillaEditBase_needShown(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position position, Scintilla::Position length) {
+			Scintilla::Position position_ret = position;
+			intptr_t sigval1 = static_cast<intptr_t>(position_ret);
+			Scintilla::Position length_ret = length;
+			intptr_t sigval2 = static_cast<intptr_t>(length_ret);
+			miqt_exec_callback_ScintillaEditBase_needShown(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_needShown_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::Position)>(&ScintillaEditBase::needShown), self, caller{slot});
 }
 
 void ScintillaEditBase_painted(ScintillaEditBase* self) {
@@ -3166,9 +3379,18 @@ void ScintillaEditBase_painted(ScintillaEditBase* self) {
 }
 
 void ScintillaEditBase_connect_painted(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::painted), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_painted(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaEditBase_painted(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_painted_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::painted), self, caller{slot});
 }
 
 void ScintillaEditBase_userListSelection(ScintillaEditBase* self) {
@@ -3176,9 +3398,18 @@ void ScintillaEditBase_userListSelection(ScintillaEditBase* self) {
 }
 
 void ScintillaEditBase_connect_userListSelection(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::userListSelection), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_userListSelection(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaEditBase_userListSelection(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_userListSelection_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::userListSelection), self, caller{slot});
 }
 
 void ScintillaEditBase_uriDropped(ScintillaEditBase* self, struct miqt_string uri) {
@@ -3187,17 +3418,26 @@ void ScintillaEditBase_uriDropped(ScintillaEditBase* self, struct miqt_string ur
 }
 
 void ScintillaEditBase_connect_uriDropped(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(const QString&)>(&ScintillaEditBase::uriDropped), self, [=](const QString& uri) {
-		const QString uri_ret = uri;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray uri_b = uri_ret.toUtf8();
-		struct miqt_string uri_ms;
-		uri_ms.len = uri_b.length();
-		uri_ms.data = static_cast<char*>(malloc(uri_ms.len));
-		memcpy(uri_ms.data, uri_b.data(), uri_ms.len);
-		struct miqt_string sigval1 = uri_ms;
-		miqt_exec_callback_ScintillaEditBase_uriDropped(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& uri) {
+			const QString uri_ret = uri;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray uri_b = uri_ret.toUtf8();
+			struct miqt_string uri_ms;
+			uri_ms.len = uri_b.length();
+			uri_ms.data = static_cast<char*>(malloc(uri_ms.len));
+			memcpy(uri_ms.data, uri_b.data(), uri_ms.len);
+			struct miqt_string sigval1 = uri_ms;
+			miqt_exec_callback_ScintillaEditBase_uriDropped(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_uriDropped_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(const QString&)>(&ScintillaEditBase::uriDropped), self, caller{slot});
 }
 
 void ScintillaEditBase_dwellStart(ScintillaEditBase* self, int x, int y) {
@@ -3205,11 +3445,20 @@ void ScintillaEditBase_dwellStart(ScintillaEditBase* self, int x, int y) {
 }
 
 void ScintillaEditBase_connect_dwellStart(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::dwellStart), self, [=](int x, int y) {
-		int sigval1 = x;
-		int sigval2 = y;
-		miqt_exec_callback_ScintillaEditBase_dwellStart(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int x, int y) {
+			int sigval1 = x;
+			int sigval2 = y;
+			miqt_exec_callback_ScintillaEditBase_dwellStart(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_dwellStart_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::dwellStart), self, caller{slot});
 }
 
 void ScintillaEditBase_dwellEnd(ScintillaEditBase* self, int x, int y) {
@@ -3217,11 +3466,20 @@ void ScintillaEditBase_dwellEnd(ScintillaEditBase* self, int x, int y) {
 }
 
 void ScintillaEditBase_connect_dwellEnd(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::dwellEnd), self, [=](int x, int y) {
-		int sigval1 = x;
-		int sigval2 = y;
-		miqt_exec_callback_ScintillaEditBase_dwellEnd(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int x, int y) {
+			int sigval1 = x;
+			int sigval2 = y;
+			miqt_exec_callback_ScintillaEditBase_dwellEnd(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_dwellEnd_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::dwellEnd), self, caller{slot});
 }
 
 void ScintillaEditBase_zoom(ScintillaEditBase* self, int zoom) {
@@ -3229,10 +3487,19 @@ void ScintillaEditBase_zoom(ScintillaEditBase* self, int zoom) {
 }
 
 void ScintillaEditBase_connect_zoom(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::zoom), self, [=](int zoom) {
-		int sigval1 = zoom;
-		miqt_exec_callback_ScintillaEditBase_zoom(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int zoom) {
+			int sigval1 = zoom;
+			miqt_exec_callback_ScintillaEditBase_zoom(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_zoom_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::zoom), self, caller{slot});
 }
 
 void ScintillaEditBase_hotSpotClick(ScintillaEditBase* self, intptr_t position, int modifiers) {
@@ -3240,13 +3507,22 @@ void ScintillaEditBase_hotSpotClick(ScintillaEditBase* self, intptr_t position, 
 }
 
 void ScintillaEditBase_connect_hotSpotClick(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod)>(&ScintillaEditBase::hotSpotClick), self, [=](Scintilla::Position position, Scintilla::KeyMod modifiers) {
-		Scintilla::Position position_ret = position;
-		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		Scintilla::KeyMod modifiers_ret = modifiers;
-		int sigval2 = static_cast<int>(modifiers_ret);
-		miqt_exec_callback_ScintillaEditBase_hotSpotClick(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position position, Scintilla::KeyMod modifiers) {
+			Scintilla::Position position_ret = position;
+			intptr_t sigval1 = static_cast<intptr_t>(position_ret);
+			Scintilla::KeyMod modifiers_ret = modifiers;
+			int sigval2 = static_cast<int>(modifiers_ret);
+			miqt_exec_callback_ScintillaEditBase_hotSpotClick(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_hotSpotClick_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod)>(&ScintillaEditBase::hotSpotClick), self, caller{slot});
 }
 
 void ScintillaEditBase_hotSpotDoubleClick(ScintillaEditBase* self, intptr_t position, int modifiers) {
@@ -3254,13 +3530,22 @@ void ScintillaEditBase_hotSpotDoubleClick(ScintillaEditBase* self, intptr_t posi
 }
 
 void ScintillaEditBase_connect_hotSpotDoubleClick(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod)>(&ScintillaEditBase::hotSpotDoubleClick), self, [=](Scintilla::Position position, Scintilla::KeyMod modifiers) {
-		Scintilla::Position position_ret = position;
-		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		Scintilla::KeyMod modifiers_ret = modifiers;
-		int sigval2 = static_cast<int>(modifiers_ret);
-		miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position position, Scintilla::KeyMod modifiers) {
+			Scintilla::Position position_ret = position;
+			intptr_t sigval1 = static_cast<intptr_t>(position_ret);
+			Scintilla::KeyMod modifiers_ret = modifiers;
+			int sigval2 = static_cast<int>(modifiers_ret);
+			miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod)>(&ScintillaEditBase::hotSpotDoubleClick), self, caller{slot});
 }
 
 void ScintillaEditBase_callTipClick(ScintillaEditBase* self) {
@@ -3268,9 +3553,18 @@ void ScintillaEditBase_callTipClick(ScintillaEditBase* self) {
 }
 
 void ScintillaEditBase_connect_callTipClick(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::callTipClick), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_callTipClick(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaEditBase_callTipClick(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_callTipClick_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::callTipClick), self, caller{slot});
 }
 
 void ScintillaEditBase_autoCompleteSelection(ScintillaEditBase* self, intptr_t position, struct miqt_string text) {
@@ -3279,19 +3573,28 @@ void ScintillaEditBase_autoCompleteSelection(ScintillaEditBase* self, intptr_t p
 }
 
 void ScintillaEditBase_connect_autoCompleteSelection(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, const QString&)>(&ScintillaEditBase::autoCompleteSelection), self, [=](Scintilla::Position position, const QString& text) {
-		Scintilla::Position position_ret = position;
-		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		const QString text_ret = text;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray text_b = text_ret.toUtf8();
-		struct miqt_string text_ms;
-		text_ms.len = text_b.length();
-		text_ms.data = static_cast<char*>(malloc(text_ms.len));
-		memcpy(text_ms.data, text_b.data(), text_ms.len);
-		struct miqt_string sigval2 = text_ms;
-		miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::Position position, const QString& text) {
+			Scintilla::Position position_ret = position;
+			intptr_t sigval1 = static_cast<intptr_t>(position_ret);
+			const QString text_ret = text;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray text_b = text_ret.toUtf8();
+			struct miqt_string text_ms;
+			text_ms.len = text_b.length();
+			text_ms.data = static_cast<char*>(malloc(text_ms.len));
+			memcpy(text_ms.data, text_b.data(), text_ms.len);
+			struct miqt_string sigval2 = text_ms;
+			miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_autoCompleteSelection_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, const QString&)>(&ScintillaEditBase::autoCompleteSelection), self, caller{slot});
 }
 
 void ScintillaEditBase_autoCompleteCancelled(ScintillaEditBase* self) {
@@ -3299,9 +3602,18 @@ void ScintillaEditBase_autoCompleteCancelled(ScintillaEditBase* self) {
 }
 
 void ScintillaEditBase_connect_autoCompleteCancelled(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::autoCompleteCancelled), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::autoCompleteCancelled), self, caller{slot});
 }
 
 void ScintillaEditBase_focusChanged(ScintillaEditBase* self, bool focused) {
@@ -3309,10 +3621,19 @@ void ScintillaEditBase_focusChanged(ScintillaEditBase* self, bool focused) {
 }
 
 void ScintillaEditBase_connect_focusChanged(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(bool)>(&ScintillaEditBase::focusChanged), self, [=](bool focused) {
-		bool sigval1 = focused;
-		miqt_exec_callback_ScintillaEditBase_focusChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool focused) {
+			bool sigval1 = focused;
+			miqt_exec_callback_ScintillaEditBase_focusChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_focusChanged_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(bool)>(&ScintillaEditBase::focusChanged), self, caller{slot});
 }
 
 void ScintillaEditBase_notify(ScintillaEditBase* self, Scintilla__NotificationData* pscn) {
@@ -3320,10 +3641,19 @@ void ScintillaEditBase_notify(ScintillaEditBase* self, Scintilla__NotificationDa
 }
 
 void ScintillaEditBase_connect_notify(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::NotificationData*)>(&ScintillaEditBase::notify), self, [=](Scintilla::NotificationData* pscn) {
-		Scintilla__NotificationData* sigval1 = pscn;
-		miqt_exec_callback_ScintillaEditBase_notify(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::NotificationData* pscn) {
+			Scintilla__NotificationData* sigval1 = pscn;
+			miqt_exec_callback_ScintillaEditBase_notify(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_notify_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::NotificationData*)>(&ScintillaEditBase::notify), self, caller{slot});
 }
 
 void ScintillaEditBase_command(ScintillaEditBase* self, uintptr_t wParam, intptr_t lParam) {
@@ -3331,13 +3661,22 @@ void ScintillaEditBase_command(ScintillaEditBase* self, uintptr_t wParam, intptr
 }
 
 void ScintillaEditBase_connect_command(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::uptr_t, Scintilla::sptr_t)>(&ScintillaEditBase::command), self, [=](Scintilla::uptr_t wParam, Scintilla::sptr_t lParam) {
-		Scintilla::uptr_t wParam_ret = wParam;
-		uintptr_t sigval1 = static_cast<uintptr_t>(wParam_ret);
-		Scintilla::sptr_t lParam_ret = lParam;
-		intptr_t sigval2 = static_cast<intptr_t>(lParam_ret);
-		miqt_exec_callback_ScintillaEditBase_command(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Scintilla::uptr_t wParam, Scintilla::sptr_t lParam) {
+			Scintilla::uptr_t wParam_ret = wParam;
+			uintptr_t sigval1 = static_cast<uintptr_t>(wParam_ret);
+			Scintilla::sptr_t lParam_ret = lParam;
+			intptr_t sigval2 = static_cast<intptr_t>(lParam_ret);
+			miqt_exec_callback_ScintillaEditBase_command(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_command_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::uptr_t, Scintilla::sptr_t)>(&ScintillaEditBase::command), self, caller{slot});
 }
 
 void ScintillaEditBase_buttonPressed(ScintillaEditBase* self, QMouseEvent* event) {
@@ -3345,10 +3684,19 @@ void ScintillaEditBase_buttonPressed(ScintillaEditBase* self, QMouseEvent* event
 }
 
 void ScintillaEditBase_connect_buttonPressed(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMouseEvent*)>(&ScintillaEditBase::buttonPressed), self, [=](QMouseEvent* event) {
-		QMouseEvent* sigval1 = event;
-		miqt_exec_callback_ScintillaEditBase_buttonPressed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMouseEvent* event) {
+			QMouseEvent* sigval1 = event;
+			miqt_exec_callback_ScintillaEditBase_buttonPressed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_buttonPressed_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMouseEvent*)>(&ScintillaEditBase::buttonPressed), self, caller{slot});
 }
 
 void ScintillaEditBase_buttonReleased(ScintillaEditBase* self, QMouseEvent* event) {
@@ -3356,10 +3704,19 @@ void ScintillaEditBase_buttonReleased(ScintillaEditBase* self, QMouseEvent* even
 }
 
 void ScintillaEditBase_connect_buttonReleased(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMouseEvent*)>(&ScintillaEditBase::buttonReleased), self, [=](QMouseEvent* event) {
-		QMouseEvent* sigval1 = event;
-		miqt_exec_callback_ScintillaEditBase_buttonReleased(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMouseEvent* event) {
+			QMouseEvent* sigval1 = event;
+			miqt_exec_callback_ScintillaEditBase_buttonReleased(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_buttonReleased_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMouseEvent*)>(&ScintillaEditBase::buttonReleased), self, caller{slot});
 }
 
 void ScintillaEditBase_keyPressed(ScintillaEditBase* self, QKeyEvent* event) {
@@ -3367,10 +3724,19 @@ void ScintillaEditBase_keyPressed(ScintillaEditBase* self, QKeyEvent* event) {
 }
 
 void ScintillaEditBase_connect_keyPressed(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QKeyEvent*)>(&ScintillaEditBase::keyPressed), self, [=](QKeyEvent* event) {
-		QKeyEvent* sigval1 = event;
-		miqt_exec_callback_ScintillaEditBase_keyPressed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QKeyEvent* event) {
+			QKeyEvent* sigval1 = event;
+			miqt_exec_callback_ScintillaEditBase_keyPressed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_keyPressed_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QKeyEvent*)>(&ScintillaEditBase::keyPressed), self, caller{slot});
 }
 
 void ScintillaEditBase_resized(ScintillaEditBase* self) {
@@ -3378,9 +3744,18 @@ void ScintillaEditBase_resized(ScintillaEditBase* self) {
 }
 
 void ScintillaEditBase_connect_resized(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::resized), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_resized(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaEditBase_resized(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaEditBase_resized_release(slot); }
+	};
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::resized), self, caller{slot});
 }
 
 struct miqt_string ScintillaEditBase_tr2(const char* s, const char* c) {
@@ -4096,9 +4471,18 @@ void ScintillaDocument_modifyAttempt(ScintillaDocument* self) {
 }
 
 void ScintillaDocument_connect_modifyAttempt(ScintillaDocument* self, intptr_t slot) {
-	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)()>(&ScintillaDocument::modify_attempt), self, [=]() {
-		miqt_exec_callback_ScintillaDocument_modifyAttempt(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_ScintillaDocument_modifyAttempt(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaDocument_modifyAttempt_release(slot); }
+	};
+	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)()>(&ScintillaDocument::modify_attempt), self, caller{slot});
 }
 
 void ScintillaDocument_savePoint(ScintillaDocument* self, bool atSavePoint) {
@@ -4106,10 +4490,19 @@ void ScintillaDocument_savePoint(ScintillaDocument* self, bool atSavePoint) {
 }
 
 void ScintillaDocument_connect_savePoint(ScintillaDocument* self, intptr_t slot) {
-	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(bool)>(&ScintillaDocument::save_point), self, [=](bool atSavePoint) {
-		bool sigval1 = atSavePoint;
-		miqt_exec_callback_ScintillaDocument_savePoint(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool atSavePoint) {
+			bool sigval1 = atSavePoint;
+			miqt_exec_callback_ScintillaDocument_savePoint(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaDocument_savePoint_release(slot); }
+	};
+	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(bool)>(&ScintillaDocument::save_point), self, caller{slot});
 }
 
 void ScintillaDocument_modified(ScintillaDocument* self, int position, int modification_type, struct miqt_string text, int length, int linesAdded, int line, int foldLevelNow, int foldLevelPrev) {
@@ -4118,22 +4511,31 @@ void ScintillaDocument_modified(ScintillaDocument* self, int position, int modif
 }
 
 void ScintillaDocument_connect_modified(ScintillaDocument* self, intptr_t slot) {
-	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int, int, const QByteArray&, int, int, int, int, int)>(&ScintillaDocument::modified), self, [=](int position, int modification_type, const QByteArray& text, int length, int linesAdded, int line, int foldLevelNow, int foldLevelPrev) {
-		int sigval1 = position;
-		int sigval2 = modification_type;
-		const QByteArray text_qb = text;
-		struct miqt_string text_ms;
-		text_ms.len = text_qb.length();
-		text_ms.data = static_cast<char*>(malloc(text_ms.len));
-		memcpy(text_ms.data, text_qb.data(), text_ms.len);
-		struct miqt_string sigval3 = text_ms;
-		int sigval4 = length;
-		int sigval5 = linesAdded;
-		int sigval6 = line;
-		int sigval7 = foldLevelNow;
-		int sigval8 = foldLevelPrev;
-		miqt_exec_callback_ScintillaDocument_modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int position, int modification_type, const QByteArray& text, int length, int linesAdded, int line, int foldLevelNow, int foldLevelPrev) {
+			int sigval1 = position;
+			int sigval2 = modification_type;
+			const QByteArray text_qb = text;
+			struct miqt_string text_ms;
+			text_ms.len = text_qb.length();
+			text_ms.data = static_cast<char*>(malloc(text_ms.len));
+			memcpy(text_ms.data, text_qb.data(), text_ms.len);
+			struct miqt_string sigval3 = text_ms;
+			int sigval4 = length;
+			int sigval5 = linesAdded;
+			int sigval6 = line;
+			int sigval7 = foldLevelNow;
+			int sigval8 = foldLevelPrev;
+			miqt_exec_callback_ScintillaDocument_modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaDocument_modified_release(slot); }
+	};
+	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int, int, const QByteArray&, int, int, int, int, int)>(&ScintillaDocument::modified), self, caller{slot});
 }
 
 void ScintillaDocument_styleNeeded(ScintillaDocument* self, int pos) {
@@ -4141,10 +4543,19 @@ void ScintillaDocument_styleNeeded(ScintillaDocument* self, int pos) {
 }
 
 void ScintillaDocument_connect_styleNeeded(ScintillaDocument* self, intptr_t slot) {
-	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int)>(&ScintillaDocument::style_needed), self, [=](int pos) {
-		int sigval1 = pos;
-		miqt_exec_callback_ScintillaDocument_styleNeeded(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int pos) {
+			int sigval1 = pos;
+			miqt_exec_callback_ScintillaDocument_styleNeeded(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaDocument_styleNeeded_release(slot); }
+	};
+	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int)>(&ScintillaDocument::style_needed), self, caller{slot});
 }
 
 void ScintillaDocument_errorOccurred(ScintillaDocument* self, int status) {
@@ -4152,10 +4563,19 @@ void ScintillaDocument_errorOccurred(ScintillaDocument* self, int status) {
 }
 
 void ScintillaDocument_connect_errorOccurred(ScintillaDocument* self, intptr_t slot) {
-	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int)>(&ScintillaDocument::error_occurred), self, [=](int status) {
-		int sigval1 = status;
-		miqt_exec_callback_ScintillaDocument_errorOccurred(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int status) {
+			int sigval1 = status;
+			miqt_exec_callback_ScintillaDocument_errorOccurred(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_ScintillaDocument_errorOccurred_release(slot); }
+	};
+	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int)>(&ScintillaDocument::error_occurred), self, caller{slot});
 }
 
 struct miqt_string ScintillaDocument_tr2(const char* s, const char* c) {

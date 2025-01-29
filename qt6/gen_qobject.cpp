@@ -24,7 +24,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QObject_destroyed(intptr_t);
+void miqt_exec_callback_QObject_destroyed_release(intptr_t);
 void miqt_exec_callback_QObject_destroyed1(intptr_t, QObject*);
+void miqt_exec_callback_QObject_destroyed1_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -433,9 +435,18 @@ void QObject_destroyed(QObject* self) {
 }
 
 void QObject_connect_destroyed(QObject* self, intptr_t slot) {
-	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=]() {
-		miqt_exec_callback_QObject_destroyed(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QObject_destroyed(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QObject_destroyed_release(slot); }
+	};
+	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, caller{slot});
 }
 
 QObject* QObject_parent(const QObject* self) {
@@ -489,10 +500,19 @@ void QObject_destroyed1(QObject* self, QObject* param1) {
 }
 
 void QObject_connect_destroyed1(QObject* self, intptr_t slot) {
-	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=](QObject* param1) {
-		QObject* sigval1 = param1;
-		miqt_exec_callback_QObject_destroyed1(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QObject* param1) {
+			QObject* sigval1 = param1;
+			miqt_exec_callback_QObject_destroyed1(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QObject_destroyed1_release(slot); }
+	};
+	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, caller{slot});
 }
 
 QMetaObject* QObject_virtualbase_metaObject(const void* self) {

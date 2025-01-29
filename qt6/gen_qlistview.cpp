@@ -56,6 +56,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QListView_indexesMoved(intptr_t, struct miqt_array /* of QModelIndex* */ );
+void miqt_exec_callback_QListView_indexesMoved_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2251,19 +2252,28 @@ void QListView_indexesMoved(QListView* self, struct miqt_array /* of QModelIndex
 }
 
 void QListView_connect_indexesMoved(QListView* self, intptr_t slot) {
-	MiqtVirtualQListView::connect(self, static_cast<void (QListView::*)(const QModelIndexList&)>(&QListView::indexesMoved), self, [=](const QModelIndexList& indexes) {
-		const QModelIndexList& indexes_ret = indexes;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
-		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
-			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QModelIndexList& indexes) {
+			const QModelIndexList& indexes_ret = indexes;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
+			for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
+				indexes_arr[i] = new QModelIndex(indexes_ret[i]);
+			}
+			struct miqt_array indexes_out;
+			indexes_out.len = indexes_ret.length();
+			indexes_out.data = static_cast<void*>(indexes_arr);
+			struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
+			miqt_exec_callback_QListView_indexesMoved(slot, sigval1);
 		}
-		struct miqt_array indexes_out;
-		indexes_out.len = indexes_ret.length();
-		indexes_out.data = static_cast<void*>(indexes_arr);
-		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
-		miqt_exec_callback_QListView_indexesMoved(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QListView_indexesMoved_release(slot); }
+	};
+	MiqtVirtualQListView::connect(self, static_cast<void (QListView::*)(const QModelIndexList&)>(&QListView::indexesMoved), self, caller{slot});
 }
 
 struct miqt_string QListView_tr2(const char* s, const char* c) {

@@ -593,6 +593,10 @@ proc miqt_exec_callback_cQTextDocument_contentsChange(slot: int, fromVal: cint, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQTextDocument_contentsChange_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_contentsChange_release".} =
+  let nimfunc = cast[ref QTextDocumentcontentsChangeSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncontentsChange*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentcontentsChangeSlot) =
   var tmp = new QTextDocumentcontentsChangeSlot
   tmp[] = slot
@@ -606,6 +610,10 @@ type QTextDocumentcontentsChangedSlot* = proc()
 proc miqt_exec_callback_cQTextDocument_contentsChanged(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_contentsChanged".} =
   let nimfunc = cast[ptr QTextDocumentcontentsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQTextDocument_contentsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_contentsChanged_release".} =
+  let nimfunc = cast[ref QTextDocumentcontentsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncontentsChanged*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentcontentsChangedSlot) =
   var tmp = new QTextDocumentcontentsChangedSlot
@@ -623,6 +631,10 @@ proc miqt_exec_callback_cQTextDocument_undoAvailable(slot: int, param1: bool) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextDocument_undoAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_undoAvailable_release".} =
+  let nimfunc = cast[ref QTextDocumentundoAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onundoAvailable*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentundoAvailableSlot) =
   var tmp = new QTextDocumentundoAvailableSlot
   tmp[] = slot
@@ -639,6 +651,10 @@ proc miqt_exec_callback_cQTextDocument_redoAvailable(slot: int, param1: bool) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextDocument_redoAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_redoAvailable_release".} =
+  let nimfunc = cast[ref QTextDocumentredoAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onredoAvailable*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentredoAvailableSlot) =
   var tmp = new QTextDocumentredoAvailableSlot
   tmp[] = slot
@@ -652,6 +668,10 @@ type QTextDocumentundoCommandAddedSlot* = proc()
 proc miqt_exec_callback_cQTextDocument_undoCommandAdded(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_undoCommandAdded".} =
   let nimfunc = cast[ptr QTextDocumentundoCommandAddedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQTextDocument_undoCommandAdded_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_undoCommandAdded_release".} =
+  let nimfunc = cast[ref QTextDocumentundoCommandAddedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onundoCommandAdded*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentundoCommandAddedSlot) =
   var tmp = new QTextDocumentundoCommandAddedSlot
@@ -669,6 +689,10 @@ proc miqt_exec_callback_cQTextDocument_modificationChanged(slot: int, m: bool) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextDocument_modificationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_modificationChanged_release".} =
+  let nimfunc = cast[ref QTextDocumentmodificationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmodificationChanged*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentmodificationChangedSlot) =
   var tmp = new QTextDocumentmodificationChangedSlot
   tmp[] = slot
@@ -684,6 +708,10 @@ proc miqt_exec_callback_cQTextDocument_cursorPositionChanged(slot: int, cursor: 
   let slotval1 = gen_qtextcursor_types.QTextCursor(h: cursor)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTextDocument_cursorPositionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_cursorPositionChanged_release".} =
+  let nimfunc = cast[ref QTextDocumentcursorPositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncursorPositionChanged*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentcursorPositionChangedSlot) =
   var tmp = new QTextDocumentcursorPositionChangedSlot
@@ -701,6 +729,10 @@ proc miqt_exec_callback_cQTextDocument_blockCountChanged(slot: int, newBlockCoun
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextDocument_blockCountChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_blockCountChanged_release".} =
+  let nimfunc = cast[ref QTextDocumentblockCountChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onblockCountChanged*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentblockCountChangedSlot) =
   var tmp = new QTextDocumentblockCountChangedSlot
   tmp[] = slot
@@ -717,6 +749,10 @@ proc miqt_exec_callback_cQTextDocument_baseUrlChanged(slot: int, url: pointer) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextDocument_baseUrlChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_baseUrlChanged_release".} =
+  let nimfunc = cast[ref QTextDocumentbaseUrlChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbaseUrlChanged*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentbaseUrlChangedSlot) =
   var tmp = new QTextDocumentbaseUrlChangedSlot
   tmp[] = slot
@@ -730,6 +766,10 @@ type QTextDocumentdocumentLayoutChangedSlot* = proc()
 proc miqt_exec_callback_cQTextDocument_documentLayoutChanged(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_documentLayoutChanged".} =
   let nimfunc = cast[ptr QTextDocumentdocumentLayoutChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQTextDocument_documentLayoutChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextDocument_documentLayoutChanged_release".} =
+  let nimfunc = cast[ref QTextDocumentdocumentLayoutChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondocumentLayoutChanged*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentdocumentLayoutChangedSlot) =
   var tmp = new QTextDocumentdocumentLayoutChangedSlot

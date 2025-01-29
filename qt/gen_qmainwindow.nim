@@ -469,6 +469,10 @@ proc miqt_exec_callback_cQMainWindow_iconSizeChanged(slot: int, iconSize: pointe
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMainWindow_iconSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMainWindow_iconSizeChanged_release".} =
+  let nimfunc = cast[ref QMainWindowiconSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oniconSizeChanged*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowiconSizeChangedSlot) =
   var tmp = new QMainWindowiconSizeChangedSlot
   tmp[] = slot
@@ -485,6 +489,10 @@ proc miqt_exec_callback_cQMainWindow_toolButtonStyleChanged(slot: int, toolButto
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMainWindow_toolButtonStyleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMainWindow_toolButtonStyleChanged_release".} =
+  let nimfunc = cast[ref QMainWindowtoolButtonStyleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontoolButtonStyleChanged*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowtoolButtonStyleChangedSlot) =
   var tmp = new QMainWindowtoolButtonStyleChangedSlot
   tmp[] = slot
@@ -500,6 +508,10 @@ proc miqt_exec_callback_cQMainWindow_tabifiedDockWidgetActivated(slot: int, dock
   let slotval1 = gen_qdockwidget_types.QDockWidget(h: dockWidget)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMainWindow_tabifiedDockWidgetActivated_release(slot: int) {.exportc: "miqt_exec_callback_QMainWindow_tabifiedDockWidgetActivated_release".} =
+  let nimfunc = cast[ref QMainWindowtabifiedDockWidgetActivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontabifiedDockWidgetActivated*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowtabifiedDockWidgetActivatedSlot) =
   var tmp = new QMainWindowtabifiedDockWidgetActivatedSlot

@@ -453,6 +453,10 @@ proc miqt_exec_callback_cQTabWidget_currentChanged(slot: int, index: cint) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTabWidget_currentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTabWidget_currentChanged_release".} =
+  let nimfunc = cast[ref QTabWidgetcurrentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentChanged*(self: gen_qtabwidget_types.QTabWidget, slot: QTabWidgetcurrentChangedSlot) =
   var tmp = new QTabWidgetcurrentChangedSlot
   tmp[] = slot
@@ -468,6 +472,10 @@ proc miqt_exec_callback_cQTabWidget_tabCloseRequested(slot: int, index: cint) {.
   let slotval1 = index
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTabWidget_tabCloseRequested_release(slot: int) {.exportc: "miqt_exec_callback_QTabWidget_tabCloseRequested_release".} =
+  let nimfunc = cast[ref QTabWidgettabCloseRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontabCloseRequested*(self: gen_qtabwidget_types.QTabWidget, slot: QTabWidgettabCloseRequestedSlot) =
   var tmp = new QTabWidgettabCloseRequestedSlot
@@ -485,6 +493,10 @@ proc miqt_exec_callback_cQTabWidget_tabBarClicked(slot: int, index: cint) {.expo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTabWidget_tabBarClicked_release(slot: int) {.exportc: "miqt_exec_callback_QTabWidget_tabBarClicked_release".} =
+  let nimfunc = cast[ref QTabWidgettabBarClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontabBarClicked*(self: gen_qtabwidget_types.QTabWidget, slot: QTabWidgettabBarClickedSlot) =
   var tmp = new QTabWidgettabBarClickedSlot
   tmp[] = slot
@@ -500,6 +512,10 @@ proc miqt_exec_callback_cQTabWidget_tabBarDoubleClicked(slot: int, index: cint) 
   let slotval1 = index
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTabWidget_tabBarDoubleClicked_release(slot: int) {.exportc: "miqt_exec_callback_QTabWidget_tabBarDoubleClicked_release".} =
+  let nimfunc = cast[ref QTabWidgettabBarDoubleClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontabBarDoubleClicked*(self: gen_qtabwidget_types.QTabWidget, slot: QTabWidgettabBarDoubleClickedSlot) =
   var tmp = new QTabWidgettabBarDoubleClickedSlot

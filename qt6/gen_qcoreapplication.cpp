@@ -20,11 +20,17 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCoreApplication_installNativeEventFilter(intptr_t, QAbstractNativeEventFilter*);
+void miqt_exec_callback_QCoreApplication_installNativeEventFilter_release(intptr_t);
 void miqt_exec_callback_QCoreApplication_removeNativeEventFilter(intptr_t, QAbstractNativeEventFilter*);
+void miqt_exec_callback_QCoreApplication_removeNativeEventFilter_release(intptr_t);
 void miqt_exec_callback_QCoreApplication_organizationNameChanged(intptr_t);
+void miqt_exec_callback_QCoreApplication_organizationNameChanged_release(intptr_t);
 void miqt_exec_callback_QCoreApplication_organizationDomainChanged(intptr_t);
+void miqt_exec_callback_QCoreApplication_organizationDomainChanged_release(intptr_t);
 void miqt_exec_callback_QCoreApplication_applicationNameChanged(intptr_t);
+void miqt_exec_callback_QCoreApplication_applicationNameChanged_release(intptr_t);
 void miqt_exec_callback_QCoreApplication_applicationVersionChanged(intptr_t);
+void miqt_exec_callback_QCoreApplication_applicationVersionChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -547,10 +553,19 @@ void QCoreApplication_installNativeEventFilter(QCoreApplication* self, QAbstract
 }
 
 void QCoreApplication_connect_installNativeEventFilter(QCoreApplication* self, intptr_t slot) {
-	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)(QAbstractNativeEventFilter*)>(&QCoreApplication::installNativeEventFilter), self, [=](QAbstractNativeEventFilter* filterObj) {
-		QAbstractNativeEventFilter* sigval1 = filterObj;
-		miqt_exec_callback_QCoreApplication_installNativeEventFilter(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractNativeEventFilter* filterObj) {
+			QAbstractNativeEventFilter* sigval1 = filterObj;
+			miqt_exec_callback_QCoreApplication_installNativeEventFilter(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCoreApplication_installNativeEventFilter_release(slot); }
+	};
+	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)(QAbstractNativeEventFilter*)>(&QCoreApplication::installNativeEventFilter), self, caller{slot});
 }
 
 void QCoreApplication_removeNativeEventFilter(QCoreApplication* self, QAbstractNativeEventFilter* filterObj) {
@@ -558,10 +573,19 @@ void QCoreApplication_removeNativeEventFilter(QCoreApplication* self, QAbstractN
 }
 
 void QCoreApplication_connect_removeNativeEventFilter(QCoreApplication* self, intptr_t slot) {
-	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)(QAbstractNativeEventFilter*)>(&QCoreApplication::removeNativeEventFilter), self, [=](QAbstractNativeEventFilter* filterObj) {
-		QAbstractNativeEventFilter* sigval1 = filterObj;
-		miqt_exec_callback_QCoreApplication_removeNativeEventFilter(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractNativeEventFilter* filterObj) {
+			QAbstractNativeEventFilter* sigval1 = filterObj;
+			miqt_exec_callback_QCoreApplication_removeNativeEventFilter(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCoreApplication_removeNativeEventFilter_release(slot); }
+	};
+	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)(QAbstractNativeEventFilter*)>(&QCoreApplication::removeNativeEventFilter), self, caller{slot});
 }
 
 bool QCoreApplication_isQuitLockEnabled() {
@@ -585,9 +609,18 @@ void QCoreApplication_organizationNameChanged(QCoreApplication* self) {
 }
 
 void QCoreApplication_connect_organizationNameChanged(QCoreApplication* self, intptr_t slot) {
-	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::organizationNameChanged), self, [=]() {
-		miqt_exec_callback_QCoreApplication_organizationNameChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCoreApplication_organizationNameChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCoreApplication_organizationNameChanged_release(slot); }
+	};
+	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::organizationNameChanged), self, caller{slot});
 }
 
 void QCoreApplication_organizationDomainChanged(QCoreApplication* self) {
@@ -595,9 +628,18 @@ void QCoreApplication_organizationDomainChanged(QCoreApplication* self) {
 }
 
 void QCoreApplication_connect_organizationDomainChanged(QCoreApplication* self, intptr_t slot) {
-	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::organizationDomainChanged), self, [=]() {
-		miqt_exec_callback_QCoreApplication_organizationDomainChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCoreApplication_organizationDomainChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCoreApplication_organizationDomainChanged_release(slot); }
+	};
+	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::organizationDomainChanged), self, caller{slot});
 }
 
 void QCoreApplication_applicationNameChanged(QCoreApplication* self) {
@@ -605,9 +647,18 @@ void QCoreApplication_applicationNameChanged(QCoreApplication* self) {
 }
 
 void QCoreApplication_connect_applicationNameChanged(QCoreApplication* self, intptr_t slot) {
-	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::applicationNameChanged), self, [=]() {
-		miqt_exec_callback_QCoreApplication_applicationNameChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCoreApplication_applicationNameChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCoreApplication_applicationNameChanged_release(slot); }
+	};
+	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::applicationNameChanged), self, caller{slot});
 }
 
 void QCoreApplication_applicationVersionChanged(QCoreApplication* self) {
@@ -615,9 +666,18 @@ void QCoreApplication_applicationVersionChanged(QCoreApplication* self) {
 }
 
 void QCoreApplication_connect_applicationVersionChanged(QCoreApplication* self, intptr_t slot) {
-	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::applicationVersionChanged), self, [=]() {
-		miqt_exec_callback_QCoreApplication_applicationVersionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCoreApplication_applicationVersionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCoreApplication_applicationVersionChanged_release(slot); }
+	};
+	MiqtVirtualQCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::applicationVersionChanged), self, caller{slot});
 }
 
 struct miqt_string QCoreApplication_tr2(const char* s, const char* c) {

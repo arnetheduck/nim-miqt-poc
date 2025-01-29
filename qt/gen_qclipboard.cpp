@@ -15,9 +15,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QClipboard_changed(intptr_t, int);
+void miqt_exec_callback_QClipboard_changed_release(intptr_t);
 void miqt_exec_callback_QClipboard_selectionChanged(intptr_t);
+void miqt_exec_callback_QClipboard_selectionChanged_release(intptr_t);
 void miqt_exec_callback_QClipboard_findBufferChanged(intptr_t);
+void miqt_exec_callback_QClipboard_findBufferChanged_release(intptr_t);
 void miqt_exec_callback_QClipboard_dataChanged(intptr_t);
+void miqt_exec_callback_QClipboard_dataChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -141,11 +145,20 @@ void QClipboard_changed(QClipboard* self, int mode) {
 }
 
 void QClipboard_connect_changed(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)(QClipboard::Mode)>(&QClipboard::changed), self, [=](QClipboard::Mode mode) {
-		QClipboard::Mode mode_ret = mode;
-		int sigval1 = static_cast<int>(mode_ret);
-		miqt_exec_callback_QClipboard_changed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QClipboard::Mode mode) {
+			QClipboard::Mode mode_ret = mode;
+			int sigval1 = static_cast<int>(mode_ret);
+			miqt_exec_callback_QClipboard_changed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QClipboard_changed_release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)(QClipboard::Mode)>(&QClipboard::changed), self, caller{slot});
 }
 
 void QClipboard_selectionChanged(QClipboard* self) {
@@ -153,9 +166,18 @@ void QClipboard_selectionChanged(QClipboard* self) {
 }
 
 void QClipboard_connect_selectionChanged(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::selectionChanged), self, [=]() {
-		miqt_exec_callback_QClipboard_selectionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QClipboard_selectionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QClipboard_selectionChanged_release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::selectionChanged), self, caller{slot});
 }
 
 void QClipboard_findBufferChanged(QClipboard* self) {
@@ -163,9 +185,18 @@ void QClipboard_findBufferChanged(QClipboard* self) {
 }
 
 void QClipboard_connect_findBufferChanged(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::findBufferChanged), self, [=]() {
-		miqt_exec_callback_QClipboard_findBufferChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QClipboard_findBufferChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QClipboard_findBufferChanged_release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::findBufferChanged), self, caller{slot});
 }
 
 void QClipboard_dataChanged(QClipboard* self) {
@@ -173,9 +204,18 @@ void QClipboard_dataChanged(QClipboard* self) {
 }
 
 void QClipboard_connect_dataChanged(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::dataChanged), self, [=]() {
-		miqt_exec_callback_QClipboard_dataChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QClipboard_dataChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QClipboard_dataChanged_release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::dataChanged), self, caller{slot});
 }
 
 struct miqt_string QClipboard_tr2(const char* s, const char* c) {

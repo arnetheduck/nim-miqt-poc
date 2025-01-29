@@ -20,9 +20,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QProcess_finished(intptr_t, int);
+void miqt_exec_callback_QProcess_finished_release(intptr_t);
 void miqt_exec_callback_QProcess_finished2(intptr_t, int, int);
+void miqt_exec_callback_QProcess_finished2_release(intptr_t);
 void miqt_exec_callback_QProcess_errorWithError(intptr_t, int);
+void miqt_exec_callback_QProcess_errorWithError_release(intptr_t);
 void miqt_exec_callback_QProcess_errorOccurred(intptr_t, int);
+void miqt_exec_callback_QProcess_errorOccurred_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1140,10 +1144,19 @@ void QProcess_finished(QProcess* self, int exitCode) {
 }
 
 void QProcess_connect_finished(QProcess* self, intptr_t slot) {
-	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(int)>(&QProcess::finished), self, [=](int exitCode) {
-		int sigval1 = exitCode;
-		miqt_exec_callback_QProcess_finished(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int exitCode) {
+			int sigval1 = exitCode;
+			miqt_exec_callback_QProcess_finished(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QProcess_finished_release(slot); }
+	};
+	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(int)>(&QProcess::finished), self, caller{slot});
 }
 
 void QProcess_finished2(QProcess* self, int exitCode, int exitStatus) {
@@ -1151,12 +1164,21 @@ void QProcess_finished2(QProcess* self, int exitCode, int exitStatus) {
 }
 
 void QProcess_connect_finished2(QProcess* self, intptr_t slot) {
-	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode, QProcess::ExitStatus exitStatus) {
-		int sigval1 = exitCode;
-		QProcess::ExitStatus exitStatus_ret = exitStatus;
-		int sigval2 = static_cast<int>(exitStatus_ret);
-		miqt_exec_callback_QProcess_finished2(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int exitCode, QProcess::ExitStatus exitStatus) {
+			int sigval1 = exitCode;
+			QProcess::ExitStatus exitStatus_ret = exitStatus;
+			int sigval2 = static_cast<int>(exitStatus_ret);
+			miqt_exec_callback_QProcess_finished2(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QProcess_finished2_release(slot); }
+	};
+	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, caller{slot});
 }
 
 void QProcess_errorWithError(QProcess* self, int error) {
@@ -1164,11 +1186,20 @@ void QProcess_errorWithError(QProcess* self, int error) {
 }
 
 void QProcess_connect_errorWithError(QProcess* self, intptr_t slot) {
-	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), self, [=](QProcess::ProcessError error) {
-		QProcess::ProcessError error_ret = error;
-		int sigval1 = static_cast<int>(error_ret);
-		miqt_exec_callback_QProcess_errorWithError(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QProcess::ProcessError error) {
+			QProcess::ProcessError error_ret = error;
+			int sigval1 = static_cast<int>(error_ret);
+			miqt_exec_callback_QProcess_errorWithError(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QProcess_errorWithError_release(slot); }
+	};
+	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), self, caller{slot});
 }
 
 void QProcess_errorOccurred(QProcess* self, int error) {
@@ -1176,11 +1207,20 @@ void QProcess_errorOccurred(QProcess* self, int error) {
 }
 
 void QProcess_connect_errorOccurred(QProcess* self, intptr_t slot) {
-	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), self, [=](QProcess::ProcessError error) {
-		QProcess::ProcessError error_ret = error;
-		int sigval1 = static_cast<int>(error_ret);
-		miqt_exec_callback_QProcess_errorOccurred(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QProcess::ProcessError error) {
+			QProcess::ProcessError error_ret = error;
+			int sigval1 = static_cast<int>(error_ret);
+			miqt_exec_callback_QProcess_errorOccurred(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QProcess_errorOccurred_release(slot); }
+	};
+	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), self, caller{slot});
 }
 
 struct miqt_string QProcess_tr2(const char* s, const char* c) {

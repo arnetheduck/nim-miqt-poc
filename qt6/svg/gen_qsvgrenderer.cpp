@@ -23,6 +23,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSvgRenderer_repaintNeeded(intptr_t);
+void miqt_exec_callback_QSvgRenderer_repaintNeeded_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -418,9 +419,18 @@ void QSvgRenderer_repaintNeeded(QSvgRenderer* self) {
 }
 
 void QSvgRenderer_connect_repaintNeeded(QSvgRenderer* self, intptr_t slot) {
-	MiqtVirtualQSvgRenderer::connect(self, static_cast<void (QSvgRenderer::*)()>(&QSvgRenderer::repaintNeeded), self, [=]() {
-		miqt_exec_callback_QSvgRenderer_repaintNeeded(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSvgRenderer_repaintNeeded(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSvgRenderer_repaintNeeded_release(slot); }
+	};
+	MiqtVirtualQSvgRenderer::connect(self, static_cast<void (QSvgRenderer::*)()>(&QSvgRenderer::repaintNeeded), self, caller{slot});
 }
 
 struct miqt_string QSvgRenderer_tr2(const char* s, const char* c) {

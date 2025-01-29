@@ -26,14 +26,23 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractItemModel_dataChanged(intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemModel_dataChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_headerDataChanged(intptr_t, int, int, int);
+void miqt_exec_callback_QAbstractItemModel_headerDataChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_layoutChanged(intptr_t);
+void miqt_exec_callback_QAbstractItemModel_layoutChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged(intptr_t);
+void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_dataChanged3(intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QAbstractItemModel_dataChanged3_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_layoutChanged1(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ );
+void miqt_exec_callback_QAbstractItemModel_layoutChanged1_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_layoutChanged2(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ , int);
+void miqt_exec_callback_QAbstractItemModel_layoutChanged2_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ );
+void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1_release(intptr_t);
 void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ , int);
+void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1594,15 +1603,24 @@ void QAbstractItemModel_dataChanged(QAbstractItemModel* self, QModelIndex* topLe
 }
 
 void QAbstractItemModel_connect_dataChanged(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QModelIndex&, const QModelIndex&, const QVector<int>&)>(&QAbstractItemModel::dataChanged), self, [=](const QModelIndex& topLeft, const QModelIndex& bottomRight) {
-		const QModelIndex& topLeft_ret = topLeft;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
-		const QModelIndex& bottomRight_ret = bottomRight;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
-		miqt_exec_callback_QAbstractItemModel_dataChanged(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QModelIndex& topLeft, const QModelIndex& bottomRight) {
+			const QModelIndex& topLeft_ret = topLeft;
+			// Cast returned reference into pointer
+			QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
+			const QModelIndex& bottomRight_ret = bottomRight;
+			// Cast returned reference into pointer
+			QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
+			miqt_exec_callback_QAbstractItemModel_dataChanged(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_dataChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QModelIndex&, const QModelIndex&, const QVector<int>&)>(&QAbstractItemModel::dataChanged), self, caller{slot});
 }
 
 void QAbstractItemModel_headerDataChanged(QAbstractItemModel* self, int orientation, int first, int last) {
@@ -1610,13 +1628,22 @@ void QAbstractItemModel_headerDataChanged(QAbstractItemModel* self, int orientat
 }
 
 void QAbstractItemModel_connect_headerDataChanged(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(Qt::Orientation, int, int)>(&QAbstractItemModel::headerDataChanged), self, [=](Qt::Orientation orientation, int first, int last) {
-		Qt::Orientation orientation_ret = orientation;
-		int sigval1 = static_cast<int>(orientation_ret);
-		int sigval2 = first;
-		int sigval3 = last;
-		miqt_exec_callback_QAbstractItemModel_headerDataChanged(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::Orientation orientation, int first, int last) {
+			Qt::Orientation orientation_ret = orientation;
+			int sigval1 = static_cast<int>(orientation_ret);
+			int sigval2 = first;
+			int sigval3 = last;
+			miqt_exec_callback_QAbstractItemModel_headerDataChanged(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_headerDataChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(Qt::Orientation, int, int)>(&QAbstractItemModel::headerDataChanged), self, caller{slot});
 }
 
 void QAbstractItemModel_layoutChanged(QAbstractItemModel* self) {
@@ -1624,9 +1651,18 @@ void QAbstractItemModel_layoutChanged(QAbstractItemModel* self) {
 }
 
 void QAbstractItemModel_connect_layoutChanged(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, [=]() {
-		miqt_exec_callback_QAbstractItemModel_layoutChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractItemModel_layoutChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_layoutChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, caller{slot});
 }
 
 void QAbstractItemModel_layoutAboutToBeChanged(QAbstractItemModel* self) {
@@ -1634,9 +1670,18 @@ void QAbstractItemModel_layoutAboutToBeChanged(QAbstractItemModel* self) {
 }
 
 void QAbstractItemModel_connect_layoutAboutToBeChanged(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, [=]() {
-		miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, caller{slot});
 }
 
 bool QAbstractItemModel_submit(QAbstractItemModel* self) {
@@ -1726,25 +1771,34 @@ void QAbstractItemModel_dataChanged3(QAbstractItemModel* self, QModelIndex* topL
 }
 
 void QAbstractItemModel_connect_dataChanged3(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QModelIndex&, const QModelIndex&, const QVector<int>&)>(&QAbstractItemModel::dataChanged), self, [=](const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles) {
-		const QModelIndex& topLeft_ret = topLeft;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
-		const QModelIndex& bottomRight_ret = bottomRight;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
-		const QVector<int>& roles_ret = roles;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		int* roles_arr = static_cast<int*>(malloc(sizeof(int) * roles_ret.length()));
-		for (size_t i = 0, e = roles_ret.length(); i < e; ++i) {
-			roles_arr[i] = roles_ret[i];
+	struct caller {
+		intptr_t slot;
+		void operator()(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles) {
+			const QModelIndex& topLeft_ret = topLeft;
+			// Cast returned reference into pointer
+			QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
+			const QModelIndex& bottomRight_ret = bottomRight;
+			// Cast returned reference into pointer
+			QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
+			const QVector<int>& roles_ret = roles;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			int* roles_arr = static_cast<int*>(malloc(sizeof(int) * roles_ret.length()));
+			for (size_t i = 0, e = roles_ret.length(); i < e; ++i) {
+				roles_arr[i] = roles_ret[i];
+			}
+			struct miqt_array roles_out;
+			roles_out.len = roles_ret.length();
+			roles_out.data = static_cast<void*>(roles_arr);
+			struct miqt_array /* of int */  sigval3 = roles_out;
+			miqt_exec_callback_QAbstractItemModel_dataChanged3(slot, sigval1, sigval2, sigval3);
 		}
-		struct miqt_array roles_out;
-		roles_out.len = roles_ret.length();
-		roles_out.data = static_cast<void*>(roles_arr);
-		struct miqt_array /* of int */  sigval3 = roles_out;
-		miqt_exec_callback_QAbstractItemModel_dataChanged3(slot, sigval1, sigval2, sigval3);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_dataChanged3_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QModelIndex&, const QModelIndex&, const QVector<int>&)>(&QAbstractItemModel::dataChanged), self, caller{slot});
 }
 
 void QAbstractItemModel_layoutChanged1(QAbstractItemModel* self, struct miqt_array /* of QPersistentModelIndex* */  parents) {
@@ -1758,19 +1812,28 @@ void QAbstractItemModel_layoutChanged1(QAbstractItemModel* self, struct miqt_arr
 }
 
 void QAbstractItemModel_connect_layoutChanged1(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, [=](const QList<QPersistentModelIndex>& parents) {
-		const QList<QPersistentModelIndex>& parents_ret = parents;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
-		for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
-			parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QPersistentModelIndex>& parents) {
+			const QList<QPersistentModelIndex>& parents_ret = parents;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
+			for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
+				parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+			}
+			struct miqt_array parents_out;
+			parents_out.len = parents_ret.length();
+			parents_out.data = static_cast<void*>(parents_arr);
+			struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
+			miqt_exec_callback_QAbstractItemModel_layoutChanged1(slot, sigval1);
 		}
-		struct miqt_array parents_out;
-		parents_out.len = parents_ret.length();
-		parents_out.data = static_cast<void*>(parents_arr);
-		struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
-		miqt_exec_callback_QAbstractItemModel_layoutChanged1(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_layoutChanged1_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, caller{slot});
 }
 
 void QAbstractItemModel_layoutChanged2(QAbstractItemModel* self, struct miqt_array /* of QPersistentModelIndex* */  parents, int hint) {
@@ -1784,21 +1847,30 @@ void QAbstractItemModel_layoutChanged2(QAbstractItemModel* self, struct miqt_arr
 }
 
 void QAbstractItemModel_connect_layoutChanged2(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, [=](const QList<QPersistentModelIndex>& parents, QAbstractItemModel::LayoutChangeHint hint) {
-		const QList<QPersistentModelIndex>& parents_ret = parents;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
-		for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
-			parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QPersistentModelIndex>& parents, QAbstractItemModel::LayoutChangeHint hint) {
+			const QList<QPersistentModelIndex>& parents_ret = parents;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
+			for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
+				parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+			}
+			struct miqt_array parents_out;
+			parents_out.len = parents_ret.length();
+			parents_out.data = static_cast<void*>(parents_arr);
+			struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
+			QAbstractItemModel::LayoutChangeHint hint_ret = hint;
+			int sigval2 = static_cast<int>(hint_ret);
+			miqt_exec_callback_QAbstractItemModel_layoutChanged2(slot, sigval1, sigval2);
 		}
-		struct miqt_array parents_out;
-		parents_out.len = parents_ret.length();
-		parents_out.data = static_cast<void*>(parents_arr);
-		struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
-		QAbstractItemModel::LayoutChangeHint hint_ret = hint;
-		int sigval2 = static_cast<int>(hint_ret);
-		miqt_exec_callback_QAbstractItemModel_layoutChanged2(slot, sigval1, sigval2);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_layoutChanged2_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, caller{slot});
 }
 
 void QAbstractItemModel_layoutAboutToBeChanged1(QAbstractItemModel* self, struct miqt_array /* of QPersistentModelIndex* */  parents) {
@@ -1812,19 +1884,28 @@ void QAbstractItemModel_layoutAboutToBeChanged1(QAbstractItemModel* self, struct
 }
 
 void QAbstractItemModel_connect_layoutAboutToBeChanged1(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, [=](const QList<QPersistentModelIndex>& parents) {
-		const QList<QPersistentModelIndex>& parents_ret = parents;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
-		for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
-			parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QPersistentModelIndex>& parents) {
+			const QList<QPersistentModelIndex>& parents_ret = parents;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
+			for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
+				parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+			}
+			struct miqt_array parents_out;
+			parents_out.len = parents_ret.length();
+			parents_out.data = static_cast<void*>(parents_arr);
+			struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
+			miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1(slot, sigval1);
 		}
-		struct miqt_array parents_out;
-		parents_out.len = parents_ret.length();
-		parents_out.data = static_cast<void*>(parents_arr);
-		struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
-		miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, caller{slot});
 }
 
 void QAbstractItemModel_layoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array /* of QPersistentModelIndex* */  parents, int hint) {
@@ -1838,21 +1919,30 @@ void QAbstractItemModel_layoutAboutToBeChanged2(QAbstractItemModel* self, struct
 }
 
 void QAbstractItemModel_connect_layoutAboutToBeChanged2(QAbstractItemModel* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, [=](const QList<QPersistentModelIndex>& parents, QAbstractItemModel::LayoutChangeHint hint) {
-		const QList<QPersistentModelIndex>& parents_ret = parents;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
-		for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
-			parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QPersistentModelIndex>& parents, QAbstractItemModel::LayoutChangeHint hint) {
+			const QList<QPersistentModelIndex>& parents_ret = parents;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(malloc(sizeof(QPersistentModelIndex*) * parents_ret.length()));
+			for (size_t i = 0, e = parents_ret.length(); i < e; ++i) {
+				parents_arr[i] = new QPersistentModelIndex(parents_ret[i]);
+			}
+			struct miqt_array parents_out;
+			parents_out.len = parents_ret.length();
+			parents_out.data = static_cast<void*>(parents_arr);
+			struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
+			QAbstractItemModel::LayoutChangeHint hint_ret = hint;
+			int sigval2 = static_cast<int>(hint_ret);
+			miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(slot, sigval1, sigval2);
 		}
-		struct miqt_array parents_out;
-		parents_out.len = parents_ret.length();
-		parents_out.data = static_cast<void*>(parents_arr);
-		struct miqt_array /* of QPersistentModelIndex* */  sigval1 = parents_out;
-		QAbstractItemModel::LayoutChangeHint hint_ret = hint;
-		int sigval2 = static_cast<int>(hint_ret);
-		miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(slot, sigval1, sigval2);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2_release(slot); }
+	};
+	MiqtVirtualQAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, caller{slot});
 }
 
 QMetaObject* QAbstractItemModel_virtualbase_metaObject(const void* self) {

@@ -116,6 +116,10 @@ proc miqt_exec_callback_cQWebEngineNavigationRequest_actionChanged(slot: int) {.
   let nimfunc = cast[ptr QWebEngineNavigationRequestactionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEngineNavigationRequest_actionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineNavigationRequest_actionChanged_release".} =
+  let nimfunc = cast[ref QWebEngineNavigationRequestactionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, slot: QWebEngineNavigationRequestactionChangedSlot) =
   var tmp = new QWebEngineNavigationRequestactionChangedSlot
   tmp[] = slot

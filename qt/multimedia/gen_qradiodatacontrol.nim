@@ -156,6 +156,10 @@ proc miqt_exec_callback_cQRadioDataControl_stationIdChanged(slot: int, stationId
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioDataControl_stationIdChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioDataControl_stationIdChanged_release".} =
+  let nimfunc = cast[ref QRadioDataControlstationIdChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstationIdChanged*(self: gen_qradiodatacontrol_types.QRadioDataControl, slot: QRadioDataControlstationIdChangedSlot) =
   var tmp = new QRadioDataControlstationIdChangedSlot
   tmp[] = slot
@@ -171,6 +175,10 @@ proc miqt_exec_callback_cQRadioDataControl_programTypeChanged(slot: int, program
   let slotval1 = cint(programType)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQRadioDataControl_programTypeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioDataControl_programTypeChanged_release".} =
+  let nimfunc = cast[ref QRadioDataControlprogramTypeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onprogramTypeChanged*(self: gen_qradiodatacontrol_types.QRadioDataControl, slot: QRadioDataControlprogramTypeChangedSlot) =
   var tmp = new QRadioDataControlprogramTypeChangedSlot
@@ -191,6 +199,10 @@ proc miqt_exec_callback_cQRadioDataControl_programTypeNameChanged(slot: int, pro
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioDataControl_programTypeNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioDataControl_programTypeNameChanged_release".} =
+  let nimfunc = cast[ref QRadioDataControlprogramTypeNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onprogramTypeNameChanged*(self: gen_qradiodatacontrol_types.QRadioDataControl, slot: QRadioDataControlprogramTypeNameChangedSlot) =
   var tmp = new QRadioDataControlprogramTypeNameChangedSlot
   tmp[] = slot
@@ -209,6 +221,10 @@ proc miqt_exec_callback_cQRadioDataControl_stationNameChanged(slot: int, station
   let slotval1 = vstationNamex_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQRadioDataControl_stationNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioDataControl_stationNameChanged_release".} =
+  let nimfunc = cast[ref QRadioDataControlstationNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstationNameChanged*(self: gen_qradiodatacontrol_types.QRadioDataControl, slot: QRadioDataControlstationNameChangedSlot) =
   var tmp = new QRadioDataControlstationNameChangedSlot
@@ -229,6 +245,10 @@ proc miqt_exec_callback_cQRadioDataControl_radioTextChanged(slot: int, radioText
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioDataControl_radioTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioDataControl_radioTextChanged_release".} =
+  let nimfunc = cast[ref QRadioDataControlradioTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onradioTextChanged*(self: gen_qradiodatacontrol_types.QRadioDataControl, slot: QRadioDataControlradioTextChangedSlot) =
   var tmp = new QRadioDataControlradioTextChangedSlot
   tmp[] = slot
@@ -245,6 +265,10 @@ proc miqt_exec_callback_cQRadioDataControl_alternativeFrequenciesEnabledChanged(
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRadioDataControl_alternativeFrequenciesEnabledChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRadioDataControl_alternativeFrequenciesEnabledChanged_release".} =
+  let nimfunc = cast[ref QRadioDataControlalternativeFrequenciesEnabledChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onalternativeFrequenciesEnabledChanged*(self: gen_qradiodatacontrol_types.QRadioDataControl, slot: QRadioDataControlalternativeFrequenciesEnabledChangedSlot) =
   var tmp = new QRadioDataControlalternativeFrequenciesEnabledChangedSlot
   tmp[] = slot
@@ -260,6 +284,10 @@ proc miqt_exec_callback_cQRadioDataControl_errorWithErr(slot: int, err: cint) {.
   let slotval1 = cint(err)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQRadioDataControl_errorWithErr_release(slot: int) {.exportc: "miqt_exec_callback_QRadioDataControl_errorWithErr_release".} =
+  let nimfunc = cast[ref QRadioDataControlerrorWithErrSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onerror*(self: gen_qradiodatacontrol_types.QRadioDataControl, slot: QRadioDataControlerrorWithErrSlot) =
   var tmp = new QRadioDataControlerrorWithErrSlot

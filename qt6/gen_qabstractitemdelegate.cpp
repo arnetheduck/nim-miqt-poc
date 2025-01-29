@@ -25,9 +25,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractItemDelegate_commitData(intptr_t, QWidget*);
+void miqt_exec_callback_QAbstractItemDelegate_commitData_release(intptr_t);
 void miqt_exec_callback_QAbstractItemDelegate_closeEditor(intptr_t, QWidget*);
+void miqt_exec_callback_QAbstractItemDelegate_closeEditor_release(intptr_t);
 void miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged(intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractItemDelegate_closeEditor2(intptr_t, QWidget*, int);
+void miqt_exec_callback_QAbstractItemDelegate_closeEditor2_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -585,10 +589,19 @@ void QAbstractItemDelegate_commitData(QAbstractItemDelegate* self, QWidget* edit
 }
 
 void QAbstractItemDelegate_connect_commitData(QAbstractItemDelegate* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*)>(&QAbstractItemDelegate::commitData), self, [=](QWidget* editor) {
-		QWidget* sigval1 = editor;
-		miqt_exec_callback_QAbstractItemDelegate_commitData(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWidget* editor) {
+			QWidget* sigval1 = editor;
+			miqt_exec_callback_QAbstractItemDelegate_commitData(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemDelegate_commitData_release(slot); }
+	};
+	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*)>(&QAbstractItemDelegate::commitData), self, caller{slot});
 }
 
 void QAbstractItemDelegate_closeEditor(QAbstractItemDelegate* self, QWidget* editor) {
@@ -596,10 +609,19 @@ void QAbstractItemDelegate_closeEditor(QAbstractItemDelegate* self, QWidget* edi
 }
 
 void QAbstractItemDelegate_connect_closeEditor(QAbstractItemDelegate* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor) {
-		QWidget* sigval1 = editor;
-		miqt_exec_callback_QAbstractItemDelegate_closeEditor(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWidget* editor) {
+			QWidget* sigval1 = editor;
+			miqt_exec_callback_QAbstractItemDelegate_closeEditor(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemDelegate_closeEditor_release(slot); }
+	};
+	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, caller{slot});
 }
 
 void QAbstractItemDelegate_sizeHintChanged(QAbstractItemDelegate* self, QModelIndex* param1) {
@@ -607,12 +629,21 @@ void QAbstractItemDelegate_sizeHintChanged(QAbstractItemDelegate* self, QModelIn
 }
 
 void QAbstractItemDelegate_connect_sizeHintChanged(QAbstractItemDelegate* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(const QModelIndex&)>(&QAbstractItemDelegate::sizeHintChanged), self, [=](const QModelIndex& param1) {
-		const QModelIndex& param1_ret = param1;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&param1_ret);
-		miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QModelIndex& param1) {
+			const QModelIndex& param1_ret = param1;
+			// Cast returned reference into pointer
+			QModelIndex* sigval1 = const_cast<QModelIndex*>(&param1_ret);
+			miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(const QModelIndex&)>(&QAbstractItemDelegate::sizeHintChanged), self, caller{slot});
 }
 
 struct miqt_string QAbstractItemDelegate_tr2(const char* s, const char* c) {
@@ -642,12 +673,21 @@ void QAbstractItemDelegate_closeEditor2(QAbstractItemDelegate* self, QWidget* ed
 }
 
 void QAbstractItemDelegate_connect_closeEditor2(QAbstractItemDelegate* self, intptr_t slot) {
-	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor, QAbstractItemDelegate::EndEditHint hint) {
-		QWidget* sigval1 = editor;
-		QAbstractItemDelegate::EndEditHint hint_ret = hint;
-		int sigval2 = static_cast<int>(hint_ret);
-		miqt_exec_callback_QAbstractItemDelegate_closeEditor2(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWidget* editor, QAbstractItemDelegate::EndEditHint hint) {
+			QWidget* sigval1 = editor;
+			QAbstractItemDelegate::EndEditHint hint_ret = hint;
+			int sigval2 = static_cast<int>(hint_ret);
+			miqt_exec_callback_QAbstractItemDelegate_closeEditor2(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractItemDelegate_closeEditor2_release(slot); }
+	};
+	MiqtVirtualQAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, caller{slot});
 }
 
 QMetaObject* QAbstractItemDelegate_virtualbase_metaObject(const void* self) {

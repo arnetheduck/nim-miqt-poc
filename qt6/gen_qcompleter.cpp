@@ -22,9 +22,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCompleter_activated(intptr_t, struct miqt_string);
+void miqt_exec_callback_QCompleter_activated_release(intptr_t);
 void miqt_exec_callback_QCompleter_activatedWithIndex(intptr_t, QModelIndex*);
+void miqt_exec_callback_QCompleter_activatedWithIndex_release(intptr_t);
 void miqt_exec_callback_QCompleter_highlighted(intptr_t, struct miqt_string);
+void miqt_exec_callback_QCompleter_highlighted_release(intptr_t);
 void miqt_exec_callback_QCompleter_highlightedWithIndex(intptr_t, QModelIndex*);
+void miqt_exec_callback_QCompleter_highlightedWithIndex_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -578,17 +582,26 @@ void QCompleter_activated(QCompleter* self, struct miqt_string text) {
 }
 
 void QCompleter_connect_activated(QCompleter* self, intptr_t slot) {
-	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QString&)>(&QCompleter::activated), self, [=](const QString& text) {
-		const QString text_ret = text;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray text_b = text_ret.toUtf8();
-		struct miqt_string text_ms;
-		text_ms.len = text_b.length();
-		text_ms.data = static_cast<char*>(malloc(text_ms.len));
-		memcpy(text_ms.data, text_b.data(), text_ms.len);
-		struct miqt_string sigval1 = text_ms;
-		miqt_exec_callback_QCompleter_activated(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& text) {
+			const QString text_ret = text;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray text_b = text_ret.toUtf8();
+			struct miqt_string text_ms;
+			text_ms.len = text_b.length();
+			text_ms.data = static_cast<char*>(malloc(text_ms.len));
+			memcpy(text_ms.data, text_b.data(), text_ms.len);
+			struct miqt_string sigval1 = text_ms;
+			miqt_exec_callback_QCompleter_activated(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCompleter_activated_release(slot); }
+	};
+	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QString&)>(&QCompleter::activated), self, caller{slot});
 }
 
 void QCompleter_activatedWithIndex(QCompleter* self, QModelIndex* index) {
@@ -596,12 +609,21 @@ void QCompleter_activatedWithIndex(QCompleter* self, QModelIndex* index) {
 }
 
 void QCompleter_connect_activatedWithIndex(QCompleter* self, intptr_t slot) {
-	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::activated), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		miqt_exec_callback_QCompleter_activatedWithIndex(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QModelIndex& index) {
+			const QModelIndex& index_ret = index;
+			// Cast returned reference into pointer
+			QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+			miqt_exec_callback_QCompleter_activatedWithIndex(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCompleter_activatedWithIndex_release(slot); }
+	};
+	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::activated), self, caller{slot});
 }
 
 void QCompleter_highlighted(QCompleter* self, struct miqt_string text) {
@@ -610,17 +632,26 @@ void QCompleter_highlighted(QCompleter* self, struct miqt_string text) {
 }
 
 void QCompleter_connect_highlighted(QCompleter* self, intptr_t slot) {
-	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QString&)>(&QCompleter::highlighted), self, [=](const QString& text) {
-		const QString text_ret = text;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray text_b = text_ret.toUtf8();
-		struct miqt_string text_ms;
-		text_ms.len = text_b.length();
-		text_ms.data = static_cast<char*>(malloc(text_ms.len));
-		memcpy(text_ms.data, text_b.data(), text_ms.len);
-		struct miqt_string sigval1 = text_ms;
-		miqt_exec_callback_QCompleter_highlighted(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& text) {
+			const QString text_ret = text;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray text_b = text_ret.toUtf8();
+			struct miqt_string text_ms;
+			text_ms.len = text_b.length();
+			text_ms.data = static_cast<char*>(malloc(text_ms.len));
+			memcpy(text_ms.data, text_b.data(), text_ms.len);
+			struct miqt_string sigval1 = text_ms;
+			miqt_exec_callback_QCompleter_highlighted(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCompleter_highlighted_release(slot); }
+	};
+	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QString&)>(&QCompleter::highlighted), self, caller{slot});
 }
 
 void QCompleter_highlightedWithIndex(QCompleter* self, QModelIndex* index) {
@@ -628,12 +659,21 @@ void QCompleter_highlightedWithIndex(QCompleter* self, QModelIndex* index) {
 }
 
 void QCompleter_connect_highlightedWithIndex(QCompleter* self, intptr_t slot) {
-	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::highlighted), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		miqt_exec_callback_QCompleter_highlightedWithIndex(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QModelIndex& index) {
+			const QModelIndex& index_ret = index;
+			// Cast returned reference into pointer
+			QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+			miqt_exec_callback_QCompleter_highlightedWithIndex(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCompleter_highlightedWithIndex_release(slot); }
+	};
+	MiqtVirtualQCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::highlighted), self, caller{slot});
 }
 
 struct miqt_string QCompleter_tr2(const char* s, const char* c) {

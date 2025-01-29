@@ -14,7 +14,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged_release(intptr_t);
 void miqt_exec_callback_QAudioInputSelectorControl_availableInputsChanged(intptr_t);
+void miqt_exec_callback_QAudioInputSelectorControl_availableInputsChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -122,17 +124,26 @@ void QAudioInputSelectorControl_activeInputChanged(QAudioInputSelectorControl* s
 }
 
 void QAudioInputSelectorControl_connect_activeInputChanged(QAudioInputSelectorControl* self, intptr_t slot) {
-	QAudioInputSelectorControl::connect(self, static_cast<void (QAudioInputSelectorControl::*)(const QString&)>(&QAudioInputSelectorControl::activeInputChanged), self, [=](const QString& name) {
-		const QString name_ret = name;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray name_b = name_ret.toUtf8();
-		struct miqt_string name_ms;
-		name_ms.len = name_b.length();
-		name_ms.data = static_cast<char*>(malloc(name_ms.len));
-		memcpy(name_ms.data, name_b.data(), name_ms.len);
-		struct miqt_string sigval1 = name_ms;
-		miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& name) {
+			const QString name_ret = name;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray name_b = name_ret.toUtf8();
+			struct miqt_string name_ms;
+			name_ms.len = name_b.length();
+			name_ms.data = static_cast<char*>(malloc(name_ms.len));
+			memcpy(name_ms.data, name_b.data(), name_ms.len);
+			struct miqt_string sigval1 = name_ms;
+			miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged_release(slot); }
+	};
+	QAudioInputSelectorControl::connect(self, static_cast<void (QAudioInputSelectorControl::*)(const QString&)>(&QAudioInputSelectorControl::activeInputChanged), self, caller{slot});
 }
 
 void QAudioInputSelectorControl_availableInputsChanged(QAudioInputSelectorControl* self) {
@@ -140,9 +151,18 @@ void QAudioInputSelectorControl_availableInputsChanged(QAudioInputSelectorContro
 }
 
 void QAudioInputSelectorControl_connect_availableInputsChanged(QAudioInputSelectorControl* self, intptr_t slot) {
-	QAudioInputSelectorControl::connect(self, static_cast<void (QAudioInputSelectorControl::*)()>(&QAudioInputSelectorControl::availableInputsChanged), self, [=]() {
-		miqt_exec_callback_QAudioInputSelectorControl_availableInputsChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAudioInputSelectorControl_availableInputsChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAudioInputSelectorControl_availableInputsChanged_release(slot); }
+	};
+	QAudioInputSelectorControl::connect(self, static_cast<void (QAudioInputSelectorControl::*)()>(&QAudioInputSelectorControl::availableInputsChanged), self, caller{slot});
 }
 
 struct miqt_string QAudioInputSelectorControl_tr2(const char* s, const char* c) {

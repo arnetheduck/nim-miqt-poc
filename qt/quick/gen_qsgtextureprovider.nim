@@ -94,6 +94,10 @@ proc miqt_exec_callback_cQSGTextureProvider_textureChanged(slot: int) {.exportc:
   let nimfunc = cast[ptr QSGTextureProvidertextureChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSGTextureProvider_textureChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSGTextureProvider_textureChanged_release".} =
+  let nimfunc = cast[ref QSGTextureProvidertextureChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontextureChanged*(self: gen_qsgtextureprovider_types.QSGTextureProvider, slot: QSGTextureProvidertextureChangedSlot) =
   var tmp = new QSGTextureProvidertextureChangedSlot
   tmp[] = slot

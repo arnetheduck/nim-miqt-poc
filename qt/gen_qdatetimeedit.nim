@@ -725,6 +725,10 @@ proc miqt_exec_callback_cQDateTimeEdit_dateTimeChanged(slot: int, dateTime: poin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDateTimeEdit_dateTimeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDateTimeEdit_dateTimeChanged_release".} =
+  let nimfunc = cast[ref QDateTimeEditdateTimeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondateTimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdateTimeChangedSlot) =
   var tmp = new QDateTimeEditdateTimeChangedSlot
   tmp[] = slot
@@ -741,6 +745,10 @@ proc miqt_exec_callback_cQDateTimeEdit_timeChanged(slot: int, time: pointer) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDateTimeEdit_timeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDateTimeEdit_timeChanged_release".} =
+  let nimfunc = cast[ref QDateTimeEdittimeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEdittimeChangedSlot) =
   var tmp = new QDateTimeEdittimeChangedSlot
   tmp[] = slot
@@ -756,6 +764,10 @@ proc miqt_exec_callback_cQDateTimeEdit_dateChanged(slot: int, date: pointer) {.e
   let slotval1 = gen_qdatetime_types.QDate(h: date)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDateTimeEdit_dateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDateTimeEdit_dateChanged_release".} =
+  let nimfunc = cast[ref QDateTimeEditdateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondateChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdateChangedSlot) =
   var tmp = new QDateTimeEditdateChangedSlot
@@ -2484,6 +2496,10 @@ proc miqt_exec_callback_cQTimeEdit_userTimeChanged(slot: int, time: pointer) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTimeEdit_userTimeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTimeEdit_userTimeChanged_release".} =
+  let nimfunc = cast[ref QTimeEdituserTimeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onuserTimeChanged*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEdituserTimeChangedSlot) =
   var tmp = new QTimeEdituserTimeChangedSlot
   tmp[] = slot
@@ -3705,6 +3721,10 @@ proc miqt_exec_callback_cQDateEdit_userDateChanged(slot: int, date: pointer) {.e
   let slotval1 = gen_qdatetime_types.QDate(h: date)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDateEdit_userDateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDateEdit_userDateChanged_release".} =
+  let nimfunc = cast[ref QDateEdituserDateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onuserDateChanged*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEdituserDateChangedSlot) =
   var tmp = new QDateEdituserDateChangedSlot

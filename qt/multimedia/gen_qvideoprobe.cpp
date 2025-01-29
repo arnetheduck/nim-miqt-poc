@@ -19,7 +19,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QVideoProbe_videoFrameProbed(intptr_t, QVideoFrame*);
+void miqt_exec_callback_QVideoProbe_videoFrameProbed_release(intptr_t);
 void miqt_exec_callback_QVideoProbe_flush(intptr_t);
+void miqt_exec_callback_QVideoProbe_flush_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -305,12 +307,21 @@ void QVideoProbe_videoFrameProbed(QVideoProbe* self, QVideoFrame* frame) {
 }
 
 void QVideoProbe_connect_videoFrameProbed(QVideoProbe* self, intptr_t slot) {
-	MiqtVirtualQVideoProbe::connect(self, static_cast<void (QVideoProbe::*)(const QVideoFrame&)>(&QVideoProbe::videoFrameProbed), self, [=](const QVideoFrame& frame) {
-		const QVideoFrame& frame_ret = frame;
-		// Cast returned reference into pointer
-		QVideoFrame* sigval1 = const_cast<QVideoFrame*>(&frame_ret);
-		miqt_exec_callback_QVideoProbe_videoFrameProbed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QVideoFrame& frame) {
+			const QVideoFrame& frame_ret = frame;
+			// Cast returned reference into pointer
+			QVideoFrame* sigval1 = const_cast<QVideoFrame*>(&frame_ret);
+			miqt_exec_callback_QVideoProbe_videoFrameProbed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoProbe_videoFrameProbed_release(slot); }
+	};
+	MiqtVirtualQVideoProbe::connect(self, static_cast<void (QVideoProbe::*)(const QVideoFrame&)>(&QVideoProbe::videoFrameProbed), self, caller{slot});
 }
 
 void QVideoProbe_flush(QVideoProbe* self) {
@@ -318,9 +329,18 @@ void QVideoProbe_flush(QVideoProbe* self) {
 }
 
 void QVideoProbe_connect_flush(QVideoProbe* self, intptr_t slot) {
-	MiqtVirtualQVideoProbe::connect(self, static_cast<void (QVideoProbe::*)()>(&QVideoProbe::flush), self, [=]() {
-		miqt_exec_callback_QVideoProbe_flush(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QVideoProbe_flush(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoProbe_flush_release(slot); }
+	};
+	MiqtVirtualQVideoProbe::connect(self, static_cast<void (QVideoProbe::*)()>(&QVideoProbe::flush), self, caller{slot});
 }
 
 struct miqt_string QVideoProbe_tr2(const char* s, const char* c) {

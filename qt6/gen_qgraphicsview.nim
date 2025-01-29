@@ -610,6 +610,10 @@ proc miqt_exec_callback_cQGraphicsView_rubberBandChanged(slot: int, viewportRect
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQGraphicsView_rubberBandChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsView_rubberBandChanged_release".} =
+  let nimfunc = cast[ref QGraphicsViewrubberBandChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrubberBandChanged*(self: gen_qgraphicsview_types.QGraphicsView, slot: QGraphicsViewrubberBandChangedSlot) =
   var tmp = new QGraphicsViewrubberBandChangedSlot
   tmp[] = slot

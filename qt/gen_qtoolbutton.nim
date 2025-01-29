@@ -292,6 +292,10 @@ proc miqt_exec_callback_cQToolButton_triggered(slot: int, param1: pointer) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQToolButton_triggered_release(slot: int) {.exportc: "miqt_exec_callback_QToolButton_triggered_release".} =
+  let nimfunc = cast[ref QToolButtontriggeredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontriggered*(self: gen_qtoolbutton_types.QToolButton, slot: QToolButtontriggeredSlot) =
   var tmp = new QToolButtontriggeredSlot
   tmp[] = slot

@@ -244,6 +244,10 @@ proc miqt_exec_callback_cQPrintPreviewDialog_paintRequested(slot: int, printer: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQPrintPreviewDialog_paintRequested_release(slot: int) {.exportc: "miqt_exec_callback_QPrintPreviewDialog_paintRequested_release".} =
+  let nimfunc = cast[ref QPrintPreviewDialogpaintRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpaintRequested*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, slot: QPrintPreviewDialogpaintRequestedSlot) =
   var tmp = new QPrintPreviewDialogpaintRequestedSlot
   tmp[] = slot

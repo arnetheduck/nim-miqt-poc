@@ -46,7 +46,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLabel_linkActivated(intptr_t, struct miqt_string);
+void miqt_exec_callback_QLabel_linkActivated_release(intptr_t);
 void miqt_exec_callback_QLabel_linkHovered(intptr_t, struct miqt_string);
+void miqt_exec_callback_QLabel_linkHovered_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1318,17 +1320,26 @@ void QLabel_linkActivated(QLabel* self, struct miqt_string link) {
 }
 
 void QLabel_connect_linkActivated(QLabel* self, intptr_t slot) {
-	MiqtVirtualQLabel::connect(self, static_cast<void (QLabel::*)(const QString&)>(&QLabel::linkActivated), self, [=](const QString& link) {
-		const QString link_ret = link;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray link_b = link_ret.toUtf8();
-		struct miqt_string link_ms;
-		link_ms.len = link_b.length();
-		link_ms.data = static_cast<char*>(malloc(link_ms.len));
-		memcpy(link_ms.data, link_b.data(), link_ms.len);
-		struct miqt_string sigval1 = link_ms;
-		miqt_exec_callback_QLabel_linkActivated(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& link) {
+			const QString link_ret = link;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray link_b = link_ret.toUtf8();
+			struct miqt_string link_ms;
+			link_ms.len = link_b.length();
+			link_ms.data = static_cast<char*>(malloc(link_ms.len));
+			memcpy(link_ms.data, link_b.data(), link_ms.len);
+			struct miqt_string sigval1 = link_ms;
+			miqt_exec_callback_QLabel_linkActivated(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLabel_linkActivated_release(slot); }
+	};
+	MiqtVirtualQLabel::connect(self, static_cast<void (QLabel::*)(const QString&)>(&QLabel::linkActivated), self, caller{slot});
 }
 
 void QLabel_linkHovered(QLabel* self, struct miqt_string link) {
@@ -1337,17 +1348,26 @@ void QLabel_linkHovered(QLabel* self, struct miqt_string link) {
 }
 
 void QLabel_connect_linkHovered(QLabel* self, intptr_t slot) {
-	MiqtVirtualQLabel::connect(self, static_cast<void (QLabel::*)(const QString&)>(&QLabel::linkHovered), self, [=](const QString& link) {
-		const QString link_ret = link;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray link_b = link_ret.toUtf8();
-		struct miqt_string link_ms;
-		link_ms.len = link_b.length();
-		link_ms.data = static_cast<char*>(malloc(link_ms.len));
-		memcpy(link_ms.data, link_b.data(), link_ms.len);
-		struct miqt_string sigval1 = link_ms;
-		miqt_exec_callback_QLabel_linkHovered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& link) {
+			const QString link_ret = link;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray link_b = link_ret.toUtf8();
+			struct miqt_string link_ms;
+			link_ms.len = link_b.length();
+			link_ms.data = static_cast<char*>(malloc(link_ms.len));
+			memcpy(link_ms.data, link_b.data(), link_ms.len);
+			struct miqt_string sigval1 = link_ms;
+			miqt_exec_callback_QLabel_linkHovered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLabel_linkHovered_release(slot); }
+	};
+	MiqtVirtualQLabel::connect(self, static_cast<void (QLabel::*)(const QString&)>(&QLabel::linkHovered), self, caller{slot});
 }
 
 struct miqt_string QLabel_tr2(const char* s, const char* c) {

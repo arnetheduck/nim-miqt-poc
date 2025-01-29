@@ -255,6 +255,10 @@ proc miqt_exec_callback_cQSplashScreen_messageChanged(slot: int, message: struct
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSplashScreen_messageChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSplashScreen_messageChanged_release".} =
+  let nimfunc = cast[ref QSplashScreenmessageChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmessageChanged*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmessageChangedSlot) =
   var tmp = new QSplashScreenmessageChangedSlot
   tmp[] = slot

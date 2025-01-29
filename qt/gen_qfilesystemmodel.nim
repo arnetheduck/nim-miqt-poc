@@ -280,6 +280,10 @@ proc miqt_exec_callback_cQFileSystemModel_rootPathChanged(slot: int, newPath: st
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFileSystemModel_rootPathChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFileSystemModel_rootPathChanged_release".} =
+  let nimfunc = cast[ref QFileSystemModelrootPathChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrootPathChanged*(self: gen_qfilesystemmodel_types.QFileSystemModel, slot: QFileSystemModelrootPathChangedSlot) =
   var tmp = new QFileSystemModelrootPathChangedSlot
   tmp[] = slot
@@ -309,6 +313,10 @@ proc miqt_exec_callback_cQFileSystemModel_fileRenamed(slot: int, path: struct_mi
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQFileSystemModel_fileRenamed_release(slot: int) {.exportc: "miqt_exec_callback_QFileSystemModel_fileRenamed_release".} =
+  let nimfunc = cast[ref QFileSystemModelfileRenamedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfileRenamed*(self: gen_qfilesystemmodel_types.QFileSystemModel, slot: QFileSystemModelfileRenamedSlot) =
   var tmp = new QFileSystemModelfileRenamedSlot
   tmp[] = slot
@@ -327,6 +335,10 @@ proc miqt_exec_callback_cQFileSystemModel_directoryLoaded(slot: int, path: struc
   let slotval1 = vpathx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFileSystemModel_directoryLoaded_release(slot: int) {.exportc: "miqt_exec_callback_QFileSystemModel_directoryLoaded_release".} =
+  let nimfunc = cast[ref QFileSystemModeldirectoryLoadedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondirectoryLoaded*(self: gen_qfilesystemmodel_types.QFileSystemModel, slot: QFileSystemModeldirectoryLoadedSlot) =
   var tmp = new QFileSystemModeldirectoryLoadedSlot

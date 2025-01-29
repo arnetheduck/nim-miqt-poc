@@ -232,6 +232,10 @@ proc miqt_exec_callback_cQKeySequenceEdit_editingFinished(slot: int) {.exportc: 
   let nimfunc = cast[ptr QKeySequenceEditeditingFinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQKeySequenceEdit_editingFinished_release(slot: int) {.exportc: "miqt_exec_callback_QKeySequenceEdit_editingFinished_release".} =
+  let nimfunc = cast[ref QKeySequenceEditeditingFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oneditingFinished*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditeditingFinishedSlot) =
   var tmp = new QKeySequenceEditeditingFinishedSlot
   tmp[] = slot
@@ -247,6 +251,10 @@ proc miqt_exec_callback_cQKeySequenceEdit_keySequenceChanged(slot: int, keySeque
   let slotval1 = gen_qkeysequence_types.QKeySequence(h: keySequence)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQKeySequenceEdit_keySequenceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QKeySequenceEdit_keySequenceChanged_release".} =
+  let nimfunc = cast[ref QKeySequenceEditkeySequenceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onkeySequenceChanged*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditkeySequenceChangedSlot) =
   var tmp = new QKeySequenceEditkeySequenceChangedSlot

@@ -263,6 +263,10 @@ proc miqt_exec_callback_cQPrintDialog_accepted(slot: int, printer: pointer) {.ex
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQPrintDialog_accepted_release(slot: int) {.exportc: "miqt_exec_callback_QPrintDialog_accepted_release".} =
+  let nimfunc = cast[ref QPrintDialogacceptedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaccepted*(self: gen_qprintdialog_types.QPrintDialog, slot: QPrintDialogacceptedSlot) =
   var tmp = new QPrintDialogacceptedSlot
   tmp[] = slot

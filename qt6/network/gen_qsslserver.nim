@@ -168,6 +168,10 @@ proc miqt_exec_callback_cQSslServer_sslErrors(slot: int, socket: pointer, errors
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQSslServer_sslErrors_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_sslErrors_release".} =
+  let nimfunc = cast[ref QSslServersslErrorsSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsslErrors*(self: gen_qsslserver_types.QSslServer, slot: QSslServersslErrorsSlot) =
   var tmp = new QSslServersslErrorsSlot
   tmp[] = slot
@@ -185,6 +189,10 @@ proc miqt_exec_callback_cQSslServer_peerVerifyError(slot: int, socket: pointer, 
   let slotval2 = gen_qsslerror_types.QSslError(h: error)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQSslServer_peerVerifyError_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_peerVerifyError_release".} =
+  let nimfunc = cast[ref QSslServerpeerVerifyErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpeerVerifyError*(self: gen_qsslserver_types.QSslServer, slot: QSslServerpeerVerifyErrorSlot) =
   var tmp = new QSslServerpeerVerifyErrorSlot
@@ -204,6 +212,10 @@ proc miqt_exec_callback_cQSslServer_errorOccurred(slot: int, socket: pointer, er
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQSslServer_errorOccurred_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_errorOccurred_release".} =
+  let nimfunc = cast[ref QSslServererrorOccurredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerrorOccurred*(self: gen_qsslserver_types.QSslServer, slot: QSslServererrorOccurredSlot) =
   var tmp = new QSslServererrorOccurredSlot
   tmp[] = slot
@@ -221,6 +233,10 @@ proc miqt_exec_callback_cQSslServer_preSharedKeyAuthenticationRequired(slot: int
   let slotval2 = gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator(h: authenticator)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQSslServer_preSharedKeyAuthenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_preSharedKeyAuthenticationRequired_release".} =
+  let nimfunc = cast[ref QSslServerpreSharedKeyAuthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpreSharedKeyAuthenticationRequired*(self: gen_qsslserver_types.QSslServer, slot: QSslServerpreSharedKeyAuthenticationRequiredSlot) =
   var tmp = new QSslServerpreSharedKeyAuthenticationRequiredSlot
@@ -247,6 +263,10 @@ proc miqt_exec_callback_cQSslServer_alertSent(slot: int, socket: pointer, level:
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
+proc miqt_exec_callback_cQSslServer_alertSent_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_alertSent_release".} =
+  let nimfunc = cast[ref QSslServeralertSentSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onalertSent*(self: gen_qsslserver_types.QSslServer, slot: QSslServeralertSentSlot) =
   var tmp = new QSslServeralertSentSlot
   tmp[] = slot
@@ -272,6 +292,10 @@ proc miqt_exec_callback_cQSslServer_alertReceived(slot: int, socket: pointer, le
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
+proc miqt_exec_callback_cQSslServer_alertReceived_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_alertReceived_release".} =
+  let nimfunc = cast[ref QSslServeralertReceivedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onalertReceived*(self: gen_qsslserver_types.QSslServer, slot: QSslServeralertReceivedSlot) =
   var tmp = new QSslServeralertReceivedSlot
   tmp[] = slot
@@ -290,6 +314,10 @@ proc miqt_exec_callback_cQSslServer_handshakeInterruptedOnError(slot: int, socke
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQSslServer_handshakeInterruptedOnError_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_handshakeInterruptedOnError_release".} =
+  let nimfunc = cast[ref QSslServerhandshakeInterruptedOnErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhandshakeInterruptedOnError*(self: gen_qsslserver_types.QSslServer, slot: QSslServerhandshakeInterruptedOnErrorSlot) =
   var tmp = new QSslServerhandshakeInterruptedOnErrorSlot
   tmp[] = slot
@@ -305,6 +333,10 @@ proc miqt_exec_callback_cQSslServer_startedEncryptionHandshake(slot: int, socket
   let slotval1 = gen_qsslsocket_types.QSslSocket(h: socket)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSslServer_startedEncryptionHandshake_release(slot: int) {.exportc: "miqt_exec_callback_QSslServer_startedEncryptionHandshake_release".} =
+  let nimfunc = cast[ref QSslServerstartedEncryptionHandshakeSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstartedEncryptionHandshake*(self: gen_qsslserver_types.QSslServer, slot: QSslServerstartedEncryptionHandshakeSlot) =
   var tmp = new QSslServerstartedEncryptionHandshakeSlot

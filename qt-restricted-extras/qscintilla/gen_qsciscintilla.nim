@@ -1715,6 +1715,10 @@ proc miqt_exec_callback_cQsciScintilla_cursorPositionChanged(slot: int, line: ci
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQsciScintilla_cursorPositionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_cursorPositionChanged_release".} =
+  let nimfunc = cast[ref QsciScintillacursorPositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncursorPositionChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacursorPositionChangedSlot) =
   var tmp = new QsciScintillacursorPositionChangedSlot
   tmp[] = slot
@@ -1730,6 +1734,10 @@ proc miqt_exec_callback_cQsciScintilla_copyAvailable(slot: int, yes: bool) {.exp
   let slotval1 = yes
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQsciScintilla_copyAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_copyAvailable_release".} =
+  let nimfunc = cast[ref QsciScintillacopyAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncopyAvailable*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillacopyAvailableSlot) =
   var tmp = new QsciScintillacopyAvailableSlot
@@ -1751,6 +1759,10 @@ proc miqt_exec_callback_cQsciScintilla_indicatorClicked(slot: int, line: cint, i
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintilla_indicatorClicked_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_indicatorClicked_release".} =
+  let nimfunc = cast[ref QsciScintillaindicatorClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onindicatorClicked*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaindicatorClickedSlot) =
   var tmp = new QsciScintillaindicatorClickedSlot
   tmp[] = slot
@@ -1771,6 +1783,10 @@ proc miqt_exec_callback_cQsciScintilla_indicatorReleased(slot: int, line: cint, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintilla_indicatorReleased_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_indicatorReleased_release".} =
+  let nimfunc = cast[ref QsciScintillaindicatorReleasedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onindicatorReleased*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaindicatorReleasedSlot) =
   var tmp = new QsciScintillaindicatorReleasedSlot
   tmp[] = slot
@@ -1784,6 +1800,10 @@ type QsciScintillalinesChangedSlot* = proc()
 proc miqt_exec_callback_cQsciScintilla_linesChanged(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_linesChanged".} =
   let nimfunc = cast[ptr QsciScintillalinesChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintilla_linesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_linesChanged_release".} =
+  let nimfunc = cast[ref QsciScintillalinesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlinesChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillalinesChangedSlot) =
   var tmp = new QsciScintillalinesChangedSlot
@@ -1805,6 +1825,10 @@ proc miqt_exec_callback_cQsciScintilla_marginClicked(slot: int, margin: cint, li
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintilla_marginClicked_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_marginClicked_release".} =
+  let nimfunc = cast[ref QsciScintillamarginClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmarginClicked*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamarginClickedSlot) =
   var tmp = new QsciScintillamarginClickedSlot
   tmp[] = slot
@@ -1825,6 +1849,10 @@ proc miqt_exec_callback_cQsciScintilla_marginRightClicked(slot: int, margin: cin
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQsciScintilla_marginRightClicked_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_marginRightClicked_release".} =
+  let nimfunc = cast[ref QsciScintillamarginRightClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmarginRightClicked*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamarginRightClickedSlot) =
   var tmp = new QsciScintillamarginRightClickedSlot
   tmp[] = slot
@@ -1838,6 +1866,10 @@ type QsciScintillamodificationAttemptedSlot* = proc()
 proc miqt_exec_callback_cQsciScintilla_modificationAttempted(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_modificationAttempted".} =
   let nimfunc = cast[ptr QsciScintillamodificationAttemptedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintilla_modificationAttempted_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_modificationAttempted_release".} =
+  let nimfunc = cast[ref QsciScintillamodificationAttemptedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmodificationAttempted*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamodificationAttemptedSlot) =
   var tmp = new QsciScintillamodificationAttemptedSlot
@@ -1855,6 +1887,10 @@ proc miqt_exec_callback_cQsciScintilla_modificationChanged(slot: int, m: bool) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQsciScintilla_modificationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_modificationChanged_release".} =
+  let nimfunc = cast[ref QsciScintillamodificationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmodificationChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillamodificationChangedSlot) =
   var tmp = new QsciScintillamodificationChangedSlot
   tmp[] = slot
@@ -1869,6 +1905,10 @@ proc miqt_exec_callback_cQsciScintilla_selectionChanged(slot: int) {.exportc: "m
   let nimfunc = cast[ptr QsciScintillaselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQsciScintilla_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_selectionChanged_release".} =
+  let nimfunc = cast[ref QsciScintillaselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectionChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillaselectionChangedSlot) =
   var tmp = new QsciScintillaselectionChangedSlot
   tmp[] = slot
@@ -1882,6 +1922,10 @@ type QsciScintillatextChangedSlot* = proc()
 proc miqt_exec_callback_cQsciScintilla_textChanged(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_textChanged".} =
   let nimfunc = cast[ptr QsciScintillatextChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciScintilla_textChanged_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_textChanged_release".} =
+  let nimfunc = cast[ref QsciScintillatextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontextChanged*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillatextChangedSlot) =
   var tmp = new QsciScintillatextChangedSlot
@@ -1903,6 +1947,10 @@ proc miqt_exec_callback_cQsciScintilla_userListActivated(slot: int, id: cint, st
   let slotval2 = vstringx_ret
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQsciScintilla_userListActivated_release(slot: int) {.exportc: "miqt_exec_callback_QsciScintilla_userListActivated_release".} =
+  let nimfunc = cast[ref QsciScintillauserListActivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onuserListActivated*(self: gen_qsciscintilla_types.QsciScintilla, slot: QsciScintillauserListActivatedSlot) =
   var tmp = new QsciScintillauserListActivatedSlot

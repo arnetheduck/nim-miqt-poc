@@ -20,33 +20,61 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCamera_activeChanged(intptr_t, bool);
+void miqt_exec_callback_QCamera_activeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_errorChanged(intptr_t);
+void miqt_exec_callback_QCamera_errorChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_errorOccurred(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QCamera_errorOccurred_release(intptr_t);
 void miqt_exec_callback_QCamera_cameraDeviceChanged(intptr_t);
+void miqt_exec_callback_QCamera_cameraDeviceChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_cameraFormatChanged(intptr_t);
+void miqt_exec_callback_QCamera_cameraFormatChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_supportedFeaturesChanged(intptr_t);
+void miqt_exec_callback_QCamera_supportedFeaturesChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_focusModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_focusModeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_zoomFactorChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_zoomFactorChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_minimumZoomFactorChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_minimumZoomFactorChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_maximumZoomFactorChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_maximumZoomFactorChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_focusDistanceChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_focusDistanceChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_focusPointChanged(intptr_t);
+void miqt_exec_callback_QCamera_focusPointChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_customFocusPointChanged(intptr_t);
+void miqt_exec_callback_QCamera_customFocusPointChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_flashReady(intptr_t, bool);
+void miqt_exec_callback_QCamera_flashReady_release(intptr_t);
 void miqt_exec_callback_QCamera_flashModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_flashModeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_torchModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_torchModeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_exposureTimeChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_exposureTimeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_manualExposureTimeChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_manualExposureTimeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_isoSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QCamera_isoSensitivityChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_manualIsoSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QCamera_manualIsoSensitivityChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_exposureCompensationChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_exposureCompensationChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_exposureModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_exposureModeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_whiteBalanceModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_whiteBalanceModeChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_colorTemperatureChanged(intptr_t);
+void miqt_exec_callback_QCamera_colorTemperatureChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_brightnessChanged(intptr_t);
+void miqt_exec_callback_QCamera_brightnessChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_contrastChanged(intptr_t);
+void miqt_exec_callback_QCamera_contrastChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_saturationChanged(intptr_t);
+void miqt_exec_callback_QCamera_saturationChanged_release(intptr_t);
 void miqt_exec_callback_QCamera_hueChanged(intptr_t);
+void miqt_exec_callback_QCamera_hueChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -563,10 +591,19 @@ void QCamera_activeChanged(QCamera* self, bool param1) {
 }
 
 void QCamera_connect_activeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(bool)>(&QCamera::activeChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QCamera_activeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QCamera_activeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_activeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(bool)>(&QCamera::activeChanged), self, caller{slot});
 }
 
 void QCamera_errorChanged(QCamera* self) {
@@ -574,9 +611,18 @@ void QCamera_errorChanged(QCamera* self) {
 }
 
 void QCamera_connect_errorChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::errorChanged), self, [=]() {
-		miqt_exec_callback_QCamera_errorChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_errorChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_errorChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::errorChanged), self, caller{slot});
 }
 
 void QCamera_errorOccurred(QCamera* self, int error, struct miqt_string errorString) {
@@ -585,19 +631,28 @@ void QCamera_errorOccurred(QCamera* self, int error, struct miqt_string errorStr
 }
 
 void QCamera_connect_errorOccurred(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Error, const QString&)>(&QCamera::errorOccurred), self, [=](QCamera::Error error, const QString& errorString) {
-		QCamera::Error error_ret = error;
-		int sigval1 = static_cast<int>(error_ret);
-		const QString errorString_ret = errorString;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray errorString_b = errorString_ret.toUtf8();
-		struct miqt_string errorString_ms;
-		errorString_ms.len = errorString_b.length();
-		errorString_ms.data = static_cast<char*>(malloc(errorString_ms.len));
-		memcpy(errorString_ms.data, errorString_b.data(), errorString_ms.len);
-		struct miqt_string sigval2 = errorString_ms;
-		miqt_exec_callback_QCamera_errorOccurred(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QCamera::Error error, const QString& errorString) {
+			QCamera::Error error_ret = error;
+			int sigval1 = static_cast<int>(error_ret);
+			const QString errorString_ret = errorString;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray errorString_b = errorString_ret.toUtf8();
+			struct miqt_string errorString_ms;
+			errorString_ms.len = errorString_b.length();
+			errorString_ms.data = static_cast<char*>(malloc(errorString_ms.len));
+			memcpy(errorString_ms.data, errorString_b.data(), errorString_ms.len);
+			struct miqt_string sigval2 = errorString_ms;
+			miqt_exec_callback_QCamera_errorOccurred(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_errorOccurred_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Error, const QString&)>(&QCamera::errorOccurred), self, caller{slot});
 }
 
 void QCamera_cameraDeviceChanged(QCamera* self) {
@@ -605,9 +660,18 @@ void QCamera_cameraDeviceChanged(QCamera* self) {
 }
 
 void QCamera_connect_cameraDeviceChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::cameraDeviceChanged), self, [=]() {
-		miqt_exec_callback_QCamera_cameraDeviceChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_cameraDeviceChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_cameraDeviceChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::cameraDeviceChanged), self, caller{slot});
 }
 
 void QCamera_cameraFormatChanged(QCamera* self) {
@@ -615,9 +679,18 @@ void QCamera_cameraFormatChanged(QCamera* self) {
 }
 
 void QCamera_connect_cameraFormatChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::cameraFormatChanged), self, [=]() {
-		miqt_exec_callback_QCamera_cameraFormatChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_cameraFormatChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_cameraFormatChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::cameraFormatChanged), self, caller{slot});
 }
 
 void QCamera_supportedFeaturesChanged(QCamera* self) {
@@ -625,9 +698,18 @@ void QCamera_supportedFeaturesChanged(QCamera* self) {
 }
 
 void QCamera_connect_supportedFeaturesChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::supportedFeaturesChanged), self, [=]() {
-		miqt_exec_callback_QCamera_supportedFeaturesChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_supportedFeaturesChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_supportedFeaturesChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::supportedFeaturesChanged), self, caller{slot});
 }
 
 void QCamera_focusModeChanged(QCamera* self) {
@@ -635,9 +717,18 @@ void QCamera_focusModeChanged(QCamera* self) {
 }
 
 void QCamera_connect_focusModeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::focusModeChanged), self, [=]() {
-		miqt_exec_callback_QCamera_focusModeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_focusModeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_focusModeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::focusModeChanged), self, caller{slot});
 }
 
 void QCamera_zoomFactorChanged(QCamera* self, float param1) {
@@ -645,10 +736,19 @@ void QCamera_zoomFactorChanged(QCamera* self, float param1) {
 }
 
 void QCamera_connect_zoomFactorChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::zoomFactorChanged), self, [=](float param1) {
-		float sigval1 = param1;
-		miqt_exec_callback_QCamera_zoomFactorChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float param1) {
+			float sigval1 = param1;
+			miqt_exec_callback_QCamera_zoomFactorChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_zoomFactorChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::zoomFactorChanged), self, caller{slot});
 }
 
 void QCamera_minimumZoomFactorChanged(QCamera* self, float param1) {
@@ -656,10 +756,19 @@ void QCamera_minimumZoomFactorChanged(QCamera* self, float param1) {
 }
 
 void QCamera_connect_minimumZoomFactorChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::minimumZoomFactorChanged), self, [=](float param1) {
-		float sigval1 = param1;
-		miqt_exec_callback_QCamera_minimumZoomFactorChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float param1) {
+			float sigval1 = param1;
+			miqt_exec_callback_QCamera_minimumZoomFactorChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_minimumZoomFactorChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::minimumZoomFactorChanged), self, caller{slot});
 }
 
 void QCamera_maximumZoomFactorChanged(QCamera* self, float param1) {
@@ -667,10 +776,19 @@ void QCamera_maximumZoomFactorChanged(QCamera* self, float param1) {
 }
 
 void QCamera_connect_maximumZoomFactorChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::maximumZoomFactorChanged), self, [=](float param1) {
-		float sigval1 = param1;
-		miqt_exec_callback_QCamera_maximumZoomFactorChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float param1) {
+			float sigval1 = param1;
+			miqt_exec_callback_QCamera_maximumZoomFactorChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_maximumZoomFactorChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::maximumZoomFactorChanged), self, caller{slot});
 }
 
 void QCamera_focusDistanceChanged(QCamera* self, float param1) {
@@ -678,10 +796,19 @@ void QCamera_focusDistanceChanged(QCamera* self, float param1) {
 }
 
 void QCamera_connect_focusDistanceChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::focusDistanceChanged), self, [=](float param1) {
-		float sigval1 = param1;
-		miqt_exec_callback_QCamera_focusDistanceChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float param1) {
+			float sigval1 = param1;
+			miqt_exec_callback_QCamera_focusDistanceChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_focusDistanceChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::focusDistanceChanged), self, caller{slot});
 }
 
 void QCamera_focusPointChanged(QCamera* self) {
@@ -689,9 +816,18 @@ void QCamera_focusPointChanged(QCamera* self) {
 }
 
 void QCamera_connect_focusPointChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::focusPointChanged), self, [=]() {
-		miqt_exec_callback_QCamera_focusPointChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_focusPointChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_focusPointChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::focusPointChanged), self, caller{slot});
 }
 
 void QCamera_customFocusPointChanged(QCamera* self) {
@@ -699,9 +835,18 @@ void QCamera_customFocusPointChanged(QCamera* self) {
 }
 
 void QCamera_connect_customFocusPointChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::customFocusPointChanged), self, [=]() {
-		miqt_exec_callback_QCamera_customFocusPointChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_customFocusPointChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_customFocusPointChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::customFocusPointChanged), self, caller{slot});
 }
 
 void QCamera_flashReady(QCamera* self, bool param1) {
@@ -709,10 +854,19 @@ void QCamera_flashReady(QCamera* self, bool param1) {
 }
 
 void QCamera_connect_flashReady(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(bool)>(&QCamera::flashReady), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QCamera_flashReady(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QCamera_flashReady(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_flashReady_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(bool)>(&QCamera::flashReady), self, caller{slot});
 }
 
 void QCamera_flashModeChanged(QCamera* self) {
@@ -720,9 +874,18 @@ void QCamera_flashModeChanged(QCamera* self) {
 }
 
 void QCamera_connect_flashModeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::flashModeChanged), self, [=]() {
-		miqt_exec_callback_QCamera_flashModeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_flashModeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_flashModeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::flashModeChanged), self, caller{slot});
 }
 
 void QCamera_torchModeChanged(QCamera* self) {
@@ -730,9 +893,18 @@ void QCamera_torchModeChanged(QCamera* self) {
 }
 
 void QCamera_connect_torchModeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::torchModeChanged), self, [=]() {
-		miqt_exec_callback_QCamera_torchModeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_torchModeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_torchModeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::torchModeChanged), self, caller{slot});
 }
 
 void QCamera_exposureTimeChanged(QCamera* self, float speed) {
@@ -740,10 +912,19 @@ void QCamera_exposureTimeChanged(QCamera* self, float speed) {
 }
 
 void QCamera_connect_exposureTimeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::exposureTimeChanged), self, [=](float speed) {
-		float sigval1 = speed;
-		miqt_exec_callback_QCamera_exposureTimeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float speed) {
+			float sigval1 = speed;
+			miqt_exec_callback_QCamera_exposureTimeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_exposureTimeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::exposureTimeChanged), self, caller{slot});
 }
 
 void QCamera_manualExposureTimeChanged(QCamera* self, float speed) {
@@ -751,10 +932,19 @@ void QCamera_manualExposureTimeChanged(QCamera* self, float speed) {
 }
 
 void QCamera_connect_manualExposureTimeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::manualExposureTimeChanged), self, [=](float speed) {
-		float sigval1 = speed;
-		miqt_exec_callback_QCamera_manualExposureTimeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float speed) {
+			float sigval1 = speed;
+			miqt_exec_callback_QCamera_manualExposureTimeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_manualExposureTimeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::manualExposureTimeChanged), self, caller{slot});
 }
 
 void QCamera_isoSensitivityChanged(QCamera* self, int param1) {
@@ -762,10 +952,19 @@ void QCamera_isoSensitivityChanged(QCamera* self, int param1) {
 }
 
 void QCamera_connect_isoSensitivityChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(int)>(&QCamera::isoSensitivityChanged), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QCamera_isoSensitivityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QCamera_isoSensitivityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_isoSensitivityChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(int)>(&QCamera::isoSensitivityChanged), self, caller{slot});
 }
 
 void QCamera_manualIsoSensitivityChanged(QCamera* self, int param1) {
@@ -773,10 +972,19 @@ void QCamera_manualIsoSensitivityChanged(QCamera* self, int param1) {
 }
 
 void QCamera_connect_manualIsoSensitivityChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(int)>(&QCamera::manualIsoSensitivityChanged), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QCamera_manualIsoSensitivityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QCamera_manualIsoSensitivityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_manualIsoSensitivityChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(int)>(&QCamera::manualIsoSensitivityChanged), self, caller{slot});
 }
 
 void QCamera_exposureCompensationChanged(QCamera* self, float param1) {
@@ -784,10 +992,19 @@ void QCamera_exposureCompensationChanged(QCamera* self, float param1) {
 }
 
 void QCamera_connect_exposureCompensationChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::exposureCompensationChanged), self, [=](float param1) {
-		float sigval1 = param1;
-		miqt_exec_callback_QCamera_exposureCompensationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(float param1) {
+			float sigval1 = param1;
+			miqt_exec_callback_QCamera_exposureCompensationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_exposureCompensationChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(float)>(&QCamera::exposureCompensationChanged), self, caller{slot});
 }
 
 void QCamera_exposureModeChanged(QCamera* self) {
@@ -795,9 +1012,18 @@ void QCamera_exposureModeChanged(QCamera* self) {
 }
 
 void QCamera_connect_exposureModeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::exposureModeChanged), self, [=]() {
-		miqt_exec_callback_QCamera_exposureModeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_exposureModeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_exposureModeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::exposureModeChanged), self, caller{slot});
 }
 
 void QCamera_whiteBalanceModeChanged(const QCamera* self) {
@@ -805,9 +1031,18 @@ void QCamera_whiteBalanceModeChanged(const QCamera* self) {
 }
 
 void QCamera_connect_whiteBalanceModeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)() const>(&QCamera::whiteBalanceModeChanged), self, [=]() {
-		miqt_exec_callback_QCamera_whiteBalanceModeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_whiteBalanceModeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_whiteBalanceModeChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)() const>(&QCamera::whiteBalanceModeChanged), self, caller{slot});
 }
 
 void QCamera_colorTemperatureChanged(const QCamera* self) {
@@ -815,9 +1050,18 @@ void QCamera_colorTemperatureChanged(const QCamera* self) {
 }
 
 void QCamera_connect_colorTemperatureChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)() const>(&QCamera::colorTemperatureChanged), self, [=]() {
-		miqt_exec_callback_QCamera_colorTemperatureChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_colorTemperatureChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_colorTemperatureChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)() const>(&QCamera::colorTemperatureChanged), self, caller{slot});
 }
 
 void QCamera_brightnessChanged(QCamera* self) {
@@ -825,9 +1069,18 @@ void QCamera_brightnessChanged(QCamera* self) {
 }
 
 void QCamera_connect_brightnessChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::brightnessChanged), self, [=]() {
-		miqt_exec_callback_QCamera_brightnessChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_brightnessChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_brightnessChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::brightnessChanged), self, caller{slot});
 }
 
 void QCamera_contrastChanged(QCamera* self) {
@@ -835,9 +1088,18 @@ void QCamera_contrastChanged(QCamera* self) {
 }
 
 void QCamera_connect_contrastChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::contrastChanged), self, [=]() {
-		miqt_exec_callback_QCamera_contrastChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_contrastChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_contrastChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::contrastChanged), self, caller{slot});
 }
 
 void QCamera_saturationChanged(QCamera* self) {
@@ -845,9 +1107,18 @@ void QCamera_saturationChanged(QCamera* self) {
 }
 
 void QCamera_connect_saturationChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::saturationChanged), self, [=]() {
-		miqt_exec_callback_QCamera_saturationChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_saturationChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_saturationChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::saturationChanged), self, caller{slot});
 }
 
 void QCamera_hueChanged(QCamera* self) {
@@ -855,9 +1126,18 @@ void QCamera_hueChanged(QCamera* self) {
 }
 
 void QCamera_connect_hueChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::hueChanged), self, [=]() {
-		miqt_exec_callback_QCamera_hueChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QCamera_hueChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCamera_hueChanged_release(slot); }
+	};
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::hueChanged), self, caller{slot});
 }
 
 struct miqt_string QCamera_tr2(const char* s, const char* c) {

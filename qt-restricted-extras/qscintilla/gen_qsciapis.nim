@@ -227,6 +227,10 @@ proc miqt_exec_callback_cQsciAPIs_apiPreparationCancelled(slot: int) {.exportc: 
   let nimfunc = cast[ptr QsciAPIsapiPreparationCancelledSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQsciAPIs_apiPreparationCancelled_release(slot: int) {.exportc: "miqt_exec_callback_QsciAPIs_apiPreparationCancelled_release".} =
+  let nimfunc = cast[ref QsciAPIsapiPreparationCancelledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onapiPreparationCancelled*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsapiPreparationCancelledSlot) =
   var tmp = new QsciAPIsapiPreparationCancelledSlot
   tmp[] = slot
@@ -241,6 +245,10 @@ proc miqt_exec_callback_cQsciAPIs_apiPreparationStarted(slot: int) {.exportc: "m
   let nimfunc = cast[ptr QsciAPIsapiPreparationStartedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQsciAPIs_apiPreparationStarted_release(slot: int) {.exportc: "miqt_exec_callback_QsciAPIs_apiPreparationStarted_release".} =
+  let nimfunc = cast[ref QsciAPIsapiPreparationStartedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onapiPreparationStarted*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsapiPreparationStartedSlot) =
   var tmp = new QsciAPIsapiPreparationStartedSlot
   tmp[] = slot
@@ -254,6 +262,10 @@ type QsciAPIsapiPreparationFinishedSlot* = proc()
 proc miqt_exec_callback_cQsciAPIs_apiPreparationFinished(slot: int) {.exportc: "miqt_exec_callback_QsciAPIs_apiPreparationFinished".} =
   let nimfunc = cast[ptr QsciAPIsapiPreparationFinishedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQsciAPIs_apiPreparationFinished_release(slot: int) {.exportc: "miqt_exec_callback_QsciAPIs_apiPreparationFinished_release".} =
+  let nimfunc = cast[ref QsciAPIsapiPreparationFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onapiPreparationFinished*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsapiPreparationFinishedSlot) =
   var tmp = new QsciAPIsapiPreparationFinishedSlot
