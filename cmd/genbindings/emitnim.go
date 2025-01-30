@@ -817,6 +817,21 @@ const cflags = gorge("pkg-config -cflags ` + pkgConfigModule + `")
 		ind:                "  ",
 	}
 
+	// messy: pkg-config flags don't include private headers
+	if headerName == "qobject.h" {
+		ret.WriteString(`const qtversion = gorge("pkg-config --modversion Qt5Core")
+import std/strutils
+const privateDir = block:
+  var flag = ""
+  for path in cflags.split(" "):
+    if "QtCore" in path:
+      flag = " " & path & "/" & qtversion & " " & path & "/" & qtversion & "/QtCore"
+      break
+  flag
+{.compile("../libmiqt/libmiqt.cpp", cflags & privateDir).}
+`)
+	}
+
 	for _, c := range src.Classes {
 		rawClassName := cabiClassNameNim(c.ClassName, true)
 		nimClassName := cabiClassNameNim(c.ClassName, false)

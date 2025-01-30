@@ -33,6 +33,16 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
 const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qobject.cpp", cflags).}
 
+const qtversion = gorge("pkg-config --modversion Qt5Core")
+import std/strutils
+const privateDir = block:
+  var flag = ""
+  for path in cflags.split(" "):
+    if "QtCore" in path:
+      flag = " " & path & "/" & qtversion & " " & path & "/" & qtversion & "/QtCore"
+      break
+  flag
+{.compile("../libmiqt/libmiqt.cpp", cflags & privateDir).}
 
 type QObjectDataEnumEnum* = distinct cint
 template CheckForParentChildLoopsWarnDepth*(_: type QObjectDataEnumEnum): untyped = 4096
