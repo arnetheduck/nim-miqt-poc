@@ -249,6 +249,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWebEngineProfile::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWebEngineProfile::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWebEngineProfile::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWebEngineProfile::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWebEngineProfile* QWebEngineProfile_new(struct QWebEngineProfile_VTable* vtbl) {
@@ -654,6 +682,22 @@ void QWebEngineProfile_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QWebEngineProfile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QWebEngineProfile_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWebEngineProfile*)(self) )->protectedbase_sender();
+}
+
+int QWebEngineProfile_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWebEngineProfile*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWebEngineProfile_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWebEngineProfile*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWebEngineProfile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWebEngineProfile*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWebEngineProfile_staticMetaObject() { return &QWebEngineProfile::staticMetaObject; }

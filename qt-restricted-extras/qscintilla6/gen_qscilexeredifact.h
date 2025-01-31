@@ -146,6 +146,10 @@ void QsciLexerEDIFACT_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerEDIFACT_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerEDIFACT_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerEDIFACT_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciLexerEDIFACT_protectedbase_sender(const void* self);
+int QsciLexerEDIFACT_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerEDIFACT_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerEDIFACT_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerEDIFACT_staticMetaObject();
 void QsciLexerEDIFACT_delete(QsciLexerEDIFACT* self);
 

@@ -103,6 +103,12 @@ void QAbstractVideoSurface_virtualbase_childEvent(void* self, QChildEvent* event
 void QAbstractVideoSurface_virtualbase_customEvent(void* self, QEvent* event);
 void QAbstractVideoSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAbstractVideoSurface_protectedbase_setError(void* self, int error);
+void QAbstractVideoSurface_protectedbase_setNativeResolution(void* self, QSize* resolution);
+QObject* QAbstractVideoSurface_protectedbase_sender(const void* self);
+int QAbstractVideoSurface_protectedbase_senderSignalIndex(const void* self);
+int QAbstractVideoSurface_protectedbase_receivers(const void* self, const char* signal);
+bool QAbstractVideoSurface_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAbstractVideoSurface_staticMetaObject();
 void QAbstractVideoSurface_delete(QAbstractVideoSurface* self);
 

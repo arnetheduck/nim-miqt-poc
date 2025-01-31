@@ -288,6 +288,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QHttpMultiPart::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QHttpMultiPart::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QHttpMultiPart::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QHttpMultiPart::isSignalConnected(*signal);
+
+	}
+
 };
 
 QHttpMultiPart* QHttpMultiPart_new(struct QHttpMultiPart_VTable* vtbl) {
@@ -448,6 +476,22 @@ void QHttpMultiPart_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QHttpMultiPart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QHttpMultiPart_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQHttpMultiPart*)(self) )->protectedbase_sender();
+}
+
+int QHttpMultiPart_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQHttpMultiPart*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QHttpMultiPart_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQHttpMultiPart*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QHttpMultiPart_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQHttpMultiPart*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QHttpMultiPart_staticMetaObject() { return &QHttpMultiPart::staticMetaObject; }

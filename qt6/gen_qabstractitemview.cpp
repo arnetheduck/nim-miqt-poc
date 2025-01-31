@@ -1996,6 +1996,169 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	int protectedbase_state() const {
+
+		QAbstractItemView::State _ret = QAbstractItemView::state();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setState(int state) {
+
+		QAbstractItemView::setState(static_cast<QAbstractItemView::State>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scheduleDelayedItemsLayout() {
+
+		QAbstractItemView::scheduleDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_executeDelayedItemsLayout() {
+
+		QAbstractItemView::executeDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setDirtyRegion(QRegion* region) {
+
+		QAbstractItemView::setDirtyRegion(*region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scrollDirtyRegion(int dx, int dy) {
+
+		QAbstractItemView::scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPoint* protectedbase_dirtyRegionOffset() const {
+
+		return new QPoint(QAbstractItemView::dirtyRegionOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_startAutoScroll() {
+
+		QAbstractItemView::startAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_stopAutoScroll() {
+
+		QAbstractItemView::stopAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doAutoScroll() {
+
+		QAbstractItemView::doAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_dropIndicatorPosition() const {
+
+		QAbstractItemView::DropIndicatorPosition _ret = QAbstractItemView::dropIndicatorPosition();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QAbstractItemView::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QAbstractItemView::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QAbstractItemView::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QAbstractItemView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QAbstractItemView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QAbstractItemView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QAbstractItemView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QAbstractItemView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractItemView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractItemView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractItemView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractItemView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractItemView* QAbstractItemView_new(struct QAbstractItemView_VTable* vtbl, QWidget* parent) {
@@ -2837,6 +3000,98 @@ void QAbstractItemView_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QAbstractItemView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+int QAbstractItemView_protectedbase_state(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_state();
+}
+
+void QAbstractItemView_protectedbase_setState(void* self, int state) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_setState(state);
+}
+
+void QAbstractItemView_protectedbase_scheduleDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_scheduleDelayedItemsLayout();
+}
+
+void QAbstractItemView_protectedbase_executeDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_executeDelayedItemsLayout();
+}
+
+void QAbstractItemView_protectedbase_setDirtyRegion(void* self, QRegion* region) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_setDirtyRegion(region);
+}
+
+void QAbstractItemView_protectedbase_scrollDirtyRegion(void* self, int dx, int dy) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_scrollDirtyRegion(dx, dy);
+}
+
+QPoint* QAbstractItemView_protectedbase_dirtyRegionOffset(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_dirtyRegionOffset();
+}
+
+void QAbstractItemView_protectedbase_startAutoScroll(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_startAutoScroll();
+}
+
+void QAbstractItemView_protectedbase_stopAutoScroll(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_stopAutoScroll();
+}
+
+void QAbstractItemView_protectedbase_doAutoScroll(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_doAutoScroll();
+}
+
+int QAbstractItemView_protectedbase_dropIndicatorPosition(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_dropIndicatorPosition();
+}
+
+void QAbstractItemView_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QAbstractItemView_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_viewportMargins();
+}
+
+void QAbstractItemView_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QAbstractItemView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QAbstractItemView_protectedbase_create(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_create();
+}
+
+void QAbstractItemView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_destroy();
+}
+
+bool QAbstractItemView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QAbstractItemView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQAbstractItemView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QAbstractItemView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_sender();
+}
+
+int QAbstractItemView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractItemView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractItemView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractItemView_staticMetaObject() { return &QAbstractItemView::staticMetaObject; }

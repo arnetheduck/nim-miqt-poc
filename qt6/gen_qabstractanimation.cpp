@@ -317,6 +317,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractAnimation::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractAnimation::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractAnimation::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractAnimation::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractAnimation* QAbstractAnimation_new(struct QAbstractAnimation_VTable* vtbl) {
@@ -579,6 +607,22 @@ void QAbstractAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QAbstractAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAbstractAnimation_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractAnimation*)(self) )->protectedbase_sender();
+}
+
+int QAbstractAnimation_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractAnimation*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractAnimation_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractAnimation*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractAnimation_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractAnimation*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractAnimation_staticMetaObject() { return &QAbstractAnimation::staticMetaObject; }
@@ -879,6 +923,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_advanceAnimation() {
+
+		QAnimationDriver::advanceAnimation();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAnimationDriver::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAnimationDriver::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAnimationDriver::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAnimationDriver::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAnimationDriver* QAnimationDriver_new(struct QAnimationDriver_VTable* vtbl) {
@@ -1051,6 +1130,26 @@ void QAnimationDriver_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QAnimationDriver_protectedbase_advanceAnimation(void* self) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->protectedbase_advanceAnimation();
+}
+
+QObject* QAnimationDriver_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAnimationDriver*)(self) )->protectedbase_sender();
+}
+
+int QAnimationDriver_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAnimationDriver*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAnimationDriver_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAnimationDriver*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAnimationDriver_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAnimationDriver*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAnimationDriver_staticMetaObject() { return &QAnimationDriver::staticMetaObject; }

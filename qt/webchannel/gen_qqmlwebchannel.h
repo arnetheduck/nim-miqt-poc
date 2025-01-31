@@ -74,6 +74,10 @@ void QQmlWebChannel_virtualbase_childEvent(void* self, QChildEvent* event);
 void QQmlWebChannel_virtualbase_customEvent(void* self, QEvent* event);
 void QQmlWebChannel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QQmlWebChannel_protectedbase_sender(const void* self);
+int QQmlWebChannel_protectedbase_senderSignalIndex(const void* self);
+int QQmlWebChannel_protectedbase_receivers(const void* self, const char* signal);
+bool QQmlWebChannel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QQmlWebChannel_staticMetaObject();
 void QQmlWebChannel_delete(QQmlWebChannel* self);
 

@@ -29,6 +29,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPoint>
+#include <QRect>
 #include <QResizeEvent>
 #include <QShowEvent>
 #include <QSize>
@@ -1110,6 +1111,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_cursorRect() const {
+
+		return new QRect(QLineEdit::cursorRect());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QLineEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QLineEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QLineEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QLineEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QLineEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QLineEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QLineEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QLineEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QLineEdit::isSignalConnected(*signal);
+
+	}
+
 };
 
 QLineEdit* QLineEdit_new(struct QLineEdit_VTable* vtbl, QWidget* parent) {
@@ -1864,6 +1935,46 @@ void QLineEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLineEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QRect* QLineEdit_protectedbase_cursorRect(const void* self) {
+	return ( (const MiqtVirtualQLineEdit*)(self) )->protectedbase_cursorRect();
+}
+
+void QLineEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQLineEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QLineEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualQLineEdit*)(self) )->protectedbase_create();
+}
+
+void QLineEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQLineEdit*)(self) )->protectedbase_destroy();
+}
+
+bool QLineEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQLineEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QLineEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQLineEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QLineEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQLineEdit*)(self) )->protectedbase_sender();
+}
+
+int QLineEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQLineEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QLineEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQLineEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QLineEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQLineEdit*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QLineEdit_staticMetaObject() { return &QLineEdit::staticMetaObject; }

@@ -154,6 +154,13 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_fromImageInPlace(QImage* image) {
+
+		return new QPixmap(QBitmap::fromImageInPlace(*image));
+
+	}
+
 };
 
 QBitmap* QBitmap_new(struct QBitmap_VTable* vtbl) {
@@ -256,6 +263,10 @@ QPaintDevice* QBitmap_virtualbase_redirected(const void* self, QPoint* offset) {
 
 QPainter* QBitmap_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_sharedPainter();
+}
+
+QPixmap* QBitmap_protectedbase_fromImageInPlace(QImage* image) {
+	return ( (MiqtVirtualQBitmap*)(self) )->protectedbase_fromImageInPlace(image);
 }
 
 void QBitmap_delete(QBitmap* self) {

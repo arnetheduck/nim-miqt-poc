@@ -166,6 +166,10 @@ proc fcQsciLexerCustom_virtualbase_childEvent(self: pointer, event: pointer): vo
 proc fcQsciLexerCustom_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerCustom_virtualbase_customEvent".}
 proc fcQsciLexerCustom_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCustom_virtualbase_connectNotify".}
 proc fcQsciLexerCustom_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCustom_virtualbase_disconnectNotify".}
+proc fcQsciLexerCustom_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerCustom_protectedbase_sender".}
+proc fcQsciLexerCustom_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerCustom_protectedbase_senderSignalIndex".}
+proc fcQsciLexerCustom_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerCustom_protectedbase_receivers".}
+proc fcQsciLexerCustom_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerCustom_protectedbase_isSignalConnected".}
 proc fcQsciLexerCustom_new(vtbl: pointer, ): ptr cQsciLexerCustom {.importc: "QsciLexerCustom_new".}
 proc fcQsciLexerCustom_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerCustom {.importc: "QsciLexerCustom_new2".}
 proc fcQsciLexerCustom_staticMetaObject(): pointer {.importc: "QsciLexerCustom_staticMetaObject".}
@@ -770,6 +774,18 @@ proc miqt_exec_callback_cQsciLexerCustom_disconnectNotify(vtbl: pointer, self: p
   let self = QsciLexerCustom(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qscilexercustom_types.QsciLexerCustom, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerCustom_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexercustom_types.QsciLexerCustom, ): cint =
+  fcQsciLexerCustom_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexercustom_types.QsciLexerCustom, signal: cstring): cint =
+  fcQsciLexerCustom_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexercustom_types.QsciLexerCustom, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerCustom_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexercustom_types.QsciLexerCustom,
     vtbl: ref QsciLexerCustomVTable = nil): gen_qscilexercustom_types.QsciLexerCustom =

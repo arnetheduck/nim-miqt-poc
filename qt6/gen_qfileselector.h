@@ -71,6 +71,10 @@ void QFileSelector_virtualbase_childEvent(void* self, QChildEvent* event);
 void QFileSelector_virtualbase_customEvent(void* self, QEvent* event);
 void QFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QFileSelector_protectedbase_sender(const void* self);
+int QFileSelector_protectedbase_senderSignalIndex(const void* self);
+int QFileSelector_protectedbase_receivers(const void* self, const char* signal);
+bool QFileSelector_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QFileSelector_staticMetaObject();
 void QFileSelector_delete(QFileSelector* self);
 

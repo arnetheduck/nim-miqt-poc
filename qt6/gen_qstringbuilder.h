@@ -16,8 +16,12 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractConcatenable;
+class QByteArrayView;
+class QChar;
 #else
 typedef struct QAbstractConcatenable QAbstractConcatenable;
+typedef struct QByteArrayView QByteArrayView;
+typedef struct QChar QChar;
 #endif
 
 void QAbstractConcatenable_delete(QAbstractConcatenable* self);

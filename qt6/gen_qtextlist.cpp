@@ -305,6 +305,57 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QTextBlock* */  protectedbase_blockList() const {
+
+		QList<QTextBlock> _ret = QTextList::blockList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QTextBlock** _arr = static_cast<QTextBlock**>(malloc(sizeof(QTextBlock*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QTextBlock(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setFormat(QTextFormat* format) {
+
+		QTextList::setFormat(*format);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTextList::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTextList::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTextList::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTextList::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTextList* QTextList_new(struct QTextList_VTable* vtbl, QTextDocument* doc) {
@@ -453,6 +504,30 @@ void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextList*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(const void* self) {
+	return ( (const MiqtVirtualQTextList*)(self) )->protectedbase_blockList();
+}
+
+void QTextList_protectedbase_setFormat(void* self, QTextFormat* format) {
+	( (MiqtVirtualQTextList*)(self) )->protectedbase_setFormat(format);
+}
+
+QObject* QTextList_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTextList*)(self) )->protectedbase_sender();
+}
+
+int QTextList_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTextList*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTextList_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTextList*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTextList_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTextList*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTextList_staticMetaObject() { return &QTextList::staticMetaObject; }

@@ -66,7 +66,6 @@ void QAnimationGroup_insertAnimation(QAnimationGroup* self, int index, QAbstract
 void QAnimationGroup_removeAnimation(QAnimationGroup* self, QAbstractAnimation* animation);
 QAbstractAnimation* QAnimationGroup_takeAnimation(QAnimationGroup* self, int index);
 void QAnimationGroup_clear(QAnimationGroup* self);
-bool QAnimationGroup_event(QAnimationGroup* self, QEvent* event);
 struct miqt_string QAnimationGroup_tr2(const char* s, const char* c);
 struct miqt_string QAnimationGroup_tr3(const char* s, const char* c, int n);
 QMetaObject* QAnimationGroup_virtualbase_metaObject(const void* self);
@@ -83,6 +82,10 @@ void QAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event);
 void QAnimationGroup_virtualbase_customEvent(void* self, QEvent* event);
 void QAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAnimationGroup_protectedbase_sender(const void* self);
+int QAnimationGroup_protectedbase_senderSignalIndex(const void* self);
+int QAnimationGroup_protectedbase_receivers(const void* self, const char* signal);
+bool QAnimationGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAnimationGroup_staticMetaObject();
 void QAnimationGroup_delete(QAnimationGroup* self);
 

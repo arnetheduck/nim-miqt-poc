@@ -1169,6 +1169,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QColorDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QColorDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QColorDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QColorDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QColorDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QColorDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QColorDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QColorDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QColorDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QColorDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QColorDialog* QColorDialog_new(struct QColorDialog_VTable* vtbl, QWidget* parent) {
@@ -1630,6 +1700,46 @@ void QColorDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QColorDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQColorDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QColorDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQColorDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QColorDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQColorDialog*)(self) )->protectedbase_create();
+}
+
+void QColorDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQColorDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QColorDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQColorDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QColorDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQColorDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QColorDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQColorDialog*)(self) )->protectedbase_sender();
+}
+
+int QColorDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQColorDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QColorDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQColorDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QColorDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQColorDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QColorDialog_staticMetaObject() { return &QColorDialog::staticMetaObject; }

@@ -655,6 +655,49 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setOpenMode(int openMode) {
+
+		QFile::setOpenMode(static_cast<QIODevice::OpenMode>(openMode));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setErrorString(struct miqt_string errorString) {
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+		QFile::setErrorString(errorString_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QFile::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QFile::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QFile::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QFile::isSignalConnected(*signal);
+
+	}
+
 };
 
 QFile* QFile_new(struct QFile_VTable* vtbl) {
@@ -1076,6 +1119,30 @@ void QFile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QFile_protectedbase_setOpenMode(void* self, int openMode) {
+	( (MiqtVirtualQFile*)(self) )->protectedbase_setOpenMode(openMode);
+}
+
+void QFile_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	( (MiqtVirtualQFile*)(self) )->protectedbase_setErrorString(errorString);
+}
+
+QObject* QFile_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQFile*)(self) )->protectedbase_sender();
+}
+
+int QFile_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQFile*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QFile_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQFile*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QFile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQFile*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QFile_staticMetaObject() { return &QFile::staticMetaObject; }

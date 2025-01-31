@@ -84,6 +84,10 @@ void QTranslator_virtualbase_childEvent(void* self, QChildEvent* event);
 void QTranslator_virtualbase_customEvent(void* self, QEvent* event);
 void QTranslator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QTranslator_protectedbase_sender(const void* self);
+int QTranslator_protectedbase_senderSignalIndex(const void* self);
+int QTranslator_protectedbase_receivers(const void* self, const char* signal);
+bool QTranslator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QTranslator_staticMetaObject();
 void QTranslator_delete(QTranslator* self);
 

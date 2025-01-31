@@ -803,6 +803,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsItem* QGraphicsItem_new(struct QGraphicsItem_VTable* vtbl) {
@@ -1706,6 +1734,22 @@ void QGraphicsItem_virtualbase_setExtension(void* self, int extension, QVariant*
 
 QVariant* QGraphicsItem_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQGraphicsItem*)(self) )->virtualbase_extension(variant);
+}
+
+void QGraphicsItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsItem_delete(QGraphicsItem* self) {
@@ -2632,6 +2676,62 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsObject::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsObject::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsObject::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsObject::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsObject::isSignalConnected(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsObject::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsObject::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsObject::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsObject* QGraphicsObject_new(struct QGraphicsObject_VTable* vtbl) {
@@ -3102,6 +3202,38 @@ void QGraphicsObject_virtualbase_setExtension(void* self, int extension, QVarian
 
 QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQGraphicsObject*)(self) )->virtualbase_extension(variant);
+}
+
+void QGraphicsObject_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsObject*)(self) )->protectedbase_updateMicroFocus();
+}
+
+QObject* QGraphicsObject_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsObject*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsObject_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsObject*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsObject_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsObject*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsObject_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsObject*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
+void QGraphicsObject_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsObject*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsObject_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsObject*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsObject_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsObject*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 const QMetaObject* QGraphicsObject_staticMetaObject() { return &QGraphicsObject::staticMetaObject; }
@@ -3822,6 +3954,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QAbstractGraphicsShapeItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QAbstractGraphicsShapeItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QAbstractGraphicsShapeItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QAbstractGraphicsShapeItem::prepareGeometryChange();
+
+	}
+
 };
 
 QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem_new(struct QAbstractGraphicsShapeItem_VTable* vtbl) {
@@ -3990,6 +4150,22 @@ void QAbstractGraphicsShapeItem_virtualbase_setExtension(void* self, int extensi
 
 QVariant* QAbstractGraphicsShapeItem_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQAbstractGraphicsShapeItem*)(self) )->virtualbase_extension(variant);
+}
+
+void QAbstractGraphicsShapeItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQAbstractGraphicsShapeItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QAbstractGraphicsShapeItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQAbstractGraphicsShapeItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QAbstractGraphicsShapeItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQAbstractGraphicsShapeItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QAbstractGraphicsShapeItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQAbstractGraphicsShapeItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QAbstractGraphicsShapeItem_delete(QAbstractGraphicsShapeItem* self) {
@@ -4726,6 +4902,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsPathItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsPathItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsPathItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsPathItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsPathItem* QGraphicsPathItem_new(struct QGraphicsPathItem_VTable* vtbl) {
@@ -4922,6 +5126,22 @@ QVariant* QGraphicsPathItem_virtualbase_inputMethodQuery(const void* self, int q
 
 QVariant* QGraphicsPathItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsPathItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsPathItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsPathItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsPathItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsPathItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsPathItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsPathItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsPathItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsPathItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsPathItem_delete(QGraphicsPathItem* self) {
@@ -5660,6 +5880,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsRectItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsRectItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsRectItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsRectItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsRectItem* QGraphicsRectItem_new(struct QGraphicsRectItem_VTable* vtbl) {
@@ -5868,6 +6116,22 @@ QVariant* QGraphicsRectItem_virtualbase_inputMethodQuery(const void* self, int q
 
 QVariant* QGraphicsRectItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsRectItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsRectItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsRectItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsRectItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsRectItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsRectItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsRectItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsRectItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsRectItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsRectItem_delete(QGraphicsRectItem* self) {
@@ -6606,6 +6870,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsEllipseItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsEllipseItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsEllipseItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsEllipseItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsEllipseItem* QGraphicsEllipseItem_new(struct QGraphicsEllipseItem_VTable* vtbl) {
@@ -6830,6 +7122,22 @@ QVariant* QGraphicsEllipseItem_virtualbase_inputMethodQuery(const void* self, in
 
 QVariant* QGraphicsEllipseItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsEllipseItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsEllipseItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsEllipseItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsEllipseItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsEllipseItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsEllipseItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsEllipseItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsEllipseItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsEllipseItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsEllipseItem_delete(QGraphicsEllipseItem* self) {
@@ -7564,6 +7872,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsPolygonItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsPolygonItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsPolygonItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsPolygonItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsPolygonItem* QGraphicsPolygonItem_new(struct QGraphicsPolygonItem_VTable* vtbl) {
@@ -7753,6 +8089,22 @@ QVariant* QGraphicsPolygonItem_virtualbase_inputMethodQuery(const void* self, in
 
 QVariant* QGraphicsPolygonItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsPolygonItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsPolygonItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsPolygonItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsPolygonItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsPolygonItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsPolygonItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsPolygonItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsPolygonItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsPolygonItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsPolygonItem_delete(QGraphicsPolygonItem* self) {
@@ -8491,6 +8843,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsLineItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsLineItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsLineItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsLineItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsLineItem* QGraphicsLineItem_new(struct QGraphicsLineItem_VTable* vtbl) {
@@ -8707,6 +9087,22 @@ QVariant* QGraphicsLineItem_virtualbase_inputMethodQuery(const void* self, int q
 
 QVariant* QGraphicsLineItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsLineItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsLineItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsLineItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsLineItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsLineItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsLineItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsLineItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsLineItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsLineItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsLineItem_delete(QGraphicsLineItem* self) {
@@ -9443,6 +9839,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsPixmapItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsPixmapItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsPixmapItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsPixmapItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsPixmapItem* QGraphicsPixmapItem_new(struct QGraphicsPixmapItem_VTable* vtbl) {
@@ -9669,6 +10093,22 @@ QVariant* QGraphicsPixmapItem_virtualbase_inputMethodQuery(const void* self, int
 
 QVariant* QGraphicsPixmapItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsPixmapItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsPixmapItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsPixmapItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsPixmapItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsPixmapItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsPixmapItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsPixmapItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsPixmapItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsPixmapItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsPixmapItem_delete(QGraphicsPixmapItem* self) {
@@ -10612,6 +11052,62 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsTextItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsTextItem::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsTextItem::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsTextItem::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsTextItem::isSignalConnected(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsTextItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsTextItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsTextItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsTextItem* QGraphicsTextItem_new(struct QGraphicsTextItem_VTable* vtbl) {
@@ -11045,6 +11541,38 @@ void QGraphicsTextItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEve
 
 QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsTextItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsTextItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+QObject* QGraphicsTextItem_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsTextItem_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsTextItem_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsTextItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
+void QGraphicsTextItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsTextItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsTextItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsTextItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 const QMetaObject* QGraphicsTextItem_staticMetaObject() { return &QGraphicsTextItem::staticMetaObject; }
@@ -11782,6 +12310,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsSimpleTextItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsSimpleTextItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsSimpleTextItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsSimpleTextItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new(struct QGraphicsSimpleTextItem_VTable* vtbl) {
@@ -11996,6 +12552,22 @@ QVariant* QGraphicsSimpleTextItem_virtualbase_inputMethodQuery(const void* self,
 
 QVariant* QGraphicsSimpleTextItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsSimpleTextItem*)(self) )->virtualbase_itemChange(change, value);
+}
+
+void QGraphicsSimpleTextItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsSimpleTextItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsSimpleTextItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsSimpleTextItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsSimpleTextItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsSimpleTextItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsSimpleTextItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsSimpleTextItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsSimpleTextItem_delete(QGraphicsSimpleTextItem* self) {
@@ -12730,6 +13302,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsItemGroup::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsItemGroup::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsItemGroup::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsItemGroup::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsItemGroup* QGraphicsItemGroup_new(struct QGraphicsItemGroup_VTable* vtbl) {
@@ -12910,6 +13510,22 @@ void QGraphicsItemGroup_virtualbase_setExtension(void* self, int extension, QVar
 
 QVariant* QGraphicsItemGroup_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQGraphicsItemGroup*)(self) )->virtualbase_extension(variant);
+}
+
+void QGraphicsItemGroup_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsItemGroup*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsItemGroup_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsItemGroup*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsItemGroup_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsItemGroup*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsItemGroup_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsItemGroup*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 void QGraphicsItemGroup_delete(QGraphicsItemGroup* self) {

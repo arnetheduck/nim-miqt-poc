@@ -1091,6 +1091,104 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_moveSplitter(int pos, int index) {
+
+		QSplitter::moveSplitter(static_cast<int>(pos), static_cast<int>(index));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setRubberBand(int position) {
+
+		QSplitter::setRubberBand(static_cast<int>(position));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_closestLegalPosition(int param1, int param2) {
+
+		return QSplitter::closestLegalPosition(static_cast<int>(param1), static_cast<int>(param2));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QSplitter::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QSplitter::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QSplitter::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QSplitter::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QSplitter::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QSplitter::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QSplitter::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSplitter::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSplitter::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSplitter::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSplitter::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSplitter* QSplitter_new(struct QSplitter_VTable* vtbl, QWidget* parent) {
@@ -1544,6 +1642,62 @@ void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSplitter*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSplitter_protectedbase_moveSplitter(void* self, int pos, int index) {
+	( (MiqtVirtualQSplitter*)(self) )->protectedbase_moveSplitter(pos, index);
+}
+
+void QSplitter_protectedbase_setRubberBand(void* self, int position) {
+	( (MiqtVirtualQSplitter*)(self) )->protectedbase_setRubberBand(position);
+}
+
+int QSplitter_protectedbase_closestLegalPosition(void* self, int param1, int param2) {
+	return ( (MiqtVirtualQSplitter*)(self) )->protectedbase_closestLegalPosition(param1, param2);
+}
+
+void QSplitter_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQSplitter*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QSplitter_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQSplitter*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QSplitter_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQSplitter*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QSplitter_protectedbase_create(void* self) {
+	( (MiqtVirtualQSplitter*)(self) )->protectedbase_create();
+}
+
+void QSplitter_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQSplitter*)(self) )->protectedbase_destroy();
+}
+
+bool QSplitter_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQSplitter*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QSplitter_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQSplitter*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QSplitter_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSplitter*)(self) )->protectedbase_sender();
+}
+
+int QSplitter_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSplitter*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSplitter_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSplitter*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSplitter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSplitter*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSplitter_staticMetaObject() { return &QSplitter::staticMetaObject; }
@@ -2570,6 +2724,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_moveSplitter(int p) {
+
+		QSplitterHandle::moveSplitter(static_cast<int>(p));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_closestLegalPosition(int p) {
+
+		return QSplitterHandle::closestLegalPosition(static_cast<int>(p));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QSplitterHandle::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QSplitterHandle::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QSplitterHandle::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QSplitterHandle::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QSplitterHandle::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSplitterHandle::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSplitterHandle::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSplitterHandle::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSplitterHandle::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSplitterHandle* QSplitterHandle_new(struct QSplitterHandle_VTable* vtbl, int o, QSplitter* parent) {
@@ -2877,6 +3108,50 @@ void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSplitterHandle_protectedbase_moveSplitter(void* self, int p) {
+	( (MiqtVirtualQSplitterHandle*)(self) )->protectedbase_moveSplitter(p);
+}
+
+int QSplitterHandle_protectedbase_closestLegalPosition(void* self, int p) {
+	return ( (MiqtVirtualQSplitterHandle*)(self) )->protectedbase_closestLegalPosition(p);
+}
+
+void QSplitterHandle_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQSplitterHandle*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QSplitterHandle_protectedbase_create(void* self) {
+	( (MiqtVirtualQSplitterHandle*)(self) )->protectedbase_create();
+}
+
+void QSplitterHandle_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQSplitterHandle*)(self) )->protectedbase_destroy();
+}
+
+bool QSplitterHandle_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQSplitterHandle*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QSplitterHandle_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQSplitterHandle*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QSplitterHandle_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->protectedbase_sender();
+}
+
+int QSplitterHandle_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSplitterHandle_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSplitterHandle_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSplitterHandle_staticMetaObject() { return &QSplitterHandle::staticMetaObject; }

@@ -52,9 +52,6 @@ unsigned char* QFileDevice_map(QFileDevice* self, long long offset, long long si
 bool QFileDevice_unmap(QFileDevice* self, unsigned char* address);
 QDateTime* QFileDevice_fileTime(const QFileDevice* self, int time);
 bool QFileDevice_setFileTime(QFileDevice* self, QDateTime* newDate, int fileTime);
-long long QFileDevice_readData(QFileDevice* self, char* data, long long maxlen);
-long long QFileDevice_writeData(QFileDevice* self, const char* data, long long len);
-long long QFileDevice_readLineData(QFileDevice* self, char* data, long long maxlen);
 struct miqt_string QFileDevice_tr2(const char* s, const char* c);
 struct miqt_string QFileDevice_tr3(const char* s, const char* c, int n);
 struct miqt_string QFileDevice_trUtf82(const char* s, const char* c);

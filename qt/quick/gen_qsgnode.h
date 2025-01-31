@@ -164,16 +164,6 @@ bool QSGOpacityNode_virtualbase_isSubtreeBlocked(const void* self);
 void QSGOpacityNode_virtualbase_preprocess(void* self);
 void QSGOpacityNode_delete(QSGOpacityNode* self);
 
-void QSGNodeVisitor_enterTransformNode(QSGNodeVisitor* self, QSGTransformNode* param1);
-void QSGNodeVisitor_leaveTransformNode(QSGNodeVisitor* self, QSGTransformNode* param1);
-void QSGNodeVisitor_enterClipNode(QSGNodeVisitor* self, QSGClipNode* param1);
-void QSGNodeVisitor_leaveClipNode(QSGNodeVisitor* self, QSGClipNode* param1);
-void QSGNodeVisitor_enterGeometryNode(QSGNodeVisitor* self, QSGGeometryNode* param1);
-void QSGNodeVisitor_leaveGeometryNode(QSGNodeVisitor* self, QSGGeometryNode* param1);
-void QSGNodeVisitor_enterOpacityNode(QSGNodeVisitor* self, QSGOpacityNode* param1);
-void QSGNodeVisitor_leaveOpacityNode(QSGNodeVisitor* self, QSGOpacityNode* param1);
-void QSGNodeVisitor_visitNode(QSGNodeVisitor* self, QSGNode* n);
-void QSGNodeVisitor_visitChildren(QSGNodeVisitor* self, QSGNode* n);
 void QSGNodeVisitor_delete(QSGNodeVisitor* self);
 
 #ifdef __cplusplus

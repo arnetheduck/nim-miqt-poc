@@ -1151,6 +1151,208 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_resetInternalData() {
+
+		QDirModel::resetInternalData();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QDirModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QDirModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QDirModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QDirModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QDirModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QDirModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QDirModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QDirModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QDirModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QDirModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QDirModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QDirModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QDirModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QDirModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QDirModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QDirModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QDirModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QDirModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QDirModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QDirModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDirModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDirModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDirModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDirModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDirModel* QDirModel_new(struct QDirModel_VTable* vtbl, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort) {
@@ -1665,6 +1867,106 @@ void QDirModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDirModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDirModel_protectedbase_resetInternalData(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_resetInternalData();
+}
+
+QModelIndex* QDirModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+void QDirModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQDirModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QDirModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQDirModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QDirModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QDirModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QDirModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QDirModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QDirModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQDirModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QDirModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QDirModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QDirModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QDirModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QDirModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QDirModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQDirModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QDirModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QDirModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QDirModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QDirModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QDirModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQDirModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QDirModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QObject* QDirModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->protectedbase_sender();
+}
+
+int QDirModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDirModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDirModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDirModel_staticMetaObject() { return &QDirModel::staticMetaObject; }

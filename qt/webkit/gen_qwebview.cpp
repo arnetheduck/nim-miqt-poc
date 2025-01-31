@@ -1112,6 +1112,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QWebView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QWebView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QWebView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QWebView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QWebView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWebView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWebView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWebView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWebView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWebView* QWebView_new(struct QWebView_VTable* vtbl, QWidget* parent) {
@@ -1805,6 +1868,42 @@ void QWebView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWebView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQWebView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QWebView_protectedbase_create(void* self) {
+	( (MiqtVirtualQWebView*)(self) )->protectedbase_create();
+}
+
+void QWebView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQWebView*)(self) )->protectedbase_destroy();
+}
+
+bool QWebView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQWebView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QWebView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQWebView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QWebView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWebView*)(self) )->protectedbase_sender();
+}
+
+int QWebView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWebView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWebView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWebView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWebView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWebView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWebView_staticMetaObject() { return &QWebView::staticMetaObject; }

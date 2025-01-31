@@ -415,6 +415,7 @@ proc fcQTextCharFormat_setTableCellColumnSpan(self: pointer, tableCellColumnSpan
 proc fcQTextCharFormat_tableCellColumnSpan(self: pointer, ): cint {.importc: "QTextCharFormat_tableCellColumnSpan".}
 proc fcQTextCharFormat_setFont2(self: pointer, font: pointer, behavior: cint): void {.importc: "QTextCharFormat_setFont2".}
 proc fcQTextCharFormat_setFontStyleHint2(self: pointer, hint: cint, strategy: cint): void {.importc: "QTextCharFormat_setFontStyleHint2".}
+proc fcQTextCharFormat_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextCharFormat_protectedbase_operatorAssign".}
 proc fcQTextCharFormat_new(): ptr cQTextCharFormat {.importc: "QTextCharFormat_new".}
 proc fcQTextCharFormat_new2(param1: pointer): ptr cQTextCharFormat {.importc: "QTextCharFormat_new2".}
 proc fcQTextCharFormat_delete(self: pointer) {.importc: "QTextCharFormat_delete".}
@@ -447,6 +448,7 @@ proc fcQTextBlockFormat_setTabPositions(self: pointer, tabs: struct_miqt_array):
 proc fcQTextBlockFormat_tabPositions(self: pointer, ): struct_miqt_array {.importc: "QTextBlockFormat_tabPositions".}
 proc fcQTextBlockFormat_setMarker(self: pointer, marker: cint): void {.importc: "QTextBlockFormat_setMarker".}
 proc fcQTextBlockFormat_marker(self: pointer, ): cint {.importc: "QTextBlockFormat_marker".}
+proc fcQTextBlockFormat_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextBlockFormat_protectedbase_operatorAssign".}
 proc fcQTextBlockFormat_new(): ptr cQTextBlockFormat {.importc: "QTextBlockFormat_new".}
 proc fcQTextBlockFormat_new2(param1: pointer): ptr cQTextBlockFormat {.importc: "QTextBlockFormat_new2".}
 proc fcQTextBlockFormat_delete(self: pointer) {.importc: "QTextBlockFormat_delete".}
@@ -459,6 +461,7 @@ proc fcQTextListFormat_setNumberPrefix(self: pointer, numberPrefix: struct_miqt_
 proc fcQTextListFormat_numberPrefix(self: pointer, ): struct_miqt_string {.importc: "QTextListFormat_numberPrefix".}
 proc fcQTextListFormat_setNumberSuffix(self: pointer, numberSuffix: struct_miqt_string): void {.importc: "QTextListFormat_setNumberSuffix".}
 proc fcQTextListFormat_numberSuffix(self: pointer, ): struct_miqt_string {.importc: "QTextListFormat_numberSuffix".}
+proc fcQTextListFormat_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextListFormat_protectedbase_operatorAssign".}
 proc fcQTextListFormat_new(): ptr cQTextListFormat {.importc: "QTextListFormat_new".}
 proc fcQTextListFormat_new2(param1: pointer): ptr cQTextListFormat {.importc: "QTextListFormat_new2".}
 proc fcQTextListFormat_delete(self: pointer) {.importc: "QTextListFormat_delete".}
@@ -472,6 +475,7 @@ proc fcQTextImageFormat_height(self: pointer, ): float64 {.importc: "QTextImageF
 proc fcQTextImageFormat_setQuality(self: pointer, quality: cint): void {.importc: "QTextImageFormat_setQuality".}
 proc fcQTextImageFormat_setQuality2(self: pointer, ): void {.importc: "QTextImageFormat_setQuality2".}
 proc fcQTextImageFormat_quality(self: pointer, ): cint {.importc: "QTextImageFormat_quality".}
+proc fcQTextImageFormat_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextImageFormat_protectedbase_operatorAssign".}
 proc fcQTextImageFormat_new(): ptr cQTextImageFormat {.importc: "QTextImageFormat_new".}
 proc fcQTextImageFormat_delete(self: pointer) {.importc: "QTextImageFormat_delete".}
 proc fcQTextFrameFormat_isValid(self: pointer, ): bool {.importc: "QTextFrameFormat_isValid".}
@@ -503,6 +507,7 @@ proc fcQTextFrameFormat_setHeightWithHeight(self: pointer, height: pointer): voi
 proc fcQTextFrameFormat_height(self: pointer, ): pointer {.importc: "QTextFrameFormat_height".}
 proc fcQTextFrameFormat_setPageBreakPolicy(self: pointer, flags: cint): void {.importc: "QTextFrameFormat_setPageBreakPolicy".}
 proc fcQTextFrameFormat_pageBreakPolicy(self: pointer, ): cint {.importc: "QTextFrameFormat_pageBreakPolicy".}
+proc fcQTextFrameFormat_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextFrameFormat_protectedbase_operatorAssign".}
 proc fcQTextFrameFormat_new(): ptr cQTextFrameFormat {.importc: "QTextFrameFormat_new".}
 proc fcQTextFrameFormat_new2(param1: pointer): ptr cQTextFrameFormat {.importc: "QTextFrameFormat_new2".}
 proc fcQTextFrameFormat_delete(self: pointer) {.importc: "QTextFrameFormat_delete".}
@@ -522,6 +527,7 @@ proc fcQTextTableFormat_setHeaderRowCount(self: pointer, count: cint): void {.im
 proc fcQTextTableFormat_headerRowCount(self: pointer, ): cint {.importc: "QTextTableFormat_headerRowCount".}
 proc fcQTextTableFormat_setBorderCollapse(self: pointer, borderCollapse: bool): void {.importc: "QTextTableFormat_setBorderCollapse".}
 proc fcQTextTableFormat_borderCollapse(self: pointer, ): bool {.importc: "QTextTableFormat_borderCollapse".}
+proc fcQTextTableFormat_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextTableFormat_protectedbase_operatorAssign".}
 proc fcQTextTableFormat_new(): ptr cQTextTableFormat {.importc: "QTextTableFormat_new".}
 proc fcQTextTableFormat_delete(self: pointer) {.importc: "QTextTableFormat_delete".}
 proc fcQTextTableCellFormat_isValid(self: pointer, ): bool {.importc: "QTextTableCellFormat_isValid".}
@@ -561,6 +567,7 @@ proc fcQTextTableCellFormat_leftBorderBrush(self: pointer, ): pointer {.importc:
 proc fcQTextTableCellFormat_setRightBorderBrush(self: pointer, brush: pointer): void {.importc: "QTextTableCellFormat_setRightBorderBrush".}
 proc fcQTextTableCellFormat_rightBorderBrush(self: pointer, ): pointer {.importc: "QTextTableCellFormat_rightBorderBrush".}
 proc fcQTextTableCellFormat_setBorderBrush(self: pointer, brush: pointer): void {.importc: "QTextTableCellFormat_setBorderBrush".}
+proc fcQTextTableCellFormat_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextTableCellFormat_protectedbase_operatorAssign".}
 proc fcQTextTableCellFormat_new(): ptr cQTextTableCellFormat {.importc: "QTextTableCellFormat_new".}
 proc fcQTextTableCellFormat_delete(self: pointer) {.importc: "QTextTableCellFormat_delete".}
 
@@ -1017,6 +1024,9 @@ proc setFont*(self: gen_qtextformat_types.QTextCharFormat, font: gen_qfont_types
 proc setFontStyleHint*(self: gen_qtextformat_types.QTextCharFormat, hint: cint, strategy: cint): void =
   fcQTextCharFormat_setFontStyleHint2(self.h, cint(hint), cint(strategy))
 
+proc operatorAssign*(self: gen_qtextformat_types.QTextCharFormat, param1: gen_qtextformat_types.QTextCharFormat): void =
+  fcQTextCharFormat_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qtextformat_types.QTextCharFormat): gen_qtextformat_types.QTextCharFormat =
   gen_qtextformat_types.QTextCharFormat(h: fcQTextCharFormat_new())
 
@@ -1122,6 +1132,9 @@ proc setMarker*(self: gen_qtextformat_types.QTextBlockFormat, marker: cint): voi
 proc marker*(self: gen_qtextformat_types.QTextBlockFormat, ): cint =
   cint(fcQTextBlockFormat_marker(self.h))
 
+proc operatorAssign*(self: gen_qtextformat_types.QTextBlockFormat, param1: gen_qtextformat_types.QTextBlockFormat): void =
+  fcQTextBlockFormat_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qtextformat_types.QTextBlockFormat): gen_qtextformat_types.QTextBlockFormat =
   gen_qtextformat_types.QTextBlockFormat(h: fcQTextBlockFormat_new())
 
@@ -1164,6 +1177,9 @@ proc numberSuffix*(self: gen_qtextformat_types.QTextListFormat, ): string =
   c_free(v_ms.data)
   vx_ret
 
+proc operatorAssign*(self: gen_qtextformat_types.QTextListFormat, param1: gen_qtextformat_types.QTextListFormat): void =
+  fcQTextListFormat_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qtextformat_types.QTextListFormat): gen_qtextformat_types.QTextListFormat =
   gen_qtextformat_types.QTextListFormat(h: fcQTextListFormat_new())
 
@@ -1205,6 +1221,9 @@ proc setQuality*(self: gen_qtextformat_types.QTextImageFormat, ): void =
 
 proc quality*(self: gen_qtextformat_types.QTextImageFormat, ): cint =
   fcQTextImageFormat_quality(self.h)
+
+proc operatorAssign*(self: gen_qtextformat_types.QTextImageFormat, param1: gen_qtextformat_types.QTextCharFormat): void =
+  fcQTextImageFormat_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qtextformat_types.QTextImageFormat): gen_qtextformat_types.QTextImageFormat =
   gen_qtextformat_types.QTextImageFormat(h: fcQTextImageFormat_new())
@@ -1298,6 +1317,9 @@ proc setPageBreakPolicy*(self: gen_qtextformat_types.QTextFrameFormat, flags: ci
 proc pageBreakPolicy*(self: gen_qtextformat_types.QTextFrameFormat, ): cint =
   cint(fcQTextFrameFormat_pageBreakPolicy(self.h))
 
+proc operatorAssign*(self: gen_qtextformat_types.QTextFrameFormat, param1: gen_qtextformat_types.QTextFrameFormat): void =
+  fcQTextFrameFormat_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qtextformat_types.QTextFrameFormat): gen_qtextformat_types.QTextFrameFormat =
   gen_qtextformat_types.QTextFrameFormat(h: fcQTextFrameFormat_new())
 
@@ -1363,6 +1385,9 @@ proc setBorderCollapse*(self: gen_qtextformat_types.QTextTableFormat, borderColl
 
 proc borderCollapse*(self: gen_qtextformat_types.QTextTableFormat, ): bool =
   fcQTextTableFormat_borderCollapse(self.h)
+
+proc operatorAssign*(self: gen_qtextformat_types.QTextTableFormat, param1: gen_qtextformat_types.QTextFrameFormat): void =
+  fcQTextTableFormat_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qtextformat_types.QTextTableFormat): gen_qtextformat_types.QTextTableFormat =
   gen_qtextformat_types.QTextTableFormat(h: fcQTextTableFormat_new())
@@ -1479,6 +1504,9 @@ proc rightBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, ): gen_
 
 proc setBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, brush: gen_qbrush_types.QBrush): void =
   fcQTextTableCellFormat_setBorderBrush(self.h, brush.h)
+
+proc operatorAssign*(self: gen_qtextformat_types.QTextTableCellFormat, param1: gen_qtextformat_types.QTextCharFormat): void =
+  fcQTextTableCellFormat_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qtextformat_types.QTextTableCellFormat): gen_qtextformat_types.QTextTableCellFormat =
   gen_qtextformat_types.QTextTableCellFormat(h: fcQTextTableCellFormat_new())

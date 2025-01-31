@@ -121,7 +121,6 @@ void QPixmap_detach(QPixmap* self);
 bool QPixmap_isQBitmap(const QPixmap* self);
 QPaintEngine* QPixmap_paintEngine(const QPixmap* self);
 bool QPixmap_operatorNot(const QPixmap* self);
-int QPixmap_metric(const QPixmap* self, int param1);
 void QPixmap_fill1(QPixmap* self, QColor* fillColor);
 QBitmap* QPixmap_createHeuristicMask1(const QPixmap* self, bool clipTight);
 QBitmap* QPixmap_createMaskFromColor2(const QPixmap* self, QColor* maskColor, int mode);
@@ -163,6 +162,8 @@ int QPixmap_virtualbase_metric(const void* self, int param1);
 void QPixmap_virtualbase_initPainter(const void* self, QPainter* painter);
 QPaintDevice* QPixmap_virtualbase_redirected(const void* self, QPoint* offset);
 QPainter* QPixmap_virtualbase_sharedPainter(const void* self);
+QPixmap* QPixmap_protectedbase_fromImageInPlace(QImage* image);
+QPixmap* QPixmap_protectedbase_fromImageInPlace2(QImage* image, int flags);
 void QPixmap_delete(QPixmap* self);
 
 #ifdef __cplusplus

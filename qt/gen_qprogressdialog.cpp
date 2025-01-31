@@ -1171,6 +1171,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_forceShow() {
+
+		QProgressDialog::forceShow();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QProgressDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QProgressDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QProgressDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QProgressDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QProgressDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QProgressDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QProgressDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QProgressDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QProgressDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QProgressDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QProgressDialog* QProgressDialog_new(struct QProgressDialog_VTable* vtbl, QWidget* parent) {
@@ -1623,6 +1700,50 @@ void QProgressDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QProgressDialog_protectedbase_forceShow(void* self) {
+	( (MiqtVirtualQProgressDialog*)(self) )->protectedbase_forceShow();
+}
+
+void QProgressDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQProgressDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QProgressDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQProgressDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QProgressDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQProgressDialog*)(self) )->protectedbase_create();
+}
+
+void QProgressDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQProgressDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QProgressDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQProgressDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QProgressDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQProgressDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QProgressDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->protectedbase_sender();
+}
+
+int QProgressDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QProgressDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QProgressDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QProgressDialog_staticMetaObject() { return &QProgressDialog::staticMetaObject; }

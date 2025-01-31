@@ -79,8 +79,6 @@ void QFutureWatcherBase_toggleSuspended(QFutureWatcherBase* self);
 void QFutureWatcherBase_setPaused(QFutureWatcherBase* self, bool paused);
 void QFutureWatcherBase_pause(QFutureWatcherBase* self);
 void QFutureWatcherBase_togglePaused(QFutureWatcherBase* self);
-void QFutureWatcherBase_connectNotify(QFutureWatcherBase* self, QMetaMethod* signal);
-void QFutureWatcherBase_disconnectNotify(QFutureWatcherBase* self, QMetaMethod* signal);
 struct miqt_string QFutureWatcherBase_tr2(const char* s, const char* c);
 struct miqt_string QFutureWatcherBase_tr3(const char* s, const char* c, int n);
 const QMetaObject* QFutureWatcherBase_staticMetaObject();

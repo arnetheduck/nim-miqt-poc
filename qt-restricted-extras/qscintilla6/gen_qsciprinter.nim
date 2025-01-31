@@ -45,6 +45,7 @@ import
   gen_qpaintengine_types,
   gen_qpainter_types,
   gen_qpoint_types,
+  gen_qprintengine_types,
   gen_qprinter,
   gen_qrect_types,
   gen_qsciscintillabase_types
@@ -57,6 +58,7 @@ export
   gen_qpaintengine_types,
   gen_qpainter_types,
   gen_qpoint_types,
+  gen_qprintengine_types,
   gen_qprinter,
   gen_qrect_types,
   gen_qsciscintillabase_types
@@ -106,6 +108,7 @@ proc fcQsciPrinter_virtualbase_setPageRanges(self: pointer, ranges: pointer): vo
 proc fcQsciPrinter_virtualbase_initPainter(self: pointer, painter: pointer): void {.importc: "QsciPrinter_virtualbase_initPainter".}
 proc fcQsciPrinter_virtualbase_redirected(self: pointer, offset: pointer): pointer {.importc: "QsciPrinter_virtualbase_redirected".}
 proc fcQsciPrinter_virtualbase_sharedPainter(self: pointer, ): pointer {.importc: "QsciPrinter_virtualbase_sharedPainter".}
+proc fcQsciPrinter_protectedbase_setEngines(self: pointer, printEngine: pointer, paintEngine: pointer): void {.importc: "QsciPrinter_protectedbase_setEngines".}
 proc fcQsciPrinter_new(vtbl: pointer, ): ptr cQsciPrinter {.importc: "QsciPrinter_new".}
 proc fcQsciPrinter_new2(vtbl: pointer, mode: cint): ptr cQsciPrinter {.importc: "QsciPrinter_new2".}
 proc fcQsciPrinter_delete(self: pointer) {.importc: "QsciPrinter_delete".}
@@ -336,6 +339,9 @@ proc miqt_exec_callback_cQsciPrinter_sharedPainter(vtbl: pointer, self: pointer)
   let self = QsciPrinter(h: self)
   let virtualReturn = vtbl[].sharedPainter(self)
   virtualReturn.h
+
+proc setEngines*(self: gen_qsciprinter_types.QsciPrinter, printEngine: gen_qprintengine_types.QPrintEngine, paintEngine: gen_qpaintengine_types.QPaintEngine): void =
+  fcQsciPrinter_protectedbase_setEngines(self.h, printEngine.h, paintEngine.h)
 
 proc create*(T: type gen_qsciprinter_types.QsciPrinter,
     vtbl: ref QsciPrinterVTable = nil): gen_qsciprinter_types.QsciPrinter =

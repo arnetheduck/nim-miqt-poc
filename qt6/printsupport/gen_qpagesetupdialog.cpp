@@ -1167,6 +1167,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QPageSetupDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QPageSetupDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QPageSetupDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QPageSetupDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QPageSetupDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QPageSetupDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPageSetupDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPageSetupDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPageSetupDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPageSetupDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPageSetupDialog* QPageSetupDialog_new(struct QPageSetupDialog_VTable* vtbl, QWidget* parent) {
@@ -1464,6 +1534,46 @@ void QPageSetupDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QPageSetupDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QPageSetupDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QPageSetupDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_create();
+}
+
+void QPageSetupDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QPageSetupDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QPageSetupDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QPageSetupDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_sender();
+}
+
+int QPageSetupDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPageSetupDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPageSetupDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPageSetupDialog_staticMetaObject() { return &QPageSetupDialog::staticMetaObject; }

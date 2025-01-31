@@ -64,7 +64,6 @@ bool QTimer_isSingleShot(const QTimer* self);
 void QTimer_start(QTimer* self, int msec);
 void QTimer_start2(QTimer* self);
 void QTimer_stop(QTimer* self);
-void QTimer_timerEvent(QTimer* self, QTimerEvent* param1);
 struct miqt_string QTimer_tr2(const char* s, const char* c);
 struct miqt_string QTimer_tr3(const char* s, const char* c, int n);
 QMetaObject* QTimer_virtualbase_metaObject(const void* self);
@@ -77,6 +76,10 @@ void QTimer_virtualbase_childEvent(void* self, QChildEvent* event);
 void QTimer_virtualbase_customEvent(void* self, QEvent* event);
 void QTimer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QTimer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QTimer_protectedbase_sender(const void* self);
+int QTimer_protectedbase_senderSignalIndex(const void* self);
+int QTimer_protectedbase_receivers(const void* self, const char* signal);
+bool QTimer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QTimer_staticMetaObject();
 void QTimer_delete(QTimer* self);
 

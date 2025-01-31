@@ -1,8 +1,12 @@
+#include <QList>
 #include <QMatrix4x4>
 #include <QRect>
 #include <QSGMaterial>
 #include <QSGMaterialShader>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QSGMaterialShader__RenderState
+#include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <qsgmaterialshader.h>
 #include "gen_qsgmaterialshader.h"
 
@@ -172,6 +176,28 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setShaderSourceFile(QOpenGLShader::ShaderType type, struct miqt_string sourceFile) {
+		QString sourceFile_QString = QString::fromUtf8(sourceFile.data, sourceFile.len);
+
+		QSGMaterialShader::setShaderSourceFile(type, sourceFile_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setShaderSourceFiles(QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles) {
+		QStringList sourceFiles_QList;
+		sourceFiles_QList.reserve(sourceFiles.len);
+		struct miqt_string* sourceFiles_arr = static_cast<struct miqt_string*>(sourceFiles.data);
+		for(size_t i = 0; i < sourceFiles.len; ++i) {
+			QString sourceFiles_arr_i_QString = QString::fromUtf8(sourceFiles_arr[i].data, sourceFiles_arr[i].len);
+			sourceFiles_QList.push_back(sourceFiles_arr_i_QString);
+		}
+
+		QSGMaterialShader::setShaderSourceFiles(type, sourceFiles_QList);
+
+	}
+
 };
 
 QSGMaterialShader* QSGMaterialShader_new(struct QSGMaterialShader_VTable* vtbl) {
@@ -220,6 +246,14 @@ const char* QSGMaterialShader_virtualbase_vertexShader(const void* self) {
 
 const char* QSGMaterialShader_virtualbase_fragmentShader(const void* self) {
 	return ( (const MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_fragmentShader();
+}
+
+void QSGMaterialShader_protectedbase_setShaderSourceFile(void* self, QOpenGLShader::ShaderType type, struct miqt_string sourceFile) {
+	( (MiqtVirtualQSGMaterialShader*)(self) )->protectedbase_setShaderSourceFile(type, sourceFile);
+}
+
+void QSGMaterialShader_protectedbase_setShaderSourceFiles(void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles) {
+	( (MiqtVirtualQSGMaterialShader*)(self) )->protectedbase_setShaderSourceFiles(type, sourceFiles);
 }
 
 void QSGMaterialShader_delete(QSGMaterialShader* self) {

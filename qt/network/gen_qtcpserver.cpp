@@ -301,6 +301,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_addPendingConnection(QTcpSocket* socket) {
+
+		QTcpServer::addPendingConnection(socket);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTcpServer::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTcpServer::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTcpServer::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTcpServer::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTcpServer* QTcpServer_new(struct QTcpServer_VTable* vtbl) {
@@ -581,6 +616,26 @@ void QTcpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTcpServer_protectedbase_addPendingConnection(void* self, QTcpSocket* socket) {
+	( (MiqtVirtualQTcpServer*)(self) )->protectedbase_addPendingConnection(socket);
+}
+
+QObject* QTcpServer_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTcpServer*)(self) )->protectedbase_sender();
+}
+
+int QTcpServer_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTcpServer*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTcpServer_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTcpServer*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTcpServer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTcpServer*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTcpServer_staticMetaObject() { return &QTcpServer::staticMetaObject; }

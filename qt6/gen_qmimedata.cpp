@@ -338,6 +338,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMimeData::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMimeData::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMimeData::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMimeData::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMimeData* QMimeData_new(struct QMimeData_VTable* vtbl) {
@@ -584,6 +612,22 @@ void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMimeData*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QMimeData_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMimeData*)(self) )->protectedbase_sender();
+}
+
+int QMimeData_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMimeData*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMimeData_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMimeData*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMimeData_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMimeData*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMimeData_staticMetaObject() { return &QMimeData::staticMetaObject; }

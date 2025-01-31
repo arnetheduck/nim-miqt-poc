@@ -1074,6 +1074,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QMdiSubWindow::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QMdiSubWindow::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QMdiSubWindow::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QMdiSubWindow::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QMdiSubWindow::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMdiSubWindow::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMdiSubWindow::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMdiSubWindow::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMdiSubWindow::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMdiSubWindow* QMdiSubWindow_new(struct QMdiSubWindow_VTable* vtbl, QWidget* parent) {
@@ -1453,6 +1516,42 @@ void QMdiSubWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMdiSubWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QMdiSubWindow_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QMdiSubWindow_protectedbase_create(void* self) {
+	( (MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_create();
+}
+
+void QMdiSubWindow_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_destroy();
+}
+
+bool QMdiSubWindow_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QMdiSubWindow_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QMdiSubWindow_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_sender();
+}
+
+int QMdiSubWindow_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMdiSubWindow_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMdiSubWindow_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMdiSubWindow_staticMetaObject() { return &QMdiSubWindow::staticMetaObject; }

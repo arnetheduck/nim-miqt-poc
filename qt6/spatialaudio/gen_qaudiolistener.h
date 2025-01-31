@@ -62,6 +62,10 @@ void QAudioListener_virtualbase_childEvent(void* self, QChildEvent* event);
 void QAudioListener_virtualbase_customEvent(void* self, QEvent* event);
 void QAudioListener_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAudioListener_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAudioListener_protectedbase_sender(const void* self);
+int QAudioListener_protectedbase_senderSignalIndex(const void* self);
+int QAudioListener_protectedbase_receivers(const void* self, const char* signal);
+bool QAudioListener_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 void QAudioListener_delete(QAudioListener* self);
 
 #ifdef __cplusplus

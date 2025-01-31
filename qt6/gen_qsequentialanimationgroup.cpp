@@ -323,6 +323,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSequentialAnimationGroup::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSequentialAnimationGroup::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSequentialAnimationGroup::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSequentialAnimationGroup::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSequentialAnimationGroup* QSequentialAnimationGroup_new(struct QSequentialAnimationGroup_VTable* vtbl) {
@@ -472,6 +500,22 @@ void QSequentialAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod
 
 void QSequentialAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSequentialAnimationGroup_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->protectedbase_sender();
+}
+
+int QSequentialAnimationGroup_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSequentialAnimationGroup_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSequentialAnimationGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSequentialAnimationGroup_staticMetaObject() { return &QSequentialAnimationGroup::staticMetaObject; }

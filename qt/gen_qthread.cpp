@@ -256,6 +256,55 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	int protectedbase_exec() {
+
+		return QThread::exec();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setTerminationEnabled() {
+
+		QThread::setTerminationEnabled();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setTerminationEnabled1(bool enabled) {
+
+		QThread::setTerminationEnabled(enabled);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QThread::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QThread::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QThread::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QThread::isSignalConnected(*signal);
+
+	}
+
 };
 
 QThread* QThread_new(struct QThread_VTable* vtbl) {
@@ -505,6 +554,34 @@ void QThread_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QThread_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+int QThread_protectedbase_exec(void* self) {
+	return ( (MiqtVirtualQThread*)(self) )->protectedbase_exec();
+}
+
+void QThread_protectedbase_setTerminationEnabled() {
+	( (MiqtVirtualQThread*)(self) )->protectedbase_setTerminationEnabled();
+}
+
+void QThread_protectedbase_setTerminationEnabled1(bool enabled) {
+	( (MiqtVirtualQThread*)(self) )->protectedbase_setTerminationEnabled1(enabled);
+}
+
+QObject* QThread_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQThread*)(self) )->protectedbase_sender();
+}
+
+int QThread_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQThread*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QThread_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQThread*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QThread_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQThread*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QThread_staticMetaObject() { return &QThread::staticMetaObject; }

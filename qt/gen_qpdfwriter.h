@@ -98,8 +98,6 @@ void QPdfWriter_addFileAttachment(QPdfWriter* self, struct miqt_string fileName,
 void QPdfWriter_setPageSize(QPdfWriter* self, int size);
 void QPdfWriter_setPageSizeMM(QPdfWriter* self, QSizeF* size);
 void QPdfWriter_setMargins(QPdfWriter* self, QPagedPaintDevice__Margins* m);
-QPaintEngine* QPdfWriter_paintEngine(const QPdfWriter* self);
-int QPdfWriter_metric(const QPdfWriter* self, int id);
 struct miqt_string QPdfWriter_tr2(const char* s, const char* c);
 struct miqt_string QPdfWriter_tr3(const char* s, const char* c, int n);
 struct miqt_string QPdfWriter_trUtf82(const char* s, const char* c);
@@ -125,6 +123,11 @@ int QPdfWriter_virtualbase_devType(const void* self);
 void QPdfWriter_virtualbase_initPainter(const void* self, QPainter* painter);
 QPaintDevice* QPdfWriter_virtualbase_redirected(const void* self, QPoint* offset);
 QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self);
+QObject* QPdfWriter_protectedbase_sender(const void* self);
+int QPdfWriter_protectedbase_senderSignalIndex(const void* self);
+int QPdfWriter_protectedbase_receivers(const void* self, const char* signal);
+bool QPdfWriter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
+QPageLayout* QPdfWriter_protectedbase_devicePageLayout(const void* self);
 const QMetaObject* QPdfWriter_staticMetaObject();
 void QPdfWriter_delete(QPdfWriter* self);
 

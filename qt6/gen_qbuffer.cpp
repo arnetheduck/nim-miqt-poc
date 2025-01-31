@@ -586,6 +586,49 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setOpenMode(int openMode) {
+
+		QBuffer::setOpenMode(static_cast<QIODeviceBase::OpenMode>(openMode));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setErrorString(struct miqt_string errorString) {
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+		QBuffer::setErrorString(errorString_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QBuffer::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QBuffer::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QBuffer::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QBuffer::isSignalConnected(*signal);
+
+	}
+
 };
 
 QBuffer* QBuffer_new(struct QBuffer_VTable* vtbl) {
@@ -817,6 +860,30 @@ void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
 void QBuffer_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQBuffer*)(self) )->virtualbase_customEvent(event);
+}
+
+void QBuffer_protectedbase_setOpenMode(void* self, int openMode) {
+	( (MiqtVirtualQBuffer*)(self) )->protectedbase_setOpenMode(openMode);
+}
+
+void QBuffer_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	( (MiqtVirtualQBuffer*)(self) )->protectedbase_setErrorString(errorString);
+}
+
+QObject* QBuffer_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->protectedbase_sender();
+}
+
+int QBuffer_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QBuffer_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QBuffer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QBuffer_staticMetaObject() { return &QBuffer::staticMetaObject; }

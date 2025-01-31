@@ -1097,6 +1097,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QMainWindow::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QMainWindow::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QMainWindow::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QMainWindow::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QMainWindow::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMainWindow::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMainWindow::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMainWindow::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMainWindow::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMainWindow* QMainWindow_new(struct QMainWindow_VTable* vtbl, QWidget* parent) {
@@ -1719,6 +1782,42 @@ void QMainWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMainWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMainWindow*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QMainWindow_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQMainWindow*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QMainWindow_protectedbase_create(void* self) {
+	( (MiqtVirtualQMainWindow*)(self) )->protectedbase_create();
+}
+
+void QMainWindow_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQMainWindow*)(self) )->protectedbase_destroy();
+}
+
+bool QMainWindow_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQMainWindow*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QMainWindow_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQMainWindow*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QMainWindow_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMainWindow*)(self) )->protectedbase_sender();
+}
+
+int QMainWindow_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMainWindow*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMainWindow_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMainWindow*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMainWindow_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMainWindow*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMainWindow_staticMetaObject() { return &QMainWindow::staticMetaObject; }

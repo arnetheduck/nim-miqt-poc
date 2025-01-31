@@ -1072,6 +1072,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QKeySequenceEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QKeySequenceEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QKeySequenceEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QKeySequenceEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QKeySequenceEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QKeySequenceEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QKeySequenceEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QKeySequenceEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QKeySequenceEdit::isSignalConnected(*signal);
+
+	}
+
 };
 
 QKeySequenceEdit* QKeySequenceEdit_new(struct QKeySequenceEdit_VTable* vtbl, QWidget* parent) {
@@ -1423,6 +1486,42 @@ void QKeySequenceEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QKeySequenceEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QKeySequenceEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QKeySequenceEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_create();
+}
+
+void QKeySequenceEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_destroy();
+}
+
+bool QKeySequenceEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QKeySequenceEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QKeySequenceEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_sender();
+}
+
+int QKeySequenceEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QKeySequenceEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QKeySequenceEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QKeySequenceEdit_staticMetaObject() { return &QKeySequenceEdit::staticMetaObject; }

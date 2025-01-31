@@ -1016,6 +1016,62 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsVideoItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsVideoItem::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsVideoItem::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsVideoItem::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsVideoItem::isSignalConnected(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsVideoItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsVideoItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsVideoItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsVideoItem* QGraphicsVideoItem_new(struct QGraphicsVideoItem_VTable* vtbl) {
@@ -1362,6 +1418,38 @@ void QGraphicsVideoItem_virtualbase_setExtension(void* self, int extension, QVar
 
 QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_extension(variant);
+}
+
+void QGraphicsVideoItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+QObject* QGraphicsVideoItem_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsVideoItem_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsVideoItem_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsVideoItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
+void QGraphicsVideoItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsVideoItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsVideoItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsVideoItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 const QMetaObject* QGraphicsVideoItem_staticMetaObject() { return &QGraphicsVideoItem::staticMetaObject; }

@@ -1076,6 +1076,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QPrintPreviewWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QPrintPreviewWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QPrintPreviewWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QPrintPreviewWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QPrintPreviewWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPrintPreviewWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPrintPreviewWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPrintPreviewWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPrintPreviewWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPrintPreviewWidget* QPrintPreviewWidget_new(struct QPrintPreviewWidget_VTable* vtbl, QWidget* parent) {
@@ -1492,6 +1555,42 @@ void QPrintPreviewWidget_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QPrintPreviewWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QPrintPreviewWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_create();
+}
+
+void QPrintPreviewWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QPrintPreviewWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QPrintPreviewWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QPrintPreviewWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_sender();
+}
+
+int QPrintPreviewWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPrintPreviewWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPrintPreviewWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPrintPreviewWidget_staticMetaObject() { return &QPrintPreviewWidget::staticMetaObject; }

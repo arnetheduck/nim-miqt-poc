@@ -975,6 +975,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	bool protectedbase_isComponentComplete() const {
+
+		return QQuickFramebufferObject::isComponentComplete();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateInputMethod() {
+
+		QQuickFramebufferObject::updateInputMethod();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_widthValid() const {
+
+		return QQuickFramebufferObject::widthValid();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_heightValid() const {
+
+		return QQuickFramebufferObject::heightValid();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setImplicitSize(double param1, double param2) {
+
+		QQuickFramebufferObject::setImplicitSize(static_cast<qreal>(param1), static_cast<qreal>(param2));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickFramebufferObject::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickFramebufferObject::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickFramebufferObject::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickFramebufferObject::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickFramebufferObject* QQuickFramebufferObject_new(struct QQuickFramebufferObject_VTable* vtbl) {
@@ -1317,6 +1380,42 @@ void QQuickFramebufferObject_virtualbase_connectNotify(void* self, QMetaMethod* 
 
 void QQuickFramebufferObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+bool QQuickFramebufferObject_protectedbase_isComponentComplete(const void* self) {
+	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_isComponentComplete();
+}
+
+void QQuickFramebufferObject_protectedbase_updateInputMethod(void* self) {
+	( (MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_updateInputMethod();
+}
+
+bool QQuickFramebufferObject_protectedbase_widthValid(const void* self) {
+	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_widthValid();
+}
+
+bool QQuickFramebufferObject_protectedbase_heightValid(const void* self) {
+	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_heightValid();
+}
+
+void QQuickFramebufferObject_protectedbase_setImplicitSize(void* self, double param1, double param2) {
+	( (MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_setImplicitSize(param1, param2);
+}
+
+QObject* QQuickFramebufferObject_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_sender();
+}
+
+int QQuickFramebufferObject_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickFramebufferObject_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickFramebufferObject_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickFramebufferObject_staticMetaObject() { return &QQuickFramebufferObject::staticMetaObject; }

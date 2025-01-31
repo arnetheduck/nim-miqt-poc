@@ -30,6 +30,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionRubberBand>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1066,6 +1067,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionRubberBand* option) const {
+
+		QRubberBand::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QRubberBand::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QRubberBand::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QRubberBand::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QRubberBand::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QRubberBand::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QRubberBand::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QRubberBand::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QRubberBand::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QRubberBand::isSignalConnected(*signal);
+
+	}
+
 };
 
 QRubberBand* QRubberBand_new(struct QRubberBand_VTable* vtbl, int param1) {
@@ -1385,6 +1456,46 @@ void QRubberBand_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QRubberBand_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QRubberBand_protectedbase_initStyleOption(const void* self, QStyleOptionRubberBand* option) {
+	( (const MiqtVirtualQRubberBand*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QRubberBand_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQRubberBand*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QRubberBand_protectedbase_create(void* self) {
+	( (MiqtVirtualQRubberBand*)(self) )->protectedbase_create();
+}
+
+void QRubberBand_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQRubberBand*)(self) )->protectedbase_destroy();
+}
+
+bool QRubberBand_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQRubberBand*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QRubberBand_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQRubberBand*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QRubberBand_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQRubberBand*)(self) )->protectedbase_sender();
+}
+
+int QRubberBand_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQRubberBand*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QRubberBand_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQRubberBand*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QRubberBand_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQRubberBand*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QRubberBand_staticMetaObject() { return &QRubberBand::staticMetaObject; }

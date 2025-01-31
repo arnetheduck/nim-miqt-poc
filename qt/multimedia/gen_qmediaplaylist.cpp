@@ -301,6 +301,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMediaPlaylist::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMediaPlaylist::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMediaPlaylist::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMediaPlaylist::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMediaPlaylist* QMediaPlaylist_new(struct QMediaPlaylist_VTable* vtbl) {
@@ -811,6 +839,22 @@ void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QMediaPlaylist_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->protectedbase_sender();
+}
+
+int QMediaPlaylist_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMediaPlaylist_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMediaPlaylist_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMediaPlaylist_staticMetaObject() { return &QMediaPlaylist::staticMetaObject; }

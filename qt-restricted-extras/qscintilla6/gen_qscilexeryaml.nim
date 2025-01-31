@@ -179,6 +179,12 @@ proc fcQsciLexerYAML_virtualbase_childEvent(self: pointer, event: pointer): void
 proc fcQsciLexerYAML_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerYAML_virtualbase_customEvent".}
 proc fcQsciLexerYAML_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerYAML_virtualbase_connectNotify".}
 proc fcQsciLexerYAML_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerYAML_virtualbase_disconnectNotify".}
+proc fcQsciLexerYAML_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerYAML_protectedbase_readProperties".}
+proc fcQsciLexerYAML_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerYAML_protectedbase_writeProperties".}
+proc fcQsciLexerYAML_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerYAML_protectedbase_sender".}
+proc fcQsciLexerYAML_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerYAML_protectedbase_senderSignalIndex".}
+proc fcQsciLexerYAML_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerYAML_protectedbase_receivers".}
+proc fcQsciLexerYAML_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerYAML_protectedbase_isSignalConnected".}
 proc fcQsciLexerYAML_new(vtbl: pointer, ): ptr cQsciLexerYAML {.importc: "QsciLexerYAML_new".}
 proc fcQsciLexerYAML_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerYAML {.importc: "QsciLexerYAML_new2".}
 proc fcQsciLexerYAML_staticMetaObject(): pointer {.importc: "QsciLexerYAML_staticMetaObject".}
@@ -782,6 +788,24 @@ proc miqt_exec_callback_cQsciLexerYAML_disconnectNotify(vtbl: pointer, self: poi
   let self = QsciLexerYAML(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexeryaml_types.QsciLexerYAML, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerYAML_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexeryaml_types.QsciLexerYAML, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerYAML_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerYAML_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cint =
+  fcQsciLexerYAML_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexeryaml_types.QsciLexerYAML, signal: cstring): cint =
+  fcQsciLexerYAML_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexeryaml_types.QsciLexerYAML, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerYAML_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexeryaml_types.QsciLexerYAML,
     vtbl: ref QsciLexerYAMLVTable = nil): gen_qscilexeryaml_types.QsciLexerYAML =

@@ -89,6 +89,7 @@ QWidget* QLayoutItem_virtualbase_widget(const void* self);
 QLayout* QLayoutItem_virtualbase_layout(void* self);
 QSpacerItem* QLayoutItem_virtualbase_spacerItem(void* self);
 int QLayoutItem_virtualbase_controlTypes(const void* self);
+void QLayoutItem_protectedbase_operatorAssign(void* self, QLayoutItem* param1);
 void QLayoutItem_delete(QLayoutItem* self);
 
 struct QSpacerItem_VTable {

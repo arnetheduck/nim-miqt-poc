@@ -1164,6 +1164,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QErrorMessage::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QErrorMessage::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QErrorMessage::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QErrorMessage::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QErrorMessage::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QErrorMessage::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QErrorMessage::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QErrorMessage::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QErrorMessage::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QErrorMessage::isSignalConnected(*signal);
+
+	}
+
 };
 
 QErrorMessage* QErrorMessage_new(struct QErrorMessage_VTable* vtbl, QWidget* parent) {
@@ -1456,6 +1526,46 @@ void QErrorMessage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QErrorMessage_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQErrorMessage*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QErrorMessage_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQErrorMessage*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QErrorMessage_protectedbase_create(void* self) {
+	( (MiqtVirtualQErrorMessage*)(self) )->protectedbase_create();
+}
+
+void QErrorMessage_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQErrorMessage*)(self) )->protectedbase_destroy();
+}
+
+bool QErrorMessage_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQErrorMessage*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QErrorMessage_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQErrorMessage*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QErrorMessage_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->protectedbase_sender();
+}
+
+int QErrorMessage_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QErrorMessage_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QErrorMessage_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QErrorMessage_staticMetaObject() { return &QErrorMessage::staticMetaObject; }

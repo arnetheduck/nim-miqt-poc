@@ -16,6 +16,7 @@
 #include <QInputMethodEvent>
 #include <QKeyEvent>
 #include <QList>
+#include <QMargins>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QMouseEvent>
@@ -1171,6 +1172,97 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QAbstractScrollArea::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMarginsWithMargins(QMargins* margins) {
+
+		QAbstractScrollArea::setViewportMargins(*margins);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QAbstractScrollArea::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QAbstractScrollArea::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QAbstractScrollArea::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QAbstractScrollArea::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QAbstractScrollArea::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QAbstractScrollArea::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QAbstractScrollArea::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractScrollArea::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractScrollArea::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractScrollArea::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractScrollArea::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractScrollArea* QAbstractScrollArea_new(struct QAbstractScrollArea_VTable* vtbl, QWidget* parent) {
@@ -1540,6 +1632,58 @@ void QAbstractScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QAbstractScrollArea_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+void QAbstractScrollArea_protectedbase_setViewportMarginsWithMargins(void* self, QMargins* margins) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_setViewportMarginsWithMargins(margins);
+}
+
+QMargins* QAbstractScrollArea_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_viewportMargins();
+}
+
+void QAbstractScrollArea_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QAbstractScrollArea_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QAbstractScrollArea_protectedbase_create(void* self) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_create();
+}
+
+void QAbstractScrollArea_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_destroy();
+}
+
+bool QAbstractScrollArea_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QAbstractScrollArea_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QAbstractScrollArea_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_sender();
+}
+
+int QAbstractScrollArea_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractScrollArea_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractScrollArea_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractScrollArea_staticMetaObject() { return &QAbstractScrollArea::staticMetaObject; }

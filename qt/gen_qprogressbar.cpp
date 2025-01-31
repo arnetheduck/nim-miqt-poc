@@ -29,6 +29,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionProgressBar>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1094,6 +1095,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionProgressBar* option) const {
+
+		QProgressBar::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QProgressBar::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QProgressBar::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QProgressBar::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QProgressBar::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QProgressBar::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QProgressBar::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QProgressBar::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QProgressBar::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QProgressBar::isSignalConnected(*signal);
+
+	}
+
 };
 
 QProgressBar* QProgressBar_new(struct QProgressBar_VTable* vtbl, QWidget* parent) {
@@ -1522,6 +1593,46 @@ void QProgressBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProgressBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QProgressBar_protectedbase_initStyleOption(const void* self, QStyleOptionProgressBar* option) {
+	( (const MiqtVirtualQProgressBar*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QProgressBar_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQProgressBar*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QProgressBar_protectedbase_create(void* self) {
+	( (MiqtVirtualQProgressBar*)(self) )->protectedbase_create();
+}
+
+void QProgressBar_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQProgressBar*)(self) )->protectedbase_destroy();
+}
+
+bool QProgressBar_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQProgressBar*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QProgressBar_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQProgressBar*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QProgressBar_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQProgressBar*)(self) )->protectedbase_sender();
+}
+
+int QProgressBar_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQProgressBar*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QProgressBar_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQProgressBar*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QProgressBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQProgressBar*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QProgressBar_staticMetaObject() { return &QProgressBar::staticMetaObject; }

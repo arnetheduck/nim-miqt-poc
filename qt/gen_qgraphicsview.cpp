@@ -1207,6 +1207,97 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QGraphicsView::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QGraphicsView::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QGraphicsView::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QGraphicsView::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QGraphicsView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QGraphicsView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QGraphicsView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QGraphicsView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsView* QGraphicsView_new(struct QGraphicsView_VTable* vtbl, QWidget* parent) {
@@ -2027,6 +2118,58 @@ void QGraphicsView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QGraphicsView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsView_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQGraphicsView*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QGraphicsView_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQGraphicsView*)(self) )->protectedbase_viewportMargins();
+}
+
+void QGraphicsView_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQGraphicsView*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QGraphicsView_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQGraphicsView*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QGraphicsView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGraphicsView_protectedbase_create(void* self) {
+	( (MiqtVirtualQGraphicsView*)(self) )->protectedbase_create();
+}
+
+void QGraphicsView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQGraphicsView*)(self) )->protectedbase_destroy();
+}
+
+bool QGraphicsView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQGraphicsView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QGraphicsView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQGraphicsView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QGraphicsView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsView*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsView_staticMetaObject() { return &QGraphicsView::staticMetaObject; }

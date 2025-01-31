@@ -947,6 +947,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciLexerMarkdown::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciLexerMarkdown::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciLexerMarkdown::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciLexerMarkdown::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciLexerMarkdown* QsciLexerMarkdown_new(struct QsciLexerMarkdown_VTable* vtbl) {
@@ -1203,6 +1231,22 @@ void QsciLexerMarkdown_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QsciLexerMarkdown_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerMarkdown*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerMarkdown_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMarkdown*)(self) )->protectedbase_sender();
+}
+
+int QsciLexerMarkdown_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMarkdown*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciLexerMarkdown_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciLexerMarkdown*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciLexerMarkdown_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciLexerMarkdown*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciLexerMarkdown_staticMetaObject() { return &QsciLexerMarkdown::staticMetaObject; }

@@ -184,6 +184,10 @@ proc fcQsciLexerMarkdown_virtualbase_childEvent(self: pointer, event: pointer): 
 proc fcQsciLexerMarkdown_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerMarkdown_virtualbase_customEvent".}
 proc fcQsciLexerMarkdown_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerMarkdown_virtualbase_connectNotify".}
 proc fcQsciLexerMarkdown_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerMarkdown_virtualbase_disconnectNotify".}
+proc fcQsciLexerMarkdown_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerMarkdown_protectedbase_sender".}
+proc fcQsciLexerMarkdown_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerMarkdown_protectedbase_senderSignalIndex".}
+proc fcQsciLexerMarkdown_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerMarkdown_protectedbase_receivers".}
+proc fcQsciLexerMarkdown_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerMarkdown_protectedbase_isSignalConnected".}
 proc fcQsciLexerMarkdown_new(vtbl: pointer, ): ptr cQsciLexerMarkdown {.importc: "QsciLexerMarkdown_new".}
 proc fcQsciLexerMarkdown_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerMarkdown {.importc: "QsciLexerMarkdown_new2".}
 proc fcQsciLexerMarkdown_staticMetaObject(): pointer {.importc: "QsciLexerMarkdown_staticMetaObject".}
@@ -761,6 +765,18 @@ proc miqt_exec_callback_cQsciLexerMarkdown_disconnectNotify(vtbl: pointer, self:
   let self = QsciLexerMarkdown(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qscilexermarkdown_types.QsciLexerMarkdown, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerMarkdown_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexermarkdown_types.QsciLexerMarkdown, ): cint =
+  fcQsciLexerMarkdown_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexermarkdown_types.QsciLexerMarkdown, signal: cstring): cint =
+  fcQsciLexerMarkdown_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexermarkdown_types.QsciLexerMarkdown, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerMarkdown_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexermarkdown_types.QsciLexerMarkdown,
     vtbl: ref QsciLexerMarkdownVTable = nil): gen_qscilexermarkdown_types.QsciLexerMarkdown =

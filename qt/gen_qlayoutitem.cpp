@@ -269,6 +269,13 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_operatorAssign(QLayoutItem* param1) {
+
+		QLayoutItem::operator=(*param1);
+
+	}
+
 };
 
 QLayoutItem* QLayoutItem_new(struct QLayoutItem_VTable* vtbl) {
@@ -384,6 +391,10 @@ QSpacerItem* QLayoutItem_virtualbase_spacerItem(void* self) {
 
 int QLayoutItem_virtualbase_controlTypes(const void* self) {
 	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_controlTypes();
+}
+
+void QLayoutItem_protectedbase_operatorAssign(void* self, QLayoutItem* param1) {
+	( (MiqtVirtualQLayoutItem*)(self) )->protectedbase_operatorAssign(param1);
 }
 
 void QLayoutItem_delete(QLayoutItem* self) {

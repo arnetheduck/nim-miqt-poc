@@ -510,6 +510,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDnsLookup::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDnsLookup::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDnsLookup::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDnsLookup::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDnsLookup* QDnsLookup_new(struct QDnsLookup_VTable* vtbl) {
@@ -869,6 +897,22 @@ void QDnsLookup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QDnsLookup_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDnsLookup*)(self) )->protectedbase_sender();
+}
+
+int QDnsLookup_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDnsLookup*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDnsLookup_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDnsLookup*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDnsLookup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDnsLookup*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDnsLookup_staticMetaObject() { return &QDnsLookup::staticMetaObject; }

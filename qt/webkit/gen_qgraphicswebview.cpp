@@ -1451,6 +1451,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsWebView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsWebView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsWebView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsWebView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsWebView::isSignalConnected(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsWebView::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsWebView::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsWebView::prepareGeometryChange();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setGraphicsItem(QGraphicsItem* item) {
+
+		QGraphicsWebView::setGraphicsItem(item);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setOwnedByLayout(bool ownedByLayout) {
+
+		QGraphicsWebView::setOwnedByLayout(ownedByLayout);
+
+	}
+
 };
 
 QGraphicsWebView* QGraphicsWebView_new(struct QGraphicsWebView_VTable* vtbl) {
@@ -2178,6 +2248,46 @@ void QGraphicsWebView_virtualbase_setExtension(void* self, int extension, QVaria
 
 QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_extension(variant);
+}
+
+void QGraphicsWebView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+QObject* QGraphicsWebView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsWebView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsWebView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsWebView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
+void QGraphicsWebView_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsWebView_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsWebView_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_prepareGeometryChange();
+}
+
+void QGraphicsWebView_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item) {
+	( (MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_setGraphicsItem(item);
+}
+
+void QGraphicsWebView_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout) {
+	( (MiqtVirtualQGraphicsWebView*)(self) )->protectedbase_setOwnedByLayout(ownedByLayout);
 }
 
 const QMetaObject* QGraphicsWebView_staticMetaObject() { return &QGraphicsWebView::staticMetaObject; }

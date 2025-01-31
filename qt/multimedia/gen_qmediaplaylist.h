@@ -117,7 +117,6 @@ void QMediaPlaylist_loaded(QMediaPlaylist* self);
 void QMediaPlaylist_connect_loaded(QMediaPlaylist* self, intptr_t slot);
 void QMediaPlaylist_loadFailed(QMediaPlaylist* self);
 void QMediaPlaylist_connect_loadFailed(QMediaPlaylist* self, intptr_t slot);
-bool QMediaPlaylist_setMediaObject(QMediaPlaylist* self, QMediaObject* object);
 struct miqt_string QMediaPlaylist_tr2(const char* s, const char* c);
 struct miqt_string QMediaPlaylist_tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaPlaylist_trUtf82(const char* s, const char* c);
@@ -140,6 +139,10 @@ void QMediaPlaylist_virtualbase_childEvent(void* self, QChildEvent* event);
 void QMediaPlaylist_virtualbase_customEvent(void* self, QEvent* event);
 void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QMediaPlaylist_protectedbase_sender(const void* self);
+int QMediaPlaylist_protectedbase_senderSignalIndex(const void* self);
+int QMediaPlaylist_protectedbase_receivers(const void* self, const char* signal);
+bool QMediaPlaylist_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QMediaPlaylist_staticMetaObject();
 void QMediaPlaylist_delete(QMediaPlaylist* self);
 

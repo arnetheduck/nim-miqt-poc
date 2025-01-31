@@ -238,6 +238,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQmlWebChannel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQmlWebChannel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQmlWebChannel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQmlWebChannel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQmlWebChannel* QQmlWebChannel_new(struct QQmlWebChannel_VTable* vtbl) {
@@ -354,6 +382,22 @@ void QQmlWebChannel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQmlWebChannel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQmlWebChannel*)(self) )->protectedbase_sender();
+}
+
+int QQmlWebChannel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQmlWebChannel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQmlWebChannel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQmlWebChannel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQmlWebChannel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQmlWebChannel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQmlWebChannel_staticMetaObject() { return &QQmlWebChannel::staticMetaObject; }

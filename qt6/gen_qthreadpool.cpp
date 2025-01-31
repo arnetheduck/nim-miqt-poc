@@ -237,6 +237,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QThreadPool::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QThreadPool::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QThreadPool::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QThreadPool::isSignalConnected(*signal);
+
+	}
+
 };
 
 QThreadPool* QThreadPool_new(struct QThreadPool_VTable* vtbl) {
@@ -420,6 +448,22 @@ void QThreadPool_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QThreadPool_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQThreadPool*)(self) )->protectedbase_sender();
+}
+
+int QThreadPool_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQThreadPool*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QThreadPool_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQThreadPool*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QThreadPool_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQThreadPool*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QThreadPool_staticMetaObject() { return &QThreadPool::staticMetaObject; }

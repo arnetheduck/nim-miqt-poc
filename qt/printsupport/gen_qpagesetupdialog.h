@@ -216,6 +216,16 @@ void QPageSetupDialog_virtualbase_childEvent(void* self, QChildEvent* event);
 void QPageSetupDialog_virtualbase_customEvent(void* self, QEvent* event);
 void QPageSetupDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QPageSetupDialog_protectedbase_adjustPosition(void* self, QWidget* param1);
+void QPageSetupDialog_protectedbase_updateMicroFocus(void* self);
+void QPageSetupDialog_protectedbase_create(void* self);
+void QPageSetupDialog_protectedbase_destroy(void* self);
+bool QPageSetupDialog_protectedbase_focusNextChild(void* self);
+bool QPageSetupDialog_protectedbase_focusPreviousChild(void* self);
+QObject* QPageSetupDialog_protectedbase_sender(const void* self);
+int QPageSetupDialog_protectedbase_senderSignalIndex(const void* self);
+int QPageSetupDialog_protectedbase_receivers(const void* self, const char* signal);
+bool QPageSetupDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QPageSetupDialog_staticMetaObject();
 void QPageSetupDialog_delete(QPageSetupDialog* self);
 

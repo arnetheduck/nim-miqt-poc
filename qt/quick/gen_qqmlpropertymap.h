@@ -68,7 +68,6 @@ QVariant* QQmlPropertyMap_operatorSubscript(QQmlPropertyMap* self, struct miqt_s
 QVariant* QQmlPropertyMap_operatorSubscriptWithKey(const QQmlPropertyMap* self, struct miqt_string key);
 void QQmlPropertyMap_valueChanged(QQmlPropertyMap* self, struct miqt_string key, QVariant* value);
 void QQmlPropertyMap_connect_valueChanged(QQmlPropertyMap* self, intptr_t slot);
-QVariant* QQmlPropertyMap_updateValue(QQmlPropertyMap* self, struct miqt_string key, QVariant* input);
 struct miqt_string QQmlPropertyMap_tr2(const char* s, const char* c);
 struct miqt_string QQmlPropertyMap_tr3(const char* s, const char* c, int n);
 struct miqt_string QQmlPropertyMap_trUtf82(const char* s, const char* c);
@@ -84,6 +83,10 @@ void QQmlPropertyMap_virtualbase_childEvent(void* self, QChildEvent* event);
 void QQmlPropertyMap_virtualbase_customEvent(void* self, QEvent* event);
 void QQmlPropertyMap_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QQmlPropertyMap_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QQmlPropertyMap_protectedbase_sender(const void* self);
+int QQmlPropertyMap_protectedbase_senderSignalIndex(const void* self);
+int QQmlPropertyMap_protectedbase_receivers(const void* self, const char* signal);
+bool QQmlPropertyMap_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QQmlPropertyMap_staticMetaObject();
 void QQmlPropertyMap_delete(QQmlPropertyMap* self);
 

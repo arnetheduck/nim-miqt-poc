@@ -62,7 +62,6 @@ int QSocketNotifier_type(const QSocketNotifier* self);
 bool QSocketNotifier_isValid(const QSocketNotifier* self);
 bool QSocketNotifier_isEnabled(const QSocketNotifier* self);
 void QSocketNotifier_setEnabled(QSocketNotifier* self, bool enabled);
-bool QSocketNotifier_event(QSocketNotifier* self, QEvent* param1);
 struct miqt_string QSocketNotifier_tr2(const char* s, const char* c);
 struct miqt_string QSocketNotifier_tr3(const char* s, const char* c, int n);
 QMetaObject* QSocketNotifier_virtualbase_metaObject(const void* self);
@@ -75,6 +74,10 @@ void QSocketNotifier_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSocketNotifier_virtualbase_customEvent(void* self, QEvent* event);
 void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSocketNotifier_protectedbase_sender(const void* self);
+int QSocketNotifier_protectedbase_senderSignalIndex(const void* self);
+int QSocketNotifier_protectedbase_receivers(const void* self, const char* signal);
+bool QSocketNotifier_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSocketNotifier_staticMetaObject();
 void QSocketNotifier_delete(QSocketNotifier* self);
 

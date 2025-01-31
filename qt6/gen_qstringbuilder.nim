@@ -36,10 +36,24 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 import gen_qstringbuilder_types
 export gen_qstringbuilder_types
 
+import
+  gen_qbytearrayview_types,
+  gen_qchar_types
+export
+  gen_qbytearrayview_types,
+  gen_qchar_types
 
 type cQAbstractConcatenable*{.exportc: "QAbstractConcatenable", incompleteStruct.} = object
 
+proc fcQAbstractConcatenable_protectedbase_convertFromUtf8(self: pointer, inVal: pointer, outVal: pointer): void {.importc: "QAbstractConcatenable_protectedbase_convertFromUtf8".}
+proc fcQAbstractConcatenable_protectedbase_convertFromAscii(self: pointer, a: cchar, outVal: pointer): void {.importc: "QAbstractConcatenable_protectedbase_convertFromAscii".}
 proc fcQAbstractConcatenable_delete(self: pointer) {.importc: "QAbstractConcatenable_delete".}
+
+proc convertFromUtf8*(self: gen_qstringbuilder_types.QAbstractConcatenable, inVal: gen_qbytearrayview_types.QByteArrayView, outVal: gen_qchar_types.QChar): void =
+  fcQAbstractConcatenable_protectedbase_convertFromUtf8(self.hinVal.h, outVal.h)
+
+proc convertFromAscii*(self: gen_qstringbuilder_types.QAbstractConcatenable, a: cchar, outVal: gen_qchar_types.QChar): void =
+  fcQAbstractConcatenable_protectedbase_convertFromAscii(self.ha, outVal.h)
 
 proc delete*(self: gen_qstringbuilder_types.QAbstractConcatenable) =
   fcQAbstractConcatenable_delete(self.h)

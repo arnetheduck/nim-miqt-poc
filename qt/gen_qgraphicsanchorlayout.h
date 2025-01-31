@@ -83,7 +83,6 @@ void QGraphicsAnchorLayout_setGeometry(QGraphicsAnchorLayout* self, QRectF* rect
 int QGraphicsAnchorLayout_count(const QGraphicsAnchorLayout* self);
 QGraphicsLayoutItem* QGraphicsAnchorLayout_itemAt(const QGraphicsAnchorLayout* self, int index);
 void QGraphicsAnchorLayout_invalidate(QGraphicsAnchorLayout* self);
-QSizeF* QGraphicsAnchorLayout_sizeHint(const QGraphicsAnchorLayout* self, int which, QSizeF* constraint);
 void QGraphicsAnchorLayout_addAnchors3(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations);
 void QGraphicsAnchorLayout_virtualbase_removeAt(void* self, int index);
 void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, QRectF* rect);
@@ -94,6 +93,9 @@ QSizeF* QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, 
 void QGraphicsAnchorLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
 void QGraphicsAnchorLayout_virtualbase_updateGeometry(void* self);
 void QGraphicsAnchorLayout_virtualbase_widgetEvent(void* self, QEvent* e);
+void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(void* self, QGraphicsLayoutItem* layoutItem);
+void QGraphicsAnchorLayout_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item);
+void QGraphicsAnchorLayout_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout);
 void QGraphicsAnchorLayout_delete(QGraphicsAnchorLayout* self);
 
 #ifdef __cplusplus

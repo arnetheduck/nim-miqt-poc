@@ -80,6 +80,8 @@ int QPagedPaintDevice_virtualbase_metric(const void* self, int metric);
 void QPagedPaintDevice_virtualbase_initPainter(const void* self, QPainter* painter);
 QPaintDevice* QPagedPaintDevice_virtualbase_redirected(const void* self, QPoint* offset);
 QPainter* QPagedPaintDevice_virtualbase_sharedPainter(const void* self);
+QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout(const void* self);
+QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout2(void* self);
 void QPagedPaintDevice_delete(QPagedPaintDevice* self);
 
 void QPagedPaintDevice__Margins_delete(QPagedPaintDevice__Margins* self);

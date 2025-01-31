@@ -152,7 +152,6 @@ int QCameraViewfinder_metacall(QCameraViewfinder* self, int param1, int param2, 
 struct miqt_string QCameraViewfinder_tr(const char* s);
 struct miqt_string QCameraViewfinder_trUtf8(const char* s);
 QMediaObject* QCameraViewfinder_mediaObject(const QCameraViewfinder* self);
-bool QCameraViewfinder_setMediaObject(QCameraViewfinder* self, QMediaObject* object);
 struct miqt_string QCameraViewfinder_tr2(const char* s, const char* c);
 struct miqt_string QCameraViewfinder_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraViewfinder_trUtf82(const char* s, const char* c);
@@ -209,6 +208,15 @@ void QCameraViewfinder_virtualbase_childEvent(void* self, QChildEvent* event);
 void QCameraViewfinder_virtualbase_customEvent(void* self, QEvent* event);
 void QCameraViewfinder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QCameraViewfinder_protectedbase_updateMicroFocus(void* self);
+void QCameraViewfinder_protectedbase_create(void* self);
+void QCameraViewfinder_protectedbase_destroy(void* self);
+bool QCameraViewfinder_protectedbase_focusNextChild(void* self);
+bool QCameraViewfinder_protectedbase_focusPreviousChild(void* self);
+QObject* QCameraViewfinder_protectedbase_sender(const void* self);
+int QCameraViewfinder_protectedbase_senderSignalIndex(const void* self);
+int QCameraViewfinder_protectedbase_receivers(const void* self, const char* signal);
+bool QCameraViewfinder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QCameraViewfinder_staticMetaObject();
 void QCameraViewfinder_delete(QCameraViewfinder* self);
 

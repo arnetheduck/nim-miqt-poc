@@ -3,6 +3,7 @@
 #include <QAbstractItemView>
 #include <QChildEvent>
 #include <QEvent>
+#include <QFont>
 #include <QHelpEvent>
 #include <QItemDelegate>
 #include <QItemEditorFactory>
@@ -12,6 +13,7 @@
 #include <QModelIndex>
 #include <QObject>
 #include <QPainter>
+#include <QPalette>
 #include <QPixmap>
 #include <QRect>
 #include <QSize>
@@ -20,6 +22,7 @@
 #include <cstring>
 #include <QStyleOptionViewItem>
 #include <QTimerEvent>
+#include <QVariant>
 #include <QWidget>
 #include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"
@@ -627,6 +630,91 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_drawBackground(QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) const {
+
+		QItemDelegate::drawBackground(painter, *option, *index);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doLayout(QStyleOptionViewItem* option, QRect* checkRect, QRect* iconRect, QRect* textRect, bool hint) const {
+
+		QItemDelegate::doLayout(*option, checkRect, iconRect, textRect, hint);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_rect(QStyleOptionViewItem* option, QModelIndex* index, int role) const {
+
+		return new QRect(QItemDelegate::rect(*option, *index, static_cast<int>(role)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QStyleOptionViewItem* protectedbase_setOptions(QModelIndex* index, QStyleOptionViewItem* option) const {
+
+		return new QStyleOptionViewItem(QItemDelegate::setOptions(*index, *option));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_decoration(QStyleOptionViewItem* option, QVariant* variant) const {
+
+		return new QPixmap(QItemDelegate::decoration(*option, *variant));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_selectedPixmap(QPixmap* pixmap, QPalette* palette, bool enabled) {
+
+		return new QPixmap(QItemDelegate::selectedPixmap(*pixmap, *palette, enabled));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_doCheck(QStyleOptionViewItem* option, QRect* bounding, QVariant* variant) const {
+
+		return new QRect(QItemDelegate::doCheck(*option, *bounding, *variant));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_textRectangle(QPainter* painter, QRect* rect, QFont* font, struct miqt_string text) const {
+		QString text_QString = QString::fromUtf8(text.data, text.len);
+
+		return new QRect(QItemDelegate::textRectangle(painter, *rect, *font, text_QString));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QItemDelegate::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QItemDelegate::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QItemDelegate::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QItemDelegate::isSignalConnected(*signal);
+
+	}
+
 };
 
 QItemDelegate* QItemDelegate_new(struct QItemDelegate_VTable* vtbl) {
@@ -820,6 +908,54 @@ void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QItemDelegate_protectedbase_drawBackground(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
+	( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_drawBackground(painter, option, index);
+}
+
+void QItemDelegate_protectedbase_doLayout(const void* self, QStyleOptionViewItem* option, QRect* checkRect, QRect* iconRect, QRect* textRect, bool hint) {
+	( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_doLayout(option, checkRect, iconRect, textRect, hint);
+}
+
+QRect* QItemDelegate_protectedbase_rect(const void* self, QStyleOptionViewItem* option, QModelIndex* index, int role) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_rect(option, index, role);
+}
+
+QStyleOptionViewItem* QItemDelegate_protectedbase_setOptions(const void* self, QModelIndex* index, QStyleOptionViewItem* option) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_setOptions(index, option);
+}
+
+QPixmap* QItemDelegate_protectedbase_decoration(const void* self, QStyleOptionViewItem* option, QVariant* variant) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_decoration(option, variant);
+}
+
+QPixmap* QItemDelegate_protectedbase_selectedPixmap(QPixmap* pixmap, QPalette* palette, bool enabled) {
+	return ( (MiqtVirtualQItemDelegate*)(self) )->protectedbase_selectedPixmap(pixmap, palette, enabled);
+}
+
+QRect* QItemDelegate_protectedbase_doCheck(const void* self, QStyleOptionViewItem* option, QRect* bounding, QVariant* variant) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_doCheck(option, bounding, variant);
+}
+
+QRect* QItemDelegate_protectedbase_textRectangle(const void* self, QPainter* painter, QRect* rect, QFont* font, struct miqt_string text) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_textRectangle(painter, rect, font, text);
+}
+
+QObject* QItemDelegate_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_sender();
+}
+
+int QItemDelegate_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QItemDelegate_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QItemDelegate_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QItemDelegate_staticMetaObject() { return &QItemDelegate::staticMetaObject; }

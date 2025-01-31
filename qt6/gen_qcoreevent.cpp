@@ -11,6 +11,14 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QEvent_operatorAssign(intptr_t, QEvent*);
+void miqt_exec_callback_QEvent_operatorAssign_release(intptr_t);
+void miqt_exec_callback_QTimerEvent_operatorAssign(intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTimerEvent_operatorAssign_release(intptr_t);
+void miqt_exec_callback_QChildEvent_operatorAssign(intptr_t, QChildEvent*);
+void miqt_exec_callback_QChildEvent_operatorAssign_release(intptr_t);
+void miqt_exec_callback_QDynamicPropertyChangeEvent_operatorAssign(intptr_t, QDynamicPropertyChangeEvent*);
+void miqt_exec_callback_QDynamicPropertyChangeEvent_operatorAssign_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif

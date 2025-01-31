@@ -274,6 +274,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAccessibleBridgePlugin::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAccessibleBridgePlugin::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAccessibleBridgePlugin::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAccessibleBridgePlugin::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAccessibleBridgePlugin* QAccessibleBridgePlugin_new(struct QAccessibleBridgePlugin_VTable* vtbl) {
@@ -409,6 +437,22 @@ void QAccessibleBridgePlugin_virtualbase_connectNotify(void* self, QMetaMethod* 
 
 void QAccessibleBridgePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAccessibleBridgePlugin_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAccessibleBridgePlugin*)(self) )->protectedbase_sender();
+}
+
+int QAccessibleBridgePlugin_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAccessibleBridgePlugin*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAccessibleBridgePlugin_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAccessibleBridgePlugin*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAccessibleBridgePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAccessibleBridgePlugin*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAccessibleBridgePlugin_staticMetaObject() { return &QAccessibleBridgePlugin::staticMetaObject; }

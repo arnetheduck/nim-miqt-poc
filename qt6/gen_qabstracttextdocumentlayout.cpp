@@ -15,6 +15,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTextBlock>
+#include <QTextCharFormat>
 #include <QTextDocument>
 #include <QTextFormat>
 #include <QTextFrame>
@@ -431,6 +432,48 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	int protectedbase_formatIndex(int pos) {
+
+		return QAbstractTextDocumentLayout::formatIndex(static_cast<int>(pos));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QTextCharFormat* protectedbase_format(int pos) {
+
+		return new QTextCharFormat(QAbstractTextDocumentLayout::format(static_cast<int>(pos)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractTextDocumentLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractTextDocumentLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractTextDocumentLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractTextDocumentLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractTextDocumentLayout* QAbstractTextDocumentLayout_new(struct QAbstractTextDocumentLayout_VTable* vtbl, QTextDocument* doc) {
@@ -723,6 +766,30 @@ void QAbstractTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMeth
 
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+int QAbstractTextDocumentLayout_protectedbase_formatIndex(void* self, int pos) {
+	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->protectedbase_formatIndex(pos);
+}
+
+QTextCharFormat* QAbstractTextDocumentLayout_protectedbase_format(void* self, int pos) {
+	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->protectedbase_format(pos);
+}
+
+QObject* QAbstractTextDocumentLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractTextDocumentLayout*)(self) )->protectedbase_sender();
+}
+
+int QAbstractTextDocumentLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractTextDocumentLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractTextDocumentLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractTextDocumentLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractTextDocumentLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractTextDocumentLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractTextDocumentLayout_staticMetaObject() { return &QAbstractTextDocumentLayout::staticMetaObject; }

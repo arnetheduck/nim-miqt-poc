@@ -70,7 +70,6 @@ struct miqt_array /* of struct miqt_string */  QPicture_outputFormats();
 struct miqt_array /* of struct miqt_string */  QPicture_inputFormatList();
 struct miqt_array /* of struct miqt_string */  QPicture_outputFormatList();
 QPaintEngine* QPicture_paintEngine(const QPicture* self);
-int QPicture_metric(const QPicture* self, int m);
 bool QPicture_load2(QPicture* self, QIODevice* dev, const char* format);
 bool QPicture_load22(QPicture* self, struct miqt_string fileName, const char* format);
 bool QPicture_save2(QPicture* self, QIODevice* dev, const char* format);

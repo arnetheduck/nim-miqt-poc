@@ -79,6 +79,10 @@ void QVideoSink_virtualbase_childEvent(void* self, QChildEvent* event);
 void QVideoSink_virtualbase_customEvent(void* self, QEvent* event);
 void QVideoSink_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QVideoSink_protectedbase_sender(const void* self);
+int QVideoSink_protectedbase_senderSignalIndex(const void* self);
+int QVideoSink_protectedbase_receivers(const void* self, const char* signal);
+bool QVideoSink_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QVideoSink_staticMetaObject();
 void QVideoSink_delete(QVideoSink* self);
 

@@ -53,11 +53,15 @@ export gen_qmediaserviceproviderplugin_types
 
 import
   gen_qmediaservice_types,
+  gen_qmetaobject_types,
   gen_qobject,
+  gen_qobject_types,
   gen_qobjectdefs_types
 export
   gen_qmediaservice_types,
+  gen_qmetaobject_types,
   gen_qobject,
+  gen_qobject_types,
   gen_qobjectdefs_types
 
 type cQMediaServiceProviderHint*{.exportc: "QMediaServiceProviderHint", incompleteStruct.} = object
@@ -119,6 +123,10 @@ proc fcQMediaServiceProviderPlugin_tr2(s: cstring, c: cstring): struct_miqt_stri
 proc fcQMediaServiceProviderPlugin_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaServiceProviderPlugin_tr3".}
 proc fcQMediaServiceProviderPlugin_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaServiceProviderPlugin_trUtf82".}
 proc fcQMediaServiceProviderPlugin_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaServiceProviderPlugin_trUtf83".}
+proc fcQMediaServiceProviderPlugin_protectedbase_sender(self: pointer, ): pointer {.importc: "QMediaServiceProviderPlugin_protectedbase_sender".}
+proc fcQMediaServiceProviderPlugin_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QMediaServiceProviderPlugin_protectedbase_senderSignalIndex".}
+proc fcQMediaServiceProviderPlugin_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QMediaServiceProviderPlugin_protectedbase_receivers".}
+proc fcQMediaServiceProviderPlugin_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QMediaServiceProviderPlugin_protectedbase_isSignalConnected".}
 proc fcQMediaServiceProviderPlugin_staticMetaObject(): pointer {.importc: "QMediaServiceProviderPlugin_staticMetaObject".}
 proc fcQMediaServiceProviderPlugin_delete(self: pointer) {.importc: "QMediaServiceProviderPlugin_delete".}
 
@@ -331,6 +339,18 @@ proc trUtf8*(_: type gen_qmediaserviceproviderplugin_types.QMediaServiceProvider
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
+
+proc sender*(self: gen_qmediaserviceproviderplugin_types.QMediaServiceProviderPlugin, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQMediaServiceProviderPlugin_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qmediaserviceproviderplugin_types.QMediaServiceProviderPlugin, ): cint =
+  fcQMediaServiceProviderPlugin_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qmediaserviceproviderplugin_types.QMediaServiceProviderPlugin, signal: cstring): cint =
+  fcQMediaServiceProviderPlugin_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qmediaserviceproviderplugin_types.QMediaServiceProviderPlugin, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQMediaServiceProviderPlugin_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc staticMetaObject*(_: type gen_qmediaserviceproviderplugin_types.QMediaServiceProviderPlugin): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQMediaServiceProviderPlugin_staticMetaObject())

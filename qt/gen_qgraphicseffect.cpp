@@ -11,6 +11,8 @@
 #include <QMetaObject>
 #include <QObject>
 #include <QPainter>
+#include <QPixmap>
+#include <QPoint>
 #include <QPointF>
 #include <QRectF>
 #include <QString>
@@ -319,6 +321,97 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateBoundingRect() {
+
+		QGraphicsEffect::updateBoundingRect();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_sourceIsPixmap() const {
+
+		return QGraphicsEffect::sourceIsPixmap();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_sourceBoundingRect() const {
+
+		return new QRectF(QGraphicsEffect::sourceBoundingRect());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawSource(QPainter* painter) {
+
+		QGraphicsEffect::drawSource(painter);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap() const {
+
+		return new QPixmap(QGraphicsEffect::sourcePixmap());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_sourceBoundingRect1(int system) const {
+
+		return new QRectF(QGraphicsEffect::sourceBoundingRect(static_cast<Qt::CoordinateSystem>(system)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap1(int system) const {
+
+		return new QPixmap(QGraphicsEffect::sourcePixmap(static_cast<Qt::CoordinateSystem>(system)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap2(int system, QPoint* offset) const {
+
+		return new QPixmap(QGraphicsEffect::sourcePixmap(static_cast<Qt::CoordinateSystem>(system), offset));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap3(int system, QPoint* offset, int mode) const {
+
+		return new QPixmap(QGraphicsEffect::sourcePixmap(static_cast<Qt::CoordinateSystem>(system), offset, static_cast<QGraphicsEffect::PixmapPadMode>(mode)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsEffect::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsEffect::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsEffect::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsEffect::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsEffect* QGraphicsEffect_new(struct QGraphicsEffect_VTable* vtbl) {
@@ -497,6 +590,58 @@ void QGraphicsEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsEffect_protectedbase_updateBoundingRect(void* self) {
+	( (MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_updateBoundingRect();
+}
+
+bool QGraphicsEffect_protectedbase_sourceIsPixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sourceIsPixmap();
+}
+
+QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(const void* self) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sourceBoundingRect();
+}
+
+void QGraphicsEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	( (MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_drawSource(painter);
+}
+
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sourcePixmap();
+}
+
+QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect1(const void* self, int system) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sourceBoundingRect1(system);
+}
+
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap1(const void* self, int system) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sourcePixmap1(system);
+}
+
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(const void* self, int system, QPoint* offset) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sourcePixmap2(system, offset);
+}
+
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(const void* self, int system, QPoint* offset, int mode) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sourcePixmap3(system, offset, mode);
+}
+
+QObject* QGraphicsEffect_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsEffect_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsEffect_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsEffect_staticMetaObject() { return &QGraphicsEffect::staticMetaObject; }
@@ -783,6 +928,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateBoundingRect() {
+
+		QGraphicsColorizeEffect::updateBoundingRect();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_sourceIsPixmap() const {
+
+		return QGraphicsColorizeEffect::sourceIsPixmap();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_sourceBoundingRect() const {
+
+		return new QRectF(QGraphicsColorizeEffect::sourceBoundingRect());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawSource(QPainter* painter) {
+
+		QGraphicsColorizeEffect::drawSource(painter);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap() const {
+
+		return new QPixmap(QGraphicsColorizeEffect::sourcePixmap());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsColorizeEffect::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsColorizeEffect::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsColorizeEffect::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsColorizeEffect::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new(struct QGraphicsColorizeEffect_VTable* vtbl) {
@@ -985,6 +1193,42 @@ void QGraphicsColorizeEffect_virtualbase_connectNotify(void* self, QMetaMethod* 
 
 void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(void* self) {
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_updateBoundingRect();
+}
+
+bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_sourceIsPixmap();
+}
+
+QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(const void* self) {
+	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_sourceBoundingRect();
+}
+
+void QGraphicsColorizeEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_drawSource(painter);
+}
+
+QPixmap* QGraphicsColorizeEffect_protectedbase_sourcePixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_sourcePixmap();
+}
+
+QObject* QGraphicsColorizeEffect_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsColorizeEffect_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsColorizeEffect_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsColorizeEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsColorizeEffect_staticMetaObject() { return &QGraphicsColorizeEffect::staticMetaObject; }
@@ -1271,6 +1515,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateBoundingRect() {
+
+		QGraphicsBlurEffect::updateBoundingRect();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_sourceIsPixmap() const {
+
+		return QGraphicsBlurEffect::sourceIsPixmap();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_sourceBoundingRect() const {
+
+		return new QRectF(QGraphicsBlurEffect::sourceBoundingRect());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawSource(QPainter* painter) {
+
+		QGraphicsBlurEffect::drawSource(painter);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap() const {
+
+		return new QPixmap(QGraphicsBlurEffect::sourcePixmap());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsBlurEffect::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsBlurEffect::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsBlurEffect::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsBlurEffect::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsBlurEffect* QGraphicsBlurEffect_new(struct QGraphicsBlurEffect_VTable* vtbl) {
@@ -1477,6 +1784,42 @@ void QGraphicsBlurEffect_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsBlurEffect_protectedbase_updateBoundingRect(void* self) {
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_updateBoundingRect();
+}
+
+bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_sourceIsPixmap();
+}
+
+QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(const void* self) {
+	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_sourceBoundingRect();
+}
+
+void QGraphicsBlurEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_drawSource(painter);
+}
+
+QPixmap* QGraphicsBlurEffect_protectedbase_sourcePixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_sourcePixmap();
+}
+
+QObject* QGraphicsBlurEffect_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsBlurEffect_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsBlurEffect_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsBlurEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsBlurEffect_staticMetaObject() { return &QGraphicsBlurEffect::staticMetaObject; }
@@ -1763,6 +2106,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateBoundingRect() {
+
+		QGraphicsDropShadowEffect::updateBoundingRect();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_sourceIsPixmap() const {
+
+		return QGraphicsDropShadowEffect::sourceIsPixmap();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_sourceBoundingRect() const {
+
+		return new QRectF(QGraphicsDropShadowEffect::sourceBoundingRect());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawSource(QPainter* painter) {
+
+		QGraphicsDropShadowEffect::drawSource(painter);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap() const {
+
+		return new QPixmap(QGraphicsDropShadowEffect::sourcePixmap());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsDropShadowEffect::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsDropShadowEffect::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsDropShadowEffect::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsDropShadowEffect::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new(struct QGraphicsDropShadowEffect_VTable* vtbl) {
@@ -2025,6 +2431,42 @@ void QGraphicsDropShadowEffect_virtualbase_connectNotify(void* self, QMetaMethod
 
 void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(void* self) {
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_updateBoundingRect();
+}
+
+bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_sourceIsPixmap();
+}
+
+QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(const void* self) {
+	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_sourceBoundingRect();
+}
+
+void QGraphicsDropShadowEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_drawSource(painter);
+}
+
+QPixmap* QGraphicsDropShadowEffect_protectedbase_sourcePixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_sourcePixmap();
+}
+
+QObject* QGraphicsDropShadowEffect_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsDropShadowEffect_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsDropShadowEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsDropShadowEffect_staticMetaObject() { return &QGraphicsDropShadowEffect::staticMetaObject; }
@@ -2311,6 +2753,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateBoundingRect() {
+
+		QGraphicsOpacityEffect::updateBoundingRect();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_sourceIsPixmap() const {
+
+		return QGraphicsOpacityEffect::sourceIsPixmap();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_sourceBoundingRect() const {
+
+		return new QRectF(QGraphicsOpacityEffect::sourceBoundingRect());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawSource(QPainter* painter) {
+
+		QGraphicsOpacityEffect::drawSource(painter);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPixmap* protectedbase_sourcePixmap() const {
+
+		return new QPixmap(QGraphicsOpacityEffect::sourcePixmap());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsOpacityEffect::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsOpacityEffect::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsOpacityEffect::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsOpacityEffect::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new(struct QGraphicsOpacityEffect_VTable* vtbl) {
@@ -2513,6 +3018,42 @@ void QGraphicsOpacityEffect_virtualbase_connectNotify(void* self, QMetaMethod* s
 
 void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(void* self) {
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_updateBoundingRect();
+}
+
+bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_sourceIsPixmap();
+}
+
+QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(const void* self) {
+	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_sourceBoundingRect();
+}
+
+void QGraphicsOpacityEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_drawSource(painter);
+}
+
+QPixmap* QGraphicsOpacityEffect_protectedbase_sourcePixmap(const void* self) {
+	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_sourcePixmap();
+}
+
+QObject* QGraphicsOpacityEffect_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsOpacityEffect_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsOpacityEffect_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsOpacityEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsOpacityEffect_staticMetaObject() { return &QGraphicsOpacityEffect::staticMetaObject; }

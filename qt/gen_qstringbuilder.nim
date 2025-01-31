@@ -36,10 +36,26 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 import gen_qstringbuilder_types
 export gen_qstringbuilder_types
 
+import
+  gen_qchar_types
+export
+  gen_qchar_types
 
 type cQAbstractConcatenable*{.exportc: "QAbstractConcatenable", incompleteStruct.} = object
 
+proc fcQAbstractConcatenable_protectedbase_convertFromAscii(self: pointer, a: cstring, len: cint, outVal: pointer): void {.importc: "QAbstractConcatenable_protectedbase_convertFromAscii".}
+proc fcQAbstractConcatenable_protectedbase_convertFromAscii2(self: pointer, a: cchar, outVal: pointer): void {.importc: "QAbstractConcatenable_protectedbase_convertFromAscii2".}
+proc fcQAbstractConcatenable_protectedbase_appendLatin1To(self: pointer, a: cstring, len: cint, outVal: pointer): void {.importc: "QAbstractConcatenable_protectedbase_appendLatin1To".}
 proc fcQAbstractConcatenable_delete(self: pointer) {.importc: "QAbstractConcatenable_delete".}
+
+proc convertFromAscii*(self: gen_qstringbuilder_types.QAbstractConcatenable, a: cstring, len: cint, outVal: gen_qchar_types.QChar): void =
+  fcQAbstractConcatenable_protectedbase_convertFromAscii(self.ha, len, outVal.h)
+
+proc convertFromAscii*(self: gen_qstringbuilder_types.QAbstractConcatenable, a: cchar, outVal: gen_qchar_types.QChar): void =
+  fcQAbstractConcatenable_protectedbase_convertFromAscii2(self.ha, outVal.h)
+
+proc appendLatin1To*(self: gen_qstringbuilder_types.QAbstractConcatenable, a: cstring, len: cint, outVal: gen_qchar_types.QChar): void =
+  fcQAbstractConcatenable_protectedbase_appendLatin1To(self.ha, len, outVal.h)
 
 proc delete*(self: gen_qstringbuilder_types.QAbstractConcatenable) =
   fcQAbstractConcatenable_delete(self.h)

@@ -63,6 +63,24 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QEventPoint* protectedbase_point(int touchId) {
+
+		QEventPoint& _ret = QTest__QTouchEventWidgetSequence::point(static_cast<int>(touchId));
+		// Cast returned reference into pointer
+		return &_ret;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QEventPoint* protectedbase_pointOrPreviousPoint(int touchId) {
+
+		QEventPoint& _ret = QTest__QTouchEventWidgetSequence::pointOrPreviousPoint(static_cast<int>(touchId));
+		// Cast returned reference into pointer
+		return &_ret;
+
+	}
+
 };
 
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_new(struct QTest::QTouchEventWidgetSequence_VTable* vtbl, QTest__QTouchEventWidgetSequence* param1) {
@@ -125,6 +143,14 @@ QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_s
 
 bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool processEvents) {
 	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_commit(processEvents);
+}
+
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(void* self, int touchId) {
+	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->protectedbase_point(touchId);
+}
+
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(void* self, int touchId) {
+	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->protectedbase_pointOrPreviousPoint(touchId);
 }
 
 void QTest__QTouchEventWidgetSequence_delete(QTest__QTouchEventWidgetSequence* self) {

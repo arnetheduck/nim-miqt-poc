@@ -634,6 +634,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_widgetEvent(QEvent* param1) {
+
+		QBoxLayout::widgetEvent(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildLayout(QLayout* l) {
+
+		QBoxLayout::addChildLayout(l);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildWidget(QWidget* w) {
+
+		QBoxLayout::addChildWidget(w);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_adoptLayout(QLayout* layout) {
+
+		return QBoxLayout::adoptLayout(layout);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_alignmentRect(QRect* param1) const {
+
+		return new QRect(QBoxLayout::alignmentRect(*param1));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QBoxLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QBoxLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QBoxLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QBoxLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QBoxLayout* QBoxLayout_new(struct QBoxLayout_VTable* vtbl, int param1) {
@@ -1010,6 +1073,42 @@ QWidget* QBoxLayout_virtualbase_widget(void* self) {
 
 QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_spacerItem();
+}
+
+void QBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQBoxLayout*)(self) )->protectedbase_widgetEvent(param1);
+}
+
+void QBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	( (MiqtVirtualQBoxLayout*)(self) )->protectedbase_addChildLayout(l);
+}
+
+void QBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	( (MiqtVirtualQBoxLayout*)(self) )->protectedbase_addChildWidget(w);
+}
+
+bool QBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	return ( (MiqtVirtualQBoxLayout*)(self) )->protectedbase_adoptLayout(layout);
+}
+
+QRect* QBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->protectedbase_alignmentRect(param1);
+}
+
+QObject* QBoxLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->protectedbase_sender();
+}
+
+int QBoxLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QBoxLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QBoxLayout_staticMetaObject() { return &QBoxLayout::staticMetaObject; }
@@ -1624,6 +1723,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_widgetEvent(QEvent* param1) {
+
+		QHBoxLayout::widgetEvent(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildLayout(QLayout* l) {
+
+		QHBoxLayout::addChildLayout(l);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildWidget(QWidget* w) {
+
+		QHBoxLayout::addChildWidget(w);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_adoptLayout(QLayout* layout) {
+
+		return QHBoxLayout::adoptLayout(layout);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_alignmentRect(QRect* param1) const {
+
+		return new QRect(QHBoxLayout::alignmentRect(*param1));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QHBoxLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QHBoxLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QHBoxLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QHBoxLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QHBoxLayout* QHBoxLayout_new(struct QHBoxLayout_VTable* vtbl, QWidget* parent) {
@@ -1834,6 +1996,42 @@ QWidget* QHBoxLayout_virtualbase_widget(void* self) {
 
 QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_spacerItem();
+}
+
+void QHBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQHBoxLayout*)(self) )->protectedbase_widgetEvent(param1);
+}
+
+void QHBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	( (MiqtVirtualQHBoxLayout*)(self) )->protectedbase_addChildLayout(l);
+}
+
+void QHBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	( (MiqtVirtualQHBoxLayout*)(self) )->protectedbase_addChildWidget(w);
+}
+
+bool QHBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	return ( (MiqtVirtualQHBoxLayout*)(self) )->protectedbase_adoptLayout(layout);
+}
+
+QRect* QHBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->protectedbase_alignmentRect(param1);
+}
+
+QObject* QHBoxLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->protectedbase_sender();
+}
+
+int QHBoxLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QHBoxLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QHBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QHBoxLayout_staticMetaObject() { return &QHBoxLayout::staticMetaObject; }
@@ -2448,6 +2646,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_widgetEvent(QEvent* param1) {
+
+		QVBoxLayout::widgetEvent(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildLayout(QLayout* l) {
+
+		QVBoxLayout::addChildLayout(l);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildWidget(QWidget* w) {
+
+		QVBoxLayout::addChildWidget(w);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_adoptLayout(QLayout* layout) {
+
+		return QVBoxLayout::adoptLayout(layout);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_alignmentRect(QRect* param1) const {
+
+		return new QRect(QVBoxLayout::alignmentRect(*param1));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QVBoxLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QVBoxLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QVBoxLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QVBoxLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QVBoxLayout* QVBoxLayout_new(struct QVBoxLayout_VTable* vtbl, QWidget* parent) {
@@ -2658,6 +2919,42 @@ QWidget* QVBoxLayout_virtualbase_widget(void* self) {
 
 QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_spacerItem();
+}
+
+void QVBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQVBoxLayout*)(self) )->protectedbase_widgetEvent(param1);
+}
+
+void QVBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	( (MiqtVirtualQVBoxLayout*)(self) )->protectedbase_addChildLayout(l);
+}
+
+void QVBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	( (MiqtVirtualQVBoxLayout*)(self) )->protectedbase_addChildWidget(w);
+}
+
+bool QVBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	return ( (MiqtVirtualQVBoxLayout*)(self) )->protectedbase_adoptLayout(layout);
+}
+
+QRect* QVBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->protectedbase_alignmentRect(param1);
+}
+
+QObject* QVBoxLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->protectedbase_sender();
+}
+
+int QVBoxLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QVBoxLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QVBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QVBoxLayout_staticMetaObject() { return &QVBoxLayout::staticMetaObject; }

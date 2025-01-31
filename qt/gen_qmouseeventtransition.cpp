@@ -281,6 +281,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMouseEventTransition::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMouseEventTransition::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMouseEventTransition::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMouseEventTransition::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMouseEventTransition* QMouseEventTransition_new(struct QMouseEventTransition_VTable* vtbl) {
@@ -453,6 +481,22 @@ void QMouseEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* si
 
 void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QMouseEventTransition_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMouseEventTransition*)(self) )->protectedbase_sender();
+}
+
+int QMouseEventTransition_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMouseEventTransition*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMouseEventTransition_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMouseEventTransition*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMouseEventTransition_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMouseEventTransition*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMouseEventTransition_staticMetaObject() { return &QMouseEventTransition::staticMetaObject; }

@@ -55,8 +55,6 @@ QTextEncoder* QTextCodec_makeEncoder(const QTextCodec* self);
 struct miqt_string QTextCodec_name(const QTextCodec* self);
 struct miqt_array /* of struct miqt_string */  QTextCodec_aliases(const QTextCodec* self);
 int QTextCodec_mibEnum(const QTextCodec* self);
-struct miqt_string QTextCodec_convertToUnicode(const QTextCodec* self, const char* in, int length, QTextCodec__ConverterState* state);
-struct miqt_string QTextCodec_convertFromUnicode(const QTextCodec* self, QChar* in, int length, QTextCodec__ConverterState* state);
 struct miqt_string QTextCodec_toUnicode3(const QTextCodec* self, const char* in, int length, QTextCodec__ConverterState* state);
 struct miqt_string QTextCodec_fromUnicode3(const QTextCodec* self, QChar* in, int length, QTextCodec__ConverterState* state);
 QTextDecoder* QTextCodec_makeDecoder1(const QTextCodec* self, int flags);

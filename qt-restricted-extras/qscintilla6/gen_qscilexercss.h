@@ -168,6 +168,12 @@ void QsciLexerCSS_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerCSS_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerCSS_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerCSS_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerCSS_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerCSS_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerCSS_protectedbase_sender(const void* self);
+int QsciLexerCSS_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerCSS_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerCSS_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerCSS_staticMetaObject();
 void QsciLexerCSS_delete(QsciLexerCSS* self);
 

@@ -101,6 +101,10 @@ void QUndoGroup_virtualbase_childEvent(void* self, QChildEvent* event);
 void QUndoGroup_virtualbase_customEvent(void* self, QEvent* event);
 void QUndoGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QUndoGroup_protectedbase_sender(const void* self);
+int QUndoGroup_protectedbase_senderSignalIndex(const void* self);
+int QUndoGroup_protectedbase_receivers(const void* self, const char* signal);
+bool QUndoGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QUndoGroup_staticMetaObject();
 void QUndoGroup_delete(QUndoGroup* self);
 

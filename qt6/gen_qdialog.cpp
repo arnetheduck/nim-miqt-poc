@@ -1170,6 +1170,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDialog* QDialog_new(struct QDialog_VTable* vtbl, QWidget* parent) {
@@ -1561,6 +1631,46 @@ void QDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQDialog*)(self) )->protectedbase_create();
+}
+
+void QDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDialog*)(self) )->protectedbase_sender();
+}
+
+int QDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDialog_staticMetaObject() { return &QDialog::staticMetaObject; }

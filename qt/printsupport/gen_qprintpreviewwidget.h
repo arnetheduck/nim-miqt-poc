@@ -232,6 +232,15 @@ void QPrintPreviewWidget_virtualbase_childEvent(void* self, QChildEvent* event);
 void QPrintPreviewWidget_virtualbase_customEvent(void* self, QEvent* event);
 void QPrintPreviewWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QPrintPreviewWidget_protectedbase_updateMicroFocus(void* self);
+void QPrintPreviewWidget_protectedbase_create(void* self);
+void QPrintPreviewWidget_protectedbase_destroy(void* self);
+bool QPrintPreviewWidget_protectedbase_focusNextChild(void* self);
+bool QPrintPreviewWidget_protectedbase_focusPreviousChild(void* self);
+QObject* QPrintPreviewWidget_protectedbase_sender(const void* self);
+int QPrintPreviewWidget_protectedbase_senderSignalIndex(const void* self);
+int QPrintPreviewWidget_protectedbase_receivers(const void* self, const char* signal);
+bool QPrintPreviewWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QPrintPreviewWidget_staticMetaObject();
 void QPrintPreviewWidget_delete(QPrintPreviewWidget* self);
 

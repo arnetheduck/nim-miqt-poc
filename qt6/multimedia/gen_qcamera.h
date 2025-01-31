@@ -187,6 +187,10 @@ void QCamera_virtualbase_childEvent(void* self, QChildEvent* event);
 void QCamera_virtualbase_customEvent(void* self, QEvent* event);
 void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QCamera_protectedbase_sender(const void* self);
+int QCamera_protectedbase_senderSignalIndex(const void* self);
+int QCamera_protectedbase_receivers(const void* self, const char* signal);
+bool QCamera_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QCamera_staticMetaObject();
 void QCamera_delete(QCamera* self);
 

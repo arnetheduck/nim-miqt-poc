@@ -111,7 +111,6 @@ bool QAction_isIconVisibleInMenu(const QAction* self);
 void QAction_setShortcutVisibleInContextMenu(QAction* self, bool show);
 bool QAction_isShortcutVisibleInContextMenu(const QAction* self);
 bool QAction_showStatusText(QAction* self);
-bool QAction_event(QAction* self, QEvent* param1);
 void QAction_trigger(QAction* self);
 void QAction_hover(QAction* self);
 void QAction_setChecked(QAction* self, bool checked);
@@ -149,6 +148,10 @@ void QAction_virtualbase_childEvent(void* self, QChildEvent* event);
 void QAction_virtualbase_customEvent(void* self, QEvent* event);
 void QAction_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAction_protectedbase_sender(const void* self);
+int QAction_protectedbase_senderSignalIndex(const void* self);
+int QAction_protectedbase_receivers(const void* self, const char* signal);
+bool QAction_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAction_staticMetaObject();
 void QAction_delete(QAction* self);
 

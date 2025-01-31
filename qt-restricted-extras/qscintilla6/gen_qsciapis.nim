@@ -111,6 +111,10 @@ proc fcQsciAPIs_virtualbase_childEvent(self: pointer, event: pointer): void {.im
 proc fcQsciAPIs_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciAPIs_virtualbase_customEvent".}
 proc fcQsciAPIs_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciAPIs_virtualbase_connectNotify".}
 proc fcQsciAPIs_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciAPIs_virtualbase_disconnectNotify".}
+proc fcQsciAPIs_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciAPIs_protectedbase_sender".}
+proc fcQsciAPIs_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciAPIs_protectedbase_senderSignalIndex".}
+proc fcQsciAPIs_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciAPIs_protectedbase_receivers".}
+proc fcQsciAPIs_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciAPIs_protectedbase_isSignalConnected".}
 proc fcQsciAPIs_new(vtbl: pointer, lexer: pointer): ptr cQsciAPIs {.importc: "QsciAPIs_new".}
 proc fcQsciAPIs_staticMetaObject(): pointer {.importc: "QsciAPIs_staticMetaObject".}
 proc fcQsciAPIs_delete(self: pointer) {.importc: "QsciAPIs_delete".}
@@ -501,6 +505,18 @@ proc miqt_exec_callback_cQsciAPIs_disconnectNotify(vtbl: pointer, self: pointer,
   let self = QsciAPIs(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qsciapis_types.QsciAPIs, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciAPIs_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qsciapis_types.QsciAPIs, ): cint =
+  fcQsciAPIs_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qsciapis_types.QsciAPIs, signal: cstring): cint =
+  fcQsciAPIs_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qsciapis_types.QsciAPIs, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciAPIs_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qsciapis_types.QsciAPIs,
     lexer: gen_qscilexer_types.QsciLexer,

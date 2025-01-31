@@ -150,6 +150,10 @@ void QsciLexerDiff_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerDiff_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerDiff_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerDiff_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciLexerDiff_protectedbase_sender(const void* self);
+int QsciLexerDiff_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerDiff_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerDiff_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerDiff_staticMetaObject();
 void QsciLexerDiff_delete(QsciLexerDiff* self);
 

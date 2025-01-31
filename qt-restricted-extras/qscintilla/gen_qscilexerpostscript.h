@@ -170,6 +170,12 @@ void QsciLexerPostScript_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerPostScript_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerPostScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerPostScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerPostScript_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerPostScript_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerPostScript_protectedbase_sender(const void* self);
+int QsciLexerPostScript_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerPostScript_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerPostScript_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerPostScript_staticMetaObject();
 void QsciLexerPostScript_delete(QsciLexerPostScript* self);
 

@@ -1067,6 +1067,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_reformat() {
+
+		QStatusBar::reformat();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_hideOrShow() {
+
+		QStatusBar::hideOrShow();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QStatusBar::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QStatusBar::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QStatusBar::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QStatusBar::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QStatusBar::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QStatusBar::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QStatusBar::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QStatusBar::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QStatusBar::isSignalConnected(*signal);
+
+	}
+
 };
 
 QStatusBar* QStatusBar_new(struct QStatusBar_VTable* vtbl, QWidget* parent) {
@@ -1454,6 +1531,50 @@ void QStatusBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QStatusBar_protectedbase_reformat(void* self) {
+	( (MiqtVirtualQStatusBar*)(self) )->protectedbase_reformat();
+}
+
+void QStatusBar_protectedbase_hideOrShow(void* self) {
+	( (MiqtVirtualQStatusBar*)(self) )->protectedbase_hideOrShow();
+}
+
+void QStatusBar_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQStatusBar*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QStatusBar_protectedbase_create(void* self) {
+	( (MiqtVirtualQStatusBar*)(self) )->protectedbase_create();
+}
+
+void QStatusBar_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQStatusBar*)(self) )->protectedbase_destroy();
+}
+
+bool QStatusBar_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQStatusBar*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QStatusBar_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQStatusBar*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QStatusBar_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQStatusBar*)(self) )->protectedbase_sender();
+}
+
+int QStatusBar_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQStatusBar*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QStatusBar_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQStatusBar*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QStatusBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQStatusBar*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QStatusBar_staticMetaObject() { return &QStatusBar::staticMetaObject; }

@@ -815,6 +815,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QCommonStyle::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QCommonStyle::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QCommonStyle::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QCommonStyle::isSignalConnected(*signal);
+
+	}
+
 };
 
 QCommonStyle* QCommonStyle_new(struct QCommonStyle_VTable* vtbl) {
@@ -1106,6 +1134,22 @@ void QCommonStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QCommonStyle_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->protectedbase_sender();
+}
+
+int QCommonStyle_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QCommonStyle_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QCommonStyle_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QCommonStyle_staticMetaObject() { return &QCommonStyle::staticMetaObject; }

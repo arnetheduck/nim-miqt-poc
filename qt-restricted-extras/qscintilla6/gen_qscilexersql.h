@@ -174,6 +174,12 @@ void QsciLexerSQL_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerSQL_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerSQL_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerSQL_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerSQL_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerSQL_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerSQL_protectedbase_sender(const void* self);
+int QsciLexerSQL_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerSQL_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerSQL_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerSQL_staticMetaObject();
 void QsciLexerSQL_delete(QsciLexerSQL* self);
 

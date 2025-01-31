@@ -309,6 +309,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QValidator::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QValidator::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QValidator::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QValidator::isSignalConnected(*signal);
+
+	}
+
 };
 
 QValidator* QValidator_new(struct QValidator_VTable* vtbl) {
@@ -481,6 +509,22 @@ void QValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QValidator_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQValidator*)(self) )->protectedbase_sender();
+}
+
+int QValidator_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQValidator*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QValidator_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQValidator*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQValidator*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QValidator_staticMetaObject() { return &QValidator::staticMetaObject; }
@@ -785,6 +829,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QIntValidator::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QIntValidator::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QIntValidator::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QIntValidator::isSignalConnected(*signal);
+
+	}
+
 };
 
 QIntValidator* QIntValidator_new(struct QIntValidator_VTable* vtbl) {
@@ -1006,6 +1078,22 @@ void QIntValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QIntValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIntValidator*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QIntValidator_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQIntValidator*)(self) )->protectedbase_sender();
+}
+
+int QIntValidator_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQIntValidator*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QIntValidator_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQIntValidator*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QIntValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQIntValidator*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QIntValidator_staticMetaObject() { return &QIntValidator::staticMetaObject; }
@@ -1311,6 +1399,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDoubleValidator::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDoubleValidator::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDoubleValidator::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDoubleValidator::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDoubleValidator* QDoubleValidator_new(struct QDoubleValidator_VTable* vtbl) {
@@ -1585,6 +1701,22 @@ void QDoubleValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QDoubleValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDoubleValidator*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QDoubleValidator_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDoubleValidator*)(self) )->protectedbase_sender();
+}
+
+int QDoubleValidator_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDoubleValidator*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDoubleValidator_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDoubleValidator*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDoubleValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDoubleValidator*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDoubleValidator_staticMetaObject() { return &QDoubleValidator::staticMetaObject; }
@@ -1868,6 +2000,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QRegExpValidator::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QRegExpValidator::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QRegExpValidator::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QRegExpValidator::isSignalConnected(*signal);
+
+	}
+
 };
 
 QRegExpValidator* QRegExpValidator_new(struct QRegExpValidator_VTable* vtbl) {
@@ -2052,6 +2212,22 @@ void QRegExpValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QRegExpValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRegExpValidator*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QRegExpValidator_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQRegExpValidator*)(self) )->protectedbase_sender();
+}
+
+int QRegExpValidator_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQRegExpValidator*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QRegExpValidator_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQRegExpValidator*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QRegExpValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQRegExpValidator*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QRegExpValidator_staticMetaObject() { return &QRegExpValidator::staticMetaObject; }
@@ -2335,6 +2511,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QRegularExpressionValidator::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QRegularExpressionValidator::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QRegularExpressionValidator::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QRegularExpressionValidator::isSignalConnected(*signal);
+
+	}
+
 };
 
 QRegularExpressionValidator* QRegularExpressionValidator_new(struct QRegularExpressionValidator_VTable* vtbl) {
@@ -2517,6 +2721,22 @@ void QRegularExpressionValidator_virtualbase_connectNotify(void* self, QMetaMeth
 
 void QRegularExpressionValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRegularExpressionValidator*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QRegularExpressionValidator_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQRegularExpressionValidator*)(self) )->protectedbase_sender();
+}
+
+int QRegularExpressionValidator_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQRegularExpressionValidator*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QRegularExpressionValidator_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQRegularExpressionValidator*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QRegularExpressionValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQRegularExpressionValidator*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QRegularExpressionValidator_staticMetaObject() { return &QRegularExpressionValidator::staticMetaObject; }

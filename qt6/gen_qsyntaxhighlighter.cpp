@@ -1,5 +1,7 @@
 #include <QChildEvent>
+#include <QColor>
 #include <QEvent>
+#include <QFont>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
@@ -8,6 +10,8 @@
 #include <cstring>
 #include <QSyntaxHighlighter>
 #include <QTextBlock>
+#include <QTextBlockUserData>
+#include <QTextCharFormat>
 #include <QTextDocument>
 #include <QTimerEvent>
 #include <qsyntaxhighlighter.h>
@@ -256,6 +260,104 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setFormat(int start, int count, QTextCharFormat* format) {
+
+		QSyntaxHighlighter::setFormat(static_cast<int>(start), static_cast<int>(count), *format);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setFormat2(int start, int count, QColor* color) {
+
+		QSyntaxHighlighter::setFormat(static_cast<int>(start), static_cast<int>(count), *color);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setFormat3(int start, int count, QFont* font) {
+
+		QSyntaxHighlighter::setFormat(static_cast<int>(start), static_cast<int>(count), *font);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QTextCharFormat* protectedbase_format(int pos) const {
+
+		return new QTextCharFormat(QSyntaxHighlighter::format(static_cast<int>(pos)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_previousBlockState() const {
+
+		return QSyntaxHighlighter::previousBlockState();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_currentBlockState() const {
+
+		return QSyntaxHighlighter::currentBlockState();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setCurrentBlockState(int newState) {
+
+		QSyntaxHighlighter::setCurrentBlockState(static_cast<int>(newState));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setCurrentBlockUserData(QTextBlockUserData* data) {
+
+		QSyntaxHighlighter::setCurrentBlockUserData(data);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QTextBlockUserData* protectedbase_currentBlockUserData() const {
+
+		return QSyntaxHighlighter::currentBlockUserData();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QTextBlock* protectedbase_currentBlock() const {
+
+		return new QTextBlock(QSyntaxHighlighter::currentBlock());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSyntaxHighlighter::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSyntaxHighlighter::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSyntaxHighlighter::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSyntaxHighlighter::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSyntaxHighlighter* QSyntaxHighlighter_new(struct QSyntaxHighlighter_VTable* vtbl, QObject* parent) {
@@ -369,6 +471,62 @@ void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSyntaxHighlighter_protectedbase_setFormat(void* self, int start, int count, QTextCharFormat* format) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_setFormat(start, count, format);
+}
+
+void QSyntaxHighlighter_protectedbase_setFormat2(void* self, int start, int count, QColor* color) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_setFormat2(start, count, color);
+}
+
+void QSyntaxHighlighter_protectedbase_setFormat3(void* self, int start, int count, QFont* font) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_setFormat3(start, count, font);
+}
+
+QTextCharFormat* QSyntaxHighlighter_protectedbase_format(const void* self, int pos) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_format(pos);
+}
+
+int QSyntaxHighlighter_protectedbase_previousBlockState(const void* self) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_previousBlockState();
+}
+
+int QSyntaxHighlighter_protectedbase_currentBlockState(const void* self) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_currentBlockState();
+}
+
+void QSyntaxHighlighter_protectedbase_setCurrentBlockState(void* self, int newState) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_setCurrentBlockState(newState);
+}
+
+void QSyntaxHighlighter_protectedbase_setCurrentBlockUserData(void* self, QTextBlockUserData* data) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_setCurrentBlockUserData(data);
+}
+
+QTextBlockUserData* QSyntaxHighlighter_protectedbase_currentBlockUserData(const void* self) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_currentBlockUserData();
+}
+
+QTextBlock* QSyntaxHighlighter_protectedbase_currentBlock(const void* self) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_currentBlock();
+}
+
+QObject* QSyntaxHighlighter_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_sender();
+}
+
+int QSyntaxHighlighter_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSyntaxHighlighter_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSyntaxHighlighter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSyntaxHighlighter*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSyntaxHighlighter_staticMetaObject() { return &QSyntaxHighlighter::staticMetaObject; }

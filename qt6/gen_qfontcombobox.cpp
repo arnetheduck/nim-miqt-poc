@@ -1151,6 +1151,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QFontComboBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QFontComboBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QFontComboBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QFontComboBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QFontComboBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QFontComboBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QFontComboBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QFontComboBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QFontComboBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QFontComboBox* QFontComboBox_new(struct QFontComboBox_VTable* vtbl, QWidget* parent) {
@@ -1515,6 +1578,42 @@ void QFontComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QFontComboBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQFontComboBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QFontComboBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQFontComboBox*)(self) )->protectedbase_create();
+}
+
+void QFontComboBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQFontComboBox*)(self) )->protectedbase_destroy();
+}
+
+bool QFontComboBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQFontComboBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QFontComboBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQFontComboBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QFontComboBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->protectedbase_sender();
+}
+
+int QFontComboBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QFontComboBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QFontComboBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QFontComboBox_staticMetaObject() { return &QFontComboBox::staticMetaObject; }

@@ -63,6 +63,7 @@ type cQStringConverterBase*{.exportc: "QStringConverterBase", incompleteStruct.}
 type cQStringConverter*{.exportc: "QStringConverter", incompleteStruct.} = object
 type cQStringConverterBaseState*{.exportc: "QStringConverterBase__State", incompleteStruct.} = object
 
+proc fcQStringConverterBase_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QStringConverterBase_protectedbase_operatorAssign".}
 proc fcQStringConverterBase_new(param1: pointer): ptr cQStringConverterBase {.importc: "QStringConverterBase_new".}
 proc fcQStringConverterBase_new2(): ptr cQStringConverterBase {.importc: "QStringConverterBase_new2".}
 proc fcQStringConverter_isValid(self: pointer, ): bool {.importc: "QStringConverter_isValid".}
@@ -75,6 +76,9 @@ proc fcQStringConverterBaseState_reset(self: pointer, ): void {.importc: "QStrin
 proc fcQStringConverterBaseState_new(): ptr cQStringConverterBaseState {.importc: "QStringConverterBase__State_new".}
 proc fcQStringConverterBaseState_new2(f: cint): ptr cQStringConverterBaseState {.importc: "QStringConverterBase__State_new2".}
 proc fcQStringConverterBaseState_delete(self: pointer) {.importc: "QStringConverterBase__State_delete".}
+
+proc operatorAssign*(self: gen_qstringconverter_base_types.QStringConverterBase, param1: gen_qstringconverter_base_types.QStringConverterBase): void =
+  fcQStringConverterBase_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qstringconverter_base_types.QStringConverterBase,
     param1: gen_qstringconverter_base_types.QStringConverterBase): gen_qstringconverter_base_types.QStringConverterBase =

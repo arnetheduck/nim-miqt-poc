@@ -238,6 +238,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQmlFileSelector::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQmlFileSelector::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQmlFileSelector::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQmlFileSelector::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQmlFileSelector* QQmlFileSelector_new(struct QQmlFileSelector_VTable* vtbl, QQmlEngine* engine) {
@@ -402,6 +430,22 @@ void QQmlFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlFileSelector*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQmlFileSelector_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQmlFileSelector*)(self) )->protectedbase_sender();
+}
+
+int QQmlFileSelector_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQmlFileSelector*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQmlFileSelector_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQmlFileSelector*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQmlFileSelector_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQmlFileSelector*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQmlFileSelector_staticMetaObject() { return &QQmlFileSelector::staticMetaObject; }

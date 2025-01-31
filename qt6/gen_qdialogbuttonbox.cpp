@@ -1084,6 +1084,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QDialogButtonBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QDialogButtonBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QDialogButtonBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QDialogButtonBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QDialogButtonBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDialogButtonBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDialogButtonBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDialogButtonBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDialogButtonBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDialogButtonBox* QDialogButtonBox_new(struct QDialogButtonBox_VTable* vtbl, QWidget* parent) {
@@ -1516,6 +1579,42 @@ void QDialogButtonBox_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QDialogButtonBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDialogButtonBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDialogButtonBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QDialogButtonBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_create();
+}
+
+void QDialogButtonBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_destroy();
+}
+
+bool QDialogButtonBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QDialogButtonBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QDialogButtonBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_sender();
+}
+
+int QDialogButtonBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDialogButtonBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDialogButtonBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDialogButtonBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDialogButtonBox_staticMetaObject() { return &QDialogButtonBox::staticMetaObject; }

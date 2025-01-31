@@ -1321,6 +1321,208 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createSourceIndex(int row, int col, void* internalPtr) const {
+
+		return new QModelIndex(QTransposeProxyModel::createSourceIndex(static_cast<int>(row), static_cast<int>(col), internalPtr));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QTransposeProxyModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QTransposeProxyModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QTransposeProxyModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QTransposeProxyModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QTransposeProxyModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QTransposeProxyModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QTransposeProxyModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QTransposeProxyModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QTransposeProxyModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QTransposeProxyModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QTransposeProxyModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QTransposeProxyModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QTransposeProxyModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QTransposeProxyModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QTransposeProxyModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QTransposeProxyModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QTransposeProxyModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QTransposeProxyModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QTransposeProxyModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QTransposeProxyModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTransposeProxyModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTransposeProxyModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTransposeProxyModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTransposeProxyModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTransposeProxyModel* QTransposeProxyModel_new(struct QTransposeProxyModel_VTable* vtbl) {
@@ -1682,6 +1884,106 @@ void QTransposeProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* sig
 
 void QTransposeProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QModelIndex* QTransposeProxyModel_protectedbase_createSourceIndex(const void* self, int row, int col, void* internalPtr) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_createSourceIndex(row, col, internalPtr);
+}
+
+QModelIndex* QTransposeProxyModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+void QTransposeProxyModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QTransposeProxyModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QTransposeProxyModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QTransposeProxyModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QTransposeProxyModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QTransposeProxyModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QTransposeProxyModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QTransposeProxyModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QTransposeProxyModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QTransposeProxyModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QTransposeProxyModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QTransposeProxyModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QTransposeProxyModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QTransposeProxyModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QTransposeProxyModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QTransposeProxyModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QTransposeProxyModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QTransposeProxyModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QTransposeProxyModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QObject* QTransposeProxyModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_sender();
+}
+
+int QTransposeProxyModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTransposeProxyModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTransposeProxyModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTransposeProxyModel_staticMetaObject() { return &QTransposeProxyModel::staticMetaObject; }

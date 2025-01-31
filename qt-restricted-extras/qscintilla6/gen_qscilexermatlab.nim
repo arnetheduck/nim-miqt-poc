@@ -171,6 +171,10 @@ proc fcQsciLexerMatlab_virtualbase_childEvent(self: pointer, event: pointer): vo
 proc fcQsciLexerMatlab_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerMatlab_virtualbase_customEvent".}
 proc fcQsciLexerMatlab_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerMatlab_virtualbase_connectNotify".}
 proc fcQsciLexerMatlab_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerMatlab_virtualbase_disconnectNotify".}
+proc fcQsciLexerMatlab_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerMatlab_protectedbase_sender".}
+proc fcQsciLexerMatlab_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerMatlab_protectedbase_senderSignalIndex".}
+proc fcQsciLexerMatlab_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerMatlab_protectedbase_receivers".}
+proc fcQsciLexerMatlab_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerMatlab_protectedbase_isSignalConnected".}
 proc fcQsciLexerMatlab_new(vtbl: pointer, ): ptr cQsciLexerMatlab {.importc: "QsciLexerMatlab_new".}
 proc fcQsciLexerMatlab_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerMatlab {.importc: "QsciLexerMatlab_new2".}
 proc fcQsciLexerMatlab_staticMetaObject(): pointer {.importc: "QsciLexerMatlab_staticMetaObject".}
@@ -748,6 +752,18 @@ proc miqt_exec_callback_cQsciLexerMatlab_disconnectNotify(vtbl: pointer, self: p
   let self = QsciLexerMatlab(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerMatlab_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cint =
+  fcQsciLexerMatlab_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexermatlab_types.QsciLexerMatlab, signal: cstring): cint =
+  fcQsciLexerMatlab_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexermatlab_types.QsciLexerMatlab, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerMatlab_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexermatlab_types.QsciLexerMatlab,
     vtbl: ref QsciLexerMatlabVTable = nil): gen_qscilexermatlab_types.QsciLexerMatlab =

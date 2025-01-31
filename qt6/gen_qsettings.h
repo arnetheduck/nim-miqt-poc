@@ -100,7 +100,6 @@ struct miqt_string QSettings_applicationName(const QSettings* self);
 void QSettings_setDefaultFormat(int format);
 int QSettings_defaultFormat();
 void QSettings_setPath(int format, int scope, struct miqt_string path);
-bool QSettings_event(QSettings* self, QEvent* event);
 struct miqt_string QSettings_tr2(const char* s, const char* c);
 struct miqt_string QSettings_tr3(const char* s, const char* c, int n);
 void QSettings_beginWriteArray2(QSettings* self, QAnyStringView* prefix, int size);
@@ -114,6 +113,10 @@ void QSettings_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSettings_virtualbase_customEvent(void* self, QEvent* event);
 void QSettings_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSettings_protectedbase_sender(const void* self);
+int QSettings_protectedbase_senderSignalIndex(const void* self);
+int QSettings_protectedbase_receivers(const void* self, const char* signal);
+bool QSettings_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSettings_staticMetaObject();
 void QSettings_delete(QSettings* self);
 

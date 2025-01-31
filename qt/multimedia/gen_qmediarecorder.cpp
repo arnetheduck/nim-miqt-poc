@@ -308,6 +308,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMediaRecorder::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMediaRecorder::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMediaRecorder::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMediaRecorder::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMediaRecorder* QMediaRecorder_new(struct QMediaRecorder_VTable* vtbl, QMediaObject* mediaObject) {
@@ -1106,6 +1134,22 @@ void QMediaRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMediaRecorder*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QMediaRecorder_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMediaRecorder*)(self) )->protectedbase_sender();
+}
+
+int QMediaRecorder_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMediaRecorder*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMediaRecorder_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMediaRecorder*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMediaRecorder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMediaRecorder*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMediaRecorder_staticMetaObject() { return &QMediaRecorder::staticMetaObject; }

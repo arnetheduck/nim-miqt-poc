@@ -206,6 +206,12 @@ proc fcQsciLexerCSS_virtualbase_childEvent(self: pointer, event: pointer): void 
 proc fcQsciLexerCSS_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerCSS_virtualbase_customEvent".}
 proc fcQsciLexerCSS_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCSS_virtualbase_connectNotify".}
 proc fcQsciLexerCSS_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCSS_virtualbase_disconnectNotify".}
+proc fcQsciLexerCSS_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCSS_protectedbase_readProperties".}
+proc fcQsciLexerCSS_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCSS_protectedbase_writeProperties".}
+proc fcQsciLexerCSS_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerCSS_protectedbase_sender".}
+proc fcQsciLexerCSS_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerCSS_protectedbase_senderSignalIndex".}
+proc fcQsciLexerCSS_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerCSS_protectedbase_receivers".}
+proc fcQsciLexerCSS_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerCSS_protectedbase_isSignalConnected".}
 proc fcQsciLexerCSS_new(vtbl: pointer, ): ptr cQsciLexerCSS {.importc: "QsciLexerCSS_new".}
 proc fcQsciLexerCSS_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerCSS {.importc: "QsciLexerCSS_new2".}
 proc fcQsciLexerCSS_staticMetaObject(): pointer {.importc: "QsciLexerCSS_staticMetaObject".}
@@ -853,6 +859,24 @@ proc miqt_exec_callback_cQsciLexerCSS_disconnectNotify(vtbl: pointer, self: poin
   let self = QsciLexerCSS(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexercss_types.QsciLexerCSS, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCSS_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexercss_types.QsciLexerCSS, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCSS_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexercss_types.QsciLexerCSS, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerCSS_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexercss_types.QsciLexerCSS, ): cint =
+  fcQsciLexerCSS_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexercss_types.QsciLexerCSS, signal: cstring): cint =
+  fcQsciLexerCSS_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexercss_types.QsciLexerCSS, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerCSS_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexercss_types.QsciLexerCSS,
     vtbl: ref QsciLexerCSSVTable = nil): gen_qscilexercss_types.QsciLexerCSS =

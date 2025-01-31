@@ -1096,6 +1096,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QSplashScreen::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QSplashScreen::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QSplashScreen::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QSplashScreen::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QSplashScreen::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSplashScreen::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSplashScreen::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSplashScreen::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSplashScreen::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSplashScreen* QSplashScreen_new(struct QSplashScreen_VTable* vtbl) {
@@ -1447,6 +1510,42 @@ void QSplashScreen_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSplashScreen*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSplashScreen_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQSplashScreen*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QSplashScreen_protectedbase_create(void* self) {
+	( (MiqtVirtualQSplashScreen*)(self) )->protectedbase_create();
+}
+
+void QSplashScreen_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQSplashScreen*)(self) )->protectedbase_destroy();
+}
+
+bool QSplashScreen_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQSplashScreen*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QSplashScreen_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQSplashScreen*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QSplashScreen_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->protectedbase_sender();
+}
+
+int QSplashScreen_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSplashScreen_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSplashScreen_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSplashScreen_staticMetaObject() { return &QSplashScreen::staticMetaObject; }

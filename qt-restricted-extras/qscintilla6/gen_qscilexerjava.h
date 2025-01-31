@@ -156,6 +156,12 @@ void QsciLexerJava_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerJava_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerJava_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerJava_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerJava_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerJava_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerJava_protectedbase_sender(const void* self);
+int QsciLexerJava_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerJava_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerJava_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerJava_staticMetaObject();
 void QsciLexerJava_delete(QsciLexerJava* self);
 

@@ -211,6 +211,7 @@ import
   gen_qfont_types,
   gen_qimage_types,
   gen_qiodevice_types,
+  gen_qmargins_types,
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qmimedata_types,
@@ -238,6 +239,7 @@ export
   gen_qfont_types,
   gen_qimage_types,
   gen_qiodevice_types,
+  gen_qmargins_types,
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qmimedata_types,
@@ -852,6 +854,22 @@ proc fcQsciScintilla_virtualbase_childEvent(self: pointer, event: pointer): void
 proc fcQsciScintilla_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciScintilla_virtualbase_customEvent".}
 proc fcQsciScintilla_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciScintilla_virtualbase_connectNotify".}
 proc fcQsciScintilla_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciScintilla_virtualbase_disconnectNotify".}
+proc fcQsciScintilla_protectedbase_setScrollBars(self: pointer, ): void {.importc: "QsciScintilla_protectedbase_setScrollBars".}
+proc fcQsciScintilla_protectedbase_textAsBytes(self: pointer, text: struct_miqt_string): struct_miqt_string {.importc: "QsciScintilla_protectedbase_textAsBytes".}
+proc fcQsciScintilla_protectedbase_bytesAsText(self: pointer, bytes: cstring): struct_miqt_string {.importc: "QsciScintilla_protectedbase_bytesAsText".}
+proc fcQsciScintilla_protectedbase_contextMenuNeeded(self: pointer, x: cint, y: cint): bool {.importc: "QsciScintilla_protectedbase_contextMenuNeeded".}
+proc fcQsciScintilla_protectedbase_setViewportMargins(self: pointer, left: cint, top: cint, right: cint, bottom: cint): void {.importc: "QsciScintilla_protectedbase_setViewportMargins".}
+proc fcQsciScintilla_protectedbase_viewportMargins(self: pointer, ): pointer {.importc: "QsciScintilla_protectedbase_viewportMargins".}
+proc fcQsciScintilla_protectedbase_drawFrame(self: pointer, param1: pointer): void {.importc: "QsciScintilla_protectedbase_drawFrame".}
+proc fcQsciScintilla_protectedbase_updateMicroFocus(self: pointer, ): void {.importc: "QsciScintilla_protectedbase_updateMicroFocus".}
+proc fcQsciScintilla_protectedbase_create(self: pointer, ): void {.importc: "QsciScintilla_protectedbase_create".}
+proc fcQsciScintilla_protectedbase_destroy(self: pointer, ): void {.importc: "QsciScintilla_protectedbase_destroy".}
+proc fcQsciScintilla_protectedbase_focusNextChild(self: pointer, ): bool {.importc: "QsciScintilla_protectedbase_focusNextChild".}
+proc fcQsciScintilla_protectedbase_focusPreviousChild(self: pointer, ): bool {.importc: "QsciScintilla_protectedbase_focusPreviousChild".}
+proc fcQsciScintilla_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciScintilla_protectedbase_sender".}
+proc fcQsciScintilla_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciScintilla_protectedbase_senderSignalIndex".}
+proc fcQsciScintilla_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciScintilla_protectedbase_receivers".}
+proc fcQsciScintilla_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciScintilla_protectedbase_isSignalConnected".}
 proc fcQsciScintilla_new(vtbl: pointer, parent: pointer): ptr cQsciScintilla {.importc: "QsciScintilla_new".}
 proc fcQsciScintilla_new2(vtbl: pointer, ): ptr cQsciScintilla {.importc: "QsciScintilla_new2".}
 proc fcQsciScintilla_staticMetaObject(): pointer {.importc: "QsciScintilla_staticMetaObject".}
@@ -3659,6 +3677,60 @@ proc miqt_exec_callback_cQsciScintilla_disconnectNotify(vtbl: pointer, self: poi
   let self = QsciScintilla(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc setScrollBars*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
+  fcQsciScintilla_protectedbase_setScrollBars(self.h)
+
+proc textAsBytes*(self: gen_qsciscintilla_types.QsciScintilla, text: string): seq[byte] =
+  var v_bytearray = fcQsciScintilla_protectedbase_textAsBytes(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
+  var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
+  c_free(v_bytearray.data)
+  vx_ret
+
+proc bytesAsText*(self: gen_qsciscintilla_types.QsciScintilla, bytes: cstring): string =
+  let v_ms = fcQsciScintilla_protectedbase_bytesAsText(self.h, bytes)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc contextMenuNeeded*(self: gen_qsciscintilla_types.QsciScintilla, x: cint, y: cint): bool =
+  fcQsciScintilla_protectedbase_contextMenuNeeded(self.h, x, y)
+
+proc setViewportMargins*(self: gen_qsciscintilla_types.QsciScintilla, left: cint, top: cint, right: cint, bottom: cint): void =
+  fcQsciScintilla_protectedbase_setViewportMargins(self.h, left, top, right, bottom)
+
+proc viewportMargins*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qmargins_types.QMargins =
+  gen_qmargins_types.QMargins(h: fcQsciScintilla_protectedbase_viewportMargins(self.h))
+
+proc drawFrame*(self: gen_qsciscintilla_types.QsciScintilla, param1: gen_qpainter_types.QPainter): void =
+  fcQsciScintilla_protectedbase_drawFrame(self.h, param1.h)
+
+proc updateMicroFocus*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
+  fcQsciScintilla_protectedbase_updateMicroFocus(self.h)
+
+proc create*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
+  fcQsciScintilla_protectedbase_create(self.h)
+
+proc destroy*(self: gen_qsciscintilla_types.QsciScintilla, ): void =
+  fcQsciScintilla_protectedbase_destroy(self.h)
+
+proc focusNextChild*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
+  fcQsciScintilla_protectedbase_focusNextChild(self.h)
+
+proc focusPreviousChild*(self: gen_qsciscintilla_types.QsciScintilla, ): bool =
+  fcQsciScintilla_protectedbase_focusPreviousChild(self.h)
+
+proc sender*(self: gen_qsciscintilla_types.QsciScintilla, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciScintilla_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qsciscintilla_types.QsciScintilla, ): cint =
+  fcQsciScintilla_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qsciscintilla_types.QsciScintilla, signal: cstring): cint =
+  fcQsciScintilla_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qsciscintilla_types.QsciScintilla, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciScintilla_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qsciscintilla_types.QsciScintilla,
     parent: gen_qwidget_types.QWidget,

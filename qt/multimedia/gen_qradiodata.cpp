@@ -290,6 +290,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QRadioData::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QRadioData::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QRadioData::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QRadioData::isSignalConnected(*signal);
+
+	}
+
 };
 
 QRadioData* QRadioData_new(struct QRadioData_VTable* vtbl, QMediaObject* mediaObject) {
@@ -685,6 +713,22 @@ void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QRadioData_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQRadioData*)(self) )->protectedbase_sender();
+}
+
+int QRadioData_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQRadioData*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QRadioData_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQRadioData*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QRadioData_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQRadioData*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QRadioData_staticMetaObject() { return &QRadioData::staticMetaObject; }

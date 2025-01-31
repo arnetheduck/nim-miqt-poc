@@ -75,6 +75,10 @@ void QsciAbstractAPIs_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciAbstractAPIs_virtualbase_customEvent(void* self, QEvent* event);
 void QsciAbstractAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciAbstractAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciAbstractAPIs_protectedbase_sender(const void* self);
+int QsciAbstractAPIs_protectedbase_senderSignalIndex(const void* self);
+int QsciAbstractAPIs_protectedbase_receivers(const void* self, const char* signal);
+bool QsciAbstractAPIs_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciAbstractAPIs_staticMetaObject();
 void QsciAbstractAPIs_delete(QsciAbstractAPIs* self);
 

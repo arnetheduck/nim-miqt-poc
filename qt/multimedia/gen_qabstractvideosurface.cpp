@@ -367,6 +367,48 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setError(int error) {
+
+		QAbstractVideoSurface::setError(static_cast<QAbstractVideoSurface::Error>(error));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setNativeResolution(QSize* resolution) {
+
+		QAbstractVideoSurface::setNativeResolution(*resolution);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractVideoSurface::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractVideoSurface::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractVideoSurface::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractVideoSurface::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractVideoSurface* QAbstractVideoSurface_new(struct QAbstractVideoSurface_VTable* vtbl) {
@@ -647,6 +689,30 @@ void QAbstractVideoSurface_virtualbase_connectNotify(void* self, QMetaMethod* si
 
 void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractVideoSurface*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QAbstractVideoSurface_protectedbase_setError(void* self, int error) {
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->protectedbase_setError(error);
+}
+
+void QAbstractVideoSurface_protectedbase_setNativeResolution(void* self, QSize* resolution) {
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->protectedbase_setNativeResolution(resolution);
+}
+
+QObject* QAbstractVideoSurface_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractVideoSurface*)(self) )->protectedbase_sender();
+}
+
+int QAbstractVideoSurface_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractVideoSurface*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractVideoSurface_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractVideoSurface*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractVideoSurface_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractVideoSurface*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractVideoSurface_staticMetaObject() { return &QAbstractVideoSurface::staticMetaObject; }

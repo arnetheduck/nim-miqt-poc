@@ -214,6 +214,20 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_operatorAssign(QStandardItem* other) {
+
+		QStandardItem::operator=(*other);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_emitDataChanged() {
+
+		QStandardItem::emitDataChanged();
+
+	}
+
 };
 
 QStandardItem* QStandardItem_new(struct QStandardItem_VTable* vtbl) {
@@ -721,6 +735,14 @@ void QStandardItem_virtualbase_write(const void* self, QDataStream* out) {
 
 bool QStandardItem_virtualbase_operatorLesser(const void* self, QStandardItem* other) {
 	return ( (const MiqtVirtualQStandardItem*)(self) )->virtualbase_operatorLesser(other);
+}
+
+void QStandardItem_protectedbase_operatorAssign(void* self, QStandardItem* other) {
+	( (MiqtVirtualQStandardItem*)(self) )->protectedbase_operatorAssign(other);
+}
+
+void QStandardItem_protectedbase_emitDataChanged(void* self) {
+	( (MiqtVirtualQStandardItem*)(self) )->protectedbase_emitDataChanged();
 }
 
 void QStandardItem_delete(QStandardItem* self) {
@@ -1912,6 +1934,201 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QStandardItemModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QStandardItemModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QStandardItemModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QStandardItemModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QStandardItemModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QStandardItemModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QStandardItemModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QStandardItemModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QStandardItemModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QStandardItemModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QStandardItemModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QStandardItemModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QStandardItemModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QStandardItemModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QStandardItemModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QStandardItemModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QStandardItemModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QStandardItemModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QStandardItemModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QStandardItemModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QStandardItemModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QStandardItemModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QStandardItemModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QStandardItemModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QStandardItemModel* QStandardItemModel_new(struct QStandardItemModel_VTable* vtbl) {
@@ -2598,6 +2815,102 @@ void QStandardItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QModelIndex* QStandardItemModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQStandardItemModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+void QStandardItemModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQStandardItemModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QStandardItemModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QStandardItemModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QStandardItemModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QStandardItemModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QStandardItemModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QStandardItemModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QStandardItemModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QStandardItemModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QStandardItemModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QStandardItemModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QStandardItemModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QStandardItemModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QStandardItemModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QStandardItemModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QStandardItemModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QStandardItemModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QStandardItemModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQStandardItemModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QStandardItemModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQStandardItemModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QObject* QStandardItemModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQStandardItemModel*)(self) )->protectedbase_sender();
+}
+
+int QStandardItemModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQStandardItemModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QStandardItemModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQStandardItemModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QStandardItemModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQStandardItemModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QStandardItemModel_staticMetaObject() { return &QStandardItemModel::staticMetaObject; }

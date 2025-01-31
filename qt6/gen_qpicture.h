@@ -63,7 +63,6 @@ void QPicture_swap(QPicture* self, QPicture* other);
 void QPicture_detach(QPicture* self);
 bool QPicture_isDetached(const QPicture* self);
 QPaintEngine* QPicture_paintEngine(const QPicture* self);
-int QPicture_metric(const QPicture* self, int m);
 int QPicture_virtualbase_devType(const void* self);
 void QPicture_virtualbase_setData(void* self, const char* data, unsigned int size);
 QPaintEngine* QPicture_virtualbase_paintEngine(const void* self);

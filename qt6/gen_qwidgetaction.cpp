@@ -1,6 +1,7 @@
 #include <QAction>
 #include <QChildEvent>
 #include <QEvent>
+#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
@@ -276,6 +277,50 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QWidget* */  protectedbase_createdWidgets() const {
+
+		QList<QWidget *> _ret = QWidgetAction::createdWidgets();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = _ret[i];
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWidgetAction::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWidgetAction::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWidgetAction::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWidgetAction::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWidgetAction* QWidgetAction_new(struct QWidgetAction_VTable* vtbl, QObject* parent) {
@@ -393,6 +438,26 @@ void QWidgetAction_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+struct miqt_array /* of QWidget* */  QWidgetAction_protectedbase_createdWidgets(const void* self) {
+	return ( (const MiqtVirtualQWidgetAction*)(self) )->protectedbase_createdWidgets();
+}
+
+QObject* QWidgetAction_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWidgetAction*)(self) )->protectedbase_sender();
+}
+
+int QWidgetAction_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWidgetAction*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWidgetAction_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWidgetAction*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWidgetAction_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWidgetAction*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWidgetAction_staticMetaObject() { return &QWidgetAction::staticMetaObject; }

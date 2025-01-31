@@ -242,6 +242,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAudioProbe::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAudioProbe::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAudioProbe::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAudioProbe::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAudioProbe* QAudioProbe_new(struct QAudioProbe_VTable* vtbl) {
@@ -425,6 +453,22 @@ void QAudioProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioProbe*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAudioProbe_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAudioProbe*)(self) )->protectedbase_sender();
+}
+
+int QAudioProbe_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAudioProbe*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAudioProbe_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAudioProbe*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAudioProbe_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAudioProbe*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAudioProbe_staticMetaObject() { return &QAudioProbe::staticMetaObject; }

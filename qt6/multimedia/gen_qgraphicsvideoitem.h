@@ -138,8 +138,6 @@ void QGraphicsVideoItem_paint(QGraphicsVideoItem* self, QPainter* painter, QStyl
 int QGraphicsVideoItem_type(const QGraphicsVideoItem* self);
 void QGraphicsVideoItem_nativeSizeChanged(QGraphicsVideoItem* self, QSizeF* size);
 void QGraphicsVideoItem_connect_nativeSizeChanged(QGraphicsVideoItem* self, intptr_t slot);
-void QGraphicsVideoItem_timerEvent(QGraphicsVideoItem* self, QTimerEvent* event);
-QVariant* QGraphicsVideoItem_itemChange(QGraphicsVideoItem* self, int change, QVariant* value);
 struct miqt_string QGraphicsVideoItem_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsVideoItem_tr3(const char* s, const char* c, int n);
 QMetaObject* QGraphicsVideoItem_virtualbase_metaObject(const void* self);
@@ -187,6 +185,14 @@ QVariant* QGraphicsVideoItem_virtualbase_inputMethodQuery(const void* self, int 
 bool QGraphicsVideoItem_virtualbase_supportsExtension(const void* self, int extension);
 void QGraphicsVideoItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* variant);
+void QGraphicsVideoItem_protectedbase_updateMicroFocus(void* self);
+QObject* QGraphicsVideoItem_protectedbase_sender(const void* self);
+int QGraphicsVideoItem_protectedbase_senderSignalIndex(const void* self);
+int QGraphicsVideoItem_protectedbase_receivers(const void* self, const char* signal);
+bool QGraphicsVideoItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
+void QGraphicsVideoItem_protectedbase_addToIndex(void* self);
+void QGraphicsVideoItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsVideoItem_protectedbase_prepareGeometryChange(void* self);
 const QMetaObject* QGraphicsVideoItem_staticMetaObject();
 void QGraphicsVideoItem_delete(QGraphicsVideoItem* self);
 

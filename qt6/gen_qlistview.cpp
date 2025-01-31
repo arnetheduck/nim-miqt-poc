@@ -2050,6 +2050,197 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_resizeContents(int width, int height) {
+
+		QListView::resizeContents(static_cast<int>(width), static_cast<int>(height));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* protectedbase_contentsSize() const {
+
+		return new QSize(QListView::contentsSize());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_rectForIndex(QModelIndex* index) const {
+
+		return new QRect(QListView::rectForIndex(*index));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPositionForIndex(QPoint* position, QModelIndex* index) {
+
+		QListView::setPositionForIndex(*position, *index);
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_state() const {
+
+		QAbstractItemView::State _ret = QListView::state();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setState(int state) {
+
+		QListView::setState(static_cast<QAbstractItemView::State>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scheduleDelayedItemsLayout() {
+
+		QListView::scheduleDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_executeDelayedItemsLayout() {
+
+		QListView::executeDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setDirtyRegion(QRegion* region) {
+
+		QListView::setDirtyRegion(*region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scrollDirtyRegion(int dx, int dy) {
+
+		QListView::scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPoint* protectedbase_dirtyRegionOffset() const {
+
+		return new QPoint(QListView::dirtyRegionOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_startAutoScroll() {
+
+		QListView::startAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_stopAutoScroll() {
+
+		QListView::stopAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doAutoScroll() {
+
+		QListView::doAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_dropIndicatorPosition() const {
+
+		QAbstractItemView::DropIndicatorPosition _ret = QListView::dropIndicatorPosition();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QListView::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QListView::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QListView::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QListView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QListView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QListView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QListView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QListView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QListView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QListView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QListView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QListView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QListView* QListView_new(struct QListView_VTable* vtbl, QWidget* parent) {
@@ -2672,6 +2863,114 @@ void QListView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QListView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQListView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QListView_protectedbase_resizeContents(void* self, int width, int height) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_resizeContents(width, height);
+}
+
+QSize* QListView_protectedbase_contentsSize(const void* self) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_contentsSize();
+}
+
+QRect* QListView_protectedbase_rectForIndex(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_rectForIndex(index);
+}
+
+void QListView_protectedbase_setPositionForIndex(void* self, QPoint* position, QModelIndex* index) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_setPositionForIndex(position, index);
+}
+
+int QListView_protectedbase_state(const void* self) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_state();
+}
+
+void QListView_protectedbase_setState(void* self, int state) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_setState(state);
+}
+
+void QListView_protectedbase_scheduleDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_scheduleDelayedItemsLayout();
+}
+
+void QListView_protectedbase_executeDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_executeDelayedItemsLayout();
+}
+
+void QListView_protectedbase_setDirtyRegion(void* self, QRegion* region) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_setDirtyRegion(region);
+}
+
+void QListView_protectedbase_scrollDirtyRegion(void* self, int dx, int dy) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_scrollDirtyRegion(dx, dy);
+}
+
+QPoint* QListView_protectedbase_dirtyRegionOffset(const void* self) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_dirtyRegionOffset();
+}
+
+void QListView_protectedbase_startAutoScroll(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_startAutoScroll();
+}
+
+void QListView_protectedbase_stopAutoScroll(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_stopAutoScroll();
+}
+
+void QListView_protectedbase_doAutoScroll(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_doAutoScroll();
+}
+
+int QListView_protectedbase_dropIndicatorPosition(const void* self) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_dropIndicatorPosition();
+}
+
+void QListView_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QListView_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_viewportMargins();
+}
+
+void QListView_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QListView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QListView_protectedbase_create(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_create();
+}
+
+void QListView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQListView*)(self) )->protectedbase_destroy();
+}
+
+bool QListView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQListView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QListView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQListView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QListView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_sender();
+}
+
+int QListView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QListView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QListView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQListView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QListView_staticMetaObject() { return &QListView::staticMetaObject; }

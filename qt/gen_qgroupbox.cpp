@@ -29,6 +29,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionGroupBox>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1073,6 +1074,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionGroupBox* option) const {
+
+		QGroupBox::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGroupBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QGroupBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QGroupBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QGroupBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QGroupBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGroupBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGroupBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGroupBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGroupBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGroupBox* QGroupBox_new(struct QGroupBox_VTable* vtbl, QWidget* parent) {
@@ -1485,6 +1556,46 @@ void QGroupBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QGroupBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGroupBox_protectedbase_initStyleOption(const void* self, QStyleOptionGroupBox* option) {
+	( (const MiqtVirtualQGroupBox*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QGroupBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGroupBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QGroupBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQGroupBox*)(self) )->protectedbase_create();
+}
+
+void QGroupBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQGroupBox*)(self) )->protectedbase_destroy();
+}
+
+bool QGroupBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQGroupBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QGroupBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQGroupBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QGroupBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGroupBox*)(self) )->protectedbase_sender();
+}
+
+int QGroupBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGroupBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGroupBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGroupBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGroupBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGroupBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGroupBox_staticMetaObject() { return &QGroupBox::staticMetaObject; }

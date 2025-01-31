@@ -151,6 +151,10 @@ void QsciLexerMatlab_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerMatlab_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerMatlab_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerMatlab_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciLexerMatlab_protectedbase_sender(const void* self);
+int QsciLexerMatlab_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerMatlab_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerMatlab_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerMatlab_staticMetaObject();
 void QsciLexerMatlab_delete(QsciLexerMatlab* self);
 

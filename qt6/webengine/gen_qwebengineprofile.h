@@ -121,6 +121,10 @@ void QWebEngineProfile_virtualbase_childEvent(void* self, QChildEvent* event);
 void QWebEngineProfile_virtualbase_customEvent(void* self, QEvent* event);
 void QWebEngineProfile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QWebEngineProfile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebEngineProfile_protectedbase_sender(const void* self);
+int QWebEngineProfile_protectedbase_senderSignalIndex(const void* self);
+int QWebEngineProfile_protectedbase_receivers(const void* self, const char* signal);
+bool QWebEngineProfile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QWebEngineProfile_staticMetaObject();
 void QWebEngineProfile_delete(QWebEngineProfile* self);
 

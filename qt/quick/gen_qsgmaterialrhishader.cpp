@@ -7,6 +7,9 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QSGMaterialRhiShader__RenderState
 #include <QSGMaterialShader>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QSGMaterialShader__RenderState
+#include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <qsgmaterialrhishader.h>
 #include "gen_qsgmaterialrhishader.h"
 
@@ -232,6 +235,43 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setShaderFileName(int stage, struct miqt_string filename) {
+		QString filename_QString = QString::fromUtf8(filename.data, filename.len);
+
+		QSGMaterialRhiShader::setShaderFileName(static_cast<QSGMaterialRhiShader::Stage>(stage), filename_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setShader(int stage, const QShader* shader) {
+
+		QSGMaterialRhiShader::setShader(static_cast<QSGMaterialRhiShader::Stage>(stage), *shader);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setShaderSourceFile(QOpenGLShader::ShaderType type, struct miqt_string sourceFile) {
+		QString sourceFile_QString = QString::fromUtf8(sourceFile.data, sourceFile.len);
+
+		QSGMaterialRhiShader::setShaderSourceFile(type, sourceFile_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setShaderSourceFiles(QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles) {
+		QStringList sourceFiles_QList;
+		sourceFiles_QList.reserve(sourceFiles.len);
+		struct miqt_string* sourceFiles_arr = static_cast<struct miqt_string*>(sourceFiles.data);
+		for(size_t i = 0; i < sourceFiles.len; ++i) {
+			QString sourceFiles_arr_i_QString = QString::fromUtf8(sourceFiles_arr[i].data, sourceFiles_arr[i].len);
+			sourceFiles_QList.push_back(sourceFiles_arr_i_QString);
+		}
+
+		QSGMaterialRhiShader::setShaderSourceFiles(type, sourceFiles_QList);
+
+	}
+
 };
 
 QSGMaterialRhiShader* QSGMaterialRhiShader_new(struct QSGMaterialRhiShader_VTable* vtbl) {
@@ -305,6 +345,22 @@ const char* QSGMaterialRhiShader_virtualbase_vertexShader(const void* self) {
 
 const char* QSGMaterialRhiShader_virtualbase_fragmentShader(const void* self) {
 	return ( (const MiqtVirtualQSGMaterialRhiShader*)(self) )->virtualbase_fragmentShader();
+}
+
+void QSGMaterialRhiShader_protectedbase_setShaderFileName(void* self, int stage, struct miqt_string filename) {
+	( (MiqtVirtualQSGMaterialRhiShader*)(self) )->protectedbase_setShaderFileName(stage, filename);
+}
+
+void QSGMaterialRhiShader_protectedbase_setShader(void* self, int stage, const QShader* shader) {
+	( (MiqtVirtualQSGMaterialRhiShader*)(self) )->protectedbase_setShader(stage, shader);
+}
+
+void QSGMaterialRhiShader_protectedbase_setShaderSourceFile(void* self, QOpenGLShader::ShaderType type, struct miqt_string sourceFile) {
+	( (MiqtVirtualQSGMaterialRhiShader*)(self) )->protectedbase_setShaderSourceFile(type, sourceFile);
+}
+
+void QSGMaterialRhiShader_protectedbase_setShaderSourceFiles(void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles) {
+	( (MiqtVirtualQSGMaterialRhiShader*)(self) )->protectedbase_setShaderSourceFiles(type, sourceFiles);
 }
 
 void QSGMaterialRhiShader_delete(QSGMaterialRhiShader* self) {

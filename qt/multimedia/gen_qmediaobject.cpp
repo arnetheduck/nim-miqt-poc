@@ -1,3 +1,4 @@
+#include <QByteArray>
 #include <QList>
 #include <QMediaObject>
 #include <QMediaService>

@@ -191,6 +191,7 @@ proc fcQSGOpacityNode_virtualbase_isSubtreeBlocked(self: pointer, ): bool {.impo
 proc fcQSGOpacityNode_virtualbase_preprocess(self: pointer, ): void {.importc: "QSGOpacityNode_virtualbase_preprocess".}
 proc fcQSGOpacityNode_new(vtbl: pointer, ): ptr cQSGOpacityNode {.importc: "QSGOpacityNode_new".}
 proc fcQSGOpacityNode_delete(self: pointer) {.importc: "QSGOpacityNode_delete".}
+proc fcQSGNodeVisitor_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QSGNodeVisitor_protectedbase_operatorAssign".}
 proc fcQSGNodeVisitor_delete(self: pointer) {.importc: "QSGNodeVisitor_delete".}
 
 proc parent*(self: gen_qsgnode_types.QSGNode, ): gen_qsgnode_types.QSGNode =
@@ -585,5 +586,8 @@ proc create*(T: type gen_qsgnode_types.QSGOpacityNode,
 
 proc delete*(self: gen_qsgnode_types.QSGOpacityNode) =
   fcQSGOpacityNode_delete(self.h)
+proc operatorAssign*(self: gen_qsgnode_types.QSGNodeVisitor, param1: gen_qsgnode_types.QSGNodeVisitor): void =
+  fcQSGNodeVisitor_protectedbase_operatorAssign(self.h, param1.h)
+
 proc delete*(self: gen_qsgnode_types.QSGNodeVisitor) =
   fcQSGNodeVisitor_delete(self.h)

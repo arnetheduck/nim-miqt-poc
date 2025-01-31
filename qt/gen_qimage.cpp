@@ -164,6 +164,55 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QImage* protectedbase_mirroredHelper(bool horizontal, bool vertical) const {
+
+		return new QImage(QImage::mirrored_helper(horizontal, vertical));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QImage* protectedbase_rgbSwappedHelper() const {
+
+		return new QImage(QImage::rgbSwapped_helper());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_mirroredInplace(bool horizontal, bool vertical) {
+
+		QImage::mirrored_inplace(horizontal, vertical);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_rgbSwappedInplace() {
+
+		QImage::rgbSwapped_inplace();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QImage* protectedbase_convertToFormatHelper(int format, int flags) const {
+
+		return new QImage(QImage::convertToFormat_helper(static_cast<QImage::Format>(format), static_cast<Qt::ImageConversionFlags>(flags)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_convertToFormatInplace(int format, int flags) {
+
+		return QImage::convertToFormat_inplace(static_cast<QImage::Format>(format), static_cast<Qt::ImageConversionFlags>(flags));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QImage* protectedbase_smoothScaled(int w, int h) const {
+
+		return new QImage(QImage::smoothScaled(static_cast<int>(w), static_cast<int>(h)));
+
+	}
+
 };
 
 QImage* QImage_new(struct QImage_VTable* vtbl) {
@@ -829,6 +878,34 @@ QPaintDevice* QImage_virtualbase_redirected(const void* self, QPoint* offset) {
 
 QPainter* QImage_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_sharedPainter();
+}
+
+QImage* QImage_protectedbase_mirroredHelper(const void* self, bool horizontal, bool vertical) {
+	return ( (const MiqtVirtualQImage*)(self) )->protectedbase_mirroredHelper(horizontal, vertical);
+}
+
+QImage* QImage_protectedbase_rgbSwappedHelper(const void* self) {
+	return ( (const MiqtVirtualQImage*)(self) )->protectedbase_rgbSwappedHelper();
+}
+
+void QImage_protectedbase_mirroredInplace(void* self, bool horizontal, bool vertical) {
+	( (MiqtVirtualQImage*)(self) )->protectedbase_mirroredInplace(horizontal, vertical);
+}
+
+void QImage_protectedbase_rgbSwappedInplace(void* self) {
+	( (MiqtVirtualQImage*)(self) )->protectedbase_rgbSwappedInplace();
+}
+
+QImage* QImage_protectedbase_convertToFormatHelper(const void* self, int format, int flags) {
+	return ( (const MiqtVirtualQImage*)(self) )->protectedbase_convertToFormatHelper(format, flags);
+}
+
+bool QImage_protectedbase_convertToFormatInplace(void* self, int format, int flags) {
+	return ( (MiqtVirtualQImage*)(self) )->protectedbase_convertToFormatInplace(format, flags);
+}
+
+QImage* QImage_protectedbase_smoothScaled(const void* self, int w, int h) {
+	return ( (const MiqtVirtualQImage*)(self) )->protectedbase_smoothScaled(w, h);
 }
 
 const QMetaObject* QImage_staticMetaObject() { return &QImage::staticMetaObject; }

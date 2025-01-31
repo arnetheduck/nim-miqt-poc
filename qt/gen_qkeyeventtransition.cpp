@@ -280,6 +280,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QKeyEventTransition::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QKeyEventTransition::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QKeyEventTransition::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QKeyEventTransition::isSignalConnected(*signal);
+
+	}
+
 };
 
 QKeyEventTransition* QKeyEventTransition_new(struct QKeyEventTransition_VTable* vtbl) {
@@ -443,6 +471,22 @@ void QKeyEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QKeyEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QKeyEventTransition_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQKeyEventTransition*)(self) )->protectedbase_sender();
+}
+
+int QKeyEventTransition_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQKeyEventTransition*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QKeyEventTransition_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQKeyEventTransition*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QKeyEventTransition_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQKeyEventTransition*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QKeyEventTransition_staticMetaObject() { return &QKeyEventTransition::staticMetaObject; }

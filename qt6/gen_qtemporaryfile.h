@@ -92,7 +92,6 @@ void QTemporaryFile_setFileTemplate(QTemporaryFile* self, struct miqt_string nam
 bool QTemporaryFile_rename(QTemporaryFile* self, struct miqt_string newName);
 QTemporaryFile* QTemporaryFile_createNativeFile(struct miqt_string fileName);
 QTemporaryFile* QTemporaryFile_createNativeFileWithFile(QFile* file);
-bool QTemporaryFile_openWithFlags(QTemporaryFile* self, int flags);
 struct miqt_string QTemporaryFile_tr2(const char* s, const char* c);
 struct miqt_string QTemporaryFile_tr3(const char* s, const char* c, int n);
 QMetaObject* QTemporaryFile_virtualbase_metaObject(const void* self);
@@ -126,6 +125,12 @@ void QTemporaryFile_virtualbase_childEvent(void* self, QChildEvent* event);
 void QTemporaryFile_virtualbase_customEvent(void* self, QEvent* event);
 void QTemporaryFile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QTemporaryFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QTemporaryFile_protectedbase_setOpenMode(void* self, int openMode);
+void QTemporaryFile_protectedbase_setErrorString(void* self, struct miqt_string errorString);
+QObject* QTemporaryFile_protectedbase_sender(const void* self);
+int QTemporaryFile_protectedbase_senderSignalIndex(const void* self);
+int QTemporaryFile_protectedbase_receivers(const void* self, const char* signal);
+bool QTemporaryFile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QTemporaryFile_staticMetaObject();
 void QTemporaryFile_delete(QTemporaryFile* self);
 

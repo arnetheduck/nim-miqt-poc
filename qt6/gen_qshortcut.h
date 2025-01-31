@@ -79,7 +79,6 @@ void QShortcut_activated(QShortcut* self);
 void QShortcut_connect_activated(QShortcut* self, intptr_t slot);
 void QShortcut_activatedAmbiguously(QShortcut* self);
 void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot);
-bool QShortcut_event(QShortcut* self, QEvent* e);
 struct miqt_string QShortcut_tr2(const char* s, const char* c);
 struct miqt_string QShortcut_tr3(const char* s, const char* c, int n);
 QMetaObject* QShortcut_virtualbase_metaObject(const void* self);
@@ -92,6 +91,10 @@ void QShortcut_virtualbase_childEvent(void* self, QChildEvent* event);
 void QShortcut_virtualbase_customEvent(void* self, QEvent* event);
 void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QShortcut_protectedbase_sender(const void* self);
+int QShortcut_protectedbase_senderSignalIndex(const void* self);
+int QShortcut_protectedbase_receivers(const void* self, const char* signal);
+bool QShortcut_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QShortcut_staticMetaObject();
 void QShortcut_delete(QShortcut* self);
 

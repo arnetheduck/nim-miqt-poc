@@ -87,6 +87,8 @@ int QsciPrinter_virtualbase_metric(const void* self, int param1);
 void QsciPrinter_virtualbase_initPainter(const void* self, QPainter* painter);
 QPaintDevice* QsciPrinter_virtualbase_redirected(const void* self, QPoint* offset);
 QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self);
+void QsciPrinter_protectedbase_setEngines(void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
+QPageLayout* QsciPrinter_protectedbase_devicePageLayout(const void* self);
 void QsciPrinter_delete(QsciPrinter* self);
 
 #ifdef __cplusplus

@@ -1176,6 +1176,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QMessageBox::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QMessageBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QMessageBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QMessageBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QMessageBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QMessageBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMessageBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMessageBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMessageBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMessageBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMessageBox* QMessageBox_new(struct QMessageBox_VTable* vtbl, QWidget* parent) {
@@ -2108,6 +2178,46 @@ void QMessageBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QMessageBox_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQMessageBox*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QMessageBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQMessageBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QMessageBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQMessageBox*)(self) )->protectedbase_create();
+}
+
+void QMessageBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQMessageBox*)(self) )->protectedbase_destroy();
+}
+
+bool QMessageBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQMessageBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QMessageBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQMessageBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QMessageBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMessageBox*)(self) )->protectedbase_sender();
+}
+
+int QMessageBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMessageBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMessageBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMessageBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMessageBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMessageBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMessageBox_staticMetaObject() { return &QMessageBox::staticMetaObject; }

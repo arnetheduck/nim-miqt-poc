@@ -1303,6 +1303,97 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_zoomInF(float range) {
+
+		QTextEdit::zoomInF(static_cast<float>(range));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QTextEdit::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QTextEdit::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QTextEdit::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QTextEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QTextEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QTextEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QTextEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QTextEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTextEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTextEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTextEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTextEdit::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTextEdit* QTextEdit_new(struct QTextEdit_VTable* vtbl, QWidget* parent) {
@@ -2224,6 +2315,58 @@ void QTextEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTextEdit_protectedbase_zoomInF(void* self, float range) {
+	( (MiqtVirtualQTextEdit*)(self) )->protectedbase_zoomInF(range);
+}
+
+void QTextEdit_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQTextEdit*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QTextEdit_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQTextEdit*)(self) )->protectedbase_viewportMargins();
+}
+
+void QTextEdit_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQTextEdit*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QTextEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQTextEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QTextEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualQTextEdit*)(self) )->protectedbase_create();
+}
+
+void QTextEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQTextEdit*)(self) )->protectedbase_destroy();
+}
+
+bool QTextEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQTextEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QTextEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQTextEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QTextEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTextEdit*)(self) )->protectedbase_sender();
+}
+
+int QTextEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTextEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTextEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTextEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTextEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTextEdit*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTextEdit_staticMetaObject() { return &QTextEdit::staticMetaObject; }

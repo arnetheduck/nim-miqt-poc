@@ -83,7 +83,6 @@ void QTimeLine_stop(QTimeLine* self);
 void QTimeLine_setPaused(QTimeLine* self, bool paused);
 void QTimeLine_setCurrentTime(QTimeLine* self, int msec);
 void QTimeLine_toggleDirection(QTimeLine* self);
-void QTimeLine_timerEvent(QTimeLine* self, QTimerEvent* event);
 struct miqt_string QTimeLine_tr2(const char* s, const char* c);
 struct miqt_string QTimeLine_tr3(const char* s, const char* c, int n);
 QMetaObject* QTimeLine_virtualbase_metaObject(const void* self);
@@ -97,6 +96,10 @@ void QTimeLine_virtualbase_childEvent(void* self, QChildEvent* event);
 void QTimeLine_virtualbase_customEvent(void* self, QEvent* event);
 void QTimeLine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QTimeLine_protectedbase_sender(const void* self);
+int QTimeLine_protectedbase_senderSignalIndex(const void* self);
+int QTimeLine_protectedbase_receivers(const void* self, const char* signal);
+bool QTimeLine_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QTimeLine_staticMetaObject();
 void QTimeLine_delete(QTimeLine* self);
 

@@ -252,6 +252,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSignalMapper::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSignalMapper::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSignalMapper::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSignalMapper::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSignalMapper* QSignalMapper_new(struct QSignalMapper_VTable* vtbl) {
@@ -604,6 +632,22 @@ void QSignalMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSignalMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSignalMapper_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSignalMapper*)(self) )->protectedbase_sender();
+}
+
+int QSignalMapper_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSignalMapper*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSignalMapper_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSignalMapper*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSignalMapper_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSignalMapper*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSignalMapper_staticMetaObject() { return &QSignalMapper::staticMetaObject; }

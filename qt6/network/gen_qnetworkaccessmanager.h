@@ -130,7 +130,6 @@ void QNetworkAccessManager_sslErrors(QNetworkAccessManager* self, QNetworkReply*
 void QNetworkAccessManager_connect_sslErrors(QNetworkAccessManager* self, intptr_t slot);
 void QNetworkAccessManager_preSharedKeyAuthenticationRequired(QNetworkAccessManager* self, QNetworkReply* reply, QSslPreSharedKeyAuthenticator* authenticator);
 void QNetworkAccessManager_connect_preSharedKeyAuthenticationRequired(QNetworkAccessManager* self, intptr_t slot);
-QNetworkReply* QNetworkAccessManager_createRequest(QNetworkAccessManager* self, int op, QNetworkRequest* request, QIODevice* outgoingData);
 struct miqt_string QNetworkAccessManager_tr2(const char* s, const char* c);
 struct miqt_string QNetworkAccessManager_tr3(const char* s, const char* c, int n);
 void QNetworkAccessManager_enableStrictTransportSecurityStore2(QNetworkAccessManager* self, bool enabled, struct miqt_string storeDir);
@@ -151,6 +150,11 @@ void QNetworkAccessManager_virtualbase_childEvent(void* self, QChildEvent* event
 void QNetworkAccessManager_virtualbase_customEvent(void* self, QEvent* event);
 void QNetworkAccessManager_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedbase_supportedSchemesImplementation(const void* self);
+QObject* QNetworkAccessManager_protectedbase_sender(const void* self);
+int QNetworkAccessManager_protectedbase_senderSignalIndex(const void* self);
+int QNetworkAccessManager_protectedbase_receivers(const void* self, const char* signal);
+bool QNetworkAccessManager_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QNetworkAccessManager_staticMetaObject();
 void QNetworkAccessManager_delete(QNetworkAccessManager* self);
 

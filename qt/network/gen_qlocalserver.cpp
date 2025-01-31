@@ -297,6 +297,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QLocalServer::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QLocalServer::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QLocalServer::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QLocalServer::isSignalConnected(*signal);
+
+	}
+
 };
 
 QLocalServer* QLocalServer_new(struct QLocalServer_VTable* vtbl) {
@@ -560,6 +588,22 @@ void QLocalServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QLocalServer_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQLocalServer*)(self) )->protectedbase_sender();
+}
+
+int QLocalServer_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQLocalServer*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QLocalServer_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQLocalServer*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QLocalServer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQLocalServer*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QLocalServer_staticMetaObject() { return &QLocalServer::staticMetaObject; }

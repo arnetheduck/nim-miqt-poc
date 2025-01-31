@@ -144,13 +144,6 @@ void QQuickView_setInitialProperties(QQuickView* self, struct miqt_map /* of str
 void QQuickView_setContent(QQuickView* self, QUrl* url, QQmlComponent* component, QObject* item);
 void QQuickView_statusChanged(QQuickView* self, int param1);
 void QQuickView_connect_statusChanged(QQuickView* self, intptr_t slot);
-void QQuickView_resizeEvent(QQuickView* self, QResizeEvent* param1);
-void QQuickView_timerEvent(QQuickView* self, QTimerEvent* param1);
-void QQuickView_keyPressEvent(QQuickView* self, QKeyEvent* param1);
-void QQuickView_keyReleaseEvent(QQuickView* self, QKeyEvent* param1);
-void QQuickView_mousePressEvent(QQuickView* self, QMouseEvent* param1);
-void QQuickView_mouseReleaseEvent(QQuickView* self, QMouseEvent* param1);
-void QQuickView_mouseMoveEvent(QQuickView* self, QMouseEvent* param1);
 struct miqt_string QQuickView_tr2(const char* s, const char* c);
 struct miqt_string QQuickView_tr3(const char* s, const char* c, int n);
 struct miqt_string QQuickView_trUtf82(const char* s, const char* c);
@@ -187,6 +180,10 @@ void QQuickView_virtualbase_childEvent(void* self, QChildEvent* event);
 void QQuickView_virtualbase_customEvent(void* self, QEvent* event);
 void QQuickView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QQuickView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QQuickView_protectedbase_sender(const void* self);
+int QQuickView_protectedbase_senderSignalIndex(const void* self);
+int QQuickView_protectedbase_receivers(const void* self, const char* signal);
+bool QQuickView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QQuickView_staticMetaObject();
 void QQuickView_delete(QQuickView* self);
 

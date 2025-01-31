@@ -404,6 +404,63 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QNetworkCookie* */  protectedbase_allCookies() const {
+
+		QList<QNetworkCookie> _ret = QNetworkCookieJar::allCookies();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QNetworkCookie(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setAllCookies(struct miqt_array /* of QNetworkCookie* */  cookieList) {
+		QList<QNetworkCookie> cookieList_QList;
+		cookieList_QList.reserve(cookieList.len);
+		QNetworkCookie** cookieList_arr = static_cast<QNetworkCookie**>(cookieList.data);
+		for(size_t i = 0; i < cookieList.len; ++i) {
+			cookieList_QList.push_back(*(cookieList_arr[i]));
+		}
+
+		QNetworkCookieJar::setAllCookies(cookieList_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QNetworkCookieJar::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QNetworkCookieJar::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QNetworkCookieJar::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QNetworkCookieJar::isSignalConnected(*signal);
+
+	}
+
 };
 
 QNetworkCookieJar* QNetworkCookieJar_new(struct QNetworkCookieJar_VTable* vtbl) {
@@ -593,6 +650,30 @@ void QNetworkCookieJar_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkCookieJar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allCookies(const void* self) {
+	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->protectedbase_allCookies();
+}
+
+void QNetworkCookieJar_protectedbase_setAllCookies(void* self, struct miqt_array /* of QNetworkCookie* */  cookieList) {
+	( (MiqtVirtualQNetworkCookieJar*)(self) )->protectedbase_setAllCookies(cookieList);
+}
+
+QObject* QNetworkCookieJar_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->protectedbase_sender();
+}
+
+int QNetworkCookieJar_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QNetworkCookieJar_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QNetworkCookieJar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QNetworkCookieJar_staticMetaObject() { return &QNetworkCookieJar::staticMetaObject; }

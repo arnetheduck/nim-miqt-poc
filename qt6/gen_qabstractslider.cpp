@@ -1100,6 +1100,98 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setRepeatAction(int action) {
+
+		QAbstractSlider::setRepeatAction(static_cast<QAbstractSlider::SliderAction>(action));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_repeatAction() const {
+
+		QAbstractSlider::SliderAction _ret = QAbstractSlider::repeatAction();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setRepeatAction2(int action, int thresholdTime) {
+
+		QAbstractSlider::setRepeatAction(static_cast<QAbstractSlider::SliderAction>(action), static_cast<int>(thresholdTime));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setRepeatAction3(int action, int thresholdTime, int repeatTime) {
+
+		QAbstractSlider::setRepeatAction(static_cast<QAbstractSlider::SliderAction>(action), static_cast<int>(thresholdTime), static_cast<int>(repeatTime));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QAbstractSlider::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QAbstractSlider::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QAbstractSlider::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QAbstractSlider::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QAbstractSlider::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractSlider::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractSlider::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractSlider::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractSlider::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractSlider* QAbstractSlider_new(struct QAbstractSlider_VTable* vtbl, QWidget* parent) {
@@ -1577,6 +1669,58 @@ void QAbstractSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QAbstractSlider_protectedbase_setRepeatAction(void* self, int action) {
+	( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_setRepeatAction(action);
+}
+
+int QAbstractSlider_protectedbase_repeatAction(const void* self) {
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->protectedbase_repeatAction();
+}
+
+void QAbstractSlider_protectedbase_setRepeatAction2(void* self, int action, int thresholdTime) {
+	( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_setRepeatAction2(action, thresholdTime);
+}
+
+void QAbstractSlider_protectedbase_setRepeatAction3(void* self, int action, int thresholdTime, int repeatTime) {
+	( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_setRepeatAction3(action, thresholdTime, repeatTime);
+}
+
+void QAbstractSlider_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QAbstractSlider_protectedbase_create(void* self) {
+	( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_create();
+}
+
+void QAbstractSlider_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_destroy();
+}
+
+bool QAbstractSlider_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QAbstractSlider_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QAbstractSlider_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->protectedbase_sender();
+}
+
+int QAbstractSlider_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractSlider_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractSlider_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractSlider_staticMetaObject() { return &QAbstractSlider::staticMetaObject; }

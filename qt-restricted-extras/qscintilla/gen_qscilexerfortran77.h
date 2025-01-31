@@ -159,6 +159,12 @@ void QsciLexerFortran77_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerFortran77_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerFortran77_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerFortran77_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerFortran77_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerFortran77_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerFortran77_protectedbase_sender(const void* self);
+int QsciLexerFortran77_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerFortran77_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerFortran77_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerFortran77_staticMetaObject();
 void QsciLexerFortran77_delete(QsciLexerFortran77* self);
 

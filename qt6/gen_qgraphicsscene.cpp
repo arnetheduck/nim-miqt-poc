@@ -689,6 +689,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsScene::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsScene::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsScene::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsScene::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsScene* QGraphicsScene_new(struct QGraphicsScene_VTable* vtbl) {
@@ -1631,6 +1659,22 @@ void QGraphicsScene_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QGraphicsScene_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsScene*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsScene_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsScene*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsScene_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsScene*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsScene_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsScene*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsScene_staticMetaObject() { return &QGraphicsScene::staticMetaObject; }

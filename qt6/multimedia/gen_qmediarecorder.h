@@ -140,6 +140,10 @@ void QMediaRecorder_virtualbase_childEvent(void* self, QChildEvent* event);
 void QMediaRecorder_virtualbase_customEvent(void* self, QEvent* event);
 void QMediaRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QMediaRecorder_protectedbase_sender(const void* self);
+int QMediaRecorder_protectedbase_senderSignalIndex(const void* self);
+int QMediaRecorder_protectedbase_receivers(const void* self, const char* signal);
+bool QMediaRecorder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QMediaRecorder_staticMetaObject();
 void QMediaRecorder_delete(QMediaRecorder* self);
 

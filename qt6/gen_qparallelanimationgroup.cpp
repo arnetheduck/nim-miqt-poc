@@ -320,6 +320,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QParallelAnimationGroup::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QParallelAnimationGroup::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QParallelAnimationGroup::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QParallelAnimationGroup::isSignalConnected(*signal);
+
+	}
+
 };
 
 QParallelAnimationGroup* QParallelAnimationGroup_new(struct QParallelAnimationGroup_VTable* vtbl) {
@@ -437,6 +465,22 @@ void QParallelAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* 
 
 void QParallelAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQParallelAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QParallelAnimationGroup_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQParallelAnimationGroup*)(self) )->protectedbase_sender();
+}
+
+int QParallelAnimationGroup_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQParallelAnimationGroup*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QParallelAnimationGroup_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQParallelAnimationGroup*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QParallelAnimationGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQParallelAnimationGroup*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QParallelAnimationGroup_staticMetaObject() { return &QParallelAnimationGroup::staticMetaObject; }

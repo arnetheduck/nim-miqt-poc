@@ -96,6 +96,7 @@ proc fcQLayoutItem_virtualbase_widget(self: pointer, ): pointer {.importc: "QLay
 proc fcQLayoutItem_virtualbase_layout(self: pointer, ): pointer {.importc: "QLayoutItem_virtualbase_layout".}
 proc fcQLayoutItem_virtualbase_spacerItem(self: pointer, ): pointer {.importc: "QLayoutItem_virtualbase_spacerItem".}
 proc fcQLayoutItem_virtualbase_controlTypes(self: pointer, ): cint {.importc: "QLayoutItem_virtualbase_controlTypes".}
+proc fcQLayoutItem_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QLayoutItem_protectedbase_operatorAssign".}
 proc fcQLayoutItem_new(vtbl: pointer, ): ptr cQLayoutItem {.importc: "QLayoutItem_new".}
 proc fcQLayoutItem_new2(vtbl: pointer, param1: pointer): ptr cQLayoutItem {.importc: "QLayoutItem_new2".}
 proc fcQLayoutItem_new3(vtbl: pointer, alignment: cint): ptr cQLayoutItem {.importc: "QLayoutItem_new3".}
@@ -430,6 +431,9 @@ proc miqt_exec_callback_cQLayoutItem_controlTypes(vtbl: pointer, self: pointer):
   let self = QLayoutItem(h: self)
   let virtualReturn = vtbl[].controlTypes(self)
   cint(virtualReturn)
+
+proc operatorAssign*(self: gen_qlayoutitem_types.QLayoutItem, param1: gen_qlayoutitem_types.QLayoutItem): void =
+  fcQLayoutItem_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qlayoutitem_types.QLayoutItem,
     vtbl: ref QLayoutItemVTable = nil): gen_qlayoutitem_types.QLayoutItem =

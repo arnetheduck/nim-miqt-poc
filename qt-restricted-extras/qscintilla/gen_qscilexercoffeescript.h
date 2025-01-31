@@ -171,6 +171,12 @@ void QsciLexerCoffeeScript_virtualbase_childEvent(void* self, QChildEvent* event
 void QsciLexerCoffeeScript_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerCoffeeScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerCoffeeScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerCoffeeScript_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerCoffeeScript_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerCoffeeScript_protectedbase_sender(const void* self);
+int QsciLexerCoffeeScript_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerCoffeeScript_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerCoffeeScript_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerCoffeeScript_staticMetaObject();
 void QsciLexerCoffeeScript_delete(QsciLexerCoffeeScript* self);
 

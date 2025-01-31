@@ -212,6 +212,7 @@ void QTreeWidgetItem_virtualbase_setData(void* self, int column, int role, QVari
 bool QTreeWidgetItem_virtualbase_operatorLesser(const void* self, QTreeWidgetItem* other);
 void QTreeWidgetItem_virtualbase_read(void* self, QDataStream* in);
 void QTreeWidgetItem_virtualbase_write(const void* self, QDataStream* out);
+void QTreeWidgetItem_protectedbase_emitDataChanged(void* self);
 void QTreeWidgetItem_delete(QTreeWidgetItem* self);
 
 struct QTreeWidget_VTable {
@@ -386,12 +387,6 @@ void QTreeWidget_currentItemChanged(QTreeWidget* self, QTreeWidgetItem* current,
 void QTreeWidget_connect_currentItemChanged(QTreeWidget* self, intptr_t slot);
 void QTreeWidget_itemSelectionChanged(QTreeWidget* self);
 void QTreeWidget_connect_itemSelectionChanged(QTreeWidget* self, intptr_t slot);
-bool QTreeWidget_event(QTreeWidget* self, QEvent* e);
-struct miqt_array /* of struct miqt_string */  QTreeWidget_mimeTypes(const QTreeWidget* self);
-QMimeData* QTreeWidget_mimeData(const QTreeWidget* self, struct miqt_array /* of QTreeWidgetItem* */  items);
-bool QTreeWidget_dropMimeData(QTreeWidget* self, QTreeWidgetItem* parent, int index, QMimeData* data, int action);
-int QTreeWidget_supportedDropActions(const QTreeWidget* self);
-void QTreeWidget_dropEvent(QTreeWidget* self, QDropEvent* event);
 struct miqt_string QTreeWidget_tr2(const char* s, const char* c);
 struct miqt_string QTreeWidget_tr3(const char* s, const char* c, int n);
 void QTreeWidget_editItem2(QTreeWidget* self, QTreeWidgetItem* item, int column);
@@ -500,6 +495,37 @@ void QTreeWidget_virtualbase_childEvent(void* self, QChildEvent* event);
 void QTreeWidget_virtualbase_customEvent(void* self, QEvent* event);
 void QTreeWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QTreeWidget_protectedbase_columnResized(void* self, int column, int oldSize, int newSize);
+void QTreeWidget_protectedbase_columnCountChanged(void* self, int oldCount, int newCount);
+void QTreeWidget_protectedbase_columnMoved(void* self);
+void QTreeWidget_protectedbase_reexpand(void* self);
+void QTreeWidget_protectedbase_rowsRemoved(void* self, QModelIndex* parent, int first, int last);
+void QTreeWidget_protectedbase_drawTree(const void* self, QPainter* painter, QRegion* region);
+int QTreeWidget_protectedbase_indexRowSizeHint(const void* self, QModelIndex* index);
+int QTreeWidget_protectedbase_rowHeight(const void* self, QModelIndex* index);
+int QTreeWidget_protectedbase_state(const void* self);
+void QTreeWidget_protectedbase_setState(void* self, int state);
+void QTreeWidget_protectedbase_scheduleDelayedItemsLayout(void* self);
+void QTreeWidget_protectedbase_executeDelayedItemsLayout(void* self);
+void QTreeWidget_protectedbase_setDirtyRegion(void* self, QRegion* region);
+void QTreeWidget_protectedbase_scrollDirtyRegion(void* self, int dx, int dy);
+QPoint* QTreeWidget_protectedbase_dirtyRegionOffset(const void* self);
+void QTreeWidget_protectedbase_startAutoScroll(void* self);
+void QTreeWidget_protectedbase_stopAutoScroll(void* self);
+void QTreeWidget_protectedbase_doAutoScroll(void* self);
+int QTreeWidget_protectedbase_dropIndicatorPosition(const void* self);
+void QTreeWidget_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom);
+QMargins* QTreeWidget_protectedbase_viewportMargins(const void* self);
+void QTreeWidget_protectedbase_drawFrame(void* self, QPainter* param1);
+void QTreeWidget_protectedbase_updateMicroFocus(void* self);
+void QTreeWidget_protectedbase_create(void* self);
+void QTreeWidget_protectedbase_destroy(void* self);
+bool QTreeWidget_protectedbase_focusNextChild(void* self);
+bool QTreeWidget_protectedbase_focusPreviousChild(void* self);
+QObject* QTreeWidget_protectedbase_sender(const void* self);
+int QTreeWidget_protectedbase_senderSignalIndex(const void* self);
+int QTreeWidget_protectedbase_receivers(const void* self, const char* signal);
+bool QTreeWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QTreeWidget_staticMetaObject();
 void QTreeWidget_delete(QTreeWidget* self);
 

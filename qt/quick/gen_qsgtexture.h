@@ -117,6 +117,10 @@ void QSGTexture_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSGTexture_virtualbase_customEvent(void* self, QEvent* event);
 void QSGTexture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSGTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSGTexture_protectedbase_sender(const void* self);
+int QSGTexture_protectedbase_senderSignalIndex(const void* self);
+int QSGTexture_protectedbase_receivers(const void* self, const char* signal);
+bool QSGTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSGTexture_staticMetaObject();
 void QSGTexture_delete(QSGTexture* self);
 
@@ -173,6 +177,10 @@ void QSGDynamicTexture_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSGDynamicTexture_virtualbase_customEvent(void* self, QEvent* event);
 void QSGDynamicTexture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSGDynamicTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSGDynamicTexture_protectedbase_sender(const void* self);
+int QSGDynamicTexture_protectedbase_senderSignalIndex(const void* self);
+int QSGDynamicTexture_protectedbase_receivers(const void* self, const char* signal);
+bool QSGDynamicTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSGDynamicTexture_staticMetaObject();
 void QSGDynamicTexture_delete(QSGDynamicTexture* self);
 

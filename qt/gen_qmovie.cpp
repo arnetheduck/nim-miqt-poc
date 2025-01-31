@@ -263,6 +263,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMovie::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMovie::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMovie::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMovie::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMovie* QMovie_new(struct QMovie_VTable* vtbl) {
@@ -730,6 +758,22 @@ void QMovie_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMovie_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QMovie_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMovie*)(self) )->protectedbase_sender();
+}
+
+int QMovie_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMovie*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMovie_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMovie*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMovie_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMovie*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMovie_staticMetaObject() { return &QMovie::staticMetaObject; }

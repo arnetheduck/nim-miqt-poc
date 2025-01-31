@@ -265,6 +265,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QImageCapture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QImageCapture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QImageCapture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QImageCapture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QImageCapture* QImageCapture_new(struct QImageCapture_VTable* vtbl) {
@@ -745,6 +773,22 @@ void QImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QImageCapture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQImageCapture*)(self) )->protectedbase_sender();
+}
+
+int QImageCapture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQImageCapture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QImageCapture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQImageCapture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QImageCapture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQImageCapture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QImageCapture_staticMetaObject() { return &QImageCapture::staticMetaObject; }

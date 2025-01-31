@@ -82,7 +82,6 @@ QIODevice* QNetworkDiskCache_prepare(QNetworkDiskCache* self, QNetworkCacheMetaD
 void QNetworkDiskCache_insert(QNetworkDiskCache* self, QIODevice* device);
 QNetworkCacheMetaData* QNetworkDiskCache_fileMetaData(const QNetworkDiskCache* self, struct miqt_string fileName);
 void QNetworkDiskCache_clear(QNetworkDiskCache* self);
-long long QNetworkDiskCache_expire(QNetworkDiskCache* self);
 struct miqt_string QNetworkDiskCache_tr2(const char* s, const char* c);
 struct miqt_string QNetworkDiskCache_tr3(const char* s, const char* c, int n);
 QMetaObject* QNetworkDiskCache_virtualbase_metaObject(const void* self);
@@ -104,6 +103,10 @@ void QNetworkDiskCache_virtualbase_childEvent(void* self, QChildEvent* event);
 void QNetworkDiskCache_virtualbase_customEvent(void* self, QEvent* event);
 void QNetworkDiskCache_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QNetworkDiskCache_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QNetworkDiskCache_protectedbase_sender(const void* self);
+int QNetworkDiskCache_protectedbase_senderSignalIndex(const void* self);
+int QNetworkDiskCache_protectedbase_receivers(const void* self, const char* signal);
+bool QNetworkDiskCache_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QNetworkDiskCache_staticMetaObject();
 void QNetworkDiskCache_delete(QNetworkDiskCache* self);
 

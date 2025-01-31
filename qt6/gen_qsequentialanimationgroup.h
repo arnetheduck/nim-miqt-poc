@@ -68,10 +68,6 @@ QAbstractAnimation* QSequentialAnimationGroup_currentAnimation(const QSequential
 int QSequentialAnimationGroup_duration(const QSequentialAnimationGroup* self);
 void QSequentialAnimationGroup_currentAnimationChanged(QSequentialAnimationGroup* self, QAbstractAnimation* current);
 void QSequentialAnimationGroup_connect_currentAnimationChanged(QSequentialAnimationGroup* self, intptr_t slot);
-bool QSequentialAnimationGroup_event(QSequentialAnimationGroup* self, QEvent* event);
-void QSequentialAnimationGroup_updateCurrentTime(QSequentialAnimationGroup* self, int param1);
-void QSequentialAnimationGroup_updateState(QSequentialAnimationGroup* self, int newState, int oldState);
-void QSequentialAnimationGroup_updateDirection(QSequentialAnimationGroup* self, int direction);
 struct miqt_string QSequentialAnimationGroup_tr2(const char* s, const char* c);
 struct miqt_string QSequentialAnimationGroup_tr3(const char* s, const char* c, int n);
 QMetaObject* QSequentialAnimationGroup_virtualbase_metaObject(const void* self);
@@ -88,6 +84,10 @@ void QSequentialAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* e
 void QSequentialAnimationGroup_virtualbase_customEvent(void* self, QEvent* event);
 void QSequentialAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSequentialAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSequentialAnimationGroup_protectedbase_sender(const void* self);
+int QSequentialAnimationGroup_protectedbase_senderSignalIndex(const void* self);
+int QSequentialAnimationGroup_protectedbase_receivers(const void* self, const char* signal);
+bool QSequentialAnimationGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSequentialAnimationGroup_staticMetaObject();
 void QSequentialAnimationGroup_delete(QSequentialAnimationGroup* self);
 

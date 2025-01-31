@@ -97,9 +97,6 @@ void QStyledItemDelegate_updateEditorGeometry(const QStyledItemDelegate* self, Q
 QItemEditorFactory* QStyledItemDelegate_itemEditorFactory(const QStyledItemDelegate* self);
 void QStyledItemDelegate_setItemEditorFactory(QStyledItemDelegate* self, QItemEditorFactory* factory);
 struct miqt_string QStyledItemDelegate_displayText(const QStyledItemDelegate* self, QVariant* value, QLocale* locale);
-void QStyledItemDelegate_initStyleOption(const QStyledItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index);
-bool QStyledItemDelegate_eventFilter(QStyledItemDelegate* self, QObject* object, QEvent* event);
-bool QStyledItemDelegate_editorEvent(QStyledItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
 struct miqt_string QStyledItemDelegate_tr2(const char* s, const char* c);
 struct miqt_string QStyledItemDelegate_tr3(const char* s, const char* c, int n);
 QMetaObject* QStyledItemDelegate_virtualbase_metaObject(const void* self);
@@ -124,6 +121,10 @@ void QStyledItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event);
 void QStyledItemDelegate_virtualbase_customEvent(void* self, QEvent* event);
 void QStyledItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QStyledItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QStyledItemDelegate_protectedbase_sender(const void* self);
+int QStyledItemDelegate_protectedbase_senderSignalIndex(const void* self);
+int QStyledItemDelegate_protectedbase_receivers(const void* self, const char* signal);
+bool QStyledItemDelegate_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QStyledItemDelegate_staticMetaObject();
 void QStyledItemDelegate_delete(QStyledItemDelegate* self);
 

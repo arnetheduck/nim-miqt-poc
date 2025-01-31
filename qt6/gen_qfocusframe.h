@@ -149,10 +149,6 @@ int QFocusFrame_metacall(QFocusFrame* self, int param1, int param2, void** param
 struct miqt_string QFocusFrame_tr(const char* s);
 void QFocusFrame_setWidget(QFocusFrame* self, QWidget* widget);
 QWidget* QFocusFrame_widget(const QFocusFrame* self);
-bool QFocusFrame_event(QFocusFrame* self, QEvent* e);
-bool QFocusFrame_eventFilter(QFocusFrame* self, QObject* param1, QEvent* param2);
-void QFocusFrame_paintEvent(QFocusFrame* self, QPaintEvent* param1);
-void QFocusFrame_initStyleOption(const QFocusFrame* self, QStyleOption* option);
 struct miqt_string QFocusFrame_tr2(const char* s, const char* c);
 struct miqt_string QFocusFrame_tr3(const char* s, const char* c, int n);
 QMetaObject* QFocusFrame_virtualbase_metaObject(const void* self);
@@ -206,6 +202,15 @@ void QFocusFrame_virtualbase_childEvent(void* self, QChildEvent* event);
 void QFocusFrame_virtualbase_customEvent(void* self, QEvent* event);
 void QFocusFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QFocusFrame_protectedbase_updateMicroFocus(void* self);
+void QFocusFrame_protectedbase_create(void* self);
+void QFocusFrame_protectedbase_destroy(void* self);
+bool QFocusFrame_protectedbase_focusNextChild(void* self);
+bool QFocusFrame_protectedbase_focusPreviousChild(void* self);
+QObject* QFocusFrame_protectedbase_sender(const void* self);
+int QFocusFrame_protectedbase_senderSignalIndex(const void* self);
+int QFocusFrame_protectedbase_receivers(const void* self, const char* signal);
+bool QFocusFrame_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QFocusFrame_staticMetaObject();
 void QFocusFrame_delete(QFocusFrame* self);
 

@@ -101,6 +101,10 @@ void QAudioRoom_virtualbase_childEvent(void* self, QChildEvent* event);
 void QAudioRoom_virtualbase_customEvent(void* self, QEvent* event);
 void QAudioRoom_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAudioRoom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAudioRoom_protectedbase_sender(const void* self);
+int QAudioRoom_protectedbase_senderSignalIndex(const void* self);
+int QAudioRoom_protectedbase_receivers(const void* self, const char* signal);
+bool QAudioRoom_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAudioRoom_staticMetaObject();
 void QAudioRoom_delete(QAudioRoom* self);
 

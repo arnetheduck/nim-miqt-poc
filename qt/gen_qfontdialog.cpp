@@ -1169,6 +1169,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QFontDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QFontDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QFontDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QFontDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QFontDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QFontDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QFontDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QFontDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QFontDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QFontDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QFontDialog* QFontDialog_new(struct QFontDialog_VTable* vtbl, QWidget* parent) {
@@ -1594,6 +1664,46 @@ void QFontDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QFontDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QFontDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQFontDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QFontDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQFontDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QFontDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQFontDialog*)(self) )->protectedbase_create();
+}
+
+void QFontDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQFontDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QFontDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQFontDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QFontDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQFontDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QFontDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQFontDialog*)(self) )->protectedbase_sender();
+}
+
+int QFontDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQFontDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QFontDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQFontDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QFontDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQFontDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QFontDialog_staticMetaObject() { return &QFontDialog::staticMetaObject; }

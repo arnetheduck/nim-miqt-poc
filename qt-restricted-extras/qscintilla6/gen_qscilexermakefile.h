@@ -150,6 +150,10 @@ void QsciLexerMakefile_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerMakefile_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerMakefile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerMakefile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciLexerMakefile_protectedbase_sender(const void* self);
+int QsciLexerMakefile_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerMakefile_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerMakefile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerMakefile_staticMetaObject();
 void QsciLexerMakefile_delete(QsciLexerMakefile* self);
 

@@ -175,6 +175,12 @@ void QsciLexerPerl_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerPerl_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerPerl_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerPerl_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerPerl_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerPerl_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerPerl_protectedbase_sender(const void* self);
+int QsciLexerPerl_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerPerl_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerPerl_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerPerl_staticMetaObject();
 void QsciLexerPerl_delete(QsciLexerPerl* self);
 

@@ -261,6 +261,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QButtonGroup::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QButtonGroup::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QButtonGroup::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QButtonGroup::isSignalConnected(*signal);
+
+	}
+
 };
 
 QButtonGroup* QButtonGroup_new(struct QButtonGroup_VTable* vtbl) {
@@ -687,6 +715,22 @@ void QButtonGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QButtonGroup_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQButtonGroup*)(self) )->protectedbase_sender();
+}
+
+int QButtonGroup_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQButtonGroup*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QButtonGroup_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQButtonGroup*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QButtonGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQButtonGroup*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QButtonGroup_staticMetaObject() { return &QButtonGroup::staticMetaObject; }

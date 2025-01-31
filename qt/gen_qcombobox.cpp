@@ -37,6 +37,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionComboBox>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QValidator>
@@ -1132,6 +1133,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionComboBox* option) const {
+
+		QComboBox::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QComboBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QComboBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QComboBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QComboBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QComboBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QComboBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QComboBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QComboBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QComboBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QComboBox* QComboBox_new(struct QComboBox_VTable* vtbl, QWidget* parent) {
@@ -2066,6 +2137,46 @@ void QComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QComboBox_protectedbase_initStyleOption(const void* self, QStyleOptionComboBox* option) {
+	( (const MiqtVirtualQComboBox*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QComboBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQComboBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QComboBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQComboBox*)(self) )->protectedbase_create();
+}
+
+void QComboBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQComboBox*)(self) )->protectedbase_destroy();
+}
+
+bool QComboBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQComboBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QComboBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQComboBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QComboBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQComboBox*)(self) )->protectedbase_sender();
+}
+
+int QComboBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQComboBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QComboBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQComboBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QComboBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQComboBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QComboBox_staticMetaObject() { return &QComboBox::staticMetaObject; }

@@ -123,8 +123,6 @@ void* QRasterWindow_metacast(QRasterWindow* self, const char* param1);
 int QRasterWindow_metacall(QRasterWindow* self, int param1, int param2, void** param3);
 struct miqt_string QRasterWindow_tr(const char* s);
 struct miqt_string QRasterWindow_trUtf8(const char* s);
-int QRasterWindow_metric(const QRasterWindow* self, int metric);
-QPaintDevice* QRasterWindow_redirected(const QRasterWindow* self, QPoint* param1);
 struct miqt_string QRasterWindow_tr2(const char* s, const char* c);
 struct miqt_string QRasterWindow_tr3(const char* s, const char* c, int n);
 struct miqt_string QRasterWindow_trUtf82(const char* s, const char* c);
@@ -167,6 +165,10 @@ void QRasterWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 int QRasterWindow_virtualbase_devType(const void* self);
 void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter);
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self);
+QObject* QRasterWindow_protectedbase_sender(const void* self);
+int QRasterWindow_protectedbase_senderSignalIndex(const void* self);
+int QRasterWindow_protectedbase_receivers(const void* self, const char* signal);
+bool QRasterWindow_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QRasterWindow_staticMetaObject();
 void QRasterWindow_delete(QRasterWindow* self);
 

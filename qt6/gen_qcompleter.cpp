@@ -334,6 +334,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QCompleter::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QCompleter::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QCompleter::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QCompleter::isSignalConnected(*signal);
+
+	}
+
 };
 
 QCompleter* QCompleter_new(struct QCompleter_VTable* vtbl) {
@@ -748,6 +776,22 @@ void QCompleter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QCompleter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QCompleter_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQCompleter*)(self) )->protectedbase_sender();
+}
+
+int QCompleter_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQCompleter*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QCompleter_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQCompleter*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QCompleter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQCompleter*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QCompleter_staticMetaObject() { return &QCompleter::staticMetaObject; }

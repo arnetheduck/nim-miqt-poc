@@ -3050,6 +3050,138 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setScrollBars() {
+
+		QsciScintilla::setScrollBars();
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_string protectedbase_textAsBytes(struct miqt_string text) const {
+		QString text_QString = QString::fromUtf8(text.data, text.len);
+
+		QByteArray _qb = QsciScintilla::textAsBytes(text_QString);
+		struct miqt_string _ms;
+		_ms.len = _qb.length();
+		_ms.data = static_cast<char*>(malloc(_ms.len));
+		memcpy(_ms.data, _qb.data(), _ms.len);
+		return _ms;
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_string protectedbase_bytesAsText(const char* bytes) const {
+
+		QString _ret = QsciScintilla::bytesAsText(bytes);
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _b = _ret.toUtf8();
+		struct miqt_string _ms;
+		_ms.len = _b.length();
+		_ms.data = static_cast<char*>(malloc(_ms.len));
+		memcpy(_ms.data, _b.data(), _ms.len);
+		return _ms;
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_contextMenuNeeded(int x, int y) const {
+
+		return QsciScintilla::contextMenuNeeded(static_cast<int>(x), static_cast<int>(y));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QsciScintilla::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QsciScintilla::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QsciScintilla::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QsciScintilla::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QsciScintilla::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QsciScintilla::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QsciScintilla::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QsciScintilla::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QsciScintilla::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciScintilla::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciScintilla::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciScintilla::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciScintilla::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciScintilla* QsciScintilla_new(struct QsciScintilla_VTable* vtbl, QWidget* parent) {
@@ -5192,6 +5324,74 @@ void QsciScintilla_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QsciScintilla_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QsciScintilla_protectedbase_setScrollBars(void* self) {
+	( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_setScrollBars();
+}
+
+struct miqt_string QsciScintilla_protectedbase_textAsBytes(const void* self, struct miqt_string text) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_textAsBytes(text);
+}
+
+struct miqt_string QsciScintilla_protectedbase_bytesAsText(const void* self, const char* bytes) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_bytesAsText(bytes);
+}
+
+bool QsciScintilla_protectedbase_contextMenuNeeded(const void* self, int x, int y) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_contextMenuNeeded(x, y);
+}
+
+void QsciScintilla_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QsciScintilla_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_viewportMargins();
+}
+
+void QsciScintilla_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QsciScintilla_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QsciScintilla_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QsciScintilla_protectedbase_create(void* self) {
+	( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_create();
+}
+
+void QsciScintilla_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_destroy();
+}
+
+bool QsciScintilla_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QsciScintilla_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQsciScintilla*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QsciScintilla_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_sender();
+}
+
+int QsciScintilla_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciScintilla_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciScintilla_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciScintilla_staticMetaObject() { return &QsciScintilla::staticMetaObject; }

@@ -80,7 +80,6 @@ void QMimeData_removeFormat(QMimeData* self, struct miqt_string mimetype);
 bool QMimeData_hasFormat(const QMimeData* self, struct miqt_string mimetype);
 struct miqt_array /* of struct miqt_string */  QMimeData_formats(const QMimeData* self);
 void QMimeData_clear(QMimeData* self);
-QVariant* QMimeData_retrieveData(const QMimeData* self, struct miqt_string mimetype, int preferredType);
 struct miqt_string QMimeData_tr2(const char* s, const char* c);
 struct miqt_string QMimeData_tr3(const char* s, const char* c, int n);
 struct miqt_string QMimeData_trUtf82(const char* s, const char* c);
@@ -98,6 +97,10 @@ void QMimeData_virtualbase_childEvent(void* self, QChildEvent* event);
 void QMimeData_virtualbase_customEvent(void* self, QEvent* event);
 void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QMimeData_protectedbase_sender(const void* self);
+int QMimeData_protectedbase_senderSignalIndex(const void* self);
+int QMimeData_protectedbase_receivers(const void* self, const char* signal);
+bool QMimeData_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QMimeData_staticMetaObject();
 void QMimeData_delete(QMimeData* self);
 

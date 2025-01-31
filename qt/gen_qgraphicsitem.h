@@ -323,31 +323,6 @@ void QGraphicsItem_setInputMethodHints(QGraphicsItem* self, int hints);
 int QGraphicsItem_type(const QGraphicsItem* self);
 void QGraphicsItem_installSceneEventFilter(QGraphicsItem* self, QGraphicsItem* filterItem);
 void QGraphicsItem_removeSceneEventFilter(QGraphicsItem* self, QGraphicsItem* filterItem);
-bool QGraphicsItem_sceneEventFilter(QGraphicsItem* self, QGraphicsItem* watched, QEvent* event);
-bool QGraphicsItem_sceneEvent(QGraphicsItem* self, QEvent* event);
-void QGraphicsItem_contextMenuEvent(QGraphicsItem* self, QGraphicsSceneContextMenuEvent* event);
-void QGraphicsItem_dragEnterEvent(QGraphicsItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsItem_dragLeaveEvent(QGraphicsItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsItem_dragMoveEvent(QGraphicsItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsItem_dropEvent(QGraphicsItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsItem_focusInEvent(QGraphicsItem* self, QFocusEvent* event);
-void QGraphicsItem_focusOutEvent(QGraphicsItem* self, QFocusEvent* event);
-void QGraphicsItem_hoverEnterEvent(QGraphicsItem* self, QGraphicsSceneHoverEvent* event);
-void QGraphicsItem_hoverMoveEvent(QGraphicsItem* self, QGraphicsSceneHoverEvent* event);
-void QGraphicsItem_hoverLeaveEvent(QGraphicsItem* self, QGraphicsSceneHoverEvent* event);
-void QGraphicsItem_keyPressEvent(QGraphicsItem* self, QKeyEvent* event);
-void QGraphicsItem_keyReleaseEvent(QGraphicsItem* self, QKeyEvent* event);
-void QGraphicsItem_mousePressEvent(QGraphicsItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsItem_mouseMoveEvent(QGraphicsItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsItem_mouseReleaseEvent(QGraphicsItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsItem_mouseDoubleClickEvent(QGraphicsItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsItem_wheelEvent(QGraphicsItem* self, QGraphicsSceneWheelEvent* event);
-void QGraphicsItem_inputMethodEvent(QGraphicsItem* self, QInputMethodEvent* event);
-QVariant* QGraphicsItem_inputMethodQuery(const QGraphicsItem* self, int query);
-QVariant* QGraphicsItem_itemChange(QGraphicsItem* self, int change, QVariant* value);
-bool QGraphicsItem_supportsExtension(const QGraphicsItem* self, int extension);
-void QGraphicsItem_setExtension(QGraphicsItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsItem_extension(const QGraphicsItem* self, QVariant* variant);
 void QGraphicsItem_setFlag2(QGraphicsItem* self, int flag, bool enabled);
 void QGraphicsItem_setCacheMode2(QGraphicsItem* self, int mode, QSize* cacheSize);
 void QGraphicsItem_setFocus1(QGraphicsItem* self, int focusReason);
@@ -398,6 +373,10 @@ QVariant* QGraphicsItem_virtualbase_itemChange(void* self, int change, QVariant*
 bool QGraphicsItem_virtualbase_supportsExtension(const void* self, int extension);
 void QGraphicsItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 QVariant* QGraphicsItem_virtualbase_extension(const void* self, QVariant* variant);
+void QGraphicsItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsItem_protectedbase_addToIndex(void* self);
+void QGraphicsItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsItem_delete(QGraphicsItem* self);
 
 struct QGraphicsObject_VTable {
@@ -482,7 +461,6 @@ void QGraphicsObject_widthChanged(QGraphicsObject* self);
 void QGraphicsObject_connect_widthChanged(QGraphicsObject* self, intptr_t slot);
 void QGraphicsObject_heightChanged(QGraphicsObject* self);
 void QGraphicsObject_connect_heightChanged(QGraphicsObject* self, intptr_t slot);
-bool QGraphicsObject_event(QGraphicsObject* self, QEvent* ev);
 struct miqt_string QGraphicsObject_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsObject_tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsObject_trUtf82(const char* s, const char* c);
@@ -533,6 +511,14 @@ QVariant* QGraphicsObject_virtualbase_itemChange(void* self, int change, QVarian
 bool QGraphicsObject_virtualbase_supportsExtension(const void* self, int extension);
 void QGraphicsObject_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* variant);
+void QGraphicsObject_protectedbase_updateMicroFocus(void* self);
+QObject* QGraphicsObject_protectedbase_sender(const void* self);
+int QGraphicsObject_protectedbase_senderSignalIndex(const void* self);
+int QGraphicsObject_protectedbase_receivers(const void* self, const char* signal);
+bool QGraphicsObject_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
+void QGraphicsObject_protectedbase_addToIndex(void* self);
+void QGraphicsObject_protectedbase_removeFromIndex(void* self);
+void QGraphicsObject_protectedbase_prepareGeometryChange(void* self);
 const QMetaObject* QGraphicsObject_staticMetaObject();
 void QGraphicsObject_delete(QGraphicsObject* self);
 
@@ -618,6 +604,10 @@ QVariant* QAbstractGraphicsShapeItem_virtualbase_itemChange(void* self, int chan
 bool QAbstractGraphicsShapeItem_virtualbase_supportsExtension(const void* self, int extension);
 void QAbstractGraphicsShapeItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 QVariant* QAbstractGraphicsShapeItem_virtualbase_extension(const void* self, QVariant* variant);
+void QAbstractGraphicsShapeItem_protectedbase_updateMicroFocus(void* self);
+void QAbstractGraphicsShapeItem_protectedbase_addToIndex(void* self);
+void QAbstractGraphicsShapeItem_protectedbase_removeFromIndex(void* self);
+void QAbstractGraphicsShapeItem_protectedbase_prepareGeometryChange(void* self);
 void QAbstractGraphicsShapeItem_delete(QAbstractGraphicsShapeItem* self);
 
 struct QGraphicsPathItem_VTable {
@@ -672,9 +662,6 @@ void QGraphicsPathItem_paint(QGraphicsPathItem* self, QPainter* painter, QStyleO
 bool QGraphicsPathItem_isObscuredBy(const QGraphicsPathItem* self, QGraphicsItem* item);
 QPainterPath* QGraphicsPathItem_opaqueArea(const QGraphicsPathItem* self);
 int QGraphicsPathItem_type(const QGraphicsPathItem* self);
-bool QGraphicsPathItem_supportsExtension(const QGraphicsPathItem* self, int extension);
-void QGraphicsPathItem_setExtension(QGraphicsPathItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsPathItem_extension(const QGraphicsPathItem* self, QVariant* variant);
 QRectF* QGraphicsPathItem_virtualbase_boundingRect(const void* self);
 QPainterPath* QGraphicsPathItem_virtualbase_shape(const void* self);
 bool QGraphicsPathItem_virtualbase_contains(const void* self, QPointF* point);
@@ -710,6 +697,10 @@ void QGraphicsPathItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEve
 void QGraphicsPathItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 QVariant* QGraphicsPathItem_virtualbase_inputMethodQuery(const void* self, int query);
 QVariant* QGraphicsPathItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsPathItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsPathItem_protectedbase_addToIndex(void* self);
+void QGraphicsPathItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsPathItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsPathItem_delete(QGraphicsPathItem* self);
 
 struct QGraphicsRectItem_VTable {
@@ -767,9 +758,6 @@ void QGraphicsRectItem_paint(QGraphicsRectItem* self, QPainter* painter, QStyleO
 bool QGraphicsRectItem_isObscuredBy(const QGraphicsRectItem* self, QGraphicsItem* item);
 QPainterPath* QGraphicsRectItem_opaqueArea(const QGraphicsRectItem* self);
 int QGraphicsRectItem_type(const QGraphicsRectItem* self);
-bool QGraphicsRectItem_supportsExtension(const QGraphicsRectItem* self, int extension);
-void QGraphicsRectItem_setExtension(QGraphicsRectItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsRectItem_extension(const QGraphicsRectItem* self, QVariant* variant);
 QRectF* QGraphicsRectItem_virtualbase_boundingRect(const void* self);
 QPainterPath* QGraphicsRectItem_virtualbase_shape(const void* self);
 bool QGraphicsRectItem_virtualbase_contains(const void* self, QPointF* point);
@@ -805,6 +793,10 @@ void QGraphicsRectItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEve
 void QGraphicsRectItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 QVariant* QGraphicsRectItem_virtualbase_inputMethodQuery(const void* self, int query);
 QVariant* QGraphicsRectItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsRectItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsRectItem_protectedbase_addToIndex(void* self);
+void QGraphicsRectItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsRectItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsRectItem_delete(QGraphicsRectItem* self);
 
 struct QGraphicsEllipseItem_VTable {
@@ -866,9 +858,6 @@ void QGraphicsEllipseItem_paint(QGraphicsEllipseItem* self, QPainter* painter, Q
 bool QGraphicsEllipseItem_isObscuredBy(const QGraphicsEllipseItem* self, QGraphicsItem* item);
 QPainterPath* QGraphicsEllipseItem_opaqueArea(const QGraphicsEllipseItem* self);
 int QGraphicsEllipseItem_type(const QGraphicsEllipseItem* self);
-bool QGraphicsEllipseItem_supportsExtension(const QGraphicsEllipseItem* self, int extension);
-void QGraphicsEllipseItem_setExtension(QGraphicsEllipseItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsEllipseItem_extension(const QGraphicsEllipseItem* self, QVariant* variant);
 QRectF* QGraphicsEllipseItem_virtualbase_boundingRect(const void* self);
 QPainterPath* QGraphicsEllipseItem_virtualbase_shape(const void* self);
 bool QGraphicsEllipseItem_virtualbase_contains(const void* self, QPointF* point);
@@ -904,6 +893,10 @@ void QGraphicsEllipseItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheel
 void QGraphicsEllipseItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 QVariant* QGraphicsEllipseItem_virtualbase_inputMethodQuery(const void* self, int query);
 QVariant* QGraphicsEllipseItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsEllipseItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsEllipseItem_protectedbase_addToIndex(void* self);
+void QGraphicsEllipseItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsEllipseItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsEllipseItem_delete(QGraphicsEllipseItem* self);
 
 struct QGraphicsPolygonItem_VTable {
@@ -956,9 +949,6 @@ void QGraphicsPolygonItem_paint(QGraphicsPolygonItem* self, QPainter* painter, Q
 bool QGraphicsPolygonItem_isObscuredBy(const QGraphicsPolygonItem* self, QGraphicsItem* item);
 QPainterPath* QGraphicsPolygonItem_opaqueArea(const QGraphicsPolygonItem* self);
 int QGraphicsPolygonItem_type(const QGraphicsPolygonItem* self);
-bool QGraphicsPolygonItem_supportsExtension(const QGraphicsPolygonItem* self, int extension);
-void QGraphicsPolygonItem_setExtension(QGraphicsPolygonItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsPolygonItem_extension(const QGraphicsPolygonItem* self, QVariant* variant);
 QRectF* QGraphicsPolygonItem_virtualbase_boundingRect(const void* self);
 QPainterPath* QGraphicsPolygonItem_virtualbase_shape(const void* self);
 bool QGraphicsPolygonItem_virtualbase_contains(const void* self, QPointF* point);
@@ -994,6 +984,10 @@ void QGraphicsPolygonItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheel
 void QGraphicsPolygonItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 QVariant* QGraphicsPolygonItem_virtualbase_inputMethodQuery(const void* self, int query);
 QVariant* QGraphicsPolygonItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsPolygonItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsPolygonItem_protectedbase_addToIndex(void* self);
+void QGraphicsPolygonItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsPolygonItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsPolygonItem_delete(QGraphicsPolygonItem* self);
 
 struct QGraphicsLineItem_VTable {
@@ -1053,9 +1047,6 @@ void QGraphicsLineItem_paint(QGraphicsLineItem* self, QPainter* painter, QStyleO
 bool QGraphicsLineItem_isObscuredBy(const QGraphicsLineItem* self, QGraphicsItem* item);
 QPainterPath* QGraphicsLineItem_opaqueArea(const QGraphicsLineItem* self);
 int QGraphicsLineItem_type(const QGraphicsLineItem* self);
-bool QGraphicsLineItem_supportsExtension(const QGraphicsLineItem* self, int extension);
-void QGraphicsLineItem_setExtension(QGraphicsLineItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsLineItem_extension(const QGraphicsLineItem* self, QVariant* variant);
 QRectF* QGraphicsLineItem_virtualbase_boundingRect(const void* self);
 QPainterPath* QGraphicsLineItem_virtualbase_shape(const void* self);
 bool QGraphicsLineItem_virtualbase_contains(const void* self, QPointF* point);
@@ -1091,6 +1082,10 @@ void QGraphicsLineItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEve
 void QGraphicsLineItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 QVariant* QGraphicsLineItem_virtualbase_inputMethodQuery(const void* self, int query);
 QVariant* QGraphicsLineItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsLineItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsLineItem_protectedbase_addToIndex(void* self);
+void QGraphicsLineItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsLineItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsLineItem_delete(QGraphicsLineItem* self);
 
 struct QGraphicsPixmapItem_VTable {
@@ -1152,9 +1147,6 @@ QPainterPath* QGraphicsPixmapItem_opaqueArea(const QGraphicsPixmapItem* self);
 int QGraphicsPixmapItem_type(const QGraphicsPixmapItem* self);
 int QGraphicsPixmapItem_shapeMode(const QGraphicsPixmapItem* self);
 void QGraphicsPixmapItem_setShapeMode(QGraphicsPixmapItem* self, int mode);
-bool QGraphicsPixmapItem_supportsExtension(const QGraphicsPixmapItem* self, int extension);
-void QGraphicsPixmapItem_setExtension(QGraphicsPixmapItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsPixmapItem_extension(const QGraphicsPixmapItem* self, QVariant* variant);
 QRectF* QGraphicsPixmapItem_virtualbase_boundingRect(const void* self);
 QPainterPath* QGraphicsPixmapItem_virtualbase_shape(const void* self);
 bool QGraphicsPixmapItem_virtualbase_contains(const void* self, QPointF* point);
@@ -1190,6 +1182,10 @@ void QGraphicsPixmapItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelE
 void QGraphicsPixmapItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 QVariant* QGraphicsPixmapItem_virtualbase_inputMethodQuery(const void* self, int query);
 QVariant* QGraphicsPixmapItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsPixmapItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsPixmapItem_protectedbase_addToIndex(void* self);
+void QGraphicsPixmapItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsPixmapItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsPixmapItem_delete(QGraphicsPixmapItem* self);
 
 struct QGraphicsTextItem_VTable {
@@ -1282,28 +1278,6 @@ void QGraphicsTextItem_linkActivated(QGraphicsTextItem* self, struct miqt_string
 void QGraphicsTextItem_connect_linkActivated(QGraphicsTextItem* self, intptr_t slot);
 void QGraphicsTextItem_linkHovered(QGraphicsTextItem* self, struct miqt_string param1);
 void QGraphicsTextItem_connect_linkHovered(QGraphicsTextItem* self, intptr_t slot);
-bool QGraphicsTextItem_sceneEvent(QGraphicsTextItem* self, QEvent* event);
-void QGraphicsTextItem_mousePressEvent(QGraphicsTextItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsTextItem_mouseMoveEvent(QGraphicsTextItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsTextItem_mouseReleaseEvent(QGraphicsTextItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsTextItem_mouseDoubleClickEvent(QGraphicsTextItem* self, QGraphicsSceneMouseEvent* event);
-void QGraphicsTextItem_contextMenuEvent(QGraphicsTextItem* self, QGraphicsSceneContextMenuEvent* event);
-void QGraphicsTextItem_keyPressEvent(QGraphicsTextItem* self, QKeyEvent* event);
-void QGraphicsTextItem_keyReleaseEvent(QGraphicsTextItem* self, QKeyEvent* event);
-void QGraphicsTextItem_focusInEvent(QGraphicsTextItem* self, QFocusEvent* event);
-void QGraphicsTextItem_focusOutEvent(QGraphicsTextItem* self, QFocusEvent* event);
-void QGraphicsTextItem_dragEnterEvent(QGraphicsTextItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsTextItem_dragLeaveEvent(QGraphicsTextItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsTextItem_dragMoveEvent(QGraphicsTextItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsTextItem_dropEvent(QGraphicsTextItem* self, QGraphicsSceneDragDropEvent* event);
-void QGraphicsTextItem_inputMethodEvent(QGraphicsTextItem* self, QInputMethodEvent* event);
-void QGraphicsTextItem_hoverEnterEvent(QGraphicsTextItem* self, QGraphicsSceneHoverEvent* event);
-void QGraphicsTextItem_hoverMoveEvent(QGraphicsTextItem* self, QGraphicsSceneHoverEvent* event);
-void QGraphicsTextItem_hoverLeaveEvent(QGraphicsTextItem* self, QGraphicsSceneHoverEvent* event);
-QVariant* QGraphicsTextItem_inputMethodQuery(const QGraphicsTextItem* self, int query);
-bool QGraphicsTextItem_supportsExtension(const QGraphicsTextItem* self, int extension);
-void QGraphicsTextItem_setExtension(QGraphicsTextItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsTextItem_extension(const QGraphicsTextItem* self, QVariant* variant);
 struct miqt_string QGraphicsTextItem_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsTextItem_tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsTextItem_trUtf82(const char* s, const char* c);
@@ -1353,6 +1327,14 @@ bool QGraphicsTextItem_virtualbase_collidesWithPath(const void* self, QPainterPa
 bool QGraphicsTextItem_virtualbase_sceneEventFilter(void* self, QGraphicsItem* watched, QEvent* event);
 void QGraphicsTextItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event);
 QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsTextItem_protectedbase_updateMicroFocus(void* self);
+QObject* QGraphicsTextItem_protectedbase_sender(const void* self);
+int QGraphicsTextItem_protectedbase_senderSignalIndex(const void* self);
+int QGraphicsTextItem_protectedbase_receivers(const void* self, const char* signal);
+bool QGraphicsTextItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
+void QGraphicsTextItem_protectedbase_addToIndex(void* self);
+void QGraphicsTextItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsTextItem_protectedbase_prepareGeometryChange(void* self);
 const QMetaObject* QGraphicsTextItem_staticMetaObject();
 void QGraphicsTextItem_delete(QGraphicsTextItem* self);
 
@@ -1410,9 +1392,6 @@ void QGraphicsSimpleTextItem_paint(QGraphicsSimpleTextItem* self, QPainter* pain
 bool QGraphicsSimpleTextItem_isObscuredBy(const QGraphicsSimpleTextItem* self, QGraphicsItem* item);
 QPainterPath* QGraphicsSimpleTextItem_opaqueArea(const QGraphicsSimpleTextItem* self);
 int QGraphicsSimpleTextItem_type(const QGraphicsSimpleTextItem* self);
-bool QGraphicsSimpleTextItem_supportsExtension(const QGraphicsSimpleTextItem* self, int extension);
-void QGraphicsSimpleTextItem_setExtension(QGraphicsSimpleTextItem* self, int extension, QVariant* variant);
-QVariant* QGraphicsSimpleTextItem_extension(const QGraphicsSimpleTextItem* self, QVariant* variant);
 QRectF* QGraphicsSimpleTextItem_virtualbase_boundingRect(const void* self);
 QPainterPath* QGraphicsSimpleTextItem_virtualbase_shape(const void* self);
 bool QGraphicsSimpleTextItem_virtualbase_contains(const void* self, QPointF* point);
@@ -1448,6 +1427,10 @@ void QGraphicsSimpleTextItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWh
 void QGraphicsSimpleTextItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 QVariant* QGraphicsSimpleTextItem_virtualbase_inputMethodQuery(const void* self, int query);
 QVariant* QGraphicsSimpleTextItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+void QGraphicsSimpleTextItem_protectedbase_updateMicroFocus(void* self);
+void QGraphicsSimpleTextItem_protectedbase_addToIndex(void* self);
+void QGraphicsSimpleTextItem_protectedbase_removeFromIndex(void* self);
+void QGraphicsSimpleTextItem_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsSimpleTextItem_delete(QGraphicsSimpleTextItem* self);
 
 struct QGraphicsItemGroup_VTable {
@@ -1533,6 +1516,10 @@ QVariant* QGraphicsItemGroup_virtualbase_itemChange(void* self, int change, QVar
 bool QGraphicsItemGroup_virtualbase_supportsExtension(const void* self, int extension);
 void QGraphicsItemGroup_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 QVariant* QGraphicsItemGroup_virtualbase_extension(const void* self, QVariant* variant);
+void QGraphicsItemGroup_protectedbase_updateMicroFocus(void* self);
+void QGraphicsItemGroup_protectedbase_addToIndex(void* self);
+void QGraphicsItemGroup_protectedbase_removeFromIndex(void* self);
+void QGraphicsItemGroup_protectedbase_prepareGeometryChange(void* self);
 void QGraphicsItemGroup_delete(QGraphicsItemGroup* self);
 
 #ifdef __cplusplus

@@ -257,6 +257,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAudioDecoder::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAudioDecoder::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAudioDecoder::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAudioDecoder::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAudioDecoder* QAudioDecoder_new(struct QAudioDecoder_VTable* vtbl) {
@@ -610,6 +638,22 @@ void QAudioDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QAudioDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAudioDecoder_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->protectedbase_sender();
+}
+
+int QAudioDecoder_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAudioDecoder_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAudioDecoder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAudioDecoder_staticMetaObject() { return &QAudioDecoder::staticMetaObject; }

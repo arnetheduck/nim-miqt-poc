@@ -1112,6 +1112,111 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus1(int query) {
+
+		QWidget::updateMicroFocus(static_cast<Qt::InputMethodQuery>(query));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create1(uintptr_t param1) {
+
+		QWidget::create(static_cast<WId>(param1));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create2(uintptr_t param1, bool initializeWindow) {
+
+		QWidget::create(static_cast<WId>(param1), initializeWindow);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create3(uintptr_t param1, bool initializeWindow, bool destroyOldWindow) {
+
+		QWidget::create(static_cast<WId>(param1), initializeWindow, destroyOldWindow);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy1(bool destroyWindow) {
+
+		QWidget::destroy(destroyWindow);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy2(bool destroyWindow, bool destroySubWindows) {
+
+		QWidget::destroy(destroyWindow, destroySubWindows);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWidget* QWidget_new(struct QWidget_VTable* vtbl, QWidget* parent) {
@@ -2689,6 +2794,66 @@ void QWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_create();
+}
+
+void QWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+void QWidget_protectedbase_updateMicroFocus1(void* self, int query) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_updateMicroFocus1(query);
+}
+
+void QWidget_protectedbase_create1(void* self, uintptr_t param1) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_create1(param1);
+}
+
+void QWidget_protectedbase_create2(void* self, uintptr_t param1, bool initializeWindow) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_create2(param1, initializeWindow);
+}
+
+void QWidget_protectedbase_create3(void* self, uintptr_t param1, bool initializeWindow, bool destroyOldWindow) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_create3(param1, initializeWindow, destroyOldWindow);
+}
+
+void QWidget_protectedbase_destroy1(void* self, bool destroyWindow) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_destroy1(destroyWindow);
+}
+
+void QWidget_protectedbase_destroy2(void* self, bool destroyWindow, bool destroySubWindows) {
+	( (MiqtVirtualQWidget*)(self) )->protectedbase_destroy2(destroyWindow, destroySubWindows);
+}
+
+QObject* QWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWidget*)(self) )->protectedbase_sender();
+}
+
+int QWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWidget_staticMetaObject() { return &QWidget::staticMetaObject; }

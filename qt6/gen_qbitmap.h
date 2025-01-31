@@ -72,6 +72,7 @@ int QBitmap_virtualbase_metric(const void* self, int param1);
 void QBitmap_virtualbase_initPainter(const void* self, QPainter* painter);
 QPaintDevice* QBitmap_virtualbase_redirected(const void* self, QPoint* offset);
 QPainter* QBitmap_virtualbase_sharedPainter(const void* self);
+QPixmap* QBitmap_protectedbase_fromImageInPlace(QImage* image);
 void QBitmap_delete(QBitmap* self);
 
 #ifdef __cplusplus

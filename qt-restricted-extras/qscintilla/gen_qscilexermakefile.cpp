@@ -947,6 +947,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciLexerMakefile::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciLexerMakefile::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciLexerMakefile::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciLexerMakefile::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciLexerMakefile* QsciLexerMakefile_new(struct QsciLexerMakefile_VTable* vtbl) {
@@ -1244,6 +1272,22 @@ void QsciLexerMakefile_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QsciLexerMakefile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerMakefile_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->protectedbase_sender();
+}
+
+int QsciLexerMakefile_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciLexerMakefile_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciLexerMakefile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciLexerMakefile_staticMetaObject() { return &QsciLexerMakefile::staticMetaObject; }

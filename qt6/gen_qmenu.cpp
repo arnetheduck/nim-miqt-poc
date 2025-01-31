@@ -1103,6 +1103,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	int protectedbase_columnCount() const {
+
+		return QMenu::columnCount();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QMenu::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QMenu::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QMenu::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QMenu::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QMenu::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMenu::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMenu::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMenu::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMenu::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMenu* QMenu_new(struct QMenu_VTable* vtbl, QWidget* parent) {
@@ -1660,6 +1730,46 @@ void QMenu_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMenu_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMenu*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+int QMenu_protectedbase_columnCount(const void* self) {
+	return ( (const MiqtVirtualQMenu*)(self) )->protectedbase_columnCount();
+}
+
+void QMenu_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQMenu*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QMenu_protectedbase_create(void* self) {
+	( (MiqtVirtualQMenu*)(self) )->protectedbase_create();
+}
+
+void QMenu_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQMenu*)(self) )->protectedbase_destroy();
+}
+
+bool QMenu_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQMenu*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QMenu_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQMenu*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QMenu_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMenu*)(self) )->protectedbase_sender();
+}
+
+int QMenu_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMenu*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMenu_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMenu*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMenu_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMenu*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMenu_staticMetaObject() { return &QMenu::staticMetaObject; }

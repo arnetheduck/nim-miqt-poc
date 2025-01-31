@@ -436,6 +436,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QUndoStack::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QUndoStack::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QUndoStack::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QUndoStack::isSignalConnected(*signal);
+
+	}
+
 };
 
 QUndoStack* QUndoStack_new(struct QUndoStack_VTable* vtbl) {
@@ -805,6 +833,22 @@ void QUndoStack_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QUndoStack_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQUndoStack*)(self) )->protectedbase_sender();
+}
+
+int QUndoStack_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQUndoStack*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QUndoStack_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQUndoStack*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QUndoStack_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQUndoStack*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QUndoStack_staticMetaObject() { return &QUndoStack::staticMetaObject; }

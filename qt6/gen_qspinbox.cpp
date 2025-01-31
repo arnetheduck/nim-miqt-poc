@@ -1271,6 +1271,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QLineEdit* protectedbase_lineEdit() const {
+
+		return QSpinBox::lineEdit();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLineEdit(QLineEdit* edit) {
+
+		QSpinBox::setLineEdit(edit);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QSpinBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QSpinBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QSpinBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QSpinBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QSpinBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSpinBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSpinBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSpinBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSpinBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSpinBox* QSpinBox_new(struct QSpinBox_VTable* vtbl, QWidget* parent) {
@@ -1704,6 +1781,50 @@ void QSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSpinBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QLineEdit* QSpinBox_protectedbase_lineEdit(const void* self) {
+	return ( (const MiqtVirtualQSpinBox*)(self) )->protectedbase_lineEdit();
+}
+
+void QSpinBox_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	( (MiqtVirtualQSpinBox*)(self) )->protectedbase_setLineEdit(edit);
+}
+
+void QSpinBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQSpinBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QSpinBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQSpinBox*)(self) )->protectedbase_create();
+}
+
+void QSpinBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQSpinBox*)(self) )->protectedbase_destroy();
+}
+
+bool QSpinBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQSpinBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QSpinBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQSpinBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QSpinBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSpinBox*)(self) )->protectedbase_sender();
+}
+
+int QSpinBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSpinBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSpinBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSpinBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSpinBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSpinBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSpinBox_staticMetaObject() { return &QSpinBox::staticMetaObject; }
@@ -2925,6 +3046,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QLineEdit* protectedbase_lineEdit() const {
+
+		return QDoubleSpinBox::lineEdit();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLineEdit(QLineEdit* edit) {
+
+		QDoubleSpinBox::setLineEdit(edit);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QDoubleSpinBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QDoubleSpinBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QDoubleSpinBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QDoubleSpinBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QDoubleSpinBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDoubleSpinBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDoubleSpinBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDoubleSpinBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDoubleSpinBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDoubleSpinBox* QDoubleSpinBox_new(struct QDoubleSpinBox_VTable* vtbl, QWidget* parent) {
@@ -3385,6 +3583,50 @@ void QDoubleSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDoubleSpinBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QLineEdit* QDoubleSpinBox_protectedbase_lineEdit(const void* self) {
+	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_lineEdit();
+}
+
+void QDoubleSpinBox_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	( (MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_setLineEdit(edit);
+}
+
+void QDoubleSpinBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QDoubleSpinBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_create();
+}
+
+void QDoubleSpinBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_destroy();
+}
+
+bool QDoubleSpinBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QDoubleSpinBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QDoubleSpinBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_sender();
+}
+
+int QDoubleSpinBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDoubleSpinBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDoubleSpinBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDoubleSpinBox_staticMetaObject() { return &QDoubleSpinBox::staticMetaObject; }

@@ -168,7 +168,6 @@ void QImage_setText(QImage* self, struct miqt_string key, struct miqt_string val
 QPixelFormat* QImage_pixelFormat(const QImage* self);
 QPixelFormat* QImage_toPixelFormat(int format);
 int QImage_toImageFormat(QPixelFormat* format);
-int QImage_metric(const QImage* self, int metric);
 QImage* QImage_copy1(const QImage* self, QRect* rect);
 QImage* QImage_convertToFormat22(const QImage* self, int f, int flags);
 QImage* QImage_convertToFormat3(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable, int flags);
@@ -203,6 +202,13 @@ int QImage_virtualbase_metric(const void* self, int metric);
 void QImage_virtualbase_initPainter(const void* self, QPainter* painter);
 QPaintDevice* QImage_virtualbase_redirected(const void* self, QPoint* offset);
 QPainter* QImage_virtualbase_sharedPainter(const void* self);
+QImage* QImage_protectedbase_mirroredHelper(const void* self, bool horizontal, bool vertical);
+QImage* QImage_protectedbase_rgbSwappedHelper(const void* self);
+void QImage_protectedbase_mirroredInplace(void* self, bool horizontal, bool vertical);
+void QImage_protectedbase_rgbSwappedInplace(void* self);
+QImage* QImage_protectedbase_convertToFormatHelper(const void* self, int format, int flags);
+bool QImage_protectedbase_convertToFormatInplace(void* self, int format, int flags);
+QImage* QImage_protectedbase_smoothScaled(const void* self, int w, int h);
 const QMetaObject* QImage_staticMetaObject();
 void QImage_delete(QImage* self);
 

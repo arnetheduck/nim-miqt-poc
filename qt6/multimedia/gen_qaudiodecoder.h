@@ -106,6 +106,10 @@ void QAudioDecoder_virtualbase_childEvent(void* self, QChildEvent* event);
 void QAudioDecoder_virtualbase_customEvent(void* self, QEvent* event);
 void QAudioDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAudioDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAudioDecoder_protectedbase_sender(const void* self);
+int QAudioDecoder_protectedbase_senderSignalIndex(const void* self);
+int QAudioDecoder_protectedbase_receivers(const void* self, const char* signal);
+bool QAudioDecoder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAudioDecoder_staticMetaObject();
 void QAudioDecoder_delete(QAudioDecoder* self);
 

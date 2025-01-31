@@ -269,14 +269,6 @@ void QWebPage_consoleMessageReceived(QWebPage* self, int source, int level, stru
 void QWebPage_connect_consoleMessageReceived(QWebPage* self, intptr_t slot);
 void QWebPage_recentlyAudibleChanged(QWebPage* self, bool recentlyAudible);
 void QWebPage_connect_recentlyAudibleChanged(QWebPage* self, intptr_t slot);
-QWebPage* QWebPage_createWindow(QWebPage* self, int type);
-QObject* QWebPage_createPlugin(QWebPage* self, struct miqt_string classid, QUrl* url, struct miqt_array /* of struct miqt_string */  paramNames, struct miqt_array /* of struct miqt_string */  paramValues);
-bool QWebPage_acceptNavigationRequest(QWebPage* self, QWebFrame* frame, QNetworkRequest* request, int type);
-struct miqt_string QWebPage_chooseFile(QWebPage* self, QWebFrame* originatingFrame, struct miqt_string oldFile);
-void QWebPage_javaScriptAlert(QWebPage* self, QWebFrame* originatingFrame, struct miqt_string msg);
-bool QWebPage_javaScriptConfirm(QWebPage* self, QWebFrame* originatingFrame, struct miqt_string msg);
-void QWebPage_javaScriptConsoleMessage(QWebPage* self, struct miqt_string message, int lineNumber, struct miqt_string sourceID);
-struct miqt_string QWebPage_userAgentForUrl(const QWebPage* self, QUrl* url);
 struct miqt_string QWebPage_tr2(const char* s, const char* c);
 struct miqt_string QWebPage_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebPage_trUtf82(const char* s, const char* c);
@@ -304,6 +296,10 @@ void QWebPage_virtualbase_childEvent(void* self, QChildEvent* event);
 void QWebPage_virtualbase_customEvent(void* self, QEvent* event);
 void QWebPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebPage_protectedbase_sender(const void* self);
+int QWebPage_protectedbase_senderSignalIndex(const void* self);
+int QWebPage_protectedbase_receivers(const void* self, const char* signal);
+bool QWebPage_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QWebPage_staticMetaObject();
 void QWebPage_delete(QWebPage* self);
 

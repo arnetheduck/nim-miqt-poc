@@ -100,6 +100,10 @@ void QsciAPIs_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciAPIs_virtualbase_customEvent(void* self, QEvent* event);
 void QsciAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciAPIs_protectedbase_sender(const void* self);
+int QsciAPIs_protectedbase_senderSignalIndex(const void* self);
+int QsciAPIs_protectedbase_receivers(const void* self, const char* signal);
+bool QsciAPIs_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciAPIs_staticMetaObject();
 void QsciAPIs_delete(QsciAPIs* self);
 

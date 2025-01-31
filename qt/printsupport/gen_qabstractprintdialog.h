@@ -225,6 +225,16 @@ void QAbstractPrintDialog_virtualbase_childEvent(void* self, QChildEvent* event)
 void QAbstractPrintDialog_virtualbase_customEvent(void* self, QEvent* event);
 void QAbstractPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAbstractPrintDialog_protectedbase_adjustPosition(void* self, QWidget* param1);
+void QAbstractPrintDialog_protectedbase_updateMicroFocus(void* self);
+void QAbstractPrintDialog_protectedbase_create(void* self);
+void QAbstractPrintDialog_protectedbase_destroy(void* self);
+bool QAbstractPrintDialog_protectedbase_focusNextChild(void* self);
+bool QAbstractPrintDialog_protectedbase_focusPreviousChild(void* self);
+QObject* QAbstractPrintDialog_protectedbase_sender(const void* self);
+int QAbstractPrintDialog_protectedbase_senderSignalIndex(const void* self);
+int QAbstractPrintDialog_protectedbase_receivers(const void* self, const char* signal);
+bool QAbstractPrintDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAbstractPrintDialog_staticMetaObject();
 void QAbstractPrintDialog_delete(QAbstractPrintDialog* self);
 

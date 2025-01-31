@@ -235,6 +235,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTimer::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTimer::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTimer::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTimer::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTimer* QTimer_new(struct QTimer_VTable* vtbl) {
@@ -381,6 +409,22 @@ void QTimer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTimer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimer*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTimer_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTimer*)(self) )->protectedbase_sender();
+}
+
+int QTimer_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTimer*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTimer_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTimer*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTimer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTimer*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTimer_staticMetaObject() { return &QTimer::staticMetaObject; }

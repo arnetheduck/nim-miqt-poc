@@ -237,6 +237,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QEventLoop::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QEventLoop::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QEventLoop::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QEventLoop::isSignalConnected(*signal);
+
+	}
+
 };
 
 QEventLoop* QEventLoop_new(struct QEventLoop_VTable* vtbl) {
@@ -411,6 +439,22 @@ void QEventLoop_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQEventLoop*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QEventLoop_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQEventLoop*)(self) )->protectedbase_sender();
+}
+
+int QEventLoop_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQEventLoop*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QEventLoop_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQEventLoop*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QEventLoop_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQEventLoop*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QEventLoop_staticMetaObject() { return &QEventLoop::staticMetaObject; }

@@ -31,6 +31,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionToolBar>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QToolBar>
@@ -1086,6 +1087,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionToolBar* option) const {
+
+		QToolBar::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QToolBar::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QToolBar::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QToolBar::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QToolBar::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QToolBar::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QToolBar::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QToolBar::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QToolBar::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QToolBar::isSignalConnected(*signal);
+
+	}
+
 };
 
 QToolBar* QToolBar_new(struct QToolBar_VTable* vtbl, QWidget* parent) {
@@ -1660,6 +1731,46 @@ void QToolBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QToolBar_protectedbase_initStyleOption(const void* self, QStyleOptionToolBar* option) {
+	( (const MiqtVirtualQToolBar*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QToolBar_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQToolBar*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QToolBar_protectedbase_create(void* self) {
+	( (MiqtVirtualQToolBar*)(self) )->protectedbase_create();
+}
+
+void QToolBar_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQToolBar*)(self) )->protectedbase_destroy();
+}
+
+bool QToolBar_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQToolBar*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QToolBar_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQToolBar*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QToolBar_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQToolBar*)(self) )->protectedbase_sender();
+}
+
+int QToolBar_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQToolBar*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QToolBar_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQToolBar*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QToolBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQToolBar*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QToolBar_staticMetaObject() { return &QToolBar::staticMetaObject; }

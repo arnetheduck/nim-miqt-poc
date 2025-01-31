@@ -1104,6 +1104,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateCell(QDate* date) {
+
+		QCalendarWidget::updateCell(*date);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateCells() {
+
+		QCalendarWidget::updateCells();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QCalendarWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QCalendarWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QCalendarWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QCalendarWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QCalendarWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QCalendarWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QCalendarWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QCalendarWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QCalendarWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QCalendarWidget* QCalendarWidget_new(struct QCalendarWidget_VTable* vtbl, QWidget* parent) {
@@ -1635,6 +1712,50 @@ void QCalendarWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QCalendarWidget_protectedbase_updateCell(void* self, QDate* date) {
+	( (MiqtVirtualQCalendarWidget*)(self) )->protectedbase_updateCell(date);
+}
+
+void QCalendarWidget_protectedbase_updateCells(void* self) {
+	( (MiqtVirtualQCalendarWidget*)(self) )->protectedbase_updateCells();
+}
+
+void QCalendarWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQCalendarWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QCalendarWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQCalendarWidget*)(self) )->protectedbase_create();
+}
+
+void QCalendarWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQCalendarWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QCalendarWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQCalendarWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QCalendarWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQCalendarWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QCalendarWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->protectedbase_sender();
+}
+
+int QCalendarWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QCalendarWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QCalendarWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QCalendarWidget_staticMetaObject() { return &QCalendarWidget::staticMetaObject; }

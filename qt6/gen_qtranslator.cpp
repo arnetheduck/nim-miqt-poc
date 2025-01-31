@@ -286,6 +286,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTranslator::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTranslator::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTranslator::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTranslator::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTranslator* QTranslator_new(struct QTranslator_VTable* vtbl) {
@@ -489,6 +517,22 @@ void QTranslator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTranslator_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTranslator*)(self) )->protectedbase_sender();
+}
+
+int QTranslator_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTranslator*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTranslator_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTranslator*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTranslator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTranslator*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTranslator_staticMetaObject() { return &QTranslator::staticMetaObject; }

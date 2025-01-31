@@ -244,6 +244,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGesture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGesture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGesture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGesture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGesture* QGesture_new(struct QGesture_VTable* vtbl) {
@@ -409,6 +437,22 @@ void QGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGesture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QGesture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGesture*)(self) )->protectedbase_sender();
+}
+
+int QGesture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGesture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGesture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGesture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGesture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGesture_staticMetaObject() { return &QGesture::staticMetaObject; }
@@ -632,6 +676,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPanGesture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPanGesture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPanGesture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPanGesture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPanGesture* QPanGesture_new(struct QPanGesture_VTable* vtbl) {
@@ -791,6 +863,22 @@ void QPanGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QPanGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPanGesture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QPanGesture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPanGesture*)(self) )->protectedbase_sender();
+}
+
+int QPanGesture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPanGesture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPanGesture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPanGesture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPanGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPanGesture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPanGesture_staticMetaObject() { return &QPanGesture::staticMetaObject; }
@@ -1011,6 +1099,34 @@ public:
 	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QPinchGesture::disconnectNotify(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPinchGesture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPinchGesture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPinchGesture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPinchGesture::isSignalConnected(*signal);
 
 	}
 
@@ -1242,6 +1358,22 @@ void QPinchGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQPinchGesture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+QObject* QPinchGesture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPinchGesture*)(self) )->protectedbase_sender();
+}
+
+int QPinchGesture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPinchGesture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPinchGesture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPinchGesture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPinchGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPinchGesture*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
 const QMetaObject* QPinchGesture_staticMetaObject() { return &QPinchGesture::staticMetaObject; }
 void QPinchGesture_delete(QPinchGesture* self) {
 	delete self;
@@ -1463,6 +1595,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSwipeGesture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSwipeGesture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSwipeGesture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSwipeGesture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSwipeGesture* QSwipeGesture_new(struct QSwipeGesture_VTable* vtbl) {
@@ -1612,6 +1772,22 @@ void QSwipeGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSwipeGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSwipeGesture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSwipeGesture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSwipeGesture*)(self) )->protectedbase_sender();
+}
+
+int QSwipeGesture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSwipeGesture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSwipeGesture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSwipeGesture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSwipeGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSwipeGesture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSwipeGesture_staticMetaObject() { return &QSwipeGesture::staticMetaObject; }
@@ -1835,6 +2011,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTapGesture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTapGesture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTapGesture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTapGesture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTapGesture* QTapGesture_new(struct QTapGesture_VTable* vtbl) {
@@ -1973,6 +2177,22 @@ void QTapGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTapGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTapGesture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTapGesture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTapGesture*)(self) )->protectedbase_sender();
+}
+
+int QTapGesture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTapGesture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTapGesture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTapGesture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTapGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTapGesture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTapGesture_staticMetaObject() { return &QTapGesture::staticMetaObject; }
@@ -2196,6 +2416,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTapAndHoldGesture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTapAndHoldGesture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTapAndHoldGesture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTapAndHoldGesture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTapAndHoldGesture* QTapAndHoldGesture_new(struct QTapAndHoldGesture_VTable* vtbl) {
@@ -2342,6 +2590,22 @@ void QTapAndHoldGesture_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QTapAndHoldGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTapAndHoldGesture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTapAndHoldGesture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTapAndHoldGesture*)(self) )->protectedbase_sender();
+}
+
+int QTapAndHoldGesture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTapAndHoldGesture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTapAndHoldGesture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTapAndHoldGesture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTapAndHoldGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTapAndHoldGesture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTapAndHoldGesture_staticMetaObject() { return &QTapAndHoldGesture::staticMetaObject; }

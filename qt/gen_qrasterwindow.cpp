@@ -820,6 +820,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QRasterWindow::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QRasterWindow::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QRasterWindow::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QRasterWindow::isSignalConnected(*signal);
+
+	}
+
 };
 
 QRasterWindow* QRasterWindow_new(struct QRasterWindow_VTable* vtbl) {
@@ -1062,6 +1090,22 @@ void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter) 
 
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_sharedPainter();
+}
+
+QObject* QRasterWindow_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->protectedbase_sender();
+}
+
+int QRasterWindow_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QRasterWindow_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QRasterWindow_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QRasterWindow_staticMetaObject() { return &QRasterWindow::staticMetaObject; }

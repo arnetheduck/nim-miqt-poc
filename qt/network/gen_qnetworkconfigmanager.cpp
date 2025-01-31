@@ -247,6 +247,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QNetworkConfigurationManager::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QNetworkConfigurationManager::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QNetworkConfigurationManager::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QNetworkConfigurationManager::isSignalConnected(*signal);
+
+	}
+
 };
 
 QNetworkConfigurationManager* QNetworkConfigurationManager_new(struct QNetworkConfigurationManager_VTable* vtbl) {
@@ -530,6 +558,22 @@ void QNetworkConfigurationManager_virtualbase_connectNotify(void* self, QMetaMet
 
 void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QNetworkConfigurationManager_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQNetworkConfigurationManager*)(self) )->protectedbase_sender();
+}
+
+int QNetworkConfigurationManager_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQNetworkConfigurationManager*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QNetworkConfigurationManager_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQNetworkConfigurationManager*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QNetworkConfigurationManager_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQNetworkConfigurationManager*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QNetworkConfigurationManager_staticMetaObject() { return &QNetworkConfigurationManager::staticMetaObject; }

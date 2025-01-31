@@ -267,6 +267,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_update() {
+
+		QGraphicsTransform::update();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsTransform::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsTransform::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsTransform::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsTransform::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsTransform* QGraphicsTransform_new(struct QGraphicsTransform_VTable* vtbl) {
@@ -368,6 +403,26 @@ void QGraphicsTransform_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QGraphicsTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsTransform_protectedbase_update(void* self) {
+	( (MiqtVirtualQGraphicsTransform*)(self) )->protectedbase_update();
+}
+
+QObject* QGraphicsTransform_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsTransform*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsTransform_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsTransform*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsTransform_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsTransform*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsTransform_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsTransform*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsTransform_staticMetaObject() { return &QGraphicsTransform::staticMetaObject; }
@@ -611,6 +666,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_update() {
+
+		QGraphicsScale::update();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsScale::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsScale::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsScale::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsScale::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsScale* QGraphicsScale_new(struct QGraphicsScale_VTable* vtbl) {
@@ -846,6 +936,26 @@ void QGraphicsScale_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QGraphicsScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsScale*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsScale_protectedbase_update(void* self) {
+	( (MiqtVirtualQGraphicsScale*)(self) )->protectedbase_update();
+}
+
+QObject* QGraphicsScale_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsScale*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsScale_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsScale*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsScale_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsScale*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsScale_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsScale*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsScale_staticMetaObject() { return &QGraphicsScale::staticMetaObject; }
@@ -1089,6 +1199,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_update() {
+
+		QGraphicsRotation::update();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsRotation::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsRotation::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsRotation::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsRotation::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGraphicsRotation* QGraphicsRotation_new(struct QGraphicsRotation_VTable* vtbl) {
@@ -1280,6 +1425,26 @@ void QGraphicsRotation_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QGraphicsRotation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsRotation*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QGraphicsRotation_protectedbase_update(void* self) {
+	( (MiqtVirtualQGraphicsRotation*)(self) )->protectedbase_update();
+}
+
+QObject* QGraphicsRotation_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsRotation*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsRotation_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsRotation*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsRotation_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsRotation*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsRotation_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsRotation*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGraphicsRotation_staticMetaObject() { return &QGraphicsRotation::staticMetaObject; }

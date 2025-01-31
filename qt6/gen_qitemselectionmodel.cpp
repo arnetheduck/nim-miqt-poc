@@ -494,6 +494,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_emitSelectionChanged(QItemSelection* newSelection, QItemSelection* oldSelection) {
+
+		QItemSelectionModel::emitSelectionChanged(*newSelection, *oldSelection);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QItemSelectionModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QItemSelectionModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QItemSelectionModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QItemSelectionModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QItemSelectionModel* QItemSelectionModel_new(struct QItemSelectionModel_VTable* vtbl) {
@@ -892,6 +927,26 @@ void QItemSelectionModel_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QItemSelectionModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QItemSelectionModel_protectedbase_emitSelectionChanged(void* self, QItemSelection* newSelection, QItemSelection* oldSelection) {
+	( (MiqtVirtualQItemSelectionModel*)(self) )->protectedbase_emitSelectionChanged(newSelection, oldSelection);
+}
+
+QObject* QItemSelectionModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQItemSelectionModel*)(self) )->protectedbase_sender();
+}
+
+int QItemSelectionModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQItemSelectionModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QItemSelectionModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQItemSelectionModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QItemSelectionModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQItemSelectionModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QItemSelectionModel_staticMetaObject() { return &QItemSelectionModel::staticMetaObject; }

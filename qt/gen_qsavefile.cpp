@@ -635,6 +635,49 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setOpenMode(int openMode) {
+
+		QSaveFile::setOpenMode(static_cast<QIODevice::OpenMode>(openMode));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setErrorString(struct miqt_string errorString) {
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+		QSaveFile::setErrorString(errorString_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSaveFile::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSaveFile::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSaveFile::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSaveFile::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSaveFile* QSaveFile_new(struct QSaveFile_VTable* vtbl, struct miqt_string name) {
@@ -887,6 +930,30 @@ void QSaveFile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSaveFile_protectedbase_setOpenMode(void* self, int openMode) {
+	( (MiqtVirtualQSaveFile*)(self) )->protectedbase_setOpenMode(openMode);
+}
+
+void QSaveFile_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	( (MiqtVirtualQSaveFile*)(self) )->protectedbase_setErrorString(errorString);
+}
+
+QObject* QSaveFile_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSaveFile*)(self) )->protectedbase_sender();
+}
+
+int QSaveFile_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSaveFile*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSaveFile_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSaveFile*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSaveFile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSaveFile*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSaveFile_staticMetaObject() { return &QSaveFile::staticMetaObject; }

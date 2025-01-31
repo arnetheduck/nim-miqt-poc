@@ -1107,6 +1107,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QCameraViewfinder::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QCameraViewfinder::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QCameraViewfinder::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QCameraViewfinder::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QCameraViewfinder::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QCameraViewfinder::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QCameraViewfinder::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QCameraViewfinder::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QCameraViewfinder::isSignalConnected(*signal);
+
+	}
+
 };
 
 QCameraViewfinder* QCameraViewfinder_new(struct QCameraViewfinder_VTable* vtbl, QWidget* parent) {
@@ -1409,6 +1472,42 @@ void QCameraViewfinder_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QCameraViewfinder_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QCameraViewfinder_protectedbase_create(void* self) {
+	( (MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_create();
+}
+
+void QCameraViewfinder_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_destroy();
+}
+
+bool QCameraViewfinder_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QCameraViewfinder_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QCameraViewfinder_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_sender();
+}
+
+int QCameraViewfinder_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QCameraViewfinder_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QCameraViewfinder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QCameraViewfinder_staticMetaObject() { return &QCameraViewfinder::staticMetaObject; }

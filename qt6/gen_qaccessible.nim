@@ -110,6 +110,7 @@ proc fcQAccessibleInterface_tableCellInterface(self: pointer, ): pointer {.impor
 proc fcQAccessibleInterface_hyperlinkInterface(self: pointer, ): pointer {.importc: "QAccessibleInterface_hyperlinkInterface".}
 proc fcQAccessibleInterface_virtualHook(self: pointer, id: cint, data: pointer): void {.importc: "QAccessibleInterface_virtualHook".}
 proc fcQAccessibleInterface_interfaceCast(self: pointer, param1: cint): pointer {.importc: "QAccessibleInterface_interfaceCast".}
+proc fcQAccessibleInterface_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QAccessibleInterface_protectedbase_operatorAssign".}
 proc fcQAccessibleTextInterface_selection(self: pointer, selectionIndex: cint, startOffset: ptr cint, endOffset: ptr cint): void {.importc: "QAccessibleTextInterface_selection".}
 proc fcQAccessibleTextInterface_selectionCount(self: pointer, ): cint {.importc: "QAccessibleTextInterface_selectionCount".}
 proc fcQAccessibleTextInterface_addSelection(self: pointer, startOffset: cint, endOffset: cint): void {.importc: "QAccessibleTextInterface_addSelection".}
@@ -170,6 +171,7 @@ proc fcQAccessibleTableInterface_selectColumn(self: pointer, column: cint): bool
 proc fcQAccessibleTableInterface_unselectRow(self: pointer, row: cint): bool {.importc: "QAccessibleTableInterface_unselectRow".}
 proc fcQAccessibleTableInterface_unselectColumn(self: pointer, column: cint): bool {.importc: "QAccessibleTableInterface_unselectColumn".}
 proc fcQAccessibleTableInterface_modelChange(self: pointer, event: pointer): void {.importc: "QAccessibleTableInterface_modelChange".}
+proc fcQAccessibleTableInterface_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QAccessibleTableInterface_protectedbase_operatorAssign".}
 proc fcQAccessibleTableInterface_delete(self: pointer) {.importc: "QAccessibleTableInterface_delete".}
 proc fcQAccessibleActionInterface_tr(sourceText: cstring): struct_miqt_string {.importc: "QAccessibleActionInterface_tr".}
 proc fcQAccessibleActionInterface_actionNames(self: pointer, ): struct_miqt_array {.importc: "QAccessibleActionInterface_actionNames".}
@@ -396,6 +398,9 @@ proc virtualHook*(self: gen_qaccessible_types.QAccessibleInterface, id: cint, da
 proc interfaceCast*(self: gen_qaccessible_types.QAccessibleInterface, param1: cint): pointer =
   fcQAccessibleInterface_interfaceCast(self.h, cint(param1))
 
+proc operatorAssign*(self: gen_qaccessible_types.QAccessibleInterface, param1: gen_qaccessible_types.QAccessibleInterface): void =
+  fcQAccessibleInterface_protectedbase_operatorAssign(self.h, param1.h)
+
 proc selection*(self: gen_qaccessible_types.QAccessibleTextInterface, selectionIndex: cint, startOffset: ptr cint, endOffset: ptr cint): void =
   fcQAccessibleTextInterface_selection(self.h, selectionIndex, startOffset, endOffset)
 
@@ -617,6 +622,9 @@ proc unselectColumn*(self: gen_qaccessible_types.QAccessibleTableInterface, colu
 
 proc modelChange*(self: gen_qaccessible_types.QAccessibleTableInterface, event: gen_qaccessible_types.QAccessibleTableModelChangeEvent): void =
   fcQAccessibleTableInterface_modelChange(self.h, event.h)
+
+proc operatorAssign*(self: gen_qaccessible_types.QAccessibleTableInterface, param1: gen_qaccessible_types.QAccessibleTableInterface): void =
+  fcQAccessibleTableInterface_protectedbase_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qaccessible_types.QAccessibleTableInterface) =
   fcQAccessibleTableInterface_delete(self.h)

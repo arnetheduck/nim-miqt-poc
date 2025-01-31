@@ -241,6 +241,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDrag::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDrag::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDrag::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDrag::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDrag* QDrag_new(struct QDrag_VTable* vtbl, QObject* dragSource) {
@@ -444,6 +472,22 @@ void QDrag_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QDrag_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDrag*)(self) )->protectedbase_sender();
+}
+
+int QDrag_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDrag*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDrag_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDrag*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDrag_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDrag*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDrag_staticMetaObject() { return &QDrag::staticMetaObject; }

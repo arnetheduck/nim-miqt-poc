@@ -356,6 +356,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciAbstractAPIs::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciAbstractAPIs::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciAbstractAPIs::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciAbstractAPIs::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciAbstractAPIs* QsciAbstractAPIs_new(struct QsciAbstractAPIs_VTable* vtbl, QsciLexer* lexer) {
@@ -546,6 +574,22 @@ void QsciAbstractAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QsciAbstractAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciAbstractAPIs_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciAbstractAPIs*)(self) )->protectedbase_sender();
+}
+
+int QsciAbstractAPIs_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciAbstractAPIs*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciAbstractAPIs_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciAbstractAPIs*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciAbstractAPIs_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciAbstractAPIs*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciAbstractAPIs_staticMetaObject() { return &QsciAbstractAPIs::staticMetaObject; }

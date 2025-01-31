@@ -1007,6 +1007,50 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	bool protectedbase_readProperties(QSettings* qs, struct miqt_string prefix) {
+		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+		return QsciLexerPascal::readProperties(*qs, prefix_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_writeProperties(QSettings* qs, struct miqt_string prefix) const {
+		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+		return QsciLexerPascal::writeProperties(*qs, prefix_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciLexerPascal::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciLexerPascal::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciLexerPascal::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciLexerPascal::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciLexerPascal* QsciLexerPascal_new(struct QsciLexerPascal_VTable* vtbl) {
@@ -1367,6 +1411,30 @@ void QsciLexerPascal_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QsciLexerPascal_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerPascal*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+bool QsciLexerPascal_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
+	return ( (MiqtVirtualQsciLexerPascal*)(self) )->protectedbase_readProperties(qs, prefix);
+}
+
+bool QsciLexerPascal_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
+	return ( (const MiqtVirtualQsciLexerPascal*)(self) )->protectedbase_writeProperties(qs, prefix);
+}
+
+QObject* QsciLexerPascal_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciLexerPascal*)(self) )->protectedbase_sender();
+}
+
+int QsciLexerPascal_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciLexerPascal*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciLexerPascal_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciLexerPascal*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciLexerPascal_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciLexerPascal*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciLexerPascal_staticMetaObject() { return &QsciLexerPascal::staticMetaObject; }

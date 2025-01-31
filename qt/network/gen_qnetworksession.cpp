@@ -252,6 +252,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QNetworkSession::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QNetworkSession::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QNetworkSession::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QNetworkSession::isSignalConnected(*signal);
+
+	}
+
 };
 
 QNetworkSession* QNetworkSession_new(struct QNetworkSession_VTable* vtbl, QNetworkConfiguration* connConfig) {
@@ -624,6 +652,22 @@ void QNetworkSession_virtualbase_childEvent(void* self, QChildEvent* event) {
 
 void QNetworkSession_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_customEvent(event);
+}
+
+QObject* QNetworkSession_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQNetworkSession*)(self) )->protectedbase_sender();
+}
+
+int QNetworkSession_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQNetworkSession*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QNetworkSession_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQNetworkSession*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QNetworkSession_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQNetworkSession*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QNetworkSession_staticMetaObject() { return &QNetworkSession::staticMetaObject; }

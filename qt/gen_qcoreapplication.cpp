@@ -268,6 +268,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QCoreApplication::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QCoreApplication::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QCoreApplication::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QCoreApplication::isSignalConnected(*signal);
+
+	}
+
 };
 
 QCoreApplication* QCoreApplication_new(struct QCoreApplication_VTable* vtbl, int* argc, char** argv) {
@@ -799,6 +827,22 @@ void QCoreApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QCoreApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCoreApplication*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QCoreApplication_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQCoreApplication*)(self) )->protectedbase_sender();
+}
+
+int QCoreApplication_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQCoreApplication*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QCoreApplication_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQCoreApplication*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QCoreApplication_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQCoreApplication*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QCoreApplication_staticMetaObject() { return &QCoreApplication::staticMetaObject; }

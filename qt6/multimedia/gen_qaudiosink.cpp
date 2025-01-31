@@ -244,6 +244,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAudioSink::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAudioSink::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAudioSink::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAudioSink::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAudioSink* QAudioSink_new(struct QAudioSink_VTable* vtbl) {
@@ -453,6 +481,22 @@ void QAudioSink_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QAudioSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioSink*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAudioSink_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAudioSink*)(self) )->protectedbase_sender();
+}
+
+int QAudioSink_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAudioSink*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAudioSink_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAudioSink*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAudioSink_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAudioSink*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAudioSink_staticMetaObject() { return &QAudioSink::staticMetaObject; }

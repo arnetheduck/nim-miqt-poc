@@ -2618,6 +2618,211 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_rowMoved(int row, int oldIndex, int newIndex) {
+
+		QTableWidget::rowMoved(static_cast<int>(row), static_cast<int>(oldIndex), static_cast<int>(newIndex));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_columnMoved(int column, int oldIndex, int newIndex) {
+
+		QTableWidget::columnMoved(static_cast<int>(column), static_cast<int>(oldIndex), static_cast<int>(newIndex));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_rowResized(int row, int oldHeight, int newHeight) {
+
+		QTableWidget::rowResized(static_cast<int>(row), static_cast<int>(oldHeight), static_cast<int>(newHeight));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_columnResized(int column, int oldWidth, int newWidth) {
+
+		QTableWidget::columnResized(static_cast<int>(column), static_cast<int>(oldWidth), static_cast<int>(newWidth));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_rowCountChanged(int oldCount, int newCount) {
+
+		QTableWidget::rowCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_columnCountChanged(int oldCount, int newCount) {
+
+		QTableWidget::columnCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_state() const {
+
+		QAbstractItemView::State _ret = QTableWidget::state();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setState(int state) {
+
+		QTableWidget::setState(static_cast<QAbstractItemView::State>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scheduleDelayedItemsLayout() {
+
+		QTableWidget::scheduleDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_executeDelayedItemsLayout() {
+
+		QTableWidget::executeDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setDirtyRegion(QRegion* region) {
+
+		QTableWidget::setDirtyRegion(*region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scrollDirtyRegion(int dx, int dy) {
+
+		QTableWidget::scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPoint* protectedbase_dirtyRegionOffset() const {
+
+		return new QPoint(QTableWidget::dirtyRegionOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_startAutoScroll() {
+
+		QTableWidget::startAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_stopAutoScroll() {
+
+		QTableWidget::stopAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doAutoScroll() {
+
+		QTableWidget::doAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_dropIndicatorPosition() const {
+
+		QAbstractItemView::DropIndicatorPosition _ret = QTableWidget::dropIndicatorPosition();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QTableWidget::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QTableWidget::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QTableWidget::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QTableWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QTableWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QTableWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QTableWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QTableWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTableWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTableWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTableWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTableWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTableWidget* QTableWidget_new(struct QTableWidget_VTable* vtbl, QWidget* parent) {
@@ -3659,6 +3864,122 @@ void QTableWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTableWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTableWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTableWidget_protectedbase_rowMoved(void* self, int row, int oldIndex, int newIndex) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_rowMoved(row, oldIndex, newIndex);
+}
+
+void QTableWidget_protectedbase_columnMoved(void* self, int column, int oldIndex, int newIndex) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_columnMoved(column, oldIndex, newIndex);
+}
+
+void QTableWidget_protectedbase_rowResized(void* self, int row, int oldHeight, int newHeight) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_rowResized(row, oldHeight, newHeight);
+}
+
+void QTableWidget_protectedbase_columnResized(void* self, int column, int oldWidth, int newWidth) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_columnResized(column, oldWidth, newWidth);
+}
+
+void QTableWidget_protectedbase_rowCountChanged(void* self, int oldCount, int newCount) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_rowCountChanged(oldCount, newCount);
+}
+
+void QTableWidget_protectedbase_columnCountChanged(void* self, int oldCount, int newCount) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_columnCountChanged(oldCount, newCount);
+}
+
+int QTableWidget_protectedbase_state(const void* self) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_state();
+}
+
+void QTableWidget_protectedbase_setState(void* self, int state) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_setState(state);
+}
+
+void QTableWidget_protectedbase_scheduleDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_scheduleDelayedItemsLayout();
+}
+
+void QTableWidget_protectedbase_executeDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_executeDelayedItemsLayout();
+}
+
+void QTableWidget_protectedbase_setDirtyRegion(void* self, QRegion* region) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_setDirtyRegion(region);
+}
+
+void QTableWidget_protectedbase_scrollDirtyRegion(void* self, int dx, int dy) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_scrollDirtyRegion(dx, dy);
+}
+
+QPoint* QTableWidget_protectedbase_dirtyRegionOffset(const void* self) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_dirtyRegionOffset();
+}
+
+void QTableWidget_protectedbase_startAutoScroll(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_startAutoScroll();
+}
+
+void QTableWidget_protectedbase_stopAutoScroll(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_stopAutoScroll();
+}
+
+void QTableWidget_protectedbase_doAutoScroll(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_doAutoScroll();
+}
+
+int QTableWidget_protectedbase_dropIndicatorPosition(const void* self) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_dropIndicatorPosition();
+}
+
+void QTableWidget_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QTableWidget_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_viewportMargins();
+}
+
+void QTableWidget_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QTableWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QTableWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_create();
+}
+
+void QTableWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQTableWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QTableWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQTableWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QTableWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQTableWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QTableWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_sender();
+}
+
+int QTableWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTableWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTableWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTableWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTableWidget_staticMetaObject() { return &QTableWidget::staticMetaObject; }

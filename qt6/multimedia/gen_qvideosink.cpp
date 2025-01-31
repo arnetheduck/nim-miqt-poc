@@ -243,6 +243,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QVideoSink::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QVideoSink::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QVideoSink::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QVideoSink::isSignalConnected(*signal);
+
+	}
+
 };
 
 QVideoSink* QVideoSink_new(struct QVideoSink_VTable* vtbl) {
@@ -437,6 +465,22 @@ void QVideoSink_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QVideoSink_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQVideoSink*)(self) )->protectedbase_sender();
+}
+
+int QVideoSink_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQVideoSink*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QVideoSink_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQVideoSink*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QVideoSink_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQVideoSink*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QVideoSink_staticMetaObject() { return &QVideoSink::staticMetaObject; }

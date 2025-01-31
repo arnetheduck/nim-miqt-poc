@@ -811,6 +811,99 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setSocketState(int state) {
+
+		QSslSocket::setSocketState(static_cast<QAbstractSocket::SocketState>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setSocketError(int socketError) {
+
+		QSslSocket::setSocketError(static_cast<QAbstractSocket::SocketError>(socketError));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLocalPort(uint16_t port) {
+
+		QSslSocket::setLocalPort(static_cast<quint16>(port));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLocalAddress(QHostAddress* address) {
+
+		QSslSocket::setLocalAddress(*address);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPeerPort(uint16_t port) {
+
+		QSslSocket::setPeerPort(static_cast<quint16>(port));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPeerAddress(QHostAddress* address) {
+
+		QSslSocket::setPeerAddress(*address);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPeerName(struct miqt_string name) {
+		QString name_QString = QString::fromUtf8(name.data, name.len);
+
+		QSslSocket::setPeerName(name_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setOpenMode(int openMode) {
+
+		QSslSocket::setOpenMode(static_cast<QIODevice::OpenMode>(openMode));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setErrorString(struct miqt_string errorString) {
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+		QSslSocket::setErrorString(errorString_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSslSocket::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSslSocket::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSslSocket::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSslSocket::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSslSocket* QSslSocket_new(struct QSslSocket_VTable* vtbl) {
@@ -1759,6 +1852,58 @@ void QSslSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSslSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSslSocket_protectedbase_setSocketState(void* self, int state) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setSocketState(state);
+}
+
+void QSslSocket_protectedbase_setSocketError(void* self, int socketError) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setSocketError(socketError);
+}
+
+void QSslSocket_protectedbase_setLocalPort(void* self, uint16_t port) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setLocalPort(port);
+}
+
+void QSslSocket_protectedbase_setLocalAddress(void* self, QHostAddress* address) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setLocalAddress(address);
+}
+
+void QSslSocket_protectedbase_setPeerPort(void* self, uint16_t port) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setPeerPort(port);
+}
+
+void QSslSocket_protectedbase_setPeerAddress(void* self, QHostAddress* address) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setPeerAddress(address);
+}
+
+void QSslSocket_protectedbase_setPeerName(void* self, struct miqt_string name) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setPeerName(name);
+}
+
+void QSslSocket_protectedbase_setOpenMode(void* self, int openMode) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setOpenMode(openMode);
+}
+
+void QSslSocket_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	( (MiqtVirtualQSslSocket*)(self) )->protectedbase_setErrorString(errorString);
+}
+
+QObject* QSslSocket_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSslSocket*)(self) )->protectedbase_sender();
+}
+
+int QSslSocket_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSslSocket*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSslSocket_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSslSocket*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSslSocket_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSslSocket*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSslSocket_staticMetaObject() { return &QSslSocket::staticMetaObject; }

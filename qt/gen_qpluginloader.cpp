@@ -240,6 +240,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPluginLoader::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPluginLoader::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPluginLoader::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPluginLoader::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPluginLoader* QPluginLoader_new(struct QPluginLoader_VTable* vtbl) {
@@ -462,6 +490,22 @@ void QPluginLoader_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QPluginLoader_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QPluginLoader_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPluginLoader*)(self) )->protectedbase_sender();
+}
+
+int QPluginLoader_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPluginLoader*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPluginLoader_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPluginLoader*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPluginLoader_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPluginLoader*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPluginLoader_staticMetaObject() { return &QPluginLoader::staticMetaObject; }

@@ -158,6 +158,12 @@ void QsciLexerYAML_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerYAML_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerYAML_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerYAML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerYAML_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerYAML_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerYAML_protectedbase_sender(const void* self);
+int QsciLexerYAML_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerYAML_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerYAML_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerYAML_staticMetaObject();
 void QsciLexerYAML_delete(QsciLexerYAML* self);
 

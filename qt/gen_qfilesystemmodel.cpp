@@ -1157,6 +1157,208 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_resetInternalData() {
+
+		QFileSystemModel::resetInternalData();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QFileSystemModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QFileSystemModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QFileSystemModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QFileSystemModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QFileSystemModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QFileSystemModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QFileSystemModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QFileSystemModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QFileSystemModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QFileSystemModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QFileSystemModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QFileSystemModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QFileSystemModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QFileSystemModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QFileSystemModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QFileSystemModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QFileSystemModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QFileSystemModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QFileSystemModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QFileSystemModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QFileSystemModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QFileSystemModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QFileSystemModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QFileSystemModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QFileSystemModel* QFileSystemModel_new(struct QFileSystemModel_VTable* vtbl) {
@@ -1820,6 +2022,106 @@ void QFileSystemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 
 void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QFileSystemModel_protectedbase_resetInternalData(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_resetInternalData();
+}
+
+QModelIndex* QFileSystemModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQFileSystemModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+void QFileSystemModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQFileSystemModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QFileSystemModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QFileSystemModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QFileSystemModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QFileSystemModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QFileSystemModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QFileSystemModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QFileSystemModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QFileSystemModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QFileSystemModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QFileSystemModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QFileSystemModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QFileSystemModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QFileSystemModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QFileSystemModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QFileSystemModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QFileSystemModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QFileSystemModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQFileSystemModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QFileSystemModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQFileSystemModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QObject* QFileSystemModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQFileSystemModel*)(self) )->protectedbase_sender();
+}
+
+int QFileSystemModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQFileSystemModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QFileSystemModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQFileSystemModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QFileSystemModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQFileSystemModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QFileSystemModel_staticMetaObject() { return &QFileSystemModel::staticMetaObject; }

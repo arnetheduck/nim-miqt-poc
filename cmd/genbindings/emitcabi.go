@@ -62,6 +62,10 @@ func cabiVirtualBaseName(c CppClass, m CppMethod) string {
 	return cabiClassName(c.ClassName) + `_virtualbase_` + m.SafeMethodName()
 }
 
+func cabiProtectedBaseName(c CppClass, m CppMethod) string {
+	return cabiClassName(c.ClassName) + `_protectedbase_` + m.SafeMethodName()
+}
+
 func cabiOverrideVirtualName(c CppClass, m CppMethod) string {
 	return cabiClassName(c.ClassName) + `_override_virtual_` + m.SafeMethodName()
 }
@@ -783,6 +787,7 @@ extern "C" {
 	for _, c := range src.Classes {
 		className := cabiClassName(c.ClassName)
 		virtualMethods := c.VirtualMethods()
+		protectedMethods := c.ProtectedMethods()
 
 		if len(virtualMethods) > 0 {
 			ret.WriteString(`struct ` + className + `_VTable {
@@ -809,6 +814,10 @@ extern "C" {
 		}
 
 		for _, m := range c.Methods {
+			if m.IsProtected {
+				continue
+			}
+
 			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")))
 
 			if m.IsSignal {
@@ -819,7 +828,11 @@ extern "C" {
 		for _, m := range virtualMethods {
 			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiVirtualBaseName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*className*/ +"*")))
 		}
-
+		if len(virtualMethods) > 0 {
+			for _, m := range protectedMethods {
+				ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiProtectedBaseName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*className*/ +"*")))
+			}
+		}
 		for _, p := range c.Props {
 			if p.PropertyName == "staticMetaObject" {
 				ret.WriteString(fmt.Sprintf("const QMetaObject* %s();\n", cabiStaticMetaObjectName(c)))
@@ -926,6 +939,7 @@ extern "C" {
 		methodPrefixName := cabiClassName(c.ClassName)
 		cppClassName := c.ClassName
 		virtualMethods := c.VirtualMethods()
+		protectedMethods := c.ProtectedMethods()
 
 		if len(virtualMethods) > 0 {
 			overriddenClassName := "MiqtVirtual" + strings.Replace(cppClassName, `::`, ``, -1)
@@ -1045,7 +1059,32 @@ extern "C" {
 
 							"\n",
 					)
+				}
+			}
+			if len(virtualMethods) > 0 {
+				for _, m := range protectedMethods {
 
+					// The virtualbase wrapper needs to take CABI parameters, not
+					// real Qt parameters, in case there are protected enum types
+					// (e.g. QAbstractItemView::CursorAction)
+
+					var parametersCabi []string
+					for _, p := range m.Parameters {
+						parametersCabi = append(parametersCabi, p.RenderTypeCabi()+" "+p.cParameterName())
+					}
+					vbpreamble, vbforwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t\t", false)
+
+					vbCallTarget := methodPrefixName + "::" + m.CppCallTarget() + "(" + vbforwarding + ")"
+
+					ret.WriteString(
+						"\t// Wrapper to allow calling protected method\n" +
+							"\t" + m.ReturnType.RenderTypeCabi() + " protectedbase_" + m.SafeMethodName() + "(" + strings.Join(parametersCabi, ", ") + ") " + ifv(m.IsConst, "const ", "") + "{\n" +
+							vbpreamble + "\n" +
+							emitAssignCppToCabi("\t\treturn ", m.ReturnType, vbCallTarget) + "\n" +
+							"\t}\n" +
+
+							"\n",
+					)
 				}
 			}
 
@@ -1267,6 +1306,44 @@ extern "C" {
 			}
 		}
 
+		if len(virtualMethods) > 0 {
+			for _, m := range protectedMethods {
+
+				// Virtual methods: Allow overriding
+				// (Never use a const self*)
+				// The pointer that we are passed is the base type, not the subclassed
+				// type. First cast the void* to the base type, and only then,
+				// upclass it
+
+				// 2. Add CABI function to call the base method
+
+				// This is not generally exposed in the Go binding, but when overriding
+				// the method, allows Go code to call super()
+
+				// It uses CABI-CABI, the CABI-QtC++ type conversion will be done
+				// inside the class method so as to allow for accessing protected
+				// types.
+				// Both the parameters and return type are given in CABI format.
+
+				var parameterNames []string
+				for _, param := range m.Parameters {
+					parameterNames = append(parameterNames, param.cParameterName())
+				}
+
+				// callTarget is an rvalue representing the full C++ function call.
+				// These are never static
+
+				callTarget := "( (" + ifv(m.IsConst, "const ", "") + cppClassName + "*)(self) )->protectedbase_" + m.SafeMethodName() + "(" + strings.Join(parameterNames, `, `) + ")"
+
+				ret.WriteString(
+					m.ReturnType.RenderTypeCabi() + " " + cabiProtectedBaseName(c, m) + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void*") + ") {\n" +
+						"\t" + ifv(m.ReturnType.Void(), "", "return ") + callTarget + ";\n" +
+						"}\n" +
+						"\n",
+				)
+
+			}
+		}
 		for _, p := range c.Props {
 			if p.PropertyName == "staticMetaObject" {
 				ret.WriteString(fmt.Sprintf("const QMetaObject* %s() { return &%s::staticMetaObject; }\n", cabiStaticMetaObjectName(c), c.ClassName))

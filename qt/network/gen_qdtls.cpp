@@ -249,6 +249,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDtlsClientVerifier::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDtlsClientVerifier::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDtlsClientVerifier::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDtlsClientVerifier::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDtlsClientVerifier* QDtlsClientVerifier_new(struct QDtlsClientVerifier_VTable* vtbl) {
@@ -417,6 +445,22 @@ void QDtlsClientVerifier_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QDtlsClientVerifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDtlsClientVerifier*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QDtlsClientVerifier_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDtlsClientVerifier*)(self) )->protectedbase_sender();
+}
+
+int QDtlsClientVerifier_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDtlsClientVerifier*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDtlsClientVerifier_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDtlsClientVerifier*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDtlsClientVerifier_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDtlsClientVerifier*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDtlsClientVerifier_staticMetaObject() { return &QDtlsClientVerifier::staticMetaObject; }
@@ -637,6 +681,34 @@ public:
 	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QDtls::disconnectNotify(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDtls::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDtls::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDtls::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDtls::isSignalConnected(*signal);
 
 	}
 
@@ -971,6 +1043,22 @@ void QDtls_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDtls_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDtls*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QDtls_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDtls*)(self) )->protectedbase_sender();
+}
+
+int QDtls_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDtls*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDtls_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDtls*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDtls_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDtls*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDtls_staticMetaObject() { return &QDtls::staticMetaObject; }

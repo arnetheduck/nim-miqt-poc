@@ -291,6 +291,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciMacro::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciMacro::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciMacro::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciMacro::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciMacro* QsciMacro_new(struct QsciMacro_VTable* vtbl, QsciScintilla* parent) {
@@ -466,6 +494,22 @@ void QsciMacro_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QsciMacro_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciMacro_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciMacro*)(self) )->protectedbase_sender();
+}
+
+int QsciMacro_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciMacro*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciMacro_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciMacro*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciMacro_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciMacro*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciMacro_staticMetaObject() { return &QsciMacro::staticMetaObject; }

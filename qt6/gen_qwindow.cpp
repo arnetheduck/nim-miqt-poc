@@ -785,6 +785,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void* protectedbase_resolveInterface(const char* name, int revision) const {
+
+		return QWindow::resolveInterface(name, static_cast<int>(revision));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWindow::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWindow::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWindow::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWindow::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWindow* QWindow_new(struct QWindow_VTable* vtbl) {
@@ -1850,6 +1885,26 @@ void QWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWindow*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void* QWindow_protectedbase_resolveInterface(const void* self, const char* name, int revision) {
+	return ( (const MiqtVirtualQWindow*)(self) )->protectedbase_resolveInterface(name, revision);
+}
+
+QObject* QWindow_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWindow*)(self) )->protectedbase_sender();
+}
+
+int QWindow_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWindow*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWindow_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWindow*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWindow_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWindow*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWindow_staticMetaObject() { return &QWindow::staticMetaObject; }

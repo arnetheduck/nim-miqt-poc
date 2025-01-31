@@ -264,6 +264,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractVideoFilter::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractVideoFilter::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractVideoFilter::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractVideoFilter::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractVideoFilter* QAbstractVideoFilter_new(struct QAbstractVideoFilter_VTable* vtbl) {
@@ -425,6 +453,22 @@ void QAbstractVideoFilter_virtualbase_connectNotify(void* self, QMetaMethod* sig
 
 void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAbstractVideoFilter_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractVideoFilter*)(self) )->protectedbase_sender();
+}
+
+int QAbstractVideoFilter_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractVideoFilter*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractVideoFilter_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractVideoFilter*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractVideoFilter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractVideoFilter*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractVideoFilter_staticMetaObject() { return &QAbstractVideoFilter::staticMetaObject; }

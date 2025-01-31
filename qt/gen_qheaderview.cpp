@@ -39,6 +39,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionHeader>
 #include <QStyleOptionViewItem>
 #include <QTabletEvent>
 #include <QTimerEvent>
@@ -2065,6 +2066,253 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateSection(int logicalIndex) {
+
+		QHeaderView::updateSection(static_cast<int>(logicalIndex));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_resizeSections2() {
+
+		QHeaderView::resizeSections();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_sectionsInserted(QModelIndex* parent, int logicalFirst, int logicalLast) {
+
+		QHeaderView::sectionsInserted(*parent, static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_sectionsAboutToBeRemoved(QModelIndex* parent, int logicalFirst, int logicalLast) {
+
+		QHeaderView::sectionsAboutToBeRemoved(*parent, static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initialize() {
+
+		QHeaderView::initialize();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initializeSections() {
+
+		QHeaderView::initializeSections();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initializeSections2(int start, int end) {
+
+		QHeaderView::initializeSections(static_cast<int>(start), static_cast<int>(end));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionHeader* option) const {
+
+		QHeaderView::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setHorizontalStepsPerItem(int steps) {
+
+		QHeaderView::setHorizontalStepsPerItem(static_cast<int>(steps));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_horizontalStepsPerItem() const {
+
+		return QHeaderView::horizontalStepsPerItem();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setVerticalStepsPerItem(int steps) {
+
+		QHeaderView::setVerticalStepsPerItem(static_cast<int>(steps));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_verticalStepsPerItem() const {
+
+		return QHeaderView::verticalStepsPerItem();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_state() const {
+
+		QAbstractItemView::State _ret = QHeaderView::state();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setState(int state) {
+
+		QHeaderView::setState(static_cast<QAbstractItemView::State>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scheduleDelayedItemsLayout() {
+
+		QHeaderView::scheduleDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_executeDelayedItemsLayout() {
+
+		QHeaderView::executeDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setDirtyRegion(QRegion* region) {
+
+		QHeaderView::setDirtyRegion(*region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scrollDirtyRegion(int dx, int dy) {
+
+		QHeaderView::scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPoint* protectedbase_dirtyRegionOffset() const {
+
+		return new QPoint(QHeaderView::dirtyRegionOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_startAutoScroll() {
+
+		QHeaderView::startAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_stopAutoScroll() {
+
+		QHeaderView::stopAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doAutoScroll() {
+
+		QHeaderView::doAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_dropIndicatorPosition() const {
+
+		QAbstractItemView::DropIndicatorPosition _ret = QHeaderView::dropIndicatorPosition();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QHeaderView::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QHeaderView::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QHeaderView::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QHeaderView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QHeaderView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QHeaderView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QHeaderView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QHeaderView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QHeaderView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QHeaderView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QHeaderView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QHeaderView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QHeaderView* QHeaderView_new(struct QHeaderView_VTable* vtbl, int orientation) {
@@ -3019,6 +3267,146 @@ void QHeaderView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQHeaderView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QHeaderView_protectedbase_updateSection(void* self, int logicalIndex) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_updateSection(logicalIndex);
+}
+
+void QHeaderView_protectedbase_resizeSections2(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_resizeSections2();
+}
+
+void QHeaderView_protectedbase_sectionsInserted(void* self, QModelIndex* parent, int logicalFirst, int logicalLast) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_sectionsInserted(parent, logicalFirst, logicalLast);
+}
+
+void QHeaderView_protectedbase_sectionsAboutToBeRemoved(void* self, QModelIndex* parent, int logicalFirst, int logicalLast) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_sectionsAboutToBeRemoved(parent, logicalFirst, logicalLast);
+}
+
+void QHeaderView_protectedbase_initialize(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_initialize();
+}
+
+void QHeaderView_protectedbase_initializeSections(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_initializeSections();
+}
+
+void QHeaderView_protectedbase_initializeSections2(void* self, int start, int end) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_initializeSections2(start, end);
+}
+
+void QHeaderView_protectedbase_initStyleOption(const void* self, QStyleOptionHeader* option) {
+	( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QHeaderView_protectedbase_setHorizontalStepsPerItem(void* self, int steps) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_setHorizontalStepsPerItem(steps);
+}
+
+int QHeaderView_protectedbase_horizontalStepsPerItem(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_horizontalStepsPerItem();
+}
+
+void QHeaderView_protectedbase_setVerticalStepsPerItem(void* self, int steps) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_setVerticalStepsPerItem(steps);
+}
+
+int QHeaderView_protectedbase_verticalStepsPerItem(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_verticalStepsPerItem();
+}
+
+int QHeaderView_protectedbase_state(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_state();
+}
+
+void QHeaderView_protectedbase_setState(void* self, int state) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_setState(state);
+}
+
+void QHeaderView_protectedbase_scheduleDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_scheduleDelayedItemsLayout();
+}
+
+void QHeaderView_protectedbase_executeDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_executeDelayedItemsLayout();
+}
+
+void QHeaderView_protectedbase_setDirtyRegion(void* self, QRegion* region) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_setDirtyRegion(region);
+}
+
+void QHeaderView_protectedbase_scrollDirtyRegion(void* self, int dx, int dy) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_scrollDirtyRegion(dx, dy);
+}
+
+QPoint* QHeaderView_protectedbase_dirtyRegionOffset(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_dirtyRegionOffset();
+}
+
+void QHeaderView_protectedbase_startAutoScroll(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_startAutoScroll();
+}
+
+void QHeaderView_protectedbase_stopAutoScroll(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_stopAutoScroll();
+}
+
+void QHeaderView_protectedbase_doAutoScroll(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_doAutoScroll();
+}
+
+int QHeaderView_protectedbase_dropIndicatorPosition(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_dropIndicatorPosition();
+}
+
+void QHeaderView_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QHeaderView_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_viewportMargins();
+}
+
+void QHeaderView_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QHeaderView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QHeaderView_protectedbase_create(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_create();
+}
+
+void QHeaderView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQHeaderView*)(self) )->protectedbase_destroy();
+}
+
+bool QHeaderView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQHeaderView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QHeaderView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQHeaderView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QHeaderView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_sender();
+}
+
+int QHeaderView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QHeaderView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QHeaderView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QHeaderView_staticMetaObject() { return &QHeaderView::staticMetaObject; }

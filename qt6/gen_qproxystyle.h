@@ -131,7 +131,6 @@ void QProxyStyle_polishWithPal(QProxyStyle* self, QPalette* pal);
 void QProxyStyle_polishWithApp(QProxyStyle* self, QApplication* app);
 void QProxyStyle_unpolish(QProxyStyle* self, QWidget* widget);
 void QProxyStyle_unpolishWithApp(QProxyStyle* self, QApplication* app);
-bool QProxyStyle_event(QProxyStyle* self, QEvent* e);
 struct miqt_string QProxyStyle_tr2(const char* s, const char* c);
 struct miqt_string QProxyStyle_tr3(const char* s, const char* c, int n);
 QMetaObject* QProxyStyle_virtualbase_metaObject(const void* self);
@@ -167,6 +166,10 @@ void QProxyStyle_virtualbase_childEvent(void* self, QChildEvent* event);
 void QProxyStyle_virtualbase_customEvent(void* self, QEvent* event);
 void QProxyStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QProxyStyle_protectedbase_sender(const void* self);
+int QProxyStyle_protectedbase_senderSignalIndex(const void* self);
+int QProxyStyle_protectedbase_receivers(const void* self, const char* signal);
+bool QProxyStyle_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QProxyStyle_staticMetaObject();
 void QProxyStyle_delete(QProxyStyle* self);
 

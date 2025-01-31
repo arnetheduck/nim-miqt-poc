@@ -596,6 +596,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_widgetEvent(QEvent* param1) {
+
+		QLayout::widgetEvent(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildLayout(QLayout* l) {
+
+		QLayout::addChildLayout(l);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildWidget(QWidget* w) {
+
+		QLayout::addChildWidget(w);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_adoptLayout(QLayout* layout) {
+
+		return QLayout::adoptLayout(layout);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_alignmentRect(QRect* param1) const {
+
+		return new QRect(QLayout::alignmentRect(*param1));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QLayout* QLayout_new(struct QLayout_VTable* vtbl, QWidget* parent) {
@@ -970,6 +1033,42 @@ QWidget* QLayout_virtualbase_widget(void* self) {
 
 QSpacerItem* QLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_spacerItem();
+}
+
+void QLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQLayout*)(self) )->protectedbase_widgetEvent(param1);
+}
+
+void QLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	( (MiqtVirtualQLayout*)(self) )->protectedbase_addChildLayout(l);
+}
+
+void QLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	( (MiqtVirtualQLayout*)(self) )->protectedbase_addChildWidget(w);
+}
+
+bool QLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	return ( (MiqtVirtualQLayout*)(self) )->protectedbase_adoptLayout(layout);
+}
+
+QRect* QLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	return ( (const MiqtVirtualQLayout*)(self) )->protectedbase_alignmentRect(param1);
+}
+
+QObject* QLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->protectedbase_sender();
+}
+
+int QLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QLayout_staticMetaObject() { return &QLayout::staticMetaObject; }

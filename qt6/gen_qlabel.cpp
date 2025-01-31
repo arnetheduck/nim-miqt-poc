@@ -1100,6 +1100,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QLabel::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QLabel::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QLabel::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QLabel::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QLabel::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QLabel::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QLabel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QLabel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QLabel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QLabel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QLabel* QLabel_new(struct QLabel_VTable* vtbl, QWidget* parent) {
@@ -1606,6 +1676,46 @@ void QLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QLabel_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQLabel*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QLabel_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQLabel*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QLabel_protectedbase_create(void* self) {
+	( (MiqtVirtualQLabel*)(self) )->protectedbase_create();
+}
+
+void QLabel_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQLabel*)(self) )->protectedbase_destroy();
+}
+
+bool QLabel_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQLabel*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QLabel_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQLabel*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QLabel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQLabel*)(self) )->protectedbase_sender();
+}
+
+int QLabel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQLabel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QLabel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQLabel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QLabel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQLabel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QLabel_staticMetaObject() { return &QLabel::staticMetaObject; }

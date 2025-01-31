@@ -213,6 +213,12 @@ proc fcQsciLexerSQL_virtualbase_childEvent(self: pointer, event: pointer): void 
 proc fcQsciLexerSQL_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerSQL_virtualbase_customEvent".}
 proc fcQsciLexerSQL_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerSQL_virtualbase_connectNotify".}
 proc fcQsciLexerSQL_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerSQL_virtualbase_disconnectNotify".}
+proc fcQsciLexerSQL_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerSQL_protectedbase_readProperties".}
+proc fcQsciLexerSQL_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerSQL_protectedbase_writeProperties".}
+proc fcQsciLexerSQL_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerSQL_protectedbase_sender".}
+proc fcQsciLexerSQL_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerSQL_protectedbase_senderSignalIndex".}
+proc fcQsciLexerSQL_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerSQL_protectedbase_receivers".}
+proc fcQsciLexerSQL_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerSQL_protectedbase_isSignalConnected".}
 proc fcQsciLexerSQL_new(vtbl: pointer, ): ptr cQsciLexerSQL {.importc: "QsciLexerSQL_new".}
 proc fcQsciLexerSQL_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerSQL {.importc: "QsciLexerSQL_new2".}
 proc fcQsciLexerSQL_staticMetaObject(): pointer {.importc: "QsciLexerSQL_staticMetaObject".}
@@ -901,6 +907,24 @@ proc miqt_exec_callback_cQsciLexerSQL_disconnectNotify(vtbl: pointer, self: poin
   let self = QsciLexerSQL(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerSQL_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerSQL_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerSQL_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
+  fcQsciLexerSQL_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexersql_types.QsciLexerSQL, signal: cstring): cint =
+  fcQsciLexerSQL_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexersql_types.QsciLexerSQL, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerSQL_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexersql_types.QsciLexerSQL,
     vtbl: ref QsciLexerSQLVTable = nil): gen_qscilexersql_types.QsciLexerSQL =

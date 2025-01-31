@@ -984,6 +984,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	bool protectedbase_isComponentComplete() const {
+
+		return QQuickPaintedItem::isComponentComplete();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateInputMethod() {
+
+		QQuickPaintedItem::updateInputMethod();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_widthValid() const {
+
+		return QQuickPaintedItem::widthValid();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_heightValid() const {
+
+		return QQuickPaintedItem::heightValid();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setImplicitSize(double param1, double param2) {
+
+		QQuickPaintedItem::setImplicitSize(static_cast<qreal>(param1), static_cast<qreal>(param2));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickPaintedItem::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickPaintedItem::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickPaintedItem::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickPaintedItem::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickPaintedItem* QQuickPaintedItem_new(struct QQuickPaintedItem_VTable* vtbl) {
@@ -1460,6 +1523,42 @@ void QQuickPaintedItem_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QQuickPaintedItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickPaintedItem*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+bool QQuickPaintedItem_protectedbase_isComponentComplete(const void* self) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_isComponentComplete();
+}
+
+void QQuickPaintedItem_protectedbase_updateInputMethod(void* self) {
+	( (MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_updateInputMethod();
+}
+
+bool QQuickPaintedItem_protectedbase_widthValid(const void* self) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_widthValid();
+}
+
+bool QQuickPaintedItem_protectedbase_heightValid(const void* self) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_heightValid();
+}
+
+void QQuickPaintedItem_protectedbase_setImplicitSize(void* self, double param1, double param2) {
+	( (MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_setImplicitSize(param1, param2);
+}
+
+QObject* QQuickPaintedItem_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_sender();
+}
+
+int QQuickPaintedItem_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickPaintedItem_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickPaintedItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickPaintedItem_staticMetaObject() { return &QQuickPaintedItem::staticMetaObject; }

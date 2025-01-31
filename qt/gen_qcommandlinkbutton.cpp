@@ -1131,6 +1131,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionButton* option) const {
+
+		QCommandLinkButton::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QCommandLinkButton::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QCommandLinkButton::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QCommandLinkButton::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QCommandLinkButton::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QCommandLinkButton::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QCommandLinkButton::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QCommandLinkButton::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QCommandLinkButton::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QCommandLinkButton::isSignalConnected(*signal);
+
+	}
+
 };
 
 QCommandLinkButton* QCommandLinkButton_new(struct QCommandLinkButton_VTable* vtbl, QWidget* parent) {
@@ -1471,6 +1541,46 @@ void QCommandLinkButton_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QCommandLinkButton_protectedbase_initStyleOption(const void* self, QStyleOptionButton* option) {
+	( (const MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QCommandLinkButton_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QCommandLinkButton_protectedbase_create(void* self) {
+	( (MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_create();
+}
+
+void QCommandLinkButton_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_destroy();
+}
+
+bool QCommandLinkButton_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QCommandLinkButton_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QCommandLinkButton_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_sender();
+}
+
+int QCommandLinkButton_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QCommandLinkButton_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QCommandLinkButton_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QCommandLinkButton_staticMetaObject() { return &QCommandLinkButton::staticMetaObject; }

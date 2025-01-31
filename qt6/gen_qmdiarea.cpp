@@ -1175,6 +1175,90 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QMdiArea::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QMdiArea::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QMdiArea::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QMdiArea::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QMdiArea::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QMdiArea::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QMdiArea::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QMdiArea::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMdiArea::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMdiArea::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMdiArea::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMdiArea::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMdiArea* QMdiArea_new(struct QMdiArea_VTable* vtbl, QWidget* parent) {
@@ -1634,6 +1718,54 @@ void QMdiArea_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMdiArea*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QMdiArea_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQMdiArea*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QMdiArea_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQMdiArea*)(self) )->protectedbase_viewportMargins();
+}
+
+void QMdiArea_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQMdiArea*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QMdiArea_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQMdiArea*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QMdiArea_protectedbase_create(void* self) {
+	( (MiqtVirtualQMdiArea*)(self) )->protectedbase_create();
+}
+
+void QMdiArea_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQMdiArea*)(self) )->protectedbase_destroy();
+}
+
+bool QMdiArea_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQMdiArea*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QMdiArea_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQMdiArea*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QMdiArea_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMdiArea*)(self) )->protectedbase_sender();
+}
+
+int QMdiArea_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMdiArea*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMdiArea_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMdiArea*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMdiArea_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMdiArea*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMdiArea_staticMetaObject() { return &QMdiArea::staticMetaObject; }

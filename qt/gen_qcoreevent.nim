@@ -237,6 +237,7 @@ proc fcQEvent_new2(other: pointer): ptr cQEvent {.importc: "QEvent_new2".}
 proc fcQEvent_staticMetaObject(): pointer {.importc: "QEvent_staticMetaObject".}
 proc fcQEvent_delete(self: pointer) {.importc: "QEvent_delete".}
 proc fcQTimerEvent_timerId(self: pointer, ): cint {.importc: "QTimerEvent_timerId".}
+proc fcQTimerEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTimerEvent_protectedbase_operatorAssign".}
 proc fcQTimerEvent_new(timerId: cint): ptr cQTimerEvent {.importc: "QTimerEvent_new".}
 proc fcQTimerEvent_new2(param1: pointer): ptr cQTimerEvent {.importc: "QTimerEvent_new2".}
 proc fcQTimerEvent_delete(self: pointer) {.importc: "QTimerEvent_delete".}
@@ -244,6 +245,7 @@ proc fcQChildEvent_child(self: pointer, ): pointer {.importc: "QChildEvent_child
 proc fcQChildEvent_added(self: pointer, ): bool {.importc: "QChildEvent_added".}
 proc fcQChildEvent_polished(self: pointer, ): bool {.importc: "QChildEvent_polished".}
 proc fcQChildEvent_removed(self: pointer, ): bool {.importc: "QChildEvent_removed".}
+proc fcQChildEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QChildEvent_protectedbase_operatorAssign".}
 proc fcQChildEvent_new(typeVal: cint, child: pointer): ptr cQChildEvent {.importc: "QChildEvent_new".}
 proc fcQChildEvent_new2(param1: pointer): ptr cQChildEvent {.importc: "QChildEvent_new2".}
 proc fcQChildEvent_delete(self: pointer) {.importc: "QChildEvent_delete".}
@@ -294,6 +296,9 @@ proc delete*(self: gen_qcoreevent_types.QEvent) =
 proc timerId*(self: gen_qcoreevent_types.QTimerEvent, ): cint =
   fcQTimerEvent_timerId(self.h)
 
+proc operatorAssign*(self: gen_qcoreevent_types.QTimerEvent, param1: gen_qcoreevent_types.QTimerEvent): void =
+  fcQTimerEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qcoreevent_types.QTimerEvent,
     timerId: cint): gen_qcoreevent_types.QTimerEvent =
   gen_qcoreevent_types.QTimerEvent(h: fcQTimerEvent_new(timerId))
@@ -315,6 +320,9 @@ proc polished*(self: gen_qcoreevent_types.QChildEvent, ): bool =
 
 proc removed*(self: gen_qcoreevent_types.QChildEvent, ): bool =
   fcQChildEvent_removed(self.h)
+
+proc operatorAssign*(self: gen_qcoreevent_types.QChildEvent, param1: gen_qcoreevent_types.QChildEvent): void =
+  fcQChildEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qcoreevent_types.QChildEvent,
     typeVal: cint, child: gen_qobject_types.QObject): gen_qcoreevent_types.QChildEvent =

@@ -156,6 +156,10 @@ proc fcQsciLexerOctave_virtualbase_childEvent(self: pointer, event: pointer): vo
 proc fcQsciLexerOctave_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerOctave_virtualbase_customEvent".}
 proc fcQsciLexerOctave_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerOctave_virtualbase_connectNotify".}
 proc fcQsciLexerOctave_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerOctave_virtualbase_disconnectNotify".}
+proc fcQsciLexerOctave_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerOctave_protectedbase_sender".}
+proc fcQsciLexerOctave_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerOctave_protectedbase_senderSignalIndex".}
+proc fcQsciLexerOctave_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerOctave_protectedbase_receivers".}
+proc fcQsciLexerOctave_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerOctave_protectedbase_isSignalConnected".}
 proc fcQsciLexerOctave_new(vtbl: pointer, ): ptr cQsciLexerOctave {.importc: "QsciLexerOctave_new".}
 proc fcQsciLexerOctave_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerOctave {.importc: "QsciLexerOctave_new2".}
 proc fcQsciLexerOctave_staticMetaObject(): pointer {.importc: "QsciLexerOctave_staticMetaObject".}
@@ -721,6 +725,18 @@ proc miqt_exec_callback_cQsciLexerOctave_disconnectNotify(vtbl: pointer, self: p
   let self = QsciLexerOctave(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerOctave_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cint =
+  fcQsciLexerOctave_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexeroctave_types.QsciLexerOctave, signal: cstring): cint =
+  fcQsciLexerOctave_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexeroctave_types.QsciLexerOctave, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerOctave_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexeroctave_types.QsciLexerOctave,
     vtbl: ref QsciLexerOctaveVTable = nil): gen_qscilexeroctave_types.QsciLexerOctave =

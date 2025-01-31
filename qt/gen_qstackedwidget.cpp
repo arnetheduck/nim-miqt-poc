@@ -1070,6 +1070,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QStackedWidget::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QStackedWidget::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QStackedWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QStackedWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QStackedWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QStackedWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QStackedWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QStackedWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QStackedWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QStackedWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QStackedWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QStackedWidget* QStackedWidget_new(struct QStackedWidget_VTable* vtbl, QWidget* parent) {
@@ -1440,6 +1517,50 @@ void QStackedWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QStackedWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QStackedWidget_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQStackedWidget*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QStackedWidget_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQStackedWidget*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QStackedWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQStackedWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QStackedWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQStackedWidget*)(self) )->protectedbase_create();
+}
+
+void QStackedWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQStackedWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QStackedWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQStackedWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QStackedWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQStackedWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QStackedWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQStackedWidget*)(self) )->protectedbase_sender();
+}
+
+int QStackedWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQStackedWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QStackedWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQStackedWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QStackedWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQStackedWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QStackedWidget_staticMetaObject() { return &QStackedWidget::staticMetaObject; }

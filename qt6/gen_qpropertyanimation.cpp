@@ -373,6 +373,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPropertyAnimation::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPropertyAnimation::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPropertyAnimation::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPropertyAnimation::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPropertyAnimation* QPropertyAnimation_new(struct QPropertyAnimation_VTable* vtbl) {
@@ -526,6 +554,22 @@ void QPropertyAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QPropertyAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QPropertyAnimation_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->protectedbase_sender();
+}
+
+int QPropertyAnimation_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPropertyAnimation_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPropertyAnimation_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPropertyAnimation_staticMetaObject() { return &QPropertyAnimation::staticMetaObject; }

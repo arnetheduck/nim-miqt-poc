@@ -1391,6 +1391,97 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_zoomInF(float range) {
+
+		QTextBrowser::zoomInF(static_cast<float>(range));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QTextBrowser::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QTextBrowser::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QTextBrowser::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QTextBrowser::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QTextBrowser::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QTextBrowser::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QTextBrowser::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QTextBrowser::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTextBrowser::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTextBrowser::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTextBrowser::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTextBrowser::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTextBrowser* QTextBrowser_new(struct QTextBrowser_VTable* vtbl, QWidget* parent) {
@@ -1952,6 +2043,58 @@ void QTextBrowser_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTextBrowser_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTextBrowser_protectedbase_zoomInF(void* self, float range) {
+	( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_zoomInF(range);
+}
+
+void QTextBrowser_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QTextBrowser_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->protectedbase_viewportMargins();
+}
+
+void QTextBrowser_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QTextBrowser_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QTextBrowser_protectedbase_create(void* self) {
+	( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_create();
+}
+
+void QTextBrowser_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_destroy();
+}
+
+bool QTextBrowser_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QTextBrowser_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQTextBrowser*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QTextBrowser_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->protectedbase_sender();
+}
+
+int QTextBrowser_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTextBrowser_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTextBrowser_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTextBrowser_staticMetaObject() { return &QTextBrowser::staticMetaObject; }

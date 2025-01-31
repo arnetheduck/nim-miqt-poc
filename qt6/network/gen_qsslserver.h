@@ -87,7 +87,6 @@ void QSslServer_handshakeInterruptedOnError(QSslServer* self, QSslSocket* socket
 void QSslServer_connect_handshakeInterruptedOnError(QSslServer* self, intptr_t slot);
 void QSslServer_startedEncryptionHandshake(QSslServer* self, QSslSocket* socket);
 void QSslServer_connect_startedEncryptionHandshake(QSslServer* self, intptr_t slot);
-void QSslServer_incomingConnection(QSslServer* self, intptr_t socket);
 struct miqt_string QSslServer_tr2(const char* s, const char* c);
 struct miqt_string QSslServer_tr3(const char* s, const char* c, int n);
 QMetaObject* QSslServer_virtualbase_metaObject(const void* self);
@@ -103,6 +102,11 @@ void QSslServer_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSslServer_virtualbase_customEvent(void* self, QEvent* event);
 void QSslServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSslServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSslServer_protectedbase_addPendingConnection(void* self, QTcpSocket* socket);
+QObject* QSslServer_protectedbase_sender(const void* self);
+int QSslServer_protectedbase_senderSignalIndex(const void* self);
+int QSslServer_protectedbase_receivers(const void* self, const char* signal);
+bool QSslServer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSslServer_staticMetaObject();
 void QSslServer_delete(QSslServer* self);
 

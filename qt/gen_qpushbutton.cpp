@@ -32,6 +32,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionButton>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1132,6 +1133,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionButton* option) const {
+
+		QPushButton::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QPushButton::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QPushButton::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QPushButton::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QPushButton::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QPushButton::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPushButton::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPushButton::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPushButton::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPushButton::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPushButton* QPushButton_new(struct QPushButton_VTable* vtbl, QWidget* parent) {
@@ -1498,6 +1569,46 @@ void QPushButton_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QPushButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QPushButton_protectedbase_initStyleOption(const void* self, QStyleOptionButton* option) {
+	( (const MiqtVirtualQPushButton*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QPushButton_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQPushButton*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QPushButton_protectedbase_create(void* self) {
+	( (MiqtVirtualQPushButton*)(self) )->protectedbase_create();
+}
+
+void QPushButton_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQPushButton*)(self) )->protectedbase_destroy();
+}
+
+bool QPushButton_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQPushButton*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QPushButton_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQPushButton*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QPushButton_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPushButton*)(self) )->protectedbase_sender();
+}
+
+int QPushButton_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPushButton*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPushButton_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPushButton*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPushButton_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPushButton*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPushButton_staticMetaObject() { return &QPushButton::staticMetaObject; }

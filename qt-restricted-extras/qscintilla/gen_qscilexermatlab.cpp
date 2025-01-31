@@ -947,6 +947,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciLexerMatlab::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciLexerMatlab::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciLexerMatlab::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciLexerMatlab::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciLexerMatlab* QsciLexerMatlab_new(struct QsciLexerMatlab_VTable* vtbl) {
@@ -1236,6 +1264,22 @@ void QsciLexerMatlab_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QsciLexerMatlab_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerMatlab*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerMatlab_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->protectedbase_sender();
+}
+
+int QsciLexerMatlab_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciLexerMatlab_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciLexerMatlab_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciLexerMatlab_staticMetaObject() { return &QsciLexerMatlab::staticMetaObject; }

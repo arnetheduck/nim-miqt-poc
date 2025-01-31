@@ -75,6 +75,10 @@ void QSound_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSound_virtualbase_customEvent(void* self, QEvent* event);
 void QSound_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSound_protectedbase_sender(const void* self);
+int QSound_protectedbase_senderSignalIndex(const void* self);
+int QSound_protectedbase_receivers(const void* self, const char* signal);
+bool QSound_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSound_staticMetaObject();
 void QSound_delete(QSound* self);
 

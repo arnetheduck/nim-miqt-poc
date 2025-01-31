@@ -185,6 +185,12 @@ proc fcQsciLexerJSON_virtualbase_childEvent(self: pointer, event: pointer): void
 proc fcQsciLexerJSON_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerJSON_virtualbase_customEvent".}
 proc fcQsciLexerJSON_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerJSON_virtualbase_connectNotify".}
 proc fcQsciLexerJSON_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerJSON_virtualbase_disconnectNotify".}
+proc fcQsciLexerJSON_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerJSON_protectedbase_readProperties".}
+proc fcQsciLexerJSON_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerJSON_protectedbase_writeProperties".}
+proc fcQsciLexerJSON_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerJSON_protectedbase_sender".}
+proc fcQsciLexerJSON_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerJSON_protectedbase_senderSignalIndex".}
+proc fcQsciLexerJSON_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerJSON_protectedbase_receivers".}
+proc fcQsciLexerJSON_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerJSON_protectedbase_isSignalConnected".}
 proc fcQsciLexerJSON_new(vtbl: pointer, ): ptr cQsciLexerJSON {.importc: "QsciLexerJSON_new".}
 proc fcQsciLexerJSON_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerJSON {.importc: "QsciLexerJSON_new2".}
 proc fcQsciLexerJSON_staticMetaObject(): pointer {.importc: "QsciLexerJSON_staticMetaObject".}
@@ -789,6 +795,24 @@ proc miqt_exec_callback_cQsciLexerJSON_disconnectNotify(vtbl: pointer, self: poi
   let self = QsciLexerJSON(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexerjson_types.QsciLexerJSON, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerJSON_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexerjson_types.QsciLexerJSON, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerJSON_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexerjson_types.QsciLexerJSON, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerJSON_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cint =
+  fcQsciLexerJSON_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexerjson_types.QsciLexerJSON, signal: cstring): cint =
+  fcQsciLexerJSON_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexerjson_types.QsciLexerJSON, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerJSON_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexerjson_types.QsciLexerJSON,
     vtbl: ref QsciLexerJSONVTable = nil): gen_qscilexerjson_types.QsciLexerJSON =

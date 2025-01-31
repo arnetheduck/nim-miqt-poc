@@ -329,6 +329,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_update() {
+
+		QQuickTransform::update();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickTransform::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickTransform::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickTransform::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickTransform::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickTransform* QQuickTransform_new(struct QQuickTransform_VTable* vtbl) {
@@ -471,6 +506,26 @@ void QQuickTransform_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QQuickTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QQuickTransform_protectedbase_update(void* self) {
+	( (MiqtVirtualQQuickTransform*)(self) )->protectedbase_update();
+}
+
+QObject* QQuickTransform_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickTransform*)(self) )->protectedbase_sender();
+}
+
+int QQuickTransform_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickTransform*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickTransform_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickTransform*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickTransform_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickTransform*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickTransform_staticMetaObject() { return &QQuickTransform::staticMetaObject; }
@@ -1394,6 +1449,76 @@ public:
 	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QQuickItem::disconnectNotify(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isComponentComplete() const {
+
+		return QQuickItem::isComponentComplete();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateInputMethod() {
+
+		QQuickItem::updateInputMethod();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_widthValid() const {
+
+		return QQuickItem::widthValid();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_heightValid() const {
+
+		return QQuickItem::heightValid();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setImplicitSize(double param1, double param2) {
+
+		QQuickItem::setImplicitSize(static_cast<qreal>(param1), static_cast<qreal>(param2));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateInputMethod1(int queries) {
+
+		QQuickItem::updateInputMethod(static_cast<Qt::InputMethodQueries>(queries));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickItem::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickItem::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickItem::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickItem::isSignalConnected(*signal);
 
 	}
 
@@ -2694,6 +2819,46 @@ void QQuickItem_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QQuickItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+bool QQuickItem_protectedbase_isComponentComplete(const void* self) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->protectedbase_isComponentComplete();
+}
+
+void QQuickItem_protectedbase_updateInputMethod(void* self) {
+	( (MiqtVirtualQQuickItem*)(self) )->protectedbase_updateInputMethod();
+}
+
+bool QQuickItem_protectedbase_widthValid(const void* self) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->protectedbase_widthValid();
+}
+
+bool QQuickItem_protectedbase_heightValid(const void* self) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->protectedbase_heightValid();
+}
+
+void QQuickItem_protectedbase_setImplicitSize(void* self, double param1, double param2) {
+	( (MiqtVirtualQQuickItem*)(self) )->protectedbase_setImplicitSize(param1, param2);
+}
+
+void QQuickItem_protectedbase_updateInputMethod1(void* self, int queries) {
+	( (MiqtVirtualQQuickItem*)(self) )->protectedbase_updateInputMethod1(queries);
+}
+
+QObject* QQuickItem_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->protectedbase_sender();
+}
+
+int QQuickItem_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickItem_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickItem_staticMetaObject() { return &QQuickItem::staticMetaObject; }

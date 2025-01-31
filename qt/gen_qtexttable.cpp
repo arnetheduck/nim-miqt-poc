@@ -322,6 +322,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setFormat(QTextFormat* format) {
+
+		QTextTable::setFormat(*format);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTextTable::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTextTable::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTextTable::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTextTable::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTextTable* QTextTable_new(struct QTextTable_VTable* vtbl, QTextDocument* doc) {
@@ -524,6 +559,26 @@ void QTextTable_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextTable*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTextTable_protectedbase_setFormat(void* self, QTextFormat* format) {
+	( (MiqtVirtualQTextTable*)(self) )->protectedbase_setFormat(format);
+}
+
+QObject* QTextTable_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTextTable*)(self) )->protectedbase_sender();
+}
+
+int QTextTable_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTextTable*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTextTable_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTextTable*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTextTable_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTextTable*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTextTable_staticMetaObject() { return &QTextTable::staticMetaObject; }

@@ -92,6 +92,12 @@ void QTextList_virtualbase_childEvent(void* self, QChildEvent* event);
 void QTextList_virtualbase_customEvent(void* self, QEvent* event);
 void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(const void* self);
+void QTextList_protectedbase_setFormat(void* self, QTextFormat* format);
+QObject* QTextList_protectedbase_sender(const void* self);
+int QTextList_protectedbase_senderSignalIndex(const void* self);
+int QTextList_protectedbase_receivers(const void* self, const char* signal);
+bool QTextList_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QTextList_staticMetaObject();
 void QTextList_delete(QTextList* self);
 

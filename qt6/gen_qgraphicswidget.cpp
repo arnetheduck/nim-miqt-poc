@@ -1458,6 +1458,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsWidget::isSignalConnected(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsWidget::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsWidget::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsWidget::prepareGeometryChange();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setGraphicsItem(QGraphicsItem* item) {
+
+		QGraphicsWidget::setGraphicsItem(item);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setOwnedByLayout(bool ownedByLayout) {
+
+		QGraphicsWidget::setOwnedByLayout(ownedByLayout);
+
+	}
+
 };
 
 QGraphicsWidget* QGraphicsWidget_new(struct QGraphicsWidget_VTable* vtbl) {
@@ -2103,6 +2173,46 @@ QVariant* QGraphicsWidget_virtualbase_extension(const void* self, QVariant* vari
 
 bool QGraphicsWidget_virtualbase_isEmpty(const void* self) {
 	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->virtualbase_isEmpty();
+}
+
+void QGraphicsWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+QObject* QGraphicsWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
+void QGraphicsWidget_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsWidget_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsWidget_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_prepareGeometryChange();
+}
+
+void QGraphicsWidget_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item) {
+	( (MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_setGraphicsItem(item);
+}
+
+void QGraphicsWidget_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout) {
+	( (MiqtVirtualQGraphicsWidget*)(self) )->protectedbase_setOwnedByLayout(ownedByLayout);
 }
 
 const QMetaObject* QGraphicsWidget_staticMetaObject() { return &QGraphicsWidget::staticMetaObject; }

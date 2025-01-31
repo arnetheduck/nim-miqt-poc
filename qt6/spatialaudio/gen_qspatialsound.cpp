@@ -266,6 +266,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSpatialSound::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSpatialSound::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSpatialSound::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSpatialSound::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSpatialSound* QSpatialSound_new(struct QSpatialSound_VTable* vtbl, QAudioEngine* engine) {
@@ -754,6 +782,22 @@ void QSpatialSound_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSpatialSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSpatialSound*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSpatialSound_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSpatialSound*)(self) )->protectedbase_sender();
+}
+
+int QSpatialSound_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSpatialSound*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSpatialSound_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSpatialSound*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSpatialSound_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSpatialSound*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSpatialSound_staticMetaObject() { return &QSpatialSound::staticMetaObject; }

@@ -210,6 +210,12 @@ proc fcQsciLexerRuby_virtualbase_childEvent(self: pointer, event: pointer): void
 proc fcQsciLexerRuby_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerRuby_virtualbase_customEvent".}
 proc fcQsciLexerRuby_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerRuby_virtualbase_connectNotify".}
 proc fcQsciLexerRuby_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerRuby_virtualbase_disconnectNotify".}
+proc fcQsciLexerRuby_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerRuby_protectedbase_readProperties".}
+proc fcQsciLexerRuby_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerRuby_protectedbase_writeProperties".}
+proc fcQsciLexerRuby_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerRuby_protectedbase_sender".}
+proc fcQsciLexerRuby_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerRuby_protectedbase_senderSignalIndex".}
+proc fcQsciLexerRuby_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerRuby_protectedbase_receivers".}
+proc fcQsciLexerRuby_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerRuby_protectedbase_isSignalConnected".}
 proc fcQsciLexerRuby_new(vtbl: pointer, ): ptr cQsciLexerRuby {.importc: "QsciLexerRuby_new".}
 proc fcQsciLexerRuby_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerRuby {.importc: "QsciLexerRuby_new2".}
 proc fcQsciLexerRuby_staticMetaObject(): pointer {.importc: "QsciLexerRuby_staticMetaObject".}
@@ -847,6 +853,24 @@ proc miqt_exec_callback_cQsciLexerRuby_disconnectNotify(vtbl: pointer, self: poi
   let self = QsciLexerRuby(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexerruby_types.QsciLexerRuby, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerRuby_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexerruby_types.QsciLexerRuby, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerRuby_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexerruby_types.QsciLexerRuby, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerRuby_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
+  fcQsciLexerRuby_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexerruby_types.QsciLexerRuby, signal: cstring): cint =
+  fcQsciLexerRuby_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexerruby_types.QsciLexerRuby, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerRuby_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexerruby_types.QsciLexerRuby,
     vtbl: ref QsciLexerRubyVTable = nil): gen_qscilexerruby_types.QsciLexerRuby =

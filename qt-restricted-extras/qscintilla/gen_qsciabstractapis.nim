@@ -92,6 +92,10 @@ proc fcQsciAbstractAPIs_virtualbase_childEvent(self: pointer, event: pointer): v
 proc fcQsciAbstractAPIs_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciAbstractAPIs_virtualbase_customEvent".}
 proc fcQsciAbstractAPIs_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciAbstractAPIs_virtualbase_connectNotify".}
 proc fcQsciAbstractAPIs_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciAbstractAPIs_virtualbase_disconnectNotify".}
+proc fcQsciAbstractAPIs_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciAbstractAPIs_protectedbase_sender".}
+proc fcQsciAbstractAPIs_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciAbstractAPIs_protectedbase_senderSignalIndex".}
+proc fcQsciAbstractAPIs_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciAbstractAPIs_protectedbase_receivers".}
+proc fcQsciAbstractAPIs_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciAbstractAPIs_protectedbase_isSignalConnected".}
 proc fcQsciAbstractAPIs_new(vtbl: pointer, lexer: pointer): ptr cQsciAbstractAPIs {.importc: "QsciAbstractAPIs_new".}
 proc fcQsciAbstractAPIs_staticMetaObject(): pointer {.importc: "QsciAbstractAPIs_staticMetaObject".}
 proc fcQsciAbstractAPIs_delete(self: pointer) {.importc: "QsciAbstractAPIs_delete".}
@@ -363,6 +367,18 @@ proc miqt_exec_callback_cQsciAbstractAPIs_disconnectNotify(vtbl: pointer, self: 
   let self = QsciAbstractAPIs(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciAbstractAPIs_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, ): cint =
+  fcQsciAbstractAPIs_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, signal: cstring): cint =
+  fcQsciAbstractAPIs_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciAbstractAPIs_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qsciabstractapis_types.QsciAbstractAPIs,
     lexer: gen_qscilexer_types.QsciLexer,

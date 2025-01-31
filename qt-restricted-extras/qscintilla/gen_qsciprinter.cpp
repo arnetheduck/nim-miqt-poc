@@ -344,6 +344,20 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setEngines(QPrintEngine* printEngine, QPaintEngine* paintEngine) {
+
+		QsciPrinter::setEngines(printEngine, paintEngine);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPageLayout* protectedbase_devicePageLayout() const {
+
+		return new QPageLayout(QsciPrinter::devicePageLayout());
+
+	}
+
 };
 
 QsciPrinter* QsciPrinter_new(struct QsciPrinter_VTable* vtbl) {
@@ -445,6 +459,14 @@ QPaintDevice* QsciPrinter_virtualbase_redirected(const void* self, QPoint* offse
 
 QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_sharedPainter();
+}
+
+void QsciPrinter_protectedbase_setEngines(void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine) {
+	( (MiqtVirtualQsciPrinter*)(self) )->protectedbase_setEngines(printEngine, paintEngine);
+}
+
+QPageLayout* QsciPrinter_protectedbase_devicePageLayout(const void* self) {
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->protectedbase_devicePageLayout();
 }
 
 void QsciPrinter_delete(QsciPrinter* self) {

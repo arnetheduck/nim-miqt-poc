@@ -256,6 +256,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QIconEnginePlugin::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QIconEnginePlugin::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QIconEnginePlugin::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QIconEnginePlugin::isSignalConnected(*signal);
+
+	}
+
 };
 
 QIconEnginePlugin* QIconEnginePlugin_new(struct QIconEnginePlugin_VTable* vtbl) {
@@ -391,6 +419,22 @@ void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QIconEnginePlugin_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQIconEnginePlugin*)(self) )->protectedbase_sender();
+}
+
+int QIconEnginePlugin_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQIconEnginePlugin*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QIconEnginePlugin_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQIconEnginePlugin*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QIconEnginePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQIconEnginePlugin*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QIconEnginePlugin_staticMetaObject() { return &QIconEnginePlugin::staticMetaObject; }

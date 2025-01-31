@@ -112,7 +112,6 @@ void QCoreApplication_applicationNameChanged(QCoreApplication* self);
 void QCoreApplication_connect_applicationNameChanged(QCoreApplication* self, intptr_t slot);
 void QCoreApplication_applicationVersionChanged(QCoreApplication* self);
 void QCoreApplication_connect_applicationVersionChanged(QCoreApplication* self, intptr_t slot);
-bool QCoreApplication_event(QCoreApplication* self, QEvent* param1);
 struct miqt_string QCoreApplication_tr2(const char* s, const char* c);
 struct miqt_string QCoreApplication_tr3(const char* s, const char* c, int n);
 struct miqt_string QCoreApplication_trUtf82(const char* s, const char* c);
@@ -137,6 +136,10 @@ void QCoreApplication_virtualbase_childEvent(void* self, QChildEvent* event);
 void QCoreApplication_virtualbase_customEvent(void* self, QEvent* event);
 void QCoreApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QCoreApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QCoreApplication_protectedbase_sender(const void* self);
+int QCoreApplication_protectedbase_senderSignalIndex(const void* self);
+int QCoreApplication_protectedbase_receivers(const void* self, const char* signal);
+bool QCoreApplication_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QCoreApplication_staticMetaObject();
 void QCoreApplication_delete(QCoreApplication* self);
 

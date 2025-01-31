@@ -818,6 +818,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QProxyStyle::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QProxyStyle::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QProxyStyle::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QProxyStyle::isSignalConnected(*signal);
+
+	}
+
 };
 
 QProxyStyle* QProxyStyle_new(struct QProxyStyle_VTable* vtbl) {
@@ -1115,6 +1143,22 @@ void QProxyStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QProxyStyle_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQProxyStyle*)(self) )->protectedbase_sender();
+}
+
+int QProxyStyle_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQProxyStyle*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QProxyStyle_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQProxyStyle*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QProxyStyle_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQProxyStyle*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QProxyStyle_staticMetaObject() { return &QProxyStyle::staticMetaObject; }

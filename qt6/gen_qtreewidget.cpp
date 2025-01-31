@@ -239,6 +239,13 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_emitDataChanged() {
+
+		QTreeWidgetItem::emitDataChanged();
+
+	}
+
 };
 
 QTreeWidgetItem* QTreeWidgetItem_new(struct QTreeWidgetItem_VTable* vtbl) {
@@ -669,6 +676,10 @@ void QTreeWidgetItem_virtualbase_read(void* self, QDataStream* in) {
 
 void QTreeWidgetItem_virtualbase_write(const void* self, QDataStream* out) {
 	( (const MiqtVirtualQTreeWidgetItem*)(self) )->virtualbase_write(out);
+}
+
+void QTreeWidgetItem_protectedbase_emitDataChanged(void* self) {
+	( (MiqtVirtualQTreeWidgetItem*)(self) )->protectedbase_emitDataChanged();
 }
 
 void QTreeWidgetItem_delete(QTreeWidgetItem* self) {
@@ -2817,6 +2828,225 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_columnResized(int column, int oldSize, int newSize) {
+
+		QTreeWidget::columnResized(static_cast<int>(column), static_cast<int>(oldSize), static_cast<int>(newSize));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_columnCountChanged(int oldCount, int newCount) {
+
+		QTreeWidget::columnCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_columnMoved() {
+
+		QTreeWidget::columnMoved();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_reexpand() {
+
+		QTreeWidget::reexpand();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_rowsRemoved(QModelIndex* parent, int first, int last) {
+
+		QTreeWidget::rowsRemoved(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawTree(QPainter* painter, QRegion* region) const {
+
+		QTreeWidget::drawTree(painter, *region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_indexRowSizeHint(QModelIndex* index) const {
+
+		return QTreeWidget::indexRowSizeHint(*index);
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_rowHeight(QModelIndex* index) const {
+
+		return QTreeWidget::rowHeight(*index);
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_state() const {
+
+		QAbstractItemView::State _ret = QTreeWidget::state();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setState(int state) {
+
+		QTreeWidget::setState(static_cast<QAbstractItemView::State>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scheduleDelayedItemsLayout() {
+
+		QTreeWidget::scheduleDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_executeDelayedItemsLayout() {
+
+		QTreeWidget::executeDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setDirtyRegion(QRegion* region) {
+
+		QTreeWidget::setDirtyRegion(*region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scrollDirtyRegion(int dx, int dy) {
+
+		QTreeWidget::scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPoint* protectedbase_dirtyRegionOffset() const {
+
+		return new QPoint(QTreeWidget::dirtyRegionOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_startAutoScroll() {
+
+		QTreeWidget::startAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_stopAutoScroll() {
+
+		QTreeWidget::stopAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doAutoScroll() {
+
+		QTreeWidget::doAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_dropIndicatorPosition() const {
+
+		QAbstractItemView::DropIndicatorPosition _ret = QTreeWidget::dropIndicatorPosition();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QTreeWidget::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QTreeWidget::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QTreeWidget::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QTreeWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QTreeWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QTreeWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QTreeWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QTreeWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTreeWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTreeWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTreeWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTreeWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTreeWidget* QTreeWidget_new(struct QTreeWidget_VTable* vtbl, QWidget* parent) {
@@ -3725,6 +3955,130 @@ void QTreeWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTreeWidget_protectedbase_columnResized(void* self, int column, int oldSize, int newSize) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_columnResized(column, oldSize, newSize);
+}
+
+void QTreeWidget_protectedbase_columnCountChanged(void* self, int oldCount, int newCount) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_columnCountChanged(oldCount, newCount);
+}
+
+void QTreeWidget_protectedbase_columnMoved(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_columnMoved();
+}
+
+void QTreeWidget_protectedbase_reexpand(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_reexpand();
+}
+
+void QTreeWidget_protectedbase_rowsRemoved(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_rowsRemoved(parent, first, last);
+}
+
+void QTreeWidget_protectedbase_drawTree(const void* self, QPainter* painter, QRegion* region) {
+	( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_drawTree(painter, region);
+}
+
+int QTreeWidget_protectedbase_indexRowSizeHint(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_indexRowSizeHint(index);
+}
+
+int QTreeWidget_protectedbase_rowHeight(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_rowHeight(index);
+}
+
+int QTreeWidget_protectedbase_state(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_state();
+}
+
+void QTreeWidget_protectedbase_setState(void* self, int state) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_setState(state);
+}
+
+void QTreeWidget_protectedbase_scheduleDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_scheduleDelayedItemsLayout();
+}
+
+void QTreeWidget_protectedbase_executeDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_executeDelayedItemsLayout();
+}
+
+void QTreeWidget_protectedbase_setDirtyRegion(void* self, QRegion* region) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_setDirtyRegion(region);
+}
+
+void QTreeWidget_protectedbase_scrollDirtyRegion(void* self, int dx, int dy) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_scrollDirtyRegion(dx, dy);
+}
+
+QPoint* QTreeWidget_protectedbase_dirtyRegionOffset(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_dirtyRegionOffset();
+}
+
+void QTreeWidget_protectedbase_startAutoScroll(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_startAutoScroll();
+}
+
+void QTreeWidget_protectedbase_stopAutoScroll(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_stopAutoScroll();
+}
+
+void QTreeWidget_protectedbase_doAutoScroll(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_doAutoScroll();
+}
+
+int QTreeWidget_protectedbase_dropIndicatorPosition(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_dropIndicatorPosition();
+}
+
+void QTreeWidget_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QTreeWidget_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_viewportMargins();
+}
+
+void QTreeWidget_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QTreeWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QTreeWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_create();
+}
+
+void QTreeWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QTreeWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QTreeWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQTreeWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QTreeWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_sender();
+}
+
+int QTreeWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTreeWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTreeWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTreeWidget_staticMetaObject() { return &QTreeWidget::staticMetaObject; }

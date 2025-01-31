@@ -150,6 +150,10 @@ void QsciLexerOctave_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerOctave_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerOctave_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerOctave_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciLexerOctave_protectedbase_sender(const void* self);
+int QsciLexerOctave_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerOctave_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerOctave_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerOctave_staticMetaObject();
 void QsciLexerOctave_delete(QsciLexerOctave* self);
 

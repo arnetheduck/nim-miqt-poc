@@ -2009,6 +2009,232 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_resizeContents(int width, int height) {
+
+		QUndoView::resizeContents(static_cast<int>(width), static_cast<int>(height));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* protectedbase_contentsSize() const {
+
+		return new QSize(QUndoView::contentsSize());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_rectForIndex(QModelIndex* index) const {
+
+		return new QRect(QUndoView::rectForIndex(*index));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPositionForIndex(QPoint* position, QModelIndex* index) {
+
+		QUndoView::setPositionForIndex(*position, *index);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setHorizontalStepsPerItem(int steps) {
+
+		QUndoView::setHorizontalStepsPerItem(static_cast<int>(steps));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_horizontalStepsPerItem() const {
+
+		return QUndoView::horizontalStepsPerItem();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setVerticalStepsPerItem(int steps) {
+
+		QUndoView::setVerticalStepsPerItem(static_cast<int>(steps));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_verticalStepsPerItem() const {
+
+		return QUndoView::verticalStepsPerItem();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_state() const {
+
+		QAbstractItemView::State _ret = QUndoView::state();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setState(int state) {
+
+		QUndoView::setState(static_cast<QAbstractItemView::State>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scheduleDelayedItemsLayout() {
+
+		QUndoView::scheduleDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_executeDelayedItemsLayout() {
+
+		QUndoView::executeDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setDirtyRegion(QRegion* region) {
+
+		QUndoView::setDirtyRegion(*region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scrollDirtyRegion(int dx, int dy) {
+
+		QUndoView::scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPoint* protectedbase_dirtyRegionOffset() const {
+
+		return new QPoint(QUndoView::dirtyRegionOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_startAutoScroll() {
+
+		QUndoView::startAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_stopAutoScroll() {
+
+		QUndoView::stopAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doAutoScroll() {
+
+		QUndoView::doAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_dropIndicatorPosition() const {
+
+		QAbstractItemView::DropIndicatorPosition _ret = QUndoView::dropIndicatorPosition();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QUndoView::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QUndoView::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QUndoView::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QUndoView::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QUndoView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QUndoView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QUndoView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QUndoView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QUndoView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QUndoView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QUndoView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QUndoView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QUndoView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QUndoView* QUndoView_new(struct QUndoView_VTable* vtbl, QWidget* parent) {
@@ -2523,6 +2749,134 @@ void QUndoView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QUndoView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QUndoView_protectedbase_resizeContents(void* self, int width, int height) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_resizeContents(width, height);
+}
+
+QSize* QUndoView_protectedbase_contentsSize(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_contentsSize();
+}
+
+QRect* QUndoView_protectedbase_rectForIndex(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_rectForIndex(index);
+}
+
+void QUndoView_protectedbase_setPositionForIndex(void* self, QPoint* position, QModelIndex* index) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_setPositionForIndex(position, index);
+}
+
+void QUndoView_protectedbase_setHorizontalStepsPerItem(void* self, int steps) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_setHorizontalStepsPerItem(steps);
+}
+
+int QUndoView_protectedbase_horizontalStepsPerItem(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_horizontalStepsPerItem();
+}
+
+void QUndoView_protectedbase_setVerticalStepsPerItem(void* self, int steps) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_setVerticalStepsPerItem(steps);
+}
+
+int QUndoView_protectedbase_verticalStepsPerItem(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_verticalStepsPerItem();
+}
+
+int QUndoView_protectedbase_state(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_state();
+}
+
+void QUndoView_protectedbase_setState(void* self, int state) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_setState(state);
+}
+
+void QUndoView_protectedbase_scheduleDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_scheduleDelayedItemsLayout();
+}
+
+void QUndoView_protectedbase_executeDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_executeDelayedItemsLayout();
+}
+
+void QUndoView_protectedbase_setDirtyRegion(void* self, QRegion* region) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_setDirtyRegion(region);
+}
+
+void QUndoView_protectedbase_scrollDirtyRegion(void* self, int dx, int dy) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_scrollDirtyRegion(dx, dy);
+}
+
+QPoint* QUndoView_protectedbase_dirtyRegionOffset(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_dirtyRegionOffset();
+}
+
+void QUndoView_protectedbase_startAutoScroll(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_startAutoScroll();
+}
+
+void QUndoView_protectedbase_stopAutoScroll(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_stopAutoScroll();
+}
+
+void QUndoView_protectedbase_doAutoScroll(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_doAutoScroll();
+}
+
+int QUndoView_protectedbase_dropIndicatorPosition(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_dropIndicatorPosition();
+}
+
+void QUndoView_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QUndoView_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_viewportMargins();
+}
+
+void QUndoView_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QUndoView_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQUndoView*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QUndoView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QUndoView_protectedbase_create(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_create();
+}
+
+void QUndoView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->protectedbase_destroy();
+}
+
+bool QUndoView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQUndoView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QUndoView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQUndoView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QUndoView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_sender();
+}
+
+int QUndoView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QUndoView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QUndoView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QUndoView_staticMetaObject() { return &QUndoView::staticMetaObject; }

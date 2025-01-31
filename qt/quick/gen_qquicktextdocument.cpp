@@ -236,6 +236,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickTextDocument::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickTextDocument::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickTextDocument::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickTextDocument::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickTextDocument* QQuickTextDocument_new(struct QQuickTextDocument_VTable* vtbl, QQuickItem* parent) {
@@ -366,6 +394,22 @@ void QQuickTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QQuickTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickTextDocument*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQuickTextDocument_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickTextDocument*)(self) )->protectedbase_sender();
+}
+
+int QQuickTextDocument_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickTextDocument*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickTextDocument_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickTextDocument*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickTextDocument_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickTextDocument*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickTextDocument_staticMetaObject() { return &QQuickTextDocument::staticMetaObject; }

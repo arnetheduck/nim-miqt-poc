@@ -30,6 +30,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionButton>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1128,6 +1129,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionButton* button) const {
+
+		QRadioButton::initStyleOption(button);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QRadioButton::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QRadioButton::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QRadioButton::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QRadioButton::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QRadioButton::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QRadioButton::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QRadioButton::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QRadioButton::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QRadioButton::isSignalConnected(*signal);
+
+	}
+
 };
 
 QRadioButton* QRadioButton_new(struct QRadioButton_VTable* vtbl, QWidget* parent) {
@@ -1448,6 +1519,46 @@ void QRadioButton_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QRadioButton_protectedbase_initStyleOption(const void* self, QStyleOptionButton* button) {
+	( (const MiqtVirtualQRadioButton*)(self) )->protectedbase_initStyleOption(button);
+}
+
+void QRadioButton_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQRadioButton*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QRadioButton_protectedbase_create(void* self) {
+	( (MiqtVirtualQRadioButton*)(self) )->protectedbase_create();
+}
+
+void QRadioButton_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQRadioButton*)(self) )->protectedbase_destroy();
+}
+
+bool QRadioButton_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQRadioButton*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QRadioButton_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQRadioButton*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QRadioButton_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQRadioButton*)(self) )->protectedbase_sender();
+}
+
+int QRadioButton_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQRadioButton*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QRadioButton_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQRadioButton*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QRadioButton_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQRadioButton*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QRadioButton_staticMetaObject() { return &QRadioButton::staticMetaObject; }

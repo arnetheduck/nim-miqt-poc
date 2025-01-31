@@ -163,6 +163,12 @@ void QsciLexerXML_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerXML_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerXML_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerXML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerXML_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerXML_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerXML_protectedbase_sender(const void* self);
+int QsciLexerXML_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerXML_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerXML_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerXML_staticMetaObject();
 void QsciLexerXML_delete(QsciLexerXML* self);
 

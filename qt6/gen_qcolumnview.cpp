@@ -2072,6 +2072,176 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initializeColumn(QAbstractItemView* column) const {
+
+		QColumnView::initializeColumn(column);
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_state() const {
+
+		QAbstractItemView::State _ret = QColumnView::state();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setState(int state) {
+
+		QColumnView::setState(static_cast<QAbstractItemView::State>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scheduleDelayedItemsLayout() {
+
+		QColumnView::scheduleDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_executeDelayedItemsLayout() {
+
+		QColumnView::executeDelayedItemsLayout();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setDirtyRegion(QRegion* region) {
+
+		QColumnView::setDirtyRegion(*region);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_scrollDirtyRegion(int dx, int dy) {
+
+		QColumnView::scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPoint* protectedbase_dirtyRegionOffset() const {
+
+		return new QPoint(QColumnView::dirtyRegionOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_startAutoScroll() {
+
+		QColumnView::startAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_stopAutoScroll() {
+
+		QColumnView::stopAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_doAutoScroll() {
+
+		QColumnView::doAutoScroll();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_dropIndicatorPosition() const {
+
+		QAbstractItemView::DropIndicatorPosition _ret = QColumnView::dropIndicatorPosition();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QColumnView::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QColumnView::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QColumnView::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QColumnView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QColumnView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QColumnView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QColumnView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QColumnView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QColumnView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QColumnView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QColumnView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QColumnView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QColumnView* QColumnView_new(struct QColumnView_VTable* vtbl, QWidget* parent) {
@@ -2602,6 +2772,102 @@ void QColumnView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QColumnView_protectedbase_initializeColumn(const void* self, QAbstractItemView* column) {
+	( (const MiqtVirtualQColumnView*)(self) )->protectedbase_initializeColumn(column);
+}
+
+int QColumnView_protectedbase_state(const void* self) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_state();
+}
+
+void QColumnView_protectedbase_setState(void* self, int state) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_setState(state);
+}
+
+void QColumnView_protectedbase_scheduleDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_scheduleDelayedItemsLayout();
+}
+
+void QColumnView_protectedbase_executeDelayedItemsLayout(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_executeDelayedItemsLayout();
+}
+
+void QColumnView_protectedbase_setDirtyRegion(void* self, QRegion* region) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_setDirtyRegion(region);
+}
+
+void QColumnView_protectedbase_scrollDirtyRegion(void* self, int dx, int dy) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_scrollDirtyRegion(dx, dy);
+}
+
+QPoint* QColumnView_protectedbase_dirtyRegionOffset(const void* self) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_dirtyRegionOffset();
+}
+
+void QColumnView_protectedbase_startAutoScroll(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_startAutoScroll();
+}
+
+void QColumnView_protectedbase_stopAutoScroll(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_stopAutoScroll();
+}
+
+void QColumnView_protectedbase_doAutoScroll(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_doAutoScroll();
+}
+
+int QColumnView_protectedbase_dropIndicatorPosition(const void* self) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_dropIndicatorPosition();
+}
+
+void QColumnView_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QColumnView_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_viewportMargins();
+}
+
+void QColumnView_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QColumnView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QColumnView_protectedbase_create(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_create();
+}
+
+void QColumnView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQColumnView*)(self) )->protectedbase_destroy();
+}
+
+bool QColumnView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQColumnView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QColumnView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQColumnView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QColumnView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_sender();
+}
+
+int QColumnView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QColumnView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QColumnView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQColumnView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QColumnView_staticMetaObject() { return &QColumnView::staticMetaObject; }

@@ -244,6 +244,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMediaDevices::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMediaDevices::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMediaDevices::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMediaDevices::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMediaDevices* QMediaDevices_new(struct QMediaDevices_VTable* vtbl) {
@@ -449,6 +477,22 @@ void QMediaDevices_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMediaDevices_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QMediaDevices_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMediaDevices*)(self) )->protectedbase_sender();
+}
+
+int QMediaDevices_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMediaDevices*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMediaDevices_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMediaDevices*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMediaDevices_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMediaDevices*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMediaDevices_staticMetaObject() { return &QMediaDevices::staticMetaObject; }

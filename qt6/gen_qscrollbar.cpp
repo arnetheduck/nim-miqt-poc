@@ -1112,6 +1112,84 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setRepeatAction(int action) {
+
+		QScrollBar::setRepeatAction(static_cast<QAbstractSlider::SliderAction>(action));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_repeatAction() const {
+
+		QAbstractSlider::SliderAction _ret = QScrollBar::repeatAction();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QScrollBar::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QScrollBar::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QScrollBar::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QScrollBar::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QScrollBar::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QScrollBar::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QScrollBar::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QScrollBar::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QScrollBar::isSignalConnected(*signal);
+
+	}
+
 };
 
 QScrollBar* QScrollBar_new(struct QScrollBar_VTable* vtbl, QWidget* parent) {
@@ -1393,6 +1471,50 @@ void QScrollBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScrollBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QScrollBar_protectedbase_setRepeatAction(void* self, int action) {
+	( (MiqtVirtualQScrollBar*)(self) )->protectedbase_setRepeatAction(action);
+}
+
+int QScrollBar_protectedbase_repeatAction(const void* self) {
+	return ( (const MiqtVirtualQScrollBar*)(self) )->protectedbase_repeatAction();
+}
+
+void QScrollBar_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQScrollBar*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QScrollBar_protectedbase_create(void* self) {
+	( (MiqtVirtualQScrollBar*)(self) )->protectedbase_create();
+}
+
+void QScrollBar_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQScrollBar*)(self) )->protectedbase_destroy();
+}
+
+bool QScrollBar_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQScrollBar*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QScrollBar_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQScrollBar*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QScrollBar_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQScrollBar*)(self) )->protectedbase_sender();
+}
+
+int QScrollBar_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQScrollBar*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QScrollBar_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQScrollBar*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QScrollBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQScrollBar*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QScrollBar_staticMetaObject() { return &QScrollBar::staticMetaObject; }

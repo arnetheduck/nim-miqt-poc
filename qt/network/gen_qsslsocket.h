@@ -191,8 +191,6 @@ void QSslSocket_preSharedKeyAuthenticationRequired(QSslSocket* self, QSslPreShar
 void QSslSocket_connect_preSharedKeyAuthenticationRequired(QSslSocket* self, intptr_t slot);
 void QSslSocket_newSessionTicketReceived(QSslSocket* self);
 void QSslSocket_connect_newSessionTicketReceived(QSslSocket* self, intptr_t slot);
-long long QSslSocket_readData(QSslSocket* self, char* data, long long maxlen);
-long long QSslSocket_writeData(QSslSocket* self, const char* data, long long len);
 struct miqt_string QSslSocket_tr2(const char* s, const char* c);
 struct miqt_string QSslSocket_tr3(const char* s, const char* c, int n);
 struct miqt_string QSslSocket_trUtf82(const char* s, const char* c);
@@ -246,6 +244,19 @@ void QSslSocket_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSslSocket_virtualbase_customEvent(void* self, QEvent* event);
 void QSslSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSslSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSslSocket_protectedbase_setSocketState(void* self, int state);
+void QSslSocket_protectedbase_setSocketError(void* self, int socketError);
+void QSslSocket_protectedbase_setLocalPort(void* self, uint16_t port);
+void QSslSocket_protectedbase_setLocalAddress(void* self, QHostAddress* address);
+void QSslSocket_protectedbase_setPeerPort(void* self, uint16_t port);
+void QSslSocket_protectedbase_setPeerAddress(void* self, QHostAddress* address);
+void QSslSocket_protectedbase_setPeerName(void* self, struct miqt_string name);
+void QSslSocket_protectedbase_setOpenMode(void* self, int openMode);
+void QSslSocket_protectedbase_setErrorString(void* self, struct miqt_string errorString);
+QObject* QSslSocket_protectedbase_sender(const void* self);
+int QSslSocket_protectedbase_senderSignalIndex(const void* self);
+int QSslSocket_protectedbase_receivers(const void* self, const char* signal);
+bool QSslSocket_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSslSocket_staticMetaObject();
 void QSslSocket_delete(QSslSocket* self);
 

@@ -154,6 +154,10 @@ void QScriptEngine_virtualbase_childEvent(void* self, QChildEvent* event);
 void QScriptEngine_virtualbase_customEvent(void* self, QEvent* event);
 void QScriptEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QScriptEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QScriptEngine_protectedbase_sender(const void* self);
+int QScriptEngine_protectedbase_senderSignalIndex(const void* self);
+int QScriptEngine_protectedbase_receivers(const void* self, const char* signal);
+bool QScriptEngine_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QScriptEngine_staticMetaObject();
 void QScriptEngine_delete(QScriptEngine* self);
 

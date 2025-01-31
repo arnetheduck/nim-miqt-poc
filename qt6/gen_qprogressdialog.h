@@ -186,10 +186,6 @@ void QProgressDialog_setCancelButtonText(QProgressDialog* self, struct miqt_stri
 void QProgressDialog_setMinimumDuration(QProgressDialog* self, int ms);
 void QProgressDialog_canceled(QProgressDialog* self);
 void QProgressDialog_connect_canceled(QProgressDialog* self, intptr_t slot);
-void QProgressDialog_resizeEvent(QProgressDialog* self, QResizeEvent* event);
-void QProgressDialog_closeEvent(QProgressDialog* self, QCloseEvent* event);
-void QProgressDialog_changeEvent(QProgressDialog* self, QEvent* event);
-void QProgressDialog_showEvent(QProgressDialog* self, QShowEvent* event);
 struct miqt_string QProgressDialog_tr2(const char* s, const char* c);
 struct miqt_string QProgressDialog_tr3(const char* s, const char* c, int n);
 QMetaObject* QProgressDialog_virtualbase_metaObject(const void* self);
@@ -247,6 +243,17 @@ void QProgressDialog_virtualbase_childEvent(void* self, QChildEvent* event);
 void QProgressDialog_virtualbase_customEvent(void* self, QEvent* event);
 void QProgressDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QProgressDialog_protectedbase_forceShow(void* self);
+void QProgressDialog_protectedbase_adjustPosition(void* self, QWidget* param1);
+void QProgressDialog_protectedbase_updateMicroFocus(void* self);
+void QProgressDialog_protectedbase_create(void* self);
+void QProgressDialog_protectedbase_destroy(void* self);
+bool QProgressDialog_protectedbase_focusNextChild(void* self);
+bool QProgressDialog_protectedbase_focusPreviousChild(void* self);
+QObject* QProgressDialog_protectedbase_sender(const void* self);
+int QProgressDialog_protectedbase_senderSignalIndex(const void* self);
+int QProgressDialog_protectedbase_receivers(const void* self, const char* signal);
+bool QProgressDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QProgressDialog_staticMetaObject();
 void QProgressDialog_delete(QProgressDialog* self);
 

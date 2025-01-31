@@ -280,6 +280,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QHistoryState::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QHistoryState::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QHistoryState::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QHistoryState::isSignalConnected(*signal);
+
+	}
+
 };
 
 QHistoryState* QHistoryState_new(struct QHistoryState_VTable* vtbl) {
@@ -451,6 +479,22 @@ void QHistoryState_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QHistoryState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQHistoryState*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QHistoryState_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQHistoryState*)(self) )->protectedbase_sender();
+}
+
+int QHistoryState_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQHistoryState*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QHistoryState_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQHistoryState*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QHistoryState_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQHistoryState*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QHistoryState_staticMetaObject() { return &QHistoryState::staticMetaObject; }

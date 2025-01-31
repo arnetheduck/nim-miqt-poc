@@ -1068,6 +1068,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QSvgWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QSvgWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QSvgWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QSvgWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QSvgWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSvgWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSvgWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSvgWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSvgWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSvgWidget* QSvgWidget_new(struct QSvgWidget_VTable* vtbl, QWidget* parent) {
@@ -1386,6 +1449,42 @@ void QSvgWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSvgWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSvgWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSvgWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQSvgWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QSvgWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQSvgWidget*)(self) )->protectedbase_create();
+}
+
+void QSvgWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQSvgWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QSvgWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQSvgWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QSvgWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQSvgWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QSvgWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSvgWidget*)(self) )->protectedbase_sender();
+}
+
+int QSvgWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSvgWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSvgWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSvgWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSvgWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSvgWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSvgWidget_staticMetaObject() { return &QSvgWidget::staticMetaObject; }

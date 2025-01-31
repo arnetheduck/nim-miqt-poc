@@ -72,6 +72,10 @@ void QIconEnginePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
 void QIconEnginePlugin_virtualbase_customEvent(void* self, QEvent* event);
 void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QIconEnginePlugin_protectedbase_sender(const void* self);
+int QIconEnginePlugin_protectedbase_senderSignalIndex(const void* self);
+int QIconEnginePlugin_protectedbase_receivers(const void* self, const char* signal);
+bool QIconEnginePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QIconEnginePlugin_staticMetaObject();
 void QIconEnginePlugin_delete(QIconEnginePlugin* self);
 

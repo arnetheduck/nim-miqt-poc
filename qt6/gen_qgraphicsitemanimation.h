@@ -87,8 +87,6 @@ struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGra
 void QGraphicsItemAnimation_setShearAt(QGraphicsItemAnimation* self, double step, double sh, double sv);
 void QGraphicsItemAnimation_clear(QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_setStep(QGraphicsItemAnimation* self, double x);
-void QGraphicsItemAnimation_beforeAnimationStep(QGraphicsItemAnimation* self, double step);
-void QGraphicsItemAnimation_afterAnimationStep(QGraphicsItemAnimation* self, double step);
 struct miqt_string QGraphicsItemAnimation_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsItemAnimation_tr3(const char* s, const char* c, int n);
 QMetaObject* QGraphicsItemAnimation_virtualbase_metaObject(const void* self);
@@ -103,6 +101,10 @@ void QGraphicsItemAnimation_virtualbase_childEvent(void* self, QChildEvent* even
 void QGraphicsItemAnimation_virtualbase_customEvent(void* self, QEvent* event);
 void QGraphicsItemAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QGraphicsItemAnimation_protectedbase_sender(const void* self);
+int QGraphicsItemAnimation_protectedbase_senderSignalIndex(const void* self);
+int QGraphicsItemAnimation_protectedbase_receivers(const void* self, const char* signal);
+bool QGraphicsItemAnimation_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QGraphicsItemAnimation_staticMetaObject();
 void QGraphicsItemAnimation_delete(QGraphicsItemAnimation* self);
 

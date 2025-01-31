@@ -35,6 +35,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionSpinBox>
 #include <QTabletEvent>
 #include <QTime>
 #include <QTimeEdit>
@@ -1264,6 +1265,90 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionSpinBox* option) const {
+
+		QDateTimeEdit::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QLineEdit* protectedbase_lineEdit() const {
+
+		return QDateTimeEdit::lineEdit();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLineEdit(QLineEdit* edit) {
+
+		QDateTimeEdit::setLineEdit(edit);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QDateTimeEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QDateTimeEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QDateTimeEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QDateTimeEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QDateTimeEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDateTimeEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDateTimeEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDateTimeEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDateTimeEdit::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDateTimeEdit* QDateTimeEdit_new(struct QDateTimeEdit_VTable* vtbl, QWidget* parent) {
@@ -1891,6 +1976,54 @@ void QDateTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDateTimeEdit_protectedbase_initStyleOption(const void* self, QStyleOptionSpinBox* option) {
+	( (const MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_initStyleOption(option);
+}
+
+QLineEdit* QDateTimeEdit_protectedbase_lineEdit(const void* self) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_lineEdit();
+}
+
+void QDateTimeEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_setLineEdit(edit);
+}
+
+void QDateTimeEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QDateTimeEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_create();
+}
+
+void QDateTimeEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_destroy();
+}
+
+bool QDateTimeEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QDateTimeEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QDateTimeEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_sender();
+}
+
+int QDateTimeEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDateTimeEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDateTimeEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDateTimeEdit_staticMetaObject() { return &QDateTimeEdit::staticMetaObject; }
@@ -3095,6 +3228,90 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionSpinBox* option) const {
+
+		QTimeEdit::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QLineEdit* protectedbase_lineEdit() const {
+
+		return QTimeEdit::lineEdit();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLineEdit(QLineEdit* edit) {
+
+		QTimeEdit::setLineEdit(edit);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QTimeEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QTimeEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QTimeEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QTimeEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QTimeEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTimeEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTimeEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTimeEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTimeEdit::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTimeEdit* QTimeEdit_new(struct QTimeEdit_VTable* vtbl, QWidget* parent) {
@@ -3443,6 +3660,54 @@ void QTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTimeEdit_protectedbase_initStyleOption(const void* self, QStyleOptionSpinBox* option) {
+	( (const MiqtVirtualQTimeEdit*)(self) )->protectedbase_initStyleOption(option);
+}
+
+QLineEdit* QTimeEdit_protectedbase_lineEdit(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->protectedbase_lineEdit();
+}
+
+void QTimeEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	( (MiqtVirtualQTimeEdit*)(self) )->protectedbase_setLineEdit(edit);
+}
+
+void QTimeEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQTimeEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QTimeEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualQTimeEdit*)(self) )->protectedbase_create();
+}
+
+void QTimeEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQTimeEdit*)(self) )->protectedbase_destroy();
+}
+
+bool QTimeEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQTimeEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QTimeEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQTimeEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QTimeEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->protectedbase_sender();
+}
+
+int QTimeEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTimeEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTimeEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTimeEdit_staticMetaObject() { return &QTimeEdit::staticMetaObject; }
@@ -4647,6 +4912,90 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionSpinBox* option) const {
+
+		QDateEdit::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QLineEdit* protectedbase_lineEdit() const {
+
+		return QDateEdit::lineEdit();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLineEdit(QLineEdit* edit) {
+
+		QDateEdit::setLineEdit(edit);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QDateEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QDateEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QDateEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QDateEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QDateEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDateEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDateEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDateEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDateEdit::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDateEdit* QDateEdit_new(struct QDateEdit_VTable* vtbl, QWidget* parent) {
@@ -4995,6 +5344,54 @@ void QDateEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDateEdit_protectedbase_initStyleOption(const void* self, QStyleOptionSpinBox* option) {
+	( (const MiqtVirtualQDateEdit*)(self) )->protectedbase_initStyleOption(option);
+}
+
+QLineEdit* QDateEdit_protectedbase_lineEdit(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->protectedbase_lineEdit();
+}
+
+void QDateEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	( (MiqtVirtualQDateEdit*)(self) )->protectedbase_setLineEdit(edit);
+}
+
+void QDateEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQDateEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QDateEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualQDateEdit*)(self) )->protectedbase_create();
+}
+
+void QDateEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQDateEdit*)(self) )->protectedbase_destroy();
+}
+
+bool QDateEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQDateEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QDateEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQDateEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QDateEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->protectedbase_sender();
+}
+
+int QDateEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDateEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDateEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDateEdit_staticMetaObject() { return &QDateEdit::staticMetaObject; }

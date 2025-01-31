@@ -237,12 +237,6 @@ void QWebEnginePage_findTextFinished(QWebEnginePage* self, QWebEngineFindTextRes
 void QWebEnginePage_connect_findTextFinished(QWebEnginePage* self, intptr_t slot);
 void QWebEnginePage_QAboutToDelete(QWebEnginePage* self);
 void QWebEnginePage_connect_QAboutToDelete(QWebEnginePage* self, intptr_t slot);
-QWebEnginePage* QWebEnginePage_createWindow(QWebEnginePage* self, int type);
-struct miqt_array /* of struct miqt_string */  QWebEnginePage_chooseFiles(QWebEnginePage* self, int mode, struct miqt_array /* of struct miqt_string */  oldFiles, struct miqt_array /* of struct miqt_string */  acceptedMimeTypes);
-void QWebEnginePage_javaScriptAlert(QWebEnginePage* self, QUrl* securityOrigin, struct miqt_string msg);
-bool QWebEnginePage_javaScriptConfirm(QWebEnginePage* self, QUrl* securityOrigin, struct miqt_string msg);
-void QWebEnginePage_javaScriptConsoleMessage(QWebEnginePage* self, int level, struct miqt_string message, int lineNumber, struct miqt_string sourceID);
-bool QWebEnginePage_acceptNavigationRequest(QWebEnginePage* self, QUrl* url, int type, bool isMainFrame);
 struct miqt_string QWebEnginePage_tr2(const char* s, const char* c);
 struct miqt_string QWebEnginePage_tr3(const char* s, const char* c, int n);
 void QWebEnginePage_download2(QWebEnginePage* self, QUrl* url, struct miqt_string filename);
@@ -270,6 +264,10 @@ void QWebEnginePage_virtualbase_childEvent(void* self, QChildEvent* event);
 void QWebEnginePage_virtualbase_customEvent(void* self, QEvent* event);
 void QWebEnginePage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QWebEnginePage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebEnginePage_protectedbase_sender(const void* self);
+int QWebEnginePage_protectedbase_senderSignalIndex(const void* self);
+int QWebEnginePage_protectedbase_receivers(const void* self, const char* signal);
+bool QWebEnginePage_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QWebEnginePage_staticMetaObject();
 void QWebEnginePage_delete(QWebEnginePage* self);
 

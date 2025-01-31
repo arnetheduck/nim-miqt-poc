@@ -155,6 +155,10 @@ void QsciLexerBatch_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerBatch_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerBatch_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerBatch_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciLexerBatch_protectedbase_sender(const void* self);
+int QsciLexerBatch_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerBatch_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerBatch_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerBatch_staticMetaObject();
 void QsciLexerBatch_delete(QsciLexerBatch* self);
 

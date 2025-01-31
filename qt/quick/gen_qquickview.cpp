@@ -713,6 +713,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickView* QQuickView_new(struct QQuickView_VTable* vtbl) {
@@ -1038,6 +1066,22 @@ void QQuickView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QQuickView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQuickView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickView*)(self) )->protectedbase_sender();
+}
+
+int QQuickView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickView_staticMetaObject() { return &QQuickView::staticMetaObject; }

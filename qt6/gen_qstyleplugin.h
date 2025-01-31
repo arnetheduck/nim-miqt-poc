@@ -69,6 +69,10 @@ void QStylePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
 void QStylePlugin_virtualbase_customEvent(void* self, QEvent* event);
 void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QStylePlugin_protectedbase_sender(const void* self);
+int QStylePlugin_protectedbase_senderSignalIndex(const void* self);
+int QStylePlugin_protectedbase_receivers(const void* self, const char* signal);
+bool QStylePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QStylePlugin_staticMetaObject();
 void QStylePlugin_delete(QStylePlugin* self);
 

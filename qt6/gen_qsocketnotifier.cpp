@@ -238,6 +238,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSocketNotifier::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSocketNotifier::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSocketNotifier::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSocketNotifier::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSocketNotifier* QSocketNotifier_new(struct QSocketNotifier_VTable* vtbl, int param1) {
@@ -369,6 +397,22 @@ void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSocketNotifier_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSocketNotifier*)(self) )->protectedbase_sender();
+}
+
+int QSocketNotifier_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSocketNotifier*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSocketNotifier_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSocketNotifier*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSocketNotifier_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSocketNotifier*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSocketNotifier_staticMetaObject() { return &QSocketNotifier::staticMetaObject; }

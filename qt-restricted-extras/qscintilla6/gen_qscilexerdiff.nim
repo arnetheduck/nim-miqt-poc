@@ -173,6 +173,10 @@ proc fcQsciLexerDiff_virtualbase_childEvent(self: pointer, event: pointer): void
 proc fcQsciLexerDiff_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerDiff_virtualbase_customEvent".}
 proc fcQsciLexerDiff_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerDiff_virtualbase_connectNotify".}
 proc fcQsciLexerDiff_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerDiff_virtualbase_disconnectNotify".}
+proc fcQsciLexerDiff_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerDiff_protectedbase_sender".}
+proc fcQsciLexerDiff_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerDiff_protectedbase_senderSignalIndex".}
+proc fcQsciLexerDiff_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerDiff_protectedbase_receivers".}
+proc fcQsciLexerDiff_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerDiff_protectedbase_isSignalConnected".}
 proc fcQsciLexerDiff_new(vtbl: pointer, ): ptr cQsciLexerDiff {.importc: "QsciLexerDiff_new".}
 proc fcQsciLexerDiff_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerDiff {.importc: "QsciLexerDiff_new2".}
 proc fcQsciLexerDiff_staticMetaObject(): pointer {.importc: "QsciLexerDiff_staticMetaObject".}
@@ -747,6 +751,18 @@ proc miqt_exec_callback_cQsciLexerDiff_disconnectNotify(vtbl: pointer, self: poi
   let self = QsciLexerDiff(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerDiff_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cint =
+  fcQsciLexerDiff_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexerdiff_types.QsciLexerDiff, signal: cstring): cint =
+  fcQsciLexerDiff_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexerdiff_types.QsciLexerDiff, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerDiff_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexerdiff_types.QsciLexerDiff,
     vtbl: ref QsciLexerDiffVTable = nil): gen_qscilexerdiff_types.QsciLexerDiff =

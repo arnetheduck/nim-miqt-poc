@@ -169,6 +169,10 @@ proc fcQsciLexerEDIFACT_virtualbase_childEvent(self: pointer, event: pointer): v
 proc fcQsciLexerEDIFACT_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerEDIFACT_virtualbase_customEvent".}
 proc fcQsciLexerEDIFACT_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerEDIFACT_virtualbase_connectNotify".}
 proc fcQsciLexerEDIFACT_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerEDIFACT_virtualbase_disconnectNotify".}
+proc fcQsciLexerEDIFACT_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerEDIFACT_protectedbase_sender".}
+proc fcQsciLexerEDIFACT_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerEDIFACT_protectedbase_senderSignalIndex".}
+proc fcQsciLexerEDIFACT_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerEDIFACT_protectedbase_receivers".}
+proc fcQsciLexerEDIFACT_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerEDIFACT_protectedbase_isSignalConnected".}
 proc fcQsciLexerEDIFACT_new(vtbl: pointer, ): ptr cQsciLexerEDIFACT {.importc: "QsciLexerEDIFACT_new".}
 proc fcQsciLexerEDIFACT_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerEDIFACT {.importc: "QsciLexerEDIFACT_new2".}
 proc fcQsciLexerEDIFACT_staticMetaObject(): pointer {.importc: "QsciLexerEDIFACT_staticMetaObject".}
@@ -740,6 +744,18 @@ proc miqt_exec_callback_cQsciLexerEDIFACT_disconnectNotify(vtbl: pointer, self: 
   let self = QsciLexerEDIFACT(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerEDIFACT_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cint =
+  fcQsciLexerEDIFACT_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, signal: cstring): cint =
+  fcQsciLexerEDIFACT_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerEDIFACT_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexeredifact_types.QsciLexerEDIFACT,
     vtbl: ref QsciLexerEDIFACTVTable = nil): gen_qscilexeredifact_types.QsciLexerEDIFACT =

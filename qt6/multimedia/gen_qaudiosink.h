@@ -93,6 +93,10 @@ void QAudioSink_virtualbase_childEvent(void* self, QChildEvent* event);
 void QAudioSink_virtualbase_customEvent(void* self, QEvent* event);
 void QAudioSink_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAudioSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAudioSink_protectedbase_sender(const void* self);
+int QAudioSink_protectedbase_senderSignalIndex(const void* self);
+int QAudioSink_protectedbase_receivers(const void* self, const char* signal);
+bool QAudioSink_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAudioSink_staticMetaObject();
 void QAudioSink_delete(QAudioSink* self);
 

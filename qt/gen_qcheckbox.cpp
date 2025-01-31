@@ -30,6 +30,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionButton>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1130,6 +1131,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionButton* option) const {
+
+		QCheckBox::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QCheckBox::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QCheckBox::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QCheckBox::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QCheckBox::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QCheckBox::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QCheckBox::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QCheckBox::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QCheckBox::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QCheckBox::isSignalConnected(*signal);
+
+	}
+
 };
 
 QCheckBox* QCheckBox_new(struct QCheckBox_VTable* vtbl, QWidget* parent) {
@@ -1491,6 +1562,46 @@ void QCheckBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QCheckBox_protectedbase_initStyleOption(const void* self, QStyleOptionButton* option) {
+	( (const MiqtVirtualQCheckBox*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QCheckBox_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQCheckBox*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QCheckBox_protectedbase_create(void* self) {
+	( (MiqtVirtualQCheckBox*)(self) )->protectedbase_create();
+}
+
+void QCheckBox_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQCheckBox*)(self) )->protectedbase_destroy();
+}
+
+bool QCheckBox_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQCheckBox*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QCheckBox_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQCheckBox*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QCheckBox_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQCheckBox*)(self) )->protectedbase_sender();
+}
+
+int QCheckBox_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQCheckBox*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QCheckBox_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQCheckBox*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QCheckBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQCheckBox*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QCheckBox_staticMetaObject() { return &QCheckBox::staticMetaObject; }

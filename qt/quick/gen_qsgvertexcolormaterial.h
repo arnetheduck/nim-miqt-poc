@@ -35,8 +35,6 @@ struct QSGVertexColorMaterial_VTable {
 QSGVertexColorMaterial* QSGVertexColorMaterial_new(struct QSGVertexColorMaterial_VTable* vtbl);
 void QSGVertexColorMaterial_virtbase(QSGVertexColorMaterial* src, QSGMaterial** outptr_QSGMaterial);
 int QSGVertexColorMaterial_compare(const QSGVertexColorMaterial* self, QSGMaterial* other);
-QSGMaterialType* QSGVertexColorMaterial_type(const QSGVertexColorMaterial* self);
-QSGMaterialShader* QSGVertexColorMaterial_createShader(const QSGVertexColorMaterial* self);
 int QSGVertexColorMaterial_virtualbase_compare(const void* self, QSGMaterial* other);
 QSGMaterialType* QSGVertexColorMaterial_virtualbase_type(const void* self);
 QSGMaterialShader* QSGVertexColorMaterial_virtualbase_createShader(const void* self);

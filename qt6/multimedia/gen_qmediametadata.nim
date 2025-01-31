@@ -68,9 +68,11 @@ import gen_qmediametadata_types
 export gen_qmediametadata_types
 
 import
+  gen_qmetatype_types,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
+  gen_qmetatype_types,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -85,6 +87,8 @@ proc fcQMediaMetaData_clear(self: pointer, ): void {.importc: "QMediaMetaData_cl
 proc fcQMediaMetaData_isEmpty(self: pointer, ): bool {.importc: "QMediaMetaData_isEmpty".}
 proc fcQMediaMetaData_stringValue(self: pointer, k: cint): struct_miqt_string {.importc: "QMediaMetaData_stringValue".}
 proc fcQMediaMetaData_metaDataKeyToString(k: cint): struct_miqt_string {.importc: "QMediaMetaData_metaDataKeyToString".}
+proc fcQMediaMetaData_protectedbase_keyType(self: pointer, key: cint): pointer {.importc: "QMediaMetaData_protectedbase_keyType".}
+proc fcQMediaMetaData_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QMediaMetaData_protectedbase_operatorAssign".}
 proc fcQMediaMetaData_new(param1: pointer): ptr cQMediaMetaData {.importc: "QMediaMetaData_new".}
 proc fcQMediaMetaData_new2(): ptr cQMediaMetaData {.importc: "QMediaMetaData_new2".}
 proc fcQMediaMetaData_staticMetaObject(): pointer {.importc: "QMediaMetaData_staticMetaObject".}
@@ -127,6 +131,12 @@ proc metaDataKeyToString*(_: type gen_qmediametadata_types.QMediaMetaData, k: ci
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
+
+proc keyType*(self: gen_qmediametadata_types.QMediaMetaData, key: cint): gen_qmetatype_types.QMetaType =
+  gen_qmetatype_types.QMetaType(h: fcQMediaMetaData_protectedbase_keyType(self.hcint(key)))
+
+proc operatorAssign*(self: gen_qmediametadata_types.QMediaMetaData, param1: gen_qmediametadata_types.QMediaMetaData): void =
+  fcQMediaMetaData_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qmediametadata_types.QMediaMetaData,
     param1: gen_qmediametadata_types.QMediaMetaData): gen_qmediametadata_types.QMediaMetaData =

@@ -334,6 +334,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPictureFormatPlugin::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPictureFormatPlugin::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPictureFormatPlugin::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPictureFormatPlugin::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPictureFormatPlugin* QPictureFormatPlugin_new(struct QPictureFormatPlugin_VTable* vtbl) {
@@ -489,6 +517,22 @@ void QPictureFormatPlugin_virtualbase_connectNotify(void* self, QMetaMethod* sig
 
 void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QPictureFormatPlugin_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPictureFormatPlugin*)(self) )->protectedbase_sender();
+}
+
+int QPictureFormatPlugin_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPictureFormatPlugin*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPictureFormatPlugin_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPictureFormatPlugin*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPictureFormatPlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPictureFormatPlugin*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPictureFormatPlugin_staticMetaObject() { return &QPictureFormatPlugin::staticMetaObject; }

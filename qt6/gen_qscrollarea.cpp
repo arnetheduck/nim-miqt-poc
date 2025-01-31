@@ -1170,6 +1170,90 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QScrollArea::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QScrollArea::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QScrollArea::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QScrollArea::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QScrollArea::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QScrollArea::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QScrollArea::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QScrollArea::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QScrollArea::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QScrollArea::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QScrollArea::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QScrollArea::isSignalConnected(*signal);
+
+	}
+
 };
 
 QScrollArea* QScrollArea_new(struct QScrollArea_VTable* vtbl, QWidget* parent) {
@@ -1508,6 +1592,54 @@ void QScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScrollArea*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QScrollArea_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQScrollArea*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QScrollArea_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQScrollArea*)(self) )->protectedbase_viewportMargins();
+}
+
+void QScrollArea_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQScrollArea*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QScrollArea_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQScrollArea*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QScrollArea_protectedbase_create(void* self) {
+	( (MiqtVirtualQScrollArea*)(self) )->protectedbase_create();
+}
+
+void QScrollArea_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQScrollArea*)(self) )->protectedbase_destroy();
+}
+
+bool QScrollArea_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQScrollArea*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QScrollArea_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQScrollArea*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QScrollArea_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQScrollArea*)(self) )->protectedbase_sender();
+}
+
+int QScrollArea_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQScrollArea*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QScrollArea_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQScrollArea*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QScrollArea_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQScrollArea*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QScrollArea_staticMetaObject() { return &QScrollArea::staticMetaObject; }

@@ -184,6 +184,27 @@ public:
 		return *callback_return_value;
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildLayoutItem(QGraphicsLayoutItem* layoutItem) {
+
+		QGraphicsLayout::addChildLayoutItem(layoutItem);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setGraphicsItem(QGraphicsItem* item) {
+
+		QGraphicsLayout::setGraphicsItem(item);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setOwnedByLayout(bool ownedByLayout) {
+
+		QGraphicsLayout::setOwnedByLayout(ownedByLayout);
+
+	}
+
 };
 
 QGraphicsLayout* QGraphicsLayout_new(struct QGraphicsLayout_VTable* vtbl) {
@@ -264,6 +285,18 @@ void QGraphicsLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
 
 void QGraphicsLayout_virtualbase_setGeometry(void* self, QRectF* rect) {
 	( (MiqtVirtualQGraphicsLayout*)(self) )->virtualbase_setGeometry(rect);
+}
+
+void QGraphicsLayout_protectedbase_addChildLayoutItem(void* self, QGraphicsLayoutItem* layoutItem) {
+	( (MiqtVirtualQGraphicsLayout*)(self) )->protectedbase_addChildLayoutItem(layoutItem);
+}
+
+void QGraphicsLayout_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item) {
+	( (MiqtVirtualQGraphicsLayout*)(self) )->protectedbase_setGraphicsItem(item);
+}
+
+void QGraphicsLayout_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout) {
+	( (MiqtVirtualQGraphicsLayout*)(self) )->protectedbase_setOwnedByLayout(ownedByLayout);
 }
 
 void QGraphicsLayout_delete(QGraphicsLayout* self) {

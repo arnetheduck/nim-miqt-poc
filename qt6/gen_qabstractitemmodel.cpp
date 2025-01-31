@@ -3,6 +3,7 @@
 #include <QAbstractTableModel>
 #include <QByteArray>
 #include <QChildEvent>
+#include <QDataStream>
 #include <QEvent>
 #include <QList>
 #include <QMap>
@@ -1477,6 +1478,215 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QAbstractItemModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex2(int row, int column, uintptr_t id) const {
+
+		return new QModelIndex(QAbstractItemModel::createIndex(static_cast<int>(row), static_cast<int>(column), static_cast<quintptr>(id)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QAbstractItemModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QAbstractItemModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QAbstractItemModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QAbstractItemModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QAbstractItemModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QAbstractItemModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QAbstractItemModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QAbstractItemModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QAbstractItemModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QAbstractItemModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QAbstractItemModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QAbstractItemModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QAbstractItemModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QAbstractItemModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QAbstractItemModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QAbstractItemModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QAbstractItemModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QAbstractItemModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QAbstractItemModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex3(int row, int column, const void* data) const {
+
+		return new QModelIndex(QAbstractItemModel::createIndex(static_cast<int>(row), static_cast<int>(column), data));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractItemModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractItemModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractItemModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractItemModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractItemModel* QAbstractItemModel_new(struct QAbstractItemModel_VTable* vtbl) {
@@ -2246,6 +2456,110 @@ void QAbstractItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QAbstractItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QModelIndex* QAbstractItemModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+QModelIndex* QAbstractItemModel_protectedbase_createIndex2(const void* self, int row, int column, uintptr_t id) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_createIndex2(row, column, id);
+}
+
+void QAbstractItemModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QAbstractItemModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QAbstractItemModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QAbstractItemModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QAbstractItemModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QAbstractItemModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QAbstractItemModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QAbstractItemModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QAbstractItemModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QAbstractItemModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QAbstractItemModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QAbstractItemModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QAbstractItemModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QAbstractItemModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QAbstractItemModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QAbstractItemModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QAbstractItemModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QAbstractItemModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QAbstractItemModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QModelIndex* QAbstractItemModel_protectedbase_createIndex3(const void* self, int row, int column, const void* data) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_createIndex3(row, column, data);
+}
+
+QObject* QAbstractItemModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_sender();
+}
+
+int QAbstractItemModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractItemModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractItemModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractItemModel_staticMetaObject() { return &QAbstractItemModel::staticMetaObject; }
@@ -3371,6 +3685,201 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QAbstractTableModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QAbstractTableModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QAbstractTableModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QAbstractTableModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QAbstractTableModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QAbstractTableModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QAbstractTableModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QAbstractTableModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QAbstractTableModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QAbstractTableModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QAbstractTableModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QAbstractTableModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QAbstractTableModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QAbstractTableModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QAbstractTableModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QAbstractTableModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QAbstractTableModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QAbstractTableModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QAbstractTableModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QAbstractTableModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractTableModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractTableModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractTableModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractTableModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractTableModel* QAbstractTableModel_new(struct QAbstractTableModel_VTable* vtbl) {
@@ -3613,6 +4122,102 @@ void QAbstractTableModel_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QAbstractTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QModelIndex* QAbstractTableModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+void QAbstractTableModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QAbstractTableModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QAbstractTableModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QAbstractTableModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QAbstractTableModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QAbstractTableModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QAbstractTableModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QAbstractTableModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QAbstractTableModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QAbstractTableModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QAbstractTableModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QAbstractTableModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QAbstractTableModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QAbstractTableModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QAbstractTableModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QAbstractTableModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QAbstractTableModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QAbstractTableModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QAbstractTableModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QObject* QAbstractTableModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_sender();
+}
+
+int QAbstractTableModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractTableModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractTableModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractTableModel_staticMetaObject() { return &QAbstractTableModel::staticMetaObject; }
@@ -4723,6 +5328,201 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QAbstractListModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QAbstractListModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QAbstractListModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QAbstractListModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QAbstractListModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QAbstractListModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QAbstractListModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QAbstractListModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QAbstractListModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QAbstractListModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QAbstractListModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QAbstractListModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QAbstractListModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QAbstractListModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QAbstractListModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QAbstractListModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QAbstractListModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QAbstractListModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QAbstractListModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QAbstractListModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractListModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractListModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractListModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractListModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractListModel* QAbstractListModel_new(struct QAbstractListModel_VTable* vtbl) {
@@ -4965,6 +5765,102 @@ void QAbstractListModel_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QAbstractListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QModelIndex* QAbstractListModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+void QAbstractListModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQAbstractListModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QAbstractListModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QAbstractListModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QAbstractListModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QAbstractListModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QAbstractListModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QAbstractListModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QAbstractListModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QAbstractListModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QAbstractListModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QAbstractListModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QAbstractListModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QAbstractListModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QAbstractListModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QAbstractListModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QAbstractListModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QAbstractListModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QAbstractListModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QAbstractListModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QObject* QAbstractListModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->protectedbase_sender();
+}
+
+int QAbstractListModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractListModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractListModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractListModel_staticMetaObject() { return &QAbstractListModel::staticMetaObject; }

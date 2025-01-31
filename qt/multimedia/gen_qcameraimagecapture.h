@@ -106,7 +106,6 @@ void QCameraImageCapture_imageAvailable(QCameraImageCapture* self, int id, QVide
 void QCameraImageCapture_connect_imageAvailable(QCameraImageCapture* self, intptr_t slot);
 void QCameraImageCapture_imageSaved(QCameraImageCapture* self, int id, struct miqt_string fileName);
 void QCameraImageCapture_connect_imageSaved(QCameraImageCapture* self, intptr_t slot);
-bool QCameraImageCapture_setMediaObject(QCameraImageCapture* self, QMediaObject* mediaObject);
 struct miqt_string QCameraImageCapture_tr2(const char* s, const char* c);
 struct miqt_string QCameraImageCapture_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraImageCapture_trUtf82(const char* s, const char* c);
@@ -126,6 +125,10 @@ void QCameraImageCapture_virtualbase_childEvent(void* self, QChildEvent* event);
 void QCameraImageCapture_virtualbase_customEvent(void* self, QEvent* event);
 void QCameraImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QCameraImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QCameraImageCapture_protectedbase_sender(const void* self);
+int QCameraImageCapture_protectedbase_senderSignalIndex(const void* self);
+int QCameraImageCapture_protectedbase_receivers(const void* self, const char* signal);
+bool QCameraImageCapture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QCameraImageCapture_staticMetaObject();
 void QCameraImageCapture_delete(QCameraImageCapture* self);
 

@@ -31,6 +31,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionToolButton>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QToolButton>
@@ -1130,6 +1131,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionToolButton* option) const {
+
+		QToolButton::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QToolButton::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QToolButton::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QToolButton::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QToolButton::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QToolButton::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QToolButton::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QToolButton::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QToolButton::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QToolButton::isSignalConnected(*signal);
+
+	}
+
 };
 
 QToolButton* QToolButton_new(struct QToolButton_VTable* vtbl, QWidget* parent) {
@@ -1515,6 +1586,46 @@ void QToolButton_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QToolButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QToolButton_protectedbase_initStyleOption(const void* self, QStyleOptionToolButton* option) {
+	( (const MiqtVirtualQToolButton*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QToolButton_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQToolButton*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QToolButton_protectedbase_create(void* self) {
+	( (MiqtVirtualQToolButton*)(self) )->protectedbase_create();
+}
+
+void QToolButton_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQToolButton*)(self) )->protectedbase_destroy();
+}
+
+bool QToolButton_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQToolButton*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QToolButton_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQToolButton*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QToolButton_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQToolButton*)(self) )->protectedbase_sender();
+}
+
+int QToolButton_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQToolButton*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QToolButton_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQToolButton*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QToolButton_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQToolButton*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QToolButton_staticMetaObject() { return &QToolButton::staticMetaObject; }

@@ -264,6 +264,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickRenderControl::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickRenderControl::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickRenderControl::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickRenderControl::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickRenderControl* QQuickRenderControl_new(struct QQuickRenderControl_VTable* vtbl) {
@@ -472,6 +500,22 @@ void QQuickRenderControl_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QQuickRenderControl_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickRenderControl*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQuickRenderControl_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickRenderControl*)(self) )->protectedbase_sender();
+}
+
+int QQuickRenderControl_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickRenderControl*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickRenderControl_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickRenderControl*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickRenderControl_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickRenderControl*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickRenderControl_staticMetaObject() { return &QQuickRenderControl::staticMetaObject; }

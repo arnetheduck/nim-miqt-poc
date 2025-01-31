@@ -114,6 +114,10 @@ void QSvgRenderer_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSvgRenderer_virtualbase_customEvent(void* self, QEvent* event);
 void QSvgRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSvgRenderer_protectedbase_sender(const void* self);
+int QSvgRenderer_protectedbase_senderSignalIndex(const void* self);
+int QSvgRenderer_protectedbase_receivers(const void* self, const char* signal);
+bool QSvgRenderer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSvgRenderer_staticMetaObject();
 void QSvgRenderer_delete(QSvgRenderer* self);
 

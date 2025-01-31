@@ -170,6 +170,7 @@ proc fcQInputEvent_modifiers(self: pointer, ): cint {.importc: "QInputEvent_modi
 proc fcQInputEvent_setModifiers(self: pointer, amodifiers: cint): void {.importc: "QInputEvent_setModifiers".}
 proc fcQInputEvent_timestamp(self: pointer, ): culong {.importc: "QInputEvent_timestamp".}
 proc fcQInputEvent_setTimestamp(self: pointer, atimestamp: culong): void {.importc: "QInputEvent_setTimestamp".}
+proc fcQInputEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QInputEvent_protectedbase_operatorAssign".}
 proc fcQInputEvent_new(typeVal: cint): ptr cQInputEvent {.importc: "QInputEvent_new".}
 proc fcQInputEvent_new2(param1: pointer): ptr cQInputEvent {.importc: "QInputEvent_new2".}
 proc fcQInputEvent_new3(typeVal: cint, modifiers: cint): ptr cQInputEvent {.importc: "QInputEvent_new3".}
@@ -183,6 +184,7 @@ proc fcQEnterEvent_globalY(self: pointer, ): cint {.importc: "QEnterEvent_global
 proc fcQEnterEvent_localPos(self: pointer, ): pointer {.importc: "QEnterEvent_localPos".}
 proc fcQEnterEvent_windowPos(self: pointer, ): pointer {.importc: "QEnterEvent_windowPos".}
 proc fcQEnterEvent_screenPos(self: pointer, ): pointer {.importc: "QEnterEvent_screenPos".}
+proc fcQEnterEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QEnterEvent_protectedbase_operatorAssign".}
 proc fcQEnterEvent_new(localPos: pointer, windowPos: pointer, screenPos: pointer): ptr cQEnterEvent {.importc: "QEnterEvent_new".}
 proc fcQEnterEvent_new2(param1: pointer): ptr cQEnterEvent {.importc: "QEnterEvent_new2".}
 proc fcQEnterEvent_delete(self: pointer) {.importc: "QEnterEvent_delete".}
@@ -200,6 +202,7 @@ proc fcQMouseEvent_buttons(self: pointer, ): cint {.importc: "QMouseEvent_button
 proc fcQMouseEvent_setLocalPos(self: pointer, localPosition: pointer): void {.importc: "QMouseEvent_setLocalPos".}
 proc fcQMouseEvent_source(self: pointer, ): cint {.importc: "QMouseEvent_source".}
 proc fcQMouseEvent_flags(self: pointer, ): cint {.importc: "QMouseEvent_flags".}
+proc fcQMouseEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QMouseEvent_protectedbase_operatorAssign".}
 proc fcQMouseEvent_new(typeVal: cint, localPos: pointer, button: cint, buttons: cint, modifiers: cint): ptr cQMouseEvent {.importc: "QMouseEvent_new".}
 proc fcQMouseEvent_new2(typeVal: cint, localPos: pointer, screenPos: pointer, button: cint, buttons: cint, modifiers: cint): ptr cQMouseEvent {.importc: "QMouseEvent_new2".}
 proc fcQMouseEvent_new3(typeVal: cint, localPos: pointer, windowPos: pointer, screenPos: pointer, button: cint, buttons: cint, modifiers: cint): ptr cQMouseEvent {.importc: "QMouseEvent_new3".}
@@ -210,6 +213,7 @@ proc fcQHoverEvent_pos(self: pointer, ): pointer {.importc: "QHoverEvent_pos".}
 proc fcQHoverEvent_oldPos(self: pointer, ): pointer {.importc: "QHoverEvent_oldPos".}
 proc fcQHoverEvent_posF(self: pointer, ): pointer {.importc: "QHoverEvent_posF".}
 proc fcQHoverEvent_oldPosF(self: pointer, ): pointer {.importc: "QHoverEvent_oldPosF".}
+proc fcQHoverEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QHoverEvent_protectedbase_operatorAssign".}
 proc fcQHoverEvent_new(typeVal: cint, pos: pointer, oldPos: pointer): ptr cQHoverEvent {.importc: "QHoverEvent_new".}
 proc fcQHoverEvent_new2(param1: pointer): ptr cQHoverEvent {.importc: "QHoverEvent_new2".}
 proc fcQHoverEvent_new3(typeVal: cint, pos: pointer, oldPos: pointer, modifiers: cint): ptr cQHoverEvent {.importc: "QHoverEvent_new3".}
@@ -232,6 +236,7 @@ proc fcQWheelEvent_buttons(self: pointer, ): cint {.importc: "QWheelEvent_button
 proc fcQWheelEvent_phase(self: pointer, ): cint {.importc: "QWheelEvent_phase".}
 proc fcQWheelEvent_inverted(self: pointer, ): bool {.importc: "QWheelEvent_inverted".}
 proc fcQWheelEvent_source(self: pointer, ): cint {.importc: "QWheelEvent_source".}
+proc fcQWheelEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QWheelEvent_protectedbase_operatorAssign".}
 proc fcQWheelEvent_new(pos: pointer, delta: cint, buttons: cint, modifiers: cint): ptr cQWheelEvent {.importc: "QWheelEvent_new".}
 proc fcQWheelEvent_new2(pos: pointer, globalPos: pointer, delta: cint, buttons: cint, modifiers: cint): ptr cQWheelEvent {.importc: "QWheelEvent_new2".}
 proc fcQWheelEvent_new3(pos: pointer, globalPos: pointer, pixelDelta: pointer, angleDelta: pointer, qt4Delta: cint, qt4Orientation: cint, buttons: cint, modifiers: cint): ptr cQWheelEvent {.importc: "QWheelEvent_new3".}
@@ -266,6 +271,7 @@ proc fcQTabletEvent_xTilt(self: pointer, ): cint {.importc: "QTabletEvent_xTilt"
 proc fcQTabletEvent_yTilt(self: pointer, ): cint {.importc: "QTabletEvent_yTilt".}
 proc fcQTabletEvent_button(self: pointer, ): cint {.importc: "QTabletEvent_button".}
 proc fcQTabletEvent_buttons(self: pointer, ): cint {.importc: "QTabletEvent_buttons".}
+proc fcQTabletEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTabletEvent_protectedbase_operatorAssign".}
 proc fcQTabletEvent_new(t: cint, pos: pointer, globalPos: pointer, device: cint, pointerType: cint, pressure: float64, xTilt: cint, yTilt: cint, tangentialPressure: float64, rotation: float64, z: cint, keyState: cint, uniqueID: clonglong): ptr cQTabletEvent {.importc: "QTabletEvent_new".}
 proc fcQTabletEvent_new2(t: cint, pos: pointer, globalPos: pointer, device: cint, pointerType: cint, pressure: float64, xTilt: cint, yTilt: cint, tangentialPressure: float64, rotation: float64, z: cint, keyState: cint, uniqueID: clonglong, button: cint, buttons: cint): ptr cQTabletEvent {.importc: "QTabletEvent_new2".}
 proc fcQTabletEvent_new3(param1: pointer): ptr cQTabletEvent {.importc: "QTabletEvent_new3".}
@@ -279,6 +285,7 @@ proc fcQNativeGestureEvent_localPos(self: pointer, ): pointer {.importc: "QNativ
 proc fcQNativeGestureEvent_windowPos(self: pointer, ): pointer {.importc: "QNativeGestureEvent_windowPos".}
 proc fcQNativeGestureEvent_screenPos(self: pointer, ): pointer {.importc: "QNativeGestureEvent_screenPos".}
 proc fcQNativeGestureEvent_device(self: pointer, ): pointer {.importc: "QNativeGestureEvent_device".}
+proc fcQNativeGestureEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QNativeGestureEvent_protectedbase_operatorAssign".}
 proc fcQNativeGestureEvent_new(typeVal: cint, localPos: pointer, windowPos: pointer, screenPos: pointer, value: float64, sequenceId: culong, intArgument: culonglong): ptr cQNativeGestureEvent {.importc: "QNativeGestureEvent_new".}
 proc fcQNativeGestureEvent_new2(typeVal: cint, dev: pointer, localPos: pointer, windowPos: pointer, screenPos: pointer, value: float64, sequenceId: culong, intArgument: culonglong): ptr cQNativeGestureEvent {.importc: "QNativeGestureEvent_new2".}
 proc fcQNativeGestureEvent_new3(param1: pointer): ptr cQNativeGestureEvent {.importc: "QNativeGestureEvent_new3".}
@@ -292,6 +299,7 @@ proc fcQKeyEvent_count(self: pointer, ): cint {.importc: "QKeyEvent_count".}
 proc fcQKeyEvent_nativeScanCode(self: pointer, ): cuint {.importc: "QKeyEvent_nativeScanCode".}
 proc fcQKeyEvent_nativeVirtualKey(self: pointer, ): cuint {.importc: "QKeyEvent_nativeVirtualKey".}
 proc fcQKeyEvent_nativeModifiers(self: pointer, ): cuint {.importc: "QKeyEvent_nativeModifiers".}
+proc fcQKeyEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QKeyEvent_protectedbase_operatorAssign".}
 proc fcQKeyEvent_new(typeVal: cint, key: cint, modifiers: cint): ptr cQKeyEvent {.importc: "QKeyEvent_new".}
 proc fcQKeyEvent_new2(typeVal: cint, key: cint, modifiers: cint, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint): ptr cQKeyEvent {.importc: "QKeyEvent_new2".}
 proc fcQKeyEvent_new3(param1: pointer): ptr cQKeyEvent {.importc: "QKeyEvent_new3".}
@@ -311,25 +319,30 @@ proc fcQFocusEvent_new3(typeVal: cint, reason: cint): ptr cQFocusEvent {.importc
 proc fcQFocusEvent_delete(self: pointer) {.importc: "QFocusEvent_delete".}
 proc fcQPaintEvent_rect(self: pointer, ): pointer {.importc: "QPaintEvent_rect".}
 proc fcQPaintEvent_region(self: pointer, ): pointer {.importc: "QPaintEvent_region".}
+proc fcQPaintEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QPaintEvent_protectedbase_operatorAssign".}
 proc fcQPaintEvent_new(paintRegion: pointer): ptr cQPaintEvent {.importc: "QPaintEvent_new".}
 proc fcQPaintEvent_new2(paintRect: pointer): ptr cQPaintEvent {.importc: "QPaintEvent_new2".}
 proc fcQPaintEvent_new3(param1: pointer): ptr cQPaintEvent {.importc: "QPaintEvent_new3".}
 proc fcQPaintEvent_delete(self: pointer) {.importc: "QPaintEvent_delete".}
 proc fcQMoveEvent_pos(self: pointer, ): pointer {.importc: "QMoveEvent_pos".}
 proc fcQMoveEvent_oldPos(self: pointer, ): pointer {.importc: "QMoveEvent_oldPos".}
+proc fcQMoveEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QMoveEvent_protectedbase_operatorAssign".}
 proc fcQMoveEvent_new(pos: pointer, oldPos: pointer): ptr cQMoveEvent {.importc: "QMoveEvent_new".}
 proc fcQMoveEvent_new2(param1: pointer): ptr cQMoveEvent {.importc: "QMoveEvent_new2".}
 proc fcQMoveEvent_delete(self: pointer) {.importc: "QMoveEvent_delete".}
 proc fcQExposeEvent_region(self: pointer, ): pointer {.importc: "QExposeEvent_region".}
+proc fcQExposeEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QExposeEvent_protectedbase_operatorAssign".}
 proc fcQExposeEvent_new(rgn: pointer): ptr cQExposeEvent {.importc: "QExposeEvent_new".}
 proc fcQExposeEvent_new2(param1: pointer): ptr cQExposeEvent {.importc: "QExposeEvent_new2".}
 proc fcQExposeEvent_delete(self: pointer) {.importc: "QExposeEvent_delete".}
 proc fcQPlatformSurfaceEvent_surfaceEventType(self: pointer, ): cint {.importc: "QPlatformSurfaceEvent_surfaceEventType".}
+proc fcQPlatformSurfaceEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QPlatformSurfaceEvent_protectedbase_operatorAssign".}
 proc fcQPlatformSurfaceEvent_new(surfaceEventType: cint): ptr cQPlatformSurfaceEvent {.importc: "QPlatformSurfaceEvent_new".}
 proc fcQPlatformSurfaceEvent_new2(param1: pointer): ptr cQPlatformSurfaceEvent {.importc: "QPlatformSurfaceEvent_new2".}
 proc fcQPlatformSurfaceEvent_delete(self: pointer) {.importc: "QPlatformSurfaceEvent_delete".}
 proc fcQResizeEvent_size(self: pointer, ): pointer {.importc: "QResizeEvent_size".}
 proc fcQResizeEvent_oldSize(self: pointer, ): pointer {.importc: "QResizeEvent_oldSize".}
+proc fcQResizeEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QResizeEvent_protectedbase_operatorAssign".}
 proc fcQResizeEvent_new(size: pointer, oldSize: pointer): ptr cQResizeEvent {.importc: "QResizeEvent_new".}
 proc fcQResizeEvent_new2(param1: pointer): ptr cQResizeEvent {.importc: "QResizeEvent_new2".}
 proc fcQResizeEvent_delete(self: pointer) {.importc: "QResizeEvent_delete".}
@@ -356,6 +369,7 @@ proc fcQContextMenuEvent_globalY(self: pointer, ): cint {.importc: "QContextMenu
 proc fcQContextMenuEvent_pos(self: pointer, ): pointer {.importc: "QContextMenuEvent_pos".}
 proc fcQContextMenuEvent_globalPos(self: pointer, ): pointer {.importc: "QContextMenuEvent_globalPos".}
 proc fcQContextMenuEvent_reason(self: pointer, ): cint {.importc: "QContextMenuEvent_reason".}
+proc fcQContextMenuEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QContextMenuEvent_protectedbase_operatorAssign".}
 proc fcQContextMenuEvent_new(reason: cint, pos: pointer, globalPos: pointer, modifiers: cint): ptr cQContextMenuEvent {.importc: "QContextMenuEvent_new".}
 proc fcQContextMenuEvent_new2(reason: cint, pos: pointer, globalPos: pointer): ptr cQContextMenuEvent {.importc: "QContextMenuEvent_new2".}
 proc fcQContextMenuEvent_new3(reason: cint, pos: pointer): ptr cQContextMenuEvent {.importc: "QContextMenuEvent_new3".}
@@ -390,6 +404,7 @@ proc fcQDropEvent_dropAction(self: pointer, ): cint {.importc: "QDropEvent_dropA
 proc fcQDropEvent_setDropAction(self: pointer, action: cint): void {.importc: "QDropEvent_setDropAction".}
 proc fcQDropEvent_source(self: pointer, ): pointer {.importc: "QDropEvent_source".}
 proc fcQDropEvent_mimeData(self: pointer, ): pointer {.importc: "QDropEvent_mimeData".}
+proc fcQDropEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QDropEvent_protectedbase_operatorAssign".}
 proc fcQDropEvent_new(pos: pointer, actions: cint, data: pointer, buttons: cint, modifiers: cint): ptr cQDropEvent {.importc: "QDropEvent_new".}
 proc fcQDropEvent_new2(param1: pointer): ptr cQDropEvent {.importc: "QDropEvent_new2".}
 proc fcQDropEvent_new3(pos: pointer, actions: cint, data: pointer, buttons: cint, modifiers: cint, typeVal: cint): ptr cQDropEvent {.importc: "QDropEvent_new3".}
@@ -399,11 +414,13 @@ proc fcQDragMoveEvent_accept(self: pointer, ): void {.importc: "QDragMoveEvent_a
 proc fcQDragMoveEvent_ignore(self: pointer, ): void {.importc: "QDragMoveEvent_ignore".}
 proc fcQDragMoveEvent_acceptWithQRect(self: pointer, r: pointer): void {.importc: "QDragMoveEvent_acceptWithQRect".}
 proc fcQDragMoveEvent_ignoreWithQRect(self: pointer, r: pointer): void {.importc: "QDragMoveEvent_ignoreWithQRect".}
+proc fcQDragMoveEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QDragMoveEvent_protectedbase_operatorAssign".}
 proc fcQDragMoveEvent_new(pos: pointer, actions: cint, data: pointer, buttons: cint, modifiers: cint): ptr cQDragMoveEvent {.importc: "QDragMoveEvent_new".}
 proc fcQDragMoveEvent_new2(param1: pointer): ptr cQDragMoveEvent {.importc: "QDragMoveEvent_new2".}
 proc fcQDragMoveEvent_new3(pos: pointer, actions: cint, data: pointer, buttons: cint, modifiers: cint, typeVal: cint): ptr cQDragMoveEvent {.importc: "QDragMoveEvent_new3".}
 proc fcQDragMoveEvent_delete(self: pointer) {.importc: "QDragMoveEvent_delete".}
 proc fcQDragEnterEvent_operatorAssign(self: pointer, param1: pointer): void {.importc: "QDragEnterEvent_operatorAssign".}
+proc fcQDragEnterEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QDragEnterEvent_protectedbase_operatorAssign".}
 proc fcQDragEnterEvent_new(pos: pointer, actions: cint, data: pointer, buttons: cint, modifiers: cint): ptr cQDragEnterEvent {.importc: "QDragEnterEvent_new".}
 proc fcQDragEnterEvent_new2(param1: pointer): ptr cQDragEnterEvent {.importc: "QDragEnterEvent_new2".}
 proc fcQDragEnterEvent_delete(self: pointer) {.importc: "QDragEnterEvent_delete".}
@@ -449,6 +466,7 @@ proc fcQToolBarChangeEvent_delete(self: pointer) {.importc: "QToolBarChangeEvent
 proc fcQShortcutEvent_key(self: pointer, ): pointer {.importc: "QShortcutEvent_key".}
 proc fcQShortcutEvent_shortcutId(self: pointer, ): cint {.importc: "QShortcutEvent_shortcutId".}
 proc fcQShortcutEvent_isAmbiguous(self: pointer, ): bool {.importc: "QShortcutEvent_isAmbiguous".}
+proc fcQShortcutEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QShortcutEvent_protectedbase_operatorAssign".}
 proc fcQShortcutEvent_new(key: pointer, id: cint): ptr cQShortcutEvent {.importc: "QShortcutEvent_new".}
 proc fcQShortcutEvent_new2(param1: pointer): ptr cQShortcutEvent {.importc: "QShortcutEvent_new2".}
 proc fcQShortcutEvent_new3(key: pointer, id: cint, ambiguous: bool): ptr cQShortcutEvent {.importc: "QShortcutEvent_new3".}
@@ -476,6 +494,7 @@ proc fcQTouchEvent_setTarget(self: pointer, atarget: pointer): void {.importc: "
 proc fcQTouchEvent_setTouchPointStates(self: pointer, aTouchPointStates: cint): void {.importc: "QTouchEvent_setTouchPointStates".}
 proc fcQTouchEvent_setTouchPoints(self: pointer, atouchPoints: struct_miqt_array): void {.importc: "QTouchEvent_setTouchPoints".}
 proc fcQTouchEvent_setDevice(self: pointer, adevice: pointer): void {.importc: "QTouchEvent_setDevice".}
+proc fcQTouchEvent_protectedbase_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTouchEvent_protectedbase_operatorAssign".}
 proc fcQTouchEvent_new(eventType: cint): ptr cQTouchEvent {.importc: "QTouchEvent_new".}
 proc fcQTouchEvent_new2(param1: pointer): ptr cQTouchEvent {.importc: "QTouchEvent_new2".}
 proc fcQTouchEvent_new3(eventType: cint, device: pointer): ptr cQTouchEvent {.importc: "QTouchEvent_new3".}
@@ -580,6 +599,9 @@ proc timestamp*(self: gen_qevent_types.QInputEvent, ): culong =
 proc setTimestamp*(self: gen_qevent_types.QInputEvent, atimestamp: culong): void =
   fcQInputEvent_setTimestamp(self.h, atimestamp)
 
+proc operatorAssign*(self: gen_qevent_types.QInputEvent, param1: gen_qevent_types.QInputEvent): void =
+  fcQInputEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QInputEvent,
     typeVal: cint): gen_qevent_types.QInputEvent =
   gen_qevent_types.QInputEvent(h: fcQInputEvent_new(cint(typeVal)))
@@ -620,6 +642,9 @@ proc windowPos*(self: gen_qevent_types.QEnterEvent, ): gen_qpoint_types.QPointF 
 
 proc screenPos*(self: gen_qevent_types.QEnterEvent, ): gen_qpoint_types.QPointF =
   gen_qpoint_types.QPointF(h: fcQEnterEvent_screenPos(self.h))
+
+proc operatorAssign*(self: gen_qevent_types.QEnterEvent, param1: gen_qevent_types.QEnterEvent): void =
+  fcQEnterEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QEnterEvent,
     localPos: gen_qpoint_types.QPointF, windowPos: gen_qpoint_types.QPointF, screenPos: gen_qpoint_types.QPointF): gen_qevent_types.QEnterEvent =
@@ -673,6 +698,9 @@ proc source*(self: gen_qevent_types.QMouseEvent, ): cint =
 proc flags*(self: gen_qevent_types.QMouseEvent, ): cint =
   cint(fcQMouseEvent_flags(self.h))
 
+proc operatorAssign*(self: gen_qevent_types.QMouseEvent, param1: gen_qevent_types.QMouseEvent): void =
+  fcQMouseEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QMouseEvent,
     typeVal: cint, localPos: gen_qpoint_types.QPointF, button: cint, buttons: cint, modifiers: cint): gen_qevent_types.QMouseEvent =
   gen_qevent_types.QMouseEvent(h: fcQMouseEvent_new(cint(typeVal), localPos.h, cint(button), cint(buttons), cint(modifiers)))
@@ -706,6 +734,9 @@ proc posF*(self: gen_qevent_types.QHoverEvent, ): gen_qpoint_types.QPointF =
 
 proc oldPosF*(self: gen_qevent_types.QHoverEvent, ): gen_qpoint_types.QPointF =
   gen_qpoint_types.QPointF(h: fcQHoverEvent_oldPosF(self.h))
+
+proc operatorAssign*(self: gen_qevent_types.QHoverEvent, param1: gen_qevent_types.QHoverEvent): void =
+  fcQHoverEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QHoverEvent,
     typeVal: cint, pos: gen_qpoint_types.QPointF, oldPos: gen_qpoint_types.QPointF): gen_qevent_types.QHoverEvent =
@@ -774,6 +805,9 @@ proc inverted*(self: gen_qevent_types.QWheelEvent, ): bool =
 
 proc source*(self: gen_qevent_types.QWheelEvent, ): cint =
   cint(fcQWheelEvent_source(self.h))
+
+proc operatorAssign*(self: gen_qevent_types.QWheelEvent, param1: gen_qevent_types.QWheelEvent): void =
+  fcQWheelEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QWheelEvent,
     pos: gen_qpoint_types.QPointF, delta: cint, buttons: cint, modifiers: cint): gen_qevent_types.QWheelEvent =
@@ -887,6 +921,9 @@ proc button*(self: gen_qevent_types.QTabletEvent, ): cint =
 proc buttons*(self: gen_qevent_types.QTabletEvent, ): cint =
   cint(fcQTabletEvent_buttons(self.h))
 
+proc operatorAssign*(self: gen_qevent_types.QTabletEvent, param1: gen_qevent_types.QTabletEvent): void =
+  fcQTabletEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QTabletEvent,
     t: cint, pos: gen_qpoint_types.QPointF, globalPos: gen_qpoint_types.QPointF, device: cint, pointerType: cint, pressure: float64, xTilt: cint, yTilt: cint, tangentialPressure: float64, rotation: float64, z: cint, keyState: cint, uniqueID: clonglong): gen_qevent_types.QTabletEvent =
   gen_qevent_types.QTabletEvent(h: fcQTabletEvent_new(cint(t), pos.h, globalPos.h, device, pointerType, pressure, xTilt, yTilt, tangentialPressure, rotation, z, cint(keyState), uniqueID))
@@ -926,6 +963,9 @@ proc screenPos*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qpoint_types.
 
 proc device*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qtouchdevice_types.QTouchDevice =
   gen_qtouchdevice_types.QTouchDevice(h: fcQNativeGestureEvent_device(self.h))
+
+proc operatorAssign*(self: gen_qevent_types.QNativeGestureEvent, param1: gen_qevent_types.QNativeGestureEvent): void =
+  fcQNativeGestureEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QNativeGestureEvent,
     typeVal: cint, localPos: gen_qpoint_types.QPointF, windowPos: gen_qpoint_types.QPointF, screenPos: gen_qpoint_types.QPointF, value: float64, sequenceId: culong, intArgument: culonglong): gen_qevent_types.QNativeGestureEvent =
@@ -970,6 +1010,9 @@ proc nativeVirtualKey*(self: gen_qevent_types.QKeyEvent, ): cuint =
 
 proc nativeModifiers*(self: gen_qevent_types.QKeyEvent, ): cuint =
   fcQKeyEvent_nativeModifiers(self.h)
+
+proc operatorAssign*(self: gen_qevent_types.QKeyEvent, param1: gen_qevent_types.QKeyEvent): void =
+  fcQKeyEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QKeyEvent,
     typeVal: cint, key: cint, modifiers: cint): gen_qevent_types.QKeyEvent =
@@ -1038,6 +1081,9 @@ proc rect*(self: gen_qevent_types.QPaintEvent, ): gen_qrect_types.QRect =
 proc region*(self: gen_qevent_types.QPaintEvent, ): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQPaintEvent_region(self.h))
 
+proc operatorAssign*(self: gen_qevent_types.QPaintEvent, param1: gen_qevent_types.QPaintEvent): void =
+  fcQPaintEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QPaintEvent,
     paintRegion: gen_qregion_types.QRegion): gen_qevent_types.QPaintEvent =
   gen_qevent_types.QPaintEvent(h: fcQPaintEvent_new(paintRegion.h))
@@ -1058,6 +1104,9 @@ proc pos*(self: gen_qevent_types.QMoveEvent, ): gen_qpoint_types.QPoint =
 proc oldPos*(self: gen_qevent_types.QMoveEvent, ): gen_qpoint_types.QPoint =
   gen_qpoint_types.QPoint(h: fcQMoveEvent_oldPos(self.h))
 
+proc operatorAssign*(self: gen_qevent_types.QMoveEvent, param1: gen_qevent_types.QMoveEvent): void =
+  fcQMoveEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QMoveEvent,
     pos: gen_qpoint_types.QPoint, oldPos: gen_qpoint_types.QPoint): gen_qevent_types.QMoveEvent =
   gen_qevent_types.QMoveEvent(h: fcQMoveEvent_new(pos.h, oldPos.h))
@@ -1071,6 +1120,9 @@ proc delete*(self: gen_qevent_types.QMoveEvent) =
 proc region*(self: gen_qevent_types.QExposeEvent, ): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQExposeEvent_region(self.h))
 
+proc operatorAssign*(self: gen_qevent_types.QExposeEvent, param1: gen_qevent_types.QExposeEvent): void =
+  fcQExposeEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QExposeEvent,
     rgn: gen_qregion_types.QRegion): gen_qevent_types.QExposeEvent =
   gen_qevent_types.QExposeEvent(h: fcQExposeEvent_new(rgn.h))
@@ -1083,6 +1135,9 @@ proc delete*(self: gen_qevent_types.QExposeEvent) =
   fcQExposeEvent_delete(self.h)
 proc surfaceEventType*(self: gen_qevent_types.QPlatformSurfaceEvent, ): cint =
   cint(fcQPlatformSurfaceEvent_surfaceEventType(self.h))
+
+proc operatorAssign*(self: gen_qevent_types.QPlatformSurfaceEvent, param1: gen_qevent_types.QPlatformSurfaceEvent): void =
+  fcQPlatformSurfaceEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QPlatformSurfaceEvent,
     surfaceEventType: cint): gen_qevent_types.QPlatformSurfaceEvent =
@@ -1099,6 +1154,9 @@ proc size*(self: gen_qevent_types.QResizeEvent, ): gen_qsize_types.QSize =
 
 proc oldSize*(self: gen_qevent_types.QResizeEvent, ): gen_qsize_types.QSize =
   gen_qsize_types.QSize(h: fcQResizeEvent_oldSize(self.h))
+
+proc operatorAssign*(self: gen_qevent_types.QResizeEvent, param1: gen_qevent_types.QResizeEvent): void =
+  fcQResizeEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QResizeEvent,
     size: gen_qsize_types.QSize, oldSize: gen_qsize_types.QSize): gen_qevent_types.QResizeEvent =
@@ -1178,6 +1236,9 @@ proc globalPos*(self: gen_qevent_types.QContextMenuEvent, ): gen_qpoint_types.QP
 
 proc reason*(self: gen_qevent_types.QContextMenuEvent, ): cint =
   cint(fcQContextMenuEvent_reason(self.h))
+
+proc operatorAssign*(self: gen_qevent_types.QContextMenuEvent, param1: gen_qevent_types.QContextMenuEvent): void =
+  fcQContextMenuEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QContextMenuEvent,
     reason: cint, pos: gen_qpoint_types.QPoint, globalPos: gen_qpoint_types.QPoint, modifiers: cint): gen_qevent_types.QContextMenuEvent =
@@ -1301,6 +1362,9 @@ proc source*(self: gen_qevent_types.QDropEvent, ): gen_qobject_types.QObject =
 proc mimeData*(self: gen_qevent_types.QDropEvent, ): gen_qmimedata_types.QMimeData =
   gen_qmimedata_types.QMimeData(h: fcQDropEvent_mimeData(self.h))
 
+proc operatorAssign*(self: gen_qevent_types.QDropEvent, param1: gen_qevent_types.QDropEvent): void =
+  fcQDropEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QDropEvent,
     pos: gen_qpoint_types.QPointF, actions: cint, data: gen_qmimedata_types.QMimeData, buttons: cint, modifiers: cint): gen_qevent_types.QDropEvent =
   gen_qevent_types.QDropEvent(h: fcQDropEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
@@ -1330,6 +1394,9 @@ proc accept*(self: gen_qevent_types.QDragMoveEvent, r: gen_qrect_types.QRect): v
 proc ignore*(self: gen_qevent_types.QDragMoveEvent, r: gen_qrect_types.QRect): void =
   fcQDragMoveEvent_ignoreWithQRect(self.h, r.h)
 
+proc operatorAssign*(self: gen_qevent_types.QDragMoveEvent, param1: gen_qevent_types.QDragMoveEvent): void =
+  fcQDragMoveEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QDragMoveEvent,
     pos: gen_qpoint_types.QPoint, actions: cint, data: gen_qmimedata_types.QMimeData, buttons: cint, modifiers: cint): gen_qevent_types.QDragMoveEvent =
   gen_qevent_types.QDragMoveEvent(h: fcQDragMoveEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
@@ -1346,6 +1413,9 @@ proc delete*(self: gen_qevent_types.QDragMoveEvent) =
   fcQDragMoveEvent_delete(self.h)
 proc operatorAssign*(self: gen_qevent_types.QDragEnterEvent, param1: gen_qevent_types.QDragEnterEvent): void =
   fcQDragEnterEvent_operatorAssign(self.h, param1.h)
+
+proc operatorAssign*(self: gen_qevent_types.QDragEnterEvent, param1: gen_qevent_types.QDragMoveEvent): void =
+  fcQDragEnterEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QDragEnterEvent,
     pos: gen_qpoint_types.QPoint, actions: cint, data: gen_qmimedata_types.QMimeData, buttons: cint, modifiers: cint): gen_qevent_types.QDragEnterEvent =
@@ -1500,6 +1570,9 @@ proc shortcutId*(self: gen_qevent_types.QShortcutEvent, ): cint =
 proc isAmbiguous*(self: gen_qevent_types.QShortcutEvent, ): bool =
   fcQShortcutEvent_isAmbiguous(self.h)
 
+proc operatorAssign*(self: gen_qevent_types.QShortcutEvent, param1: gen_qevent_types.QShortcutEvent): void =
+  fcQShortcutEvent_protectedbase_operatorAssign(self.h, param1.h)
+
 proc create*(T: type gen_qevent_types.QShortcutEvent,
     key: gen_qkeysequence_types.QKeySequence, id: cint): gen_qevent_types.QShortcutEvent =
   gen_qevent_types.QShortcutEvent(h: fcQShortcutEvent_new(key.h, id))
@@ -1592,6 +1665,9 @@ proc setTouchPoints*(self: gen_qevent_types.QTouchEvent, atouchPoints: seq[gen_q
 
 proc setDevice*(self: gen_qevent_types.QTouchEvent, adevice: gen_qtouchdevice_types.QTouchDevice): void =
   fcQTouchEvent_setDevice(self.h, adevice.h)
+
+proc operatorAssign*(self: gen_qevent_types.QTouchEvent, param1: gen_qevent_types.QTouchEvent): void =
+  fcQTouchEvent_protectedbase_operatorAssign(self.h, param1.h)
 
 proc create*(T: type gen_qevent_types.QTouchEvent,
     eventType: cint): gen_qevent_types.QTouchEvent =

@@ -300,6 +300,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QOffscreenSurface::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QOffscreenSurface::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QOffscreenSurface::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QOffscreenSurface::isSignalConnected(*signal);
+
+	}
+
 };
 
 QOffscreenSurface* QOffscreenSurface_new(struct QOffscreenSurface_VTable* vtbl, QScreen* screen, QObject* parent) {
@@ -516,6 +544,22 @@ void QOffscreenSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QOffscreenSurface_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQOffscreenSurface*)(self) )->protectedbase_sender();
+}
+
+int QOffscreenSurface_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQOffscreenSurface*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QOffscreenSurface_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQOffscreenSurface*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QOffscreenSurface_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQOffscreenSurface*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QOffscreenSurface_staticMetaObject() { return &QOffscreenSurface::staticMetaObject; }

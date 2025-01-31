@@ -1129,6 +1129,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QWebEngineView::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QWebEngineView::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QWebEngineView::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QWebEngineView::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QWebEngineView::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWebEngineView::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWebEngineView::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWebEngineView::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWebEngineView::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWebEngineView* QWebEngineView_new(struct QWebEngineView_VTable* vtbl, QWidget* parent) {
@@ -1833,6 +1896,42 @@ void QWebEngineView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEngineView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWebEngineView_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQWebEngineView*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QWebEngineView_protectedbase_create(void* self) {
+	( (MiqtVirtualQWebEngineView*)(self) )->protectedbase_create();
+}
+
+void QWebEngineView_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQWebEngineView*)(self) )->protectedbase_destroy();
+}
+
+bool QWebEngineView_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQWebEngineView*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QWebEngineView_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQWebEngineView*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QWebEngineView_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->protectedbase_sender();
+}
+
+int QWebEngineView_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWebEngineView_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWebEngineView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWebEngineView_staticMetaObject() { return &QWebEngineView::staticMetaObject; }

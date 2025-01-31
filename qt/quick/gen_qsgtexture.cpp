@@ -354,6 +354,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSGTexture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSGTexture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSGTexture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSGTexture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSGTexture* QSGTexture_new(struct QSGTexture_VTable* vtbl) {
@@ -589,6 +617,22 @@ void QSGTexture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSGTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSGTexture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSGTexture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSGTexture*)(self) )->protectedbase_sender();
+}
+
+int QSGTexture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSGTexture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSGTexture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSGTexture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSGTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSGTexture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSGTexture_staticMetaObject() { return &QSGTexture::staticMetaObject; }
@@ -939,6 +983,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSGDynamicTexture::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSGDynamicTexture::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSGDynamicTexture::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSGDynamicTexture::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSGDynamicTexture* QSGDynamicTexture_new(struct QSGDynamicTexture_VTable* vtbl) {
@@ -1081,6 +1153,22 @@ void QSGDynamicTexture_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QSGDynamicTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSGDynamicTexture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSGDynamicTexture_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSGDynamicTexture*)(self) )->protectedbase_sender();
+}
+
+int QSGDynamicTexture_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSGDynamicTexture*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSGDynamicTexture_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSGDynamicTexture*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSGDynamicTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSGDynamicTexture*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSGDynamicTexture_staticMetaObject() { return &QSGDynamicTexture::staticMetaObject; }

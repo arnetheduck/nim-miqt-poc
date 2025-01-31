@@ -242,6 +242,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QVideoProbe::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QVideoProbe::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QVideoProbe::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QVideoProbe::isSignalConnected(*signal);
+
+	}
+
 };
 
 QVideoProbe* QVideoProbe_new(struct QVideoProbe_VTable* vtbl) {
@@ -425,6 +453,22 @@ void QVideoProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QVideoProbe_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQVideoProbe*)(self) )->protectedbase_sender();
+}
+
+int QVideoProbe_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQVideoProbe*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QVideoProbe_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQVideoProbe*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QVideoProbe_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQVideoProbe*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QVideoProbe_staticMetaObject() { return &QVideoProbe::staticMetaObject; }

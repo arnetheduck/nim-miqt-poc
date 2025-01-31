@@ -131,7 +131,6 @@ void QApplication_setAutoSipEnabled(QApplication* self, const bool enabled);
 bool QApplication_autoSipEnabled(const QApplication* self);
 void QApplication_closeAllWindows();
 void QApplication_aboutQt();
-bool QApplication_event(QApplication* self, QEvent* param1);
 struct miqt_string QApplication_tr2(const char* s, const char* c);
 struct miqt_string QApplication_tr3(const char* s, const char* c, int n);
 struct miqt_string QApplication_trUtf82(const char* s, const char* c);
@@ -151,6 +150,10 @@ void QApplication_virtualbase_childEvent(void* self, QChildEvent* event);
 void QApplication_virtualbase_customEvent(void* self, QEvent* event);
 void QApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QApplication_protectedbase_sender(const void* self);
+int QApplication_protectedbase_senderSignalIndex(const void* self);
+int QApplication_protectedbase_receivers(const void* self, const char* signal);
+bool QApplication_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QApplication_staticMetaObject();
 void QApplication_delete(QApplication* self);
 

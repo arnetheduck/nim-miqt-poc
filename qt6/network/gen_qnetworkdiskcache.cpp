@@ -428,6 +428,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QNetworkDiskCache::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QNetworkDiskCache::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QNetworkDiskCache::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QNetworkDiskCache::isSignalConnected(*signal);
+
+	}
+
 };
 
 QNetworkDiskCache* QNetworkDiskCache_new(struct QNetworkDiskCache_VTable* vtbl) {
@@ -624,6 +652,22 @@ void QNetworkDiskCache_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void QNetworkDiskCache_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkDiskCache*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QNetworkDiskCache_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQNetworkDiskCache*)(self) )->protectedbase_sender();
+}
+
+int QNetworkDiskCache_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQNetworkDiskCache*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QNetworkDiskCache_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQNetworkDiskCache*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QNetworkDiskCache_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQNetworkDiskCache*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QNetworkDiskCache_staticMetaObject() { return &QNetworkDiskCache::staticMetaObject; }

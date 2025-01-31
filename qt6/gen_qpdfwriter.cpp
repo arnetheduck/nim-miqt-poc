@@ -494,6 +494,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPdfWriter::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPdfWriter::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPdfWriter::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPdfWriter::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPdfWriter* QPdfWriter_new(struct QPdfWriter_VTable* vtbl, struct miqt_string filename) {
@@ -721,6 +749,22 @@ QPaintDevice* QPdfWriter_virtualbase_redirected(const void* self, QPoint* offset
 
 QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_sharedPainter();
+}
+
+QObject* QPdfWriter_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->protectedbase_sender();
+}
+
+int QPdfWriter_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPdfWriter_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPdfWriter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPdfWriter_staticMetaObject() { return &QPdfWriter::staticMetaObject; }

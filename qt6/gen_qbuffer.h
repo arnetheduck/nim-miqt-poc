@@ -85,10 +85,6 @@ long long QBuffer_pos(const QBuffer* self);
 bool QBuffer_seek(QBuffer* self, long long off);
 bool QBuffer_atEnd(const QBuffer* self);
 bool QBuffer_canReadLine(const QBuffer* self);
-void QBuffer_connectNotify(QBuffer* self, QMetaMethod* param1);
-void QBuffer_disconnectNotify(QBuffer* self, QMetaMethod* param1);
-long long QBuffer_readData(QBuffer* self, char* data, long long maxlen);
-long long QBuffer_writeData(QBuffer* self, const char* data, long long len);
 struct miqt_string QBuffer_tr2(const char* s, const char* c);
 struct miqt_string QBuffer_tr3(const char* s, const char* c, int n);
 QMetaObject* QBuffer_virtualbase_metaObject(const void* self);
@@ -118,6 +114,12 @@ bool QBuffer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event
 void QBuffer_virtualbase_timerEvent(void* self, QTimerEvent* event);
 void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event);
 void QBuffer_virtualbase_customEvent(void* self, QEvent* event);
+void QBuffer_protectedbase_setOpenMode(void* self, int openMode);
+void QBuffer_protectedbase_setErrorString(void* self, struct miqt_string errorString);
+QObject* QBuffer_protectedbase_sender(const void* self);
+int QBuffer_protectedbase_senderSignalIndex(const void* self);
+int QBuffer_protectedbase_receivers(const void* self, const char* signal);
+bool QBuffer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QBuffer_staticMetaObject();
 void QBuffer_delete(QBuffer* self);
 

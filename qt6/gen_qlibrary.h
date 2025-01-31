@@ -81,6 +81,10 @@ void QLibrary_virtualbase_childEvent(void* self, QChildEvent* event);
 void QLibrary_virtualbase_customEvent(void* self, QEvent* event);
 void QLibrary_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QLibrary_protectedbase_sender(const void* self);
+int QLibrary_protectedbase_senderSignalIndex(const void* self);
+int QLibrary_protectedbase_receivers(const void* self, const char* signal);
+bool QLibrary_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QLibrary_staticMetaObject();
 void QLibrary_delete(QLibrary* self);
 

@@ -1138,6 +1138,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setTabBar(QTabBar* tabBar) {
+
+		QTabWidget::setTabBar(tabBar);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QTabWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QTabWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QTabWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QTabWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QTabWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTabWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTabWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTabWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTabWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTabWidget* QTabWidget_new(struct QTabWidget_VTable* vtbl, QWidget* parent) {
@@ -1726,6 +1796,46 @@ void QTabWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTabWidget_protectedbase_setTabBar(void* self, QTabBar* tabBar) {
+	( (MiqtVirtualQTabWidget*)(self) )->protectedbase_setTabBar(tabBar);
+}
+
+void QTabWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQTabWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QTabWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQTabWidget*)(self) )->protectedbase_create();
+}
+
+void QTabWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQTabWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QTabWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQTabWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QTabWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQTabWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QTabWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTabWidget*)(self) )->protectedbase_sender();
+}
+
+int QTabWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTabWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTabWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTabWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTabWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTabWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTabWidget_staticMetaObject() { return &QTabWidget::staticMetaObject; }

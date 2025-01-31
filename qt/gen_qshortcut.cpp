@@ -244,6 +244,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QShortcut::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QShortcut::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QShortcut::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QShortcut::isSignalConnected(*signal);
+
+	}
+
 };
 
 QShortcut* QShortcut_new(struct QShortcut_VTable* vtbl, QWidget* parent) {
@@ -481,6 +509,22 @@ void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QShortcut_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQShortcut*)(self) )->protectedbase_sender();
+}
+
+int QShortcut_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQShortcut*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QShortcut_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQShortcut*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QShortcut_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQShortcut*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QShortcut_staticMetaObject() { return &QShortcut::staticMetaObject; }

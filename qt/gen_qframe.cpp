@@ -30,6 +30,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1067,6 +1068,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QFrame::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QFrame::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QFrame::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QFrame::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QFrame::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QFrame::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QFrame::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QFrame::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QFrame::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QFrame::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QFrame::isSignalConnected(*signal);
+
+	}
+
 };
 
 QFrame* QFrame_new(struct QFrame_VTable* vtbl, QWidget* parent) {
@@ -1419,6 +1497,50 @@ void QFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QFrame_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQFrame*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QFrame_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQFrame*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QFrame_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQFrame*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QFrame_protectedbase_create(void* self) {
+	( (MiqtVirtualQFrame*)(self) )->protectedbase_create();
+}
+
+void QFrame_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQFrame*)(self) )->protectedbase_destroy();
+}
+
+bool QFrame_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQFrame*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QFrame_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQFrame*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QFrame_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQFrame*)(self) )->protectedbase_sender();
+}
+
+int QFrame_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQFrame*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QFrame_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQFrame*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QFrame_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQFrame*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QFrame_staticMetaObject() { return &QFrame::staticMetaObject; }

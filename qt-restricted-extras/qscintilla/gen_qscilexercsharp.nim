@@ -173,6 +173,12 @@ proc fcQsciLexerCSharp_virtualbase_childEvent(self: pointer, event: pointer): vo
 proc fcQsciLexerCSharp_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerCSharp_virtualbase_customEvent".}
 proc fcQsciLexerCSharp_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCSharp_virtualbase_connectNotify".}
 proc fcQsciLexerCSharp_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCSharp_virtualbase_disconnectNotify".}
+proc fcQsciLexerCSharp_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCSharp_protectedbase_readProperties".}
+proc fcQsciLexerCSharp_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCSharp_protectedbase_writeProperties".}
+proc fcQsciLexerCSharp_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerCSharp_protectedbase_sender".}
+proc fcQsciLexerCSharp_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerCSharp_protectedbase_senderSignalIndex".}
+proc fcQsciLexerCSharp_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerCSharp_protectedbase_receivers".}
+proc fcQsciLexerCSharp_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerCSharp_protectedbase_isSignalConnected".}
 proc fcQsciLexerCSharp_new(vtbl: pointer, ): ptr cQsciLexerCSharp {.importc: "QsciLexerCSharp_new".}
 proc fcQsciLexerCSharp_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerCSharp {.importc: "QsciLexerCSharp_new2".}
 proc fcQsciLexerCSharp_staticMetaObject(): pointer {.importc: "QsciLexerCSharp_staticMetaObject".}
@@ -826,6 +832,24 @@ proc miqt_exec_callback_cQsciLexerCSharp_disconnectNotify(vtbl: pointer, self: p
   let self = QsciLexerCSharp(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexercsharp_types.QsciLexerCSharp, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCSharp_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexercsharp_types.QsciLexerCSharp, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCSharp_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexercsharp_types.QsciLexerCSharp, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerCSharp_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexercsharp_types.QsciLexerCSharp, ): cint =
+  fcQsciLexerCSharp_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexercsharp_types.QsciLexerCSharp, signal: cstring): cint =
+  fcQsciLexerCSharp_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexercsharp_types.QsciLexerCSharp, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerCSharp_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexercsharp_types.QsciLexerCSharp,
     vtbl: ref QsciLexerCSharpVTable = nil): gen_qscilexercsharp_types.QsciLexerCSharp =

@@ -154,6 +154,12 @@ void QsciLexerCMake_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerCMake_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerCMake_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerCMake_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerCMake_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerCMake_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerCMake_protectedbase_sender(const void* self);
+int QsciLexerCMake_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerCMake_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerCMake_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerCMake_staticMetaObject();
 void QsciLexerCMake_delete(QsciLexerCMake* self);
 

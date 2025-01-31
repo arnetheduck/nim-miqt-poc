@@ -1571,6 +1571,7 @@ import
   gen_qabstractscrollarea,
   gen_qcoreevent_types,
   gen_qevent_types,
+  gen_qmargins_types,
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject,
@@ -1582,12 +1583,14 @@ import
   gen_qpoint_types,
   gen_qrect_types,
   gen_qsize_types,
+  gen_qstyleoption_types,
   gen_qvariant_types,
   gen_qwidget_types
 export
   gen_qabstractscrollarea,
   gen_qcoreevent_types,
   gen_qevent_types,
+  gen_qmargins_types,
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject,
@@ -1599,6 +1602,7 @@ export
   gen_qpoint_types,
   gen_qrect_types,
   gen_qsize_types,
+  gen_qstyleoption_types,
   gen_qvariant_types,
   gen_qwidget_types
 
@@ -2122,6 +2126,19 @@ proc fcScintillaEditBase_virtualbase_childEvent(self: pointer, event: pointer): 
 proc fcScintillaEditBase_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "ScintillaEditBase_virtualbase_customEvent".}
 proc fcScintillaEditBase_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "ScintillaEditBase_virtualbase_connectNotify".}
 proc fcScintillaEditBase_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "ScintillaEditBase_virtualbase_disconnectNotify".}
+proc fcScintillaEditBase_protectedbase_setViewportMargins(self: pointer, left: cint, top: cint, right: cint, bottom: cint): void {.importc: "ScintillaEditBase_protectedbase_setViewportMargins".}
+proc fcScintillaEditBase_protectedbase_viewportMargins(self: pointer, ): pointer {.importc: "ScintillaEditBase_protectedbase_viewportMargins".}
+proc fcScintillaEditBase_protectedbase_drawFrame(self: pointer, param1: pointer): void {.importc: "ScintillaEditBase_protectedbase_drawFrame".}
+proc fcScintillaEditBase_protectedbase_initStyleOption(self: pointer, option: pointer): void {.importc: "ScintillaEditBase_protectedbase_initStyleOption".}
+proc fcScintillaEditBase_protectedbase_updateMicroFocus(self: pointer, ): void {.importc: "ScintillaEditBase_protectedbase_updateMicroFocus".}
+proc fcScintillaEditBase_protectedbase_create(self: pointer, ): void {.importc: "ScintillaEditBase_protectedbase_create".}
+proc fcScintillaEditBase_protectedbase_destroy(self: pointer, ): void {.importc: "ScintillaEditBase_protectedbase_destroy".}
+proc fcScintillaEditBase_protectedbase_focusNextChild(self: pointer, ): bool {.importc: "ScintillaEditBase_protectedbase_focusNextChild".}
+proc fcScintillaEditBase_protectedbase_focusPreviousChild(self: pointer, ): bool {.importc: "ScintillaEditBase_protectedbase_focusPreviousChild".}
+proc fcScintillaEditBase_protectedbase_sender(self: pointer, ): pointer {.importc: "ScintillaEditBase_protectedbase_sender".}
+proc fcScintillaEditBase_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "ScintillaEditBase_protectedbase_senderSignalIndex".}
+proc fcScintillaEditBase_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "ScintillaEditBase_protectedbase_receivers".}
+proc fcScintillaEditBase_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "ScintillaEditBase_protectedbase_isSignalConnected".}
 proc fcScintillaEditBase_new(vtbl: pointer, parent: pointer): ptr cScintillaEditBase {.importc: "ScintillaEditBase_new".}
 proc fcScintillaEditBase_new2(vtbl: pointer, ): ptr cScintillaEditBase {.importc: "ScintillaEditBase_new2".}
 proc fcScintillaEditBase_staticMetaObject(): pointer {.importc: "ScintillaEditBase_staticMetaObject".}
@@ -2208,6 +2225,10 @@ proc fcScintillaDocument_virtualbase_childEvent(self: pointer, event: pointer): 
 proc fcScintillaDocument_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "ScintillaDocument_virtualbase_customEvent".}
 proc fcScintillaDocument_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "ScintillaDocument_virtualbase_connectNotify".}
 proc fcScintillaDocument_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "ScintillaDocument_virtualbase_disconnectNotify".}
+proc fcScintillaDocument_protectedbase_sender(self: pointer, ): pointer {.importc: "ScintillaDocument_protectedbase_sender".}
+proc fcScintillaDocument_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "ScintillaDocument_protectedbase_senderSignalIndex".}
+proc fcScintillaDocument_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "ScintillaDocument_protectedbase_receivers".}
+proc fcScintillaDocument_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "ScintillaDocument_protectedbase_isSignalConnected".}
 proc fcScintillaDocument_new(vtbl: pointer, ): ptr cScintillaDocument {.importc: "ScintillaDocument_new".}
 proc fcScintillaDocument_new2(vtbl: pointer, parent: pointer): ptr cScintillaDocument {.importc: "ScintillaDocument_new2".}
 proc fcScintillaDocument_new3(vtbl: pointer, parent: pointer, pdoc_x: pointer): ptr cScintillaDocument {.importc: "ScintillaDocument_new3".}
@@ -3145,6 +3166,19 @@ proc fcScintillaEdit_virtualbase_childEvent(self: pointer, event: pointer): void
 proc fcScintillaEdit_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "ScintillaEdit_virtualbase_customEvent".}
 proc fcScintillaEdit_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "ScintillaEdit_virtualbase_connectNotify".}
 proc fcScintillaEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "ScintillaEdit_virtualbase_disconnectNotify".}
+proc fcScintillaEdit_protectedbase_setViewportMargins(self: pointer, left: cint, top: cint, right: cint, bottom: cint): void {.importc: "ScintillaEdit_protectedbase_setViewportMargins".}
+proc fcScintillaEdit_protectedbase_viewportMargins(self: pointer, ): pointer {.importc: "ScintillaEdit_protectedbase_viewportMargins".}
+proc fcScintillaEdit_protectedbase_drawFrame(self: pointer, param1: pointer): void {.importc: "ScintillaEdit_protectedbase_drawFrame".}
+proc fcScintillaEdit_protectedbase_initStyleOption(self: pointer, option: pointer): void {.importc: "ScintillaEdit_protectedbase_initStyleOption".}
+proc fcScintillaEdit_protectedbase_updateMicroFocus(self: pointer, ): void {.importc: "ScintillaEdit_protectedbase_updateMicroFocus".}
+proc fcScintillaEdit_protectedbase_create(self: pointer, ): void {.importc: "ScintillaEdit_protectedbase_create".}
+proc fcScintillaEdit_protectedbase_destroy(self: pointer, ): void {.importc: "ScintillaEdit_protectedbase_destroy".}
+proc fcScintillaEdit_protectedbase_focusNextChild(self: pointer, ): bool {.importc: "ScintillaEdit_protectedbase_focusNextChild".}
+proc fcScintillaEdit_protectedbase_focusPreviousChild(self: pointer, ): bool {.importc: "ScintillaEdit_protectedbase_focusPreviousChild".}
+proc fcScintillaEdit_protectedbase_sender(self: pointer, ): pointer {.importc: "ScintillaEdit_protectedbase_sender".}
+proc fcScintillaEdit_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "ScintillaEdit_protectedbase_senderSignalIndex".}
+proc fcScintillaEdit_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "ScintillaEdit_protectedbase_receivers".}
+proc fcScintillaEdit_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "ScintillaEdit_protectedbase_isSignalConnected".}
 proc fcScintillaEdit_new(vtbl: pointer, parent: pointer): ptr cScintillaEdit {.importc: "ScintillaEdit_new".}
 proc fcScintillaEdit_new2(vtbl: pointer, ): ptr cScintillaEdit {.importc: "ScintillaEdit_new2".}
 proc fcScintillaEdit_staticMetaObject(): pointer {.importc: "ScintillaEdit_staticMetaObject".}
@@ -5839,6 +5873,45 @@ proc miqt_exec_callback_cScintillaEditBase_disconnectNotify(vtbl: pointer, self:
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
 
+proc setViewportMargins*(self: gen_ScintillaEdit_types.ScintillaEditBase, left: cint, top: cint, right: cint, bottom: cint): void =
+  fcScintillaEditBase_protectedbase_setViewportMargins(self.h, left, top, right, bottom)
+
+proc viewportMargins*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qmargins_types.QMargins =
+  gen_qmargins_types.QMargins(h: fcScintillaEditBase_protectedbase_viewportMargins(self.h))
+
+proc drawFrame*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: gen_qpainter_types.QPainter): void =
+  fcScintillaEditBase_protectedbase_drawFrame(self.h, param1.h)
+
+proc initStyleOption*(self: gen_ScintillaEdit_types.ScintillaEditBase, option: gen_qstyleoption_types.QStyleOptionFrame): void =
+  fcScintillaEditBase_protectedbase_initStyleOption(self.h, option.h)
+
+proc updateMicroFocus*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
+  fcScintillaEditBase_protectedbase_updateMicroFocus(self.h)
+
+proc create*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
+  fcScintillaEditBase_protectedbase_create(self.h)
+
+proc destroy*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
+  fcScintillaEditBase_protectedbase_destroy(self.h)
+
+proc focusNextChild*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): bool =
+  fcScintillaEditBase_protectedbase_focusNextChild(self.h)
+
+proc focusPreviousChild*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): bool =
+  fcScintillaEditBase_protectedbase_focusPreviousChild(self.h)
+
+proc sender*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcScintillaEditBase_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): cint =
+  fcScintillaEditBase_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_ScintillaEdit_types.ScintillaEditBase, signal: cstring): cint =
+  fcScintillaEditBase_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_ScintillaEdit_types.ScintillaEditBase, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcScintillaEditBase_protectedbase_isSignalConnected(self.h, signal.h)
+
 proc create*(T: type gen_ScintillaEdit_types.ScintillaEditBase,
     parent: gen_qwidget_types.QWidget,
     vtbl: ref ScintillaEditBaseVTable = nil): gen_ScintillaEdit_types.ScintillaEditBase =
@@ -6490,6 +6563,18 @@ proc miqt_exec_callback_cScintillaDocument_disconnectNotify(vtbl: pointer, self:
   let self = ScintillaDocument(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_ScintillaEdit_types.ScintillaDocument, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcScintillaDocument_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
+  fcScintillaDocument_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_ScintillaEdit_types.ScintillaDocument, signal: cstring): cint =
+  fcScintillaDocument_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_ScintillaEdit_types.ScintillaDocument, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcScintillaDocument_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_ScintillaEdit_types.ScintillaDocument,
     vtbl: ref ScintillaDocumentVTable = nil): gen_ScintillaEdit_types.ScintillaDocument =
@@ -9824,6 +9909,45 @@ proc miqt_exec_callback_cScintillaEdit_disconnectNotify(vtbl: pointer, self: poi
   let self = ScintillaEdit(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc setViewportMargins*(self: gen_ScintillaEdit_types.ScintillaEdit, left: cint, top: cint, right: cint, bottom: cint): void =
+  fcScintillaEdit_protectedbase_setViewportMargins(self.h, left, top, right, bottom)
+
+proc viewportMargins*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qmargins_types.QMargins =
+  gen_qmargins_types.QMargins(h: fcScintillaEdit_protectedbase_viewportMargins(self.h))
+
+proc drawFrame*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: gen_qpainter_types.QPainter): void =
+  fcScintillaEdit_protectedbase_drawFrame(self.h, param1.h)
+
+proc initStyleOption*(self: gen_ScintillaEdit_types.ScintillaEdit, option: gen_qstyleoption_types.QStyleOptionFrame): void =
+  fcScintillaEdit_protectedbase_initStyleOption(self.h, option.h)
+
+proc updateMicroFocus*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
+  fcScintillaEdit_protectedbase_updateMicroFocus(self.h)
+
+proc create*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
+  fcScintillaEdit_protectedbase_create(self.h)
+
+proc destroy*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
+  fcScintillaEdit_protectedbase_destroy(self.h)
+
+proc focusNextChild*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
+  fcScintillaEdit_protectedbase_focusNextChild(self.h)
+
+proc focusPreviousChild*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
+  fcScintillaEdit_protectedbase_focusPreviousChild(self.h)
+
+proc sender*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcScintillaEdit_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_ScintillaEdit_types.ScintillaEdit, ): cint =
+  fcScintillaEdit_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_ScintillaEdit_types.ScintillaEdit, signal: cstring): cint =
+  fcScintillaEdit_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_ScintillaEdit_types.ScintillaEdit, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcScintillaEdit_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_ScintillaEdit_types.ScintillaEdit,
     parent: gen_qwidget_types.QWidget,

@@ -1192,6 +1192,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QFileDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QFileDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QFileDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QFileDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QFileDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QFileDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QFileDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QFileDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QFileDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QFileDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QFileDialog* QFileDialog_new(struct QFileDialog_VTable* vtbl, QWidget* parent) {
@@ -2571,6 +2641,46 @@ void QFileDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QFileDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QFileDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQFileDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QFileDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQFileDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QFileDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQFileDialog*)(self) )->protectedbase_create();
+}
+
+void QFileDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQFileDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QFileDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQFileDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QFileDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQFileDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QFileDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQFileDialog*)(self) )->protectedbase_sender();
+}
+
+int QFileDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQFileDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QFileDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQFileDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QFileDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQFileDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QFileDialog_staticMetaObject() { return &QFileDialog::staticMetaObject; }

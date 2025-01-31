@@ -558,6 +558,49 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setOpenMode(int openMode) {
+
+		QIODevice::setOpenMode(static_cast<QIODevice::OpenMode>(openMode));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setErrorString(struct miqt_string errorString) {
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+		QIODevice::setErrorString(errorString_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QIODevice::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QIODevice::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QIODevice::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QIODevice::isSignalConnected(*signal);
+
+	}
+
 };
 
 QIODevice* QIODevice_new(struct QIODevice_VTable* vtbl) {
@@ -1089,6 +1132,30 @@ void QIODevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QIODevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QIODevice_protectedbase_setOpenMode(void* self, int openMode) {
+	( (MiqtVirtualQIODevice*)(self) )->protectedbase_setOpenMode(openMode);
+}
+
+void QIODevice_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	( (MiqtVirtualQIODevice*)(self) )->protectedbase_setErrorString(errorString);
+}
+
+QObject* QIODevice_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQIODevice*)(self) )->protectedbase_sender();
+}
+
+int QIODevice_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQIODevice*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QIODevice_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQIODevice*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QIODevice_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQIODevice*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QIODevice_staticMetaObject() { return &QIODevice::staticMetaObject; }

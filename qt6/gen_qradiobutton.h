@@ -156,11 +156,6 @@ int QRadioButton_metacall(QRadioButton* self, int param1, int param2, void** par
 struct miqt_string QRadioButton_tr(const char* s);
 QSize* QRadioButton_sizeHint(const QRadioButton* self);
 QSize* QRadioButton_minimumSizeHint(const QRadioButton* self);
-bool QRadioButton_event(QRadioButton* self, QEvent* e);
-bool QRadioButton_hitButton(const QRadioButton* self, QPoint* param1);
-void QRadioButton_paintEvent(QRadioButton* self, QPaintEvent* param1);
-void QRadioButton_mouseMoveEvent(QRadioButton* self, QMouseEvent* param1);
-void QRadioButton_initStyleOption(const QRadioButton* self, QStyleOptionButton* button);
 struct miqt_string QRadioButton_tr2(const char* s, const char* c);
 struct miqt_string QRadioButton_tr3(const char* s, const char* c, int n);
 QMetaObject* QRadioButton_virtualbase_metaObject(const void* self);
@@ -217,6 +212,15 @@ void QRadioButton_virtualbase_childEvent(void* self, QChildEvent* event);
 void QRadioButton_virtualbase_customEvent(void* self, QEvent* event);
 void QRadioButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QRadioButton_protectedbase_updateMicroFocus(void* self);
+void QRadioButton_protectedbase_create(void* self);
+void QRadioButton_protectedbase_destroy(void* self);
+bool QRadioButton_protectedbase_focusNextChild(void* self);
+bool QRadioButton_protectedbase_focusPreviousChild(void* self);
+QObject* QRadioButton_protectedbase_sender(const void* self);
+int QRadioButton_protectedbase_senderSignalIndex(const void* self);
+int QRadioButton_protectedbase_receivers(const void* self, const char* signal);
+bool QRadioButton_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QRadioButton_staticMetaObject();
 void QRadioButton_delete(QRadioButton* self);
 

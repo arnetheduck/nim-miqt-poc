@@ -161,6 +161,12 @@ void QsciLexerJavaScript_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerJavaScript_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerJavaScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerJavaScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerJavaScript_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerJavaScript_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerJavaScript_protectedbase_sender(const void* self);
+int QsciLexerJavaScript_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerJavaScript_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerJavaScript_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerJavaScript_staticMetaObject();
 void QsciLexerJavaScript_delete(QsciLexerJavaScript* self);
 

@@ -109,6 +109,20 @@ public:
 		return *callback_return_value;
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setGraphicsItem(QGraphicsItem* item) {
+
+		QGraphicsLayoutItem::setGraphicsItem(item);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setOwnedByLayout(bool ownedByLayout) {
+
+		QGraphicsLayoutItem::setOwnedByLayout(ownedByLayout);
+
+	}
+
 };
 
 QGraphicsLayoutItem* QGraphicsLayoutItem_new(struct QGraphicsLayoutItem_VTable* vtbl) {
@@ -287,6 +301,14 @@ void QGraphicsLayoutItem_virtualbase_getContentsMargins(const void* self, double
 
 void QGraphicsLayoutItem_virtualbase_updateGeometry(void* self) {
 	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_updateGeometry();
+}
+
+void QGraphicsLayoutItem_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item) {
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->protectedbase_setGraphicsItem(item);
+}
+
+void QGraphicsLayoutItem_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout) {
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->protectedbase_setOwnedByLayout(ownedByLayout);
 }
 
 void QGraphicsLayoutItem_delete(QGraphicsLayoutItem* self) {

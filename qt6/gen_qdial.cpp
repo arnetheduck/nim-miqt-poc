@@ -1110,6 +1110,84 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setRepeatAction(int action) {
+
+		QDial::setRepeatAction(static_cast<QAbstractSlider::SliderAction>(action));
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_repeatAction() const {
+
+		QAbstractSlider::SliderAction _ret = QDial::repeatAction();
+		return static_cast<int>(_ret);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QDial::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QDial::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QDial::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QDial::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QDial::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDial::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDial::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDial::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDial::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDial* QDial_new(struct QDial_VTable* vtbl, QWidget* parent) {
@@ -1412,6 +1490,50 @@ void QDial_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDial_protectedbase_setRepeatAction(void* self, int action) {
+	( (MiqtVirtualQDial*)(self) )->protectedbase_setRepeatAction(action);
+}
+
+int QDial_protectedbase_repeatAction(const void* self) {
+	return ( (const MiqtVirtualQDial*)(self) )->protectedbase_repeatAction();
+}
+
+void QDial_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQDial*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QDial_protectedbase_create(void* self) {
+	( (MiqtVirtualQDial*)(self) )->protectedbase_create();
+}
+
+void QDial_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQDial*)(self) )->protectedbase_destroy();
+}
+
+bool QDial_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQDial*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QDial_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQDial*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QDial_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDial*)(self) )->protectedbase_sender();
+}
+
+int QDial_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDial*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDial_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDial*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDial_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDial*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDial_staticMetaObject() { return &QDial::staticMetaObject; }

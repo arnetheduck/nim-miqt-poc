@@ -31,6 +31,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionTab>
 #include <QTabBar>
 #include <QTabletEvent>
 #include <QTimerEvent>
@@ -1177,6 +1178,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionTab* option, int tabIndex) const {
+
+		QTabBar::initStyleOption(option, static_cast<int>(tabIndex));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QTabBar::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QTabBar::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QTabBar::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QTabBar::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QTabBar::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTabBar::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTabBar::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTabBar::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTabBar::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTabBar* QTabBar_new(struct QTabBar_VTable* vtbl, QWidget* parent) {
@@ -1855,6 +1926,46 @@ void QTabBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTabBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTabBar_protectedbase_initStyleOption(const void* self, QStyleOptionTab* option, int tabIndex) {
+	( (const MiqtVirtualQTabBar*)(self) )->protectedbase_initStyleOption(option, tabIndex);
+}
+
+void QTabBar_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQTabBar*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QTabBar_protectedbase_create(void* self) {
+	( (MiqtVirtualQTabBar*)(self) )->protectedbase_create();
+}
+
+void QTabBar_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQTabBar*)(self) )->protectedbase_destroy();
+}
+
+bool QTabBar_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQTabBar*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QTabBar_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQTabBar*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QTabBar_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTabBar*)(self) )->protectedbase_sender();
+}
+
+int QTabBar_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTabBar*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTabBar_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTabBar*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTabBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTabBar*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTabBar_staticMetaObject() { return &QTabBar::staticMetaObject; }

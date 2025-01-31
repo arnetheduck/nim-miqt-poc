@@ -1117,6 +1117,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QVideoWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QVideoWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QVideoWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QVideoWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QVideoWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QVideoWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QVideoWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QVideoWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QVideoWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QVideoWidget* QVideoWidget_new(struct QVideoWidget_VTable* vtbl, QWidget* parent) {
@@ -1573,6 +1636,42 @@ void QVideoWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QVideoWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QVideoWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQVideoWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QVideoWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQVideoWidget*)(self) )->protectedbase_create();
+}
+
+void QVideoWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQVideoWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QVideoWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQVideoWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QVideoWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQVideoWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QVideoWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->protectedbase_sender();
+}
+
+int QVideoWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QVideoWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QVideoWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QVideoWidget_staticMetaObject() { return &QVideoWidget::staticMetaObject; }

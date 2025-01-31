@@ -209,6 +209,12 @@ proc fcQsciLexerCoffeeScript_virtualbase_childEvent(self: pointer, event: pointe
 proc fcQsciLexerCoffeeScript_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_customEvent".}
 proc fcQsciLexerCoffeeScript_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_connectNotify".}
 proc fcQsciLexerCoffeeScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerCoffeeScript_virtualbase_disconnectNotify".}
+proc fcQsciLexerCoffeeScript_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCoffeeScript_protectedbase_readProperties".}
+proc fcQsciLexerCoffeeScript_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerCoffeeScript_protectedbase_writeProperties".}
+proc fcQsciLexerCoffeeScript_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerCoffeeScript_protectedbase_sender".}
+proc fcQsciLexerCoffeeScript_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerCoffeeScript_protectedbase_senderSignalIndex".}
+proc fcQsciLexerCoffeeScript_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerCoffeeScript_protectedbase_receivers".}
+proc fcQsciLexerCoffeeScript_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerCoffeeScript_protectedbase_isSignalConnected".}
 proc fcQsciLexerCoffeeScript_new(vtbl: pointer, ): ptr cQsciLexerCoffeeScript {.importc: "QsciLexerCoffeeScript_new".}
 proc fcQsciLexerCoffeeScript_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerCoffeeScript {.importc: "QsciLexerCoffeeScript_new2".}
 proc fcQsciLexerCoffeeScript_staticMetaObject(): pointer {.importc: "QsciLexerCoffeeScript_staticMetaObject".}
@@ -872,6 +878,24 @@ proc miqt_exec_callback_cQsciLexerCoffeeScript_disconnectNotify(vtbl: pointer, s
   let self = QsciLexerCoffeeScript(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCoffeeScript_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerCoffeeScript_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerCoffeeScript_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
+  fcQsciLexerCoffeeScript_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: cstring): cint =
+  fcQsciLexerCoffeeScript_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerCoffeeScript_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript,
     vtbl: ref QsciLexerCoffeeScriptVTable = nil): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =

@@ -1168,6 +1168,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QPrintDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QPrintDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QPrintDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QPrintDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QPrintDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QPrintDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPrintDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPrintDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPrintDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPrintDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPrintDialog* QPrintDialog_new(struct QPrintDialog_VTable* vtbl, QWidget* parent) {
@@ -1543,6 +1613,46 @@ void QPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QPrintDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQPrintDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QPrintDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQPrintDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QPrintDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQPrintDialog*)(self) )->protectedbase_create();
+}
+
+void QPrintDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQPrintDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QPrintDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQPrintDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QPrintDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQPrintDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QPrintDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPrintDialog*)(self) )->protectedbase_sender();
+}
+
+int QPrintDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPrintDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPrintDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPrintDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPrintDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPrintDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPrintDialog_staticMetaObject() { return &QPrintDialog::staticMetaObject; }

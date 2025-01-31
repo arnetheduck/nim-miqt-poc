@@ -1073,6 +1073,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QDesktopWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QDesktopWidget::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QDesktopWidget::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QDesktopWidget::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QDesktopWidget::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QDesktopWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QDesktopWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QDesktopWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QDesktopWidget::isSignalConnected(*signal);
+
+	}
+
 };
 
 QDesktopWidget* QDesktopWidget_new(struct QDesktopWidget_VTable* vtbl) {
@@ -1506,6 +1569,42 @@ void QDesktopWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDesktopWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQDesktopWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QDesktopWidget_protectedbase_create(void* self) {
+	( (MiqtVirtualQDesktopWidget*)(self) )->protectedbase_create();
+}
+
+void QDesktopWidget_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQDesktopWidget*)(self) )->protectedbase_destroy();
+}
+
+bool QDesktopWidget_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQDesktopWidget*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QDesktopWidget_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQDesktopWidget*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QDesktopWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->protectedbase_sender();
+}
+
+int QDesktopWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QDesktopWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QDesktopWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QDesktopWidget_staticMetaObject() { return &QDesktopWidget::staticMetaObject; }

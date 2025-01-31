@@ -157,7 +157,6 @@ void QGuiApplication_applicationDisplayNameChanged(QGuiApplication* self);
 void QGuiApplication_connect_applicationDisplayNameChanged(QGuiApplication* self, intptr_t slot);
 void QGuiApplication_fontChanged(QGuiApplication* self, QFont* font);
 void QGuiApplication_connect_fontChanged(QGuiApplication* self, intptr_t slot);
-bool QGuiApplication_event(QGuiApplication* self, QEvent* param1);
 struct miqt_string QGuiApplication_tr2(const char* s, const char* c);
 struct miqt_string QGuiApplication_tr3(const char* s, const char* c, int n);
 struct miqt_string QGuiApplication_trUtf82(const char* s, const char* c);
@@ -173,6 +172,10 @@ void QGuiApplication_virtualbase_childEvent(void* self, QChildEvent* event);
 void QGuiApplication_virtualbase_customEvent(void* self, QEvent* event);
 void QGuiApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QGuiApplication_protectedbase_sender(const void* self);
+int QGuiApplication_protectedbase_senderSignalIndex(const void* self);
+int QGuiApplication_protectedbase_receivers(const void* self, const char* signal);
+bool QGuiApplication_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QGuiApplication_staticMetaObject();
 void QGuiApplication_delete(QGuiApplication* self);
 

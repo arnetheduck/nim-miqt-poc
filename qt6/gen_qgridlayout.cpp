@@ -694,6 +694,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_widgetEvent(QEvent* param1) {
+
+		QGridLayout::widgetEvent(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildLayout(QLayout* l) {
+
+		QGridLayout::addChildLayout(l);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildWidget(QWidget* w) {
+
+		QGridLayout::addChildWidget(w);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_adoptLayout(QLayout* layout) {
+
+		return QGridLayout::adoptLayout(layout);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_alignmentRect(QRect* param1) const {
+
+		return new QRect(QGridLayout::alignmentRect(*param1));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGridLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGridLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGridLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGridLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QGridLayout* QGridLayout_new(struct QGridLayout_VTable* vtbl, QWidget* parent) {
@@ -1073,6 +1136,42 @@ QWidget* QGridLayout_virtualbase_widget(const void* self) {
 
 QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_spacerItem();
+}
+
+void QGridLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQGridLayout*)(self) )->protectedbase_widgetEvent(param1);
+}
+
+void QGridLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	( (MiqtVirtualQGridLayout*)(self) )->protectedbase_addChildLayout(l);
+}
+
+void QGridLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	( (MiqtVirtualQGridLayout*)(self) )->protectedbase_addChildWidget(w);
+}
+
+bool QGridLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	return ( (MiqtVirtualQGridLayout*)(self) )->protectedbase_adoptLayout(layout);
+}
+
+QRect* QGridLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->protectedbase_alignmentRect(param1);
+}
+
+QObject* QGridLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->protectedbase_sender();
+}
+
+int QGridLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGridLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGridLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QGridLayout_staticMetaObject() { return &QGridLayout::staticMetaObject; }

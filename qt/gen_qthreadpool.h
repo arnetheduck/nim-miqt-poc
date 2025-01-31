@@ -90,6 +90,10 @@ void QThreadPool_virtualbase_childEvent(void* self, QChildEvent* event);
 void QThreadPool_virtualbase_customEvent(void* self, QEvent* event);
 void QThreadPool_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QThreadPool_protectedbase_sender(const void* self);
+int QThreadPool_protectedbase_senderSignalIndex(const void* self);
+int QThreadPool_protectedbase_receivers(const void* self, const char* signal);
+bool QThreadPool_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QThreadPool_staticMetaObject();
 void QThreadPool_delete(QThreadPool* self);
 

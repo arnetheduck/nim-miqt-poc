@@ -151,8 +151,6 @@ QQuickFramebufferObject__Renderer* QQuickFramebufferObject_createRenderer(const 
 bool QQuickFramebufferObject_isTextureProvider(const QQuickFramebufferObject* self);
 QSGTextureProvider* QQuickFramebufferObject_textureProvider(const QQuickFramebufferObject* self);
 void QQuickFramebufferObject_releaseResources(QQuickFramebufferObject* self);
-void QQuickFramebufferObject_geometryChanged(QQuickFramebufferObject* self, QRectF* newGeometry, QRectF* oldGeometry);
-QSGNode* QQuickFramebufferObject_updatePaintNode(QQuickFramebufferObject* self, QSGNode* param1, QQuickItem__UpdatePaintNodeData* param2);
 void QQuickFramebufferObject_textureFollowsItemSizeChanged(QQuickFramebufferObject* self, bool param1);
 void QQuickFramebufferObject_connect_textureFollowsItemSizeChanged(QQuickFramebufferObject* self, intptr_t slot);
 void QQuickFramebufferObject_mirrorVerticallyChanged(QQuickFramebufferObject* self, bool param1);
@@ -207,11 +205,18 @@ void QQuickFramebufferObject_virtualbase_childEvent(void* self, QChildEvent* eve
 void QQuickFramebufferObject_virtualbase_customEvent(void* self, QEvent* event);
 void QQuickFramebufferObject_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QQuickFramebufferObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QQuickFramebufferObject_protectedbase_isComponentComplete(const void* self);
+void QQuickFramebufferObject_protectedbase_updateInputMethod(void* self);
+bool QQuickFramebufferObject_protectedbase_widthValid(const void* self);
+bool QQuickFramebufferObject_protectedbase_heightValid(const void* self);
+void QQuickFramebufferObject_protectedbase_setImplicitSize(void* self, double param1, double param2);
+QObject* QQuickFramebufferObject_protectedbase_sender(const void* self);
+int QQuickFramebufferObject_protectedbase_senderSignalIndex(const void* self);
+int QQuickFramebufferObject_protectedbase_receivers(const void* self, const char* signal);
+bool QQuickFramebufferObject_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QQuickFramebufferObject_staticMetaObject();
 void QQuickFramebufferObject_delete(QQuickFramebufferObject* self);
 
-void QQuickFramebufferObject__Renderer_render(QQuickFramebufferObject__Renderer* self);
-void QQuickFramebufferObject__Renderer_synchronize(QQuickFramebufferObject__Renderer* self, QQuickFramebufferObject* param1);
 
 #ifdef __cplusplus
 } /* extern C */

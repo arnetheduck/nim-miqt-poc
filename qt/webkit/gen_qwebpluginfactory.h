@@ -108,6 +108,10 @@ void QWebPluginFactory_virtualbase_childEvent(void* self, QChildEvent* event);
 void QWebPluginFactory_virtualbase_customEvent(void* self, QEvent* event);
 void QWebPluginFactory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebPluginFactory_protectedbase_sender(const void* self);
+int QWebPluginFactory_protectedbase_senderSignalIndex(const void* self);
+int QWebPluginFactory_protectedbase_receivers(const void* self, const char* signal);
+bool QWebPluginFactory_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QWebPluginFactory_staticMetaObject();
 void QWebPluginFactory_delete(QWebPluginFactory* self);
 

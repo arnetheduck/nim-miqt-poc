@@ -1409,6 +1409,229 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_invalidateFilter() {
+
+		QSortFilterProxyModel::invalidateFilter();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_invalidateRowsFilter() {
+
+		QSortFilterProxyModel::invalidateRowsFilter();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_invalidateColumnsFilter() {
+
+		QSortFilterProxyModel::invalidateColumnsFilter();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createSourceIndex(int row, int col, void* internalPtr) const {
+
+		return new QModelIndex(QSortFilterProxyModel::createSourceIndex(static_cast<int>(row), static_cast<int>(col), internalPtr));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QModelIndex* protectedbase_createIndex(int row, int column) const {
+
+		return new QModelIndex(QSortFilterProxyModel::createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_encodeData(struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) const {
+		QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+		QSortFilterProxyModel::encodeData(indexes_QList, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_decodeData(int row, int column, QModelIndex* parent, QDataStream* stream) {
+
+		return QSortFilterProxyModel::decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertRows(QModelIndex* parent, int first, int last) {
+
+		QSortFilterProxyModel::beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertRows() {
+
+		QSortFilterProxyModel::endInsertRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveRows(QModelIndex* parent, int first, int last) {
+
+		QSortFilterProxyModel::beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveRows() {
+
+		QSortFilterProxyModel::endRemoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveRows(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+
+		return QSortFilterProxyModel::beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveRows() {
+
+		QSortFilterProxyModel::endMoveRows();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginInsertColumns(QModelIndex* parent, int first, int last) {
+
+		QSortFilterProxyModel::beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endInsertColumns() {
+
+		QSortFilterProxyModel::endInsertColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginRemoveColumns(QModelIndex* parent, int first, int last) {
+
+		QSortFilterProxyModel::beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endRemoveColumns() {
+
+		QSortFilterProxyModel::endRemoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_beginMoveColumns(QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+
+		return QSortFilterProxyModel::beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endMoveColumns() {
+
+		QSortFilterProxyModel::endMoveColumns();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_beginResetModel() {
+
+		QSortFilterProxyModel::beginResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_endResetModel() {
+
+		QSortFilterProxyModel::endResetModel();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndex(QModelIndex* from, QModelIndex* to) {
+
+		QSortFilterProxyModel::changePersistentIndex(*from, *to);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_changePersistentIndexList(struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+		QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+		QSortFilterProxyModel::changePersistentIndexList(from_QList, to_QList);
+
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of QModelIndex* */  protectedbase_persistentIndexList() const {
+
+		QModelIndexList _ret = QSortFilterProxyModel::persistentIndexList();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			_arr[i] = new QModelIndex(_ret[i]);
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSortFilterProxyModel::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSortFilterProxyModel::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSortFilterProxyModel::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSortFilterProxyModel::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSortFilterProxyModel* QSortFilterProxyModel_new(struct QSortFilterProxyModel_VTable* vtbl) {
@@ -2111,6 +2334,118 @@ void QSortFilterProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* si
 
 void QSortFilterProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSortFilterProxyModel_protectedbase_invalidateFilter(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_invalidateFilter();
+}
+
+void QSortFilterProxyModel_protectedbase_invalidateRowsFilter(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_invalidateRowsFilter();
+}
+
+void QSortFilterProxyModel_protectedbase_invalidateColumnsFilter(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_invalidateColumnsFilter();
+}
+
+QModelIndex* QSortFilterProxyModel_protectedbase_createSourceIndex(const void* self, int row, int col, void* internalPtr) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_createSourceIndex(row, col, internalPtr);
+}
+
+QModelIndex* QSortFilterProxyModel_protectedbase_createIndex(const void* self, int row, int column) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_createIndex(row, column);
+}
+
+void QSortFilterProxyModel_protectedbase_encodeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_encodeData(indexes, stream);
+}
+
+bool QSortFilterProxyModel_protectedbase_decodeData(void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_decodeData(row, column, parent, stream);
+}
+
+void QSortFilterProxyModel_protectedbase_beginInsertRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_beginInsertRows(parent, first, last);
+}
+
+void QSortFilterProxyModel_protectedbase_endInsertRows(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_endInsertRows();
+}
+
+void QSortFilterProxyModel_protectedbase_beginRemoveRows(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_beginRemoveRows(parent, first, last);
+}
+
+void QSortFilterProxyModel_protectedbase_endRemoveRows(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_endRemoveRows();
+}
+
+bool QSortFilterProxyModel_protectedbase_beginMoveRows(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_beginMoveRows(sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow);
+}
+
+void QSortFilterProxyModel_protectedbase_endMoveRows(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_endMoveRows();
+}
+
+void QSortFilterProxyModel_protectedbase_beginInsertColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_beginInsertColumns(parent, first, last);
+}
+
+void QSortFilterProxyModel_protectedbase_endInsertColumns(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_endInsertColumns();
+}
+
+void QSortFilterProxyModel_protectedbase_beginRemoveColumns(void* self, QModelIndex* parent, int first, int last) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_beginRemoveColumns(parent, first, last);
+}
+
+void QSortFilterProxyModel_protectedbase_endRemoveColumns(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_endRemoveColumns();
+}
+
+bool QSortFilterProxyModel_protectedbase_beginMoveColumns(void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_beginMoveColumns(sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn);
+}
+
+void QSortFilterProxyModel_protectedbase_endMoveColumns(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_endMoveColumns();
+}
+
+void QSortFilterProxyModel_protectedbase_beginResetModel(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_beginResetModel();
+}
+
+void QSortFilterProxyModel_protectedbase_endResetModel(void* self) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_endResetModel();
+}
+
+void QSortFilterProxyModel_protectedbase_changePersistentIndex(void* self, QModelIndex* from, QModelIndex* to) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_changePersistentIndex(from, to);
+}
+
+void QSortFilterProxyModel_protectedbase_changePersistentIndexList(void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_changePersistentIndexList(from, to);
+}
+
+struct miqt_array /* of QModelIndex* */  QSortFilterProxyModel_protectedbase_persistentIndexList(const void* self) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_persistentIndexList();
+}
+
+QObject* QSortFilterProxyModel_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_sender();
+}
+
+int QSortFilterProxyModel_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSortFilterProxyModel_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSortFilterProxyModel_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSortFilterProxyModel_staticMetaObject() { return &QSortFilterProxyModel::staticMetaObject; }

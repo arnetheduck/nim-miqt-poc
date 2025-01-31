@@ -1428,6 +1428,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QGraphicsProxyWidget* protectedbase_newProxyWidget(QWidget* param1) {
+
+		return QGraphicsProxyWidget::newProxyWidget(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsProxyWidget::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsProxyWidget::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsProxyWidget::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsProxyWidget::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsProxyWidget::isSignalConnected(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsProxyWidget::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsProxyWidget::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsProxyWidget::prepareGeometryChange();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setGraphicsItem(QGraphicsItem* item) {
+
+		QGraphicsProxyWidget::setGraphicsItem(item);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setOwnedByLayout(bool ownedByLayout) {
+
+		QGraphicsProxyWidget::setOwnedByLayout(ownedByLayout);
+
+	}
+
 };
 
 QGraphicsProxyWidget* QGraphicsProxyWidget_new(struct QGraphicsProxyWidget_VTable* vtbl) {
@@ -1814,6 +1891,50 @@ void QGraphicsProxyWidget_virtualbase_setExtension(void* self, int extension, QV
 
 QVariant* QGraphicsProxyWidget_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQGraphicsProxyWidget*)(self) )->virtualbase_extension(variant);
+}
+
+QGraphicsProxyWidget* QGraphicsProxyWidget_protectedbase_newProxyWidget(void* self, QWidget* param1) {
+	return ( (MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_newProxyWidget(param1);
+}
+
+void QGraphicsProxyWidget_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_updateMicroFocus();
+}
+
+QObject* QGraphicsProxyWidget_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsProxyWidget_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsProxyWidget_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsProxyWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
+void QGraphicsProxyWidget_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsProxyWidget_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsProxyWidget_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_prepareGeometryChange();
+}
+
+void QGraphicsProxyWidget_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item) {
+	( (MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_setGraphicsItem(item);
+}
+
+void QGraphicsProxyWidget_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout) {
+	( (MiqtVirtualQGraphicsProxyWidget*)(self) )->protectedbase_setOwnedByLayout(ownedByLayout);
 }
 
 const QMetaObject* QGraphicsProxyWidget_staticMetaObject() { return &QGraphicsProxyWidget::staticMetaObject; }

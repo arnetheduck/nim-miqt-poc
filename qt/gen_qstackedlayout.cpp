@@ -637,6 +637,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_widgetEvent(QEvent* param1) {
+
+		QStackedLayout::widgetEvent(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildLayout(QLayout* l) {
+
+		QStackedLayout::addChildLayout(l);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addChildWidget(QWidget* w) {
+
+		QStackedLayout::addChildWidget(w);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_adoptLayout(QLayout* layout) {
+
+		return QStackedLayout::adoptLayout(layout);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* protectedbase_alignmentRect(QRect* param1) const {
+
+		return new QRect(QStackedLayout::alignmentRect(*param1));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QStackedLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QStackedLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QStackedLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QStackedLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QStackedLayout* QStackedLayout_new(struct QStackedLayout_VTable* vtbl, QWidget* parent) {
@@ -964,6 +1027,42 @@ QWidget* QStackedLayout_virtualbase_widget(void* self) {
 
 QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_spacerItem();
+}
+
+void QStackedLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQStackedLayout*)(self) )->protectedbase_widgetEvent(param1);
+}
+
+void QStackedLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	( (MiqtVirtualQStackedLayout*)(self) )->protectedbase_addChildLayout(l);
+}
+
+void QStackedLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	( (MiqtVirtualQStackedLayout*)(self) )->protectedbase_addChildWidget(w);
+}
+
+bool QStackedLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	return ( (MiqtVirtualQStackedLayout*)(self) )->protectedbase_adoptLayout(layout);
+}
+
+QRect* QStackedLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	return ( (const MiqtVirtualQStackedLayout*)(self) )->protectedbase_alignmentRect(param1);
+}
+
+QObject* QStackedLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQStackedLayout*)(self) )->protectedbase_sender();
+}
+
+int QStackedLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQStackedLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QStackedLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQStackedLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QStackedLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQStackedLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QStackedLayout_staticMetaObject() { return &QStackedLayout::staticMetaObject; }

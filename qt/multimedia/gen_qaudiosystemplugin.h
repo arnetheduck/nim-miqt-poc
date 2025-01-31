@@ -94,6 +94,10 @@ void QAudioSystemPlugin_virtualbase_childEvent(void* self, QChildEvent* event);
 void QAudioSystemPlugin_virtualbase_customEvent(void* self, QEvent* event);
 void QAudioSystemPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAudioSystemPlugin_protectedbase_sender(const void* self);
+int QAudioSystemPlugin_protectedbase_senderSignalIndex(const void* self);
+int QAudioSystemPlugin_protectedbase_receivers(const void* self, const char* signal);
+bool QAudioSystemPlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QAudioSystemPlugin_staticMetaObject();
 void QAudioSystemPlugin_delete(QAudioSystemPlugin* self);
 

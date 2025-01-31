@@ -16,9 +16,11 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMediaMetaData;
+class QMetaType;
 class QVariant;
 #else
 typedef struct QMediaMetaData QMediaMetaData;
+typedef struct QMetaType QMetaType;
 typedef struct QVariant QVariant;
 #endif
 

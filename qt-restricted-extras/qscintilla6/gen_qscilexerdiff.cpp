@@ -947,6 +947,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciLexerDiff::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciLexerDiff::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciLexerDiff::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciLexerDiff::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciLexerDiff* QsciLexerDiff_new(struct QsciLexerDiff_VTable* vtbl) {
@@ -1199,6 +1227,22 @@ void QsciLexerDiff_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QsciLexerDiff_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerDiff*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerDiff_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciLexerDiff*)(self) )->protectedbase_sender();
+}
+
+int QsciLexerDiff_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciLexerDiff*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciLexerDiff_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciLexerDiff*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciLexerDiff_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciLexerDiff*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciLexerDiff_staticMetaObject() { return &QsciLexerDiff::staticMetaObject; }

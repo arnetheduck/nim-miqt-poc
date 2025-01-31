@@ -242,6 +242,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QInputDevice::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QInputDevice::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QInputDevice::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QInputDevice::isSignalConnected(*signal);
+
+	}
+
 };
 
 QInputDevice* QInputDevice_new(struct QInputDevice_VTable* vtbl) {
@@ -467,6 +495,22 @@ void QInputDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QInputDevice_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQInputDevice*)(self) )->protectedbase_sender();
+}
+
+int QInputDevice_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQInputDevice*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QInputDevice_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQInputDevice*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QInputDevice_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQInputDevice*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QInputDevice_staticMetaObject() { return &QInputDevice::staticMetaObject; }

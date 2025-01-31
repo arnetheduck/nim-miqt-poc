@@ -849,6 +849,99 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setSocketState(int state) {
+
+		QAbstractSocket::setSocketState(static_cast<QAbstractSocket::SocketState>(state));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setSocketError(int socketError) {
+
+		QAbstractSocket::setSocketError(static_cast<QAbstractSocket::SocketError>(socketError));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLocalPort(uint16_t port) {
+
+		QAbstractSocket::setLocalPort(static_cast<quint16>(port));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setLocalAddress(QHostAddress* address) {
+
+		QAbstractSocket::setLocalAddress(*address);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPeerPort(uint16_t port) {
+
+		QAbstractSocket::setPeerPort(static_cast<quint16>(port));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPeerAddress(QHostAddress* address) {
+
+		QAbstractSocket::setPeerAddress(*address);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setPeerName(struct miqt_string name) {
+		QString name_QString = QString::fromUtf8(name.data, name.len);
+
+		QAbstractSocket::setPeerName(name_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setOpenMode(int openMode) {
+
+		QAbstractSocket::setOpenMode(static_cast<QIODeviceBase::OpenMode>(openMode));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setErrorString(struct miqt_string errorString) {
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+		QAbstractSocket::setErrorString(errorString_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAbstractSocket::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAbstractSocket::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAbstractSocket::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAbstractSocket::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAbstractSocket* QAbstractSocket_new(struct QAbstractSocket_VTable* vtbl, int socketType, QObject* parent) {
@@ -1362,6 +1455,58 @@ void QAbstractSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal) 
 
 void QAbstractSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QAbstractSocket_protectedbase_setSocketState(void* self, int state) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setSocketState(state);
+}
+
+void QAbstractSocket_protectedbase_setSocketError(void* self, int socketError) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setSocketError(socketError);
+}
+
+void QAbstractSocket_protectedbase_setLocalPort(void* self, uint16_t port) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setLocalPort(port);
+}
+
+void QAbstractSocket_protectedbase_setLocalAddress(void* self, QHostAddress* address) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setLocalAddress(address);
+}
+
+void QAbstractSocket_protectedbase_setPeerPort(void* self, uint16_t port) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setPeerPort(port);
+}
+
+void QAbstractSocket_protectedbase_setPeerAddress(void* self, QHostAddress* address) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setPeerAddress(address);
+}
+
+void QAbstractSocket_protectedbase_setPeerName(void* self, struct miqt_string name) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setPeerName(name);
+}
+
+void QAbstractSocket_protectedbase_setOpenMode(void* self, int openMode) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setOpenMode(openMode);
+}
+
+void QAbstractSocket_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	( (MiqtVirtualQAbstractSocket*)(self) )->protectedbase_setErrorString(errorString);
+}
+
+QObject* QAbstractSocket_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAbstractSocket*)(self) )->protectedbase_sender();
+}
+
+int QAbstractSocket_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAbstractSocket*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAbstractSocket_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAbstractSocket*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAbstractSocket_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAbstractSocket*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAbstractSocket_staticMetaObject() { return &QAbstractSocket::staticMetaObject; }

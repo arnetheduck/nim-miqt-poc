@@ -77,6 +77,10 @@ void QSGMaterialRhiShader_virtualbase_compile(void* self);
 void QSGMaterialRhiShader_virtualbase_initialize(void* self);
 const char* QSGMaterialRhiShader_virtualbase_vertexShader(const void* self);
 const char* QSGMaterialRhiShader_virtualbase_fragmentShader(const void* self);
+void QSGMaterialRhiShader_protectedbase_setShaderFileName(void* self, int stage, struct miqt_string filename);
+void QSGMaterialRhiShader_protectedbase_setShader(void* self, int stage, const QShader* shader);
+void QSGMaterialRhiShader_protectedbase_setShaderSourceFile(void* self, QOpenGLShader::ShaderType type, struct miqt_string sourceFile);
+void QSGMaterialRhiShader_protectedbase_setShaderSourceFiles(void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles);
 void QSGMaterialRhiShader_delete(QSGMaterialRhiShader* self);
 
 int QSGMaterialRhiShader__RenderState_dirtyStates(const QSGMaterialRhiShader__RenderState* self);

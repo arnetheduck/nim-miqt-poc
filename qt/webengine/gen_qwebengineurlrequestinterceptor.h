@@ -72,6 +72,10 @@ void QWebEngineUrlRequestInterceptor_virtualbase_childEvent(void* self, QChildEv
 void QWebEngineUrlRequestInterceptor_virtualbase_customEvent(void* self, QEvent* event);
 void QWebEngineUrlRequestInterceptor_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebEngineUrlRequestInterceptor_protectedbase_sender(const void* self);
+int QWebEngineUrlRequestInterceptor_protectedbase_senderSignalIndex(const void* self);
+int QWebEngineUrlRequestInterceptor_protectedbase_receivers(const void* self, const char* signal);
+bool QWebEngineUrlRequestInterceptor_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QWebEngineUrlRequestInterceptor_staticMetaObject();
 void QWebEngineUrlRequestInterceptor_delete(QWebEngineUrlRequestInterceptor* self);
 

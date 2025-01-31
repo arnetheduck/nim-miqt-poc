@@ -301,6 +301,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickTextureFactory::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickTextureFactory::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickTextureFactory::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickTextureFactory::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickTextureFactory* QQuickTextureFactory_new(struct QQuickTextureFactory_VTable* vtbl) {
@@ -451,6 +479,22 @@ void QQuickTextureFactory_virtualbase_connectNotify(void* self, QMetaMethod* sig
 
 void QQuickTextureFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickTextureFactory*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQuickTextureFactory_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickTextureFactory*)(self) )->protectedbase_sender();
+}
+
+int QQuickTextureFactory_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickTextureFactory*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickTextureFactory_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickTextureFactory*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickTextureFactory_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickTextureFactory*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickTextureFactory_staticMetaObject() { return &QQuickTextureFactory::staticMetaObject; }
@@ -731,6 +775,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQuickImageResponse::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQuickImageResponse::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQuickImageResponse::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQuickImageResponse::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQuickImageResponse* QQuickImageResponse_new(struct QQuickImageResponse_VTable* vtbl) {
@@ -903,6 +975,22 @@ void QQuickImageResponse_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QQuickImageResponse_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickImageResponse*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQuickImageResponse_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQuickImageResponse*)(self) )->protectedbase_sender();
+}
+
+int QQuickImageResponse_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQuickImageResponse*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQuickImageResponse_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQuickImageResponse*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQuickImageResponse_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQuickImageResponse*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQuickImageResponse_staticMetaObject() { return &QQuickImageResponse::staticMetaObject; }

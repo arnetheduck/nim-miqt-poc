@@ -78,7 +78,6 @@ int QLocalServer_listenBacklogSize(const QLocalServer* self);
 void QLocalServer_setSocketOptions(QLocalServer* self, int options);
 int QLocalServer_socketOptions(const QLocalServer* self);
 intptr_t QLocalServer_socketDescriptor(const QLocalServer* self);
-void QLocalServer_incomingConnection(QLocalServer* self, uintptr_t socketDescriptor);
 struct miqt_string QLocalServer_tr2(const char* s, const char* c);
 struct miqt_string QLocalServer_tr3(const char* s, const char* c, int n);
 bool QLocalServer_waitForNewConnection1(QLocalServer* self, int msec);
@@ -96,6 +95,10 @@ void QLocalServer_virtualbase_childEvent(void* self, QChildEvent* event);
 void QLocalServer_virtualbase_customEvent(void* self, QEvent* event);
 void QLocalServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QLocalServer_protectedbase_sender(const void* self);
+int QLocalServer_protectedbase_senderSignalIndex(const void* self);
+int QLocalServer_protectedbase_receivers(const void* self, const char* signal);
+bool QLocalServer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QLocalServer_staticMetaObject();
 void QLocalServer_delete(QLocalServer* self);
 

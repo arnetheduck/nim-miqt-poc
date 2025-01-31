@@ -1259,6 +1259,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QWizard::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QWizard::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QWizard::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QWizard::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QWizard::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QWizard::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWizard::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWizard::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWizard::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWizard::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWizard* QWizard_new(struct QWizard_VTable* vtbl, QWidget* parent) {
@@ -1861,6 +1931,46 @@ void QWizard_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWizard_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQWizard*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QWizard_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQWizard*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QWizard_protectedbase_create(void* self) {
+	( (MiqtVirtualQWizard*)(self) )->protectedbase_create();
+}
+
+void QWizard_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQWizard*)(self) )->protectedbase_destroy();
+}
+
+bool QWizard_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQWizard*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QWizard_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQWizard*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QWizard_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWizard*)(self) )->protectedbase_sender();
+}
+
+int QWizard_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWizard*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWizard_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWizard*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWizard_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWizard*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWizard_staticMetaObject() { return &QWizard::staticMetaObject; }
@@ -2984,6 +3094,116 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setField(struct miqt_string name, QVariant* value) {
+		QString name_QString = QString::fromUtf8(name.data, name.len);
+
+		QWizardPage::setField(name_QString, *value);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QVariant* protectedbase_field(struct miqt_string name) const {
+		QString name_QString = QString::fromUtf8(name.data, name.len);
+
+		return new QVariant(QWizardPage::field(name_QString));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_registerField(struct miqt_string name, QWidget* widget) {
+		QString name_QString = QString::fromUtf8(name.data, name.len);
+
+		QWizardPage::registerField(name_QString, widget);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QWizard* protectedbase_wizard() const {
+
+		return QWizardPage::wizard();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_registerField3(struct miqt_string name, QWidget* widget, const char* property) {
+		QString name_QString = QString::fromUtf8(name.data, name.len);
+
+		QWizardPage::registerField(name_QString, widget, property);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_registerField4(struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal) {
+		QString name_QString = QString::fromUtf8(name.data, name.len);
+
+		QWizardPage::registerField(name_QString, widget, property, changedSignal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QWizardPage::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QWizardPage::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QWizardPage::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QWizardPage::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QWizardPage::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWizardPage::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWizardPage::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWizardPage::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWizardPage::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWizardPage* QWizardPage_new(struct QWizardPage_VTable* vtbl, QWidget* parent) {
@@ -3372,6 +3592,66 @@ void QWizardPage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWizardPage_protectedbase_setField(void* self, struct miqt_string name, QVariant* value) {
+	( (MiqtVirtualQWizardPage*)(self) )->protectedbase_setField(name, value);
+}
+
+QVariant* QWizardPage_protectedbase_field(const void* self, struct miqt_string name) {
+	return ( (const MiqtVirtualQWizardPage*)(self) )->protectedbase_field(name);
+}
+
+void QWizardPage_protectedbase_registerField(void* self, struct miqt_string name, QWidget* widget) {
+	( (MiqtVirtualQWizardPage*)(self) )->protectedbase_registerField(name, widget);
+}
+
+QWizard* QWizardPage_protectedbase_wizard(const void* self) {
+	return ( (const MiqtVirtualQWizardPage*)(self) )->protectedbase_wizard();
+}
+
+void QWizardPage_protectedbase_registerField3(void* self, struct miqt_string name, QWidget* widget, const char* property) {
+	( (MiqtVirtualQWizardPage*)(self) )->protectedbase_registerField3(name, widget, property);
+}
+
+void QWizardPage_protectedbase_registerField4(void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal) {
+	( (MiqtVirtualQWizardPage*)(self) )->protectedbase_registerField4(name, widget, property, changedSignal);
+}
+
+void QWizardPage_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQWizardPage*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QWizardPage_protectedbase_create(void* self) {
+	( (MiqtVirtualQWizardPage*)(self) )->protectedbase_create();
+}
+
+void QWizardPage_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQWizardPage*)(self) )->protectedbase_destroy();
+}
+
+bool QWizardPage_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQWizardPage*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QWizardPage_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQWizardPage*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QWizardPage_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWizardPage*)(self) )->protectedbase_sender();
+}
+
+int QWizardPage_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWizardPage*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWizardPage_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWizardPage*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWizardPage_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWizardPage*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWizardPage_staticMetaObject() { return &QWizardPage::staticMetaObject; }

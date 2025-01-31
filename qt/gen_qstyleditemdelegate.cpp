@@ -565,6 +565,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QStyledItemDelegate::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QStyledItemDelegate::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QStyledItemDelegate::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QStyledItemDelegate::isSignalConnected(*signal);
+
+	}
+
 };
 
 QStyledItemDelegate* QStyledItemDelegate_new(struct QStyledItemDelegate_VTable* vtbl) {
@@ -786,6 +814,22 @@ void QStyledItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* sign
 
 void QStyledItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QStyledItemDelegate_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->protectedbase_sender();
+}
+
+int QStyledItemDelegate_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QStyledItemDelegate_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QStyledItemDelegate_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QStyledItemDelegate_staticMetaObject() { return &QStyledItemDelegate::staticMetaObject; }

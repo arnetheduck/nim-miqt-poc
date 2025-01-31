@@ -250,6 +250,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QWebEngineUrlRequestInterceptor::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QWebEngineUrlRequestInterceptor::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QWebEngineUrlRequestInterceptor::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QWebEngineUrlRequestInterceptor::isSignalConnected(*signal);
+
+	}
+
 };
 
 QWebEngineUrlRequestInterceptor* QWebEngineUrlRequestInterceptor_new(struct QWebEngineUrlRequestInterceptor_VTable* vtbl) {
@@ -384,6 +412,22 @@ void QWebEngineUrlRequestInterceptor_virtualbase_connectNotify(void* self, QMeta
 
 void QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QWebEngineUrlRequestInterceptor_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->protectedbase_sender();
+}
+
+int QWebEngineUrlRequestInterceptor_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QWebEngineUrlRequestInterceptor_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QWebEngineUrlRequestInterceptor_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QWebEngineUrlRequestInterceptor_staticMetaObject() { return &QWebEngineUrlRequestInterceptor::staticMetaObject; }

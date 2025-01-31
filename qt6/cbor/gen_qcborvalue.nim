@@ -266,6 +266,14 @@ proc fcQCborValueConstRef_toUuid1(self: pointer, defaultValue: pointer): pointer
 proc fcQCborValueConstRef_toCbor1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueConstRef_toCbor1".}
 proc fcQCborValueConstRef_toCbor2(self: pointer, writer: pointer, opt: cint): void {.importc: "QCborValueConstRef_toCbor2".}
 proc fcQCborValueConstRef_toDiagnosticNotation1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueConstRef_toDiagnosticNotation1".}
+proc fcQCborValueConstRef_protectedbase_concrete(self: pointer, ): pointer {.importc: "QCborValueConstRef_protectedbase_concrete".}
+proc fcQCborValueConstRef_protectedbase_concreteWithThat(self: pointer, that: pointer): pointer {.importc: "QCborValueConstRef_protectedbase_concreteWithThat".}
+proc fcQCborValueConstRef_protectedbase_concreteType(self: pointer, that: pointer): cint {.importc: "QCborValueConstRef_protectedbase_concreteType".}
+proc fcQCborValueConstRef_protectedbase_concreteBoolean(self: pointer, that: pointer, defaultValue: bool): bool {.importc: "QCborValueConstRef_protectedbase_concreteBoolean".}
+proc fcQCborValueConstRef_protectedbase_concreteDouble(self: pointer, that: pointer, defaultValue: float64): float64 {.importc: "QCborValueConstRef_protectedbase_concreteDouble".}
+proc fcQCborValueConstRef_protectedbase_concreteIntegral(self: pointer, that: pointer, defaultValue: clonglong): clonglong {.importc: "QCborValueConstRef_protectedbase_concreteIntegral".}
+proc fcQCborValueConstRef_protectedbase_concreteByteArray(self: pointer, that: pointer, defaultValue: struct_miqt_string): struct_miqt_string {.importc: "QCborValueConstRef_protectedbase_concreteByteArray".}
+proc fcQCborValueConstRef_protectedbase_concreteString(self: pointer, that: pointer, defaultValue: struct_miqt_string): struct_miqt_string {.importc: "QCborValueConstRef_protectedbase_concreteString".}
 proc fcQCborValueConstRef_new(param1: pointer): ptr cQCborValueConstRef {.importc: "QCborValueConstRef_new".}
 proc fcQCborValueConstRef_delete(self: pointer) {.importc: "QCborValueConstRef_delete".}
 proc fcQCborValueRef_operatorAssign(self: pointer, other: pointer): void {.importc: "QCborValueRef_operatorAssign".}
@@ -336,6 +344,12 @@ proc fcQCborValueRef_toUuid1(self: pointer, defaultValue: pointer): pointer {.im
 proc fcQCborValueRef_toCbor1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueRef_toCbor1".}
 proc fcQCborValueRef_toCbor2(self: pointer, writer: pointer, opt: cint): void {.importc: "QCborValueRef_toCbor2".}
 proc fcQCborValueRef_toDiagnosticNotation1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueRef_toDiagnosticNotation1".}
+proc fcQCborValueRef_protectedbase_concreteWithThat(self: pointer, that: pointer): pointer {.importc: "QCborValueRef_protectedbase_concreteWithThat".}
+proc fcQCborValueRef_protectedbase_concreteBoolean(self: pointer, that: pointer, defaultValue: bool): bool {.importc: "QCborValueRef_protectedbase_concreteBoolean".}
+proc fcQCborValueRef_protectedbase_concreteDouble(self: pointer, that: pointer, defaultValue: float64): float64 {.importc: "QCborValueRef_protectedbase_concreteDouble".}
+proc fcQCborValueRef_protectedbase_concreteIntegral(self: pointer, that: pointer, defaultValue: clonglong): clonglong {.importc: "QCborValueRef_protectedbase_concreteIntegral".}
+proc fcQCborValueRef_protectedbase_concreteByteArray(self: pointer, that: pointer, defaultValue: struct_miqt_string): struct_miqt_string {.importc: "QCborValueRef_protectedbase_concreteByteArray".}
+proc fcQCborValueRef_protectedbase_concreteString(self: pointer, that: pointer, defaultValue: struct_miqt_string): struct_miqt_string {.importc: "QCborValueRef_protectedbase_concreteString".}
 proc fcQCborValueRef_new(param1: pointer): ptr cQCborValueRef {.importc: "QCborValueRef_new".}
 proc fcQCborValueRef_delete(self: pointer) {.importc: "QCborValueRef_delete".}
 
@@ -906,6 +920,36 @@ proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueConstRef, opt: c
   c_free(v_ms.data)
   vx_ret
 
+proc concrete*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueConstRef_protectedbase_concrete(self.h))
+
+proc concrete*(self: gen_qcborvalue_types.QCborValueConstRef, that: gen_qcborvalue_types.QCborValueConstRef): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueConstRef_protectedbase_concreteWithThat(self.hthat.h))
+
+proc concreteType*(self: gen_qcborvalue_types.QCborValueConstRef, that: gen_qcborvalue_types.QCborValueConstRef): cint =
+  cint(fcQCborValueConstRef_protectedbase_concreteType(self.hthat.h))
+
+proc concreteBoolean*(self: gen_qcborvalue_types.QCborValueConstRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: bool): bool =
+  fcQCborValueConstRef_protectedbase_concreteBoolean(self.hthat.h, defaultValue)
+
+proc concreteDouble*(self: gen_qcborvalue_types.QCborValueConstRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: float64): float64 =
+  fcQCborValueConstRef_protectedbase_concreteDouble(self.hthat.h, defaultValue)
+
+proc concreteIntegral*(self: gen_qcborvalue_types.QCborValueConstRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: clonglong): clonglong =
+  fcQCborValueConstRef_protectedbase_concreteIntegral(self.hthat.h, defaultValue)
+
+proc concreteByteArray*(self: gen_qcborvalue_types.QCborValueConstRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: seq[byte]): seq[byte] =
+  var v_bytearray = fcQCborValueConstRef_protectedbase_concreteByteArray(self.hthat.h, struct_miqt_string(data: cast[cstring](if len(defaultValue) == 0: nil else: unsafeAddr defaultValue[0]), len: csize_t(len(defaultValue))))
+  var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
+  c_free(v_bytearray.data)
+  vx_ret
+
+proc concreteString*(self: gen_qcborvalue_types.QCborValueConstRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: string): string =
+  let v_ms = fcQCborValueConstRef_protectedbase_concreteString(self.hthat.h, struct_miqt_string(data: defaultValue, len: csize_t(len(defaultValue))))
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
 proc create*(T: type gen_qcborvalue_types.QCborValueConstRef,
     param1: gen_qcborvalue_types.QCborValueConstRef): gen_qcborvalue_types.QCborValueConstRef =
   gen_qcborvalue_types.QCborValueConstRef(h: fcQCborValueConstRef_new(param1.h))
@@ -1136,6 +1180,30 @@ proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, writer: gen_qcborstreamwr
 
 proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueRef, opt: cint): string =
   let v_ms = fcQCborValueRef_toDiagnosticNotation1(self.h, cint(opt))
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc concrete*(self: gen_qcborvalue_types.QCborValueRef, that: gen_qcborvalue_types.QCborValueConstRef): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueRef_protectedbase_concreteWithThat(self.hthat.h))
+
+proc concreteBoolean*(self: gen_qcborvalue_types.QCborValueRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: bool): bool =
+  fcQCborValueRef_protectedbase_concreteBoolean(self.hthat.h, defaultValue)
+
+proc concreteDouble*(self: gen_qcborvalue_types.QCborValueRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: float64): float64 =
+  fcQCborValueRef_protectedbase_concreteDouble(self.hthat.h, defaultValue)
+
+proc concreteIntegral*(self: gen_qcborvalue_types.QCborValueRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: clonglong): clonglong =
+  fcQCborValueRef_protectedbase_concreteIntegral(self.hthat.h, defaultValue)
+
+proc concreteByteArray*(self: gen_qcborvalue_types.QCborValueRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: seq[byte]): seq[byte] =
+  var v_bytearray = fcQCborValueRef_protectedbase_concreteByteArray(self.hthat.h, struct_miqt_string(data: cast[cstring](if len(defaultValue) == 0: nil else: unsafeAddr defaultValue[0]), len: csize_t(len(defaultValue))))
+  var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
+  c_free(v_bytearray.data)
+  vx_ret
+
+proc concreteString*(self: gen_qcborvalue_types.QCborValueRef, that: gen_qcborvalue_types.QCborValueConstRef, defaultValue: string): string =
+  let v_ms = fcQCborValueRef_protectedbase_concreteString(self.hthat.h, struct_miqt_string(data: defaultValue, len: csize_t(len(defaultValue))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret

@@ -1293,6 +1293,139 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QTextBlock* protectedbase_firstVisibleBlock() const {
+
+		return new QTextBlock(QPlainTextEdit::firstVisibleBlock());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPointF* protectedbase_contentOffset() const {
+
+		return new QPointF(QPlainTextEdit::contentOffset());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_blockBoundingRect(QTextBlock* block) const {
+
+		return new QRectF(QPlainTextEdit::blockBoundingRect(*block));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QRectF* protectedbase_blockBoundingGeometry(QTextBlock* block) const {
+
+		return new QRectF(QPlainTextEdit::blockBoundingGeometry(*block));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QAbstractTextDocumentLayout__PaintContext* protectedbase_getPaintContext() const {
+
+		return new QAbstractTextDocumentLayout::PaintContext(QPlainTextEdit::getPaintContext());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_zoomInF(float range) {
+
+		QPlainTextEdit::zoomInF(static_cast<float>(range));
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		QPlainTextEdit::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(QPlainTextEdit::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QPlainTextEdit::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QPlainTextEdit::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QPlainTextEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QPlainTextEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QPlainTextEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QPlainTextEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QPlainTextEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPlainTextEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPlainTextEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPlainTextEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPlainTextEdit::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPlainTextEdit* QPlainTextEdit_new(struct QPlainTextEdit_VTable* vtbl, QWidget* parent) {
@@ -2174,6 +2307,82 @@ void QPlainTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+QTextBlock* QPlainTextEdit_protectedbase_firstVisibleBlock(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_firstVisibleBlock();
+}
+
+QPointF* QPlainTextEdit_protectedbase_contentOffset(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_contentOffset();
+}
+
+QRectF* QPlainTextEdit_protectedbase_blockBoundingRect(const void* self, QTextBlock* block) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_blockBoundingRect(block);
+}
+
+QRectF* QPlainTextEdit_protectedbase_blockBoundingGeometry(const void* self, QTextBlock* block) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_blockBoundingGeometry(block);
+}
+
+QAbstractTextDocumentLayout__PaintContext* QPlainTextEdit_protectedbase_getPaintContext(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_getPaintContext();
+}
+
+void QPlainTextEdit_protectedbase_zoomInF(void* self, float range) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_zoomInF(range);
+}
+
+void QPlainTextEdit_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* QPlainTextEdit_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_viewportMargins();
+}
+
+void QPlainTextEdit_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QPlainTextEdit_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QPlainTextEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QPlainTextEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_create();
+}
+
+void QPlainTextEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_destroy();
+}
+
+bool QPlainTextEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QPlainTextEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QPlainTextEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_sender();
+}
+
+int QPlainTextEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPlainTextEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPlainTextEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
 const QMetaObject* QPlainTextEdit_staticMetaObject() { return &QPlainTextEdit::staticMetaObject; }
 void QPlainTextEdit_delete(QPlainTextEdit* self) {
 	delete self;
@@ -2619,6 +2828,48 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	int protectedbase_formatIndex(int pos) {
+
+		return QPlainTextDocumentLayout::formatIndex(static_cast<int>(pos));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QTextCharFormat* protectedbase_format(int pos) {
+
+		return new QTextCharFormat(QPlainTextDocumentLayout::format(static_cast<int>(pos)));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QPlainTextDocumentLayout::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QPlainTextDocumentLayout::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QPlainTextDocumentLayout::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QPlainTextDocumentLayout::isSignalConnected(*signal);
+
+	}
+
 };
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(struct QPlainTextDocumentLayout_VTable* vtbl, QTextDocument* document) {
@@ -2825,6 +3076,30 @@ void QPlainTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod*
 
 void QPlainTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+int QPlainTextDocumentLayout_protectedbase_formatIndex(void* self, int pos) {
+	return ( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->protectedbase_formatIndex(pos);
+}
+
+QTextCharFormat* QPlainTextDocumentLayout_protectedbase_format(void* self, int pos) {
+	return ( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->protectedbase_format(pos);
+}
+
+QObject* QPlainTextDocumentLayout_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQPlainTextDocumentLayout*)(self) )->protectedbase_sender();
+}
+
+int QPlainTextDocumentLayout_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQPlainTextDocumentLayout*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QPlainTextDocumentLayout_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQPlainTextDocumentLayout*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QPlainTextDocumentLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQPlainTextDocumentLayout*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QPlainTextDocumentLayout_staticMetaObject() { return &QPlainTextDocumentLayout::staticMetaObject; }

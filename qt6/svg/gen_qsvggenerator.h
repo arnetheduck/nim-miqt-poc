@@ -63,8 +63,6 @@ QIODevice* QSvgGenerator_outputDevice(const QSvgGenerator* self);
 void QSvgGenerator_setOutputDevice(QSvgGenerator* self, QIODevice* outputDevice);
 void QSvgGenerator_setResolution(QSvgGenerator* self, int dpi);
 int QSvgGenerator_resolution(const QSvgGenerator* self);
-QPaintEngine* QSvgGenerator_paintEngine(const QSvgGenerator* self);
-int QSvgGenerator_metric(const QSvgGenerator* self, int metric);
 QPaintEngine* QSvgGenerator_virtualbase_paintEngine(const void* self);
 int QSvgGenerator_virtualbase_metric(const void* self, int metric);
 int QSvgGenerator_virtualbase_devType(const void* self);

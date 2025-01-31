@@ -108,7 +108,6 @@ QQmlContext* QQmlEngine_contextForObject(QObject* param1);
 void QQmlEngine_setContextForObject(QObject* param1, QQmlContext* param2);
 void QQmlEngine_setObjectOwnership(QObject* param1, int param2);
 int QQmlEngine_objectOwnership(QObject* param1);
-bool QQmlEngine_event(QQmlEngine* self, QEvent* param1);
 void QQmlEngine_quit(QQmlEngine* self);
 void QQmlEngine_connect_quit(QQmlEngine* self, intptr_t slot);
 void QQmlEngine_exit(QQmlEngine* self, int retCode);
@@ -129,6 +128,10 @@ void QQmlEngine_virtualbase_childEvent(void* self, QChildEvent* event);
 void QQmlEngine_virtualbase_customEvent(void* self, QEvent* event);
 void QQmlEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QQmlEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QQmlEngine_protectedbase_sender(const void* self);
+int QQmlEngine_protectedbase_senderSignalIndex(const void* self);
+int QQmlEngine_protectedbase_receivers(const void* self, const char* signal);
+bool QQmlEngine_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QQmlEngine_staticMetaObject();
 void QQmlEngine_delete(QQmlEngine* self);
 

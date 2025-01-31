@@ -2880,6 +2880,97 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		ScintillaEditBase::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(ScintillaEditBase::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		ScintillaEditBase::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		ScintillaEditBase::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		ScintillaEditBase::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		ScintillaEditBase::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		ScintillaEditBase::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return ScintillaEditBase::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return ScintillaEditBase::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return ScintillaEditBase::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return ScintillaEditBase::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return ScintillaEditBase::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return ScintillaEditBase::isSignalConnected(*signal);
+
+	}
+
 };
 
 ScintillaEditBase* ScintillaEditBase_new(struct ScintillaEditBase_VTable* vtbl, QWidget* parent) {
@@ -4026,6 +4117,58 @@ void ScintillaEditBase_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+void ScintillaEditBase_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* ScintillaEditBase_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->protectedbase_viewportMargins();
+}
+
+void ScintillaEditBase_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void ScintillaEditBase_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualScintillaEditBase*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void ScintillaEditBase_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void ScintillaEditBase_protectedbase_create(void* self) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->protectedbase_create();
+}
+
+void ScintillaEditBase_protectedbase_destroy(void* self) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->protectedbase_destroy();
+}
+
+bool ScintillaEditBase_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->protectedbase_focusNextChild();
+}
+
+bool ScintillaEditBase_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* ScintillaEditBase_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->protectedbase_sender();
+}
+
+int ScintillaEditBase_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int ScintillaEditBase_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->protectedbase_receivers(signal);
+}
+
+bool ScintillaEditBase_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
 const QMetaObject* ScintillaEditBase_staticMetaObject() { return &ScintillaEditBase::staticMetaObject; }
 void ScintillaEditBase_delete(ScintillaEditBase* self) {
 	delete self;
@@ -4245,6 +4388,34 @@ public:
 	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		ScintillaDocument::disconnectNotify(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return ScintillaDocument::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return ScintillaDocument::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return ScintillaDocument::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return ScintillaDocument::isSignalConnected(*signal);
 
 	}
 
@@ -4664,6 +4835,22 @@ void ScintillaDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal
 
 void ScintillaDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* ScintillaDocument_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualScintillaDocument*)(self) )->protectedbase_sender();
+}
+
+int ScintillaDocument_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualScintillaDocument*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int ScintillaDocument_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualScintillaDocument*)(self) )->protectedbase_receivers(signal);
+}
+
+bool ScintillaDocument_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualScintillaDocument*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* ScintillaDocument_staticMetaObject() { return &ScintillaDocument::staticMetaObject; }
@@ -5817,6 +6004,97 @@ public:
 	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		ScintillaEdit::disconnectNotify(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_setViewportMargins(int left, int top, int right, int bottom) {
+
+		ScintillaEdit::setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+	}
+
+	// Wrapper to allow calling protected method
+	QMargins* protectedbase_viewportMargins() const {
+
+		return new QMargins(ScintillaEdit::viewportMargins());
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		ScintillaEdit::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		ScintillaEdit::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		ScintillaEdit::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		ScintillaEdit::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		ScintillaEdit::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return ScintillaEdit::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return ScintillaEdit::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return ScintillaEdit::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return ScintillaEdit::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return ScintillaEdit::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return ScintillaEdit::isSignalConnected(*signal);
 
 	}
 
@@ -9820,6 +10098,58 @@ void ScintillaEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void ScintillaEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void ScintillaEdit_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	( (MiqtVirtualScintillaEdit*)(self) )->protectedbase_setViewportMargins(left, top, right, bottom);
+}
+
+QMargins* ScintillaEdit_protectedbase_viewportMargins(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->protectedbase_viewportMargins();
+}
+
+void ScintillaEdit_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualScintillaEdit*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void ScintillaEdit_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualScintillaEdit*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void ScintillaEdit_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualScintillaEdit*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void ScintillaEdit_protectedbase_create(void* self) {
+	( (MiqtVirtualScintillaEdit*)(self) )->protectedbase_create();
+}
+
+void ScintillaEdit_protectedbase_destroy(void* self) {
+	( (MiqtVirtualScintillaEdit*)(self) )->protectedbase_destroy();
+}
+
+bool ScintillaEdit_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->protectedbase_focusNextChild();
+}
+
+bool ScintillaEdit_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* ScintillaEdit_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->protectedbase_sender();
+}
+
+int ScintillaEdit_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int ScintillaEdit_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->protectedbase_receivers(signal);
+}
+
+bool ScintillaEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* ScintillaEdit_staticMetaObject() { return &ScintillaEdit::staticMetaObject; }

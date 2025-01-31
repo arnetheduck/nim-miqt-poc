@@ -174,6 +174,10 @@ proc fcQsciLexerBatch_virtualbase_childEvent(self: pointer, event: pointer): voi
 proc fcQsciLexerBatch_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerBatch_virtualbase_customEvent".}
 proc fcQsciLexerBatch_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerBatch_virtualbase_connectNotify".}
 proc fcQsciLexerBatch_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerBatch_virtualbase_disconnectNotify".}
+proc fcQsciLexerBatch_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerBatch_protectedbase_sender".}
+proc fcQsciLexerBatch_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerBatch_protectedbase_senderSignalIndex".}
+proc fcQsciLexerBatch_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerBatch_protectedbase_receivers".}
+proc fcQsciLexerBatch_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerBatch_protectedbase_isSignalConnected".}
 proc fcQsciLexerBatch_new(vtbl: pointer, ): ptr cQsciLexerBatch {.importc: "QsciLexerBatch_new".}
 proc fcQsciLexerBatch_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerBatch {.importc: "QsciLexerBatch_new2".}
 proc fcQsciLexerBatch_staticMetaObject(): pointer {.importc: "QsciLexerBatch_staticMetaObject".}
@@ -763,6 +767,18 @@ proc miqt_exec_callback_cQsciLexerBatch_disconnectNotify(vtbl: pointer, self: po
   let self = QsciLexerBatch(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerBatch_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cint =
+  fcQsciLexerBatch_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexerbatch_types.QsciLexerBatch, signal: cstring): cint =
+  fcQsciLexerBatch_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexerbatch_types.QsciLexerBatch, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerBatch_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexerbatch_types.QsciLexerBatch,
     vtbl: ref QsciLexerBatchVTable = nil): gen_qscilexerbatch_types.QsciLexerBatch =

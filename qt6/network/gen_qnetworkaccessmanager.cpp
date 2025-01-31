@@ -329,6 +329,57 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of struct miqt_string */  protectedbase_supportedSchemesImplementation() const {
+
+		QStringList _ret = QNetworkAccessManager::supportedSchemesImplementation();
+		// Convert QList<> from C++ memory to manually-managed C memory
+		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			QString _lv_ret = _ret[i];
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray _lv_b = _lv_ret.toUtf8();
+			struct miqt_string _lv_ms;
+			_lv_ms.len = _lv_b.length();
+			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+			_arr[i] = _lv_ms;
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QNetworkAccessManager::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QNetworkAccessManager::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QNetworkAccessManager::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QNetworkAccessManager::isSignalConnected(*signal);
+
+	}
+
 };
 
 QNetworkAccessManager* QNetworkAccessManager_new(struct QNetworkAccessManager_VTable* vtbl) {
@@ -798,6 +849,26 @@ void QNetworkAccessManager_virtualbase_connectNotify(void* self, QMetaMethod* si
 
 void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedbase_supportedSchemesImplementation(const void* self) {
+	return ( (const MiqtVirtualQNetworkAccessManager*)(self) )->protectedbase_supportedSchemesImplementation();
+}
+
+QObject* QNetworkAccessManager_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQNetworkAccessManager*)(self) )->protectedbase_sender();
+}
+
+int QNetworkAccessManager_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQNetworkAccessManager*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QNetworkAccessManager_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQNetworkAccessManager*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QNetworkAccessManager_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQNetworkAccessManager*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QNetworkAccessManager_staticMetaObject() { return &QNetworkAccessManager::staticMetaObject; }

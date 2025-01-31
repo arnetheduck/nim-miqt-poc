@@ -967,6 +967,50 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	bool protectedbase_readProperties(QSettings* qs, struct miqt_string prefix) {
+		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+		return QsciLexerFortran77::readProperties(*qs, prefix_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_writeProperties(QSettings* qs, struct miqt_string prefix) const {
+		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+		return QsciLexerFortran77::writeProperties(*qs, prefix_QString);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QsciLexerFortran77::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QsciLexerFortran77::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QsciLexerFortran77::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QsciLexerFortran77::isSignalConnected(*signal);
+
+	}
+
 };
 
 QsciLexerFortran77* QsciLexerFortran77_new(struct QsciLexerFortran77_VTable* vtbl) {
@@ -1284,6 +1328,30 @@ void QsciLexerFortran77_virtualbase_connectNotify(void* self, QMetaMethod* signa
 
 void QsciLexerFortran77_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerFortran77*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+bool QsciLexerFortran77_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
+	return ( (MiqtVirtualQsciLexerFortran77*)(self) )->protectedbase_readProperties(qs, prefix);
+}
+
+bool QsciLexerFortran77_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
+	return ( (const MiqtVirtualQsciLexerFortran77*)(self) )->protectedbase_writeProperties(qs, prefix);
+}
+
+QObject* QsciLexerFortran77_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQsciLexerFortran77*)(self) )->protectedbase_sender();
+}
+
+int QsciLexerFortran77_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQsciLexerFortran77*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QsciLexerFortran77_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQsciLexerFortran77*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QsciLexerFortran77_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQsciLexerFortran77*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QsciLexerFortran77_staticMetaObject() { return &QsciLexerFortran77::staticMetaObject; }

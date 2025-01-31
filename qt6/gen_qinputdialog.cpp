@@ -1178,6 +1178,76 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_adjustPosition(QWidget* param1) {
+
+		QInputDialog::adjustPosition(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QInputDialog::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QInputDialog::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QInputDialog::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QInputDialog::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QInputDialog::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QInputDialog::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QInputDialog::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QInputDialog::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QInputDialog::isSignalConnected(*signal);
+
+	}
+
 };
 
 QInputDialog* QInputDialog_new(struct QInputDialog_VTable* vtbl, QWidget* parent) {
@@ -2194,6 +2264,46 @@ void QInputDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QInputDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QInputDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	( (MiqtVirtualQInputDialog*)(self) )->protectedbase_adjustPosition(param1);
+}
+
+void QInputDialog_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQInputDialog*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QInputDialog_protectedbase_create(void* self) {
+	( (MiqtVirtualQInputDialog*)(self) )->protectedbase_create();
+}
+
+void QInputDialog_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQInputDialog*)(self) )->protectedbase_destroy();
+}
+
+bool QInputDialog_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQInputDialog*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QInputDialog_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQInputDialog*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QInputDialog_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQInputDialog*)(self) )->protectedbase_sender();
+}
+
+int QInputDialog_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQInputDialog*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QInputDialog_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQInputDialog*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QInputDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQInputDialog*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QInputDialog_staticMetaObject() { return &QInputDialog::staticMetaObject; }

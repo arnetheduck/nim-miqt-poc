@@ -284,6 +284,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QScriptEngine::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QScriptEngine::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QScriptEngine::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QScriptEngine::isSignalConnected(*signal);
+
+	}
+
 };
 
 QScriptEngine* QScriptEngine_new(struct QScriptEngine_VTable* vtbl) {
@@ -723,6 +751,22 @@ void QScriptEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QScriptEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QScriptEngine_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQScriptEngine*)(self) )->protectedbase_sender();
+}
+
+int QScriptEngine_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQScriptEngine*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QScriptEngine_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQScriptEngine*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QScriptEngine_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQScriptEngine*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QScriptEngine_staticMetaObject() { return &QScriptEngine::staticMetaObject; }

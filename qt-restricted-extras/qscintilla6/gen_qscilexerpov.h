@@ -165,6 +165,12 @@ void QsciLexerPOV_virtualbase_childEvent(void* self, QChildEvent* event);
 void QsciLexerPOV_virtualbase_customEvent(void* self, QEvent* event);
 void QsciLexerPOV_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QsciLexerPOV_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerPOV_protectedbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerPOV_protectedbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerPOV_protectedbase_sender(const void* self);
+int QsciLexerPOV_protectedbase_senderSignalIndex(const void* self);
+int QsciLexerPOV_protectedbase_receivers(const void* self, const char* signal);
+bool QsciLexerPOV_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QsciLexerPOV_staticMetaObject();
 void QsciLexerPOV_delete(QsciLexerPOV* self);
 

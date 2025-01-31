@@ -117,6 +117,12 @@ void QWaveDecoder_virtualbase_childEvent(void* self, QChildEvent* event);
 void QWaveDecoder_virtualbase_customEvent(void* self, QEvent* event);
 void QWaveDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QWaveDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QWaveDecoder_protectedbase_setOpenMode(void* self, int openMode);
+void QWaveDecoder_protectedbase_setErrorString(void* self, struct miqt_string errorString);
+QObject* QWaveDecoder_protectedbase_sender(const void* self);
+int QWaveDecoder_protectedbase_senderSignalIndex(const void* self);
+int QWaveDecoder_protectedbase_receivers(const void* self, const char* signal);
+bool QWaveDecoder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QWaveDecoder_staticMetaObject();
 void QWaveDecoder_delete(QWaveDecoder* self);
 

@@ -282,6 +282,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QAudioRecorder::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QAudioRecorder::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QAudioRecorder::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QAudioRecorder::isSignalConnected(*signal);
+
+	}
+
 };
 
 QAudioRecorder* QAudioRecorder_new(struct QAudioRecorder_VTable* vtbl) {
@@ -526,6 +554,22 @@ void QAudioRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAudioRecorder_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQAudioRecorder*)(self) )->protectedbase_sender();
+}
+
+int QAudioRecorder_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQAudioRecorder*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QAudioRecorder_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQAudioRecorder*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QAudioRecorder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQAudioRecorder*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QAudioRecorder_staticMetaObject() { return &QAudioRecorder::staticMetaObject; }

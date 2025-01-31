@@ -377,6 +377,41 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_setFormat(QTextFormat* format) {
+
+		QTextFrame::setFormat(*format);
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QTextFrame::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QTextFrame::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QTextFrame::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QTextFrame::isSignalConnected(*signal);
+
+	}
+
 };
 
 QTextFrame* QTextFrame_new(struct QTextFrame_VTable* vtbl, QTextDocument* doc) {
@@ -527,6 +562,26 @@ void QTextFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QTextFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextFrame*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTextFrame_protectedbase_setFormat(void* self, QTextFormat* format) {
+	( (MiqtVirtualQTextFrame*)(self) )->protectedbase_setFormat(format);
+}
+
+QObject* QTextFrame_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQTextFrame*)(self) )->protectedbase_sender();
+}
+
+int QTextFrame_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQTextFrame*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QTextFrame_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQTextFrame*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QTextFrame_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQTextFrame*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QTextFrame_staticMetaObject() { return &QTextFrame::staticMetaObject; }

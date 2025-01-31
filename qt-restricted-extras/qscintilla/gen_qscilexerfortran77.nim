@@ -188,6 +188,12 @@ proc fcQsciLexerFortran77_virtualbase_childEvent(self: pointer, event: pointer):
 proc fcQsciLexerFortran77_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerFortran77_virtualbase_customEvent".}
 proc fcQsciLexerFortran77_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerFortran77_virtualbase_connectNotify".}
 proc fcQsciLexerFortran77_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerFortran77_virtualbase_disconnectNotify".}
+proc fcQsciLexerFortran77_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerFortran77_protectedbase_readProperties".}
+proc fcQsciLexerFortran77_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerFortran77_protectedbase_writeProperties".}
+proc fcQsciLexerFortran77_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerFortran77_protectedbase_sender".}
+proc fcQsciLexerFortran77_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerFortran77_protectedbase_senderSignalIndex".}
+proc fcQsciLexerFortran77_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerFortran77_protectedbase_receivers".}
+proc fcQsciLexerFortran77_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerFortran77_protectedbase_isSignalConnected".}
 proc fcQsciLexerFortran77_new(vtbl: pointer, ): ptr cQsciLexerFortran77 {.importc: "QsciLexerFortran77_new".}
 proc fcQsciLexerFortran77_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerFortran77 {.importc: "QsciLexerFortran77_new2".}
 proc fcQsciLexerFortran77_staticMetaObject(): pointer {.importc: "QsciLexerFortran77_staticMetaObject".}
@@ -812,6 +818,24 @@ proc miqt_exec_callback_cQsciLexerFortran77_disconnectNotify(vtbl: pointer, self
   let self = QsciLexerFortran77(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexerfortran77_types.QsciLexerFortran77, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerFortran77_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexerfortran77_types.QsciLexerFortran77, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerFortran77_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexerfortran77_types.QsciLexerFortran77, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerFortran77_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexerfortran77_types.QsciLexerFortran77, ): cint =
+  fcQsciLexerFortran77_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexerfortran77_types.QsciLexerFortran77, signal: cstring): cint =
+  fcQsciLexerFortran77_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexerfortran77_types.QsciLexerFortran77, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerFortran77_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexerfortran77_types.QsciLexerFortran77,
     vtbl: ref QsciLexerFortran77VTable = nil): gen_qscilexerfortran77_types.QsciLexerFortran77 =

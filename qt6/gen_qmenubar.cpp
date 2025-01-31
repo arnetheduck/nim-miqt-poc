@@ -1097,6 +1097,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QMenuBar::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QMenuBar::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QMenuBar::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QMenuBar::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QMenuBar::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QMenuBar::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QMenuBar::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QMenuBar::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QMenuBar::isSignalConnected(*signal);
+
+	}
+
 };
 
 QMenuBar* QMenuBar_new(struct QMenuBar_VTable* vtbl, QWidget* parent) {
@@ -1492,6 +1555,42 @@ void QMenuBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QMenuBar_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQMenuBar*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QMenuBar_protectedbase_create(void* self) {
+	( (MiqtVirtualQMenuBar*)(self) )->protectedbase_create();
+}
+
+void QMenuBar_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQMenuBar*)(self) )->protectedbase_destroy();
+}
+
+bool QMenuBar_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQMenuBar*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QMenuBar_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQMenuBar*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QMenuBar_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQMenuBar*)(self) )->protectedbase_sender();
+}
+
+int QMenuBar_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQMenuBar*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QMenuBar_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQMenuBar*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QMenuBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQMenuBar*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QMenuBar_staticMetaObject() { return &QMenuBar::staticMetaObject; }

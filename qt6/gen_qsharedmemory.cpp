@@ -237,6 +237,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QSharedMemory::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QSharedMemory::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QSharedMemory::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QSharedMemory::isSignalConnected(*signal);
+
+	}
+
 };
 
 QSharedMemory* QSharedMemory_new(struct QSharedMemory_VTable* vtbl) {
@@ -441,6 +469,22 @@ void QSharedMemory_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSharedMemory_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQSharedMemory*)(self) )->protectedbase_sender();
+}
+
+int QSharedMemory_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQSharedMemory*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QSharedMemory_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQSharedMemory*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QSharedMemory_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQSharedMemory*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QSharedMemory_staticMetaObject() { return &QSharedMemory::staticMetaObject; }

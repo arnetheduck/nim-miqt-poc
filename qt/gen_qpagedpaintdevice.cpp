@@ -215,6 +215,22 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QPageLayout* protectedbase_devicePageLayout() const {
+
+		return new QPageLayout(QPagedPaintDevice::devicePageLayout());
+
+	}
+
+	// Wrapper to allow calling protected method
+	QPageLayout* protectedbase_devicePageLayout2() {
+
+		QPageLayout& _ret = QPagedPaintDevice::devicePageLayout();
+		// Cast returned reference into pointer
+		return &_ret;
+
+	}
+
 };
 
 QPagedPaintDevice* QPagedPaintDevice_new(struct QPagedPaintDevice_VTable* vtbl) {
@@ -308,6 +324,14 @@ QPaintDevice* QPagedPaintDevice_virtualbase_redirected(const void* self, QPoint*
 
 QPainter* QPagedPaintDevice_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_sharedPainter();
+}
+
+QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout(const void* self) {
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->protectedbase_devicePageLayout();
+}
+
+QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout2(void* self) {
+	return ( (MiqtVirtualQPagedPaintDevice*)(self) )->protectedbase_devicePageLayout2();
 }
 
 void QPagedPaintDevice_delete(QPagedPaintDevice* self) {

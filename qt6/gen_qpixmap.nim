@@ -157,6 +157,8 @@ proc fcQPixmap_virtualbase_metric(self: pointer, param1: cint): cint {.importc: 
 proc fcQPixmap_virtualbase_initPainter(self: pointer, painter: pointer): void {.importc: "QPixmap_virtualbase_initPainter".}
 proc fcQPixmap_virtualbase_redirected(self: pointer, offset: pointer): pointer {.importc: "QPixmap_virtualbase_redirected".}
 proc fcQPixmap_virtualbase_sharedPainter(self: pointer, ): pointer {.importc: "QPixmap_virtualbase_sharedPainter".}
+proc fcQPixmap_protectedbase_fromImageInPlace(self: pointer, image: pointer): pointer {.importc: "QPixmap_protectedbase_fromImageInPlace".}
+proc fcQPixmap_protectedbase_fromImageInPlace2(self: pointer, image: pointer, flags: cint): pointer {.importc: "QPixmap_protectedbase_fromImageInPlace2".}
 proc fcQPixmap_new(vtbl: pointer, ): ptr cQPixmap {.importc: "QPixmap_new".}
 proc fcQPixmap_new2(vtbl: pointer, w: cint, h: cint): ptr cQPixmap {.importc: "QPixmap_new2".}
 proc fcQPixmap_new3(vtbl: pointer, param1: pointer): ptr cQPixmap {.importc: "QPixmap_new3".}
@@ -451,6 +453,12 @@ proc miqt_exec_callback_cQPixmap_sharedPainter(vtbl: pointer, self: pointer): po
   let self = QPixmap(h: self)
   let virtualReturn = vtbl[].sharedPainter(self)
   virtualReturn.h
+
+proc fromImageInPlace*(self: gen_qpixmap_types.QPixmap, image: gen_qimage_types.QImage): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQPixmap_protectedbase_fromImageInPlace(self.himage.h))
+
+proc fromImageInPlace*(self: gen_qpixmap_types.QPixmap, image: gen_qimage_types.QImage, flags: cint): gen_qpixmap_types.QPixmap =
+  gen_qpixmap_types.QPixmap(h: fcQPixmap_protectedbase_fromImageInPlace2(self.himage.h, cint(flags)))
 
 proc create*(T: type gen_qpixmap_types.QPixmap,
     vtbl: ref QPixmapVTable = nil): gen_qpixmap_types.QPixmap =

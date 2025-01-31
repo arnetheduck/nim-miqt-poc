@@ -84,7 +84,6 @@ void QRadioData_alternativeFrequenciesEnabledChanged(QRadioData* self, bool enab
 void QRadioData_connect_alternativeFrequenciesEnabledChanged(QRadioData* self, intptr_t slot);
 void QRadioData_errorWithError(QRadioData* self, int error);
 void QRadioData_connect_errorWithError(QRadioData* self, intptr_t slot);
-bool QRadioData_setMediaObject(QRadioData* self, QMediaObject* mediaObject);
 struct miqt_string QRadioData_tr2(const char* s, const char* c);
 struct miqt_string QRadioData_tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioData_trUtf82(const char* s, const char* c);
@@ -101,6 +100,10 @@ void QRadioData_virtualbase_childEvent(void* self, QChildEvent* event);
 void QRadioData_virtualbase_customEvent(void* self, QEvent* event);
 void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QRadioData_protectedbase_sender(const void* self);
+int QRadioData_protectedbase_senderSignalIndex(const void* self);
+int QRadioData_protectedbase_receivers(const void* self, const char* signal);
+bool QRadioData_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QRadioData_staticMetaObject();
 void QRadioData_delete(QRadioData* self);
 

@@ -1088,6 +1088,69 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QFocusFrame::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QFocusFrame::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QFocusFrame::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QFocusFrame::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QFocusFrame::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QFocusFrame::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QFocusFrame::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QFocusFrame::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QFocusFrame::isSignalConnected(*signal);
+
+	}
+
 };
 
 QFocusFrame* QFocusFrame_new(struct QFocusFrame_VTable* vtbl, QWidget* parent) {
@@ -1357,6 +1420,42 @@ void QFocusFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFocusFrame*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QFocusFrame_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQFocusFrame*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QFocusFrame_protectedbase_create(void* self) {
+	( (MiqtVirtualQFocusFrame*)(self) )->protectedbase_create();
+}
+
+void QFocusFrame_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQFocusFrame*)(self) )->protectedbase_destroy();
+}
+
+bool QFocusFrame_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQFocusFrame*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QFocusFrame_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQFocusFrame*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QFocusFrame_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->protectedbase_sender();
+}
+
+int QFocusFrame_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QFocusFrame_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QFocusFrame_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QFocusFrame_staticMetaObject() { return &QFocusFrame::staticMetaObject; }

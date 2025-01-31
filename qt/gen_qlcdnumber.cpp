@@ -1070,6 +1070,83 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_drawFrame(QPainter* param1) {
+
+		QLCDNumber::drawFrame(param1);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_initStyleOption(QStyleOptionFrame* option) const {
+
+		QLCDNumber::initStyleOption(option);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QLCDNumber::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_create() {
+
+		QLCDNumber::create();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_destroy() {
+
+		QLCDNumber::destroy();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusNextChild() {
+
+		return QLCDNumber::focusNextChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_focusPreviousChild() {
+
+		return QLCDNumber::focusPreviousChild();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QLCDNumber::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QLCDNumber::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QLCDNumber::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QLCDNumber::isSignalConnected(*signal);
+
+	}
+
 };
 
 QLCDNumber* QLCDNumber_new(struct QLCDNumber_VTable* vtbl, QWidget* parent) {
@@ -1470,6 +1547,50 @@ void QLCDNumber_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QLCDNumber_protectedbase_drawFrame(void* self, QPainter* param1) {
+	( (MiqtVirtualQLCDNumber*)(self) )->protectedbase_drawFrame(param1);
+}
+
+void QLCDNumber_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQLCDNumber*)(self) )->protectedbase_initStyleOption(option);
+}
+
+void QLCDNumber_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQLCDNumber*)(self) )->protectedbase_updateMicroFocus();
+}
+
+void QLCDNumber_protectedbase_create(void* self) {
+	( (MiqtVirtualQLCDNumber*)(self) )->protectedbase_create();
+}
+
+void QLCDNumber_protectedbase_destroy(void* self) {
+	( (MiqtVirtualQLCDNumber*)(self) )->protectedbase_destroy();
+}
+
+bool QLCDNumber_protectedbase_focusNextChild(void* self) {
+	return ( (MiqtVirtualQLCDNumber*)(self) )->protectedbase_focusNextChild();
+}
+
+bool QLCDNumber_protectedbase_focusPreviousChild(void* self) {
+	return ( (MiqtVirtualQLCDNumber*)(self) )->protectedbase_focusPreviousChild();
+}
+
+QObject* QLCDNumber_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->protectedbase_sender();
+}
+
+int QLCDNumber_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QLCDNumber_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QLCDNumber_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QLCDNumber_staticMetaObject() { return &QLCDNumber::staticMetaObject; }

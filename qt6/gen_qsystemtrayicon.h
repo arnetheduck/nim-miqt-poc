@@ -79,7 +79,6 @@ void QSystemTrayIcon_activated(QSystemTrayIcon* self, int reason);
 void QSystemTrayIcon_connect_activated(QSystemTrayIcon* self, intptr_t slot);
 void QSystemTrayIcon_messageClicked(QSystemTrayIcon* self);
 void QSystemTrayIcon_connect_messageClicked(QSystemTrayIcon* self, intptr_t slot);
-bool QSystemTrayIcon_event(QSystemTrayIcon* self, QEvent* event);
 struct miqt_string QSystemTrayIcon_tr2(const char* s, const char* c);
 struct miqt_string QSystemTrayIcon_tr3(const char* s, const char* c, int n);
 void QSystemTrayIcon_showMessage4(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon, int msecs);
@@ -95,6 +94,10 @@ void QSystemTrayIcon_virtualbase_childEvent(void* self, QChildEvent* event);
 void QSystemTrayIcon_virtualbase_customEvent(void* self, QEvent* event);
 void QSystemTrayIcon_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSystemTrayIcon_protectedbase_sender(const void* self);
+int QSystemTrayIcon_protectedbase_senderSignalIndex(const void* self);
+int QSystemTrayIcon_protectedbase_receivers(const void* self, const char* signal);
+bool QSystemTrayIcon_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QSystemTrayIcon_staticMetaObject();
 void QSystemTrayIcon_delete(QSystemTrayIcon* self);
 

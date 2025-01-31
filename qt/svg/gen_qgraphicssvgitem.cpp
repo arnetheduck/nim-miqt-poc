@@ -975,6 +975,62 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	void protectedbase_updateMicroFocus() {
+
+		QGraphicsSvgItem::updateMicroFocus();
+
+	}
+
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QGraphicsSvgItem::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QGraphicsSvgItem::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QGraphicsSvgItem::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QGraphicsSvgItem::isSignalConnected(*signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_addToIndex() {
+
+		QGraphicsSvgItem::addToIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_removeFromIndex() {
+
+		QGraphicsSvgItem::removeFromIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	void protectedbase_prepareGeometryChange() {
+
+		QGraphicsSvgItem::prepareGeometryChange();
+
+	}
+
 };
 
 QGraphicsSvgItem* QGraphicsSvgItem_new(struct QGraphicsSvgItem_VTable* vtbl) {
@@ -1307,6 +1363,38 @@ void QGraphicsSvgItem_virtualbase_setExtension(void* self, int extension, QVaria
 
 QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* variant) {
 	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_extension(variant);
+}
+
+void QGraphicsSvgItem_protectedbase_updateMicroFocus(void* self) {
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_updateMicroFocus();
+}
+
+QObject* QGraphicsSvgItem_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_sender();
+}
+
+int QGraphicsSvgItem_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QGraphicsSvgItem_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QGraphicsSvgItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_isSignalConnected(signal);
+}
+
+void QGraphicsSvgItem_protectedbase_addToIndex(void* self) {
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_addToIndex();
+}
+
+void QGraphicsSvgItem_protectedbase_removeFromIndex(void* self) {
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_removeFromIndex();
+}
+
+void QGraphicsSvgItem_protectedbase_prepareGeometryChange(void* self) {
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->protectedbase_prepareGeometryChange();
 }
 
 const QMetaObject* QGraphicsSvgItem_staticMetaObject() { return &QGraphicsSvgItem::staticMetaObject; }

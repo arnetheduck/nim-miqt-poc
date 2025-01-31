@@ -93,10 +93,6 @@ void QNetworkReply_uploadProgress(QNetworkReply* self, long long bytesSent, long
 void QNetworkReply_connect_uploadProgress(QNetworkReply* self, intptr_t slot);
 void QNetworkReply_downloadProgress(QNetworkReply* self, long long bytesReceived, long long bytesTotal);
 void QNetworkReply_connect_downloadProgress(QNetworkReply* self, intptr_t slot);
-long long QNetworkReply_writeData(QNetworkReply* self, const char* data, long long len);
-void QNetworkReply_sslConfigurationImplementation(const QNetworkReply* self, QSslConfiguration* param1);
-void QNetworkReply_setSslConfigurationImplementation(QNetworkReply* self, QSslConfiguration* sslConfigurationImplementation);
-void QNetworkReply_ignoreSslErrorsImplementation(QNetworkReply* self, struct miqt_array /* of QSslError* */  param1);
 struct miqt_string QNetworkReply_tr2(const char* s, const char* c);
 struct miqt_string QNetworkReply_tr3(const char* s, const char* c, int n);
 const QMetaObject* QNetworkReply_staticMetaObject();

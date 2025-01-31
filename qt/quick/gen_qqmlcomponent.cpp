@@ -317,6 +317,34 @@ public:
 
 	}
 
+	// Wrapper to allow calling protected method
+	QObject* protectedbase_sender() const {
+
+		return QQmlComponent::sender();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_senderSignalIndex() const {
+
+		return QQmlComponent::senderSignalIndex();
+
+	}
+
+	// Wrapper to allow calling protected method
+	int protectedbase_receivers(const char* signal) const {
+
+		return QQmlComponent::receivers(signal);
+
+	}
+
+	// Wrapper to allow calling protected method
+	bool protectedbase_isSignalConnected(QMetaMethod* signal) const {
+
+		return QQmlComponent::isSignalConnected(*signal);
+
+	}
+
 };
 
 QQmlComponent* QQmlComponent_new(struct QQmlComponent_VTable* vtbl) {
@@ -677,6 +705,22 @@ void QQmlComponent_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 void QQmlComponent_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlComponent*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QQmlComponent_protectedbase_sender(const void* self) {
+	return ( (const MiqtVirtualQQmlComponent*)(self) )->protectedbase_sender();
+}
+
+int QQmlComponent_protectedbase_senderSignalIndex(const void* self) {
+	return ( (const MiqtVirtualQQmlComponent*)(self) )->protectedbase_senderSignalIndex();
+}
+
+int QQmlComponent_protectedbase_receivers(const void* self, const char* signal) {
+	return ( (const MiqtVirtualQQmlComponent*)(self) )->protectedbase_receivers(signal);
+}
+
+bool QQmlComponent_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	return ( (const MiqtVirtualQQmlComponent*)(self) )->protectedbase_isSignalConnected(signal);
 }
 
 const QMetaObject* QQmlComponent_staticMetaObject() { return &QQmlComponent::staticMetaObject; }

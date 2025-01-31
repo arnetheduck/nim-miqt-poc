@@ -134,7 +134,6 @@ void QMediaRecorder_availabilityChanged(QMediaRecorder* self, bool available);
 void QMediaRecorder_connect_availabilityChanged(QMediaRecorder* self, intptr_t slot);
 void QMediaRecorder_availabilityChangedWithAvailability(QMediaRecorder* self, int availability);
 void QMediaRecorder_connect_availabilityChangedWithAvailability(QMediaRecorder* self, intptr_t slot);
-bool QMediaRecorder_setMediaObject(QMediaRecorder* self, QMediaObject* object);
 struct miqt_string QMediaRecorder_tr2(const char* s, const char* c);
 struct miqt_string QMediaRecorder_tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaRecorder_trUtf82(const char* s, const char* c);
@@ -159,6 +158,10 @@ void QMediaRecorder_virtualbase_childEvent(void* self, QChildEvent* event);
 void QMediaRecorder_virtualbase_customEvent(void* self, QEvent* event);
 void QMediaRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QMediaRecorder_protectedbase_sender(const void* self);
+int QMediaRecorder_protectedbase_senderSignalIndex(const void* self);
+int QMediaRecorder_protectedbase_receivers(const void* self, const char* signal);
+bool QMediaRecorder_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 const QMetaObject* QMediaRecorder_staticMetaObject();
 void QMediaRecorder_delete(QMediaRecorder* self);
 

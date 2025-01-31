@@ -300,6 +300,12 @@ proc fcQsciLexerHTML_virtualbase_childEvent(self: pointer, event: pointer): void
 proc fcQsciLexerHTML_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QsciLexerHTML_virtualbase_customEvent".}
 proc fcQsciLexerHTML_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerHTML_virtualbase_connectNotify".}
 proc fcQsciLexerHTML_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QsciLexerHTML_virtualbase_disconnectNotify".}
+proc fcQsciLexerHTML_protectedbase_readProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerHTML_protectedbase_readProperties".}
+proc fcQsciLexerHTML_protectedbase_writeProperties(self: pointer, qs: pointer, prefix: struct_miqt_string): bool {.importc: "QsciLexerHTML_protectedbase_writeProperties".}
+proc fcQsciLexerHTML_protectedbase_sender(self: pointer, ): pointer {.importc: "QsciLexerHTML_protectedbase_sender".}
+proc fcQsciLexerHTML_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QsciLexerHTML_protectedbase_senderSignalIndex".}
+proc fcQsciLexerHTML_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QsciLexerHTML_protectedbase_receivers".}
+proc fcQsciLexerHTML_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QsciLexerHTML_protectedbase_isSignalConnected".}
 proc fcQsciLexerHTML_new(vtbl: pointer, ): ptr cQsciLexerHTML {.importc: "QsciLexerHTML_new".}
 proc fcQsciLexerHTML_new2(vtbl: pointer, parent: pointer): ptr cQsciLexerHTML {.importc: "QsciLexerHTML_new2".}
 proc fcQsciLexerHTML_staticMetaObject(): pointer {.importc: "QsciLexerHTML_staticMetaObject".}
@@ -985,6 +991,24 @@ proc miqt_exec_callback_cQsciLexerHTML_disconnectNotify(vtbl: pointer, self: poi
   let self = QsciLexerHTML(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc readProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerHTML_protectedbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc writeProperties*(self: gen_qscilexerhtml_types.QsciLexerHTML, qs: gen_qsettings_types.QSettings, prefix: string): bool =
+  fcQsciLexerHTML_protectedbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
+
+proc sender*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQsciLexerHTML_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qscilexerhtml_types.QsciLexerHTML, ): cint =
+  fcQsciLexerHTML_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qscilexerhtml_types.QsciLexerHTML, signal: cstring): cint =
+  fcQsciLexerHTML_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qscilexerhtml_types.QsciLexerHTML, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQsciLexerHTML_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qscilexerhtml_types.QsciLexerHTML,
     vtbl: ref QsciLexerHTMLVTable = nil): gen_qscilexerhtml_types.QsciLexerHTML =
