@@ -49,6 +49,7 @@ QSslServer* QSslServer_new2(QObject* parent);
 void QSslServer_virtbase(QSslServer* src, QTcpServer** outptr_QTcpServer);
 QMetaObject* QSslServer_metaObject(const QSslServer* self);
 void* QSslServer_metacast(QSslServer* self, const char* param1);
+int QSslServer_metacall(QSslServer* self, int param1, int param2, void** param3);
 struct miqt_string QSslServer_tr(const char* s);
 void QSslServer_setSslConfiguration(QSslServer* self, QSslConfiguration* sslConfiguration);
 QSslConfiguration* QSslServer_sslConfiguration(const QSslServer* self);
@@ -73,6 +74,8 @@ void QSslServer_connect_startedEncryptionHandshake(QSslServer* self, intptr_t sl
 void QSslServer_incomingConnection(QSslServer* self, intptr_t socket);
 struct miqt_string QSslServer_tr2(const char* s, const char* c);
 struct miqt_string QSslServer_tr3(const char* s, const char* c, int n);
+bool QSslServer_override_virtual_metacall(void* self, intptr_t slot);
+int QSslServer_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QSslServer_override_virtual_incomingConnection(void* self, intptr_t slot);
 void QSslServer_virtualbase_incomingConnection(void* self, intptr_t socket);
 bool QSslServer_override_virtual_hasPendingConnections(void* self, intptr_t slot);

@@ -1,0 +1,255 @@
+import Qt5Quick_libs
+
+{.push raises: [].}
+
+from system/ansi_c import c_free
+
+type
+  struct_miqt_string {.used.} = object
+    len: csize_t
+    data: cstring
+
+  struct_miqt_array {.used.} = object
+    len: csize_t
+    data: pointer
+
+  struct_miqt_map {.used.} = object
+    len: csize_t
+    keys: pointer
+    values: pointer
+
+  miqt_uintptr_t {.importc: "uintptr_t", header: "stdint.h", used.} = uint
+  miqt_intptr_t {.importc: "intptr_t", header: "stdint.h", used.} = int
+
+func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
+  if v.len > 0:
+    result = newString(v.len)
+    when nimvm:
+      for i, c in v:
+        result[i] = cast[char](c)
+    else:
+      copyMem(addr result[0], unsafeAddr v[0], v.len)
+
+const cflags = gorge("pkg-config -cflags Qt5Quick")
+{.compile("gen_qsgabstractrenderer.cpp", cflags).}
+
+
+type QSGAbstractRendererClearModeBit* = cint
+const
+  QSGAbstractRendererClearColorBuffer* = 1
+  QSGAbstractRendererClearDepthBuffer* = 2
+  QSGAbstractRendererClearStencilBuffer* = 4
+
+
+
+type QSGAbstractRendererMatrixTransformFlag* = cint
+const
+  QSGAbstractRendererMatrixTransformFlipY* = 1
+
+
+
+import gen_qsgabstractrenderer_types
+export gen_qsgabstractrenderer_types
+
+import
+  gen_qcolor,
+  gen_qmatrix4x4,
+  gen_qobject,
+  gen_qobjectdefs,
+  gen_qrect,
+  gen_qsgnode,
+  gen_qsize
+export
+  gen_qcolor,
+  gen_qmatrix4x4,
+  gen_qobject,
+  gen_qobjectdefs,
+  gen_qrect,
+  gen_qsgnode,
+  gen_qsize
+
+type cQSGAbstractRenderer*{.exportc: "QSGAbstractRenderer", incompleteStruct.} = object
+
+proc fcQSGAbstractRenderer_metaObject(self: pointer, ): pointer {.importc: "QSGAbstractRenderer_metaObject".}
+proc fcQSGAbstractRenderer_metacast(self: pointer, param1: cstring): pointer {.importc: "QSGAbstractRenderer_metacast".}
+proc fcQSGAbstractRenderer_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QSGAbstractRenderer_metacall".}
+proc fcQSGAbstractRenderer_tr(s: cstring): struct_miqt_string {.importc: "QSGAbstractRenderer_tr".}
+proc fcQSGAbstractRenderer_trUtf8(s: cstring): struct_miqt_string {.importc: "QSGAbstractRenderer_trUtf8".}
+proc fcQSGAbstractRenderer_setRootNode(self: pointer, node: pointer): void {.importc: "QSGAbstractRenderer_setRootNode".}
+proc fcQSGAbstractRenderer_rootNode(self: pointer, ): pointer {.importc: "QSGAbstractRenderer_rootNode".}
+proc fcQSGAbstractRenderer_setDeviceRect(self: pointer, rect: pointer): void {.importc: "QSGAbstractRenderer_setDeviceRect".}
+proc fcQSGAbstractRenderer_setDeviceRectWithSize(self: pointer, size: pointer): void {.importc: "QSGAbstractRenderer_setDeviceRectWithSize".}
+proc fcQSGAbstractRenderer_deviceRect(self: pointer, ): pointer {.importc: "QSGAbstractRenderer_deviceRect".}
+proc fcQSGAbstractRenderer_setViewportRect(self: pointer, rect: pointer): void {.importc: "QSGAbstractRenderer_setViewportRect".}
+proc fcQSGAbstractRenderer_setViewportRectWithSize(self: pointer, size: pointer): void {.importc: "QSGAbstractRenderer_setViewportRectWithSize".}
+proc fcQSGAbstractRenderer_viewportRect(self: pointer, ): pointer {.importc: "QSGAbstractRenderer_viewportRect".}
+proc fcQSGAbstractRenderer_setProjectionMatrixToRect(self: pointer, rect: pointer): void {.importc: "QSGAbstractRenderer_setProjectionMatrixToRect".}
+proc fcQSGAbstractRenderer_setProjectionMatrixToRect2(self: pointer, rect: pointer, flags: cint): void {.importc: "QSGAbstractRenderer_setProjectionMatrixToRect2".}
+proc fcQSGAbstractRenderer_setProjectionMatrix(self: pointer, matrix: pointer): void {.importc: "QSGAbstractRenderer_setProjectionMatrix".}
+proc fcQSGAbstractRenderer_setProjectionMatrixWithNativeNDC(self: pointer, matrix: pointer): void {.importc: "QSGAbstractRenderer_setProjectionMatrixWithNativeNDC".}
+proc fcQSGAbstractRenderer_projectionMatrix(self: pointer, ): pointer {.importc: "QSGAbstractRenderer_projectionMatrix".}
+proc fcQSGAbstractRenderer_projectionMatrixWithNativeNDC(self: pointer, ): pointer {.importc: "QSGAbstractRenderer_projectionMatrixWithNativeNDC".}
+proc fcQSGAbstractRenderer_setClearColor(self: pointer, color: pointer): void {.importc: "QSGAbstractRenderer_setClearColor".}
+proc fcQSGAbstractRenderer_clearColor(self: pointer, ): pointer {.importc: "QSGAbstractRenderer_clearColor".}
+proc fcQSGAbstractRenderer_setClearMode(self: pointer, mode: cint): void {.importc: "QSGAbstractRenderer_setClearMode".}
+proc fcQSGAbstractRenderer_clearMode(self: pointer, ): cint {.importc: "QSGAbstractRenderer_clearMode".}
+proc fcQSGAbstractRenderer_renderScene(self: pointer, fboId: cuint): void {.importc: "QSGAbstractRenderer_renderScene".}
+proc fcQSGAbstractRenderer_sceneGraphChanged(self: pointer, ): void {.importc: "QSGAbstractRenderer_sceneGraphChanged".}
+proc fQSGAbstractRenderer_connect_sceneGraphChanged(self: pointer, slot: int) {.importc: "QSGAbstractRenderer_connect_sceneGraphChanged".}
+proc fcQSGAbstractRenderer_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGAbstractRenderer_tr2".}
+proc fcQSGAbstractRenderer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGAbstractRenderer_tr3".}
+proc fcQSGAbstractRenderer_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGAbstractRenderer_trUtf82".}
+proc fcQSGAbstractRenderer_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGAbstractRenderer_trUtf83".}
+proc fcQSGAbstractRenderer_delete(self: pointer) {.importc: "QSGAbstractRenderer_delete".}
+
+
+func init*(T: type QSGAbstractRenderer, h: ptr cQSGAbstractRenderer): QSGAbstractRenderer =
+  T(h: h)
+proc metaObject*(self: QSGAbstractRenderer, ): gen_qobjectdefs.QMetaObject =
+
+  gen_qobjectdefs.QMetaObject(h: fcQSGAbstractRenderer_metaObject(self.h))
+
+proc metacast*(self: QSGAbstractRenderer, param1: cstring): pointer =
+
+  fcQSGAbstractRenderer_metacast(self.h, param1)
+
+proc metacall*(self: QSGAbstractRenderer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+
+  fcQSGAbstractRenderer_metacall(self.h, cint(param1), param2, param3)
+
+proc tr*(_: type QSGAbstractRenderer, s: cstring): string =
+
+  let v_ms = fcQSGAbstractRenderer_tr(s)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc trUtf8*(_: type QSGAbstractRenderer, s: cstring): string =
+
+  let v_ms = fcQSGAbstractRenderer_trUtf8(s)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc setRootNode*(self: QSGAbstractRenderer, node: gen_qsgnode.QSGRootNode): void =
+
+  fcQSGAbstractRenderer_setRootNode(self.h, node.h)
+
+proc rootNode*(self: QSGAbstractRenderer, ): gen_qsgnode.QSGRootNode =
+
+  gen_qsgnode.QSGRootNode(h: fcQSGAbstractRenderer_rootNode(self.h))
+
+proc setDeviceRect*(self: QSGAbstractRenderer, rect: gen_qrect.QRect): void =
+
+  fcQSGAbstractRenderer_setDeviceRect(self.h, rect.h)
+
+proc setDeviceRectWithSize*(self: QSGAbstractRenderer, size: gen_qsize.QSize): void =
+
+  fcQSGAbstractRenderer_setDeviceRectWithSize(self.h, size.h)
+
+proc deviceRect*(self: QSGAbstractRenderer, ): gen_qrect.QRect =
+
+  gen_qrect.QRect(h: fcQSGAbstractRenderer_deviceRect(self.h))
+
+proc setViewportRect*(self: QSGAbstractRenderer, rect: gen_qrect.QRect): void =
+
+  fcQSGAbstractRenderer_setViewportRect(self.h, rect.h)
+
+proc setViewportRectWithSize*(self: QSGAbstractRenderer, size: gen_qsize.QSize): void =
+
+  fcQSGAbstractRenderer_setViewportRectWithSize(self.h, size.h)
+
+proc viewportRect*(self: QSGAbstractRenderer, ): gen_qrect.QRect =
+
+  gen_qrect.QRect(h: fcQSGAbstractRenderer_viewportRect(self.h))
+
+proc setProjectionMatrixToRect*(self: QSGAbstractRenderer, rect: gen_qrect.QRectF): void =
+
+  fcQSGAbstractRenderer_setProjectionMatrixToRect(self.h, rect.h)
+
+proc setProjectionMatrixToRect2*(self: QSGAbstractRenderer, rect: gen_qrect.QRectF, flags: QSGAbstractRendererMatrixTransformFlag): void =
+
+  fcQSGAbstractRenderer_setProjectionMatrixToRect2(self.h, rect.h, cint(flags))
+
+proc setProjectionMatrix*(self: QSGAbstractRenderer, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+
+  fcQSGAbstractRenderer_setProjectionMatrix(self.h, matrix.h)
+
+proc setProjectionMatrixWithNativeNDC*(self: QSGAbstractRenderer, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+
+  fcQSGAbstractRenderer_setProjectionMatrixWithNativeNDC(self.h, matrix.h)
+
+proc projectionMatrix*(self: QSGAbstractRenderer, ): gen_qmatrix4x4.QMatrix4x4 =
+
+  gen_qmatrix4x4.QMatrix4x4(h: fcQSGAbstractRenderer_projectionMatrix(self.h))
+
+proc projectionMatrixWithNativeNDC*(self: QSGAbstractRenderer, ): gen_qmatrix4x4.QMatrix4x4 =
+
+  gen_qmatrix4x4.QMatrix4x4(h: fcQSGAbstractRenderer_projectionMatrixWithNativeNDC(self.h))
+
+proc setClearColor*(self: QSGAbstractRenderer, color: gen_qcolor.QColor): void =
+
+  fcQSGAbstractRenderer_setClearColor(self.h, color.h)
+
+proc clearColor*(self: QSGAbstractRenderer, ): gen_qcolor.QColor =
+
+  gen_qcolor.QColor(h: fcQSGAbstractRenderer_clearColor(self.h))
+
+proc setClearMode*(self: QSGAbstractRenderer, mode: QSGAbstractRendererClearModeBit): void =
+
+  fcQSGAbstractRenderer_setClearMode(self.h, cint(mode))
+
+proc clearMode*(self: QSGAbstractRenderer, ): QSGAbstractRendererClearModeBit =
+
+  QSGAbstractRendererClearModeBit(fcQSGAbstractRenderer_clearMode(self.h))
+
+proc renderScene*(self: QSGAbstractRenderer, fboId: cuint): void =
+
+  fcQSGAbstractRenderer_renderScene(self.h, fboId)
+
+proc sceneGraphChanged*(self: QSGAbstractRenderer, ): void =
+
+  fcQSGAbstractRenderer_sceneGraphChanged(self.h)
+
+proc miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged(slot: int) {.exportc.} =
+  type Cb = proc()
+  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+
+  nimfunc[]()
+
+proc onsceneGraphChanged*(self: QSGAbstractRenderer, slot: proc()) =
+  type Cb = proc()
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fQSGAbstractRenderer_connect_sceneGraphChanged(self.h, cast[int](addr tmp[]))
+proc tr2*(_: type QSGAbstractRenderer, s: cstring, c: cstring): string =
+
+  let v_ms = fcQSGAbstractRenderer_tr2(s, c)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc tr3*(_: type QSGAbstractRenderer, s: cstring, c: cstring, n: cint): string =
+
+  let v_ms = fcQSGAbstractRenderer_tr3(s, c, n)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc trUtf82*(_: type QSGAbstractRenderer, s: cstring, c: cstring): string =
+
+  let v_ms = fcQSGAbstractRenderer_trUtf82(s, c)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc trUtf83*(_: type QSGAbstractRenderer, s: cstring, c: cstring, n: cint): string =
+
+  let v_ms = fcQSGAbstractRenderer_trUtf83(s, c, n)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc delete*(self: QSGAbstractRenderer) =
+  fcQSGAbstractRenderer_delete(self.h)

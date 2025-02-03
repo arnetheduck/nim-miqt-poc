@@ -33,6 +33,7 @@ typedef struct QPixmap QPixmap;
 void QClipboard_virtbase(QClipboard* src, QObject** outptr_QObject);
 QMetaObject* QClipboard_metaObject(const QClipboard* self);
 void* QClipboard_metacast(QClipboard* self, const char* param1);
+int QClipboard_metacall(QClipboard* self, int param1, int param2, void** param3);
 struct miqt_string QClipboard_tr(const char* s);
 void QClipboard_clear(QClipboard* self);
 bool QClipboard_supportsSelection(const QClipboard* self);

@@ -35,6 +35,7 @@ int miqt_exec_callback_QImageIOHandler_imageCount(const QImageIOHandler*, intptr
 int miqt_exec_callback_QImageIOHandler_nextImageDelay(const QImageIOHandler*, intptr_t);
 int miqt_exec_callback_QImageIOHandler_currentImageNumber(const QImageIOHandler*, intptr_t);
 QRect* miqt_exec_callback_QImageIOHandler_currentImageRect(const QImageIOHandler*, intptr_t);
+int miqt_exec_callback_QImageIOPlugin_metacall(QImageIOPlugin*, intptr_t, int, int, void**);
 int miqt_exec_callback_QImageIOPlugin_capabilities(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
 QImageIOHandler* miqt_exec_callback_QImageIOPlugin_create(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
 bool miqt_exec_callback_QImageIOPlugin_event(QImageIOPlugin*, intptr_t, QEvent*);
@@ -618,6 +619,32 @@ public:
 	virtual ~MiqtVirtualQImageIOPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QImageIOPlugin::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QImageIOPlugin_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QImageIOPlugin::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__capabilities = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -854,6 +881,10 @@ void* QImageIOPlugin_metacast(QImageIOPlugin* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QImageIOPlugin_metacall(QImageIOPlugin* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QImageIOPlugin_tr(const char* s) {
 	QString _ret = QImageIOPlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -896,6 +927,20 @@ struct miqt_string QImageIOPlugin_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QImageIOPlugin_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQImageIOPlugin* self_cast = dynamic_cast<MiqtVirtualQImageIOPlugin*>( (QImageIOPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QImageIOPlugin_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QImageIOPlugin_override_virtual_capabilities(void* self, intptr_t slot) {

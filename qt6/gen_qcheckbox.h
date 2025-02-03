@@ -95,6 +95,7 @@ QCheckBox* QCheckBox_new4(struct miqt_string text, QWidget* parent);
 void QCheckBox_virtbase(QCheckBox* src, QAbstractButton** outptr_QAbstractButton);
 QMetaObject* QCheckBox_metaObject(const QCheckBox* self);
 void* QCheckBox_metacast(QCheckBox* self, const char* param1);
+int QCheckBox_metacall(QCheckBox* self, int param1, int param2, void** param3);
 struct miqt_string QCheckBox_tr(const char* s);
 QSize* QCheckBox_sizeHint(const QCheckBox* self);
 QSize* QCheckBox_minimumSizeHint(const QCheckBox* self);
@@ -114,6 +115,8 @@ void QCheckBox_initStyleOption(const QCheckBox* self, QStyleOptionButton* option
 struct miqt_string QCheckBox_tr2(const char* s, const char* c);
 struct miqt_string QCheckBox_tr3(const char* s, const char* c, int n);
 void QCheckBox_setTristate1(QCheckBox* self, bool y);
+bool QCheckBox_override_virtual_metacall(void* self, intptr_t slot);
+int QCheckBox_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCheckBox_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QCheckBox_virtualbase_sizeHint(const void* self);
 bool QCheckBox_override_virtual_minimumSizeHint(void* self, intptr_t slot);

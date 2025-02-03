@@ -310,6 +310,10 @@ func (this *QProcess) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QProcess_metacast(this.h, param1_Cstring))
 }
 
+func (this *QProcess) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QProcess_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QProcess_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -845,6 +849,38 @@ func miqt_exec_callback_QProcess_finished2(cb C.intptr_t, exitCode C.int, exitSt
 	slotval2 := (QProcess__ExitStatus)(exitStatus)
 
 	gofunc(slotval1, slotval2)
+}
+
+func (this *QProcess) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QProcess_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QProcess) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QProcess_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QProcess_metacall
+func miqt_exec_callback_QProcess_metacall(self *C.QProcess, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QProcess) callVirtualBase_Open(mode QIODeviceBase__OpenModeFlag) bool {

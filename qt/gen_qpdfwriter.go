@@ -79,6 +79,10 @@ func (this *QPdfWriter) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QPdfWriter_metacast(this.h, param1_Cstring))
 }
 
+func (this *QPdfWriter) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QPdfWriter_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QPdfWriter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -253,6 +257,38 @@ func (this *QPdfWriter) AddFileAttachment3(fileName string, data []byte, mimeTyp
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
 	C.QPdfWriter_addFileAttachment3(this.h, fileName_ms, data_alias, mimeType_ms)
+}
+
+func (this *QPdfWriter) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QPdfWriter_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QPdfWriter) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QPdfWriter_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPdfWriter_metacall
+func miqt_exec_callback_QPdfWriter_metacall(self *C.QPdfWriter, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QPdfWriter) callVirtualBase_NewPage() bool {

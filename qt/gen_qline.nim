@@ -1,0 +1,369 @@
+import Qt5Widgets_libs
+
+{.push raises: [].}
+
+from system/ansi_c import c_free
+
+type
+  struct_miqt_string {.used.} = object
+    len: csize_t
+    data: cstring
+
+  struct_miqt_array {.used.} = object
+    len: csize_t
+    data: pointer
+
+  struct_miqt_map {.used.} = object
+    len: csize_t
+    keys: pointer
+    values: pointer
+
+  miqt_uintptr_t {.importc: "uintptr_t", header: "stdint.h", used.} = uint
+  miqt_intptr_t {.importc: "intptr_t", header: "stdint.h", used.} = int
+
+func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
+  if v.len > 0:
+    result = newString(v.len)
+    when nimvm:
+      for i, c in v:
+        result[i] = cast[char](c)
+    else:
+      copyMem(addr result[0], unsafeAddr v[0], v.len)
+
+const cflags = gorge("pkg-config -cflags Qt5Widgets")
+{.compile("gen_qline.cpp", cflags).}
+
+
+type QLineFIntersectType* = cint
+const
+  QLineFNoIntersection* = 0
+  QLineFBoundedIntersection* = 1
+  QLineFUnboundedIntersection* = 2
+
+
+
+import gen_qline_types
+export gen_qline_types
+
+import
+  gen_qpoint
+export
+  gen_qpoint
+
+type cQLine*{.exportc: "QLine", incompleteStruct.} = object
+type cQLineF*{.exportc: "QLineF", incompleteStruct.} = object
+
+proc fcQLine_new(): ptr cQLine {.importc: "QLine_new".}
+proc fcQLine_new2(pt1: pointer, pt2: pointer): ptr cQLine {.importc: "QLine_new2".}
+proc fcQLine_new3(x1: cint, y1: cint, x2: cint, y2: cint): ptr cQLine {.importc: "QLine_new3".}
+proc fcQLine_new4(param1: pointer): ptr cQLine {.importc: "QLine_new4".}
+proc fcQLine_isNull(self: pointer, ): bool {.importc: "QLine_isNull".}
+proc fcQLine_p1(self: pointer, ): pointer {.importc: "QLine_p1".}
+proc fcQLine_p2(self: pointer, ): pointer {.importc: "QLine_p2".}
+proc fcQLine_x1(self: pointer, ): cint {.importc: "QLine_x1".}
+proc fcQLine_y1(self: pointer, ): cint {.importc: "QLine_y1".}
+proc fcQLine_x2(self: pointer, ): cint {.importc: "QLine_x2".}
+proc fcQLine_y2(self: pointer, ): cint {.importc: "QLine_y2".}
+proc fcQLine_dx(self: pointer, ): cint {.importc: "QLine_dx".}
+proc fcQLine_dy(self: pointer, ): cint {.importc: "QLine_dy".}
+proc fcQLine_translate(self: pointer, p: pointer): void {.importc: "QLine_translate".}
+proc fcQLine_translate2(self: pointer, dx: cint, dy: cint): void {.importc: "QLine_translate2".}
+proc fcQLine_translated(self: pointer, p: pointer): pointer {.importc: "QLine_translated".}
+proc fcQLine_translated2(self: pointer, dx: cint, dy: cint): pointer {.importc: "QLine_translated2".}
+proc fcQLine_center(self: pointer, ): pointer {.importc: "QLine_center".}
+proc fcQLine_setP1(self: pointer, p1: pointer): void {.importc: "QLine_setP1".}
+proc fcQLine_setP2(self: pointer, p2: pointer): void {.importc: "QLine_setP2".}
+proc fcQLine_setPoints(self: pointer, p1: pointer, p2: pointer): void {.importc: "QLine_setPoints".}
+proc fcQLine_setLine(self: pointer, x1: cint, y1: cint, x2: cint, y2: cint): void {.importc: "QLine_setLine".}
+proc fcQLine_operatorEqual(self: pointer, d: pointer): bool {.importc: "QLine_operatorEqual".}
+proc fcQLine_operatorNotEqual(self: pointer, d: pointer): bool {.importc: "QLine_operatorNotEqual".}
+proc fcQLine_delete(self: pointer) {.importc: "QLine_delete".}
+proc fcQLineF_new(): ptr cQLineF {.importc: "QLineF_new".}
+proc fcQLineF_new2(pt1: pointer, pt2: pointer): ptr cQLineF {.importc: "QLineF_new2".}
+proc fcQLineF_new3(x1: float64, y1: float64, x2: float64, y2: float64): ptr cQLineF {.importc: "QLineF_new3".}
+proc fcQLineF_new4(line: pointer): ptr cQLineF {.importc: "QLineF_new4".}
+proc fcQLineF_new5(param1: pointer): ptr cQLineF {.importc: "QLineF_new5".}
+proc fcQLineF_fromPolar(length: float64, angle: float64): pointer {.importc: "QLineF_fromPolar".}
+proc fcQLineF_isNull(self: pointer, ): bool {.importc: "QLineF_isNull".}
+proc fcQLineF_p1(self: pointer, ): pointer {.importc: "QLineF_p1".}
+proc fcQLineF_p2(self: pointer, ): pointer {.importc: "QLineF_p2".}
+proc fcQLineF_x1(self: pointer, ): float64 {.importc: "QLineF_x1".}
+proc fcQLineF_y1(self: pointer, ): float64 {.importc: "QLineF_y1".}
+proc fcQLineF_x2(self: pointer, ): float64 {.importc: "QLineF_x2".}
+proc fcQLineF_y2(self: pointer, ): float64 {.importc: "QLineF_y2".}
+proc fcQLineF_dx(self: pointer, ): float64 {.importc: "QLineF_dx".}
+proc fcQLineF_dy(self: pointer, ): float64 {.importc: "QLineF_dy".}
+proc fcQLineF_length(self: pointer, ): float64 {.importc: "QLineF_length".}
+proc fcQLineF_setLength(self: pointer, len: float64): void {.importc: "QLineF_setLength".}
+proc fcQLineF_angle(self: pointer, ): float64 {.importc: "QLineF_angle".}
+proc fcQLineF_setAngle(self: pointer, angle: float64): void {.importc: "QLineF_setAngle".}
+proc fcQLineF_angleTo(self: pointer, l: pointer): float64 {.importc: "QLineF_angleTo".}
+proc fcQLineF_unitVector(self: pointer, ): pointer {.importc: "QLineF_unitVector".}
+proc fcQLineF_normalVector(self: pointer, ): pointer {.importc: "QLineF_normalVector".}
+proc fcQLineF_intersects(self: pointer, l: pointer, intersectionPoint: pointer): cint {.importc: "QLineF_intersects".}
+proc fcQLineF_intersect(self: pointer, l: pointer, intersectionPoint: pointer): cint {.importc: "QLineF_intersect".}
+proc fcQLineF_angleWithQLineF(self: pointer, l: pointer): float64 {.importc: "QLineF_angleWithQLineF".}
+proc fcQLineF_pointAt(self: pointer, t: float64): pointer {.importc: "QLineF_pointAt".}
+proc fcQLineF_translate(self: pointer, p: pointer): void {.importc: "QLineF_translate".}
+proc fcQLineF_translate2(self: pointer, dx: float64, dy: float64): void {.importc: "QLineF_translate2".}
+proc fcQLineF_translated(self: pointer, p: pointer): pointer {.importc: "QLineF_translated".}
+proc fcQLineF_translated2(self: pointer, dx: float64, dy: float64): pointer {.importc: "QLineF_translated2".}
+proc fcQLineF_center(self: pointer, ): pointer {.importc: "QLineF_center".}
+proc fcQLineF_setP1(self: pointer, p1: pointer): void {.importc: "QLineF_setP1".}
+proc fcQLineF_setP2(self: pointer, p2: pointer): void {.importc: "QLineF_setP2".}
+proc fcQLineF_setPoints(self: pointer, p1: pointer, p2: pointer): void {.importc: "QLineF_setPoints".}
+proc fcQLineF_setLine(self: pointer, x1: float64, y1: float64, x2: float64, y2: float64): void {.importc: "QLineF_setLine".}
+proc fcQLineF_operatorEqual(self: pointer, d: pointer): bool {.importc: "QLineF_operatorEqual".}
+proc fcQLineF_operatorNotEqual(self: pointer, d: pointer): bool {.importc: "QLineF_operatorNotEqual".}
+proc fcQLineF_toLine(self: pointer, ): pointer {.importc: "QLineF_toLine".}
+proc fcQLineF_delete(self: pointer) {.importc: "QLineF_delete".}
+
+
+func init*(T: type QLine, h: ptr cQLine): QLine =
+  T(h: h)
+proc create*(T: type QLine, ): QLine =
+
+  QLine.init(fcQLine_new())
+proc create*(T: type QLine, pt1: gen_qpoint.QPoint, pt2: gen_qpoint.QPoint): QLine =
+
+  QLine.init(fcQLine_new2(pt1.h, pt2.h))
+proc create*(T: type QLine, x1: cint, y1: cint, x2: cint, y2: cint): QLine =
+
+  QLine.init(fcQLine_new3(x1, y1, x2, y2))
+proc create*(T: type QLine, param1: QLine): QLine =
+
+  QLine.init(fcQLine_new4(param1.h))
+proc isNull*(self: QLine, ): bool =
+
+  fcQLine_isNull(self.h)
+
+proc p1*(self: QLine, ): gen_qpoint.QPoint =
+
+  gen_qpoint.QPoint(h: fcQLine_p1(self.h))
+
+proc p2*(self: QLine, ): gen_qpoint.QPoint =
+
+  gen_qpoint.QPoint(h: fcQLine_p2(self.h))
+
+proc x1*(self: QLine, ): cint =
+
+  fcQLine_x1(self.h)
+
+proc y1*(self: QLine, ): cint =
+
+  fcQLine_y1(self.h)
+
+proc x2*(self: QLine, ): cint =
+
+  fcQLine_x2(self.h)
+
+proc y2*(self: QLine, ): cint =
+
+  fcQLine_y2(self.h)
+
+proc dx*(self: QLine, ): cint =
+
+  fcQLine_dx(self.h)
+
+proc dy*(self: QLine, ): cint =
+
+  fcQLine_dy(self.h)
+
+proc translate*(self: QLine, p: gen_qpoint.QPoint): void =
+
+  fcQLine_translate(self.h, p.h)
+
+proc translate2*(self: QLine, dx: cint, dy: cint): void =
+
+  fcQLine_translate2(self.h, dx, dy)
+
+proc translated*(self: QLine, p: gen_qpoint.QPoint): QLine =
+
+  QLine(h: fcQLine_translated(self.h, p.h))
+
+proc translated2*(self: QLine, dx: cint, dy: cint): QLine =
+
+  QLine(h: fcQLine_translated2(self.h, dx, dy))
+
+proc center*(self: QLine, ): gen_qpoint.QPoint =
+
+  gen_qpoint.QPoint(h: fcQLine_center(self.h))
+
+proc setP1*(self: QLine, p1: gen_qpoint.QPoint): void =
+
+  fcQLine_setP1(self.h, p1.h)
+
+proc setP2*(self: QLine, p2: gen_qpoint.QPoint): void =
+
+  fcQLine_setP2(self.h, p2.h)
+
+proc setPoints*(self: QLine, p1: gen_qpoint.QPoint, p2: gen_qpoint.QPoint): void =
+
+  fcQLine_setPoints(self.h, p1.h, p2.h)
+
+proc setLine*(self: QLine, x1: cint, y1: cint, x2: cint, y2: cint): void =
+
+  fcQLine_setLine(self.h, x1, y1, x2, y2)
+
+proc operatorEqual*(self: QLine, d: QLine): bool =
+
+  fcQLine_operatorEqual(self.h, d.h)
+
+proc operatorNotEqual*(self: QLine, d: QLine): bool =
+
+  fcQLine_operatorNotEqual(self.h, d.h)
+
+proc delete*(self: QLine) =
+  fcQLine_delete(self.h)
+
+func init*(T: type QLineF, h: ptr cQLineF): QLineF =
+  T(h: h)
+proc create*(T: type QLineF, ): QLineF =
+
+  QLineF.init(fcQLineF_new())
+proc create*(T: type QLineF, pt1: gen_qpoint.QPointF, pt2: gen_qpoint.QPointF): QLineF =
+
+  QLineF.init(fcQLineF_new2(pt1.h, pt2.h))
+proc create*(T: type QLineF, x1: float64, y1: float64, x2: float64, y2: float64): QLineF =
+
+  QLineF.init(fcQLineF_new3(x1, y1, x2, y2))
+proc create*(T: type QLineF, line: QLine): QLineF =
+
+  QLineF.init(fcQLineF_new4(line.h))
+proc create2*(T: type QLineF, param1: QLineF): QLineF =
+
+  QLineF.init(fcQLineF_new5(param1.h))
+proc fromPolar*(_: type QLineF, length: float64, angle: float64): QLineF =
+
+  QLineF(h: fcQLineF_fromPolar(length, angle))
+
+proc isNull*(self: QLineF, ): bool =
+
+  fcQLineF_isNull(self.h)
+
+proc p1*(self: QLineF, ): gen_qpoint.QPointF =
+
+  gen_qpoint.QPointF(h: fcQLineF_p1(self.h))
+
+proc p2*(self: QLineF, ): gen_qpoint.QPointF =
+
+  gen_qpoint.QPointF(h: fcQLineF_p2(self.h))
+
+proc x1*(self: QLineF, ): float64 =
+
+  fcQLineF_x1(self.h)
+
+proc y1*(self: QLineF, ): float64 =
+
+  fcQLineF_y1(self.h)
+
+proc x2*(self: QLineF, ): float64 =
+
+  fcQLineF_x2(self.h)
+
+proc y2*(self: QLineF, ): float64 =
+
+  fcQLineF_y2(self.h)
+
+proc dx*(self: QLineF, ): float64 =
+
+  fcQLineF_dx(self.h)
+
+proc dy*(self: QLineF, ): float64 =
+
+  fcQLineF_dy(self.h)
+
+proc length*(self: QLineF, ): float64 =
+
+  fcQLineF_length(self.h)
+
+proc setLength*(self: QLineF, len: float64): void =
+
+  fcQLineF_setLength(self.h, len)
+
+proc angle*(self: QLineF, ): float64 =
+
+  fcQLineF_angle(self.h)
+
+proc setAngle*(self: QLineF, angle: float64): void =
+
+  fcQLineF_setAngle(self.h, angle)
+
+proc angleTo*(self: QLineF, l: QLineF): float64 =
+
+  fcQLineF_angleTo(self.h, l.h)
+
+proc unitVector*(self: QLineF, ): QLineF =
+
+  QLineF(h: fcQLineF_unitVector(self.h))
+
+proc normalVector*(self: QLineF, ): QLineF =
+
+  QLineF(h: fcQLineF_normalVector(self.h))
+
+proc intersects*(self: QLineF, l: QLineF, intersectionPoint: gen_qpoint.QPointF): QLineFIntersectType =
+
+  QLineFIntersectType(fcQLineF_intersects(self.h, l.h, intersectionPoint.h))
+
+proc intersect*(self: QLineF, l: QLineF, intersectionPoint: gen_qpoint.QPointF): QLineFIntersectType =
+
+  QLineFIntersectType(fcQLineF_intersect(self.h, l.h, intersectionPoint.h))
+
+proc angleWithQLineF*(self: QLineF, l: QLineF): float64 =
+
+  fcQLineF_angleWithQLineF(self.h, l.h)
+
+proc pointAt*(self: QLineF, t: float64): gen_qpoint.QPointF =
+
+  gen_qpoint.QPointF(h: fcQLineF_pointAt(self.h, t))
+
+proc translate*(self: QLineF, p: gen_qpoint.QPointF): void =
+
+  fcQLineF_translate(self.h, p.h)
+
+proc translate2*(self: QLineF, dx: float64, dy: float64): void =
+
+  fcQLineF_translate2(self.h, dx, dy)
+
+proc translated*(self: QLineF, p: gen_qpoint.QPointF): QLineF =
+
+  QLineF(h: fcQLineF_translated(self.h, p.h))
+
+proc translated2*(self: QLineF, dx: float64, dy: float64): QLineF =
+
+  QLineF(h: fcQLineF_translated2(self.h, dx, dy))
+
+proc center*(self: QLineF, ): gen_qpoint.QPointF =
+
+  gen_qpoint.QPointF(h: fcQLineF_center(self.h))
+
+proc setP1*(self: QLineF, p1: gen_qpoint.QPointF): void =
+
+  fcQLineF_setP1(self.h, p1.h)
+
+proc setP2*(self: QLineF, p2: gen_qpoint.QPointF): void =
+
+  fcQLineF_setP2(self.h, p2.h)
+
+proc setPoints*(self: QLineF, p1: gen_qpoint.QPointF, p2: gen_qpoint.QPointF): void =
+
+  fcQLineF_setPoints(self.h, p1.h, p2.h)
+
+proc setLine*(self: QLineF, x1: float64, y1: float64, x2: float64, y2: float64): void =
+
+  fcQLineF_setLine(self.h, x1, y1, x2, y2)
+
+proc operatorEqual*(self: QLineF, d: QLineF): bool =
+
+  fcQLineF_operatorEqual(self.h, d.h)
+
+proc operatorNotEqual*(self: QLineF, d: QLineF): bool =
+
+  fcQLineF_operatorNotEqual(self.h, d.h)
+
+proc toLine*(self: QLineF, ): QLine =
+
+  QLine(h: fcQLineF_toLine(self.h))
+
+proc delete*(self: QLineF) =
+  fcQLineF_delete(self.h)

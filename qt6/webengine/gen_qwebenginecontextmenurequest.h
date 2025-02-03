@@ -31,6 +31,7 @@ typedef struct QWebEngineContextMenuRequest QWebEngineContextMenuRequest;
 void QWebEngineContextMenuRequest_virtbase(QWebEngineContextMenuRequest* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineContextMenuRequest_metaObject(const QWebEngineContextMenuRequest* self);
 void* QWebEngineContextMenuRequest_metacast(QWebEngineContextMenuRequest* self, const char* param1);
+int QWebEngineContextMenuRequest_metacall(QWebEngineContextMenuRequest* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineContextMenuRequest_tr(const char* s);
 QPoint* QWebEngineContextMenuRequest_position(const QWebEngineContextMenuRequest* self);
 struct miqt_string QWebEngineContextMenuRequest_selectedText(const QWebEngineContextMenuRequest* self);

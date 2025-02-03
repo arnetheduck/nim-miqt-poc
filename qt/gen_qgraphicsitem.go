@@ -2077,6 +2077,10 @@ func (this *QGraphicsObject) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QGraphicsObject_metacast(this.h, param1_Cstring))
 }
 
+func (this *QGraphicsObject) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QGraphicsObject_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QGraphicsObject_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -2353,6 +2357,38 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 
 func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags GestureFlag) {
 	C.QGraphicsObject_grabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
+}
+
+func (this *QGraphicsObject) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QGraphicsObject_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QGraphicsObject) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QGraphicsObject_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsObject_metacall
+func miqt_exec_callback_QGraphicsObject_metacall(self *C.QGraphicsObject, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QGraphicsObject) callVirtualBase_Event(ev *QEvent) bool {
@@ -11113,6 +11149,10 @@ func (this *QGraphicsTextItem) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QGraphicsTextItem_metacast(this.h, param1_Cstring))
 }
 
+func (this *QGraphicsTextItem) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QGraphicsTextItem_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QGraphicsTextItem_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -11365,6 +11405,38 @@ func QGraphicsTextItem_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QGraphicsTextItem) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QGraphicsTextItem_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QGraphicsTextItem) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QGraphicsTextItem_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsTextItem_metacall
+func miqt_exec_callback_QGraphicsTextItem_metacall(self *C.QGraphicsTextItem, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_BoundingRect() *QRectF {

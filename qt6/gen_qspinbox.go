@@ -72,6 +72,10 @@ func (this *QSpinBox) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QSpinBox_metacast(this.h, param1_Cstring))
 }
 
+func (this *QSpinBox) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QSpinBox_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QSpinBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -237,6 +241,38 @@ func QSpinBox_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QSpinBox) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QSpinBox_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QSpinBox) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QSpinBox_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QSpinBox_metacall
+func miqt_exec_callback_QSpinBox_metacall(self *C.QSpinBox, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QSpinBox{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QSpinBox) callVirtualBase_Event(event *QEvent) bool {
@@ -1802,6 +1838,10 @@ func (this *QDoubleSpinBox) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QDoubleSpinBox_metacast(this.h, param1_Cstring))
 }
 
+func (this *QDoubleSpinBox) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QDoubleSpinBox_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QDoubleSpinBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -1998,6 +2038,38 @@ func QDoubleSpinBox_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QDoubleSpinBox) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QDoubleSpinBox_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QDoubleSpinBox) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QDoubleSpinBox_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDoubleSpinBox_metacall
+func miqt_exec_callback_QDoubleSpinBox_metacall(self *C.QDoubleSpinBox, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QDoubleSpinBox) callVirtualBase_Validate(input string, pos *int) QValidator__State {

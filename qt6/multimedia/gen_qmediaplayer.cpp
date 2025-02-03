@@ -40,6 +40,7 @@ void miqt_exec_callback_QMediaPlayer_tracksChanged(intptr_t);
 void miqt_exec_callback_QMediaPlayer_activeTracksChanged(intptr_t);
 void miqt_exec_callback_QMediaPlayer_errorChanged(intptr_t);
 void miqt_exec_callback_QMediaPlayer_errorOccurred(intptr_t, int, struct miqt_string);
+int miqt_exec_callback_QMediaPlayer_metacall(QMediaPlayer*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QMediaPlayer_event(QMediaPlayer*, intptr_t, QEvent*);
 bool miqt_exec_callback_QMediaPlayer_eventFilter(QMediaPlayer*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QMediaPlayer_timerEvent(QMediaPlayer*, intptr_t, QTimerEvent*);
@@ -58,6 +59,32 @@ public:
 	MiqtVirtualQMediaPlayer(QObject* parent): QMediaPlayer(parent) {};
 
 	virtual ~MiqtVirtualQMediaPlayer() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QMediaPlayer::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QMediaPlayer_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QMediaPlayer::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -250,6 +277,10 @@ QMetaObject* QMediaPlayer_metaObject(const QMediaPlayer* self) {
 
 void* QMediaPlayer_metacast(QMediaPlayer* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QMediaPlayer_metacall(QMediaPlayer* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QMediaPlayer_tr(const char* s) {
@@ -695,6 +726,20 @@ struct miqt_string QMediaPlayer_tr3(const char* s, const char* c, int n) {
 
 void QMediaPlayer_setSourceDevice2(QMediaPlayer* self, QIODevice* device, QUrl* sourceUrl) {
 	self->setSourceDevice(device, *sourceUrl);
+}
+
+bool QMediaPlayer_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QMediaPlayer_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QMediaPlayer_override_virtual_event(void* self, intptr_t slot) {

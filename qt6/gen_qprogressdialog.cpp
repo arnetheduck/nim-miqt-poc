@@ -47,6 +47,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QProgressDialog_canceled(intptr_t);
+int miqt_exec_callback_QProgressDialog_metacall(QProgressDialog*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QProgressDialog_sizeHint(const QProgressDialog*, intptr_t);
 void miqt_exec_callback_QProgressDialog_resizeEvent(QProgressDialog*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QProgressDialog_closeEvent(QProgressDialog*, intptr_t, QCloseEvent*);
@@ -114,6 +115,32 @@ public:
 	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum, QWidget* parent, Qt::WindowFlags flags): QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent, flags) {};
 
 	virtual ~MiqtVirtualQProgressDialog() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QProgressDialog::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QProgressDialog_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QProgressDialog::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -1398,6 +1425,10 @@ void* QProgressDialog_metacast(QProgressDialog* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QProgressDialog_metacall(QProgressDialog* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QProgressDialog_tr(const char* s) {
 	QString _ret = QProgressDialog::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1540,6 +1571,20 @@ struct miqt_string QProgressDialog_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QProgressDialog_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QProgressDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QProgressDialog_override_virtual_sizeHint(void* self, intptr_t slot) {

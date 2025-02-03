@@ -88,6 +88,10 @@ func (this *QTabWidget) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QTabWidget_metacast(this.h, param1_Cstring))
 }
 
+func (this *QTabWidget) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QTabWidget_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QTabWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -450,6 +454,38 @@ func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
 
 func (this *QTabWidget) CornerWidget1(corner Corner) *QWidget {
 	return newQWidget(C.QTabWidget_cornerWidget1(this.h, (C.int)(corner)))
+}
+
+func (this *QTabWidget) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QTabWidget_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QTabWidget) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QTabWidget_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTabWidget_metacall
+func miqt_exec_callback_QTabWidget_metacall(self *C.QTabWidget, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QTabWidget{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QTabWidget) callVirtualBase_SizeHint() *QSize {

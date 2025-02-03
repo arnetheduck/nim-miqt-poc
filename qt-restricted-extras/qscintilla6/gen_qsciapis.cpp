@@ -18,6 +18,7 @@ extern "C" {
 void miqt_exec_callback_QsciAPIs_apiPreparationCancelled(intptr_t);
 void miqt_exec_callback_QsciAPIs_apiPreparationStarted(intptr_t);
 void miqt_exec_callback_QsciAPIs_apiPreparationFinished(intptr_t);
+int miqt_exec_callback_QsciAPIs_metacall(QsciAPIs*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciAPIs_updateAutoCompletionList(QsciAPIs*, intptr_t, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
 void miqt_exec_callback_QsciAPIs_autoCompletionSelected(QsciAPIs*, intptr_t, struct miqt_string);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciAPIs_callTips(QsciAPIs*, intptr_t, struct miqt_array /* of struct miqt_string */ , int, int, struct miqt_array /* of int */ );
@@ -38,6 +39,32 @@ public:
 	MiqtVirtualQsciAPIs(QsciLexer* lexer): QsciAPIs(lexer) {};
 
 	virtual ~MiqtVirtualQsciAPIs() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QsciAPIs::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QsciAPIs_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QsciAPIs::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateAutoCompletionList = 0;
@@ -419,6 +446,10 @@ void* QsciAPIs_metacast(QsciAPIs* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QsciAPIs_metacall(QsciAPIs* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QsciAPIs_tr(const char* s) {
 	QString _ret = QsciAPIs::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -625,6 +656,20 @@ bool QsciAPIs_loadPrepared1(QsciAPIs* self, struct miqt_string filename) {
 bool QsciAPIs_savePrepared1(const QsciAPIs* self, struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	return self->savePrepared(filename_QString);
+}
+
+bool QsciAPIs_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQsciAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAPIs*>( (QsciAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QsciAPIs_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QsciAPIs_override_virtual_updateAutoCompletionList(void* self, intptr_t slot) {

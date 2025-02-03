@@ -72,6 +72,10 @@ func (this *QTextBrowser) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QTextBrowser_metacast(this.h, param1_Cstring))
 }
 
+func (this *QTextBrowser) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QTextBrowser_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QTextBrowser_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -334,6 +338,38 @@ func QTextBrowser_Tr3(s string, c string, n int) string {
 
 func (this *QTextBrowser) SetSource2(name *QUrl, typeVal QTextDocument__ResourceType) {
 	C.QTextBrowser_setSource2(this.h, name.cPointer(), (C.int)(typeVal))
+}
+
+func (this *QTextBrowser) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QTextBrowser_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QTextBrowser) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QTextBrowser_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_metacall
+func miqt_exec_callback_QTextBrowser_metacall(self *C.QTextBrowser, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QTextBrowser) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {

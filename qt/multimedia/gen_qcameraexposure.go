@@ -110,6 +110,10 @@ func (this *QCameraExposure) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QCameraExposure_metacast(this.h, param1_Cstring))
 }
 
+func (this *QCameraExposure) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QCameraExposure_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QCameraExposure_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

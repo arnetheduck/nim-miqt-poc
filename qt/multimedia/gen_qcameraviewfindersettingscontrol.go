@@ -71,6 +71,10 @@ func (this *QCameraViewfinderSettingsControl) Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl_metacast(this.h, param1_Cstring))
 }
 
+func (this *QCameraViewfinderSettingsControl) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QCameraViewfinderSettingsControl_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QCameraViewfinderSettingsControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -205,6 +209,10 @@ func (this *QCameraViewfinderSettingsControl2) Metacast(param1 string) unsafe.Po
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl2_metacast(this.h, param1_Cstring))
+}
+
+func (this *QCameraViewfinderSettingsControl2) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QCameraViewfinderSettingsControl2_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
 }
 
 func QCameraViewfinderSettingsControl2_Tr(s string) string {

@@ -66,6 +66,10 @@ func (this *QAbstractTextDocumentLayout) Metacast(param1 string) unsafe.Pointer 
 	return (unsafe.Pointer)(C.QAbstractTextDocumentLayout_metacast(this.h, param1_Cstring))
 }
 
+func (this *QAbstractTextDocumentLayout) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAbstractTextDocumentLayout_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QAbstractTextDocumentLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -309,6 +313,37 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_update1(cb C.intptr_t, param
 	gofunc(slotval1)
 }
 
+func (this *QAbstractTextDocumentLayout) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QAbstractTextDocumentLayout_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QAbstractTextDocumentLayout) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAbstractTextDocumentLayout_metacall
+func miqt_exec_callback_QAbstractTextDocumentLayout_metacall(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
+}
 func (this *QAbstractTextDocumentLayout) OnDraw(slot func(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {

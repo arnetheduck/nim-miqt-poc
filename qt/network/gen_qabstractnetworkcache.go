@@ -280,6 +280,10 @@ func (this *QAbstractNetworkCache) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QAbstractNetworkCache_metacast(this.h, param1_Cstring))
 }
 
+func (this *QAbstractNetworkCache) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAbstractNetworkCache_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QAbstractNetworkCache_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

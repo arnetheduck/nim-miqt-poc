@@ -115,6 +115,7 @@ QTableView* QTableView_new2();
 void QTableView_virtbase(QTableView* src, QAbstractItemView** outptr_QAbstractItemView);
 QMetaObject* QTableView_metaObject(const QTableView* self);
 void* QTableView_metacast(QTableView* self, const char* param1);
+int QTableView_metacall(QTableView* self, int param1, int param2, void** param3);
 struct miqt_string QTableView_tr(const char* s);
 void QTableView_setModel(QTableView* self, QAbstractItemModel* model);
 void QTableView_setRootIndex(QTableView* self, QModelIndex* index);
@@ -185,6 +186,8 @@ void QTableView_selectionChanged(QTableView* self, QItemSelection* selected, QIt
 void QTableView_currentChanged(QTableView* self, QModelIndex* current, QModelIndex* previous);
 struct miqt_string QTableView_tr2(const char* s, const char* c);
 struct miqt_string QTableView_tr3(const char* s, const char* c, int n);
+bool QTableView_override_virtual_metacall(void* self, intptr_t slot);
+int QTableView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QTableView_override_virtual_setModel(void* self, intptr_t slot);
 void QTableView_virtualbase_setModel(void* self, QAbstractItemModel* model);
 bool QTableView_override_virtual_setRootIndex(void* self, intptr_t slot);

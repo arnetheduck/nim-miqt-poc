@@ -32,6 +32,7 @@ extern "C" {
 void miqt_exec_callback_QFileSystemModel_rootPathChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_fileRenamed(intptr_t, struct miqt_string, struct miqt_string, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_directoryLoaded(intptr_t, struct miqt_string);
+int miqt_exec_callback_QFileSystemModel_metacall(QFileSystemModel*, intptr_t, int, int, void**);
 QModelIndex* miqt_exec_callback_QFileSystemModel_index(const QFileSystemModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QFileSystemModel_parent(const QFileSystemModel*, intptr_t, QModelIndex*);
 QModelIndex* miqt_exec_callback_QFileSystemModel_sibling(const QFileSystemModel*, intptr_t, int, int, QModelIndex*);
@@ -87,6 +88,32 @@ public:
 	MiqtVirtualQFileSystemModel(QObject* parent): QFileSystemModel(parent) {};
 
 	virtual ~MiqtVirtualQFileSystemModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QFileSystemModel::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QFileSystemModel_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QFileSystemModel::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__index = 0;
@@ -1364,6 +1391,10 @@ void* QFileSystemModel_metacast(QFileSystemModel* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QFileSystemModel_metacall(QFileSystemModel* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QFileSystemModel_tr(const char* s) {
 	QString _ret = QFileSystemModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1788,6 +1819,20 @@ QVariant* QFileSystemModel_myComputer1(const QFileSystemModel* self, int role) {
 
 void QFileSystemModel_setOption2(QFileSystemModel* self, int option, bool on) {
 	self->setOption(static_cast<QFileSystemModel::Option>(option), on);
+}
+
+bool QFileSystemModel_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QFileSystemModel_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QFileSystemModel_override_virtual_index(void* self, intptr_t slot) {

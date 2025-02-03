@@ -61,6 +61,10 @@ func (this *QAbstractAudioDeviceInfo) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QAbstractAudioDeviceInfo_metacast(this.h, param1_Cstring))
 }
 
+func (this *QAbstractAudioDeviceInfo) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAbstractAudioDeviceInfo_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QAbstractAudioDeviceInfo_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -261,6 +265,10 @@ func (this *QAbstractAudioOutput) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractAudioOutput_metacast(this.h, param1_Cstring))
+}
+
+func (this *QAbstractAudioOutput) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAbstractAudioOutput_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
 }
 
 func QAbstractAudioOutput_Tr(s string) string {
@@ -537,6 +545,10 @@ func (this *QAbstractAudioInput) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractAudioInput_metacast(this.h, param1_Cstring))
+}
+
+func (this *QAbstractAudioInput) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAbstractAudioInput_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
 }
 
 func QAbstractAudioInput_Tr(s string) string {

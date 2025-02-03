@@ -25,6 +25,7 @@ void miqt_exec_callback_QNetworkSession_errorWithQNetworkSessionSessionError(int
 void miqt_exec_callback_QNetworkSession_preferredConfigurationChanged(intptr_t, QNetworkConfiguration*, bool);
 void miqt_exec_callback_QNetworkSession_newConfigurationActivated(intptr_t);
 void miqt_exec_callback_QNetworkSession_usagePoliciesChanged(intptr_t, int);
+int miqt_exec_callback_QNetworkSession_metacall(QNetworkSession*, intptr_t, int, int, void**);
 void miqt_exec_callback_QNetworkSession_connectNotify(QNetworkSession*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QNetworkSession_disconnectNotify(QNetworkSession*, intptr_t, QMetaMethod*);
 bool miqt_exec_callback_QNetworkSession_event(QNetworkSession*, intptr_t, QEvent*);
@@ -43,6 +44,32 @@ public:
 	MiqtVirtualQNetworkSession(const QNetworkConfiguration& connConfig, QObject* parent): QNetworkSession(connConfig, parent) {};
 
 	virtual ~MiqtVirtualQNetworkSession() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QNetworkSession::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QNetworkSession_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QNetworkSession::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -235,6 +262,10 @@ QMetaObject* QNetworkSession_metaObject(const QNetworkSession* self) {
 
 void* QNetworkSession_metacast(QNetworkSession* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QNetworkSession_metacall(QNetworkSession* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QNetworkSession_tr(const char* s) {
@@ -480,6 +511,20 @@ struct miqt_string QNetworkSession_trUtf83(const char* s, const char* c, int n) 
 
 bool QNetworkSession_waitForOpened1(QNetworkSession* self, int msecs) {
 	return self->waitForOpened(static_cast<int>(msecs));
+}
+
+bool QNetworkSession_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QNetworkSession_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QNetworkSession_override_virtual_connectNotify(void* self, intptr_t slot) {

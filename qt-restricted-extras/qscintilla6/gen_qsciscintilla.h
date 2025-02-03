@@ -121,6 +121,7 @@ QsciScintilla* QsciScintilla_new2();
 void QsciScintilla_virtbase(QsciScintilla* src, QsciScintillaBase** outptr_QsciScintillaBase);
 QMetaObject* QsciScintilla_metaObject(const QsciScintilla* self);
 void* QsciScintilla_metacast(QsciScintilla* self, const char* param1);
+int QsciScintilla_metacall(QsciScintilla* self, int param1, int param2, void** param3);
 struct miqt_string QsciScintilla_tr(const char* s);
 struct miqt_array /* of struct miqt_string */  QsciScintilla_apiContext(QsciScintilla* self, int pos, int* context_start, int* last_word_start);
 void QsciScintilla_annotate(QsciScintilla* self, int line, struct miqt_string text, int style);
@@ -429,6 +430,8 @@ void QsciScintilla_setMarkerBackgroundColor2(QsciScintilla* self, QColor* col, i
 void QsciScintilla_setMarkerForegroundColor2(QsciScintilla* self, QColor* col, int markerNumber);
 void QsciScintilla_setWrapVisualFlags2(QsciScintilla* self, int endFlag, int startFlag);
 void QsciScintilla_setWrapVisualFlags3(QsciScintilla* self, int endFlag, int startFlag, int indent);
+bool QsciScintilla_override_virtual_metacall(void* self, intptr_t slot);
+int QsciScintilla_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciScintilla_override_virtual_apiContext(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QsciScintilla_virtualbase_apiContext(void* self, int pos, int* context_start, int* last_word_start);
 bool QsciScintilla_override_virtual_findFirst(void* self, intptr_t slot);

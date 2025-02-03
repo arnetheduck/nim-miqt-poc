@@ -41,6 +41,7 @@ QLocalSocket* QLocalSocket_new2(QObject* parent);
 void QLocalSocket_virtbase(QLocalSocket* src, QIODevice** outptr_QIODevice);
 QMetaObject* QLocalSocket_metaObject(const QLocalSocket* self);
 void* QLocalSocket_metacast(QLocalSocket* self, const char* param1);
+int QLocalSocket_metacall(QLocalSocket* self, int param1, int param2, void** param3);
 struct miqt_string QLocalSocket_tr(const char* s);
 void QLocalSocket_connectToServer(QLocalSocket* self);
 void QLocalSocket_connectToServerWithName(QLocalSocket* self, struct miqt_string name);
@@ -89,6 +90,8 @@ bool QLocalSocket_setSocketDescriptor2(QLocalSocket* self, intptr_t socketDescri
 bool QLocalSocket_setSocketDescriptor3(QLocalSocket* self, intptr_t socketDescriptor, int socketState, int openMode);
 bool QLocalSocket_waitForConnected1(QLocalSocket* self, int msecs);
 bool QLocalSocket_waitForDisconnected1(QLocalSocket* self, int msecs);
+bool QLocalSocket_override_virtual_metacall(void* self, intptr_t slot);
+int QLocalSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QLocalSocket_override_virtual_isSequential(void* self, intptr_t slot);
 bool QLocalSocket_virtualbase_isSequential(const void* self);
 bool QLocalSocket_override_virtual_bytesAvailable(void* self, intptr_t slot);

@@ -31,6 +31,7 @@ typedef struct QWebEngineNotification QWebEngineNotification;
 void QWebEngineNotification_virtbase(QWebEngineNotification* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineNotification_metaObject(const QWebEngineNotification* self);
 void* QWebEngineNotification_metacast(QWebEngineNotification* self, const char* param1);
+int QWebEngineNotification_metacall(QWebEngineNotification* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineNotification_tr(const char* s);
 struct miqt_string QWebEngineNotification_trUtf8(const char* s);
 bool QWebEngineNotification_matches(const QWebEngineNotification* self, QWebEngineNotification* other);

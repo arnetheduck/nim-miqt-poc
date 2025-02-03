@@ -103,6 +103,7 @@ QGraphicsWebView* QGraphicsWebView_new2(QGraphicsItem* parent);
 void QGraphicsWebView_virtbase(QGraphicsWebView* src, QGraphicsWidget** outptr_QGraphicsWidget);
 QMetaObject* QGraphicsWebView_metaObject(const QGraphicsWebView* self);
 void* QGraphicsWebView_metacast(QGraphicsWebView* self, const char* param1);
+int QGraphicsWebView_metacall(QGraphicsWebView* self, int param1, int param2, void** param3);
 struct miqt_string QGraphicsWebView_tr(const char* s);
 struct miqt_string QGraphicsWebView_trUtf8(const char* s);
 QWebPage* QGraphicsWebView_page(const QGraphicsWebView* self);
@@ -188,6 +189,8 @@ void QGraphicsWebView_setContent3(QGraphicsWebView* self, struct miqt_string dat
 void QGraphicsWebView_triggerPageAction2(QGraphicsWebView* self, int action, bool checked);
 bool QGraphicsWebView_findText2(QGraphicsWebView* self, struct miqt_string subString, int options);
 void QGraphicsWebView_setRenderHint2(QGraphicsWebView* self, int param1, bool enabled);
+bool QGraphicsWebView_override_virtual_metacall(void* self, intptr_t slot);
+int QGraphicsWebView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsWebView_override_virtual_setGeometry(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_setGeometry(void* self, QRectF* rect);
 bool QGraphicsWebView_override_virtual_updateGeometry(void* self, intptr_t slot);

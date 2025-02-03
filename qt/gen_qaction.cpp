@@ -29,6 +29,7 @@ void miqt_exec_callback_QAction_triggered(intptr_t);
 void miqt_exec_callback_QAction_hovered(intptr_t);
 void miqt_exec_callback_QAction_toggled(intptr_t, bool);
 void miqt_exec_callback_QAction_triggered1(intptr_t, bool);
+int miqt_exec_callback_QAction_metacall(QAction*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAction_event(QAction*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAction_eventFilter(QAction*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QAction_timerEvent(QAction*, intptr_t, QTimerEvent*);
@@ -51,6 +52,32 @@ public:
 	MiqtVirtualQAction(const QIcon& icon, const QString& text, QObject* parent): QAction(icon, text, parent) {};
 
 	virtual ~MiqtVirtualQAction() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QAction::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QAction_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QAction::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -263,6 +290,10 @@ QMetaObject* QAction_metaObject(const QAction* self) {
 
 void* QAction_metacast(QAction* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QAction_metacall(QAction* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QAction_tr(const char* s) {
@@ -685,6 +716,20 @@ void QAction_connect_triggered1(QAction* self, intptr_t slot) {
 		bool sigval1 = checked;
 		miqt_exec_callback_QAction_triggered1(slot, sigval1);
 	});
+}
+
+bool QAction_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QAction_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQAction*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QAction_override_virtual_event(void* self, intptr_t slot) {

@@ -29,6 +29,7 @@ typedef struct QObject QObject;
 void QCameraControl_virtbase(QCameraControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraControl_metaObject(const QCameraControl* self);
 void* QCameraControl_metacast(QCameraControl* self, const char* param1);
+int QCameraControl_metacall(QCameraControl* self, int param1, int param2, void** param3);
 struct miqt_string QCameraControl_tr(const char* s);
 struct miqt_string QCameraControl_trUtf8(const char* s);
 int QCameraControl_state(const QCameraControl* self);

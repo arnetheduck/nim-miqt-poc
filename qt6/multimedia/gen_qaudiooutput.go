@@ -85,6 +85,10 @@ func (this *QAudioOutput) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QAudioOutput_metacast(this.h, param1_Cstring))
 }
 
+func (this *QAudioOutput) Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAudioOutput_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QAudioOutput_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -197,6 +201,38 @@ func QAudioOutput_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QAudioOutput) callVirtualBase_Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QAudioOutput_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QAudioOutput) OnMetacall(slot func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QAudioOutput_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAudioOutput_metacall
+func miqt_exec_callback_QAudioOutput_metacall(self *C.QAudioOutput, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt6.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QAudioOutput{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QAudioOutput) callVirtualBase_Event(event *qt6.QEvent) bool {

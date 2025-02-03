@@ -171,6 +171,7 @@ QStandardItemModel* QStandardItemModel_new4(int rows, int columns, QObject* pare
 void QStandardItemModel_virtbase(QStandardItemModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QStandardItemModel_metaObject(const QStandardItemModel* self);
 void* QStandardItemModel_metacast(QStandardItemModel* self, const char* param1);
+int QStandardItemModel_metacall(QStandardItemModel* self, int param1, int param2, void** param3);
 struct miqt_string QStandardItemModel_tr(const char* s);
 void QStandardItemModel_setItemRoleNames(QStandardItemModel* self, struct miqt_map /* of int to struct miqt_string */  roleNames);
 struct miqt_map /* of int to struct miqt_string */  QStandardItemModel_roleNames(const QStandardItemModel* self);
@@ -240,6 +241,8 @@ bool QStandardItemModel_insertColumn2(QStandardItemModel* self, int column, QMod
 QStandardItem* QStandardItemModel_takeItem2(QStandardItemModel* self, int row, int column);
 struct miqt_array /* of QStandardItem* */  QStandardItemModel_findItems2(const QStandardItemModel* self, struct miqt_string text, int flags);
 struct miqt_array /* of QStandardItem* */  QStandardItemModel_findItems3(const QStandardItemModel* self, struct miqt_string text, int flags, int column);
+bool QStandardItemModel_override_virtual_metacall(void* self, intptr_t slot);
+int QStandardItemModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStandardItemModel_override_virtual_roleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QStandardItemModel_virtualbase_roleNames(const void* self);
 bool QStandardItemModel_override_virtual_index(void* self, intptr_t slot);

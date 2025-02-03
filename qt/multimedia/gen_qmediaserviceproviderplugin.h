@@ -89,6 +89,7 @@ void QMediaServiceFeaturesInterface_delete(QMediaServiceFeaturesInterface* self)
 void QMediaServiceProviderPlugin_virtbase(QMediaServiceProviderPlugin* src, QObject** outptr_QObject, QMediaServiceProviderFactoryInterface** outptr_QMediaServiceProviderFactoryInterface);
 QMetaObject* QMediaServiceProviderPlugin_metaObject(const QMediaServiceProviderPlugin* self);
 void* QMediaServiceProviderPlugin_metacast(QMediaServiceProviderPlugin* self, const char* param1);
+int QMediaServiceProviderPlugin_metacall(QMediaServiceProviderPlugin* self, int param1, int param2, void** param3);
 struct miqt_string QMediaServiceProviderPlugin_tr(const char* s);
 struct miqt_string QMediaServiceProviderPlugin_trUtf8(const char* s);
 QMediaService* QMediaServiceProviderPlugin_create(QMediaServiceProviderPlugin* self, struct miqt_string key);

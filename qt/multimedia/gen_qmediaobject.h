@@ -31,6 +31,7 @@ typedef struct QVariant QVariant;
 void QMediaObject_virtbase(QMediaObject* src, QObject** outptr_QObject);
 QMetaObject* QMediaObject_metaObject(const QMediaObject* self);
 void* QMediaObject_metacast(QMediaObject* self, const char* param1);
+int QMediaObject_metacall(QMediaObject* self, int param1, int param2, void** param3);
 struct miqt_string QMediaObject_tr(const char* s);
 struct miqt_string QMediaObject_trUtf8(const char* s);
 bool QMediaObject_isAvailable(const QMediaObject* self);

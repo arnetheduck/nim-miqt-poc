@@ -57,6 +57,7 @@ void miqt_exec_callback_QGraphicsWebView_titleChanged(intptr_t, struct miqt_stri
 void miqt_exec_callback_QGraphicsWebView_iconChanged(intptr_t);
 void miqt_exec_callback_QGraphicsWebView_statusBarMessage(intptr_t, struct miqt_string);
 void miqt_exec_callback_QGraphicsWebView_linkClicked(intptr_t, QUrl*);
+int miqt_exec_callback_QGraphicsWebView_metacall(QGraphicsWebView*, intptr_t, int, int, void**);
 void miqt_exec_callback_QGraphicsWebView_setGeometry(QGraphicsWebView*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsWebView_updateGeometry(QGraphicsWebView*, intptr_t);
 void miqt_exec_callback_QGraphicsWebView_paint(QGraphicsWebView*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
@@ -131,6 +132,32 @@ public:
 	MiqtVirtualQGraphicsWebView(QGraphicsItem* parent): QGraphicsWebView(parent) {};
 
 	virtual ~MiqtVirtualQGraphicsWebView() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QGraphicsWebView::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QGraphicsWebView_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QGraphicsWebView::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -1696,6 +1723,10 @@ void* QGraphicsWebView_metacast(QGraphicsWebView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QGraphicsWebView_metacall(QGraphicsWebView* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QGraphicsWebView_tr(const char* s) {
 	QString _ret = QGraphicsWebView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -2061,6 +2092,20 @@ bool QGraphicsWebView_findText2(QGraphicsWebView* self, struct miqt_string subSt
 
 void QGraphicsWebView_setRenderHint2(QGraphicsWebView* self, int param1, bool enabled) {
 	self->setRenderHint(static_cast<QPainter::RenderHint>(param1), enabled);
+}
+
+bool QGraphicsWebView_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QGraphicsWebView_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QGraphicsWebView_override_virtual_setGeometry(void* self, intptr_t slot) {

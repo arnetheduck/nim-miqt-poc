@@ -30,6 +30,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		clangBin,
 		pkgConfigCflags("Qt5Widgets"),
+		"Qt5Widgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -46,6 +47,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		clangBin,
 		pkgConfigCflags("Qt5Core"),
+		"Qt5Core",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -58,6 +60,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5PrintSupport"),
+		"Qt5PrintSupport",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -70,6 +73,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5Svg"),
+		"Qt5Svg",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -82,6 +86,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5Network"),
+		"Qt5Network",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -98,6 +103,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5MultimediaWidgets"),
+		"Qt5MultimediaWidgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -110,6 +116,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5Script"),
+		"Qt5Script",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -125,6 +132,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5WebKitWidgets"),
+		"Qt5WebKitWidgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -138,6 +146,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5WebChannel"),
+		"Qt5WebChannel",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -160,6 +169,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		clangBin,
 		pkgConfigCflags("Qt5WebEngineWidgets"),
+		"Qt5WebEngineWidgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -173,6 +183,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5PrintSupport"),
+		"Qt5PrintSupport",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -186,8 +197,27 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++1z "+pkgConfigCflags("ScintillaEdit"),
+		"ScintillaEdit",
 		outDir,
 		(&clangMatchUnderPath{filepath.Join(extraLibsDir, "scintilla")}).Match,
+	)
+
+	// Qt 5 Quick
+	generate(
+		"qt/quick",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtQmlModels",
+			"/usr/include/x86_64-linux-gnu/qt5/QtQml",
+			"/usr/include/x86_64-linux-gnu/qt5/QtQuick",
+		},
+
+		AllowAllHeaders,
+
+		clangBin,
+		pkgConfigCflags("Qt5Quick"),
+		"Qt5Quick",
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
 	)
 
 	// FLUSH all known typedefs / ...
@@ -214,6 +244,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6Widgets"),
+		"Qt6Widgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -230,6 +261,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		clangBin,
 		"--std=c++20 "+pkgConfigCflags("Qt6Core"),
+		"Qt6Core",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -243,6 +275,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6PrintSupport"),
+		"Qt6PrintSupport",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -257,6 +290,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6SvgWidgets"),
+		"Qt6SvgWidgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -273,6 +307,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6Network"),
+		"Qt6Network",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -287,6 +322,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6MultimediaWidgets"),
+		"Qt6MultimediaWidgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -300,6 +336,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6SpatialAudio"),
+		"Qt6SpatialAudio",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -313,6 +350,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6WebChannel"),
+		"Qt6WebChannel",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -333,6 +371,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6WebEngineWidgets"),
+		"Qt6WebEngineWidgets",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -347,6 +386,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6PrintSupport"),
+		"Qt6PrintSupport",
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)

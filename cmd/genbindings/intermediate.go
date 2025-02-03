@@ -438,7 +438,7 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		if m.IsSignal {
 			continue
 		}
-		if !AllowVirtual(m) {
+		if c.ClassName != "QObject" && !AllowVirtual(m) {
 			continue
 		}
 

@@ -59,6 +59,7 @@ void miqt_exec_callback_QComboBox_highlighted(intptr_t, int);
 void miqt_exec_callback_QComboBox_textHighlighted(intptr_t, struct miqt_string);
 void miqt_exec_callback_QComboBox_currentIndexChanged(intptr_t, int);
 void miqt_exec_callback_QComboBox_currentTextChanged(intptr_t, struct miqt_string);
+int miqt_exec_callback_QComboBox_metacall(QComboBox*, intptr_t, int, int, void**);
 void miqt_exec_callback_QComboBox_setModel(QComboBox*, intptr_t, QAbstractItemModel*);
 QSize* miqt_exec_callback_QComboBox_sizeHint(const QComboBox*, intptr_t);
 QSize* miqt_exec_callback_QComboBox_minimumSizeHint(const QComboBox*, intptr_t);
@@ -121,6 +122,32 @@ public:
 	MiqtVirtualQComboBox(): QComboBox() {};
 
 	virtual ~MiqtVirtualQComboBox() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QComboBox::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QComboBox_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QComboBox::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setModel = 0;
@@ -1362,6 +1389,10 @@ void* QComboBox_metacast(QComboBox* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QComboBox_metacall(QComboBox* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QComboBox_tr(const char* s) {
 	QString _ret = QComboBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1865,6 +1896,20 @@ void QComboBox_insertItem4(QComboBox* self, int index, QIcon* icon, struct miqt_
 
 void QComboBox_setItemData3(QComboBox* self, int index, QVariant* value, int role) {
 	self->setItemData(static_cast<int>(index), *value, static_cast<int>(role));
+}
+
+bool QComboBox_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QComboBox_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QComboBox_override_virtual_setModel(void* self, intptr_t slot) {

@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QsciLexerCSS_metacall(QsciLexerCSS*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciLexerCSS_setFoldComments(QsciLexerCSS*, intptr_t, bool);
 void miqt_exec_callback_QsciLexerCSS_setFoldCompact(QsciLexerCSS*, intptr_t, bool);
 const char* miqt_exec_callback_QsciLexerCSS_language(const QsciLexerCSS*, intptr_t);
@@ -72,6 +73,32 @@ public:
 	MiqtVirtualQsciLexerCSS(QObject* parent): QsciLexerCSS(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerCSS() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QsciLexerCSS::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QsciLexerCSS_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QsciLexerCSS::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setFoldComments = 0;
@@ -1132,6 +1159,10 @@ void* QsciLexerCSS_metacast(QsciLexerCSS* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QsciLexerCSS_metacall(QsciLexerCSS* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QsciLexerCSS_tr(const char* s) {
 	QString _ret = QsciLexerCSS::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1291,6 +1322,20 @@ const char* QsciLexerCSS_blockEnd1(const QsciLexerCSS* self, int* style) {
 
 const char* QsciLexerCSS_blockStart1(const QsciLexerCSS* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
+}
+
+bool QsciLexerCSS_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCSS* self_cast = dynamic_cast<MiqtVirtualQsciLexerCSS*>( (QsciLexerCSS*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QsciLexerCSS_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQsciLexerCSS*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QsciLexerCSS_override_virtual_setFoldComments(void* self, intptr_t slot) {

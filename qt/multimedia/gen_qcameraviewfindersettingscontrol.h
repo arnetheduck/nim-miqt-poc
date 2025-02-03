@@ -35,6 +35,7 @@ typedef struct QVariant QVariant;
 void QCameraViewfinderSettingsControl_virtbase(QCameraViewfinderSettingsControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraViewfinderSettingsControl_metaObject(const QCameraViewfinderSettingsControl* self);
 void* QCameraViewfinderSettingsControl_metacast(QCameraViewfinderSettingsControl* self, const char* param1);
+int QCameraViewfinderSettingsControl_metacall(QCameraViewfinderSettingsControl* self, int param1, int param2, void** param3);
 struct miqt_string QCameraViewfinderSettingsControl_tr(const char* s);
 struct miqt_string QCameraViewfinderSettingsControl_trUtf8(const char* s);
 bool QCameraViewfinderSettingsControl_isViewfinderParameterSupported(const QCameraViewfinderSettingsControl* self, int parameter);
@@ -49,6 +50,7 @@ void QCameraViewfinderSettingsControl_delete(QCameraViewfinderSettingsControl* s
 void QCameraViewfinderSettingsControl2_virtbase(QCameraViewfinderSettingsControl2* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraViewfinderSettingsControl2_metaObject(const QCameraViewfinderSettingsControl2* self);
 void* QCameraViewfinderSettingsControl2_metacast(QCameraViewfinderSettingsControl2* self, const char* param1);
+int QCameraViewfinderSettingsControl2_metacall(QCameraViewfinderSettingsControl2* self, int param1, int param2, void** param3);
 struct miqt_string QCameraViewfinderSettingsControl2_tr(const char* s);
 struct miqt_string QCameraViewfinderSettingsControl2_trUtf8(const char* s);
 struct miqt_array /* of QCameraViewfinderSettings* */  QCameraViewfinderSettingsControl2_supportedViewfinderSettings(const QCameraViewfinderSettingsControl2* self);

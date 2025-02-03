@@ -101,6 +101,7 @@ QWebEngineView* QWebEngineView_new2();
 void QWebEngineView_virtbase(QWebEngineView* src, QWidget** outptr_QWidget);
 QMetaObject* QWebEngineView_metaObject(const QWebEngineView* self);
 void* QWebEngineView_metacast(QWebEngineView* self, const char* param1);
+int QWebEngineView_metacall(QWebEngineView* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineView_tr(const char* s);
 struct miqt_string QWebEngineView_trUtf8(const char* s);
 QWebEnginePage* QWebEngineView_page(const QWebEngineView* self);
@@ -165,6 +166,8 @@ void QWebEngineView_setContent2(QWebEngineView* self, struct miqt_string data, s
 void QWebEngineView_setContent3(QWebEngineView* self, struct miqt_string data, struct miqt_string mimeType, QUrl* baseUrl);
 void QWebEngineView_triggerPageAction2(QWebEngineView* self, int action, bool checked);
 void QWebEngineView_findText2(QWebEngineView* self, struct miqt_string subString, int options);
+bool QWebEngineView_override_virtual_metacall(void* self, intptr_t slot);
+int QWebEngineView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEngineView_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QWebEngineView_virtualbase_sizeHint(const void* self);
 bool QWebEngineView_override_virtual_createWindow(void* self, intptr_t slot);

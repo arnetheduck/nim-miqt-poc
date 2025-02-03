@@ -55,6 +55,7 @@ QWebEngineProfile* QWebEngineProfile_new4(struct miqt_string name, QObject* pare
 void QWebEngineProfile_virtbase(QWebEngineProfile* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineProfile_metaObject(const QWebEngineProfile* self);
 void* QWebEngineProfile_metacast(QWebEngineProfile* self, const char* param1);
+int QWebEngineProfile_metacall(QWebEngineProfile* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineProfile_tr(const char* s);
 struct miqt_string QWebEngineProfile_storageName(const QWebEngineProfile* self);
 bool QWebEngineProfile_isOffTheRecord(const QWebEngineProfile* self);
@@ -97,6 +98,8 @@ void QWebEngineProfile_downloadRequested(QWebEngineProfile* self, QWebEngineDown
 void QWebEngineProfile_connect_downloadRequested(QWebEngineProfile* self, intptr_t slot);
 struct miqt_string QWebEngineProfile_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineProfile_tr3(const char* s, const char* c, int n);
+bool QWebEngineProfile_override_virtual_metacall(void* self, intptr_t slot);
+int QWebEngineProfile_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEngineProfile_override_virtual_event(void* self, intptr_t slot);
 bool QWebEngineProfile_virtualbase_event(void* self, QEvent* event);
 bool QWebEngineProfile_override_virtual_eventFilter(void* self, intptr_t slot);

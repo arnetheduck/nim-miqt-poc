@@ -1,0 +1,24 @@
+type QWebSelectData* {.inheritable, pure.} = object
+  h*: pointer
+import gen_qobject_types
+export gen_qobject_types
+type QWebSelectMethod*  = object of gen_qobject_types.QObject
+type QWebNotificationData* {.inheritable, pure.} = object
+  h*: pointer
+import gen_qobject_types
+export gen_qobject_types
+type QWebNotificationPresenter*  = object of gen_qobject_types.QObject
+import gen_qobject_types
+export gen_qobject_types
+type QWebHapticFeedbackPlayer*  = object of gen_qobject_types.QObject
+import gen_qobject_types
+export gen_qobject_types
+type QWebTouchModifier*  = object of gen_qobject_types.QObject
+import gen_qobject_types
+export gen_qobject_types
+type QWebSpellChecker*  = object of gen_qobject_types.QObject
+type QWebKitPlatformPlugin* {.inheritable, pure.} = object
+  h*: pointer
+type QWebSpellCheckerGrammarDetail* {.inheritable, pure.} = object
+  h*: pointer
+

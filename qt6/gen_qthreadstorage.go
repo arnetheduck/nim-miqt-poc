@@ -51,6 +51,18 @@ func NewQThreadStorageData(param1 *QThreadStorageData) *QThreadStorageData {
 	return newQThreadStorageData(C.QThreadStorageData_new(param1.cPointer()))
 }
 
+func (this *QThreadStorageData) Get() unsafe.Pointer {
+	return (unsafe.Pointer)(C.QThreadStorageData_get(this.h))
+}
+
+func (this *QThreadStorageData) Set(p unsafe.Pointer) unsafe.Pointer {
+	return (unsafe.Pointer)(C.QThreadStorageData_set(this.h, p))
+}
+
+func QThreadStorageData_Finish(param1 unsafe.Pointer) {
+	C.QThreadStorageData_finish(param1)
+}
+
 // Delete this object from C++ memory.
 func (this *QThreadStorageData) Delete() {
 	C.QThreadStorageData_delete(this.h)

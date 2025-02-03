@@ -89,6 +89,10 @@ func (this *QFileSystemModel) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QFileSystemModel_metacast(this.h, param1_Cstring))
 }
 
+func (this *QFileSystemModel) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QFileSystemModel_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QFileSystemModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -550,6 +554,38 @@ func (this *QFileSystemModel) MyComputer1(role int) *QVariant {
 
 func (this *QFileSystemModel) SetOption2(option QFileSystemModel__Option, on bool) {
 	C.QFileSystemModel_setOption2(this.h, (C.int)(option), (C.bool)(on))
+}
+
+func (this *QFileSystemModel) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QFileSystemModel_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QFileSystemModel) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QFileSystemModel_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFileSystemModel_metacall
+func miqt_exec_callback_QFileSystemModel_metacall(self *C.QFileSystemModel, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QFileSystemModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {

@@ -111,6 +111,10 @@ func (this *QMediaPlayer) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QMediaPlayer_metacast(this.h, param1_Cstring))
 }
 
+func (this *QMediaPlayer) Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QMediaPlayer_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QMediaPlayer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -685,6 +689,38 @@ func QMediaPlayer_Tr3(s string, c string, n int) string {
 
 func (this *QMediaPlayer) SetSourceDevice2(device *qt6.QIODevice, sourceUrl *qt6.QUrl) {
 	C.QMediaPlayer_setSourceDevice2(this.h, (*C.QIODevice)(device.UnsafePointer()), (*C.QUrl)(sourceUrl.UnsafePointer()))
+}
+
+func (this *QMediaPlayer) callVirtualBase_Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QMediaPlayer_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QMediaPlayer) OnMetacall(slot func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QMediaPlayer_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMediaPlayer_metacall
+func miqt_exec_callback_QMediaPlayer_metacall(self *C.QMediaPlayer, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt6.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QMediaPlayer{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QMediaPlayer) callVirtualBase_Event(event *qt6.QEvent) bool {

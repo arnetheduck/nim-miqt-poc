@@ -74,6 +74,10 @@ func (this *QGraphicsWebView) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QGraphicsWebView_metacast(this.h, param1_Cstring))
 }
 
+func (this *QGraphicsWebView) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QGraphicsWebView_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QGraphicsWebView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -543,6 +547,38 @@ func (this *QGraphicsWebView) FindText2(subString string, options QWebPage__Find
 
 func (this *QGraphicsWebView) SetRenderHint2(param1 qt.QPainter__RenderHint, enabled bool) {
 	C.QGraphicsWebView_setRenderHint2(this.h, (C.int)(param1), (C.bool)(enabled))
+}
+
+func (this *QGraphicsWebView) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QGraphicsWebView_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QGraphicsWebView) OnMetacall(slot func(super func(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QGraphicsWebView_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_metacall
+func miqt_exec_callback_QGraphicsWebView_metacall(self *C.QGraphicsWebView, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QGraphicsWebView) callVirtualBase_SetGeometry(rect *qt.QRectF) {

@@ -49,6 +49,7 @@ void miqt_exec_callback_QTabWidget_currentChanged(intptr_t, int);
 void miqt_exec_callback_QTabWidget_tabCloseRequested(intptr_t, int);
 void miqt_exec_callback_QTabWidget_tabBarClicked(intptr_t, int);
 void miqt_exec_callback_QTabWidget_tabBarDoubleClicked(intptr_t, int);
+int miqt_exec_callback_QTabWidget_metacall(QTabWidget*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QTabWidget_sizeHint(const QTabWidget*, intptr_t);
 QSize* miqt_exec_callback_QTabWidget_minimumSizeHint(const QTabWidget*, intptr_t);
 int miqt_exec_callback_QTabWidget_heightForWidth(const QTabWidget*, intptr_t, int);
@@ -110,6 +111,32 @@ public:
 	MiqtVirtualQTabWidget(): QTabWidget() {};
 
 	virtual ~MiqtVirtualQTabWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QTabWidget::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QTabWidget_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QTabWidget::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -1329,6 +1356,10 @@ void* QTabWidget_metacast(QTabWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QTabWidget_metacall(QTabWidget* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QTabWidget_tr(const char* s) {
 	QString _ret = QTabWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1643,6 +1674,20 @@ void QTabWidget_setCornerWidget2(QTabWidget* self, QWidget* w, int corner) {
 
 QWidget* QTabWidget_cornerWidget1(const QTabWidget* self, int corner) {
 	return self->cornerWidget(static_cast<Qt::Corner>(corner));
+}
+
+bool QTabWidget_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQTabWidget* self_cast = dynamic_cast<MiqtVirtualQTabWidget*>( (QTabWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QTabWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQTabWidget*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QTabWidget_override_virtual_sizeHint(void* self, intptr_t slot) {

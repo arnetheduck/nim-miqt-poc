@@ -46,6 +46,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSplashScreen_messageChanged(intptr_t, struct miqt_string);
+int miqt_exec_callback_QSplashScreen_metacall(QSplashScreen*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QSplashScreen_event(QSplashScreen*, intptr_t, QEvent*);
 void miqt_exec_callback_QSplashScreen_drawContents(QSplashScreen*, intptr_t, QPainter*);
 void miqt_exec_callback_QSplashScreen_mousePressEvent(QSplashScreen*, intptr_t, QMouseEvent*);
@@ -109,6 +110,32 @@ public:
 	MiqtVirtualQSplashScreen(QScreen* screen, const QPixmap& pixmap, Qt::WindowFlags f): QSplashScreen(screen, pixmap, f) {};
 
 	virtual ~MiqtVirtualQSplashScreen() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QSplashScreen::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QSplashScreen_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QSplashScreen::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -1296,6 +1323,10 @@ void* QSplashScreen_metacast(QSplashScreen* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QSplashScreen_metacall(QSplashScreen* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QSplashScreen_tr(const char* s) {
 	QString _ret = QSplashScreen::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1392,6 +1423,20 @@ void QSplashScreen_showMessage2(QSplashScreen* self, struct miqt_string message,
 void QSplashScreen_showMessage3(QSplashScreen* self, struct miqt_string message, int alignment, QColor* color) {
 	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->showMessage(message_QString, static_cast<int>(alignment), *color);
+}
+
+bool QSplashScreen_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQSplashScreen* self_cast = dynamic_cast<MiqtVirtualQSplashScreen*>( (QSplashScreen*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QSplashScreen_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQSplashScreen*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QSplashScreen_override_virtual_event(void* self, intptr_t slot) {

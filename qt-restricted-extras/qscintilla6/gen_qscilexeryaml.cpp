@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QsciLexerYAML_metacall(QsciLexerYAML*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciLexerYAML_setFoldComments(QsciLexerYAML*, intptr_t, bool);
 const char* miqt_exec_callback_QsciLexerYAML_language(const QsciLexerYAML*, intptr_t);
 const char* miqt_exec_callback_QsciLexerYAML_lexer(const QsciLexerYAML*, intptr_t);
@@ -71,6 +72,32 @@ public:
 	MiqtVirtualQsciLexerYAML(QObject* parent): QsciLexerYAML(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerYAML() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QsciLexerYAML::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QsciLexerYAML_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QsciLexerYAML::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setFoldComments = 0;
@@ -1107,6 +1134,10 @@ void* QsciLexerYAML_metacast(QsciLexerYAML* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QsciLexerYAML_metacall(QsciLexerYAML* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QsciLexerYAML_tr(const char* s) {
 	QString _ret = QsciLexerYAML::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1189,6 +1220,20 @@ struct miqt_string QsciLexerYAML_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QsciLexerYAML_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerYAML* self_cast = dynamic_cast<MiqtVirtualQsciLexerYAML*>( (QsciLexerYAML*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QsciLexerYAML_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQsciLexerYAML*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QsciLexerYAML_override_virtual_setFoldComments(void* self, intptr_t slot) {

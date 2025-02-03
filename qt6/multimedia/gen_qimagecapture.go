@@ -105,6 +105,10 @@ func (this *QImageCapture) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QImageCapture_metacast(this.h, param1_Cstring))
 }
 
+func (this *QImageCapture) Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QImageCapture_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QImageCapture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -492,6 +496,38 @@ func (this *QImageCapture) CaptureToFile1(location string) int {
 	location_ms.len = C.size_t(len(location))
 	defer C.free(unsafe.Pointer(location_ms.data))
 	return (int)(C.QImageCapture_captureToFile1(this.h, location_ms))
+}
+
+func (this *QImageCapture) callVirtualBase_Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QImageCapture_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QImageCapture) OnMetacall(slot func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QImageCapture_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QImageCapture_metacall
+func miqt_exec_callback_QImageCapture_metacall(self *C.QImageCapture, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt6.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QImageCapture{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QImageCapture) callVirtualBase_Event(event *qt6.QEvent) bool {

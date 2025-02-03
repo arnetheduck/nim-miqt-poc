@@ -44,6 +44,7 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 	clangArgs = append(clangArgs, cflags...)
 	clangArgs = append(clangArgs, `-Xclang`, `-ast-dump=json`, `-fsyntax-only`, inputHeader)
 
+	log.Printf("cmd: %s %s", clangBin, clangArgs)
 	cmd := exec.CommandContext(ctx, clangBin, clangArgs...)
 	pr, err := cmd.StdoutPipe()
 	if err != nil {

@@ -49,6 +49,7 @@ QMediaPlaylist* QMediaPlaylist_new2(QObject* parent);
 void QMediaPlaylist_virtbase(QMediaPlaylist* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QMediaPlaylist_metaObject(const QMediaPlaylist* self);
 void* QMediaPlaylist_metacast(QMediaPlaylist* self, const char* param1);
+int QMediaPlaylist_metacall(QMediaPlaylist* self, int param1, int param2, void** param3);
 struct miqt_string QMediaPlaylist_tr(const char* s);
 struct miqt_string QMediaPlaylist_trUtf8(const char* s);
 QMediaObject* QMediaPlaylist_mediaObject(const QMediaPlaylist* self);
@@ -112,6 +113,8 @@ void QMediaPlaylist_load2(QMediaPlaylist* self, QNetworkRequest* request, const 
 void QMediaPlaylist_load22(QMediaPlaylist* self, QUrl* location, const char* format);
 void QMediaPlaylist_load23(QMediaPlaylist* self, QIODevice* device, const char* format);
 bool QMediaPlaylist_save22(QMediaPlaylist* self, QUrl* location, const char* format);
+bool QMediaPlaylist_override_virtual_metacall(void* self, intptr_t slot);
+int QMediaPlaylist_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QMediaPlaylist_override_virtual_mediaObject(void* self, intptr_t slot);
 QMediaObject* QMediaPlaylist_virtualbase_mediaObject(const void* self);
 bool QMediaPlaylist_override_virtual_setMediaObject(void* self, intptr_t slot);

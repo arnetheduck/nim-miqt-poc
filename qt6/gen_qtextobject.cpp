@@ -34,6 +34,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QTextFrame_metacall(QTextFrame*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QTextFrame_event(QTextFrame*, intptr_t, QEvent*);
 bool miqt_exec_callback_QTextFrame_eventFilter(QTextFrame*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QTextFrame_timerEvent(QTextFrame*, intptr_t, QTimerEvent*);
@@ -55,6 +56,10 @@ QMetaObject* QTextObject_metaObject(const QTextObject* self) {
 
 void* QTextObject_metacast(QTextObject* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QTextObject_metacall(QTextObject* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QTextObject_tr(const char* s) {
@@ -118,6 +123,10 @@ void* QTextBlockGroup_metacast(QTextBlockGroup* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QTextBlockGroup_metacall(QTextBlockGroup* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QTextBlockGroup_tr(const char* s) {
 	QString _ret = QTextBlockGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -165,6 +174,32 @@ public:
 	MiqtVirtualQTextFrame(QTextDocument* doc): QTextFrame(doc) {};
 
 	virtual ~MiqtVirtualQTextFrame() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QTextFrame::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QTextFrame_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QTextFrame::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -355,6 +390,10 @@ void* QTextFrame_metacast(QTextFrame* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QTextFrame_metacall(QTextFrame* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QTextFrame_tr(const char* s) {
 	QString _ret = QTextFrame::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -443,6 +482,20 @@ struct miqt_string QTextFrame_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QTextFrame_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQTextFrame* self_cast = dynamic_cast<MiqtVirtualQTextFrame*>( (QTextFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QTextFrame_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQTextFrame*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QTextFrame_override_virtual_event(void* self, intptr_t slot) {

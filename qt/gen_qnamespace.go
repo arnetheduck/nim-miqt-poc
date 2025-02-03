@@ -1725,6 +1725,10 @@ func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
 	return newQInternal((*C.QInternal)(h))
 }
 
+func QInternal_ActivateCallbacks(param1 QInternal__Callback, param2 unsafe.Pointer) bool {
+	return (bool)(C.QInternal_activateCallbacks((C.int)(param1), param2))
+}
+
 // Delete this object from C++ memory.
 func (this *QInternal) Delete() {
 	C.QInternal_delete(this.h)

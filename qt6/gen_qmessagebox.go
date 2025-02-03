@@ -228,6 +228,10 @@ func (this *QMessageBox) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QMessageBox_metacast(this.h, param1_Cstring))
 }
 
+func (this *QMessageBox) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QMessageBox_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QMessageBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -1255,6 +1259,38 @@ func QMessageBox_Critical8(parent *QWidget, title string, text string, button0Te
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
 	return (int)(C.QMessageBox_critical8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
+}
+
+func (this *QMessageBox) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QMessageBox_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QMessageBox) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QMessageBox_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMessageBox_metacall
+func miqt_exec_callback_QMessageBox_metacall(self *C.QMessageBox, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QMessageBox{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QMessageBox) callVirtualBase_Event(e *QEvent) bool {

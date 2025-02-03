@@ -39,6 +39,7 @@ typedef struct QTransform QTransform;
 void QScreen_virtbase(QScreen* src, QObject** outptr_QObject);
 QMetaObject* QScreen_metaObject(const QScreen* self);
 void* QScreen_metacast(QScreen* self, const char* param1);
+int QScreen_metacall(QScreen* self, int param1, int param2, void** param3);
 struct miqt_string QScreen_tr(const char* s);
 struct miqt_string QScreen_trUtf8(const char* s);
 struct miqt_string QScreen_name(const QScreen* self);

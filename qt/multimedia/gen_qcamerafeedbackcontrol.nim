@@ -1,0 +1,159 @@
+import Qt5MultimediaWidgets_libs
+
+{.push raises: [].}
+
+from system/ansi_c import c_free
+
+type
+  struct_miqt_string {.used.} = object
+    len: csize_t
+    data: cstring
+
+  struct_miqt_array {.used.} = object
+    len: csize_t
+    data: pointer
+
+  struct_miqt_map {.used.} = object
+    len: csize_t
+    keys: pointer
+    values: pointer
+
+  miqt_uintptr_t {.importc: "uintptr_t", header: "stdint.h", used.} = uint
+  miqt_intptr_t {.importc: "intptr_t", header: "stdint.h", used.} = int
+
+func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
+  if v.len > 0:
+    result = newString(v.len)
+    when nimvm:
+      for i, c in v:
+        result[i] = cast[char](c)
+    else:
+      copyMem(addr result[0], unsafeAddr v[0], v.len)
+
+const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
+{.compile("gen_qcamerafeedbackcontrol.cpp", cflags).}
+
+
+type QCameraFeedbackControlEventType* = cint
+const
+  QCameraFeedbackControlViewfinderStarted* = 1
+  QCameraFeedbackControlViewfinderStopped* = 2
+  QCameraFeedbackControlImageCaptured* = 3
+  QCameraFeedbackControlImageSaved* = 4
+  QCameraFeedbackControlImageError* = 5
+  QCameraFeedbackControlRecordingStarted* = 6
+  QCameraFeedbackControlRecordingInProgress* = 7
+  QCameraFeedbackControlRecordingStopped* = 8
+  QCameraFeedbackControlAutoFocusInProgress* = 9
+  QCameraFeedbackControlAutoFocusLocked* = 10
+  QCameraFeedbackControlAutoFocusFailed* = 11
+
+
+
+import gen_qcamerafeedbackcontrol_types
+export gen_qcamerafeedbackcontrol_types
+
+import
+  gen_qmediacontrol,
+  gen_qobjectdefs
+export
+  gen_qmediacontrol,
+  gen_qobjectdefs
+
+type cQCameraFeedbackControl*{.exportc: "QCameraFeedbackControl", incompleteStruct.} = object
+
+proc fcQCameraFeedbackControl_metaObject(self: pointer, ): pointer {.importc: "QCameraFeedbackControl_metaObject".}
+proc fcQCameraFeedbackControl_metacast(self: pointer, param1: cstring): pointer {.importc: "QCameraFeedbackControl_metacast".}
+proc fcQCameraFeedbackControl_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QCameraFeedbackControl_metacall".}
+proc fcQCameraFeedbackControl_tr(s: cstring): struct_miqt_string {.importc: "QCameraFeedbackControl_tr".}
+proc fcQCameraFeedbackControl_trUtf8(s: cstring): struct_miqt_string {.importc: "QCameraFeedbackControl_trUtf8".}
+proc fcQCameraFeedbackControl_isEventFeedbackLocked(self: pointer, param1: cint): bool {.importc: "QCameraFeedbackControl_isEventFeedbackLocked".}
+proc fcQCameraFeedbackControl_isEventFeedbackEnabled(self: pointer, param1: cint): bool {.importc: "QCameraFeedbackControl_isEventFeedbackEnabled".}
+proc fcQCameraFeedbackControl_setEventFeedbackEnabled(self: pointer, param1: cint, param2: bool): bool {.importc: "QCameraFeedbackControl_setEventFeedbackEnabled".}
+proc fcQCameraFeedbackControl_resetEventFeedback(self: pointer, param1: cint): void {.importc: "QCameraFeedbackControl_resetEventFeedback".}
+proc fcQCameraFeedbackControl_setEventFeedbackSound(self: pointer, param1: cint, filePath: struct_miqt_string): bool {.importc: "QCameraFeedbackControl_setEventFeedbackSound".}
+proc fcQCameraFeedbackControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFeedbackControl_tr2".}
+proc fcQCameraFeedbackControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFeedbackControl_tr3".}
+proc fcQCameraFeedbackControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFeedbackControl_trUtf82".}
+proc fcQCameraFeedbackControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFeedbackControl_trUtf83".}
+proc fcQCameraFeedbackControl_delete(self: pointer) {.importc: "QCameraFeedbackControl_delete".}
+
+
+func init*(T: type QCameraFeedbackControl, h: ptr cQCameraFeedbackControl): QCameraFeedbackControl =
+  T(h: h)
+proc metaObject*(self: QCameraFeedbackControl, ): gen_qobjectdefs.QMetaObject =
+
+  gen_qobjectdefs.QMetaObject(h: fcQCameraFeedbackControl_metaObject(self.h))
+
+proc metacast*(self: QCameraFeedbackControl, param1: cstring): pointer =
+
+  fcQCameraFeedbackControl_metacast(self.h, param1)
+
+proc metacall*(self: QCameraFeedbackControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+
+  fcQCameraFeedbackControl_metacall(self.h, cint(param1), param2, param3)
+
+proc tr*(_: type QCameraFeedbackControl, s: cstring): string =
+
+  let v_ms = fcQCameraFeedbackControl_tr(s)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc trUtf8*(_: type QCameraFeedbackControl, s: cstring): string =
+
+  let v_ms = fcQCameraFeedbackControl_trUtf8(s)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc isEventFeedbackLocked*(self: QCameraFeedbackControl, param1: QCameraFeedbackControlEventType): bool =
+
+  fcQCameraFeedbackControl_isEventFeedbackLocked(self.h, cint(param1))
+
+proc isEventFeedbackEnabled*(self: QCameraFeedbackControl, param1: QCameraFeedbackControlEventType): bool =
+
+  fcQCameraFeedbackControl_isEventFeedbackEnabled(self.h, cint(param1))
+
+proc setEventFeedbackEnabled*(self: QCameraFeedbackControl, param1: QCameraFeedbackControlEventType, param2: bool): bool =
+
+  fcQCameraFeedbackControl_setEventFeedbackEnabled(self.h, cint(param1), param2)
+
+proc resetEventFeedback*(self: QCameraFeedbackControl, param1: QCameraFeedbackControlEventType): void =
+
+  fcQCameraFeedbackControl_resetEventFeedback(self.h, cint(param1))
+
+proc setEventFeedbackSound*(self: QCameraFeedbackControl, param1: QCameraFeedbackControlEventType, filePath: string): bool =
+
+  fcQCameraFeedbackControl_setEventFeedbackSound(self.h, cint(param1), struct_miqt_string(data: filePath, len: csize_t(len(filePath))))
+
+proc tr2*(_: type QCameraFeedbackControl, s: cstring, c: cstring): string =
+
+  let v_ms = fcQCameraFeedbackControl_tr2(s, c)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc tr3*(_: type QCameraFeedbackControl, s: cstring, c: cstring, n: cint): string =
+
+  let v_ms = fcQCameraFeedbackControl_tr3(s, c, n)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc trUtf82*(_: type QCameraFeedbackControl, s: cstring, c: cstring): string =
+
+  let v_ms = fcQCameraFeedbackControl_trUtf82(s, c)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc trUtf83*(_: type QCameraFeedbackControl, s: cstring, c: cstring, n: cint): string =
+
+  let v_ms = fcQCameraFeedbackControl_trUtf83(s, c, n)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc delete*(self: QCameraFeedbackControl) =
+  fcQCameraFeedbackControl_delete(self.h)

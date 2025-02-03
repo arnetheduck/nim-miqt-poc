@@ -70,6 +70,7 @@ void miqt_exec_callback_QWidget_windowTitleChanged(intptr_t, struct miqt_string)
 void miqt_exec_callback_QWidget_windowIconChanged(intptr_t, QIcon*);
 void miqt_exec_callback_QWidget_windowIconTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QWidget_customContextMenuRequested(intptr_t, QPoint*);
+int miqt_exec_callback_QWidget_metacall(QWidget*, intptr_t, int, int, void**);
 int miqt_exec_callback_QWidget_devType(const QWidget*, intptr_t);
 void miqt_exec_callback_QWidget_setVisible(QWidget*, intptr_t, bool);
 QSize* miqt_exec_callback_QWidget_sizeHint(const QWidget*, intptr_t);
@@ -141,6 +142,32 @@ public:
 	MiqtVirtualQWidget(QWidget* parent, Qt::WindowFlags f): QWidget(parent, f) {};
 
 	virtual ~MiqtVirtualQWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QWidget::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QWidget_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QWidget::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -1291,6 +1318,10 @@ QMetaObject* QWidget_metaObject(const QWidget* self) {
 
 void* QWidget_metacast(QWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QWidget_metacall(QWidget* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QWidget_tr(const char* s) {
@@ -2603,6 +2634,20 @@ QWidget* QWidget_createWindowContainer2(QWindow* window, QWidget* parent) {
 
 QWidget* QWidget_createWindowContainer3(QWindow* window, QWidget* parent, int flags) {
 	return QWidget::createWindowContainer(window, parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+bool QWidget_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQWidget*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QWidget_override_virtual_devType(void* self, intptr_t slot) {

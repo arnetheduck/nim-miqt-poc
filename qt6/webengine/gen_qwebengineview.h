@@ -119,6 +119,7 @@ QWebEngineView* QWebEngineView_new6(QWebEnginePage* page, QWidget* parent);
 void QWebEngineView_virtbase(QWebEngineView* src, QWidget** outptr_QWidget);
 QMetaObject* QWebEngineView_metaObject(const QWebEngineView* self);
 void* QWebEngineView_metacast(QWebEngineView* self, const char* param1);
+int QWebEngineView_metacall(QWebEngineView* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineView_tr(const char* s);
 QWebEngineView* QWebEngineView_forPage(QWebEnginePage* page);
 QWebEnginePage* QWebEngineView_page(const QWebEngineView* self);
@@ -191,6 +192,8 @@ void QWebEngineView_setContent3(QWebEngineView* self, struct miqt_string data, s
 void QWebEngineView_triggerPageAction2(QWebEngineView* self, int action, bool checked);
 void QWebEngineView_printToPdf2(QWebEngineView* self, struct miqt_string filePath, QPageLayout* layout);
 void QWebEngineView_printToPdf3(QWebEngineView* self, struct miqt_string filePath, QPageLayout* layout, QPageRanges* ranges);
+bool QWebEngineView_override_virtual_metacall(void* self, intptr_t slot);
+int QWebEngineView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEngineView_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QWebEngineView_virtualbase_sizeHint(const void* self);
 bool QWebEngineView_override_virtual_createWindow(void* self, intptr_t slot);

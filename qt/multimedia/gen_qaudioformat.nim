@@ -1,0 +1,191 @@
+import Qt5MultimediaWidgets_libs
+
+{.push raises: [].}
+
+from system/ansi_c import c_free
+
+type
+  struct_miqt_string {.used.} = object
+    len: csize_t
+    data: cstring
+
+  struct_miqt_array {.used.} = object
+    len: csize_t
+    data: pointer
+
+  struct_miqt_map {.used.} = object
+    len: csize_t
+    keys: pointer
+    values: pointer
+
+  miqt_uintptr_t {.importc: "uintptr_t", header: "stdint.h", used.} = uint
+  miqt_intptr_t {.importc: "intptr_t", header: "stdint.h", used.} = int
+
+func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
+  if v.len > 0:
+    result = newString(v.len)
+    when nimvm:
+      for i, c in v:
+        result[i] = cast[char](c)
+    else:
+      copyMem(addr result[0], unsafeAddr v[0], v.len)
+
+const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
+{.compile("gen_qaudioformat.cpp", cflags).}
+
+
+type QAudioFormatSampleType* = cint
+const
+  QAudioFormatUnknown* = 0
+  QAudioFormatSignedInt* = 1
+  QAudioFormatUnSignedInt* = 2
+  QAudioFormatFloat* = 3
+
+
+
+type QAudioFormatEndian* = cint
+const
+  QAudioFormatBigEndian* = 0
+  QAudioFormatLittleEndian* = 1
+
+
+
+import gen_qaudioformat_types
+export gen_qaudioformat_types
+
+
+type cQAudioFormat*{.exportc: "QAudioFormat", incompleteStruct.} = object
+
+proc fcQAudioFormat_new(): ptr cQAudioFormat {.importc: "QAudioFormat_new".}
+proc fcQAudioFormat_new2(other: pointer): ptr cQAudioFormat {.importc: "QAudioFormat_new2".}
+proc fcQAudioFormat_operatorAssign(self: pointer, other: pointer): void {.importc: "QAudioFormat_operatorAssign".}
+proc fcQAudioFormat_operatorEqual(self: pointer, other: pointer): bool {.importc: "QAudioFormat_operatorEqual".}
+proc fcQAudioFormat_operatorNotEqual(self: pointer, other: pointer): bool {.importc: "QAudioFormat_operatorNotEqual".}
+proc fcQAudioFormat_isValid(self: pointer, ): bool {.importc: "QAudioFormat_isValid".}
+proc fcQAudioFormat_setSampleRate(self: pointer, sampleRate: cint): void {.importc: "QAudioFormat_setSampleRate".}
+proc fcQAudioFormat_sampleRate(self: pointer, ): cint {.importc: "QAudioFormat_sampleRate".}
+proc fcQAudioFormat_setChannelCount(self: pointer, channelCount: cint): void {.importc: "QAudioFormat_setChannelCount".}
+proc fcQAudioFormat_channelCount(self: pointer, ): cint {.importc: "QAudioFormat_channelCount".}
+proc fcQAudioFormat_setSampleSize(self: pointer, sampleSize: cint): void {.importc: "QAudioFormat_setSampleSize".}
+proc fcQAudioFormat_sampleSize(self: pointer, ): cint {.importc: "QAudioFormat_sampleSize".}
+proc fcQAudioFormat_setCodec(self: pointer, codec: struct_miqt_string): void {.importc: "QAudioFormat_setCodec".}
+proc fcQAudioFormat_codec(self: pointer, ): struct_miqt_string {.importc: "QAudioFormat_codec".}
+proc fcQAudioFormat_setByteOrder(self: pointer, byteOrder: cint): void {.importc: "QAudioFormat_setByteOrder".}
+proc fcQAudioFormat_byteOrder(self: pointer, ): cint {.importc: "QAudioFormat_byteOrder".}
+proc fcQAudioFormat_setSampleType(self: pointer, sampleType: cint): void {.importc: "QAudioFormat_setSampleType".}
+proc fcQAudioFormat_sampleType(self: pointer, ): cint {.importc: "QAudioFormat_sampleType".}
+proc fcQAudioFormat_bytesForDuration(self: pointer, duration: clonglong): cint {.importc: "QAudioFormat_bytesForDuration".}
+proc fcQAudioFormat_durationForBytes(self: pointer, byteCount: cint): clonglong {.importc: "QAudioFormat_durationForBytes".}
+proc fcQAudioFormat_bytesForFrames(self: pointer, frameCount: cint): cint {.importc: "QAudioFormat_bytesForFrames".}
+proc fcQAudioFormat_framesForBytes(self: pointer, byteCount: cint): cint {.importc: "QAudioFormat_framesForBytes".}
+proc fcQAudioFormat_framesForDuration(self: pointer, duration: clonglong): cint {.importc: "QAudioFormat_framesForDuration".}
+proc fcQAudioFormat_durationForFrames(self: pointer, frameCount: cint): clonglong {.importc: "QAudioFormat_durationForFrames".}
+proc fcQAudioFormat_bytesPerFrame(self: pointer, ): cint {.importc: "QAudioFormat_bytesPerFrame".}
+proc fcQAudioFormat_delete(self: pointer) {.importc: "QAudioFormat_delete".}
+
+
+func init*(T: type QAudioFormat, h: ptr cQAudioFormat): QAudioFormat =
+  T(h: h)
+proc create*(T: type QAudioFormat, ): QAudioFormat =
+
+  QAudioFormat.init(fcQAudioFormat_new())
+proc create*(T: type QAudioFormat, other: QAudioFormat): QAudioFormat =
+
+  QAudioFormat.init(fcQAudioFormat_new2(other.h))
+proc operatorAssign*(self: QAudioFormat, other: QAudioFormat): void =
+
+  fcQAudioFormat_operatorAssign(self.h, other.h)
+
+proc operatorEqual*(self: QAudioFormat, other: QAudioFormat): bool =
+
+  fcQAudioFormat_operatorEqual(self.h, other.h)
+
+proc operatorNotEqual*(self: QAudioFormat, other: QAudioFormat): bool =
+
+  fcQAudioFormat_operatorNotEqual(self.h, other.h)
+
+proc isValid*(self: QAudioFormat, ): bool =
+
+  fcQAudioFormat_isValid(self.h)
+
+proc setSampleRate*(self: QAudioFormat, sampleRate: cint): void =
+
+  fcQAudioFormat_setSampleRate(self.h, sampleRate)
+
+proc sampleRate*(self: QAudioFormat, ): cint =
+
+  fcQAudioFormat_sampleRate(self.h)
+
+proc setChannelCount*(self: QAudioFormat, channelCount: cint): void =
+
+  fcQAudioFormat_setChannelCount(self.h, channelCount)
+
+proc channelCount*(self: QAudioFormat, ): cint =
+
+  fcQAudioFormat_channelCount(self.h)
+
+proc setSampleSize*(self: QAudioFormat, sampleSize: cint): void =
+
+  fcQAudioFormat_setSampleSize(self.h, sampleSize)
+
+proc sampleSize*(self: QAudioFormat, ): cint =
+
+  fcQAudioFormat_sampleSize(self.h)
+
+proc setCodec*(self: QAudioFormat, codec: string): void =
+
+  fcQAudioFormat_setCodec(self.h, struct_miqt_string(data: codec, len: csize_t(len(codec))))
+
+proc codec*(self: QAudioFormat, ): string =
+
+  let v_ms = fcQAudioFormat_codec(self.h)
+  let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
+  c_free(v_ms.data)
+  vx_ret
+
+proc setByteOrder*(self: QAudioFormat, byteOrder: QAudioFormatEndian): void =
+
+  fcQAudioFormat_setByteOrder(self.h, cint(byteOrder))
+
+proc byteOrder*(self: QAudioFormat, ): QAudioFormatEndian =
+
+  QAudioFormatEndian(fcQAudioFormat_byteOrder(self.h))
+
+proc setSampleType*(self: QAudioFormat, sampleType: QAudioFormatSampleType): void =
+
+  fcQAudioFormat_setSampleType(self.h, cint(sampleType))
+
+proc sampleType*(self: QAudioFormat, ): QAudioFormatSampleType =
+
+  QAudioFormatSampleType(fcQAudioFormat_sampleType(self.h))
+
+proc bytesForDuration*(self: QAudioFormat, duration: clonglong): cint =
+
+  fcQAudioFormat_bytesForDuration(self.h, duration)
+
+proc durationForBytes*(self: QAudioFormat, byteCount: cint): clonglong =
+
+  fcQAudioFormat_durationForBytes(self.h, byteCount)
+
+proc bytesForFrames*(self: QAudioFormat, frameCount: cint): cint =
+
+  fcQAudioFormat_bytesForFrames(self.h, frameCount)
+
+proc framesForBytes*(self: QAudioFormat, byteCount: cint): cint =
+
+  fcQAudioFormat_framesForBytes(self.h, byteCount)
+
+proc framesForDuration*(self: QAudioFormat, duration: clonglong): cint =
+
+  fcQAudioFormat_framesForDuration(self.h, duration)
+
+proc durationForFrames*(self: QAudioFormat, frameCount: cint): clonglong =
+
+  fcQAudioFormat_durationForFrames(self.h, frameCount)
+
+proc bytesPerFrame*(self: QAudioFormat, ): cint =
+
+  fcQAudioFormat_bytesPerFrame(self.h)
+
+proc delete*(self: QAudioFormat) =
+  fcQAudioFormat_delete(self.h)

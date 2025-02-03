@@ -33,6 +33,7 @@ typedef struct QVideoEncoderSettingsControl QVideoEncoderSettingsControl;
 void QVideoEncoderSettingsControl_virtbase(QVideoEncoderSettingsControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QVideoEncoderSettingsControl_metaObject(const QVideoEncoderSettingsControl* self);
 void* QVideoEncoderSettingsControl_metacast(QVideoEncoderSettingsControl* self, const char* param1);
+int QVideoEncoderSettingsControl_metacall(QVideoEncoderSettingsControl* self, int param1, int param2, void** param3);
 struct miqt_string QVideoEncoderSettingsControl_tr(const char* s);
 struct miqt_string QVideoEncoderSettingsControl_trUtf8(const char* s);
 struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_supportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);

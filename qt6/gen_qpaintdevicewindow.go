@@ -62,6 +62,10 @@ func (this *QPaintDeviceWindow) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QPaintDeviceWindow_metacast(this.h, param1_Cstring))
 }
 
+func (this *QPaintDeviceWindow) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QPaintDeviceWindow_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QPaintDeviceWindow_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

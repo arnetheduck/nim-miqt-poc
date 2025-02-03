@@ -27,6 +27,7 @@ void miqt_exec_callback_QDnsLookup_finished(intptr_t);
 void miqt_exec_callback_QDnsLookup_nameChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QDnsLookup_typeChanged(intptr_t, int);
 void miqt_exec_callback_QDnsLookup_nameserverChanged(intptr_t, QHostAddress*);
+int miqt_exec_callback_QDnsLookup_metacall(QDnsLookup*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QDnsLookup_event(QDnsLookup*, intptr_t, QEvent*);
 bool miqt_exec_callback_QDnsLookup_eventFilter(QDnsLookup*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QDnsLookup_timerEvent(QDnsLookup*, intptr_t, QTimerEvent*);
@@ -306,6 +307,32 @@ public:
 	virtual ~MiqtVirtualQDnsLookup() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QDnsLookup::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QDnsLookup_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QDnsLookup::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -516,6 +543,10 @@ QMetaObject* QDnsLookup_metaObject(const QDnsLookup* self) {
 
 void* QDnsLookup_metacast(QDnsLookup* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QDnsLookup_metacall(QDnsLookup* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QDnsLookup_tr(const char* s) {
@@ -755,6 +786,20 @@ struct miqt_string QDnsLookup_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QDnsLookup_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QDnsLookup_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QDnsLookup_override_virtual_event(void* self, intptr_t slot) {

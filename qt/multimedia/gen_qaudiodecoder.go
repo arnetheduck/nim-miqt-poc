@@ -90,6 +90,10 @@ func (this *QAudioDecoder) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QAudioDecoder_metacast(this.h, param1_Cstring))
 }
 
+func (this *QAudioDecoder) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAudioDecoder_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QAudioDecoder_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -429,6 +433,38 @@ func QAudioDecoder_HasSupport2(mimeType string, codecs []string) QMultimedia__Su
 	}
 	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
 	return (QMultimedia__SupportEstimate)(C.QAudioDecoder_hasSupport2(mimeType_ms, codecs_ma))
+}
+
+func (this *QAudioDecoder) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QAudioDecoder_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QAudioDecoder) OnMetacall(slot func(super func(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QAudioDecoder_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAudioDecoder_metacall
+func miqt_exec_callback_QAudioDecoder_metacall(self *C.QAudioDecoder, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QAudioDecoder) callVirtualBase_Bind(param1 *qt.QObject) bool {

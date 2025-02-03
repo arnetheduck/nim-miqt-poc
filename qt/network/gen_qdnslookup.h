@@ -102,6 +102,7 @@ QDnsLookup* QDnsLookup_new6(int type, struct miqt_string name, QHostAddress* nam
 void QDnsLookup_virtbase(QDnsLookup* src, QObject** outptr_QObject);
 QMetaObject* QDnsLookup_metaObject(const QDnsLookup* self);
 void* QDnsLookup_metacast(QDnsLookup* self, const char* param1);
+int QDnsLookup_metacall(QDnsLookup* self, int param1, int param2, void** param3);
 struct miqt_string QDnsLookup_tr(const char* s);
 struct miqt_string QDnsLookup_trUtf8(const char* s);
 int QDnsLookup_error(const QDnsLookup* self);
@@ -134,6 +135,8 @@ struct miqt_string QDnsLookup_tr2(const char* s, const char* c);
 struct miqt_string QDnsLookup_tr3(const char* s, const char* c, int n);
 struct miqt_string QDnsLookup_trUtf82(const char* s, const char* c);
 struct miqt_string QDnsLookup_trUtf83(const char* s, const char* c, int n);
+bool QDnsLookup_override_virtual_metacall(void* self, intptr_t slot);
+int QDnsLookup_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QDnsLookup_override_virtual_event(void* self, intptr_t slot);
 bool QDnsLookup_virtualbase_event(void* self, QEvent* event);
 bool QDnsLookup_override_virtual_eventFilter(void* self, intptr_t slot);

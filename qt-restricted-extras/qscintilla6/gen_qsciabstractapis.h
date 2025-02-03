@@ -38,6 +38,7 @@ QsciAbstractAPIs* QsciAbstractAPIs_new(QsciLexer* lexer);
 void QsciAbstractAPIs_virtbase(QsciAbstractAPIs* src, QObject** outptr_QObject);
 QMetaObject* QsciAbstractAPIs_metaObject(const QsciAbstractAPIs* self);
 void* QsciAbstractAPIs_metacast(QsciAbstractAPIs* self, const char* param1);
+int QsciAbstractAPIs_metacall(QsciAbstractAPIs* self, int param1, int param2, void** param3);
 struct miqt_string QsciAbstractAPIs_tr(const char* s);
 QsciLexer* QsciAbstractAPIs_lexer(const QsciAbstractAPIs* self);
 void QsciAbstractAPIs_updateAutoCompletionList(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
@@ -45,6 +46,8 @@ void QsciAbstractAPIs_autoCompletionSelected(QsciAbstractAPIs* self, struct miqt
 struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_callTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
 struct miqt_string QsciAbstractAPIs_tr2(const char* s, const char* c);
 struct miqt_string QsciAbstractAPIs_tr3(const char* s, const char* c, int n);
+bool QsciAbstractAPIs_override_virtual_metacall(void* self, intptr_t slot);
+int QsciAbstractAPIs_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciAbstractAPIs_override_virtual_updateAutoCompletionList(void* self, intptr_t slot);
 void QsciAbstractAPIs_virtualbase_updateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
 bool QsciAbstractAPIs_override_virtual_autoCompletionSelected(void* self, intptr_t slot);

@@ -21,6 +21,7 @@ void miqt_exec_callback_QAbstractAnimation_finished(intptr_t);
 void miqt_exec_callback_QAbstractAnimation_stateChanged(intptr_t, int, int);
 void miqt_exec_callback_QAbstractAnimation_currentLoopChanged(intptr_t, int);
 void miqt_exec_callback_QAbstractAnimation_directionChanged(intptr_t, int);
+int miqt_exec_callback_QAbstractAnimation_metacall(QAbstractAnimation*, intptr_t, int, int, void**);
 int miqt_exec_callback_QAbstractAnimation_duration(const QAbstractAnimation*, intptr_t);
 bool miqt_exec_callback_QAbstractAnimation_event(QAbstractAnimation*, intptr_t, QEvent*);
 void miqt_exec_callback_QAbstractAnimation_updateCurrentTime(QAbstractAnimation*, intptr_t, int);
@@ -34,6 +35,7 @@ void miqt_exec_callback_QAbstractAnimation_connectNotify(QAbstractAnimation*, in
 void miqt_exec_callback_QAbstractAnimation_disconnectNotify(QAbstractAnimation*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QAnimationDriver_started(intptr_t);
 void miqt_exec_callback_QAnimationDriver_stopped(intptr_t);
+int miqt_exec_callback_QAnimationDriver_metacall(QAnimationDriver*, intptr_t, int, int, void**);
 void miqt_exec_callback_QAnimationDriver_advance(QAnimationDriver*, intptr_t);
 long long miqt_exec_callback_QAnimationDriver_elapsed(const QAnimationDriver*, intptr_t);
 void miqt_exec_callback_QAnimationDriver_start(QAnimationDriver*, intptr_t);
@@ -56,6 +58,32 @@ public:
 	MiqtVirtualQAbstractAnimation(QObject* parent): QAbstractAnimation(parent) {};
 
 	virtual ~MiqtVirtualQAbstractAnimation() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QAbstractAnimation::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QAbstractAnimation_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QAbstractAnimation::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__duration = 0;
@@ -333,6 +361,10 @@ void* QAbstractAnimation_metacast(QAbstractAnimation* self, const char* param1) 
 	return self->qt_metacast(param1);
 }
 
+int QAbstractAnimation_metacall(QAbstractAnimation* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QAbstractAnimation_tr(const char* s) {
 	QString _ret = QAbstractAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -520,6 +552,20 @@ void QAbstractAnimation_start1(QAbstractAnimation* self, int policy) {
 	self->start(static_cast<QAbstractAnimation::DeletionPolicy>(policy));
 }
 
+bool QAbstractAnimation_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QAbstractAnimation_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_metacall(param1, param2, param3);
+}
+
 bool QAbstractAnimation_override_virtual_duration(void* self, intptr_t slot) {
 	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
 	if (self_cast == nullptr) {
@@ -677,6 +723,32 @@ public:
 	MiqtVirtualQAnimationDriver(QObject* parent): QAnimationDriver(parent) {};
 
 	virtual ~MiqtVirtualQAnimationDriver() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QAnimationDriver::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QAnimationDriver_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QAnimationDriver::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__advance = 0;
@@ -963,6 +1035,10 @@ void* QAnimationDriver_metacast(QAnimationDriver* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QAnimationDriver_metacall(QAnimationDriver* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QAnimationDriver_tr(const char* s) {
 	QString _ret = QAnimationDriver::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1077,6 +1153,20 @@ struct miqt_string QAnimationDriver_trUtf83(const char* s, const char* c, int n)
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAnimationDriver_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QAnimationDriver_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QAnimationDriver_override_virtual_advance(void* self, intptr_t slot) {

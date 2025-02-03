@@ -29,6 +29,7 @@ typedef struct QObject QObject;
 void QAudioOutputSelectorControl_virtbase(QAudioOutputSelectorControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QAudioOutputSelectorControl_metaObject(const QAudioOutputSelectorControl* self);
 void* QAudioOutputSelectorControl_metacast(QAudioOutputSelectorControl* self, const char* param1);
+int QAudioOutputSelectorControl_metacall(QAudioOutputSelectorControl* self, int param1, int param2, void** param3);
 struct miqt_string QAudioOutputSelectorControl_tr(const char* s);
 struct miqt_string QAudioOutputSelectorControl_trUtf8(const char* s);
 struct miqt_array /* of struct miqt_string */  QAudioOutputSelectorControl_availableOutputs(const QAudioOutputSelectorControl* self);

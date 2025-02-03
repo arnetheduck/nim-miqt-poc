@@ -1,0 +1,184 @@
+import Qt6Widgets_libs
+
+{.push raises: [].}
+
+from system/ansi_c import c_free
+
+type
+  struct_miqt_string {.used.} = object
+    len: csize_t
+    data: cstring
+
+  struct_miqt_array {.used.} = object
+    len: csize_t
+    data: pointer
+
+  struct_miqt_map {.used.} = object
+    len: csize_t
+    keys: pointer
+    values: pointer
+
+  miqt_uintptr_t {.importc: "uintptr_t", header: "stdint.h", used.} = uint
+  miqt_intptr_t {.importc: "intptr_t", header: "stdint.h", used.} = int
+
+func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
+  if v.len > 0:
+    result = newString(v.len)
+    when nimvm:
+      for i, c in v:
+        result[i] = cast[char](c)
+    else:
+      copyMem(addr result[0], unsafeAddr v[0], v.len)
+
+const cflags = gorge("pkg-config -cflags Qt6Widgets")
+{.compile("gen_qcursor.cpp", cflags).}
+
+
+import gen_qcursor_types
+export gen_qcursor_types
+
+import
+  gen_qbitmap,
+  gen_qnamespace,
+  gen_qpixmap,
+  gen_qpoint,
+  gen_qscreen,
+  gen_qvariant
+export
+  gen_qbitmap,
+  gen_qnamespace,
+  gen_qpixmap,
+  gen_qpoint,
+  gen_qscreen,
+  gen_qvariant
+
+type cQCursor*{.exportc: "QCursor", incompleteStruct.} = object
+
+proc fcQCursor_new(): ptr cQCursor {.importc: "QCursor_new".}
+proc fcQCursor_new2(shape: cint): ptr cQCursor {.importc: "QCursor_new2".}
+proc fcQCursor_new3(bitmap: pointer, mask: pointer): ptr cQCursor {.importc: "QCursor_new3".}
+proc fcQCursor_new4(pixmap: pointer): ptr cQCursor {.importc: "QCursor_new4".}
+proc fcQCursor_new5(cursor: pointer): ptr cQCursor {.importc: "QCursor_new5".}
+proc fcQCursor_new6(bitmap: pointer, mask: pointer, hotX: cint): ptr cQCursor {.importc: "QCursor_new6".}
+proc fcQCursor_new7(bitmap: pointer, mask: pointer, hotX: cint, hotY: cint): ptr cQCursor {.importc: "QCursor_new7".}
+proc fcQCursor_new8(pixmap: pointer, hotX: cint): ptr cQCursor {.importc: "QCursor_new8".}
+proc fcQCursor_new9(pixmap: pointer, hotX: cint, hotY: cint): ptr cQCursor {.importc: "QCursor_new9".}
+proc fcQCursor_operatorAssign(self: pointer, cursor: pointer): void {.importc: "QCursor_operatorAssign".}
+proc fcQCursor_swap(self: pointer, other: pointer): void {.importc: "QCursor_swap".}
+proc fcQCursor_ToQVariant(self: pointer, ): pointer {.importc: "QCursor_ToQVariant".}
+proc fcQCursor_shape(self: pointer, ): cint {.importc: "QCursor_shape".}
+proc fcQCursor_setShape(self: pointer, newShape: cint): void {.importc: "QCursor_setShape".}
+proc fcQCursor_bitmap(self: pointer, param1: cint): pointer {.importc: "QCursor_bitmap".}
+proc fcQCursor_mask(self: pointer, param1: cint): pointer {.importc: "QCursor_mask".}
+proc fcQCursor_bitmap2(self: pointer, ): pointer {.importc: "QCursor_bitmap2".}
+proc fcQCursor_mask2(self: pointer, ): pointer {.importc: "QCursor_mask2".}
+proc fcQCursor_pixmap(self: pointer, ): pointer {.importc: "QCursor_pixmap".}
+proc fcQCursor_hotSpot(self: pointer, ): pointer {.importc: "QCursor_hotSpot".}
+proc fcQCursor_pos(): pointer {.importc: "QCursor_pos".}
+proc fcQCursor_posWithScreen(screen: pointer): pointer {.importc: "QCursor_posWithScreen".}
+proc fcQCursor_setPos(x: cint, y: cint): void {.importc: "QCursor_setPos".}
+proc fcQCursor_setPos2(screen: pointer, x: cint, y: cint): void {.importc: "QCursor_setPos2".}
+proc fcQCursor_setPosWithQPoint(p: pointer): void {.importc: "QCursor_setPosWithQPoint".}
+proc fcQCursor_setPos3(screen: pointer, p: pointer): void {.importc: "QCursor_setPos3".}
+proc fcQCursor_delete(self: pointer) {.importc: "QCursor_delete".}
+
+
+func init*(T: type QCursor, h: ptr cQCursor): QCursor =
+  T(h: h)
+proc create*(T: type QCursor, ): QCursor =
+
+  QCursor.init(fcQCursor_new())
+proc create*(T: type QCursor, shape: gen_qnamespace.CursorShape): QCursor =
+
+  QCursor.init(fcQCursor_new2(cint(shape)))
+proc create*(T: type QCursor, bitmap: gen_qbitmap.QBitmap, mask: gen_qbitmap.QBitmap): QCursor =
+
+  QCursor.init(fcQCursor_new3(bitmap.h, mask.h))
+proc create*(T: type QCursor, pixmap: gen_qpixmap.QPixmap): QCursor =
+
+  QCursor.init(fcQCursor_new4(pixmap.h))
+proc create2*(T: type QCursor, cursor: QCursor): QCursor =
+
+  QCursor.init(fcQCursor_new5(cursor.h))
+proc create*(T: type QCursor, bitmap: gen_qbitmap.QBitmap, mask: gen_qbitmap.QBitmap, hotX: cint): QCursor =
+
+  QCursor.init(fcQCursor_new6(bitmap.h, mask.h, hotX))
+proc create*(T: type QCursor, bitmap: gen_qbitmap.QBitmap, mask: gen_qbitmap.QBitmap, hotX: cint, hotY: cint): QCursor =
+
+  QCursor.init(fcQCursor_new7(bitmap.h, mask.h, hotX, hotY))
+proc create*(T: type QCursor, pixmap: gen_qpixmap.QPixmap, hotX: cint): QCursor =
+
+  QCursor.init(fcQCursor_new8(pixmap.h, hotX))
+proc create*(T: type QCursor, pixmap: gen_qpixmap.QPixmap, hotX: cint, hotY: cint): QCursor =
+
+  QCursor.init(fcQCursor_new9(pixmap.h, hotX, hotY))
+proc operatorAssign*(self: QCursor, cursor: QCursor): void =
+
+  fcQCursor_operatorAssign(self.h, cursor.h)
+
+proc swap*(self: QCursor, other: QCursor): void =
+
+  fcQCursor_swap(self.h, other.h)
+
+proc ToQVariant*(self: QCursor, ): gen_qvariant.QVariant =
+
+  gen_qvariant.QVariant(h: fcQCursor_ToQVariant(self.h))
+
+proc shape*(self: QCursor, ): gen_qnamespace.CursorShape =
+
+  gen_qnamespace.CursorShape(fcQCursor_shape(self.h))
+
+proc setShape*(self: QCursor, newShape: gen_qnamespace.CursorShape): void =
+
+  fcQCursor_setShape(self.h, cint(newShape))
+
+proc bitmap*(self: QCursor, param1: gen_qnamespace.ReturnByValueConstant): gen_qbitmap.QBitmap =
+
+  gen_qbitmap.QBitmap(h: fcQCursor_bitmap(self.h, cint(param1)))
+
+proc mask*(self: QCursor, param1: gen_qnamespace.ReturnByValueConstant): gen_qbitmap.QBitmap =
+
+  gen_qbitmap.QBitmap(h: fcQCursor_mask(self.h, cint(param1)))
+
+proc bitmap2*(self: QCursor, ): gen_qbitmap.QBitmap =
+
+  gen_qbitmap.QBitmap(h: fcQCursor_bitmap2(self.h))
+
+proc mask2*(self: QCursor, ): gen_qbitmap.QBitmap =
+
+  gen_qbitmap.QBitmap(h: fcQCursor_mask2(self.h))
+
+proc pixmap*(self: QCursor, ): gen_qpixmap.QPixmap =
+
+  gen_qpixmap.QPixmap(h: fcQCursor_pixmap(self.h))
+
+proc hotSpot*(self: QCursor, ): gen_qpoint.QPoint =
+
+  gen_qpoint.QPoint(h: fcQCursor_hotSpot(self.h))
+
+proc pos*(_: type QCursor, ): gen_qpoint.QPoint =
+
+  gen_qpoint.QPoint(h: fcQCursor_pos())
+
+proc posWithScreen*(_: type QCursor, screen: gen_qscreen.QScreen): gen_qpoint.QPoint =
+
+  gen_qpoint.QPoint(h: fcQCursor_posWithScreen(screen.h))
+
+proc setPos*(_: type QCursor, x: cint, y: cint): void =
+
+  fcQCursor_setPos(x, y)
+
+proc setPos2*(_: type QCursor, screen: gen_qscreen.QScreen, x: cint, y: cint): void =
+
+  fcQCursor_setPos2(screen.h, x, y)
+
+proc setPosWithQPoint*(_: type QCursor, p: gen_qpoint.QPoint): void =
+
+  fcQCursor_setPosWithQPoint(p.h)
+
+proc setPos3*(_: type QCursor, screen: gen_qscreen.QScreen, p: gen_qpoint.QPoint): void =
+
+  fcQCursor_setPos3(screen.h, p.h)
+
+proc delete*(self: QCursor) =
+  fcQCursor_delete(self.h)

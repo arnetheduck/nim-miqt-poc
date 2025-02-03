@@ -73,6 +73,10 @@ func (this *QTcpSocket) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QTcpSocket_metacast(this.h, param1_Cstring))
 }
 
+func (this *QTcpSocket) Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QTcpSocket_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QTcpSocket_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -114,6 +118,38 @@ func (this *QTcpSocket) Bind2(addr QHostAddress__SpecialAddress, port uint16) bo
 
 func (this *QTcpSocket) Bind3(addr QHostAddress__SpecialAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
 	return (bool)(C.QTcpSocket_bind3(this.h, (C.int)(addr), (C.uint16_t)(port), (C.int)(mode)))
+}
+
+func (this *QTcpSocket) callVirtualBase_Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QTcpSocket_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QTcpSocket) OnMetacall(slot func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QTcpSocket_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_metacall
+func miqt_exec_callback_QTcpSocket_metacall(self *C.QTcpSocket, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt6.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QTcpSocket) callVirtualBase_Resume() {

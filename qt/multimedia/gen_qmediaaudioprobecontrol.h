@@ -31,6 +31,7 @@ typedef struct QObject QObject;
 void QMediaAudioProbeControl_virtbase(QMediaAudioProbeControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMediaAudioProbeControl_metaObject(const QMediaAudioProbeControl* self);
 void* QMediaAudioProbeControl_metacast(QMediaAudioProbeControl* self, const char* param1);
+int QMediaAudioProbeControl_metacall(QMediaAudioProbeControl* self, int param1, int param2, void** param3);
 struct miqt_string QMediaAudioProbeControl_tr(const char* s);
 struct miqt_string QMediaAudioProbeControl_trUtf8(const char* s);
 void QMediaAudioProbeControl_audioBufferProbed(QMediaAudioProbeControl* self, QAudioBuffer* buffer);

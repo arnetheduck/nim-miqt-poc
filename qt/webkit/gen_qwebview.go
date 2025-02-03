@@ -75,6 +75,10 @@ func (this *QWebView) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWebView_metacast(this.h, param1_Cstring))
 }
 
+func (this *QWebView) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebView_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QWebView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -557,6 +561,38 @@ func (this *QWebView) FindText2(subString string, options QWebPage__FindFlag) bo
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
 	return (bool)(C.QWebView_findText2(this.h, subString_ms, (C.int)(options)))
+}
+
+func (this *QWebView) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QWebView_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QWebView) OnMetacall(slot func(super func(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QWebView_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWebView_metacall
+func miqt_exec_callback_QWebView_metacall(self *C.QWebView, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QWebView{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QWebView) callVirtualBase_InputMethodQuery(property qt.InputMethodQuery) *qt.QVariant {

@@ -33,6 +33,10 @@ void* QWebEngineDownloadItem_metacast(QWebEngineDownloadItem* self, const char* 
 	return self->qt_metacast(param1);
 }
 
+int QWebEngineDownloadItem_metacall(QWebEngineDownloadItem* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWebEngineDownloadItem_tr(const char* s) {
 	QString _ret = QWebEngineDownloadItem::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

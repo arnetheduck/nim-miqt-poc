@@ -815,6 +815,12 @@ func (this *QVariant) ToReal1(ok *bool) float64 {
 	return (float64)(C.QVariant_toReal1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
+func QVariant_FromValue(value *QObject) *QVariant {
+	_goptr := newQVariant(C.QVariant_fromValue(value.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 // Delete this object from C++ memory.
 func (this *QVariant) Delete() {
 	C.QVariant_delete(this.h)

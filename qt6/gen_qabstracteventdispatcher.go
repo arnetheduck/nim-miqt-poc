@@ -60,6 +60,10 @@ func (this *QAbstractEventDispatcher) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QAbstractEventDispatcher_metacast(this.h, param1_Cstring))
 }
 
+func (this *QAbstractEventDispatcher) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QAbstractEventDispatcher_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QAbstractEventDispatcher_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

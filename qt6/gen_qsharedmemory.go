@@ -113,6 +113,10 @@ func (this *QSharedMemory) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QSharedMemory_metacast(this.h, param1_Cstring))
 }
 
+func (this *QSharedMemory) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QSharedMemory_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QSharedMemory_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -231,6 +235,38 @@ func (this *QSharedMemory) Create2(size int64, mode QSharedMemory__AccessMode) b
 
 func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {
 	return (bool)(C.QSharedMemory_attach1(this.h, (C.int)(mode)))
+}
+
+func (this *QSharedMemory) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QSharedMemory_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QSharedMemory) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QSharedMemory_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QSharedMemory_metacall
+func miqt_exec_callback_QSharedMemory_metacall(self *C.QSharedMemory, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QSharedMemory{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QSharedMemory) callVirtualBase_Event(event *QEvent) bool {

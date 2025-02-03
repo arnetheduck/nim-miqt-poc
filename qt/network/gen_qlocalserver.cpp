@@ -17,6 +17,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLocalServer_newConnection(intptr_t);
+int miqt_exec_callback_QLocalServer_metacall(QLocalServer*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QLocalServer_hasPendingConnections(const QLocalServer*, intptr_t);
 QLocalSocket* miqt_exec_callback_QLocalServer_nextPendingConnection(QLocalServer*, intptr_t);
 void miqt_exec_callback_QLocalServer_incomingConnection(QLocalServer*, intptr_t, uintptr_t);
@@ -38,6 +39,32 @@ public:
 	MiqtVirtualQLocalServer(QObject* parent): QLocalServer(parent) {};
 
 	virtual ~MiqtVirtualQLocalServer() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QLocalServer::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QLocalServer_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QLocalServer::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasPendingConnections = 0;
@@ -301,6 +328,10 @@ void* QLocalServer_metacast(QLocalServer* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QLocalServer_metacall(QLocalServer* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QLocalServer_tr(const char* s) {
 	QString _ret = QLocalServer::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -477,6 +508,20 @@ bool QLocalServer_waitForNewConnection1(QLocalServer* self, int msec) {
 
 bool QLocalServer_waitForNewConnection2(QLocalServer* self, int msec, bool* timedOut) {
 	return self->waitForNewConnection(static_cast<int>(msec), timedOut);
+}
+
+bool QLocalServer_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QLocalServer_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQLocalServer*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QLocalServer_override_virtual_hasPendingConnections(void* self, intptr_t slot) {

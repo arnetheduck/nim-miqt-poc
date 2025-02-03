@@ -112,6 +112,10 @@ func (this *QGraphicsScene) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QGraphicsScene_metacast(this.h, param1_Cstring))
 }
 
+func (this *QGraphicsScene) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QGraphicsScene_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QGraphicsScene_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -897,6 +901,38 @@ func (this *QGraphicsScene) Invalidate1(rect *QRectF) {
 
 func (this *QGraphicsScene) Invalidate22(rect *QRectF, layers QGraphicsScene__SceneLayer) {
 	C.QGraphicsScene_invalidate22(this.h, rect.cPointer(), (C.int)(layers))
+}
+
+func (this *QGraphicsScene) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QGraphicsScene_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QGraphicsScene) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QGraphicsScene_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsScene_metacall
+func miqt_exec_callback_QGraphicsScene_metacall(self *C.QGraphicsScene, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QGraphicsScene{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QGraphicsScene) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {

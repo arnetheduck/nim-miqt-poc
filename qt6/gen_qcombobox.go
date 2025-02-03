@@ -92,6 +92,10 @@ func (this *QComboBox) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QComboBox_metacast(this.h, param1_Cstring))
 }
 
+func (this *QComboBox) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QComboBox_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QComboBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -708,6 +712,38 @@ func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData
 
 func (this *QComboBox) SetItemData3(index int, value *QVariant, role int) {
 	C.QComboBox_setItemData3(this.h, (C.int)(index), value.cPointer(), (C.int)(role))
+}
+
+func (this *QComboBox) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QComboBox_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QComboBox) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QComboBox_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QComboBox_metacall
+func miqt_exec_callback_QComboBox_metacall(self *C.QComboBox, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QComboBox{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QComboBox) callVirtualBase_SetModel(model *QAbstractItemModel) {

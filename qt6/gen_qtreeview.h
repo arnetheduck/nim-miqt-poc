@@ -115,6 +115,7 @@ QTreeView* QTreeView_new2();
 void QTreeView_virtbase(QTreeView* src, QAbstractItemView** outptr_QAbstractItemView);
 QMetaObject* QTreeView_metaObject(const QTreeView* self);
 void* QTreeView_metacast(QTreeView* self, const char* param1);
+int QTreeView_metacall(QTreeView* self, int param1, int param2, void** param3);
 struct miqt_string QTreeView_tr(const char* s);
 void QTreeView_setModel(QTreeView* self, QAbstractItemModel* model);
 void QTreeView_setRootIndex(QTreeView* self, QModelIndex* index);
@@ -214,6 +215,8 @@ void QTreeView_currentChanged(QTreeView* self, QModelIndex* current, QModelIndex
 struct miqt_string QTreeView_tr2(const char* s, const char* c);
 struct miqt_string QTreeView_tr3(const char* s, const char* c, int n);
 void QTreeView_expandRecursively2(QTreeView* self, QModelIndex* index, int depth);
+bool QTreeView_override_virtual_metacall(void* self, intptr_t slot);
+int QTreeView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QTreeView_override_virtual_setModel(void* self, intptr_t slot);
 void QTreeView_virtualbase_setModel(void* self, QAbstractItemModel* model);
 bool QTreeView_override_virtual_setRootIndex(void* self, intptr_t slot);

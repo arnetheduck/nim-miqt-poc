@@ -213,6 +213,10 @@ func (this *QWebSelectMethod) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWebSelectMethod_metacast(this.h, param1_Cstring))
 }
 
+func (this *QWebSelectMethod) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebSelectMethod_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QWebSelectMethod_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -468,6 +472,10 @@ func (this *QWebNotificationPresenter) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWebNotificationPresenter_metacast(this.h, param1_Cstring))
 }
 
+func (this *QWebNotificationPresenter) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebNotificationPresenter_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QWebNotificationPresenter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -628,6 +636,10 @@ func (this *QWebHapticFeedbackPlayer) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWebHapticFeedbackPlayer_metacast(this.h, param1_Cstring))
 }
 
+func (this *QWebHapticFeedbackPlayer) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebHapticFeedbackPlayer_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QWebHapticFeedbackPlayer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -758,6 +770,10 @@ func (this *QWebTouchModifier) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWebTouchModifier_metacast(this.h, param1_Cstring))
 }
 
+func (this *QWebTouchModifier) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebTouchModifier_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QWebTouchModifier_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -882,6 +898,10 @@ func (this *QWebSpellChecker) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebSpellChecker_metacast(this.h, param1_Cstring))
+}
+
+func (this *QWebSpellChecker) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebSpellChecker_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
 }
 
 func QWebSpellChecker_Tr(s string) string {

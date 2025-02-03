@@ -91,8 +91,11 @@ func pkgConfigCflags(packageName string) string {
 
 	return string(stdout)
 }
+func moduleName(header string) string {
+	return "gen_" + strings.TrimSuffix(filepath.Base(header), `.h`)
+}
 
-func generate(packageName string, srcDirs []string, allowHeaderFn func(string) bool, clangBin, cflagsCombined, outDir string, matcher ClangMatcher) {
+func generate(packageName string, srcDirs []string, allowHeaderFn func(string) bool, clangBin, cflagsCombined, pkgConfigModule, outDir string, matcher ClangMatcher) {
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
@@ -163,6 +166,21 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		astTransformConstructorOrder(parsed)
 		atr.Process(parsed)
 
+		// Hack to add some overloads
+		if strings.Contains(inputHeader, "qvariant.h") {
+			for i, c := range parsed.Classes {
+				if c.ClassName == "QVariant" {
+					m := CppMethod{
+						MethodName: "fromValue",
+						ReturnType: CppParameter{ParameterType: "QVariant"},
+						Parameters: []CppParameter{CppParameter{ParameterName: "value", ParameterType: "QObject", Const: true, Pointer: true}},
+						IsStatic:   true,
+					}
+					parsed.Classes[i].Methods = append(parsed.Classes[i].Methods, m)
+				}
+			}
+		}
+
 		// Update global state tracker (AFTER astTransformChildClasses)
 		addKnownTypes(packageName, parsed)
 
@@ -172,6 +190,12 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 	//
 	// PASS 2
 	//
+
+	libsSrc := fmt.Sprintf(`
+const libs = gorge("pkg-config -libs %s")
+{.passl: libs}
+`, pkgConfigModule)
+	os.WriteFile(filepath.Join(outDir, strings.ReplaceAll(pkgConfigModule, " ", "_")+"_libs.nim"), []byte(libsSrc), 0644)
 
 	for _, parsed := range processHeaders {
 
@@ -201,7 +225,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		}
 
 		// Emit 3 code files from the intermediate format
-		outputName := filepath.Join(outDir, "gen_"+strings.TrimSuffix(filepath.Base(parsed.Filename), `.h`))
+		outputName := filepath.Join(outDir, moduleName(parsed.Filename))
 
 		// For packages where we scan multiple directories, it's possible that
 		// there are filename collisions (e.g. Qt 6 has QtWidgets/qaction.h include
@@ -224,7 +248,10 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 		goSrc, go64Src, err := emitGo(parsed, filepath.Base(parsed.Filename), packageName)
 		if err != nil {
-			panic(err)
+			log.Printf("Error in %s: %s", parsed.Filename, err)
+			continue
+
+			// panic(err)
 		}
 
 		err = os.WriteFile(outputName+".go", []byte(goSrc), 0644)
@@ -234,6 +261,26 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 		if len(go64Src) > 0 {
 			err = os.WriteFile(outputName+"_64bit.go", []byte(go64Src), 0644)
+			if err != nil {
+				panic(err)
+			}
+		}
+
+		nimSrc, nim64Src, err := emitNim(parsed, filepath.Base(parsed.Filename), packageName, pkgConfigModule)
+		if err != nil {
+			log.Printf("Error in %s: %s", parsed.Filename, err)
+			continue
+
+			// panic(err)
+		}
+
+		err = os.WriteFile(outputName+".nim", []byte(nimSrc), 0644)
+		if err != nil {
+			panic(err)
+		}
+
+		if len(nim64Src) > 0 {
+			err = os.WriteFile(outputName+"_types.nim", []byte(nim64Src), 0644)
 			if err != nil {
 				panic(err)
 			}

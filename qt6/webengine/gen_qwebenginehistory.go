@@ -164,6 +164,10 @@ func (this *QWebEngineHistoryModel) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWebEngineHistoryModel_metacast(this.h, param1_Cstring))
 }
 
+func (this *QWebEngineHistoryModel) Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebEngineHistoryModel_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QWebEngineHistoryModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -270,6 +274,10 @@ func (this *QWebEngineHistory) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineHistory_metacast(this.h, param1_Cstring))
+}
+
+func (this *QWebEngineHistory) Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebEngineHistory_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
 }
 
 func QWebEngineHistory_Tr(s string) string {

@@ -1,0 +1,4 @@
+import gen_qscilexerfortran77_types
+export gen_qscilexerfortran77_types
+type QsciLexerFortran*  = object of gen_qscilexerfortran77_types.QsciLexerFortran77
+

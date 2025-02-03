@@ -1,0 +1,89 @@
+import Qt5WebEngineWidgets_libs
+
+{.push raises: [].}
+
+from system/ansi_c import c_free
+
+type
+  struct_miqt_string {.used.} = object
+    len: csize_t
+    data: cstring
+
+  struct_miqt_array {.used.} = object
+    len: csize_t
+    data: pointer
+
+  struct_miqt_map {.used.} = object
+    len: csize_t
+    keys: pointer
+    values: pointer
+
+  miqt_uintptr_t {.importc: "uintptr_t", header: "stdint.h", used.} = uint
+  miqt_intptr_t {.importc: "intptr_t", header: "stdint.h", used.} = int
+
+func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
+  if v.len > 0:
+    result = newString(v.len)
+    when nimvm:
+      for i, c in v:
+        result[i] = cast[char](c)
+    else:
+      copyMem(addr result[0], unsafeAddr v[0], v.len)
+
+const cflags = gorge("pkg-config -cflags Qt5WebEngineWidgets")
+{.compile("gen_qwebengineclientcertificateselection.cpp", cflags).}
+
+
+import gen_qwebengineclientcertificateselection_types
+export gen_qwebengineclientcertificateselection_types
+
+import
+  gen_qsslcertificate,
+  gen_qurl
+export
+  gen_qsslcertificate,
+  gen_qurl
+
+type cQWebEngineClientCertificateSelection*{.exportc: "QWebEngineClientCertificateSelection", incompleteStruct.} = object
+
+proc fcQWebEngineClientCertificateSelection_new(param1: pointer): ptr cQWebEngineClientCertificateSelection {.importc: "QWebEngineClientCertificateSelection_new".}
+proc fcQWebEngineClientCertificateSelection_operatorAssign(self: pointer, param1: pointer): void {.importc: "QWebEngineClientCertificateSelection_operatorAssign".}
+proc fcQWebEngineClientCertificateSelection_host(self: pointer, ): pointer {.importc: "QWebEngineClientCertificateSelection_host".}
+proc fcQWebEngineClientCertificateSelection_select(self: pointer, certificate: pointer): void {.importc: "QWebEngineClientCertificateSelection_select".}
+proc fcQWebEngineClientCertificateSelection_selectNone(self: pointer, ): void {.importc: "QWebEngineClientCertificateSelection_selectNone".}
+proc fcQWebEngineClientCertificateSelection_certificates(self: pointer, ): struct_miqt_array {.importc: "QWebEngineClientCertificateSelection_certificates".}
+proc fcQWebEngineClientCertificateSelection_delete(self: pointer) {.importc: "QWebEngineClientCertificateSelection_delete".}
+
+
+func init*(T: type QWebEngineClientCertificateSelection, h: ptr cQWebEngineClientCertificateSelection): QWebEngineClientCertificateSelection =
+  T(h: h)
+proc create*(T: type QWebEngineClientCertificateSelection, param1: QWebEngineClientCertificateSelection): QWebEngineClientCertificateSelection =
+
+  QWebEngineClientCertificateSelection.init(fcQWebEngineClientCertificateSelection_new(param1.h))
+proc operatorAssign*(self: QWebEngineClientCertificateSelection, param1: QWebEngineClientCertificateSelection): void =
+
+  fcQWebEngineClientCertificateSelection_operatorAssign(self.h, param1.h)
+
+proc host*(self: QWebEngineClientCertificateSelection, ): gen_qurl.QUrl =
+
+  gen_qurl.QUrl(h: fcQWebEngineClientCertificateSelection_host(self.h))
+
+proc select*(self: QWebEngineClientCertificateSelection, certificate: gen_qsslcertificate.QSslCertificate): void =
+
+  fcQWebEngineClientCertificateSelection_select(self.h, certificate.h)
+
+proc selectNone*(self: QWebEngineClientCertificateSelection, ): void =
+
+  fcQWebEngineClientCertificateSelection_selectNone(self.h)
+
+proc certificates*(self: QWebEngineClientCertificateSelection, ): seq[gen_qsslcertificate.QSslCertificate] =
+
+  var v_ma = fcQWebEngineClientCertificateSelection_certificates(self.h)
+  var vx_ret = newSeq[gen_qsslcertificate.QSslCertificate](int(v_ma.len))
+  let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
+  for i in 0 ..< v_ma.len:
+    vx_ret[i] = gen_qsslcertificate.QSslCertificate(h: v_outCast[i])
+  vx_ret
+
+proc delete*(self: QWebEngineClientCertificateSelection) =
+  fcQWebEngineClientCertificateSelection_delete(self.h)

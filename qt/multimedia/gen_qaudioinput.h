@@ -47,6 +47,7 @@ QAudioInput* QAudioInput_new6(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* f
 void QAudioInput_virtbase(QAudioInput* src, QObject** outptr_QObject);
 QMetaObject* QAudioInput_metaObject(const QAudioInput* self);
 void* QAudioInput_metacast(QAudioInput* self, const char* param1);
+int QAudioInput_metacall(QAudioInput* self, int param1, int param2, void** param3);
 struct miqt_string QAudioInput_tr(const char* s);
 struct miqt_string QAudioInput_trUtf8(const char* s);
 QAudioFormat* QAudioInput_format(const QAudioInput* self);
@@ -76,6 +77,8 @@ struct miqt_string QAudioInput_tr2(const char* s, const char* c);
 struct miqt_string QAudioInput_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioInput_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioInput_trUtf83(const char* s, const char* c, int n);
+bool QAudioInput_override_virtual_metacall(void* self, intptr_t slot);
+int QAudioInput_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAudioInput_override_virtual_event(void* self, intptr_t slot);
 bool QAudioInput_virtualbase_event(void* self, QEvent* event);
 bool QAudioInput_override_virtual_eventFilter(void* self, intptr_t slot);

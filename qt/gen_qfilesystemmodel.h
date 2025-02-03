@@ -57,6 +57,7 @@ QFileSystemModel* QFileSystemModel_new2(QObject* parent);
 void QFileSystemModel_virtbase(QFileSystemModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QFileSystemModel_metaObject(const QFileSystemModel* self);
 void* QFileSystemModel_metacast(QFileSystemModel* self, const char* param1);
+int QFileSystemModel_metacall(QFileSystemModel* self, int param1, int param2, void** param3);
 struct miqt_string QFileSystemModel_tr(const char* s);
 struct miqt_string QFileSystemModel_trUtf8(const char* s);
 void QFileSystemModel_rootPathChanged(QFileSystemModel* self, struct miqt_string newPath);
@@ -124,6 +125,8 @@ struct miqt_string QFileSystemModel_trUtf83(const char* s, const char* c, int n)
 QModelIndex* QFileSystemModel_index2(const QFileSystemModel* self, struct miqt_string path, int column);
 QVariant* QFileSystemModel_myComputer1(const QFileSystemModel* self, int role);
 void QFileSystemModel_setOption2(QFileSystemModel* self, int option, bool on);
+bool QFileSystemModel_override_virtual_metacall(void* self, intptr_t slot);
+int QFileSystemModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QFileSystemModel_override_virtual_index(void* self, intptr_t slot);
 QModelIndex* QFileSystemModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
 bool QFileSystemModel_override_virtual_parent(void* self, intptr_t slot);

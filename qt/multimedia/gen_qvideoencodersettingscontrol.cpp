@@ -31,6 +31,10 @@ void* QVideoEncoderSettingsControl_metacast(QVideoEncoderSettingsControl* self, 
 	return self->qt_metacast(param1);
 }
 
+int QVideoEncoderSettingsControl_metacall(QVideoEncoderSettingsControl* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QVideoEncoderSettingsControl_tr(const char* s) {
 	QString _ret = QVideoEncoderSettingsControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

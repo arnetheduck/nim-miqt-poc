@@ -47,6 +47,7 @@ QsciLexerCoffeeScript* QsciLexerCoffeeScript_new2(QObject* parent);
 void QsciLexerCoffeeScript_virtbase(QsciLexerCoffeeScript* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCoffeeScript_metaObject(const QsciLexerCoffeeScript* self);
 void* QsciLexerCoffeeScript_metacast(QsciLexerCoffeeScript* self, const char* param1);
+int QsciLexerCoffeeScript_metacall(QsciLexerCoffeeScript* self, int param1, int param2, void** param3);
 struct miqt_string QsciLexerCoffeeScript_tr(const char* s);
 struct miqt_string QsciLexerCoffeeScript_trUtf8(const char* s);
 const char* QsciLexerCoffeeScript_language(const QsciLexerCoffeeScript* self);
@@ -79,6 +80,8 @@ struct miqt_string QsciLexerCoffeeScript_trUtf83(const char* s, const char* c, i
 const char* QsciLexerCoffeeScript_blockEnd1(const QsciLexerCoffeeScript* self, int* style);
 const char* QsciLexerCoffeeScript_blockStart1(const QsciLexerCoffeeScript* self, int* style);
 const char* QsciLexerCoffeeScript_blockStartKeyword1(const QsciLexerCoffeeScript* self, int* style);
+bool QsciLexerCoffeeScript_override_virtual_metacall(void* self, intptr_t slot);
+int QsciLexerCoffeeScript_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciLexerCoffeeScript_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexerCoffeeScript_virtualbase_language(const void* self);
 bool QsciLexerCoffeeScript_override_virtual_lexer(void* self, intptr_t slot);

@@ -64,6 +64,7 @@ void miqt_exec_callback_QsciScintilla_modificationChanged(intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_selectionChanged(intptr_t);
 void miqt_exec_callback_QsciScintilla_textChanged(intptr_t);
 void miqt_exec_callback_QsciScintilla_userListActivated(intptr_t, int, struct miqt_string);
+int miqt_exec_callback_QsciScintilla_metacall(QsciScintilla*, intptr_t, int, int, void**);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciScintilla_apiContext(QsciScintilla*, intptr_t, int, int*, int*);
 bool miqt_exec_callback_QsciScintilla_findFirst(QsciScintilla*, intptr_t, struct miqt_string, bool, bool, bool, bool, bool, int, int, bool, bool, bool);
 bool miqt_exec_callback_QsciScintilla_findFirstInSelection(QsciScintilla*, intptr_t, struct miqt_string, bool, bool, bool, bool, bool, bool, bool);
@@ -213,6 +214,32 @@ public:
 	MiqtVirtualQsciScintilla(): QsciScintilla() {};
 
 	virtual ~MiqtVirtualQsciScintilla() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QsciScintilla::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QsciScintilla_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QsciScintilla::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__apiContext = 0;
@@ -3687,6 +3714,10 @@ void* QsciScintilla_metacast(QsciScintilla* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QsciScintilla_metacall(QsciScintilla* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QsciScintilla_tr(const char* s) {
 	QString _ret = QsciScintilla::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -5102,6 +5133,20 @@ void QsciScintilla_setWrapVisualFlags2(QsciScintilla* self, int endFlag, int sta
 
 void QsciScintilla_setWrapVisualFlags3(QsciScintilla* self, int endFlag, int startFlag, int indent) {
 	self->setWrapVisualFlags(static_cast<QsciScintilla::WrapVisualFlag>(endFlag), static_cast<QsciScintilla::WrapVisualFlag>(startFlag), static_cast<int>(indent));
+}
+
+bool QsciScintilla_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QsciScintilla_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QsciScintilla_override_virtual_apiContext(void* self, intptr_t slot) {

@@ -49,6 +49,7 @@ QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent);
 void QsciLexerJavaScript_virtbase(QsciLexerJavaScript* src, QsciLexerCPP** outptr_QsciLexerCPP);
 QMetaObject* QsciLexerJavaScript_metaObject(const QsciLexerJavaScript* self);
 void* QsciLexerJavaScript_metacast(QsciLexerJavaScript* self, const char* param1);
+int QsciLexerJavaScript_metacall(QsciLexerJavaScript* self, int param1, int param2, void** param3);
 struct miqt_string QsciLexerJavaScript_tr(const char* s);
 const char* QsciLexerJavaScript_language(const QsciLexerJavaScript* self);
 QColor* QsciLexerJavaScript_defaultColor(const QsciLexerJavaScript* self, int style);
@@ -59,6 +60,8 @@ const char* QsciLexerJavaScript_keywords(const QsciLexerJavaScript* self, int se
 struct miqt_string QsciLexerJavaScript_description(const QsciLexerJavaScript* self, int style);
 struct miqt_string QsciLexerJavaScript_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerJavaScript_tr3(const char* s, const char* c, int n);
+bool QsciLexerJavaScript_override_virtual_metacall(void* self, intptr_t slot);
+int QsciLexerJavaScript_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciLexerJavaScript_override_virtual_setFoldAtElse(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_setFoldAtElse(void* self, bool fold);
 bool QsciLexerJavaScript_override_virtual_setFoldComments(void* self, intptr_t slot);

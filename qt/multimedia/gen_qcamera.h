@@ -71,6 +71,7 @@ QCamera* QCamera_new8(int position, QObject* parent);
 void QCamera_virtbase(QCamera* src, QMediaObject** outptr_QMediaObject);
 QMetaObject* QCamera_metaObject(const QCamera* self);
 void* QCamera_metacast(QCamera* self, const char* param1);
+int QCamera_metacall(QCamera* self, int param1, int param2, void** param3);
 struct miqt_string QCamera_tr(const char* s);
 struct miqt_string QCamera_trUtf8(const char* s);
 struct miqt_array /* of struct miqt_string */  QCamera_availableDevices();
@@ -133,6 +134,8 @@ struct miqt_array /* of QCameraViewfinderSettings* */  QCamera_supportedViewfind
 struct miqt_array /* of QSize* */  QCamera_supportedViewfinderResolutions1(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of QCamera__FrameRateRange* */  QCamera_supportedViewfinderFrameRateRanges1(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of int */  QCamera_supportedViewfinderPixelFormats1(const QCamera* self, QCameraViewfinderSettings* settings);
+bool QCamera_override_virtual_metacall(void* self, intptr_t slot);
+int QCamera_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCamera_override_virtual_availability(void* self, intptr_t slot);
 int QCamera_virtualbase_availability(const void* self);
 bool QCamera_override_virtual_isAvailable(void* self, intptr_t slot);

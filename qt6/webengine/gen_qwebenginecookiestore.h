@@ -37,6 +37,7 @@ typedef struct QWebEngineCookieStore__FilterRequest QWebEngineCookieStore__Filte
 void QWebEngineCookieStore_virtbase(QWebEngineCookieStore* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineCookieStore_metaObject(const QWebEngineCookieStore* self);
 void* QWebEngineCookieStore_metacast(QWebEngineCookieStore* self, const char* param1);
+int QWebEngineCookieStore_metacall(QWebEngineCookieStore* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineCookieStore_tr(const char* s);
 void QWebEngineCookieStore_setCookie(QWebEngineCookieStore* self, QNetworkCookie* cookie);
 void QWebEngineCookieStore_deleteCookie(QWebEngineCookieStore* self, QNetworkCookie* cookie);

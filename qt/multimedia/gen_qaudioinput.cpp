@@ -20,6 +20,7 @@ extern "C" {
 
 void miqt_exec_callback_QAudioInput_stateChanged(intptr_t, int);
 void miqt_exec_callback_QAudioInput_notify(intptr_t);
+int miqt_exec_callback_QAudioInput_metacall(QAudioInput*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAudioInput_event(QAudioInput*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAudioInput_eventFilter(QAudioInput*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QAudioInput_timerEvent(QAudioInput*, intptr_t, QTimerEvent*);
@@ -42,6 +43,32 @@ public:
 	MiqtVirtualQAudioInput(const QAudioDeviceInfo& audioDeviceInfo, const QAudioFormat& format, QObject* parent): QAudioInput(audioDeviceInfo, format, parent) {};
 
 	virtual ~MiqtVirtualQAudioInput() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QAudioInput::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QAudioInput_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QAudioInput::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -252,6 +279,10 @@ void* QAudioInput_metacast(QAudioInput* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QAudioInput_metacall(QAudioInput* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QAudioInput_tr(const char* s) {
 	QString _ret = QAudioInput::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -419,6 +450,20 @@ struct miqt_string QAudioInput_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAudioInput_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QAudioInput_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQAudioInput*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QAudioInput_override_virtual_event(void* self, intptr_t slot) {

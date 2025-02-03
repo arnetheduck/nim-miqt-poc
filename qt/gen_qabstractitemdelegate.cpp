@@ -29,6 +29,7 @@ void miqt_exec_callback_QAbstractItemDelegate_commitData(intptr_t, QWidget*);
 void miqt_exec_callback_QAbstractItemDelegate_closeEditor(intptr_t, QWidget*);
 void miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged(intptr_t, QModelIndex*);
 void miqt_exec_callback_QAbstractItemDelegate_closeEditor2(intptr_t, QWidget*, int);
+int miqt_exec_callback_QAbstractItemDelegate_metacall(QAbstractItemDelegate*, intptr_t, int, int, void**);
 void miqt_exec_callback_QAbstractItemDelegate_paint(const QAbstractItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
 QSize* miqt_exec_callback_QAbstractItemDelegate_sizeHint(const QAbstractItemDelegate*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
 QWidget* miqt_exec_callback_QAbstractItemDelegate_createEditor(const QAbstractItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
@@ -57,6 +58,32 @@ public:
 	MiqtVirtualQAbstractItemDelegate(QObject* parent): QAbstractItemDelegate(parent) {};
 
 	virtual ~MiqtVirtualQAbstractItemDelegate() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QAbstractItemDelegate::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QAbstractItemDelegate_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QAbstractItemDelegate::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -532,6 +559,10 @@ void* QAbstractItemDelegate_metacast(QAbstractItemDelegate* self, const char* pa
 	return self->qt_metacast(param1);
 }
 
+int QAbstractItemDelegate_metacall(QAbstractItemDelegate* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QAbstractItemDelegate_tr(const char* s) {
 	QString _ret = QAbstractItemDelegate::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -705,6 +736,20 @@ void QAbstractItemDelegate_connect_closeEditor2(QAbstractItemDelegate* self, int
 		int sigval2 = static_cast<int>(hint_ret);
 		miqt_exec_callback_QAbstractItemDelegate_closeEditor2(slot, sigval1, sigval2);
 	});
+}
+
+bool QAbstractItemDelegate_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QAbstractItemDelegate_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QAbstractItemDelegate_override_virtual_paint(void* self, intptr_t slot) {

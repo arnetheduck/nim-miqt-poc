@@ -31,6 +31,10 @@ void* QAudioInputSelectorControl_metacast(QAudioInputSelectorControl* self, cons
 	return self->qt_metacast(param1);
 }
 
+int QAudioInputSelectorControl_metacall(QAudioInputSelectorControl* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QAudioInputSelectorControl_tr(const char* s) {
 	QString _ret = QAudioInputSelectorControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

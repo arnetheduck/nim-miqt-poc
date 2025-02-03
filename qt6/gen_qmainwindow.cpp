@@ -51,6 +51,7 @@ extern "C" {
 void miqt_exec_callback_QMainWindow_iconSizeChanged(intptr_t, QSize*);
 void miqt_exec_callback_QMainWindow_toolButtonStyleChanged(intptr_t, int);
 void miqt_exec_callback_QMainWindow_tabifiedDockWidgetActivated(intptr_t, QDockWidget*);
+int miqt_exec_callback_QMainWindow_metacall(QMainWindow*, intptr_t, int, int, void**);
 QMenu* miqt_exec_callback_QMainWindow_createPopupMenu(QMainWindow*, intptr_t);
 void miqt_exec_callback_QMainWindow_contextMenuEvent(QMainWindow*, intptr_t, QContextMenuEvent*);
 bool miqt_exec_callback_QMainWindow_event(QMainWindow*, intptr_t, QEvent*);
@@ -111,6 +112,32 @@ public:
 	MiqtVirtualQMainWindow(QWidget* parent, Qt::WindowFlags flags): QMainWindow(parent, flags) {};
 
 	virtual ~MiqtVirtualQMainWindow() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QMainWindow::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QMainWindow_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QMainWindow::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createPopupMenu = 0;
@@ -1284,6 +1311,10 @@ void* QMainWindow_metacast(QMainWindow* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QMainWindow_metacall(QMainWindow* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QMainWindow_tr(const char* s) {
 	QString _ret = QMainWindow::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1612,6 +1643,20 @@ struct miqt_string QMainWindow_saveState1(const QMainWindow* self, int version) 
 bool QMainWindow_restoreState2(QMainWindow* self, struct miqt_string state, int version) {
 	QByteArray state_QByteArray(state.data, state.len);
 	return self->restoreState(state_QByteArray, static_cast<int>(version));
+}
+
+bool QMainWindow_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQMainWindow* self_cast = dynamic_cast<MiqtVirtualQMainWindow*>( (QMainWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QMainWindow_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQMainWindow*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QMainWindow_override_virtual_createPopupMenu(void* self, intptr_t slot) {

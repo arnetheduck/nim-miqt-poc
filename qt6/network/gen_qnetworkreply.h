@@ -45,6 +45,7 @@ typedef struct QVariant QVariant;
 void QNetworkReply_virtbase(QNetworkReply* src, QIODevice** outptr_QIODevice);
 QMetaObject* QNetworkReply_metaObject(const QNetworkReply* self);
 void* QNetworkReply_metacast(QNetworkReply* self, const char* param1);
+int QNetworkReply_metacall(QNetworkReply* self, int param1, int param2, void** param3);
 struct miqt_string QNetworkReply_tr(const char* s);
 void QNetworkReply_close(QNetworkReply* self);
 bool QNetworkReply_isSequential(const QNetworkReply* self);

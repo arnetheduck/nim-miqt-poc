@@ -65,6 +65,7 @@ void miqt_exec_callback_QTextEdit_currentCharFormatChanged(intptr_t, QTextCharFo
 void miqt_exec_callback_QTextEdit_copyAvailable(intptr_t, bool);
 void miqt_exec_callback_QTextEdit_selectionChanged(intptr_t);
 void miqt_exec_callback_QTextEdit_cursorPositionChanged(intptr_t);
+int miqt_exec_callback_QTextEdit_metacall(QTextEdit*, intptr_t, int, int, void**);
 QVariant* miqt_exec_callback_QTextEdit_loadResource(QTextEdit*, intptr_t, int, QUrl*);
 QVariant* miqt_exec_callback_QTextEdit_inputMethodQuery(const QTextEdit*, intptr_t, int);
 bool miqt_exec_callback_QTextEdit_event(QTextEdit*, intptr_t, QEvent*);
@@ -135,6 +136,32 @@ public:
 	MiqtVirtualQTextEdit(const QString& text, QWidget* parent): QTextEdit(text, parent) {};
 
 	virtual ~MiqtVirtualQTextEdit() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QTextEdit::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QTextEdit_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QTextEdit::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__loadResource = 0;
@@ -1531,6 +1558,10 @@ void* QTextEdit_metacast(QTextEdit* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QTextEdit_metacall(QTextEdit* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QTextEdit_tr(const char* s) {
 	QString _ret = QTextEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -2113,6 +2144,20 @@ void QTextEdit_zoomIn1(QTextEdit* self, int range) {
 
 void QTextEdit_zoomOut1(QTextEdit* self, int range) {
 	self->zoomOut(static_cast<int>(range));
+}
+
+bool QTextEdit_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QTextEdit_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQTextEdit*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QTextEdit_override_virtual_loadResource(void* self, intptr_t slot) {

@@ -479,6 +479,18 @@ func QMetaObject_ConnectSlotsByName(o *QObject) {
 	C.QMetaObject_connectSlotsByName(o.cPointer())
 }
 
+func QMetaObject_Activate(sender *QObject, signal_index int, argv unsafe.Pointer) {
+	C.QMetaObject_activate(sender.cPointer(), (C.int)(signal_index), argv)
+}
+
+func QMetaObject_Activate2(sender *QObject, param2 *QMetaObject, local_signal_index int, argv unsafe.Pointer) {
+	C.QMetaObject_activate2(sender.cPointer(), param2.cPointer(), (C.int)(local_signal_index), argv)
+}
+
+func QMetaObject_Activate3(sender *QObject, signal_offset int, local_signal_index int, argv unsafe.Pointer) {
+	C.QMetaObject_activate3(sender.cPointer(), (C.int)(signal_offset), (C.int)(local_signal_index), argv)
+}
+
 func QMetaObject_InvokeMethod(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
@@ -505,6 +517,14 @@ func QMetaObject_InvokeMethod4(obj *QObject, member string) bool {
 
 func (this *QMetaObject) NewInstance() *QObject {
 	return newQObject(C.QMetaObject_newInstance(this.h))
+}
+
+func (this *QMetaObject) StaticMetacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QMetaObject_staticMetacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
+func QMetaObject_Metacall(param1 *QObject, param2 QMetaObject__Call, param3 int, param4 unsafe.Pointer) int {
+	return (int)(C.QMetaObject_metacall(param1.cPointer(), (C.int)(param2), (C.int)(param3), param4))
 }
 
 func (this *QMetaObject) Tr3(s string, c string, n int) string {

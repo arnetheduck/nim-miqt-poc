@@ -55,6 +55,7 @@ QSortFilterProxyModel* QSortFilterProxyModel_new2(QObject* parent);
 void QSortFilterProxyModel_virtbase(QSortFilterProxyModel* src, QAbstractProxyModel** outptr_QAbstractProxyModel);
 QMetaObject* QSortFilterProxyModel_metaObject(const QSortFilterProxyModel* self);
 void* QSortFilterProxyModel_metacast(QSortFilterProxyModel* self, const char* param1);
+int QSortFilterProxyModel_metacall(QSortFilterProxyModel* self, int param1, int param2, void** param3);
 struct miqt_string QSortFilterProxyModel_tr(const char* s);
 void QSortFilterProxyModel_setSourceModel(QSortFilterProxyModel* self, QAbstractItemModel* sourceModel);
 QModelIndex* QSortFilterProxyModel_mapToSource(const QSortFilterProxyModel* self, QModelIndex* proxyIndex);
@@ -133,6 +134,8 @@ void QSortFilterProxyModel_autoAcceptChildRowsChanged(QSortFilterProxyModel* sel
 void QSortFilterProxyModel_connect_autoAcceptChildRowsChanged(QSortFilterProxyModel* self, intptr_t slot);
 struct miqt_string QSortFilterProxyModel_tr2(const char* s, const char* c);
 struct miqt_string QSortFilterProxyModel_tr3(const char* s, const char* c, int n);
+bool QSortFilterProxyModel_override_virtual_metacall(void* self, intptr_t slot);
+int QSortFilterProxyModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QSortFilterProxyModel_override_virtual_setSourceModel(void* self, intptr_t slot);
 void QSortFilterProxyModel_virtualbase_setSourceModel(void* self, QAbstractItemModel* sourceModel);
 bool QSortFilterProxyModel_override_virtual_mapToSource(void* self, intptr_t slot);

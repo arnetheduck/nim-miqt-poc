@@ -77,6 +77,7 @@ void miqt_exec_callback_QWebPage_featurePermissionRequestCanceled(intptr_t, QWeb
 void miqt_exec_callback_QWebPage_fullScreenRequested(intptr_t, QWebFullScreenRequest*);
 void miqt_exec_callback_QWebPage_consoleMessageReceived(intptr_t, int, int, struct miqt_string, int, struct miqt_string);
 void miqt_exec_callback_QWebPage_recentlyAudibleChanged(intptr_t, bool);
+int miqt_exec_callback_QWebPage_metacall(QWebPage*, intptr_t, int, int, void**);
 void miqt_exec_callback_QWebPage_triggerAction(QWebPage*, intptr_t, int, bool);
 bool miqt_exec_callback_QWebPage_event(QWebPage*, intptr_t, QEvent*);
 bool miqt_exec_callback_QWebPage_extension(QWebPage*, intptr_t, int, QWebPage__ExtensionOption*, QWebPage__ExtensionReturn*);
@@ -107,6 +108,32 @@ public:
 	MiqtVirtualQWebPage(QObject* parent): QWebPage(parent) {};
 
 	virtual ~MiqtVirtualQWebPage() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QWebPage::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QWebPage_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QWebPage::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__triggerAction = 0;
@@ -711,6 +738,10 @@ QMetaObject* QWebPage_metaObject(const QWebPage* self) {
 
 void* QWebPage_metacast(QWebPage* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QWebPage_metacall(QWebPage* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QWebPage_tr(const char* s) {
@@ -1458,6 +1489,20 @@ struct miqt_string QWebPage_trUtf83(const char* s, const char* c, int n) {
 bool QWebPage_findText2(QWebPage* self, struct miqt_string subString, int options) {
 	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
 	return self->findText(subString_QString, static_cast<QWebPage::FindFlags>(options));
+}
+
+bool QWebPage_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QWebPage_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QWebPage_override_virtual_triggerAction(void* self, intptr_t slot) {

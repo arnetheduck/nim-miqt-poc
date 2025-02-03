@@ -222,6 +222,10 @@ func (this *QWebEnginePage) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWebEnginePage_metacast(this.h, param1_Cstring))
 }
 
+func (this *QWebEnginePage) Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QWebEnginePage_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QWebEnginePage_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -1336,6 +1340,38 @@ func (this *QWebEnginePage) PrintToPdf3(filePath string, layout *qt6.QPageLayout
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
 	C.QWebEnginePage_printToPdf3(this.h, filePath_ms, (*C.QPageLayout)(layout.UnsafePointer()), (*C.QPageRanges)(ranges.UnsafePointer()))
+}
+
+func (this *QWebEnginePage) callVirtualBase_Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QWebEnginePage_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QWebEnginePage) OnMetacall(slot func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QWebEnginePage_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWebEnginePage_metacall
+func miqt_exec_callback_QWebEnginePage_metacall(self *C.QWebEnginePage, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt6.QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QWebEnginePage{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QWebEnginePage) callVirtualBase_TriggerAction(action QWebEnginePage__WebAction, checked bool) {

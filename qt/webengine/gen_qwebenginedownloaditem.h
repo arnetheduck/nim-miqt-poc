@@ -31,6 +31,7 @@ typedef struct QWebEnginePage QWebEnginePage;
 void QWebEngineDownloadItem_virtbase(QWebEngineDownloadItem* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineDownloadItem_metaObject(const QWebEngineDownloadItem* self);
 void* QWebEngineDownloadItem_metacast(QWebEngineDownloadItem* self, const char* param1);
+int QWebEngineDownloadItem_metacall(QWebEngineDownloadItem* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineDownloadItem_tr(const char* s);
 struct miqt_string QWebEngineDownloadItem_trUtf8(const char* s);
 unsigned int QWebEngineDownloadItem_id(const QWebEngineDownloadItem* self);

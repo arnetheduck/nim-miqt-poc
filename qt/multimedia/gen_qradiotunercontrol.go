@@ -61,6 +61,10 @@ func (this *QRadioTunerControl) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QRadioTunerControl_metacast(this.h, param1_Cstring))
 }
 
+func (this *QRadioTunerControl) Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QRadioTunerControl_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QRadioTunerControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

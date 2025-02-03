@@ -101,6 +101,10 @@ func (this *QStateMachine) Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QStateMachine_metacast(this.h, param1_Cstring))
 }
 
+func (this *QStateMachine) Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+	return (int)(C.QStateMachine_metacall(this.h, (C.int)(param1), (C.int)(param2), param3))
+}
+
 func QStateMachine_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -286,6 +290,38 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 
 func (this *QStateMachine) PostEvent2(event *QEvent, priority QStateMachine__EventPriority) {
 	C.QStateMachine_postEvent2(this.h, event.cPointer(), (C.int)(priority))
+}
+
+func (this *QStateMachine) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
+
+	return (int)(C.QStateMachine_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
+
+}
+func (this *QStateMachine) OnMetacall(slot func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int) {
+	ok := C.QStateMachine_override_virtual_metacall(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStateMachine_metacall
+func miqt_exec_callback_QStateMachine_metacall(self *C.QStateMachine, cb C.intptr_t, param1 C.int, param2 C.int, param3 unsafe.Pointer) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int, param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QMetaObject__Call)(param1)
+
+	slotval2 := (int)(param2)
+
+	slotval3 := (unsafe.Pointer)(param3)
+
+	virtualReturn := gofunc((&QStateMachine{h: self}).callVirtualBase_Metacall, slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
 }
 
 func (this *QStateMachine) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {

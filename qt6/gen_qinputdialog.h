@@ -92,6 +92,7 @@ QInputDialog* QInputDialog_new3(QWidget* parent, int flags);
 void QInputDialog_virtbase(QInputDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QInputDialog_metaObject(const QInputDialog* self);
 void* QInputDialog_metacast(QInputDialog* self, const char* param1);
+int QInputDialog_metacall(QInputDialog* self, int param1, int param2, void** param3);
 struct miqt_string QInputDialog_tr(const char* s);
 void QInputDialog_setInputMode(QInputDialog* self, int mode);
 int QInputDialog_inputMode(const QInputDialog* self);
@@ -184,6 +185,8 @@ double QInputDialog_getDouble7(QWidget* parent, struct miqt_string title, struct
 double QInputDialog_getDouble8(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok);
 double QInputDialog_getDouble9(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok, int flags);
 double QInputDialog_getDouble10(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok, int flags, double step);
+bool QInputDialog_override_virtual_metacall(void* self, intptr_t slot);
+int QInputDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QInputDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot);
 QSize* QInputDialog_virtualbase_minimumSizeHint(const void* self);
 bool QInputDialog_override_virtual_sizeHint(void* self, intptr_t slot);

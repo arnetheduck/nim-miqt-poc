@@ -21,6 +21,7 @@ void miqt_exec_callback_QLocalSocket_disconnected(intptr_t);
 void miqt_exec_callback_QLocalSocket_errorWithSocketError(intptr_t, int);
 void miqt_exec_callback_QLocalSocket_errorOccurred(intptr_t, int);
 void miqt_exec_callback_QLocalSocket_stateChanged(intptr_t, int);
+int miqt_exec_callback_QLocalSocket_metacall(QLocalSocket*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QLocalSocket_isSequential(const QLocalSocket*, intptr_t);
 long long miqt_exec_callback_QLocalSocket_bytesAvailable(const QLocalSocket*, intptr_t);
 long long miqt_exec_callback_QLocalSocket_bytesToWrite(const QLocalSocket*, intptr_t);
@@ -55,6 +56,32 @@ public:
 	MiqtVirtualQLocalSocket(QObject* parent): QLocalSocket(parent) {};
 
 	virtual ~MiqtVirtualQLocalSocket() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QLocalSocket::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QLocalSocket_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QLocalSocket::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isSequential = 0;
@@ -624,6 +651,10 @@ void* QLocalSocket_metacast(QLocalSocket* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QLocalSocket_metacall(QLocalSocket* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QLocalSocket_tr(const char* s) {
 	QString _ret = QLocalSocket::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -891,6 +922,20 @@ bool QLocalSocket_waitForConnected1(QLocalSocket* self, int msecs) {
 
 bool QLocalSocket_waitForDisconnected1(QLocalSocket* self, int msecs) {
 	return self->waitForDisconnected(static_cast<int>(msecs));
+}
+
+bool QLocalSocket_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QLocalSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QLocalSocket_override_virtual_isSequential(void* self, intptr_t slot) {

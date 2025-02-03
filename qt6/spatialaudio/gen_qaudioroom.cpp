@@ -26,6 +26,7 @@ void miqt_exec_callback_QAudioRoom_reflectionGainChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_reverbGainChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_reverbTimeChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_reverbBrightnessChanged(intptr_t);
+int miqt_exec_callback_QAudioRoom_metacall(QAudioRoom*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAudioRoom_event(QAudioRoom*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAudioRoom_eventFilter(QAudioRoom*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QAudioRoom_timerEvent(QAudioRoom*, intptr_t, QTimerEvent*);
@@ -43,6 +44,32 @@ public:
 	MiqtVirtualQAudioRoom(QAudioEngine* engine): QAudioRoom(engine) {};
 
 	virtual ~MiqtVirtualQAudioRoom() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QAudioRoom::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QAudioRoom_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QAudioRoom::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -233,6 +260,10 @@ void* QAudioRoom_metacast(QAudioRoom* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QAudioRoom_metacall(QAudioRoom* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QAudioRoom_tr(const char* s) {
 	QString _ret = QAudioRoom::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -409,6 +440,20 @@ struct miqt_string QAudioRoom_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAudioRoom_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQAudioRoom* self_cast = dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QAudioRoom_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QAudioRoom_override_virtual_event(void* self, intptr_t slot) {

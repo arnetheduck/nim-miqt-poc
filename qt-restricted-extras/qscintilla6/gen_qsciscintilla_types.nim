@@ -1,0 +1,4 @@
+import gen_qsciscintillabase_types
+export gen_qsciscintillabase_types
+type QsciScintilla*  = object of gen_qsciscintillabase_types.QsciScintillaBase
+
