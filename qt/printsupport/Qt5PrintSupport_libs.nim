@@ -1,3 +1,3 @@
 
-const libs = gorge("pkg-config -libs Qt5PrintSupport")
+const libs = gorge("pkg-config --libs Qt5PrintSupport")
 {.passl: libs}

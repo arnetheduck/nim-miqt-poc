@@ -30,7 +30,7 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
     else:
       copyMem(addr result[0], unsafeAddr v[0], v.len)
 
-const cflags = gorge("pkg-config -cflags Qt6WebChannel")
+const cflags = gorge("pkg-config --cflags Qt6WebChannel")
 {.compile("gen_qwebchannelabstracttransport.cpp", cflags).}
 
 import gen_qwebchannelabstracttransport_types

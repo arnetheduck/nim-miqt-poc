@@ -192,7 +192,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 	//
 
 	libsSrc := fmt.Sprintf(`
-const libs = gorge("pkg-config -libs %s")
+const libs = gorge("pkg-config --libs %s")
 {.passl: libs}
 `, pkgConfigModule)
 	os.WriteFile(filepath.Join(outDir, strings.ReplaceAll(pkgConfigModule, " ", "_")+"_libs.nim"), []byte(libsSrc), 0644)

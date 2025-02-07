@@ -1,3 +1,3 @@
 
-const libs = gorge("pkg-config -libs ScintillaEdit")
+const libs = gorge("pkg-config --libs ScintillaEdit")
 {.passl: libs}

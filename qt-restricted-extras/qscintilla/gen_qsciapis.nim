@@ -30,7 +30,7 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
     else:
       copyMem(addr result[0], unsafeAddr v[0], v.len)
 
-const cflags = gorge("pkg-config -cflags Qt5PrintSupport")
+const cflags = gorge("pkg-config --cflags Qt5PrintSupport")
 {.compile("gen_qsciapis.cpp", cflags).}
 
 import gen_qsciapis_types

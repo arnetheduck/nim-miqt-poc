@@ -30,7 +30,7 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
     else:
       copyMem(addr result[0], unsafeAddr v[0], v.len)
 
-const cflags = gorge("pkg-config -cflags Qt5Network")
+const cflags = gorge("pkg-config --cflags Qt5Network")
 {.compile("gen_qlocalsocket.cpp", cflags).}
 
 
