@@ -49,7 +49,14 @@ QObject_connectRawSlot(QObject *sender, const char *signal, QObject *receiver,
   auto slotObj = new QCSlotObject(slot);
   auto signal_index = senderMetaObject->indexOfSignal(signal + 1);
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 3)
+  // https://github.com/qt/qtbase/commit/32d4e43f926c30bd1a8dd6e6744385d731908d06
+  return new QMetaObject::Connection(
+      QObjectPrivate::connect(sender, signal_index, slotObj, type));
+#else
   return new QMetaObject::Connection(
       QObjectPrivate::connect(sender, signal_index, receiver, slotObj, type));
+#endif
+
 }
 }
