@@ -1,4 +1,4 @@
-import ../../qt/[gen_qapplication, gen_qpushbutton]
+import ../../qt6/[gen_qapplication, gen_qpushbutton]
 
 import strformat
 
