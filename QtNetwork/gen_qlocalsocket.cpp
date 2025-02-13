@@ -17,10 +17,15 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLocalSocket_connected(intptr_t);
+void miqt_exec_callback_QLocalSocket_connected_release(intptr_t);
 void miqt_exec_callback_QLocalSocket_disconnected(intptr_t);
+void miqt_exec_callback_QLocalSocket_disconnected_release(intptr_t);
 void miqt_exec_callback_QLocalSocket_errorWithSocketError(intptr_t, int);
+void miqt_exec_callback_QLocalSocket_errorWithSocketError_release(intptr_t);
 void miqt_exec_callback_QLocalSocket_errorOccurred(intptr_t, int);
+void miqt_exec_callback_QLocalSocket_errorOccurred_release(intptr_t);
 void miqt_exec_callback_QLocalSocket_stateChanged(intptr_t, int);
+void miqt_exec_callback_QLocalSocket_stateChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -749,9 +754,18 @@ void QLocalSocket_connected(QLocalSocket* self) {
 }
 
 void QLocalSocket_connect_connected(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::connected), self, [=]() {
-		miqt_exec_callback_QLocalSocket_connected(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QLocalSocket_connected(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLocalSocket_connected_release(slot); }
+	};
+	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::connected), self, caller{slot});
 }
 
 void QLocalSocket_disconnected(QLocalSocket* self) {
@@ -759,9 +773,18 @@ void QLocalSocket_disconnected(QLocalSocket* self) {
 }
 
 void QLocalSocket_connect_disconnected(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::disconnected), self, [=]() {
-		miqt_exec_callback_QLocalSocket_disconnected(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QLocalSocket_disconnected(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLocalSocket_disconnected_release(slot); }
+	};
+	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::disconnected), self, caller{slot});
 }
 
 void QLocalSocket_errorWithSocketError(QLocalSocket* self, int socketError) {
@@ -769,11 +792,20 @@ void QLocalSocket_errorWithSocketError(QLocalSocket* self, int socketError) {
 }
 
 void QLocalSocket_connect_errorWithSocketError(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), self, [=](QLocalSocket::LocalSocketError socketError) {
-		QLocalSocket::LocalSocketError socketError_ret = socketError;
-		int sigval1 = static_cast<int>(socketError_ret);
-		miqt_exec_callback_QLocalSocket_errorWithSocketError(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QLocalSocket::LocalSocketError socketError) {
+			QLocalSocket::LocalSocketError socketError_ret = socketError;
+			int sigval1 = static_cast<int>(socketError_ret);
+			miqt_exec_callback_QLocalSocket_errorWithSocketError(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLocalSocket_errorWithSocketError_release(slot); }
+	};
+	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), self, caller{slot});
 }
 
 void QLocalSocket_errorOccurred(QLocalSocket* self, int socketError) {
@@ -781,11 +813,20 @@ void QLocalSocket_errorOccurred(QLocalSocket* self, int socketError) {
 }
 
 void QLocalSocket_connect_errorOccurred(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::errorOccurred), self, [=](QLocalSocket::LocalSocketError socketError) {
-		QLocalSocket::LocalSocketError socketError_ret = socketError;
-		int sigval1 = static_cast<int>(socketError_ret);
-		miqt_exec_callback_QLocalSocket_errorOccurred(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QLocalSocket::LocalSocketError socketError) {
+			QLocalSocket::LocalSocketError socketError_ret = socketError;
+			int sigval1 = static_cast<int>(socketError_ret);
+			miqt_exec_callback_QLocalSocket_errorOccurred(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLocalSocket_errorOccurred_release(slot); }
+	};
+	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::errorOccurred), self, caller{slot});
 }
 
 void QLocalSocket_stateChanged(QLocalSocket* self, int socketState) {
@@ -793,11 +834,20 @@ void QLocalSocket_stateChanged(QLocalSocket* self, int socketState) {
 }
 
 void QLocalSocket_connect_stateChanged(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketState)>(&QLocalSocket::stateChanged), self, [=](QLocalSocket::LocalSocketState socketState) {
-		QLocalSocket::LocalSocketState socketState_ret = socketState;
-		int sigval1 = static_cast<int>(socketState_ret);
-		miqt_exec_callback_QLocalSocket_stateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QLocalSocket::LocalSocketState socketState) {
+			QLocalSocket::LocalSocketState socketState_ret = socketState;
+			int sigval1 = static_cast<int>(socketState_ret);
+			miqt_exec_callback_QLocalSocket_stateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLocalSocket_stateChanged_release(slot); }
+	};
+	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketState)>(&QLocalSocket::stateChanged), self, caller{slot});
 }
 
 struct miqt_string QLocalSocket_tr2(const char* s, const char* c) {

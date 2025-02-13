@@ -270,6 +270,10 @@ proc miqt_exec_callback_cQWebEngineDownloadItem_finished(slot: int) {.exportc: "
   let nimfunc = cast[ptr QWebEngineDownloadItemfinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEngineDownloadItem_finished_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadItem_finished_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadItemfinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemfinishedSlot) =
   var tmp = new QWebEngineDownloadItemfinishedSlot
   tmp[] = slot
@@ -285,6 +289,10 @@ proc miqt_exec_callback_cQWebEngineDownloadItem_stateChanged(slot: int, state: c
   let slotval1 = cint(state)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEngineDownloadItem_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadItem_stateChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadItemstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstateChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemstateChangedSlot) =
   var tmp = new QWebEngineDownloadItemstateChangedSlot
@@ -304,6 +312,10 @@ proc miqt_exec_callback_cQWebEngineDownloadItem_downloadProgress(slot: int, byte
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQWebEngineDownloadItem_downloadProgress_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadItem_downloadProgress_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadItemdownloadProgressSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondownloadProgress*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemdownloadProgressSlot) =
   var tmp = new QWebEngineDownloadItemdownloadProgressSlot
   tmp[] = slot
@@ -319,6 +331,10 @@ proc miqt_exec_callback_cQWebEngineDownloadItem_isPausedChanged(slot: int, isPau
   let slotval1 = isPaused
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEngineDownloadItem_isPausedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadItem_isPausedChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadItemisPausedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onisPausedChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemisPausedChangedSlot) =
   var tmp = new QWebEngineDownloadItemisPausedChangedSlot

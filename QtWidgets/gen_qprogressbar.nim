@@ -324,6 +324,10 @@ proc miqt_exec_callback_cQProgressBar_valueChanged(slot: int, value: cint) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQProgressBar_valueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QProgressBar_valueChanged_release".} =
+  let nimfunc = cast[ref QProgressBarvalueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvalueChanged*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarvalueChangedSlot) =
   var tmp = new QProgressBarvalueChangedSlot
   tmp[] = slot

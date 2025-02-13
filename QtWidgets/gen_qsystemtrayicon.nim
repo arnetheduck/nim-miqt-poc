@@ -210,6 +210,10 @@ proc miqt_exec_callback_cQSystemTrayIcon_activated(slot: int, reason: cint) {.ex
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSystemTrayIcon_activated_release(slot: int) {.exportc: "miqt_exec_callback_QSystemTrayIcon_activated_release".} =
+  let nimfunc = cast[ref QSystemTrayIconactivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactivated*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, slot: QSystemTrayIconactivatedSlot) =
   var tmp = new QSystemTrayIconactivatedSlot
   tmp[] = slot
@@ -223,6 +227,10 @@ type QSystemTrayIconmessageClickedSlot* = proc()
 proc miqt_exec_callback_cQSystemTrayIcon_messageClicked(slot: int) {.exportc: "miqt_exec_callback_QSystemTrayIcon_messageClicked".} =
   let nimfunc = cast[ptr QSystemTrayIconmessageClickedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSystemTrayIcon_messageClicked_release(slot: int) {.exportc: "miqt_exec_callback_QSystemTrayIcon_messageClicked_release".} =
+  let nimfunc = cast[ref QSystemTrayIconmessageClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmessageClicked*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, slot: QSystemTrayIconmessageClickedSlot) =
   var tmp = new QSystemTrayIconmessageClickedSlot

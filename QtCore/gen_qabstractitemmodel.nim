@@ -820,6 +820,10 @@ proc miqt_exec_callback_cQAbstractItemModel_dataChanged(slot: int, topLeft: poin
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQAbstractItemModel_dataChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_dataChanged_release".} =
+  let nimfunc = cast[ref QAbstractItemModeldataChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondataChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModeldataChangedSlot) =
   var tmp = new QAbstractItemModeldataChangedSlot
   tmp[] = slot
@@ -840,6 +844,10 @@ proc miqt_exec_callback_cQAbstractItemModel_headerDataChanged(slot: int, orienta
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQAbstractItemModel_headerDataChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_headerDataChanged_release".} =
+  let nimfunc = cast[ref QAbstractItemModelheaderDataChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onheaderDataChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModelheaderDataChangedSlot) =
   var tmp = new QAbstractItemModelheaderDataChangedSlot
   tmp[] = slot
@@ -854,6 +862,10 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutChanged(slot: int) {.exportc: 
   let nimfunc = cast[ptr QAbstractItemModellayoutChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractItemModel_layoutChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_layoutChanged_release".} =
+  let nimfunc = cast[ref QAbstractItemModellayoutChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onlayoutChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModellayoutChangedSlot) =
   var tmp = new QAbstractItemModellayoutChangedSlot
   tmp[] = slot
@@ -867,6 +879,10 @@ type QAbstractItemModellayoutAboutToBeChangedSlot* = proc()
 proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged".} =
   let nimfunc = cast[ptr QAbstractItemModellayoutAboutToBeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged_release".} =
+  let nimfunc = cast[ref QAbstractItemModellayoutAboutToBeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlayoutAboutToBeChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModellayoutAboutToBeChangedSlot) =
   var tmp = new QAbstractItemModellayoutAboutToBeChangedSlot
@@ -945,6 +961,10 @@ proc miqt_exec_callback_cQAbstractItemModel_dataChanged3(slot: int, topLeft: poi
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQAbstractItemModel_dataChanged3_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_dataChanged3_release".} =
+  let nimfunc = cast[ref QAbstractItemModeldataChanged3Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondataChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModeldataChanged3Slot) =
   var tmp = new QAbstractItemModeldataChanged3Slot
   tmp[] = slot
@@ -969,6 +989,10 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutChanged1(slot: int, parents: s
   let slotval1 = vparentsx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractItemModel_layoutChanged1_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_layoutChanged1_release".} =
+  let nimfunc = cast[ref QAbstractItemModellayoutChanged1Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlayoutChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModellayoutChanged1Slot) =
   var tmp = new QAbstractItemModellayoutChanged1Slot
@@ -997,6 +1021,10 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutChanged2(slot: int, parents: s
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQAbstractItemModel_layoutChanged2_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_layoutChanged2_release".} =
+  let nimfunc = cast[ref QAbstractItemModellayoutChanged2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onlayoutChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModellayoutChanged2Slot) =
   var tmp = new QAbstractItemModellayoutChanged2Slot
   tmp[] = slot
@@ -1021,6 +1049,10 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged1(slot: int, p
   let slotval1 = vparentsx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged1_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1_release".} =
+  let nimfunc = cast[ref QAbstractItemModellayoutAboutToBeChanged1Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlayoutAboutToBeChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModellayoutAboutToBeChanged1Slot) =
   var tmp = new QAbstractItemModellayoutAboutToBeChanged1Slot
@@ -1048,6 +1080,10 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged2(slot: int, p
   let slotval2 = cint(hint)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged2_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2_release".} =
+  let nimfunc = cast[ref QAbstractItemModellayoutAboutToBeChanged2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlayoutAboutToBeChanged*(self: gen_qabstractitemmodel_types.QAbstractItemModel, slot: QAbstractItemModellayoutAboutToBeChanged2Slot) =
   var tmp = new QAbstractItemModellayoutAboutToBeChanged2Slot

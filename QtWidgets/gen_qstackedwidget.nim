@@ -259,6 +259,10 @@ proc miqt_exec_callback_cQStackedWidget_currentChanged(slot: int, param1: cint) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQStackedWidget_currentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QStackedWidget_currentChanged_release".} =
+  let nimfunc = cast[ref QStackedWidgetcurrentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentChanged*(self: gen_qstackedwidget_types.QStackedWidget, slot: QStackedWidgetcurrentChangedSlot) =
   var tmp = new QStackedWidgetcurrentChangedSlot
   tmp[] = slot
@@ -274,6 +278,10 @@ proc miqt_exec_callback_cQStackedWidget_widgetRemoved(slot: int, index: cint) {.
   let slotval1 = index
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQStackedWidget_widgetRemoved_release(slot: int) {.exportc: "miqt_exec_callback_QStackedWidget_widgetRemoved_release".} =
+  let nimfunc = cast[ref QStackedWidgetwidgetRemovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onwidgetRemoved*(self: gen_qstackedwidget_types.QStackedWidget, slot: QStackedWidgetwidgetRemovedSlot) =
   var tmp = new QStackedWidgetwidgetRemovedSlot

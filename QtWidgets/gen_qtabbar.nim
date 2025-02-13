@@ -501,6 +501,10 @@ proc miqt_exec_callback_cQTabBar_currentChanged(slot: int, index: cint) {.export
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTabBar_currentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTabBar_currentChanged_release".} =
+  let nimfunc = cast[ref QTabBarcurrentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentChanged*(self: gen_qtabbar_types.QTabBar, slot: QTabBarcurrentChangedSlot) =
   var tmp = new QTabBarcurrentChangedSlot
   tmp[] = slot
@@ -516,6 +520,10 @@ proc miqt_exec_callback_cQTabBar_tabCloseRequested(slot: int, index: cint) {.exp
   let slotval1 = index
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTabBar_tabCloseRequested_release(slot: int) {.exportc: "miqt_exec_callback_QTabBar_tabCloseRequested_release".} =
+  let nimfunc = cast[ref QTabBartabCloseRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontabCloseRequested*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabCloseRequestedSlot) =
   var tmp = new QTabBartabCloseRequestedSlot
@@ -535,6 +543,10 @@ proc miqt_exec_callback_cQTabBar_tabMoved(slot: int, fromVal: cint, to: cint) {.
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQTabBar_tabMoved_release(slot: int) {.exportc: "miqt_exec_callback_QTabBar_tabMoved_release".} =
+  let nimfunc = cast[ref QTabBartabMovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontabMoved*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabMovedSlot) =
   var tmp = new QTabBartabMovedSlot
   tmp[] = slot
@@ -551,6 +563,10 @@ proc miqt_exec_callback_cQTabBar_tabBarClicked(slot: int, index: cint) {.exportc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTabBar_tabBarClicked_release(slot: int) {.exportc: "miqt_exec_callback_QTabBar_tabBarClicked_release".} =
+  let nimfunc = cast[ref QTabBartabBarClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontabBarClicked*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabBarClickedSlot) =
   var tmp = new QTabBartabBarClickedSlot
   tmp[] = slot
@@ -566,6 +582,10 @@ proc miqt_exec_callback_cQTabBar_tabBarDoubleClicked(slot: int, index: cint) {.e
   let slotval1 = index
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTabBar_tabBarDoubleClicked_release(slot: int) {.exportc: "miqt_exec_callback_QTabBar_tabBarDoubleClicked_release".} =
+  let nimfunc = cast[ref QTabBartabBarDoubleClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontabBarDoubleClicked*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabBarDoubleClickedSlot) =
   var tmp = new QTabBartabBarDoubleClickedSlot

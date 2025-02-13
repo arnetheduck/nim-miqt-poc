@@ -45,10 +45,15 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QVideoWidget_fullScreenChanged(intptr_t, bool);
+void miqt_exec_callback_QVideoWidget_fullScreenChanged_release(intptr_t);
 void miqt_exec_callback_QVideoWidget_brightnessChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidget_brightnessChanged_release(intptr_t);
 void miqt_exec_callback_QVideoWidget_contrastChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidget_contrastChanged_release(intptr_t);
 void miqt_exec_callback_QVideoWidget_hueChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidget_hueChanged_release(intptr_t);
 void miqt_exec_callback_QVideoWidget_saturationChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidget_saturationChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1233,10 +1238,19 @@ void QVideoWidget_fullScreenChanged(QVideoWidget* self, bool fullScreen) {
 }
 
 void QVideoWidget_connect_fullScreenChanged(QVideoWidget* self, intptr_t slot) {
-	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(bool)>(&QVideoWidget::fullScreenChanged), self, [=](bool fullScreen) {
-		bool sigval1 = fullScreen;
-		miqt_exec_callback_QVideoWidget_fullScreenChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool fullScreen) {
+			bool sigval1 = fullScreen;
+			miqt_exec_callback_QVideoWidget_fullScreenChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoWidget_fullScreenChanged_release(slot); }
+	};
+	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(bool)>(&QVideoWidget::fullScreenChanged), self, caller{slot});
 }
 
 void QVideoWidget_brightnessChanged(QVideoWidget* self, int brightness) {
@@ -1244,10 +1258,19 @@ void QVideoWidget_brightnessChanged(QVideoWidget* self, int brightness) {
 }
 
 void QVideoWidget_connect_brightnessChanged(QVideoWidget* self, intptr_t slot) {
-	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::brightnessChanged), self, [=](int brightness) {
-		int sigval1 = brightness;
-		miqt_exec_callback_QVideoWidget_brightnessChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int brightness) {
+			int sigval1 = brightness;
+			miqt_exec_callback_QVideoWidget_brightnessChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoWidget_brightnessChanged_release(slot); }
+	};
+	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::brightnessChanged), self, caller{slot});
 }
 
 void QVideoWidget_contrastChanged(QVideoWidget* self, int contrast) {
@@ -1255,10 +1278,19 @@ void QVideoWidget_contrastChanged(QVideoWidget* self, int contrast) {
 }
 
 void QVideoWidget_connect_contrastChanged(QVideoWidget* self, intptr_t slot) {
-	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::contrastChanged), self, [=](int contrast) {
-		int sigval1 = contrast;
-		miqt_exec_callback_QVideoWidget_contrastChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int contrast) {
+			int sigval1 = contrast;
+			miqt_exec_callback_QVideoWidget_contrastChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoWidget_contrastChanged_release(slot); }
+	};
+	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::contrastChanged), self, caller{slot});
 }
 
 void QVideoWidget_hueChanged(QVideoWidget* self, int hue) {
@@ -1266,10 +1298,19 @@ void QVideoWidget_hueChanged(QVideoWidget* self, int hue) {
 }
 
 void QVideoWidget_connect_hueChanged(QVideoWidget* self, intptr_t slot) {
-	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::hueChanged), self, [=](int hue) {
-		int sigval1 = hue;
-		miqt_exec_callback_QVideoWidget_hueChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int hue) {
+			int sigval1 = hue;
+			miqt_exec_callback_QVideoWidget_hueChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoWidget_hueChanged_release(slot); }
+	};
+	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::hueChanged), self, caller{slot});
 }
 
 void QVideoWidget_saturationChanged(QVideoWidget* self, int saturation) {
@@ -1277,10 +1318,19 @@ void QVideoWidget_saturationChanged(QVideoWidget* self, int saturation) {
 }
 
 void QVideoWidget_connect_saturationChanged(QVideoWidget* self, intptr_t slot) {
-	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::saturationChanged), self, [=](int saturation) {
-		int sigval1 = saturation;
-		miqt_exec_callback_QVideoWidget_saturationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int saturation) {
+			int sigval1 = saturation;
+			miqt_exec_callback_QVideoWidget_saturationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoWidget_saturationChanged_release(slot); }
+	};
+	MiqtVirtualQVideoWidget::connect(self, static_cast<void (QVideoWidget::*)(int)>(&QVideoWidget::saturationChanged), self, caller{slot});
 }
 
 struct miqt_string QVideoWidget_tr2(const char* s, const char* c) {

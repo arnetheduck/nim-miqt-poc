@@ -192,6 +192,10 @@ proc miqt_exec_callback_cQUndoGroup_activeStackChanged(slot: int, stack: pointer
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQUndoGroup_activeStackChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoGroup_activeStackChanged_release".} =
+  let nimfunc = cast[ref QUndoGroupactiveStackChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactiveStackChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupactiveStackChangedSlot) =
   var tmp = new QUndoGroupactiveStackChangedSlot
   tmp[] = slot
@@ -207,6 +211,10 @@ proc miqt_exec_callback_cQUndoGroup_indexChanged(slot: int, idx: cint) {.exportc
   let slotval1 = idx
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQUndoGroup_indexChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoGroup_indexChanged_release".} =
+  let nimfunc = cast[ref QUndoGroupindexChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onindexChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupindexChangedSlot) =
   var tmp = new QUndoGroupindexChangedSlot
@@ -224,6 +232,10 @@ proc miqt_exec_callback_cQUndoGroup_cleanChanged(slot: int, clean: bool) {.expor
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQUndoGroup_cleanChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoGroup_cleanChanged_release".} =
+  let nimfunc = cast[ref QUndoGroupcleanChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncleanChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupcleanChangedSlot) =
   var tmp = new QUndoGroupcleanChangedSlot
   tmp[] = slot
@@ -240,6 +252,10 @@ proc miqt_exec_callback_cQUndoGroup_canUndoChanged(slot: int, canUndo: bool) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQUndoGroup_canUndoChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoGroup_canUndoChanged_release".} =
+  let nimfunc = cast[ref QUndoGroupcanUndoChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncanUndoChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupcanUndoChangedSlot) =
   var tmp = new QUndoGroupcanUndoChangedSlot
   tmp[] = slot
@@ -255,6 +271,10 @@ proc miqt_exec_callback_cQUndoGroup_canRedoChanged(slot: int, canRedo: bool) {.e
   let slotval1 = canRedo
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQUndoGroup_canRedoChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoGroup_canRedoChanged_release".} =
+  let nimfunc = cast[ref QUndoGroupcanRedoChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncanRedoChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupcanRedoChangedSlot) =
   var tmp = new QUndoGroupcanRedoChangedSlot
@@ -275,6 +295,10 @@ proc miqt_exec_callback_cQUndoGroup_undoTextChanged(slot: int, undoText: struct_
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQUndoGroup_undoTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoGroup_undoTextChanged_release".} =
+  let nimfunc = cast[ref QUndoGroupundoTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onundoTextChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupundoTextChangedSlot) =
   var tmp = new QUndoGroupundoTextChangedSlot
   tmp[] = slot
@@ -293,6 +317,10 @@ proc miqt_exec_callback_cQUndoGroup_redoTextChanged(slot: int, redoText: struct_
   let slotval1 = vredoTextx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQUndoGroup_redoTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QUndoGroup_redoTextChanged_release".} =
+  let nimfunc = cast[ref QUndoGroupredoTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onredoTextChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupredoTextChangedSlot) =
   var tmp = new QUndoGroupredoTextChangedSlot

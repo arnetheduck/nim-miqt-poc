@@ -364,6 +364,10 @@ proc miqt_exec_callback_cQValidator_changed(slot: int) {.exportc: "miqt_exec_cal
   let nimfunc = cast[ptr QValidatorchangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQValidator_changed_release(slot: int) {.exportc: "miqt_exec_callback_QValidator_changed_release".} =
+  let nimfunc = cast[ref QValidatorchangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onchanged*(self: gen_qvalidator_types.QValidator, slot: QValidatorchangedSlot) =
   var tmp = new QValidatorchangedSlot
   tmp[] = slot
@@ -663,6 +667,10 @@ proc miqt_exec_callback_cQIntValidator_bottomChanged(slot: int, bottom: cint) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQIntValidator_bottomChanged_release(slot: int) {.exportc: "miqt_exec_callback_QIntValidator_bottomChanged_release".} =
+  let nimfunc = cast[ref QIntValidatorbottomChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbottomChanged*(self: gen_qvalidator_types.QIntValidator, slot: QIntValidatorbottomChangedSlot) =
   var tmp = new QIntValidatorbottomChangedSlot
   tmp[] = slot
@@ -678,6 +686,10 @@ proc miqt_exec_callback_cQIntValidator_topChanged(slot: int, top: cint) {.export
   let slotval1 = top
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQIntValidator_topChanged_release(slot: int) {.exportc: "miqt_exec_callback_QIntValidator_topChanged_release".} =
+  let nimfunc = cast[ref QIntValidatortopChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontopChanged*(self: gen_qvalidator_types.QIntValidator, slot: QIntValidatortopChangedSlot) =
   var tmp = new QIntValidatortopChangedSlot
@@ -1078,6 +1090,10 @@ proc miqt_exec_callback_cQDoubleValidator_bottomChanged(slot: int, bottom: float
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDoubleValidator_bottomChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDoubleValidator_bottomChanged_release".} =
+  let nimfunc = cast[ref QDoubleValidatorbottomChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbottomChanged*(self: gen_qvalidator_types.QDoubleValidator, slot: QDoubleValidatorbottomChangedSlot) =
   var tmp = new QDoubleValidatorbottomChangedSlot
   tmp[] = slot
@@ -1093,6 +1109,10 @@ proc miqt_exec_callback_cQDoubleValidator_topChanged(slot: int, top: float64) {.
   let slotval1 = top
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDoubleValidator_topChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDoubleValidator_topChanged_release".} =
+  let nimfunc = cast[ref QDoubleValidatortopChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontopChanged*(self: gen_qvalidator_types.QDoubleValidator, slot: QDoubleValidatortopChangedSlot) =
   var tmp = new QDoubleValidatortopChangedSlot
@@ -1110,6 +1130,10 @@ proc miqt_exec_callback_cQDoubleValidator_decimalsChanged(slot: int, decimals: c
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDoubleValidator_decimalsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDoubleValidator_decimalsChanged_release".} =
+  let nimfunc = cast[ref QDoubleValidatordecimalsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondecimalsChanged*(self: gen_qvalidator_types.QDoubleValidator, slot: QDoubleValidatordecimalsChangedSlot) =
   var tmp = new QDoubleValidatordecimalsChangedSlot
   tmp[] = slot
@@ -1125,6 +1149,10 @@ proc miqt_exec_callback_cQDoubleValidator_notationChanged(slot: int, notation: c
   let slotval1 = cint(notation)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDoubleValidator_notationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDoubleValidator_notationChanged_release".} =
+  let nimfunc = cast[ref QDoubleValidatornotationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnotationChanged*(self: gen_qvalidator_types.QDoubleValidator, slot: QDoubleValidatornotationChangedSlot) =
   var tmp = new QDoubleValidatornotationChangedSlot
@@ -1505,6 +1533,10 @@ proc miqt_exec_callback_cQRegExpValidator_regExpChanged(slot: int, regExp: point
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQRegExpValidator_regExpChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRegExpValidator_regExpChanged_release".} =
+  let nimfunc = cast[ref QRegExpValidatorregExpChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onregExpChanged*(self: gen_qvalidator_types.QRegExpValidator, slot: QRegExpValidatorregExpChangedSlot) =
   var tmp = new QRegExpValidatorregExpChangedSlot
   tmp[] = slot
@@ -1862,6 +1894,10 @@ proc miqt_exec_callback_cQRegularExpressionValidator_regularExpressionChanged(sl
   let slotval1 = gen_qregularexpression_types.QRegularExpression(h: re)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQRegularExpressionValidator_regularExpressionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QRegularExpressionValidator_regularExpressionChanged_release".} =
+  let nimfunc = cast[ref QRegularExpressionValidatorregularExpressionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onregularExpressionChanged*(self: gen_qvalidator_types.QRegularExpressionValidator, slot: QRegularExpressionValidatorregularExpressionChangedSlot) =
   var tmp = new QRegularExpressionValidatorregularExpressionChangedSlot

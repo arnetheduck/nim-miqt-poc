@@ -121,6 +121,10 @@ proc miqt_exec_callback_cQMediaStreamsControl_streamsChanged(slot: int) {.export
   let nimfunc = cast[ptr QMediaStreamsControlstreamsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMediaStreamsControl_streamsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaStreamsControl_streamsChanged_release".} =
+  let nimfunc = cast[ref QMediaStreamsControlstreamsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstreamsChanged*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, slot: QMediaStreamsControlstreamsChangedSlot) =
   var tmp = new QMediaStreamsControlstreamsChangedSlot
   tmp[] = slot
@@ -134,6 +138,10 @@ type QMediaStreamsControlactiveStreamsChangedSlot* = proc()
 proc miqt_exec_callback_cQMediaStreamsControl_activeStreamsChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaStreamsControl_activeStreamsChanged".} =
   let nimfunc = cast[ptr QMediaStreamsControlactiveStreamsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaStreamsControl_activeStreamsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaStreamsControl_activeStreamsChanged_release".} =
+  let nimfunc = cast[ref QMediaStreamsControlactiveStreamsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactiveStreamsChanged*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl, slot: QMediaStreamsControlactiveStreamsChangedSlot) =
   var tmp = new QMediaStreamsControlactiveStreamsChangedSlot

@@ -20,6 +20,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QOffscreenSurface_screenChanged(intptr_t, QScreen*);
+void miqt_exec_callback_QOffscreenSurface_screenChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -411,10 +412,19 @@ void QOffscreenSurface_screenChanged(QOffscreenSurface* self, QScreen* screen) {
 }
 
 void QOffscreenSurface_connect_screenChanged(QOffscreenSurface* self, intptr_t slot) {
-	MiqtVirtualQOffscreenSurface::connect(self, static_cast<void (QOffscreenSurface::*)(QScreen*)>(&QOffscreenSurface::screenChanged), self, [=](QScreen* screen) {
-		QScreen* sigval1 = screen;
-		miqt_exec_callback_QOffscreenSurface_screenChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QScreen* screen) {
+			QScreen* sigval1 = screen;
+			miqt_exec_callback_QOffscreenSurface_screenChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QOffscreenSurface_screenChanged_release(slot); }
+	};
+	MiqtVirtualQOffscreenSurface::connect(self, static_cast<void (QOffscreenSurface::*)(QScreen*)>(&QOffscreenSurface::screenChanged), self, caller{slot});
 }
 
 struct miqt_string QOffscreenSurface_tr2(const char* s, const char* c) {

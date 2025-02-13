@@ -169,6 +169,10 @@ proc miqt_exec_callback_cQWebChannel_blockUpdatesChanged(slot: int, blockVal: bo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebChannel_blockUpdatesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebChannel_blockUpdatesChanged_release".} =
+  let nimfunc = cast[ref QWebChannelblockUpdatesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onblockUpdatesChanged*(self: gen_qwebchannel_types.QWebChannel, slot: QWebChannelblockUpdatesChangedSlot) =
   var tmp = new QWebChannelblockUpdatesChangedSlot
   tmp[] = slot

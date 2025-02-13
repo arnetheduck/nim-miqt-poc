@@ -697,6 +697,10 @@ proc miqt_exec_callback_cQTextEdit_textChanged(slot: int) {.exportc: "miqt_exec_
   let nimfunc = cast[ptr QTextEdittextChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQTextEdit_textChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_textChanged_release".} =
+  let nimfunc = cast[ref QTextEdittextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontextChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEdittextChangedSlot) =
   var tmp = new QTextEdittextChangedSlot
   tmp[] = slot
@@ -712,6 +716,10 @@ proc miqt_exec_callback_cQTextEdit_undoAvailable(slot: int, b: bool) {.exportc: 
   let slotval1 = b
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTextEdit_undoAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_undoAvailable_release".} =
+  let nimfunc = cast[ref QTextEditundoAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onundoAvailable*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditundoAvailableSlot) =
   var tmp = new QTextEditundoAvailableSlot
@@ -729,6 +737,10 @@ proc miqt_exec_callback_cQTextEdit_redoAvailable(slot: int, b: bool) {.exportc: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextEdit_redoAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_redoAvailable_release".} =
+  let nimfunc = cast[ref QTextEditredoAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onredoAvailable*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditredoAvailableSlot) =
   var tmp = new QTextEditredoAvailableSlot
   tmp[] = slot
@@ -744,6 +756,10 @@ proc miqt_exec_callback_cQTextEdit_currentCharFormatChanged(slot: int, format: p
   let slotval1 = gen_qtextformat_types.QTextCharFormat(h: format)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTextEdit_currentCharFormatChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_currentCharFormatChanged_release".} =
+  let nimfunc = cast[ref QTextEditcurrentCharFormatChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncurrentCharFormatChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditcurrentCharFormatChangedSlot) =
   var tmp = new QTextEditcurrentCharFormatChangedSlot
@@ -761,6 +777,10 @@ proc miqt_exec_callback_cQTextEdit_copyAvailable(slot: int, b: bool) {.exportc: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextEdit_copyAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_copyAvailable_release".} =
+  let nimfunc = cast[ref QTextEditcopyAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncopyAvailable*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditcopyAvailableSlot) =
   var tmp = new QTextEditcopyAvailableSlot
   tmp[] = slot
@@ -775,6 +795,10 @@ proc miqt_exec_callback_cQTextEdit_selectionChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QTextEditselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQTextEdit_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_selectionChanged_release".} =
+  let nimfunc = cast[ref QTextEditselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectionChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditselectionChangedSlot) =
   var tmp = new QTextEditselectionChangedSlot
   tmp[] = slot
@@ -788,6 +812,10 @@ type QTextEditcursorPositionChangedSlot* = proc()
 proc miqt_exec_callback_cQTextEdit_cursorPositionChanged(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_cursorPositionChanged".} =
   let nimfunc = cast[ptr QTextEditcursorPositionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQTextEdit_cursorPositionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextEdit_cursorPositionChanged_release".} =
+  let nimfunc = cast[ref QTextEditcursorPositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncursorPositionChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditcursorPositionChangedSlot) =
   var tmp = new QTextEditcursorPositionChangedSlot

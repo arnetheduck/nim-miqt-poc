@@ -18,12 +18,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QUndoGroup_activeStackChanged(intptr_t, QUndoStack*);
+void miqt_exec_callback_QUndoGroup_activeStackChanged_release(intptr_t);
 void miqt_exec_callback_QUndoGroup_indexChanged(intptr_t, int);
+void miqt_exec_callback_QUndoGroup_indexChanged_release(intptr_t);
 void miqt_exec_callback_QUndoGroup_cleanChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoGroup_cleanChanged_release(intptr_t);
 void miqt_exec_callback_QUndoGroup_canUndoChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoGroup_canUndoChanged_release(intptr_t);
 void miqt_exec_callback_QUndoGroup_canRedoChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoGroup_canRedoChanged_release(intptr_t);
 void miqt_exec_callback_QUndoGroup_undoTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QUndoGroup_undoTextChanged_release(intptr_t);
 void miqt_exec_callback_QUndoGroup_redoTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QUndoGroup_redoTextChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -373,10 +380,19 @@ void QUndoGroup_activeStackChanged(QUndoGroup* self, QUndoStack* stack) {
 }
 
 void QUndoGroup_connect_activeStackChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(QUndoStack*)>(&QUndoGroup::activeStackChanged), self, [=](QUndoStack* stack) {
-		QUndoStack* sigval1 = stack;
-		miqt_exec_callback_QUndoGroup_activeStackChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QUndoStack* stack) {
+			QUndoStack* sigval1 = stack;
+			miqt_exec_callback_QUndoGroup_activeStackChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QUndoGroup_activeStackChanged_release(slot); }
+	};
+	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(QUndoStack*)>(&QUndoGroup::activeStackChanged), self, caller{slot});
 }
 
 void QUndoGroup_indexChanged(QUndoGroup* self, int idx) {
@@ -384,10 +400,19 @@ void QUndoGroup_indexChanged(QUndoGroup* self, int idx) {
 }
 
 void QUndoGroup_connect_indexChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(int)>(&QUndoGroup::indexChanged), self, [=](int idx) {
-		int sigval1 = idx;
-		miqt_exec_callback_QUndoGroup_indexChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int idx) {
+			int sigval1 = idx;
+			miqt_exec_callback_QUndoGroup_indexChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QUndoGroup_indexChanged_release(slot); }
+	};
+	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(int)>(&QUndoGroup::indexChanged), self, caller{slot});
 }
 
 void QUndoGroup_cleanChanged(QUndoGroup* self, bool clean) {
@@ -395,10 +420,19 @@ void QUndoGroup_cleanChanged(QUndoGroup* self, bool clean) {
 }
 
 void QUndoGroup_connect_cleanChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::cleanChanged), self, [=](bool clean) {
-		bool sigval1 = clean;
-		miqt_exec_callback_QUndoGroup_cleanChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool clean) {
+			bool sigval1 = clean;
+			miqt_exec_callback_QUndoGroup_cleanChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QUndoGroup_cleanChanged_release(slot); }
+	};
+	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::cleanChanged), self, caller{slot});
 }
 
 void QUndoGroup_canUndoChanged(QUndoGroup* self, bool canUndo) {
@@ -406,10 +440,19 @@ void QUndoGroup_canUndoChanged(QUndoGroup* self, bool canUndo) {
 }
 
 void QUndoGroup_connect_canUndoChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canUndoChanged), self, [=](bool canUndo) {
-		bool sigval1 = canUndo;
-		miqt_exec_callback_QUndoGroup_canUndoChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool canUndo) {
+			bool sigval1 = canUndo;
+			miqt_exec_callback_QUndoGroup_canUndoChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QUndoGroup_canUndoChanged_release(slot); }
+	};
+	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canUndoChanged), self, caller{slot});
 }
 
 void QUndoGroup_canRedoChanged(QUndoGroup* self, bool canRedo) {
@@ -417,10 +460,19 @@ void QUndoGroup_canRedoChanged(QUndoGroup* self, bool canRedo) {
 }
 
 void QUndoGroup_connect_canRedoChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canRedoChanged), self, [=](bool canRedo) {
-		bool sigval1 = canRedo;
-		miqt_exec_callback_QUndoGroup_canRedoChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool canRedo) {
+			bool sigval1 = canRedo;
+			miqt_exec_callback_QUndoGroup_canRedoChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QUndoGroup_canRedoChanged_release(slot); }
+	};
+	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canRedoChanged), self, caller{slot});
 }
 
 void QUndoGroup_undoTextChanged(QUndoGroup* self, struct miqt_string undoText) {
@@ -429,17 +481,26 @@ void QUndoGroup_undoTextChanged(QUndoGroup* self, struct miqt_string undoText) {
 }
 
 void QUndoGroup_connect_undoTextChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::undoTextChanged), self, [=](const QString& undoText) {
-		const QString undoText_ret = undoText;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray undoText_b = undoText_ret.toUtf8();
-		struct miqt_string undoText_ms;
-		undoText_ms.len = undoText_b.length();
-		undoText_ms.data = static_cast<char*>(malloc(undoText_ms.len));
-		memcpy(undoText_ms.data, undoText_b.data(), undoText_ms.len);
-		struct miqt_string sigval1 = undoText_ms;
-		miqt_exec_callback_QUndoGroup_undoTextChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& undoText) {
+			const QString undoText_ret = undoText;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray undoText_b = undoText_ret.toUtf8();
+			struct miqt_string undoText_ms;
+			undoText_ms.len = undoText_b.length();
+			undoText_ms.data = static_cast<char*>(malloc(undoText_ms.len));
+			memcpy(undoText_ms.data, undoText_b.data(), undoText_ms.len);
+			struct miqt_string sigval1 = undoText_ms;
+			miqt_exec_callback_QUndoGroup_undoTextChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QUndoGroup_undoTextChanged_release(slot); }
+	};
+	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::undoTextChanged), self, caller{slot});
 }
 
 void QUndoGroup_redoTextChanged(QUndoGroup* self, struct miqt_string redoText) {
@@ -448,17 +509,26 @@ void QUndoGroup_redoTextChanged(QUndoGroup* self, struct miqt_string redoText) {
 }
 
 void QUndoGroup_connect_redoTextChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::redoTextChanged), self, [=](const QString& redoText) {
-		const QString redoText_ret = redoText;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray redoText_b = redoText_ret.toUtf8();
-		struct miqt_string redoText_ms;
-		redoText_ms.len = redoText_b.length();
-		redoText_ms.data = static_cast<char*>(malloc(redoText_ms.len));
-		memcpy(redoText_ms.data, redoText_b.data(), redoText_ms.len);
-		struct miqt_string sigval1 = redoText_ms;
-		miqt_exec_callback_QUndoGroup_redoTextChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& redoText) {
+			const QString redoText_ret = redoText;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray redoText_b = redoText_ret.toUtf8();
+			struct miqt_string redoText_ms;
+			redoText_ms.len = redoText_b.length();
+			redoText_ms.data = static_cast<char*>(malloc(redoText_ms.len));
+			memcpy(redoText_ms.data, redoText_b.data(), redoText_ms.len);
+			struct miqt_string sigval1 = redoText_ms;
+			miqt_exec_callback_QUndoGroup_redoTextChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QUndoGroup_redoTextChanged_release(slot); }
+	};
+	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::redoTextChanged), self, caller{slot});
 }
 
 struct miqt_string QUndoGroup_tr2(const char* s, const char* c) {

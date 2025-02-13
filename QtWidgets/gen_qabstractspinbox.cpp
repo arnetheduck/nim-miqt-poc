@@ -44,6 +44,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractSpinBox_editingFinished(intptr_t);
+void miqt_exec_callback_QAbstractSpinBox_editingFinished_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1408,9 +1409,18 @@ void QAbstractSpinBox_editingFinished(QAbstractSpinBox* self) {
 }
 
 void QAbstractSpinBox_connect_editingFinished(QAbstractSpinBox* self, intptr_t slot) {
-	MiqtVirtualQAbstractSpinBox::connect(self, static_cast<void (QAbstractSpinBox::*)()>(&QAbstractSpinBox::editingFinished), self, [=]() {
-		miqt_exec_callback_QAbstractSpinBox_editingFinished(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractSpinBox_editingFinished(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractSpinBox_editingFinished_release(slot); }
+	};
+	MiqtVirtualQAbstractSpinBox::connect(self, static_cast<void (QAbstractSpinBox::*)()>(&QAbstractSpinBox::editingFinished), self, caller{slot});
 }
 
 struct miqt_string QAbstractSpinBox_tr2(const char* s, const char* c) {

@@ -180,6 +180,10 @@ proc miqt_exec_callback_cQOffscreenSurface_screenChanged(slot: int, screen: poin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQOffscreenSurface_screenChanged_release(slot: int) {.exportc: "miqt_exec_callback_QOffscreenSurface_screenChanged_release".} =
+  let nimfunc = cast[ref QOffscreenSurfacescreenChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onscreenChanged*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacescreenChangedSlot) =
   var tmp = new QOffscreenSurfacescreenChangedSlot
   tmp[] = slot

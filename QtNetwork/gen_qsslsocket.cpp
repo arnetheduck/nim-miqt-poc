@@ -30,12 +30,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSslSocket_encrypted(intptr_t);
+void miqt_exec_callback_QSslSocket_encrypted_release(intptr_t);
 void miqt_exec_callback_QSslSocket_peerVerifyError(intptr_t, QSslError*);
+void miqt_exec_callback_QSslSocket_peerVerifyError_release(intptr_t);
 void miqt_exec_callback_QSslSocket_sslErrorsWithErrors(intptr_t, struct miqt_array /* of QSslError* */ );
+void miqt_exec_callback_QSslSocket_sslErrorsWithErrors_release(intptr_t);
 void miqt_exec_callback_QSslSocket_modeChanged(intptr_t, int);
+void miqt_exec_callback_QSslSocket_modeChanged_release(intptr_t);
 void miqt_exec_callback_QSslSocket_encryptedBytesWritten(intptr_t, long long);
+void miqt_exec_callback_QSslSocket_encryptedBytesWritten_release(intptr_t);
 void miqt_exec_callback_QSslSocket_preSharedKeyAuthenticationRequired(intptr_t, QSslPreSharedKeyAuthenticator*);
+void miqt_exec_callback_QSslSocket_preSharedKeyAuthenticationRequired_release(intptr_t);
 void miqt_exec_callback_QSslSocket_newSessionTicketReceived(intptr_t);
+void miqt_exec_callback_QSslSocket_newSessionTicketReceived_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1362,9 +1369,18 @@ void QSslSocket_encrypted(QSslSocket* self) {
 }
 
 void QSslSocket_connect_encrypted(QSslSocket* self, intptr_t slot) {
-	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)()>(&QSslSocket::encrypted), self, [=]() {
-		miqt_exec_callback_QSslSocket_encrypted(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSslSocket_encrypted(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSslSocket_encrypted_release(slot); }
+	};
+	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)()>(&QSslSocket::encrypted), self, caller{slot});
 }
 
 void QSslSocket_peerVerifyError(QSslSocket* self, QSslError* error) {
@@ -1372,12 +1388,21 @@ void QSslSocket_peerVerifyError(QSslSocket* self, QSslError* error) {
 }
 
 void QSslSocket_connect_peerVerifyError(QSslSocket* self, intptr_t slot) {
-	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(const QSslError&)>(&QSslSocket::peerVerifyError), self, [=](const QSslError& error) {
-		const QSslError& error_ret = error;
-		// Cast returned reference into pointer
-		QSslError* sigval1 = const_cast<QSslError*>(&error_ret);
-		miqt_exec_callback_QSslSocket_peerVerifyError(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QSslError& error) {
+			const QSslError& error_ret = error;
+			// Cast returned reference into pointer
+			QSslError* sigval1 = const_cast<QSslError*>(&error_ret);
+			miqt_exec_callback_QSslSocket_peerVerifyError(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSslSocket_peerVerifyError_release(slot); }
+	};
+	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(const QSslError&)>(&QSslSocket::peerVerifyError), self, caller{slot});
 }
 
 void QSslSocket_sslErrorsWithErrors(QSslSocket* self, struct miqt_array /* of QSslError* */  errors) {
@@ -1391,19 +1416,28 @@ void QSslSocket_sslErrorsWithErrors(QSslSocket* self, struct miqt_array /* of QS
 }
 
 void QSslSocket_connect_sslErrorsWithErrors(QSslSocket* self, intptr_t slot) {
-	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(const QList<QSslError>&)>(&QSslSocket::sslErrors), self, [=](const QList<QSslError>& errors) {
-		const QList<QSslError>& errors_ret = errors;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.length()));
-		for (size_t i = 0, e = errors_ret.length(); i < e; ++i) {
-			errors_arr[i] = new QSslError(errors_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QSslError>& errors) {
+			const QList<QSslError>& errors_ret = errors;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.length()));
+			for (size_t i = 0, e = errors_ret.length(); i < e; ++i) {
+				errors_arr[i] = new QSslError(errors_ret[i]);
+			}
+			struct miqt_array errors_out;
+			errors_out.len = errors_ret.length();
+			errors_out.data = static_cast<void*>(errors_arr);
+			struct miqt_array /* of QSslError* */  sigval1 = errors_out;
+			miqt_exec_callback_QSslSocket_sslErrorsWithErrors(slot, sigval1);
 		}
-		struct miqt_array errors_out;
-		errors_out.len = errors_ret.length();
-		errors_out.data = static_cast<void*>(errors_arr);
-		struct miqt_array /* of QSslError* */  sigval1 = errors_out;
-		miqt_exec_callback_QSslSocket_sslErrorsWithErrors(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSslSocket_sslErrorsWithErrors_release(slot); }
+	};
+	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(const QList<QSslError>&)>(&QSslSocket::sslErrors), self, caller{slot});
 }
 
 void QSslSocket_modeChanged(QSslSocket* self, int newMode) {
@@ -1411,11 +1445,20 @@ void QSslSocket_modeChanged(QSslSocket* self, int newMode) {
 }
 
 void QSslSocket_connect_modeChanged(QSslSocket* self, intptr_t slot) {
-	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(QSslSocket::SslMode)>(&QSslSocket::modeChanged), self, [=](QSslSocket::SslMode newMode) {
-		QSslSocket::SslMode newMode_ret = newMode;
-		int sigval1 = static_cast<int>(newMode_ret);
-		miqt_exec_callback_QSslSocket_modeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QSslSocket::SslMode newMode) {
+			QSslSocket::SslMode newMode_ret = newMode;
+			int sigval1 = static_cast<int>(newMode_ret);
+			miqt_exec_callback_QSslSocket_modeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSslSocket_modeChanged_release(slot); }
+	};
+	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(QSslSocket::SslMode)>(&QSslSocket::modeChanged), self, caller{slot});
 }
 
 void QSslSocket_encryptedBytesWritten(QSslSocket* self, long long totalBytes) {
@@ -1423,11 +1466,20 @@ void QSslSocket_encryptedBytesWritten(QSslSocket* self, long long totalBytes) {
 }
 
 void QSslSocket_connect_encryptedBytesWritten(QSslSocket* self, intptr_t slot) {
-	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(qint64)>(&QSslSocket::encryptedBytesWritten), self, [=](qint64 totalBytes) {
-		qint64 totalBytes_ret = totalBytes;
-		long long sigval1 = static_cast<long long>(totalBytes_ret);
-		miqt_exec_callback_QSslSocket_encryptedBytesWritten(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qint64 totalBytes) {
+			qint64 totalBytes_ret = totalBytes;
+			long long sigval1 = static_cast<long long>(totalBytes_ret);
+			miqt_exec_callback_QSslSocket_encryptedBytesWritten(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSslSocket_encryptedBytesWritten_release(slot); }
+	};
+	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(qint64)>(&QSslSocket::encryptedBytesWritten), self, caller{slot});
 }
 
 void QSslSocket_preSharedKeyAuthenticationRequired(QSslSocket* self, QSslPreSharedKeyAuthenticator* authenticator) {
@@ -1435,10 +1487,19 @@ void QSslSocket_preSharedKeyAuthenticationRequired(QSslSocket* self, QSslPreShar
 }
 
 void QSslSocket_connect_preSharedKeyAuthenticationRequired(QSslSocket* self, intptr_t slot) {
-	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(QSslPreSharedKeyAuthenticator*)>(&QSslSocket::preSharedKeyAuthenticationRequired), self, [=](QSslPreSharedKeyAuthenticator* authenticator) {
-		QSslPreSharedKeyAuthenticator* sigval1 = authenticator;
-		miqt_exec_callback_QSslSocket_preSharedKeyAuthenticationRequired(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QSslPreSharedKeyAuthenticator* authenticator) {
+			QSslPreSharedKeyAuthenticator* sigval1 = authenticator;
+			miqt_exec_callback_QSslSocket_preSharedKeyAuthenticationRequired(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSslSocket_preSharedKeyAuthenticationRequired_release(slot); }
+	};
+	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)(QSslPreSharedKeyAuthenticator*)>(&QSslSocket::preSharedKeyAuthenticationRequired), self, caller{slot});
 }
 
 void QSslSocket_newSessionTicketReceived(QSslSocket* self) {
@@ -1446,9 +1507,18 @@ void QSslSocket_newSessionTicketReceived(QSslSocket* self) {
 }
 
 void QSslSocket_connect_newSessionTicketReceived(QSslSocket* self, intptr_t slot) {
-	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)()>(&QSslSocket::newSessionTicketReceived), self, [=]() {
-		miqt_exec_callback_QSslSocket_newSessionTicketReceived(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSslSocket_newSessionTicketReceived(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSslSocket_newSessionTicketReceived_release(slot); }
+	};
+	MiqtVirtualQSslSocket::connect(self, static_cast<void (QSslSocket::*)()>(&QSslSocket::newSessionTicketReceived), self, caller{slot});
 }
 
 struct miqt_string QSslSocket_tr2(const char* s, const char* c) {

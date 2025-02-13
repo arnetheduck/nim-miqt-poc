@@ -590,6 +590,10 @@ proc miqt_exec_callback_cQProcess_finished(slot: int, exitCode: cint) {.exportc:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQProcess_finished_release(slot: int) {.exportc: "miqt_exec_callback_QProcess_finished_release".} =
+  let nimfunc = cast[ref QProcessfinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qprocess_types.QProcess, slot: QProcessfinishedSlot) =
   var tmp = new QProcessfinishedSlot
   tmp[] = slot
@@ -608,6 +612,10 @@ proc miqt_exec_callback_cQProcess_finished2(slot: int, exitCode: cint, exitStatu
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQProcess_finished2_release(slot: int) {.exportc: "miqt_exec_callback_QProcess_finished2_release".} =
+  let nimfunc = cast[ref QProcessfinished2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qprocess_types.QProcess, slot: QProcessfinished2Slot) =
   var tmp = new QProcessfinished2Slot
   tmp[] = slot
@@ -624,6 +632,10 @@ proc miqt_exec_callback_cQProcess_errorWithError(slot: int, error: cint) {.expor
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQProcess_errorWithError_release(slot: int) {.exportc: "miqt_exec_callback_QProcess_errorWithError_release".} =
+  let nimfunc = cast[ref QProcesserrorWithErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerror*(self: gen_qprocess_types.QProcess, slot: QProcesserrorWithErrorSlot) =
   var tmp = new QProcesserrorWithErrorSlot
   tmp[] = slot
@@ -639,6 +651,10 @@ proc miqt_exec_callback_cQProcess_errorOccurred(slot: int, error: cint) {.export
   let slotval1 = cint(error)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQProcess_errorOccurred_release(slot: int) {.exportc: "miqt_exec_callback_QProcess_errorOccurred_release".} =
+  let nimfunc = cast[ref QProcesserrorOccurredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onerrorOccurred*(self: gen_qprocess_types.QProcess, slot: QProcesserrorOccurredSlot) =
   var tmp = new QProcesserrorOccurredSlot

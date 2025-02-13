@@ -15,9 +15,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QWebEngineDownloadItem_finished(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadItem_finished_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadItem_stateChanged(intptr_t, int);
+void miqt_exec_callback_QWebEngineDownloadItem_stateChanged_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadItem_downloadProgress(intptr_t, long long, long long);
+void miqt_exec_callback_QWebEngineDownloadItem_downloadProgress_release(intptr_t);
 void miqt_exec_callback_QWebEngineDownloadItem_isPausedChanged(intptr_t, bool);
+void miqt_exec_callback_QWebEngineDownloadItem_isPausedChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -221,9 +225,18 @@ void QWebEngineDownloadItem_finished(QWebEngineDownloadItem* self) {
 }
 
 void QWebEngineDownloadItem_connect_finished(QWebEngineDownloadItem* self, intptr_t slot) {
-	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)()>(&QWebEngineDownloadItem::finished), self, [=]() {
-		miqt_exec_callback_QWebEngineDownloadItem_finished(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWebEngineDownloadItem_finished(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadItem_finished_release(slot); }
+	};
+	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)()>(&QWebEngineDownloadItem::finished), self, caller{slot});
 }
 
 void QWebEngineDownloadItem_stateChanged(QWebEngineDownloadItem* self, int state) {
@@ -231,11 +244,20 @@ void QWebEngineDownloadItem_stateChanged(QWebEngineDownloadItem* self, int state
 }
 
 void QWebEngineDownloadItem_connect_stateChanged(QWebEngineDownloadItem* self, intptr_t slot) {
-	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)(QWebEngineDownloadItem::DownloadState)>(&QWebEngineDownloadItem::stateChanged), self, [=](QWebEngineDownloadItem::DownloadState state) {
-		QWebEngineDownloadItem::DownloadState state_ret = state;
-		int sigval1 = static_cast<int>(state_ret);
-		miqt_exec_callback_QWebEngineDownloadItem_stateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWebEngineDownloadItem::DownloadState state) {
+			QWebEngineDownloadItem::DownloadState state_ret = state;
+			int sigval1 = static_cast<int>(state_ret);
+			miqt_exec_callback_QWebEngineDownloadItem_stateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadItem_stateChanged_release(slot); }
+	};
+	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)(QWebEngineDownloadItem::DownloadState)>(&QWebEngineDownloadItem::stateChanged), self, caller{slot});
 }
 
 void QWebEngineDownloadItem_downloadProgress(QWebEngineDownloadItem* self, long long bytesReceived, long long bytesTotal) {
@@ -243,13 +265,22 @@ void QWebEngineDownloadItem_downloadProgress(QWebEngineDownloadItem* self, long 
 }
 
 void QWebEngineDownloadItem_connect_downloadProgress(QWebEngineDownloadItem* self, intptr_t slot) {
-	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)(qint64, qint64)>(&QWebEngineDownloadItem::downloadProgress), self, [=](qint64 bytesReceived, qint64 bytesTotal) {
-		qint64 bytesReceived_ret = bytesReceived;
-		long long sigval1 = static_cast<long long>(bytesReceived_ret);
-		qint64 bytesTotal_ret = bytesTotal;
-		long long sigval2 = static_cast<long long>(bytesTotal_ret);
-		miqt_exec_callback_QWebEngineDownloadItem_downloadProgress(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qint64 bytesReceived, qint64 bytesTotal) {
+			qint64 bytesReceived_ret = bytesReceived;
+			long long sigval1 = static_cast<long long>(bytesReceived_ret);
+			qint64 bytesTotal_ret = bytesTotal;
+			long long sigval2 = static_cast<long long>(bytesTotal_ret);
+			miqt_exec_callback_QWebEngineDownloadItem_downloadProgress(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadItem_downloadProgress_release(slot); }
+	};
+	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)(qint64, qint64)>(&QWebEngineDownloadItem::downloadProgress), self, caller{slot});
 }
 
 void QWebEngineDownloadItem_isPausedChanged(QWebEngineDownloadItem* self, bool isPaused) {
@@ -257,10 +288,19 @@ void QWebEngineDownloadItem_isPausedChanged(QWebEngineDownloadItem* self, bool i
 }
 
 void QWebEngineDownloadItem_connect_isPausedChanged(QWebEngineDownloadItem* self, intptr_t slot) {
-	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)(bool)>(&QWebEngineDownloadItem::isPausedChanged), self, [=](bool isPaused) {
-		bool sigval1 = isPaused;
-		miqt_exec_callback_QWebEngineDownloadItem_isPausedChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool isPaused) {
+			bool sigval1 = isPaused;
+			miqt_exec_callback_QWebEngineDownloadItem_isPausedChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWebEngineDownloadItem_isPausedChanged_release(slot); }
+	};
+	QWebEngineDownloadItem::connect(self, static_cast<void (QWebEngineDownloadItem::*)(bool)>(&QWebEngineDownloadItem::isPausedChanged), self, caller{slot});
 }
 
 struct miqt_string QWebEngineDownloadItem_tr2(const char* s, const char* c) {

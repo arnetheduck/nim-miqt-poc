@@ -192,6 +192,10 @@ proc miqt_exec_callback_cQDrag_actionChanged(slot: int, action: cint) {.exportc:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDrag_actionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDrag_actionChanged_release".} =
+  let nimfunc = cast[ref QDragactionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactionChanged*(self: gen_qdrag_types.QDrag, slot: QDragactionChangedSlot) =
   var tmp = new QDragactionChangedSlot
   tmp[] = slot
@@ -207,6 +211,10 @@ proc miqt_exec_callback_cQDrag_targetChanged(slot: int, newTarget: pointer) {.ex
   let slotval1 = gen_qobject_types.QObject(h: newTarget)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDrag_targetChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDrag_targetChanged_release".} =
+  let nimfunc = cast[ref QDragtargetChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontargetChanged*(self: gen_qdrag_types.QDrag, slot: QDragtargetChangedSlot) =
   var tmp = new QDragtargetChangedSlot

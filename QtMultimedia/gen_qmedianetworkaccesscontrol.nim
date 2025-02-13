@@ -101,6 +101,10 @@ proc miqt_exec_callback_cQMediaNetworkAccessControl_configurationChanged(slot: i
 TODO QNetworkConfiguration
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaNetworkAccessControl_configurationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaNetworkAccessControl_configurationChanged_release".} =
+  let nimfunc = cast[ref QMediaNetworkAccessControlconfigurationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onconfigurationChanged*(self: gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl, slot: QMediaNetworkAccessControlconfigurationChangedSlot) =
   var tmp = new QMediaNetworkAccessControlconfigurationChangedSlot
   tmp[] = slot

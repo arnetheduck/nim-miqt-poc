@@ -387,6 +387,10 @@ proc miqt_exec_callback_cQAbstractSpinBox_editingFinished(slot: int) {.exportc: 
   let nimfunc = cast[ptr QAbstractSpinBoxeditingFinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractSpinBox_editingFinished_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractSpinBox_editingFinished_release".} =
+  let nimfunc = cast[ref QAbstractSpinBoxeditingFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oneditingFinished*(self: gen_qabstractspinbox_types.QAbstractSpinBox, slot: QAbstractSpinBoxeditingFinishedSlot) =
   var tmp = new QAbstractSpinBoxeditingFinishedSlot
   tmp[] = slot

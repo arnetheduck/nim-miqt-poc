@@ -20,6 +20,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged(intptr_t);
+void miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -144,9 +145,18 @@ void QSGAbstractRenderer_sceneGraphChanged(QSGAbstractRenderer* self) {
 }
 
 void QSGAbstractRenderer_connect_sceneGraphChanged(QSGAbstractRenderer* self, intptr_t slot) {
-	QSGAbstractRenderer::connect(self, static_cast<void (QSGAbstractRenderer::*)()>(&QSGAbstractRenderer::sceneGraphChanged), self, [=]() {
-		miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged_release(slot); }
+	};
+	QSGAbstractRenderer::connect(self, static_cast<void (QSGAbstractRenderer::*)()>(&QSGAbstractRenderer::sceneGraphChanged), self, caller{slot});
 }
 
 struct miqt_string QSGAbstractRenderer_tr2(const char* s, const char* c) {

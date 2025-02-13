@@ -182,6 +182,10 @@ proc miqt_exec_callback_cQAbstractEventDispatcher_aboutToBlock(slot: int) {.expo
   let nimfunc = cast[ptr QAbstractEventDispatcheraboutToBlockSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractEventDispatcher_aboutToBlock_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractEventDispatcher_aboutToBlock_release".} =
+  let nimfunc = cast[ref QAbstractEventDispatcheraboutToBlockSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaboutToBlock*(self: gen_qabstracteventdispatcher_types.QAbstractEventDispatcher, slot: QAbstractEventDispatcheraboutToBlockSlot) =
   var tmp = new QAbstractEventDispatcheraboutToBlockSlot
   tmp[] = slot
@@ -195,6 +199,10 @@ type QAbstractEventDispatcherawakeSlot* = proc()
 proc miqt_exec_callback_cQAbstractEventDispatcher_awake(slot: int) {.exportc: "miqt_exec_callback_QAbstractEventDispatcher_awake".} =
   let nimfunc = cast[ptr QAbstractEventDispatcherawakeSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractEventDispatcher_awake_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractEventDispatcher_awake_release".} =
+  let nimfunc = cast[ref QAbstractEventDispatcherawakeSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onawake*(self: gen_qabstracteventdispatcher_types.QAbstractEventDispatcher, slot: QAbstractEventDispatcherawakeSlot) =
   var tmp = new QAbstractEventDispatcherawakeSlot

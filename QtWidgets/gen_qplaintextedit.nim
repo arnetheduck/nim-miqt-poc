@@ -660,6 +660,10 @@ proc miqt_exec_callback_cQPlainTextEdit_textChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QPlainTextEdittextChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQPlainTextEdit_textChanged_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_textChanged_release".} =
+  let nimfunc = cast[ref QPlainTextEdittextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontextChanged*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEdittextChangedSlot) =
   var tmp = new QPlainTextEdittextChangedSlot
   tmp[] = slot
@@ -675,6 +679,10 @@ proc miqt_exec_callback_cQPlainTextEdit_undoAvailable(slot: int, b: bool) {.expo
   let slotval1 = b
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQPlainTextEdit_undoAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_undoAvailable_release".} =
+  let nimfunc = cast[ref QPlainTextEditundoAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onundoAvailable*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditundoAvailableSlot) =
   var tmp = new QPlainTextEditundoAvailableSlot
@@ -692,6 +700,10 @@ proc miqt_exec_callback_cQPlainTextEdit_redoAvailable(slot: int, b: bool) {.expo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQPlainTextEdit_redoAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_redoAvailable_release".} =
+  let nimfunc = cast[ref QPlainTextEditredoAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onredoAvailable*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditredoAvailableSlot) =
   var tmp = new QPlainTextEditredoAvailableSlot
   tmp[] = slot
@@ -708,6 +720,10 @@ proc miqt_exec_callback_cQPlainTextEdit_copyAvailable(slot: int, b: bool) {.expo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQPlainTextEdit_copyAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_copyAvailable_release".} =
+  let nimfunc = cast[ref QPlainTextEditcopyAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncopyAvailable*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditcopyAvailableSlot) =
   var tmp = new QPlainTextEditcopyAvailableSlot
   tmp[] = slot
@@ -722,6 +738,10 @@ proc miqt_exec_callback_cQPlainTextEdit_selectionChanged(slot: int) {.exportc: "
   let nimfunc = cast[ptr QPlainTextEditselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQPlainTextEdit_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_selectionChanged_release".} =
+  let nimfunc = cast[ref QPlainTextEditselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectionChanged*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditselectionChangedSlot) =
   var tmp = new QPlainTextEditselectionChangedSlot
   tmp[] = slot
@@ -735,6 +755,10 @@ type QPlainTextEditcursorPositionChangedSlot* = proc()
 proc miqt_exec_callback_cQPlainTextEdit_cursorPositionChanged(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_cursorPositionChanged".} =
   let nimfunc = cast[ptr QPlainTextEditcursorPositionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQPlainTextEdit_cursorPositionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_cursorPositionChanged_release".} =
+  let nimfunc = cast[ref QPlainTextEditcursorPositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncursorPositionChanged*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditcursorPositionChangedSlot) =
   var tmp = new QPlainTextEditcursorPositionChangedSlot
@@ -754,6 +778,10 @@ proc miqt_exec_callback_cQPlainTextEdit_updateRequest(slot: int, rect: pointer, 
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQPlainTextEdit_updateRequest_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_updateRequest_release".} =
+  let nimfunc = cast[ref QPlainTextEditupdateRequestSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onupdateRequest*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditupdateRequestSlot) =
   var tmp = new QPlainTextEditupdateRequestSlot
   tmp[] = slot
@@ -770,6 +798,10 @@ proc miqt_exec_callback_cQPlainTextEdit_blockCountChanged(slot: int, newBlockCou
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQPlainTextEdit_blockCountChanged_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_blockCountChanged_release".} =
+  let nimfunc = cast[ref QPlainTextEditblockCountChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onblockCountChanged*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditblockCountChangedSlot) =
   var tmp = new QPlainTextEditblockCountChangedSlot
   tmp[] = slot
@@ -785,6 +817,10 @@ proc miqt_exec_callback_cQPlainTextEdit_modificationChanged(slot: int, param1: b
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQPlainTextEdit_modificationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QPlainTextEdit_modificationChanged_release".} =
+  let nimfunc = cast[ref QPlainTextEditmodificationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmodificationChanged*(self: gen_qplaintextedit_types.QPlainTextEdit, slot: QPlainTextEditmodificationChangedSlot) =
   var tmp = new QPlainTextEditmodificationChangedSlot

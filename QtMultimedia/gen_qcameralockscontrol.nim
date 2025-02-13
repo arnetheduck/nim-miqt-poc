@@ -111,6 +111,10 @@ proc miqt_exec_callback_cQCameraLocksControl_lockStatusChanged(slot: int, typeVa
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQCameraLocksControl_lockStatusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraLocksControl_lockStatusChanged_release".} =
+  let nimfunc = cast[ref QCameraLocksControllockStatusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onlockStatusChanged*(self: gen_qcameralockscontrol_types.QCameraLocksControl, slot: QCameraLocksControllockStatusChangedSlot) =
   var tmp = new QCameraLocksControllockStatusChangedSlot
   tmp[] = slot

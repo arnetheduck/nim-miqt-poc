@@ -405,6 +405,10 @@ proc miqt_exec_callback_cQGuiApplication_fontDatabaseChanged(slot: int) {.export
   let nimfunc = cast[ptr QGuiApplicationfontDatabaseChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGuiApplication_fontDatabaseChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_fontDatabaseChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationfontDatabaseChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfontDatabaseChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationfontDatabaseChangedSlot) =
   var tmp = new QGuiApplicationfontDatabaseChangedSlot
   tmp[] = slot
@@ -420,6 +424,10 @@ proc miqt_exec_callback_cQGuiApplication_screenAdded(slot: int, screen: pointer)
   let slotval1 = gen_qscreen_types.QScreen(h: screen)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGuiApplication_screenAdded_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_screenAdded_release".} =
+  let nimfunc = cast[ref QGuiApplicationscreenAddedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onscreenAdded*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationscreenAddedSlot) =
   var tmp = new QGuiApplicationscreenAddedSlot
@@ -437,6 +445,10 @@ proc miqt_exec_callback_cQGuiApplication_screenRemoved(slot: int, screen: pointe
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGuiApplication_screenRemoved_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_screenRemoved_release".} =
+  let nimfunc = cast[ref QGuiApplicationscreenRemovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onscreenRemoved*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationscreenRemovedSlot) =
   var tmp = new QGuiApplicationscreenRemovedSlot
   tmp[] = slot
@@ -453,6 +465,10 @@ proc miqt_exec_callback_cQGuiApplication_primaryScreenChanged(slot: int, screen:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGuiApplication_primaryScreenChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_primaryScreenChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationprimaryScreenChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onprimaryScreenChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationprimaryScreenChangedSlot) =
   var tmp = new QGuiApplicationprimaryScreenChangedSlot
   tmp[] = slot
@@ -466,6 +482,10 @@ type QGuiApplicationlastWindowClosedSlot* = proc()
 proc miqt_exec_callback_cQGuiApplication_lastWindowClosed(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_lastWindowClosed".} =
   let nimfunc = cast[ptr QGuiApplicationlastWindowClosedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGuiApplication_lastWindowClosed_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_lastWindowClosed_release".} =
+  let nimfunc = cast[ref QGuiApplicationlastWindowClosedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlastWindowClosed*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationlastWindowClosedSlot) =
   var tmp = new QGuiApplicationlastWindowClosedSlot
@@ -483,6 +503,10 @@ proc miqt_exec_callback_cQGuiApplication_focusObjectChanged(slot: int, focusObje
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGuiApplication_focusObjectChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_focusObjectChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationfocusObjectChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfocusObjectChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationfocusObjectChangedSlot) =
   var tmp = new QGuiApplicationfocusObjectChangedSlot
   tmp[] = slot
@@ -498,6 +522,10 @@ proc miqt_exec_callback_cQGuiApplication_focusWindowChanged(slot: int, focusWind
   let slotval1 = gen_qwindow_types.QWindow(h: focusWindow)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGuiApplication_focusWindowChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_focusWindowChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationfocusWindowChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfocusWindowChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationfocusWindowChangedSlot) =
   var tmp = new QGuiApplicationfocusWindowChangedSlot
@@ -515,6 +543,10 @@ proc miqt_exec_callback_cQGuiApplication_applicationStateChanged(slot: int, stat
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGuiApplication_applicationStateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_applicationStateChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationapplicationStateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onapplicationStateChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationapplicationStateChangedSlot) =
   var tmp = new QGuiApplicationapplicationStateChangedSlot
   tmp[] = slot
@@ -530,6 +562,10 @@ proc miqt_exec_callback_cQGuiApplication_layoutDirectionChanged(slot: int, direc
   let slotval1 = cint(direction)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGuiApplication_layoutDirectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_layoutDirectionChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationlayoutDirectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlayoutDirectionChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationlayoutDirectionChangedSlot) =
   var tmp = new QGuiApplicationlayoutDirectionChangedSlot
@@ -547,6 +583,10 @@ proc miqt_exec_callback_cQGuiApplication_commitDataRequest(slot: int, sessionMan
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGuiApplication_commitDataRequest_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_commitDataRequest_release".} =
+  let nimfunc = cast[ref QGuiApplicationcommitDataRequestSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncommitDataRequest*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationcommitDataRequestSlot) =
   var tmp = new QGuiApplicationcommitDataRequestSlot
   tmp[] = slot
@@ -562,6 +602,10 @@ proc miqt_exec_callback_cQGuiApplication_saveStateRequest(slot: int, sessionMana
   let slotval1 = gen_qsessionmanager_types.QSessionManager(h: sessionManager)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGuiApplication_saveStateRequest_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_saveStateRequest_release".} =
+  let nimfunc = cast[ref QGuiApplicationsaveStateRequestSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsaveStateRequest*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationsaveStateRequestSlot) =
   var tmp = new QGuiApplicationsaveStateRequestSlot
@@ -579,6 +623,10 @@ proc miqt_exec_callback_cQGuiApplication_paletteChanged(slot: int, pal: pointer)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGuiApplication_paletteChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_paletteChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationpaletteChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpaletteChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationpaletteChangedSlot) =
   var tmp = new QGuiApplicationpaletteChangedSlot
   tmp[] = slot
@@ -592,6 +640,10 @@ type QGuiApplicationapplicationDisplayNameChangedSlot* = proc()
 proc miqt_exec_callback_cQGuiApplication_applicationDisplayNameChanged(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_applicationDisplayNameChanged".} =
   let nimfunc = cast[ptr QGuiApplicationapplicationDisplayNameChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGuiApplication_applicationDisplayNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_applicationDisplayNameChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationapplicationDisplayNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onapplicationDisplayNameChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationapplicationDisplayNameChangedSlot) =
   var tmp = new QGuiApplicationapplicationDisplayNameChangedSlot
@@ -608,6 +660,10 @@ proc miqt_exec_callback_cQGuiApplication_fontChanged(slot: int, font: pointer) {
   let slotval1 = gen_qfont_types.QFont(h: font)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGuiApplication_fontChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGuiApplication_fontChanged_release".} =
+  let nimfunc = cast[ref QGuiApplicationfontChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfontChanged*(self: gen_qguiapplication_types.QGuiApplication, slot: QGuiApplicationfontChangedSlot) =
   var tmp = new QGuiApplicationfontChangedSlot

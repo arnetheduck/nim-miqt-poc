@@ -363,6 +363,10 @@ proc miqt_exec_callback_cQCoreApplication_organizationNameChanged(slot: int) {.e
   let nimfunc = cast[ptr QCoreApplicationorganizationNameChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQCoreApplication_organizationNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCoreApplication_organizationNameChanged_release".} =
+  let nimfunc = cast[ref QCoreApplicationorganizationNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onorganizationNameChanged*(self: gen_qcoreapplication_types.QCoreApplication, slot: QCoreApplicationorganizationNameChangedSlot) =
   var tmp = new QCoreApplicationorganizationNameChangedSlot
   tmp[] = slot
@@ -376,6 +380,10 @@ type QCoreApplicationorganizationDomainChangedSlot* = proc()
 proc miqt_exec_callback_cQCoreApplication_organizationDomainChanged(slot: int) {.exportc: "miqt_exec_callback_QCoreApplication_organizationDomainChanged".} =
   let nimfunc = cast[ptr QCoreApplicationorganizationDomainChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQCoreApplication_organizationDomainChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCoreApplication_organizationDomainChanged_release".} =
+  let nimfunc = cast[ref QCoreApplicationorganizationDomainChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onorganizationDomainChanged*(self: gen_qcoreapplication_types.QCoreApplication, slot: QCoreApplicationorganizationDomainChangedSlot) =
   var tmp = new QCoreApplicationorganizationDomainChangedSlot
@@ -391,6 +399,10 @@ proc miqt_exec_callback_cQCoreApplication_applicationNameChanged(slot: int) {.ex
   let nimfunc = cast[ptr QCoreApplicationapplicationNameChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQCoreApplication_applicationNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCoreApplication_applicationNameChanged_release".} =
+  let nimfunc = cast[ref QCoreApplicationapplicationNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onapplicationNameChanged*(self: gen_qcoreapplication_types.QCoreApplication, slot: QCoreApplicationapplicationNameChangedSlot) =
   var tmp = new QCoreApplicationapplicationNameChangedSlot
   tmp[] = slot
@@ -404,6 +416,10 @@ type QCoreApplicationapplicationVersionChangedSlot* = proc()
 proc miqt_exec_callback_cQCoreApplication_applicationVersionChanged(slot: int) {.exportc: "miqt_exec_callback_QCoreApplication_applicationVersionChanged".} =
   let nimfunc = cast[ptr QCoreApplicationapplicationVersionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQCoreApplication_applicationVersionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCoreApplication_applicationVersionChanged_release".} =
+  let nimfunc = cast[ref QCoreApplicationapplicationVersionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onapplicationVersionChanged*(self: gen_qcoreapplication_types.QCoreApplication, slot: QCoreApplicationapplicationVersionChangedSlot) =
   var tmp = new QCoreApplicationapplicationVersionChangedSlot

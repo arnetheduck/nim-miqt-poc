@@ -620,6 +620,10 @@ proc miqt_exec_callback_cQHeaderView_sectionMoved(slot: int, logicalIndex: cint,
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQHeaderView_sectionMoved_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionMoved_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionMovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsectionMoved*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionMovedSlot) =
   var tmp = new QHeaderViewsectionMovedSlot
   tmp[] = slot
@@ -640,6 +644,10 @@ proc miqt_exec_callback_cQHeaderView_sectionResized(slot: int, logicalIndex: cin
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQHeaderView_sectionResized_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionResized_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionResizedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsectionResized*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionResizedSlot) =
   var tmp = new QHeaderViewsectionResizedSlot
   tmp[] = slot
@@ -655,6 +663,10 @@ proc miqt_exec_callback_cQHeaderView_sectionPressed(slot: int, logicalIndex: cin
   let slotval1 = logicalIndex
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQHeaderView_sectionPressed_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionPressed_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionPressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsectionPressed*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionPressedSlot) =
   var tmp = new QHeaderViewsectionPressedSlot
@@ -672,6 +684,10 @@ proc miqt_exec_callback_cQHeaderView_sectionClicked(slot: int, logicalIndex: cin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQHeaderView_sectionClicked_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionClicked_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsectionClicked*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionClickedSlot) =
   var tmp = new QHeaderViewsectionClickedSlot
   tmp[] = slot
@@ -688,6 +704,10 @@ proc miqt_exec_callback_cQHeaderView_sectionEntered(slot: int, logicalIndex: cin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQHeaderView_sectionEntered_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionEntered_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionEnteredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsectionEntered*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionEnteredSlot) =
   var tmp = new QHeaderViewsectionEnteredSlot
   tmp[] = slot
@@ -703,6 +723,10 @@ proc miqt_exec_callback_cQHeaderView_sectionDoubleClicked(slot: int, logicalInde
   let slotval1 = logicalIndex
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQHeaderView_sectionDoubleClicked_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionDoubleClicked_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionDoubleClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsectionDoubleClicked*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionDoubleClickedSlot) =
   var tmp = new QHeaderViewsectionDoubleClickedSlot
@@ -722,6 +746,10 @@ proc miqt_exec_callback_cQHeaderView_sectionCountChanged(slot: int, oldCount: ci
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQHeaderView_sectionCountChanged_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionCountChanged_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionCountChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsectionCountChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionCountChangedSlot) =
   var tmp = new QHeaderViewsectionCountChangedSlot
   tmp[] = slot
@@ -738,6 +766,10 @@ proc miqt_exec_callback_cQHeaderView_sectionHandleDoubleClicked(slot: int, logic
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQHeaderView_sectionHandleDoubleClicked_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sectionHandleDoubleClicked_release".} =
+  let nimfunc = cast[ref QHeaderViewsectionHandleDoubleClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsectionHandleDoubleClicked*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionHandleDoubleClickedSlot) =
   var tmp = new QHeaderViewsectionHandleDoubleClickedSlot
   tmp[] = slot
@@ -751,6 +783,10 @@ type QHeaderViewgeometriesChangedSlot* = proc()
 proc miqt_exec_callback_cQHeaderView_geometriesChanged(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_geometriesChanged".} =
   let nimfunc = cast[ptr QHeaderViewgeometriesChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQHeaderView_geometriesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_geometriesChanged_release".} =
+  let nimfunc = cast[ref QHeaderViewgeometriesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ongeometriesChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewgeometriesChangedSlot) =
   var tmp = new QHeaderViewgeometriesChangedSlot
@@ -769,6 +805,10 @@ proc miqt_exec_callback_cQHeaderView_sortIndicatorChanged(slot: int, logicalInde
   let slotval2 = cint(order)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQHeaderView_sortIndicatorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QHeaderView_sortIndicatorChanged_release".} =
+  let nimfunc = cast[ref QHeaderViewsortIndicatorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsortIndicatorChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsortIndicatorChangedSlot) =
   var tmp = new QHeaderViewsortIndicatorChangedSlot

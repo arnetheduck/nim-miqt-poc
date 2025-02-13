@@ -24,12 +24,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMovie_started(intptr_t);
+void miqt_exec_callback_QMovie_started_release(intptr_t);
 void miqt_exec_callback_QMovie_resized(intptr_t, QSize*);
+void miqt_exec_callback_QMovie_resized_release(intptr_t);
 void miqt_exec_callback_QMovie_updated(intptr_t, QRect*);
+void miqt_exec_callback_QMovie_updated_release(intptr_t);
 void miqt_exec_callback_QMovie_stateChanged(intptr_t, int);
+void miqt_exec_callback_QMovie_stateChanged_release(intptr_t);
 void miqt_exec_callback_QMovie_error(intptr_t, int);
+void miqt_exec_callback_QMovie_error_release(intptr_t);
 void miqt_exec_callback_QMovie_finished(intptr_t);
+void miqt_exec_callback_QMovie_finished_release(intptr_t);
 void miqt_exec_callback_QMovie_frameChanged(intptr_t, int);
+void miqt_exec_callback_QMovie_frameChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -487,9 +494,18 @@ void QMovie_started(QMovie* self) {
 }
 
 void QMovie_connect_started(QMovie* self, intptr_t slot) {
-	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::started), self, [=]() {
-		miqt_exec_callback_QMovie_started(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMovie_started(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMovie_started_release(slot); }
+	};
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::started), self, caller{slot});
 }
 
 void QMovie_resized(QMovie* self, QSize* size) {
@@ -497,12 +513,21 @@ void QMovie_resized(QMovie* self, QSize* size) {
 }
 
 void QMovie_connect_resized(QMovie* self, intptr_t slot) {
-	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(const QSize&)>(&QMovie::resized), self, [=](const QSize& size) {
-		const QSize& size_ret = size;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&size_ret);
-		miqt_exec_callback_QMovie_resized(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QSize& size) {
+			const QSize& size_ret = size;
+			// Cast returned reference into pointer
+			QSize* sigval1 = const_cast<QSize*>(&size_ret);
+			miqt_exec_callback_QMovie_resized(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMovie_resized_release(slot); }
+	};
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(const QSize&)>(&QMovie::resized), self, caller{slot});
 }
 
 void QMovie_updated(QMovie* self, QRect* rect) {
@@ -510,12 +535,21 @@ void QMovie_updated(QMovie* self, QRect* rect) {
 }
 
 void QMovie_connect_updated(QMovie* self, intptr_t slot) {
-	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(const QRect&)>(&QMovie::updated), self, [=](const QRect& rect) {
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
-		miqt_exec_callback_QMovie_updated(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QRect& rect) {
+			const QRect& rect_ret = rect;
+			// Cast returned reference into pointer
+			QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+			miqt_exec_callback_QMovie_updated(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMovie_updated_release(slot); }
+	};
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(const QRect&)>(&QMovie::updated), self, caller{slot});
 }
 
 void QMovie_stateChanged(QMovie* self, int state) {
@@ -523,11 +557,20 @@ void QMovie_stateChanged(QMovie* self, int state) {
 }
 
 void QMovie_connect_stateChanged(QMovie* self, intptr_t slot) {
-	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(QMovie::MovieState)>(&QMovie::stateChanged), self, [=](QMovie::MovieState state) {
-		QMovie::MovieState state_ret = state;
-		int sigval1 = static_cast<int>(state_ret);
-		miqt_exec_callback_QMovie_stateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QMovie::MovieState state) {
+			QMovie::MovieState state_ret = state;
+			int sigval1 = static_cast<int>(state_ret);
+			miqt_exec_callback_QMovie_stateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMovie_stateChanged_release(slot); }
+	};
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(QMovie::MovieState)>(&QMovie::stateChanged), self, caller{slot});
 }
 
 void QMovie_error(QMovie* self, int error) {
@@ -535,11 +578,20 @@ void QMovie_error(QMovie* self, int error) {
 }
 
 void QMovie_connect_error(QMovie* self, intptr_t slot) {
-	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(QImageReader::ImageReaderError)>(&QMovie::error), self, [=](QImageReader::ImageReaderError error) {
-		QImageReader::ImageReaderError error_ret = error;
-		int sigval1 = static_cast<int>(error_ret);
-		miqt_exec_callback_QMovie_error(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QImageReader::ImageReaderError error) {
+			QImageReader::ImageReaderError error_ret = error;
+			int sigval1 = static_cast<int>(error_ret);
+			miqt_exec_callback_QMovie_error(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMovie_error_release(slot); }
+	};
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(QImageReader::ImageReaderError)>(&QMovie::error), self, caller{slot});
 }
 
 void QMovie_finished(QMovie* self) {
@@ -547,9 +599,18 @@ void QMovie_finished(QMovie* self) {
 }
 
 void QMovie_connect_finished(QMovie* self, intptr_t slot) {
-	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::finished), self, [=]() {
-		miqt_exec_callback_QMovie_finished(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMovie_finished(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMovie_finished_release(slot); }
+	};
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::finished), self, caller{slot});
 }
 
 void QMovie_frameChanged(QMovie* self, int frameNumber) {
@@ -557,10 +618,19 @@ void QMovie_frameChanged(QMovie* self, int frameNumber) {
 }
 
 void QMovie_connect_frameChanged(QMovie* self, intptr_t slot) {
-	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(int)>(&QMovie::frameChanged), self, [=](int frameNumber) {
-		int sigval1 = frameNumber;
-		miqt_exec_callback_QMovie_frameChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int frameNumber) {
+			int sigval1 = frameNumber;
+			miqt_exec_callback_QMovie_frameChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMovie_frameChanged_release(slot); }
+	};
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(int)>(&QMovie::frameChanged), self, caller{slot});
 }
 
 void QMovie_start(QMovie* self) {

@@ -185,6 +185,10 @@ proc miqt_exec_callback_cQSGAbstractRenderer_sceneGraphChanged(slot: int) {.expo
   let nimfunc = cast[ptr QSGAbstractRenderersceneGraphChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSGAbstractRenderer_sceneGraphChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged_release".} =
+  let nimfunc = cast[ref QSGAbstractRenderersceneGraphChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsceneGraphChanged*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, slot: QSGAbstractRenderersceneGraphChangedSlot) =
   var tmp = new QSGAbstractRenderersceneGraphChangedSlot
   tmp[] = slot

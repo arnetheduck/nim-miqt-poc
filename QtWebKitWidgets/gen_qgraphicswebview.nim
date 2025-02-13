@@ -430,6 +430,10 @@ proc miqt_exec_callback_cQGraphicsWebView_loadStarted(slot: int) {.exportc: "miq
   let nimfunc = cast[ptr QGraphicsWebViewloadStartedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGraphicsWebView_loadStarted_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_loadStarted_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewloadStartedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onloadStarted*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewloadStartedSlot) =
   var tmp = new QGraphicsWebViewloadStartedSlot
   tmp[] = slot
@@ -445,6 +449,10 @@ proc miqt_exec_callback_cQGraphicsWebView_loadFinished(slot: int, param1: bool) 
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGraphicsWebView_loadFinished_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_loadFinished_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewloadFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onloadFinished*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewloadFinishedSlot) =
   var tmp = new QGraphicsWebViewloadFinishedSlot
@@ -462,6 +470,10 @@ proc miqt_exec_callback_cQGraphicsWebView_loadProgress(slot: int, progress: cint
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsWebView_loadProgress_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_loadProgress_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewloadProgressSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onloadProgress*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewloadProgressSlot) =
   var tmp = new QGraphicsWebViewloadProgressSlot
   tmp[] = slot
@@ -477,6 +489,10 @@ proc miqt_exec_callback_cQGraphicsWebView_urlChanged(slot: int, param1: pointer)
   let slotval1 = gen_qurl_types.QUrl(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGraphicsWebView_urlChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_urlChanged_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewurlChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onurlChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewurlChangedSlot) =
   var tmp = new QGraphicsWebViewurlChangedSlot
@@ -497,6 +513,10 @@ proc miqt_exec_callback_cQGraphicsWebView_titleChanged(slot: int, param1: struct
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsWebView_titleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_titleChanged_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewtitleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontitleChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewtitleChangedSlot) =
   var tmp = new QGraphicsWebViewtitleChangedSlot
   tmp[] = slot
@@ -510,6 +530,10 @@ type QGraphicsWebViewiconChangedSlot* = proc()
 proc miqt_exec_callback_cQGraphicsWebView_iconChanged(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_iconChanged".} =
   let nimfunc = cast[ptr QGraphicsWebViewiconChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGraphicsWebView_iconChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_iconChanged_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewiconChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oniconChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewiconChangedSlot) =
   var tmp = new QGraphicsWebViewiconChangedSlot
@@ -530,6 +554,10 @@ proc miqt_exec_callback_cQGraphicsWebView_statusBarMessage(slot: int, message: s
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsWebView_statusBarMessage_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_statusBarMessage_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewstatusBarMessageSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstatusBarMessage*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewstatusBarMessageSlot) =
   var tmp = new QGraphicsWebViewstatusBarMessageSlot
   tmp[] = slot
@@ -545,6 +573,10 @@ proc miqt_exec_callback_cQGraphicsWebView_linkClicked(slot: int, param1: pointer
   let slotval1 = gen_qurl_types.QUrl(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGraphicsWebView_linkClicked_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWebView_linkClicked_release".} =
+  let nimfunc = cast[ref QGraphicsWebViewlinkClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlinkClicked*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewlinkClickedSlot) =
   var tmp = new QGraphicsWebViewlinkClickedSlot

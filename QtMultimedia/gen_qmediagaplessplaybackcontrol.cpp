@@ -15,8 +15,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged(intptr_t, double);
+void miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged_release(intptr_t);
 void miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged(intptr_t, QMediaContent*);
+void miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged_release(intptr_t);
 void miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia(intptr_t);
+void miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -85,11 +88,20 @@ void QMediaGaplessPlaybackControl_crossfadeTimeChanged(QMediaGaplessPlaybackCont
 }
 
 void QMediaGaplessPlaybackControl_connect_crossfadeTimeChanged(QMediaGaplessPlaybackControl* self, intptr_t slot) {
-	QMediaGaplessPlaybackControl::connect(self, static_cast<void (QMediaGaplessPlaybackControl::*)(qreal)>(&QMediaGaplessPlaybackControl::crossfadeTimeChanged), self, [=](qreal crossfadeTime) {
-		qreal crossfadeTime_ret = crossfadeTime;
-		double sigval1 = static_cast<double>(crossfadeTime_ret);
-		miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal crossfadeTime) {
+			qreal crossfadeTime_ret = crossfadeTime;
+			double sigval1 = static_cast<double>(crossfadeTime_ret);
+			miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged_release(slot); }
+	};
+	QMediaGaplessPlaybackControl::connect(self, static_cast<void (QMediaGaplessPlaybackControl::*)(qreal)>(&QMediaGaplessPlaybackControl::crossfadeTimeChanged), self, caller{slot});
 }
 
 void QMediaGaplessPlaybackControl_nextMediaChanged(QMediaGaplessPlaybackControl* self, QMediaContent* media) {
@@ -97,12 +109,21 @@ void QMediaGaplessPlaybackControl_nextMediaChanged(QMediaGaplessPlaybackControl*
 }
 
 void QMediaGaplessPlaybackControl_connect_nextMediaChanged(QMediaGaplessPlaybackControl* self, intptr_t slot) {
-	QMediaGaplessPlaybackControl::connect(self, static_cast<void (QMediaGaplessPlaybackControl::*)(const QMediaContent&)>(&QMediaGaplessPlaybackControl::nextMediaChanged), self, [=](const QMediaContent& media) {
-		const QMediaContent& media_ret = media;
-		// Cast returned reference into pointer
-		QMediaContent* sigval1 = const_cast<QMediaContent*>(&media_ret);
-		miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QMediaContent& media) {
+			const QMediaContent& media_ret = media;
+			// Cast returned reference into pointer
+			QMediaContent* sigval1 = const_cast<QMediaContent*>(&media_ret);
+			miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged_release(slot); }
+	};
+	QMediaGaplessPlaybackControl::connect(self, static_cast<void (QMediaGaplessPlaybackControl::*)(const QMediaContent&)>(&QMediaGaplessPlaybackControl::nextMediaChanged), self, caller{slot});
 }
 
 void QMediaGaplessPlaybackControl_advancedToNextMedia(QMediaGaplessPlaybackControl* self) {
@@ -110,9 +131,18 @@ void QMediaGaplessPlaybackControl_advancedToNextMedia(QMediaGaplessPlaybackContr
 }
 
 void QMediaGaplessPlaybackControl_connect_advancedToNextMedia(QMediaGaplessPlaybackControl* self, intptr_t slot) {
-	QMediaGaplessPlaybackControl::connect(self, static_cast<void (QMediaGaplessPlaybackControl::*)()>(&QMediaGaplessPlaybackControl::advancedToNextMedia), self, [=]() {
-		miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia_release(slot); }
+	};
+	QMediaGaplessPlaybackControl::connect(self, static_cast<void (QMediaGaplessPlaybackControl::*)()>(&QMediaGaplessPlaybackControl::advancedToNextMedia), self, caller{slot});
 }
 
 struct miqt_string QMediaGaplessPlaybackControl_tr2(const char* s, const char* c) {

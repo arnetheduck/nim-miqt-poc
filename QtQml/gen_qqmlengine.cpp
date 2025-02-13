@@ -26,8 +26,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQmlEngine_quit(intptr_t);
+void miqt_exec_callback_QQmlEngine_quit_release(intptr_t);
 void miqt_exec_callback_QQmlEngine_exit(intptr_t, int);
+void miqt_exec_callback_QQmlEngine_exit_release(intptr_t);
 void miqt_exec_callback_QQmlEngine_warnings(intptr_t, struct miqt_array /* of QQmlError* */ );
+void miqt_exec_callback_QQmlEngine_warnings_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -530,9 +533,18 @@ void QQmlEngine_quit(QQmlEngine* self) {
 }
 
 void QQmlEngine_connect_quit(QQmlEngine* self, intptr_t slot) {
-	MiqtVirtualQQmlEngine::connect(self, static_cast<void (QQmlEngine::*)()>(&QQmlEngine::quit), self, [=]() {
-		miqt_exec_callback_QQmlEngine_quit(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQmlEngine_quit(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQmlEngine_quit_release(slot); }
+	};
+	MiqtVirtualQQmlEngine::connect(self, static_cast<void (QQmlEngine::*)()>(&QQmlEngine::quit), self, caller{slot});
 }
 
 void QQmlEngine_exit(QQmlEngine* self, int retCode) {
@@ -540,10 +552,19 @@ void QQmlEngine_exit(QQmlEngine* self, int retCode) {
 }
 
 void QQmlEngine_connect_exit(QQmlEngine* self, intptr_t slot) {
-	MiqtVirtualQQmlEngine::connect(self, static_cast<void (QQmlEngine::*)(int)>(&QQmlEngine::exit), self, [=](int retCode) {
-		int sigval1 = retCode;
-		miqt_exec_callback_QQmlEngine_exit(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int retCode) {
+			int sigval1 = retCode;
+			miqt_exec_callback_QQmlEngine_exit(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQmlEngine_exit_release(slot); }
+	};
+	MiqtVirtualQQmlEngine::connect(self, static_cast<void (QQmlEngine::*)(int)>(&QQmlEngine::exit), self, caller{slot});
 }
 
 void QQmlEngine_warnings(QQmlEngine* self, struct miqt_array /* of QQmlError* */  warnings) {
@@ -557,19 +578,28 @@ void QQmlEngine_warnings(QQmlEngine* self, struct miqt_array /* of QQmlError* */
 }
 
 void QQmlEngine_connect_warnings(QQmlEngine* self, intptr_t slot) {
-	MiqtVirtualQQmlEngine::connect(self, static_cast<void (QQmlEngine::*)(const QList<QQmlError>&)>(&QQmlEngine::warnings), self, [=](const QList<QQmlError>& warnings) {
-		const QList<QQmlError>& warnings_ret = warnings;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QQmlError** warnings_arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * warnings_ret.length()));
-		for (size_t i = 0, e = warnings_ret.length(); i < e; ++i) {
-			warnings_arr[i] = new QQmlError(warnings_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QQmlError>& warnings) {
+			const QList<QQmlError>& warnings_ret = warnings;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QQmlError** warnings_arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * warnings_ret.length()));
+			for (size_t i = 0, e = warnings_ret.length(); i < e; ++i) {
+				warnings_arr[i] = new QQmlError(warnings_ret[i]);
+			}
+			struct miqt_array warnings_out;
+			warnings_out.len = warnings_ret.length();
+			warnings_out.data = static_cast<void*>(warnings_arr);
+			struct miqt_array /* of QQmlError* */  sigval1 = warnings_out;
+			miqt_exec_callback_QQmlEngine_warnings(slot, sigval1);
 		}
-		struct miqt_array warnings_out;
-		warnings_out.len = warnings_ret.length();
-		warnings_out.data = static_cast<void*>(warnings_arr);
-		struct miqt_array /* of QQmlError* */  sigval1 = warnings_out;
-		miqt_exec_callback_QQmlEngine_warnings(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQmlEngine_warnings_release(slot); }
+	};
+	MiqtVirtualQQmlEngine::connect(self, static_cast<void (QQmlEngine::*)(const QList<QQmlError>&)>(&QQmlEngine::warnings), self, caller{slot});
 }
 
 struct miqt_string QQmlEngine_tr2(const char* s, const char* c) {

@@ -17,11 +17,17 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQuickWebEngineScript_nameChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QQuickWebEngineScript_nameChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWebEngineScript_sourceUrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QQuickWebEngineScript_sourceUrlChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWebEngineScript_sourceCodeChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QQuickWebEngineScript_sourceCodeChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWebEngineScript_injectionPointChanged(intptr_t, int);
+void miqt_exec_callback_QQuickWebEngineScript_injectionPointChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWebEngineScript_worldIdChanged(intptr_t, int);
+void miqt_exec_callback_QQuickWebEngineScript_worldIdChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWebEngineScript_runOnSubframesChanged(intptr_t, bool);
+void miqt_exec_callback_QQuickWebEngineScript_runOnSubframesChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -378,17 +384,26 @@ void QQuickWebEngineScript_nameChanged(QQuickWebEngineScript* self, struct miqt_
 }
 
 void QQuickWebEngineScript_connect_nameChanged(QQuickWebEngineScript* self, intptr_t slot) {
-	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(const QString&)>(&QQuickWebEngineScript::nameChanged), self, [=](const QString& name) {
-		const QString name_ret = name;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray name_b = name_ret.toUtf8();
-		struct miqt_string name_ms;
-		name_ms.len = name_b.length();
-		name_ms.data = static_cast<char*>(malloc(name_ms.len));
-		memcpy(name_ms.data, name_b.data(), name_ms.len);
-		struct miqt_string sigval1 = name_ms;
-		miqt_exec_callback_QQuickWebEngineScript_nameChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& name) {
+			const QString name_ret = name;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray name_b = name_ret.toUtf8();
+			struct miqt_string name_ms;
+			name_ms.len = name_b.length();
+			name_ms.data = static_cast<char*>(malloc(name_ms.len));
+			memcpy(name_ms.data, name_b.data(), name_ms.len);
+			struct miqt_string sigval1 = name_ms;
+			miqt_exec_callback_QQuickWebEngineScript_nameChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWebEngineScript_nameChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(const QString&)>(&QQuickWebEngineScript::nameChanged), self, caller{slot});
 }
 
 void QQuickWebEngineScript_sourceUrlChanged(QQuickWebEngineScript* self, QUrl* url) {
@@ -396,12 +411,21 @@ void QQuickWebEngineScript_sourceUrlChanged(QQuickWebEngineScript* self, QUrl* u
 }
 
 void QQuickWebEngineScript_connect_sourceUrlChanged(QQuickWebEngineScript* self, intptr_t slot) {
-	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(const QUrl&)>(&QQuickWebEngineScript::sourceUrlChanged), self, [=](const QUrl& url) {
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QQuickWebEngineScript_sourceUrlChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& url) {
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
+			miqt_exec_callback_QQuickWebEngineScript_sourceUrlChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWebEngineScript_sourceUrlChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(const QUrl&)>(&QQuickWebEngineScript::sourceUrlChanged), self, caller{slot});
 }
 
 void QQuickWebEngineScript_sourceCodeChanged(QQuickWebEngineScript* self, struct miqt_string code) {
@@ -410,17 +434,26 @@ void QQuickWebEngineScript_sourceCodeChanged(QQuickWebEngineScript* self, struct
 }
 
 void QQuickWebEngineScript_connect_sourceCodeChanged(QQuickWebEngineScript* self, intptr_t slot) {
-	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(const QString&)>(&QQuickWebEngineScript::sourceCodeChanged), self, [=](const QString& code) {
-		const QString code_ret = code;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray code_b = code_ret.toUtf8();
-		struct miqt_string code_ms;
-		code_ms.len = code_b.length();
-		code_ms.data = static_cast<char*>(malloc(code_ms.len));
-		memcpy(code_ms.data, code_b.data(), code_ms.len);
-		struct miqt_string sigval1 = code_ms;
-		miqt_exec_callback_QQuickWebEngineScript_sourceCodeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& code) {
+			const QString code_ret = code;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray code_b = code_ret.toUtf8();
+			struct miqt_string code_ms;
+			code_ms.len = code_b.length();
+			code_ms.data = static_cast<char*>(malloc(code_ms.len));
+			memcpy(code_ms.data, code_b.data(), code_ms.len);
+			struct miqt_string sigval1 = code_ms;
+			miqt_exec_callback_QQuickWebEngineScript_sourceCodeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWebEngineScript_sourceCodeChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(const QString&)>(&QQuickWebEngineScript::sourceCodeChanged), self, caller{slot});
 }
 
 void QQuickWebEngineScript_injectionPointChanged(QQuickWebEngineScript* self, int injectionPoint) {
@@ -428,11 +461,20 @@ void QQuickWebEngineScript_injectionPointChanged(QQuickWebEngineScript* self, in
 }
 
 void QQuickWebEngineScript_connect_injectionPointChanged(QQuickWebEngineScript* self, intptr_t slot) {
-	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(QQuickWebEngineScript::InjectionPoint)>(&QQuickWebEngineScript::injectionPointChanged), self, [=](QQuickWebEngineScript::InjectionPoint injectionPoint) {
-		QQuickWebEngineScript::InjectionPoint injectionPoint_ret = injectionPoint;
-		int sigval1 = static_cast<int>(injectionPoint_ret);
-		miqt_exec_callback_QQuickWebEngineScript_injectionPointChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQuickWebEngineScript::InjectionPoint injectionPoint) {
+			QQuickWebEngineScript::InjectionPoint injectionPoint_ret = injectionPoint;
+			int sigval1 = static_cast<int>(injectionPoint_ret);
+			miqt_exec_callback_QQuickWebEngineScript_injectionPointChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWebEngineScript_injectionPointChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(QQuickWebEngineScript::InjectionPoint)>(&QQuickWebEngineScript::injectionPointChanged), self, caller{slot});
 }
 
 void QQuickWebEngineScript_worldIdChanged(QQuickWebEngineScript* self, int scriptWorldId) {
@@ -440,11 +482,20 @@ void QQuickWebEngineScript_worldIdChanged(QQuickWebEngineScript* self, int scrip
 }
 
 void QQuickWebEngineScript_connect_worldIdChanged(QQuickWebEngineScript* self, intptr_t slot) {
-	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(QQuickWebEngineScript::ScriptWorldId)>(&QQuickWebEngineScript::worldIdChanged), self, [=](QQuickWebEngineScript::ScriptWorldId scriptWorldId) {
-		QQuickWebEngineScript::ScriptWorldId scriptWorldId_ret = scriptWorldId;
-		int sigval1 = static_cast<int>(scriptWorldId_ret);
-		miqt_exec_callback_QQuickWebEngineScript_worldIdChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQuickWebEngineScript::ScriptWorldId scriptWorldId) {
+			QQuickWebEngineScript::ScriptWorldId scriptWorldId_ret = scriptWorldId;
+			int sigval1 = static_cast<int>(scriptWorldId_ret);
+			miqt_exec_callback_QQuickWebEngineScript_worldIdChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWebEngineScript_worldIdChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(QQuickWebEngineScript::ScriptWorldId)>(&QQuickWebEngineScript::worldIdChanged), self, caller{slot});
 }
 
 void QQuickWebEngineScript_runOnSubframesChanged(QQuickWebEngineScript* self, bool on) {
@@ -452,10 +503,19 @@ void QQuickWebEngineScript_runOnSubframesChanged(QQuickWebEngineScript* self, bo
 }
 
 void QQuickWebEngineScript_connect_runOnSubframesChanged(QQuickWebEngineScript* self, intptr_t slot) {
-	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(bool)>(&QQuickWebEngineScript::runOnSubframesChanged), self, [=](bool on) {
-		bool sigval1 = on;
-		miqt_exec_callback_QQuickWebEngineScript_runOnSubframesChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool on) {
+			bool sigval1 = on;
+			miqt_exec_callback_QQuickWebEngineScript_runOnSubframesChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWebEngineScript_runOnSubframesChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWebEngineScript::connect(self, static_cast<void (QQuickWebEngineScript::*)(bool)>(&QQuickWebEngineScript::runOnSubframesChanged), self, caller{slot});
 }
 
 struct miqt_string QQuickWebEngineScript_tr2(const char* s, const char* c) {

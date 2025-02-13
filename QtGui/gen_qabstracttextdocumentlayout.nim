@@ -240,6 +240,10 @@ proc miqt_exec_callback_cQAbstractTextDocumentLayout_update(slot: int) {.exportc
   let nimfunc = cast[ptr QAbstractTextDocumentLayoutupdateSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractTextDocumentLayout_update_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_update_release".} =
+  let nimfunc = cast[ref QAbstractTextDocumentLayoutupdateSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onupdate*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutupdateSlot) =
   var tmp = new QAbstractTextDocumentLayoutupdateSlot
   tmp[] = slot
@@ -255,6 +259,10 @@ proc miqt_exec_callback_cQAbstractTextDocumentLayout_updateBlock(slot: int, bloc
   let slotval1 = gen_qtextobject_types.QTextBlock(h: blockVal)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractTextDocumentLayout_updateBlock_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock_release".} =
+  let nimfunc = cast[ref QAbstractTextDocumentLayoutupdateBlockSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onupdateBlock*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutupdateBlockSlot) =
   var tmp = new QAbstractTextDocumentLayoutupdateBlockSlot
@@ -272,6 +280,10 @@ proc miqt_exec_callback_cQAbstractTextDocumentLayout_documentSizeChanged(slot: i
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractTextDocumentLayout_documentSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged_release".} =
+  let nimfunc = cast[ref QAbstractTextDocumentLayoutdocumentSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondocumentSizeChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutdocumentSizeChangedSlot) =
   var tmp = new QAbstractTextDocumentLayoutdocumentSizeChangedSlot
   tmp[] = slot
@@ -287,6 +299,10 @@ proc miqt_exec_callback_cQAbstractTextDocumentLayout_pageCountChanged(slot: int,
   let slotval1 = newPages
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractTextDocumentLayout_pageCountChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged_release".} =
+  let nimfunc = cast[ref QAbstractTextDocumentLayoutpageCountChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpageCountChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutpageCountChangedSlot) =
   var tmp = new QAbstractTextDocumentLayoutpageCountChangedSlot
@@ -330,6 +346,10 @@ proc miqt_exec_callback_cQAbstractTextDocumentLayout_update1(slot: int, param1: 
   let slotval1 = gen_qrect_types.QRectF(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractTextDocumentLayout_update1_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_update1_release".} =
+  let nimfunc = cast[ref QAbstractTextDocumentLayoutupdate1Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onupdate*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutupdate1Slot) =
   var tmp = new QAbstractTextDocumentLayoutupdate1Slot

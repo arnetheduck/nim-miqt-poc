@@ -207,6 +207,10 @@ proc miqt_exec_callback_cQQuickWebEngineScript_nameChanged(slot: int, name: stru
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickWebEngineScript_nameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineScript_nameChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineScriptnameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnameChanged*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptnameChangedSlot) =
   var tmp = new QQuickWebEngineScriptnameChangedSlot
   tmp[] = slot
@@ -222,6 +226,10 @@ proc miqt_exec_callback_cQQuickWebEngineScript_sourceUrlChanged(slot: int, url: 
   let slotval1 = gen_qurl_types.QUrl(h: url)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickWebEngineScript_sourceUrlChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineScript_sourceUrlChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineScriptsourceUrlChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsourceUrlChanged*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptsourceUrlChangedSlot) =
   var tmp = new QQuickWebEngineScriptsourceUrlChangedSlot
@@ -242,6 +250,10 @@ proc miqt_exec_callback_cQQuickWebEngineScript_sourceCodeChanged(slot: int, code
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickWebEngineScript_sourceCodeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineScript_sourceCodeChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineScriptsourceCodeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsourceCodeChanged*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptsourceCodeChangedSlot) =
   var tmp = new QQuickWebEngineScriptsourceCodeChangedSlot
   tmp[] = slot
@@ -257,6 +269,10 @@ proc miqt_exec_callback_cQQuickWebEngineScript_injectionPointChanged(slot: int, 
   let slotval1 = cint(injectionPoint)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickWebEngineScript_injectionPointChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineScript_injectionPointChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineScriptinjectionPointChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oninjectionPointChanged*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptinjectionPointChangedSlot) =
   var tmp = new QQuickWebEngineScriptinjectionPointChangedSlot
@@ -274,6 +290,10 @@ proc miqt_exec_callback_cQQuickWebEngineScript_worldIdChanged(slot: int, scriptW
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickWebEngineScript_worldIdChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineScript_worldIdChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineScriptworldIdChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onworldIdChanged*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptworldIdChangedSlot) =
   var tmp = new QQuickWebEngineScriptworldIdChangedSlot
   tmp[] = slot
@@ -289,6 +309,10 @@ proc miqt_exec_callback_cQQuickWebEngineScript_runOnSubframesChanged(slot: int, 
   let slotval1 = on
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickWebEngineScript_runOnSubframesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineScript_runOnSubframesChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineScriptrunOnSubframesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onrunOnSubframesChanged*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptrunOnSubframesChangedSlot) =
   var tmp = new QQuickWebEngineScriptrunOnSubframesChangedSlot

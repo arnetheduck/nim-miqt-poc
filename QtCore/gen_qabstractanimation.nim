@@ -253,6 +253,10 @@ proc miqt_exec_callback_cQAbstractAnimation_finished(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QAbstractAnimationfinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractAnimation_finished_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAnimation_finished_release".} =
+  let nimfunc = cast[ref QAbstractAnimationfinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfinished*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationfinishedSlot) =
   var tmp = new QAbstractAnimationfinishedSlot
   tmp[] = slot
@@ -271,6 +275,10 @@ proc miqt_exec_callback_cQAbstractAnimation_stateChanged(slot: int, newState: ci
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQAbstractAnimation_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAnimation_stateChanged_release".} =
+  let nimfunc = cast[ref QAbstractAnimationstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationstateChangedSlot) =
   var tmp = new QAbstractAnimationstateChangedSlot
   tmp[] = slot
@@ -287,6 +295,10 @@ proc miqt_exec_callback_cQAbstractAnimation_currentLoopChanged(slot: int, curren
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractAnimation_currentLoopChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAnimation_currentLoopChanged_release".} =
+  let nimfunc = cast[ref QAbstractAnimationcurrentLoopChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentLoopChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationcurrentLoopChangedSlot) =
   var tmp = new QAbstractAnimationcurrentLoopChangedSlot
   tmp[] = slot
@@ -302,6 +314,10 @@ proc miqt_exec_callback_cQAbstractAnimation_directionChanged(slot: int, param1: 
   let slotval1 = cint(param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractAnimation_directionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractAnimation_directionChanged_release".} =
+  let nimfunc = cast[ref QAbstractAnimationdirectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondirectionChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationdirectionChangedSlot) =
   var tmp = new QAbstractAnimationdirectionChangedSlot
@@ -641,6 +657,10 @@ proc miqt_exec_callback_cQAnimationDriver_started(slot: int) {.exportc: "miqt_ex
   let nimfunc = cast[ptr QAnimationDriverstartedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAnimationDriver_started_release(slot: int) {.exportc: "miqt_exec_callback_QAnimationDriver_started_release".} =
+  let nimfunc = cast[ref QAnimationDriverstartedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstarted*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverstartedSlot) =
   var tmp = new QAnimationDriverstartedSlot
   tmp[] = slot
@@ -654,6 +674,10 @@ type QAnimationDriverstoppedSlot* = proc()
 proc miqt_exec_callback_cQAnimationDriver_stopped(slot: int) {.exportc: "miqt_exec_callback_QAnimationDriver_stopped".} =
   let nimfunc = cast[ptr QAnimationDriverstoppedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAnimationDriver_stopped_release(slot: int) {.exportc: "miqt_exec_callback_QAnimationDriver_stopped_release".} =
+  let nimfunc = cast[ref QAnimationDriverstoppedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onstopped*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverstoppedSlot) =
   var tmp = new QAnimationDriverstoppedSlot

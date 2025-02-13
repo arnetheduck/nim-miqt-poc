@@ -103,6 +103,10 @@ proc miqt_exec_callback_cQCameraCaptureDestinationControl_captureDestinationChan
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraCaptureDestinationControl_captureDestinationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraCaptureDestinationControl_captureDestinationChanged_release".} =
+  let nimfunc = cast[ref QCameraCaptureDestinationControlcaptureDestinationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncaptureDestinationChanged*(self: gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl, slot: QCameraCaptureDestinationControlcaptureDestinationChangedSlot) =
   var tmp = new QCameraCaptureDestinationControlcaptureDestinationChangedSlot
   tmp[] = slot

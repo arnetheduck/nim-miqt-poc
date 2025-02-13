@@ -20,13 +20,21 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsScale_originChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_originChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsScale_xScaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_xScaleChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsScale_yScaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_yScaleChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsScale_zScaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_zScaleChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsScale_scaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_scaleChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsRotation_originChanged(intptr_t);
+void miqt_exec_callback_QGraphicsRotation_originChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsRotation_angleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsRotation_angleChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsRotation_axisChanged(intptr_t);
+void miqt_exec_callback_QGraphicsRotation_axisChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -805,9 +813,18 @@ void QGraphicsScale_originChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_originChanged(QGraphicsScale* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::originChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsScale_originChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsScale_originChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScale_originChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::originChanged), self, caller{slot});
 }
 
 void QGraphicsScale_xScaleChanged(QGraphicsScale* self) {
@@ -815,9 +832,18 @@ void QGraphicsScale_xScaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_xScaleChanged(QGraphicsScale* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::xScaleChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsScale_xScaleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsScale_xScaleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScale_xScaleChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::xScaleChanged), self, caller{slot});
 }
 
 void QGraphicsScale_yScaleChanged(QGraphicsScale* self) {
@@ -825,9 +851,18 @@ void QGraphicsScale_yScaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_yScaleChanged(QGraphicsScale* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::yScaleChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsScale_yScaleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsScale_yScaleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScale_yScaleChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::yScaleChanged), self, caller{slot});
 }
 
 void QGraphicsScale_zScaleChanged(QGraphicsScale* self) {
@@ -835,9 +870,18 @@ void QGraphicsScale_zScaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_zScaleChanged(QGraphicsScale* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::zScaleChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsScale_zScaleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsScale_zScaleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScale_zScaleChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::zScaleChanged), self, caller{slot});
 }
 
 void QGraphicsScale_scaleChanged(QGraphicsScale* self) {
@@ -845,9 +889,18 @@ void QGraphicsScale_scaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_scaleChanged(QGraphicsScale* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::scaleChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsScale_scaleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsScale_scaleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScale_scaleChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::scaleChanged), self, caller{slot});
 }
 
 struct miqt_string QGraphicsScale_tr2(const char* s, const char* c) {
@@ -1336,9 +1389,18 @@ void QGraphicsRotation_originChanged(QGraphicsRotation* self) {
 }
 
 void QGraphicsRotation_connect_originChanged(QGraphicsRotation* self, intptr_t slot) {
-	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::originChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsRotation_originChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsRotation_originChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsRotation_originChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::originChanged), self, caller{slot});
 }
 
 void QGraphicsRotation_angleChanged(QGraphicsRotation* self) {
@@ -1346,9 +1408,18 @@ void QGraphicsRotation_angleChanged(QGraphicsRotation* self) {
 }
 
 void QGraphicsRotation_connect_angleChanged(QGraphicsRotation* self, intptr_t slot) {
-	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::angleChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsRotation_angleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsRotation_angleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsRotation_angleChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::angleChanged), self, caller{slot});
 }
 
 void QGraphicsRotation_axisChanged(QGraphicsRotation* self) {
@@ -1356,9 +1427,18 @@ void QGraphicsRotation_axisChanged(QGraphicsRotation* self) {
 }
 
 void QGraphicsRotation_connect_axisChanged(QGraphicsRotation* self, intptr_t slot) {
-	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::axisChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsRotation_axisChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsRotation_axisChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsRotation_axisChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::axisChanged), self, caller{slot});
 }
 
 struct miqt_string QGraphicsRotation_tr2(const char* s, const char* c) {

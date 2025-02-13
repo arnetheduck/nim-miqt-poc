@@ -207,6 +207,10 @@ proc miqt_exec_callback_cQAudioInput_stateChanged(slot: int, state: cint) {.expo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioInput_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioInput_stateChanged_release".} =
+  let nimfunc = cast[ref QAudioInputstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputstateChangedSlot) =
   var tmp = new QAudioInputstateChangedSlot
   tmp[] = slot
@@ -220,6 +224,10 @@ type QAudioInputnotifySlot* = proc()
 proc miqt_exec_callback_cQAudioInput_notify(slot: int) {.exportc: "miqt_exec_callback_QAudioInput_notify".} =
   let nimfunc = cast[ptr QAudioInputnotifySlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioInput_notify_release(slot: int) {.exportc: "miqt_exec_callback_QAudioInput_notify_release".} =
+  let nimfunc = cast[ref QAudioInputnotifySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnotify*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputnotifySlot) =
   var tmp = new QAudioInputnotifySlot

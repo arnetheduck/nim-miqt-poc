@@ -169,6 +169,10 @@ proc miqt_exec_callback_cQNetworkConfigurationManager_configurationAdded(slot: i
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQNetworkConfigurationManager_configurationAdded_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_configurationAdded_release".} =
+  let nimfunc = cast[ref QNetworkConfigurationManagerconfigurationAddedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onconfigurationAdded*(self: gen_qnetworkconfigmanager_types.QNetworkConfigurationManager, slot: QNetworkConfigurationManagerconfigurationAddedSlot) =
   var tmp = new QNetworkConfigurationManagerconfigurationAddedSlot
   tmp[] = slot
@@ -184,6 +188,10 @@ proc miqt_exec_callback_cQNetworkConfigurationManager_configurationRemoved(slot:
   let slotval1 = gen_qnetworkconfiguration_types.QNetworkConfiguration(h: config)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQNetworkConfigurationManager_configurationRemoved_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved_release".} =
+  let nimfunc = cast[ref QNetworkConfigurationManagerconfigurationRemovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onconfigurationRemoved*(self: gen_qnetworkconfigmanager_types.QNetworkConfigurationManager, slot: QNetworkConfigurationManagerconfigurationRemovedSlot) =
   var tmp = new QNetworkConfigurationManagerconfigurationRemovedSlot
@@ -201,6 +209,10 @@ proc miqt_exec_callback_cQNetworkConfigurationManager_configurationChanged(slot:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQNetworkConfigurationManager_configurationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_configurationChanged_release".} =
+  let nimfunc = cast[ref QNetworkConfigurationManagerconfigurationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onconfigurationChanged*(self: gen_qnetworkconfigmanager_types.QNetworkConfigurationManager, slot: QNetworkConfigurationManagerconfigurationChangedSlot) =
   var tmp = new QNetworkConfigurationManagerconfigurationChangedSlot
   tmp[] = slot
@@ -217,6 +229,10 @@ proc miqt_exec_callback_cQNetworkConfigurationManager_onlineStateChanged(slot: i
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQNetworkConfigurationManager_onlineStateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged_release".} =
+  let nimfunc = cast[ref QNetworkConfigurationManageronlineStateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ononlineStateChanged*(self: gen_qnetworkconfigmanager_types.QNetworkConfigurationManager, slot: QNetworkConfigurationManageronlineStateChangedSlot) =
   var tmp = new QNetworkConfigurationManageronlineStateChangedSlot
   tmp[] = slot
@@ -230,6 +246,10 @@ type QNetworkConfigurationManagerupdateCompletedSlot* = proc()
 proc miqt_exec_callback_cQNetworkConfigurationManager_updateCompleted(slot: int) {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_updateCompleted".} =
   let nimfunc = cast[ptr QNetworkConfigurationManagerupdateCompletedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQNetworkConfigurationManager_updateCompleted_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_updateCompleted_release".} =
+  let nimfunc = cast[ref QNetworkConfigurationManagerupdateCompletedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onupdateCompleted*(self: gen_qnetworkconfigmanager_types.QNetworkConfigurationManager, slot: QNetworkConfigurationManagerupdateCompletedSlot) =
   var tmp = new QNetworkConfigurationManagerupdateCompletedSlot

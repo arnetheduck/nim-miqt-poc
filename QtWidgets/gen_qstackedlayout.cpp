@@ -22,7 +22,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStackedLayout_widgetRemoved(intptr_t, int);
+void miqt_exec_callback_QStackedLayout_widgetRemoved_release(intptr_t);
 void miqt_exec_callback_QStackedLayout_currentChanged(intptr_t, int);
+void miqt_exec_callback_QStackedLayout_currentChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -767,10 +769,19 @@ void QStackedLayout_widgetRemoved(QStackedLayout* self, int index) {
 }
 
 void QStackedLayout_connect_widgetRemoved(QStackedLayout* self, intptr_t slot) {
-	MiqtVirtualQStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::widgetRemoved), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QStackedLayout_widgetRemoved(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QStackedLayout_widgetRemoved(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QStackedLayout_widgetRemoved_release(slot); }
+	};
+	MiqtVirtualQStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::widgetRemoved), self, caller{slot});
 }
 
 void QStackedLayout_currentChanged(QStackedLayout* self, int index) {
@@ -778,10 +789,19 @@ void QStackedLayout_currentChanged(QStackedLayout* self, int index) {
 }
 
 void QStackedLayout_connect_currentChanged(QStackedLayout* self, intptr_t slot) {
-	MiqtVirtualQStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::currentChanged), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QStackedLayout_currentChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QStackedLayout_currentChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QStackedLayout_currentChanged_release(slot); }
+	};
+	MiqtVirtualQStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::currentChanged), self, caller{slot});
 }
 
 void QStackedLayout_setCurrentIndex(QStackedLayout* self, int index) {

@@ -44,6 +44,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQuickView_statusChanged(intptr_t, int);
+void miqt_exec_callback_QQuickView_statusChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -856,11 +857,20 @@ void QQuickView_statusChanged(QQuickView* self, int param1) {
 }
 
 void QQuickView_connect_statusChanged(QQuickView* self, intptr_t slot) {
-	MiqtVirtualQQuickView::connect(self, static_cast<void (QQuickView::*)(QQuickView::Status)>(&QQuickView::statusChanged), self, [=](QQuickView::Status param1) {
-		QQuickView::Status param1_ret = param1;
-		int sigval1 = static_cast<int>(param1_ret);
-		miqt_exec_callback_QQuickView_statusChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQuickView::Status param1) {
+			QQuickView::Status param1_ret = param1;
+			int sigval1 = static_cast<int>(param1_ret);
+			miqt_exec_callback_QQuickView_statusChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickView_statusChanged_release(slot); }
+	};
+	MiqtVirtualQQuickView::connect(self, static_cast<void (QQuickView::*)(QQuickView::Status)>(&QQuickView::statusChanged), self, caller{slot});
 }
 
 struct miqt_string QQuickView_tr2(const char* s, const char* c) {

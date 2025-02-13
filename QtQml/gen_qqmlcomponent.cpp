@@ -25,7 +25,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQmlComponent_statusChanged(intptr_t, int);
+void miqt_exec_callback_QQmlComponent_statusChanged_release(intptr_t);
 void miqt_exec_callback_QQmlComponent_progressChanged(intptr_t, double);
+void miqt_exec_callback_QQmlComponent_progressChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -530,11 +532,20 @@ void QQmlComponent_statusChanged(QQmlComponent* self, int param1) {
 }
 
 void QQmlComponent_connect_statusChanged(QQmlComponent* self, intptr_t slot) {
-	MiqtVirtualQQmlComponent::connect(self, static_cast<void (QQmlComponent::*)(QQmlComponent::Status)>(&QQmlComponent::statusChanged), self, [=](QQmlComponent::Status param1) {
-		QQmlComponent::Status param1_ret = param1;
-		int sigval1 = static_cast<int>(param1_ret);
-		miqt_exec_callback_QQmlComponent_statusChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQmlComponent::Status param1) {
+			QQmlComponent::Status param1_ret = param1;
+			int sigval1 = static_cast<int>(param1_ret);
+			miqt_exec_callback_QQmlComponent_statusChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQmlComponent_statusChanged_release(slot); }
+	};
+	MiqtVirtualQQmlComponent::connect(self, static_cast<void (QQmlComponent::*)(QQmlComponent::Status)>(&QQmlComponent::statusChanged), self, caller{slot});
 }
 
 void QQmlComponent_progressChanged(QQmlComponent* self, double param1) {
@@ -542,11 +553,20 @@ void QQmlComponent_progressChanged(QQmlComponent* self, double param1) {
 }
 
 void QQmlComponent_connect_progressChanged(QQmlComponent* self, intptr_t slot) {
-	MiqtVirtualQQmlComponent::connect(self, static_cast<void (QQmlComponent::*)(qreal)>(&QQmlComponent::progressChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QQmlComponent_progressChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal param1) {
+			qreal param1_ret = param1;
+			double sigval1 = static_cast<double>(param1_ret);
+			miqt_exec_callback_QQmlComponent_progressChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQmlComponent_progressChanged_release(slot); }
+	};
+	MiqtVirtualQQmlComponent::connect(self, static_cast<void (QQmlComponent::*)(qreal)>(&QQmlComponent::progressChanged), self, caller{slot});
 }
 
 struct miqt_string QQmlComponent_tr2(const char* s, const char* c) {

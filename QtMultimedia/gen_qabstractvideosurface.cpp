@@ -20,9 +20,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractVideoSurface_activeChanged(intptr_t, bool);
+void miqt_exec_callback_QAbstractVideoSurface_activeChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(intptr_t, QVideoSurfaceFormat*);
+void miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(intptr_t);
+void miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged_release(intptr_t);
 void miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(intptr_t, QSize*);
+void miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -474,10 +478,19 @@ void QAbstractVideoSurface_activeChanged(QAbstractVideoSurface* self, bool activ
 }
 
 void QAbstractVideoSurface_connect_activeChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(bool)>(&QAbstractVideoSurface::activeChanged), self, [=](bool active) {
-		bool sigval1 = active;
-		miqt_exec_callback_QAbstractVideoSurface_activeChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool active) {
+			bool sigval1 = active;
+			miqt_exec_callback_QAbstractVideoSurface_activeChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractVideoSurface_activeChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(bool)>(&QAbstractVideoSurface::activeChanged), self, caller{slot});
 }
 
 void QAbstractVideoSurface_surfaceFormatChanged(QAbstractVideoSurface* self, QVideoSurfaceFormat* format) {
@@ -485,12 +498,21 @@ void QAbstractVideoSurface_surfaceFormatChanged(QAbstractVideoSurface* self, QVi
 }
 
 void QAbstractVideoSurface_connect_surfaceFormatChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QVideoSurfaceFormat&)>(&QAbstractVideoSurface::surfaceFormatChanged), self, [=](const QVideoSurfaceFormat& format) {
-		const QVideoSurfaceFormat& format_ret = format;
-		// Cast returned reference into pointer
-		QVideoSurfaceFormat* sigval1 = const_cast<QVideoSurfaceFormat*>(&format_ret);
-		miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QVideoSurfaceFormat& format) {
+			const QVideoSurfaceFormat& format_ret = format;
+			// Cast returned reference into pointer
+			QVideoSurfaceFormat* sigval1 = const_cast<QVideoSurfaceFormat*>(&format_ret);
+			miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QVideoSurfaceFormat&)>(&QAbstractVideoSurface::surfaceFormatChanged), self, caller{slot});
 }
 
 void QAbstractVideoSurface_supportedFormatsChanged(QAbstractVideoSurface* self) {
@@ -498,9 +520,18 @@ void QAbstractVideoSurface_supportedFormatsChanged(QAbstractVideoSurface* self) 
 }
 
 void QAbstractVideoSurface_connect_supportedFormatsChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)()>(&QAbstractVideoSurface::supportedFormatsChanged), self, [=]() {
-		miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)()>(&QAbstractVideoSurface::supportedFormatsChanged), self, caller{slot});
 }
 
 void QAbstractVideoSurface_nativeResolutionChanged(QAbstractVideoSurface* self, QSize* resolution) {
@@ -508,12 +539,21 @@ void QAbstractVideoSurface_nativeResolutionChanged(QAbstractVideoSurface* self, 
 }
 
 void QAbstractVideoSurface_connect_nativeResolutionChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QSize&)>(&QAbstractVideoSurface::nativeResolutionChanged), self, [=](const QSize& resolution) {
-		const QSize& resolution_ret = resolution;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&resolution_ret);
-		miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QSize& resolution) {
+			const QSize& resolution_ret = resolution;
+			// Cast returned reference into pointer
+			QSize* sigval1 = const_cast<QSize*>(&resolution_ret);
+			miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged_release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QSize&)>(&QAbstractVideoSurface::nativeResolutionChanged), self, caller{slot});
 }
 
 struct miqt_string QAbstractVideoSurface_tr2(const char* s, const char* c) {

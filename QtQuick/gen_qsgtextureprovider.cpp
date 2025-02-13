@@ -14,6 +14,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSGTextureProvider_textureChanged(intptr_t);
+void miqt_exec_callback_QSGTextureProvider_textureChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -65,9 +66,18 @@ void QSGTextureProvider_textureChanged(QSGTextureProvider* self) {
 }
 
 void QSGTextureProvider_connect_textureChanged(QSGTextureProvider* self, intptr_t slot) {
-	QSGTextureProvider::connect(self, static_cast<void (QSGTextureProvider::*)()>(&QSGTextureProvider::textureChanged), self, [=]() {
-		miqt_exec_callback_QSGTextureProvider_textureChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSGTextureProvider_textureChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSGTextureProvider_textureChanged_release(slot); }
+	};
+	QSGTextureProvider::connect(self, static_cast<void (QSGTextureProvider::*)()>(&QSGTextureProvider::textureChanged), self, caller{slot});
 }
 
 struct miqt_string QSGTextureProvider_tr2(const char* s, const char* c) {

@@ -23,14 +23,23 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QValidator_changed(intptr_t);
+void miqt_exec_callback_QValidator_changed_release(intptr_t);
 void miqt_exec_callback_QIntValidator_bottomChanged(intptr_t, int);
+void miqt_exec_callback_QIntValidator_bottomChanged_release(intptr_t);
 void miqt_exec_callback_QIntValidator_topChanged(intptr_t, int);
+void miqt_exec_callback_QIntValidator_topChanged_release(intptr_t);
 void miqt_exec_callback_QDoubleValidator_bottomChanged(intptr_t, double);
+void miqt_exec_callback_QDoubleValidator_bottomChanged_release(intptr_t);
 void miqt_exec_callback_QDoubleValidator_topChanged(intptr_t, double);
+void miqt_exec_callback_QDoubleValidator_topChanged_release(intptr_t);
 void miqt_exec_callback_QDoubleValidator_decimalsChanged(intptr_t, int);
+void miqt_exec_callback_QDoubleValidator_decimalsChanged_release(intptr_t);
 void miqt_exec_callback_QDoubleValidator_notationChanged(intptr_t, int);
+void miqt_exec_callback_QDoubleValidator_notationChanged_release(intptr_t);
 void miqt_exec_callback_QRegExpValidator_regExpChanged(intptr_t, QRegExp*);
+void miqt_exec_callback_QRegExpValidator_regExpChanged_release(intptr_t);
 void miqt_exec_callback_QRegularExpressionValidator_regularExpressionChanged(intptr_t, QRegularExpression*);
+void miqt_exec_callback_QRegularExpressionValidator_regularExpressionChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -377,9 +386,18 @@ void QValidator_changed(QValidator* self) {
 }
 
 void QValidator_connect_changed(QValidator* self, intptr_t slot) {
-	MiqtVirtualQValidator::connect(self, static_cast<void (QValidator::*)()>(&QValidator::changed), self, [=]() {
-		miqt_exec_callback_QValidator_changed(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QValidator_changed(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QValidator_changed_release(slot); }
+	};
+	MiqtVirtualQValidator::connect(self, static_cast<void (QValidator::*)()>(&QValidator::changed), self, caller{slot});
 }
 
 struct miqt_string QValidator_tr2(const char* s, const char* c) {
@@ -921,10 +939,19 @@ void QIntValidator_bottomChanged(QIntValidator* self, int bottom) {
 }
 
 void QIntValidator_connect_bottomChanged(QIntValidator* self, intptr_t slot) {
-	MiqtVirtualQIntValidator::connect(self, static_cast<void (QIntValidator::*)(int)>(&QIntValidator::bottomChanged), self, [=](int bottom) {
-		int sigval1 = bottom;
-		miqt_exec_callback_QIntValidator_bottomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int bottom) {
+			int sigval1 = bottom;
+			miqt_exec_callback_QIntValidator_bottomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QIntValidator_bottomChanged_release(slot); }
+	};
+	MiqtVirtualQIntValidator::connect(self, static_cast<void (QIntValidator::*)(int)>(&QIntValidator::bottomChanged), self, caller{slot});
 }
 
 void QIntValidator_topChanged(QIntValidator* self, int top) {
@@ -932,10 +959,19 @@ void QIntValidator_topChanged(QIntValidator* self, int top) {
 }
 
 void QIntValidator_connect_topChanged(QIntValidator* self, intptr_t slot) {
-	MiqtVirtualQIntValidator::connect(self, static_cast<void (QIntValidator::*)(int)>(&QIntValidator::topChanged), self, [=](int top) {
-		int sigval1 = top;
-		miqt_exec_callback_QIntValidator_topChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int top) {
+			int sigval1 = top;
+			miqt_exec_callback_QIntValidator_topChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QIntValidator_topChanged_release(slot); }
+	};
+	MiqtVirtualQIntValidator::connect(self, static_cast<void (QIntValidator::*)(int)>(&QIntValidator::topChanged), self, caller{slot});
 }
 
 struct miqt_string QIntValidator_tr2(const char* s, const char* c) {
@@ -1498,10 +1534,19 @@ void QDoubleValidator_bottomChanged(QDoubleValidator* self, double bottom) {
 }
 
 void QDoubleValidator_connect_bottomChanged(QDoubleValidator* self, intptr_t slot) {
-	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(double)>(&QDoubleValidator::bottomChanged), self, [=](double bottom) {
-		double sigval1 = bottom;
-		miqt_exec_callback_QDoubleValidator_bottomChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(double bottom) {
+			double sigval1 = bottom;
+			miqt_exec_callback_QDoubleValidator_bottomChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDoubleValidator_bottomChanged_release(slot); }
+	};
+	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(double)>(&QDoubleValidator::bottomChanged), self, caller{slot});
 }
 
 void QDoubleValidator_topChanged(QDoubleValidator* self, double top) {
@@ -1509,10 +1554,19 @@ void QDoubleValidator_topChanged(QDoubleValidator* self, double top) {
 }
 
 void QDoubleValidator_connect_topChanged(QDoubleValidator* self, intptr_t slot) {
-	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(double)>(&QDoubleValidator::topChanged), self, [=](double top) {
-		double sigval1 = top;
-		miqt_exec_callback_QDoubleValidator_topChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(double top) {
+			double sigval1 = top;
+			miqt_exec_callback_QDoubleValidator_topChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDoubleValidator_topChanged_release(slot); }
+	};
+	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(double)>(&QDoubleValidator::topChanged), self, caller{slot});
 }
 
 void QDoubleValidator_decimalsChanged(QDoubleValidator* self, int decimals) {
@@ -1520,10 +1574,19 @@ void QDoubleValidator_decimalsChanged(QDoubleValidator* self, int decimals) {
 }
 
 void QDoubleValidator_connect_decimalsChanged(QDoubleValidator* self, intptr_t slot) {
-	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(int)>(&QDoubleValidator::decimalsChanged), self, [=](int decimals) {
-		int sigval1 = decimals;
-		miqt_exec_callback_QDoubleValidator_decimalsChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int decimals) {
+			int sigval1 = decimals;
+			miqt_exec_callback_QDoubleValidator_decimalsChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDoubleValidator_decimalsChanged_release(slot); }
+	};
+	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(int)>(&QDoubleValidator::decimalsChanged), self, caller{slot});
 }
 
 void QDoubleValidator_notationChanged(QDoubleValidator* self, int notation) {
@@ -1531,11 +1594,20 @@ void QDoubleValidator_notationChanged(QDoubleValidator* self, int notation) {
 }
 
 void QDoubleValidator_connect_notationChanged(QDoubleValidator* self, intptr_t slot) {
-	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(QDoubleValidator::Notation)>(&QDoubleValidator::notationChanged), self, [=](QDoubleValidator::Notation notation) {
-		QDoubleValidator::Notation notation_ret = notation;
-		int sigval1 = static_cast<int>(notation_ret);
-		miqt_exec_callback_QDoubleValidator_notationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QDoubleValidator::Notation notation) {
+			QDoubleValidator::Notation notation_ret = notation;
+			int sigval1 = static_cast<int>(notation_ret);
+			miqt_exec_callback_QDoubleValidator_notationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDoubleValidator_notationChanged_release(slot); }
+	};
+	MiqtVirtualQDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(QDoubleValidator::Notation)>(&QDoubleValidator::notationChanged), self, caller{slot});
 }
 
 struct miqt_string QDoubleValidator_tr2(const char* s, const char* c) {
@@ -2049,12 +2121,21 @@ void QRegExpValidator_regExpChanged(QRegExpValidator* self, QRegExp* regExp) {
 }
 
 void QRegExpValidator_connect_regExpChanged(QRegExpValidator* self, intptr_t slot) {
-	MiqtVirtualQRegExpValidator::connect(self, static_cast<void (QRegExpValidator::*)(const QRegExp&)>(&QRegExpValidator::regExpChanged), self, [=](const QRegExp& regExp) {
-		const QRegExp& regExp_ret = regExp;
-		// Cast returned reference into pointer
-		QRegExp* sigval1 = const_cast<QRegExp*>(&regExp_ret);
-		miqt_exec_callback_QRegExpValidator_regExpChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QRegExp& regExp) {
+			const QRegExp& regExp_ret = regExp;
+			// Cast returned reference into pointer
+			QRegExp* sigval1 = const_cast<QRegExp*>(&regExp_ret);
+			miqt_exec_callback_QRegExpValidator_regExpChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRegExpValidator_regExpChanged_release(slot); }
+	};
+	MiqtVirtualQRegExpValidator::connect(self, static_cast<void (QRegExpValidator::*)(const QRegExp&)>(&QRegExpValidator::regExpChanged), self, caller{slot});
 }
 
 struct miqt_string QRegExpValidator_tr2(const char* s, const char* c) {
@@ -2562,12 +2643,21 @@ void QRegularExpressionValidator_regularExpressionChanged(QRegularExpressionVali
 }
 
 void QRegularExpressionValidator_connect_regularExpressionChanged(QRegularExpressionValidator* self, intptr_t slot) {
-	MiqtVirtualQRegularExpressionValidator::connect(self, static_cast<void (QRegularExpressionValidator::*)(const QRegularExpression&)>(&QRegularExpressionValidator::regularExpressionChanged), self, [=](const QRegularExpression& re) {
-		const QRegularExpression& re_ret = re;
-		// Cast returned reference into pointer
-		QRegularExpression* sigval1 = const_cast<QRegularExpression*>(&re_ret);
-		miqt_exec_callback_QRegularExpressionValidator_regularExpressionChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QRegularExpression& re) {
+			const QRegularExpression& re_ret = re;
+			// Cast returned reference into pointer
+			QRegularExpression* sigval1 = const_cast<QRegularExpression*>(&re_ret);
+			miqt_exec_callback_QRegularExpressionValidator_regularExpressionChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QRegularExpressionValidator_regularExpressionChanged_release(slot); }
+	};
+	MiqtVirtualQRegularExpressionValidator::connect(self, static_cast<void (QRegularExpressionValidator::*)(const QRegularExpression&)>(&QRegularExpressionValidator::regularExpressionChanged), self, caller{slot});
 }
 
 struct miqt_string QRegularExpressionValidator_tr2(const char* s, const char* c) {
