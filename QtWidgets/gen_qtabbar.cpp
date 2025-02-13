@@ -1179,16 +1179,16 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QTabBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionTab* option, int tabIndex);
-	friend void QTabBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QTabBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QTabBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QTabBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QTabBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QTabBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QTabBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QTabBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QTabBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QTabBar_protectedbase_initStyleOption(const void* self, QStyleOptionTab* option, int tabIndex);
+	friend void QTabBar_protectedbase_updateMicroFocus(void* self);
+	friend void QTabBar_protectedbase_create(void* self);
+	friend void QTabBar_protectedbase_destroy(void* self);
+	friend bool QTabBar_protectedbase_focusNextChild(void* self);
+	friend bool QTabBar_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QTabBar_protectedbase_sender(const void* self);
+	friend int QTabBar_protectedbase_senderSignalIndex(const void* self);
+	friend int QTabBar_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QTabBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QTabBar* QTabBar_new(struct QTabBar_VTable* vtbl, QWidget* parent) {
@@ -1870,131 +1870,71 @@ void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QTabBar_staticMetaObject() { return &QTabBar::staticMetaObject; }
-void QTabBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionTab* option, int tabIndex) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTabBar_protectedbase_initStyleOption(const void* self, QStyleOptionTab* option, int tabIndex) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	self_cast->initStyleOption(option, static_cast<int>(tabIndex));
 
 }
 
-void QTabBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTabBar_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QTabBar_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTabBar_protectedbase_create(void* self) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QTabBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTabBar_protectedbase_destroy(void* self) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QTabBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTabBar_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QTabBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTabBar_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QTabBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QTabBar_protectedbase_sender(const void* self) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QTabBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTabBar_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QTabBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTabBar_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QTabBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTabBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTabBar* self_cast = static_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

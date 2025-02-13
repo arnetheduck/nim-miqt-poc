@@ -257,10 +257,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QIconEnginePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QIconEnginePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QIconEnginePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QIconEnginePlugin_protectedbase_sender(const void* self);
+	friend int QIconEnginePlugin_protectedbase_senderSignalIndex(const void* self);
+	friend int QIconEnginePlugin_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QIconEnginePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QIconEnginePlugin* QIconEnginePlugin_new(struct QIconEnginePlugin_VTable* vtbl) {
@@ -399,53 +399,29 @@ void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 }
 
 const QMetaObject* QIconEnginePlugin_staticMetaObject() { return &QIconEnginePlugin::staticMetaObject; }
-QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQIconEnginePlugin* self_cast = dynamic_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QIconEnginePlugin_protectedbase_sender(const void* self) {
+	MiqtVirtualQIconEnginePlugin* self_cast = static_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QIconEnginePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQIconEnginePlugin* self_cast = dynamic_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QIconEnginePlugin_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQIconEnginePlugin* self_cast = static_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QIconEnginePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQIconEnginePlugin* self_cast = dynamic_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QIconEnginePlugin_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQIconEnginePlugin* self_cast = static_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QIconEnginePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQIconEnginePlugin* self_cast = dynamic_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QIconEnginePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQIconEnginePlugin* self_cast = static_cast<MiqtVirtualQIconEnginePlugin*>( (QIconEnginePlugin*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

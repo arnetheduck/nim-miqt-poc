@@ -39,11 +39,13 @@ export gen_qquickitemgrabresult_types
 
 import
   gen_qimage_types,
+  gen_qmetaobject_types,
   gen_qobject,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qimage_types,
+  gen_qmetaobject_types,
   gen_qobject,
   gen_qobjectdefs_types,
   gen_qurl_types
@@ -65,6 +67,10 @@ proc fcQQuickItemGrabResult_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQQuickItemGrabResult_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickItemGrabResult_tr3".}
 proc fcQQuickItemGrabResult_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickItemGrabResult_trUtf82".}
 proc fcQQuickItemGrabResult_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickItemGrabResult_trUtf83".}
+proc fcQQuickItemGrabResult_protectedbase_sender(self: pointer, ): pointer {.importc: "QQuickItemGrabResult_protectedbase_sender".}
+proc fcQQuickItemGrabResult_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QQuickItemGrabResult_protectedbase_senderSignalIndex".}
+proc fcQQuickItemGrabResult_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QQuickItemGrabResult_protectedbase_receivers".}
+proc fcQQuickItemGrabResult_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QQuickItemGrabResult_protectedbase_isSignalConnected".}
 proc fcQQuickItemGrabResult_staticMetaObject(): pointer {.importc: "QQuickItemGrabResult_staticMetaObject".}
 proc fcQQuickItemGrabResult_delete(self: pointer) {.importc: "QQuickItemGrabResult_delete".}
 
@@ -142,6 +148,18 @@ proc trUtf8*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cst
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
+
+proc sender*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQQuickItemGrabResult_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): cint =
+  fcQQuickItemGrabResult_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, signal: cstring): cint =
+  fcQQuickItemGrabResult_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQQuickItemGrabResult_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc staticMetaObject*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQQuickItemGrabResult_staticMetaObject())

@@ -165,13 +165,13 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QImage* QImage_protectedbase_mirroredHelper(bool* _dynamic_cast_ok, const void* self, bool horizontal, bool vertical);
-	friend QImage* QImage_protectedbase_rgbSwappedHelper(bool* _dynamic_cast_ok, const void* self);
-	friend void QImage_protectedbase_mirroredInplace(bool* _dynamic_cast_ok, void* self, bool horizontal, bool vertical);
-	friend void QImage_protectedbase_rgbSwappedInplace(bool* _dynamic_cast_ok, void* self);
-	friend QImage* QImage_protectedbase_convertToFormatHelper(bool* _dynamic_cast_ok, const void* self, int format, int flags);
-	friend bool QImage_protectedbase_convertToFormatInplace(bool* _dynamic_cast_ok, void* self, int format, int flags);
-	friend QImage* QImage_protectedbase_smoothScaled(bool* _dynamic_cast_ok, const void* self, int w, int h);
+	friend QImage* QImage_protectedbase_mirroredHelper(const void* self, bool horizontal, bool vertical);
+	friend QImage* QImage_protectedbase_rgbSwappedHelper(const void* self);
+	friend void QImage_protectedbase_mirroredInplace(void* self, bool horizontal, bool vertical);
+	friend void QImage_protectedbase_rgbSwappedInplace(void* self);
+	friend QImage* QImage_protectedbase_convertToFormatHelper(const void* self, int format, int flags);
+	friend bool QImage_protectedbase_convertToFormatInplace(void* self, int format, int flags);
+	friend QImage* QImage_protectedbase_smoothScaled(const void* self, int w, int h);
 };
 
 QImage* QImage_new(struct QImage_VTable* vtbl) {
@@ -840,92 +840,50 @@ QPainter* QImage_virtualbase_sharedPainter(const void* self) {
 }
 
 const QMetaObject* QImage_staticMetaObject() { return &QImage::staticMetaObject; }
-QImage* QImage_protectedbase_mirroredHelper(bool* _dynamic_cast_ok, const void* self, bool horizontal, bool vertical) {
-	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QImage* QImage_protectedbase_mirroredHelper(const void* self, bool horizontal, bool vertical) {
+	MiqtVirtualQImage* self_cast = static_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	
 	return new QImage(self_cast->mirrored_helper(horizontal, vertical));
 
 }
 
-QImage* QImage_protectedbase_rgbSwappedHelper(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QImage* QImage_protectedbase_rgbSwappedHelper(const void* self) {
+	MiqtVirtualQImage* self_cast = static_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	
 	return new QImage(self_cast->rgbSwapped_helper());
 
 }
 
-void QImage_protectedbase_mirroredInplace(bool* _dynamic_cast_ok, void* self, bool horizontal, bool vertical) {
-	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QImage_protectedbase_mirroredInplace(void* self, bool horizontal, bool vertical) {
+	MiqtVirtualQImage* self_cast = static_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	
 	self_cast->mirrored_inplace(horizontal, vertical);
 
 }
 
-void QImage_protectedbase_rgbSwappedInplace(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QImage_protectedbase_rgbSwappedInplace(void* self) {
+	MiqtVirtualQImage* self_cast = static_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	
 	self_cast->rgbSwapped_inplace();
 
 }
 
-QImage* QImage_protectedbase_convertToFormatHelper(bool* _dynamic_cast_ok, const void* self, int format, int flags) {
-	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QImage* QImage_protectedbase_convertToFormatHelper(const void* self, int format, int flags) {
+	MiqtVirtualQImage* self_cast = static_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	
 	return new QImage(self_cast->convertToFormat_helper(static_cast<MiqtVirtualQImage::Format>(format), static_cast<Qt::ImageConversionFlags>(flags)));
 
 }
 
-bool QImage_protectedbase_convertToFormatInplace(bool* _dynamic_cast_ok, void* self, int format, int flags) {
-	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QImage_protectedbase_convertToFormatInplace(void* self, int format, int flags) {
+	MiqtVirtualQImage* self_cast = static_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	
 	return self_cast->convertToFormat_inplace(static_cast<MiqtVirtualQImage::Format>(format), static_cast<Qt::ImageConversionFlags>(flags));
 
 }
 
-QImage* QImage_protectedbase_smoothScaled(bool* _dynamic_cast_ok, const void* self, int w, int h) {
-	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QImage* QImage_protectedbase_smoothScaled(const void* self, int w, int h) {
+	MiqtVirtualQImage* self_cast = static_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	
 	return new QImage(self_cast->smoothScaled(static_cast<int>(w), static_cast<int>(h)));
 

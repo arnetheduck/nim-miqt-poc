@@ -738,10 +738,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QQuickWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QQuickWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QQuickWindow_protectedbase_sender(const void* self);
+	friend int QQuickWindow_protectedbase_senderSignalIndex(const void* self);
+	friend int QQuickWindow_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QQuickWindow_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QQuickWindow* QQuickWindow_new(struct QQuickWindow_VTable* vtbl) {
@@ -1440,53 +1440,29 @@ void QQuickWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 }
 
 const QMetaObject* QQuickWindow_staticMetaObject() { return &QQuickWindow::staticMetaObject; }
-QObject* QQuickWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickWindow* self_cast = dynamic_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QQuickWindow_protectedbase_sender(const void* self) {
+	MiqtVirtualQQuickWindow* self_cast = static_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QQuickWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickWindow* self_cast = dynamic_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickWindow_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQQuickWindow* self_cast = static_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QQuickWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQQuickWindow* self_cast = dynamic_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickWindow_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQQuickWindow* self_cast = static_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QQuickWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQQuickWindow* self_cast = dynamic_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickWindow_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQQuickWindow* self_cast = static_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

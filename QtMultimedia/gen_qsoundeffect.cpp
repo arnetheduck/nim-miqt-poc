@@ -259,10 +259,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QSoundEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QSoundEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QSoundEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QSoundEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QSoundEffect_protectedbase_sender(const void* self);
+	friend int QSoundEffect_protectedbase_senderSignalIndex(const void* self);
+	friend int QSoundEffect_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QSoundEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QSoundEffect* QSoundEffect_new(struct QSoundEffect_VTable* vtbl) {
@@ -669,53 +669,29 @@ void QSoundEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 }
 
 const QMetaObject* QSoundEffect_staticMetaObject() { return &QSoundEffect::staticMetaObject; }
-QObject* QSoundEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QSoundEffect_protectedbase_sender(const void* self) {
+	MiqtVirtualQSoundEffect* self_cast = static_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QSoundEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSoundEffect_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQSoundEffect* self_cast = static_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QSoundEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSoundEffect_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQSoundEffect* self_cast = static_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QSoundEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QSoundEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSoundEffect* self_cast = static_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

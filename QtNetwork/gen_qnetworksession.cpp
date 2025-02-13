@@ -253,10 +253,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QNetworkSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QNetworkSession_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QNetworkSession_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QNetworkSession_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QNetworkSession_protectedbase_sender(const void* self);
+	friend int QNetworkSession_protectedbase_senderSignalIndex(const void* self);
+	friend int QNetworkSession_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QNetworkSession_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QNetworkSession* QNetworkSession_new(struct QNetworkSession_VTable* vtbl, QNetworkConfiguration* connConfig) {
@@ -632,53 +632,29 @@ void QNetworkSession_virtualbase_customEvent(void* self, QEvent* event) {
 }
 
 const QMetaObject* QNetworkSession_staticMetaObject() { return &QNetworkSession::staticMetaObject; }
-QObject* QNetworkSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QNetworkSession_protectedbase_sender(const void* self) {
+	MiqtVirtualQNetworkSession* self_cast = static_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QNetworkSession_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QNetworkSession_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQNetworkSession* self_cast = static_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QNetworkSession_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QNetworkSession_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQNetworkSession* self_cast = static_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QNetworkSession_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QNetworkSession_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQNetworkSession* self_cast = static_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

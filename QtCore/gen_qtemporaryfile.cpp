@@ -656,12 +656,12 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QTemporaryFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
-	friend void QTemporaryFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
-	friend QObject* QTemporaryFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QTemporaryFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QTemporaryFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QTemporaryFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QTemporaryFile_protectedbase_setOpenMode(void* self, int openMode);
+	friend void QTemporaryFile_protectedbase_setErrorString(void* self, struct miqt_string errorString);
+	friend QObject* QTemporaryFile_protectedbase_sender(const void* self);
+	friend int QTemporaryFile_protectedbase_senderSignalIndex(const void* self);
+	friend int QTemporaryFile_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QTemporaryFile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QTemporaryFile* QTemporaryFile_new(struct QTemporaryFile_VTable* vtbl) {
@@ -947,80 +947,44 @@ void QTemporaryFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 }
 
 const QMetaObject* QTemporaryFile_staticMetaObject() { return &QTemporaryFile::staticMetaObject; }
-void QTemporaryFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
-	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTemporaryFile_protectedbase_setOpenMode(void* self, int openMode) {
+	MiqtVirtualQTemporaryFile* self_cast = static_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
 	
 	self_cast->setOpenMode(static_cast<MiqtVirtualQTemporaryFile::OpenMode>(openMode));
 
 }
 
-void QTemporaryFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
-	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTemporaryFile_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	MiqtVirtualQTemporaryFile* self_cast = static_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
 			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
 
 	self_cast->setErrorString(errorString_QString);
 
 }
 
-QObject* QTemporaryFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QTemporaryFile_protectedbase_sender(const void* self) {
+	MiqtVirtualQTemporaryFile* self_cast = static_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QTemporaryFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTemporaryFile_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQTemporaryFile* self_cast = static_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QTemporaryFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTemporaryFile_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQTemporaryFile* self_cast = static_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QTemporaryFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTemporaryFile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTemporaryFile* self_cast = static_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

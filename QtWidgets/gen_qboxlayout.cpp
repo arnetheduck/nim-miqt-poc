@@ -635,15 +635,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
-	friend void QBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
-	friend void QBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
-	friend bool QBoxLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QBoxLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
-	friend QObject* QBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1);
+	friend void QBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l);
+	friend void QBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w);
+	friend bool QBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout);
+	friend QRect* QBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1);
+	friend QObject* QBoxLayout_protectedbase_sender(const void* self);
+	friend int QBoxLayout_protectedbase_senderSignalIndex(const void* self);
+	friend int QBoxLayout_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QBoxLayout* QBoxLayout_new(struct QBoxLayout_VTable* vtbl, int param1) {
@@ -1023,118 +1023,64 @@ QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self) {
 }
 
 const QMetaObject* QBoxLayout_staticMetaObject() { return &QBoxLayout::staticMetaObject; }
-void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	self_cast->widgetEvent(param1);
 
 }
 
-void QBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	self_cast->addChildLayout(l);
 
 }
 
-void QBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	self_cast->addChildWidget(w);
 
 }
 
-bool QBoxLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	return self_cast->adoptLayout(layout);
 
 }
 
-QRect* QBoxLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRect* QBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	return new QRect(self_cast->alignmentRect(*param1));
 
 }
 
-QObject* QBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QBoxLayout_protectedbase_sender(const void* self) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QBoxLayout_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QBoxLayout_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQBoxLayout* self_cast = static_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1752,15 +1698,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
-	friend void QHBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
-	friend void QHBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
-	friend bool QHBoxLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QHBoxLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
-	friend QObject* QHBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QHBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QHBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QHBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QHBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1);
+	friend void QHBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l);
+	friend void QHBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w);
+	friend bool QHBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout);
+	friend QRect* QHBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1);
+	friend QObject* QHBoxLayout_protectedbase_sender(const void* self);
+	friend int QHBoxLayout_protectedbase_senderSignalIndex(const void* self);
+	friend int QHBoxLayout_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QHBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QHBoxLayout* QHBoxLayout_new(struct QHBoxLayout_VTable* vtbl, QWidget* parent) {
@@ -1974,118 +1920,64 @@ QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self) {
 }
 
 const QMetaObject* QHBoxLayout_staticMetaObject() { return &QHBoxLayout::staticMetaObject; }
-void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QHBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	self_cast->widgetEvent(param1);
 
 }
 
-void QHBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QHBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	self_cast->addChildLayout(l);
 
 }
 
-void QHBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QHBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	self_cast->addChildWidget(w);
 
 }
 
-bool QHBoxLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QHBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	return self_cast->adoptLayout(layout);
 
 }
 
-QRect* QHBoxLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRect* QHBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	return new QRect(self_cast->alignmentRect(*param1));
 
 }
 
-QObject* QHBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QHBoxLayout_protectedbase_sender(const void* self) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QHBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QHBoxLayout_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QHBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QHBoxLayout_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QHBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QHBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQHBoxLayout* self_cast = static_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -2703,15 +2595,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
-	friend void QVBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
-	friend void QVBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
-	friend bool QVBoxLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QVBoxLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
-	friend QObject* QVBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QVBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QVBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QVBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QVBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1);
+	friend void QVBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l);
+	friend void QVBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w);
+	friend bool QVBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout);
+	friend QRect* QVBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1);
+	friend QObject* QVBoxLayout_protectedbase_sender(const void* self);
+	friend int QVBoxLayout_protectedbase_senderSignalIndex(const void* self);
+	friend int QVBoxLayout_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QVBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QVBoxLayout* QVBoxLayout_new(struct QVBoxLayout_VTable* vtbl, QWidget* parent) {
@@ -2925,118 +2817,64 @@ QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self) {
 }
 
 const QMetaObject* QVBoxLayout_staticMetaObject() { return &QVBoxLayout::staticMetaObject; }
-void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QVBoxLayout_protectedbase_widgetEvent(void* self, QEvent* param1) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	self_cast->widgetEvent(param1);
 
 }
 
-void QVBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QVBoxLayout_protectedbase_addChildLayout(void* self, QLayout* l) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	self_cast->addChildLayout(l);
 
 }
 
-void QVBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QVBoxLayout_protectedbase_addChildWidget(void* self, QWidget* w) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	self_cast->addChildWidget(w);
 
 }
 
-bool QVBoxLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QVBoxLayout_protectedbase_adoptLayout(void* self, QLayout* layout) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	return self_cast->adoptLayout(layout);
 
 }
 
-QRect* QVBoxLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRect* QVBoxLayout_protectedbase_alignmentRect(const void* self, QRect* param1) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	return new QRect(self_cast->alignmentRect(*param1));
 
 }
 
-QObject* QVBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QVBoxLayout_protectedbase_sender(const void* self) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QVBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QVBoxLayout_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QVBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QVBoxLayout_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QVBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QVBoxLayout_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQVBoxLayout* self_cast = static_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

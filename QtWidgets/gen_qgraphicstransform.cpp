@@ -268,11 +268,11 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsTransform_protectedbase_update(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QGraphicsTransform_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsTransform_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsTransform_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsTransform_protectedbase_update(void* self);
+	friend QObject* QGraphicsTransform_protectedbase_sender(const void* self);
+	friend int QGraphicsTransform_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsTransform_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsTransform_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsTransform* QGraphicsTransform_new(struct QGraphicsTransform_VTable* vtbl) {
@@ -410,66 +410,36 @@ void QGraphicsTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 }
 
 const QMetaObject* QGraphicsTransform_staticMetaObject() { return &QGraphicsTransform::staticMetaObject; }
-void QGraphicsTransform_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsTransform_protectedbase_update(void* self) {
+	MiqtVirtualQGraphicsTransform* self_cast = static_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
 	
 	self_cast->update();
 
 }
 
-QObject* QGraphicsTransform_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsTransform_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsTransform* self_cast = static_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsTransform_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsTransform_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsTransform* self_cast = static_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsTransform_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsTransform_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsTransform* self_cast = static_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsTransform_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsTransform* self_cast = static_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -716,11 +686,11 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsScale_protectedbase_update(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QGraphicsScale_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsScale_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsScale_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsScale_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsScale_protectedbase_update(void* self);
+	friend QObject* QGraphicsScale_protectedbase_sender(const void* self);
+	friend int QGraphicsScale_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsScale_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsScale_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsScale* QGraphicsScale_new(struct QGraphicsScale_VTable* vtbl) {
@@ -992,66 +962,36 @@ void QGraphicsScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 }
 
 const QMetaObject* QGraphicsScale_staticMetaObject() { return &QGraphicsScale::staticMetaObject; }
-void QGraphicsScale_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsScale* self_cast = dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsScale_protectedbase_update(void* self) {
+	MiqtVirtualQGraphicsScale* self_cast = static_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
 	
 	self_cast->update();
 
 }
 
-QObject* QGraphicsScale_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsScale* self_cast = dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsScale_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsScale* self_cast = static_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsScale_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsScale* self_cast = dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsScale_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsScale* self_cast = static_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsScale_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsScale* self_cast = dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsScale_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsScale* self_cast = static_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsScale_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsScale* self_cast = dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsScale_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsScale* self_cast = static_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1298,11 +1238,11 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsRotation_protectedbase_update(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QGraphicsRotation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsRotation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsRotation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsRotation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsRotation_protectedbase_update(void* self);
+	friend QObject* QGraphicsRotation_protectedbase_sender(const void* self);
+	friend int QGraphicsRotation_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsRotation_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsRotation_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsRotation* QGraphicsRotation_new(struct QGraphicsRotation_VTable* vtbl) {
@@ -1530,66 +1470,36 @@ void QGraphicsRotation_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 }
 
 const QMetaObject* QGraphicsRotation_staticMetaObject() { return &QGraphicsRotation::staticMetaObject; }
-void QGraphicsRotation_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsRotation* self_cast = dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsRotation_protectedbase_update(void* self) {
+	MiqtVirtualQGraphicsRotation* self_cast = static_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
 	
 	self_cast->update();
 
 }
 
-QObject* QGraphicsRotation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsRotation* self_cast = dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsRotation_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsRotation* self_cast = static_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsRotation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsRotation* self_cast = dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsRotation_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsRotation* self_cast = static_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsRotation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsRotation* self_cast = dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsRotation_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsRotation* self_cast = static_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsRotation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsRotation* self_cast = dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsRotation_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsRotation* self_cast = static_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

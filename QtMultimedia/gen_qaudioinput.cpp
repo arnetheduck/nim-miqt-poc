@@ -247,10 +247,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QAudioInput_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QAudioInput_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QAudioInput_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QAudioInput_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QAudioInput_protectedbase_sender(const void* self);
+	friend int QAudioInput_protectedbase_senderSignalIndex(const void* self);
+	friend int QAudioInput_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QAudioInput_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QAudioInput* QAudioInput_new(struct QAudioInput_VTable* vtbl) {
@@ -521,53 +521,29 @@ void QAudioInput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QAudioInput_staticMetaObject() { return &QAudioInput::staticMetaObject; }
-QObject* QAudioInput_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QAudioInput_protectedbase_sender(const void* self) {
+	MiqtVirtualQAudioInput* self_cast = static_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QAudioInput_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAudioInput_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQAudioInput* self_cast = static_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QAudioInput_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAudioInput_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQAudioInput* self_cast = static_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QAudioInput_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QAudioInput_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAudioInput* self_cast = static_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

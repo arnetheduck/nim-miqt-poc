@@ -264,10 +264,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QMovie_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QMovie_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QMovie_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QMovie_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QMovie_protectedbase_sender(const void* self);
+	friend int QMovie_protectedbase_senderSignalIndex(const void* self);
+	friend int QMovie_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QMovie_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QMovie* QMovie_new(struct QMovie_VTable* vtbl) {
@@ -738,53 +738,29 @@ void QMovie_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QMovie_staticMetaObject() { return &QMovie::staticMetaObject; }
-QObject* QMovie_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QMovie_protectedbase_sender(const void* self) {
+	MiqtVirtualQMovie* self_cast = static_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QMovie_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMovie_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQMovie* self_cast = static_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QMovie_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMovie_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQMovie* self_cast = static_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QMovie_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMovie_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQMovie* self_cast = static_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

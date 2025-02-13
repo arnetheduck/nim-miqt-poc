@@ -237,10 +237,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QSGMaterialRhiShader_protectedbase_setShaderFileName(bool* _dynamic_cast_ok, void* self, int stage, struct miqt_string filename);
-	friend void QSGMaterialRhiShader_protectedbase_setShader(bool* _dynamic_cast_ok, void* self, int stage, const QShader* shader);
-	friend void QSGMaterialRhiShader_protectedbase_setShaderSourceFile(bool* _dynamic_cast_ok, void* self, QOpenGLShader::ShaderType type, struct miqt_string sourceFile);
-	friend void QSGMaterialRhiShader_protectedbase_setShaderSourceFiles(bool* _dynamic_cast_ok, void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles);
+	friend void QSGMaterialRhiShader_protectedbase_setShaderFileName(void* self, int stage, struct miqt_string filename);
+	friend void QSGMaterialRhiShader_protectedbase_setShader(void* self, int stage, const QShader* shader);
+	friend void QSGMaterialRhiShader_protectedbase_setShaderSourceFile(void* self, QOpenGLShader::ShaderType type, struct miqt_string sourceFile);
+	friend void QSGMaterialRhiShader_protectedbase_setShaderSourceFiles(void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles);
 };
 
 QSGMaterialRhiShader* QSGMaterialRhiShader_new(struct QSGMaterialRhiShader_VTable* vtbl) {
@@ -316,55 +316,31 @@ const char* QSGMaterialRhiShader_virtualbase_fragmentShader(const void* self) {
 	return ( (const MiqtVirtualQSGMaterialRhiShader*)(self) )->virtualbase_fragmentShader();
 }
 
-void QSGMaterialRhiShader_protectedbase_setShaderFileName(bool* _dynamic_cast_ok, void* self, int stage, struct miqt_string filename) {
-	MiqtVirtualQSGMaterialRhiShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QSGMaterialRhiShader_protectedbase_setShaderFileName(void* self, int stage, struct miqt_string filename) {
+	MiqtVirtualQSGMaterialRhiShader* self_cast = static_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
 			QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 
 	self_cast->setShaderFileName(static_cast<MiqtVirtualQSGMaterialRhiShader::Stage>(stage), filename_QString);
 
 }
 
-void QSGMaterialRhiShader_protectedbase_setShader(bool* _dynamic_cast_ok, void* self, int stage, const QShader* shader) {
-	MiqtVirtualQSGMaterialRhiShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QSGMaterialRhiShader_protectedbase_setShader(void* self, int stage, const QShader* shader) {
+	MiqtVirtualQSGMaterialRhiShader* self_cast = static_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
 	
 	self_cast->setShader(static_cast<MiqtVirtualQSGMaterialRhiShader::Stage>(stage), *shader);
 
 }
 
-void QSGMaterialRhiShader_protectedbase_setShaderSourceFile(bool* _dynamic_cast_ok, void* self, QOpenGLShader::ShaderType type, struct miqt_string sourceFile) {
-	MiqtVirtualQSGMaterialRhiShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QSGMaterialRhiShader_protectedbase_setShaderSourceFile(void* self, QOpenGLShader::ShaderType type, struct miqt_string sourceFile) {
+	MiqtVirtualQSGMaterialRhiShader* self_cast = static_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
 			QString sourceFile_QString = QString::fromUtf8(sourceFile.data, sourceFile.len);
 
 	self_cast->setShaderSourceFile(type, sourceFile_QString);
 
 }
 
-void QSGMaterialRhiShader_protectedbase_setShaderSourceFiles(bool* _dynamic_cast_ok, void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles) {
-	MiqtVirtualQSGMaterialRhiShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QSGMaterialRhiShader_protectedbase_setShaderSourceFiles(void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles) {
+	MiqtVirtualQSGMaterialRhiShader* self_cast = static_cast<MiqtVirtualQSGMaterialRhiShader*>( (QSGMaterialRhiShader*)(self) );
 			QStringList sourceFiles_QList;
 		sourceFiles_QList.reserve(sourceFiles.len);
 		struct miqt_string* sourceFiles_arr = static_cast<struct miqt_string*>(sourceFiles.data);

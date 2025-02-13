@@ -235,10 +235,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QObjectCleanupHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QObjectCleanupHandler_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QObjectCleanupHandler_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QObjectCleanupHandler_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QObjectCleanupHandler_protectedbase_sender(const void* self);
+	friend int QObjectCleanupHandler_protectedbase_senderSignalIndex(const void* self);
+	friend int QObjectCleanupHandler_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QObjectCleanupHandler_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QObjectCleanupHandler* QObjectCleanupHandler_new(struct QObjectCleanupHandler_VTable* vtbl) {
@@ -384,53 +384,29 @@ void QObjectCleanupHandler_virtualbase_disconnectNotify(void* self, QMetaMethod*
 }
 
 const QMetaObject* QObjectCleanupHandler_staticMetaObject() { return &QObjectCleanupHandler::staticMetaObject; }
-QObject* QObjectCleanupHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QObjectCleanupHandler_protectedbase_sender(const void* self) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = static_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QObjectCleanupHandler_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QObjectCleanupHandler_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = static_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QObjectCleanupHandler_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QObjectCleanupHandler_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = static_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QObjectCleanupHandler_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QObjectCleanupHandler_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = static_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

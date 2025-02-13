@@ -368,12 +368,12 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QAbstractVideoSurface_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int error);
-	friend void QAbstractVideoSurface_protectedbase_setNativeResolution(bool* _dynamic_cast_ok, void* self, QSize* resolution);
-	friend QObject* QAbstractVideoSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QAbstractVideoSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QAbstractVideoSurface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QAbstractVideoSurface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QAbstractVideoSurface_protectedbase_setError(void* self, int error);
+	friend void QAbstractVideoSurface_protectedbase_setNativeResolution(void* self, QSize* resolution);
+	friend QObject* QAbstractVideoSurface_protectedbase_sender(const void* self);
+	friend int QAbstractVideoSurface_protectedbase_senderSignalIndex(const void* self);
+	friend int QAbstractVideoSurface_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QAbstractVideoSurface_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QAbstractVideoSurface* QAbstractVideoSurface_new(struct QAbstractVideoSurface_VTable* vtbl) {
@@ -657,79 +657,43 @@ void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod*
 }
 
 const QMetaObject* QAbstractVideoSurface_staticMetaObject() { return &QAbstractVideoSurface::staticMetaObject; }
-void QAbstractVideoSurface_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int error) {
-	MiqtVirtualQAbstractVideoSurface* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QAbstractVideoSurface_protectedbase_setError(void* self, int error) {
+	MiqtVirtualQAbstractVideoSurface* self_cast = static_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
 	
 	self_cast->setError(static_cast<MiqtVirtualQAbstractVideoSurface::Error>(error));
 
 }
 
-void QAbstractVideoSurface_protectedbase_setNativeResolution(bool* _dynamic_cast_ok, void* self, QSize* resolution) {
-	MiqtVirtualQAbstractVideoSurface* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QAbstractVideoSurface_protectedbase_setNativeResolution(void* self, QSize* resolution) {
+	MiqtVirtualQAbstractVideoSurface* self_cast = static_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
 	
 	self_cast->setNativeResolution(*resolution);
 
 }
 
-QObject* QAbstractVideoSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAbstractVideoSurface* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QAbstractVideoSurface_protectedbase_sender(const void* self) {
+	MiqtVirtualQAbstractVideoSurface* self_cast = static_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QAbstractVideoSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAbstractVideoSurface* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAbstractVideoSurface_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQAbstractVideoSurface* self_cast = static_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QAbstractVideoSurface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQAbstractVideoSurface* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAbstractVideoSurface_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQAbstractVideoSurface* self_cast = static_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QAbstractVideoSurface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQAbstractVideoSurface* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QAbstractVideoSurface_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAbstractVideoSurface* self_cast = static_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

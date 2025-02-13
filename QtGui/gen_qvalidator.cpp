@@ -310,10 +310,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QValidator_protectedbase_sender(const void* self);
+	friend int QValidator_protectedbase_senderSignalIndex(const void* self);
+	friend int QValidator_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QValidator* QValidator_new(struct QValidator_VTable* vtbl) {
@@ -489,53 +489,29 @@ void QValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QValidator_staticMetaObject() { return &QValidator::staticMetaObject; }
-QObject* QValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QValidator_protectedbase_sender(const void* self) {
+	MiqtVirtualQValidator* self_cast = static_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QValidator_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQValidator* self_cast = static_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QValidator_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQValidator* self_cast = static_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQValidator* self_cast = static_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -843,10 +819,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QIntValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QIntValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QIntValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QIntValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QIntValidator_protectedbase_sender(const void* self);
+	friend int QIntValidator_protectedbase_senderSignalIndex(const void* self);
+	friend int QIntValidator_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QIntValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QIntValidator* QIntValidator_new(struct QIntValidator_VTable* vtbl) {
@@ -1071,53 +1047,29 @@ void QIntValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QIntValidator_staticMetaObject() { return &QIntValidator::staticMetaObject; }
-QObject* QIntValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QIntValidator_protectedbase_sender(const void* self) {
+	MiqtVirtualQIntValidator* self_cast = static_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QIntValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QIntValidator_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQIntValidator* self_cast = static_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QIntValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QIntValidator_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQIntValidator* self_cast = static_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QIntValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QIntValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQIntValidator* self_cast = static_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1426,10 +1378,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QDoubleValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QDoubleValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QDoubleValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QDoubleValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QDoubleValidator_protectedbase_sender(const void* self);
+	friend int QDoubleValidator_protectedbase_senderSignalIndex(const void* self);
+	friend int QDoubleValidator_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QDoubleValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QDoubleValidator* QDoubleValidator_new(struct QDoubleValidator_VTable* vtbl) {
@@ -1707,53 +1659,29 @@ void QDoubleValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 }
 
 const QMetaObject* QDoubleValidator_staticMetaObject() { return &QDoubleValidator::staticMetaObject; }
-QObject* QDoubleValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QDoubleValidator_protectedbase_sender(const void* self) {
+	MiqtVirtualQDoubleValidator* self_cast = static_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QDoubleValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDoubleValidator_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQDoubleValidator* self_cast = static_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QDoubleValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDoubleValidator_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQDoubleValidator* self_cast = static_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QDoubleValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDoubleValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQDoubleValidator* self_cast = static_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -2040,10 +1968,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QRegExpValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QRegExpValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QRegExpValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QRegExpValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QRegExpValidator_protectedbase_sender(const void* self);
+	friend int QRegExpValidator_protectedbase_senderSignalIndex(const void* self);
+	friend int QRegExpValidator_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QRegExpValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QRegExpValidator* QRegExpValidator_new(struct QRegExpValidator_VTable* vtbl) {
@@ -2231,53 +2159,29 @@ void QRegExpValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 }
 
 const QMetaObject* QRegExpValidator_staticMetaObject() { return &QRegExpValidator::staticMetaObject; }
-QObject* QRegExpValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQRegExpValidator* self_cast = dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QRegExpValidator_protectedbase_sender(const void* self) {
+	MiqtVirtualQRegExpValidator* self_cast = static_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QRegExpValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQRegExpValidator* self_cast = dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QRegExpValidator_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQRegExpValidator* self_cast = static_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QRegExpValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQRegExpValidator* self_cast = dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QRegExpValidator_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQRegExpValidator* self_cast = static_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QRegExpValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQRegExpValidator* self_cast = dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QRegExpValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQRegExpValidator* self_cast = static_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -2564,10 +2468,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QRegularExpressionValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QRegularExpressionValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QRegularExpressionValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QRegularExpressionValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QRegularExpressionValidator_protectedbase_sender(const void* self);
+	friend int QRegularExpressionValidator_protectedbase_senderSignalIndex(const void* self);
+	friend int QRegularExpressionValidator_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QRegularExpressionValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QRegularExpressionValidator* QRegularExpressionValidator_new(struct QRegularExpressionValidator_VTable* vtbl) {
@@ -2753,53 +2657,29 @@ void QRegularExpressionValidator_virtualbase_disconnectNotify(void* self, QMetaM
 }
 
 const QMetaObject* QRegularExpressionValidator_staticMetaObject() { return &QRegularExpressionValidator::staticMetaObject; }
-QObject* QRegularExpressionValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQRegularExpressionValidator* self_cast = dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QRegularExpressionValidator_protectedbase_sender(const void* self) {
+	MiqtVirtualQRegularExpressionValidator* self_cast = static_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QRegularExpressionValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQRegularExpressionValidator* self_cast = dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QRegularExpressionValidator_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQRegularExpressionValidator* self_cast = static_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QRegularExpressionValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQRegularExpressionValidator* self_cast = dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QRegularExpressionValidator_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQRegularExpressionValidator* self_cast = static_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QRegularExpressionValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQRegularExpressionValidator* self_cast = dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QRegularExpressionValidator_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQRegularExpressionValidator* self_cast = static_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

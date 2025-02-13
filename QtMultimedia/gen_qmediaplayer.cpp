@@ -377,12 +377,12 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QMediaPlayer_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
-	friend void QMediaPlayer_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
-	friend QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QMediaPlayer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QMediaPlayer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QMediaPlayer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QMediaPlayer_protectedbase_addPropertyWatch(void* self, struct miqt_string name);
+	friend void QMediaPlayer_protectedbase_removePropertyWatch(void* self, struct miqt_string name);
+	friend QObject* QMediaPlayer_protectedbase_sender(const void* self);
+	friend int QMediaPlayer_protectedbase_senderSignalIndex(const void* self);
+	friend int QMediaPlayer_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QMediaPlayer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QMediaPlayer* QMediaPlayer_new(struct QMediaPlayer_VTable* vtbl) {
@@ -1200,81 +1200,45 @@ void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 }
 
 const QMetaObject* QMediaPlayer_staticMetaObject() { return &QMediaPlayer::staticMetaObject; }
-void QMediaPlayer_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
-	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMediaPlayer_protectedbase_addPropertyWatch(void* self, struct miqt_string name) {
+	MiqtVirtualQMediaPlayer* self_cast = static_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
 			QByteArray name_QByteArray(name.data, name.len);
 
 	self_cast->addPropertyWatch(name_QByteArray);
 
 }
 
-void QMediaPlayer_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
-	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMediaPlayer_protectedbase_removePropertyWatch(void* self, struct miqt_string name) {
+	MiqtVirtualQMediaPlayer* self_cast = static_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
 			QByteArray name_QByteArray(name.data, name.len);
 
 	self_cast->removePropertyWatch(name_QByteArray);
 
 }
 
-QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QMediaPlayer_protectedbase_sender(const void* self) {
+	MiqtVirtualQMediaPlayer* self_cast = static_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QMediaPlayer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMediaPlayer_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQMediaPlayer* self_cast = static_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QMediaPlayer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMediaPlayer_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQMediaPlayer* self_cast = static_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QMediaPlayer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMediaPlayer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQMediaPlayer* self_cast = static_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

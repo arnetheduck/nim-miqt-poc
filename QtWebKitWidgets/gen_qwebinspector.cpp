@@ -1067,15 +1067,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QWebInspector_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QWebInspector_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QWebInspector_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QWebInspector_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QWebInspector_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QWebInspector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebInspector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebInspector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QWebInspector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QWebInspector_protectedbase_updateMicroFocus(void* self);
+	friend void QWebInspector_protectedbase_create(void* self);
+	friend void QWebInspector_protectedbase_destroy(void* self);
+	friend bool QWebInspector_protectedbase_focusNextChild(void* self);
+	friend bool QWebInspector_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QWebInspector_protectedbase_sender(const void* self);
+	friend int QWebInspector_protectedbase_senderSignalIndex(const void* self);
+	friend int QWebInspector_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QWebInspector_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QWebInspector* QWebInspector_new(struct QWebInspector_VTable* vtbl, QWidget* parent) {
@@ -1385,118 +1385,64 @@ void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QWebInspector_staticMetaObject() { return &QWebInspector::staticMetaObject; }
-void QWebInspector_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebInspector_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QWebInspector_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebInspector_protectedbase_create(void* self) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QWebInspector_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebInspector_protectedbase_destroy(void* self) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QWebInspector_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebInspector_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QWebInspector_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebInspector_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QWebInspector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QWebInspector_protectedbase_sender(const void* self) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QWebInspector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebInspector_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QWebInspector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebInspector_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QWebInspector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebInspector_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebInspector* self_cast = static_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

@@ -1169,16 +1169,16 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
-	friend void QDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QDialog_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QDialog_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QDialog_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QDialog_protectedbase_adjustPosition(void* self, QWidget* param1);
+	friend void QDialog_protectedbase_updateMicroFocus(void* self);
+	friend void QDialog_protectedbase_create(void* self);
+	friend void QDialog_protectedbase_destroy(void* self);
+	friend bool QDialog_protectedbase_focusNextChild(void* self);
+	friend bool QDialog_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QDialog_protectedbase_sender(const void* self);
+	friend int QDialog_protectedbase_senderSignalIndex(const void* self);
+	friend int QDialog_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QDialog* QDialog_new(struct QDialog_VTable* vtbl, QWidget* parent) {
@@ -1627,131 +1627,71 @@ void QDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QDialog_staticMetaObject() { return &QDialog::staticMetaObject; }
-void QDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDialog_protectedbase_adjustPosition(void* self, QWidget* param1) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	self_cast->adjustPosition(param1);
 
 }
 
-void QDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDialog_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDialog_protectedbase_create(void* self) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QDialog_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDialog_protectedbase_destroy(void* self) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QDialog_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDialog_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QDialog_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDialog_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QDialog_protectedbase_sender(const void* self) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDialog_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDialog_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDialog_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQDialog* self_cast = static_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

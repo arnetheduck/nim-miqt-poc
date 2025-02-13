@@ -249,10 +249,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QQuickWebEngineScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickWebEngineScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickWebEngineScript_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QQuickWebEngineScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QQuickWebEngineScript_protectedbase_sender(const void* self);
+	friend int QQuickWebEngineScript_protectedbase_senderSignalIndex(const void* self);
+	friend int QQuickWebEngineScript_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QQuickWebEngineScript_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QQuickWebEngineScript* QQuickWebEngineScript_new(struct QQuickWebEngineScript_VTable* vtbl) {
@@ -603,53 +603,29 @@ void QQuickWebEngineScript_virtualbase_disconnectNotify(void* self, QMetaMethod*
 }
 
 const QMetaObject* QQuickWebEngineScript_staticMetaObject() { return &QQuickWebEngineScript::staticMetaObject; }
-QObject* QQuickWebEngineScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickWebEngineScript* self_cast = dynamic_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QQuickWebEngineScript_protectedbase_sender(const void* self) {
+	MiqtVirtualQQuickWebEngineScript* self_cast = static_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QQuickWebEngineScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickWebEngineScript* self_cast = dynamic_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickWebEngineScript_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQQuickWebEngineScript* self_cast = static_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QQuickWebEngineScript_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQQuickWebEngineScript* self_cast = dynamic_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickWebEngineScript_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQQuickWebEngineScript* self_cast = static_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QQuickWebEngineScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQQuickWebEngineScript* self_cast = dynamic_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickWebEngineScript_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQQuickWebEngineScript* self_cast = static_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

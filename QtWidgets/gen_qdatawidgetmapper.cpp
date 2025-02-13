@@ -263,10 +263,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QDataWidgetMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QDataWidgetMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QDataWidgetMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QDataWidgetMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QDataWidgetMapper_protectedbase_sender(const void* self);
+	friend int QDataWidgetMapper_protectedbase_senderSignalIndex(const void* self);
+	friend int QDataWidgetMapper_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QDataWidgetMapper_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QDataWidgetMapper* QDataWidgetMapper_new(struct QDataWidgetMapper_VTable* vtbl) {
@@ -536,53 +536,29 @@ void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 }
 
 const QMetaObject* QDataWidgetMapper_staticMetaObject() { return &QDataWidgetMapper::staticMetaObject; }
-QObject* QDataWidgetMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDataWidgetMapper* self_cast = dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QDataWidgetMapper_protectedbase_sender(const void* self) {
+	MiqtVirtualQDataWidgetMapper* self_cast = static_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QDataWidgetMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDataWidgetMapper* self_cast = dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDataWidgetMapper_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQDataWidgetMapper* self_cast = static_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QDataWidgetMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQDataWidgetMapper* self_cast = dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDataWidgetMapper_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQDataWidgetMapper* self_cast = static_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QDataWidgetMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQDataWidgetMapper* self_cast = dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDataWidgetMapper_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQDataWidgetMapper* self_cast = static_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

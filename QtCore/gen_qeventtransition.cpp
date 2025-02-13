@@ -280,10 +280,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QEventTransition_protectedbase_sender(const void* self);
+	friend int QEventTransition_protectedbase_senderSignalIndex(const void* self);
+	friend int QEventTransition_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QEventTransition_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QEventTransition* QEventTransition_new(struct QEventTransition_VTable* vtbl) {
@@ -450,53 +450,29 @@ void QEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 }
 
 const QMetaObject* QEventTransition_staticMetaObject() { return &QEventTransition::staticMetaObject; }
-QObject* QEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QEventTransition_protectedbase_sender(const void* self) {
+	MiqtVirtualQEventTransition* self_cast = static_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QEventTransition_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQEventTransition* self_cast = static_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QEventTransition_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQEventTransition* self_cast = static_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QEventTransition_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQEventTransition* self_cast = static_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

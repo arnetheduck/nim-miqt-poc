@@ -322,19 +322,19 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
-	friend bool QGraphicsEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
-	friend void QGraphicsEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
-	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect1(bool* _dynamic_cast_ok, const void* self, int system);
-	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap1(bool* _dynamic_cast_ok, const void* self, int system);
-	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset);
-	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset, int mode);
-	friend QObject* QGraphicsEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsEffect_protectedbase_updateBoundingRect(void* self);
+	friend bool QGraphicsEffect_protectedbase_sourceIsPixmap(const void* self);
+	friend QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(const void* self);
+	friend void QGraphicsEffect_protectedbase_drawSource(void* self, QPainter* painter);
+	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(const void* self);
+	friend QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect1(const void* self, int system);
+	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap1(const void* self, int system);
+	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(const void* self, int system, QPoint* offset);
+	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(const void* self, int system, QPoint* offset, int mode);
+	friend QObject* QGraphicsEffect_protectedbase_sender(const void* self);
+	friend int QGraphicsEffect_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsEffect_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsEffect* QGraphicsEffect_new(struct QGraphicsEffect_VTable* vtbl) {
@@ -516,170 +516,92 @@ void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 }
 
 const QMetaObject* QGraphicsEffect_staticMetaObject() { return &QGraphicsEffect::staticMetaObject; }
-void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsEffect_protectedbase_updateBoundingRect(void* self) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	self_cast->updateBoundingRect();
 
 }
 
-bool QGraphicsEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsEffect_protectedbase_sourceIsPixmap(const void* self) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return self_cast->sourceIsPixmap();
 
 }
 
-QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(const void* self) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return new QRectF(self_cast->sourceBoundingRect());
 
 }
 
-void QGraphicsEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	self_cast->drawSource(painter);
 
 }
 
-QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(const void* self) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap());
 
 }
 
-QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect1(bool* _dynamic_cast_ok, const void* self, int system) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect1(const void* self, int system) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return new QRectF(self_cast->sourceBoundingRect(static_cast<Qt::CoordinateSystem>(system)));
 
 }
 
-QPixmap* QGraphicsEffect_protectedbase_sourcePixmap1(bool* _dynamic_cast_ok, const void* self, int system) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap1(const void* self, int system) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap(static_cast<Qt::CoordinateSystem>(system)));
 
 }
 
-QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(const void* self, int system, QPoint* offset) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap(static_cast<Qt::CoordinateSystem>(system), offset));
 
 }
 
-QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset, int mode) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(const void* self, int system, QPoint* offset, int mode) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap(static_cast<Qt::CoordinateSystem>(system), offset, static_cast<MiqtVirtualQGraphicsEffect::PixmapPadMode>(mode)));
 
 }
 
-QObject* QGraphicsEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsEffect_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsEffect_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsEffect_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsEffect* self_cast = static_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -969,15 +891,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
-	friend bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
-	friend void QGraphicsColorizeEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
-	friend QPixmap* QGraphicsColorizeEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QObject* QGraphicsColorizeEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsColorizeEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsColorizeEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsColorizeEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(void* self);
+	friend bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(const void* self);
+	friend QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(const void* self);
+	friend void QGraphicsColorizeEffect_protectedbase_drawSource(void* self, QPainter* painter);
+	friend QPixmap* QGraphicsColorizeEffect_protectedbase_sourcePixmap(const void* self);
+	friend QObject* QGraphicsColorizeEffect_protectedbase_sender(const void* self);
+	friend int QGraphicsColorizeEffect_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsColorizeEffect_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsColorizeEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new(struct QGraphicsColorizeEffect_VTable* vtbl) {
@@ -1183,118 +1105,64 @@ void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMetho
 }
 
 const QMetaObject* QGraphicsColorizeEffect_staticMetaObject() { return &QGraphicsColorizeEffect::staticMetaObject; }
-void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(void* self) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	self_cast->updateBoundingRect();
 
 }
 
-bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(const void* self) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	return self_cast->sourceIsPixmap();
 
 }
 
-QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(const void* self) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	return new QRectF(self_cast->sourceBoundingRect());
 
 }
 
-void QGraphicsColorizeEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsColorizeEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	self_cast->drawSource(painter);
 
 }
 
-QPixmap* QGraphicsColorizeEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsColorizeEffect_protectedbase_sourcePixmap(const void* self) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap());
 
 }
 
-QObject* QGraphicsColorizeEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsColorizeEffect_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsColorizeEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsColorizeEffect_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsColorizeEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsColorizeEffect_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsColorizeEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsColorizeEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = static_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1584,15 +1452,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
-	friend bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
-	friend void QGraphicsBlurEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
-	friend QPixmap* QGraphicsBlurEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QObject* QGraphicsBlurEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsBlurEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsBlurEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsBlurEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsBlurEffect_protectedbase_updateBoundingRect(void* self);
+	friend bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(const void* self);
+	friend QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(const void* self);
+	friend void QGraphicsBlurEffect_protectedbase_drawSource(void* self, QPainter* painter);
+	friend QPixmap* QGraphicsBlurEffect_protectedbase_sourcePixmap(const void* self);
+	friend QObject* QGraphicsBlurEffect_protectedbase_sender(const void* self);
+	friend int QGraphicsBlurEffect_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsBlurEffect_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsBlurEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsBlurEffect* QGraphicsBlurEffect_new(struct QGraphicsBlurEffect_VTable* vtbl) {
@@ -1802,118 +1670,64 @@ void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 }
 
 const QMetaObject* QGraphicsBlurEffect_staticMetaObject() { return &QGraphicsBlurEffect::staticMetaObject; }
-void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsBlurEffect_protectedbase_updateBoundingRect(void* self) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	self_cast->updateBoundingRect();
 
 }
 
-bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(const void* self) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	return self_cast->sourceIsPixmap();
 
 }
 
-QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(const void* self) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	return new QRectF(self_cast->sourceBoundingRect());
 
 }
 
-void QGraphicsBlurEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsBlurEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	self_cast->drawSource(painter);
 
 }
 
-QPixmap* QGraphicsBlurEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsBlurEffect_protectedbase_sourcePixmap(const void* self) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap());
 
 }
 
-QObject* QGraphicsBlurEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsBlurEffect_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsBlurEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsBlurEffect_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsBlurEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsBlurEffect_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsBlurEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsBlurEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = static_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -2203,15 +2017,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
-	friend bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
-	friend void QGraphicsDropShadowEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
-	friend QPixmap* QGraphicsDropShadowEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QObject* QGraphicsDropShadowEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsDropShadowEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsDropShadowEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(void* self);
+	friend bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(const void* self);
+	friend QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(const void* self);
+	friend void QGraphicsDropShadowEffect_protectedbase_drawSource(void* self, QPainter* painter);
+	friend QPixmap* QGraphicsDropShadowEffect_protectedbase_sourcePixmap(const void* self);
+	friend QObject* QGraphicsDropShadowEffect_protectedbase_sender(const void* self);
+	friend int QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsDropShadowEffect_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsDropShadowEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new(struct QGraphicsDropShadowEffect_VTable* vtbl) {
@@ -2477,118 +2291,64 @@ void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMet
 }
 
 const QMetaObject* QGraphicsDropShadowEffect_staticMetaObject() { return &QGraphicsDropShadowEffect::staticMetaObject; }
-void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(void* self) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	self_cast->updateBoundingRect();
 
 }
 
-bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(const void* self) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	return self_cast->sourceIsPixmap();
 
 }
 
-QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(const void* self) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	return new QRectF(self_cast->sourceBoundingRect());
 
 }
 
-void QGraphicsDropShadowEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsDropShadowEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	self_cast->drawSource(painter);
 
 }
 
-QPixmap* QGraphicsDropShadowEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsDropShadowEffect_protectedbase_sourcePixmap(const void* self) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap());
 
 }
 
-QObject* QGraphicsDropShadowEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsDropShadowEffect_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsDropShadowEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsDropShadowEffect_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsDropShadowEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsDropShadowEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = static_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -2878,15 +2638,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
-	friend bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
-	friend void QGraphicsOpacityEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
-	friend QPixmap* QGraphicsOpacityEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QObject* QGraphicsOpacityEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsOpacityEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsOpacityEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsOpacityEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(void* self);
+	friend bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(const void* self);
+	friend QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(const void* self);
+	friend void QGraphicsOpacityEffect_protectedbase_drawSource(void* self, QPainter* painter);
+	friend QPixmap* QGraphicsOpacityEffect_protectedbase_sourcePixmap(const void* self);
+	friend QObject* QGraphicsOpacityEffect_protectedbase_sender(const void* self);
+	friend int QGraphicsOpacityEffect_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsOpacityEffect_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsOpacityEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new(struct QGraphicsOpacityEffect_VTable* vtbl) {
@@ -3092,118 +2852,64 @@ void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod
 }
 
 const QMetaObject* QGraphicsOpacityEffect_staticMetaObject() { return &QGraphicsOpacityEffect::staticMetaObject; }
-void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(void* self) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	self_cast->updateBoundingRect();
 
 }
 
-bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(const void* self) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	return self_cast->sourceIsPixmap();
 
 }
 
-QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(const void* self) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	return new QRectF(self_cast->sourceBoundingRect());
 
 }
 
-void QGraphicsOpacityEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsOpacityEffect_protectedbase_drawSource(void* self, QPainter* painter) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	self_cast->drawSource(painter);
 
 }
 
-QPixmap* QGraphicsOpacityEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QPixmap* QGraphicsOpacityEffect_protectedbase_sourcePixmap(const void* self) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	return new QPixmap(self_cast->sourcePixmap());
 
 }
 
-QObject* QGraphicsOpacityEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsOpacityEffect_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsOpacityEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsOpacityEffect_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsOpacityEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsOpacityEffect_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsOpacityEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsOpacityEffect_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = static_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

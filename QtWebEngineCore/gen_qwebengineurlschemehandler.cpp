@@ -249,10 +249,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebEngineUrlSchemeHandler_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebEngineUrlSchemeHandler_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QWebEngineUrlSchemeHandler_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(const void* self);
+	friend int QWebEngineUrlSchemeHandler_protectedbase_senderSignalIndex(const void* self);
+	friend int QWebEngineUrlSchemeHandler_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QWebEngineUrlSchemeHandler_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QWebEngineUrlSchemeHandler* QWebEngineUrlSchemeHandler_new(struct QWebEngineUrlSchemeHandler_VTable* vtbl) {
@@ -390,53 +390,29 @@ void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMe
 }
 
 const QMetaObject* QWebEngineUrlSchemeHandler_staticMetaObject() { return &QWebEngineUrlSchemeHandler::staticMetaObject; }
-QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(const void* self) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = static_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QWebEngineUrlSchemeHandler_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebEngineUrlSchemeHandler_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = static_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QWebEngineUrlSchemeHandler_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebEngineUrlSchemeHandler_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = static_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QWebEngineUrlSchemeHandler_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebEngineUrlSchemeHandler_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = static_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

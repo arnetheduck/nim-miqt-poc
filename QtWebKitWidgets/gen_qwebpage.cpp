@@ -701,10 +701,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QWebPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QWebPage_protectedbase_sender(const void* self);
+	friend int QWebPage_protectedbase_senderSignalIndex(const void* self);
+	friend int QWebPage_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QWebPage_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QWebPage* QWebPage_new(struct QWebPage_VTable* vtbl) {
@@ -1838,53 +1838,29 @@ void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QWebPage_staticMetaObject() { return &QWebPage::staticMetaObject; }
-QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QWebPage_protectedbase_sender(const void* self) {
+	MiqtVirtualQWebPage* self_cast = static_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QWebPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebPage_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQWebPage* self_cast = static_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QWebPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebPage_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQWebPage* self_cast = static_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QWebPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebPage_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebPage* self_cast = static_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

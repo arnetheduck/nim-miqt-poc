@@ -120,6 +120,10 @@ proc fcQQuickWebEngineScript_virtualbase_childEvent(self: pointer, event: pointe
 proc fcQQuickWebEngineScript_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QQuickWebEngineScript_virtualbase_customEvent".}
 proc fcQQuickWebEngineScript_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QQuickWebEngineScript_virtualbase_connectNotify".}
 proc fcQQuickWebEngineScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QQuickWebEngineScript_virtualbase_disconnectNotify".}
+proc fcQQuickWebEngineScript_protectedbase_sender(self: pointer, ): pointer {.importc: "QQuickWebEngineScript_protectedbase_sender".}
+proc fcQQuickWebEngineScript_protectedbase_senderSignalIndex(self: pointer, ): cint {.importc: "QQuickWebEngineScript_protectedbase_senderSignalIndex".}
+proc fcQQuickWebEngineScript_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QQuickWebEngineScript_protectedbase_receivers".}
+proc fcQQuickWebEngineScript_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QQuickWebEngineScript_protectedbase_isSignalConnected".}
 proc fcQQuickWebEngineScript_new(vtbl: pointer, ): ptr cQQuickWebEngineScript {.importc: "QQuickWebEngineScript_new".}
 proc fcQQuickWebEngineScript_new2(vtbl: pointer, parent: pointer): ptr cQQuickWebEngineScript {.importc: "QQuickWebEngineScript_new2".}
 proc fcQQuickWebEngineScript_staticMetaObject(): pointer {.importc: "QQuickWebEngineScript_staticMetaObject".}
@@ -462,6 +466,18 @@ proc miqt_exec_callback_cQQuickWebEngineScript_disconnectNotify(vtbl: pointer, s
   let self = QQuickWebEngineScript(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
   vtbl[].disconnectNotify(self, slotval1)
+
+proc sender*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, ): gen_qobject_types.QObject =
+  gen_qobject_types.QObject(h: fcQQuickWebEngineScript_protectedbase_sender(self.h))
+
+proc senderSignalIndex*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, ): cint =
+  fcQQuickWebEngineScript_protectedbase_senderSignalIndex(self.h)
+
+proc receivers*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, signal: cstring): cint =
+  fcQQuickWebEngineScript_protectedbase_receivers(self.h, signal)
+
+proc isSignalConnected*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, signal: gen_qmetaobject_types.QMetaMethod): bool =
+  fcQQuickWebEngineScript_protectedbase_isSignalConnected(self.h, signal.h)
 
 proc create*(T: type gen_qquickwebenginescript_types.QQuickWebEngineScript,
     vtbl: ref QQuickWebEngineScriptVTable = nil): gen_qquickwebenginescript_types.QQuickWebEngineScript =

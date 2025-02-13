@@ -302,11 +302,11 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QTcpServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket);
-	friend QObject* QTcpServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QTcpServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QTcpServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QTcpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QTcpServer_protectedbase_addPendingConnection(void* self, QTcpSocket* socket);
+	friend QObject* QTcpServer_protectedbase_sender(const void* self);
+	friend int QTcpServer_protectedbase_senderSignalIndex(const void* self);
+	friend int QTcpServer_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QTcpServer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QTcpServer* QTcpServer_new(struct QTcpServer_VTable* vtbl) {
@@ -590,66 +590,36 @@ void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QTcpServer_staticMetaObject() { return &QTcpServer::staticMetaObject; }
-void QTcpServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket) {
-	MiqtVirtualQTcpServer* self_cast = dynamic_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTcpServer_protectedbase_addPendingConnection(void* self, QTcpSocket* socket) {
+	MiqtVirtualQTcpServer* self_cast = static_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
 	
 	self_cast->addPendingConnection(socket);
 
 }
 
-QObject* QTcpServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTcpServer* self_cast = dynamic_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QTcpServer_protectedbase_sender(const void* self) {
+	MiqtVirtualQTcpServer* self_cast = static_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QTcpServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTcpServer* self_cast = dynamic_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTcpServer_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQTcpServer* self_cast = static_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QTcpServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQTcpServer* self_cast = dynamic_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTcpServer_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQTcpServer* self_cast = static_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QTcpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQTcpServer* self_cast = dynamic_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTcpServer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTcpServer* self_cast = static_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

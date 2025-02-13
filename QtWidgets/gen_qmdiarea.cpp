@@ -1155,19 +1155,19 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QMdiArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
-	friend void QMdiArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
-	friend void QMdiArea_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
-	friend void QMdiArea_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QMdiArea_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QMdiArea_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QMdiArea_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QMdiArea_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QMdiArea_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QMdiArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QMdiArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QMdiArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QMdiArea_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom);
+	friend QMargins* QMdiArea_protectedbase_viewportMargins(const void* self);
+	friend void QMdiArea_protectedbase_drawFrame(void* self, QPainter* param1);
+	friend void QMdiArea_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option);
+	friend void QMdiArea_protectedbase_updateMicroFocus(void* self);
+	friend void QMdiArea_protectedbase_create(void* self);
+	friend void QMdiArea_protectedbase_destroy(void* self);
+	friend bool QMdiArea_protectedbase_focusNextChild(void* self);
+	friend bool QMdiArea_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QMdiArea_protectedbase_sender(const void* self);
+	friend int QMdiArea_protectedbase_senderSignalIndex(const void* self);
+	friend int QMdiArea_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QMdiArea_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QMdiArea* QMdiArea_new(struct QMdiArea_VTable* vtbl, QWidget* parent) {
@@ -1659,170 +1659,92 @@ void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QMdiArea_staticMetaObject() { return &QMdiArea::staticMetaObject; }
-void QMdiArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMdiArea_protectedbase_setViewportMargins(void* self, int left, int top, int right, int bottom) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 
 }
 
-QMargins* QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QMargins* QMdiArea_protectedbase_viewportMargins(const void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	return new QMargins(self_cast->viewportMargins());
 
 }
 
-void QMdiArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMdiArea_protectedbase_drawFrame(void* self, QPainter* param1) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	self_cast->drawFrame(param1);
 
 }
 
-void QMdiArea_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMdiArea_protectedbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	self_cast->initStyleOption(option);
 
 }
 
-void QMdiArea_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMdiArea_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QMdiArea_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMdiArea_protectedbase_create(void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QMdiArea_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMdiArea_protectedbase_destroy(void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QMdiArea_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMdiArea_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QMdiArea_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMdiArea_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QMdiArea_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QMdiArea_protectedbase_sender(const void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QMdiArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMdiArea_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QMdiArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMdiArea_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QMdiArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMdiArea_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQMdiArea* self_cast = static_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

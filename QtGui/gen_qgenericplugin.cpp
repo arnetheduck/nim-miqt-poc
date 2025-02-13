@@ -264,10 +264,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QGenericPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGenericPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGenericPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGenericPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QGenericPlugin_protectedbase_sender(const void* self);
+	friend int QGenericPlugin_protectedbase_senderSignalIndex(const void* self);
+	friend int QGenericPlugin_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGenericPlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGenericPlugin* QGenericPlugin_new(struct QGenericPlugin_VTable* vtbl) {
@@ -407,53 +407,29 @@ void QGenericPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 }
 
 const QMetaObject* QGenericPlugin_staticMetaObject() { return &QGenericPlugin::staticMetaObject; }
-QObject* QGenericPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGenericPlugin_protectedbase_sender(const void* self) {
+	MiqtVirtualQGenericPlugin* self_cast = static_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGenericPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGenericPlugin_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGenericPlugin* self_cast = static_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGenericPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGenericPlugin_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGenericPlugin* self_cast = static_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGenericPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGenericPlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGenericPlugin* self_cast = static_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

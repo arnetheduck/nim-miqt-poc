@@ -1451,16 +1451,16 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QGraphicsWebView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsWebView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGraphicsWebView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGraphicsWebView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
-	friend void QGraphicsWebView_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
-	friend void QGraphicsWebView_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
-	friend void QGraphicsWebView_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
-	friend void QGraphicsWebView_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
-	friend void QGraphicsWebView_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+	friend void QGraphicsWebView_protectedbase_updateMicroFocus(void* self);
+	friend QObject* QGraphicsWebView_protectedbase_sender(const void* self);
+	friend int QGraphicsWebView_protectedbase_senderSignalIndex(const void* self);
+	friend int QGraphicsWebView_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGraphicsWebView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
+	friend void QGraphicsWebView_protectedbase_addToIndex(void* self);
+	friend void QGraphicsWebView_protectedbase_removeFromIndex(void* self);
+	friend void QGraphicsWebView_protectedbase_prepareGeometryChange(void* self);
+	friend void QGraphicsWebView_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item);
+	friend void QGraphicsWebView_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout);
 };
 
 QGraphicsWebView* QGraphicsWebView_new(struct QGraphicsWebView_VTable* vtbl) {
@@ -2187,131 +2187,71 @@ QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* var
 }
 
 const QMetaObject* QGraphicsWebView_staticMetaObject() { return &QGraphicsWebView::staticMetaObject; }
-void QGraphicsWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsWebView_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-QObject* QGraphicsWebView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGraphicsWebView_protectedbase_sender(const void* self) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGraphicsWebView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsWebView_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGraphicsWebView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGraphicsWebView_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGraphicsWebView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGraphicsWebView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
 }
 
-void QGraphicsWebView_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsWebView_protectedbase_addToIndex(void* self) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	self_cast->addToIndex();
 
 }
 
-void QGraphicsWebView_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsWebView_protectedbase_removeFromIndex(void* self) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	self_cast->removeFromIndex();
 
 }
 
-void QGraphicsWebView_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsWebView_protectedbase_prepareGeometryChange(void* self) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	self_cast->prepareGeometryChange();
 
 }
 
-void QGraphicsWebView_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsWebView_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	self_cast->setGraphicsItem(item);
 
 }
 
-void QGraphicsWebView_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout) {
-	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsWebView_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout) {
+	MiqtVirtualQGraphicsWebView* self_cast = static_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	
 	self_cast->setOwnedByLayout(ownedByLayout);
 

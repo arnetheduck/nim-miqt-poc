@@ -1112,15 +1112,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QWebView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QWebView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QWebView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QWebView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QWebView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QWebView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QWebView_protectedbase_updateMicroFocus(void* self);
+	friend void QWebView_protectedbase_create(void* self);
+	friend void QWebView_protectedbase_destroy(void* self);
+	friend bool QWebView_protectedbase_focusNextChild(void* self);
+	friend bool QWebView_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QWebView_protectedbase_sender(const void* self);
+	friend int QWebView_protectedbase_senderSignalIndex(const void* self);
+	friend int QWebView_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QWebView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QWebView* QWebView_new(struct QWebView_VTable* vtbl, QWidget* parent) {
@@ -1813,118 +1813,64 @@ void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QWebView_staticMetaObject() { return &QWebView::staticMetaObject; }
-void QWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebView_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QWebView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebView_protectedbase_create(void* self) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QWebView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebView_protectedbase_destroy(void* self) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QWebView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebView_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QWebView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebView_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QWebView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QWebView_protectedbase_sender(const void* self) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QWebView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebView_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QWebView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebView_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QWebView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebView* self_cast = static_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

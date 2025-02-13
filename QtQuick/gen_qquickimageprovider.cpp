@@ -302,10 +302,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QQuickTextureFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickTextureFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickTextureFactory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QQuickTextureFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QQuickTextureFactory_protectedbase_sender(const void* self);
+	friend int QQuickTextureFactory_protectedbase_senderSignalIndex(const void* self);
+	friend int QQuickTextureFactory_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QQuickTextureFactory_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QQuickTextureFactory* QQuickTextureFactory_new(struct QQuickTextureFactory_VTable* vtbl) {
@@ -459,53 +459,29 @@ void QQuickTextureFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 }
 
 const QMetaObject* QQuickTextureFactory_staticMetaObject() { return &QQuickTextureFactory::staticMetaObject; }
-QObject* QQuickTextureFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QQuickTextureFactory_protectedbase_sender(const void* self) {
+	MiqtVirtualQQuickTextureFactory* self_cast = static_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QQuickTextureFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickTextureFactory_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQQuickTextureFactory* self_cast = static_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QQuickTextureFactory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickTextureFactory_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQQuickTextureFactory* self_cast = static_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QQuickTextureFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickTextureFactory_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQQuickTextureFactory* self_cast = static_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -789,10 +765,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QQuickImageResponse_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickImageResponse_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickImageResponse_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QQuickImageResponse_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QQuickImageResponse_protectedbase_sender(const void* self);
+	friend int QQuickImageResponse_protectedbase_senderSignalIndex(const void* self);
+	friend int QQuickImageResponse_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QQuickImageResponse_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QQuickImageResponse* QQuickImageResponse_new(struct QQuickImageResponse_VTable* vtbl) {
@@ -968,53 +944,29 @@ void QQuickImageResponse_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 }
 
 const QMetaObject* QQuickImageResponse_staticMetaObject() { return &QQuickImageResponse::staticMetaObject; }
-QObject* QQuickImageResponse_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QQuickImageResponse_protectedbase_sender(const void* self) {
+	MiqtVirtualQQuickImageResponse* self_cast = static_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QQuickImageResponse_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickImageResponse_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQQuickImageResponse* self_cast = static_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QQuickImageResponse_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickImageResponse_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQQuickImageResponse* self_cast = static_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QQuickImageResponse_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickImageResponse_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQQuickImageResponse* self_cast = static_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

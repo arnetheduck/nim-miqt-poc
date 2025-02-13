@@ -243,10 +243,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QAudioProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QAudioProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QAudioProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QAudioProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QAudioProbe_protectedbase_sender(const void* self);
+	friend int QAudioProbe_protectedbase_senderSignalIndex(const void* self);
+	friend int QAudioProbe_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QAudioProbe_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QAudioProbe* QAudioProbe_new(struct QAudioProbe_VTable* vtbl) {
@@ -433,53 +433,29 @@ void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QAudioProbe_staticMetaObject() { return &QAudioProbe::staticMetaObject; }
-QObject* QAudioProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAudioProbe* self_cast = dynamic_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QAudioProbe_protectedbase_sender(const void* self) {
+	MiqtVirtualQAudioProbe* self_cast = static_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QAudioProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAudioProbe* self_cast = dynamic_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAudioProbe_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQAudioProbe* self_cast = static_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QAudioProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQAudioProbe* self_cast = dynamic_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAudioProbe_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQAudioProbe* self_cast = static_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QAudioProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQAudioProbe* self_cast = dynamic_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QAudioProbe_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAudioProbe* self_cast = static_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

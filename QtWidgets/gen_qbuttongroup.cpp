@@ -262,10 +262,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QButtonGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QButtonGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QButtonGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QButtonGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QButtonGroup_protectedbase_sender(const void* self);
+	friend int QButtonGroup_protectedbase_senderSignalIndex(const void* self);
+	friend int QButtonGroup_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QButtonGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QButtonGroup* QButtonGroup_new(struct QButtonGroup_VTable* vtbl) {
@@ -695,53 +695,29 @@ void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 }
 
 const QMetaObject* QButtonGroup_staticMetaObject() { return &QButtonGroup::staticMetaObject; }
-QObject* QButtonGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QButtonGroup_protectedbase_sender(const void* self) {
+	MiqtVirtualQButtonGroup* self_cast = static_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QButtonGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QButtonGroup_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQButtonGroup* self_cast = static_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QButtonGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QButtonGroup_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQButtonGroup* self_cast = static_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QButtonGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QButtonGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQButtonGroup* self_cast = static_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

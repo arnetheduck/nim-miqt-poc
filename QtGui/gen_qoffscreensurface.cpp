@@ -301,10 +301,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QOffscreenSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QOffscreenSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QOffscreenSurface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QOffscreenSurface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QOffscreenSurface_protectedbase_sender(const void* self);
+	friend int QOffscreenSurface_protectedbase_senderSignalIndex(const void* self);
+	friend int QOffscreenSurface_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QOffscreenSurface_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QOffscreenSurface* QOffscreenSurface_new(struct QOffscreenSurface_VTable* vtbl, QScreen* screen, QObject* parent) {
@@ -524,53 +524,29 @@ void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 }
 
 const QMetaObject* QOffscreenSurface_staticMetaObject() { return &QOffscreenSurface::staticMetaObject; }
-QObject* QOffscreenSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QOffscreenSurface_protectedbase_sender(const void* self) {
+	MiqtVirtualQOffscreenSurface* self_cast = static_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QOffscreenSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QOffscreenSurface_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQOffscreenSurface* self_cast = static_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QOffscreenSurface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QOffscreenSurface_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQOffscreenSurface* self_cast = static_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QOffscreenSurface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QOffscreenSurface_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQOffscreenSurface* self_cast = static_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

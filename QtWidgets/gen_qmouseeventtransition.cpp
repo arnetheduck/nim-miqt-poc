@@ -282,10 +282,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QMouseEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QMouseEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QMouseEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QMouseEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QMouseEventTransition_protectedbase_sender(const void* self);
+	friend int QMouseEventTransition_protectedbase_senderSignalIndex(const void* self);
+	friend int QMouseEventTransition_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QMouseEventTransition_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QMouseEventTransition* QMouseEventTransition_new(struct QMouseEventTransition_VTable* vtbl) {
@@ -461,53 +461,29 @@ void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod*
 }
 
 const QMetaObject* QMouseEventTransition_staticMetaObject() { return &QMouseEventTransition::staticMetaObject; }
-QObject* QMouseEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMouseEventTransition* self_cast = dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QMouseEventTransition_protectedbase_sender(const void* self) {
+	MiqtVirtualQMouseEventTransition* self_cast = static_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QMouseEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMouseEventTransition* self_cast = dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMouseEventTransition_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQMouseEventTransition* self_cast = static_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QMouseEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQMouseEventTransition* self_cast = dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMouseEventTransition_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQMouseEventTransition* self_cast = static_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QMouseEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQMouseEventTransition* self_cast = dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMouseEventTransition_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQMouseEventTransition* self_cast = static_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
