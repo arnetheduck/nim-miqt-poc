@@ -77,6 +77,10 @@ proc fcQQmlPropertyMap_valueChanged(self: pointer, key: struct_miqt_string, valu
 proc fQQmlPropertyMap_connect_valueChanged(self: pointer, slot: int) {.importc: "QQmlPropertyMap_connect_valueChanged".}
 proc fcQQmlPropertyMap_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QQmlPropertyMap_tr2".}
 proc fcQQmlPropertyMap_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlPropertyMap_tr3".}
+proc fQQmlPropertyMap_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQmlPropertyMap_virtualbase_metaObject".}
+proc fcQQmlPropertyMap_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQmlPropertyMap_override_virtual_metaObject".}
+proc fQQmlPropertyMap_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQmlPropertyMap_virtualbase_metacast".}
+proc fcQQmlPropertyMap_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQmlPropertyMap_override_virtual_metacast".}
 proc fQQmlPropertyMap_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQmlPropertyMap_virtualbase_metacall".}
 proc fcQQmlPropertyMap_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQmlPropertyMap_override_virtual_metacall".}
 proc fQQmlPropertyMap_virtualbase_updateValue(self: pointer, key: struct_miqt_string, input: pointer): pointer{.importc: "QQmlPropertyMap_virtualbase_updateValue".}
@@ -207,6 +211,42 @@ proc tr*(_: type gen_qqmlpropertymap_types.QQmlPropertyMap, s: cstring, c: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc QQmlPropertyMapmetaObject*(self: gen_qqmlpropertymap_types.QQmlPropertyMap, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQQmlPropertyMap_virtualbase_metaObject(self.h))
+
+type QQmlPropertyMapmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qqmlpropertymap_types.QQmlPropertyMap, slot: QQmlPropertyMapmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QQmlPropertyMapmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlPropertyMap_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlPropertyMap_metaObject(self: ptr cQQmlPropertyMap, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlPropertyMap_metaObject ".} =
+  var nimfunc = cast[ptr QQmlPropertyMapmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QQmlPropertyMapmetacast*(self: gen_qqmlpropertymap_types.QQmlPropertyMap, param1: cstring): pointer =
+  fQQmlPropertyMap_virtualbase_metacast(self.h, param1)
+
+type QQmlPropertyMapmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qqmlpropertymap_types.QQmlPropertyMap, slot: QQmlPropertyMapmetacastProc) =
+  # TODO check subclass
+  var tmp = new QQmlPropertyMapmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlPropertyMap_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlPropertyMap_metacast(self: ptr cQQmlPropertyMap, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlPropertyMap_metacast ".} =
+  var nimfunc = cast[ptr QQmlPropertyMapmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QQmlPropertyMapmetacall*(self: gen_qqmlpropertymap_types.QQmlPropertyMap, param1: cint, param2: cint, param3: pointer): cint =
   fQQmlPropertyMap_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

@@ -78,6 +78,10 @@ bool QTransposeProxyModel_moveColumns(QTransposeProxyModel* self, QModelIndex* s
 void QTransposeProxyModel_sort(QTransposeProxyModel* self, int column, int order);
 struct miqt_string QTransposeProxyModel_tr2(const char* s, const char* c);
 struct miqt_string QTransposeProxyModel_tr3(const char* s, const char* c, int n);
+bool QTransposeProxyModel_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QTransposeProxyModel_virtualbase_metaObject(const void* self);
+bool QTransposeProxyModel_override_virtual_metacast(void* self, intptr_t slot);
+void* QTransposeProxyModel_virtualbase_metacast(void* self, const char* param1);
 bool QTransposeProxyModel_override_virtual_metacall(void* self, intptr_t slot);
 int QTransposeProxyModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QTransposeProxyModel_override_virtual_setSourceModel(void* self, intptr_t slot);

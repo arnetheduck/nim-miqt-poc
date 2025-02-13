@@ -112,6 +112,10 @@ proc fcQSoundEffect_play(self: pointer, ): void {.importc: "QSoundEffect_play".}
 proc fcQSoundEffect_stop(self: pointer, ): void {.importc: "QSoundEffect_stop".}
 proc fcQSoundEffect_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSoundEffect_tr2".}
 proc fcQSoundEffect_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSoundEffect_tr3".}
+proc fQSoundEffect_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSoundEffect_virtualbase_metaObject".}
+proc fcQSoundEffect_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSoundEffect_override_virtual_metaObject".}
+proc fQSoundEffect_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSoundEffect_virtualbase_metacast".}
+proc fcQSoundEffect_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSoundEffect_override_virtual_metacast".}
 proc fQSoundEffect_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSoundEffect_virtualbase_metacall".}
 proc fcQSoundEffect_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSoundEffect_override_virtual_metacall".}
 proc fQSoundEffect_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSoundEffect_virtualbase_event".}
@@ -358,6 +362,42 @@ proc tr*(_: type gen_qsoundeffect_types.QSoundEffect, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QSoundEffectmetaObject*(self: gen_qsoundeffect_types.QSoundEffect, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSoundEffect_virtualbase_metaObject(self.h))
+
+type QSoundEffectmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSoundEffectmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSoundEffect_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSoundEffect_metaObject(self: ptr cQSoundEffect, slot: int): pointer {.exportc: "miqt_exec_callback_QSoundEffect_metaObject ".} =
+  var nimfunc = cast[ptr QSoundEffectmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSoundEffectmetacast*(self: gen_qsoundeffect_types.QSoundEffect, param1: cstring): pointer =
+  fQSoundEffect_virtualbase_metacast(self.h, param1)
+
+type QSoundEffectmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsoundeffect_types.QSoundEffect, slot: QSoundEffectmetacastProc) =
+  # TODO check subclass
+  var tmp = new QSoundEffectmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSoundEffect_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSoundEffect_metacast(self: ptr cQSoundEffect, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSoundEffect_metacast ".} =
+  var nimfunc = cast[ptr QSoundEffectmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSoundEffectmetacall*(self: gen_qsoundeffect_types.QSoundEffect, param1: cint, param2: cint, param3: pointer): cint =
   fQSoundEffect_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

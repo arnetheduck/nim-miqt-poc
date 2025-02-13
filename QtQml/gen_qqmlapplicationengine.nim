@@ -82,6 +82,10 @@ proc fQQmlApplicationEngine_connect_objectCreationFailed(self: pointer, slot: in
 proc fcQQmlApplicationEngine_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QQmlApplicationEngine_tr2".}
 proc fcQQmlApplicationEngine_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlApplicationEngine_tr3".}
 proc fcQQmlApplicationEngine_loadData2(self: pointer, data: struct_miqt_string, url: pointer): void {.importc: "QQmlApplicationEngine_loadData2".}
+proc fQQmlApplicationEngine_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQmlApplicationEngine_virtualbase_metaObject".}
+proc fcQQmlApplicationEngine_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQmlApplicationEngine_override_virtual_metaObject".}
+proc fQQmlApplicationEngine_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQmlApplicationEngine_virtualbase_metacast".}
+proc fcQQmlApplicationEngine_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQmlApplicationEngine_override_virtual_metacast".}
 proc fQQmlApplicationEngine_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQmlApplicationEngine_virtualbase_metacall".}
 proc fcQQmlApplicationEngine_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQmlApplicationEngine_override_virtual_metacall".}
 proc fQQmlApplicationEngine_virtualbase_event(self: pointer, param1: pointer): bool{.importc: "QQmlApplicationEngine_virtualbase_event".}
@@ -221,6 +225,42 @@ proc tr*(_: type gen_qqmlapplicationengine_types.QQmlApplicationEngine, s: cstri
 proc loadData*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, data: seq[byte], url: gen_qurl_types.QUrl): void =
   fcQQmlApplicationEngine_loadData2(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), url.h)
 
+proc QQmlApplicationEnginemetaObject*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQQmlApplicationEngine_virtualbase_metaObject(self.h))
+
+type QQmlApplicationEnginemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, slot: QQmlApplicationEnginemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QQmlApplicationEnginemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlApplicationEngine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlApplicationEngine_metaObject(self: ptr cQQmlApplicationEngine, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlApplicationEngine_metaObject ".} =
+  var nimfunc = cast[ptr QQmlApplicationEnginemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QQmlApplicationEnginemetacast*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, param1: cstring): pointer =
+  fQQmlApplicationEngine_virtualbase_metacast(self.h, param1)
+
+type QQmlApplicationEnginemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, slot: QQmlApplicationEnginemetacastProc) =
+  # TODO check subclass
+  var tmp = new QQmlApplicationEnginemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlApplicationEngine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlApplicationEngine_metacast(self: ptr cQQmlApplicationEngine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlApplicationEngine_metacast ".} =
+  var nimfunc = cast[ptr QQmlApplicationEnginemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QQmlApplicationEnginemetacall*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, param1: cint, param2: cint, param3: pointer): cint =
   fQQmlApplicationEngine_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

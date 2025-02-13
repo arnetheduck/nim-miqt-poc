@@ -19,6 +19,8 @@ extern "C" {
 void miqt_exec_callback_QAudioInput_deviceChanged(intptr_t);
 void miqt_exec_callback_QAudioInput_volumeChanged(intptr_t, float);
 void miqt_exec_callback_QAudioInput_mutedChanged(intptr_t, bool);
+QMetaObject* miqt_exec_callback_QAudioInput_metaObject(const QAudioInput*, intptr_t);
+void* miqt_exec_callback_QAudioInput_metacast(QAudioInput*, intptr_t, const char*);
 int miqt_exec_callback_QAudioInput_metacall(QAudioInput*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAudioInput_event(QAudioInput*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAudioInput_eventFilter(QAudioInput*, intptr_t, QObject*, QEvent*);
@@ -40,6 +42,51 @@ public:
 	MiqtVirtualQAudioInput(const QAudioDevice& deviceInfo, QObject* parent): QAudioInput(deviceInfo, parent) {};
 
 	virtual ~MiqtVirtualQAudioInput() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAudioInput::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAudioInput_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAudioInput::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAudioInput::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAudioInput_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAudioInput::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -364,6 +411,34 @@ struct miqt_string QAudioInput_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAudioInput_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAudioInput_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAudioInput*)(self) )->virtualbase_metaObject();
+}
+
+bool QAudioInput_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAudioInput_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAudioInput*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAudioInput_override_virtual_metacall(void* self, intptr_t slot) {

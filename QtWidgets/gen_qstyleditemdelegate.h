@@ -77,6 +77,10 @@ bool QStyledItemDelegate_eventFilter(QStyledItemDelegate* self, QObject* object,
 bool QStyledItemDelegate_editorEvent(QStyledItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
 struct miqt_string QStyledItemDelegate_tr2(const char* s, const char* c);
 struct miqt_string QStyledItemDelegate_tr3(const char* s, const char* c, int n);
+bool QStyledItemDelegate_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QStyledItemDelegate_virtualbase_metaObject(const void* self);
+bool QStyledItemDelegate_override_virtual_metacast(void* self, intptr_t slot);
+void* QStyledItemDelegate_virtualbase_metacast(void* self, const char* param1);
 bool QStyledItemDelegate_override_virtual_metacall(void* self, intptr_t slot);
 int QStyledItemDelegate_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStyledItemDelegate_override_virtual_paint(void* self, intptr_t slot);

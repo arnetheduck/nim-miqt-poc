@@ -147,6 +147,10 @@ proc fcQSortFilterProxyModel_autoAcceptChildRowsChanged(self: pointer, autoAccep
 proc fQSortFilterProxyModel_connect_autoAcceptChildRowsChanged(self: pointer, slot: int) {.importc: "QSortFilterProxyModel_connect_autoAcceptChildRowsChanged".}
 proc fcQSortFilterProxyModel_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSortFilterProxyModel_tr2".}
 proc fcQSortFilterProxyModel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSortFilterProxyModel_tr3".}
+proc fQSortFilterProxyModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSortFilterProxyModel_virtualbase_metaObject".}
+proc fcQSortFilterProxyModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSortFilterProxyModel_override_virtual_metaObject".}
+proc fQSortFilterProxyModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSortFilterProxyModel_virtualbase_metacast".}
+proc fcQSortFilterProxyModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSortFilterProxyModel_override_virtual_metacast".}
 proc fQSortFilterProxyModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSortFilterProxyModel_virtualbase_metacall".}
 proc fcQSortFilterProxyModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSortFilterProxyModel_override_virtual_metacall".}
 proc fQSortFilterProxyModel_virtualbase_setSourceModel(self: pointer, sourceModel: pointer): void{.importc: "QSortFilterProxyModel_virtualbase_setSourceModel".}
@@ -605,6 +609,42 @@ proc tr*(_: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, s: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc QSortFilterProxyModelmetaObject*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSortFilterProxyModel_virtualbase_metaObject(self.h))
+
+type QSortFilterProxyModelmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSortFilterProxyModelmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSortFilterProxyModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSortFilterProxyModel_metaObject(self: ptr cQSortFilterProxyModel, slot: int): pointer {.exportc: "miqt_exec_callback_QSortFilterProxyModel_metaObject ".} =
+  var nimfunc = cast[ptr QSortFilterProxyModelmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSortFilterProxyModelmetacast*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, param1: cstring): pointer =
+  fQSortFilterProxyModel_virtualbase_metacast(self.h, param1)
+
+type QSortFilterProxyModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelmetacastProc) =
+  # TODO check subclass
+  var tmp = new QSortFilterProxyModelmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSortFilterProxyModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSortFilterProxyModel_metacast(self: ptr cQSortFilterProxyModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSortFilterProxyModel_metacast ".} =
+  var nimfunc = cast[ptr QSortFilterProxyModelmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSortFilterProxyModelmetacall*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, param1: cint, param2: cint, param3: pointer): cint =
   fQSortFilterProxyModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

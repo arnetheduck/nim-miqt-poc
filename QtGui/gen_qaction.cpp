@@ -29,6 +29,8 @@ void miqt_exec_callback_QAction_triggered(intptr_t);
 void miqt_exec_callback_QAction_hovered(intptr_t);
 void miqt_exec_callback_QAction_toggled(intptr_t, bool);
 void miqt_exec_callback_QAction_triggered1(intptr_t, bool);
+QMetaObject* miqt_exec_callback_QAction_metaObject(const QAction*, intptr_t);
+void* miqt_exec_callback_QAction_metacast(QAction*, intptr_t, const char*);
 int miqt_exec_callback_QAction_metacall(QAction*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAction_event(QAction*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAction_eventFilter(QAction*, intptr_t, QObject*, QEvent*);
@@ -52,6 +54,51 @@ public:
 	MiqtVirtualQAction(const QIcon& icon, const QString& text, QObject* parent): QAction(icon, text, parent) {};
 
 	virtual ~MiqtVirtualQAction() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAction::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAction_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAction::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAction::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAction_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAction::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -699,6 +746,34 @@ void QAction_connect_triggered1(QAction* self, intptr_t slot) {
 		bool sigval1 = checked;
 		miqt_exec_callback_QAction_triggered1(slot, sigval1);
 	});
+}
+
+bool QAction_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAction_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAction*)(self) )->virtualbase_metaObject();
+}
+
+bool QAction_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAction_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAction*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAction_override_virtual_metacall(void* self, intptr_t slot) {

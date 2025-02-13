@@ -114,6 +114,10 @@ int QStatusBar_insertWidget3(QStatusBar* self, int index, QWidget* widget, int s
 void QStatusBar_addPermanentWidget2(QStatusBar* self, QWidget* widget, int stretch);
 int QStatusBar_insertPermanentWidget3(QStatusBar* self, int index, QWidget* widget, int stretch);
 void QStatusBar_showMessage2(QStatusBar* self, struct miqt_string text, int timeout);
+bool QStatusBar_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QStatusBar_virtualbase_metaObject(const void* self);
+bool QStatusBar_override_virtual_metacast(void* self, intptr_t slot);
+void* QStatusBar_virtualbase_metacast(void* self, const char* param1);
 bool QStatusBar_override_virtual_metacall(void* self, intptr_t slot);
 int QStatusBar_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStatusBar_override_virtual_showEvent(void* self, intptr_t slot);

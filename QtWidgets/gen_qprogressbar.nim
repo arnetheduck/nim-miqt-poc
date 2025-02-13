@@ -109,6 +109,10 @@ proc fcQProgressBar_valueChanged(self: pointer, value: cint): void {.importc: "Q
 proc fQProgressBar_connect_valueChanged(self: pointer, slot: int) {.importc: "QProgressBar_connect_valueChanged".}
 proc fcQProgressBar_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QProgressBar_tr2".}
 proc fcQProgressBar_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QProgressBar_tr3".}
+proc fQProgressBar_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QProgressBar_virtualbase_metaObject".}
+proc fcQProgressBar_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QProgressBar_override_virtual_metaObject".}
+proc fQProgressBar_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QProgressBar_virtualbase_metacast".}
+proc fcQProgressBar_override_virtual_metacast(self: pointer, slot: int) {.importc: "QProgressBar_override_virtual_metacast".}
 proc fQProgressBar_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QProgressBar_virtualbase_metacall".}
 proc fcQProgressBar_override_virtual_metacall(self: pointer, slot: int) {.importc: "QProgressBar_override_virtual_metacall".}
 proc fQProgressBar_virtualbase_text(self: pointer, ): struct_miqt_string{.importc: "QProgressBar_virtualbase_text".}
@@ -342,6 +346,42 @@ proc tr*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QProgressBarmetaObject*(self: gen_qprogressbar_types.QProgressBar, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQProgressBar_virtualbase_metaObject(self.h))
+
+type QProgressBarmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QProgressBarmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQProgressBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QProgressBar_metaObject(self: ptr cQProgressBar, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressBar_metaObject ".} =
+  var nimfunc = cast[ptr QProgressBarmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QProgressBarmetacast*(self: gen_qprogressbar_types.QProgressBar, param1: cstring): pointer =
+  fQProgressBar_virtualbase_metacast(self.h, param1)
+
+type QProgressBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmetacastProc) =
+  # TODO check subclass
+  var tmp = new QProgressBarmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQProgressBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QProgressBar_metacast(self: ptr cQProgressBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QProgressBar_metacast ".} =
+  var nimfunc = cast[ptr QProgressBarmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QProgressBarmetacall*(self: gen_qprogressbar_types.QProgressBar, param1: cint, param2: cint, param3: pointer): cint =
   fQProgressBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

@@ -36,6 +36,8 @@ void miqt_exec_callback_QNetworkAccessManager_finished(intptr_t, QNetworkReply*)
 void miqt_exec_callback_QNetworkAccessManager_encrypted(intptr_t, QNetworkReply*);
 void miqt_exec_callback_QNetworkAccessManager_sslErrors(intptr_t, QNetworkReply*, struct miqt_array /* of QSslError* */ );
 void miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired(intptr_t, QNetworkReply*, QSslPreSharedKeyAuthenticator*);
+QMetaObject* miqt_exec_callback_QNetworkAccessManager_metaObject(const QNetworkAccessManager*, intptr_t);
+void* miqt_exec_callback_QNetworkAccessManager_metacast(QNetworkAccessManager*, intptr_t, const char*);
 int miqt_exec_callback_QNetworkAccessManager_metacall(QNetworkAccessManager*, intptr_t, int, int, void**);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QNetworkAccessManager_supportedSchemes(const QNetworkAccessManager*, intptr_t);
 QNetworkReply* miqt_exec_callback_QNetworkAccessManager_createRequest(QNetworkAccessManager*, intptr_t, int, QNetworkRequest*, QIODevice*);
@@ -57,6 +59,51 @@ public:
 	MiqtVirtualQNetworkAccessManager(QObject* parent): QNetworkAccessManager(parent) {};
 
 	virtual ~MiqtVirtualQNetworkAccessManager() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QNetworkAccessManager::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QNetworkAccessManager_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QNetworkAccessManager::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QNetworkAccessManager::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QNetworkAccessManager_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QNetworkAccessManager::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -701,6 +748,34 @@ void QNetworkAccessManager_connectToHost2(QNetworkAccessManager* self, struct mi
 
 void QNetworkAccessManager_setTransferTimeout1(QNetworkAccessManager* self, int timeout) {
 	self->setTransferTimeout(static_cast<int>(timeout));
+}
+
+bool QNetworkAccessManager_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QNetworkAccessManager_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_metaObject();
+}
+
+bool QNetworkAccessManager_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QNetworkAccessManager_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QNetworkAccessManager_override_virtual_metacall(void* self, intptr_t slot) {

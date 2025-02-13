@@ -76,6 +76,10 @@ void QGraphicsItemAnimation_beforeAnimationStep(QGraphicsItemAnimation* self, do
 void QGraphicsItemAnimation_afterAnimationStep(QGraphicsItemAnimation* self, double step);
 struct miqt_string QGraphicsItemAnimation_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsItemAnimation_tr3(const char* s, const char* c, int n);
+bool QGraphicsItemAnimation_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QGraphicsItemAnimation_virtualbase_metaObject(const void* self);
+bool QGraphicsItemAnimation_override_virtual_metacast(void* self, intptr_t slot);
+void* QGraphicsItemAnimation_virtualbase_metacast(void* self, const char* param1);
 bool QGraphicsItemAnimation_override_virtual_metacall(void* self, intptr_t slot);
 int QGraphicsItemAnimation_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsItemAnimation_override_virtual_beforeAnimationStep(void* self, intptr_t slot);

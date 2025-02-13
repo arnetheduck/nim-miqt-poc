@@ -188,6 +188,10 @@ int QGraphicsWidget_grabShortcut2(QGraphicsWidget* self, QKeySequence* sequence,
 void QGraphicsWidget_setShortcutEnabled2(QGraphicsWidget* self, int id, bool enabled);
 void QGraphicsWidget_setShortcutAutoRepeat2(QGraphicsWidget* self, int id, bool enabled);
 void QGraphicsWidget_setAttribute2(QGraphicsWidget* self, int attribute, bool on);
+bool QGraphicsWidget_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QGraphicsWidget_virtualbase_metaObject(const void* self);
+bool QGraphicsWidget_override_virtual_metacast(void* self, intptr_t slot);
+void* QGraphicsWidget_virtualbase_metacast(void* self, const char* param1);
 bool QGraphicsWidget_override_virtual_metacall(void* self, intptr_t slot);
 int QGraphicsWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsWidget_override_virtual_setGeometry(void* self, intptr_t slot);

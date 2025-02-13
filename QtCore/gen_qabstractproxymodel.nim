@@ -101,6 +101,10 @@ proc fcQAbstractProxyModel_supportedDropActions(self: pointer, ): cint {.importc
 proc fcQAbstractProxyModel_roleNames(self: pointer, ): struct_miqt_map {.importc: "QAbstractProxyModel_roleNames".}
 proc fcQAbstractProxyModel_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractProxyModel_tr2".}
 proc fcQAbstractProxyModel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractProxyModel_tr3".}
+proc fQAbstractProxyModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractProxyModel_virtualbase_metaObject".}
+proc fcQAbstractProxyModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractProxyModel_override_virtual_metaObject".}
+proc fQAbstractProxyModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractProxyModel_virtualbase_metacast".}
+proc fcQAbstractProxyModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractProxyModel_override_virtual_metacast".}
 proc fQAbstractProxyModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractProxyModel_virtualbase_metacall".}
 proc fcQAbstractProxyModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractProxyModel_override_virtual_metacall".}
 proc fQAbstractProxyModel_virtualbase_setSourceModel(self: pointer, sourceModel: pointer): void{.importc: "QAbstractProxyModel_virtualbase_setSourceModel".}
@@ -367,6 +371,42 @@ proc tr*(_: type gen_qabstractproxymodel_types.QAbstractProxyModel, s: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QAbstractProxyModelmetaObject*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAbstractProxyModel_virtualbase_metaObject(self.h))
+
+type QAbstractProxyModelmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, slot: QAbstractProxyModelmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAbstractProxyModelmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractProxyModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractProxyModel_metaObject(self: ptr cQAbstractProxyModel, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractProxyModel_metaObject ".} =
+  var nimfunc = cast[ptr QAbstractProxyModelmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAbstractProxyModelmetacast*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, param1: cstring): pointer =
+  fQAbstractProxyModel_virtualbase_metacast(self.h, param1)
+
+type QAbstractProxyModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, slot: QAbstractProxyModelmetacastProc) =
+  # TODO check subclass
+  var tmp = new QAbstractProxyModelmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractProxyModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractProxyModel_metacast(self: ptr cQAbstractProxyModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractProxyModel_metacast ".} =
+  var nimfunc = cast[ptr QAbstractProxyModelmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAbstractProxyModelmetacall*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, param1: cint, param2: cint, param3: pointer): cint =
   fQAbstractProxyModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

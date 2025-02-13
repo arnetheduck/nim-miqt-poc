@@ -27,6 +27,8 @@ void miqt_exec_callback_QDnsLookup_finished(intptr_t);
 void miqt_exec_callback_QDnsLookup_nameChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QDnsLookup_typeChanged(intptr_t, int);
 void miqt_exec_callback_QDnsLookup_nameserverChanged(intptr_t, QHostAddress*);
+QMetaObject* miqt_exec_callback_QDnsLookup_metaObject(const QDnsLookup*, intptr_t);
+void* miqt_exec_callback_QDnsLookup_metacast(QDnsLookup*, intptr_t, const char*);
 int miqt_exec_callback_QDnsLookup_metacall(QDnsLookup*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QDnsLookup_event(QDnsLookup*, intptr_t, QEvent*);
 bool miqt_exec_callback_QDnsLookup_eventFilter(QDnsLookup*, intptr_t, QObject*, QEvent*);
@@ -305,6 +307,51 @@ public:
 	MiqtVirtualQDnsLookup(QDnsLookup::Type type, const QString& name, const QHostAddress& nameserver, QObject* parent): QDnsLookup(type, name, nameserver, parent) {};
 
 	virtual ~MiqtVirtualQDnsLookup() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QDnsLookup::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QDnsLookup_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QDnsLookup::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QDnsLookup::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QDnsLookup_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QDnsLookup::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -791,6 +838,34 @@ struct miqt_string QDnsLookup_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QDnsLookup_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QDnsLookup_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQDnsLookup*)(self) )->virtualbase_metaObject();
+}
+
+bool QDnsLookup_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QDnsLookup_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QDnsLookup_override_virtual_metacall(void* self, intptr_t slot) {

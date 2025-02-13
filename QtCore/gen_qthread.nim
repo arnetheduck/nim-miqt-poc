@@ -103,6 +103,10 @@ proc fcQThread_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.import
 proc fcQThread_start1(self: pointer, param1: cint): void {.importc: "QThread_start1".}
 proc fcQThread_exit1(self: pointer, retcode: cint): void {.importc: "QThread_exit1".}
 proc fcQThread_wait1(self: pointer, deadline: pointer): bool {.importc: "QThread_wait1".}
+proc fQThread_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QThread_virtualbase_metaObject".}
+proc fcQThread_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QThread_override_virtual_metaObject".}
+proc fQThread_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QThread_virtualbase_metacast".}
+proc fcQThread_override_virtual_metacast(self: pointer, slot: int) {.importc: "QThread_override_virtual_metacast".}
 proc fQThread_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QThread_virtualbase_metacall".}
 proc fcQThread_override_virtual_metacall(self: pointer, slot: int) {.importc: "QThread_override_virtual_metacall".}
 proc fQThread_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QThread_virtualbase_event".}
@@ -244,6 +248,42 @@ proc exit*(self: gen_qthread_types.QThread, retcode: cint): void =
 proc wait*(self: gen_qthread_types.QThread, deadline: gen_qdeadlinetimer_types.QDeadlineTimer): bool =
   fcQThread_wait1(self.h, deadline.h)
 
+proc QThreadmetaObject*(self: gen_qthread_types.QThread, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQThread_virtualbase_metaObject(self.h))
+
+type QThreadmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qthread_types.QThread, slot: QThreadmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QThreadmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQThread_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QThread_metaObject(self: ptr cQThread, slot: int): pointer {.exportc: "miqt_exec_callback_QThread_metaObject ".} =
+  var nimfunc = cast[ptr QThreadmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QThreadmetacast*(self: gen_qthread_types.QThread, param1: cstring): pointer =
+  fQThread_virtualbase_metacast(self.h, param1)
+
+type QThreadmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qthread_types.QThread, slot: QThreadmetacastProc) =
+  # TODO check subclass
+  var tmp = new QThreadmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQThread_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QThread_metacast(self: ptr cQThread, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QThread_metacast ".} =
+  var nimfunc = cast[ptr QThreadmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QThreadmetacall*(self: gen_qthread_types.QThread, param1: cint, param2: cint, param3: pointer): cint =
   fQThread_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

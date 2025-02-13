@@ -103,6 +103,10 @@ int QImageIOPlugin_capabilities(const QImageIOPlugin* self, QIODevice* device, s
 QImageIOHandler* QImageIOPlugin_create(const QImageIOPlugin* self, QIODevice* device, struct miqt_string format);
 struct miqt_string QImageIOPlugin_tr2(const char* s, const char* c);
 struct miqt_string QImageIOPlugin_tr3(const char* s, const char* c, int n);
+bool QImageIOPlugin_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QImageIOPlugin_virtualbase_metaObject(const void* self);
+bool QImageIOPlugin_override_virtual_metacast(void* self, intptr_t slot);
+void* QImageIOPlugin_virtualbase_metacast(void* self, const char* param1);
 bool QImageIOPlugin_override_virtual_metacall(void* self, intptr_t slot);
 int QImageIOPlugin_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QImageIOPlugin_override_virtual_capabilities(void* self, intptr_t slot);

@@ -74,6 +74,10 @@ proc fcQActionGroup_setExclusive(self: pointer, exclusive: bool): void {.importc
 proc fcQActionGroup_setExclusionPolicy(self: pointer, policy: cint): void {.importc: "QActionGroup_setExclusionPolicy".}
 proc fcQActionGroup_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QActionGroup_tr2".}
 proc fcQActionGroup_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QActionGroup_tr3".}
+proc fQActionGroup_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QActionGroup_virtualbase_metaObject".}
+proc fcQActionGroup_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QActionGroup_override_virtual_metaObject".}
+proc fQActionGroup_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QActionGroup_virtualbase_metacast".}
+proc fcQActionGroup_override_virtual_metacast(self: pointer, slot: int) {.importc: "QActionGroup_override_virtual_metacast".}
 proc fQActionGroup_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QActionGroup_virtualbase_metacall".}
 proc fcQActionGroup_override_virtual_metacall(self: pointer, slot: int) {.importc: "QActionGroup_override_virtual_metacall".}
 proc fQActionGroup_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QActionGroup_virtualbase_event".}
@@ -153,6 +157,42 @@ proc tr*(_: type gen_qactiongroup_types.QActionGroup, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QActionGroupmetaObject*(self: gen_qactiongroup_types.QActionGroup, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQActionGroup_virtualbase_metaObject(self.h))
+
+type QActionGroupmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QActionGroupmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQActionGroup_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QActionGroup_metaObject(self: ptr cQActionGroup, slot: int): pointer {.exportc: "miqt_exec_callback_QActionGroup_metaObject ".} =
+  var nimfunc = cast[ptr QActionGroupmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QActionGroupmetacast*(self: gen_qactiongroup_types.QActionGroup, param1: cstring): pointer =
+  fQActionGroup_virtualbase_metacast(self.h, param1)
+
+type QActionGroupmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupmetacastProc) =
+  # TODO check subclass
+  var tmp = new QActionGroupmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQActionGroup_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QActionGroup_metacast(self: ptr cQActionGroup, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QActionGroup_metacast ".} =
+  var nimfunc = cast[ptr QActionGroupmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QActionGroupmetacall*(self: gen_qactiongroup_types.QActionGroup, param1: cint, param2: cint, param3: pointer): cint =
   fQActionGroup_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

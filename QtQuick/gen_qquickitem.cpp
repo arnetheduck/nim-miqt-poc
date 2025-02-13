@@ -43,6 +43,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QQuickTransform_metaObject(const QQuickTransform*, intptr_t);
+void* miqt_exec_callback_QQuickTransform_metacast(QQuickTransform*, intptr_t, const char*);
 int miqt_exec_callback_QQuickTransform_metacall(QQuickTransform*, intptr_t, int, int, void**);
 void miqt_exec_callback_QQuickTransform_applyTo(const QQuickTransform*, intptr_t, QMatrix4x4*);
 bool miqt_exec_callback_QQuickTransform_event(QQuickTransform*, intptr_t, QEvent*);
@@ -81,6 +83,8 @@ void miqt_exec_callback_QQuickItem_implicitHeightChanged(intptr_t);
 void miqt_exec_callback_QQuickItem_containmentMaskChanged(intptr_t);
 void miqt_exec_callback_QQuickItem_paletteChanged(intptr_t);
 void miqt_exec_callback_QQuickItem_paletteCreated(intptr_t);
+QMetaObject* miqt_exec_callback_QQuickItem_metaObject(const QQuickItem*, intptr_t);
+void* miqt_exec_callback_QQuickItem_metacast(QQuickItem*, intptr_t, const char*);
 int miqt_exec_callback_QQuickItem_metacall(QQuickItem*, intptr_t, int, int, void**);
 QRectF* miqt_exec_callback_QQuickItem_boundingRect(const QQuickItem*, intptr_t);
 QRectF* miqt_exec_callback_QQuickItem_clipRect(const QQuickItem*, intptr_t);
@@ -134,6 +138,51 @@ public:
 	MiqtVirtualQQuickTransform(QObject* parent): QQuickTransform(parent) {};
 
 	virtual ~MiqtVirtualQQuickTransform() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQuickTransform::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQuickTransform_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQuickTransform::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQuickTransform::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQuickTransform_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQuickTransform::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -425,6 +474,34 @@ struct miqt_string QQuickTransform_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+bool QQuickTransform_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQuickTransform_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQuickTransform*)(self) )->virtualbase_metaObject();
+}
+
+bool QQuickTransform_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQuickTransform_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QQuickTransform_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
 	if (self_cast == nullptr) {
@@ -624,6 +701,51 @@ public:
 	MiqtVirtualQQuickItem(QQuickItem* parent): QQuickItem(parent) {};
 
 	virtual ~MiqtVirtualQQuickItem() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQuickItem::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQuickItem_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQuickItem::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQuickItem::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQuickItem_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQuickItem::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -2518,6 +2640,34 @@ bool QQuickItem_grabToImage22(QQuickItem* self, QJSValue* callback, QSize* targe
 
 QQuickItem* QQuickItem_nextItemInFocusChain1(QQuickItem* self, bool forward) {
 	return self->nextItemInFocusChain(forward);
+}
+
+bool QQuickItem_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQuickItem_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_metaObject();
+}
+
+bool QQuickItem_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQuickItem_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQuickItem*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QQuickItem_override_virtual_metacall(void* self, intptr_t slot) {

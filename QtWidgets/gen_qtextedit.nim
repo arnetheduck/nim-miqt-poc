@@ -228,6 +228,10 @@ proc fcQTextEdit_toMarkdown1(self: pointer, features: cint): struct_miqt_string 
 proc fcQTextEdit_moveCursor2(self: pointer, operation: cint, mode: cint): void {.importc: "QTextEdit_moveCursor2".}
 proc fcQTextEdit_zoomIn1(self: pointer, range: cint): void {.importc: "QTextEdit_zoomIn1".}
 proc fcQTextEdit_zoomOut1(self: pointer, range: cint): void {.importc: "QTextEdit_zoomOut1".}
+proc fQTextEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTextEdit_virtualbase_metaObject".}
+proc fcQTextEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTextEdit_override_virtual_metaObject".}
+proc fQTextEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTextEdit_virtualbase_metacast".}
+proc fcQTextEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTextEdit_override_virtual_metacast".}
 proc fQTextEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTextEdit_virtualbase_metacall".}
 proc fcQTextEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTextEdit_override_virtual_metacall".}
 proc fQTextEdit_virtualbase_loadResource(self: pointer, typeVal: cint, name: pointer): pointer{.importc: "QTextEdit_virtualbase_loadResource".}
@@ -819,6 +823,42 @@ proc zoomIn*(self: gen_qtextedit_types.QTextEdit, range: cint): void =
 proc zoomOut*(self: gen_qtextedit_types.QTextEdit, range: cint): void =
   fcQTextEdit_zoomOut1(self.h, range)
 
+proc QTextEditmetaObject*(self: gen_qtextedit_types.QTextEdit, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQTextEdit_virtualbase_metaObject(self.h))
+
+type QTextEditmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QTextEditmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextEdit_metaObject(self: ptr cQTextEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QTextEdit_metaObject ".} =
+  var nimfunc = cast[ptr QTextEditmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QTextEditmetacast*(self: gen_qtextedit_types.QTextEdit, param1: cstring): pointer =
+  fQTextEdit_virtualbase_metacast(self.h, param1)
+
+type QTextEditmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditmetacastProc) =
+  # TODO check subclass
+  var tmp = new QTextEditmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextEdit_metacast(self: ptr cQTextEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextEdit_metacast ".} =
+  var nimfunc = cast[ptr QTextEditmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QTextEditmetacall*(self: gen_qtextedit_types.QTextEdit, param1: cint, param2: cint, param3: pointer): cint =
   fQTextEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

@@ -47,6 +47,8 @@ void miqt_exec_callback_QCamera_brightnessChanged(intptr_t);
 void miqt_exec_callback_QCamera_contrastChanged(intptr_t);
 void miqt_exec_callback_QCamera_saturationChanged(intptr_t);
 void miqt_exec_callback_QCamera_hueChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QCamera_metaObject(const QCamera*, intptr_t);
+void* miqt_exec_callback_QCamera_metacast(QCamera*, intptr_t, const char*);
 int miqt_exec_callback_QCamera_metacall(QCamera*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QCamera_event(QCamera*, intptr_t, QEvent*);
 bool miqt_exec_callback_QCamera_eventFilter(QCamera*, intptr_t, QObject*, QEvent*);
@@ -70,6 +72,51 @@ public:
 	MiqtVirtualQCamera(QCameraDevice::Position position, QObject* parent): QCamera(position, parent) {};
 
 	virtual ~MiqtVirtualQCamera() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QCamera::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QCamera_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QCamera::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QCamera::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QCamera_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QCamera::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -882,6 +929,34 @@ struct miqt_string QCamera_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QCamera_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QCamera_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_metaObject();
+}
+
+bool QCamera_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QCamera_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QCamera_override_virtual_metacall(void* self, intptr_t slot) {

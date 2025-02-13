@@ -141,6 +141,10 @@ proc fQImageCapture_connect_imageSaved(self: pointer, slot: int) {.importc: "QIm
 proc fcQImageCapture_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QImageCapture_tr2".}
 proc fcQImageCapture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QImageCapture_tr3".}
 proc fcQImageCapture_captureToFile1(self: pointer, location: struct_miqt_string): cint {.importc: "QImageCapture_captureToFile1".}
+proc fQImageCapture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QImageCapture_virtualbase_metaObject".}
+proc fcQImageCapture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QImageCapture_override_virtual_metaObject".}
+proc fQImageCapture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QImageCapture_virtualbase_metacast".}
+proc fcQImageCapture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QImageCapture_override_virtual_metacast".}
 proc fQImageCapture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QImageCapture_virtualbase_metacall".}
 proc fcQImageCapture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QImageCapture_override_virtual_metacall".}
 proc fQImageCapture_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QImageCapture_virtualbase_event".}
@@ -473,6 +477,42 @@ proc tr*(_: type gen_qimagecapture_types.QImageCapture, s: cstring, c: cstring, 
 proc captureToFile*(self: gen_qimagecapture_types.QImageCapture, location: string): cint =
   fcQImageCapture_captureToFile1(self.h, struct_miqt_string(data: location, len: csize_t(len(location))))
 
+proc QImageCapturemetaObject*(self: gen_qimagecapture_types.QImageCapture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQImageCapture_virtualbase_metaObject(self.h))
+
+type QImageCapturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qimagecapture_types.QImageCapture, slot: QImageCapturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QImageCapturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQImageCapture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QImageCapture_metaObject(self: ptr cQImageCapture, slot: int): pointer {.exportc: "miqt_exec_callback_QImageCapture_metaObject ".} =
+  var nimfunc = cast[ptr QImageCapturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QImageCapturemetacast*(self: gen_qimagecapture_types.QImageCapture, param1: cstring): pointer =
+  fQImageCapture_virtualbase_metacast(self.h, param1)
+
+type QImageCapturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qimagecapture_types.QImageCapture, slot: QImageCapturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QImageCapturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQImageCapture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QImageCapture_metacast(self: ptr cQImageCapture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QImageCapture_metacast ".} =
+  var nimfunc = cast[ptr QImageCapturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QImageCapturemetacall*(self: gen_qimagecapture_types.QImageCapture, param1: cint, param2: cint, param3: pointer): cint =
   fQImageCapture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

@@ -89,6 +89,10 @@ proc fcQAudioSource_stateChanged(self: pointer, state: cint): void {.importc: "Q
 proc fQAudioSource_connect_stateChanged(self: pointer, slot: int) {.importc: "QAudioSource_connect_stateChanged".}
 proc fcQAudioSource_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioSource_tr2".}
 proc fcQAudioSource_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioSource_tr3".}
+proc fQAudioSource_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAudioSource_virtualbase_metaObject".}
+proc fcQAudioSource_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAudioSource_override_virtual_metaObject".}
+proc fQAudioSource_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAudioSource_virtualbase_metacast".}
+proc fcQAudioSource_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAudioSource_override_virtual_metacast".}
 proc fQAudioSource_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAudioSource_virtualbase_metacall".}
 proc fcQAudioSource_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAudioSource_override_virtual_metacall".}
 proc fQAudioSource_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QAudioSource_virtualbase_event".}
@@ -223,6 +227,42 @@ proc tr*(_: type gen_qaudiosource_types.QAudioSource, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QAudioSourcemetaObject*(self: gen_qaudiosource_types.QAudioSource, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAudioSource_virtualbase_metaObject(self.h))
+
+type QAudioSourcemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qaudiosource_types.QAudioSource, slot: QAudioSourcemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAudioSourcemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioSource_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioSource_metaObject(self: ptr cQAudioSource, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioSource_metaObject ".} =
+  var nimfunc = cast[ptr QAudioSourcemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAudioSourcemetacast*(self: gen_qaudiosource_types.QAudioSource, param1: cstring): pointer =
+  fQAudioSource_virtualbase_metacast(self.h, param1)
+
+type QAudioSourcemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qaudiosource_types.QAudioSource, slot: QAudioSourcemetacastProc) =
+  # TODO check subclass
+  var tmp = new QAudioSourcemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioSource_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioSource_metacast(self: ptr cQAudioSource, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioSource_metacast ".} =
+  var nimfunc = cast[ptr QAudioSourcemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAudioSourcemetacall*(self: gen_qaudiosource_types.QAudioSource, param1: cint, param2: cint, param3: pointer): cint =
   fQAudioSource_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

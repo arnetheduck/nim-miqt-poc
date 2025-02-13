@@ -93,6 +93,10 @@ proc fQPrintDialog_connect_accepted(self: pointer, slot: int) {.importc: "QPrint
 proc fcQPrintDialog_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QPrintDialog_tr2".}
 proc fcQPrintDialog_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPrintDialog_tr3".}
 proc fcQPrintDialog_setOption2(self: pointer, option: cint, on: bool): void {.importc: "QPrintDialog_setOption2".}
+proc fQPrintDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPrintDialog_virtualbase_metaObject".}
+proc fcQPrintDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPrintDialog_override_virtual_metaObject".}
+proc fQPrintDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPrintDialog_virtualbase_metacast".}
+proc fcQPrintDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPrintDialog_override_virtual_metacast".}
 proc fQPrintDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPrintDialog_virtualbase_metacall".}
 proc fcQPrintDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPrintDialog_override_virtual_metacall".}
 proc fQPrintDialog_virtualbase_exec(self: pointer, ): cint{.importc: "QPrintDialog_virtualbase_exec".}
@@ -287,6 +291,42 @@ proc tr*(_: type gen_qprintdialog_types.QPrintDialog, s: cstring, c: cstring, n:
 proc setOption*(self: gen_qprintdialog_types.QPrintDialog, option: cint, on: bool): void =
   fcQPrintDialog_setOption2(self.h, cint(option), on)
 
+proc QPrintDialogmetaObject*(self: gen_qprintdialog_types.QPrintDialog, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQPrintDialog_virtualbase_metaObject(self.h))
+
+type QPrintDialogmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qprintdialog_types.QPrintDialog, slot: QPrintDialogmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QPrintDialogmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPrintDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPrintDialog_metaObject(self: ptr cQPrintDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintDialog_metaObject ".} =
+  var nimfunc = cast[ptr QPrintDialogmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QPrintDialogmetacast*(self: gen_qprintdialog_types.QPrintDialog, param1: cstring): pointer =
+  fQPrintDialog_virtualbase_metacast(self.h, param1)
+
+type QPrintDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qprintdialog_types.QPrintDialog, slot: QPrintDialogmetacastProc) =
+  # TODO check subclass
+  var tmp = new QPrintDialogmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPrintDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPrintDialog_metacast(self: ptr cQPrintDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPrintDialog_metacast ".} =
+  var nimfunc = cast[ptr QPrintDialogmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QPrintDialogmetacall*(self: gen_qprintdialog_types.QPrintDialog, param1: cint, param2: cint, param3: pointer): cint =
   fQPrintDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

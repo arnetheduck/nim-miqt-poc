@@ -75,6 +75,10 @@ proc fcQSocketNotifier_isEnabled(self: pointer, ): bool {.importc: "QSocketNotif
 proc fcQSocketNotifier_setEnabled(self: pointer, enabled: bool): void {.importc: "QSocketNotifier_setEnabled".}
 proc fcQSocketNotifier_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSocketNotifier_tr2".}
 proc fcQSocketNotifier_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSocketNotifier_tr3".}
+proc fQSocketNotifier_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSocketNotifier_virtualbase_metaObject".}
+proc fcQSocketNotifier_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSocketNotifier_override_virtual_metaObject".}
+proc fQSocketNotifier_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSocketNotifier_virtualbase_metacast".}
+proc fcQSocketNotifier_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSocketNotifier_override_virtual_metacast".}
 proc fQSocketNotifier_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSocketNotifier_virtualbase_metacall".}
 proc fcQSocketNotifier_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSocketNotifier_override_virtual_metacall".}
 proc fQSocketNotifier_virtualbase_event(self: pointer, param1: pointer): bool{.importc: "QSocketNotifier_virtualbase_event".}
@@ -160,6 +164,42 @@ proc tr*(_: type gen_qsocketnotifier_types.QSocketNotifier, s: cstring, c: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc QSocketNotifiermetaObject*(self: gen_qsocketnotifier_types.QSocketNotifier, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSocketNotifier_virtualbase_metaObject(self.h))
+
+type QSocketNotifiermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsocketnotifier_types.QSocketNotifier, slot: QSocketNotifiermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSocketNotifiermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSocketNotifier_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSocketNotifier_metaObject(self: ptr cQSocketNotifier, slot: int): pointer {.exportc: "miqt_exec_callback_QSocketNotifier_metaObject ".} =
+  var nimfunc = cast[ptr QSocketNotifiermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSocketNotifiermetacast*(self: gen_qsocketnotifier_types.QSocketNotifier, param1: cstring): pointer =
+  fQSocketNotifier_virtualbase_metacast(self.h, param1)
+
+type QSocketNotifiermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsocketnotifier_types.QSocketNotifier, slot: QSocketNotifiermetacastProc) =
+  # TODO check subclass
+  var tmp = new QSocketNotifiermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSocketNotifier_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSocketNotifier_metacast(self: ptr cQSocketNotifier, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSocketNotifier_metacast ".} =
+  var nimfunc = cast[ptr QSocketNotifiermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSocketNotifiermetacall*(self: gen_qsocketnotifier_types.QSocketNotifier, param1: cint, param2: cint, param3: pointer): cint =
   fQSocketNotifier_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

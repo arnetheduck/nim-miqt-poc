@@ -101,6 +101,10 @@ proc fcQGraphicsSvgItem_paint(self: pointer, painter: pointer, option: pointer, 
 proc fcQGraphicsSvgItem_typeX(self: pointer, ): cint {.importc: "QGraphicsSvgItem_type".}
 proc fcQGraphicsSvgItem_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsSvgItem_tr2".}
 proc fcQGraphicsSvgItem_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsSvgItem_tr3".}
+proc fQGraphicsSvgItem_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsSvgItem_virtualbase_metaObject".}
+proc fcQGraphicsSvgItem_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsSvgItem_override_virtual_metaObject".}
+proc fQGraphicsSvgItem_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsSvgItem_virtualbase_metacast".}
+proc fcQGraphicsSvgItem_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsSvgItem_override_virtual_metacast".}
 proc fQGraphicsSvgItem_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsSvgItem_virtualbase_metacall".}
 proc fcQGraphicsSvgItem_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsSvgItem_override_virtual_metacall".}
 proc fQGraphicsSvgItem_virtualbase_boundingRect(self: pointer, ): pointer{.importc: "QGraphicsSvgItem_virtualbase_boundingRect".}
@@ -268,6 +272,42 @@ proc tr*(_: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, s: cstring, c: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsSvgItemmetaObject*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsSvgItem_virtualbase_metaObject(self.h))
+
+type QGraphicsSvgItemmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, slot: QGraphicsSvgItemmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsSvgItemmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsSvgItem_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsSvgItem_metaObject(self: ptr cQGraphicsSvgItem, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsSvgItem_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsSvgItemmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsSvgItemmetacast*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, param1: cstring): pointer =
+  fQGraphicsSvgItem_virtualbase_metacast(self.h, param1)
+
+type QGraphicsSvgItemmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, slot: QGraphicsSvgItemmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsSvgItemmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsSvgItem_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsSvgItem_metacast(self: ptr cQGraphicsSvgItem, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsSvgItem_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsSvgItemmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsSvgItemmetacall*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsSvgItem_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

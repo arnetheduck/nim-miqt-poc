@@ -115,6 +115,10 @@ void QCheckBox_initStyleOption(const QCheckBox* self, QStyleOptionButton* option
 struct miqt_string QCheckBox_tr2(const char* s, const char* c);
 struct miqt_string QCheckBox_tr3(const char* s, const char* c, int n);
 void QCheckBox_setTristate1(QCheckBox* self, bool y);
+bool QCheckBox_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QCheckBox_virtualbase_metaObject(const void* self);
+bool QCheckBox_override_virtual_metacast(void* self, intptr_t slot);
+void* QCheckBox_virtualbase_metacast(void* self, const char* param1);
 bool QCheckBox_override_virtual_metacall(void* self, intptr_t slot);
 int QCheckBox_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCheckBox_override_virtual_sizeHint(void* self, intptr_t slot);

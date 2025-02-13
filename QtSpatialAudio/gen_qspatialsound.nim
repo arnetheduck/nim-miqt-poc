@@ -138,6 +138,10 @@ proc fcQSpatialSound_pause(self: pointer, ): void {.importc: "QSpatialSound_paus
 proc fcQSpatialSound_stop(self: pointer, ): void {.importc: "QSpatialSound_stop".}
 proc fcQSpatialSound_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSpatialSound_tr2".}
 proc fcQSpatialSound_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSpatialSound_tr3".}
+proc fQSpatialSound_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSpatialSound_virtualbase_metaObject".}
+proc fcQSpatialSound_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_metaObject".}
+proc fQSpatialSound_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSpatialSound_virtualbase_metacast".}
+proc fcQSpatialSound_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_metacast".}
 proc fQSpatialSound_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSpatialSound_virtualbase_metacall".}
 proc fcQSpatialSound_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_metacall".}
 proc fQSpatialSound_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSpatialSound_virtualbase_event".}
@@ -482,6 +486,42 @@ proc tr*(_: type gen_qspatialsound_types.QSpatialSound, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QSpatialSoundmetaObject*(self: gen_qspatialsound_types.QSpatialSound, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSpatialSound_virtualbase_metaObject(self.h))
+
+type QSpatialSoundmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSpatialSoundmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSpatialSound_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSpatialSound_metaObject(self: ptr cQSpatialSound, slot: int): pointer {.exportc: "miqt_exec_callback_QSpatialSound_metaObject ".} =
+  var nimfunc = cast[ptr QSpatialSoundmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSpatialSoundmetacast*(self: gen_qspatialsound_types.QSpatialSound, param1: cstring): pointer =
+  fQSpatialSound_virtualbase_metacast(self.h, param1)
+
+type QSpatialSoundmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundmetacastProc) =
+  # TODO check subclass
+  var tmp = new QSpatialSoundmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSpatialSound_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSpatialSound_metacast(self: ptr cQSpatialSound, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSpatialSound_metacast ".} =
+  var nimfunc = cast[ptr QSpatialSoundmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSpatialSoundmetacall*(self: gen_qspatialsound_types.QSpatialSound, param1: cint, param2: cint, param3: pointer): cint =
   fQSpatialSound_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

@@ -15,6 +15,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QGenericPlugin_metaObject(const QGenericPlugin*, intptr_t);
+void* miqt_exec_callback_QGenericPlugin_metacast(QGenericPlugin*, intptr_t, const char*);
 int miqt_exec_callback_QGenericPlugin_metacall(QGenericPlugin*, intptr_t, int, int, void**);
 QObject* miqt_exec_callback_QGenericPlugin_create(QGenericPlugin*, intptr_t, struct miqt_string, struct miqt_string);
 bool miqt_exec_callback_QGenericPlugin_event(QGenericPlugin*, intptr_t, QEvent*);
@@ -35,6 +37,51 @@ public:
 	MiqtVirtualQGenericPlugin(QObject* parent): QGenericPlugin(parent) {};
 
 	virtual ~MiqtVirtualQGenericPlugin() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QGenericPlugin::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QGenericPlugin_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QGenericPlugin::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QGenericPlugin::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QGenericPlugin_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QGenericPlugin::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -332,6 +379,34 @@ struct miqt_string QGenericPlugin_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QGenericPlugin_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QGenericPlugin_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQGenericPlugin*)(self) )->virtualbase_metaObject();
+}
+
+bool QGenericPlugin_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QGenericPlugin_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QGenericPlugin_override_virtual_metacall(void* self, intptr_t slot) {

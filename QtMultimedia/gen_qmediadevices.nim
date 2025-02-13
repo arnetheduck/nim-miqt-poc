@@ -76,6 +76,10 @@ proc fcQMediaDevices_videoInputsChanged(self: pointer, ): void {.importc: "QMedi
 proc fQMediaDevices_connect_videoInputsChanged(self: pointer, slot: int) {.importc: "QMediaDevices_connect_videoInputsChanged".}
 proc fcQMediaDevices_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaDevices_tr2".}
 proc fcQMediaDevices_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaDevices_tr3".}
+proc fQMediaDevices_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMediaDevices_virtualbase_metaObject".}
+proc fcQMediaDevices_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMediaDevices_override_virtual_metaObject".}
+proc fQMediaDevices_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMediaDevices_virtualbase_metacast".}
+proc fcQMediaDevices_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMediaDevices_override_virtual_metacast".}
 proc fQMediaDevices_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMediaDevices_virtualbase_metacall".}
 proc fcQMediaDevices_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMediaDevices_override_virtual_metacall".}
 proc fQMediaDevices_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QMediaDevices_virtualbase_event".}
@@ -206,6 +210,42 @@ proc tr*(_: type gen_qmediadevices_types.QMediaDevices, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QMediaDevicesmetaObject*(self: gen_qmediadevices_types.QMediaDevices, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQMediaDevices_virtualbase_metaObject(self.h))
+
+type QMediaDevicesmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qmediadevices_types.QMediaDevices, slot: QMediaDevicesmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QMediaDevicesmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMediaDevices_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMediaDevices_metaObject(self: ptr cQMediaDevices, slot: int): pointer {.exportc: "miqt_exec_callback_QMediaDevices_metaObject ".} =
+  var nimfunc = cast[ptr QMediaDevicesmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QMediaDevicesmetacast*(self: gen_qmediadevices_types.QMediaDevices, param1: cstring): pointer =
+  fQMediaDevices_virtualbase_metacast(self.h, param1)
+
+type QMediaDevicesmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmediadevices_types.QMediaDevices, slot: QMediaDevicesmetacastProc) =
+  # TODO check subclass
+  var tmp = new QMediaDevicesmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMediaDevices_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMediaDevices_metacast(self: ptr cQMediaDevices, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMediaDevices_metacast ".} =
+  var nimfunc = cast[ptr QMediaDevicesmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QMediaDevicesmetacall*(self: gen_qmediadevices_types.QMediaDevices, param1: cint, param2: cint, param3: pointer): cint =
   fQMediaDevices_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

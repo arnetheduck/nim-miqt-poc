@@ -21,6 +21,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQmlExpression_valueChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QQmlExpression_metaObject(const QQmlExpression*, intptr_t);
+void* miqt_exec_callback_QQmlExpression_metacast(QQmlExpression*, intptr_t, const char*);
 int miqt_exec_callback_QQmlExpression_metacall(QQmlExpression*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QQmlExpression_event(QQmlExpression*, intptr_t, QEvent*);
 bool miqt_exec_callback_QQmlExpression_eventFilter(QQmlExpression*, intptr_t, QObject*, QEvent*);
@@ -45,6 +47,51 @@ public:
 	MiqtVirtualQQmlExpression(const QQmlScriptString& param1, QQmlContext* param2, QObject* param3, QObject* param4): QQmlExpression(param1, param2, param3, param4) {};
 
 	virtual ~MiqtVirtualQQmlExpression() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQmlExpression::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQmlExpression_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQmlExpression::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQmlExpression::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQmlExpression_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQmlExpression::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -422,6 +469,34 @@ void QQmlExpression_setSourceLocation3(QQmlExpression* self, struct miqt_string 
 
 QVariant* QQmlExpression_evaluate1(QQmlExpression* self, bool* valueIsUndefined) {
 	return new QVariant(self->evaluate(valueIsUndefined));
+}
+
+bool QQmlExpression_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQmlExpression* self_cast = dynamic_cast<MiqtVirtualQQmlExpression*>( (QQmlExpression*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQmlExpression_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQmlExpression*)(self) )->virtualbase_metaObject();
+}
+
+bool QQmlExpression_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQmlExpression* self_cast = dynamic_cast<MiqtVirtualQQmlExpression*>( (QQmlExpression*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQmlExpression_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQmlExpression*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QQmlExpression_override_virtual_metacall(void* self, intptr_t slot) {

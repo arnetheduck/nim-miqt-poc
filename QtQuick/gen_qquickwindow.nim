@@ -203,6 +203,10 @@ proc fcQQuickWindow_update(self: pointer, ): void {.importc: "QQuickWindow_updat
 proc fcQQuickWindow_releaseResources(self: pointer, ): void {.importc: "QQuickWindow_releaseResources".}
 proc fcQQuickWindow_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickWindow_tr2".}
 proc fcQQuickWindow_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickWindow_tr3".}
+proc fQQuickWindow_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQuickWindow_virtualbase_metaObject".}
+proc fcQQuickWindow_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQuickWindow_override_virtual_metaObject".}
+proc fQQuickWindow_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQuickWindow_virtualbase_metacast".}
+proc fcQQuickWindow_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQuickWindow_override_virtual_metacast".}
 proc fQQuickWindow_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQuickWindow_virtualbase_metacall".}
 proc fcQQuickWindow_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQuickWindow_override_virtual_metacall".}
 proc fQQuickWindow_virtualbase_focusObject(self: pointer, ): pointer{.importc: "QQuickWindow_virtualbase_focusObject".}
@@ -697,6 +701,42 @@ proc tr*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QQuickWindowmetaObject*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQQuickWindow_virtualbase_metaObject(self.h))
+
+type QQuickWindowmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QQuickWindowmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickWindow_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickWindow_metaObject(self: ptr cQQuickWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickWindow_metaObject ".} =
+  var nimfunc = cast[ptr QQuickWindowmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QQuickWindowmetacast*(self: gen_qquickwindow_types.QQuickWindow, param1: cstring): pointer =
+  fQQuickWindow_virtualbase_metacast(self.h, param1)
+
+type QQuickWindowmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowmetacastProc) =
+  # TODO check subclass
+  var tmp = new QQuickWindowmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickWindow_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickWindow_metacast(self: ptr cQQuickWindow, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickWindow_metacast ".} =
+  var nimfunc = cast[ptr QQuickWindowmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QQuickWindowmetacall*(self: gen_qquickwindow_types.QQuickWindow, param1: cint, param2: cint, param3: pointer): cint =
   fQQuickWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

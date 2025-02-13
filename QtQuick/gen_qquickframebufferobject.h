@@ -109,6 +109,10 @@ void QQuickFramebufferObject_mirrorVerticallyChanged(QQuickFramebufferObject* se
 void QQuickFramebufferObject_connect_mirrorVerticallyChanged(QQuickFramebufferObject* self, intptr_t slot);
 struct miqt_string QQuickFramebufferObject_tr2(const char* s, const char* c);
 struct miqt_string QQuickFramebufferObject_tr3(const char* s, const char* c, int n);
+bool QQuickFramebufferObject_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QQuickFramebufferObject_virtualbase_metaObject(const void* self);
+bool QQuickFramebufferObject_override_virtual_metacast(void* self, intptr_t slot);
+void* QQuickFramebufferObject_virtualbase_metacast(void* self, const char* param1);
 bool QQuickFramebufferObject_override_virtual_metacall(void* self, intptr_t slot);
 int QQuickFramebufferObject_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QQuickFramebufferObject_override_virtual_createRenderer(void* self, intptr_t slot);

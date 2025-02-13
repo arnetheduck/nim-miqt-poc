@@ -111,6 +111,10 @@ proc fcQTextFrame_begin(self: pointer, ): pointer {.importc: "QTextFrame_begin".
 proc fcQTextFrame_endX(self: pointer, ): pointer {.importc: "QTextFrame_end".}
 proc fcQTextFrame_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QTextFrame_tr2".}
 proc fcQTextFrame_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTextFrame_tr3".}
+proc fQTextFrame_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTextFrame_virtualbase_metaObject".}
+proc fcQTextFrame_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTextFrame_override_virtual_metaObject".}
+proc fQTextFrame_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTextFrame_virtualbase_metacast".}
+proc fcQTextFrame_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTextFrame_override_virtual_metacast".}
 proc fQTextFrame_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTextFrame_virtualbase_metacall".}
 proc fcQTextFrame_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTextFrame_override_virtual_metacall".}
 proc fQTextFrame_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QTextFrame_virtualbase_event".}
@@ -370,6 +374,42 @@ proc tr*(_: type gen_qtextobject_types.QTextFrame, s: cstring, c: cstring, n: ci
   c_free(v_ms.data)
   vx_ret
 
+proc QTextFramemetaObject*(self: gen_qtextobject_types.QTextFrame, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQTextFrame_virtualbase_metaObject(self.h))
+
+type QTextFramemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QTextFramemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextFrame_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextFrame_metaObject(self: ptr cQTextFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QTextFrame_metaObject ".} =
+  var nimfunc = cast[ptr QTextFramemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QTextFramemetacast*(self: gen_qtextobject_types.QTextFrame, param1: cstring): pointer =
+  fQTextFrame_virtualbase_metacast(self.h, param1)
+
+type QTextFramemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramemetacastProc) =
+  # TODO check subclass
+  var tmp = new QTextFramemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextFrame_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextFrame_metacast(self: ptr cQTextFrame, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextFrame_metacast ".} =
+  var nimfunc = cast[ptr QTextFramemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QTextFramemetacall*(self: gen_qtextobject_types.QTextFrame, param1: cint, param2: cint, param3: pointer): cint =
   fQTextFrame_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

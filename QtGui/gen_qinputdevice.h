@@ -60,6 +60,10 @@ void QInputDevice_connect_availableVirtualGeometryChanged(QInputDevice* self, in
 struct miqt_string QInputDevice_tr2(const char* s, const char* c);
 struct miqt_string QInputDevice_tr3(const char* s, const char* c, int n);
 QInputDevice* QInputDevice_primaryKeyboard1(struct miqt_string seatName);
+bool QInputDevice_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QInputDevice_virtualbase_metaObject(const void* self);
+bool QInputDevice_override_virtual_metacast(void* self, intptr_t slot);
+void* QInputDevice_virtualbase_metacast(void* self, const char* param1);
 bool QInputDevice_override_virtual_metacall(void* self, intptr_t slot);
 int QInputDevice_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QInputDevice_override_virtual_event(void* self, intptr_t slot);

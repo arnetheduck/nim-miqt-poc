@@ -46,6 +46,8 @@ extern "C" {
 
 void miqt_exec_callback_QFontDialog_currentFontChanged(intptr_t, QFont*);
 void miqt_exec_callback_QFontDialog_fontSelected(intptr_t, QFont*);
+QMetaObject* miqt_exec_callback_QFontDialog_metaObject(const QFontDialog*, intptr_t);
+void* miqt_exec_callback_QFontDialog_metacast(QFontDialog*, intptr_t, const char*);
 int miqt_exec_callback_QFontDialog_metacall(QFontDialog*, intptr_t, int, int, void**);
 void miqt_exec_callback_QFontDialog_setVisible(QFontDialog*, intptr_t, bool);
 void miqt_exec_callback_QFontDialog_changeEvent(QFontDialog*, intptr_t, QEvent*);
@@ -112,6 +114,51 @@ public:
 	MiqtVirtualQFontDialog(const QFont& initial, QWidget* parent): QFontDialog(initial, parent) {};
 
 	virtual ~MiqtVirtualQFontDialog() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QFontDialog::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QFontDialog_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QFontDialog::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QFontDialog::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QFontDialog_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QFontDialog::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1543,6 +1590,34 @@ QFont* QFontDialog_getFont4(bool* ok, QFont* initial, QWidget* parent, struct mi
 QFont* QFontDialog_getFont5(bool* ok, QFont* initial, QWidget* parent, struct miqt_string title, int options) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QFont(QFontDialog::getFont(ok, *initial, parent, title_QString, static_cast<QFontDialog::FontDialogOptions>(options)));
+}
+
+bool QFontDialog_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QFontDialog_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQFontDialog*)(self) )->virtualbase_metaObject();
+}
+
+bool QFontDialog_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QFontDialog_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQFontDialog*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QFontDialog_override_virtual_metacall(void* self, intptr_t slot) {

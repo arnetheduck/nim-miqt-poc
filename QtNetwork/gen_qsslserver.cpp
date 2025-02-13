@@ -30,6 +30,8 @@ void miqt_exec_callback_QSslServer_alertSent(intptr_t, QSslSocket*, int, int, st
 void miqt_exec_callback_QSslServer_alertReceived(intptr_t, QSslSocket*, int, int, struct miqt_string);
 void miqt_exec_callback_QSslServer_handshakeInterruptedOnError(intptr_t, QSslSocket*, QSslError*);
 void miqt_exec_callback_QSslServer_startedEncryptionHandshake(intptr_t, QSslSocket*);
+QMetaObject* miqt_exec_callback_QSslServer_metaObject(const QSslServer*, intptr_t);
+void* miqt_exec_callback_QSslServer_metacast(QSslServer*, intptr_t, const char*);
 int miqt_exec_callback_QSslServer_metacall(QSslServer*, intptr_t, int, int, void**);
 void miqt_exec_callback_QSslServer_incomingConnection(QSslServer*, intptr_t, intptr_t);
 bool miqt_exec_callback_QSslServer_hasPendingConnections(const QSslServer*, intptr_t);
@@ -52,6 +54,51 @@ public:
 	MiqtVirtualQSslServer(QObject* parent): QSslServer(parent) {};
 
 	virtual ~MiqtVirtualQSslServer() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QSslServer::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QSslServer_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QSslServer::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QSslServer::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QSslServer_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QSslServer::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -537,6 +584,34 @@ struct miqt_string QSslServer_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QSslServer_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQSslServer* self_cast = dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QSslServer_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQSslServer*)(self) )->virtualbase_metaObject();
+}
+
+bool QSslServer_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQSslServer* self_cast = dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QSslServer_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQSslServer*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QSslServer_override_virtual_metacall(void* self, intptr_t slot) {

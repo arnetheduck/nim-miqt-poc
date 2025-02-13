@@ -48,6 +48,8 @@ extern "C" {
 
 void miqt_exec_callback_QGraphicsWidget_geometryChanged(intptr_t);
 void miqt_exec_callback_QGraphicsWidget_layoutChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QGraphicsWidget_metaObject(const QGraphicsWidget*, intptr_t);
+void* miqt_exec_callback_QGraphicsWidget_metacast(QGraphicsWidget*, intptr_t, const char*);
 int miqt_exec_callback_QGraphicsWidget_metacall(QGraphicsWidget*, intptr_t, int, int, void**);
 void miqt_exec_callback_QGraphicsWidget_setGeometry(QGraphicsWidget*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsWidget_getContentsMargins(const QGraphicsWidget*, intptr_t, double*, double*, double*, double*);
@@ -125,6 +127,51 @@ public:
 	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent, Qt::WindowFlags wFlags): QGraphicsWidget(parent, wFlags) {};
 
 	virtual ~MiqtVirtualQGraphicsWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QGraphicsWidget::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QGraphicsWidget_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QGraphicsWidget::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QGraphicsWidget::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QGraphicsWidget_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QGraphicsWidget::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -2041,6 +2088,34 @@ void QGraphicsWidget_setShortcutAutoRepeat2(QGraphicsWidget* self, int id, bool 
 
 void QGraphicsWidget_setAttribute2(QGraphicsWidget* self, int attribute, bool on) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(attribute), on);
+}
+
+bool QGraphicsWidget_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWidget* self_cast = dynamic_cast<MiqtVirtualQGraphicsWidget*>( (QGraphicsWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QGraphicsWidget_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->virtualbase_metaObject();
+}
+
+bool QGraphicsWidget_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWidget* self_cast = dynamic_cast<MiqtVirtualQGraphicsWidget*>( (QGraphicsWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QGraphicsWidget_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQGraphicsWidget*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QGraphicsWidget_override_virtual_metacall(void* self, intptr_t slot) {

@@ -74,6 +74,10 @@ void QSslServer_connect_startedEncryptionHandshake(QSslServer* self, intptr_t sl
 void QSslServer_incomingConnection(QSslServer* self, intptr_t socket);
 struct miqt_string QSslServer_tr2(const char* s, const char* c);
 struct miqt_string QSslServer_tr3(const char* s, const char* c, int n);
+bool QSslServer_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QSslServer_virtualbase_metaObject(const void* self);
+bool QSslServer_override_virtual_metacast(void* self, intptr_t slot);
+void* QSslServer_virtualbase_metacast(void* self, const char* param1);
 bool QSslServer_override_virtual_metacall(void* self, intptr_t slot);
 int QSslServer_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QSslServer_override_virtual_incomingConnection(void* self, intptr_t slot);

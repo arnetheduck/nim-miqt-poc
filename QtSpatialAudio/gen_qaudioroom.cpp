@@ -26,6 +26,8 @@ void miqt_exec_callback_QAudioRoom_reflectionGainChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_reverbGainChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_reverbTimeChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_reverbBrightnessChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QAudioRoom_metaObject(const QAudioRoom*, intptr_t);
+void* miqt_exec_callback_QAudioRoom_metacast(QAudioRoom*, intptr_t, const char*);
 int miqt_exec_callback_QAudioRoom_metacall(QAudioRoom*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAudioRoom_event(QAudioRoom*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAudioRoom_eventFilter(QAudioRoom*, intptr_t, QObject*, QEvent*);
@@ -44,6 +46,51 @@ public:
 	MiqtVirtualQAudioRoom(QAudioEngine* engine): QAudioRoom(engine) {};
 
 	virtual ~MiqtVirtualQAudioRoom() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAudioRoom::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAudioRoom_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAudioRoom::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAudioRoom::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAudioRoom_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAudioRoom::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -445,6 +492,34 @@ struct miqt_string QAudioRoom_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAudioRoom_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioRoom* self_cast = dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAudioRoom_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAudioRoom*)(self) )->virtualbase_metaObject();
+}
+
+bool QAudioRoom_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAudioRoom* self_cast = dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAudioRoom_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAudioRoom_override_virtual_metacall(void* self, intptr_t slot) {

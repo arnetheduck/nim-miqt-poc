@@ -24,6 +24,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QQuickTextureFactory_metaObject(const QQuickTextureFactory*, intptr_t);
+void* miqt_exec_callback_QQuickTextureFactory_metacast(QQuickTextureFactory*, intptr_t, const char*);
 int miqt_exec_callback_QQuickTextureFactory_metacall(QQuickTextureFactory*, intptr_t, int, int, void**);
 QSGTexture* miqt_exec_callback_QQuickTextureFactory_createTexture(const QQuickTextureFactory*, intptr_t, QQuickWindow*);
 QSize* miqt_exec_callback_QQuickTextureFactory_textureSize(const QQuickTextureFactory*, intptr_t);
@@ -37,6 +39,8 @@ void miqt_exec_callback_QQuickTextureFactory_customEvent(QQuickTextureFactory*, 
 void miqt_exec_callback_QQuickTextureFactory_connectNotify(QQuickTextureFactory*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QQuickTextureFactory_disconnectNotify(QQuickTextureFactory*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QQuickImageResponse_finished(intptr_t);
+QMetaObject* miqt_exec_callback_QQuickImageResponse_metaObject(const QQuickImageResponse*, intptr_t);
+void* miqt_exec_callback_QQuickImageResponse_metacast(QQuickImageResponse*, intptr_t, const char*);
 int miqt_exec_callback_QQuickImageResponse_metacall(QQuickImageResponse*, intptr_t, int, int, void**);
 QQuickTextureFactory* miqt_exec_callback_QQuickImageResponse_textureFactory(const QQuickImageResponse*, intptr_t);
 struct miqt_string miqt_exec_callback_QQuickImageResponse_errorString(const QQuickImageResponse*, intptr_t);
@@ -48,6 +52,8 @@ void miqt_exec_callback_QQuickImageResponse_childEvent(QQuickImageResponse*, int
 void miqt_exec_callback_QQuickImageResponse_customEvent(QQuickImageResponse*, intptr_t, QEvent*);
 void miqt_exec_callback_QQuickImageResponse_connectNotify(QQuickImageResponse*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QQuickImageResponse_disconnectNotify(QQuickImageResponse*, intptr_t, QMetaMethod*);
+QMetaObject* miqt_exec_callback_QQuickImageProvider_metaObject(const QQuickImageProvider*, intptr_t);
+void* miqt_exec_callback_QQuickImageProvider_metacast(QQuickImageProvider*, intptr_t, const char*);
 int miqt_exec_callback_QQuickImageProvider_metacall(QQuickImageProvider*, intptr_t, int, int, void**);
 int miqt_exec_callback_QQuickImageProvider_imageType(const QQuickImageProvider*, intptr_t);
 int miqt_exec_callback_QQuickImageProvider_flags(const QQuickImageProvider*, intptr_t);
@@ -85,6 +91,51 @@ public:
 	MiqtVirtualQQuickTextureFactory(): QQuickTextureFactory() {};
 
 	virtual ~MiqtVirtualQQuickTextureFactory() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQuickTextureFactory::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQuickTextureFactory_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQuickTextureFactory::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQuickTextureFactory::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQuickTextureFactory_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQuickTextureFactory::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -431,6 +482,34 @@ struct miqt_string QQuickTextureFactory_tr3(const char* s, const char* c, int n)
 	return _ms;
 }
 
+bool QQuickTextureFactory_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQuickTextureFactory_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQuickTextureFactory*)(self) )->virtualbase_metaObject();
+}
+
+bool QQuickTextureFactory_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQuickTextureFactory_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQuickTextureFactory*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QQuickTextureFactory_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
 	if (self_cast == nullptr) {
@@ -650,6 +729,51 @@ public:
 	MiqtVirtualQQuickImageResponse(): QQuickImageResponse() {};
 
 	virtual ~MiqtVirtualQQuickImageResponse() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQuickImageResponse::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQuickImageResponse_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQuickImageResponse::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQuickImageResponse::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQuickImageResponse_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQuickImageResponse::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1005,6 +1129,34 @@ struct miqt_string QQuickImageResponse_tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
+bool QQuickImageResponse_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQuickImageResponse_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQuickImageResponse*)(self) )->virtualbase_metaObject();
+}
+
+bool QQuickImageResponse_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQuickImageResponse_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQuickImageResponse*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QQuickImageResponse_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
 	if (self_cast == nullptr) {
@@ -1219,6 +1371,51 @@ public:
 	MiqtVirtualQQuickImageProvider(QQmlImageProviderBase::ImageType type, QQmlImageProviderBase::Flags flags): QQuickImageProvider(type, flags) {};
 
 	virtual ~MiqtVirtualQQuickImageProvider() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQuickImageProvider::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQuickImageProvider_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQuickImageProvider::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQuickImageProvider::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQuickImageProvider_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQuickImageProvider::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1655,6 +1852,34 @@ struct miqt_string QQuickImageProvider_tr3(const char* s, const char* c, int n) 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QQuickImageProvider_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQuickImageProvider* self_cast = dynamic_cast<MiqtVirtualQQuickImageProvider*>( (QQuickImageProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQuickImageProvider_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQuickImageProvider*)(self) )->virtualbase_metaObject();
+}
+
+bool QQuickImageProvider_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQuickImageProvider* self_cast = dynamic_cast<MiqtVirtualQQuickImageProvider*>( (QQuickImageProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQuickImageProvider_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQuickImageProvider*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QQuickImageProvider_override_virtual_metacall(void* self, intptr_t slot) {

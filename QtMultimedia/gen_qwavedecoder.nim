@@ -81,6 +81,10 @@ proc fcQWaveDecoder_parsingError(self: pointer, ): void {.importc: "QWaveDecoder
 proc fQWaveDecoder_connect_parsingError(self: pointer, slot: int) {.importc: "QWaveDecoder_connect_parsingError".}
 proc fcQWaveDecoder_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWaveDecoder_tr2".}
 proc fcQWaveDecoder_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWaveDecoder_tr3".}
+proc fQWaveDecoder_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWaveDecoder_virtualbase_metaObject".}
+proc fcQWaveDecoder_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWaveDecoder_override_virtual_metaObject".}
+proc fQWaveDecoder_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWaveDecoder_virtualbase_metacast".}
+proc fcQWaveDecoder_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWaveDecoder_override_virtual_metacast".}
 proc fQWaveDecoder_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWaveDecoder_virtualbase_metacall".}
 proc fcQWaveDecoder_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWaveDecoder_override_virtual_metacall".}
 proc fQWaveDecoder_virtualbase_open(self: pointer, mode: cint): bool{.importc: "QWaveDecoder_virtualbase_open".}
@@ -233,6 +237,42 @@ proc tr*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QWaveDecodermetaObject*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQWaveDecoder_virtualbase_metaObject(self.h))
+
+type QWaveDecodermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QWaveDecodermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWaveDecoder_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWaveDecoder_metaObject(self: ptr cQWaveDecoder, slot: int): pointer {.exportc: "miqt_exec_callback_QWaveDecoder_metaObject ".} =
+  var nimfunc = cast[ptr QWaveDecodermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QWaveDecodermetacast*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cstring): pointer =
+  fQWaveDecoder_virtualbase_metacast(self.h, param1)
+
+type QWaveDecodermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodermetacastProc) =
+  # TODO check subclass
+  var tmp = new QWaveDecodermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWaveDecoder_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWaveDecoder_metacast(self: ptr cQWaveDecoder, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWaveDecoder_metacast ".} =
+  var nimfunc = cast[ptr QWaveDecodermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QWaveDecodermetacall*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cint, param2: cint, param3: pointer): cint =
   fQWaveDecoder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

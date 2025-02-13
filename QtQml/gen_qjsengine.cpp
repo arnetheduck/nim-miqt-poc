@@ -18,6 +18,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QJSEngine_uiLanguageChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QJSEngine_metaObject(const QJSEngine*, intptr_t);
+void* miqt_exec_callback_QJSEngine_metacast(QJSEngine*, intptr_t, const char*);
 int miqt_exec_callback_QJSEngine_metacall(QJSEngine*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QJSEngine_event(QJSEngine*, intptr_t, QEvent*);
 bool miqt_exec_callback_QJSEngine_eventFilter(QJSEngine*, intptr_t, QObject*, QEvent*);
@@ -37,6 +39,51 @@ public:
 	MiqtVirtualQJSEngine(QObject* parent): QJSEngine(parent) {};
 
 	virtual ~MiqtVirtualQJSEngine() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QJSEngine::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QJSEngine_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QJSEngine::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QJSEngine::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QJSEngine_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QJSEngine::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -456,6 +503,34 @@ void QJSEngine_installExtensions2(QJSEngine* self, int extensions, QJSValue* obj
 void QJSEngine_throwError2(QJSEngine* self, int errorType, struct miqt_string message) {
 	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->throwError(static_cast<QJSValue::ErrorType>(errorType), message_QString);
+}
+
+bool QJSEngine_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQJSEngine* self_cast = dynamic_cast<MiqtVirtualQJSEngine*>( (QJSEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QJSEngine_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQJSEngine*)(self) )->virtualbase_metaObject();
+}
+
+bool QJSEngine_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQJSEngine* self_cast = dynamic_cast<MiqtVirtualQJSEngine*>( (QJSEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QJSEngine_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQJSEngine*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QJSEngine_override_virtual_metacall(void* self, intptr_t slot) {

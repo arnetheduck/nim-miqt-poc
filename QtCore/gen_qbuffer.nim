@@ -74,6 +74,10 @@ proc fcQBuffer_atEnd(self: pointer, ): bool {.importc: "QBuffer_atEnd".}
 proc fcQBuffer_canReadLine(self: pointer, ): bool {.importc: "QBuffer_canReadLine".}
 proc fcQBuffer_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QBuffer_tr2".}
 proc fcQBuffer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QBuffer_tr3".}
+proc fQBuffer_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QBuffer_virtualbase_metaObject".}
+proc fcQBuffer_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QBuffer_override_virtual_metaObject".}
+proc fQBuffer_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QBuffer_virtualbase_metacast".}
+proc fcQBuffer_override_virtual_metacast(self: pointer, slot: int) {.importc: "QBuffer_override_virtual_metacast".}
 proc fQBuffer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QBuffer_virtualbase_metacall".}
 proc fcQBuffer_override_virtual_metacall(self: pointer, slot: int) {.importc: "QBuffer_override_virtual_metacall".}
 proc fQBuffer_virtualbase_open(self: pointer, openMode: cint): bool{.importc: "QBuffer_virtualbase_open".}
@@ -208,6 +212,42 @@ proc tr*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc QBuffermetaObject*(self: gen_qbuffer_types.QBuffer, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQBuffer_virtualbase_metaObject(self.h))
+
+type QBuffermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qbuffer_types.QBuffer, slot: QBuffermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QBuffermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQBuffer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QBuffer_metaObject(self: ptr cQBuffer, slot: int): pointer {.exportc: "miqt_exec_callback_QBuffer_metaObject ".} =
+  var nimfunc = cast[ptr QBuffermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QBuffermetacast*(self: gen_qbuffer_types.QBuffer, param1: cstring): pointer =
+  fQBuffer_virtualbase_metacast(self.h, param1)
+
+type QBuffermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qbuffer_types.QBuffer, slot: QBuffermetacastProc) =
+  # TODO check subclass
+  var tmp = new QBuffermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQBuffer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QBuffer_metacast(self: ptr cQBuffer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QBuffer_metacast ".} =
+  var nimfunc = cast[ptr QBuffermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QBuffermetacall*(self: gen_qbuffer_types.QBuffer, param1: cint, param2: cint, param3: pointer): cint =
   fQBuffer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

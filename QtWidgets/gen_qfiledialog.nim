@@ -237,6 +237,10 @@ proc fcQFileDialog_getOpenFileUrls1(parent: pointer): struct_miqt_array {.import
 proc fcQFileDialog_getOpenFileUrls2(parent: pointer, caption: struct_miqt_string): struct_miqt_array {.importc: "QFileDialog_getOpenFileUrls2".}
 proc fcQFileDialog_getOpenFileUrls3(parent: pointer, caption: struct_miqt_string, dir: pointer): struct_miqt_array {.importc: "QFileDialog_getOpenFileUrls3".}
 proc fcQFileDialog_getOpenFileUrls4(parent: pointer, caption: struct_miqt_string, dir: pointer, filter: struct_miqt_string): struct_miqt_array {.importc: "QFileDialog_getOpenFileUrls4".}
+proc fQFileDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QFileDialog_virtualbase_metaObject".}
+proc fcQFileDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QFileDialog_override_virtual_metaObject".}
+proc fQFileDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QFileDialog_virtualbase_metacast".}
+proc fcQFileDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QFileDialog_override_virtual_metacast".}
 proc fQFileDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QFileDialog_virtualbase_metacall".}
 proc fcQFileDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QFileDialog_override_virtual_metacall".}
 proc fQFileDialog_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QFileDialog_virtualbase_setVisible".}
@@ -1046,6 +1050,42 @@ proc getOpenFileUrls*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwi
     vx_ret[i] = gen_qurl_types.QUrl(h: v_outCast[i])
   vx_ret
 
+proc QFileDialogmetaObject*(self: gen_qfiledialog_types.QFileDialog, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQFileDialog_virtualbase_metaObject(self.h))
+
+type QFileDialogmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QFileDialogmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFileDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFileDialog_metaObject(self: ptr cQFileDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFileDialog_metaObject ".} =
+  var nimfunc = cast[ptr QFileDialogmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QFileDialogmetacast*(self: gen_qfiledialog_types.QFileDialog, param1: cstring): pointer =
+  fQFileDialog_virtualbase_metacast(self.h, param1)
+
+type QFileDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmetacastProc) =
+  # TODO check subclass
+  var tmp = new QFileDialogmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFileDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFileDialog_metacast(self: ptr cQFileDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFileDialog_metacast ".} =
+  var nimfunc = cast[ptr QFileDialogmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QFileDialogmetacall*(self: gen_qfiledialog_types.QFileDialog, param1: cint, param2: cint, param3: pointer): cint =
   fQFileDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

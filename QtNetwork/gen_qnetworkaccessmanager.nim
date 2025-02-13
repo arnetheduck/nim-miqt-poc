@@ -150,6 +150,10 @@ proc fcQNetworkAccessManager_connectToHostEncrypted22(self: pointer, hostName: s
 proc fcQNetworkAccessManager_connectToHostEncrypted3(self: pointer, hostName: struct_miqt_string, port: cushort, sslConfiguration: pointer): void {.importc: "QNetworkAccessManager_connectToHostEncrypted3".}
 proc fcQNetworkAccessManager_connectToHost2(self: pointer, hostName: struct_miqt_string, port: cushort): void {.importc: "QNetworkAccessManager_connectToHost2".}
 proc fcQNetworkAccessManager_setTransferTimeout1(self: pointer, timeout: cint): void {.importc: "QNetworkAccessManager_setTransferTimeout1".}
+proc fQNetworkAccessManager_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QNetworkAccessManager_virtualbase_metaObject".}
+proc fcQNetworkAccessManager_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QNetworkAccessManager_override_virtual_metaObject".}
+proc fQNetworkAccessManager_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QNetworkAccessManager_virtualbase_metacast".}
+proc fcQNetworkAccessManager_override_virtual_metacast(self: pointer, slot: int) {.importc: "QNetworkAccessManager_override_virtual_metacast".}
 proc fQNetworkAccessManager_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QNetworkAccessManager_virtualbase_metacall".}
 proc fcQNetworkAccessManager_override_virtual_metacall(self: pointer, slot: int) {.importc: "QNetworkAccessManager_override_virtual_metacall".}
 proc fQNetworkAccessManager_virtualbase_supportedSchemes(self: pointer, ): struct_miqt_array{.importc: "QNetworkAccessManager_virtualbase_supportedSchemes".}
@@ -471,6 +475,42 @@ proc connectToHost*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager,
 proc setTransferTimeout*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, timeout: cint): void =
   fcQNetworkAccessManager_setTransferTimeout1(self.h, timeout)
 
+proc QNetworkAccessManagermetaObject*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQNetworkAccessManager_virtualbase_metaObject(self.h))
+
+type QNetworkAccessManagermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QNetworkAccessManagermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkAccessManager_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkAccessManager_metaObject(self: ptr cQNetworkAccessManager, slot: int): pointer {.exportc: "miqt_exec_callback_QNetworkAccessManager_metaObject ".} =
+  var nimfunc = cast[ptr QNetworkAccessManagermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QNetworkAccessManagermetacast*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, param1: cstring): pointer =
+  fQNetworkAccessManager_virtualbase_metacast(self.h, param1)
+
+type QNetworkAccessManagermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagermetacastProc) =
+  # TODO check subclass
+  var tmp = new QNetworkAccessManagermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkAccessManager_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkAccessManager_metacast(self: ptr cQNetworkAccessManager, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QNetworkAccessManager_metacast ".} =
+  var nimfunc = cast[ptr QNetworkAccessManagermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QNetworkAccessManagermetacall*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, param1: cint, param2: cint, param3: pointer): cint =
   fQNetworkAccessManager_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

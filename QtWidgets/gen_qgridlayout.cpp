@@ -21,6 +21,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QGridLayout_metaObject(const QGridLayout*, intptr_t);
+void* miqt_exec_callback_QGridLayout_metacast(QGridLayout*, intptr_t, const char*);
 int miqt_exec_callback_QGridLayout_metacall(QGridLayout*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QGridLayout_sizeHint(const QGridLayout*, intptr_t);
 QSize* miqt_exec_callback_QGridLayout_minimumSize(const QGridLayout*, intptr_t);
@@ -63,6 +65,51 @@ public:
 	MiqtVirtualQGridLayout(): QGridLayout() {};
 
 	virtual ~MiqtVirtualQGridLayout() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QGridLayout::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QGridLayout_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QGridLayout::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QGridLayout::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QGridLayout_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QGridLayout::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1044,6 +1091,34 @@ void QGridLayout_addItem5(QGridLayout* self, QLayoutItem* item, int row, int col
 
 void QGridLayout_addItem6(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int param6) {
 	self->addItem(item, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan), static_cast<Qt::Alignment>(param6));
+}
+
+bool QGridLayout_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QGridLayout_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_metaObject();
+}
+
+bool QGridLayout_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QGridLayout_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QGridLayout_override_virtual_metacall(void* self, intptr_t slot) {

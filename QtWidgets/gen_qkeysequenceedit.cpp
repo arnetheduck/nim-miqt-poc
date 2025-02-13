@@ -45,6 +45,8 @@ extern "C" {
 
 void miqt_exec_callback_QKeySequenceEdit_editingFinished(intptr_t);
 void miqt_exec_callback_QKeySequenceEdit_keySequenceChanged(intptr_t, QKeySequence*);
+QMetaObject* miqt_exec_callback_QKeySequenceEdit_metaObject(const QKeySequenceEdit*, intptr_t);
+void* miqt_exec_callback_QKeySequenceEdit_metacast(QKeySequenceEdit*, intptr_t, const char*);
 int miqt_exec_callback_QKeySequenceEdit_metacall(QKeySequenceEdit*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QKeySequenceEdit_event(QKeySequenceEdit*, intptr_t, QEvent*);
 void miqt_exec_callback_QKeySequenceEdit_keyPressEvent(QKeySequenceEdit*, intptr_t, QKeyEvent*);
@@ -106,6 +108,51 @@ public:
 	MiqtVirtualQKeySequenceEdit(const QKeySequence& keySequence, QWidget* parent): QKeySequenceEdit(keySequence, parent) {};
 
 	virtual ~MiqtVirtualQKeySequenceEdit() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QKeySequenceEdit::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QKeySequenceEdit_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QKeySequenceEdit::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QKeySequenceEdit::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QKeySequenceEdit_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QKeySequenceEdit::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1375,6 +1422,34 @@ struct miqt_string QKeySequenceEdit_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QKeySequenceEdit_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QKeySequenceEdit_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_metaObject();
+}
+
+bool QKeySequenceEdit_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QKeySequenceEdit_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QKeySequenceEdit_override_virtual_metacall(void* self, intptr_t slot) {

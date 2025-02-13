@@ -249,6 +249,10 @@ proc fcQAbstractItemView_iconSizeChanged(self: pointer, size: pointer): void {.i
 proc fQAbstractItemView_connect_iconSizeChanged(self: pointer, slot: int) {.importc: "QAbstractItemView_connect_iconSizeChanged".}
 proc fcQAbstractItemView_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractItemView_tr2".}
 proc fcQAbstractItemView_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractItemView_tr3".}
+proc fQAbstractItemView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractItemView_virtualbase_metaObject".}
+proc fcQAbstractItemView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_metaObject".}
+proc fQAbstractItemView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractItemView_virtualbase_metacast".}
+proc fcQAbstractItemView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_metacast".}
 proc fQAbstractItemView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractItemView_virtualbase_metacall".}
 proc fcQAbstractItemView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_metacall".}
 proc fQAbstractItemView_virtualbase_setModel(self: pointer, model: pointer): void{.importc: "QAbstractItemView_virtualbase_setModel".}
@@ -786,6 +790,42 @@ proc tr*(_: type gen_qabstractitemview_types.QAbstractItemView, s: cstring, c: c
   c_free(v_ms.data)
   vx_ret
 
+proc QAbstractItemViewmetaObject*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAbstractItemView_virtualbase_metaObject(self.h))
+
+type QAbstractItemViewmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAbstractItemViewmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemView_metaObject(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_metaObject ".} =
+  var nimfunc = cast[ptr QAbstractItemViewmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAbstractItemViewmetacast*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cstring): pointer =
+  fQAbstractItemView_virtualbase_metacast(self.h, param1)
+
+type QAbstractItemViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmetacastProc) =
+  # TODO check subclass
+  var tmp = new QAbstractItemViewmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemView_metacast(self: ptr cQAbstractItemView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_metacast ".} =
+  var nimfunc = cast[ptr QAbstractItemViewmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAbstractItemViewmetacall*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cint, param2: cint, param3: pointer): cint =
   fQAbstractItemView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

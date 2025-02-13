@@ -69,6 +69,10 @@ proc fcQSctpServer_maximumChannelCount(self: pointer, ): cint {.importc: "QSctpS
 proc fcQSctpServer_nextPendingDatagramConnection(self: pointer, ): pointer {.importc: "QSctpServer_nextPendingDatagramConnection".}
 proc fcQSctpServer_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSctpServer_tr2".}
 proc fcQSctpServer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSctpServer_tr3".}
+proc fQSctpServer_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSctpServer_virtualbase_metaObject".}
+proc fcQSctpServer_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSctpServer_override_virtual_metaObject".}
+proc fQSctpServer_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSctpServer_virtualbase_metacast".}
+proc fcQSctpServer_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSctpServer_override_virtual_metacast".}
 proc fQSctpServer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSctpServer_virtualbase_metacall".}
 proc fcQSctpServer_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSctpServer_override_virtual_metacall".}
 proc fQSctpServer_virtualbase_incomingConnection(self: pointer, handle: uint): void{.importc: "QSctpServer_virtualbase_incomingConnection".}
@@ -139,6 +143,42 @@ proc tr*(_: type gen_qsctpserver_types.QSctpServer, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc QSctpServermetaObject*(self: gen_qsctpserver_types.QSctpServer, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSctpServer_virtualbase_metaObject(self.h))
+
+type QSctpServermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSctpServermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSctpServer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSctpServer_metaObject(self: ptr cQSctpServer, slot: int): pointer {.exportc: "miqt_exec_callback_QSctpServer_metaObject ".} =
+  var nimfunc = cast[ptr QSctpServermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSctpServermetacast*(self: gen_qsctpserver_types.QSctpServer, param1: cstring): pointer =
+  fQSctpServer_virtualbase_metacast(self.h, param1)
+
+type QSctpServermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServermetacastProc) =
+  # TODO check subclass
+  var tmp = new QSctpServermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSctpServer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSctpServer_metacast(self: ptr cQSctpServer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSctpServer_metacast ".} =
+  var nimfunc = cast[ptr QSctpServermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSctpServermetacall*(self: gen_qsctpserver_types.QSctpServer, param1: cint, param2: cint, param3: pointer): cint =
   fQSctpServer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

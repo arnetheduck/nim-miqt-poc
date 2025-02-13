@@ -23,6 +23,8 @@ extern "C" {
 void miqt_exec_callback_QProcess_finished(intptr_t, int);
 void miqt_exec_callback_QProcess_errorOccurred(intptr_t, int);
 void miqt_exec_callback_QProcess_finished2(intptr_t, int, int);
+QMetaObject* miqt_exec_callback_QProcess_metaObject(const QProcess*, intptr_t);
+void* miqt_exec_callback_QProcess_metacast(QProcess*, intptr_t, const char*);
 int miqt_exec_callback_QProcess_metacall(QProcess*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QProcess_open(QProcess*, intptr_t, int);
 bool miqt_exec_callback_QProcess_waitForReadyRead(QProcess*, intptr_t, int);
@@ -192,6 +194,51 @@ public:
 	MiqtVirtualQProcess(QObject* parent): QProcess(parent) {};
 
 	virtual ~MiqtVirtualQProcess() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QProcess::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QProcess_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QProcess::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QProcess::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QProcess_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QProcess::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1294,6 +1341,34 @@ void QProcess_connect_finished2(QProcess* self, intptr_t slot) {
 		int sigval2 = static_cast<int>(exitStatus_ret);
 		miqt_exec_callback_QProcess_finished2(slot, sigval1, sigval2);
 	});
+}
+
+bool QProcess_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QProcess_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_metaObject();
+}
+
+bool QProcess_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QProcess_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QProcess_override_virtual_metacall(void* self, intptr_t slot) {

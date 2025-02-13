@@ -126,6 +126,10 @@ proc fQCompleter_connect_highlightedWithIndex(self: pointer, slot: int) {.import
 proc fcQCompleter_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QCompleter_tr2".}
 proc fcQCompleter_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCompleter_tr3".}
 proc fcQCompleter_complete1(self: pointer, rect: pointer): void {.importc: "QCompleter_complete1".}
+proc fQCompleter_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QCompleter_virtualbase_metaObject".}
+proc fcQCompleter_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QCompleter_override_virtual_metaObject".}
+proc fQCompleter_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QCompleter_virtualbase_metacast".}
+proc fcQCompleter_override_virtual_metacast(self: pointer, slot: int) {.importc: "QCompleter_override_virtual_metacast".}
 proc fQCompleter_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QCompleter_virtualbase_metacall".}
 proc fcQCompleter_override_virtual_metacall(self: pointer, slot: int) {.importc: "QCompleter_override_virtual_metacall".}
 proc fQCompleter_virtualbase_pathFromIndex(self: pointer, index: pointer): struct_miqt_string{.importc: "QCompleter_virtualbase_pathFromIndex".}
@@ -394,6 +398,42 @@ proc tr*(_: type gen_qcompleter_types.QCompleter, s: cstring, c: cstring, n: cin
 proc complete*(self: gen_qcompleter_types.QCompleter, rect: gen_qrect_types.QRect): void =
   fcQCompleter_complete1(self.h, rect.h)
 
+proc QCompletermetaObject*(self: gen_qcompleter_types.QCompleter, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQCompleter_virtualbase_metaObject(self.h))
+
+type QCompletermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qcompleter_types.QCompleter, slot: QCompletermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QCompletermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCompleter_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCompleter_metaObject(self: ptr cQCompleter, slot: int): pointer {.exportc: "miqt_exec_callback_QCompleter_metaObject ".} =
+  var nimfunc = cast[ptr QCompletermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QCompletermetacast*(self: gen_qcompleter_types.QCompleter, param1: cstring): pointer =
+  fQCompleter_virtualbase_metacast(self.h, param1)
+
+type QCompletermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qcompleter_types.QCompleter, slot: QCompletermetacastProc) =
+  # TODO check subclass
+  var tmp = new QCompletermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCompleter_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCompleter_metacast(self: ptr cQCompleter, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QCompleter_metacast ".} =
+  var nimfunc = cast[ptr QCompletermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QCompletermetacall*(self: gen_qcompleter_types.QCompleter, param1: cint, param2: cint, param3: pointer): cint =
   fQCompleter_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

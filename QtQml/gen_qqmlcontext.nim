@@ -86,6 +86,10 @@ proc fcQQmlContext_baseUrl(self: pointer, ): pointer {.importc: "QQmlContext_bas
 proc fcQQmlContext_importedScript(self: pointer, name: struct_miqt_string): pointer {.importc: "QQmlContext_importedScript".}
 proc fcQQmlContext_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QQmlContext_tr2".}
 proc fcQQmlContext_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlContext_tr3".}
+proc fQQmlContext_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQmlContext_virtualbase_metaObject".}
+proc fcQQmlContext_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQmlContext_override_virtual_metaObject".}
+proc fQQmlContext_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQmlContext_virtualbase_metacast".}
+proc fcQQmlContext_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQmlContext_override_virtual_metacast".}
 proc fQQmlContext_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQmlContext_virtualbase_metacall".}
 proc fcQQmlContext_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQmlContext_override_virtual_metacall".}
 proc fQQmlContext_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QQmlContext_virtualbase_event".}
@@ -202,6 +206,42 @@ proc tr*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc QQmlContextmetaObject*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQQmlContext_virtualbase_metaObject(self.h))
+
+type QQmlContextmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qqmlcontext_types.QQmlContext, slot: QQmlContextmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QQmlContextmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlContext_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlContext_metaObject(self: ptr cQQmlContext, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlContext_metaObject ".} =
+  var nimfunc = cast[ptr QQmlContextmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QQmlContextmetacast*(self: gen_qqmlcontext_types.QQmlContext, param1: cstring): pointer =
+  fQQmlContext_virtualbase_metacast(self.h, param1)
+
+type QQmlContextmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qqmlcontext_types.QQmlContext, slot: QQmlContextmetacastProc) =
+  # TODO check subclass
+  var tmp = new QQmlContextmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlContext_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlContext_metacast(self: ptr cQQmlContext, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlContext_metacast ".} =
+  var nimfunc = cast[ptr QQmlContextmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QQmlContextmetacall*(self: gen_qqmlcontext_types.QQmlContext, param1: cint, param2: cint, param3: pointer): cint =
   fQQmlContext_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

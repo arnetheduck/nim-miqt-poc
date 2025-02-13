@@ -43,6 +43,8 @@ void miqt_exec_callback_QTextDocument_cursorPositionChanged(intptr_t, QTextCurso
 void miqt_exec_callback_QTextDocument_blockCountChanged(intptr_t, int);
 void miqt_exec_callback_QTextDocument_baseUrlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QTextDocument_documentLayoutChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QTextDocument_metaObject(const QTextDocument*, intptr_t);
+void* miqt_exec_callback_QTextDocument_metacast(QTextDocument*, intptr_t, const char*);
 int miqt_exec_callback_QTextDocument_metacall(QTextDocument*, intptr_t, int, int, void**);
 void miqt_exec_callback_QTextDocument_clear(QTextDocument*, intptr_t);
 QTextObject* miqt_exec_callback_QTextDocument_createObject(QTextDocument*, intptr_t, QTextFormat*);
@@ -83,6 +85,51 @@ public:
 	MiqtVirtualQTextDocument(const QString& text, QObject* parent): QTextDocument(text, parent) {};
 
 	virtual ~MiqtVirtualQTextDocument() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QTextDocument::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QTextDocument_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QTextDocument::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QTextDocument::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QTextDocument_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QTextDocument::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1017,6 +1064,34 @@ void QTextDocument_clearUndoRedoStacks1(QTextDocument* self, int historyToClear)
 
 void QTextDocument_setModified1(QTextDocument* self, bool m) {
 	self->setModified(m);
+}
+
+bool QTextDocument_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QTextDocument_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQTextDocument*)(self) )->virtualbase_metaObject();
+}
+
+bool QTextDocument_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QTextDocument_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QTextDocument_override_virtual_metacall(void* self, intptr_t slot) {

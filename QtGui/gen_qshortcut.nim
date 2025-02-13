@@ -87,6 +87,10 @@ proc fcQShortcut_activatedAmbiguously(self: pointer, ): void {.importc: "QShortc
 proc fQShortcut_connect_activatedAmbiguously(self: pointer, slot: int) {.importc: "QShortcut_connect_activatedAmbiguously".}
 proc fcQShortcut_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QShortcut_tr2".}
 proc fcQShortcut_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QShortcut_tr3".}
+proc fQShortcut_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QShortcut_virtualbase_metaObject".}
+proc fcQShortcut_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QShortcut_override_virtual_metaObject".}
+proc fQShortcut_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QShortcut_virtualbase_metacast".}
+proc fcQShortcut_override_virtual_metacast(self: pointer, slot: int) {.importc: "QShortcut_override_virtual_metacast".}
 proc fQShortcut_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QShortcut_virtualbase_metacall".}
 proc fcQShortcut_override_virtual_metacall(self: pointer, slot: int) {.importc: "QShortcut_override_virtual_metacall".}
 proc fQShortcut_virtualbase_event(self: pointer, e: pointer): bool{.importc: "QShortcut_virtualbase_event".}
@@ -245,6 +249,42 @@ proc tr*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring, n: cint)
   c_free(v_ms.data)
   vx_ret
 
+proc QShortcutmetaObject*(self: gen_qshortcut_types.QShortcut, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQShortcut_virtualbase_metaObject(self.h))
+
+type QShortcutmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qshortcut_types.QShortcut, slot: QShortcutmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QShortcutmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQShortcut_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QShortcut_metaObject(self: ptr cQShortcut, slot: int): pointer {.exportc: "miqt_exec_callback_QShortcut_metaObject ".} =
+  var nimfunc = cast[ptr QShortcutmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QShortcutmetacast*(self: gen_qshortcut_types.QShortcut, param1: cstring): pointer =
+  fQShortcut_virtualbase_metacast(self.h, param1)
+
+type QShortcutmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qshortcut_types.QShortcut, slot: QShortcutmetacastProc) =
+  # TODO check subclass
+  var tmp = new QShortcutmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQShortcut_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QShortcut_metacast(self: ptr cQShortcut, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QShortcut_metacast ".} =
+  var nimfunc = cast[ptr QShortcutmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QShortcutmetacall*(self: gen_qshortcut_types.QShortcut, param1: cint, param2: cint, param3: pointer): cint =
   fQShortcut_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

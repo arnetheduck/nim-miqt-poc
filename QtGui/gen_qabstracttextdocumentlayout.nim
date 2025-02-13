@@ -107,6 +107,10 @@ proc fcQAbstractTextDocumentLayout_tr3(s: cstring, c: cstring, n: cint): struct_
 proc fcQAbstractTextDocumentLayout_unregisterHandler2(self: pointer, objectType: cint, component: pointer): void {.importc: "QAbstractTextDocumentLayout_unregisterHandler2".}
 proc fcQAbstractTextDocumentLayout_update1(self: pointer, param1: pointer): void {.importc: "QAbstractTextDocumentLayout_update1".}
 proc fQAbstractTextDocumentLayout_connect_update1(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_connect_update1".}
+proc fQAbstractTextDocumentLayout_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractTextDocumentLayout_virtualbase_metaObject".}
+proc fcQAbstractTextDocumentLayout_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_metaObject".}
+proc fQAbstractTextDocumentLayout_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractTextDocumentLayout_virtualbase_metacast".}
+proc fcQAbstractTextDocumentLayout_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_metacast".}
 proc fQAbstractTextDocumentLayout_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractTextDocumentLayout_virtualbase_metacall".}
 proc fcQAbstractTextDocumentLayout_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_metacall".}
 proc fcQAbstractTextDocumentLayout_override_virtual_draw(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_draw".}
@@ -318,6 +322,42 @@ proc onupdate*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocument
   GC_ref(tmp)
   fQAbstractTextDocumentLayout_connect_update1(self.h, cast[int](addr tmp[]))
 
+proc QAbstractTextDocumentLayoutmetaObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAbstractTextDocumentLayout_virtualbase_metaObject(self.h))
+
+type QAbstractTextDocumentLayoutmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAbstractTextDocumentLayoutmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTextDocumentLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTextDocumentLayout_metaObject(self: ptr cQAbstractTextDocumentLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_metaObject ".} =
+  var nimfunc = cast[ptr QAbstractTextDocumentLayoutmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAbstractTextDocumentLayoutmetacast*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: cstring): pointer =
+  fQAbstractTextDocumentLayout_virtualbase_metacast(self.h, param1)
+
+type QAbstractTextDocumentLayoutmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutmetacastProc) =
+  # TODO check subclass
+  var tmp = new QAbstractTextDocumentLayoutmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTextDocumentLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTextDocumentLayout_metacast(self: ptr cQAbstractTextDocumentLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_metacast ".} =
+  var nimfunc = cast[ptr QAbstractTextDocumentLayoutmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAbstractTextDocumentLayoutmetacall*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: cint, param2: cint, param3: pointer): cint =
   fQAbstractTextDocumentLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

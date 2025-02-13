@@ -18,6 +18,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(intptr_t, QRect*);
+QMetaObject* miqt_exec_callback_QInputDevice_metaObject(const QInputDevice*, intptr_t);
+void* miqt_exec_callback_QInputDevice_metacast(QInputDevice*, intptr_t, const char*);
 int miqt_exec_callback_QInputDevice_metacall(QInputDevice*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QInputDevice_event(QInputDevice*, intptr_t, QEvent*);
 bool miqt_exec_callback_QInputDevice_eventFilter(QInputDevice*, intptr_t, QObject*, QEvent*);
@@ -40,6 +42,51 @@ public:
 	MiqtVirtualQInputDevice(const QString& name, qint64 systemId, QInputDevice::DeviceType type, const QString& seatName, QObject* parent): QInputDevice(name, systemId, type, seatName, parent) {};
 
 	virtual ~MiqtVirtualQInputDevice() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QInputDevice::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QInputDevice_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QInputDevice::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QInputDevice::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QInputDevice_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QInputDevice::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -419,6 +466,34 @@ struct miqt_string QInputDevice_tr3(const char* s, const char* c, int n) {
 QInputDevice* QInputDevice_primaryKeyboard1(struct miqt_string seatName) {
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
 	return (QInputDevice*) QInputDevice::primaryKeyboard(seatName_QString);
+}
+
+bool QInputDevice_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQInputDevice* self_cast = dynamic_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QInputDevice_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQInputDevice*)(self) )->virtualbase_metaObject();
+}
+
+bool QInputDevice_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQInputDevice* self_cast = dynamic_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QInputDevice_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQInputDevice*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QInputDevice_override_virtual_metacall(void* self, intptr_t slot) {

@@ -89,6 +89,10 @@ proc fcQHttpMultiPart_boundary(self: pointer, ): struct_miqt_string {.importc: "
 proc fcQHttpMultiPart_setBoundary(self: pointer, boundary: struct_miqt_string): void {.importc: "QHttpMultiPart_setBoundary".}
 proc fcQHttpMultiPart_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QHttpMultiPart_tr2".}
 proc fcQHttpMultiPart_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QHttpMultiPart_tr3".}
+proc fQHttpMultiPart_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QHttpMultiPart_virtualbase_metaObject".}
+proc fcQHttpMultiPart_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QHttpMultiPart_override_virtual_metaObject".}
+proc fQHttpMultiPart_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QHttpMultiPart_virtualbase_metacast".}
+proc fcQHttpMultiPart_override_virtual_metacast(self: pointer, slot: int) {.importc: "QHttpMultiPart_override_virtual_metacast".}
 proc fQHttpMultiPart_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QHttpMultiPart_virtualbase_metacall".}
 proc fcQHttpMultiPart_override_virtual_metacall(self: pointer, slot: int) {.importc: "QHttpMultiPart_override_virtual_metacall".}
 proc fQHttpMultiPart_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QHttpMultiPart_virtualbase_event".}
@@ -200,6 +204,42 @@ proc tr*(_: type gen_qhttpmultipart_types.QHttpMultiPart, s: cstring, c: cstring
   c_free(v_ms.data)
   vx_ret
 
+proc QHttpMultiPartmetaObject*(self: gen_qhttpmultipart_types.QHttpMultiPart, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQHttpMultiPart_virtualbase_metaObject(self.h))
+
+type QHttpMultiPartmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qhttpmultipart_types.QHttpMultiPart, slot: QHttpMultiPartmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QHttpMultiPartmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQHttpMultiPart_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QHttpMultiPart_metaObject(self: ptr cQHttpMultiPart, slot: int): pointer {.exportc: "miqt_exec_callback_QHttpMultiPart_metaObject ".} =
+  var nimfunc = cast[ptr QHttpMultiPartmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QHttpMultiPartmetacast*(self: gen_qhttpmultipart_types.QHttpMultiPart, param1: cstring): pointer =
+  fQHttpMultiPart_virtualbase_metacast(self.h, param1)
+
+type QHttpMultiPartmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qhttpmultipart_types.QHttpMultiPart, slot: QHttpMultiPartmetacastProc) =
+  # TODO check subclass
+  var tmp = new QHttpMultiPartmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQHttpMultiPart_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QHttpMultiPart_metacast(self: ptr cQHttpMultiPart, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QHttpMultiPart_metacast ".} =
+  var nimfunc = cast[ptr QHttpMultiPartmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QHttpMultiPartmetacall*(self: gen_qhttpmultipart_types.QHttpMultiPart, param1: cint, param2: cint, param3: pointer): cint =
   fQHttpMultiPart_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

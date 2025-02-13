@@ -97,6 +97,10 @@ proc fcQAudioEngine_pause(self: pointer, ): void {.importc: "QAudioEngine_pause"
 proc fcQAudioEngine_resume(self: pointer, ): void {.importc: "QAudioEngine_resume".}
 proc fcQAudioEngine_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioEngine_tr2".}
 proc fcQAudioEngine_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioEngine_tr3".}
+proc fQAudioEngine_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAudioEngine_virtualbase_metaObject".}
+proc fcQAudioEngine_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAudioEngine_override_virtual_metaObject".}
+proc fQAudioEngine_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAudioEngine_virtualbase_metacast".}
+proc fcQAudioEngine_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAudioEngine_override_virtual_metacast".}
 proc fQAudioEngine_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAudioEngine_virtualbase_metacall".}
 proc fcQAudioEngine_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAudioEngine_override_virtual_metacall".}
 proc fQAudioEngine_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QAudioEngine_virtualbase_event".}
@@ -279,6 +283,42 @@ proc tr*(_: type gen_qaudioengine_types.QAudioEngine, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QAudioEnginemetaObject*(self: gen_qaudioengine_types.QAudioEngine, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAudioEngine_virtualbase_metaObject(self.h))
+
+type QAudioEnginemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qaudioengine_types.QAudioEngine, slot: QAudioEnginemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAudioEnginemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioEngine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioEngine_metaObject(self: ptr cQAudioEngine, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioEngine_metaObject ".} =
+  var nimfunc = cast[ptr QAudioEnginemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAudioEnginemetacast*(self: gen_qaudioengine_types.QAudioEngine, param1: cstring): pointer =
+  fQAudioEngine_virtualbase_metacast(self.h, param1)
+
+type QAudioEnginemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qaudioengine_types.QAudioEngine, slot: QAudioEnginemetacastProc) =
+  # TODO check subclass
+  var tmp = new QAudioEnginemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioEngine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioEngine_metacast(self: ptr cQAudioEngine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioEngine_metacast ".} =
+  var nimfunc = cast[ptr QAudioEnginemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAudioEnginemetacall*(self: gen_qaudioengine_types.QAudioEngine, param1: cint, param2: cint, param3: pointer): cint =
   fQAudioEngine_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

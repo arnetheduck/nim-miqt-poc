@@ -97,6 +97,10 @@ proc fcQSplashScreen_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQSplashScreen_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSplashScreen_tr3".}
 proc fcQSplashScreen_showMessage2(self: pointer, message: struct_miqt_string, alignment: cint): void {.importc: "QSplashScreen_showMessage2".}
 proc fcQSplashScreen_showMessage3(self: pointer, message: struct_miqt_string, alignment: cint, color: pointer): void {.importc: "QSplashScreen_showMessage3".}
+proc fQSplashScreen_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSplashScreen_virtualbase_metaObject".}
+proc fcQSplashScreen_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSplashScreen_override_virtual_metaObject".}
+proc fQSplashScreen_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSplashScreen_virtualbase_metacast".}
+proc fcQSplashScreen_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSplashScreen_override_virtual_metacast".}
 proc fQSplashScreen_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSplashScreen_virtualbase_metacall".}
 proc fcQSplashScreen_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSplashScreen_override_virtual_metacall".}
 proc fQSplashScreen_virtualbase_event(self: pointer, e: pointer): bool{.importc: "QSplashScreen_virtualbase_event".}
@@ -295,6 +299,42 @@ proc showMessage*(self: gen_qsplashscreen_types.QSplashScreen, message: string, 
 proc showMessage*(self: gen_qsplashscreen_types.QSplashScreen, message: string, alignment: cint, color: gen_qcolor_types.QColor): void =
   fcQSplashScreen_showMessage3(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), alignment, color.h)
 
+proc QSplashScreenmetaObject*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSplashScreen_virtualbase_metaObject(self.h))
+
+type QSplashScreenmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSplashScreenmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSplashScreen_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSplashScreen_metaObject(self: ptr cQSplashScreen, slot: int): pointer {.exportc: "miqt_exec_callback_QSplashScreen_metaObject ".} =
+  var nimfunc = cast[ptr QSplashScreenmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSplashScreenmetacast*(self: gen_qsplashscreen_types.QSplashScreen, param1: cstring): pointer =
+  fQSplashScreen_virtualbase_metacast(self.h, param1)
+
+type QSplashScreenmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmetacastProc) =
+  # TODO check subclass
+  var tmp = new QSplashScreenmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSplashScreen_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSplashScreen_metacast(self: ptr cQSplashScreen, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSplashScreen_metacast ".} =
+  var nimfunc = cast[ptr QSplashScreenmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSplashScreenmetacall*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint, param2: cint, param3: pointer): cint =
   fQSplashScreen_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

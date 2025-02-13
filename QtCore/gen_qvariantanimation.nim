@@ -81,6 +81,10 @@ proc fcQVariantAnimation_valueChanged(self: pointer, value: pointer): void {.imp
 proc fQVariantAnimation_connect_valueChanged(self: pointer, slot: int) {.importc: "QVariantAnimation_connect_valueChanged".}
 proc fcQVariantAnimation_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QVariantAnimation_tr2".}
 proc fcQVariantAnimation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVariantAnimation_tr3".}
+proc fQVariantAnimation_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QVariantAnimation_virtualbase_metaObject".}
+proc fcQVariantAnimation_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QVariantAnimation_override_virtual_metaObject".}
+proc fQVariantAnimation_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QVariantAnimation_virtualbase_metacast".}
+proc fcQVariantAnimation_override_virtual_metacast(self: pointer, slot: int) {.importc: "QVariantAnimation_override_virtual_metacast".}
 proc fQVariantAnimation_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QVariantAnimation_virtualbase_metacall".}
 proc fcQVariantAnimation_override_virtual_metacall(self: pointer, slot: int) {.importc: "QVariantAnimation_override_virtual_metacall".}
 proc fQVariantAnimation_virtualbase_duration(self: pointer, ): cint{.importc: "QVariantAnimation_virtualbase_duration".}
@@ -223,6 +227,42 @@ proc tr*(_: type gen_qvariantanimation_types.QVariantAnimation, s: cstring, c: c
   c_free(v_ms.data)
   vx_ret
 
+proc QVariantAnimationmetaObject*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQVariantAnimation_virtualbase_metaObject(self.h))
+
+type QVariantAnimationmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qvariantanimation_types.QVariantAnimation, slot: QVariantAnimationmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QVariantAnimationmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQVariantAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QVariantAnimation_metaObject(self: ptr cQVariantAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QVariantAnimation_metaObject ".} =
+  var nimfunc = cast[ptr QVariantAnimationmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QVariantAnimationmetacast*(self: gen_qvariantanimation_types.QVariantAnimation, param1: cstring): pointer =
+  fQVariantAnimation_virtualbase_metacast(self.h, param1)
+
+type QVariantAnimationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qvariantanimation_types.QVariantAnimation, slot: QVariantAnimationmetacastProc) =
+  # TODO check subclass
+  var tmp = new QVariantAnimationmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQVariantAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QVariantAnimation_metacast(self: ptr cQVariantAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QVariantAnimation_metacast ".} =
+  var nimfunc = cast[ptr QVariantAnimationmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QVariantAnimationmetacall*(self: gen_qvariantanimation_types.QVariantAnimation, param1: cint, param2: cint, param3: pointer): cint =
   fQVariantAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

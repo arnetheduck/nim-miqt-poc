@@ -76,6 +76,10 @@ proc fcQTranslator_load33(self: pointer, locale: pointer, filename: struct_miqt_
 proc fcQTranslator_load42(self: pointer, locale: pointer, filename: struct_miqt_string, prefix: struct_miqt_string, directory: struct_miqt_string): bool {.importc: "QTranslator_load42".}
 proc fcQTranslator_load5(self: pointer, locale: pointer, filename: struct_miqt_string, prefix: struct_miqt_string, directory: struct_miqt_string, suffix: struct_miqt_string): bool {.importc: "QTranslator_load5".}
 proc fcQTranslator_load34(self: pointer, data: ptr uint8, len: cint, directory: struct_miqt_string): bool {.importc: "QTranslator_load34".}
+proc fQTranslator_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTranslator_virtualbase_metaObject".}
+proc fcQTranslator_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTranslator_override_virtual_metaObject".}
+proc fQTranslator_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTranslator_virtualbase_metacast".}
+proc fcQTranslator_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTranslator_override_virtual_metacast".}
 proc fQTranslator_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTranslator_virtualbase_metacall".}
 proc fcQTranslator_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTranslator_override_virtual_metacall".}
 proc fQTranslator_virtualbase_translate(self: pointer, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): struct_miqt_string{.importc: "QTranslator_virtualbase_translate".}
@@ -186,6 +190,42 @@ proc load*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale_types.QL
 proc load*(self: gen_qtranslator_types.QTranslator, data: ptr uint8, len: cint, directory: string): bool =
   fcQTranslator_load34(self.h, data, len, struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
+proc QTranslatormetaObject*(self: gen_qtranslator_types.QTranslator, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQTranslator_virtualbase_metaObject(self.h))
+
+type QTranslatormetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qtranslator_types.QTranslator, slot: QTranslatormetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QTranslatormetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTranslator_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTranslator_metaObject(self: ptr cQTranslator, slot: int): pointer {.exportc: "miqt_exec_callback_QTranslator_metaObject ".} =
+  var nimfunc = cast[ptr QTranslatormetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QTranslatormetacast*(self: gen_qtranslator_types.QTranslator, param1: cstring): pointer =
+  fQTranslator_virtualbase_metacast(self.h, param1)
+
+type QTranslatormetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtranslator_types.QTranslator, slot: QTranslatormetacastProc) =
+  # TODO check subclass
+  var tmp = new QTranslatormetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTranslator_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTranslator_metacast(self: ptr cQTranslator, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTranslator_metacast ".} =
+  var nimfunc = cast[ptr QTranslatormetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QTranslatormetacall*(self: gen_qtranslator_types.QTranslator, param1: cint, param2: cint, param3: pointer): cint =
   fQTranslator_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

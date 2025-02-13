@@ -84,6 +84,10 @@ proc fcQScrollBar_sizeHint(self: pointer, ): pointer {.importc: "QScrollBar_size
 proc fcQScrollBar_event(self: pointer, event: pointer): bool {.importc: "QScrollBar_event".}
 proc fcQScrollBar_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QScrollBar_tr2".}
 proc fcQScrollBar_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QScrollBar_tr3".}
+proc fQScrollBar_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QScrollBar_virtualbase_metaObject".}
+proc fcQScrollBar_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QScrollBar_override_virtual_metaObject".}
+proc fQScrollBar_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QScrollBar_virtualbase_metacast".}
+proc fcQScrollBar_override_virtual_metacast(self: pointer, slot: int) {.importc: "QScrollBar_override_virtual_metacast".}
 proc fQScrollBar_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QScrollBar_virtualbase_metacall".}
 proc fcQScrollBar_override_virtual_metacall(self: pointer, slot: int) {.importc: "QScrollBar_override_virtual_metacall".}
 proc fQScrollBar_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QScrollBar_virtualbase_sizeHint".}
@@ -235,6 +239,42 @@ proc tr*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring, n: cin
   c_free(v_ms.data)
   vx_ret
 
+proc QScrollBarmetaObject*(self: gen_qscrollbar_types.QScrollBar, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQScrollBar_virtualbase_metaObject(self.h))
+
+type QScrollBarmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QScrollBarmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQScrollBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QScrollBar_metaObject(self: ptr cQScrollBar, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollBar_metaObject ".} =
+  var nimfunc = cast[ptr QScrollBarmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QScrollBarmetacast*(self: gen_qscrollbar_types.QScrollBar, param1: cstring): pointer =
+  fQScrollBar_virtualbase_metacast(self.h, param1)
+
+type QScrollBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmetacastProc) =
+  # TODO check subclass
+  var tmp = new QScrollBarmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQScrollBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QScrollBar_metacast(self: ptr cQScrollBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QScrollBar_metacast ".} =
+  var nimfunc = cast[ptr QScrollBarmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QScrollBarmetacall*(self: gen_qscrollbar_types.QScrollBar, param1: cint, param2: cint, param3: pointer): cint =
   fQScrollBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

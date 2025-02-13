@@ -98,6 +98,10 @@ void QWebEngineProfile_downloadRequested(QWebEngineProfile* self, QWebEngineDown
 void QWebEngineProfile_connect_downloadRequested(QWebEngineProfile* self, intptr_t slot);
 struct miqt_string QWebEngineProfile_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineProfile_tr3(const char* s, const char* c, int n);
+bool QWebEngineProfile_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QWebEngineProfile_virtualbase_metaObject(const void* self);
+bool QWebEngineProfile_override_virtual_metacast(void* self, intptr_t slot);
+void* QWebEngineProfile_virtualbase_metacast(void* self, const char* param1);
 bool QWebEngineProfile_override_virtual_metacall(void* self, intptr_t slot);
 int QWebEngineProfile_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEngineProfile_override_virtual_event(void* self, intptr_t slot);

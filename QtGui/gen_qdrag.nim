@@ -85,6 +85,10 @@ proc fQDrag_connect_targetChanged(self: pointer, slot: int) {.importc: "QDrag_co
 proc fcQDrag_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDrag_tr2".}
 proc fcQDrag_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDrag_tr3".}
 proc fcQDrag_exec1(self: pointer, supportedActions: cint): cint {.importc: "QDrag_exec1".}
+proc fQDrag_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDrag_virtualbase_metaObject".}
+proc fcQDrag_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDrag_override_virtual_metaObject".}
+proc fQDrag_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDrag_virtualbase_metacast".}
+proc fcQDrag_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDrag_override_virtual_metacast".}
 proc fQDrag_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDrag_virtualbase_metacall".}
 proc fcQDrag_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDrag_override_virtual_metacall".}
 proc fQDrag_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QDrag_virtualbase_event".}
@@ -217,6 +221,42 @@ proc tr*(_: type gen_qdrag_types.QDrag, s: cstring, c: cstring, n: cint): string
 proc exec*(self: gen_qdrag_types.QDrag, supportedActions: cint): cint =
   cint(fcQDrag_exec1(self.h, cint(supportedActions)))
 
+proc QDragmetaObject*(self: gen_qdrag_types.QDrag, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQDrag_virtualbase_metaObject(self.h))
+
+type QDragmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qdrag_types.QDrag, slot: QDragmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QDragmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDrag_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDrag_metaObject(self: ptr cQDrag, slot: int): pointer {.exportc: "miqt_exec_callback_QDrag_metaObject ".} =
+  var nimfunc = cast[ptr QDragmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QDragmetacast*(self: gen_qdrag_types.QDrag, param1: cstring): pointer =
+  fQDrag_virtualbase_metacast(self.h, param1)
+
+type QDragmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdrag_types.QDrag, slot: QDragmetacastProc) =
+  # TODO check subclass
+  var tmp = new QDragmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDrag_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDrag_metacast(self: ptr cQDrag, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDrag_metacast ".} =
+  var nimfunc = cast[ptr QDragmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QDragmetacall*(self: gen_qdrag_types.QDrag, param1: cint, param2: cint, param3: pointer): cint =
   fQDrag_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

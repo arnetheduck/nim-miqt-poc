@@ -87,6 +87,10 @@ proc fcQVideoWidget_aspectRatioModeChanged(self: pointer, mode: cint): void {.im
 proc fQVideoWidget_connect_aspectRatioModeChanged(self: pointer, slot: int) {.importc: "QVideoWidget_connect_aspectRatioModeChanged".}
 proc fcQVideoWidget_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QVideoWidget_tr2".}
 proc fcQVideoWidget_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoWidget_tr3".}
+proc fQVideoWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QVideoWidget_virtualbase_metaObject".}
+proc fcQVideoWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QVideoWidget_override_virtual_metaObject".}
+proc fQVideoWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QVideoWidget_virtualbase_metacast".}
+proc fcQVideoWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QVideoWidget_override_virtual_metacast".}
 proc fQVideoWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QVideoWidget_virtualbase_metacall".}
 proc fcQVideoWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QVideoWidget_override_virtual_metacall".}
 proc fQVideoWidget_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QVideoWidget_virtualbase_sizeHint".}
@@ -269,6 +273,42 @@ proc tr*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QVideoWidgetmetaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQVideoWidget_virtualbase_metaObject(self.h))
+
+type QVideoWidgetmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QVideoWidgetmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQVideoWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QVideoWidget_metaObject(self: ptr cQVideoWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QVideoWidget_metaObject ".} =
+  var nimfunc = cast[ptr QVideoWidgetmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QVideoWidgetmetacast*(self: gen_qvideowidget_types.QVideoWidget, param1: cstring): pointer =
+  fQVideoWidget_virtualbase_metacast(self.h, param1)
+
+type QVideoWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmetacastProc) =
+  # TODO check subclass
+  var tmp = new QVideoWidgetmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQVideoWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QVideoWidget_metacast(self: ptr cQVideoWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QVideoWidget_metacast ".} =
+  var nimfunc = cast[ptr QVideoWidgetmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QVideoWidgetmetacall*(self: gen_qvideowidget_types.QVideoWidget, param1: cint, param2: cint, param3: pointer): cint =
   fQVideoWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

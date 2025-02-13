@@ -93,6 +93,10 @@ proc fcQGraphicsItemAnimation_clear(self: pointer, ): void {.importc: "QGraphics
 proc fcQGraphicsItemAnimation_setStep(self: pointer, x: float64): void {.importc: "QGraphicsItemAnimation_setStep".}
 proc fcQGraphicsItemAnimation_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsItemAnimation_tr2".}
 proc fcQGraphicsItemAnimation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsItemAnimation_tr3".}
+proc fQGraphicsItemAnimation_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsItemAnimation_virtualbase_metaObject".}
+proc fcQGraphicsItemAnimation_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_metaObject".}
+proc fQGraphicsItemAnimation_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsItemAnimation_virtualbase_metacast".}
+proc fcQGraphicsItemAnimation_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_metacast".}
 proc fQGraphicsItemAnimation_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsItemAnimation_virtualbase_metacall".}
 proc fcQGraphicsItemAnimation_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_metacall".}
 proc fQGraphicsItemAnimation_virtualbase_beforeAnimationStep(self: pointer, step: float64): void{.importc: "QGraphicsItemAnimation_virtualbase_beforeAnimationStep".}
@@ -287,6 +291,42 @@ proc tr*(_: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, s: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsItemAnimationmetaObject*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsItemAnimation_virtualbase_metaObject(self.h))
+
+type QGraphicsItemAnimationmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, slot: QGraphicsItemAnimationmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsItemAnimationmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsItemAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsItemAnimation_metaObject(self: ptr cQGraphicsItemAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsItemAnimation_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsItemAnimationmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsItemAnimationmetacast*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, param1: cstring): pointer =
+  fQGraphicsItemAnimation_virtualbase_metacast(self.h, param1)
+
+type QGraphicsItemAnimationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, slot: QGraphicsItemAnimationmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsItemAnimationmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsItemAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsItemAnimation_metacast(self: ptr cQGraphicsItemAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsItemAnimation_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsItemAnimationmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsItemAnimationmetacall*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsItemAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

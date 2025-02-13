@@ -134,6 +134,10 @@ proc fcQMovie_stop(self: pointer, ): void {.importc: "QMovie_stop".}
 proc fcQMovie_setSpeed(self: pointer, percentSpeed: cint): void {.importc: "QMovie_setSpeed".}
 proc fcQMovie_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QMovie_tr2".}
 proc fcQMovie_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMovie_tr3".}
+proc fQMovie_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMovie_virtualbase_metaObject".}
+proc fcQMovie_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMovie_override_virtual_metaObject".}
+proc fQMovie_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMovie_virtualbase_metacast".}
+proc fcQMovie_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMovie_override_virtual_metacast".}
 proc fQMovie_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMovie_virtualbase_metacall".}
 proc fcQMovie_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMovie_override_virtual_metacall".}
 proc fQMovie_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QMovie_virtualbase_event".}
@@ -425,6 +429,42 @@ proc tr*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc QMoviemetaObject*(self: gen_qmovie_types.QMovie, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQMovie_virtualbase_metaObject(self.h))
+
+type QMoviemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qmovie_types.QMovie, slot: QMoviemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QMoviemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMovie_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMovie_metaObject(self: ptr cQMovie, slot: int): pointer {.exportc: "miqt_exec_callback_QMovie_metaObject ".} =
+  var nimfunc = cast[ptr QMoviemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QMoviemetacast*(self: gen_qmovie_types.QMovie, param1: cstring): pointer =
+  fQMovie_virtualbase_metacast(self.h, param1)
+
+type QMoviemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmovie_types.QMovie, slot: QMoviemetacastProc) =
+  # TODO check subclass
+  var tmp = new QMoviemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMovie_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMovie_metacast(self: ptr cQMovie, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMovie_metacast ".} =
+  var nimfunc = cast[ptr QMoviemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QMoviemetacall*(self: gen_qmovie_types.QMovie, param1: cint, param2: cint, param3: pointer): cint =
   fQMovie_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

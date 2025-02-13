@@ -128,6 +128,10 @@ proc fcQApplication_setPalette2(param1: pointer, className: cstring): void {.imp
 proc fcQApplication_setFont2(param1: pointer, className: cstring): void {.importc: "QApplication_setFont2".}
 proc fcQApplication_alert2(widget: pointer, duration: cint): void {.importc: "QApplication_alert2".}
 proc fcQApplication_setEffectEnabled2(param1: cint, enable: bool): void {.importc: "QApplication_setEffectEnabled2".}
+proc fQApplication_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QApplication_virtualbase_metaObject".}
+proc fcQApplication_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QApplication_override_virtual_metaObject".}
+proc fQApplication_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QApplication_virtualbase_metacast".}
+proc fcQApplication_override_virtual_metacast(self: pointer, slot: int) {.importc: "QApplication_override_virtual_metacast".}
 proc fQApplication_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QApplication_virtualbase_metacall".}
 proc fcQApplication_override_virtual_metacall(self: pointer, slot: int) {.importc: "QApplication_override_virtual_metacall".}
 proc fQApplication_virtualbase_notify(self: pointer, param1: pointer, param2: pointer): bool{.importc: "QApplication_virtualbase_notify".}
@@ -378,6 +382,42 @@ proc alert*(_: type gen_qapplication_types.QApplication, widget: gen_qwidget_typ
 proc setEffectEnabled*(_: type gen_qapplication_types.QApplication, param1: cint, enable: bool): void =
   fcQApplication_setEffectEnabled2(cint(param1), enable)
 
+proc QApplicationmetaObject*(self: gen_qapplication_types.QApplication, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQApplication_virtualbase_metaObject(self.h))
+
+type QApplicationmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qapplication_types.QApplication, slot: QApplicationmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QApplicationmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQApplication_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QApplication_metaObject(self: ptr cQApplication, slot: int): pointer {.exportc: "miqt_exec_callback_QApplication_metaObject ".} =
+  var nimfunc = cast[ptr QApplicationmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QApplicationmetacast*(self: gen_qapplication_types.QApplication, param1: cstring): pointer =
+  fQApplication_virtualbase_metacast(self.h, param1)
+
+type QApplicationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qapplication_types.QApplication, slot: QApplicationmetacastProc) =
+  # TODO check subclass
+  var tmp = new QApplicationmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQApplication_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QApplication_metacast(self: ptr cQApplication, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QApplication_metacast ".} =
+  var nimfunc = cast[ptr QApplicationmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QApplicationmetacall*(self: gen_qapplication_types.QApplication, param1: cint, param2: cint, param3: pointer): cint =
   fQApplication_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

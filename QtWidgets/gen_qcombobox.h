@@ -218,6 +218,10 @@ void QComboBox_addItem3(QComboBox* self, QIcon* icon, struct miqt_string text, Q
 void QComboBox_insertItem3(QComboBox* self, int index, struct miqt_string text, QVariant* userData);
 void QComboBox_insertItem4(QComboBox* self, int index, QIcon* icon, struct miqt_string text, QVariant* userData);
 void QComboBox_setItemData3(QComboBox* self, int index, QVariant* value, int role);
+bool QComboBox_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QComboBox_virtualbase_metaObject(const void* self);
+bool QComboBox_override_virtual_metacast(void* self, intptr_t slot);
+void* QComboBox_virtualbase_metacast(void* self, const char* param1);
 bool QComboBox_override_virtual_metacall(void* self, intptr_t slot);
 int QComboBox_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QComboBox_override_virtual_setModel(void* self, intptr_t slot);
