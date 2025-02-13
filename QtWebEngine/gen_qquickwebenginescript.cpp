@@ -611,6 +611,7 @@ void QQuickWebEngineScript_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQQuickWebEngineScript*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickWebEngineScript_staticMetaObject() { return &QQuickWebEngineScript::staticMetaObject; }
 QObject* QQuickWebEngineScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickWebEngineScript* self_cast = dynamic_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
 	if (self_cast == nullptr) {

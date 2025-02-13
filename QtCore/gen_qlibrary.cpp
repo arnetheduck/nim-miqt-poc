@@ -543,6 +543,7 @@ void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLibrary_staticMetaObject() { return &QLibrary::staticMetaObject; }
 QObject* QLibrary_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
 	if (self_cast == nullptr) {

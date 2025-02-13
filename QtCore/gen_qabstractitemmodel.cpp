@@ -2667,6 +2667,7 @@ void QAbstractItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractItemModel_staticMetaObject() { return &QAbstractItemModel::staticMetaObject; }
 void QAbstractItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQAbstractItemModel* self_cast = dynamic_cast<MiqtVirtualQAbstractItemModel*>( (QAbstractItemModel*)(self) );
 	if (self_cast == nullptr) {
@@ -4874,6 +4875,7 @@ void QAbstractTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractTableModel_staticMetaObject() { return &QAbstractTableModel::staticMetaObject; }
 void QAbstractTableModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
 	if (self_cast == nullptr) {
@@ -7027,6 +7029,7 @@ void QAbstractListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractListModel_staticMetaObject() { return &QAbstractListModel::staticMetaObject; }
 void QAbstractListModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
 	if (self_cast == nullptr) {

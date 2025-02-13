@@ -211,6 +211,7 @@ QObject* QCameraViewfinder_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QCameraViewfinder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCameraViewfinder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCameraViewfinder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QCameraViewfinder_staticMetaObject();
 void QCameraViewfinder_delete(QCameraViewfinder* self);
 
 #ifdef __cplusplus

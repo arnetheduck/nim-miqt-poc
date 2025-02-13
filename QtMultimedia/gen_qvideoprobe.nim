@@ -43,6 +43,7 @@ import
   gen_qmediarecorder_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvideoframe_types
 export
@@ -51,6 +52,7 @@ export
   gen_qmediarecorder_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvideoframe_types
 
@@ -90,6 +92,7 @@ proc fQVideoProbe_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQVideoProbe_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QVideoProbe_override_virtual_connectNotify".}
 proc fQVideoProbe_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QVideoProbe_virtualbase_disconnectNotify".}
 proc fcQVideoProbe_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QVideoProbe_override_virtual_disconnectNotify".}
+proc fcQVideoProbe_staticMetaObject(): pointer {.importc: "QVideoProbe_staticMetaObject".}
 proc fcQVideoProbe_delete(self: pointer) {.importc: "QVideoProbe_delete".}
 
 
@@ -333,5 +336,7 @@ proc miqt_exec_callback_QVideoProbe_disconnectNotify(self: ptr cQVideoProbe, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qvideoprobe_types.QVideoProbe): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVideoProbe_staticMetaObject())
 proc delete*(self: gen_qvideoprobe_types.QVideoProbe) =
   fcQVideoProbe_delete(self.h)

@@ -329,6 +329,7 @@ void QGraphicsWidget_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void*
 void QGraphicsWidget_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QGraphicsWidget_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QGraphicsWidget_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+const QMetaObject* QGraphicsWidget_staticMetaObject();
 void QGraphicsWidget_delete(QGraphicsWidget* self);
 
 #ifdef __cplusplus

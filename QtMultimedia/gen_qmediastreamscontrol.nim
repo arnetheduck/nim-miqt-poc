@@ -47,10 +47,12 @@ export gen_qmediastreamscontrol_types
 
 import
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -74,6 +76,7 @@ proc fcQMediaStreamsControl_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQMediaStreamsControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaStreamsControl_tr3".}
 proc fcQMediaStreamsControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaStreamsControl_trUtf82".}
 proc fcQMediaStreamsControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaStreamsControl_trUtf83".}
+proc fcQMediaStreamsControl_staticMetaObject(): pointer {.importc: "QMediaStreamsControl_staticMetaObject".}
 proc fcQMediaStreamsControl_delete(self: pointer) {.importc: "QMediaStreamsControl_delete".}
 
 
@@ -167,5 +170,7 @@ proc trUtf8*(_: type gen_qmediastreamscontrol_types.QMediaStreamsControl, s: cst
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmediastreamscontrol_types.QMediaStreamsControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaStreamsControl_staticMetaObject())
 proc delete*(self: gen_qmediastreamscontrol_types.QMediaStreamsControl) =
   fcQMediaStreamsControl_delete(self.h)

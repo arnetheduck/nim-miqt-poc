@@ -87,6 +87,7 @@ QObject* QThreadPool_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QThreadPool_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QThreadPool_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QThreadPool_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QThreadPool_staticMetaObject();
 void QThreadPool_delete(QThreadPool* self);
 
 #ifdef __cplusplus

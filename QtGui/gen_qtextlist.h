@@ -90,6 +90,7 @@ QObject* QTextList_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QTextList_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextList_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextList_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTextList_staticMetaObject();
 void QTextList_delete(QTextList* self);
 
 #ifdef __cplusplus

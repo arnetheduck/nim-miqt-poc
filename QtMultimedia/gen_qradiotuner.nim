@@ -74,6 +74,7 @@ import
   gen_qmediaservice_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qradiodata_types
 export
@@ -82,6 +83,7 @@ export
   gen_qmediaservice_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qradiodata_types
 
@@ -175,6 +177,7 @@ proc fQRadioTuner_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQRadioTuner_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QRadioTuner_override_virtual_connectNotify".}
 proc fQRadioTuner_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QRadioTuner_virtualbase_disconnectNotify".}
 proc fcQRadioTuner_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QRadioTuner_override_virtual_disconnectNotify".}
+proc fcQRadioTuner_staticMetaObject(): pointer {.importc: "QRadioTuner_staticMetaObject".}
 proc fcQRadioTuner_delete(self: pointer) {.importc: "QRadioTuner_delete".}
 
 
@@ -744,5 +747,7 @@ proc miqt_exec_callback_QRadioTuner_disconnectNotify(self: ptr cQRadioTuner, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qradiotuner_types.QRadioTuner): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQRadioTuner_staticMetaObject())
 proc delete*(self: gen_qradiotuner_types.QRadioTuner) =
   fcQRadioTuner_delete(self.h)

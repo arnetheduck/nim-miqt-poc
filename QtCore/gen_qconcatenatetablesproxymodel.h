@@ -185,6 +185,7 @@ QObject* QConcatenateTablesProxyModel_protectedbase_sender(bool* _dynamic_cast_o
 int QConcatenateTablesProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QConcatenateTablesProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QConcatenateTablesProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QConcatenateTablesProxyModel_staticMetaObject();
 void QConcatenateTablesProxyModel_delete(QConcatenateTablesProxyModel* self);
 
 #ifdef __cplusplus

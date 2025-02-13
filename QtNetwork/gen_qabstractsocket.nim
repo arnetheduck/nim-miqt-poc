@@ -119,6 +119,7 @@ import
   gen_qmetaobject_types,
   gen_qnetworkproxy_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
@@ -129,6 +130,7 @@ export
   gen_qmetaobject_types,
   gen_qnetworkproxy_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -271,6 +273,7 @@ proc fQAbstractSocket_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQAbstractSocket_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractSocket_override_virtual_connectNotify".}
 proc fQAbstractSocket_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractSocket_virtualbase_disconnectNotify".}
 proc fcQAbstractSocket_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractSocket_override_virtual_disconnectNotify".}
+proc fcQAbstractSocket_staticMetaObject(): pointer {.importc: "QAbstractSocket_staticMetaObject".}
 proc fcQAbstractSocket_delete(self: pointer) {.importc: "QAbstractSocket_delete".}
 
 
@@ -1215,5 +1218,7 @@ proc miqt_exec_callback_QAbstractSocket_disconnectNotify(self: ptr cQAbstractSoc
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractsocket_types.QAbstractSocket): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractSocket_staticMetaObject())
 proc delete*(self: gen_qabstractsocket_types.QAbstractSocket) =
   fcQAbstractSocket_delete(self.h)

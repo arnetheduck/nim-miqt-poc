@@ -89,6 +89,7 @@ QObject* QQuickRenderControl_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QQuickRenderControl_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickRenderControl_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickRenderControl_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickRenderControl_staticMetaObject();
 void QQuickRenderControl_delete(QQuickRenderControl* self);
 
 #ifdef __cplusplus

@@ -856,6 +856,7 @@ void QAudioDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioDecoder_staticMetaObject() { return &QAudioDecoder::staticMetaObject; }
 void QAudioDecoder_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
 	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
 	if (self_cast == nullptr) {

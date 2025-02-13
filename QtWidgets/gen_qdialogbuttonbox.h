@@ -234,6 +234,7 @@ QObject* QDialogButtonBox_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QDialogButtonBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDialogButtonBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDialogButtonBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDialogButtonBox_staticMetaObject();
 void QDialogButtonBox_delete(QDialogButtonBox* self);
 
 #ifdef __cplusplus

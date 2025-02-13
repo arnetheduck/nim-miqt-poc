@@ -43,6 +43,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -57,6 +58,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -181,6 +183,7 @@ proc fQScrollBar_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQScrollBar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QScrollBar_override_virtual_connectNotify".}
 proc fQScrollBar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QScrollBar_virtualbase_disconnectNotify".}
 proc fcQScrollBar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QScrollBar_override_virtual_disconnectNotify".}
+proc fcQScrollBar_staticMetaObject(): pointer {.importc: "QScrollBar_staticMetaObject".}
 proc fcQScrollBar_delete(self: pointer) {.importc: "QScrollBar_delete".}
 
 
@@ -1113,5 +1116,7 @@ proc miqt_exec_callback_QScrollBar_disconnectNotify(self: ptr cQScrollBar, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qscrollbar_types.QScrollBar): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQScrollBar_staticMetaObject())
 proc delete*(self: gen_qscrollbar_types.QScrollBar) =
   fcQScrollBar_delete(self.h)

@@ -43,6 +43,7 @@ import
   gen_qmediarecorder,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
@@ -50,6 +51,7 @@ export
   gen_qmediarecorder,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQAudioRecorder*{.exportc: "QAudioRecorder", incompleteStruct.} = object
@@ -94,6 +96,7 @@ proc fQAudioRecorder_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQAudioRecorder_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioRecorder_override_virtual_connectNotify".}
 proc fQAudioRecorder_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioRecorder_virtualbase_disconnectNotify".}
 proc fcQAudioRecorder_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioRecorder_override_virtual_disconnectNotify".}
+proc fcQAudioRecorder_staticMetaObject(): pointer {.importc: "QAudioRecorder_staticMetaObject".}
 proc fcQAudioRecorder_delete(self: pointer) {.importc: "QAudioRecorder_delete".}
 
 
@@ -399,5 +402,7 @@ proc miqt_exec_callback_QAudioRecorder_disconnectNotify(self: ptr cQAudioRecorde
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaudiorecorder_types.QAudioRecorder): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioRecorder_staticMetaObject())
 proc delete*(self: gen_qaudiorecorder_types.QAudioRecorder) =
   fcQAudioRecorder_delete(self.h)

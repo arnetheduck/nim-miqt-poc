@@ -624,6 +624,7 @@ void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QOffscreenSurface_staticMetaObject() { return &QOffscreenSurface::staticMetaObject; }
 QObject* QOffscreenSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
 	if (self_cast == nullptr) {

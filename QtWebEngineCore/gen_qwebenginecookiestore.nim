@@ -40,11 +40,13 @@ export gen_qwebenginecookiestore_types
 import
   gen_qnetworkcookie_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qnetworkcookie_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -71,6 +73,7 @@ proc fcQWebEngineCookieStore_trUtf82(s: cstring, c: cstring): struct_miqt_string
 proc fcQWebEngineCookieStore_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineCookieStore_trUtf83".}
 proc fcQWebEngineCookieStore_setCookie2(self: pointer, cookie: pointer, origin: pointer): void {.importc: "QWebEngineCookieStore_setCookie2".}
 proc fcQWebEngineCookieStore_deleteCookie2(self: pointer, cookie: pointer, origin: pointer): void {.importc: "QWebEngineCookieStore_deleteCookie2".}
+proc fcQWebEngineCookieStore_staticMetaObject(): pointer {.importc: "QWebEngineCookieStore_staticMetaObject".}
 proc fcQWebEngineCookieStore_delete(self: pointer) {.importc: "QWebEngineCookieStore_delete".}
 proc fcQWebEngineCookieStoreFilterRequest_new(param1: pointer): ptr cQWebEngineCookieStoreFilterRequest {.importc: "QWebEngineCookieStore__FilterRequest_new".}
 proc fcQWebEngineCookieStoreFilterRequest_operatorAssign(self: pointer, param1: pointer): void {.importc: "QWebEngineCookieStore__FilterRequest_operatorAssign".}
@@ -177,6 +180,8 @@ proc setCookie*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, coo
 proc deleteCookie*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, cookie: gen_qnetworkcookie_types.QNetworkCookie, origin: gen_qurl_types.QUrl): void =
   fcQWebEngineCookieStore_deleteCookie2(self.h, cookie.h, origin.h)
 
+proc staticMetaObject*(_: type gen_qwebenginecookiestore_types.QWebEngineCookieStore): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineCookieStore_staticMetaObject())
 proc delete*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore) =
   fcQWebEngineCookieStore_delete(self.h)
 

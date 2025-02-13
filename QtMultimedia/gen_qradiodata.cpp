@@ -719,6 +719,7 @@ void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRadioData_staticMetaObject() { return &QRadioData::staticMetaObject; }
 QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
 	if (self_cast == nullptr) {

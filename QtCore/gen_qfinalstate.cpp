@@ -521,6 +521,7 @@ void QFinalState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFinalState*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFinalState_staticMetaObject() { return &QFinalState::staticMetaObject; }
 QObject* QFinalState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQFinalState* self_cast = dynamic_cast<MiqtVirtualQFinalState*>( (QFinalState*)(self) );
 	if (self_cast == nullptr) {

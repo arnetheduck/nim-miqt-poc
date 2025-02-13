@@ -53,9 +53,11 @@ export gen_qcamerafeedbackcontrol_types
 
 import
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQCameraFeedbackControl*{.exportc: "QCameraFeedbackControl", incompleteStruct.} = object
@@ -74,6 +76,7 @@ proc fcQCameraFeedbackControl_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQCameraFeedbackControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFeedbackControl_tr3".}
 proc fcQCameraFeedbackControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFeedbackControl_trUtf82".}
 proc fcQCameraFeedbackControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFeedbackControl_trUtf83".}
+proc fcQCameraFeedbackControl_staticMetaObject(): pointer {.importc: "QCameraFeedbackControl_staticMetaObject".}
 proc fcQCameraFeedbackControl_delete(self: pointer) {.importc: "QCameraFeedbackControl_delete".}
 
 
@@ -139,5 +142,7 @@ proc trUtf8*(_: type gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl, s:
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraFeedbackControl_staticMetaObject())
 proc delete*(self: gen_qcamerafeedbackcontrol_types.QCameraFeedbackControl) =
   fcQCameraFeedbackControl_delete(self.h)

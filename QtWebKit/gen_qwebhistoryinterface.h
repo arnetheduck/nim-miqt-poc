@@ -72,6 +72,7 @@ QObject* QWebHistoryInterface_protectedbase_sender(bool* _dynamic_cast_ok, const
 int QWebHistoryInterface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebHistoryInterface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebHistoryInterface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWebHistoryInterface_staticMetaObject();
 void QWebHistoryInterface_delete(QWebHistoryInterface* self);
 
 #ifdef __cplusplus

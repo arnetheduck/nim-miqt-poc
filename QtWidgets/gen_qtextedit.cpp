@@ -2983,6 +2983,7 @@ void QTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextEdit_staticMetaObject() { return &QTextEdit::staticMetaObject; }
 void QTextEdit_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range) {
 	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
 	if (self_cast == nullptr) {

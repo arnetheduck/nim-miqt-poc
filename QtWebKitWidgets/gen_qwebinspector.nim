@@ -42,6 +42,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -56,6 +57,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -179,6 +181,7 @@ proc fQWebInspector_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQWebInspector_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebInspector_override_virtual_connectNotify".}
 proc fQWebInspector_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebInspector_virtualbase_disconnectNotify".}
 proc fcQWebInspector_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebInspector_override_virtual_disconnectNotify".}
+proc fcQWebInspector_staticMetaObject(): pointer {.importc: "QWebInspector_staticMetaObject".}
 proc fcQWebInspector_delete(self: pointer) {.importc: "QWebInspector_delete".}
 
 
@@ -1094,5 +1097,7 @@ proc miqt_exec_callback_QWebInspector_disconnectNotify(self: ptr cQWebInspector,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebinspector_types.QWebInspector): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebInspector_staticMetaObject())
 proc delete*(self: gen_qwebinspector_types.QWebInspector) =
   fcQWebInspector_delete(self.h)

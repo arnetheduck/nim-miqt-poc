@@ -62,6 +62,7 @@ import
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types,
@@ -73,6 +74,7 @@ export
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types,
@@ -151,6 +153,7 @@ proc fQCameraImageCapture_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQCameraImageCapture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCameraImageCapture_override_virtual_connectNotify".}
 proc fQCameraImageCapture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCameraImageCapture_virtualbase_disconnectNotify".}
 proc fcQCameraImageCapture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCameraImageCapture_override_virtual_disconnectNotify".}
+proc fcQCameraImageCapture_staticMetaObject(): pointer {.importc: "QCameraImageCapture_staticMetaObject".}
 proc fcQCameraImageCapture_delete(self: pointer) {.importc: "QCameraImageCapture_delete".}
 
 
@@ -658,5 +661,7 @@ proc miqt_exec_callback_QCameraImageCapture_disconnectNotify(self: ptr cQCameraI
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcameraimagecapture_types.QCameraImageCapture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraImageCapture_staticMetaObject())
 proc delete*(self: gen_qcameraimagecapture_types.QCameraImageCapture) =
   fcQCameraImageCapture_delete(self.h)

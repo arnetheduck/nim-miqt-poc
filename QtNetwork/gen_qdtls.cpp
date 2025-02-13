@@ -499,6 +499,7 @@ void QDtlsClientVerifier_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQDtlsClientVerifier*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDtlsClientVerifier_staticMetaObject() { return &QDtlsClientVerifier::staticMetaObject; }
 QObject* QDtlsClientVerifier_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDtlsClientVerifier* self_cast = dynamic_cast<MiqtVirtualQDtlsClientVerifier*>( (QDtlsClientVerifier*)(self) );
 	if (self_cast == nullptr) {
@@ -1152,6 +1153,7 @@ void QDtls_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDtls*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDtls_staticMetaObject() { return &QDtls::staticMetaObject; }
 QObject* QDtls_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDtls* self_cast = dynamic_cast<MiqtVirtualQDtls*>( (QDtls*)(self) );
 	if (self_cast == nullptr) {

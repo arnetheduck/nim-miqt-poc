@@ -786,6 +786,7 @@ void QVariantAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QVariantAnimation_staticMetaObject() { return &QVariantAnimation::staticMetaObject; }
 QObject* QVariantAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
 	if (self_cast == nullptr) {

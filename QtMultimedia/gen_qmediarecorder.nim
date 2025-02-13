@@ -67,6 +67,7 @@ import
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qurl_types,
@@ -77,6 +78,7 @@ export
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qurl_types,
@@ -188,6 +190,7 @@ proc fQMediaRecorder_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQMediaRecorder_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMediaRecorder_override_virtual_connectNotify".}
 proc fQMediaRecorder_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMediaRecorder_virtualbase_disconnectNotify".}
 proc fcQMediaRecorder_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMediaRecorder_override_virtual_disconnectNotify".}
+proc fcQMediaRecorder_staticMetaObject(): pointer {.importc: "QMediaRecorder_staticMetaObject".}
 proc fcQMediaRecorder_delete(self: pointer) {.importc: "QMediaRecorder_delete".}
 
 
@@ -872,5 +875,7 @@ proc miqt_exec_callback_QMediaRecorder_disconnectNotify(self: ptr cQMediaRecorde
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmediarecorder_types.QMediaRecorder): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaRecorder_staticMetaObject())
 proc delete*(self: gen_qmediarecorder_types.QMediaRecorder) =
   fcQMediaRecorder_delete(self.h)

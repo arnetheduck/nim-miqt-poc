@@ -42,6 +42,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -56,6 +57,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -199,6 +201,7 @@ proc fQDesktopWidget_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQDesktopWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDesktopWidget_override_virtual_connectNotify".}
 proc fQDesktopWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDesktopWidget_virtualbase_disconnectNotify".}
 proc fcQDesktopWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDesktopWidget_override_virtual_disconnectNotify".}
+proc fcQDesktopWidget_staticMetaObject(): pointer {.importc: "QDesktopWidget_staticMetaObject".}
 proc fcQDesktopWidget_delete(self: pointer) {.importc: "QDesktopWidget_delete".}
 
 
@@ -1212,5 +1215,7 @@ proc miqt_exec_callback_QDesktopWidget_disconnectNotify(self: ptr cQDesktopWidge
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdesktopwidget_types.QDesktopWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDesktopWidget_staticMetaObject())
 proc delete*(self: gen_qdesktopwidget_types.QDesktopWidget) =
   fcQDesktopWidget_delete(self.h)

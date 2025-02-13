@@ -42,6 +42,7 @@ import
   gen_qimage_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qquickwindow_types,
@@ -52,6 +53,7 @@ export
   gen_qimage_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qquickwindow_types,
@@ -102,6 +104,7 @@ proc fQQuickRenderControl_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQQuickRenderControl_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickRenderControl_override_virtual_connectNotify".}
 proc fQQuickRenderControl_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickRenderControl_virtualbase_disconnectNotify".}
 proc fcQQuickRenderControl_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickRenderControl_override_virtual_disconnectNotify".}
+proc fcQQuickRenderControl_staticMetaObject(): pointer {.importc: "QQuickRenderControl_staticMetaObject".}
 proc fcQQuickRenderControl_delete(self: pointer) {.importc: "QQuickRenderControl_delete".}
 
 
@@ -380,5 +383,7 @@ proc miqt_exec_callback_QQuickRenderControl_disconnectNotify(self: ptr cQQuickRe
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickrendercontrol_types.QQuickRenderControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickRenderControl_staticMetaObject())
 proc delete*(self: gen_qquickrendercontrol_types.QQuickRenderControl) =
   fcQQuickRenderControl_delete(self.h)

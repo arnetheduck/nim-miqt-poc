@@ -45,6 +45,7 @@ import
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpalette_types,
@@ -63,6 +64,7 @@ export
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpalette_types,
@@ -175,6 +177,7 @@ proc fQProxyStyle_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQProxyStyle_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QProxyStyle_override_virtual_connectNotify".}
 proc fQProxyStyle_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QProxyStyle_virtualbase_disconnectNotify".}
 proc fcQProxyStyle_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QProxyStyle_override_virtual_disconnectNotify".}
+proc fcQProxyStyle_staticMetaObject(): pointer {.importc: "QProxyStyle_staticMetaObject".}
 proc fcQProxyStyle_delete(self: pointer) {.importc: "QProxyStyle_delete".}
 
 
@@ -978,5 +981,7 @@ proc miqt_exec_callback_QProxyStyle_disconnectNotify(self: ptr cQProxyStyle, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qproxystyle_types.QProxyStyle): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQProxyStyle_staticMetaObject())
 proc delete*(self: gen_qproxystyle_types.QProxyStyle) =
   fcQProxyStyle_delete(self.h)

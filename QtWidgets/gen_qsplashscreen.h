@@ -228,6 +228,7 @@ QObject* QSplashScreen_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QSplashScreen_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSplashScreen_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSplashScreen_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSplashScreen_staticMetaObject();
 void QSplashScreen_delete(QSplashScreen* self);
 
 #ifdef __cplusplus

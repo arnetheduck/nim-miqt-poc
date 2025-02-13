@@ -81,6 +81,7 @@ QObject* QParallelAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, co
 int QParallelAnimationGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QParallelAnimationGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QParallelAnimationGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QParallelAnimationGroup_staticMetaObject();
 void QParallelAnimationGroup_delete(QParallelAnimationGroup* self);
 
 #ifdef __cplusplus

@@ -481,6 +481,7 @@ void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QVideoProbe_staticMetaObject() { return &QVideoProbe::staticMetaObject; }
 QObject* QVideoProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
 	if (self_cast == nullptr) {

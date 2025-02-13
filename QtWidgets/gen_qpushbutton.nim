@@ -45,6 +45,7 @@ import
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -61,6 +62,7 @@ export
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -200,6 +202,7 @@ proc fQPushButton_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQPushButton_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPushButton_override_virtual_connectNotify".}
 proc fQPushButton_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPushButton_virtualbase_disconnectNotify".}
 proc fcQPushButton_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPushButton_override_virtual_disconnectNotify".}
+proc fcQPushButton_staticMetaObject(): pointer {.importc: "QPushButton_staticMetaObject".}
 proc fcQPushButton_delete(self: pointer) {.importc: "QPushButton_delete".}
 
 
@@ -1197,5 +1200,7 @@ proc miqt_exec_callback_QPushButton_disconnectNotify(self: ptr cQPushButton, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpushbutton_types.QPushButton): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPushButton_staticMetaObject())
 proc delete*(self: gen_qpushbutton_types.QPushButton) =
   fcQPushButton_delete(self.h)

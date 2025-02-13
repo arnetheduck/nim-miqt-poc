@@ -55,6 +55,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types,
@@ -64,6 +65,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types
@@ -275,6 +277,7 @@ proc fQAbstractItemModel_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQAbstractItemModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractItemModel_override_virtual_connectNotify".}
 proc fQAbstractItemModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractItemModel_virtualbase_disconnectNotify".}
 proc fcQAbstractItemModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractItemModel_override_virtual_disconnectNotify".}
+proc fcQAbstractItemModel_staticMetaObject(): pointer {.importc: "QAbstractItemModel_staticMetaObject".}
 proc fcQAbstractItemModel_delete(self: pointer) {.importc: "QAbstractItemModel_delete".}
 proc fcQAbstractTableModel_new(): ptr cQAbstractTableModel {.importc: "QAbstractTableModel_new".}
 proc fcQAbstractTableModel_new2(parent: pointer): ptr cQAbstractTableModel {.importc: "QAbstractTableModel_new2".}
@@ -368,6 +371,7 @@ proc fQAbstractTableModel_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQAbstractTableModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractTableModel_override_virtual_connectNotify".}
 proc fQAbstractTableModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractTableModel_virtualbase_disconnectNotify".}
 proc fcQAbstractTableModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractTableModel_override_virtual_disconnectNotify".}
+proc fcQAbstractTableModel_staticMetaObject(): pointer {.importc: "QAbstractTableModel_staticMetaObject".}
 proc fcQAbstractTableModel_delete(self: pointer) {.importc: "QAbstractTableModel_delete".}
 proc fcQAbstractListModel_new(): ptr cQAbstractListModel {.importc: "QAbstractListModel_new".}
 proc fcQAbstractListModel_new2(parent: pointer): ptr cQAbstractListModel {.importc: "QAbstractListModel_new2".}
@@ -460,6 +464,7 @@ proc fQAbstractListModel_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQAbstractListModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractListModel_override_virtual_connectNotify".}
 proc fQAbstractListModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractListModel_virtualbase_disconnectNotify".}
 proc fcQAbstractListModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractListModel_override_virtual_disconnectNotify".}
+proc fcQAbstractListModel_staticMetaObject(): pointer {.importc: "QAbstractListModel_staticMetaObject".}
 proc fcQAbstractListModel_delete(self: pointer) {.importc: "QAbstractListModel_delete".}
 
 
@@ -1978,6 +1983,8 @@ proc miqt_exec_callback_QAbstractItemModel_disconnectNotify(self: ptr cQAbstract
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractitemmodel_types.QAbstractItemModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractItemModel_staticMetaObject())
 proc delete*(self: gen_qabstractitemmodel_types.QAbstractItemModel) =
   fcQAbstractItemModel_delete(self.h)
 
@@ -2946,6 +2953,8 @@ proc miqt_exec_callback_QAbstractTableModel_disconnectNotify(self: ptr cQAbstrac
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractitemmodel_types.QAbstractTableModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractTableModel_staticMetaObject())
 proc delete*(self: gen_qabstractitemmodel_types.QAbstractTableModel) =
   fcQAbstractTableModel_delete(self.h)
 
@@ -3898,5 +3907,7 @@ proc miqt_exec_callback_QAbstractListModel_disconnectNotify(self: ptr cQAbstract
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractitemmodel_types.QAbstractListModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractListModel_staticMetaObject())
 proc delete*(self: gen_qabstractitemmodel_types.QAbstractListModel) =
   fcQAbstractListModel_delete(self.h)

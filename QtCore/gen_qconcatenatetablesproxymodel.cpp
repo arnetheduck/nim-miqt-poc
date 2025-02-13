@@ -2121,6 +2121,7 @@ void QConcatenateTablesProxyModel_virtualbase_disconnectNotify(void* self, QMeta
 	( (MiqtVirtualQConcatenateTablesProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QConcatenateTablesProxyModel_staticMetaObject() { return &QConcatenateTablesProxyModel::staticMetaObject; }
 void QConcatenateTablesProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {

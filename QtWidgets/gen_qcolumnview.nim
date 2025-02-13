@@ -45,6 +45,7 @@ import
   gen_qitemselectionmodel_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -64,6 +65,7 @@ export
   gen_qitemselectionmodel_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -287,6 +289,7 @@ proc fQColumnView_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQColumnView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QColumnView_override_virtual_connectNotify".}
 proc fQColumnView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QColumnView_virtualbase_disconnectNotify".}
 proc fcQColumnView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QColumnView_override_virtual_disconnectNotify".}
+proc fcQColumnView_staticMetaObject(): pointer {.importc: "QColumnView_staticMetaObject".}
 proc fcQColumnView_delete(self: pointer) {.importc: "QColumnView_delete".}
 
 
@@ -2051,5 +2054,7 @@ proc miqt_exec_callback_QColumnView_disconnectNotify(self: ptr cQColumnView, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcolumnview_types.QColumnView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQColumnView_staticMetaObject())
 proc delete*(self: gen_qcolumnview_types.QColumnView) =
   fcQColumnView_delete(self.h)

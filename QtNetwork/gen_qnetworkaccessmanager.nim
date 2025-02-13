@@ -67,6 +67,7 @@ import
   gen_qnetworkreply_types,
   gen_qnetworkrequest_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsslconfiguration_types,
   gen_qsslerror_types,
@@ -85,6 +86,7 @@ export
   gen_qnetworkreply_types,
   gen_qnetworkrequest_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsslconfiguration_types,
   gen_qsslerror_types,
@@ -186,6 +188,7 @@ proc fQNetworkAccessManager_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQNetworkAccessManager_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QNetworkAccessManager_override_virtual_connectNotify".}
 proc fQNetworkAccessManager_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QNetworkAccessManager_virtualbase_disconnectNotify".}
 proc fcQNetworkAccessManager_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QNetworkAccessManager_override_virtual_disconnectNotify".}
+proc fcQNetworkAccessManager_staticMetaObject(): pointer {.importc: "QNetworkAccessManager_staticMetaObject".}
 proc fcQNetworkAccessManager_delete(self: pointer) {.importc: "QNetworkAccessManager_delete".}
 
 
@@ -720,5 +723,7 @@ proc miqt_exec_callback_QNetworkAccessManager_disconnectNotify(self: ptr cQNetwo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQNetworkAccessManager_staticMetaObject())
 proc delete*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager) =
   fcQNetworkAccessManager_delete(self.h)

@@ -151,6 +151,7 @@ QObject* QScriptEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QScriptEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QScriptEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QScriptEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QScriptEngine_staticMetaObject();
 void QScriptEngine_delete(QScriptEngine* self);
 
 #ifdef __cplusplus

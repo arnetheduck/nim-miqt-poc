@@ -42,12 +42,14 @@ import
   gen_qlocale_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qlocale_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQTranslator*{.exportc: "QTranslator", incompleteStruct.} = object
@@ -97,6 +99,7 @@ proc fQTranslator_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQTranslator_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTranslator_override_virtual_connectNotify".}
 proc fQTranslator_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTranslator_virtualbase_disconnectNotify".}
 proc fcQTranslator_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTranslator_override_virtual_disconnectNotify".}
+proc fcQTranslator_staticMetaObject(): pointer {.importc: "QTranslator_staticMetaObject".}
 proc fcQTranslator_delete(self: pointer) {.importc: "QTranslator_delete".}
 
 
@@ -397,5 +400,7 @@ proc miqt_exec_callback_QTranslator_disconnectNotify(self: ptr cQTranslator, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtranslator_types.QTranslator): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTranslator_staticMetaObject())
 proc delete*(self: gen_qtranslator_types.QTranslator) =
   fcQTranslator_delete(self.h)

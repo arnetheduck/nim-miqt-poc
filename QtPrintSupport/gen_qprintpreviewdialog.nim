@@ -43,6 +43,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -58,6 +59,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -196,6 +198,7 @@ proc fQPrintPreviewDialog_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQPrintPreviewDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPrintPreviewDialog_override_virtual_connectNotify".}
 proc fQPrintPreviewDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPrintPreviewDialog_virtualbase_disconnectNotify".}
 proc fcQPrintPreviewDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPrintPreviewDialog_override_virtual_disconnectNotify".}
+proc fcQPrintPreviewDialog_staticMetaObject(): pointer {.importc: "QPrintPreviewDialog_staticMetaObject".}
 proc fcQPrintPreviewDialog_delete(self: pointer) {.importc: "QPrintPreviewDialog_delete".}
 
 
@@ -1215,5 +1218,7 @@ proc miqt_exec_callback_QPrintPreviewDialog_disconnectNotify(self: ptr cQPrintPr
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qprintpreviewdialog_types.QPrintPreviewDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPrintPreviewDialog_staticMetaObject())
 proc delete*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog) =
   fcQPrintPreviewDialog_delete(self.h)

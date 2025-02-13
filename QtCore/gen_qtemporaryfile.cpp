@@ -1296,6 +1296,7 @@ void QTemporaryFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTemporaryFile_staticMetaObject() { return &QTemporaryFile::staticMetaObject; }
 void QTemporaryFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
 	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
 	if (self_cast == nullptr) {

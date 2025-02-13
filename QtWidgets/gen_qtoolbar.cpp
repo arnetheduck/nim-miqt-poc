@@ -2190,6 +2190,7 @@ void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolBar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QToolBar_staticMetaObject() { return &QToolBar::staticMetaObject; }
 void QToolBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionToolBar* option) {
 	MiqtVirtualQToolBar* self_cast = dynamic_cast<MiqtVirtualQToolBar*>( (QToolBar*)(self) );
 	if (self_cast == nullptr) {

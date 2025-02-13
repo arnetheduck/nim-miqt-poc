@@ -442,6 +442,7 @@ void QQuickTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQQuickTextDocument*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickTextDocument_staticMetaObject() { return &QQuickTextDocument::staticMetaObject; }
 QObject* QQuickTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickTextDocument* self_cast = dynamic_cast<MiqtVirtualQQuickTextDocument*>( (QQuickTextDocument*)(self) );
 	if (self_cast == nullptr) {

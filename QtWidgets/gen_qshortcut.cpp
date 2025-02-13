@@ -537,6 +537,7 @@ void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QShortcut_staticMetaObject() { return &QShortcut::staticMetaObject; }
 QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {

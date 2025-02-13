@@ -84,6 +84,7 @@ import
   gen_qfileiconprovider_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -103,6 +104,7 @@ export
   gen_qfileiconprovider_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -354,6 +356,7 @@ proc fQFileDialog_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQFileDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFileDialog_override_virtual_connectNotify".}
 proc fQFileDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFileDialog_virtualbase_disconnectNotify".}
 proc fcQFileDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFileDialog_override_virtual_disconnectNotify".}
+proc fcQFileDialog_staticMetaObject(): pointer {.importc: "QFileDialog_staticMetaObject".}
 proc fcQFileDialog_delete(self: pointer) {.importc: "QFileDialog_delete".}
 
 
@@ -2024,5 +2027,7 @@ proc miqt_exec_callback_QFileDialog_disconnectNotify(self: ptr cQFileDialog, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfiledialog_types.QFileDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFileDialog_staticMetaObject())
 proc delete*(self: gen_qfiledialog_types.QFileDialog) =
   fcQFileDialog_delete(self.h)

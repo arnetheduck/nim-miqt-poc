@@ -39,9 +39,11 @@ export gen_qcustomaudiorolecontrol_types
 
 import
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQCustomAudioRoleControl*{.exportc: "QCustomAudioRoleControl", incompleteStruct.} = object
@@ -60,6 +62,7 @@ proc fcQCustomAudioRoleControl_tr2(s: cstring, c: cstring): struct_miqt_string {
 proc fcQCustomAudioRoleControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCustomAudioRoleControl_tr3".}
 proc fcQCustomAudioRoleControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCustomAudioRoleControl_trUtf82".}
 proc fcQCustomAudioRoleControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCustomAudioRoleControl_trUtf83".}
+proc fcQCustomAudioRoleControl_staticMetaObject(): pointer {.importc: "QCustomAudioRoleControl_staticMetaObject".}
 proc fcQCustomAudioRoleControl_delete(self: pointer) {.importc: "QCustomAudioRoleControl_delete".}
 
 
@@ -149,5 +152,7 @@ proc trUtf8*(_: type gen_qcustomaudiorolecontrol_types.QCustomAudioRoleControl, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qcustomaudiorolecontrol_types.QCustomAudioRoleControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCustomAudioRoleControl_staticMetaObject())
 proc delete*(self: gen_qcustomaudiorolecontrol_types.QCustomAudioRoleControl) =
   fcQCustomAudioRoleControl_delete(self.h)

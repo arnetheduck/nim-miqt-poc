@@ -42,6 +42,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 export
@@ -49,6 +50,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 
@@ -91,6 +93,7 @@ proc fQSignalTransition_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQSignalTransition_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSignalTransition_override_virtual_connectNotify".}
 proc fQSignalTransition_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSignalTransition_virtualbase_disconnectNotify".}
 proc fcQSignalTransition_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSignalTransition_override_virtual_disconnectNotify".}
+proc fcQSignalTransition_staticMetaObject(): pointer {.importc: "QSignalTransition_staticMetaObject".}
 proc fcQSignalTransition_delete(self: pointer) {.importc: "QSignalTransition_delete".}
 
 
@@ -352,5 +355,7 @@ proc miqt_exec_callback_QSignalTransition_disconnectNotify(self: ptr cQSignalTra
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsignaltransition_types.QSignalTransition): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSignalTransition_staticMetaObject())
 proc delete*(self: gen_qsignaltransition_types.QSignalTransition) =
   fcQSignalTransition_delete(self.h)

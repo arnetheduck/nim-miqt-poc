@@ -130,6 +130,7 @@ struct miqt_string QQuickItemGrabResult_trUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
+const QMetaObject* QQuickItemGrabResult_staticMetaObject() { return &QQuickItemGrabResult::staticMetaObject; }
 void QQuickItemGrabResult_delete(QQuickItemGrabResult* self) {
 	delete self;
 }

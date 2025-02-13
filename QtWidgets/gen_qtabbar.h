@@ -302,6 +302,7 @@ QObject* QTabBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTabBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTabBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTabBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTabBar_staticMetaObject();
 void QTabBar_delete(QTabBar* self);
 
 #ifdef __cplusplus

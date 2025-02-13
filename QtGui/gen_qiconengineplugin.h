@@ -69,6 +69,7 @@ QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QIconEnginePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIconEnginePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIconEnginePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QIconEnginePlugin_staticMetaObject();
 void QIconEnginePlugin_delete(QIconEnginePlugin* self);
 
 #ifdef __cplusplus

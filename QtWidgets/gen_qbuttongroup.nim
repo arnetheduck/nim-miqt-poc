@@ -42,12 +42,14 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qabstractbutton_types,
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQButtonGroup*{.exportc: "QButtonGroup", incompleteStruct.} = object
@@ -114,6 +116,7 @@ proc fQButtonGroup_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQButtonGroup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QButtonGroup_override_virtual_connectNotify".}
 proc fQButtonGroup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QButtonGroup_virtualbase_disconnectNotify".}
 proc fcQButtonGroup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QButtonGroup_override_virtual_disconnectNotify".}
+proc fcQButtonGroup_staticMetaObject(): pointer {.importc: "QButtonGroup_staticMetaObject".}
 proc fcQButtonGroup_delete(self: pointer) {.importc: "QButtonGroup_delete".}
 
 
@@ -554,5 +557,7 @@ proc miqt_exec_callback_QButtonGroup_disconnectNotify(self: ptr cQButtonGroup, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qbuttongroup_types.QButtonGroup): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQButtonGroup_staticMetaObject())
 proc delete*(self: gen_qbuttongroup_types.QButtonGroup) =
   fcQButtonGroup_delete(self.h)

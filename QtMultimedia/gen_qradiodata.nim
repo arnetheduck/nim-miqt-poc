@@ -100,12 +100,14 @@ import
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQRadioData*{.exportc: "QRadioData", incompleteStruct.} = object
@@ -166,6 +168,7 @@ proc fQRadioData_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQRadioData_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QRadioData_override_virtual_connectNotify".}
 proc fQRadioData_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QRadioData_virtualbase_disconnectNotify".}
 proc fcQRadioData_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QRadioData_override_virtual_disconnectNotify".}
+proc fcQRadioData_staticMetaObject(): pointer {.importc: "QRadioData_staticMetaObject".}
 proc fcQRadioData_delete(self: pointer) {.importc: "QRadioData_delete".}
 
 
@@ -578,5 +581,7 @@ proc miqt_exec_callback_QRadioData_disconnectNotify(self: ptr cQRadioData, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qradiodata_types.QRadioData): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQRadioData_staticMetaObject())
 proc delete*(self: gen_qradiodata_types.QRadioData) =
   fcQRadioData_delete(self.h)

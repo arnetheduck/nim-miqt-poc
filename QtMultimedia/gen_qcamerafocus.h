@@ -80,6 +80,7 @@ struct miqt_string QCameraFocus_tr2(const char* s, const char* c);
 struct miqt_string QCameraFocus_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraFocus_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraFocus_trUtf83(const char* s, const char* c, int n);
+const QMetaObject* QCameraFocus_staticMetaObject();
 
 #ifdef __cplusplus
 } /* extern C */

@@ -237,6 +237,7 @@ QObject* QToolBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QToolBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QToolBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QToolBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QToolBar_staticMetaObject();
 void QToolBar_delete(QToolBar* self);
 
 #ifdef __cplusplus

@@ -125,6 +125,7 @@ struct miqt_string QAbstractState_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QAbstractState_staticMetaObject() { return &QAbstractState::staticMetaObject; }
 void QAbstractState_delete(QAbstractState* self) {
 	delete self;
 }

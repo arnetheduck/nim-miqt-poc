@@ -40,10 +40,12 @@ export gen_qstylehints_types
 import
   gen_qchar_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qchar_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQStyleHints*{.exportc: "QStyleHints", incompleteStruct.} = object
@@ -113,6 +115,7 @@ proc fcQStyleHints_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "Q
 proc fcQStyleHints_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStyleHints_tr3".}
 proc fcQStyleHints_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QStyleHints_trUtf82".}
 proc fcQStyleHints_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStyleHints_trUtf83".}
+proc fcQStyleHints_staticMetaObject(): pointer {.importc: "QStyleHints_staticMetaObject".}
 proc fcQStyleHints_delete(self: pointer) {.importc: "QStyleHints_delete".}
 
 
@@ -441,5 +444,7 @@ proc trUtf8*(_: type gen_qstylehints_types.QStyleHints, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qstylehints_types.QStyleHints): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStyleHints_staticMetaObject())
 proc delete*(self: gen_qstylehints_types.QStyleHints) =
   fcQStyleHints_delete(self.h)

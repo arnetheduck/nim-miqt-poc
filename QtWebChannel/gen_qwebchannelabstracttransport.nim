@@ -42,12 +42,14 @@ import
   gen_qjsonobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qjsonobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQWebChannelAbstractTransport*{.exportc: "QWebChannelAbstractTransport", incompleteStruct.} = object
@@ -83,6 +85,7 @@ proc fQWebChannelAbstractTransport_virtualbase_connectNotify(self: pointer, sign
 proc fcQWebChannelAbstractTransport_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebChannelAbstractTransport_override_virtual_connectNotify".}
 proc fQWebChannelAbstractTransport_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebChannelAbstractTransport_virtualbase_disconnectNotify".}
 proc fcQWebChannelAbstractTransport_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebChannelAbstractTransport_override_virtual_disconnectNotify".}
+proc fcQWebChannelAbstractTransport_staticMetaObject(): pointer {.importc: "QWebChannelAbstractTransport_staticMetaObject".}
 proc fcQWebChannelAbstractTransport_delete(self: pointer) {.importc: "QWebChannelAbstractTransport_delete".}
 
 
@@ -322,5 +325,7 @@ proc miqt_exec_callback_QWebChannelAbstractTransport_disconnectNotify(self: ptr 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebChannelAbstractTransport_staticMetaObject())
 proc delete*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport) =
   fcQWebChannelAbstractTransport_delete(self.h)

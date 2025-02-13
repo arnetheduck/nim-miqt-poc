@@ -47,6 +47,7 @@ import
   gen_qinputmethod_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpalette_types,
   gen_qpoint_types,
@@ -66,6 +67,7 @@ export
   gen_qinputmethod_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpalette_types,
   gen_qpoint_types,
@@ -184,6 +186,7 @@ proc fQGuiApplication_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQGuiApplication_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGuiApplication_override_virtual_connectNotify".}
 proc fQGuiApplication_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGuiApplication_virtualbase_disconnectNotify".}
 proc fcQGuiApplication_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGuiApplication_override_virtual_disconnectNotify".}
+proc fcQGuiApplication_staticMetaObject(): pointer {.importc: "QGuiApplication_staticMetaObject".}
 proc fcQGuiApplication_delete(self: pointer) {.importc: "QGuiApplication_delete".}
 
 
@@ -822,5 +825,7 @@ proc miqt_exec_callback_QGuiApplication_disconnectNotify(self: ptr cQGuiApplicat
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qguiapplication_types.QGuiApplication): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGuiApplication_staticMetaObject())
 proc delete*(self: gen_qguiapplication_types.QGuiApplication) =
   fcQGuiApplication_delete(self.h)

@@ -527,6 +527,7 @@ void QWebHistoryInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebHistoryInterface_staticMetaObject() { return &QWebHistoryInterface::staticMetaObject; }
 QObject* QWebHistoryInterface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
 	if (self_cast == nullptr) {

@@ -409,6 +409,7 @@ struct miqt_string QNetworkReply_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QNetworkReply_staticMetaObject() { return &QNetworkReply::staticMetaObject; }
 void QNetworkReply_delete(QNetworkReply* self) {
 	delete self;
 }

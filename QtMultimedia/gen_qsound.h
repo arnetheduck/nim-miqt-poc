@@ -72,6 +72,7 @@ QObject* QSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSound_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSound_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSound_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSound_staticMetaObject();
 void QSound_delete(QSound* self);
 
 #ifdef __cplusplus

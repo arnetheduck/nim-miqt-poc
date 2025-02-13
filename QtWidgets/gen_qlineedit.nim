@@ -57,6 +57,7 @@ import
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -74,6 +75,7 @@ export
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -279,6 +281,7 @@ proc fQLineEdit_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQLineEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QLineEdit_override_virtual_connectNotify".}
 proc fQLineEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QLineEdit_virtualbase_disconnectNotify".}
 proc fcQLineEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QLineEdit_override_virtual_disconnectNotify".}
+proc fcQLineEdit_staticMetaObject(): pointer {.importc: "QLineEdit_staticMetaObject".}
 proc fcQLineEdit_delete(self: pointer) {.importc: "QLineEdit_delete".}
 
 
@@ -1525,5 +1528,7 @@ proc miqt_exec_callback_QLineEdit_disconnectNotify(self: ptr cQLineEdit, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qlineedit_types.QLineEdit): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQLineEdit_staticMetaObject())
 proc delete*(self: gen_qlineedit_types.QLineEdit) =
   fcQLineEdit_delete(self.h)

@@ -61,6 +61,7 @@ import
   gen_qlayoutitem_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsize_types,
@@ -71,6 +72,7 @@ export
   gen_qlayoutitem_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsize_types,
@@ -196,6 +198,7 @@ proc fQFormLayout_virtualbase_widget(self: pointer, ): pointer{.importc: "QFormL
 proc fcQFormLayout_override_virtual_widget(self: pointer, slot: int) {.importc: "QFormLayout_override_virtual_widget".}
 proc fQFormLayout_virtualbase_spacerItem(self: pointer, ): pointer{.importc: "QFormLayout_virtualbase_spacerItem".}
 proc fcQFormLayout_override_virtual_spacerItem(self: pointer, slot: int) {.importc: "QFormLayout_override_virtual_spacerItem".}
+proc fcQFormLayout_staticMetaObject(): pointer {.importc: "QFormLayout_staticMetaObject".}
 proc fcQFormLayout_delete(self: pointer) {.importc: "QFormLayout_delete".}
 proc fcQFormLayoutTakeRowResult_delete(self: pointer) {.importc: "QFormLayout__TakeRowResult_delete".}
 
@@ -899,6 +902,8 @@ proc miqt_exec_callback_QFormLayout_spacerItem(self: ptr cQFormLayout, slot: int
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qformlayout_types.QFormLayout): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFormLayout_staticMetaObject())
 proc delete*(self: gen_qformlayout_types.QFormLayout) =
   fcQFormLayout_delete(self.h)
 

@@ -43,6 +43,7 @@ import
   gen_qframe,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -57,6 +58,7 @@ export
   gen_qframe,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -189,6 +191,7 @@ proc fQStackedWidget_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQStackedWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QStackedWidget_override_virtual_connectNotify".}
 proc fQStackedWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QStackedWidget_virtualbase_disconnectNotify".}
 proc fcQStackedWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QStackedWidget_override_virtual_disconnectNotify".}
+proc fcQStackedWidget_staticMetaObject(): pointer {.importc: "QStackedWidget_staticMetaObject".}
 proc fcQStackedWidget_delete(self: pointer) {.importc: "QStackedWidget_delete".}
 
 
@@ -1154,5 +1157,7 @@ proc miqt_exec_callback_QStackedWidget_disconnectNotify(self: ptr cQStackedWidge
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstackedwidget_types.QStackedWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStackedWidget_staticMetaObject())
 proc delete*(self: gen_qstackedwidget_types.QStackedWidget) =
   fcQStackedWidget_delete(self.h)

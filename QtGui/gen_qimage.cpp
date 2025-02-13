@@ -923,6 +923,7 @@ QPainter* QImage_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_sharedPainter();
 }
 
+const QMetaObject* QImage_staticMetaObject() { return &QImage::staticMetaObject; }
 QImage* QImage_protectedbase_mirroredHelper(bool* _dynamic_cast_ok, const void* self, bool horizontal, bool vertical) {
 	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
 	if (self_cast == nullptr) {

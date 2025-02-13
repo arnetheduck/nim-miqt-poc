@@ -481,6 +481,7 @@ void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioProbe*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioProbe_staticMetaObject() { return &QAudioProbe::staticMetaObject; }
 QObject* QAudioProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAudioProbe* self_cast = dynamic_cast<MiqtVirtualQAudioProbe*>( (QAudioProbe*)(self) );
 	if (self_cast == nullptr) {

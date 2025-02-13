@@ -42,6 +42,7 @@ import
   gen_qmatrix4x4_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvector3d_types
 export
@@ -49,6 +50,7 @@ export
   gen_qmatrix4x4_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvector3d_types
 
@@ -85,6 +87,7 @@ proc fQGraphicsTransform_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQGraphicsTransform_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsTransform_override_virtual_connectNotify".}
 proc fQGraphicsTransform_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsTransform_virtualbase_disconnectNotify".}
 proc fcQGraphicsTransform_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsTransform_override_virtual_disconnectNotify".}
+proc fcQGraphicsTransform_staticMetaObject(): pointer {.importc: "QGraphicsTransform_staticMetaObject".}
 proc fcQGraphicsTransform_delete(self: pointer) {.importc: "QGraphicsTransform_delete".}
 proc fcQGraphicsScale_new(): ptr cQGraphicsScale {.importc: "QGraphicsScale_new".}
 proc fcQGraphicsScale_new2(parent: pointer): ptr cQGraphicsScale {.importc: "QGraphicsScale_new2".}
@@ -134,6 +137,7 @@ proc fQGraphicsScale_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQGraphicsScale_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsScale_override_virtual_connectNotify".}
 proc fQGraphicsScale_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsScale_virtualbase_disconnectNotify".}
 proc fcQGraphicsScale_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsScale_override_virtual_disconnectNotify".}
+proc fcQGraphicsScale_staticMetaObject(): pointer {.importc: "QGraphicsScale_staticMetaObject".}
 proc fcQGraphicsScale_delete(self: pointer) {.importc: "QGraphicsScale_delete".}
 proc fcQGraphicsRotation_new(): ptr cQGraphicsRotation {.importc: "QGraphicsRotation_new".}
 proc fcQGraphicsRotation_new2(parent: pointer): ptr cQGraphicsRotation {.importc: "QGraphicsRotation_new2".}
@@ -178,6 +182,7 @@ proc fQGraphicsRotation_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQGraphicsRotation_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsRotation_override_virtual_connectNotify".}
 proc fQGraphicsRotation_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsRotation_virtualbase_disconnectNotify".}
 proc fcQGraphicsRotation_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsRotation_override_virtual_disconnectNotify".}
+proc fcQGraphicsRotation_staticMetaObject(): pointer {.importc: "QGraphicsRotation_staticMetaObject".}
 proc fcQGraphicsRotation_delete(self: pointer) {.importc: "QGraphicsRotation_delete".}
 
 
@@ -399,6 +404,8 @@ proc miqt_exec_callback_QGraphicsTransform_disconnectNotify(self: ptr cQGraphics
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicstransform_types.QGraphicsTransform): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsTransform_staticMetaObject())
 proc delete*(self: gen_qgraphicstransform_types.QGraphicsTransform) =
   fcQGraphicsTransform_delete(self.h)
 
@@ -717,6 +724,8 @@ proc miqt_exec_callback_QGraphicsScale_disconnectNotify(self: ptr cQGraphicsScal
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicstransform_types.QGraphicsScale): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsScale_staticMetaObject())
 proc delete*(self: gen_qgraphicstransform_types.QGraphicsScale) =
   fcQGraphicsScale_delete(self.h)
 
@@ -1004,5 +1013,7 @@ proc miqt_exec_callback_QGraphicsRotation_disconnectNotify(self: ptr cQGraphicsR
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicstransform_types.QGraphicsRotation): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsRotation_staticMetaObject())
 proc delete*(self: gen_qgraphicstransform_types.QGraphicsRotation) =
   fcQGraphicsRotation_delete(self.h)

@@ -262,6 +262,7 @@ QObject* QAbstractButton_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QAbstractButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractButton_staticMetaObject();
 void QAbstractButton_delete(QAbstractButton* self);
 
 #ifdef __cplusplus

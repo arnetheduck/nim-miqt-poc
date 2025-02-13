@@ -40,11 +40,13 @@ export gen_qquickitemgrabresult_types
 import
   gen_qimage_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qimage_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -65,6 +67,7 @@ proc fcQQuickItemGrabResult_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQQuickItemGrabResult_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickItemGrabResult_tr3".}
 proc fcQQuickItemGrabResult_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickItemGrabResult_trUtf82".}
 proc fcQQuickItemGrabResult_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickItemGrabResult_trUtf83".}
+proc fcQQuickItemGrabResult_staticMetaObject(): pointer {.importc: "QQuickItemGrabResult_staticMetaObject".}
 proc fcQQuickItemGrabResult_delete(self: pointer) {.importc: "QQuickItemGrabResult_delete".}
 
 
@@ -141,5 +144,7 @@ proc trUtf8*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cst
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickItemGrabResult_staticMetaObject())
 proc delete*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult) =
   fcQQuickItemGrabResult_delete(self.h)

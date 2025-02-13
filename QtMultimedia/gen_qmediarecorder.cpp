@@ -1080,6 +1080,7 @@ void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQMediaRecorder*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaRecorder_staticMetaObject() { return &QMediaRecorder::staticMetaObject; }
 QObject* QMediaRecorder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQMediaRecorder* self_cast = dynamic_cast<MiqtVirtualQMediaRecorder*>( (QMediaRecorder*)(self) );
 	if (self_cast == nullptr) {

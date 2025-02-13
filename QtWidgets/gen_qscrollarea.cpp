@@ -2247,6 +2247,7 @@ void QScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScrollArea*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QScrollArea_staticMetaObject() { return &QScrollArea::staticMetaObject; }
 void QScrollArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
 	MiqtVirtualQScrollArea* self_cast = dynamic_cast<MiqtVirtualQScrollArea*>( (QScrollArea*)(self) );
 	if (self_cast == nullptr) {

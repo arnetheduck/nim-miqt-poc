@@ -227,6 +227,7 @@ QObject* QCheckBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QCheckBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCheckBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCheckBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QCheckBox_staticMetaObject();
 void QCheckBox_delete(QCheckBox* self);
 
 #ifdef __cplusplus

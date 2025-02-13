@@ -42,6 +42,7 @@ import
   gen_qimage_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpixmap_types,
   gen_qqmlengine,
@@ -53,6 +54,7 @@ export
   gen_qimage_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpixmap_types,
   gen_qqmlengine,
@@ -101,6 +103,7 @@ proc fQQuickTextureFactory_virtualbase_connectNotify(self: pointer, signal: poin
 proc fcQQuickTextureFactory_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickTextureFactory_override_virtual_connectNotify".}
 proc fQQuickTextureFactory_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickTextureFactory_virtualbase_disconnectNotify".}
 proc fcQQuickTextureFactory_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickTextureFactory_override_virtual_disconnectNotify".}
+proc fcQQuickTextureFactory_staticMetaObject(): pointer {.importc: "QQuickTextureFactory_staticMetaObject".}
 proc fcQQuickTextureFactory_delete(self: pointer) {.importc: "QQuickTextureFactory_delete".}
 proc fcQQuickImageResponse_new(): ptr cQQuickImageResponse {.importc: "QQuickImageResponse_new".}
 proc fcQQuickImageResponse_metaObject(self: pointer, ): pointer {.importc: "QQuickImageResponse_metaObject".}
@@ -138,6 +141,7 @@ proc fQQuickImageResponse_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQQuickImageResponse_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickImageResponse_override_virtual_connectNotify".}
 proc fQQuickImageResponse_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickImageResponse_virtualbase_disconnectNotify".}
 proc fcQQuickImageResponse_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickImageResponse_override_virtual_disconnectNotify".}
+proc fcQQuickImageResponse_staticMetaObject(): pointer {.importc: "QQuickImageResponse_staticMetaObject".}
 proc fcQQuickImageResponse_delete(self: pointer) {.importc: "QQuickImageResponse_delete".}
 proc fcQQuickImageProvider_new(typeVal: cint): ptr cQQuickImageProvider {.importc: "QQuickImageProvider_new".}
 proc fcQQuickImageProvider_new2(param1: pointer): ptr cQQuickImageProvider {.importc: "QQuickImageProvider_new2".}
@@ -449,6 +453,8 @@ proc miqt_exec_callback_QQuickTextureFactory_disconnectNotify(self: ptr cQQuickT
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickimageprovider_types.QQuickTextureFactory): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickTextureFactory_staticMetaObject())
 proc delete*(self: gen_qquickimageprovider_types.QQuickTextureFactory) =
   fcQQuickTextureFactory_delete(self.h)
 
@@ -725,6 +731,8 @@ proc miqt_exec_callback_QQuickImageResponse_disconnectNotify(self: ptr cQQuickIm
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickimageprovider_types.QQuickImageResponse): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickImageResponse_staticMetaObject())
 proc delete*(self: gen_qquickimageprovider_types.QQuickImageResponse) =
   fcQQuickImageResponse_delete(self.h)
 

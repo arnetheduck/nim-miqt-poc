@@ -569,6 +569,7 @@ void QAudioInput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioInput_staticMetaObject() { return &QAudioInput::staticMetaObject; }
 QObject* QAudioInput_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {

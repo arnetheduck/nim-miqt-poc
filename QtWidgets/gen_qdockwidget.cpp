@@ -2158,6 +2158,7 @@ void QDockWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDockWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDockWidget_staticMetaObject() { return &QDockWidget::staticMetaObject; }
 void QDockWidget_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionDockWidget* option) {
 	MiqtVirtualQDockWidget* self_cast = dynamic_cast<MiqtVirtualQDockWidget*>( (QDockWidget*)(self) );
 	if (self_cast == nullptr) {

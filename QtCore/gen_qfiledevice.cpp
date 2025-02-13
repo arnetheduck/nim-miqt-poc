@@ -189,6 +189,7 @@ unsigned char* QFileDevice_map3(QFileDevice* self, long long offset, long long s
 	return static_cast<unsigned char*>(_ret);
 }
 
+const QMetaObject* QFileDevice_staticMetaObject() { return &QFileDevice::staticMetaObject; }
 void QFileDevice_delete(QFileDevice* self) {
 	delete self;
 }

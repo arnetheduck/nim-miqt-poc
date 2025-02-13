@@ -43,6 +43,7 @@ import
   gen_qkeysequence_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -57,6 +58,7 @@ export
   gen_qkeysequence_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -184,6 +186,7 @@ proc fQKeySequenceEdit_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQKeySequenceEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QKeySequenceEdit_override_virtual_connectNotify".}
 proc fQKeySequenceEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QKeySequenceEdit_virtualbase_disconnectNotify".}
 proc fcQKeySequenceEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QKeySequenceEdit_override_virtual_disconnectNotify".}
+proc fcQKeySequenceEdit_staticMetaObject(): pointer {.importc: "QKeySequenceEdit_staticMetaObject".}
 proc fcQKeySequenceEdit_delete(self: pointer) {.importc: "QKeySequenceEdit_delete".}
 
 
@@ -1132,5 +1135,7 @@ proc miqt_exec_callback_QKeySequenceEdit_disconnectNotify(self: ptr cQKeySequenc
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQKeySequenceEdit_staticMetaObject())
 proc delete*(self: gen_qkeysequenceedit_types.QKeySequenceEdit) =
   fcQKeySequenceEdit_delete(self.h)

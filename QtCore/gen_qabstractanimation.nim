@@ -58,12 +58,14 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qanimationgroup_types,
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQAbstractAnimation*{.exportc: "QAbstractAnimation", incompleteStruct.} = object
@@ -128,6 +130,7 @@ proc fQAbstractAnimation_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQAbstractAnimation_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractAnimation_override_virtual_connectNotify".}
 proc fQAbstractAnimation_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractAnimation_virtualbase_disconnectNotify".}
 proc fcQAbstractAnimation_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractAnimation_override_virtual_disconnectNotify".}
+proc fcQAbstractAnimation_staticMetaObject(): pointer {.importc: "QAbstractAnimation_staticMetaObject".}
 proc fcQAbstractAnimation_delete(self: pointer) {.importc: "QAbstractAnimation_delete".}
 proc fcQAnimationDriver_new(): ptr cQAnimationDriver {.importc: "QAnimationDriver_new".}
 proc fcQAnimationDriver_new2(parent: pointer): ptr cQAnimationDriver {.importc: "QAnimationDriver_new2".}
@@ -175,6 +178,7 @@ proc fQAnimationDriver_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQAnimationDriver_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAnimationDriver_override_virtual_connectNotify".}
 proc fQAnimationDriver_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAnimationDriver_virtualbase_disconnectNotify".}
 proc fcQAnimationDriver_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAnimationDriver_override_virtual_disconnectNotify".}
+proc fcQAnimationDriver_staticMetaObject(): pointer {.importc: "QAnimationDriver_staticMetaObject".}
 proc fcQAnimationDriver_delete(self: pointer) {.importc: "QAnimationDriver_delete".}
 
 
@@ -561,6 +565,8 @@ proc miqt_exec_callback_QAbstractAnimation_disconnectNotify(self: ptr cQAbstract
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractanimation_types.QAbstractAnimation): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractAnimation_staticMetaObject())
 proc delete*(self: gen_qabstractanimation_types.QAbstractAnimation) =
   fcQAbstractAnimation_delete(self.h)
 
@@ -876,5 +882,7 @@ proc miqt_exec_callback_QAnimationDriver_disconnectNotify(self: ptr cQAnimationD
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractanimation_types.QAnimationDriver): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAnimationDriver_staticMetaObject())
 proc delete*(self: gen_qabstractanimation_types.QAnimationDriver) =
   fcQAnimationDriver_delete(self.h)

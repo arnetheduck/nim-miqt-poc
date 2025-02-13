@@ -42,12 +42,14 @@ import
   gen_qiconengine_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qiconengine_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQIconEnginePlugin*{.exportc: "QIconEnginePlugin", incompleteStruct.} = object
@@ -81,6 +83,7 @@ proc fQIconEnginePlugin_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQIconEnginePlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QIconEnginePlugin_override_virtual_connectNotify".}
 proc fQIconEnginePlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QIconEnginePlugin_virtualbase_disconnectNotify".}
 proc fcQIconEnginePlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QIconEnginePlugin_override_virtual_disconnectNotify".}
+proc fcQIconEnginePlugin_staticMetaObject(): pointer {.importc: "QIconEnginePlugin_staticMetaObject".}
 proc fcQIconEnginePlugin_delete(self: pointer) {.importc: "QIconEnginePlugin_delete".}
 
 
@@ -307,5 +310,7 @@ proc miqt_exec_callback_QIconEnginePlugin_disconnectNotify(self: ptr cQIconEngin
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qiconengineplugin_types.QIconEnginePlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQIconEnginePlugin_staticMetaObject())
 proc delete*(self: gen_qiconengineplugin_types.QIconEnginePlugin) =
   fcQIconEnginePlugin_delete(self.h)

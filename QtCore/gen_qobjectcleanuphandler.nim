@@ -41,11 +41,13 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQObjectCleanupHandler*{.exportc: "QObjectCleanupHandler", incompleteStruct.} = object
@@ -80,6 +82,7 @@ proc fQObjectCleanupHandler_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQObjectCleanupHandler_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QObjectCleanupHandler_override_virtual_connectNotify".}
 proc fQObjectCleanupHandler_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QObjectCleanupHandler_virtualbase_disconnectNotify".}
 proc fcQObjectCleanupHandler_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QObjectCleanupHandler_override_virtual_disconnectNotify".}
+proc fcQObjectCleanupHandler_staticMetaObject(): pointer {.importc: "QObjectCleanupHandler_staticMetaObject".}
 proc fcQObjectCleanupHandler_delete(self: pointer) {.importc: "QObjectCleanupHandler_delete".}
 
 
@@ -293,5 +296,7 @@ proc miqt_exec_callback_QObjectCleanupHandler_disconnectNotify(self: ptr cQObjec
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQObjectCleanupHandler_staticMetaObject())
 proc delete*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler) =
   fcQObjectCleanupHandler_delete(self.h)

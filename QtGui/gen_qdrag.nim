@@ -42,6 +42,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpixmap_types,
   gen_qpoint_types
@@ -50,6 +51,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpixmap_types,
   gen_qpoint_types
@@ -104,6 +106,7 @@ proc fQDrag_virtualbase_connectNotify(self: pointer, signal: pointer): void{.imp
 proc fcQDrag_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDrag_override_virtual_connectNotify".}
 proc fQDrag_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDrag_virtualbase_disconnectNotify".}
 proc fcQDrag_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDrag_override_virtual_disconnectNotify".}
+proc fcQDrag_staticMetaObject(): pointer {.importc: "QDrag_staticMetaObject".}
 proc fcQDrag_delete(self: pointer) {.importc: "QDrag_delete".}
 
 
@@ -391,5 +394,7 @@ proc miqt_exec_callback_QDrag_disconnectNotify(self: ptr cQDrag, slot: int, sign
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdrag_types.QDrag): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDrag_staticMetaObject())
 proc delete*(self: gen_qdrag_types.QDrag) =
   fcQDrag_delete(self.h)

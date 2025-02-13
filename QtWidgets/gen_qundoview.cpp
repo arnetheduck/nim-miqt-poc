@@ -3832,6 +3832,7 @@ void QUndoView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QUndoView_staticMetaObject() { return &QUndoView::staticMetaObject; }
 void QUndoView_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {

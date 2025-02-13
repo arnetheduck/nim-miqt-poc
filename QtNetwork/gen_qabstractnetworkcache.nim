@@ -41,6 +41,7 @@ import
   gen_qdatetime_types,
   gen_qiodevice_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qvariant_types,
@@ -49,6 +50,7 @@ export
   gen_qdatetime_types,
   gen_qiodevice_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qvariant_types
@@ -93,6 +95,7 @@ proc fcQAbstractNetworkCache_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQAbstractNetworkCache_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractNetworkCache_tr3".}
 proc fcQAbstractNetworkCache_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractNetworkCache_trUtf82".}
 proc fcQAbstractNetworkCache_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractNetworkCache_trUtf83".}
+proc fcQAbstractNetworkCache_staticMetaObject(): pointer {.importc: "QAbstractNetworkCache_staticMetaObject".}
 proc fcQAbstractNetworkCache_delete(self: pointer) {.importc: "QAbstractNetworkCache_delete".}
 
 
@@ -273,5 +276,7 @@ proc trUtf8*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache, s: c
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractNetworkCache_staticMetaObject())
 proc delete*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache) =
   fcQAbstractNetworkCache_delete(self.h)

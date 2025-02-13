@@ -44,6 +44,7 @@ import
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -59,6 +60,7 @@ export
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -192,6 +194,7 @@ proc fQMenuBar_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQMenuBar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMenuBar_override_virtual_connectNotify".}
 proc fQMenuBar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMenuBar_virtualbase_disconnectNotify".}
 proc fcQMenuBar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMenuBar_override_virtual_disconnectNotify".}
+proc fcQMenuBar_staticMetaObject(): pointer {.importc: "QMenuBar_staticMetaObject".}
 proc fcQMenuBar_delete(self: pointer) {.importc: "QMenuBar_delete".}
 
 
@@ -1140,5 +1143,7 @@ proc miqt_exec_callback_QMenuBar_disconnectNotify(self: ptr cQMenuBar, slot: int
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmenubar_types.QMenuBar): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMenuBar_staticMetaObject())
 proc delete*(self: gen_qmenubar_types.QMenuBar) =
   fcQMenuBar_delete(self.h)

@@ -136,6 +136,7 @@ struct miqt_string QAudioRoleControl_trUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
+const QMetaObject* QAudioRoleControl_staticMetaObject() { return &QAudioRoleControl::staticMetaObject; }
 void QAudioRoleControl_delete(QAudioRoleControl* self) {
 	delete self;
 }

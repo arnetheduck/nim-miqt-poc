@@ -59,12 +59,14 @@ export gen_qscroller_types
 
 import
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qrect_types,
   gen_qscrollerproperties_types
 export
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qrect_types,
@@ -112,6 +114,7 @@ proc fcQScroller_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQScroller_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QScroller_trUtf83".}
 proc fcQScroller_grabGesture2(target: pointer, gestureType: cint): cint {.importc: "QScroller_grabGesture2".}
 proc fcQScroller_handleInput3(self: pointer, input: cint, position: pointer, timestamp: clonglong): bool {.importc: "QScroller_handleInput3".}
+proc fcQScroller_staticMetaObject(): pointer {.importc: "QScroller_staticMetaObject".}
 
 
 func init*(T: type gen_qscroller_types.QScroller, h: ptr cQScroller): gen_qscroller_types.QScroller =
@@ -287,3 +290,5 @@ proc grabGesture*(_: type gen_qscroller_types.QScroller, target: gen_qobject_typ
 proc handleInput*(self: gen_qscroller_types.QScroller, input: cint, position: gen_qpoint_types.QPointF, timestamp: clonglong): bool =
   fcQScroller_handleInput3(self.h, cint(input), position.h, timestamp)
 
+proc staticMetaObject*(_: type gen_qscroller_types.QScroller): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQScroller_staticMetaObject())

@@ -1767,6 +1767,7 @@ void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebPage_staticMetaObject() { return &QWebPage::staticMetaObject; }
 QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
 	if (self_cast == nullptr) {

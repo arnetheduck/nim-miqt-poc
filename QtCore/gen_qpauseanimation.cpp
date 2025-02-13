@@ -618,6 +618,7 @@ void QPauseAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPauseAnimation_staticMetaObject() { return &QPauseAnimation::staticMetaObject; }
 QObject* QPauseAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
 	if (self_cast == nullptr) {

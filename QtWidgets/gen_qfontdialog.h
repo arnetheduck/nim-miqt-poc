@@ -238,6 +238,7 @@ QObject* QFontDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QFontDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFontDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFontDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QFontDialog_staticMetaObject();
 void QFontDialog_delete(QFontDialog* self);
 
 #ifdef __cplusplus

@@ -569,6 +569,7 @@ void QAbstractTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractTransition_staticMetaObject() { return &QAbstractTransition::staticMetaObject; }
 QObject* QAbstractTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
 	if (self_cast == nullptr) {

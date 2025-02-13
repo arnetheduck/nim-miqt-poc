@@ -49,11 +49,13 @@ export gen_qcameraviewfindersettingscontrol_types
 import
   gen_qcameraviewfindersettings_types,
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
   gen_qcameraviewfindersettings_types,
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -72,6 +74,7 @@ proc fcQCameraViewfinderSettingsControl_tr2(s: cstring, c: cstring): struct_miqt
 proc fcQCameraViewfinderSettingsControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraViewfinderSettingsControl_tr3".}
 proc fcQCameraViewfinderSettingsControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraViewfinderSettingsControl_trUtf82".}
 proc fcQCameraViewfinderSettingsControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraViewfinderSettingsControl_trUtf83".}
+proc fcQCameraViewfinderSettingsControl_staticMetaObject(): pointer {.importc: "QCameraViewfinderSettingsControl_staticMetaObject".}
 proc fcQCameraViewfinderSettingsControl_delete(self: pointer) {.importc: "QCameraViewfinderSettingsControl_delete".}
 proc fcQCameraViewfinderSettingsControl2_metaObject(self: pointer, ): pointer {.importc: "QCameraViewfinderSettingsControl2_metaObject".}
 proc fcQCameraViewfinderSettingsControl2_metacast(self: pointer, param1: cstring): pointer {.importc: "QCameraViewfinderSettingsControl2_metacast".}
@@ -85,6 +88,7 @@ proc fcQCameraViewfinderSettingsControl2_tr2(s: cstring, c: cstring): struct_miq
 proc fcQCameraViewfinderSettingsControl2_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraViewfinderSettingsControl2_tr3".}
 proc fcQCameraViewfinderSettingsControl2_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraViewfinderSettingsControl2_trUtf82".}
 proc fcQCameraViewfinderSettingsControl2_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraViewfinderSettingsControl2_trUtf83".}
+proc fcQCameraViewfinderSettingsControl2_staticMetaObject(): pointer {.importc: "QCameraViewfinderSettingsControl2_staticMetaObject".}
 proc fcQCameraViewfinderSettingsControl2_delete(self: pointer) {.importc: "QCameraViewfinderSettingsControl2_delete".}
 
 
@@ -144,6 +148,8 @@ proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinde
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraViewfinderSettingsControl_staticMetaObject())
 proc delete*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl) =
   fcQCameraViewfinderSettingsControl_delete(self.h)
 
@@ -208,5 +214,7 @@ proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinde
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraViewfinderSettingsControl2_staticMetaObject())
 proc delete*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2) =
   fcQCameraViewfinderSettingsControl2_delete(self.h)

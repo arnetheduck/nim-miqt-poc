@@ -39,10 +39,12 @@ export gen_qmediavideoprobecontrol_types
 
 import
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvideoframe_types
 export
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvideoframe_types
 
@@ -61,6 +63,7 @@ proc fcQMediaVideoProbeControl_tr2(s: cstring, c: cstring): struct_miqt_string {
 proc fcQMediaVideoProbeControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaVideoProbeControl_tr3".}
 proc fcQMediaVideoProbeControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaVideoProbeControl_trUtf82".}
 proc fcQMediaVideoProbeControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaVideoProbeControl_trUtf83".}
+proc fcQMediaVideoProbeControl_staticMetaObject(): pointer {.importc: "QMediaVideoProbeControl_staticMetaObject".}
 proc fcQMediaVideoProbeControl_delete(self: pointer) {.importc: "QMediaVideoProbeControl_delete".}
 
 
@@ -141,5 +144,7 @@ proc trUtf8*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaVideoProbeControl_staticMetaObject())
 proc delete*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl) =
   fcQMediaVideoProbeControl_delete(self.h)

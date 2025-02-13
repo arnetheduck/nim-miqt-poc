@@ -545,6 +545,7 @@ void QScriptExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod
 	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QScriptExtensionPlugin_staticMetaObject() { return &QScriptExtensionPlugin::staticMetaObject; }
 QObject* QScriptExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
 	if (self_cast == nullptr) {

@@ -215,6 +215,7 @@ struct miqt_string QAbstractAudioDeviceInfo_trUtf83(const char* s, const char* c
 	return _ms;
 }
 
+const QMetaObject* QAbstractAudioDeviceInfo_staticMetaObject() { return &QAbstractAudioDeviceInfo::staticMetaObject; }
 void QAbstractAudioDeviceInfo_delete(QAbstractAudioDeviceInfo* self) {
 	delete self;
 }
@@ -436,6 +437,7 @@ struct miqt_string QAbstractAudioOutput_trUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
+const QMetaObject* QAbstractAudioOutput_staticMetaObject() { return &QAbstractAudioOutput::staticMetaObject; }
 void QAbstractAudioOutput_delete(QAbstractAudioOutput* self) {
 	delete self;
 }
@@ -641,6 +643,7 @@ struct miqt_string QAbstractAudioInput_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QAbstractAudioInput_staticMetaObject() { return &QAbstractAudioInput::staticMetaObject; }
 void QAbstractAudioInput_delete(QAbstractAudioInput* self) {
 	delete self;
 }

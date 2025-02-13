@@ -2394,6 +2394,7 @@ void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTabWidget_staticMetaObject() { return &QTabWidget::staticMetaObject; }
 void QTabWidget_protectedbase_setTabBar(bool* _dynamic_cast_ok, void* self, QTabBar* tabBar) {
 	MiqtVirtualQTabWidget* self_cast = dynamic_cast<MiqtVirtualQTabWidget*>( (QTabWidget*)(self) );
 	if (self_cast == nullptr) {

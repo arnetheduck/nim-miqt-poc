@@ -1428,6 +1428,7 @@ void QQuickView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickView_staticMetaObject() { return &QQuickView::staticMetaObject; }
 QObject* QQuickView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickView* self_cast = dynamic_cast<MiqtVirtualQQuickView*>( (QQuickView*)(self) );
 	if (self_cast == nullptr) {

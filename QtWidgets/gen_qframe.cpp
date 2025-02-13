@@ -2091,6 +2091,7 @@ void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFrame_staticMetaObject() { return &QFrame::staticMetaObject; }
 void QFrame_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
 	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
 	if (self_cast == nullptr) {

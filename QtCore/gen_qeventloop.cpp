@@ -487,6 +487,7 @@ void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQEventLoop*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QEventLoop_staticMetaObject() { return &QEventLoop::staticMetaObject; }
 QObject* QEventLoop_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQEventLoop* self_cast = dynamic_cast<MiqtVirtualQEventLoop*>( (QEventLoop*)(self) );
 	if (self_cast == nullptr) {

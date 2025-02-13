@@ -42,12 +42,14 @@ import
   gen_qfiledevice,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qfiledevice,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQFile*{.exportc: "QFile", incompleteStruct.} = object
@@ -152,6 +154,7 @@ proc fQFile_virtualbase_connectNotify(self: pointer, signal: pointer): void{.imp
 proc fcQFile_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFile_override_virtual_connectNotify".}
 proc fQFile_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFile_virtualbase_disconnectNotify".}
 proc fcQFile_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFile_override_virtual_disconnectNotify".}
+proc fcQFile_staticMetaObject(): pointer {.importc: "QFile_staticMetaObject".}
 proc fcQFile_delete(self: pointer) {.importc: "QFile_delete".}
 
 
@@ -844,5 +847,7 @@ proc miqt_exec_callback_QFile_disconnectNotify(self: ptr cQFile, slot: int, sign
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfile_types.QFile): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFile_staticMetaObject())
 proc delete*(self: gen_qfile_types.QFile) =
   fcQFile_delete(self.h)

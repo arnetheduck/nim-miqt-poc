@@ -2286,6 +2286,7 @@ void QTransposeProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTransposeProxyModel_staticMetaObject() { return &QTransposeProxyModel::staticMetaObject; }
 void QTransposeProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
 	if (self_cast == nullptr) {

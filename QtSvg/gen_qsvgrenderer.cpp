@@ -603,6 +603,7 @@ void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSvgRenderer_staticMetaObject() { return &QSvgRenderer::staticMetaObject; }
 QObject* QSvgRenderer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
 	if (self_cast == nullptr) {

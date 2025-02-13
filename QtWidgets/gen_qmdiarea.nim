@@ -60,6 +60,7 @@ import
   gen_qmdisubwindow_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -76,6 +77,7 @@ export
   gen_qmdisubwindow_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -239,6 +241,7 @@ proc fQMdiArea_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQMdiArea_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMdiArea_override_virtual_connectNotify".}
 proc fQMdiArea_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMdiArea_virtualbase_disconnectNotify".}
 proc fcQMdiArea_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMdiArea_override_virtual_disconnectNotify".}
+proc fcQMdiArea_staticMetaObject(): pointer {.importc: "QMdiArea_staticMetaObject".}
 proc fcQMdiArea_delete(self: pointer) {.importc: "QMdiArea_delete".}
 
 
@@ -1345,5 +1348,7 @@ proc miqt_exec_callback_QMdiArea_disconnectNotify(self: ptr cQMdiArea, slot: int
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmdiarea_types.QMdiArea): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMdiArea_staticMetaObject())
 proc delete*(self: gen_qmdiarea_types.QMdiArea) =
   fcQMdiArea_delete(self.h)

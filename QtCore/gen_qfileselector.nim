@@ -41,12 +41,14 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -84,6 +86,7 @@ proc fQFileSelector_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQFileSelector_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFileSelector_override_virtual_connectNotify".}
 proc fQFileSelector_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFileSelector_virtualbase_disconnectNotify".}
 proc fcQFileSelector_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFileSelector_override_virtual_disconnectNotify".}
+proc fcQFileSelector_staticMetaObject(): pointer {.importc: "QFileSelector_staticMetaObject".}
 proc fcQFileSelector_delete(self: pointer) {.importc: "QFileSelector_delete".}
 
 
@@ -326,5 +329,7 @@ proc miqt_exec_callback_QFileSelector_disconnectNotify(self: ptr cQFileSelector,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfileselector_types.QFileSelector): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFileSelector_staticMetaObject())
 proc delete*(self: gen_qfileselector_types.QFileSelector) =
   fcQFileSelector_delete(self.h)

@@ -402,6 +402,7 @@ QObject* QTableView_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTableView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTableView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTableView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTableView_staticMetaObject();
 void QTableView_delete(QTableView* self);
 
 #ifdef __cplusplus

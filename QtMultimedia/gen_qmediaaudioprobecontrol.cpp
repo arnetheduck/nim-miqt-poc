@@ -125,6 +125,7 @@ struct miqt_string QMediaAudioProbeControl_trUtf83(const char* s, const char* c,
 	return _ms;
 }
 
+const QMetaObject* QMediaAudioProbeControl_staticMetaObject() { return &QMediaAudioProbeControl::staticMetaObject; }
 void QMediaAudioProbeControl_delete(QMediaAudioProbeControl* self) {
 	delete self;
 }

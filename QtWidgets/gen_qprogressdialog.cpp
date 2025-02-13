@@ -2358,6 +2358,7 @@ void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QProgressDialog_staticMetaObject() { return &QProgressDialog::staticMetaObject; }
 void QProgressDialog_protectedbase_forceShow(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
 	if (self_cast == nullptr) {

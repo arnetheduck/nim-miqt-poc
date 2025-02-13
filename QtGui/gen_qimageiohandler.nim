@@ -83,6 +83,7 @@ import
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qvariant_types
@@ -92,6 +93,7 @@ export
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qvariant_types
@@ -177,6 +179,7 @@ proc fQImageIOPlugin_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQImageIOPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QImageIOPlugin_override_virtual_connectNotify".}
 proc fQImageIOPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QImageIOPlugin_virtualbase_disconnectNotify".}
 proc fcQImageIOPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QImageIOPlugin_override_virtual_disconnectNotify".}
+proc fcQImageIOPlugin_staticMetaObject(): pointer {.importc: "QImageIOPlugin_staticMetaObject".}
 proc fcQImageIOPlugin_delete(self: pointer) {.importc: "QImageIOPlugin_delete".}
 
 
@@ -747,5 +750,7 @@ proc miqt_exec_callback_QImageIOPlugin_disconnectNotify(self: ptr cQImageIOPlugi
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qimageiohandler_types.QImageIOPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQImageIOPlugin_staticMetaObject())
 proc delete*(self: gen_qimageiohandler_types.QImageIOPlugin) =
   fcQImageIOPlugin_delete(self.h)

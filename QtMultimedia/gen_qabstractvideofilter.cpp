@@ -505,6 +505,7 @@ void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractVideoFilter_staticMetaObject() { return &QAbstractVideoFilter::staticMetaObject; }
 QObject* QAbstractVideoFilter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAbstractVideoFilter* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoFilter*>( (QAbstractVideoFilter*)(self) );
 	if (self_cast == nullptr) {

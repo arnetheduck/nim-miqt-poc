@@ -2088,6 +2088,7 @@ void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMenuBar_staticMetaObject() { return &QMenuBar::staticMetaObject; }
 void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	if (self_cast == nullptr) {

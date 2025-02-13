@@ -94,6 +94,7 @@ struct miqt_string QTextObject_tr2(const char* s, const char* c);
 struct miqt_string QTextObject_tr3(const char* s, const char* c, int n);
 struct miqt_string QTextObject_trUtf82(const char* s, const char* c);
 struct miqt_string QTextObject_trUtf83(const char* s, const char* c, int n);
+const QMetaObject* QTextObject_staticMetaObject();
 
 void QTextBlockGroup_virtbase(QTextBlockGroup* src, QTextObject** outptr_QTextObject);
 QMetaObject* QTextBlockGroup_metaObject(const QTextBlockGroup* self);
@@ -108,6 +109,7 @@ struct miqt_string QTextBlockGroup_tr2(const char* s, const char* c);
 struct miqt_string QTextBlockGroup_tr3(const char* s, const char* c, int n);
 struct miqt_string QTextBlockGroup_trUtf82(const char* s, const char* c);
 struct miqt_string QTextBlockGroup_trUtf83(const char* s, const char* c, int n);
+const QMetaObject* QTextBlockGroup_staticMetaObject();
 
 void QTextFrameLayoutData_operatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1);
 void QTextFrameLayoutData_delete(QTextFrameLayoutData* self);
@@ -156,6 +158,7 @@ QObject* QTextFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTextFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTextFrame_staticMetaObject();
 void QTextFrame_delete(QTextFrame* self);
 
 void QTextBlockUserData_operatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);

@@ -98,6 +98,7 @@ QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QRadioData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QRadioData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QRadioData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QRadioData_staticMetaObject();
 void QRadioData_delete(QRadioData* self);
 
 #ifdef __cplusplus

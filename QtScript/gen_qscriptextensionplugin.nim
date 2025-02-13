@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qscriptengine_types,
   gen_qscriptvalue_types
@@ -48,6 +49,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qscriptengine_types,
   gen_qscriptvalue_types
@@ -86,6 +88,7 @@ proc fQScriptExtensionPlugin_virtualbase_connectNotify(self: pointer, signal: po
 proc fcQScriptExtensionPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QScriptExtensionPlugin_override_virtual_connectNotify".}
 proc fQScriptExtensionPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QScriptExtensionPlugin_virtualbase_disconnectNotify".}
 proc fcQScriptExtensionPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QScriptExtensionPlugin_override_virtual_disconnectNotify".}
+proc fcQScriptExtensionPlugin_staticMetaObject(): pointer {.importc: "QScriptExtensionPlugin_staticMetaObject".}
 proc fcQScriptExtensionPlugin_delete(self: pointer) {.importc: "QScriptExtensionPlugin_delete".}
 
 
@@ -344,5 +347,7 @@ proc miqt_exec_callback_QScriptExtensionPlugin_disconnectNotify(self: ptr cQScri
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQScriptExtensionPlugin_staticMetaObject())
 proc delete*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin) =
   fcQScriptExtensionPlugin_delete(self.h)

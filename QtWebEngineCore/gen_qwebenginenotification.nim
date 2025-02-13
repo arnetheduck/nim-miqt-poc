@@ -40,11 +40,13 @@ export gen_qwebenginenotification_types
 import
   gen_qimage_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qimage_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -72,6 +74,7 @@ proc fcQWebEngineNotification_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQWebEngineNotification_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNotification_tr3".}
 proc fcQWebEngineNotification_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineNotification_trUtf82".}
 proc fcQWebEngineNotification_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNotification_trUtf83".}
+proc fcQWebEngineNotification_staticMetaObject(): pointer {.importc: "QWebEngineNotification_staticMetaObject".}
 proc fcQWebEngineNotification_delete(self: pointer) {.importc: "QWebEngineNotification_delete".}
 
 
@@ -181,5 +184,7 @@ proc trUtf8*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s:
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qwebenginenotification_types.QWebEngineNotification): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineNotification_staticMetaObject())
 proc delete*(self: gen_qwebenginenotification_types.QWebEngineNotification) =
   fcQWebEngineNotification_delete(self.h)

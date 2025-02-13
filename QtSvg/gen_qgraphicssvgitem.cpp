@@ -1898,6 +1898,7 @@ QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* var
 	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_extension(variant);
 }
 
+const QMetaObject* QGraphicsSvgItem_staticMetaObject() { return &QGraphicsSvgItem::staticMetaObject; }
 void QGraphicsSvgItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsSvgItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) );
 	if (self_cast == nullptr) {

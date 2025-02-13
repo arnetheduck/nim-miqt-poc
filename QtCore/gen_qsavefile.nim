@@ -42,12 +42,14 @@ import
   gen_qfiledevice,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qfiledevice,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQSaveFile*{.exportc: "QSaveFile", incompleteStruct.} = object
@@ -126,6 +128,7 @@ proc fQSaveFile_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQSaveFile_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSaveFile_override_virtual_connectNotify".}
 proc fQSaveFile_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSaveFile_virtualbase_disconnectNotify".}
 proc fcQSaveFile_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSaveFile_override_virtual_disconnectNotify".}
+proc fcQSaveFile_staticMetaObject(): pointer {.importc: "QSaveFile_staticMetaObject".}
 proc fcQSaveFile_delete(self: pointer) {.importc: "QSaveFile_delete".}
 
 
@@ -710,5 +713,7 @@ proc miqt_exec_callback_QSaveFile_disconnectNotify(self: ptr cQSaveFile, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsavefile_types.QSaveFile): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSaveFile_staticMetaObject())
 proc delete*(self: gen_qsavefile_types.QSaveFile) =
   fcQSaveFile_delete(self.h)

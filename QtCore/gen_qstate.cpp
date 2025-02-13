@@ -592,6 +592,7 @@ void QState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQState*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QState_staticMetaObject() { return &QState::staticMetaObject; }
 QObject* QState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {

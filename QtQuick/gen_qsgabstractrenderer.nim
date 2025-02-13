@@ -51,6 +51,7 @@ import
   gen_qcolor_types,
   gen_qmatrix4x4_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsgnode_types,
@@ -59,6 +60,7 @@ export
   gen_qcolor_types,
   gen_qmatrix4x4_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsgnode_types,
@@ -96,6 +98,7 @@ proc fcQSGAbstractRenderer_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQSGAbstractRenderer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGAbstractRenderer_tr3".}
 proc fcQSGAbstractRenderer_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGAbstractRenderer_trUtf82".}
 proc fcQSGAbstractRenderer_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGAbstractRenderer_trUtf83".}
+proc fcQSGAbstractRenderer_staticMetaObject(): pointer {.importc: "QSGAbstractRenderer_staticMetaObject".}
 proc fcQSGAbstractRenderer_delete(self: pointer) {.importc: "QSGAbstractRenderer_delete".}
 
 
@@ -217,5 +220,7 @@ proc trUtf8*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSGAbstractRenderer_staticMetaObject())
 proc delete*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer) =
   fcQSGAbstractRenderer_delete(self.h)

@@ -60,6 +60,7 @@ import
   gen_qmargins_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qrect_types,
@@ -76,6 +77,7 @@ export
   gen_qmargins_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qrect_types,
@@ -306,6 +308,7 @@ proc fQWindow_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQWindow_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWindow_override_virtual_connectNotify".}
 proc fQWindow_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWindow_virtualbase_disconnectNotify".}
 proc fcQWindow_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWindow_override_virtual_disconnectNotify".}
+proc fcQWindow_staticMetaObject(): pointer {.importc: "QWindow_staticMetaObject".}
 proc fcQWindow_delete(self: pointer) {.importc: "QWindow_delete".}
 
 
@@ -1537,5 +1540,7 @@ proc miqt_exec_callback_QWindow_disconnectNotify(self: ptr cQWindow, slot: int, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwindow_types.QWindow): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWindow_staticMetaObject())
 proc delete*(self: gen_qwindow_types.QWindow) =
   fcQWindow_delete(self.h)

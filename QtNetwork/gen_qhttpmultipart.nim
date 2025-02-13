@@ -49,6 +49,7 @@ import
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
@@ -56,6 +57,7 @@ export
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -106,6 +108,7 @@ proc fQHttpMultiPart_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQHttpMultiPart_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QHttpMultiPart_override_virtual_connectNotify".}
 proc fQHttpMultiPart_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QHttpMultiPart_virtualbase_disconnectNotify".}
 proc fcQHttpMultiPart_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QHttpMultiPart_override_virtual_disconnectNotify".}
+proc fcQHttpMultiPart_staticMetaObject(): pointer {.importc: "QHttpMultiPart_staticMetaObject".}
 proc fcQHttpMultiPart_delete(self: pointer) {.importc: "QHttpMultiPart_delete".}
 
 
@@ -366,5 +369,7 @@ proc miqt_exec_callback_QHttpMultiPart_disconnectNotify(self: ptr cQHttpMultiPar
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qhttpmultipart_types.QHttpMultiPart): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQHttpMultiPart_staticMetaObject())
 proc delete*(self: gen_qhttpmultipart_types.QHttpMultiPart) =
   fcQHttpMultiPart_delete(self.h)

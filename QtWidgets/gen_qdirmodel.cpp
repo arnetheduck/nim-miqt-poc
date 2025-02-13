@@ -2242,6 +2242,7 @@ void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDirModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDirModel_staticMetaObject() { return &QDirModel::staticMetaObject; }
 void QDirModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {

@@ -1332,6 +1332,7 @@ void QIODevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QIODevice_staticMetaObject() { return &QIODevice::staticMetaObject; }
 void QIODevice_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
 	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
 	if (self_cast == nullptr) {

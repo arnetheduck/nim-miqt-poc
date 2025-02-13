@@ -39,10 +39,12 @@ export gen_qmetadatawritercontrol_types
 
 import
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -70,6 +72,7 @@ proc fcQMetaDataWriterControl_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQMetaDataWriterControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMetaDataWriterControl_tr3".}
 proc fcQMetaDataWriterControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMetaDataWriterControl_trUtf82".}
 proc fcQMetaDataWriterControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMetaDataWriterControl_trUtf83".}
+proc fcQMetaDataWriterControl_staticMetaObject(): pointer {.importc: "QMetaDataWriterControl_staticMetaObject".}
 proc fcQMetaDataWriterControl_delete(self: pointer) {.importc: "QMetaDataWriterControl_delete".}
 
 
@@ -210,5 +213,7 @@ proc trUtf8*(_: type gen_qmetadatawritercontrol_types.QMetaDataWriterControl, s:
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmetadatawritercontrol_types.QMetaDataWriterControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMetaDataWriterControl_staticMetaObject())
 proc delete*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl) =
   fcQMetaDataWriterControl_delete(self.h)

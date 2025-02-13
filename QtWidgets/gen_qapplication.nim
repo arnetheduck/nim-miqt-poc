@@ -52,6 +52,7 @@ import
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpalette_types,
   gen_qpoint_types,
@@ -69,6 +70,7 @@ export
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpalette_types,
   gen_qpoint_types,
@@ -166,6 +168,7 @@ proc fQApplication_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQApplication_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QApplication_override_virtual_connectNotify".}
 proc fQApplication_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QApplication_virtualbase_disconnectNotify".}
 proc fcQApplication_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QApplication_override_virtual_disconnectNotify".}
+proc fcQApplication_staticMetaObject(): pointer {.importc: "QApplication_staticMetaObject".}
 proc fcQApplication_delete(self: pointer) {.importc: "QApplication_delete".}
 
 
@@ -605,5 +608,7 @@ proc miqt_exec_callback_QApplication_disconnectNotify(self: ptr cQApplication, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qapplication_types.QApplication): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQApplication_staticMetaObject())
 proc delete*(self: gen_qapplication_types.QApplication) =
   fcQApplication_delete(self.h)

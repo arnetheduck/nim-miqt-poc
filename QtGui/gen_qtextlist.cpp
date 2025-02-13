@@ -613,6 +613,7 @@ void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextList*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextList_staticMetaObject() { return &QTextList::staticMetaObject; }
 struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTextList* self_cast = dynamic_cast<MiqtVirtualQTextList*>( (QTextList*)(self) );
 	if (self_cast == nullptr) {

@@ -2148,6 +2148,7 @@ void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFontComboBox_staticMetaObject() { return &QFontComboBox::staticMetaObject; }
 void QFontComboBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionComboBox* option) {
 	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	if (self_cast == nullptr) {

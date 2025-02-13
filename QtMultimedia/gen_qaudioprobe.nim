@@ -44,6 +44,7 @@ import
   gen_qmediarecorder_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qaudiobuffer_types,
@@ -52,6 +53,7 @@ export
   gen_qmediarecorder_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQAudioProbe*{.exportc: "QAudioProbe", incompleteStruct.} = object
@@ -90,6 +92,7 @@ proc fQAudioProbe_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQAudioProbe_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioProbe_override_virtual_connectNotify".}
 proc fQAudioProbe_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioProbe_virtualbase_disconnectNotify".}
 proc fcQAudioProbe_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioProbe_override_virtual_disconnectNotify".}
+proc fcQAudioProbe_staticMetaObject(): pointer {.importc: "QAudioProbe_staticMetaObject".}
 proc fcQAudioProbe_delete(self: pointer) {.importc: "QAudioProbe_delete".}
 
 
@@ -333,5 +336,7 @@ proc miqt_exec_callback_QAudioProbe_disconnectNotify(self: ptr cQAudioProbe, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaudioprobe_types.QAudioProbe): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioProbe_staticMetaObject())
 proc delete*(self: gen_qaudioprobe_types.QAudioProbe) =
   fcQAudioProbe_delete(self.h)

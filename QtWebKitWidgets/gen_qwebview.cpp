@@ -2393,6 +2393,7 @@ void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebView_staticMetaObject() { return &QWebView::staticMetaObject; }
 void QWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQWebView* self_cast = dynamic_cast<MiqtVirtualQWebView*>( (QWebView*)(self) );
 	if (self_cast == nullptr) {

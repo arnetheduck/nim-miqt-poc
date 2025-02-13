@@ -177,6 +177,7 @@ QObject* QStringListModel_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QStringListModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStringListModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStringListModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QStringListModel_staticMetaObject();
 void QStringListModel_delete(QStringListModel* self);
 
 #ifdef __cplusplus

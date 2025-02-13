@@ -119,6 +119,7 @@ QObject* QQmlComponent_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QQmlComponent_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlComponent_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlComponent_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQmlComponent_staticMetaObject();
 void QQmlComponent_delete(QQmlComponent* self);
 
 #ifdef __cplusplus

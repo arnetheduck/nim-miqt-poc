@@ -43,6 +43,7 @@ import
   gen_qmetaobject_types,
   gen_qnetworkproxy_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qtcpsocket_types
 export
@@ -51,6 +52,7 @@ export
   gen_qmetaobject_types,
   gen_qnetworkproxy_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qtcpsocket_types
 
@@ -115,6 +117,7 @@ proc fQTcpServer_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQTcpServer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTcpServer_override_virtual_connectNotify".}
 proc fQTcpServer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTcpServer_virtualbase_disconnectNotify".}
 proc fcQTcpServer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTcpServer_override_virtual_disconnectNotify".}
+proc fcQTcpServer_staticMetaObject(): pointer {.importc: "QTcpServer_staticMetaObject".}
 proc fcQTcpServer_delete(self: pointer) {.importc: "QTcpServer_delete".}
 
 
@@ -469,5 +472,7 @@ proc miqt_exec_callback_QTcpServer_disconnectNotify(self: ptr cQTcpServer, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtcpserver_types.QTcpServer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTcpServer_staticMetaObject())
 proc delete*(self: gen_qtcpserver_types.QTcpServer) =
   fcQTcpServer_delete(self.h)

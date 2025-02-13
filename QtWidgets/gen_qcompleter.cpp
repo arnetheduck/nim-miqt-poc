@@ -845,6 +845,7 @@ void QCompleter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCompleter_staticMetaObject() { return &QCompleter::staticMetaObject; }
 QObject* QCompleter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
 	if (self_cast == nullptr) {

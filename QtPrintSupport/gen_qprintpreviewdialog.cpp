@@ -2261,6 +2261,7 @@ void QPrintPreviewDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQPrintPreviewDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPrintPreviewDialog_staticMetaObject() { return &QPrintPreviewDialog::staticMetaObject; }
 void QPrintPreviewDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQPrintPreviewDialog* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewDialog*>( (QPrintPreviewDialog*)(self) );
 	if (self_cast == nullptr) {

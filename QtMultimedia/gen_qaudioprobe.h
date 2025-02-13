@@ -77,6 +77,7 @@ QObject* QAudioProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QAudioProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAudioProbe_staticMetaObject();
 void QAudioProbe_delete(QAudioProbe* self);
 
 #ifdef __cplusplus

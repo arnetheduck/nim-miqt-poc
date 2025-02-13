@@ -2106,6 +2106,7 @@ void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDial_staticMetaObject() { return &QDial::staticMetaObject; }
 void QDial_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSlider* option) {
 	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
 	if (self_cast == nullptr) {

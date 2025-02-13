@@ -42,6 +42,7 @@ import
   gen_qmatrix_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qrect_types,
@@ -53,6 +54,7 @@ export
   gen_qmatrix_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qrect_types,
@@ -122,6 +124,7 @@ proc fQSvgRenderer_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQSvgRenderer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_connectNotify".}
 proc fQSvgRenderer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSvgRenderer_virtualbase_disconnectNotify".}
 proc fcQSvgRenderer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_disconnectNotify".}
+proc fcQSvgRenderer_staticMetaObject(): pointer {.importc: "QSvgRenderer_staticMetaObject".}
 proc fcQSvgRenderer_delete(self: pointer) {.importc: "QSvgRenderer_delete".}
 
 
@@ -433,5 +436,7 @@ proc miqt_exec_callback_QSvgRenderer_disconnectNotify(self: ptr cQSvgRenderer, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsvgrenderer_types.QSvgRenderer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSvgRenderer_staticMetaObject())
 proc delete*(self: gen_qsvgrenderer_types.QSvgRenderer) =
   fcQSvgRenderer_delete(self.h)

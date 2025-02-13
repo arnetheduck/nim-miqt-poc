@@ -1308,6 +1308,7 @@ QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QStackedLayout_staticMetaObject() { return &QStackedLayout::staticMetaObject; }
 void QStackedLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
 	if (self_cast == nullptr) {

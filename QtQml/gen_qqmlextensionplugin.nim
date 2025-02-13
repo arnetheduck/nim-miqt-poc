@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlengine_types,
   gen_qurl_types
@@ -48,6 +49,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlengine_types,
   gen_qurl_types
@@ -88,6 +90,7 @@ proc fQQmlExtensionPlugin_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQQmlExtensionPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlExtensionPlugin_override_virtual_connectNotify".}
 proc fQQmlExtensionPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlExtensionPlugin_virtualbase_disconnectNotify".}
 proc fcQQmlExtensionPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlExtensionPlugin_override_virtual_disconnectNotify".}
+proc fcQQmlExtensionPlugin_staticMetaObject(): pointer {.importc: "QQmlExtensionPlugin_staticMetaObject".}
 proc fcQQmlExtensionPlugin_delete(self: pointer) {.importc: "QQmlExtensionPlugin_delete".}
 proc fcQQmlEngineExtensionPlugin_new(): ptr cQQmlEngineExtensionPlugin {.importc: "QQmlEngineExtensionPlugin_new".}
 proc fcQQmlEngineExtensionPlugin_new2(parent: pointer): ptr cQQmlEngineExtensionPlugin {.importc: "QQmlEngineExtensionPlugin_new2".}
@@ -119,6 +122,7 @@ proc fQQmlEngineExtensionPlugin_virtualbase_connectNotify(self: pointer, signal:
 proc fcQQmlEngineExtensionPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlEngineExtensionPlugin_override_virtual_connectNotify".}
 proc fQQmlEngineExtensionPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlEngineExtensionPlugin_virtualbase_disconnectNotify".}
 proc fcQQmlEngineExtensionPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlEngineExtensionPlugin_override_virtual_disconnectNotify".}
+proc fcQQmlEngineExtensionPlugin_staticMetaObject(): pointer {.importc: "QQmlEngineExtensionPlugin_staticMetaObject".}
 proc fcQQmlEngineExtensionPlugin_delete(self: pointer) {.importc: "QQmlEngineExtensionPlugin_delete".}
 
 
@@ -365,6 +369,8 @@ proc miqt_exec_callback_QQmlExtensionPlugin_disconnectNotify(self: ptr cQQmlExte
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQmlExtensionPlugin_staticMetaObject())
 proc delete*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin) =
   fcQQmlExtensionPlugin_delete(self.h)
 
@@ -591,5 +597,7 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_disconnectNotify(self: ptr cQQ
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQmlEngineExtensionPlugin_staticMetaObject())
 proc delete*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin) =
   fcQQmlEngineExtensionPlugin_delete(self.h)

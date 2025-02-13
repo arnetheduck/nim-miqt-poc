@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlcontext_types,
   gen_qqmlengine_types,
@@ -51,6 +52,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlcontext_types,
   gen_qqmlengine_types,
@@ -111,6 +113,7 @@ proc fQQmlExpression_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQQmlExpression_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlExpression_override_virtual_connectNotify".}
 proc fQQmlExpression_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlExpression_virtualbase_disconnectNotify".}
 proc fcQQmlExpression_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlExpression_override_virtual_disconnectNotify".}
+proc fcQQmlExpression_staticMetaObject(): pointer {.importc: "QQmlExpression_staticMetaObject".}
 proc fcQQmlExpression_delete(self: pointer) {.importc: "QQmlExpression_delete".}
 
 
@@ -401,5 +404,7 @@ proc miqt_exec_callback_QQmlExpression_disconnectNotify(self: ptr cQQmlExpressio
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlexpression_types.QQmlExpression): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQmlExpression_staticMetaObject())
 proc delete*(self: gen_qqmlexpression_types.QQmlExpression) =
   fcQQmlExpression_delete(self.h)

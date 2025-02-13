@@ -56,6 +56,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -81,6 +82,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -420,6 +422,7 @@ proc fQListWidget_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQListWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QListWidget_override_virtual_connectNotify".}
 proc fQListWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QListWidget_virtualbase_disconnectNotify".}
 proc fcQListWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QListWidget_override_virtual_disconnectNotify".}
+proc fcQListWidget_staticMetaObject(): pointer {.importc: "QListWidget_staticMetaObject".}
 proc fcQListWidget_delete(self: pointer) {.importc: "QListWidget_delete".}
 
 
@@ -2777,5 +2780,7 @@ proc miqt_exec_callback_QListWidget_disconnectNotify(self: ptr cQListWidget, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qlistwidget_types.QListWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQListWidget_staticMetaObject())
 proc delete*(self: gen_qlistwidget_types.QListWidget) =
   fcQListWidget_delete(self.h)

@@ -190,6 +190,7 @@ struct miqt_string QAudioInputSelectorControl_trUtf83(const char* s, const char*
 	return _ms;
 }
 
+const QMetaObject* QAudioInputSelectorControl_staticMetaObject() { return &QAudioInputSelectorControl::staticMetaObject; }
 void QAudioInputSelectorControl_delete(QAudioInputSelectorControl* self) {
 	delete self;
 }

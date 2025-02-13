@@ -645,6 +645,7 @@ import
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpalette_types,
@@ -661,6 +662,7 @@ export
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpalette_types,
@@ -767,6 +769,7 @@ proc fQStyle_virtualbase_connectNotify(self: pointer, signal: pointer): void{.im
 proc fcQStyle_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QStyle_override_virtual_connectNotify".}
 proc fQStyle_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QStyle_virtualbase_disconnectNotify".}
 proc fcQStyle_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QStyle_override_virtual_disconnectNotify".}
+proc fcQStyle_staticMetaObject(): pointer {.importc: "QStyle_staticMetaObject".}
 proc fcQStyle_delete(self: pointer) {.importc: "QStyle_delete".}
 
 
@@ -1555,5 +1558,7 @@ proc miqt_exec_callback_QStyle_disconnectNotify(self: ptr cQStyle, slot: int, si
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstyle_types.QStyle): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStyle_staticMetaObject())
 proc delete*(self: gen_qstyle_types.QStyle) =
   fcQStyle_delete(self.h)

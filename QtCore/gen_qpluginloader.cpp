@@ -538,6 +538,7 @@ void QPluginLoader_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPluginLoader_staticMetaObject() { return &QPluginLoader::staticMetaObject; }
 QObject* QPluginLoader_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
 	if (self_cast == nullptr) {

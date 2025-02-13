@@ -43,6 +43,7 @@ import
   gen_qlayoutitem_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsize_types,
@@ -53,6 +54,7 @@ export
   gen_qlayoutitem_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsize_types,
@@ -174,6 +176,7 @@ proc fQGridLayout_virtualbase_widget(self: pointer, ): pointer{.importc: "QGridL
 proc fcQGridLayout_override_virtual_widget(self: pointer, slot: int) {.importc: "QGridLayout_override_virtual_widget".}
 proc fQGridLayout_virtualbase_spacerItem(self: pointer, ): pointer{.importc: "QGridLayout_virtualbase_spacerItem".}
 proc fcQGridLayout_override_virtual_spacerItem(self: pointer, slot: int) {.importc: "QGridLayout_override_virtual_spacerItem".}
+proc fcQGridLayout_staticMetaObject(): pointer {.importc: "QGridLayout_staticMetaObject".}
 proc fcQGridLayout_delete(self: pointer) {.importc: "QGridLayout_delete".}
 
 
@@ -867,5 +870,7 @@ proc miqt_exec_callback_QGridLayout_spacerItem(self: ptr cQGridLayout, slot: int
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qgridlayout_types.QGridLayout): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGridLayout_staticMetaObject())
 proc delete*(self: gen_qgridlayout_types.QGridLayout) =
   fcQGridLayout_delete(self.h)

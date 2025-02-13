@@ -51,6 +51,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpagedpaintdevice_types,
   gen_qpaintdevice_types,
@@ -79,6 +80,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpagedpaintdevice_types,
   gen_qpaintdevice_types,
@@ -324,6 +326,7 @@ proc fQPlainTextEdit_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQPlainTextEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPlainTextEdit_override_virtual_connectNotify".}
 proc fQPlainTextEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPlainTextEdit_virtualbase_disconnectNotify".}
 proc fcQPlainTextEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPlainTextEdit_override_virtual_disconnectNotify".}
+proc fcQPlainTextEdit_staticMetaObject(): pointer {.importc: "QPlainTextEdit_staticMetaObject".}
 proc fcQPlainTextEdit_delete(self: pointer) {.importc: "QPlainTextEdit_delete".}
 proc fcQPlainTextDocumentLayout_new(document: pointer): ptr cQPlainTextDocumentLayout {.importc: "QPlainTextDocumentLayout_new".}
 proc fcQPlainTextDocumentLayout_metaObject(self: pointer, ): pointer {.importc: "QPlainTextDocumentLayout_metaObject".}
@@ -381,6 +384,7 @@ proc fQPlainTextDocumentLayout_virtualbase_connectNotify(self: pointer, signal: 
 proc fcQPlainTextDocumentLayout_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPlainTextDocumentLayout_override_virtual_connectNotify".}
 proc fQPlainTextDocumentLayout_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPlainTextDocumentLayout_virtualbase_disconnectNotify".}
 proc fcQPlainTextDocumentLayout_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPlainTextDocumentLayout_override_virtual_disconnectNotify".}
+proc fcQPlainTextDocumentLayout_staticMetaObject(): pointer {.importc: "QPlainTextDocumentLayout_staticMetaObject".}
 proc fcQPlainTextDocumentLayout_delete(self: pointer) {.importc: "QPlainTextDocumentLayout_delete".}
 
 
@@ -1845,6 +1849,8 @@ proc miqt_exec_callback_QPlainTextEdit_disconnectNotify(self: ptr cQPlainTextEdi
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qplaintextedit_types.QPlainTextEdit): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPlainTextEdit_staticMetaObject())
 proc delete*(self: gen_qplaintextedit_types.QPlainTextEdit) =
   fcQPlainTextEdit_delete(self.h)
 
@@ -2276,5 +2282,7 @@ proc miqt_exec_callback_QPlainTextDocumentLayout_disconnectNotify(self: ptr cQPl
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qplaintextedit_types.QPlainTextDocumentLayout): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPlainTextDocumentLayout_staticMetaObject())
 proc delete*(self: gen_qplaintextedit_types.QPlainTextDocumentLayout) =
   fcQPlainTextDocumentLayout_delete(self.h)

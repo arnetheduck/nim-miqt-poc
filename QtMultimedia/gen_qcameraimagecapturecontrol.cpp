@@ -245,6 +245,7 @@ struct miqt_string QCameraImageCaptureControl_trUtf83(const char* s, const char*
 	return _ms;
 }
 
+const QMetaObject* QCameraImageCaptureControl_staticMetaObject() { return &QCameraImageCaptureControl::staticMetaObject; }
 void QCameraImageCaptureControl_delete(QCameraImageCaptureControl* self) {
 	delete self;
 }

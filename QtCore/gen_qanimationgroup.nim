@@ -42,12 +42,14 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qabstractanimation,
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQAnimationGroup*{.exportc: "QAnimationGroup", incompleteStruct.} = object
@@ -93,6 +95,7 @@ proc fQAnimationGroup_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQAnimationGroup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAnimationGroup_override_virtual_connectNotify".}
 proc fQAnimationGroup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAnimationGroup_virtualbase_disconnectNotify".}
 proc fcQAnimationGroup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAnimationGroup_override_virtual_disconnectNotify".}
+proc fcQAnimationGroup_staticMetaObject(): pointer {.importc: "QAnimationGroup_staticMetaObject".}
 proc fcQAnimationGroup_delete(self: pointer) {.importc: "QAnimationGroup_delete".}
 
 
@@ -385,5 +388,7 @@ proc miqt_exec_callback_QAnimationGroup_disconnectNotify(self: ptr cQAnimationGr
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qanimationgroup_types.QAnimationGroup): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAnimationGroup_staticMetaObject())
 proc delete*(self: gen_qanimationgroup_types.QAnimationGroup) =
   fcQAnimationGroup_delete(self.h)

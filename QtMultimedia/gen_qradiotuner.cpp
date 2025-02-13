@@ -919,6 +919,7 @@ void QRadioTuner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioTuner*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRadioTuner_staticMetaObject() { return &QRadioTuner::staticMetaObject; }
 void QRadioTuner_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
 	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
 	if (self_cast == nullptr) {

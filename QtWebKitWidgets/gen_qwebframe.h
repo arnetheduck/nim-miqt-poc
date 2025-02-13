@@ -170,6 +170,7 @@ void QWebFrame_setContent3(QWebFrame* self, struct miqt_string data, struct miqt
 void QWebFrame_addToJavaScriptWindowObject3(QWebFrame* self, struct miqt_string name, QObject* object, int ownership);
 void QWebFrame_render22(QWebFrame* self, QPainter* param1, QRegion* clip);
 void QWebFrame_render3(QWebFrame* self, QPainter* param1, int layer, QRegion* clip);
+const QMetaObject* QWebFrame_staticMetaObject();
 
 #ifdef __cplusplus
 } /* extern C */

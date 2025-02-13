@@ -53,12 +53,14 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -116,6 +118,7 @@ proc fQQuickWebEngineScript_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQQuickWebEngineScript_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickWebEngineScript_override_virtual_connectNotify".}
 proc fQQuickWebEngineScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickWebEngineScript_virtualbase_disconnectNotify".}
 proc fcQQuickWebEngineScript_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickWebEngineScript_override_virtual_disconnectNotify".}
+proc fcQQuickWebEngineScript_staticMetaObject(): pointer {.importc: "QQuickWebEngineScript_staticMetaObject".}
 proc fcQQuickWebEngineScript_delete(self: pointer) {.importc: "QQuickWebEngineScript_delete".}
 
 
@@ -470,5 +473,7 @@ proc miqt_exec_callback_QQuickWebEngineScript_disconnectNotify(self: ptr cQQuick
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickwebenginescript_types.QQuickWebEngineScript): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickWebEngineScript_staticMetaObject())
 proc delete*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript) =
   fcQQuickWebEngineScript_delete(self.h)

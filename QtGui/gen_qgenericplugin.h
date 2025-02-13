@@ -67,6 +67,7 @@ QObject* QGenericPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QGenericPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGenericPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGenericPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGenericPlugin_staticMetaObject();
 void QGenericPlugin_delete(QGenericPlugin* self);
 
 #ifdef __cplusplus

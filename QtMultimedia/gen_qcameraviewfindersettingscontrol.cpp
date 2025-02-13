@@ -115,6 +115,7 @@ struct miqt_string QCameraViewfinderSettingsControl_trUtf83(const char* s, const
 	return _ms;
 }
 
+const QMetaObject* QCameraViewfinderSettingsControl_staticMetaObject() { return &QCameraViewfinderSettingsControl::staticMetaObject; }
 void QCameraViewfinderSettingsControl_delete(QCameraViewfinderSettingsControl* self) {
 	delete self;
 }
@@ -222,6 +223,7 @@ struct miqt_string QCameraViewfinderSettingsControl2_trUtf83(const char* s, cons
 	return _ms;
 }
 
+const QMetaObject* QCameraViewfinderSettingsControl2_staticMetaObject() { return &QCameraViewfinderSettingsControl2::staticMetaObject; }
 void QCameraViewfinderSettingsControl2_delete(QCameraViewfinderSettingsControl2* self) {
 	delete self;
 }

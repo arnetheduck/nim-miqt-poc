@@ -3266,6 +3266,7 @@ void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWidget_staticMetaObject() { return &QWidget::staticMetaObject; }
 void QWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
 	if (self_cast == nullptr) {

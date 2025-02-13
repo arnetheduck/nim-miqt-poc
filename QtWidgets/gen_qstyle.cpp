@@ -1437,6 +1437,7 @@ void QStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStyle_staticMetaObject() { return &QStyle::staticMetaObject; }
 QObject* QStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
 	if (self_cast == nullptr) {

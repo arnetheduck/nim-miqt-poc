@@ -41,11 +41,13 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQGenericPlugin*{.exportc: "QGenericPlugin", incompleteStruct.} = object
@@ -79,6 +81,7 @@ proc fQGenericPlugin_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQGenericPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGenericPlugin_override_virtual_connectNotify".}
 proc fQGenericPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGenericPlugin_virtualbase_disconnectNotify".}
 proc fcQGenericPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGenericPlugin_override_virtual_disconnectNotify".}
+proc fcQGenericPlugin_staticMetaObject(): pointer {.importc: "QGenericPlugin_staticMetaObject".}
 proc fcQGenericPlugin_delete(self: pointer) {.importc: "QGenericPlugin_delete".}
 
 
@@ -310,5 +313,7 @@ proc miqt_exec_callback_QGenericPlugin_disconnectNotify(self: ptr cQGenericPlugi
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgenericplugin_types.QGenericPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGenericPlugin_staticMetaObject())
 proc delete*(self: gen_qgenericplugin_types.QGenericPlugin) =
   fcQGenericPlugin_delete(self.h)

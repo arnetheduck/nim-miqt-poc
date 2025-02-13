@@ -556,6 +556,7 @@ void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMeta
 	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QNetworkConfigurationManager_staticMetaObject() { return &QNetworkConfigurationManager::staticMetaObject; }
 QObject* QNetworkConfigurationManager_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {

@@ -489,6 +489,7 @@ void QGenericPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGenericPlugin_staticMetaObject() { return &QGenericPlugin::staticMetaObject; }
 QObject* QGenericPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
 	if (self_cast == nullptr) {

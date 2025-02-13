@@ -52,6 +52,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types,
@@ -65,6 +66,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types
@@ -208,6 +210,7 @@ proc fQDirModel_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQDirModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDirModel_override_virtual_connectNotify".}
 proc fQDirModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDirModel_virtualbase_disconnectNotify".}
 proc fcQDirModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDirModel_override_virtual_disconnectNotify".}
+proc fcQDirModel_staticMetaObject(): pointer {.importc: "QDirModel_staticMetaObject".}
 proc fcQDirModel_delete(self: pointer) {.importc: "QDirModel_delete".}
 
 
@@ -1375,5 +1378,7 @@ proc miqt_exec_callback_QDirModel_disconnectNotify(self: ptr cQDirModel, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdirmodel_types.QDirModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDirModel_staticMetaObject())
 proc delete*(self: gen_qdirmodel_types.QDirModel) =
   fcQDirModel_delete(self.h)

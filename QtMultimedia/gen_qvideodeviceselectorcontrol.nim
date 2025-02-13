@@ -39,9 +39,11 @@ export gen_qvideodeviceselectorcontrol_types
 
 import
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQVideoDeviceSelectorControl*{.exportc: "QVideoDeviceSelectorControl", incompleteStruct.} = object
@@ -67,6 +69,7 @@ proc fcQVideoDeviceSelectorControl_tr2(s: cstring, c: cstring): struct_miqt_stri
 proc fcQVideoDeviceSelectorControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoDeviceSelectorControl_tr3".}
 proc fcQVideoDeviceSelectorControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QVideoDeviceSelectorControl_trUtf82".}
 proc fcQVideoDeviceSelectorControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoDeviceSelectorControl_trUtf83".}
+proc fcQVideoDeviceSelectorControl_staticMetaObject(): pointer {.importc: "QVideoDeviceSelectorControl_staticMetaObject".}
 proc fcQVideoDeviceSelectorControl_delete(self: pointer) {.importc: "QVideoDeviceSelectorControl_delete".}
 
 
@@ -190,5 +193,7 @@ proc trUtf8*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorC
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVideoDeviceSelectorControl_staticMetaObject())
 proc delete*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl) =
   fcQVideoDeviceSelectorControl_delete(self.h)

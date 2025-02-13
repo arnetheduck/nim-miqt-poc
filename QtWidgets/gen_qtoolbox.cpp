@@ -2224,6 +2224,7 @@ void QToolBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QToolBox_staticMetaObject() { return &QToolBox::staticMetaObject; }
 void QToolBox_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
 	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
 	if (self_cast == nullptr) {

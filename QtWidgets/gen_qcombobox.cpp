@@ -2667,6 +2667,7 @@ void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QComboBox_staticMetaObject() { return &QComboBox::staticMetaObject; }
 void QComboBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionComboBox* option) {
 	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	if (self_cast == nullptr) {

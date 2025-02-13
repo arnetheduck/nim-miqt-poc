@@ -42,6 +42,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 export
@@ -49,6 +50,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 
@@ -85,6 +87,7 @@ proc fQFinalState_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQFinalState_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFinalState_override_virtual_connectNotify".}
 proc fQFinalState_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFinalState_virtualbase_disconnectNotify".}
 proc fcQFinalState_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFinalState_override_virtual_disconnectNotify".}
+proc fcQFinalState_staticMetaObject(): pointer {.importc: "QFinalState_staticMetaObject".}
 proc fcQFinalState_delete(self: pointer) {.importc: "QFinalState_delete".}
 
 
@@ -323,5 +326,7 @@ proc miqt_exec_callback_QFinalState_disconnectNotify(self: ptr cQFinalState, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfinalstate_types.QFinalState): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFinalState_staticMetaObject())
 proc delete*(self: gen_qfinalstate_types.QFinalState) =
   fcQFinalState_delete(self.h)

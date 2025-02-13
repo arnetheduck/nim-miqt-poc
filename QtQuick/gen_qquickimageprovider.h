@@ -94,6 +94,7 @@ QObject* QQuickTextureFactory_protectedbase_sender(bool* _dynamic_cast_ok, const
 int QQuickTextureFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickTextureFactory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickTextureFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickTextureFactory_staticMetaObject();
 void QQuickTextureFactory_delete(QQuickTextureFactory* self);
 
 QQuickImageResponse* QQuickImageResponse_new();
@@ -138,6 +139,7 @@ QObject* QQuickImageResponse_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QQuickImageResponse_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickImageResponse_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickImageResponse_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickImageResponse_staticMetaObject();
 void QQuickImageResponse_delete(QQuickImageResponse* self);
 
 QQuickImageProvider* QQuickImageProvider_new(int type);

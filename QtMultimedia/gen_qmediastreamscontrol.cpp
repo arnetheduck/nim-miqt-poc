@@ -144,6 +144,7 @@ struct miqt_string QMediaStreamsControl_trUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
+const QMetaObject* QMediaStreamsControl_staticMetaObject() { return &QMediaStreamsControl::staticMetaObject; }
 void QMediaStreamsControl_delete(QMediaStreamsControl* self) {
 	delete self;
 }

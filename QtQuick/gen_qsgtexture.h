@@ -114,6 +114,7 @@ QObject* QSGTexture_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QSGTexture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSGTexture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSGTexture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSGTexture_staticMetaObject();
 void QSGTexture_delete(QSGTexture* self);
 
 QSGDynamicTexture* QSGDynamicTexture_new();
@@ -166,6 +167,7 @@ QObject* QSGDynamicTexture_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QSGDynamicTexture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSGDynamicTexture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSGDynamicTexture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSGDynamicTexture_staticMetaObject();
 void QSGDynamicTexture_delete(QSGDynamicTexture* self);
 
 void QSGTexture__NativeTexture_delete(QSGTexture__NativeTexture* self);

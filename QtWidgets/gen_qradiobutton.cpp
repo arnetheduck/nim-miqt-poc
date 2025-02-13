@@ -2163,6 +2163,7 @@ void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRadioButton_staticMetaObject() { return &QRadioButton::staticMetaObject; }
 void QRadioButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* button) {
 	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
 	if (self_cast == nullptr) {

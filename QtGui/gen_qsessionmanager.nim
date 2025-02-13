@@ -46,9 +46,11 @@ export gen_qsessionmanager_types
 
 import
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQSessionManager*{.exportc: "QSessionManager", incompleteStruct.} = object
@@ -78,6 +80,7 @@ proc fcQSessionManager_tr2(s: cstring, c: cstring): struct_miqt_string {.importc
 proc fcQSessionManager_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSessionManager_tr3".}
 proc fcQSessionManager_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSessionManager_trUtf82".}
 proc fcQSessionManager_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSessionManager_trUtf83".}
+proc fcQSessionManager_staticMetaObject(): pointer {.importc: "QSessionManager_staticMetaObject".}
 
 
 func init*(T: type gen_qsessionmanager_types.QSessionManager, h: ptr cQSessionManager): gen_qsessionmanager_types.QSessionManager =
@@ -209,3 +212,5 @@ proc trUtf8*(_: type gen_qsessionmanager_types.QSessionManager, s: cstring, c: c
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qsessionmanager_types.QSessionManager): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSessionManager_staticMetaObject())

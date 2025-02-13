@@ -610,6 +610,7 @@ void QValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QValidator_staticMetaObject() { return &QValidator::staticMetaObject; }
 QObject* QValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
 	if (self_cast == nullptr) {
@@ -1275,6 +1276,7 @@ void QIntValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQIntValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QIntValidator_staticMetaObject() { return &QIntValidator::staticMetaObject; }
 QObject* QIntValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
 	if (self_cast == nullptr) {
@@ -1976,6 +1978,7 @@ void QDoubleValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQDoubleValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDoubleValidator_staticMetaObject() { return &QDoubleValidator::staticMetaObject; }
 QObject* QDoubleValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
 	if (self_cast == nullptr) {
@@ -2578,6 +2581,7 @@ void QRegExpValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQRegExpValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRegExpValidator_staticMetaObject() { return &QRegExpValidator::staticMetaObject; }
 QObject* QRegExpValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQRegExpValidator* self_cast = dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
 	if (self_cast == nullptr) {
@@ -3178,6 +3182,7 @@ void QRegularExpressionValidator_virtualbase_disconnectNotify(void* self, QMetaM
 	( (MiqtVirtualQRegularExpressionValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRegularExpressionValidator_staticMetaObject() { return &QRegularExpressionValidator::staticMetaObject; }
 QObject* QRegularExpressionValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQRegularExpressionValidator* self_cast = dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
 	if (self_cast == nullptr) {

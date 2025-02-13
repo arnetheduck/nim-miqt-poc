@@ -599,6 +599,7 @@ void QSignalMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSignalMapper_staticMetaObject() { return &QSignalMapper::staticMetaObject; }
 QObject* QSignalMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
 	if (self_cast == nullptr) {

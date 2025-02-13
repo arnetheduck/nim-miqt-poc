@@ -643,6 +643,7 @@ void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QButtonGroup_staticMetaObject() { return &QButtonGroup::staticMetaObject; }
 QObject* QButtonGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {

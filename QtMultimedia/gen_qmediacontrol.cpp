@@ -98,6 +98,7 @@ struct miqt_string QMediaControl_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QMediaControl_staticMetaObject() { return &QMediaControl::staticMetaObject; }
 void QMediaControl_delete(QMediaControl* self) {
 	delete self;
 }

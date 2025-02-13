@@ -524,6 +524,7 @@ void QHttpMultiPart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QHttpMultiPart_staticMetaObject() { return &QHttpMultiPart::staticMetaObject; }
 QObject* QHttpMultiPart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
 	if (self_cast == nullptr) {

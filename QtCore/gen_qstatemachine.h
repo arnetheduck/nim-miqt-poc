@@ -127,6 +127,7 @@ QObject* QStateMachine_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QStateMachine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStateMachine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStateMachine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QStateMachine_staticMetaObject();
 void QStateMachine_delete(QStateMachine* self);
 
 QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1);

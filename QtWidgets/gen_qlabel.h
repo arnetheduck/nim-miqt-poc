@@ -268,6 +268,7 @@ QObject* QLabel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QLabel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLabel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLabel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QLabel_staticMetaObject();
 void QLabel_delete(QLabel* self);
 
 #ifdef __cplusplus

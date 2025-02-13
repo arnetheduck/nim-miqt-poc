@@ -3288,6 +3288,7 @@ void QFileDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFileDialog_staticMetaObject() { return &QFileDialog::staticMetaObject; }
 void QFileDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
 	if (self_cast == nullptr) {

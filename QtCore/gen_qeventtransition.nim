@@ -42,6 +42,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 export
@@ -49,6 +50,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 
@@ -91,6 +93,7 @@ proc fQEventTransition_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQEventTransition_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QEventTransition_override_virtual_connectNotify".}
 proc fQEventTransition_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QEventTransition_virtualbase_disconnectNotify".}
 proc fcQEventTransition_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QEventTransition_override_virtual_disconnectNotify".}
+proc fcQEventTransition_staticMetaObject(): pointer {.importc: "QEventTransition_staticMetaObject".}
 proc fcQEventTransition_delete(self: pointer) {.importc: "QEventTransition_delete".}
 
 
@@ -349,5 +352,7 @@ proc miqt_exec_callback_QEventTransition_disconnectNotify(self: ptr cQEventTrans
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qeventtransition_types.QEventTransition): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQEventTransition_staticMetaObject())
 proc delete*(self: gen_qeventtransition_types.QEventTransition) =
   fcQEventTransition_delete(self.h)

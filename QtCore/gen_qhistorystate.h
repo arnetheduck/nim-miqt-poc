@@ -85,6 +85,7 @@ QObject* QHistoryState_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QHistoryState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHistoryState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHistoryState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QHistoryState_staticMetaObject();
 void QHistoryState_delete(QHistoryState* self);
 
 #ifdef __cplusplus

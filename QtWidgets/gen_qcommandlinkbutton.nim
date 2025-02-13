@@ -42,6 +42,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -56,6 +57,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -187,6 +189,7 @@ proc fQCommandLinkButton_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQCommandLinkButton_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCommandLinkButton_override_virtual_connectNotify".}
 proc fQCommandLinkButton_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCommandLinkButton_virtualbase_disconnectNotify".}
 proc fcQCommandLinkButton_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCommandLinkButton_override_virtual_disconnectNotify".}
+proc fcQCommandLinkButton_staticMetaObject(): pointer {.importc: "QCommandLinkButton_staticMetaObject".}
 proc fcQCommandLinkButton_delete(self: pointer) {.importc: "QCommandLinkButton_delete".}
 
 
@@ -1160,5 +1163,7 @@ proc miqt_exec_callback_QCommandLinkButton_disconnectNotify(self: ptr cQCommandL
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCommandLinkButton_staticMetaObject())
 proc delete*(self: gen_qcommandlinkbutton_types.QCommandLinkButton) =
   fcQCommandLinkButton_delete(self.h)

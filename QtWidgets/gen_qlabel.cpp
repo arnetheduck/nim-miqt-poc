@@ -2264,6 +2264,7 @@ void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLabel_staticMetaObject() { return &QLabel::staticMetaObject; }
 void QLabel_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
 	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
 	if (self_cast == nullptr) {

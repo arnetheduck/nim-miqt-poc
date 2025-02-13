@@ -1396,6 +1396,7 @@ QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QGridLayout_staticMetaObject() { return &QGridLayout::staticMetaObject; }
 void QGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
 	if (self_cast == nullptr) {

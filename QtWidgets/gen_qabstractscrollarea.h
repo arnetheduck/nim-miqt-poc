@@ -258,6 +258,7 @@ QObject* QAbstractScrollArea_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QAbstractScrollArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractScrollArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractScrollArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractScrollArea_staticMetaObject();
 void QAbstractScrollArea_delete(QAbstractScrollArea* self);
 
 #ifdef __cplusplus

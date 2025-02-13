@@ -53,6 +53,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlcontext_types,
   gen_qqmlengine_types,
@@ -65,6 +66,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlcontext_types,
   gen_qqmlengine_types,
@@ -145,6 +147,7 @@ proc fQQmlComponent_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQQmlComponent_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlComponent_override_virtual_connectNotify".}
 proc fQQmlComponent_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlComponent_virtualbase_disconnectNotify".}
 proc fcQQmlComponent_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlComponent_override_virtual_disconnectNotify".}
+proc fcQQmlComponent_staticMetaObject(): pointer {.importc: "QQmlComponent_staticMetaObject".}
 proc fcQQmlComponent_delete(self: pointer) {.importc: "QQmlComponent_delete".}
 
 
@@ -565,5 +568,7 @@ proc miqt_exec_callback_QQmlComponent_disconnectNotify(self: ptr cQQmlComponent,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlcomponent_types.QQmlComponent): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQmlComponent_staticMetaObject())
 proc delete*(self: gen_qqmlcomponent_types.QQmlComponent) =
   fcQQmlComponent_delete(self.h)

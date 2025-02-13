@@ -4805,6 +4805,7 @@ void QListWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QListWidget_staticMetaObject() { return &QListWidget::staticMetaObject; }
 struct miqt_array /* of QListWidgetItem* */  QListWidget_protectedbase_items(bool* _dynamic_cast_ok, const void* self, QMimeData* data) {
 	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
 	if (self_cast == nullptr) {

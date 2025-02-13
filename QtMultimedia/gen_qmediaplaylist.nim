@@ -60,6 +60,7 @@ import
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
@@ -69,6 +70,7 @@ export
   gen_qmediaobject_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -161,6 +163,7 @@ proc fQMediaPlaylist_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQMediaPlaylist_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMediaPlaylist_override_virtual_connectNotify".}
 proc fQMediaPlaylist_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMediaPlaylist_virtualbase_disconnectNotify".}
 proc fcQMediaPlaylist_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMediaPlaylist_override_virtual_disconnectNotify".}
+proc fcQMediaPlaylist_staticMetaObject(): pointer {.importc: "QMediaPlaylist_staticMetaObject".}
 proc fcQMediaPlaylist_delete(self: pointer) {.importc: "QMediaPlaylist_delete".}
 
 
@@ -686,5 +689,7 @@ proc miqt_exec_callback_QMediaPlaylist_disconnectNotify(self: ptr cQMediaPlaylis
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmediaplaylist_types.QMediaPlaylist): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaPlaylist_staticMetaObject())
 proc delete*(self: gen_qmediaplaylist_types.QMediaPlaylist) =
   fcQMediaPlaylist_delete(self.h)

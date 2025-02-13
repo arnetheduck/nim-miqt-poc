@@ -76,6 +76,7 @@ QObject* QGraphicsTransform_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QGraphicsTransform_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsTransform_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsTransform_staticMetaObject();
 void QGraphicsTransform_delete(QGraphicsTransform* self);
 
 QGraphicsScale* QGraphicsScale_new();
@@ -132,6 +133,7 @@ QObject* QGraphicsScale_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QGraphicsScale_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsScale_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsScale_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsScale_staticMetaObject();
 void QGraphicsScale_delete(QGraphicsScale* self);
 
 QGraphicsRotation* QGraphicsRotation_new();
@@ -183,6 +185,7 @@ QObject* QGraphicsRotation_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QGraphicsRotation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsRotation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsRotation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsRotation_staticMetaObject();
 void QGraphicsRotation_delete(QGraphicsRotation* self);
 
 #ifdef __cplusplus

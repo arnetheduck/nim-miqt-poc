@@ -74,6 +74,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qtextcodec_types,
   gen_qvariant_types
@@ -81,6 +82,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qtextcodec_types,
   gen_qvariant_types
@@ -164,6 +166,7 @@ proc fQSettings_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQSettings_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSettings_override_virtual_connectNotify".}
 proc fQSettings_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSettings_virtualbase_disconnectNotify".}
 proc fcQSettings_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSettings_override_virtual_disconnectNotify".}
+proc fcQSettings_staticMetaObject(): pointer {.importc: "QSettings_staticMetaObject".}
 proc fcQSettings_delete(self: pointer) {.importc: "QSettings_delete".}
 
 
@@ -554,5 +557,7 @@ proc miqt_exec_callback_QSettings_disconnectNotify(self: ptr cQSettings, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsettings_types.QSettings): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSettings_staticMetaObject())
 proc delete*(self: gen_qsettings_types.QSettings) =
   fcQSettings_delete(self.h)

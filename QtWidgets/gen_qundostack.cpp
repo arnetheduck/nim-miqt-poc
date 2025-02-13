@@ -892,6 +892,7 @@ void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QUndoStack_staticMetaObject() { return &QUndoStack::staticMetaObject; }
 QObject* QUndoStack_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {

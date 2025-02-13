@@ -284,6 +284,7 @@ QObject* QAbstractItemModel_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QAbstractItemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractItemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractItemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractItemModel_staticMetaObject();
 void QAbstractItemModel_delete(QAbstractItemModel* self);
 
 QAbstractTableModel* QAbstractTableModel_new();
@@ -407,6 +408,7 @@ QObject* QAbstractTableModel_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QAbstractTableModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractTableModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractTableModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractTableModel_staticMetaObject();
 void QAbstractTableModel_delete(QAbstractTableModel* self);
 
 QAbstractListModel* QAbstractListModel_new();
@@ -528,6 +530,7 @@ QObject* QAbstractListModel_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QAbstractListModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractListModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractListModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractListModel_staticMetaObject();
 void QAbstractListModel_delete(QAbstractListModel* self);
 
 #ifdef __cplusplus

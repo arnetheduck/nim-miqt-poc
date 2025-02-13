@@ -369,6 +369,7 @@ struct miqt_string QRadioTunerControl_trUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
+const QMetaObject* QRadioTunerControl_staticMetaObject() { return &QRadioTunerControl::staticMetaObject; }
 void QRadioTunerControl_delete(QRadioTunerControl* self) {
 	delete self;
 }

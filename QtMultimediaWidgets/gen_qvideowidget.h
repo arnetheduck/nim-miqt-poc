@@ -240,6 +240,7 @@ QObject* QVideoWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QVideoWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVideoWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVideoWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QVideoWidget_staticMetaObject();
 void QVideoWidget_delete(QVideoWidget* self);
 
 #ifdef __cplusplus

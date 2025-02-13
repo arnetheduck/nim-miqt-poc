@@ -50,12 +50,14 @@ import
   gen_qlocalsocket_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qlocalsocket_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQLocalServer*{.exportc: "QLocalServer", incompleteStruct.} = object
@@ -114,6 +116,7 @@ proc fQLocalServer_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQLocalServer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QLocalServer_override_virtual_connectNotify".}
 proc fQLocalServer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QLocalServer_virtualbase_disconnectNotify".}
 proc fcQLocalServer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QLocalServer_override_virtual_disconnectNotify".}
+proc fcQLocalServer_staticMetaObject(): pointer {.importc: "QLocalServer_staticMetaObject".}
 proc fcQLocalServer_delete(self: pointer) {.importc: "QLocalServer_delete".}
 
 
@@ -449,5 +452,7 @@ proc miqt_exec_callback_QLocalServer_disconnectNotify(self: ptr cQLocalServer, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qlocalserver_types.QLocalServer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQLocalServer_staticMetaObject())
 proc delete*(self: gen_qlocalserver_types.QLocalServer) =
   fcQLocalServer_delete(self.h)

@@ -48,6 +48,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 export
@@ -56,6 +57,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types
 
@@ -100,6 +102,7 @@ proc fQHistoryState_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQHistoryState_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QHistoryState_override_virtual_connectNotify".}
 proc fQHistoryState_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QHistoryState_virtualbase_disconnectNotify".}
 proc fcQHistoryState_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QHistoryState_override_virtual_disconnectNotify".}
+proc fcQHistoryState_staticMetaObject(): pointer {.importc: "QHistoryState_staticMetaObject".}
 proc fcQHistoryState_delete(self: pointer) {.importc: "QHistoryState_delete".}
 
 
@@ -362,5 +365,7 @@ proc miqt_exec_callback_QHistoryState_disconnectNotify(self: ptr cQHistoryState,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qhistorystate_types.QHistoryState): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQHistoryState_staticMetaObject())
 proc delete*(self: gen_qhistorystate_types.QHistoryState) =
   fcQHistoryState_delete(self.h)

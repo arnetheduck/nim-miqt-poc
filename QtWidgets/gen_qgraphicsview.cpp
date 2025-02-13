@@ -2780,6 +2780,7 @@ void QGraphicsView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQGraphicsView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsView_staticMetaObject() { return &QGraphicsView::staticMetaObject; }
 void QGraphicsView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
 	MiqtVirtualQGraphicsView* self_cast = dynamic_cast<MiqtVirtualQGraphicsView*>( (QGraphicsView*)(self) );
 	if (self_cast == nullptr) {

@@ -473,6 +473,7 @@ void QActionGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QActionGroup_staticMetaObject() { return &QActionGroup::staticMetaObject; }
 QObject* QActionGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {

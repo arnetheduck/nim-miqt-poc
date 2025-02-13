@@ -43,6 +43,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -57,6 +58,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -186,6 +188,7 @@ proc fQDial_virtualbase_connectNotify(self: pointer, signal: pointer): void{.imp
 proc fcQDial_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDial_override_virtual_connectNotify".}
 proc fQDial_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDial_virtualbase_disconnectNotify".}
 proc fcQDial_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDial_override_virtual_disconnectNotify".}
+proc fcQDial_staticMetaObject(): pointer {.importc: "QDial_staticMetaObject".}
 proc fcQDial_delete(self: pointer) {.importc: "QDial_delete".}
 
 
@@ -1133,5 +1136,7 @@ proc miqt_exec_callback_QDial_disconnectNotify(self: ptr cQDial, slot: int, sign
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdial_types.QDial): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDial_staticMetaObject())
 proc delete*(self: gen_qdial_types.QDial) =
   fcQDial_delete(self.h)

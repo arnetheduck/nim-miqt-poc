@@ -42,12 +42,14 @@ import
   gen_qmediacontent_types,
   gen_qmediacontrol,
   gen_qmediatimerange_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qiodevice_types,
   gen_qmediacontent_types,
   gen_qmediacontrol,
   gen_qmediatimerange_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQMediaPlayerControl*{.exportc: "QMediaPlayerControl", incompleteStruct.} = object
@@ -111,6 +113,7 @@ proc fcQMediaPlayerControl_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQMediaPlayerControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaPlayerControl_tr3".}
 proc fcQMediaPlayerControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaPlayerControl_trUtf82".}
 proc fcQMediaPlayerControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaPlayerControl_trUtf83".}
+proc fcQMediaPlayerControl_staticMetaObject(): pointer {.importc: "QMediaPlayerControl_staticMetaObject".}
 proc fcQMediaPlayerControl_delete(self: pointer) {.importc: "QMediaPlayerControl_delete".}
 
 
@@ -456,5 +459,7 @@ proc trUtf8*(_: type gen_qmediaplayercontrol_types.QMediaPlayerControl, s: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmediaplayercontrol_types.QMediaPlayerControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaPlayerControl_staticMetaObject())
 proc delete*(self: gen_qmediaplayercontrol_types.QMediaPlayerControl) =
   fcQMediaPlayerControl_delete(self.h)

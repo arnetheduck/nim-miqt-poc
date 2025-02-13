@@ -88,6 +88,7 @@ QObject* QValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QValidator_staticMetaObject();
 void QValidator_delete(QValidator* self);
 
 QIntValidator* QIntValidator_new();
@@ -141,6 +142,7 @@ QObject* QIntValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QIntValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIntValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIntValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QIntValidator_staticMetaObject();
 void QIntValidator_delete(QIntValidator* self);
 
 QDoubleValidator* QDoubleValidator_new();
@@ -201,6 +203,7 @@ QObject* QDoubleValidator_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QDoubleValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDoubleValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDoubleValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDoubleValidator_staticMetaObject();
 void QDoubleValidator_delete(QDoubleValidator* self);
 
 QRegExpValidator* QRegExpValidator_new();
@@ -246,6 +249,7 @@ QObject* QRegExpValidator_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QRegExpValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QRegExpValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QRegExpValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QRegExpValidator_staticMetaObject();
 void QRegExpValidator_delete(QRegExpValidator* self);
 
 QRegularExpressionValidator* QRegularExpressionValidator_new();
@@ -291,6 +295,7 @@ QObject* QRegularExpressionValidator_protectedbase_sender(bool* _dynamic_cast_ok
 int QRegularExpressionValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QRegularExpressionValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QRegularExpressionValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QRegularExpressionValidator_staticMetaObject();
 void QRegularExpressionValidator_delete(QRegularExpressionValidator* self);
 
 #ifdef __cplusplus

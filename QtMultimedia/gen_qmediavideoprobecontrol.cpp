@@ -125,6 +125,7 @@ struct miqt_string QMediaVideoProbeControl_trUtf83(const char* s, const char* c,
 	return _ms;
 }
 
+const QMetaObject* QMediaVideoProbeControl_staticMetaObject() { return &QMediaVideoProbeControl::staticMetaObject; }
 void QMediaVideoProbeControl_delete(QMediaVideoProbeControl* self) {
 	delete self;
 }

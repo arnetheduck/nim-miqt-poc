@@ -579,6 +579,7 @@ void QQuickTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickTransform_staticMetaObject() { return &QQuickTransform::staticMetaObject; }
 void QQuickTransform_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
 	if (self_cast == nullptr) {
@@ -3177,6 +3178,7 @@ void QQuickItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickItem_staticMetaObject() { return &QQuickItem::staticMetaObject; }
 bool QQuickItem_protectedbase_isComponentComplete(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	if (self_cast == nullptr) {

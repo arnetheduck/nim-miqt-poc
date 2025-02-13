@@ -47,6 +47,7 @@ import
   gen_qmetaobject_types,
   gen_qnetworkrequest_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpainterpath_types,
@@ -70,6 +71,7 @@ export
   gen_qmetaobject_types,
   gen_qnetworkrequest_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpainterpath_types,
@@ -284,6 +286,7 @@ proc fQGraphicsWebView_virtualbase_setExtension(self: pointer, extension: cint, 
 proc fcQGraphicsWebView_override_virtual_setExtension(self: pointer, slot: int) {.importc: "QGraphicsWebView_override_virtual_setExtension".}
 proc fQGraphicsWebView_virtualbase_extension(self: pointer, variant: pointer): pointer{.importc: "QGraphicsWebView_virtualbase_extension".}
 proc fcQGraphicsWebView_override_virtual_extension(self: pointer, slot: int) {.importc: "QGraphicsWebView_override_virtual_extension".}
+proc fcQGraphicsWebView_staticMetaObject(): pointer {.importc: "QGraphicsWebView_staticMetaObject".}
 proc fcQGraphicsWebView_delete(self: pointer) {.importc: "QGraphicsWebView_delete".}
 
 
@@ -1759,5 +1762,7 @@ proc miqt_exec_callback_QGraphicsWebView_extension(self: ptr cQGraphicsWebView, 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qgraphicswebview_types.QGraphicsWebView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsWebView_staticMetaObject())
 proc delete*(self: gen_qgraphicswebview_types.QGraphicsWebView) =
   fcQGraphicsWebView_delete(self.h)

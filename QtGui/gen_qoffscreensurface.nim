@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qscreen_types,
   gen_qsize_types,
@@ -49,6 +50,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qscreen_types,
   gen_qsize_types,
@@ -104,6 +106,7 @@ proc fQOffscreenSurface_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQOffscreenSurface_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QOffscreenSurface_override_virtual_connectNotify".}
 proc fQOffscreenSurface_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QOffscreenSurface_virtualbase_disconnectNotify".}
 proc fcQOffscreenSurface_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QOffscreenSurface_override_virtual_disconnectNotify".}
+proc fcQOffscreenSurface_staticMetaObject(): pointer {.importc: "QOffscreenSurface_staticMetaObject".}
 proc fcQOffscreenSurface_delete(self: pointer) {.importc: "QOffscreenSurface_delete".}
 
 
@@ -414,5 +417,7 @@ proc miqt_exec_callback_QOffscreenSurface_disconnectNotify(self: ptr cQOffscreen
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qoffscreensurface_types.QOffscreenSurface): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQOffscreenSurface_staticMetaObject())
 proc delete*(self: gen_qoffscreensurface_types.QOffscreenSurface) =
   fcQOffscreenSurface_delete(self.h)

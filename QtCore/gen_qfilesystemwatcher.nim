@@ -41,11 +41,13 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQFileSystemWatcher*{.exportc: "QFileSystemWatcher", incompleteStruct.} = object
@@ -85,6 +87,7 @@ proc fQFileSystemWatcher_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQFileSystemWatcher_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFileSystemWatcher_override_virtual_connectNotify".}
 proc fQFileSystemWatcher_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFileSystemWatcher_virtualbase_disconnectNotify".}
 proc fcQFileSystemWatcher_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFileSystemWatcher_override_virtual_disconnectNotify".}
+proc fcQFileSystemWatcher_staticMetaObject(): pointer {.importc: "QFileSystemWatcher_staticMetaObject".}
 proc fcQFileSystemWatcher_delete(self: pointer) {.importc: "QFileSystemWatcher_delete".}
 
 
@@ -361,5 +364,7 @@ proc miqt_exec_callback_QFileSystemWatcher_disconnectNotify(self: ptr cQFileSyst
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfilesystemwatcher_types.QFileSystemWatcher): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFileSystemWatcher_staticMetaObject())
 proc delete*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher) =
   fcQFileSystemWatcher_delete(self.h)

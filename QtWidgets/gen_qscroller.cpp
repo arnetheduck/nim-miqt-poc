@@ -262,3 +262,4 @@ bool QScroller_handleInput3(QScroller* self, int input, QPointF* position, long 
 	return self->handleInput(static_cast<QScroller::Input>(input), *position, static_cast<qint64>(timestamp));
 }
 
+const QMetaObject* QScroller_staticMetaObject() { return &QScroller::staticMetaObject; }

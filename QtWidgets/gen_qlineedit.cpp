@@ -2463,6 +2463,7 @@ void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLineEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLineEdit_staticMetaObject() { return &QLineEdit::staticMetaObject; }
 void QLineEdit_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
 	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
 	if (self_cast == nullptr) {

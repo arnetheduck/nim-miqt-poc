@@ -213,6 +213,7 @@ QObject* QDirModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QDirModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDirModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDirModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDirModel_staticMetaObject();
 void QDirModel_delete(QDirModel* self);
 
 #ifdef __cplusplus

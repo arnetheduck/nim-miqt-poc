@@ -167,6 +167,7 @@ QObject* QProxyStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QProxyStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QProxyStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QProxyStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QProxyStyle_staticMetaObject();
 void QProxyStyle_delete(QProxyStyle* self);
 
 #ifdef __cplusplus

@@ -110,6 +110,7 @@ struct miqt_string QCameraInfoControl_trUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
+const QMetaObject* QCameraInfoControl_staticMetaObject() { return &QCameraInfoControl::staticMetaObject; }
 void QCameraInfoControl_delete(QCameraInfoControl* self) {
 	delete self;
 }

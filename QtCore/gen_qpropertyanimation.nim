@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types,
   gen_qvariantanimation
@@ -48,6 +49,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types,
   gen_qvariantanimation
@@ -99,6 +101,7 @@ proc fQPropertyAnimation_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQPropertyAnimation_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPropertyAnimation_override_virtual_connectNotify".}
 proc fQPropertyAnimation_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPropertyAnimation_virtualbase_disconnectNotify".}
 proc fcQPropertyAnimation_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPropertyAnimation_override_virtual_disconnectNotify".}
+proc fcQPropertyAnimation_staticMetaObject(): pointer {.importc: "QPropertyAnimation_staticMetaObject".}
 proc fcQPropertyAnimation_delete(self: pointer) {.importc: "QPropertyAnimation_delete".}
 
 
@@ -434,5 +437,7 @@ proc miqt_exec_callback_QPropertyAnimation_disconnectNotify(self: ptr cQProperty
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpropertyanimation_types.QPropertyAnimation): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPropertyAnimation_staticMetaObject())
 proc delete*(self: gen_qpropertyanimation_types.QPropertyAnimation) =
   fcQPropertyAnimation_delete(self.h)

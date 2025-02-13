@@ -553,6 +553,7 @@ void QSignalTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSignalTransition_staticMetaObject() { return &QSignalTransition::staticMetaObject; }
 QObject* QSignalTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSignalTransition* self_cast = dynamic_cast<MiqtVirtualQSignalTransition*>( (QSignalTransition*)(self) );
 	if (self_cast == nullptr) {

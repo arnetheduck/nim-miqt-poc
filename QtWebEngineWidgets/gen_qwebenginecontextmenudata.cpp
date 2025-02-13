@@ -116,6 +116,7 @@ int QWebEngineContextMenuData_editFlags(const QWebEngineContextMenuData* self) {
 	return static_cast<int>(_ret);
 }
 
+const QMetaObject* QWebEngineContextMenuData_staticMetaObject() { return &QWebEngineContextMenuData::staticMetaObject; }
 void QWebEngineContextMenuData_delete(QWebEngineContextMenuData* self) {
 	delete self;
 }
