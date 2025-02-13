@@ -210,6 +210,10 @@ proc miqt_exec_callback_cQInputDevice_availableVirtualGeometryChanged(slot: int,
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQInputDevice_availableVirtualGeometryChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged_release".} =
+  let nimfunc = cast[ref QInputDeviceavailableVirtualGeometryChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onavailableVirtualGeometryChanged*(self: gen_qinputdevice_types.QInputDevice, slot: QInputDeviceavailableVirtualGeometryChangedSlot) =
   var tmp = new QInputDeviceavailableVirtualGeometryChangedSlot
   tmp[] = slot

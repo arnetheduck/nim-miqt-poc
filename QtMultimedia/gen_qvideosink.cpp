@@ -18,8 +18,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QVideoSink_videoFrameChanged(intptr_t, QVideoFrame*);
+void miqt_exec_callback_QVideoSink_videoFrameChanged_release(intptr_t);
 void miqt_exec_callback_QVideoSink_subtitleTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QVideoSink_subtitleTextChanged_release(intptr_t);
 void miqt_exec_callback_QVideoSink_videoSizeChanged(intptr_t);
+void miqt_exec_callback_QVideoSink_videoSizeChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -315,12 +318,21 @@ void QVideoSink_videoFrameChanged(const QVideoSink* self, QVideoFrame* frame) {
 }
 
 void QVideoSink_connect_videoFrameChanged(QVideoSink* self, intptr_t slot) {
-	MiqtVirtualQVideoSink::connect(self, static_cast<void (QVideoSink::*)(const QVideoFrame&) const>(&QVideoSink::videoFrameChanged), self, [=](const QVideoFrame& frame) {
-		const QVideoFrame& frame_ret = frame;
-		// Cast returned reference into pointer
-		QVideoFrame* sigval1 = const_cast<QVideoFrame*>(&frame_ret);
-		miqt_exec_callback_QVideoSink_videoFrameChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QVideoFrame& frame) {
+			const QVideoFrame& frame_ret = frame;
+			// Cast returned reference into pointer
+			QVideoFrame* sigval1 = const_cast<QVideoFrame*>(&frame_ret);
+			miqt_exec_callback_QVideoSink_videoFrameChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoSink_videoFrameChanged_release(slot); }
+	};
+	MiqtVirtualQVideoSink::connect(self, static_cast<void (QVideoSink::*)(const QVideoFrame&) const>(&QVideoSink::videoFrameChanged), self, caller{slot});
 }
 
 void QVideoSink_subtitleTextChanged(const QVideoSink* self, struct miqt_string subtitleText) {
@@ -329,17 +341,26 @@ void QVideoSink_subtitleTextChanged(const QVideoSink* self, struct miqt_string s
 }
 
 void QVideoSink_connect_subtitleTextChanged(QVideoSink* self, intptr_t slot) {
-	MiqtVirtualQVideoSink::connect(self, static_cast<void (QVideoSink::*)(const QString&) const>(&QVideoSink::subtitleTextChanged), self, [=](const QString& subtitleText) {
-		const QString subtitleText_ret = subtitleText;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray subtitleText_b = subtitleText_ret.toUtf8();
-		struct miqt_string subtitleText_ms;
-		subtitleText_ms.len = subtitleText_b.length();
-		subtitleText_ms.data = static_cast<char*>(malloc(subtitleText_ms.len));
-		memcpy(subtitleText_ms.data, subtitleText_b.data(), subtitleText_ms.len);
-		struct miqt_string sigval1 = subtitleText_ms;
-		miqt_exec_callback_QVideoSink_subtitleTextChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& subtitleText) {
+			const QString subtitleText_ret = subtitleText;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray subtitleText_b = subtitleText_ret.toUtf8();
+			struct miqt_string subtitleText_ms;
+			subtitleText_ms.len = subtitleText_b.length();
+			subtitleText_ms.data = static_cast<char*>(malloc(subtitleText_ms.len));
+			memcpy(subtitleText_ms.data, subtitleText_b.data(), subtitleText_ms.len);
+			struct miqt_string sigval1 = subtitleText_ms;
+			miqt_exec_callback_QVideoSink_subtitleTextChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoSink_subtitleTextChanged_release(slot); }
+	};
+	MiqtVirtualQVideoSink::connect(self, static_cast<void (QVideoSink::*)(const QString&) const>(&QVideoSink::subtitleTextChanged), self, caller{slot});
 }
 
 void QVideoSink_videoSizeChanged(QVideoSink* self) {
@@ -347,9 +368,18 @@ void QVideoSink_videoSizeChanged(QVideoSink* self) {
 }
 
 void QVideoSink_connect_videoSizeChanged(QVideoSink* self, intptr_t slot) {
-	MiqtVirtualQVideoSink::connect(self, static_cast<void (QVideoSink::*)()>(&QVideoSink::videoSizeChanged), self, [=]() {
-		miqt_exec_callback_QVideoSink_videoSizeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QVideoSink_videoSizeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QVideoSink_videoSizeChanged_release(slot); }
+	};
+	MiqtVirtualQVideoSink::connect(self, static_cast<void (QVideoSink::*)()>(&QVideoSink::videoSizeChanged), self, caller{slot});
 }
 
 struct miqt_string QVideoSink_tr2(const char* s, const char* c) {

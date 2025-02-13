@@ -46,6 +46,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QToolBox_currentChanged(intptr_t, int);
+void miqt_exec_callback_QToolBox_currentChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1289,10 +1290,19 @@ void QToolBox_currentChanged(QToolBox* self, int index) {
 }
 
 void QToolBox_connect_currentChanged(QToolBox* self, intptr_t slot) {
-	MiqtVirtualQToolBox::connect(self, static_cast<void (QToolBox::*)(int)>(&QToolBox::currentChanged), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QToolBox_currentChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QToolBox_currentChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QToolBox_currentChanged_release(slot); }
+	};
+	MiqtVirtualQToolBox::connect(self, static_cast<void (QToolBox::*)(int)>(&QToolBox::currentChanged), self, caller{slot});
 }
 
 struct miqt_string QToolBox_tr2(const char* s, const char* c) {

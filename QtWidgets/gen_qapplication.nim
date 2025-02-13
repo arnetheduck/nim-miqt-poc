@@ -310,6 +310,10 @@ proc miqt_exec_callback_cQApplication_focusChanged(slot: int, old: pointer, now:
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQApplication_focusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QApplication_focusChanged_release".} =
+  let nimfunc = cast[ref QApplicationfocusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfocusChanged*(self: gen_qapplication_types.QApplication, slot: QApplicationfocusChangedSlot) =
   var tmp = new QApplicationfocusChangedSlot
   tmp[] = slot

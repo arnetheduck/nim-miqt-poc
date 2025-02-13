@@ -452,6 +452,10 @@ proc miqt_exec_callback_cQSplitter_splitterMoved(slot: int, pos: cint, index: ci
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQSplitter_splitterMoved_release(slot: int) {.exportc: "miqt_exec_callback_QSplitter_splitterMoved_release".} =
+  let nimfunc = cast[ref QSplittersplitterMovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsplitterMoved*(self: gen_qsplitter_types.QSplitter, slot: QSplittersplitterMovedSlot) =
   var tmp = new QSplittersplitterMovedSlot
   tmp[] = slot

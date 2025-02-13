@@ -297,6 +297,10 @@ proc miqt_exec_callback_cQMenu_aboutToShow(slot: int) {.exportc: "miqt_exec_call
   let nimfunc = cast[ptr QMenuaboutToShowSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMenu_aboutToShow_release(slot: int) {.exportc: "miqt_exec_callback_QMenu_aboutToShow_release".} =
+  let nimfunc = cast[ref QMenuaboutToShowSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaboutToShow*(self: gen_qmenu_types.QMenu, slot: QMenuaboutToShowSlot) =
   var tmp = new QMenuaboutToShowSlot
   tmp[] = slot
@@ -310,6 +314,10 @@ type QMenuaboutToHideSlot* = proc()
 proc miqt_exec_callback_cQMenu_aboutToHide(slot: int) {.exportc: "miqt_exec_callback_QMenu_aboutToHide".} =
   let nimfunc = cast[ptr QMenuaboutToHideSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMenu_aboutToHide_release(slot: int) {.exportc: "miqt_exec_callback_QMenu_aboutToHide_release".} =
+  let nimfunc = cast[ref QMenuaboutToHideSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaboutToHide*(self: gen_qmenu_types.QMenu, slot: QMenuaboutToHideSlot) =
   var tmp = new QMenuaboutToHideSlot

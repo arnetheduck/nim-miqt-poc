@@ -45,7 +45,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStackedWidget_currentChanged(intptr_t, int);
+void miqt_exec_callback_QStackedWidget_currentChanged_release(intptr_t);
 void miqt_exec_callback_QStackedWidget_widgetRemoved(intptr_t, int);
+void miqt_exec_callback_QStackedWidget_widgetRemoved_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1184,10 +1186,19 @@ void QStackedWidget_currentChanged(QStackedWidget* self, int param1) {
 }
 
 void QStackedWidget_connect_currentChanged(QStackedWidget* self, intptr_t slot) {
-	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QStackedWidget_currentChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			miqt_exec_callback_QStackedWidget_currentChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QStackedWidget_currentChanged_release(slot); }
+	};
+	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, caller{slot});
 }
 
 void QStackedWidget_widgetRemoved(QStackedWidget* self, int index) {
@@ -1195,10 +1206,19 @@ void QStackedWidget_widgetRemoved(QStackedWidget* self, int index) {
 }
 
 void QStackedWidget_connect_widgetRemoved(QStackedWidget* self, intptr_t slot) {
-	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, [=](int index) {
-		int sigval1 = index;
-		miqt_exec_callback_QStackedWidget_widgetRemoved(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int index) {
+			int sigval1 = index;
+			miqt_exec_callback_QStackedWidget_widgetRemoved(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QStackedWidget_widgetRemoved_release(slot); }
+	};
+	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, caller{slot});
 }
 
 struct miqt_string QStackedWidget_tr2(const char* s, const char* c) {

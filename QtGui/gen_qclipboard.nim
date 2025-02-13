@@ -176,6 +176,10 @@ proc miqt_exec_callback_cQClipboard_changed(slot: int, mode: cint) {.exportc: "m
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQClipboard_changed_release(slot: int) {.exportc: "miqt_exec_callback_QClipboard_changed_release".} =
+  let nimfunc = cast[ref QClipboardchangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onchanged*(self: gen_qclipboard_types.QClipboard, slot: QClipboardchangedSlot) =
   var tmp = new QClipboardchangedSlot
   tmp[] = slot
@@ -189,6 +193,10 @@ type QClipboardselectionChangedSlot* = proc()
 proc miqt_exec_callback_cQClipboard_selectionChanged(slot: int) {.exportc: "miqt_exec_callback_QClipboard_selectionChanged".} =
   let nimfunc = cast[ptr QClipboardselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQClipboard_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QClipboard_selectionChanged_release".} =
+  let nimfunc = cast[ref QClipboardselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onselectionChanged*(self: gen_qclipboard_types.QClipboard, slot: QClipboardselectionChangedSlot) =
   var tmp = new QClipboardselectionChangedSlot
@@ -204,6 +212,10 @@ proc miqt_exec_callback_cQClipboard_findBufferChanged(slot: int) {.exportc: "miq
   let nimfunc = cast[ptr QClipboardfindBufferChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQClipboard_findBufferChanged_release(slot: int) {.exportc: "miqt_exec_callback_QClipboard_findBufferChanged_release".} =
+  let nimfunc = cast[ref QClipboardfindBufferChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfindBufferChanged*(self: gen_qclipboard_types.QClipboard, slot: QClipboardfindBufferChangedSlot) =
   var tmp = new QClipboardfindBufferChangedSlot
   tmp[] = slot
@@ -217,6 +229,10 @@ type QClipboarddataChangedSlot* = proc()
 proc miqt_exec_callback_cQClipboard_dataChanged(slot: int) {.exportc: "miqt_exec_callback_QClipboard_dataChanged".} =
   let nimfunc = cast[ptr QClipboarddataChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQClipboard_dataChanged_release(slot: int) {.exportc: "miqt_exec_callback_QClipboard_dataChanged_release".} =
+  let nimfunc = cast[ref QClipboarddataChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondataChanged*(self: gen_qclipboard_types.QClipboard, slot: QClipboarddataChangedSlot) =
   var tmp = new QClipboarddataChangedSlot

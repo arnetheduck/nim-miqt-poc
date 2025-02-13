@@ -320,6 +320,10 @@ proc miqt_exec_callback_cQPrintPreviewWidget_paintRequested(slot: int, printer: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQPrintPreviewWidget_paintRequested_release(slot: int) {.exportc: "miqt_exec_callback_QPrintPreviewWidget_paintRequested_release".} =
+  let nimfunc = cast[ref QPrintPreviewWidgetpaintRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpaintRequested*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetpaintRequestedSlot) =
   var tmp = new QPrintPreviewWidgetpaintRequestedSlot
   tmp[] = slot
@@ -333,6 +337,10 @@ type QPrintPreviewWidgetpreviewChangedSlot* = proc()
 proc miqt_exec_callback_cQPrintPreviewWidget_previewChanged(slot: int) {.exportc: "miqt_exec_callback_QPrintPreviewWidget_previewChanged".} =
   let nimfunc = cast[ptr QPrintPreviewWidgetpreviewChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQPrintPreviewWidget_previewChanged_release(slot: int) {.exportc: "miqt_exec_callback_QPrintPreviewWidget_previewChanged_release".} =
+  let nimfunc = cast[ref QPrintPreviewWidgetpreviewChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpreviewChanged*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetpreviewChangedSlot) =
   var tmp = new QPrintPreviewWidgetpreviewChangedSlot

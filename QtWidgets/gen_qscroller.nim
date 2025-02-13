@@ -224,6 +224,10 @@ proc miqt_exec_callback_cQScroller_stateChanged(slot: int, newstate: cint) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQScroller_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScroller_stateChanged_release".} =
+  let nimfunc = cast[ref QScrollerstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qscroller_types.QScroller, slot: QScrollerstateChangedSlot) =
   var tmp = new QScrollerstateChangedSlot
   tmp[] = slot
@@ -239,6 +243,10 @@ proc miqt_exec_callback_cQScroller_scrollerPropertiesChanged(slot: int, param1: 
   let slotval1 = gen_qscrollerproperties_types.QScrollerProperties(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQScroller_scrollerPropertiesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QScroller_scrollerPropertiesChanged_release".} =
+  let nimfunc = cast[ref QScrollerscrollerPropertiesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onscrollerPropertiesChanged*(self: gen_qscroller_types.QScroller, slot: QScrollerscrollerPropertiesChangedSlot) =
   var tmp = new QScrollerscrollerPropertiesChangedSlot

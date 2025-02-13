@@ -261,6 +261,10 @@ proc miqt_exec_callback_cQGroupBox_clicked(slot: int) {.exportc: "miqt_exec_call
   let nimfunc = cast[ptr QGroupBoxclickedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGroupBox_clicked_release(slot: int) {.exportc: "miqt_exec_callback_QGroupBox_clicked_release".} =
+  let nimfunc = cast[ref QGroupBoxclickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onclicked*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxclickedSlot) =
   var tmp = new QGroupBoxclickedSlot
   tmp[] = slot
@@ -276,6 +280,10 @@ proc miqt_exec_callback_cQGroupBox_toggled(slot: int, param1: bool) {.exportc: "
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGroupBox_toggled_release(slot: int) {.exportc: "miqt_exec_callback_QGroupBox_toggled_release".} =
+  let nimfunc = cast[ref QGroupBoxtoggledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontoggled*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxtoggledSlot) =
   var tmp = new QGroupBoxtoggledSlot
@@ -304,6 +312,10 @@ proc miqt_exec_callback_cQGroupBox_clicked1(slot: int, checked: bool) {.exportc:
   let slotval1 = checked
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQGroupBox_clicked1_release(slot: int) {.exportc: "miqt_exec_callback_QGroupBox_clicked1_release".} =
+  let nimfunc = cast[ref QGroupBoxclicked1Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onclicked*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxclicked1Slot) =
   var tmp = new QGroupBoxclicked1Slot

@@ -50,23 +50,41 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQuickWindow_frameSwapped(intptr_t);
+void miqt_exec_callback_QQuickWindow_frameSwapped_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_sceneGraphInitialized(intptr_t);
+void miqt_exec_callback_QQuickWindow_sceneGraphInitialized_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_sceneGraphInvalidated(intptr_t);
+void miqt_exec_callback_QQuickWindow_sceneGraphInvalidated_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_beforeSynchronizing(intptr_t);
+void miqt_exec_callback_QQuickWindow_beforeSynchronizing_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_afterSynchronizing(intptr_t);
+void miqt_exec_callback_QQuickWindow_afterSynchronizing_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_beforeRendering(intptr_t);
+void miqt_exec_callback_QQuickWindow_beforeRendering_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_afterRendering(intptr_t);
+void miqt_exec_callback_QQuickWindow_afterRendering_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_afterAnimating(intptr_t);
+void miqt_exec_callback_QQuickWindow_afterAnimating_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop(intptr_t);
+void miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_colorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QQuickWindow_colorChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_activeFocusItemChanged(intptr_t);
+void miqt_exec_callback_QQuickWindow_activeFocusItemChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_sceneGraphError(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QQuickWindow_sceneGraphError_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_beforeRenderPassRecording(intptr_t);
+void miqt_exec_callback_QQuickWindow_beforeRenderPassRecording_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_afterRenderPassRecording(intptr_t);
+void miqt_exec_callback_QQuickWindow_afterRenderPassRecording_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_paletteChanged(intptr_t);
+void miqt_exec_callback_QQuickWindow_paletteChanged_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_paletteCreated(intptr_t);
+void miqt_exec_callback_QQuickWindow_paletteCreated_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_beforeFrameBegin(intptr_t);
+void miqt_exec_callback_QQuickWindow_beforeFrameBegin_release(intptr_t);
 void miqt_exec_callback_QQuickWindow_afterFrameEnd(intptr_t);
+void miqt_exec_callback_QQuickWindow_afterFrameEnd_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -994,9 +1012,18 @@ void QQuickWindow_frameSwapped(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_frameSwapped(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::frameSwapped), self, [=]() {
-		miqt_exec_callback_QQuickWindow_frameSwapped(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_frameSwapped(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_frameSwapped_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::frameSwapped), self, caller{slot});
 }
 
 void QQuickWindow_sceneGraphInitialized(QQuickWindow* self) {
@@ -1004,9 +1031,18 @@ void QQuickWindow_sceneGraphInitialized(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_sceneGraphInitialized(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::sceneGraphInitialized), self, [=]() {
-		miqt_exec_callback_QQuickWindow_sceneGraphInitialized(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_sceneGraphInitialized(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_sceneGraphInitialized_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::sceneGraphInitialized), self, caller{slot});
 }
 
 void QQuickWindow_sceneGraphInvalidated(QQuickWindow* self) {
@@ -1014,9 +1050,18 @@ void QQuickWindow_sceneGraphInvalidated(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_sceneGraphInvalidated(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::sceneGraphInvalidated), self, [=]() {
-		miqt_exec_callback_QQuickWindow_sceneGraphInvalidated(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_sceneGraphInvalidated(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_sceneGraphInvalidated_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::sceneGraphInvalidated), self, caller{slot});
 }
 
 void QQuickWindow_beforeSynchronizing(QQuickWindow* self) {
@@ -1024,9 +1069,18 @@ void QQuickWindow_beforeSynchronizing(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_beforeSynchronizing(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeSynchronizing), self, [=]() {
-		miqt_exec_callback_QQuickWindow_beforeSynchronizing(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_beforeSynchronizing(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_beforeSynchronizing_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeSynchronizing), self, caller{slot});
 }
 
 void QQuickWindow_afterSynchronizing(QQuickWindow* self) {
@@ -1034,9 +1088,18 @@ void QQuickWindow_afterSynchronizing(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_afterSynchronizing(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterSynchronizing), self, [=]() {
-		miqt_exec_callback_QQuickWindow_afterSynchronizing(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_afterSynchronizing(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_afterSynchronizing_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterSynchronizing), self, caller{slot});
 }
 
 void QQuickWindow_beforeRendering(QQuickWindow* self) {
@@ -1044,9 +1107,18 @@ void QQuickWindow_beforeRendering(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_beforeRendering(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeRendering), self, [=]() {
-		miqt_exec_callback_QQuickWindow_beforeRendering(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_beforeRendering(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_beforeRendering_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeRendering), self, caller{slot});
 }
 
 void QQuickWindow_afterRendering(QQuickWindow* self) {
@@ -1054,9 +1126,18 @@ void QQuickWindow_afterRendering(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_afterRendering(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterRendering), self, [=]() {
-		miqt_exec_callback_QQuickWindow_afterRendering(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_afterRendering(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_afterRendering_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterRendering), self, caller{slot});
 }
 
 void QQuickWindow_afterAnimating(QQuickWindow* self) {
@@ -1064,9 +1145,18 @@ void QQuickWindow_afterAnimating(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_afterAnimating(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterAnimating), self, [=]() {
-		miqt_exec_callback_QQuickWindow_afterAnimating(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_afterAnimating(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_afterAnimating_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterAnimating), self, caller{slot});
 }
 
 void QQuickWindow_sceneGraphAboutToStop(QQuickWindow* self) {
@@ -1074,9 +1164,18 @@ void QQuickWindow_sceneGraphAboutToStop(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_sceneGraphAboutToStop(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::sceneGraphAboutToStop), self, [=]() {
-		miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::sceneGraphAboutToStop), self, caller{slot});
 }
 
 void QQuickWindow_colorChanged(QQuickWindow* self, QColor* param1) {
@@ -1084,12 +1183,21 @@ void QQuickWindow_colorChanged(QQuickWindow* self, QColor* param1) {
 }
 
 void QQuickWindow_connect_colorChanged(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)(const QColor&)>(&QQuickWindow::colorChanged), self, [=](const QColor& param1) {
-		const QColor& param1_ret = param1;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&param1_ret);
-		miqt_exec_callback_QQuickWindow_colorChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QColor& param1) {
+			const QColor& param1_ret = param1;
+			// Cast returned reference into pointer
+			QColor* sigval1 = const_cast<QColor*>(&param1_ret);
+			miqt_exec_callback_QQuickWindow_colorChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_colorChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)(const QColor&)>(&QQuickWindow::colorChanged), self, caller{slot});
 }
 
 void QQuickWindow_activeFocusItemChanged(QQuickWindow* self) {
@@ -1097,9 +1205,18 @@ void QQuickWindow_activeFocusItemChanged(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_activeFocusItemChanged(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::activeFocusItemChanged), self, [=]() {
-		miqt_exec_callback_QQuickWindow_activeFocusItemChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_activeFocusItemChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_activeFocusItemChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::activeFocusItemChanged), self, caller{slot});
 }
 
 void QQuickWindow_sceneGraphError(QQuickWindow* self, int error, struct miqt_string message) {
@@ -1108,19 +1225,28 @@ void QQuickWindow_sceneGraphError(QQuickWindow* self, int error, struct miqt_str
 }
 
 void QQuickWindow_connect_sceneGraphError(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)(QQuickWindow::SceneGraphError, const QString&)>(&QQuickWindow::sceneGraphError), self, [=](QQuickWindow::SceneGraphError error, const QString& message) {
-		QQuickWindow::SceneGraphError error_ret = error;
-		int sigval1 = static_cast<int>(error_ret);
-		const QString message_ret = message;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray message_b = message_ret.toUtf8();
-		struct miqt_string message_ms;
-		message_ms.len = message_b.length();
-		message_ms.data = static_cast<char*>(malloc(message_ms.len));
-		memcpy(message_ms.data, message_b.data(), message_ms.len);
-		struct miqt_string sigval2 = message_ms;
-		miqt_exec_callback_QQuickWindow_sceneGraphError(slot, sigval1, sigval2);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQuickWindow::SceneGraphError error, const QString& message) {
+			QQuickWindow::SceneGraphError error_ret = error;
+			int sigval1 = static_cast<int>(error_ret);
+			const QString message_ret = message;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray message_b = message_ret.toUtf8();
+			struct miqt_string message_ms;
+			message_ms.len = message_b.length();
+			message_ms.data = static_cast<char*>(malloc(message_ms.len));
+			memcpy(message_ms.data, message_b.data(), message_ms.len);
+			struct miqt_string sigval2 = message_ms;
+			miqt_exec_callback_QQuickWindow_sceneGraphError(slot, sigval1, sigval2);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_sceneGraphError_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)(QQuickWindow::SceneGraphError, const QString&)>(&QQuickWindow::sceneGraphError), self, caller{slot});
 }
 
 void QQuickWindow_beforeRenderPassRecording(QQuickWindow* self) {
@@ -1128,9 +1254,18 @@ void QQuickWindow_beforeRenderPassRecording(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_beforeRenderPassRecording(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeRenderPassRecording), self, [=]() {
-		miqt_exec_callback_QQuickWindow_beforeRenderPassRecording(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_beforeRenderPassRecording(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_beforeRenderPassRecording_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeRenderPassRecording), self, caller{slot});
 }
 
 void QQuickWindow_afterRenderPassRecording(QQuickWindow* self) {
@@ -1138,9 +1273,18 @@ void QQuickWindow_afterRenderPassRecording(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_afterRenderPassRecording(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterRenderPassRecording), self, [=]() {
-		miqt_exec_callback_QQuickWindow_afterRenderPassRecording(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_afterRenderPassRecording(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_afterRenderPassRecording_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterRenderPassRecording), self, caller{slot});
 }
 
 void QQuickWindow_paletteChanged(QQuickWindow* self) {
@@ -1148,9 +1292,18 @@ void QQuickWindow_paletteChanged(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_paletteChanged(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::paletteChanged), self, [=]() {
-		miqt_exec_callback_QQuickWindow_paletteChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_paletteChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_paletteChanged_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::paletteChanged), self, caller{slot});
 }
 
 void QQuickWindow_paletteCreated(QQuickWindow* self) {
@@ -1158,9 +1311,18 @@ void QQuickWindow_paletteCreated(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_paletteCreated(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::paletteCreated), self, [=]() {
-		miqt_exec_callback_QQuickWindow_paletteCreated(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_paletteCreated(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_paletteCreated_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::paletteCreated), self, caller{slot});
 }
 
 void QQuickWindow_beforeFrameBegin(QQuickWindow* self) {
@@ -1168,9 +1330,18 @@ void QQuickWindow_beforeFrameBegin(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_beforeFrameBegin(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeFrameBegin), self, [=]() {
-		miqt_exec_callback_QQuickWindow_beforeFrameBegin(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_beforeFrameBegin(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_beforeFrameBegin_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::beforeFrameBegin), self, caller{slot});
 }
 
 void QQuickWindow_afterFrameEnd(QQuickWindow* self) {
@@ -1178,9 +1349,18 @@ void QQuickWindow_afterFrameEnd(QQuickWindow* self) {
 }
 
 void QQuickWindow_connect_afterFrameEnd(QQuickWindow* self, intptr_t slot) {
-	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterFrameEnd), self, [=]() {
-		miqt_exec_callback_QQuickWindow_afterFrameEnd(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickWindow_afterFrameEnd(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickWindow_afterFrameEnd_release(slot); }
+	};
+	MiqtVirtualQQuickWindow::connect(self, static_cast<void (QQuickWindow::*)()>(&QQuickWindow::afterFrameEnd), self, caller{slot});
 }
 
 void QQuickWindow_update(QQuickWindow* self) {

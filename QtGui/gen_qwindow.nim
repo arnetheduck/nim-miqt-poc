@@ -676,6 +676,10 @@ proc miqt_exec_callback_cQWindow_screenChanged(slot: int, screen: pointer) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_screenChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_screenChanged_release".} =
+  let nimfunc = cast[ref QWindowscreenChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onscreenChanged*(self: gen_qwindow_types.QWindow, slot: QWindowscreenChangedSlot) =
   var tmp = new QWindowscreenChangedSlot
   tmp[] = slot
@@ -692,6 +696,10 @@ proc miqt_exec_callback_cQWindow_modalityChanged(slot: int, modality: cint) {.ex
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_modalityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_modalityChanged_release".} =
+  let nimfunc = cast[ref QWindowmodalityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmodalityChanged*(self: gen_qwindow_types.QWindow, slot: QWindowmodalityChangedSlot) =
   var tmp = new QWindowmodalityChangedSlot
   tmp[] = slot
@@ -707,6 +715,10 @@ proc miqt_exec_callback_cQWindow_windowStateChanged(slot: int, windowState: cint
   let slotval1 = cint(windowState)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_windowStateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_windowStateChanged_release".} =
+  let nimfunc = cast[ref QWindowwindowStateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onwindowStateChanged*(self: gen_qwindow_types.QWindow, slot: QWindowwindowStateChangedSlot) =
   var tmp = new QWindowwindowStateChangedSlot
@@ -727,6 +739,10 @@ proc miqt_exec_callback_cQWindow_windowTitleChanged(slot: int, title: struct_miq
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_windowTitleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_windowTitleChanged_release".} =
+  let nimfunc = cast[ref QWindowwindowTitleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onwindowTitleChanged*(self: gen_qwindow_types.QWindow, slot: QWindowwindowTitleChangedSlot) =
   var tmp = new QWindowwindowTitleChangedSlot
   tmp[] = slot
@@ -742,6 +758,10 @@ proc miqt_exec_callback_cQWindow_xChanged(slot: int, arg: cint) {.exportc: "miqt
   let slotval1 = arg
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_xChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_xChanged_release".} =
+  let nimfunc = cast[ref QWindowxChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onxChanged*(self: gen_qwindow_types.QWindow, slot: QWindowxChangedSlot) =
   var tmp = new QWindowxChangedSlot
@@ -759,6 +779,10 @@ proc miqt_exec_callback_cQWindow_yChanged(slot: int, arg: cint) {.exportc: "miqt
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_yChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_yChanged_release".} =
+  let nimfunc = cast[ref QWindowyChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onyChanged*(self: gen_qwindow_types.QWindow, slot: QWindowyChangedSlot) =
   var tmp = new QWindowyChangedSlot
   tmp[] = slot
@@ -774,6 +798,10 @@ proc miqt_exec_callback_cQWindow_widthChanged(slot: int, arg: cint) {.exportc: "
   let slotval1 = arg
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_widthChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_widthChanged_release".} =
+  let nimfunc = cast[ref QWindowwidthChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onwidthChanged*(self: gen_qwindow_types.QWindow, slot: QWindowwidthChangedSlot) =
   var tmp = new QWindowwidthChangedSlot
@@ -791,6 +819,10 @@ proc miqt_exec_callback_cQWindow_heightChanged(slot: int, arg: cint) {.exportc: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_heightChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_heightChanged_release".} =
+  let nimfunc = cast[ref QWindowheightChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onheightChanged*(self: gen_qwindow_types.QWindow, slot: QWindowheightChangedSlot) =
   var tmp = new QWindowheightChangedSlot
   tmp[] = slot
@@ -806,6 +838,10 @@ proc miqt_exec_callback_cQWindow_minimumWidthChanged(slot: int, arg: cint) {.exp
   let slotval1 = arg
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_minimumWidthChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_minimumWidthChanged_release".} =
+  let nimfunc = cast[ref QWindowminimumWidthChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onminimumWidthChanged*(self: gen_qwindow_types.QWindow, slot: QWindowminimumWidthChangedSlot) =
   var tmp = new QWindowminimumWidthChangedSlot
@@ -823,6 +859,10 @@ proc miqt_exec_callback_cQWindow_minimumHeightChanged(slot: int, arg: cint) {.ex
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_minimumHeightChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_minimumHeightChanged_release".} =
+  let nimfunc = cast[ref QWindowminimumHeightChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onminimumHeightChanged*(self: gen_qwindow_types.QWindow, slot: QWindowminimumHeightChangedSlot) =
   var tmp = new QWindowminimumHeightChangedSlot
   tmp[] = slot
@@ -838,6 +878,10 @@ proc miqt_exec_callback_cQWindow_maximumWidthChanged(slot: int, arg: cint) {.exp
   let slotval1 = arg
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_maximumWidthChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_maximumWidthChanged_release".} =
+  let nimfunc = cast[ref QWindowmaximumWidthChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmaximumWidthChanged*(self: gen_qwindow_types.QWindow, slot: QWindowmaximumWidthChangedSlot) =
   var tmp = new QWindowmaximumWidthChangedSlot
@@ -855,6 +899,10 @@ proc miqt_exec_callback_cQWindow_maximumHeightChanged(slot: int, arg: cint) {.ex
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_maximumHeightChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_maximumHeightChanged_release".} =
+  let nimfunc = cast[ref QWindowmaximumHeightChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmaximumHeightChanged*(self: gen_qwindow_types.QWindow, slot: QWindowmaximumHeightChangedSlot) =
   var tmp = new QWindowmaximumHeightChangedSlot
   tmp[] = slot
@@ -870,6 +918,10 @@ proc miqt_exec_callback_cQWindow_visibleChanged(slot: int, arg: bool) {.exportc:
   let slotval1 = arg
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_visibleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_visibleChanged_release".} =
+  let nimfunc = cast[ref QWindowvisibleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvisibleChanged*(self: gen_qwindow_types.QWindow, slot: QWindowvisibleChangedSlot) =
   var tmp = new QWindowvisibleChangedSlot
@@ -887,6 +939,10 @@ proc miqt_exec_callback_cQWindow_visibilityChanged(slot: int, visibility: cint) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_visibilityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_visibilityChanged_release".} =
+  let nimfunc = cast[ref QWindowvisibilityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvisibilityChanged*(self: gen_qwindow_types.QWindow, slot: QWindowvisibilityChangedSlot) =
   var tmp = new QWindowvisibilityChangedSlot
   tmp[] = slot
@@ -900,6 +956,10 @@ type QWindowactiveChangedSlot* = proc()
 proc miqt_exec_callback_cQWindow_activeChanged(slot: int) {.exportc: "miqt_exec_callback_QWindow_activeChanged".} =
   let nimfunc = cast[ptr QWindowactiveChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWindow_activeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_activeChanged_release".} =
+  let nimfunc = cast[ref QWindowactiveChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactiveChanged*(self: gen_qwindow_types.QWindow, slot: QWindowactiveChangedSlot) =
   var tmp = new QWindowactiveChangedSlot
@@ -917,6 +977,10 @@ proc miqt_exec_callback_cQWindow_contentOrientationChanged(slot: int, orientatio
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_contentOrientationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_contentOrientationChanged_release".} =
+  let nimfunc = cast[ref QWindowcontentOrientationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncontentOrientationChanged*(self: gen_qwindow_types.QWindow, slot: QWindowcontentOrientationChangedSlot) =
   var tmp = new QWindowcontentOrientationChangedSlot
   tmp[] = slot
@@ -932,6 +996,10 @@ proc miqt_exec_callback_cQWindow_focusObjectChanged(slot: int, objectVal: pointe
   let slotval1 = gen_qobject_types.QObject(h: objectVal)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_focusObjectChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_focusObjectChanged_release".} =
+  let nimfunc = cast[ref QWindowfocusObjectChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfocusObjectChanged*(self: gen_qwindow_types.QWindow, slot: QWindowfocusObjectChangedSlot) =
   var tmp = new QWindowfocusObjectChangedSlot
@@ -949,6 +1017,10 @@ proc miqt_exec_callback_cQWindow_opacityChanged(slot: int, opacity: float64) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWindow_opacityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_opacityChanged_release".} =
+  let nimfunc = cast[ref QWindowopacityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onopacityChanged*(self: gen_qwindow_types.QWindow, slot: QWindowopacityChangedSlot) =
   var tmp = new QWindowopacityChangedSlot
   tmp[] = slot
@@ -964,6 +1036,10 @@ proc miqt_exec_callback_cQWindow_transientParentChanged(slot: int, transientPare
   let slotval1 = gen_qwindow_types.QWindow(h: transientParent)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWindow_transientParentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWindow_transientParentChanged_release".} =
+  let nimfunc = cast[ref QWindowtransientParentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontransientParentChanged*(self: gen_qwindow_types.QWindow, slot: QWindowtransientParentChangedSlot) =
   var tmp = new QWindowtransientParentChangedSlot

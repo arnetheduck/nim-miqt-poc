@@ -557,6 +557,10 @@ proc miqt_exec_callback_cQSslSocket_encrypted(slot: int) {.exportc: "miqt_exec_c
   let nimfunc = cast[ptr QSslSocketencryptedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSslSocket_encrypted_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_encrypted_release".} =
+  let nimfunc = cast[ref QSslSocketencryptedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onencrypted*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketencryptedSlot) =
   var tmp = new QSslSocketencryptedSlot
   tmp[] = slot
@@ -572,6 +576,10 @@ proc miqt_exec_callback_cQSslSocket_peerVerifyError(slot: int, error: pointer) {
   let slotval1 = gen_qsslerror_types.QSslError(h: error)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSslSocket_peerVerifyError_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_peerVerifyError_release".} =
+  let nimfunc = cast[ref QSslSocketpeerVerifyErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpeerVerifyError*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketpeerVerifyErrorSlot) =
   var tmp = new QSslSocketpeerVerifyErrorSlot
@@ -598,6 +606,10 @@ proc miqt_exec_callback_cQSslSocket_sslErrors(slot: int, errors: struct_miqt_arr
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSslSocket_sslErrors_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_sslErrors_release".} =
+  let nimfunc = cast[ref QSslSocketsslErrorsSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsslErrors*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketsslErrorsSlot) =
   var tmp = new QSslSocketsslErrorsSlot
   tmp[] = slot
@@ -613,6 +625,10 @@ proc miqt_exec_callback_cQSslSocket_modeChanged(slot: int, newMode: cint) {.expo
   let slotval1 = cint(newMode)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSslSocket_modeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_modeChanged_release".} =
+  let nimfunc = cast[ref QSslSocketmodeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmodeChanged*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketmodeChangedSlot) =
   var tmp = new QSslSocketmodeChangedSlot
@@ -630,6 +646,10 @@ proc miqt_exec_callback_cQSslSocket_encryptedBytesWritten(slot: int, totalBytes:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSslSocket_encryptedBytesWritten_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_encryptedBytesWritten_release".} =
+  let nimfunc = cast[ref QSslSocketencryptedBytesWrittenSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onencryptedBytesWritten*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketencryptedBytesWrittenSlot) =
   var tmp = new QSslSocketencryptedBytesWrittenSlot
   tmp[] = slot
@@ -646,6 +666,10 @@ proc miqt_exec_callback_cQSslSocket_preSharedKeyAuthenticationRequired(slot: int
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSslSocket_preSharedKeyAuthenticationRequired_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_preSharedKeyAuthenticationRequired_release".} =
+  let nimfunc = cast[ref QSslSocketpreSharedKeyAuthenticationRequiredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpreSharedKeyAuthenticationRequired*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketpreSharedKeyAuthenticationRequiredSlot) =
   var tmp = new QSslSocketpreSharedKeyAuthenticationRequiredSlot
   tmp[] = slot
@@ -659,6 +683,10 @@ type QSslSocketnewSessionTicketReceivedSlot* = proc()
 proc miqt_exec_callback_cQSslSocket_newSessionTicketReceived(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_newSessionTicketReceived".} =
   let nimfunc = cast[ptr QSslSocketnewSessionTicketReceivedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSslSocket_newSessionTicketReceived_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_newSessionTicketReceived_release".} =
+  let nimfunc = cast[ref QSslSocketnewSessionTicketReceivedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnewSessionTicketReceived*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketnewSessionTicketReceivedSlot) =
   var tmp = new QSslSocketnewSessionTicketReceivedSlot
@@ -683,6 +711,10 @@ proc miqt_exec_callback_cQSslSocket_alertSent(slot: int, level: cint, typeVal: c
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQSslSocket_alertSent_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_alertSent_release".} =
+  let nimfunc = cast[ref QSslSocketalertSentSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onalertSent*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketalertSentSlot) =
   var tmp = new QSslSocketalertSentSlot
   tmp[] = slot
@@ -706,6 +738,10 @@ proc miqt_exec_callback_cQSslSocket_alertReceived(slot: int, level: cint, typeVa
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQSslSocket_alertReceived_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_alertReceived_release".} =
+  let nimfunc = cast[ref QSslSocketalertReceivedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onalertReceived*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSocketalertReceivedSlot) =
   var tmp = new QSslSocketalertReceivedSlot
   tmp[] = slot
@@ -721,6 +757,10 @@ proc miqt_exec_callback_cQSslSocket_handshakeInterruptedOnError(slot: int, error
   let slotval1 = gen_qsslerror_types.QSslError(h: error)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSslSocket_handshakeInterruptedOnError_release(slot: int) {.exportc: "miqt_exec_callback_QSslSocket_handshakeInterruptedOnError_release".} =
+  let nimfunc = cast[ref QSslSockethandshakeInterruptedOnErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhandshakeInterruptedOnError*(self: gen_qsslsocket_types.QSslSocket, slot: QSslSockethandshakeInterruptedOnErrorSlot) =
   var tmp = new QSslSockethandshakeInterruptedOnErrorSlot

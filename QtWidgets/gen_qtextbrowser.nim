@@ -356,6 +356,10 @@ proc miqt_exec_callback_cQTextBrowser_backwardAvailable(slot: int, param1: bool)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextBrowser_backwardAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QTextBrowser_backwardAvailable_release".} =
+  let nimfunc = cast[ref QTextBrowserbackwardAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbackwardAvailable*(self: gen_qtextbrowser_types.QTextBrowser, slot: QTextBrowserbackwardAvailableSlot) =
   var tmp = new QTextBrowserbackwardAvailableSlot
   tmp[] = slot
@@ -372,6 +376,10 @@ proc miqt_exec_callback_cQTextBrowser_forwardAvailable(slot: int, param1: bool) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextBrowser_forwardAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QTextBrowser_forwardAvailable_release".} =
+  let nimfunc = cast[ref QTextBrowserforwardAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onforwardAvailable*(self: gen_qtextbrowser_types.QTextBrowser, slot: QTextBrowserforwardAvailableSlot) =
   var tmp = new QTextBrowserforwardAvailableSlot
   tmp[] = slot
@@ -385,6 +393,10 @@ type QTextBrowserhistoryChangedSlot* = proc()
 proc miqt_exec_callback_cQTextBrowser_historyChanged(slot: int) {.exportc: "miqt_exec_callback_QTextBrowser_historyChanged".} =
   let nimfunc = cast[ptr QTextBrowserhistoryChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQTextBrowser_historyChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextBrowser_historyChanged_release".} =
+  let nimfunc = cast[ref QTextBrowserhistoryChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhistoryChanged*(self: gen_qtextbrowser_types.QTextBrowser, slot: QTextBrowserhistoryChangedSlot) =
   var tmp = new QTextBrowserhistoryChangedSlot
@@ -402,6 +414,10 @@ proc miqt_exec_callback_cQTextBrowser_sourceChanged(slot: int, param1: pointer) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextBrowser_sourceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QTextBrowser_sourceChanged_release".} =
+  let nimfunc = cast[ref QTextBrowsersourceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsourceChanged*(self: gen_qtextbrowser_types.QTextBrowser, slot: QTextBrowsersourceChangedSlot) =
   var tmp = new QTextBrowsersourceChangedSlot
   tmp[] = slot
@@ -418,6 +434,10 @@ proc miqt_exec_callback_cQTextBrowser_highlighted(slot: int, param1: pointer) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQTextBrowser_highlighted_release(slot: int) {.exportc: "miqt_exec_callback_QTextBrowser_highlighted_release".} =
+  let nimfunc = cast[ref QTextBrowserhighlightedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhighlighted*(self: gen_qtextbrowser_types.QTextBrowser, slot: QTextBrowserhighlightedSlot) =
   var tmp = new QTextBrowserhighlightedSlot
   tmp[] = slot
@@ -433,6 +453,10 @@ proc miqt_exec_callback_cQTextBrowser_anchorClicked(slot: int, param1: pointer) 
   let slotval1 = gen_qurl_types.QUrl(h: param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTextBrowser_anchorClicked_release(slot: int) {.exportc: "miqt_exec_callback_QTextBrowser_anchorClicked_release".} =
+  let nimfunc = cast[ref QTextBrowseranchorClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onanchorClicked*(self: gen_qtextbrowser_types.QTextBrowser, slot: QTextBrowseranchorClickedSlot) =
   var tmp = new QTextBrowseranchorClickedSlot

@@ -276,6 +276,10 @@ proc miqt_exec_callback_cQDockWidget_featuresChanged(slot: int, features: cint) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDockWidget_featuresChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDockWidget_featuresChanged_release".} =
+  let nimfunc = cast[ref QDockWidgetfeaturesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfeaturesChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetfeaturesChangedSlot) =
   var tmp = new QDockWidgetfeaturesChangedSlot
   tmp[] = slot
@@ -291,6 +295,10 @@ proc miqt_exec_callback_cQDockWidget_topLevelChanged(slot: int, topLevel: bool) 
   let slotval1 = topLevel
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDockWidget_topLevelChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDockWidget_topLevelChanged_release".} =
+  let nimfunc = cast[ref QDockWidgettopLevelChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontopLevelChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgettopLevelChangedSlot) =
   var tmp = new QDockWidgettopLevelChangedSlot
@@ -308,6 +316,10 @@ proc miqt_exec_callback_cQDockWidget_allowedAreasChanged(slot: int, allowedAreas
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDockWidget_allowedAreasChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDockWidget_allowedAreasChanged_release".} =
+  let nimfunc = cast[ref QDockWidgetallowedAreasChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onallowedAreasChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetallowedAreasChangedSlot) =
   var tmp = new QDockWidgetallowedAreasChangedSlot
   tmp[] = slot
@@ -324,6 +336,10 @@ proc miqt_exec_callback_cQDockWidget_visibilityChanged(slot: int, visible: bool)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDockWidget_visibilityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDockWidget_visibilityChanged_release".} =
+  let nimfunc = cast[ref QDockWidgetvisibilityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvisibilityChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetvisibilityChangedSlot) =
   var tmp = new QDockWidgetvisibilityChangedSlot
   tmp[] = slot
@@ -339,6 +355,10 @@ proc miqt_exec_callback_cQDockWidget_dockLocationChanged(slot: int, area: cint) 
   let slotval1 = cint(area)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDockWidget_dockLocationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDockWidget_dockLocationChanged_release".} =
+  let nimfunc = cast[ref QDockWidgetdockLocationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondockLocationChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetdockLocationChangedSlot) =
   var tmp = new QDockWidgetdockLocationChangedSlot

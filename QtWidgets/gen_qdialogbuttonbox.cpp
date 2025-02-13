@@ -46,9 +46,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QDialogButtonBox_clicked(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QDialogButtonBox_clicked_release(intptr_t);
 void miqt_exec_callback_QDialogButtonBox_accepted(intptr_t);
+void miqt_exec_callback_QDialogButtonBox_accepted_release(intptr_t);
 void miqt_exec_callback_QDialogButtonBox_helpRequested(intptr_t);
+void miqt_exec_callback_QDialogButtonBox_helpRequested_release(intptr_t);
 void miqt_exec_callback_QDialogButtonBox_rejected(intptr_t);
+void miqt_exec_callback_QDialogButtonBox_rejected_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1230,10 +1234,19 @@ void QDialogButtonBox_clicked(QDialogButtonBox* self, QAbstractButton* button) {
 }
 
 void QDialogButtonBox_connect_clicked(QDialogButtonBox* self, intptr_t slot) {
-	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)(QAbstractButton*)>(&QDialogButtonBox::clicked), self, [=](QAbstractButton* button) {
-		QAbstractButton* sigval1 = button;
-		miqt_exec_callback_QDialogButtonBox_clicked(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAbstractButton* button) {
+			QAbstractButton* sigval1 = button;
+			miqt_exec_callback_QDialogButtonBox_clicked(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDialogButtonBox_clicked_release(slot); }
+	};
+	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)(QAbstractButton*)>(&QDialogButtonBox::clicked), self, caller{slot});
 }
 
 void QDialogButtonBox_accepted(QDialogButtonBox* self) {
@@ -1241,9 +1254,18 @@ void QDialogButtonBox_accepted(QDialogButtonBox* self) {
 }
 
 void QDialogButtonBox_connect_accepted(QDialogButtonBox* self, intptr_t slot) {
-	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::accepted), self, [=]() {
-		miqt_exec_callback_QDialogButtonBox_accepted(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QDialogButtonBox_accepted(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDialogButtonBox_accepted_release(slot); }
+	};
+	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::accepted), self, caller{slot});
 }
 
 void QDialogButtonBox_helpRequested(QDialogButtonBox* self) {
@@ -1251,9 +1273,18 @@ void QDialogButtonBox_helpRequested(QDialogButtonBox* self) {
 }
 
 void QDialogButtonBox_connect_helpRequested(QDialogButtonBox* self, intptr_t slot) {
-	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::helpRequested), self, [=]() {
-		miqt_exec_callback_QDialogButtonBox_helpRequested(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QDialogButtonBox_helpRequested(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDialogButtonBox_helpRequested_release(slot); }
+	};
+	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::helpRequested), self, caller{slot});
 }
 
 void QDialogButtonBox_rejected(QDialogButtonBox* self) {
@@ -1261,9 +1292,18 @@ void QDialogButtonBox_rejected(QDialogButtonBox* self) {
 }
 
 void QDialogButtonBox_connect_rejected(QDialogButtonBox* self, intptr_t slot) {
-	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::rejected), self, [=]() {
-		miqt_exec_callback_QDialogButtonBox_rejected(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QDialogButtonBox_rejected(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDialogButtonBox_rejected_release(slot); }
+	};
+	MiqtVirtualQDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::rejected), self, caller{slot});
 }
 
 struct miqt_string QDialogButtonBox_tr2(const char* s, const char* c) {

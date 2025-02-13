@@ -1185,6 +1185,10 @@ proc miqt_exec_callback_cQStandardItemModel_itemChanged(slot: int, item: pointer
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQStandardItemModel_itemChanged_release(slot: int) {.exportc: "miqt_exec_callback_QStandardItemModel_itemChanged_release".} =
+  let nimfunc = cast[ref QStandardItemModelitemChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onitemChanged*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelitemChangedSlot) =
   var tmp = new QStandardItemModelitemChangedSlot
   tmp[] = slot

@@ -42,24 +42,43 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QWindow_screenChanged(intptr_t, QScreen*);
+void miqt_exec_callback_QWindow_screenChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_modalityChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_modalityChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_windowStateChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_windowStateChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_windowTitleChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QWindow_windowTitleChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_xChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_xChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_yChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_yChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_widthChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_widthChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_heightChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_heightChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_minimumWidthChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_minimumWidthChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_minimumHeightChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_minimumHeightChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_maximumWidthChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_maximumWidthChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_maximumHeightChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_maximumHeightChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_visibleChanged(intptr_t, bool);
+void miqt_exec_callback_QWindow_visibleChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_visibilityChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_visibilityChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_activeChanged(intptr_t);
+void miqt_exec_callback_QWindow_activeChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_contentOrientationChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_contentOrientationChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_focusObjectChanged(intptr_t, QObject*);
+void miqt_exec_callback_QWindow_focusObjectChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_opacityChanged(intptr_t, double);
+void miqt_exec_callback_QWindow_opacityChanged_release(intptr_t);
 void miqt_exec_callback_QWindow_transientParentChanged(intptr_t, QWindow*);
+void miqt_exec_callback_QWindow_transientParentChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1282,10 +1301,19 @@ void QWindow_screenChanged(QWindow* self, QScreen* screen) {
 }
 
 void QWindow_connect_screenChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QScreen*)>(&QWindow::screenChanged), self, [=](QScreen* screen) {
-		QScreen* sigval1 = screen;
-		miqt_exec_callback_QWindow_screenChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QScreen* screen) {
+			QScreen* sigval1 = screen;
+			miqt_exec_callback_QWindow_screenChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_screenChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QScreen*)>(&QWindow::screenChanged), self, caller{slot});
 }
 
 void QWindow_modalityChanged(QWindow* self, int modality) {
@@ -1293,11 +1321,20 @@ void QWindow_modalityChanged(QWindow* self, int modality) {
 }
 
 void QWindow_connect_modalityChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(Qt::WindowModality)>(&QWindow::modalityChanged), self, [=](Qt::WindowModality modality) {
-		Qt::WindowModality modality_ret = modality;
-		int sigval1 = static_cast<int>(modality_ret);
-		miqt_exec_callback_QWindow_modalityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::WindowModality modality) {
+			Qt::WindowModality modality_ret = modality;
+			int sigval1 = static_cast<int>(modality_ret);
+			miqt_exec_callback_QWindow_modalityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_modalityChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(Qt::WindowModality)>(&QWindow::modalityChanged), self, caller{slot});
 }
 
 void QWindow_windowStateChanged(QWindow* self, int windowState) {
@@ -1305,11 +1342,20 @@ void QWindow_windowStateChanged(QWindow* self, int windowState) {
 }
 
 void QWindow_connect_windowStateChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(Qt::WindowState)>(&QWindow::windowStateChanged), self, [=](Qt::WindowState windowState) {
-		Qt::WindowState windowState_ret = windowState;
-		int sigval1 = static_cast<int>(windowState_ret);
-		miqt_exec_callback_QWindow_windowStateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::WindowState windowState) {
+			Qt::WindowState windowState_ret = windowState;
+			int sigval1 = static_cast<int>(windowState_ret);
+			miqt_exec_callback_QWindow_windowStateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_windowStateChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(Qt::WindowState)>(&QWindow::windowStateChanged), self, caller{slot});
 }
 
 void QWindow_windowTitleChanged(QWindow* self, struct miqt_string title) {
@@ -1318,17 +1364,26 @@ void QWindow_windowTitleChanged(QWindow* self, struct miqt_string title) {
 }
 
 void QWindow_connect_windowTitleChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(const QString&)>(&QWindow::windowTitleChanged), self, [=](const QString& title) {
-		const QString title_ret = title;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray title_b = title_ret.toUtf8();
-		struct miqt_string title_ms;
-		title_ms.len = title_b.length();
-		title_ms.data = static_cast<char*>(malloc(title_ms.len));
-		memcpy(title_ms.data, title_b.data(), title_ms.len);
-		struct miqt_string sigval1 = title_ms;
-		miqt_exec_callback_QWindow_windowTitleChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& title) {
+			const QString title_ret = title;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray title_b = title_ret.toUtf8();
+			struct miqt_string title_ms;
+			title_ms.len = title_b.length();
+			title_ms.data = static_cast<char*>(malloc(title_ms.len));
+			memcpy(title_ms.data, title_b.data(), title_ms.len);
+			struct miqt_string sigval1 = title_ms;
+			miqt_exec_callback_QWindow_windowTitleChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_windowTitleChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(const QString&)>(&QWindow::windowTitleChanged), self, caller{slot});
 }
 
 void QWindow_xChanged(QWindow* self, int arg) {
@@ -1336,10 +1391,19 @@ void QWindow_xChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_xChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::xChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_xChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_xChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_xChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::xChanged), self, caller{slot});
 }
 
 void QWindow_yChanged(QWindow* self, int arg) {
@@ -1347,10 +1411,19 @@ void QWindow_yChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_yChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::yChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_yChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_yChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_yChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::yChanged), self, caller{slot});
 }
 
 void QWindow_widthChanged(QWindow* self, int arg) {
@@ -1358,10 +1431,19 @@ void QWindow_widthChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_widthChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::widthChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_widthChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_widthChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_widthChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::widthChanged), self, caller{slot});
 }
 
 void QWindow_heightChanged(QWindow* self, int arg) {
@@ -1369,10 +1451,19 @@ void QWindow_heightChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_heightChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::heightChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_heightChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_heightChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_heightChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::heightChanged), self, caller{slot});
 }
 
 void QWindow_minimumWidthChanged(QWindow* self, int arg) {
@@ -1380,10 +1471,19 @@ void QWindow_minimumWidthChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_minimumWidthChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::minimumWidthChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_minimumWidthChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_minimumWidthChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_minimumWidthChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::minimumWidthChanged), self, caller{slot});
 }
 
 void QWindow_minimumHeightChanged(QWindow* self, int arg) {
@@ -1391,10 +1491,19 @@ void QWindow_minimumHeightChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_minimumHeightChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::minimumHeightChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_minimumHeightChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_minimumHeightChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_minimumHeightChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::minimumHeightChanged), self, caller{slot});
 }
 
 void QWindow_maximumWidthChanged(QWindow* self, int arg) {
@@ -1402,10 +1511,19 @@ void QWindow_maximumWidthChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_maximumWidthChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::maximumWidthChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_maximumWidthChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_maximumWidthChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_maximumWidthChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::maximumWidthChanged), self, caller{slot});
 }
 
 void QWindow_maximumHeightChanged(QWindow* self, int arg) {
@@ -1413,10 +1531,19 @@ void QWindow_maximumHeightChanged(QWindow* self, int arg) {
 }
 
 void QWindow_connect_maximumHeightChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::maximumHeightChanged), self, [=](int arg) {
-		int sigval1 = arg;
-		miqt_exec_callback_QWindow_maximumHeightChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(int arg) {
+			int sigval1 = arg;
+			miqt_exec_callback_QWindow_maximumHeightChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_maximumHeightChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::maximumHeightChanged), self, caller{slot});
 }
 
 void QWindow_visibleChanged(QWindow* self, bool arg) {
@@ -1424,10 +1551,19 @@ void QWindow_visibleChanged(QWindow* self, bool arg) {
 }
 
 void QWindow_connect_visibleChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(bool)>(&QWindow::visibleChanged), self, [=](bool arg) {
-		bool sigval1 = arg;
-		miqt_exec_callback_QWindow_visibleChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool arg) {
+			bool sigval1 = arg;
+			miqt_exec_callback_QWindow_visibleChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_visibleChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(bool)>(&QWindow::visibleChanged), self, caller{slot});
 }
 
 void QWindow_visibilityChanged(QWindow* self, int visibility) {
@@ -1435,11 +1571,20 @@ void QWindow_visibilityChanged(QWindow* self, int visibility) {
 }
 
 void QWindow_connect_visibilityChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QWindow::Visibility)>(&QWindow::visibilityChanged), self, [=](QWindow::Visibility visibility) {
-		QWindow::Visibility visibility_ret = visibility;
-		int sigval1 = static_cast<int>(visibility_ret);
-		miqt_exec_callback_QWindow_visibilityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWindow::Visibility visibility) {
+			QWindow::Visibility visibility_ret = visibility;
+			int sigval1 = static_cast<int>(visibility_ret);
+			miqt_exec_callback_QWindow_visibilityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_visibilityChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QWindow::Visibility)>(&QWindow::visibilityChanged), self, caller{slot});
 }
 
 void QWindow_activeChanged(QWindow* self) {
@@ -1447,9 +1592,18 @@ void QWindow_activeChanged(QWindow* self) {
 }
 
 void QWindow_connect_activeChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)()>(&QWindow::activeChanged), self, [=]() {
-		miqt_exec_callback_QWindow_activeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QWindow_activeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_activeChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)()>(&QWindow::activeChanged), self, caller{slot});
 }
 
 void QWindow_contentOrientationChanged(QWindow* self, int orientation) {
@@ -1457,11 +1611,20 @@ void QWindow_contentOrientationChanged(QWindow* self, int orientation) {
 }
 
 void QWindow_connect_contentOrientationChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(Qt::ScreenOrientation)>(&QWindow::contentOrientationChanged), self, [=](Qt::ScreenOrientation orientation) {
-		Qt::ScreenOrientation orientation_ret = orientation;
-		int sigval1 = static_cast<int>(orientation_ret);
-		miqt_exec_callback_QWindow_contentOrientationChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::ScreenOrientation orientation) {
+			Qt::ScreenOrientation orientation_ret = orientation;
+			int sigval1 = static_cast<int>(orientation_ret);
+			miqt_exec_callback_QWindow_contentOrientationChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_contentOrientationChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(Qt::ScreenOrientation)>(&QWindow::contentOrientationChanged), self, caller{slot});
 }
 
 void QWindow_focusObjectChanged(QWindow* self, QObject* object) {
@@ -1469,10 +1632,19 @@ void QWindow_focusObjectChanged(QWindow* self, QObject* object) {
 }
 
 void QWindow_connect_focusObjectChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QObject*)>(&QWindow::focusObjectChanged), self, [=](QObject* object) {
-		QObject* sigval1 = object;
-		miqt_exec_callback_QWindow_focusObjectChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QObject* object) {
+			QObject* sigval1 = object;
+			miqt_exec_callback_QWindow_focusObjectChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_focusObjectChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QObject*)>(&QWindow::focusObjectChanged), self, caller{slot});
 }
 
 void QWindow_opacityChanged(QWindow* self, double opacity) {
@@ -1480,11 +1652,20 @@ void QWindow_opacityChanged(QWindow* self, double opacity) {
 }
 
 void QWindow_connect_opacityChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(qreal)>(&QWindow::opacityChanged), self, [=](qreal opacity) {
-		qreal opacity_ret = opacity;
-		double sigval1 = static_cast<double>(opacity_ret);
-		miqt_exec_callback_QWindow_opacityChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal opacity) {
+			qreal opacity_ret = opacity;
+			double sigval1 = static_cast<double>(opacity_ret);
+			miqt_exec_callback_QWindow_opacityChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_opacityChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(qreal)>(&QWindow::opacityChanged), self, caller{slot});
 }
 
 void QWindow_transientParentChanged(QWindow* self, QWindow* transientParent) {
@@ -1492,10 +1673,19 @@ void QWindow_transientParentChanged(QWindow* self, QWindow* transientParent) {
 }
 
 void QWindow_connect_transientParentChanged(QWindow* self, intptr_t slot) {
-	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QWindow*)>(&QWindow::transientParentChanged), self, [=](QWindow* transientParent) {
-		QWindow* sigval1 = transientParent;
-		miqt_exec_callback_QWindow_transientParentChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QWindow* transientParent) {
+			QWindow* sigval1 = transientParent;
+			miqt_exec_callback_QWindow_transientParentChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QWindow_transientParentChanged_release(slot); }
+	};
+	MiqtVirtualQWindow::connect(self, static_cast<void (QWindow::*)(QWindow*)>(&QWindow::transientParentChanged), self, caller{slot});
 }
 
 struct miqt_string QWindow_tr2(const char* s, const char* c) {

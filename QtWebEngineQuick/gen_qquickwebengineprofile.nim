@@ -327,6 +327,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_storageNameChanged(slot: int) {.
   let nimfunc = cast[ptr QQuickWebEngineProfilestorageNameChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWebEngineProfile_storageNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_storageNameChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilestorageNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstorageNameChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilestorageNameChangedSlot) =
   var tmp = new QQuickWebEngineProfilestorageNameChangedSlot
   tmp[] = slot
@@ -340,6 +344,10 @@ type QQuickWebEngineProfileoffTheRecordChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickWebEngineProfile_offTheRecordChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_offTheRecordChanged".} =
   let nimfunc = cast[ptr QQuickWebEngineProfileoffTheRecordChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_offTheRecordChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_offTheRecordChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfileoffTheRecordChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onoffTheRecordChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfileoffTheRecordChangedSlot) =
   var tmp = new QQuickWebEngineProfileoffTheRecordChangedSlot
@@ -355,6 +363,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_persistentStoragePathChanged(slo
   let nimfunc = cast[ptr QQuickWebEngineProfilepersistentStoragePathChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWebEngineProfile_persistentStoragePathChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_persistentStoragePathChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilepersistentStoragePathChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpersistentStoragePathChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilepersistentStoragePathChangedSlot) =
   var tmp = new QQuickWebEngineProfilepersistentStoragePathChangedSlot
   tmp[] = slot
@@ -368,6 +380,10 @@ type QQuickWebEngineProfilecachePathChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickWebEngineProfile_cachePathChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_cachePathChanged".} =
   let nimfunc = cast[ptr QQuickWebEngineProfilecachePathChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_cachePathChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_cachePathChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilecachePathChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncachePathChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilecachePathChangedSlot) =
   var tmp = new QQuickWebEngineProfilecachePathChangedSlot
@@ -383,6 +399,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_httpUserAgentChanged(slot: int) 
   let nimfunc = cast[ptr QQuickWebEngineProfilehttpUserAgentChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWebEngineProfile_httpUserAgentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_httpUserAgentChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilehttpUserAgentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhttpUserAgentChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilehttpUserAgentChangedSlot) =
   var tmp = new QQuickWebEngineProfilehttpUserAgentChangedSlot
   tmp[] = slot
@@ -396,6 +416,10 @@ type QQuickWebEngineProfilehttpCacheTypeChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickWebEngineProfile_httpCacheTypeChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_httpCacheTypeChanged".} =
   let nimfunc = cast[ptr QQuickWebEngineProfilehttpCacheTypeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_httpCacheTypeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_httpCacheTypeChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilehttpCacheTypeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhttpCacheTypeChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilehttpCacheTypeChangedSlot) =
   var tmp = new QQuickWebEngineProfilehttpCacheTypeChangedSlot
@@ -411,6 +435,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_persistentCookiesPolicyChanged(s
   let nimfunc = cast[ptr QQuickWebEngineProfilepersistentCookiesPolicyChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWebEngineProfile_persistentCookiesPolicyChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_persistentCookiesPolicyChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilepersistentCookiesPolicyChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpersistentCookiesPolicyChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilepersistentCookiesPolicyChangedSlot) =
   var tmp = new QQuickWebEngineProfilepersistentCookiesPolicyChangedSlot
   tmp[] = slot
@@ -424,6 +452,10 @@ type QQuickWebEngineProfilehttpCacheMaximumSizeChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickWebEngineProfile_httpCacheMaximumSizeChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_httpCacheMaximumSizeChanged".} =
   let nimfunc = cast[ptr QQuickWebEngineProfilehttpCacheMaximumSizeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_httpCacheMaximumSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_httpCacheMaximumSizeChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilehttpCacheMaximumSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhttpCacheMaximumSizeChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilehttpCacheMaximumSizeChangedSlot) =
   var tmp = new QQuickWebEngineProfilehttpCacheMaximumSizeChangedSlot
@@ -439,6 +471,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_httpAcceptLanguageChanged(slot: 
   let nimfunc = cast[ptr QQuickWebEngineProfilehttpAcceptLanguageChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWebEngineProfile_httpAcceptLanguageChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_httpAcceptLanguageChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilehttpAcceptLanguageChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhttpAcceptLanguageChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilehttpAcceptLanguageChangedSlot) =
   var tmp = new QQuickWebEngineProfilehttpAcceptLanguageChangedSlot
   tmp[] = slot
@@ -452,6 +488,10 @@ type QQuickWebEngineProfilespellCheckLanguagesChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickWebEngineProfile_spellCheckLanguagesChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_spellCheckLanguagesChanged".} =
   let nimfunc = cast[ptr QQuickWebEngineProfilespellCheckLanguagesChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_spellCheckLanguagesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_spellCheckLanguagesChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilespellCheckLanguagesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onspellCheckLanguagesChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilespellCheckLanguagesChangedSlot) =
   var tmp = new QQuickWebEngineProfilespellCheckLanguagesChangedSlot
@@ -467,6 +507,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_spellCheckEnabledChanged(slot: i
   let nimfunc = cast[ptr QQuickWebEngineProfilespellCheckEnabledChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickWebEngineProfile_spellCheckEnabledChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_spellCheckEnabledChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilespellCheckEnabledChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onspellCheckEnabledChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilespellCheckEnabledChangedSlot) =
   var tmp = new QQuickWebEngineProfilespellCheckEnabledChangedSlot
   tmp[] = slot
@@ -480,6 +524,10 @@ type QQuickWebEngineProfiledownloadPathChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickWebEngineProfile_downloadPathChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_downloadPathChanged".} =
   let nimfunc = cast[ptr QQuickWebEngineProfiledownloadPathChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_downloadPathChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_downloadPathChanged_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfiledownloadPathChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondownloadPathChanged*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfiledownloadPathChangedSlot) =
   var tmp = new QQuickWebEngineProfiledownloadPathChangedSlot
@@ -496,6 +544,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_downloadRequested(slot: int, dow
 TODO QQuickWebEngineDownloadRequest
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickWebEngineProfile_downloadRequested_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_downloadRequested_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfiledownloadRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondownloadRequested*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfiledownloadRequestedSlot) =
   var tmp = new QQuickWebEngineProfiledownloadRequestedSlot
   tmp[] = slot
@@ -510,6 +562,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_downloadFinished(slot: int, down
   let nimfunc = cast[ptr QQuickWebEngineProfiledownloadFinishedSlot](cast[pointer](slot))
 TODO QQuickWebEngineDownloadRequest
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_downloadFinished_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_downloadFinished_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfiledownloadFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondownloadFinished*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfiledownloadFinishedSlot) =
   var tmp = new QQuickWebEngineProfiledownloadFinishedSlot
@@ -526,6 +582,10 @@ proc miqt_exec_callback_cQQuickWebEngineProfile_presentNotification(slot: int, n
   let slotval1 = gen_qwebenginenotification_types.QWebEngineNotification(h: notification)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickWebEngineProfile_presentNotification_release(slot: int) {.exportc: "miqt_exec_callback_QQuickWebEngineProfile_presentNotification_release".} =
+  let nimfunc = cast[ref QQuickWebEngineProfilepresentNotificationSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpresentNotification*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile, slot: QQuickWebEngineProfilepresentNotificationSlot) =
   var tmp = new QQuickWebEngineProfilepresentNotificationSlot

@@ -209,6 +209,10 @@ proc miqt_exec_callback_cQTcpServer_newConnection(slot: int) {.exportc: "miqt_ex
   let nimfunc = cast[ptr QTcpServernewConnectionSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQTcpServer_newConnection_release(slot: int) {.exportc: "miqt_exec_callback_QTcpServer_newConnection_release".} =
+  let nimfunc = cast[ref QTcpServernewConnectionSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnewConnection*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServernewConnectionSlot) =
   var tmp = new QTcpServernewConnectionSlot
   tmp[] = slot
@@ -224,6 +228,10 @@ proc miqt_exec_callback_cQTcpServer_acceptError(slot: int, socketError: cint) {.
   let slotval1 = cint(socketError)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQTcpServer_acceptError_release(slot: int) {.exportc: "miqt_exec_callback_QTcpServer_acceptError_release".} =
+  let nimfunc = cast[ref QTcpServeracceptErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onacceptError*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServeracceptErrorSlot) =
   var tmp = new QTcpServeracceptErrorSlot

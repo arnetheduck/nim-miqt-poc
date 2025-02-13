@@ -186,6 +186,10 @@ proc miqt_exec_callback_cQMediaCaptureSession_audioInputChanged(slot: int) {.exp
   let nimfunc = cast[ptr QMediaCaptureSessionaudioInputChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMediaCaptureSession_audioInputChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_audioInputChanged_release".} =
+  let nimfunc = cast[ref QMediaCaptureSessionaudioInputChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaudioInputChanged*(self: gen_qmediacapturesession_types.QMediaCaptureSession, slot: QMediaCaptureSessionaudioInputChangedSlot) =
   var tmp = new QMediaCaptureSessionaudioInputChangedSlot
   tmp[] = slot
@@ -199,6 +203,10 @@ type QMediaCaptureSessioncameraChangedSlot* = proc()
 proc miqt_exec_callback_cQMediaCaptureSession_cameraChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_cameraChanged".} =
   let nimfunc = cast[ptr QMediaCaptureSessioncameraChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaCaptureSession_cameraChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_cameraChanged_release".} =
+  let nimfunc = cast[ref QMediaCaptureSessioncameraChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncameraChanged*(self: gen_qmediacapturesession_types.QMediaCaptureSession, slot: QMediaCaptureSessioncameraChangedSlot) =
   var tmp = new QMediaCaptureSessioncameraChangedSlot
@@ -214,6 +222,10 @@ proc miqt_exec_callback_cQMediaCaptureSession_imageCaptureChanged(slot: int) {.e
   let nimfunc = cast[ptr QMediaCaptureSessionimageCaptureChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMediaCaptureSession_imageCaptureChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_imageCaptureChanged_release".} =
+  let nimfunc = cast[ref QMediaCaptureSessionimageCaptureChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onimageCaptureChanged*(self: gen_qmediacapturesession_types.QMediaCaptureSession, slot: QMediaCaptureSessionimageCaptureChangedSlot) =
   var tmp = new QMediaCaptureSessionimageCaptureChangedSlot
   tmp[] = slot
@@ -227,6 +239,10 @@ type QMediaCaptureSessionrecorderChangedSlot* = proc()
 proc miqt_exec_callback_cQMediaCaptureSession_recorderChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_recorderChanged".} =
   let nimfunc = cast[ptr QMediaCaptureSessionrecorderChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaCaptureSession_recorderChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_recorderChanged_release".} =
+  let nimfunc = cast[ref QMediaCaptureSessionrecorderChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onrecorderChanged*(self: gen_qmediacapturesession_types.QMediaCaptureSession, slot: QMediaCaptureSessionrecorderChangedSlot) =
   var tmp = new QMediaCaptureSessionrecorderChangedSlot
@@ -242,6 +258,10 @@ proc miqt_exec_callback_cQMediaCaptureSession_videoOutputChanged(slot: int) {.ex
   let nimfunc = cast[ptr QMediaCaptureSessionvideoOutputChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMediaCaptureSession_videoOutputChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_videoOutputChanged_release".} =
+  let nimfunc = cast[ref QMediaCaptureSessionvideoOutputChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvideoOutputChanged*(self: gen_qmediacapturesession_types.QMediaCaptureSession, slot: QMediaCaptureSessionvideoOutputChangedSlot) =
   var tmp = new QMediaCaptureSessionvideoOutputChangedSlot
   tmp[] = slot
@@ -255,6 +275,10 @@ type QMediaCaptureSessionaudioOutputChangedSlot* = proc()
 proc miqt_exec_callback_cQMediaCaptureSession_audioOutputChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_audioOutputChanged".} =
   let nimfunc = cast[ptr QMediaCaptureSessionaudioOutputChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaCaptureSession_audioOutputChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaCaptureSession_audioOutputChanged_release".} =
+  let nimfunc = cast[ref QMediaCaptureSessionaudioOutputChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaudioOutputChanged*(self: gen_qmediacapturesession_types.QMediaCaptureSession, slot: QMediaCaptureSessionaudioOutputChangedSlot) =
   var tmp = new QMediaCaptureSessionaudioOutputChangedSlot

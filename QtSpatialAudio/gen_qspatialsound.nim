@@ -271,6 +271,10 @@ proc miqt_exec_callback_cQSpatialSound_sourceChanged(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QSpatialSoundsourceChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSpatialSound_sourceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_sourceChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundsourceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsourceChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundsourceChangedSlot) =
   var tmp = new QSpatialSoundsourceChangedSlot
   tmp[] = slot
@@ -284,6 +288,10 @@ type QSpatialSoundloopsChangedSlot* = proc()
 proc miqt_exec_callback_cQSpatialSound_loopsChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_loopsChanged".} =
   let nimfunc = cast[ptr QSpatialSoundloopsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSpatialSound_loopsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_loopsChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundloopsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onloopsChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundloopsChangedSlot) =
   var tmp = new QSpatialSoundloopsChangedSlot
@@ -299,6 +307,10 @@ proc miqt_exec_callback_cQSpatialSound_autoPlayChanged(slot: int) {.exportc: "mi
   let nimfunc = cast[ptr QSpatialSoundautoPlayChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSpatialSound_autoPlayChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_autoPlayChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundautoPlayChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onautoPlayChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundautoPlayChangedSlot) =
   var tmp = new QSpatialSoundautoPlayChangedSlot
   tmp[] = slot
@@ -312,6 +324,10 @@ type QSpatialSoundpositionChangedSlot* = proc()
 proc miqt_exec_callback_cQSpatialSound_positionChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_positionChanged".} =
   let nimfunc = cast[ptr QSpatialSoundpositionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSpatialSound_positionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_positionChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundpositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpositionChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundpositionChangedSlot) =
   var tmp = new QSpatialSoundpositionChangedSlot
@@ -327,6 +343,10 @@ proc miqt_exec_callback_cQSpatialSound_rotationChanged(slot: int) {.exportc: "mi
   let nimfunc = cast[ptr QSpatialSoundrotationChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSpatialSound_rotationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_rotationChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundrotationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrotationChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundrotationChangedSlot) =
   var tmp = new QSpatialSoundrotationChangedSlot
   tmp[] = slot
@@ -340,6 +360,10 @@ type QSpatialSoundvolumeChangedSlot* = proc()
 proc miqt_exec_callback_cQSpatialSound_volumeChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_volumeChanged".} =
   let nimfunc = cast[ptr QSpatialSoundvolumeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSpatialSound_volumeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_volumeChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundvolumeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvolumeChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundvolumeChangedSlot) =
   var tmp = new QSpatialSoundvolumeChangedSlot
@@ -355,6 +379,10 @@ proc miqt_exec_callback_cQSpatialSound_distanceModelChanged(slot: int) {.exportc
   let nimfunc = cast[ptr QSpatialSounddistanceModelChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSpatialSound_distanceModelChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_distanceModelChanged_release".} =
+  let nimfunc = cast[ref QSpatialSounddistanceModelChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondistanceModelChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSounddistanceModelChangedSlot) =
   var tmp = new QSpatialSounddistanceModelChangedSlot
   tmp[] = slot
@@ -368,6 +396,10 @@ type QSpatialSoundsizeChangedSlot* = proc()
 proc miqt_exec_callback_cQSpatialSound_sizeChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_sizeChanged".} =
   let nimfunc = cast[ptr QSpatialSoundsizeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSpatialSound_sizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_sizeChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundsizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsizeChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundsizeChangedSlot) =
   var tmp = new QSpatialSoundsizeChangedSlot
@@ -383,6 +415,10 @@ proc miqt_exec_callback_cQSpatialSound_distanceCutoffChanged(slot: int) {.export
   let nimfunc = cast[ptr QSpatialSounddistanceCutoffChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSpatialSound_distanceCutoffChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_distanceCutoffChanged_release".} =
+  let nimfunc = cast[ref QSpatialSounddistanceCutoffChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondistanceCutoffChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSounddistanceCutoffChangedSlot) =
   var tmp = new QSpatialSounddistanceCutoffChangedSlot
   tmp[] = slot
@@ -396,6 +432,10 @@ type QSpatialSoundmanualAttenuationChangedSlot* = proc()
 proc miqt_exec_callback_cQSpatialSound_manualAttenuationChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_manualAttenuationChanged".} =
   let nimfunc = cast[ptr QSpatialSoundmanualAttenuationChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSpatialSound_manualAttenuationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_manualAttenuationChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundmanualAttenuationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmanualAttenuationChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundmanualAttenuationChangedSlot) =
   var tmp = new QSpatialSoundmanualAttenuationChangedSlot
@@ -411,6 +451,10 @@ proc miqt_exec_callback_cQSpatialSound_occlusionIntensityChanged(slot: int) {.ex
   let nimfunc = cast[ptr QSpatialSoundocclusionIntensityChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSpatialSound_occlusionIntensityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_occlusionIntensityChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundocclusionIntensityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onocclusionIntensityChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundocclusionIntensityChangedSlot) =
   var tmp = new QSpatialSoundocclusionIntensityChangedSlot
   tmp[] = slot
@@ -424,6 +468,10 @@ type QSpatialSounddirectivityChangedSlot* = proc()
 proc miqt_exec_callback_cQSpatialSound_directivityChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_directivityChanged".} =
   let nimfunc = cast[ptr QSpatialSounddirectivityChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSpatialSound_directivityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_directivityChanged_release".} =
+  let nimfunc = cast[ref QSpatialSounddirectivityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondirectivityChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSounddirectivityChangedSlot) =
   var tmp = new QSpatialSounddirectivityChangedSlot
@@ -439,6 +487,10 @@ proc miqt_exec_callback_cQSpatialSound_directivityOrderChanged(slot: int) {.expo
   let nimfunc = cast[ptr QSpatialSounddirectivityOrderChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQSpatialSound_directivityOrderChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_directivityOrderChanged_release".} =
+  let nimfunc = cast[ref QSpatialSounddirectivityOrderChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondirectivityOrderChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSounddirectivityOrderChangedSlot) =
   var tmp = new QSpatialSounddirectivityOrderChangedSlot
   tmp[] = slot
@@ -452,6 +504,10 @@ type QSpatialSoundnearFieldGainChangedSlot* = proc()
 proc miqt_exec_callback_cQSpatialSound_nearFieldGainChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_nearFieldGainChanged".} =
   let nimfunc = cast[ptr QSpatialSoundnearFieldGainChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQSpatialSound_nearFieldGainChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_nearFieldGainChanged_release".} =
+  let nimfunc = cast[ref QSpatialSoundnearFieldGainChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnearFieldGainChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundnearFieldGainChangedSlot) =
   var tmp = new QSpatialSoundnearFieldGainChangedSlot

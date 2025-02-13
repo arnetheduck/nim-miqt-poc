@@ -470,6 +470,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_dynamicSortFilterChanged(slot: in
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSortFilterProxyModel_dynamicSortFilterChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_dynamicSortFilterChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModeldynamicSortFilterChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondynamicSortFilterChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModeldynamicSortFilterChangedSlot) =
   var tmp = new QSortFilterProxyModeldynamicSortFilterChangedSlot
   tmp[] = slot
@@ -485,6 +489,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_filterCaseSensitivityChanged(slot
   let slotval1 = cint(filterCaseSensitivity)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSortFilterProxyModel_filterCaseSensitivityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_filterCaseSensitivityChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModelfilterCaseSensitivityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfilterCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelfilterCaseSensitivityChangedSlot) =
   var tmp = new QSortFilterProxyModelfilterCaseSensitivityChangedSlot
@@ -502,6 +510,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_sortCaseSensitivityChanged(slot: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSortFilterProxyModel_sortCaseSensitivityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_sortCaseSensitivityChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModelsortCaseSensitivityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsortCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelsortCaseSensitivityChangedSlot) =
   var tmp = new QSortFilterProxyModelsortCaseSensitivityChangedSlot
   tmp[] = slot
@@ -517,6 +529,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_sortLocaleAwareChanged(slot: int,
   let slotval1 = sortLocaleAware
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSortFilterProxyModel_sortLocaleAwareChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_sortLocaleAwareChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModelsortLocaleAwareChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsortLocaleAwareChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelsortLocaleAwareChangedSlot) =
   var tmp = new QSortFilterProxyModelsortLocaleAwareChangedSlot
@@ -534,6 +550,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_sortRoleChanged(slot: int, sortRo
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSortFilterProxyModel_sortRoleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_sortRoleChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModelsortRoleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsortRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelsortRoleChangedSlot) =
   var tmp = new QSortFilterProxyModelsortRoleChangedSlot
   tmp[] = slot
@@ -549,6 +569,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_filterRoleChanged(slot: int, filt
   let slotval1 = filterRole
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSortFilterProxyModel_filterRoleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_filterRoleChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModelfilterRoleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfilterRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelfilterRoleChangedSlot) =
   var tmp = new QSortFilterProxyModelfilterRoleChangedSlot
@@ -566,6 +590,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_recursiveFilteringEnabledChanged(
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSortFilterProxyModel_recursiveFilteringEnabledChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_recursiveFilteringEnabledChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModelrecursiveFilteringEnabledChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrecursiveFilteringEnabledChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelrecursiveFilteringEnabledChangedSlot) =
   var tmp = new QSortFilterProxyModelrecursiveFilteringEnabledChangedSlot
   tmp[] = slot
@@ -581,6 +609,10 @@ proc miqt_exec_callback_cQSortFilterProxyModel_autoAcceptChildRowsChanged(slot: 
   let slotval1 = autoAcceptChildRows
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSortFilterProxyModel_autoAcceptChildRowsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSortFilterProxyModel_autoAcceptChildRowsChanged_release".} =
+  let nimfunc = cast[ref QSortFilterProxyModelautoAcceptChildRowsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onautoAcceptChildRowsChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelautoAcceptChildRowsChangedSlot) =
   var tmp = new QSortFilterProxyModelautoAcceptChildRowsChangedSlot

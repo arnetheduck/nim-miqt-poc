@@ -251,6 +251,10 @@ proc miqt_exec_callback_cQWebEngineDownloadRequest_stateChanged(slot: int, state
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEngineDownloadRequest_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_stateChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequeststateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequeststateChangedSlot) =
   var tmp = new QWebEngineDownloadRequeststateChangedSlot
   tmp[] = slot
@@ -264,6 +268,10 @@ type QWebEngineDownloadRequestsavePageFormatChangedSlot* = proc()
 proc miqt_exec_callback_cQWebEngineDownloadRequest_savePageFormatChanged(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged".} =
   let nimfunc = cast[ptr QWebEngineDownloadRequestsavePageFormatChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEngineDownloadRequest_savePageFormatChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequestsavePageFormatChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsavePageFormatChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequestsavePageFormatChangedSlot) =
   var tmp = new QWebEngineDownloadRequestsavePageFormatChangedSlot
@@ -279,6 +287,10 @@ proc miqt_exec_callback_cQWebEngineDownloadRequest_receivedBytesChanged(slot: in
   let nimfunc = cast[ptr QWebEngineDownloadRequestreceivedBytesChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEngineDownloadRequest_receivedBytesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequestreceivedBytesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onreceivedBytesChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequestreceivedBytesChangedSlot) =
   var tmp = new QWebEngineDownloadRequestreceivedBytesChangedSlot
   tmp[] = slot
@@ -292,6 +304,10 @@ type QWebEngineDownloadRequesttotalBytesChangedSlot* = proc()
 proc miqt_exec_callback_cQWebEngineDownloadRequest_totalBytesChanged(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged".} =
   let nimfunc = cast[ptr QWebEngineDownloadRequesttotalBytesChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEngineDownloadRequest_totalBytesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequesttotalBytesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontotalBytesChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequesttotalBytesChangedSlot) =
   var tmp = new QWebEngineDownloadRequesttotalBytesChangedSlot
@@ -307,6 +323,10 @@ proc miqt_exec_callback_cQWebEngineDownloadRequest_interruptReasonChanged(slot: 
   let nimfunc = cast[ptr QWebEngineDownloadRequestinterruptReasonChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEngineDownloadRequest_interruptReasonChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequestinterruptReasonChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oninterruptReasonChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequestinterruptReasonChangedSlot) =
   var tmp = new QWebEngineDownloadRequestinterruptReasonChangedSlot
   tmp[] = slot
@@ -320,6 +340,10 @@ type QWebEngineDownloadRequestisFinishedChangedSlot* = proc()
 proc miqt_exec_callback_cQWebEngineDownloadRequest_isFinishedChanged(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged".} =
   let nimfunc = cast[ptr QWebEngineDownloadRequestisFinishedChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEngineDownloadRequest_isFinishedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequestisFinishedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onisFinishedChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequestisFinishedChangedSlot) =
   var tmp = new QWebEngineDownloadRequestisFinishedChangedSlot
@@ -335,6 +359,10 @@ proc miqt_exec_callback_cQWebEngineDownloadRequest_isPausedChanged(slot: int) {.
   let nimfunc = cast[ptr QWebEngineDownloadRequestisPausedChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEngineDownloadRequest_isPausedChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequestisPausedChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onisPausedChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequestisPausedChangedSlot) =
   var tmp = new QWebEngineDownloadRequestisPausedChangedSlot
   tmp[] = slot
@@ -349,6 +377,10 @@ proc miqt_exec_callback_cQWebEngineDownloadRequest_downloadDirectoryChanged(slot
   let nimfunc = cast[ptr QWebEngineDownloadRequestdownloadDirectoryChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEngineDownloadRequest_downloadDirectoryChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequestdownloadDirectoryChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondownloadDirectoryChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequestdownloadDirectoryChangedSlot) =
   var tmp = new QWebEngineDownloadRequestdownloadDirectoryChangedSlot
   tmp[] = slot
@@ -362,6 +394,10 @@ type QWebEngineDownloadRequestdownloadFileNameChangedSlot* = proc()
 proc miqt_exec_callback_cQWebEngineDownloadRequest_downloadFileNameChanged(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged".} =
   let nimfunc = cast[ptr QWebEngineDownloadRequestdownloadFileNameChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWebEngineDownloadRequest_downloadFileNameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged_release".} =
+  let nimfunc = cast[ref QWebEngineDownloadRequestdownloadFileNameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondownloadFileNameChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: QWebEngineDownloadRequestdownloadFileNameChangedSlot) =
   var tmp = new QWebEngineDownloadRequestdownloadFileNameChangedSlot

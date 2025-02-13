@@ -50,14 +50,23 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QFileDialog_fileSelected(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_fileSelected_release(intptr_t);
 void miqt_exec_callback_QFileDialog_filesSelected(intptr_t, struct miqt_array /* of struct miqt_string */ );
+void miqt_exec_callback_QFileDialog_filesSelected_release(intptr_t);
 void miqt_exec_callback_QFileDialog_currentChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_currentChanged_release(intptr_t);
 void miqt_exec_callback_QFileDialog_directoryEntered(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_directoryEntered_release(intptr_t);
 void miqt_exec_callback_QFileDialog_urlSelected(intptr_t, QUrl*);
+void miqt_exec_callback_QFileDialog_urlSelected_release(intptr_t);
 void miqt_exec_callback_QFileDialog_urlsSelected(intptr_t, struct miqt_array /* of QUrl* */ );
+void miqt_exec_callback_QFileDialog_urlsSelected_release(intptr_t);
 void miqt_exec_callback_QFileDialog_currentUrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QFileDialog_currentUrlChanged_release(intptr_t);
 void miqt_exec_callback_QFileDialog_directoryUrlEntered(intptr_t, QUrl*);
+void miqt_exec_callback_QFileDialog_directoryUrlEntered_release(intptr_t);
 void miqt_exec_callback_QFileDialog_filterSelected(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_filterSelected_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1633,17 +1642,26 @@ void QFileDialog_fileSelected(QFileDialog* self, struct miqt_string file) {
 }
 
 void QFileDialog_connect_fileSelected(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::fileSelected), self, [=](const QString& file) {
-		const QString file_ret = file;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray file_b = file_ret.toUtf8();
-		struct miqt_string file_ms;
-		file_ms.len = file_b.length();
-		file_ms.data = static_cast<char*>(malloc(file_ms.len));
-		memcpy(file_ms.data, file_b.data(), file_ms.len);
-		struct miqt_string sigval1 = file_ms;
-		miqt_exec_callback_QFileDialog_fileSelected(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& file) {
+			const QString file_ret = file;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray file_b = file_ret.toUtf8();
+			struct miqt_string file_ms;
+			file_ms.len = file_b.length();
+			file_ms.data = static_cast<char*>(malloc(file_ms.len));
+			memcpy(file_ms.data, file_b.data(), file_ms.len);
+			struct miqt_string sigval1 = file_ms;
+			miqt_exec_callback_QFileDialog_fileSelected(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_fileSelected_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::fileSelected), self, caller{slot});
 }
 
 void QFileDialog_filesSelected(QFileDialog* self, struct miqt_array /* of struct miqt_string */  files) {
@@ -1658,26 +1676,35 @@ void QFileDialog_filesSelected(QFileDialog* self, struct miqt_array /* of struct
 }
 
 void QFileDialog_connect_filesSelected(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QStringList&)>(&QFileDialog::filesSelected), self, [=](const QStringList& files) {
-		const QStringList& files_ret = files;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* files_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * files_ret.length()));
-		for (size_t i = 0, e = files_ret.length(); i < e; ++i) {
-			QString files_lv_ret = files_ret[i];
-			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-			QByteArray files_lv_b = files_lv_ret.toUtf8();
-			struct miqt_string files_lv_ms;
-			files_lv_ms.len = files_lv_b.length();
-			files_lv_ms.data = static_cast<char*>(malloc(files_lv_ms.len));
-			memcpy(files_lv_ms.data, files_lv_b.data(), files_lv_ms.len);
-			files_arr[i] = files_lv_ms;
+	struct caller {
+		intptr_t slot;
+		void operator()(const QStringList& files) {
+			const QStringList& files_ret = files;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			struct miqt_string* files_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * files_ret.length()));
+			for (size_t i = 0, e = files_ret.length(); i < e; ++i) {
+				QString files_lv_ret = files_ret[i];
+				// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+				QByteArray files_lv_b = files_lv_ret.toUtf8();
+				struct miqt_string files_lv_ms;
+				files_lv_ms.len = files_lv_b.length();
+				files_lv_ms.data = static_cast<char*>(malloc(files_lv_ms.len));
+				memcpy(files_lv_ms.data, files_lv_b.data(), files_lv_ms.len);
+				files_arr[i] = files_lv_ms;
+			}
+			struct miqt_array files_out;
+			files_out.len = files_ret.length();
+			files_out.data = static_cast<void*>(files_arr);
+			struct miqt_array /* of struct miqt_string */  sigval1 = files_out;
+			miqt_exec_callback_QFileDialog_filesSelected(slot, sigval1);
 		}
-		struct miqt_array files_out;
-		files_out.len = files_ret.length();
-		files_out.data = static_cast<void*>(files_arr);
-		struct miqt_array /* of struct miqt_string */  sigval1 = files_out;
-		miqt_exec_callback_QFileDialog_filesSelected(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_filesSelected_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QStringList&)>(&QFileDialog::filesSelected), self, caller{slot});
 }
 
 void QFileDialog_currentChanged(QFileDialog* self, struct miqt_string path) {
@@ -1686,17 +1713,26 @@ void QFileDialog_currentChanged(QFileDialog* self, struct miqt_string path) {
 }
 
 void QFileDialog_connect_currentChanged(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::currentChanged), self, [=](const QString& path) {
-		const QString path_ret = path;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray path_b = path_ret.toUtf8();
-		struct miqt_string path_ms;
-		path_ms.len = path_b.length();
-		path_ms.data = static_cast<char*>(malloc(path_ms.len));
-		memcpy(path_ms.data, path_b.data(), path_ms.len);
-		struct miqt_string sigval1 = path_ms;
-		miqt_exec_callback_QFileDialog_currentChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& path) {
+			const QString path_ret = path;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray path_b = path_ret.toUtf8();
+			struct miqt_string path_ms;
+			path_ms.len = path_b.length();
+			path_ms.data = static_cast<char*>(malloc(path_ms.len));
+			memcpy(path_ms.data, path_b.data(), path_ms.len);
+			struct miqt_string sigval1 = path_ms;
+			miqt_exec_callback_QFileDialog_currentChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_currentChanged_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::currentChanged), self, caller{slot});
 }
 
 void QFileDialog_directoryEntered(QFileDialog* self, struct miqt_string directory) {
@@ -1705,17 +1741,26 @@ void QFileDialog_directoryEntered(QFileDialog* self, struct miqt_string director
 }
 
 void QFileDialog_connect_directoryEntered(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::directoryEntered), self, [=](const QString& directory) {
-		const QString directory_ret = directory;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray directory_b = directory_ret.toUtf8();
-		struct miqt_string directory_ms;
-		directory_ms.len = directory_b.length();
-		directory_ms.data = static_cast<char*>(malloc(directory_ms.len));
-		memcpy(directory_ms.data, directory_b.data(), directory_ms.len);
-		struct miqt_string sigval1 = directory_ms;
-		miqt_exec_callback_QFileDialog_directoryEntered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& directory) {
+			const QString directory_ret = directory;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray directory_b = directory_ret.toUtf8();
+			struct miqt_string directory_ms;
+			directory_ms.len = directory_b.length();
+			directory_ms.data = static_cast<char*>(malloc(directory_ms.len));
+			memcpy(directory_ms.data, directory_b.data(), directory_ms.len);
+			struct miqt_string sigval1 = directory_ms;
+			miqt_exec_callback_QFileDialog_directoryEntered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_directoryEntered_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::directoryEntered), self, caller{slot});
 }
 
 void QFileDialog_urlSelected(QFileDialog* self, QUrl* url) {
@@ -1723,12 +1768,21 @@ void QFileDialog_urlSelected(QFileDialog* self, QUrl* url) {
 }
 
 void QFileDialog_connect_urlSelected(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::urlSelected), self, [=](const QUrl& url) {
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QFileDialog_urlSelected(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& url) {
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
+			miqt_exec_callback_QFileDialog_urlSelected(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_urlSelected_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::urlSelected), self, caller{slot});
 }
 
 void QFileDialog_urlsSelected(QFileDialog* self, struct miqt_array /* of QUrl* */  urls) {
@@ -1742,19 +1796,28 @@ void QFileDialog_urlsSelected(QFileDialog* self, struct miqt_array /* of QUrl* *
 }
 
 void QFileDialog_connect_urlsSelected(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QList<QUrl>&)>(&QFileDialog::urlsSelected), self, [=](const QList<QUrl>& urls) {
-		const QList<QUrl>& urls_ret = urls;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QUrl** urls_arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * urls_ret.length()));
-		for (size_t i = 0, e = urls_ret.length(); i < e; ++i) {
-			urls_arr[i] = new QUrl(urls_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QUrl>& urls) {
+			const QList<QUrl>& urls_ret = urls;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QUrl** urls_arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * urls_ret.length()));
+			for (size_t i = 0, e = urls_ret.length(); i < e; ++i) {
+				urls_arr[i] = new QUrl(urls_ret[i]);
+			}
+			struct miqt_array urls_out;
+			urls_out.len = urls_ret.length();
+			urls_out.data = static_cast<void*>(urls_arr);
+			struct miqt_array /* of QUrl* */  sigval1 = urls_out;
+			miqt_exec_callback_QFileDialog_urlsSelected(slot, sigval1);
 		}
-		struct miqt_array urls_out;
-		urls_out.len = urls_ret.length();
-		urls_out.data = static_cast<void*>(urls_arr);
-		struct miqt_array /* of QUrl* */  sigval1 = urls_out;
-		miqt_exec_callback_QFileDialog_urlsSelected(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_urlsSelected_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QList<QUrl>&)>(&QFileDialog::urlsSelected), self, caller{slot});
 }
 
 void QFileDialog_currentUrlChanged(QFileDialog* self, QUrl* url) {
@@ -1762,12 +1825,21 @@ void QFileDialog_currentUrlChanged(QFileDialog* self, QUrl* url) {
 }
 
 void QFileDialog_connect_currentUrlChanged(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::currentUrlChanged), self, [=](const QUrl& url) {
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QFileDialog_currentUrlChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& url) {
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
+			miqt_exec_callback_QFileDialog_currentUrlChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_currentUrlChanged_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::currentUrlChanged), self, caller{slot});
 }
 
 void QFileDialog_directoryUrlEntered(QFileDialog* self, QUrl* directory) {
@@ -1775,12 +1847,21 @@ void QFileDialog_directoryUrlEntered(QFileDialog* self, QUrl* directory) {
 }
 
 void QFileDialog_connect_directoryUrlEntered(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::directoryUrlEntered), self, [=](const QUrl& directory) {
-		const QUrl& directory_ret = directory;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&directory_ret);
-		miqt_exec_callback_QFileDialog_directoryUrlEntered(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QUrl& directory) {
+			const QUrl& directory_ret = directory;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&directory_ret);
+			miqt_exec_callback_QFileDialog_directoryUrlEntered(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_directoryUrlEntered_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::directoryUrlEntered), self, caller{slot});
 }
 
 void QFileDialog_filterSelected(QFileDialog* self, struct miqt_string filter) {
@@ -1789,17 +1870,26 @@ void QFileDialog_filterSelected(QFileDialog* self, struct miqt_string filter) {
 }
 
 void QFileDialog_connect_filterSelected(QFileDialog* self, intptr_t slot) {
-	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::filterSelected), self, [=](const QString& filter) {
-		const QString filter_ret = filter;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray filter_b = filter_ret.toUtf8();
-		struct miqt_string filter_ms;
-		filter_ms.len = filter_b.length();
-		filter_ms.data = static_cast<char*>(malloc(filter_ms.len));
-		memcpy(filter_ms.data, filter_b.data(), filter_ms.len);
-		struct miqt_string sigval1 = filter_ms;
-		miqt_exec_callback_QFileDialog_filterSelected(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& filter) {
+			const QString filter_ret = filter;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray filter_b = filter_ret.toUtf8();
+			struct miqt_string filter_ms;
+			filter_ms.len = filter_b.length();
+			filter_ms.data = static_cast<char*>(malloc(filter_ms.len));
+			memcpy(filter_ms.data, filter_b.data(), filter_ms.len);
+			struct miqt_string sigval1 = filter_ms;
+			miqt_exec_callback_QFileDialog_filterSelected(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileDialog_filterSelected_release(slot); }
+	};
+	MiqtVirtualQFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::filterSelected), self, caller{slot});
 }
 
 struct miqt_string QFileDialog_getOpenFileName() {

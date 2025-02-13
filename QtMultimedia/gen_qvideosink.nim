@@ -141,6 +141,10 @@ proc miqt_exec_callback_cQVideoSink_videoFrameChanged(slot: int, frame: pointer)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQVideoSink_videoFrameChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVideoSink_videoFrameChanged_release".} =
+  let nimfunc = cast[ref QVideoSinkvideoFrameChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvideoFrameChanged*(self: gen_qvideosink_types.QVideoSink, slot: QVideoSinkvideoFrameChangedSlot) =
   var tmp = new QVideoSinkvideoFrameChangedSlot
   tmp[] = slot
@@ -160,6 +164,10 @@ proc miqt_exec_callback_cQVideoSink_subtitleTextChanged(slot: int, subtitleText:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQVideoSink_subtitleTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVideoSink_subtitleTextChanged_release".} =
+  let nimfunc = cast[ref QVideoSinksubtitleTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsubtitleTextChanged*(self: gen_qvideosink_types.QVideoSink, slot: QVideoSinksubtitleTextChangedSlot) =
   var tmp = new QVideoSinksubtitleTextChangedSlot
   tmp[] = slot
@@ -173,6 +181,10 @@ type QVideoSinkvideoSizeChangedSlot* = proc()
 proc miqt_exec_callback_cQVideoSink_videoSizeChanged(slot: int) {.exportc: "miqt_exec_callback_QVideoSink_videoSizeChanged".} =
   let nimfunc = cast[ptr QVideoSinkvideoSizeChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQVideoSink_videoSizeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVideoSink_videoSizeChanged_release".} =
+  let nimfunc = cast[ref QVideoSinkvideoSizeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvideoSizeChanged*(self: gen_qvideosink_types.QVideoSink, slot: QVideoSinkvideoSizeChangedSlot) =
   var tmp = new QVideoSinkvideoSizeChangedSlot

@@ -466,6 +466,10 @@ proc miqt_exec_callback_cQGraphicsScale_originChanged(slot: int) {.exportc: "miq
   let nimfunc = cast[ptr QGraphicsScaleoriginChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGraphicsScale_originChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScale_originChanged_release".} =
+  let nimfunc = cast[ref QGraphicsScaleoriginChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onoriginChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaleoriginChangedSlot) =
   var tmp = new QGraphicsScaleoriginChangedSlot
   tmp[] = slot
@@ -479,6 +483,10 @@ type QGraphicsScalexScaleChangedSlot* = proc()
 proc miqt_exec_callback_cQGraphicsScale_xScaleChanged(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScale_xScaleChanged".} =
   let nimfunc = cast[ptr QGraphicsScalexScaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGraphicsScale_xScaleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScale_xScaleChanged_release".} =
+  let nimfunc = cast[ref QGraphicsScalexScaleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onxScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalexScaleChangedSlot) =
   var tmp = new QGraphicsScalexScaleChangedSlot
@@ -494,6 +502,10 @@ proc miqt_exec_callback_cQGraphicsScale_yScaleChanged(slot: int) {.exportc: "miq
   let nimfunc = cast[ptr QGraphicsScaleyScaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGraphicsScale_yScaleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScale_yScaleChanged_release".} =
+  let nimfunc = cast[ref QGraphicsScaleyScaleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onyScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaleyScaleChangedSlot) =
   var tmp = new QGraphicsScaleyScaleChangedSlot
   tmp[] = slot
@@ -508,6 +520,10 @@ proc miqt_exec_callback_cQGraphicsScale_zScaleChanged(slot: int) {.exportc: "miq
   let nimfunc = cast[ptr QGraphicsScalezScaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGraphicsScale_zScaleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScale_zScaleChanged_release".} =
+  let nimfunc = cast[ref QGraphicsScalezScaleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onzScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalezScaleChangedSlot) =
   var tmp = new QGraphicsScalezScaleChangedSlot
   tmp[] = slot
@@ -521,6 +537,10 @@ type QGraphicsScalescaleChangedSlot* = proc()
 proc miqt_exec_callback_cQGraphicsScale_scaleChanged(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScale_scaleChanged".} =
   let nimfunc = cast[ptr QGraphicsScalescaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGraphicsScale_scaleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScale_scaleChanged_release".} =
+  let nimfunc = cast[ref QGraphicsScalescaleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onscaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalescaleChangedSlot) =
   var tmp = new QGraphicsScalescaleChangedSlot
@@ -784,6 +804,10 @@ proc miqt_exec_callback_cQGraphicsRotation_originChanged(slot: int) {.exportc: "
   let nimfunc = cast[ptr QGraphicsRotationoriginChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGraphicsRotation_originChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsRotation_originChanged_release".} =
+  let nimfunc = cast[ref QGraphicsRotationoriginChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onoriginChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationoriginChangedSlot) =
   var tmp = new QGraphicsRotationoriginChangedSlot
   tmp[] = slot
@@ -798,6 +822,10 @@ proc miqt_exec_callback_cQGraphicsRotation_angleChanged(slot: int) {.exportc: "m
   let nimfunc = cast[ptr QGraphicsRotationangleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGraphicsRotation_angleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsRotation_angleChanged_release".} =
+  let nimfunc = cast[ref QGraphicsRotationangleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onangleChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationangleChangedSlot) =
   var tmp = new QGraphicsRotationangleChangedSlot
   tmp[] = slot
@@ -811,6 +839,10 @@ type QGraphicsRotationaxisChangedSlot* = proc()
 proc miqt_exec_callback_cQGraphicsRotation_axisChanged(slot: int) {.exportc: "miqt_exec_callback_QGraphicsRotation_axisChanged".} =
   let nimfunc = cast[ptr QGraphicsRotationaxisChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGraphicsRotation_axisChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsRotation_axisChanged_release".} =
+  let nimfunc = cast[ref QGraphicsRotationaxisChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaxisChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationaxisChangedSlot) =
   var tmp = new QGraphicsRotationaxisChangedSlot

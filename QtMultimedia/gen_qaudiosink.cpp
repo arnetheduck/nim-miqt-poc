@@ -19,6 +19,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAudioSink_stateChanged(intptr_t, int);
+void miqt_exec_callback_QAudioSink_stateChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -381,11 +382,20 @@ void QAudioSink_stateChanged(QAudioSink* self, int state) {
 }
 
 void QAudioSink_connect_stateChanged(QAudioSink* self, intptr_t slot) {
-	MiqtVirtualQAudioSink::connect(self, static_cast<void (QAudioSink::*)(QAudio::State)>(&QAudioSink::stateChanged), self, [=](QAudio::State state) {
-		QAudio::State state_ret = state;
-		int sigval1 = static_cast<int>(state_ret);
-		miqt_exec_callback_QAudioSink_stateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QAudio::State state) {
+			QAudio::State state_ret = state;
+			int sigval1 = static_cast<int>(state_ret);
+			miqt_exec_callback_QAudioSink_stateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QAudioSink_stateChanged_release(slot); }
+	};
+	MiqtVirtualQAudioSink::connect(self, static_cast<void (QAudioSink::*)(QAudio::State)>(&QAudioSink::stateChanged), self, caller{slot});
 }
 
 struct miqt_string QAudioSink_tr2(const char* s, const char* c) {

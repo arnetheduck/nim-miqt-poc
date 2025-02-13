@@ -227,6 +227,10 @@ proc miqt_exec_callback_cQAudioRoom_positionChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QAudioRoompositionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioRoom_positionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_positionChanged_release".} =
+  let nimfunc = cast[ref QAudioRoompositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpositionChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoompositionChangedSlot) =
   var tmp = new QAudioRoompositionChangedSlot
   tmp[] = slot
@@ -240,6 +244,10 @@ type QAudioRoomdimensionsChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioRoom_dimensionsChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_dimensionsChanged".} =
   let nimfunc = cast[ptr QAudioRoomdimensionsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioRoom_dimensionsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_dimensionsChanged_release".} =
+  let nimfunc = cast[ref QAudioRoomdimensionsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondimensionsChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomdimensionsChangedSlot) =
   var tmp = new QAudioRoomdimensionsChangedSlot
@@ -255,6 +263,10 @@ proc miqt_exec_callback_cQAudioRoom_rotationChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QAudioRoomrotationChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioRoom_rotationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_rotationChanged_release".} =
+  let nimfunc = cast[ref QAudioRoomrotationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrotationChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomrotationChangedSlot) =
   var tmp = new QAudioRoomrotationChangedSlot
   tmp[] = slot
@@ -268,6 +280,10 @@ type QAudioRoomwallsChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioRoom_wallsChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_wallsChanged".} =
   let nimfunc = cast[ptr QAudioRoomwallsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioRoom_wallsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_wallsChanged_release".} =
+  let nimfunc = cast[ref QAudioRoomwallsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onwallsChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomwallsChangedSlot) =
   var tmp = new QAudioRoomwallsChangedSlot
@@ -283,6 +299,10 @@ proc miqt_exec_callback_cQAudioRoom_reflectionGainChanged(slot: int) {.exportc: 
   let nimfunc = cast[ptr QAudioRoomreflectionGainChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioRoom_reflectionGainChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reflectionGainChanged_release".} =
+  let nimfunc = cast[ref QAudioRoomreflectionGainChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onreflectionGainChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomreflectionGainChangedSlot) =
   var tmp = new QAudioRoomreflectionGainChangedSlot
   tmp[] = slot
@@ -296,6 +316,10 @@ type QAudioRoomreverbGainChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioRoom_reverbGainChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbGainChanged".} =
   let nimfunc = cast[ptr QAudioRoomreverbGainChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioRoom_reverbGainChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbGainChanged_release".} =
+  let nimfunc = cast[ref QAudioRoomreverbGainChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onreverbGainChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomreverbGainChangedSlot) =
   var tmp = new QAudioRoomreverbGainChangedSlot
@@ -311,6 +335,10 @@ proc miqt_exec_callback_cQAudioRoom_reverbTimeChanged(slot: int) {.exportc: "miq
   let nimfunc = cast[ptr QAudioRoomreverbTimeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAudioRoom_reverbTimeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbTimeChanged_release".} =
+  let nimfunc = cast[ref QAudioRoomreverbTimeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onreverbTimeChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomreverbTimeChangedSlot) =
   var tmp = new QAudioRoomreverbTimeChangedSlot
   tmp[] = slot
@@ -324,6 +352,10 @@ type QAudioRoomreverbBrightnessChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioRoom_reverbBrightnessChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbBrightnessChanged".} =
   let nimfunc = cast[ptr QAudioRoomreverbBrightnessChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioRoom_reverbBrightnessChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbBrightnessChanged_release".} =
+  let nimfunc = cast[ref QAudioRoomreverbBrightnessChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onreverbBrightnessChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomreverbBrightnessChangedSlot) =
   var tmp = new QAudioRoomreverbBrightnessChangedSlot

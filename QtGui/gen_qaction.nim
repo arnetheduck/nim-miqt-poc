@@ -399,6 +399,10 @@ proc miqt_exec_callback_cQAction_changed(slot: int) {.exportc: "miqt_exec_callba
   let nimfunc = cast[ptr QActionchangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAction_changed_release(slot: int) {.exportc: "miqt_exec_callback_QAction_changed_release".} =
+  let nimfunc = cast[ref QActionchangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onchanged*(self: gen_qaction_types.QAction, slot: QActionchangedSlot) =
   var tmp = new QActionchangedSlot
   tmp[] = slot
@@ -414,6 +418,10 @@ proc miqt_exec_callback_cQAction_enabledChanged(slot: int, enabled: bool) {.expo
   let slotval1 = enabled
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAction_enabledChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAction_enabledChanged_release".} =
+  let nimfunc = cast[ref QActionenabledChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onenabledChanged*(self: gen_qaction_types.QAction, slot: QActionenabledChangedSlot) =
   var tmp = new QActionenabledChangedSlot
@@ -431,6 +439,10 @@ proc miqt_exec_callback_cQAction_checkableChanged(slot: int, checkable: bool) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAction_checkableChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAction_checkableChanged_release".} =
+  let nimfunc = cast[ref QActioncheckableChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncheckableChanged*(self: gen_qaction_types.QAction, slot: QActioncheckableChangedSlot) =
   var tmp = new QActioncheckableChangedSlot
   tmp[] = slot
@@ -444,6 +456,10 @@ type QActionvisibleChangedSlot* = proc()
 proc miqt_exec_callback_cQAction_visibleChanged(slot: int) {.exportc: "miqt_exec_callback_QAction_visibleChanged".} =
   let nimfunc = cast[ptr QActionvisibleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAction_visibleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAction_visibleChanged_release".} =
+  let nimfunc = cast[ref QActionvisibleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvisibleChanged*(self: gen_qaction_types.QAction, slot: QActionvisibleChangedSlot) =
   var tmp = new QActionvisibleChangedSlot
@@ -459,6 +475,10 @@ proc miqt_exec_callback_cQAction_triggered(slot: int) {.exportc: "miqt_exec_call
   let nimfunc = cast[ptr QActiontriggeredSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAction_triggered_release(slot: int) {.exportc: "miqt_exec_callback_QAction_triggered_release".} =
+  let nimfunc = cast[ref QActiontriggeredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontriggered*(self: gen_qaction_types.QAction, slot: QActiontriggeredSlot) =
   var tmp = new QActiontriggeredSlot
   tmp[] = slot
@@ -472,6 +492,10 @@ type QActionhoveredSlot* = proc()
 proc miqt_exec_callback_cQAction_hovered(slot: int) {.exportc: "miqt_exec_callback_QAction_hovered".} =
   let nimfunc = cast[ptr QActionhoveredSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAction_hovered_release(slot: int) {.exportc: "miqt_exec_callback_QAction_hovered_release".} =
+  let nimfunc = cast[ref QActionhoveredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhovered*(self: gen_qaction_types.QAction, slot: QActionhoveredSlot) =
   var tmp = new QActionhoveredSlot
@@ -488,6 +512,10 @@ proc miqt_exec_callback_cQAction_toggled(slot: int, param1: bool) {.exportc: "mi
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAction_toggled_release(slot: int) {.exportc: "miqt_exec_callback_QAction_toggled_release".} =
+  let nimfunc = cast[ref QActiontoggledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontoggled*(self: gen_qaction_types.QAction, slot: QActiontoggledSlot) =
   var tmp = new QActiontoggledSlot
@@ -519,6 +547,10 @@ proc miqt_exec_callback_cQAction_triggered1(slot: int, checked: bool) {.exportc:
   let slotval1 = checked
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAction_triggered1_release(slot: int) {.exportc: "miqt_exec_callback_QAction_triggered1_release".} =
+  let nimfunc = cast[ref QActiontriggered1Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontriggered*(self: gen_qaction_types.QAction, slot: QActiontriggered1Slot) =
   var tmp = new QActiontriggered1Slot

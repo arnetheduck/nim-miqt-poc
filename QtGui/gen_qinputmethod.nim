@@ -186,6 +186,10 @@ proc miqt_exec_callback_cQInputMethod_cursorRectangleChanged(slot: int) {.export
   let nimfunc = cast[ptr QInputMethodcursorRectangleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQInputMethod_cursorRectangleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_cursorRectangleChanged_release".} =
+  let nimfunc = cast[ref QInputMethodcursorRectangleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncursorRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodcursorRectangleChangedSlot) =
   var tmp = new QInputMethodcursorRectangleChangedSlot
   tmp[] = slot
@@ -199,6 +203,10 @@ type QInputMethodanchorRectangleChangedSlot* = proc()
 proc miqt_exec_callback_cQInputMethod_anchorRectangleChanged(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_anchorRectangleChanged".} =
   let nimfunc = cast[ptr QInputMethodanchorRectangleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQInputMethod_anchorRectangleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_anchorRectangleChanged_release".} =
+  let nimfunc = cast[ref QInputMethodanchorRectangleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onanchorRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodanchorRectangleChangedSlot) =
   var tmp = new QInputMethodanchorRectangleChangedSlot
@@ -214,6 +222,10 @@ proc miqt_exec_callback_cQInputMethod_keyboardRectangleChanged(slot: int) {.expo
   let nimfunc = cast[ptr QInputMethodkeyboardRectangleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQInputMethod_keyboardRectangleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_keyboardRectangleChanged_release".} =
+  let nimfunc = cast[ref QInputMethodkeyboardRectangleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onkeyboardRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodkeyboardRectangleChangedSlot) =
   var tmp = new QInputMethodkeyboardRectangleChangedSlot
   tmp[] = slot
@@ -227,6 +239,10 @@ type QInputMethodinputItemClipRectangleChangedSlot* = proc()
 proc miqt_exec_callback_cQInputMethod_inputItemClipRectangleChanged(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_inputItemClipRectangleChanged".} =
   let nimfunc = cast[ptr QInputMethodinputItemClipRectangleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQInputMethod_inputItemClipRectangleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_inputItemClipRectangleChanged_release".} =
+  let nimfunc = cast[ref QInputMethodinputItemClipRectangleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oninputItemClipRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodinputItemClipRectangleChangedSlot) =
   var tmp = new QInputMethodinputItemClipRectangleChangedSlot
@@ -242,6 +258,10 @@ proc miqt_exec_callback_cQInputMethod_visibleChanged(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QInputMethodvisibleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQInputMethod_visibleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_visibleChanged_release".} =
+  let nimfunc = cast[ref QInputMethodvisibleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvisibleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodvisibleChangedSlot) =
   var tmp = new QInputMethodvisibleChangedSlot
   tmp[] = slot
@@ -256,6 +276,10 @@ proc miqt_exec_callback_cQInputMethod_animatingChanged(slot: int) {.exportc: "mi
   let nimfunc = cast[ptr QInputMethodanimatingChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQInputMethod_animatingChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_animatingChanged_release".} =
+  let nimfunc = cast[ref QInputMethodanimatingChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onanimatingChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodanimatingChangedSlot) =
   var tmp = new QInputMethodanimatingChangedSlot
   tmp[] = slot
@@ -269,6 +293,10 @@ type QInputMethodlocaleChangedSlot* = proc()
 proc miqt_exec_callback_cQInputMethod_localeChanged(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_localeChanged".} =
   let nimfunc = cast[ptr QInputMethodlocaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQInputMethod_localeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_localeChanged_release".} =
+  let nimfunc = cast[ref QInputMethodlocaleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlocaleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodlocaleChangedSlot) =
   var tmp = new QInputMethodlocaleChangedSlot
@@ -285,6 +313,10 @@ proc miqt_exec_callback_cQInputMethod_inputDirectionChanged(slot: int, newDirect
   let slotval1 = cint(newDirection)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQInputMethod_inputDirectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QInputMethod_inputDirectionChanged_release".} =
+  let nimfunc = cast[ref QInputMethodinputDirectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oninputDirectionChanged*(self: gen_qinputmethod_types.QInputMethod, slot: QInputMethodinputDirectionChangedSlot) =
   var tmp = new QInputMethodinputDirectionChangedSlot

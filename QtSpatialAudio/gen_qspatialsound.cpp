@@ -20,19 +20,33 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSpatialSound_sourceChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_sourceChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_loopsChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_loopsChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_autoPlayChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_autoPlayChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_positionChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_positionChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_rotationChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_rotationChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_volumeChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_volumeChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_distanceModelChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_distanceModelChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_sizeChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_sizeChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_distanceCutoffChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_distanceCutoffChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_manualAttenuationChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_manualAttenuationChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_occlusionIntensityChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_occlusionIntensityChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_directivityChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_directivityChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_directivityOrderChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_directivityOrderChanged_release(intptr_t);
 void miqt_exec_callback_QSpatialSound_nearFieldGainChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_nearFieldGainChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -412,9 +426,18 @@ void QSpatialSound_sourceChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_sourceChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::sourceChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_sourceChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_sourceChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_sourceChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::sourceChanged), self, caller{slot});
 }
 
 void QSpatialSound_loopsChanged(QSpatialSound* self) {
@@ -422,9 +445,18 @@ void QSpatialSound_loopsChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_loopsChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::loopsChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_loopsChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_loopsChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_loopsChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::loopsChanged), self, caller{slot});
 }
 
 void QSpatialSound_autoPlayChanged(QSpatialSound* self) {
@@ -432,9 +464,18 @@ void QSpatialSound_autoPlayChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_autoPlayChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::autoPlayChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_autoPlayChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_autoPlayChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_autoPlayChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::autoPlayChanged), self, caller{slot});
 }
 
 void QSpatialSound_positionChanged(QSpatialSound* self) {
@@ -442,9 +483,18 @@ void QSpatialSound_positionChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_positionChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::positionChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_positionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_positionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_positionChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::positionChanged), self, caller{slot});
 }
 
 void QSpatialSound_rotationChanged(QSpatialSound* self) {
@@ -452,9 +502,18 @@ void QSpatialSound_rotationChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_rotationChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::rotationChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_rotationChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_rotationChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_rotationChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::rotationChanged), self, caller{slot});
 }
 
 void QSpatialSound_volumeChanged(QSpatialSound* self) {
@@ -462,9 +521,18 @@ void QSpatialSound_volumeChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_volumeChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::volumeChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_volumeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_volumeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_volumeChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::volumeChanged), self, caller{slot});
 }
 
 void QSpatialSound_distanceModelChanged(QSpatialSound* self) {
@@ -472,9 +540,18 @@ void QSpatialSound_distanceModelChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_distanceModelChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::distanceModelChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_distanceModelChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_distanceModelChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_distanceModelChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::distanceModelChanged), self, caller{slot});
 }
 
 void QSpatialSound_sizeChanged(QSpatialSound* self) {
@@ -482,9 +559,18 @@ void QSpatialSound_sizeChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_sizeChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::sizeChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_sizeChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_sizeChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_sizeChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::sizeChanged), self, caller{slot});
 }
 
 void QSpatialSound_distanceCutoffChanged(QSpatialSound* self) {
@@ -492,9 +578,18 @@ void QSpatialSound_distanceCutoffChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_distanceCutoffChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::distanceCutoffChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_distanceCutoffChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_distanceCutoffChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_distanceCutoffChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::distanceCutoffChanged), self, caller{slot});
 }
 
 void QSpatialSound_manualAttenuationChanged(QSpatialSound* self) {
@@ -502,9 +597,18 @@ void QSpatialSound_manualAttenuationChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_manualAttenuationChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::manualAttenuationChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_manualAttenuationChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_manualAttenuationChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_manualAttenuationChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::manualAttenuationChanged), self, caller{slot});
 }
 
 void QSpatialSound_occlusionIntensityChanged(QSpatialSound* self) {
@@ -512,9 +616,18 @@ void QSpatialSound_occlusionIntensityChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_occlusionIntensityChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::occlusionIntensityChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_occlusionIntensityChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_occlusionIntensityChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_occlusionIntensityChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::occlusionIntensityChanged), self, caller{slot});
 }
 
 void QSpatialSound_directivityChanged(QSpatialSound* self) {
@@ -522,9 +635,18 @@ void QSpatialSound_directivityChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_directivityChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::directivityChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_directivityChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_directivityChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_directivityChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::directivityChanged), self, caller{slot});
 }
 
 void QSpatialSound_directivityOrderChanged(QSpatialSound* self) {
@@ -532,9 +654,18 @@ void QSpatialSound_directivityOrderChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_directivityOrderChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::directivityOrderChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_directivityOrderChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_directivityOrderChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_directivityOrderChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::directivityOrderChanged), self, caller{slot});
 }
 
 void QSpatialSound_nearFieldGainChanged(QSpatialSound* self) {
@@ -542,9 +673,18 @@ void QSpatialSound_nearFieldGainChanged(QSpatialSound* self) {
 }
 
 void QSpatialSound_connect_nearFieldGainChanged(QSpatialSound* self, intptr_t slot) {
-	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::nearFieldGainChanged), self, [=]() {
-		miqt_exec_callback_QSpatialSound_nearFieldGainChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSpatialSound_nearFieldGainChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSpatialSound_nearFieldGainChanged_release(slot); }
+	};
+	MiqtVirtualQSpatialSound::connect(self, static_cast<void (QSpatialSound::*)()>(&QSpatialSound::nearFieldGainChanged), self, caller{slot});
 }
 
 void QSpatialSound_play(QSpatialSound* self) {

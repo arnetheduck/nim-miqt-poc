@@ -114,6 +114,10 @@ proc miqt_exec_callback_cQWebEngineCookieStore_cookieAdded(slot: int, cookie: po
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWebEngineCookieStore_cookieAdded_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineCookieStore_cookieAdded_release".} =
+  let nimfunc = cast[ref QWebEngineCookieStorecookieAddedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncookieAdded*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, slot: QWebEngineCookieStorecookieAddedSlot) =
   var tmp = new QWebEngineCookieStorecookieAddedSlot
   tmp[] = slot
@@ -129,6 +133,10 @@ proc miqt_exec_callback_cQWebEngineCookieStore_cookieRemoved(slot: int, cookie: 
   let slotval1 = gen_qnetworkcookie_types.QNetworkCookie(h: cookie)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWebEngineCookieStore_cookieRemoved_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineCookieStore_cookieRemoved_release".} =
+  let nimfunc = cast[ref QWebEngineCookieStorecookieRemovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncookieRemoved*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, slot: QWebEngineCookieStorecookieRemovedSlot) =
   var tmp = new QWebEngineCookieStorecookieRemovedSlot

@@ -155,6 +155,10 @@ proc miqt_exec_callback_cQMediaDevices_audioInputsChanged(slot: int) {.exportc: 
   let nimfunc = cast[ptr QMediaDevicesaudioInputsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMediaDevices_audioInputsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaDevices_audioInputsChanged_release".} =
+  let nimfunc = cast[ref QMediaDevicesaudioInputsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaudioInputsChanged*(self: gen_qmediadevices_types.QMediaDevices, slot: QMediaDevicesaudioInputsChangedSlot) =
   var tmp = new QMediaDevicesaudioInputsChangedSlot
   tmp[] = slot
@@ -169,6 +173,10 @@ proc miqt_exec_callback_cQMediaDevices_audioOutputsChanged(slot: int) {.exportc:
   let nimfunc = cast[ptr QMediaDevicesaudioOutputsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMediaDevices_audioOutputsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaDevices_audioOutputsChanged_release".} =
+  let nimfunc = cast[ref QMediaDevicesaudioOutputsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaudioOutputsChanged*(self: gen_qmediadevices_types.QMediaDevices, slot: QMediaDevicesaudioOutputsChangedSlot) =
   var tmp = new QMediaDevicesaudioOutputsChangedSlot
   tmp[] = slot
@@ -182,6 +190,10 @@ type QMediaDevicesvideoInputsChangedSlot* = proc()
 proc miqt_exec_callback_cQMediaDevices_videoInputsChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaDevices_videoInputsChanged".} =
   let nimfunc = cast[ptr QMediaDevicesvideoInputsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaDevices_videoInputsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaDevices_videoInputsChanged_release".} =
+  let nimfunc = cast[ref QMediaDevicesvideoInputsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvideoInputsChanged*(self: gen_qmediadevices_types.QMediaDevices, slot: QMediaDevicesvideoInputsChangedSlot) =
   var tmp = new QMediaDevicesvideoInputsChangedSlot

@@ -17,6 +17,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLocalServer_newConnection(intptr_t);
+void miqt_exec_callback_QLocalServer_newConnection_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -343,9 +344,18 @@ void QLocalServer_newConnection(QLocalServer* self) {
 }
 
 void QLocalServer_connect_newConnection(QLocalServer* self, intptr_t slot) {
-	MiqtVirtualQLocalServer::connect(self, static_cast<void (QLocalServer::*)()>(&QLocalServer::newConnection), self, [=]() {
-		miqt_exec_callback_QLocalServer_newConnection(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QLocalServer_newConnection(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QLocalServer_newConnection_release(slot); }
+	};
+	MiqtVirtualQLocalServer::connect(self, static_cast<void (QLocalServer::*)()>(&QLocalServer::newConnection), self, caller{slot});
 }
 
 void QLocalServer_close(QLocalServer* self) {

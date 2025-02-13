@@ -333,6 +333,10 @@ proc miqt_exec_callback_cQDialogButtonBox_clicked(slot: int, button: pointer) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDialogButtonBox_clicked_release(slot: int) {.exportc: "miqt_exec_callback_QDialogButtonBox_clicked_release".} =
+  let nimfunc = cast[ref QDialogButtonBoxclickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onclicked*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxclickedSlot) =
   var tmp = new QDialogButtonBoxclickedSlot
   tmp[] = slot
@@ -346,6 +350,10 @@ type QDialogButtonBoxacceptedSlot* = proc()
 proc miqt_exec_callback_cQDialogButtonBox_accepted(slot: int) {.exportc: "miqt_exec_callback_QDialogButtonBox_accepted".} =
   let nimfunc = cast[ptr QDialogButtonBoxacceptedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQDialogButtonBox_accepted_release(slot: int) {.exportc: "miqt_exec_callback_QDialogButtonBox_accepted_release".} =
+  let nimfunc = cast[ref QDialogButtonBoxacceptedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaccepted*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxacceptedSlot) =
   var tmp = new QDialogButtonBoxacceptedSlot
@@ -361,6 +369,10 @@ proc miqt_exec_callback_cQDialogButtonBox_helpRequested(slot: int) {.exportc: "m
   let nimfunc = cast[ptr QDialogButtonBoxhelpRequestedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQDialogButtonBox_helpRequested_release(slot: int) {.exportc: "miqt_exec_callback_QDialogButtonBox_helpRequested_release".} =
+  let nimfunc = cast[ref QDialogButtonBoxhelpRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onhelpRequested*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxhelpRequestedSlot) =
   var tmp = new QDialogButtonBoxhelpRequestedSlot
   tmp[] = slot
@@ -374,6 +386,10 @@ type QDialogButtonBoxrejectedSlot* = proc()
 proc miqt_exec_callback_cQDialogButtonBox_rejected(slot: int) {.exportc: "miqt_exec_callback_QDialogButtonBox_rejected".} =
   let nimfunc = cast[ptr QDialogButtonBoxrejectedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQDialogButtonBox_rejected_release(slot: int) {.exportc: "miqt_exec_callback_QDialogButtonBox_rejected_release".} =
+  let nimfunc = cast[ref QDialogButtonBoxrejectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onrejected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxrejectedSlot) =
   var tmp = new QDialogButtonBoxrejectedSlot

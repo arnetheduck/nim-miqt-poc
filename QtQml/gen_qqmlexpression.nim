@@ -191,6 +191,10 @@ proc miqt_exec_callback_cQQmlExpression_valueChanged(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QQmlExpressionvalueChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQmlExpression_valueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQmlExpression_valueChanged_release".} =
+  let nimfunc = cast[ref QQmlExpressionvalueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvalueChanged*(self: gen_qqmlexpression_types.QQmlExpression, slot: QQmlExpressionvalueChangedSlot) =
   var tmp = new QQmlExpressionvalueChangedSlot
   tmp[] = slot

@@ -342,6 +342,10 @@ proc miqt_exec_callback_cQIODevice_readyRead(slot: int) {.exportc: "miqt_exec_ca
   let nimfunc = cast[ptr QIODevicereadyReadSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQIODevice_readyRead_release(slot: int) {.exportc: "miqt_exec_callback_QIODevice_readyRead_release".} =
+  let nimfunc = cast[ref QIODevicereadyReadSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onreadyRead*(self: gen_qiodevice_types.QIODevice, slot: QIODevicereadyReadSlot) =
   var tmp = new QIODevicereadyReadSlot
   tmp[] = slot
@@ -358,6 +362,10 @@ proc miqt_exec_callback_cQIODevice_channelReadyRead(slot: int, channel: cint) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQIODevice_channelReadyRead_release(slot: int) {.exportc: "miqt_exec_callback_QIODevice_channelReadyRead_release".} =
+  let nimfunc = cast[ref QIODevicechannelReadyReadSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onchannelReadyRead*(self: gen_qiodevice_types.QIODevice, slot: QIODevicechannelReadyReadSlot) =
   var tmp = new QIODevicechannelReadyReadSlot
   tmp[] = slot
@@ -373,6 +381,10 @@ proc miqt_exec_callback_cQIODevice_bytesWritten(slot: int, bytes: clonglong) {.e
   let slotval1 = bytes
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQIODevice_bytesWritten_release(slot: int) {.exportc: "miqt_exec_callback_QIODevice_bytesWritten_release".} =
+  let nimfunc = cast[ref QIODevicebytesWrittenSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbytesWritten*(self: gen_qiodevice_types.QIODevice, slot: QIODevicebytesWrittenSlot) =
   var tmp = new QIODevicebytesWrittenSlot
@@ -392,6 +404,10 @@ proc miqt_exec_callback_cQIODevice_channelBytesWritten(slot: int, channel: cint,
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQIODevice_channelBytesWritten_release(slot: int) {.exportc: "miqt_exec_callback_QIODevice_channelBytesWritten_release".} =
+  let nimfunc = cast[ref QIODevicechannelBytesWrittenSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onchannelBytesWritten*(self: gen_qiodevice_types.QIODevice, slot: QIODevicechannelBytesWrittenSlot) =
   var tmp = new QIODevicechannelBytesWrittenSlot
   tmp[] = slot
@@ -406,6 +422,10 @@ proc miqt_exec_callback_cQIODevice_aboutToClose(slot: int) {.exportc: "miqt_exec
   let nimfunc = cast[ptr QIODeviceaboutToCloseSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQIODevice_aboutToClose_release(slot: int) {.exportc: "miqt_exec_callback_QIODevice_aboutToClose_release".} =
+  let nimfunc = cast[ref QIODeviceaboutToCloseSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaboutToClose*(self: gen_qiodevice_types.QIODevice, slot: QIODeviceaboutToCloseSlot) =
   var tmp = new QIODeviceaboutToCloseSlot
   tmp[] = slot
@@ -419,6 +439,10 @@ type QIODevicereadChannelFinishedSlot* = proc()
 proc miqt_exec_callback_cQIODevice_readChannelFinished(slot: int) {.exportc: "miqt_exec_callback_QIODevice_readChannelFinished".} =
   let nimfunc = cast[ptr QIODevicereadChannelFinishedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQIODevice_readChannelFinished_release(slot: int) {.exportc: "miqt_exec_callback_QIODevice_readChannelFinished_release".} =
+  let nimfunc = cast[ref QIODevicereadChannelFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onreadChannelFinished*(self: gen_qiodevice_types.QIODevice, slot: QIODevicereadChannelFinishedSlot) =
   var tmp = new QIODevicereadChannelFinishedSlot

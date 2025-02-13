@@ -245,6 +245,10 @@ proc miqt_exec_callback_cQCheckBox_stateChanged(slot: int, param1: cint) {.expor
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCheckBox_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCheckBox_stateChanged_release".} =
+  let nimfunc = cast[ref QCheckBoxstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qcheckbox_types.QCheckBox, slot: QCheckBoxstateChangedSlot) =
   var tmp = new QCheckBoxstateChangedSlot
   tmp[] = slot

@@ -268,6 +268,10 @@ proc miqt_exec_callback_cQQuickView_statusChanged(slot: int, param1: cint) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickView_statusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickView_statusChanged_release".} =
+  let nimfunc = cast[ref QQuickViewstatusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstatusChanged*(self: gen_qquickview_types.QQuickView, slot: QQuickViewstatusChangedSlot) =
   var tmp = new QQuickViewstatusChangedSlot
   tmp[] = slot

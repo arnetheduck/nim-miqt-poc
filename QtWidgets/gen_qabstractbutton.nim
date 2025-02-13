@@ -330,6 +330,10 @@ proc miqt_exec_callback_cQAbstractButton_pressed(slot: int) {.exportc: "miqt_exe
   let nimfunc = cast[ptr QAbstractButtonpressedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractButton_pressed_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractButton_pressed_release".} =
+  let nimfunc = cast[ref QAbstractButtonpressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpressed*(self: gen_qabstractbutton_types.QAbstractButton, slot: QAbstractButtonpressedSlot) =
   var tmp = new QAbstractButtonpressedSlot
   tmp[] = slot
@@ -344,6 +348,10 @@ proc miqt_exec_callback_cQAbstractButton_released(slot: int) {.exportc: "miqt_ex
   let nimfunc = cast[ptr QAbstractButtonreleasedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractButton_released_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractButton_released_release".} =
+  let nimfunc = cast[ref QAbstractButtonreleasedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onreleased*(self: gen_qabstractbutton_types.QAbstractButton, slot: QAbstractButtonreleasedSlot) =
   var tmp = new QAbstractButtonreleasedSlot
   tmp[] = slot
@@ -357,6 +365,10 @@ type QAbstractButtonclickedSlot* = proc()
 proc miqt_exec_callback_cQAbstractButton_clicked(slot: int) {.exportc: "miqt_exec_callback_QAbstractButton_clicked".} =
   let nimfunc = cast[ptr QAbstractButtonclickedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAbstractButton_clicked_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractButton_clicked_release".} =
+  let nimfunc = cast[ref QAbstractButtonclickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onclicked*(self: gen_qabstractbutton_types.QAbstractButton, slot: QAbstractButtonclickedSlot) =
   var tmp = new QAbstractButtonclickedSlot
@@ -373,6 +385,10 @@ proc miqt_exec_callback_cQAbstractButton_toggled(slot: int, checked: bool) {.exp
   let slotval1 = checked
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractButton_toggled_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractButton_toggled_release".} =
+  let nimfunc = cast[ref QAbstractButtontoggledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontoggled*(self: gen_qabstractbutton_types.QAbstractButton, slot: QAbstractButtontoggledSlot) =
   var tmp = new QAbstractButtontoggledSlot
@@ -401,6 +417,10 @@ proc miqt_exec_callback_cQAbstractButton_clicked1(slot: int, checked: bool) {.ex
   let slotval1 = checked
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQAbstractButton_clicked1_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractButton_clicked1_release".} =
+  let nimfunc = cast[ref QAbstractButtonclicked1Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onclicked*(self: gen_qabstractbutton_types.QAbstractButton, slot: QAbstractButtonclicked1Slot) =
   var tmp = new QAbstractButtonclicked1Slot

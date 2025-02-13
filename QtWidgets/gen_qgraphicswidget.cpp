@@ -47,7 +47,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsWidget_geometryChanged(intptr_t);
+void miqt_exec_callback_QGraphicsWidget_geometryChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsWidget_layoutChanged(intptr_t);
+void miqt_exec_callback_QGraphicsWidget_layoutChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1724,9 +1726,18 @@ void QGraphicsWidget_geometryChanged(QGraphicsWidget* self) {
 }
 
 void QGraphicsWidget_connect_geometryChanged(QGraphicsWidget* self, intptr_t slot) {
-	MiqtVirtualQGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::geometryChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsWidget_geometryChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsWidget_geometryChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsWidget_geometryChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::geometryChanged), self, caller{slot});
 }
 
 void QGraphicsWidget_layoutChanged(QGraphicsWidget* self) {
@@ -1734,9 +1745,18 @@ void QGraphicsWidget_layoutChanged(QGraphicsWidget* self) {
 }
 
 void QGraphicsWidget_connect_layoutChanged(QGraphicsWidget* self, intptr_t slot) {
-	MiqtVirtualQGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::layoutChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsWidget_layoutChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsWidget_layoutChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsWidget_layoutChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::layoutChanged), self, caller{slot});
 }
 
 bool QGraphicsWidget_close(QGraphicsWidget* self) {

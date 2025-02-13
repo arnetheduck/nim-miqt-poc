@@ -19,7 +19,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSystemTrayIcon_activated(intptr_t, int);
+void miqt_exec_callback_QSystemTrayIcon_activated_release(intptr_t);
 void miqt_exec_callback_QSystemTrayIcon_messageClicked(intptr_t);
+void miqt_exec_callback_QSystemTrayIcon_messageClicked_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -369,11 +371,20 @@ void QSystemTrayIcon_activated(QSystemTrayIcon* self, int reason) {
 }
 
 void QSystemTrayIcon_connect_activated(QSystemTrayIcon* self, intptr_t slot) {
-	MiqtVirtualQSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)(QSystemTrayIcon::ActivationReason)>(&QSystemTrayIcon::activated), self, [=](QSystemTrayIcon::ActivationReason reason) {
-		QSystemTrayIcon::ActivationReason reason_ret = reason;
-		int sigval1 = static_cast<int>(reason_ret);
-		miqt_exec_callback_QSystemTrayIcon_activated(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QSystemTrayIcon::ActivationReason reason) {
+			QSystemTrayIcon::ActivationReason reason_ret = reason;
+			int sigval1 = static_cast<int>(reason_ret);
+			miqt_exec_callback_QSystemTrayIcon_activated(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSystemTrayIcon_activated_release(slot); }
+	};
+	MiqtVirtualQSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)(QSystemTrayIcon::ActivationReason)>(&QSystemTrayIcon::activated), self, caller{slot});
 }
 
 void QSystemTrayIcon_messageClicked(QSystemTrayIcon* self) {
@@ -381,9 +392,18 @@ void QSystemTrayIcon_messageClicked(QSystemTrayIcon* self) {
 }
 
 void QSystemTrayIcon_connect_messageClicked(QSystemTrayIcon* self, intptr_t slot) {
-	MiqtVirtualQSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)()>(&QSystemTrayIcon::messageClicked), self, [=]() {
-		miqt_exec_callback_QSystemTrayIcon_messageClicked(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QSystemTrayIcon_messageClicked(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QSystemTrayIcon_messageClicked_release(slot); }
+	};
+	MiqtVirtualQSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)()>(&QSystemTrayIcon::messageClicked), self, caller{slot});
 }
 
 struct miqt_string QSystemTrayIcon_tr2(const char* s, const char* c) {

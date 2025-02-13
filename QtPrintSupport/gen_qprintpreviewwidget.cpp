@@ -44,7 +44,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QPrintPreviewWidget_paintRequested(intptr_t, QPrinter*);
+void miqt_exec_callback_QPrintPreviewWidget_paintRequested_release(intptr_t);
 void miqt_exec_callback_QPrintPreviewWidget_previewChanged(intptr_t);
+void miqt_exec_callback_QPrintPreviewWidget_previewChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1238,10 +1240,19 @@ void QPrintPreviewWidget_paintRequested(QPrintPreviewWidget* self, QPrinter* pri
 }
 
 void QPrintPreviewWidget_connect_paintRequested(QPrintPreviewWidget* self, intptr_t slot) {
-	MiqtVirtualQPrintPreviewWidget::connect(self, static_cast<void (QPrintPreviewWidget::*)(QPrinter*)>(&QPrintPreviewWidget::paintRequested), self, [=](QPrinter* printer) {
-		QPrinter* sigval1 = printer;
-		miqt_exec_callback_QPrintPreviewWidget_paintRequested(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QPrinter* printer) {
+			QPrinter* sigval1 = printer;
+			miqt_exec_callback_QPrintPreviewWidget_paintRequested(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPrintPreviewWidget_paintRequested_release(slot); }
+	};
+	MiqtVirtualQPrintPreviewWidget::connect(self, static_cast<void (QPrintPreviewWidget::*)(QPrinter*)>(&QPrintPreviewWidget::paintRequested), self, caller{slot});
 }
 
 void QPrintPreviewWidget_previewChanged(QPrintPreviewWidget* self) {
@@ -1249,9 +1260,18 @@ void QPrintPreviewWidget_previewChanged(QPrintPreviewWidget* self) {
 }
 
 void QPrintPreviewWidget_connect_previewChanged(QPrintPreviewWidget* self, intptr_t slot) {
-	MiqtVirtualQPrintPreviewWidget::connect(self, static_cast<void (QPrintPreviewWidget::*)()>(&QPrintPreviewWidget::previewChanged), self, [=]() {
-		miqt_exec_callback_QPrintPreviewWidget_previewChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QPrintPreviewWidget_previewChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QPrintPreviewWidget_previewChanged_release(slot); }
+	};
+	MiqtVirtualQPrintPreviewWidget::connect(self, static_cast<void (QPrintPreviewWidget::*)()>(&QPrintPreviewWidget::previewChanged), self, caller{slot});
 }
 
 struct miqt_string QPrintPreviewWidget_tr2(const char* s, const char* c) {

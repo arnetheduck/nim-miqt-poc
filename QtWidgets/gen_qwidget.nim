@@ -1298,6 +1298,10 @@ proc miqt_exec_callback_cQWidget_windowTitleChanged(slot: int, title: struct_miq
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWidget_windowTitleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWidget_windowTitleChanged_release".} =
+  let nimfunc = cast[ref QWidgetwindowTitleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onwindowTitleChanged*(self: gen_qwidget_types.QWidget, slot: QWidgetwindowTitleChangedSlot) =
   var tmp = new QWidgetwindowTitleChangedSlot
   tmp[] = slot
@@ -1313,6 +1317,10 @@ proc miqt_exec_callback_cQWidget_windowIconChanged(slot: int, icon: pointer) {.e
   let slotval1 = gen_qicon_types.QIcon(h: icon)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWidget_windowIconChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWidget_windowIconChanged_release".} =
+  let nimfunc = cast[ref QWidgetwindowIconChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onwindowIconChanged*(self: gen_qwidget_types.QWidget, slot: QWidgetwindowIconChangedSlot) =
   var tmp = new QWidgetwindowIconChangedSlot
@@ -1333,6 +1341,10 @@ proc miqt_exec_callback_cQWidget_windowIconTextChanged(slot: int, iconText: stru
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWidget_windowIconTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWidget_windowIconTextChanged_release".} =
+  let nimfunc = cast[ref QWidgetwindowIconTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onwindowIconTextChanged*(self: gen_qwidget_types.QWidget, slot: QWidgetwindowIconTextChangedSlot) =
   var tmp = new QWidgetwindowIconTextChangedSlot
   tmp[] = slot
@@ -1348,6 +1360,10 @@ proc miqt_exec_callback_cQWidget_customContextMenuRequested(slot: int, pos: poin
   let slotval1 = gen_qpoint_types.QPoint(h: pos)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWidget_customContextMenuRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWidget_customContextMenuRequested_release".} =
+  let nimfunc = cast[ref QWidgetcustomContextMenuRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncustomContextMenuRequested*(self: gen_qwidget_types.QWidget, slot: QWidgetcustomContextMenuRequestedSlot) =
   var tmp = new QWidgetcustomContextMenuRequestedSlot

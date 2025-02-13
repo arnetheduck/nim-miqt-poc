@@ -51,9 +51,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsScene_changed(intptr_t, struct miqt_array /* of QRectF* */ );
+void miqt_exec_callback_QGraphicsScene_changed_release(intptr_t);
 void miqt_exec_callback_QGraphicsScene_sceneRectChanged(intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsScene_sceneRectChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsScene_selectionChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScene_selectionChanged_release(intptr_t);
 void miqt_exec_callback_QGraphicsScene_focusItemChanged(intptr_t, QGraphicsItem*, QGraphicsItem*, int);
+void miqt_exec_callback_QGraphicsScene_focusItemChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1138,19 +1142,28 @@ void QGraphicsScene_changed(QGraphicsScene* self, struct miqt_array /* of QRectF
 }
 
 void QGraphicsScene_connect_changed(QGraphicsScene* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(const QList<QRectF>&)>(&QGraphicsScene::changed), self, [=](const QList<QRectF>& region) {
-		const QList<QRectF>& region_ret = region;
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QRectF** region_arr = static_cast<QRectF**>(malloc(sizeof(QRectF*) * region_ret.length()));
-		for (size_t i = 0, e = region_ret.length(); i < e; ++i) {
-			region_arr[i] = new QRectF(region_ret[i]);
+	struct caller {
+		intptr_t slot;
+		void operator()(const QList<QRectF>& region) {
+			const QList<QRectF>& region_ret = region;
+			// Convert QList<> from C++ memory to manually-managed C memory
+			QRectF** region_arr = static_cast<QRectF**>(malloc(sizeof(QRectF*) * region_ret.length()));
+			for (size_t i = 0, e = region_ret.length(); i < e; ++i) {
+				region_arr[i] = new QRectF(region_ret[i]);
+			}
+			struct miqt_array region_out;
+			region_out.len = region_ret.length();
+			region_out.data = static_cast<void*>(region_arr);
+			struct miqt_array /* of QRectF* */  sigval1 = region_out;
+			miqt_exec_callback_QGraphicsScene_changed(slot, sigval1);
 		}
-		struct miqt_array region_out;
-		region_out.len = region_ret.length();
-		region_out.data = static_cast<void*>(region_arr);
-		struct miqt_array /* of QRectF* */  sigval1 = region_out;
-		miqt_exec_callback_QGraphicsScene_changed(slot, sigval1);
-	});
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScene_changed_release(slot); }
+	};
+	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(const QList<QRectF>&)>(&QGraphicsScene::changed), self, caller{slot});
 }
 
 void QGraphicsScene_sceneRectChanged(QGraphicsScene* self, QRectF* rect) {
@@ -1158,12 +1171,21 @@ void QGraphicsScene_sceneRectChanged(QGraphicsScene* self, QRectF* rect) {
 }
 
 void QGraphicsScene_connect_sceneRectChanged(QGraphicsScene* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(const QRectF&)>(&QGraphicsScene::sceneRectChanged), self, [=](const QRectF& rect) {
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
-		miqt_exec_callback_QGraphicsScene_sceneRectChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QRectF& rect) {
+			const QRectF& rect_ret = rect;
+			// Cast returned reference into pointer
+			QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+			miqt_exec_callback_QGraphicsScene_sceneRectChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScene_sceneRectChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(const QRectF&)>(&QGraphicsScene::sceneRectChanged), self, caller{slot});
 }
 
 void QGraphicsScene_selectionChanged(QGraphicsScene* self) {
@@ -1171,9 +1193,18 @@ void QGraphicsScene_selectionChanged(QGraphicsScene* self) {
 }
 
 void QGraphicsScene_connect_selectionChanged(QGraphicsScene* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)()>(&QGraphicsScene::selectionChanged), self, [=]() {
-		miqt_exec_callback_QGraphicsScene_selectionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QGraphicsScene_selectionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScene_selectionChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)()>(&QGraphicsScene::selectionChanged), self, caller{slot});
 }
 
 void QGraphicsScene_focusItemChanged(QGraphicsScene* self, QGraphicsItem* newFocus, QGraphicsItem* oldFocus, int reason) {
@@ -1181,13 +1212,22 @@ void QGraphicsScene_focusItemChanged(QGraphicsScene* self, QGraphicsItem* newFoc
 }
 
 void QGraphicsScene_connect_focusItemChanged(QGraphicsScene* self, intptr_t slot) {
-	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(QGraphicsItem*, QGraphicsItem*, Qt::FocusReason)>(&QGraphicsScene::focusItemChanged), self, [=](QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason reason) {
-		QGraphicsItem* sigval1 = newFocus;
-		QGraphicsItem* sigval2 = oldFocus;
-		Qt::FocusReason reason_ret = reason;
-		int sigval3 = static_cast<int>(reason_ret);
-		miqt_exec_callback_QGraphicsScene_focusItemChanged(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason reason) {
+			QGraphicsItem* sigval1 = newFocus;
+			QGraphicsItem* sigval2 = oldFocus;
+			Qt::FocusReason reason_ret = reason;
+			int sigval3 = static_cast<int>(reason_ret);
+			miqt_exec_callback_QGraphicsScene_focusItemChanged(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsScene_focusItemChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(QGraphicsItem*, QGraphicsItem*, Qt::FocusReason)>(&QGraphicsScene::focusItemChanged), self, caller{slot});
 }
 
 struct miqt_string QGraphicsScene_tr2(const char* s, const char* c) {

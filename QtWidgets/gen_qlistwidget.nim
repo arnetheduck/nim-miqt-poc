@@ -1006,6 +1006,10 @@ proc miqt_exec_callback_cQListWidget_itemPressed(slot: int, item: pointer) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQListWidget_itemPressed_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemPressed_release".} =
+  let nimfunc = cast[ref QListWidgetitemPressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onitemPressed*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetitemPressedSlot) =
   var tmp = new QListWidgetitemPressedSlot
   tmp[] = slot
@@ -1021,6 +1025,10 @@ proc miqt_exec_callback_cQListWidget_itemClicked(slot: int, item: pointer) {.exp
   let slotval1 = gen_qlistwidget_types.QListWidgetItem(h: item)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQListWidget_itemClicked_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemClicked_release".} =
+  let nimfunc = cast[ref QListWidgetitemClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onitemClicked*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetitemClickedSlot) =
   var tmp = new QListWidgetitemClickedSlot
@@ -1038,6 +1046,10 @@ proc miqt_exec_callback_cQListWidget_itemDoubleClicked(slot: int, item: pointer)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQListWidget_itemDoubleClicked_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemDoubleClicked_release".} =
+  let nimfunc = cast[ref QListWidgetitemDoubleClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onitemDoubleClicked*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetitemDoubleClickedSlot) =
   var tmp = new QListWidgetitemDoubleClickedSlot
   tmp[] = slot
@@ -1053,6 +1065,10 @@ proc miqt_exec_callback_cQListWidget_itemActivated(slot: int, item: pointer) {.e
   let slotval1 = gen_qlistwidget_types.QListWidgetItem(h: item)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQListWidget_itemActivated_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemActivated_release".} =
+  let nimfunc = cast[ref QListWidgetitemActivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onitemActivated*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetitemActivatedSlot) =
   var tmp = new QListWidgetitemActivatedSlot
@@ -1070,6 +1086,10 @@ proc miqt_exec_callback_cQListWidget_itemEntered(slot: int, item: pointer) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQListWidget_itemEntered_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemEntered_release".} =
+  let nimfunc = cast[ref QListWidgetitemEnteredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onitemEntered*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetitemEnteredSlot) =
   var tmp = new QListWidgetitemEnteredSlot
   tmp[] = slot
@@ -1085,6 +1105,10 @@ proc miqt_exec_callback_cQListWidget_itemChanged(slot: int, item: pointer) {.exp
   let slotval1 = gen_qlistwidget_types.QListWidgetItem(h: item)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQListWidget_itemChanged_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemChanged_release".} =
+  let nimfunc = cast[ref QListWidgetitemChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onitemChanged*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetitemChangedSlot) =
   var tmp = new QListWidgetitemChangedSlot
@@ -1103,6 +1127,10 @@ proc miqt_exec_callback_cQListWidget_currentItemChanged(slot: int, current: poin
   let slotval2 = gen_qlistwidget_types.QListWidgetItem(h: previous)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQListWidget_currentItemChanged_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_currentItemChanged_release".} =
+  let nimfunc = cast[ref QListWidgetcurrentItemChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncurrentItemChanged*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetcurrentItemChangedSlot) =
   var tmp = new QListWidgetcurrentItemChangedSlot
@@ -1123,6 +1151,10 @@ proc miqt_exec_callback_cQListWidget_currentTextChanged(slot: int, currentText: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQListWidget_currentTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_currentTextChanged_release".} =
+  let nimfunc = cast[ref QListWidgetcurrentTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentTextChanged*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetcurrentTextChangedSlot) =
   var tmp = new QListWidgetcurrentTextChangedSlot
   tmp[] = slot
@@ -1139,6 +1171,10 @@ proc miqt_exec_callback_cQListWidget_currentRowChanged(slot: int, currentRow: ci
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQListWidget_currentRowChanged_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_currentRowChanged_release".} =
+  let nimfunc = cast[ref QListWidgetcurrentRowChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentRowChanged*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetcurrentRowChangedSlot) =
   var tmp = new QListWidgetcurrentRowChangedSlot
   tmp[] = slot
@@ -1152,6 +1188,10 @@ type QListWidgetitemSelectionChangedSlot* = proc()
 proc miqt_exec_callback_cQListWidget_itemSelectionChanged(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemSelectionChanged".} =
   let nimfunc = cast[ptr QListWidgetitemSelectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQListWidget_itemSelectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QListWidget_itemSelectionChanged_release".} =
+  let nimfunc = cast[ref QListWidgetitemSelectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onitemSelectionChanged*(self: gen_qlistwidget_types.QListWidget, slot: QListWidgetitemSelectionChangedSlot) =
   var tmp = new QListWidgetitemSelectionChangedSlot

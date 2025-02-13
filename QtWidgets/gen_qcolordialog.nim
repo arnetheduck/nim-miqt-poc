@@ -291,6 +291,10 @@ proc miqt_exec_callback_cQColorDialog_currentColorChanged(slot: int, color: poin
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQColorDialog_currentColorChanged_release(slot: int) {.exportc: "miqt_exec_callback_QColorDialog_currentColorChanged_release".} =
+  let nimfunc = cast[ref QColorDialogcurrentColorChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentColorChanged*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogcurrentColorChangedSlot) =
   var tmp = new QColorDialogcurrentColorChangedSlot
   tmp[] = slot
@@ -306,6 +310,10 @@ proc miqt_exec_callback_cQColorDialog_colorSelected(slot: int, color: pointer) {
   let slotval1 = gen_qcolor_types.QColor(h: color)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQColorDialog_colorSelected_release(slot: int) {.exportc: "miqt_exec_callback_QColorDialog_colorSelected_release".} =
+  let nimfunc = cast[ref QColorDialogcolorSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncolorSelected*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogcolorSelectedSlot) =
   var tmp = new QColorDialogcolorSelectedSlot

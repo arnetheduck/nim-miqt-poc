@@ -372,6 +372,10 @@ proc miqt_exec_callback_cQItemSelectionModel_selectionChanged(slot: int, selecte
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQItemSelectionModel_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QItemSelectionModel_selectionChanged_release".} =
+  let nimfunc = cast[ref QItemSelectionModelselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectionChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelselectionChangedSlot) =
   var tmp = new QItemSelectionModelselectionChangedSlot
   tmp[] = slot
@@ -389,6 +393,10 @@ proc miqt_exec_callback_cQItemSelectionModel_currentChanged(slot: int, current: 
   let slotval2 = gen_qabstractitemmodel_types.QModelIndex(h: previous)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQItemSelectionModel_currentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QItemSelectionModel_currentChanged_release".} =
+  let nimfunc = cast[ref QItemSelectionModelcurrentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncurrentChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelcurrentChangedSlot) =
   var tmp = new QItemSelectionModelcurrentChangedSlot
@@ -408,6 +416,10 @@ proc miqt_exec_callback_cQItemSelectionModel_currentRowChanged(slot: int, curren
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQItemSelectionModel_currentRowChanged_release(slot: int) {.exportc: "miqt_exec_callback_QItemSelectionModel_currentRowChanged_release".} =
+  let nimfunc = cast[ref QItemSelectionModelcurrentRowChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentRowChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelcurrentRowChangedSlot) =
   var tmp = new QItemSelectionModelcurrentRowChangedSlot
   tmp[] = slot
@@ -426,6 +438,10 @@ proc miqt_exec_callback_cQItemSelectionModel_currentColumnChanged(slot: int, cur
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQItemSelectionModel_currentColumnChanged_release(slot: int) {.exportc: "miqt_exec_callback_QItemSelectionModel_currentColumnChanged_release".} =
+  let nimfunc = cast[ref QItemSelectionModelcurrentColumnChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentColumnChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelcurrentColumnChangedSlot) =
   var tmp = new QItemSelectionModelcurrentColumnChangedSlot
   tmp[] = slot
@@ -441,6 +457,10 @@ proc miqt_exec_callback_cQItemSelectionModel_modelChanged(slot: int, model: poin
   let slotval1 = gen_qabstractitemmodel_types.QAbstractItemModel(h: model)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQItemSelectionModel_modelChanged_release(slot: int) {.exportc: "miqt_exec_callback_QItemSelectionModel_modelChanged_release".} =
+  let nimfunc = cast[ref QItemSelectionModelmodelChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmodelChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelmodelChangedSlot) =
   var tmp = new QItemSelectionModelmodelChangedSlot

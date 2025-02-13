@@ -354,6 +354,10 @@ proc miqt_exec_callback_cQMdiArea_subWindowActivated(slot: int, param1: pointer)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMdiArea_subWindowActivated_release(slot: int) {.exportc: "miqt_exec_callback_QMdiArea_subWindowActivated_release".} =
+  let nimfunc = cast[ref QMdiAreasubWindowActivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsubWindowActivated*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreasubWindowActivatedSlot) =
   var tmp = new QMdiAreasubWindowActivatedSlot
   tmp[] = slot

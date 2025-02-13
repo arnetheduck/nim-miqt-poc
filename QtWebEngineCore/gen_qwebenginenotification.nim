@@ -140,6 +140,10 @@ proc miqt_exec_callback_cQWebEngineNotification_closed(slot: int) {.exportc: "mi
   let nimfunc = cast[ptr QWebEngineNotificationclosedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQWebEngineNotification_closed_release(slot: int) {.exportc: "miqt_exec_callback_QWebEngineNotification_closed_release".} =
+  let nimfunc = cast[ref QWebEngineNotificationclosedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onclosed*(self: gen_qwebenginenotification_types.QWebEngineNotification, slot: QWebEngineNotificationclosedSlot) =
   var tmp = new QWebEngineNotificationclosedSlot
   tmp[] = slot

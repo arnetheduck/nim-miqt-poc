@@ -44,34 +44,63 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQuickItem_childrenRectChanged(intptr_t, QRectF*);
+void miqt_exec_callback_QQuickItem_childrenRectChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_baselineOffsetChanged(intptr_t, double);
+void miqt_exec_callback_QQuickItem_baselineOffsetChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_stateChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QQuickItem_stateChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_focusChanged(intptr_t, bool);
+void miqt_exec_callback_QQuickItem_focusChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_activeFocusChanged(intptr_t, bool);
+void miqt_exec_callback_QQuickItem_activeFocusChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_activeFocusOnTabChanged(intptr_t, bool);
+void miqt_exec_callback_QQuickItem_activeFocusOnTabChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_parentChanged(intptr_t, QQuickItem*);
+void miqt_exec_callback_QQuickItem_parentChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_transformOriginChanged(intptr_t, int);
+void miqt_exec_callback_QQuickItem_transformOriginChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_smoothChanged(intptr_t, bool);
+void miqt_exec_callback_QQuickItem_smoothChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_antialiasingChanged(intptr_t, bool);
+void miqt_exec_callback_QQuickItem_antialiasingChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_clipChanged(intptr_t, bool);
+void miqt_exec_callback_QQuickItem_clipChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_windowChanged(intptr_t, QQuickWindow*);
+void miqt_exec_callback_QQuickItem_windowChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_childrenChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_childrenChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_opacityChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_opacityChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_enabledChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_enabledChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_visibleChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_visibleChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_visibleChildrenChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_visibleChildrenChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_rotationChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_rotationChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_scaleChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_scaleChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_xChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_xChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_yChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_yChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_widthChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_widthChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_heightChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_heightChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_zChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_zChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_implicitWidthChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_implicitWidthChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_implicitHeightChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_implicitHeightChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_containmentMaskChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_containmentMaskChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_paletteChanged(intptr_t);
+void miqt_exec_callback_QQuickItem_paletteChanged_release(intptr_t);
 void miqt_exec_callback_QQuickItem_paletteCreated(intptr_t);
+void miqt_exec_callback_QQuickItem_paletteCreated_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1934,12 +1963,21 @@ void QQuickItem_childrenRectChanged(QQuickItem* self, QRectF* param1) {
 }
 
 void QQuickItem_connect_childrenRectChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(const QRectF&)>(&QQuickItem::childrenRectChanged), self, [=](const QRectF& param1) {
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
-		miqt_exec_callback_QQuickItem_childrenRectChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QRectF& param1) {
+			const QRectF& param1_ret = param1;
+			// Cast returned reference into pointer
+			QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+			miqt_exec_callback_QQuickItem_childrenRectChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_childrenRectChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(const QRectF&)>(&QQuickItem::childrenRectChanged), self, caller{slot});
 }
 
 void QQuickItem_baselineOffsetChanged(QQuickItem* self, double param1) {
@@ -1947,11 +1985,20 @@ void QQuickItem_baselineOffsetChanged(QQuickItem* self, double param1) {
 }
 
 void QQuickItem_connect_baselineOffsetChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(qreal)>(&QQuickItem::baselineOffsetChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QQuickItem_baselineOffsetChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(qreal param1) {
+			qreal param1_ret = param1;
+			double sigval1 = static_cast<double>(param1_ret);
+			miqt_exec_callback_QQuickItem_baselineOffsetChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_baselineOffsetChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(qreal)>(&QQuickItem::baselineOffsetChanged), self, caller{slot});
 }
 
 void QQuickItem_stateChanged(QQuickItem* self, struct miqt_string param1) {
@@ -1960,17 +2007,26 @@ void QQuickItem_stateChanged(QQuickItem* self, struct miqt_string param1) {
 }
 
 void QQuickItem_connect_stateChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(const QString&)>(&QQuickItem::stateChanged), self, [=](const QString& param1) {
-		const QString param1_ret = param1;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string param1_ms;
-		param1_ms.len = param1_b.length();
-		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
-		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
-		struct miqt_string sigval1 = param1_ms;
-		miqt_exec_callback_QQuickItem_stateChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& param1) {
+			const QString param1_ret = param1;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray param1_b = param1_ret.toUtf8();
+			struct miqt_string param1_ms;
+			param1_ms.len = param1_b.length();
+			param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+			memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+			struct miqt_string sigval1 = param1_ms;
+			miqt_exec_callback_QQuickItem_stateChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_stateChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(const QString&)>(&QQuickItem::stateChanged), self, caller{slot});
 }
 
 void QQuickItem_focusChanged(QQuickItem* self, bool param1) {
@@ -1978,10 +2034,19 @@ void QQuickItem_focusChanged(QQuickItem* self, bool param1) {
 }
 
 void QQuickItem_connect_focusChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::focusChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickItem_focusChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QQuickItem_focusChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_focusChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::focusChanged), self, caller{slot});
 }
 
 void QQuickItem_activeFocusChanged(QQuickItem* self, bool param1) {
@@ -1989,10 +2054,19 @@ void QQuickItem_activeFocusChanged(QQuickItem* self, bool param1) {
 }
 
 void QQuickItem_connect_activeFocusChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::activeFocusChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickItem_activeFocusChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QQuickItem_activeFocusChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_activeFocusChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::activeFocusChanged), self, caller{slot});
 }
 
 void QQuickItem_activeFocusOnTabChanged(QQuickItem* self, bool param1) {
@@ -2000,10 +2074,19 @@ void QQuickItem_activeFocusOnTabChanged(QQuickItem* self, bool param1) {
 }
 
 void QQuickItem_connect_activeFocusOnTabChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::activeFocusOnTabChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickItem_activeFocusOnTabChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QQuickItem_activeFocusOnTabChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_activeFocusOnTabChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::activeFocusOnTabChanged), self, caller{slot});
 }
 
 void QQuickItem_parentChanged(QQuickItem* self, QQuickItem* param1) {
@@ -2011,10 +2094,19 @@ void QQuickItem_parentChanged(QQuickItem* self, QQuickItem* param1) {
 }
 
 void QQuickItem_connect_parentChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(QQuickItem*)>(&QQuickItem::parentChanged), self, [=](QQuickItem* param1) {
-		QQuickItem* sigval1 = param1;
-		miqt_exec_callback_QQuickItem_parentChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQuickItem* param1) {
+			QQuickItem* sigval1 = param1;
+			miqt_exec_callback_QQuickItem_parentChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_parentChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(QQuickItem*)>(&QQuickItem::parentChanged), self, caller{slot});
 }
 
 void QQuickItem_transformOriginChanged(QQuickItem* self, int param1) {
@@ -2022,11 +2114,20 @@ void QQuickItem_transformOriginChanged(QQuickItem* self, int param1) {
 }
 
 void QQuickItem_connect_transformOriginChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(QQuickItem::TransformOrigin)>(&QQuickItem::transformOriginChanged), self, [=](QQuickItem::TransformOrigin param1) {
-		QQuickItem::TransformOrigin param1_ret = param1;
-		int sigval1 = static_cast<int>(param1_ret);
-		miqt_exec_callback_QQuickItem_transformOriginChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQuickItem::TransformOrigin param1) {
+			QQuickItem::TransformOrigin param1_ret = param1;
+			int sigval1 = static_cast<int>(param1_ret);
+			miqt_exec_callback_QQuickItem_transformOriginChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_transformOriginChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(QQuickItem::TransformOrigin)>(&QQuickItem::transformOriginChanged), self, caller{slot});
 }
 
 void QQuickItem_smoothChanged(QQuickItem* self, bool param1) {
@@ -2034,10 +2135,19 @@ void QQuickItem_smoothChanged(QQuickItem* self, bool param1) {
 }
 
 void QQuickItem_connect_smoothChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::smoothChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickItem_smoothChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QQuickItem_smoothChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_smoothChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::smoothChanged), self, caller{slot});
 }
 
 void QQuickItem_antialiasingChanged(QQuickItem* self, bool param1) {
@@ -2045,10 +2155,19 @@ void QQuickItem_antialiasingChanged(QQuickItem* self, bool param1) {
 }
 
 void QQuickItem_connect_antialiasingChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::antialiasingChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickItem_antialiasingChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QQuickItem_antialiasingChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_antialiasingChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::antialiasingChanged), self, caller{slot});
 }
 
 void QQuickItem_clipChanged(QQuickItem* self, bool param1) {
@@ -2056,10 +2175,19 @@ void QQuickItem_clipChanged(QQuickItem* self, bool param1) {
 }
 
 void QQuickItem_connect_clipChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::clipChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickItem_clipChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			miqt_exec_callback_QQuickItem_clipChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_clipChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(bool)>(&QQuickItem::clipChanged), self, caller{slot});
 }
 
 void QQuickItem_windowChanged(QQuickItem* self, QQuickWindow* window) {
@@ -2067,10 +2195,19 @@ void QQuickItem_windowChanged(QQuickItem* self, QQuickWindow* window) {
 }
 
 void QQuickItem_connect_windowChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(QQuickWindow*)>(&QQuickItem::windowChanged), self, [=](QQuickWindow* window) {
-		QQuickWindow* sigval1 = window;
-		miqt_exec_callback_QQuickItem_windowChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QQuickWindow* window) {
+			QQuickWindow* sigval1 = window;
+			miqt_exec_callback_QQuickItem_windowChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_windowChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)(QQuickWindow*)>(&QQuickItem::windowChanged), self, caller{slot});
 }
 
 void QQuickItem_childrenChanged(QQuickItem* self) {
@@ -2078,9 +2215,18 @@ void QQuickItem_childrenChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_childrenChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::childrenChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_childrenChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_childrenChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_childrenChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::childrenChanged), self, caller{slot});
 }
 
 void QQuickItem_opacityChanged(QQuickItem* self) {
@@ -2088,9 +2234,18 @@ void QQuickItem_opacityChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_opacityChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::opacityChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_opacityChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_opacityChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_opacityChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::opacityChanged), self, caller{slot});
 }
 
 void QQuickItem_enabledChanged(QQuickItem* self) {
@@ -2098,9 +2253,18 @@ void QQuickItem_enabledChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_enabledChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::enabledChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_enabledChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_enabledChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_enabledChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::enabledChanged), self, caller{slot});
 }
 
 void QQuickItem_visibleChanged(QQuickItem* self) {
@@ -2108,9 +2272,18 @@ void QQuickItem_visibleChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_visibleChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::visibleChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_visibleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_visibleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_visibleChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::visibleChanged), self, caller{slot});
 }
 
 void QQuickItem_visibleChildrenChanged(QQuickItem* self) {
@@ -2118,9 +2291,18 @@ void QQuickItem_visibleChildrenChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_visibleChildrenChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::visibleChildrenChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_visibleChildrenChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_visibleChildrenChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_visibleChildrenChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::visibleChildrenChanged), self, caller{slot});
 }
 
 void QQuickItem_rotationChanged(QQuickItem* self) {
@@ -2128,9 +2310,18 @@ void QQuickItem_rotationChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_rotationChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::rotationChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_rotationChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_rotationChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_rotationChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::rotationChanged), self, caller{slot});
 }
 
 void QQuickItem_scaleChanged(QQuickItem* self) {
@@ -2138,9 +2329,18 @@ void QQuickItem_scaleChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_scaleChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::scaleChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_scaleChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_scaleChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_scaleChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::scaleChanged), self, caller{slot});
 }
 
 void QQuickItem_xChanged(QQuickItem* self) {
@@ -2148,9 +2348,18 @@ void QQuickItem_xChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_xChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::xChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_xChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_xChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_xChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::xChanged), self, caller{slot});
 }
 
 void QQuickItem_yChanged(QQuickItem* self) {
@@ -2158,9 +2367,18 @@ void QQuickItem_yChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_yChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::yChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_yChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_yChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_yChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::yChanged), self, caller{slot});
 }
 
 void QQuickItem_widthChanged(QQuickItem* self) {
@@ -2168,9 +2386,18 @@ void QQuickItem_widthChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_widthChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::widthChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_widthChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_widthChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_widthChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::widthChanged), self, caller{slot});
 }
 
 void QQuickItem_heightChanged(QQuickItem* self) {
@@ -2178,9 +2405,18 @@ void QQuickItem_heightChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_heightChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::heightChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_heightChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_heightChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_heightChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::heightChanged), self, caller{slot});
 }
 
 void QQuickItem_zChanged(QQuickItem* self) {
@@ -2188,9 +2424,18 @@ void QQuickItem_zChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_zChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::zChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_zChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_zChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_zChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::zChanged), self, caller{slot});
 }
 
 void QQuickItem_implicitWidthChanged(QQuickItem* self) {
@@ -2198,9 +2443,18 @@ void QQuickItem_implicitWidthChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_implicitWidthChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::implicitWidthChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_implicitWidthChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_implicitWidthChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_implicitWidthChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::implicitWidthChanged), self, caller{slot});
 }
 
 void QQuickItem_implicitHeightChanged(QQuickItem* self) {
@@ -2208,9 +2462,18 @@ void QQuickItem_implicitHeightChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_implicitHeightChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::implicitHeightChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_implicitHeightChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_implicitHeightChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_implicitHeightChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::implicitHeightChanged), self, caller{slot});
 }
 
 void QQuickItem_containmentMaskChanged(QQuickItem* self) {
@@ -2218,9 +2481,18 @@ void QQuickItem_containmentMaskChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_containmentMaskChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::containmentMaskChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_containmentMaskChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_containmentMaskChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_containmentMaskChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::containmentMaskChanged), self, caller{slot});
 }
 
 void QQuickItem_paletteChanged(QQuickItem* self) {
@@ -2228,9 +2500,18 @@ void QQuickItem_paletteChanged(QQuickItem* self) {
 }
 
 void QQuickItem_connect_paletteChanged(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::paletteChanged), self, [=]() {
-		miqt_exec_callback_QQuickItem_paletteChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_paletteChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_paletteChanged_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::paletteChanged), self, caller{slot});
 }
 
 void QQuickItem_paletteCreated(QQuickItem* self) {
@@ -2238,9 +2519,18 @@ void QQuickItem_paletteCreated(QQuickItem* self) {
 }
 
 void QQuickItem_connect_paletteCreated(QQuickItem* self, intptr_t slot) {
-	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::paletteCreated), self, [=]() {
-		miqt_exec_callback_QQuickItem_paletteCreated(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItem_paletteCreated(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItem_paletteCreated_release(slot); }
+	};
+	MiqtVirtualQQuickItem::connect(self, static_cast<void (QQuickItem::*)()>(&QQuickItem::paletteCreated), self, caller{slot});
 }
 
 struct miqt_string QQuickItem_tr2(const char* s, const char* c) {

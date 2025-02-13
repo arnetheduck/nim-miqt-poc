@@ -324,6 +324,10 @@ proc miqt_exec_callback_cQColumnView_updatePreviewWidget(slot: int, index: point
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQColumnView_updatePreviewWidget_release(slot: int) {.exportc: "miqt_exec_callback_QColumnView_updatePreviewWidget_release".} =
+  let nimfunc = cast[ref QColumnViewupdatePreviewWidgetSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onupdatePreviewWidget*(self: gen_qcolumnview_types.QColumnView, slot: QColumnViewupdatePreviewWidgetSlot) =
   var tmp = new QColumnViewupdatePreviewWidgetSlot
   tmp[] = slot

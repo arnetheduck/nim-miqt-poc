@@ -604,6 +604,10 @@ proc miqt_exec_callback_cQGraphicsScene_changed(slot: int, region: struct_miqt_a
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsScene_changed_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScene_changed_release".} =
+  let nimfunc = cast[ref QGraphicsScenechangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onchanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsScenechangedSlot) =
   var tmp = new QGraphicsScenechangedSlot
   tmp[] = slot
@@ -620,6 +624,10 @@ proc miqt_exec_callback_cQGraphicsScene_sceneRectChanged(slot: int, rect: pointe
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQGraphicsScene_sceneRectChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScene_sceneRectChanged_release".} =
+  let nimfunc = cast[ref QGraphicsScenesceneRectChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsceneRectChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsScenesceneRectChangedSlot) =
   var tmp = new QGraphicsScenesceneRectChangedSlot
   tmp[] = slot
@@ -633,6 +641,10 @@ type QGraphicsSceneselectionChangedSlot* = proc()
 proc miqt_exec_callback_cQGraphicsScene_selectionChanged(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScene_selectionChanged".} =
   let nimfunc = cast[ptr QGraphicsSceneselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGraphicsScene_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScene_selectionChanged_release".} =
+  let nimfunc = cast[ref QGraphicsSceneselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onselectionChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsSceneselectionChangedSlot) =
   var tmp = new QGraphicsSceneselectionChangedSlot
@@ -653,6 +665,10 @@ proc miqt_exec_callback_cQGraphicsScene_focusItemChanged(slot: int, newFocus: po
   let slotval3 = cint(reason)
 
   nimfunc[](slotval1, slotval2, slotval3)
+
+proc miqt_exec_callback_cQGraphicsScene_focusItemChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsScene_focusItemChanged_release".} =
+  let nimfunc = cast[ref QGraphicsScenefocusItemChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfocusItemChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsScenefocusItemChangedSlot) =
   var tmp = new QGraphicsScenefocusItemChangedSlot

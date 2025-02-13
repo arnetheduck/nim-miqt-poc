@@ -31,8 +31,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QFileSystemModel_rootPathChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileSystemModel_rootPathChanged_release(intptr_t);
 void miqt_exec_callback_QFileSystemModel_fileRenamed(intptr_t, struct miqt_string, struct miqt_string, struct miqt_string);
+void miqt_exec_callback_QFileSystemModel_fileRenamed_release(intptr_t);
 void miqt_exec_callback_QFileSystemModel_directoryLoaded(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileSystemModel_directoryLoaded_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1288,17 +1291,26 @@ void QFileSystemModel_rootPathChanged(QFileSystemModel* self, struct miqt_string
 }
 
 void QFileSystemModel_connect_rootPathChanged(QFileSystemModel* self, intptr_t slot) {
-	MiqtVirtualQFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&)>(&QFileSystemModel::rootPathChanged), self, [=](const QString& newPath) {
-		const QString newPath_ret = newPath;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray newPath_b = newPath_ret.toUtf8();
-		struct miqt_string newPath_ms;
-		newPath_ms.len = newPath_b.length();
-		newPath_ms.data = static_cast<char*>(malloc(newPath_ms.len));
-		memcpy(newPath_ms.data, newPath_b.data(), newPath_ms.len);
-		struct miqt_string sigval1 = newPath_ms;
-		miqt_exec_callback_QFileSystemModel_rootPathChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& newPath) {
+			const QString newPath_ret = newPath;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray newPath_b = newPath_ret.toUtf8();
+			struct miqt_string newPath_ms;
+			newPath_ms.len = newPath_b.length();
+			newPath_ms.data = static_cast<char*>(malloc(newPath_ms.len));
+			memcpy(newPath_ms.data, newPath_b.data(), newPath_ms.len);
+			struct miqt_string sigval1 = newPath_ms;
+			miqt_exec_callback_QFileSystemModel_rootPathChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileSystemModel_rootPathChanged_release(slot); }
+	};
+	MiqtVirtualQFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&)>(&QFileSystemModel::rootPathChanged), self, caller{slot});
 }
 
 void QFileSystemModel_fileRenamed(QFileSystemModel* self, struct miqt_string path, struct miqt_string oldName, struct miqt_string newName) {
@@ -1309,33 +1321,42 @@ void QFileSystemModel_fileRenamed(QFileSystemModel* self, struct miqt_string pat
 }
 
 void QFileSystemModel_connect_fileRenamed(QFileSystemModel* self, intptr_t slot) {
-	MiqtVirtualQFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&, const QString&, const QString&)>(&QFileSystemModel::fileRenamed), self, [=](const QString& path, const QString& oldName, const QString& newName) {
-		const QString path_ret = path;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray path_b = path_ret.toUtf8();
-		struct miqt_string path_ms;
-		path_ms.len = path_b.length();
-		path_ms.data = static_cast<char*>(malloc(path_ms.len));
-		memcpy(path_ms.data, path_b.data(), path_ms.len);
-		struct miqt_string sigval1 = path_ms;
-		const QString oldName_ret = oldName;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray oldName_b = oldName_ret.toUtf8();
-		struct miqt_string oldName_ms;
-		oldName_ms.len = oldName_b.length();
-		oldName_ms.data = static_cast<char*>(malloc(oldName_ms.len));
-		memcpy(oldName_ms.data, oldName_b.data(), oldName_ms.len);
-		struct miqt_string sigval2 = oldName_ms;
-		const QString newName_ret = newName;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray newName_b = newName_ret.toUtf8();
-		struct miqt_string newName_ms;
-		newName_ms.len = newName_b.length();
-		newName_ms.data = static_cast<char*>(malloc(newName_ms.len));
-		memcpy(newName_ms.data, newName_b.data(), newName_ms.len);
-		struct miqt_string sigval3 = newName_ms;
-		miqt_exec_callback_QFileSystemModel_fileRenamed(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& path, const QString& oldName, const QString& newName) {
+			const QString path_ret = path;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray path_b = path_ret.toUtf8();
+			struct miqt_string path_ms;
+			path_ms.len = path_b.length();
+			path_ms.data = static_cast<char*>(malloc(path_ms.len));
+			memcpy(path_ms.data, path_b.data(), path_ms.len);
+			struct miqt_string sigval1 = path_ms;
+			const QString oldName_ret = oldName;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray oldName_b = oldName_ret.toUtf8();
+			struct miqt_string oldName_ms;
+			oldName_ms.len = oldName_b.length();
+			oldName_ms.data = static_cast<char*>(malloc(oldName_ms.len));
+			memcpy(oldName_ms.data, oldName_b.data(), oldName_ms.len);
+			struct miqt_string sigval2 = oldName_ms;
+			const QString newName_ret = newName;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray newName_b = newName_ret.toUtf8();
+			struct miqt_string newName_ms;
+			newName_ms.len = newName_b.length();
+			newName_ms.data = static_cast<char*>(malloc(newName_ms.len));
+			memcpy(newName_ms.data, newName_b.data(), newName_ms.len);
+			struct miqt_string sigval3 = newName_ms;
+			miqt_exec_callback_QFileSystemModel_fileRenamed(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileSystemModel_fileRenamed_release(slot); }
+	};
+	MiqtVirtualQFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&, const QString&, const QString&)>(&QFileSystemModel::fileRenamed), self, caller{slot});
 }
 
 void QFileSystemModel_directoryLoaded(QFileSystemModel* self, struct miqt_string path) {
@@ -1344,17 +1365,26 @@ void QFileSystemModel_directoryLoaded(QFileSystemModel* self, struct miqt_string
 }
 
 void QFileSystemModel_connect_directoryLoaded(QFileSystemModel* self, intptr_t slot) {
-	MiqtVirtualQFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&)>(&QFileSystemModel::directoryLoaded), self, [=](const QString& path) {
-		const QString path_ret = path;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray path_b = path_ret.toUtf8();
-		struct miqt_string path_ms;
-		path_ms.len = path_b.length();
-		path_ms.data = static_cast<char*>(malloc(path_ms.len));
-		memcpy(path_ms.data, path_b.data(), path_ms.len);
-		struct miqt_string sigval1 = path_ms;
-		miqt_exec_callback_QFileSystemModel_directoryLoaded(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& path) {
+			const QString path_ret = path;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray path_b = path_ret.toUtf8();
+			struct miqt_string path_ms;
+			path_ms.len = path_b.length();
+			path_ms.data = static_cast<char*>(malloc(path_ms.len));
+			memcpy(path_ms.data, path_b.data(), path_ms.len);
+			struct miqt_string sigval1 = path_ms;
+			miqt_exec_callback_QFileSystemModel_directoryLoaded(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QFileSystemModel_directoryLoaded_release(slot); }
+	};
+	MiqtVirtualQFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&)>(&QFileSystemModel::directoryLoaded), self, caller{slot});
 }
 
 QModelIndex* QFileSystemModel_index(const QFileSystemModel* self, int row, int column, QModelIndex* parent) {

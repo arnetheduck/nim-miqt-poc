@@ -464,6 +464,10 @@ proc miqt_exec_callback_cQSpinBox_valueChanged(slot: int, param1: cint) {.export
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQSpinBox_valueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpinBox_valueChanged_release".} =
+  let nimfunc = cast[ref QSpinBoxvalueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvalueChanged*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxvalueChangedSlot) =
   var tmp = new QSpinBoxvalueChangedSlot
   tmp[] = slot
@@ -482,6 +486,10 @@ proc miqt_exec_callback_cQSpinBox_textChanged(slot: int, param1: struct_miqt_str
   let slotval1 = vparam1x_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQSpinBox_textChanged_release(slot: int) {.exportc: "miqt_exec_callback_QSpinBox_textChanged_release".} =
+  let nimfunc = cast[ref QSpinBoxtextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontextChanged*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxtextChangedSlot) =
   var tmp = new QSpinBoxtextChangedSlot
@@ -1532,6 +1540,10 @@ proc miqt_exec_callback_cQDoubleSpinBox_valueChanged(slot: int, param1: float64)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDoubleSpinBox_valueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDoubleSpinBox_valueChanged_release".} =
+  let nimfunc = cast[ref QDoubleSpinBoxvalueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvalueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxvalueChangedSlot) =
   var tmp = new QDoubleSpinBoxvalueChangedSlot
   tmp[] = slot
@@ -1550,6 +1562,10 @@ proc miqt_exec_callback_cQDoubleSpinBox_textChanged(slot: int, param1: struct_mi
   let slotval1 = vparam1x_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDoubleSpinBox_textChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDoubleSpinBox_textChanged_release".} =
+  let nimfunc = cast[ref QDoubleSpinBoxtextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontextChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxtextChangedSlot) =
   var tmp = new QDoubleSpinBoxtextChangedSlot

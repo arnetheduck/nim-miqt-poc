@@ -56,6 +56,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsView_rubberBandChanged(intptr_t, QRect*, QPointF*, QPointF*);
+void miqt_exec_callback_QGraphicsView_rubberBandChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1645,12 +1646,21 @@ void QGraphicsView_rubberBandChanged(QGraphicsView* self, QRect* viewportRect, Q
 }
 
 void QGraphicsView_connect_rubberBandChanged(QGraphicsView* self, intptr_t slot) {
-	MiqtVirtualQGraphicsView::connect(self, static_cast<void (QGraphicsView::*)(QRect, QPointF, QPointF)>(&QGraphicsView::rubberBandChanged), self, [=](QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint) {
-		QRect* sigval1 = new QRect(viewportRect);
-		QPointF* sigval2 = new QPointF(fromScenePoint);
-		QPointF* sigval3 = new QPointF(toScenePoint);
-		miqt_exec_callback_QGraphicsView_rubberBandChanged(slot, sigval1, sigval2, sigval3);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint) {
+			QRect* sigval1 = new QRect(viewportRect);
+			QPointF* sigval2 = new QPointF(fromScenePoint);
+			QPointF* sigval3 = new QPointF(toScenePoint);
+			miqt_exec_callback_QGraphicsView_rubberBandChanged(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QGraphicsView_rubberBandChanged_release(slot); }
+	};
+	MiqtVirtualQGraphicsView::connect(self, static_cast<void (QGraphicsView::*)(QRect, QPointF, QPointF)>(&QGraphicsView::rubberBandChanged), self, caller{slot});
 }
 
 struct miqt_string QGraphicsView_tr2(const char* s, const char* c) {

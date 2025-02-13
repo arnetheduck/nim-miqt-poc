@@ -60,12 +60,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QTextEdit_textChanged(intptr_t);
+void miqt_exec_callback_QTextEdit_textChanged_release(intptr_t);
 void miqt_exec_callback_QTextEdit_undoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextEdit_undoAvailable_release(intptr_t);
 void miqt_exec_callback_QTextEdit_redoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextEdit_redoAvailable_release(intptr_t);
 void miqt_exec_callback_QTextEdit_currentCharFormatChanged(intptr_t, QTextCharFormat*);
+void miqt_exec_callback_QTextEdit_currentCharFormatChanged_release(intptr_t);
 void miqt_exec_callback_QTextEdit_copyAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextEdit_copyAvailable_release(intptr_t);
 void miqt_exec_callback_QTextEdit_selectionChanged(intptr_t);
+void miqt_exec_callback_QTextEdit_selectionChanged_release(intptr_t);
 void miqt_exec_callback_QTextEdit_cursorPositionChanged(intptr_t);
+void miqt_exec_callback_QTextEdit_cursorPositionChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1806,9 +1813,18 @@ void QTextEdit_textChanged(QTextEdit* self) {
 }
 
 void QTextEdit_connect_textChanged(QTextEdit* self, intptr_t slot) {
-	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::textChanged), self, [=]() {
-		miqt_exec_callback_QTextEdit_textChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTextEdit_textChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextEdit_textChanged_release(slot); }
+	};
+	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::textChanged), self, caller{slot});
 }
 
 void QTextEdit_undoAvailable(QTextEdit* self, bool b) {
@@ -1816,10 +1832,19 @@ void QTextEdit_undoAvailable(QTextEdit* self, bool b) {
 }
 
 void QTextEdit_connect_undoAvailable(QTextEdit* self, intptr_t slot) {
-	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::undoAvailable), self, [=](bool b) {
-		bool sigval1 = b;
-		miqt_exec_callback_QTextEdit_undoAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool b) {
+			bool sigval1 = b;
+			miqt_exec_callback_QTextEdit_undoAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextEdit_undoAvailable_release(slot); }
+	};
+	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::undoAvailable), self, caller{slot});
 }
 
 void QTextEdit_redoAvailable(QTextEdit* self, bool b) {
@@ -1827,10 +1852,19 @@ void QTextEdit_redoAvailable(QTextEdit* self, bool b) {
 }
 
 void QTextEdit_connect_redoAvailable(QTextEdit* self, intptr_t slot) {
-	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::redoAvailable), self, [=](bool b) {
-		bool sigval1 = b;
-		miqt_exec_callback_QTextEdit_redoAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool b) {
+			bool sigval1 = b;
+			miqt_exec_callback_QTextEdit_redoAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextEdit_redoAvailable_release(slot); }
+	};
+	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::redoAvailable), self, caller{slot});
 }
 
 void QTextEdit_currentCharFormatChanged(QTextEdit* self, QTextCharFormat* format) {
@@ -1838,12 +1872,21 @@ void QTextEdit_currentCharFormatChanged(QTextEdit* self, QTextCharFormat* format
 }
 
 void QTextEdit_connect_currentCharFormatChanged(QTextEdit* self, intptr_t slot) {
-	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(const QTextCharFormat&)>(&QTextEdit::currentCharFormatChanged), self, [=](const QTextCharFormat& format) {
-		const QTextCharFormat& format_ret = format;
-		// Cast returned reference into pointer
-		QTextCharFormat* sigval1 = const_cast<QTextCharFormat*>(&format_ret);
-		miqt_exec_callback_QTextEdit_currentCharFormatChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QTextCharFormat& format) {
+			const QTextCharFormat& format_ret = format;
+			// Cast returned reference into pointer
+			QTextCharFormat* sigval1 = const_cast<QTextCharFormat*>(&format_ret);
+			miqt_exec_callback_QTextEdit_currentCharFormatChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextEdit_currentCharFormatChanged_release(slot); }
+	};
+	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(const QTextCharFormat&)>(&QTextEdit::currentCharFormatChanged), self, caller{slot});
 }
 
 void QTextEdit_copyAvailable(QTextEdit* self, bool b) {
@@ -1851,10 +1894,19 @@ void QTextEdit_copyAvailable(QTextEdit* self, bool b) {
 }
 
 void QTextEdit_connect_copyAvailable(QTextEdit* self, intptr_t slot) {
-	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::copyAvailable), self, [=](bool b) {
-		bool sigval1 = b;
-		miqt_exec_callback_QTextEdit_copyAvailable(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(bool b) {
+			bool sigval1 = b;
+			miqt_exec_callback_QTextEdit_copyAvailable(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextEdit_copyAvailable_release(slot); }
+	};
+	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::copyAvailable), self, caller{slot});
 }
 
 void QTextEdit_selectionChanged(QTextEdit* self) {
@@ -1862,9 +1914,18 @@ void QTextEdit_selectionChanged(QTextEdit* self) {
 }
 
 void QTextEdit_connect_selectionChanged(QTextEdit* self, intptr_t slot) {
-	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::selectionChanged), self, [=]() {
-		miqt_exec_callback_QTextEdit_selectionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTextEdit_selectionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextEdit_selectionChanged_release(slot); }
+	};
+	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::selectionChanged), self, caller{slot});
 }
 
 void QTextEdit_cursorPositionChanged(QTextEdit* self) {
@@ -1872,9 +1933,18 @@ void QTextEdit_cursorPositionChanged(QTextEdit* self) {
 }
 
 void QTextEdit_connect_cursorPositionChanged(QTextEdit* self, intptr_t slot) {
-	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::cursorPositionChanged), self, [=]() {
-		miqt_exec_callback_QTextEdit_cursorPositionChanged(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QTextEdit_cursorPositionChanged(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QTextEdit_cursorPositionChanged_release(slot); }
+	};
+	MiqtVirtualQTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::cursorPositionChanged), self, caller{slot});
 }
 
 struct miqt_string QTextEdit_tr2(const char* s, const char* c) {

@@ -19,7 +19,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QDrag_actionChanged(intptr_t, int);
+void miqt_exec_callback_QDrag_actionChanged_release(intptr_t);
 void miqt_exec_callback_QDrag_targetChanged(intptr_t, QObject*);
+void miqt_exec_callback_QDrag_targetChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -346,11 +348,20 @@ void QDrag_actionChanged(QDrag* self, int action) {
 }
 
 void QDrag_connect_actionChanged(QDrag* self, intptr_t slot) {
-	MiqtVirtualQDrag::connect(self, static_cast<void (QDrag::*)(Qt::DropAction)>(&QDrag::actionChanged), self, [=](Qt::DropAction action) {
-		Qt::DropAction action_ret = action;
-		int sigval1 = static_cast<int>(action_ret);
-		miqt_exec_callback_QDrag_actionChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(Qt::DropAction action) {
+			Qt::DropAction action_ret = action;
+			int sigval1 = static_cast<int>(action_ret);
+			miqt_exec_callback_QDrag_actionChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDrag_actionChanged_release(slot); }
+	};
+	MiqtVirtualQDrag::connect(self, static_cast<void (QDrag::*)(Qt::DropAction)>(&QDrag::actionChanged), self, caller{slot});
 }
 
 void QDrag_targetChanged(QDrag* self, QObject* newTarget) {
@@ -358,10 +369,19 @@ void QDrag_targetChanged(QDrag* self, QObject* newTarget) {
 }
 
 void QDrag_connect_targetChanged(QDrag* self, intptr_t slot) {
-	MiqtVirtualQDrag::connect(self, static_cast<void (QDrag::*)(QObject*)>(&QDrag::targetChanged), self, [=](QObject* newTarget) {
-		QObject* sigval1 = newTarget;
-		miqt_exec_callback_QDrag_targetChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(QObject* newTarget) {
+			QObject* sigval1 = newTarget;
+			miqt_exec_callback_QDrag_targetChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QDrag_targetChanged_release(slot); }
+	};
+	MiqtVirtualQDrag::connect(self, static_cast<void (QDrag::*)(QObject*)>(&QDrag::targetChanged), self, caller{slot});
 }
 
 struct miqt_string QDrag_tr2(const char* s, const char* c) {
