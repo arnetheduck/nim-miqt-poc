@@ -114,9 +114,6 @@ proc fcQWebEngineSettings_unknownUrlSchemePolicy(self: pointer, ): cint {.import
 proc fcQWebEngineSettings_setUnknownUrlSchemePolicy(self: pointer, policy: cint): void {.importc: "QWebEngineSettings_setUnknownUrlSchemePolicy".}
 proc fcQWebEngineSettings_resetUnknownUrlSchemePolicy(self: pointer, ): void {.importc: "QWebEngineSettings_resetUnknownUrlSchemePolicy".}
 
-
-func init*(T: type gen_qwebenginesettings_types.QWebEngineSettings, h: ptr cQWebEngineSettings): gen_qwebenginesettings_types.QWebEngineSettings =
-  T(h: h)
 proc globalSettings*(_: type gen_qwebenginesettings_types.QWebEngineSettings, ): gen_qwebenginesettings_types.QWebEngineSettings =
   gen_qwebenginesettings_types.QWebEngineSettings(h: fcQWebEngineSettings_globalSettings())
 

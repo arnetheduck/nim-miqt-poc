@@ -51,7 +51,6 @@ import
   gen_qcolor_types,
   gen_qmatrix4x4_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsgnode_types,
@@ -60,7 +59,6 @@ export
   gen_qcolor_types,
   gen_qmatrix4x4_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qsgnode_types,
@@ -93,7 +91,7 @@ proc fcQSGAbstractRenderer_setClearMode(self: pointer, mode: cint): void {.impor
 proc fcQSGAbstractRenderer_clearMode(self: pointer, ): cint {.importc: "QSGAbstractRenderer_clearMode".}
 proc fcQSGAbstractRenderer_renderScene(self: pointer, fboId: cuint): void {.importc: "QSGAbstractRenderer_renderScene".}
 proc fcQSGAbstractRenderer_sceneGraphChanged(self: pointer, ): void {.importc: "QSGAbstractRenderer_sceneGraphChanged".}
-proc fQSGAbstractRenderer_connect_sceneGraphChanged(self: pointer, slot: int) {.importc: "QSGAbstractRenderer_connect_sceneGraphChanged".}
+proc fcQSGAbstractRenderer_connect_sceneGraphChanged(self: pointer, slot: int) {.importc: "QSGAbstractRenderer_connect_sceneGraphChanged".}
 proc fcQSGAbstractRenderer_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGAbstractRenderer_tr2".}
 proc fcQSGAbstractRenderer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGAbstractRenderer_tr3".}
 proc fcQSGAbstractRenderer_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGAbstractRenderer_trUtf82".}
@@ -101,9 +99,6 @@ proc fcQSGAbstractRenderer_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt
 proc fcQSGAbstractRenderer_staticMetaObject(): pointer {.importc: "QSGAbstractRenderer_staticMetaObject".}
 proc fcQSGAbstractRenderer_delete(self: pointer) {.importc: "QSGAbstractRenderer_delete".}
 
-
-func init*(T: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, h: ptr cQSGAbstractRenderer): gen_qsgabstractrenderer_types.QSGAbstractRenderer =
-  T(h: h)
 proc metaObject*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQSGAbstractRenderer_metaObject(self.h))
 
@@ -186,7 +181,7 @@ proc sceneGraphChanged*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer,
   fcQSGAbstractRenderer_sceneGraphChanged(self.h)
 
 type QSGAbstractRenderersceneGraphChangedSlot* = proc()
-proc miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSGAbstractRenderer_sceneGraphChanged(slot: int) {.exportc: "miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged".} =
   let nimfunc = cast[ptr QSGAbstractRenderersceneGraphChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -194,7 +189,7 @@ proc onsceneGraphChanged*(self: gen_qsgabstractrenderer_types.QSGAbstractRendere
   var tmp = new QSGAbstractRenderersceneGraphChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSGAbstractRenderer_connect_sceneGraphChanged(self.h, cast[int](addr tmp[]))
+  fcQSGAbstractRenderer_connect_sceneGraphChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstring, c: cstring): string =
   let v_ms = fcQSGAbstractRenderer_tr2(s, c)
@@ -220,7 +215,7 @@ proc trUtf8*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstri
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSGAbstractRenderer_staticMetaObject())
+proc staticMetaObject*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSGAbstractRenderer_staticMetaObject())
 proc delete*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer) =
   fcQSGAbstractRenderer_delete(self.h)

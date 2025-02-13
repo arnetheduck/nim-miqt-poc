@@ -93,9 +93,9 @@ import gen_qcborcommon_types
 export gen_qcborcommon_types
 
 import
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQCborError*{.exportc: "QCborError", incompleteStruct.} = object
 
@@ -104,9 +104,6 @@ proc fcQCborError_toString(self: pointer, ): struct_miqt_string {.importc: "QCbo
 proc fcQCborError_staticMetaObject(): pointer {.importc: "QCborError_staticMetaObject".}
 proc fcQCborError_delete(self: pointer) {.importc: "QCborError_delete".}
 
-
-func init*(T: type gen_qcborcommon_types.QCborError, h: ptr cQCborError): gen_qcborcommon_types.QCborError =
-  T(h: h)
 proc ToQCborError__Code*(self: gen_qcborcommon_types.QCborError, ): cint =
   cint(fcQCborError_ToQCborError__Code(self.h))
 
@@ -116,7 +113,7 @@ proc toString*(self: gen_qcborcommon_types.QCborError, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qcborcommon_types.QCborError): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCborError_staticMetaObject())
+proc staticMetaObject*(_: type gen_qcborcommon_types.QCborError): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCborError_staticMetaObject())
 proc delete*(self: gen_qcborcommon_types.QCborError) =
   fcQCborError_delete(self.h)

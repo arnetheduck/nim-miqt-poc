@@ -899,21 +899,15 @@ import
   gen_qcalendar_types,
   gen_qchar_types,
   gen_qdatetime_types,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 export
   gen_qcalendar_types,
   gen_qchar_types,
   gen_qdatetime_types,
-  gen_qobjectdefs
+  gen_qobjectdefs_types
 
 type cQLocale*{.exportc: "QLocale", incompleteStruct.} = object
 
-proc fcQLocale_new(): ptr cQLocale {.importc: "QLocale_new".}
-proc fcQLocale_new2(name: struct_miqt_string): ptr cQLocale {.importc: "QLocale_new2".}
-proc fcQLocale_new3(language: cint): ptr cQLocale {.importc: "QLocale_new3".}
-proc fcQLocale_new4(language: cint, script: cint, country: cint): ptr cQLocale {.importc: "QLocale_new4".}
-proc fcQLocale_new5(other: pointer): ptr cQLocale {.importc: "QLocale_new5".}
-proc fcQLocale_new6(language: cint, country: cint): ptr cQLocale {.importc: "QLocale_new6".}
 proc fcQLocale_operatorAssign(self: pointer, other: pointer): void {.importc: "QLocale_operatorAssign".}
 proc fcQLocale_swap(self: pointer, other: pointer): void {.importc: "QLocale_swap".}
 proc fcQLocale_language(self: pointer, ): cint {.importc: "QLocale_language".}
@@ -1055,29 +1049,14 @@ proc fcQLocale_formattedDataSize3(self: pointer, bytes: clonglong, precision: ci
 proc fcQLocale_formattedDataSize22(self: pointer, bytes: clonglong, precision: cint): struct_miqt_string {.importc: "QLocale_formattedDataSize22".}
 proc fcQLocale_formattedDataSize32(self: pointer, bytes: clonglong, precision: cint, format: cint): struct_miqt_string {.importc: "QLocale_formattedDataSize32".}
 proc fcQLocale_quoteString2(self: pointer, str: struct_miqt_string, style: cint): struct_miqt_string {.importc: "QLocale_quoteString2".}
+proc fcQLocale_new(): ptr cQLocale {.importc: "QLocale_new".}
+proc fcQLocale_new2(name: struct_miqt_string): ptr cQLocale {.importc: "QLocale_new2".}
+proc fcQLocale_new3(language: cint): ptr cQLocale {.importc: "QLocale_new3".}
+proc fcQLocale_new4(language: cint, script: cint, country: cint): ptr cQLocale {.importc: "QLocale_new4".}
+proc fcQLocale_new5(other: pointer): ptr cQLocale {.importc: "QLocale_new5".}
+proc fcQLocale_new6(language: cint, country: cint): ptr cQLocale {.importc: "QLocale_new6".}
 proc fcQLocale_staticMetaObject(): pointer {.importc: "QLocale_staticMetaObject".}
 proc fcQLocale_delete(self: pointer) {.importc: "QLocale_delete".}
-
-
-func init*(T: type gen_qlocale_types.QLocale, h: ptr cQLocale): gen_qlocale_types.QLocale =
-  T(h: h)
-proc create*(T: type gen_qlocale_types.QLocale, ): gen_qlocale_types.QLocale =
-  gen_qlocale_types.QLocale.init(fcQLocale_new())
-
-proc create*(T: type gen_qlocale_types.QLocale, name: string): gen_qlocale_types.QLocale =
-  gen_qlocale_types.QLocale.init(fcQLocale_new2(struct_miqt_string(data: name, len: csize_t(len(name)))))
-
-proc create*(T: type gen_qlocale_types.QLocale, language: cint): gen_qlocale_types.QLocale =
-  gen_qlocale_types.QLocale.init(fcQLocale_new3(cint(language)))
-
-proc create*(T: type gen_qlocale_types.QLocale, language: cint, script: cint, country: cint): gen_qlocale_types.QLocale =
-  gen_qlocale_types.QLocale.init(fcQLocale_new4(cint(language), cint(script), cint(country)))
-
-proc create*(T: type gen_qlocale_types.QLocale, other: gen_qlocale_types.QLocale): gen_qlocale_types.QLocale =
-  gen_qlocale_types.QLocale.init(fcQLocale_new5(other.h))
-
-proc create*(T: type gen_qlocale_types.QLocale, language: cint, country: cint): gen_qlocale_types.QLocale =
-  gen_qlocale_types.QLocale.init(fcQLocale_new6(cint(language), cint(country)))
 
 proc operatorAssign*(self: gen_qlocale_types.QLocale, other: gen_qlocale_types.QLocale): void =
   fcQLocale_operatorAssign(self.h, other.h)
@@ -1766,7 +1745,30 @@ proc quoteString*(self: gen_qlocale_types.QLocale, str: string, style: cint): st
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qlocale_types.QLocale): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQLocale_staticMetaObject())
+proc create*(T: type gen_qlocale_types.QLocale): gen_qlocale_types.QLocale =
+  gen_qlocale_types.QLocale(h: fcQLocale_new())
+
+proc create*(T: type gen_qlocale_types.QLocale,
+    name: string): gen_qlocale_types.QLocale =
+  gen_qlocale_types.QLocale(h: fcQLocale_new2(struct_miqt_string(data: name, len: csize_t(len(name)))))
+
+proc create*(T: type gen_qlocale_types.QLocale,
+    language: cint): gen_qlocale_types.QLocale =
+  gen_qlocale_types.QLocale(h: fcQLocale_new3(cint(language)))
+
+proc create*(T: type gen_qlocale_types.QLocale,
+    language: cint, script: cint, country: cint): gen_qlocale_types.QLocale =
+  gen_qlocale_types.QLocale(h: fcQLocale_new4(cint(language), cint(script), cint(country)))
+
+proc create*(T: type gen_qlocale_types.QLocale,
+    other: gen_qlocale_types.QLocale): gen_qlocale_types.QLocale =
+  gen_qlocale_types.QLocale(h: fcQLocale_new5(other.h))
+
+proc create*(T: type gen_qlocale_types.QLocale,
+    language: cint, country: cint): gen_qlocale_types.QLocale =
+  gen_qlocale_types.QLocale(h: fcQLocale_new6(cint(language), cint(country)))
+
+proc staticMetaObject*(_: type gen_qlocale_types.QLocale): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQLocale_staticMetaObject())
 proc delete*(self: gen_qlocale_types.QLocale) =
   fcQLocale_delete(self.h)

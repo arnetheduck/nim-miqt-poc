@@ -18,61 +18,29 @@
 extern "C" {
 #endif
 
-QMetaObject* miqt_exec_callback_QFile_metaObject(const QFile*, intptr_t);
-void* miqt_exec_callback_QFile_metacast(QFile*, intptr_t, const char*);
-int miqt_exec_callback_QFile_metacall(QFile*, intptr_t, int, int, void**);
-struct miqt_string miqt_exec_callback_QFile_fileName(const QFile*, intptr_t);
-bool miqt_exec_callback_QFile_open(QFile*, intptr_t, int);
-long long miqt_exec_callback_QFile_size(const QFile*, intptr_t);
-bool miqt_exec_callback_QFile_resize(QFile*, intptr_t, long long);
-int miqt_exec_callback_QFile_permissions(const QFile*, intptr_t);
-bool miqt_exec_callback_QFile_setPermissions(QFile*, intptr_t, int);
-void miqt_exec_callback_QFile_close(QFile*, intptr_t);
-bool miqt_exec_callback_QFile_isSequential(const QFile*, intptr_t);
-long long miqt_exec_callback_QFile_pos(const QFile*, intptr_t);
-bool miqt_exec_callback_QFile_seek(QFile*, intptr_t, long long);
-bool miqt_exec_callback_QFile_atEnd(const QFile*, intptr_t);
-long long miqt_exec_callback_QFile_readData(QFile*, intptr_t, char*, long long);
-long long miqt_exec_callback_QFile_writeData(QFile*, intptr_t, const char*, long long);
-long long miqt_exec_callback_QFile_readLineData(QFile*, intptr_t, char*, long long);
-bool miqt_exec_callback_QFile_reset(QFile*, intptr_t);
-long long miqt_exec_callback_QFile_bytesAvailable(const QFile*, intptr_t);
-long long miqt_exec_callback_QFile_bytesToWrite(const QFile*, intptr_t);
-bool miqt_exec_callback_QFile_canReadLine(const QFile*, intptr_t);
-bool miqt_exec_callback_QFile_waitForReadyRead(QFile*, intptr_t, int);
-bool miqt_exec_callback_QFile_waitForBytesWritten(QFile*, intptr_t, int);
-bool miqt_exec_callback_QFile_event(QFile*, intptr_t, QEvent*);
-bool miqt_exec_callback_QFile_eventFilter(QFile*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QFile_timerEvent(QFile*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QFile_childEvent(QFile*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFile_customEvent(QFile*, intptr_t, QEvent*);
-void miqt_exec_callback_QFile_connectNotify(QFile*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFile_disconnectNotify(QFile*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQFile final : public QFile {
+	struct QFile_VTable* vtbl;
 public:
 
-	MiqtVirtualQFile(): QFile() {};
-	MiqtVirtualQFile(const QString& name): QFile(name) {};
-	MiqtVirtualQFile(QObject* parent): QFile(parent) {};
-	MiqtVirtualQFile(const QString& name, QObject* parent): QFile(name, parent) {};
+	MiqtVirtualQFile(struct QFile_VTable* vtbl): QFile(), vtbl(vtbl) {};
+	MiqtVirtualQFile(struct QFile_VTable* vtbl, const QString& name): QFile(name), vtbl(vtbl) {};
+	MiqtVirtualQFile(struct QFile_VTable* vtbl, QObject* parent): QFile(parent), vtbl(vtbl) {};
+	MiqtVirtualQFile(struct QFile_VTable* vtbl, const QString& name, QObject* parent): QFile(name, parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQFile() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQFile() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QFile::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QFile_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -84,18 +52,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QFile::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QFile_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -107,21 +72,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QFile::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QFile_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -133,17 +95,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__fileName = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QString fileName() const override {
-		if (handle__fileName == 0) {
+		if (vtbl->fileName == 0) {
 			return QFile::fileName();
 		}
-		
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QFile_fileName(this, handle__fileName);
+
+		struct miqt_string callback_return_value = vtbl->fileName(vtbl, this);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -163,19 +122,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__open = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool open(QIODevice::OpenMode flags) override {
-		if (handle__open == 0) {
+		if (vtbl->open == 0) {
 			return QFile::open(flags);
 		}
-		
+
 		QIODevice::OpenMode flags_ret = flags;
 		int sigval1 = static_cast<int>(flags_ret);
 
-		bool callback_return_value = miqt_exec_callback_QFile_open(this, handle__open, sigval1);
+		bool callback_return_value = vtbl->open(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -187,17 +143,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__size = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual qint64 size() const override {
-		if (handle__size == 0) {
+		if (vtbl->size == 0) {
 			return QFile::size();
 		}
-		
 
-		long long callback_return_value = miqt_exec_callback_QFile_size(this, handle__size);
+
+		long long callback_return_value = vtbl->size(vtbl, this);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -210,19 +163,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__resize = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool resize(qint64 sz) override {
-		if (handle__resize == 0) {
+		if (vtbl->resize == 0) {
 			return QFile::resize(sz);
 		}
-		
+
 		qint64 sz_ret = sz;
 		long long sigval1 = static_cast<long long>(sz_ret);
 
-		bool callback_return_value = miqt_exec_callback_QFile_resize(this, handle__resize, sigval1);
+		bool callback_return_value = vtbl->resize(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -234,17 +184,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__permissions = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QFileDevice::Permissions permissions() const override {
-		if (handle__permissions == 0) {
+		if (vtbl->permissions == 0) {
 			return QFile::permissions();
 		}
-		
 
-		int callback_return_value = miqt_exec_callback_QFile_permissions(this, handle__permissions);
+
+		int callback_return_value = vtbl->permissions(vtbl, this);
 
 		return static_cast<QFileDevice::Permissions>(callback_return_value);
 	}
@@ -257,19 +204,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setPermissions = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool setPermissions(QFileDevice::Permissions permissionSpec) override {
-		if (handle__setPermissions == 0) {
+		if (vtbl->setPermissions == 0) {
 			return QFile::setPermissions(permissionSpec);
 		}
-		
+
 		QFileDevice::Permissions permissionSpec_ret = permissionSpec;
 		int sigval1 = static_cast<int>(permissionSpec_ret);
 
-		bool callback_return_value = miqt_exec_callback_QFile_setPermissions(this, handle__setPermissions, sigval1);
+		bool callback_return_value = vtbl->setPermissions(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -281,20 +225,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__close = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void close() override {
-		if (handle__close == 0) {
+		if (vtbl->close == 0) {
 			QFile::close();
 			return;
 		}
-		
 
-		miqt_exec_callback_QFile_close(this, handle__close);
 
-		
+		vtbl->close(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -304,17 +244,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSequential = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isSequential() const override {
-		if (handle__isSequential == 0) {
+		if (vtbl->isSequential == 0) {
 			return QFile::isSequential();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QFile_isSequential(this, handle__isSequential);
+
+		bool callback_return_value = vtbl->isSequential(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -326,17 +263,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__pos = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual qint64 pos() const override {
-		if (handle__pos == 0) {
+		if (vtbl->pos == 0) {
 			return QFile::pos();
 		}
-		
 
-		long long callback_return_value = miqt_exec_callback_QFile_pos(this, handle__pos);
+
+		long long callback_return_value = vtbl->pos(vtbl, this);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -349,19 +283,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__seek = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool seek(qint64 offset) override {
-		if (handle__seek == 0) {
+		if (vtbl->seek == 0) {
 			return QFile::seek(offset);
 		}
-		
+
 		qint64 offset_ret = offset;
 		long long sigval1 = static_cast<long long>(offset_ret);
 
-		bool callback_return_value = miqt_exec_callback_QFile_seek(this, handle__seek, sigval1);
+		bool callback_return_value = vtbl->seek(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -373,17 +304,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__atEnd = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool atEnd() const override {
-		if (handle__atEnd == 0) {
+		if (vtbl->atEnd == 0) {
 			return QFile::atEnd();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QFile_atEnd(this, handle__atEnd);
+
+		bool callback_return_value = vtbl->atEnd(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -395,20 +323,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__readData = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual qint64 readData(char* data, qint64 maxlen) override {
-		if (handle__readData == 0) {
+		if (vtbl->readData == 0) {
 			return QFile::readData(data, maxlen);
 		}
-		
+
 		char* sigval1 = data;
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
 
-		long long callback_return_value = miqt_exec_callback_QFile_readData(this, handle__readData, sigval1, sigval2);
+		long long callback_return_value = vtbl->readData(vtbl, this, sigval1, sigval2);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -421,20 +346,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__writeData = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual qint64 writeData(const char* data, qint64 len) override {
-		if (handle__writeData == 0) {
+		if (vtbl->writeData == 0) {
 			return QFile::writeData(data, len);
 		}
-		
+
 		const char* sigval1 = (const char*) data;
 		qint64 len_ret = len;
 		long long sigval2 = static_cast<long long>(len_ret);
 
-		long long callback_return_value = miqt_exec_callback_QFile_writeData(this, handle__writeData, sigval1, sigval2);
+		long long callback_return_value = vtbl->writeData(vtbl, this, sigval1, sigval2);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -447,20 +369,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__readLineData = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual qint64 readLineData(char* data, qint64 maxlen) override {
-		if (handle__readLineData == 0) {
+		if (vtbl->readLineData == 0) {
 			return QFile::readLineData(data, maxlen);
 		}
-		
+
 		char* sigval1 = data;
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
 
-		long long callback_return_value = miqt_exec_callback_QFile_readLineData(this, handle__readLineData, sigval1, sigval2);
+		long long callback_return_value = vtbl->readLineData(vtbl, this, sigval1, sigval2);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -473,17 +392,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__reset = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool reset() override {
-		if (handle__reset == 0) {
+		if (vtbl->reset == 0) {
 			return QFile::reset();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QFile_reset(this, handle__reset);
+
+		bool callback_return_value = vtbl->reset(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -495,17 +411,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__bytesAvailable = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual qint64 bytesAvailable() const override {
-		if (handle__bytesAvailable == 0) {
+		if (vtbl->bytesAvailable == 0) {
 			return QFile::bytesAvailable();
 		}
-		
 
-		long long callback_return_value = miqt_exec_callback_QFile_bytesAvailable(this, handle__bytesAvailable);
+
+		long long callback_return_value = vtbl->bytesAvailable(vtbl, this);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -518,17 +431,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__bytesToWrite = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual qint64 bytesToWrite() const override {
-		if (handle__bytesToWrite == 0) {
+		if (vtbl->bytesToWrite == 0) {
 			return QFile::bytesToWrite();
 		}
-		
 
-		long long callback_return_value = miqt_exec_callback_QFile_bytesToWrite(this, handle__bytesToWrite);
+
+		long long callback_return_value = vtbl->bytesToWrite(vtbl, this);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -541,17 +451,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__canReadLine = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool canReadLine() const override {
-		if (handle__canReadLine == 0) {
+		if (vtbl->canReadLine == 0) {
 			return QFile::canReadLine();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QFile_canReadLine(this, handle__canReadLine);
+
+		bool callback_return_value = vtbl->canReadLine(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -563,18 +470,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__waitForReadyRead = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool waitForReadyRead(int msecs) override {
-		if (handle__waitForReadyRead == 0) {
+		if (vtbl->waitForReadyRead == 0) {
 			return QFile::waitForReadyRead(msecs);
 		}
-		
+
 		int sigval1 = msecs;
 
-		bool callback_return_value = miqt_exec_callback_QFile_waitForReadyRead(this, handle__waitForReadyRead, sigval1);
+		bool callback_return_value = vtbl->waitForReadyRead(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -586,18 +490,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__waitForBytesWritten = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool waitForBytesWritten(int msecs) override {
-		if (handle__waitForBytesWritten == 0) {
+		if (vtbl->waitForBytesWritten == 0) {
 			return QFile::waitForBytesWritten(msecs);
 		}
-		
+
 		int sigval1 = msecs;
 
-		bool callback_return_value = miqt_exec_callback_QFile_waitForBytesWritten(this, handle__waitForBytesWritten, sigval1);
+		bool callback_return_value = vtbl->waitForBytesWritten(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -609,18 +510,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QFile::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QFile_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -632,19 +530,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QFile::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QFile_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -656,21 +551,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QFile::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QFile_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -680,21 +571,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QFile::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QFile_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -704,21 +591,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QFile::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QFile_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -728,23 +611,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QFile::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QFile_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -754,23 +633,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QFile::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QFile_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -789,22 +664,22 @@ public:
 	friend bool QFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QFile* QFile_new() {
-	return new MiqtVirtualQFile();
+QFile* QFile_new(struct QFile_VTable* vtbl) {
+	return new MiqtVirtualQFile(vtbl);
 }
 
-QFile* QFile_new2(struct miqt_string name) {
+QFile* QFile_new2(struct QFile_VTable* vtbl, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new MiqtVirtualQFile(name_QString);
+	return new MiqtVirtualQFile(vtbl, name_QString);
 }
 
-QFile* QFile_new3(QObject* parent) {
-	return new MiqtVirtualQFile(parent);
+QFile* QFile_new3(struct QFile_VTable* vtbl, QObject* parent) {
+	return new MiqtVirtualQFile(vtbl, parent);
 }
 
-QFile* QFile_new4(struct miqt_string name, QObject* parent) {
+QFile* QFile_new4(struct QFile_VTable* vtbl, struct miqt_string name, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new MiqtVirtualQFile(name_QString, parent);
+	return new MiqtVirtualQFile(vtbl, name_QString, parent);
 }
 
 void QFile_virtbase(QFile* src, QFileDevice** outptr_QFileDevice) {
@@ -1090,420 +965,120 @@ bool QFile_open33(QFile* self, int fd, int ioFlags, int handleFlags) {
 	return self->open(static_cast<int>(fd), static_cast<QIODevice::OpenMode>(ioFlags), static_cast<QFileDevice::FileHandleFlags>(handleFlags));
 }
 
-bool QFile_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QFile_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_metaObject();
-}
-
-bool QFile_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QFile_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QFile_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QFile_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QFile_override_virtual_fileName(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__fileName = slot;
-	return true;
 }
 
 struct miqt_string QFile_virtualbase_fileName(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_fileName();
 }
 
-bool QFile_override_virtual_open(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__open = slot;
-	return true;
-}
-
 bool QFile_virtualbase_open(void* self, int flags) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_open(flags);
-}
-
-bool QFile_override_virtual_size(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__size = slot;
-	return true;
 }
 
 long long QFile_virtualbase_size(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_size();
 }
 
-bool QFile_override_virtual_resize(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__resize = slot;
-	return true;
-}
-
 bool QFile_virtualbase_resize(void* self, long long sz) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_resize(sz);
-}
-
-bool QFile_override_virtual_permissions(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__permissions = slot;
-	return true;
 }
 
 int QFile_virtualbase_permissions(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_permissions();
 }
 
-bool QFile_override_virtual_setPermissions(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setPermissions = slot;
-	return true;
-}
-
 bool QFile_virtualbase_setPermissions(void* self, int permissionSpec) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_setPermissions(permissionSpec);
-}
-
-bool QFile_override_virtual_close(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__close = slot;
-	return true;
 }
 
 void QFile_virtualbase_close(void* self) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_close();
 }
 
-bool QFile_override_virtual_isSequential(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSequential = slot;
-	return true;
-}
-
 bool QFile_virtualbase_isSequential(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_isSequential();
-}
-
-bool QFile_override_virtual_pos(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__pos = slot;
-	return true;
 }
 
 long long QFile_virtualbase_pos(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_pos();
 }
 
-bool QFile_override_virtual_seek(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__seek = slot;
-	return true;
-}
-
 bool QFile_virtualbase_seek(void* self, long long offset) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_seek(offset);
-}
-
-bool QFile_override_virtual_atEnd(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__atEnd = slot;
-	return true;
 }
 
 bool QFile_virtualbase_atEnd(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_atEnd();
 }
 
-bool QFile_override_virtual_readData(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__readData = slot;
-	return true;
-}
-
 long long QFile_virtualbase_readData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_readData(data, maxlen);
-}
-
-bool QFile_override_virtual_writeData(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__writeData = slot;
-	return true;
 }
 
 long long QFile_virtualbase_writeData(void* self, const char* data, long long len) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_writeData(data, len);
 }
 
-bool QFile_override_virtual_readLineData(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__readLineData = slot;
-	return true;
-}
-
 long long QFile_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_readLineData(data, maxlen);
-}
-
-bool QFile_override_virtual_reset(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__reset = slot;
-	return true;
 }
 
 bool QFile_virtualbase_reset(void* self) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_reset();
 }
 
-bool QFile_override_virtual_bytesAvailable(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__bytesAvailable = slot;
-	return true;
-}
-
 long long QFile_virtualbase_bytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_bytesAvailable();
-}
-
-bool QFile_override_virtual_bytesToWrite(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__bytesToWrite = slot;
-	return true;
 }
 
 long long QFile_virtualbase_bytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_bytesToWrite();
 }
 
-bool QFile_override_virtual_canReadLine(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__canReadLine = slot;
-	return true;
-}
-
 bool QFile_virtualbase_canReadLine(const void* self) {
 	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_canReadLine();
-}
-
-bool QFile_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__waitForReadyRead = slot;
-	return true;
 }
 
 bool QFile_virtualbase_waitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_waitForReadyRead(msecs);
 }
 
-bool QFile_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__waitForBytesWritten = slot;
-	return true;
-}
-
 bool QFile_virtualbase_waitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_waitForBytesWritten(msecs);
-}
-
-bool QFile_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
 }
 
 bool QFile_virtualbase_event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_event(event);
 }
 
-bool QFile_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
-}
-
 bool QFile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_eventFilter(watched, event);
-}
-
-bool QFile_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
 }
 
 void QFile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QFile_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
-}
-
 void QFile_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_childEvent(event);
-}
-
-bool QFile_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
 }
 
 void QFile_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QFile_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QFile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QFile_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

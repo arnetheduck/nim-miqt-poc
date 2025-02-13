@@ -56,12 +56,10 @@ export gen_qcameraimageprocessingcontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -83,9 +81,6 @@ proc fcQCameraImageProcessingControl_trUtf83(s: cstring, c: cstring, n: cint): s
 proc fcQCameraImageProcessingControl_staticMetaObject(): pointer {.importc: "QCameraImageProcessingControl_staticMetaObject".}
 proc fcQCameraImageProcessingControl_delete(self: pointer) {.importc: "QCameraImageProcessingControl_delete".}
 
-
-func init*(T: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, h: ptr cQCameraImageProcessingControl): gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl =
-  T(h: h)
 proc metaObject*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQCameraImageProcessingControl_metaObject(self.h))
 
@@ -143,7 +138,7 @@ proc trUtf8*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcess
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraImageProcessingControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraImageProcessingControl_staticMetaObject())
 proc delete*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl) =
   fcQCameraImageProcessingControl_delete(self.h)

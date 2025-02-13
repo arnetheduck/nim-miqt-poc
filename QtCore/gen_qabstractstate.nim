@@ -39,13 +39,11 @@ export gen_qabstractstate_types
 
 import
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types,
   gen_qstatemachine_types
 export
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qstate_types,
   gen_qstatemachine_types
@@ -61,7 +59,7 @@ proc fcQAbstractState_parentState(self: pointer, ): pointer {.importc: "QAbstrac
 proc fcQAbstractState_machine(self: pointer, ): pointer {.importc: "QAbstractState_machine".}
 proc fcQAbstractState_active(self: pointer, ): bool {.importc: "QAbstractState_active".}
 proc fcQAbstractState_activeChanged(self: pointer, active: bool): void {.importc: "QAbstractState_activeChanged".}
-proc fQAbstractState_connect_activeChanged(self: pointer, slot: int) {.importc: "QAbstractState_connect_activeChanged".}
+proc fcQAbstractState_connect_activeChanged(self: pointer, slot: int) {.importc: "QAbstractState_connect_activeChanged".}
 proc fcQAbstractState_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractState_tr2".}
 proc fcQAbstractState_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractState_tr3".}
 proc fcQAbstractState_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractState_trUtf82".}
@@ -69,9 +67,6 @@ proc fcQAbstractState_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_stri
 proc fcQAbstractState_staticMetaObject(): pointer {.importc: "QAbstractState_staticMetaObject".}
 proc fcQAbstractState_delete(self: pointer) {.importc: "QAbstractState_delete".}
 
-
-func init*(T: type gen_qabstractstate_types.QAbstractState, h: ptr cQAbstractState): gen_qabstractstate_types.QAbstractState =
-  T(h: h)
 proc metaObject*(self: gen_qabstractstate_types.QAbstractState, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQAbstractState_metaObject(self.h))
 
@@ -106,7 +101,7 @@ proc activeChanged*(self: gen_qabstractstate_types.QAbstractState, active: bool)
   fcQAbstractState_activeChanged(self.h, active)
 
 type QAbstractStateactiveChangedSlot* = proc(active: bool)
-proc miqt_exec_callback_QAbstractState_activeChanged(slot: int, active: bool) {.exportc.} =
+proc miqt_exec_callback_cQAbstractState_activeChanged(slot: int, active: bool) {.exportc: "miqt_exec_callback_QAbstractState_activeChanged".} =
   let nimfunc = cast[ptr QAbstractStateactiveChangedSlot](cast[pointer](slot))
   let slotval1 = active
 
@@ -116,7 +111,7 @@ proc onactiveChanged*(self: gen_qabstractstate_types.QAbstractState, slot: QAbst
   var tmp = new QAbstractStateactiveChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAbstractState_connect_activeChanged(self.h, cast[int](addr tmp[]))
+  fcQAbstractState_connect_activeChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qabstractstate_types.QAbstractState, s: cstring, c: cstring): string =
   let v_ms = fcQAbstractState_tr2(s, c)
@@ -142,7 +137,7 @@ proc trUtf8*(_: type gen_qabstractstate_types.QAbstractState, s: cstring, c: cst
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qabstractstate_types.QAbstractState): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQAbstractState_staticMetaObject())
+proc staticMetaObject*(_: type gen_qabstractstate_types.QAbstractState): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractState_staticMetaObject())
 proc delete*(self: gen_qabstractstate_types.QAbstractState) =
   fcQAbstractState_delete(self.h)

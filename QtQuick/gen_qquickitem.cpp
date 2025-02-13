@@ -43,17 +43,6 @@
 extern "C" {
 #endif
 
-QMetaObject* miqt_exec_callback_QQuickTransform_metaObject(const QQuickTransform*, intptr_t);
-void* miqt_exec_callback_QQuickTransform_metacast(QQuickTransform*, intptr_t, const char*);
-int miqt_exec_callback_QQuickTransform_metacall(QQuickTransform*, intptr_t, int, int, void**);
-void miqt_exec_callback_QQuickTransform_applyTo(const QQuickTransform*, intptr_t, QMatrix4x4*);
-bool miqt_exec_callback_QQuickTransform_event(QQuickTransform*, intptr_t, QEvent*);
-bool miqt_exec_callback_QQuickTransform_eventFilter(QQuickTransform*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QQuickTransform_timerEvent(QQuickTransform*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QQuickTransform_childEvent(QQuickTransform*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QQuickTransform_customEvent(QQuickTransform*, intptr_t, QEvent*);
-void miqt_exec_callback_QQuickTransform_connectNotify(QQuickTransform*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QQuickTransform_disconnectNotify(QQuickTransform*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QQuickItem_childrenRectChanged(intptr_t, QRectF*);
 void miqt_exec_callback_QQuickItem_baselineOffsetChanged(intptr_t, double);
 void miqt_exec_callback_QQuickItem_stateChanged(intptr_t, struct miqt_string);
@@ -81,74 +70,27 @@ void miqt_exec_callback_QQuickItem_zChanged(intptr_t);
 void miqt_exec_callback_QQuickItem_implicitWidthChanged(intptr_t);
 void miqt_exec_callback_QQuickItem_implicitHeightChanged(intptr_t);
 void miqt_exec_callback_QQuickItem_containmentMaskChanged(intptr_t);
-QMetaObject* miqt_exec_callback_QQuickItem_metaObject(const QQuickItem*, intptr_t);
-void* miqt_exec_callback_QQuickItem_metacast(QQuickItem*, intptr_t, const char*);
-int miqt_exec_callback_QQuickItem_metacall(QQuickItem*, intptr_t, int, int, void**);
-QRectF* miqt_exec_callback_QQuickItem_boundingRect(const QQuickItem*, intptr_t);
-QRectF* miqt_exec_callback_QQuickItem_clipRect(const QQuickItem*, intptr_t);
-bool miqt_exec_callback_QQuickItem_contains(const QQuickItem*, intptr_t, QPointF*);
-QVariant* miqt_exec_callback_QQuickItem_inputMethodQuery(const QQuickItem*, intptr_t, int);
-bool miqt_exec_callback_QQuickItem_isTextureProvider(const QQuickItem*, intptr_t);
-QSGTextureProvider* miqt_exec_callback_QQuickItem_textureProvider(const QQuickItem*, intptr_t);
-bool miqt_exec_callback_QQuickItem_event(QQuickItem*, intptr_t, QEvent*);
-void miqt_exec_callback_QQuickItem_itemChange(QQuickItem*, intptr_t, int, QQuickItem__ItemChangeData*);
-void miqt_exec_callback_QQuickItem_classBegin(QQuickItem*, intptr_t);
-void miqt_exec_callback_QQuickItem_componentComplete(QQuickItem*, intptr_t);
-void miqt_exec_callback_QQuickItem_keyPressEvent(QQuickItem*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QQuickItem_keyReleaseEvent(QQuickItem*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QQuickItem_inputMethodEvent(QQuickItem*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QQuickItem_focusInEvent(QQuickItem*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QQuickItem_focusOutEvent(QQuickItem*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QQuickItem_mousePressEvent(QQuickItem*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickItem_mouseMoveEvent(QQuickItem*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickItem_mouseReleaseEvent(QQuickItem*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickItem_mouseDoubleClickEvent(QQuickItem*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickItem_mouseUngrabEvent(QQuickItem*, intptr_t);
-void miqt_exec_callback_QQuickItem_touchUngrabEvent(QQuickItem*, intptr_t);
-void miqt_exec_callback_QQuickItem_wheelEvent(QQuickItem*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QQuickItem_touchEvent(QQuickItem*, intptr_t, QTouchEvent*);
-void miqt_exec_callback_QQuickItem_hoverEnterEvent(QQuickItem*, intptr_t, QHoverEvent*);
-void miqt_exec_callback_QQuickItem_hoverMoveEvent(QQuickItem*, intptr_t, QHoverEvent*);
-void miqt_exec_callback_QQuickItem_hoverLeaveEvent(QQuickItem*, intptr_t, QHoverEvent*);
-void miqt_exec_callback_QQuickItem_dragEnterEvent(QQuickItem*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QQuickItem_dragMoveEvent(QQuickItem*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QQuickItem_dragLeaveEvent(QQuickItem*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QQuickItem_dropEvent(QQuickItem*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QQuickItem_childMouseEventFilter(QQuickItem*, intptr_t, QQuickItem*, QEvent*);
-void miqt_exec_callback_QQuickItem_windowDeactivateEvent(QQuickItem*, intptr_t);
-void miqt_exec_callback_QQuickItem_geometryChanged(QQuickItem*, intptr_t, QRectF*, QRectF*);
-QSGNode* miqt_exec_callback_QQuickItem_updatePaintNode(QQuickItem*, intptr_t, QSGNode*, QQuickItem__UpdatePaintNodeData*);
-void miqt_exec_callback_QQuickItem_releaseResources(QQuickItem*, intptr_t);
-void miqt_exec_callback_QQuickItem_updatePolish(QQuickItem*, intptr_t);
-bool miqt_exec_callback_QQuickItem_eventFilter(QQuickItem*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QQuickItem_timerEvent(QQuickItem*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QQuickItem_childEvent(QQuickItem*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QQuickItem_customEvent(QQuickItem*, intptr_t, QEvent*);
-void miqt_exec_callback_QQuickItem_connectNotify(QQuickItem*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QQuickItem_disconnectNotify(QQuickItem*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQQuickTransform final : public QQuickTransform {
+	struct QQuickTransform_VTable* vtbl;
 public:
 
-	MiqtVirtualQQuickTransform(): QQuickTransform() {};
-	MiqtVirtualQQuickTransform(QObject* parent): QQuickTransform(parent) {};
+	MiqtVirtualQQuickTransform(struct QQuickTransform_VTable* vtbl): QQuickTransform(), vtbl(vtbl) {};
+	MiqtVirtualQQuickTransform(struct QQuickTransform_VTable* vtbl, QObject* parent): QQuickTransform(parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQQuickTransform() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQQuickTransform() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QQuickTransform::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QQuickTransform_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -160,18 +102,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QQuickTransform::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QQuickTransform_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -183,21 +122,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QQuickTransform::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QQuickTransform_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -209,34 +145,27 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__applyTo = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void applyTo(QMatrix4x4* matrix) const override {
-		if (handle__applyTo == 0) {
+		if (vtbl->applyTo == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		QMatrix4x4* sigval1 = matrix;
 
-		miqt_exec_callback_QQuickTransform_applyTo(this, handle__applyTo, sigval1);
+		vtbl->applyTo(vtbl, this, sigval1);
 
-		
 	}
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QQuickTransform::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQuickTransform_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -248,19 +177,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QQuickTransform::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQuickTransform_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -272,21 +198,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QQuickTransform::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickTransform_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -296,21 +218,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QQuickTransform::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickTransform_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -320,21 +238,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QQuickTransform::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickTransform_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -344,23 +258,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QQuickTransform::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQuickTransform_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -370,23 +280,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QQuickTransform::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQuickTransform_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -404,12 +310,12 @@ public:
 	friend bool QQuickTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QQuickTransform* QQuickTransform_new() {
-	return new MiqtVirtualQQuickTransform();
+QQuickTransform* QQuickTransform_new(struct QQuickTransform_VTable* vtbl) {
+	return new MiqtVirtualQQuickTransform(vtbl);
 }
 
-QQuickTransform* QQuickTransform_new2(QObject* parent) {
-	return new MiqtVirtualQQuickTransform(parent);
+QQuickTransform* QQuickTransform_new2(struct QQuickTransform_VTable* vtbl, QObject* parent) {
+	return new MiqtVirtualQQuickTransform(vtbl, parent);
 }
 
 void QQuickTransform_virtbase(QQuickTransform* src, QObject** outptr_QObject) {
@@ -506,150 +412,40 @@ struct miqt_string QQuickTransform_trUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-bool QQuickTransform_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QQuickTransform_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQQuickTransform*)(self) )->virtualbase_metaObject();
-}
-
-bool QQuickTransform_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QQuickTransform_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QQuickTransform_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QQuickTransform_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QQuickTransform_override_virtual_applyTo(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__applyTo = slot;
-	return true;
-}
-
-bool QQuickTransform_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
 }
 
 bool QQuickTransform_virtualbase_event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_event(event);
 }
 
-bool QQuickTransform_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
-}
-
 bool QQuickTransform_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_eventFilter(watched, event);
-}
-
-bool QQuickTransform_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
 }
 
 void QQuickTransform_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QQuickTransform_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
-}
-
 void QQuickTransform_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_childEvent(event);
-}
-
-bool QQuickTransform_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
 }
 
 void QQuickTransform_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QQuickTransform_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QQuickTransform_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QQuickTransform_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QQuickTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
@@ -727,24 +523,22 @@ void QQuickTransform_delete(QQuickTransform* self) {
 }
 
 class MiqtVirtualQQuickItem final : public QQuickItem {
+	struct QQuickItem_VTable* vtbl;
 public:
 
-	MiqtVirtualQQuickItem(): QQuickItem() {};
-	MiqtVirtualQQuickItem(QQuickItem* parent): QQuickItem(parent) {};
+	MiqtVirtualQQuickItem(struct QQuickItem_VTable* vtbl): QQuickItem(), vtbl(vtbl) {};
+	MiqtVirtualQQuickItem(struct QQuickItem_VTable* vtbl, QQuickItem* parent): QQuickItem(parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQQuickItem() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQQuickItem() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QQuickItem::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QQuickItem_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -756,18 +550,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QQuickItem::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QQuickItem_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -779,21 +570,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QQuickItem::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QQuickItem_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -805,17 +593,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__boundingRect = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QRectF boundingRect() const override {
-		if (handle__boundingRect == 0) {
+		if (vtbl->boundingRect == 0) {
 			return QQuickItem::boundingRect();
 		}
-		
 
-		QRectF* callback_return_value = miqt_exec_callback_QQuickItem_boundingRect(this, handle__boundingRect);
+
+		QRectF* callback_return_value = vtbl->boundingRect(vtbl, this);
 
 		return *callback_return_value;
 	}
@@ -827,17 +612,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clipRect = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QRectF clipRect() const override {
-		if (handle__clipRect == 0) {
+		if (vtbl->clipRect == 0) {
 			return QQuickItem::clipRect();
 		}
-		
 
-		QRectF* callback_return_value = miqt_exec_callback_QQuickItem_clipRect(this, handle__clipRect);
+
+		QRectF* callback_return_value = vtbl->clipRect(vtbl, this);
 
 		return *callback_return_value;
 	}
@@ -849,20 +631,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__contains = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool contains(const QPointF& point) const override {
-		if (handle__contains == 0) {
+		if (vtbl->contains == 0) {
 			return QQuickItem::contains(point);
 		}
-		
+
 		const QPointF& point_ret = point;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
 
-		bool callback_return_value = miqt_exec_callback_QQuickItem_contains(this, handle__contains, sigval1);
+		bool callback_return_value = vtbl->contains(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -874,19 +653,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__inputMethodQuery = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
-		if (handle__inputMethodQuery == 0) {
+		if (vtbl->inputMethodQuery == 0) {
 			return QQuickItem::inputMethodQuery(query);
 		}
-		
+
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QQuickItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
+		QVariant* callback_return_value = vtbl->inputMethodQuery(vtbl, this, sigval1);
 
 		return *callback_return_value;
 	}
@@ -898,17 +674,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isTextureProvider = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isTextureProvider() const override {
-		if (handle__isTextureProvider == 0) {
+		if (vtbl->isTextureProvider == 0) {
 			return QQuickItem::isTextureProvider();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QQuickItem_isTextureProvider(this, handle__isTextureProvider);
+
+		bool callback_return_value = vtbl->isTextureProvider(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -920,17 +693,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__textureProvider = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSGTextureProvider* textureProvider() const override {
-		if (handle__textureProvider == 0) {
+		if (vtbl->textureProvider == 0) {
 			return QQuickItem::textureProvider();
 		}
-		
 
-		QSGTextureProvider* callback_return_value = miqt_exec_callback_QQuickItem_textureProvider(this, handle__textureProvider);
+
+		QSGTextureProvider* callback_return_value = vtbl->textureProvider(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -942,18 +712,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* param1) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QQuickItem::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_QQuickItem_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -965,25 +732,21 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__itemChange = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void itemChange(QQuickItem::ItemChange param1, const QQuickItem::ItemChangeData& param2) override {
-		if (handle__itemChange == 0) {
+		if (vtbl->itemChange == 0) {
 			QQuickItem::itemChange(param1, param2);
 			return;
 		}
-		
+
 		QQuickItem::ItemChange param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		const QQuickItem::ItemChangeData& param2_ret = param2;
 		// Cast returned reference into pointer
 		QQuickItem__ItemChangeData* sigval2 = const_cast<QQuickItem::ItemChangeData*>(&param2_ret);
 
-		miqt_exec_callback_QQuickItem_itemChange(this, handle__itemChange, sigval1, sigval2);
+		vtbl->itemChange(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -993,20 +756,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__classBegin = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void classBegin() override {
-		if (handle__classBegin == 0) {
+		if (vtbl->classBegin == 0) {
 			QQuickItem::classBegin();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickItem_classBegin(this, handle__classBegin);
 
-		
+		vtbl->classBegin(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -1016,20 +775,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__componentComplete = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void componentComplete() override {
-		if (handle__componentComplete == 0) {
+		if (vtbl->componentComplete == 0) {
 			QQuickItem::componentComplete();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickItem_componentComplete(this, handle__componentComplete);
 
-		
+		vtbl->componentComplete(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -1039,21 +794,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__keyPressEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void keyPressEvent(QKeyEvent* event) override {
-		if (handle__keyPressEvent == 0) {
+		if (vtbl->keyPressEvent == 0) {
 			QQuickItem::keyPressEvent(event);
 			return;
 		}
-		
+
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_keyPressEvent(this, handle__keyPressEvent, sigval1);
+		vtbl->keyPressEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1063,21 +814,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__keyReleaseEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void keyReleaseEvent(QKeyEvent* event) override {
-		if (handle__keyReleaseEvent == 0) {
+		if (vtbl->keyReleaseEvent == 0) {
 			QQuickItem::keyReleaseEvent(event);
 			return;
 		}
-		
+
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
+		vtbl->keyReleaseEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1087,21 +834,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__inputMethodEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void inputMethodEvent(QInputMethodEvent* param1) override {
-		if (handle__inputMethodEvent == 0) {
+		if (vtbl->inputMethodEvent == 0) {
 			QQuickItem::inputMethodEvent(param1);
 			return;
 		}
-		
+
 		QInputMethodEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickItem_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
+		vtbl->inputMethodEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1111,21 +854,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__focusInEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void focusInEvent(QFocusEvent* param1) override {
-		if (handle__focusInEvent == 0) {
+		if (vtbl->focusInEvent == 0) {
 			QQuickItem::focusInEvent(param1);
 			return;
 		}
-		
+
 		QFocusEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickItem_focusInEvent(this, handle__focusInEvent, sigval1);
+		vtbl->focusInEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1135,21 +874,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__focusOutEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void focusOutEvent(QFocusEvent* param1) override {
-		if (handle__focusOutEvent == 0) {
+		if (vtbl->focusOutEvent == 0) {
 			QQuickItem::focusOutEvent(param1);
 			return;
 		}
-		
+
 		QFocusEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickItem_focusOutEvent(this, handle__focusOutEvent, sigval1);
+		vtbl->focusOutEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1159,21 +894,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mousePressEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mousePressEvent(QMouseEvent* event) override {
-		if (handle__mousePressEvent == 0) {
+		if (vtbl->mousePressEvent == 0) {
 			QQuickItem::mousePressEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_mousePressEvent(this, handle__mousePressEvent, sigval1);
+		vtbl->mousePressEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1183,21 +914,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseMoveEvent(QMouseEvent* event) override {
-		if (handle__mouseMoveEvent == 0) {
+		if (vtbl->mouseMoveEvent == 0) {
 			QQuickItem::mouseMoveEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
+		vtbl->mouseMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1207,21 +934,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseReleaseEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseReleaseEvent(QMouseEvent* event) override {
-		if (handle__mouseReleaseEvent == 0) {
+		if (vtbl->mouseReleaseEvent == 0) {
 			QQuickItem::mouseReleaseEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
+		vtbl->mouseReleaseEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1231,21 +954,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseDoubleClickEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
-		if (handle__mouseDoubleClickEvent == 0) {
+		if (vtbl->mouseDoubleClickEvent == 0) {
 			QQuickItem::mouseDoubleClickEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
+		vtbl->mouseDoubleClickEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1255,20 +974,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseUngrabEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseUngrabEvent() override {
-		if (handle__mouseUngrabEvent == 0) {
+		if (vtbl->mouseUngrabEvent == 0) {
 			QQuickItem::mouseUngrabEvent();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickItem_mouseUngrabEvent(this, handle__mouseUngrabEvent);
 
-		
+		vtbl->mouseUngrabEvent(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -1278,20 +993,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__touchUngrabEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void touchUngrabEvent() override {
-		if (handle__touchUngrabEvent == 0) {
+		if (vtbl->touchUngrabEvent == 0) {
 			QQuickItem::touchUngrabEvent();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickItem_touchUngrabEvent(this, handle__touchUngrabEvent);
 
-		
+		vtbl->touchUngrabEvent(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -1301,21 +1012,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__wheelEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void wheelEvent(QWheelEvent* event) override {
-		if (handle__wheelEvent == 0) {
+		if (vtbl->wheelEvent == 0) {
 			QQuickItem::wheelEvent(event);
 			return;
 		}
-		
+
 		QWheelEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_wheelEvent(this, handle__wheelEvent, sigval1);
+		vtbl->wheelEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1325,21 +1032,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__touchEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void touchEvent(QTouchEvent* event) override {
-		if (handle__touchEvent == 0) {
+		if (vtbl->touchEvent == 0) {
 			QQuickItem::touchEvent(event);
 			return;
 		}
-		
+
 		QTouchEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_touchEvent(this, handle__touchEvent, sigval1);
+		vtbl->touchEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1349,21 +1052,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hoverEnterEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void hoverEnterEvent(QHoverEvent* event) override {
-		if (handle__hoverEnterEvent == 0) {
+		if (vtbl->hoverEnterEvent == 0) {
 			QQuickItem::hoverEnterEvent(event);
 			return;
 		}
-		
+
 		QHoverEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_hoverEnterEvent(this, handle__hoverEnterEvent, sigval1);
+		vtbl->hoverEnterEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1373,21 +1072,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hoverMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void hoverMoveEvent(QHoverEvent* event) override {
-		if (handle__hoverMoveEvent == 0) {
+		if (vtbl->hoverMoveEvent == 0) {
 			QQuickItem::hoverMoveEvent(event);
 			return;
 		}
-		
+
 		QHoverEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_hoverMoveEvent(this, handle__hoverMoveEvent, sigval1);
+		vtbl->hoverMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1397,21 +1092,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hoverLeaveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void hoverLeaveEvent(QHoverEvent* event) override {
-		if (handle__hoverLeaveEvent == 0) {
+		if (vtbl->hoverLeaveEvent == 0) {
 			QQuickItem::hoverLeaveEvent(event);
 			return;
 		}
-		
+
 		QHoverEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_hoverLeaveEvent(this, handle__hoverLeaveEvent, sigval1);
+		vtbl->hoverLeaveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1421,21 +1112,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragEnterEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragEnterEvent(QDragEnterEvent* param1) override {
-		if (handle__dragEnterEvent == 0) {
+		if (vtbl->dragEnterEvent == 0) {
 			QQuickItem::dragEnterEvent(param1);
 			return;
 		}
-		
+
 		QDragEnterEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickItem_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
+		vtbl->dragEnterEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1445,21 +1132,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragMoveEvent(QDragMoveEvent* param1) override {
-		if (handle__dragMoveEvent == 0) {
+		if (vtbl->dragMoveEvent == 0) {
 			QQuickItem::dragMoveEvent(param1);
 			return;
 		}
-		
+
 		QDragMoveEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickItem_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
+		vtbl->dragMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1469,21 +1152,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragLeaveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragLeaveEvent(QDragLeaveEvent* param1) override {
-		if (handle__dragLeaveEvent == 0) {
+		if (vtbl->dragLeaveEvent == 0) {
 			QQuickItem::dragLeaveEvent(param1);
 			return;
 		}
-		
+
 		QDragLeaveEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickItem_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
+		vtbl->dragLeaveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1493,21 +1172,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dropEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dropEvent(QDropEvent* param1) override {
-		if (handle__dropEvent == 0) {
+		if (vtbl->dropEvent == 0) {
 			QQuickItem::dropEvent(param1);
 			return;
 		}
-		
+
 		QDropEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickItem_dropEvent(this, handle__dropEvent, sigval1);
+		vtbl->dropEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1517,19 +1192,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childMouseEventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool childMouseEventFilter(QQuickItem* param1, QEvent* param2) override {
-		if (handle__childMouseEventFilter == 0) {
+		if (vtbl->childMouseEventFilter == 0) {
 			return QQuickItem::childMouseEventFilter(param1, param2);
 		}
-		
+
 		QQuickItem* sigval1 = param1;
 		QEvent* sigval2 = param2;
 
-		bool callback_return_value = miqt_exec_callback_QQuickItem_childMouseEventFilter(this, handle__childMouseEventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->childMouseEventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -1541,20 +1213,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__windowDeactivateEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void windowDeactivateEvent() override {
-		if (handle__windowDeactivateEvent == 0) {
+		if (vtbl->windowDeactivateEvent == 0) {
 			QQuickItem::windowDeactivateEvent();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickItem_windowDeactivateEvent(this, handle__windowDeactivateEvent);
 
-		
+		vtbl->windowDeactivateEvent(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -1564,16 +1232,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__geometryChanged = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void geometryChanged(const QRectF& newGeometry, const QRectF& oldGeometry) override {
-		if (handle__geometryChanged == 0) {
+		if (vtbl->geometryChanged == 0) {
 			QQuickItem::geometryChanged(newGeometry, oldGeometry);
 			return;
 		}
-		
+
 		const QRectF& newGeometry_ret = newGeometry;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&newGeometry_ret);
@@ -1581,9 +1246,8 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval2 = const_cast<QRectF*>(&oldGeometry_ret);
 
-		miqt_exec_callback_QQuickItem_geometryChanged(this, handle__geometryChanged, sigval1, sigval2);
+		vtbl->geometryChanged(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1593,19 +1257,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updatePaintNode = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSGNode* updatePaintNode(QSGNode* param1, QQuickItem::UpdatePaintNodeData* param2) override {
-		if (handle__updatePaintNode == 0) {
+		if (vtbl->updatePaintNode == 0) {
 			return QQuickItem::updatePaintNode(param1, param2);
 		}
-		
+
 		QSGNode* sigval1 = param1;
 		QQuickItem__UpdatePaintNodeData* sigval2 = param2;
 
-		QSGNode* callback_return_value = miqt_exec_callback_QQuickItem_updatePaintNode(this, handle__updatePaintNode, sigval1, sigval2);
+		QSGNode* callback_return_value = vtbl->updatePaintNode(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -1617,20 +1278,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__releaseResources = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void releaseResources() override {
-		if (handle__releaseResources == 0) {
+		if (vtbl->releaseResources == 0) {
 			QQuickItem::releaseResources();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickItem_releaseResources(this, handle__releaseResources);
 
-		
+		vtbl->releaseResources(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -1640,20 +1297,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updatePolish = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void updatePolish() override {
-		if (handle__updatePolish == 0) {
+		if (vtbl->updatePolish == 0) {
 			QQuickItem::updatePolish();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickItem_updatePolish(this, handle__updatePolish);
 
-		
+		vtbl->updatePolish(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -1663,19 +1316,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QQuickItem::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQuickItem_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -1687,21 +1337,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QQuickItem::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1711,21 +1357,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QQuickItem::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1735,21 +1377,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QQuickItem::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickItem_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1759,23 +1397,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QQuickItem::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQuickItem_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1785,23 +1419,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QQuickItem::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQuickItem_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -1824,12 +1454,12 @@ public:
 	friend bool QQuickItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QQuickItem* QQuickItem_new() {
-	return new MiqtVirtualQQuickItem();
+QQuickItem* QQuickItem_new(struct QQuickItem_VTable* vtbl) {
+	return new MiqtVirtualQQuickItem(vtbl);
 }
 
-QQuickItem* QQuickItem_new2(QQuickItem* parent) {
-	return new MiqtVirtualQQuickItem(parent);
+QQuickItem* QQuickItem_new2(struct QQuickItem_VTable* vtbl, QQuickItem* parent) {
+	return new MiqtVirtualQQuickItem(vtbl, parent);
 }
 
 void QQuickItem_virtbase(QQuickItem* src, QObject** outptr_QObject, QQmlParserStatus** outptr_QQmlParserStatus) {
@@ -2698,630 +2328,180 @@ QQuickItem* QQuickItem_nextItemInFocusChain1(QQuickItem* self, bool forward) {
 	return self->nextItemInFocusChain(forward);
 }
 
-bool QQuickItem_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QQuickItem_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_metaObject();
-}
-
-bool QQuickItem_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QQuickItem_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQQuickItem*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QQuickItem_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QQuickItem_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQQuickItem*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QQuickItem_override_virtual_boundingRect(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__boundingRect = slot;
-	return true;
 }
 
 QRectF* QQuickItem_virtualbase_boundingRect(const void* self) {
 	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_boundingRect();
 }
 
-bool QQuickItem_override_virtual_clipRect(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clipRect = slot;
-	return true;
-}
-
 QRectF* QQuickItem_virtualbase_clipRect(const void* self) {
 	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_clipRect();
-}
-
-bool QQuickItem_override_virtual_contains(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__contains = slot;
-	return true;
 }
 
 bool QQuickItem_virtualbase_contains(const void* self, QPointF* point) {
 	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_contains(point);
 }
 
-bool QQuickItem_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__inputMethodQuery = slot;
-	return true;
-}
-
 QVariant* QQuickItem_virtualbase_inputMethodQuery(const void* self, int query) {
 	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_inputMethodQuery(query);
-}
-
-bool QQuickItem_override_virtual_isTextureProvider(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isTextureProvider = slot;
-	return true;
 }
 
 bool QQuickItem_virtualbase_isTextureProvider(const void* self) {
 	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_isTextureProvider();
 }
 
-bool QQuickItem_override_virtual_textureProvider(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__textureProvider = slot;
-	return true;
-}
-
 QSGTextureProvider* QQuickItem_virtualbase_textureProvider(const void* self) {
 	return ( (const MiqtVirtualQQuickItem*)(self) )->virtualbase_textureProvider();
-}
-
-bool QQuickItem_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
 }
 
 bool QQuickItem_virtualbase_event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQQuickItem*)(self) )->virtualbase_event(param1);
 }
 
-bool QQuickItem_override_virtual_itemChange(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__itemChange = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_itemChange(void* self, int param1, QQuickItem__ItemChangeData* param2) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_itemChange(param1, param2);
-}
-
-bool QQuickItem_override_virtual_classBegin(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__classBegin = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_classBegin(void* self) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_classBegin();
 }
 
-bool QQuickItem_override_virtual_componentComplete(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__componentComplete = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_componentComplete(void* self) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_componentComplete();
-}
-
-bool QQuickItem_override_virtual_keyPressEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__keyPressEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_keyPressEvent(event);
 }
 
-bool QQuickItem_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__keyReleaseEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_keyReleaseEvent(event);
-}
-
-bool QQuickItem_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__inputMethodEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_inputMethodEvent(param1);
 }
 
-bool QQuickItem_override_virtual_focusInEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__focusInEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_focusInEvent(param1);
-}
-
-bool QQuickItem_override_virtual_focusOutEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__focusOutEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_focusOutEvent(param1);
 }
 
-bool QQuickItem_override_virtual_mousePressEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mousePressEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_mousePressEvent(event);
-}
-
-bool QQuickItem_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseMoveEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_mouseMoveEvent(event);
 }
 
-bool QQuickItem_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseReleaseEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_mouseReleaseEvent(event);
-}
-
-bool QQuickItem_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseDoubleClickEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_mouseDoubleClickEvent(event);
 }
 
-bool QQuickItem_override_virtual_mouseUngrabEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseUngrabEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_mouseUngrabEvent(void* self) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_mouseUngrabEvent();
-}
-
-bool QQuickItem_override_virtual_touchUngrabEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__touchUngrabEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_touchUngrabEvent(void* self) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_touchUngrabEvent();
 }
 
-bool QQuickItem_override_virtual_wheelEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__wheelEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_wheelEvent(event);
-}
-
-bool QQuickItem_override_virtual_touchEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__touchEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_touchEvent(void* self, QTouchEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_touchEvent(event);
 }
 
-bool QQuickItem_override_virtual_hoverEnterEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hoverEnterEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_hoverEnterEvent(void* self, QHoverEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_hoverEnterEvent(event);
-}
-
-bool QQuickItem_override_virtual_hoverMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hoverMoveEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_hoverMoveEvent(void* self, QHoverEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_hoverMoveEvent(event);
 }
 
-bool QQuickItem_override_virtual_hoverLeaveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hoverLeaveEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_hoverLeaveEvent(void* self, QHoverEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_hoverLeaveEvent(event);
-}
-
-bool QQuickItem_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragEnterEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_dragEnterEvent(param1);
 }
 
-bool QQuickItem_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragMoveEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* param1) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_dragMoveEvent(param1);
-}
-
-bool QQuickItem_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragLeaveEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* param1) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_dragLeaveEvent(param1);
 }
 
-bool QQuickItem_override_virtual_dropEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dropEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_dropEvent(void* self, QDropEvent* param1) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_dropEvent(param1);
-}
-
-bool QQuickItem_override_virtual_childMouseEventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childMouseEventFilter = slot;
-	return true;
 }
 
 bool QQuickItem_virtualbase_childMouseEventFilter(void* self, QQuickItem* param1, QEvent* param2) {
 	return ( (MiqtVirtualQQuickItem*)(self) )->virtualbase_childMouseEventFilter(param1, param2);
 }
 
-bool QQuickItem_override_virtual_windowDeactivateEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__windowDeactivateEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_windowDeactivateEvent(void* self) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_windowDeactivateEvent();
-}
-
-bool QQuickItem_override_virtual_geometryChanged(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__geometryChanged = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_geometryChanged(void* self, QRectF* newGeometry, QRectF* oldGeometry) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_geometryChanged(newGeometry, oldGeometry);
 }
 
-bool QQuickItem_override_virtual_updatePaintNode(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updatePaintNode = slot;
-	return true;
-}
-
 QSGNode* QQuickItem_virtualbase_updatePaintNode(void* self, QSGNode* param1, QQuickItem__UpdatePaintNodeData* param2) {
 	return ( (MiqtVirtualQQuickItem*)(self) )->virtualbase_updatePaintNode(param1, param2);
-}
-
-bool QQuickItem_override_virtual_releaseResources(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__releaseResources = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_releaseResources(void* self) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_releaseResources();
 }
 
-bool QQuickItem_override_virtual_updatePolish(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updatePolish = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_updatePolish(void* self) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_updatePolish();
-}
-
-bool QQuickItem_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QQuickItem_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQQuickItem*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QQuickItem_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_timerEvent(event);
-}
-
-bool QQuickItem_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QQuickItem_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QQuickItem_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QQuickItem_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QQuickItem_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QQuickItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

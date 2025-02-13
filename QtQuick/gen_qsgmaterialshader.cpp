@@ -14,39 +14,28 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QSGMaterialShader_activate(QSGMaterialShader*, intptr_t);
-void miqt_exec_callback_QSGMaterialShader_deactivate(QSGMaterialShader*, intptr_t);
-void miqt_exec_callback_QSGMaterialShader_updateState(QSGMaterialShader*, intptr_t, QSGMaterialShader__RenderState*, QSGMaterial*, QSGMaterial*);
-const char** miqt_exec_callback_QSGMaterialShader_attributeNames(const QSGMaterialShader*, intptr_t);
-void miqt_exec_callback_QSGMaterialShader_compile(QSGMaterialShader*, intptr_t);
-void miqt_exec_callback_QSGMaterialShader_initialize(QSGMaterialShader*, intptr_t);
-const char* miqt_exec_callback_QSGMaterialShader_vertexShader(const QSGMaterialShader*, intptr_t);
-const char* miqt_exec_callback_QSGMaterialShader_fragmentShader(const QSGMaterialShader*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQSGMaterialShader final : public QSGMaterialShader {
+	struct QSGMaterialShader_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGMaterialShader(): QSGMaterialShader() {};
+	MiqtVirtualQSGMaterialShader(struct QSGMaterialShader_VTable* vtbl): QSGMaterialShader(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGMaterialShader() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__activate = 0;
+	virtual ~MiqtVirtualQSGMaterialShader() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void activate() override {
-		if (handle__activate == 0) {
+		if (vtbl->activate == 0) {
 			QSGMaterialShader::activate();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGMaterialShader_activate(this, handle__activate);
 
-		
+		vtbl->activate(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -56,20 +45,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__deactivate = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void deactivate() override {
-		if (handle__deactivate == 0) {
+		if (vtbl->deactivate == 0) {
 			QSGMaterialShader::deactivate();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGMaterialShader_deactivate(this, handle__deactivate);
 
-		
+		vtbl->deactivate(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -79,25 +64,21 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updateState = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void updateState(const QSGMaterialShader::RenderState& state, QSGMaterial* newMaterial, QSGMaterial* oldMaterial) override {
-		if (handle__updateState == 0) {
+		if (vtbl->updateState == 0) {
 			QSGMaterialShader::updateState(state, newMaterial, oldMaterial);
 			return;
 		}
-		
+
 		const QSGMaterialShader::RenderState& state_ret = state;
 		// Cast returned reference into pointer
 		QSGMaterialShader__RenderState* sigval1 = const_cast<QSGMaterialShader::RenderState*>(&state_ret);
 		QSGMaterial* sigval2 = newMaterial;
 		QSGMaterial* sigval3 = oldMaterial;
 
-		miqt_exec_callback_QSGMaterialShader_updateState(this, handle__updateState, sigval1, sigval2, sigval3);
+		vtbl->updateState(vtbl, this, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -107,35 +88,28 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__attributeNames = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual const char** attributeNames() const override {
-		if (handle__attributeNames == 0) {
+		if (vtbl->attributeNames == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
 
-		const char** callback_return_value = miqt_exec_callback_QSGMaterialShader_attributeNames(this, handle__attributeNames);
+
+		const char** callback_return_value = vtbl->attributeNames(vtbl, this);
 
 		return callback_return_value;
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__compile = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void compile() override {
-		if (handle__compile == 0) {
+		if (vtbl->compile == 0) {
 			QSGMaterialShader::compile();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGMaterialShader_compile(this, handle__compile);
 
-		
+		vtbl->compile(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -145,20 +119,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__initialize = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void initialize() override {
-		if (handle__initialize == 0) {
+		if (vtbl->initialize == 0) {
 			QSGMaterialShader::initialize();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGMaterialShader_initialize(this, handle__initialize);
 
-		
+		vtbl->initialize(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -168,17 +138,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__vertexShader = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual const char* vertexShader() const override {
-		if (handle__vertexShader == 0) {
+		if (vtbl->vertexShader == 0) {
 			return QSGMaterialShader::vertexShader();
 		}
-		
 
-		const char* callback_return_value = miqt_exec_callback_QSGMaterialShader_vertexShader(this, handle__vertexShader);
+
+		const char* callback_return_value = vtbl->vertexShader(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -190,17 +157,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__fragmentShader = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual const char* fragmentShader() const override {
-		if (handle__fragmentShader == 0) {
+		if (vtbl->fragmentShader == 0) {
 			return QSGMaterialShader::fragmentShader();
 		}
-		
 
-		const char* callback_return_value = miqt_exec_callback_QSGMaterialShader_fragmentShader(this, handle__fragmentShader);
+
+		const char* callback_return_value = vtbl->fragmentShader(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -217,8 +181,8 @@ public:
 	friend void QSGMaterialShader_protectedbase_setShaderSourceFiles(bool* _dynamic_cast_ok, void* self, QOpenGLShader::ShaderType type, struct miqt_array /* of struct miqt_string */  sourceFiles);
 };
 
-QSGMaterialShader* QSGMaterialShader_new() {
-	return new MiqtVirtualQSGMaterialShader();
+QSGMaterialShader* QSGMaterialShader_new(struct QSGMaterialShader_VTable* vtbl) {
+	return new MiqtVirtualQSGMaterialShader(vtbl);
 }
 
 void QSGMaterialShader_activate(QSGMaterialShader* self) {
@@ -237,108 +201,28 @@ const char** QSGMaterialShader_attributeNames(const QSGMaterialShader* self) {
 	return (const char**) self->attributeNames();
 }
 
-bool QSGMaterialShader_override_virtual_activate(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__activate = slot;
-	return true;
-}
-
 void QSGMaterialShader_virtualbase_activate(void* self) {
 	( (MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_activate();
-}
-
-bool QSGMaterialShader_override_virtual_deactivate(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__deactivate = slot;
-	return true;
 }
 
 void QSGMaterialShader_virtualbase_deactivate(void* self) {
 	( (MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_deactivate();
 }
 
-bool QSGMaterialShader_override_virtual_updateState(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updateState = slot;
-	return true;
-}
-
 void QSGMaterialShader_virtualbase_updateState(void* self, QSGMaterialShader__RenderState* state, QSGMaterial* newMaterial, QSGMaterial* oldMaterial) {
 	( (MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_updateState(state, newMaterial, oldMaterial);
-}
-
-bool QSGMaterialShader_override_virtual_attributeNames(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__attributeNames = slot;
-	return true;
-}
-
-bool QSGMaterialShader_override_virtual_compile(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__compile = slot;
-	return true;
 }
 
 void QSGMaterialShader_virtualbase_compile(void* self) {
 	( (MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_compile();
 }
 
-bool QSGMaterialShader_override_virtual_initialize(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__initialize = slot;
-	return true;
-}
-
 void QSGMaterialShader_virtualbase_initialize(void* self) {
 	( (MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_initialize();
 }
 
-bool QSGMaterialShader_override_virtual_vertexShader(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__vertexShader = slot;
-	return true;
-}
-
 const char* QSGMaterialShader_virtualbase_vertexShader(const void* self) {
 	return ( (const MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_vertexShader();
-}
-
-bool QSGMaterialShader_override_virtual_fragmentShader(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__fragmentShader = slot;
-	return true;
 }
 
 const char* QSGMaterialShader_virtualbase_fragmentShader(const void* self) {

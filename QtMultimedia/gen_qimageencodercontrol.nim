@@ -40,13 +40,11 @@ export gen_qimageencodercontrol_types
 import
   gen_qmediacontrol,
   gen_qmediaencodersettings_types,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types
 export
   gen_qmediacontrol,
   gen_qmediaencodersettings_types,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types
 
@@ -69,9 +67,6 @@ proc fcQImageEncoderControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miq
 proc fcQImageEncoderControl_staticMetaObject(): pointer {.importc: "QImageEncoderControl_staticMetaObject".}
 proc fcQImageEncoderControl_delete(self: pointer) {.importc: "QImageEncoderControl_delete".}
 
-
-func init*(T: type gen_qimageencodercontrol_types.QImageEncoderControl, h: ptr cQImageEncoderControl): gen_qimageencodercontrol_types.QImageEncoderControl =
-  T(h: h)
 proc metaObject*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQImageEncoderControl_metaObject(self.h))
 
@@ -148,7 +143,7 @@ proc trUtf8*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cst
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qimageencodercontrol_types.QImageEncoderControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQImageEncoderControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qimageencodercontrol_types.QImageEncoderControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQImageEncoderControl_staticMetaObject())
 proc delete*(self: gen_qimageencodercontrol_types.QImageEncoderControl) =
   fcQImageEncoderControl_delete(self.h)

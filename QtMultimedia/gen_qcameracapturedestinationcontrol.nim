@@ -39,11 +39,9 @@ export gen_qcameracapturedestinationcontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQCameraCaptureDestinationControl*{.exportc: "QCameraCaptureDestinationControl", incompleteStruct.} = object
@@ -57,7 +55,7 @@ proc fcQCameraCaptureDestinationControl_isCaptureDestinationSupported(self: poin
 proc fcQCameraCaptureDestinationControl_captureDestination(self: pointer, ): cint {.importc: "QCameraCaptureDestinationControl_captureDestination".}
 proc fcQCameraCaptureDestinationControl_setCaptureDestination(self: pointer, destination: cint): void {.importc: "QCameraCaptureDestinationControl_setCaptureDestination".}
 proc fcQCameraCaptureDestinationControl_captureDestinationChanged(self: pointer, destination: cint): void {.importc: "QCameraCaptureDestinationControl_captureDestinationChanged".}
-proc fQCameraCaptureDestinationControl_connect_captureDestinationChanged(self: pointer, slot: int) {.importc: "QCameraCaptureDestinationControl_connect_captureDestinationChanged".}
+proc fcQCameraCaptureDestinationControl_connect_captureDestinationChanged(self: pointer, slot: int) {.importc: "QCameraCaptureDestinationControl_connect_captureDestinationChanged".}
 proc fcQCameraCaptureDestinationControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraCaptureDestinationControl_tr2".}
 proc fcQCameraCaptureDestinationControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraCaptureDestinationControl_tr3".}
 proc fcQCameraCaptureDestinationControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraCaptureDestinationControl_trUtf82".}
@@ -65,9 +63,6 @@ proc fcQCameraCaptureDestinationControl_trUtf83(s: cstring, c: cstring, n: cint)
 proc fcQCameraCaptureDestinationControl_staticMetaObject(): pointer {.importc: "QCameraCaptureDestinationControl_staticMetaObject".}
 proc fcQCameraCaptureDestinationControl_delete(self: pointer) {.importc: "QCameraCaptureDestinationControl_delete".}
 
-
-func init*(T: type gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl, h: ptr cQCameraCaptureDestinationControl): gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl =
-  T(h: h)
 proc metaObject*(self: gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQCameraCaptureDestinationControl_metaObject(self.h))
 
@@ -102,7 +97,7 @@ proc captureDestinationChanged*(self: gen_qcameracapturedestinationcontrol_types
   fcQCameraCaptureDestinationControl_captureDestinationChanged(self.h, cint(destination))
 
 type QCameraCaptureDestinationControlcaptureDestinationChangedSlot* = proc(destination: cint)
-proc miqt_exec_callback_QCameraCaptureDestinationControl_captureDestinationChanged(slot: int, destination: cint) {.exportc.} =
+proc miqt_exec_callback_cQCameraCaptureDestinationControl_captureDestinationChanged(slot: int, destination: cint) {.exportc: "miqt_exec_callback_QCameraCaptureDestinationControl_captureDestinationChanged".} =
   let nimfunc = cast[ptr QCameraCaptureDestinationControlcaptureDestinationChangedSlot](cast[pointer](slot))
   let slotval1 = cint(destination)
 
@@ -112,7 +107,7 @@ proc oncaptureDestinationChanged*(self: gen_qcameracapturedestinationcontrol_typ
   var tmp = new QCameraCaptureDestinationControlcaptureDestinationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQCameraCaptureDestinationControl_connect_captureDestinationChanged(self.h, cast[int](addr tmp[]))
+  fcQCameraCaptureDestinationControl_connect_captureDestinationChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraCaptureDestinationControl_tr2(s, c)
@@ -138,7 +133,7 @@ proc trUtf8*(_: type gen_qcameracapturedestinationcontrol_types.QCameraCaptureDe
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQCameraCaptureDestinationControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraCaptureDestinationControl_staticMetaObject())
 proc delete*(self: gen_qcameracapturedestinationcontrol_types.QCameraCaptureDestinationControl) =
   fcQCameraCaptureDestinationControl_delete(self.h)

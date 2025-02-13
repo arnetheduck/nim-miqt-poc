@@ -40,12 +40,10 @@ export gen_qaudioencodersettingscontrol_types
 import
   gen_qmediacontrol,
   gen_qmediaencodersettings_types,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
   gen_qmediaencodersettings_types,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQAudioEncoderSettingsControl*{.exportc: "QAudioEncoderSettingsControl", incompleteStruct.} = object
@@ -67,9 +65,6 @@ proc fcQAudioEncoderSettingsControl_trUtf83(s: cstring, c: cstring, n: cint): st
 proc fcQAudioEncoderSettingsControl_staticMetaObject(): pointer {.importc: "QAudioEncoderSettingsControl_staticMetaObject".}
 proc fcQAudioEncoderSettingsControl_delete(self: pointer) {.importc: "QAudioEncoderSettingsControl_delete".}
 
-
-func init*(T: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, h: ptr cQAudioEncoderSettingsControl): gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl =
-  T(h: h)
 proc metaObject*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQAudioEncoderSettingsControl_metaObject(self.h))
 
@@ -146,7 +141,7 @@ proc trUtf8*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSetting
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQAudioEncoderSettingsControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAudioEncoderSettingsControl_staticMetaObject())
 proc delete*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl) =
   fcQAudioEncoderSettingsControl_delete(self.h)

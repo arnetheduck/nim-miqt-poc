@@ -54,9 +54,6 @@ proc fcQWhatsThis_hideText(): void {.importc: "QWhatsThis_hideText".}
 proc fcQWhatsThis_showText3(pos: pointer, text: struct_miqt_string, w: pointer): void {.importc: "QWhatsThis_showText3".}
 proc fcQWhatsThis_delete(self: pointer) {.importc: "QWhatsThis_delete".}
 
-
-func init*(T: type gen_qwhatsthis_types.QWhatsThis, h: ptr cQWhatsThis): gen_qwhatsthis_types.QWhatsThis =
-  T(h: h)
 proc enterWhatsThisMode*(_: type gen_qwhatsthis_types.QWhatsThis, ): void =
   fcQWhatsThis_enterWhatsThisMode()
 

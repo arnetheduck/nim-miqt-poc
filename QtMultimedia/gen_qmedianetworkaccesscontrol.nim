@@ -39,11 +39,9 @@ export gen_qmedianetworkaccesscontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQMediaNetworkAccessControl*{.exportc: "QMediaNetworkAccessControl", incompleteStruct.} = object
@@ -56,7 +54,7 @@ proc fcQMediaNetworkAccessControl_trUtf8(s: cstring): struct_miqt_string {.impor
 proc fcQMediaNetworkAccessControl_setConfigurations(self: pointer, configuration: struct_miqt_array): void {.importc: "QMediaNetworkAccessControl_setConfigurations".}
 proc fcQMediaNetworkAccessControl_currentConfiguration(self: pointer, ): cQNetworkConfiguration {.importc: "QMediaNetworkAccessControl_currentConfiguration".}
 proc fcQMediaNetworkAccessControl_configurationChanged(self: pointer, configuration: ptr cQNetworkConfiguration): void {.importc: "QMediaNetworkAccessControl_configurationChanged".}
-proc fQMediaNetworkAccessControl_connect_configurationChanged(self: pointer, slot: int) {.importc: "QMediaNetworkAccessControl_connect_configurationChanged".}
+proc fcQMediaNetworkAccessControl_connect_configurationChanged(self: pointer, slot: int) {.importc: "QMediaNetworkAccessControl_connect_configurationChanged".}
 proc fcQMediaNetworkAccessControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaNetworkAccessControl_tr2".}
 proc fcQMediaNetworkAccessControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaNetworkAccessControl_tr3".}
 proc fcQMediaNetworkAccessControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaNetworkAccessControl_trUtf82".}
@@ -64,9 +62,6 @@ proc fcQMediaNetworkAccessControl_trUtf83(s: cstring, c: cstring, n: cint): stru
 proc fcQMediaNetworkAccessControl_staticMetaObject(): pointer {.importc: "QMediaNetworkAccessControl_staticMetaObject".}
 proc fcQMediaNetworkAccessControl_delete(self: pointer) {.importc: "QMediaNetworkAccessControl_delete".}
 
-
-func init*(T: type gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl, h: ptr cQMediaNetworkAccessControl): gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl =
-  T(h: h)
 proc metaObject*(self: gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQMediaNetworkAccessControl_metaObject(self.h))
 
@@ -101,7 +96,7 @@ proc configurationChanged*(self: gen_qmedianetworkaccesscontrol_types.QMediaNetw
   fcQMediaNetworkAccessControl_configurationChanged(self.h, configuration)
 
 type QMediaNetworkAccessControlconfigurationChangedSlot* = proc(configuration: ptr QNetworkConfiguration)
-proc miqt_exec_callback_QMediaNetworkAccessControl_configurationChanged(slot: int, configuration: ptr cQNetworkConfiguration) {.exportc.} =
+proc miqt_exec_callback_cQMediaNetworkAccessControl_configurationChanged(slot: int, configuration: ptr cQNetworkConfiguration) {.exportc: "miqt_exec_callback_QMediaNetworkAccessControl_configurationChanged".} =
   let nimfunc = cast[ptr QMediaNetworkAccessControlconfigurationChangedSlot](cast[pointer](slot))
 TODO QNetworkConfiguration
   nimfunc[](slotval1)
@@ -110,7 +105,7 @@ proc onconfigurationChanged*(self: gen_qmedianetworkaccesscontrol_types.QMediaNe
   var tmp = new QMediaNetworkAccessControlconfigurationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQMediaNetworkAccessControl_connect_configurationChanged(self.h, cast[int](addr tmp[]))
+  fcQMediaNetworkAccessControl_connect_configurationChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl, s: cstring, c: cstring): string =
   let v_ms = fcQMediaNetworkAccessControl_tr2(s, c)
@@ -136,7 +131,7 @@ proc trUtf8*(_: type gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessCon
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMediaNetworkAccessControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaNetworkAccessControl_staticMetaObject())
 proc delete*(self: gen_qmedianetworkaccesscontrol_types.QMediaNetworkAccessControl) =
   fcQMediaNetworkAccessControl_delete(self.h)

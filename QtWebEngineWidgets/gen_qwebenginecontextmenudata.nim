@@ -73,18 +73,16 @@ import gen_qwebenginecontextmenudata_types
 export gen_qwebenginecontextmenudata_types
 
 import
-  gen_qobjectdefs,
+  gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qurl_types
 export
-  gen_qobjectdefs,
+  gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qurl_types
 
 type cQWebEngineContextMenuData*{.exportc: "QWebEngineContextMenuData", incompleteStruct.} = object
 
-proc fcQWebEngineContextMenuData_new(): ptr cQWebEngineContextMenuData {.importc: "QWebEngineContextMenuData_new".}
-proc fcQWebEngineContextMenuData_new2(other: pointer): ptr cQWebEngineContextMenuData {.importc: "QWebEngineContextMenuData_new2".}
 proc fcQWebEngineContextMenuData_operatorAssign(self: pointer, other: pointer): void {.importc: "QWebEngineContextMenuData_operatorAssign".}
 proc fcQWebEngineContextMenuData_isValid(self: pointer, ): bool {.importc: "QWebEngineContextMenuData_isValid".}
 proc fcQWebEngineContextMenuData_position(self: pointer, ): pointer {.importc: "QWebEngineContextMenuData_position".}
@@ -98,17 +96,10 @@ proc fcQWebEngineContextMenuData_misspelledWord(self: pointer, ): struct_miqt_st
 proc fcQWebEngineContextMenuData_spellCheckerSuggestions(self: pointer, ): struct_miqt_array {.importc: "QWebEngineContextMenuData_spellCheckerSuggestions".}
 proc fcQWebEngineContextMenuData_mediaFlags(self: pointer, ): cint {.importc: "QWebEngineContextMenuData_mediaFlags".}
 proc fcQWebEngineContextMenuData_editFlags(self: pointer, ): cint {.importc: "QWebEngineContextMenuData_editFlags".}
+proc fcQWebEngineContextMenuData_new(): ptr cQWebEngineContextMenuData {.importc: "QWebEngineContextMenuData_new".}
+proc fcQWebEngineContextMenuData_new2(other: pointer): ptr cQWebEngineContextMenuData {.importc: "QWebEngineContextMenuData_new2".}
 proc fcQWebEngineContextMenuData_staticMetaObject(): pointer {.importc: "QWebEngineContextMenuData_staticMetaObject".}
 proc fcQWebEngineContextMenuData_delete(self: pointer) {.importc: "QWebEngineContextMenuData_delete".}
-
-
-func init*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, h: ptr cQWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
-  T(h: h)
-proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
-  gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new())
-
-proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
-  gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new2(other.h))
 
 proc operatorAssign*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): void =
   fcQWebEngineContextMenuData_operatorAssign(self.h, other.h)
@@ -166,7 +157,14 @@ proc mediaFlags*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenu
 proc editFlags*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): cint =
   cint(fcQWebEngineContextMenuData_editFlags(self.h))
 
-proc staticMetaObject*(_: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebEngineContextMenuData_staticMetaObject())
+proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
+  gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData(h: fcQWebEngineContextMenuData_new())
+
+proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData,
+    other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
+  gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData(h: fcQWebEngineContextMenuData_new2(other.h))
+
+proc staticMetaObject*(_: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineContextMenuData_staticMetaObject())
 proc delete*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData) =
   fcQWebEngineContextMenuData_delete(self.h)

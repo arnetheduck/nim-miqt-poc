@@ -8,4 +8,3 @@ type QSequentialIterableconst_iterator* {.inheritable, pure.} = object
   h*: pointer
 type QAssociativeIterableconst_iterator* {.inheritable, pure.} = object
   h*: pointer
-

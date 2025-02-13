@@ -17,40 +17,26 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QSGNode_isSubtreeBlocked(const QSGNode*, intptr_t);
-void miqt_exec_callback_QSGNode_preprocess(QSGNode*, intptr_t);
-bool miqt_exec_callback_QSGGeometryNode_isSubtreeBlocked(const QSGGeometryNode*, intptr_t);
-void miqt_exec_callback_QSGGeometryNode_preprocess(QSGGeometryNode*, intptr_t);
-bool miqt_exec_callback_QSGClipNode_isSubtreeBlocked(const QSGClipNode*, intptr_t);
-void miqt_exec_callback_QSGClipNode_preprocess(QSGClipNode*, intptr_t);
-bool miqt_exec_callback_QSGTransformNode_isSubtreeBlocked(const QSGTransformNode*, intptr_t);
-void miqt_exec_callback_QSGTransformNode_preprocess(QSGTransformNode*, intptr_t);
-bool miqt_exec_callback_QSGRootNode_isSubtreeBlocked(const QSGRootNode*, intptr_t);
-void miqt_exec_callback_QSGRootNode_preprocess(QSGRootNode*, intptr_t);
-bool miqt_exec_callback_QSGOpacityNode_isSubtreeBlocked(const QSGOpacityNode*, intptr_t);
-void miqt_exec_callback_QSGOpacityNode_preprocess(QSGOpacityNode*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQSGNode final : public QSGNode {
+	struct QSGNode_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGNode(): QSGNode() {};
+	MiqtVirtualQSGNode(struct QSGNode_VTable* vtbl): QSGNode(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGNode() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSubtreeBlocked = 0;
+	virtual ~MiqtVirtualQSGNode() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSubtreeBlocked() const override {
-		if (handle__isSubtreeBlocked == 0) {
+		if (vtbl->isSubtreeBlocked == 0) {
 			return QSGNode::isSubtreeBlocked();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QSGNode_isSubtreeBlocked(this, handle__isSubtreeBlocked);
+
+		bool callback_return_value = vtbl->isSubtreeBlocked(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -62,20 +48,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__preprocess = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void preprocess() override {
-		if (handle__preprocess == 0) {
+		if (vtbl->preprocess == 0) {
 			QSGNode::preprocess();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGNode_preprocess(this, handle__preprocess);
 
-		
+		vtbl->preprocess(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -87,8 +69,8 @@ public:
 
 };
 
-QSGNode* QSGNode_new() {
-	return new MiqtVirtualQSGNode();
+QSGNode* QSGNode_new(struct QSGNode_VTable* vtbl) {
+	return new MiqtVirtualQSGNode(vtbl);
 }
 
 QSGNode* QSGNode_parent(const QSGNode* self) {
@@ -194,28 +176,8 @@ void QSGNode_setFlags2(QSGNode* self, int param1, bool param2) {
 	self->setFlags(static_cast<QSGNode::Flags>(param1), param2);
 }
 
-bool QSGNode_override_virtual_isSubtreeBlocked(void* self, intptr_t slot) {
-	MiqtVirtualQSGNode* self_cast = dynamic_cast<MiqtVirtualQSGNode*>( (QSGNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSubtreeBlocked = slot;
-	return true;
-}
-
 bool QSGNode_virtualbase_isSubtreeBlocked(const void* self) {
 	return ( (const MiqtVirtualQSGNode*)(self) )->virtualbase_isSubtreeBlocked();
-}
-
-bool QSGNode_override_virtual_preprocess(void* self, intptr_t slot) {
-	MiqtVirtualQSGNode* self_cast = dynamic_cast<MiqtVirtualQSGNode*>( (QSGNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__preprocess = slot;
-	return true;
 }
 
 void QSGNode_virtualbase_preprocess(void* self) {
@@ -263,23 +225,21 @@ void QSGBasicGeometryNode_delete(QSGBasicGeometryNode* self) {
 }
 
 class MiqtVirtualQSGGeometryNode final : public QSGGeometryNode {
+	struct QSGGeometryNode_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGGeometryNode(): QSGGeometryNode() {};
+	MiqtVirtualQSGGeometryNode(struct QSGGeometryNode_VTable* vtbl): QSGGeometryNode(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGGeometryNode() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSubtreeBlocked = 0;
+	virtual ~MiqtVirtualQSGGeometryNode() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSubtreeBlocked() const override {
-		if (handle__isSubtreeBlocked == 0) {
+		if (vtbl->isSubtreeBlocked == 0) {
 			return QSGGeometryNode::isSubtreeBlocked();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QSGGeometryNode_isSubtreeBlocked(this, handle__isSubtreeBlocked);
+
+		bool callback_return_value = vtbl->isSubtreeBlocked(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -291,20 +251,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__preprocess = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void preprocess() override {
-		if (handle__preprocess == 0) {
+		if (vtbl->preprocess == 0) {
 			QSGGeometryNode::preprocess();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGGeometryNode_preprocess(this, handle__preprocess);
 
-		
+		vtbl->preprocess(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -316,8 +272,8 @@ public:
 
 };
 
-QSGGeometryNode* QSGGeometryNode_new() {
-	return new MiqtVirtualQSGGeometryNode();
+QSGGeometryNode* QSGGeometryNode_new(struct QSGGeometryNode_VTable* vtbl) {
+	return new MiqtVirtualQSGGeometryNode(vtbl);
 }
 
 void QSGGeometryNode_virtbase(QSGGeometryNode* src, QSGBasicGeometryNode** outptr_QSGBasicGeometryNode) {
@@ -361,28 +317,8 @@ double QSGGeometryNode_inheritedOpacity(const QSGGeometryNode* self) {
 	return static_cast<double>(_ret);
 }
 
-bool QSGGeometryNode_override_virtual_isSubtreeBlocked(void* self, intptr_t slot) {
-	MiqtVirtualQSGGeometryNode* self_cast = dynamic_cast<MiqtVirtualQSGGeometryNode*>( (QSGGeometryNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSubtreeBlocked = slot;
-	return true;
-}
-
 bool QSGGeometryNode_virtualbase_isSubtreeBlocked(const void* self) {
 	return ( (const MiqtVirtualQSGGeometryNode*)(self) )->virtualbase_isSubtreeBlocked();
-}
-
-bool QSGGeometryNode_override_virtual_preprocess(void* self, intptr_t slot) {
-	MiqtVirtualQSGGeometryNode* self_cast = dynamic_cast<MiqtVirtualQSGGeometryNode*>( (QSGGeometryNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__preprocess = slot;
-	return true;
 }
 
 void QSGGeometryNode_virtualbase_preprocess(void* self) {
@@ -394,23 +330,21 @@ void QSGGeometryNode_delete(QSGGeometryNode* self) {
 }
 
 class MiqtVirtualQSGClipNode final : public QSGClipNode {
+	struct QSGClipNode_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGClipNode(): QSGClipNode() {};
+	MiqtVirtualQSGClipNode(struct QSGClipNode_VTable* vtbl): QSGClipNode(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGClipNode() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSubtreeBlocked = 0;
+	virtual ~MiqtVirtualQSGClipNode() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSubtreeBlocked() const override {
-		if (handle__isSubtreeBlocked == 0) {
+		if (vtbl->isSubtreeBlocked == 0) {
 			return QSGClipNode::isSubtreeBlocked();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QSGClipNode_isSubtreeBlocked(this, handle__isSubtreeBlocked);
+
+		bool callback_return_value = vtbl->isSubtreeBlocked(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -422,20 +356,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__preprocess = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void preprocess() override {
-		if (handle__preprocess == 0) {
+		if (vtbl->preprocess == 0) {
 			QSGClipNode::preprocess();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGClipNode_preprocess(this, handle__preprocess);
 
-		
+		vtbl->preprocess(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -447,8 +377,8 @@ public:
 
 };
 
-QSGClipNode* QSGClipNode_new() {
-	return new MiqtVirtualQSGClipNode();
+QSGClipNode* QSGClipNode_new(struct QSGClipNode_VTable* vtbl) {
+	return new MiqtVirtualQSGClipNode(vtbl);
 }
 
 void QSGClipNode_virtbase(QSGClipNode* src, QSGBasicGeometryNode** outptr_QSGBasicGeometryNode) {
@@ -471,28 +401,8 @@ QRectF* QSGClipNode_clipRect(const QSGClipNode* self) {
 	return new QRectF(self->clipRect());
 }
 
-bool QSGClipNode_override_virtual_isSubtreeBlocked(void* self, intptr_t slot) {
-	MiqtVirtualQSGClipNode* self_cast = dynamic_cast<MiqtVirtualQSGClipNode*>( (QSGClipNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSubtreeBlocked = slot;
-	return true;
-}
-
 bool QSGClipNode_virtualbase_isSubtreeBlocked(const void* self) {
 	return ( (const MiqtVirtualQSGClipNode*)(self) )->virtualbase_isSubtreeBlocked();
-}
-
-bool QSGClipNode_override_virtual_preprocess(void* self, intptr_t slot) {
-	MiqtVirtualQSGClipNode* self_cast = dynamic_cast<MiqtVirtualQSGClipNode*>( (QSGClipNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__preprocess = slot;
-	return true;
 }
 
 void QSGClipNode_virtualbase_preprocess(void* self) {
@@ -504,23 +414,21 @@ void QSGClipNode_delete(QSGClipNode* self) {
 }
 
 class MiqtVirtualQSGTransformNode final : public QSGTransformNode {
+	struct QSGTransformNode_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGTransformNode(): QSGTransformNode() {};
+	MiqtVirtualQSGTransformNode(struct QSGTransformNode_VTable* vtbl): QSGTransformNode(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGTransformNode() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSubtreeBlocked = 0;
+	virtual ~MiqtVirtualQSGTransformNode() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSubtreeBlocked() const override {
-		if (handle__isSubtreeBlocked == 0) {
+		if (vtbl->isSubtreeBlocked == 0) {
 			return QSGTransformNode::isSubtreeBlocked();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QSGTransformNode_isSubtreeBlocked(this, handle__isSubtreeBlocked);
+
+		bool callback_return_value = vtbl->isSubtreeBlocked(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -532,20 +440,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__preprocess = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void preprocess() override {
-		if (handle__preprocess == 0) {
+		if (vtbl->preprocess == 0) {
 			QSGTransformNode::preprocess();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGTransformNode_preprocess(this, handle__preprocess);
 
-		
+		vtbl->preprocess(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -557,8 +461,8 @@ public:
 
 };
 
-QSGTransformNode* QSGTransformNode_new() {
-	return new MiqtVirtualQSGTransformNode();
+QSGTransformNode* QSGTransformNode_new(struct QSGTransformNode_VTable* vtbl) {
+	return new MiqtVirtualQSGTransformNode(vtbl);
 }
 
 void QSGTransformNode_virtbase(QSGTransformNode* src, QSGNode** outptr_QSGNode) {
@@ -585,28 +489,8 @@ QMatrix4x4* QSGTransformNode_combinedMatrix(const QSGTransformNode* self) {
 	return const_cast<QMatrix4x4*>(&_ret);
 }
 
-bool QSGTransformNode_override_virtual_isSubtreeBlocked(void* self, intptr_t slot) {
-	MiqtVirtualQSGTransformNode* self_cast = dynamic_cast<MiqtVirtualQSGTransformNode*>( (QSGTransformNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSubtreeBlocked = slot;
-	return true;
-}
-
 bool QSGTransformNode_virtualbase_isSubtreeBlocked(const void* self) {
 	return ( (const MiqtVirtualQSGTransformNode*)(self) )->virtualbase_isSubtreeBlocked();
-}
-
-bool QSGTransformNode_override_virtual_preprocess(void* self, intptr_t slot) {
-	MiqtVirtualQSGTransformNode* self_cast = dynamic_cast<MiqtVirtualQSGTransformNode*>( (QSGTransformNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__preprocess = slot;
-	return true;
 }
 
 void QSGTransformNode_virtualbase_preprocess(void* self) {
@@ -618,23 +502,21 @@ void QSGTransformNode_delete(QSGTransformNode* self) {
 }
 
 class MiqtVirtualQSGRootNode final : public QSGRootNode {
+	struct QSGRootNode_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGRootNode(): QSGRootNode() {};
+	MiqtVirtualQSGRootNode(struct QSGRootNode_VTable* vtbl): QSGRootNode(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGRootNode() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSubtreeBlocked = 0;
+	virtual ~MiqtVirtualQSGRootNode() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSubtreeBlocked() const override {
-		if (handle__isSubtreeBlocked == 0) {
+		if (vtbl->isSubtreeBlocked == 0) {
 			return QSGRootNode::isSubtreeBlocked();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QSGRootNode_isSubtreeBlocked(this, handle__isSubtreeBlocked);
+
+		bool callback_return_value = vtbl->isSubtreeBlocked(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -646,20 +528,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__preprocess = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void preprocess() override {
-		if (handle__preprocess == 0) {
+		if (vtbl->preprocess == 0) {
 			QSGRootNode::preprocess();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGRootNode_preprocess(this, handle__preprocess);
 
-		
+		vtbl->preprocess(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -671,36 +549,16 @@ public:
 
 };
 
-QSGRootNode* QSGRootNode_new() {
-	return new MiqtVirtualQSGRootNode();
+QSGRootNode* QSGRootNode_new(struct QSGRootNode_VTable* vtbl) {
+	return new MiqtVirtualQSGRootNode(vtbl);
 }
 
 void QSGRootNode_virtbase(QSGRootNode* src, QSGNode** outptr_QSGNode) {
 	*outptr_QSGNode = static_cast<QSGNode*>(src);
 }
 
-bool QSGRootNode_override_virtual_isSubtreeBlocked(void* self, intptr_t slot) {
-	MiqtVirtualQSGRootNode* self_cast = dynamic_cast<MiqtVirtualQSGRootNode*>( (QSGRootNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSubtreeBlocked = slot;
-	return true;
-}
-
 bool QSGRootNode_virtualbase_isSubtreeBlocked(const void* self) {
 	return ( (const MiqtVirtualQSGRootNode*)(self) )->virtualbase_isSubtreeBlocked();
-}
-
-bool QSGRootNode_override_virtual_preprocess(void* self, intptr_t slot) {
-	MiqtVirtualQSGRootNode* self_cast = dynamic_cast<MiqtVirtualQSGRootNode*>( (QSGRootNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__preprocess = slot;
-	return true;
 }
 
 void QSGRootNode_virtualbase_preprocess(void* self) {
@@ -712,23 +570,21 @@ void QSGRootNode_delete(QSGRootNode* self) {
 }
 
 class MiqtVirtualQSGOpacityNode final : public QSGOpacityNode {
+	struct QSGOpacityNode_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGOpacityNode(): QSGOpacityNode() {};
+	MiqtVirtualQSGOpacityNode(struct QSGOpacityNode_VTable* vtbl): QSGOpacityNode(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGOpacityNode() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSubtreeBlocked = 0;
+	virtual ~MiqtVirtualQSGOpacityNode() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSubtreeBlocked() const override {
-		if (handle__isSubtreeBlocked == 0) {
+		if (vtbl->isSubtreeBlocked == 0) {
 			return QSGOpacityNode::isSubtreeBlocked();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QSGOpacityNode_isSubtreeBlocked(this, handle__isSubtreeBlocked);
+
+		bool callback_return_value = vtbl->isSubtreeBlocked(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -740,20 +596,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__preprocess = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void preprocess() override {
-		if (handle__preprocess == 0) {
+		if (vtbl->preprocess == 0) {
 			QSGOpacityNode::preprocess();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGOpacityNode_preprocess(this, handle__preprocess);
 
-		
+		vtbl->preprocess(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -765,8 +617,8 @@ public:
 
 };
 
-QSGOpacityNode* QSGOpacityNode_new() {
-	return new MiqtVirtualQSGOpacityNode();
+QSGOpacityNode* QSGOpacityNode_new(struct QSGOpacityNode_VTable* vtbl) {
+	return new MiqtVirtualQSGOpacityNode(vtbl);
 }
 
 void QSGOpacityNode_virtbase(QSGOpacityNode* src, QSGNode** outptr_QSGNode) {
@@ -795,28 +647,8 @@ bool QSGOpacityNode_isSubtreeBlocked(const QSGOpacityNode* self) {
 	return self->isSubtreeBlocked();
 }
 
-bool QSGOpacityNode_override_virtual_isSubtreeBlocked(void* self, intptr_t slot) {
-	MiqtVirtualQSGOpacityNode* self_cast = dynamic_cast<MiqtVirtualQSGOpacityNode*>( (QSGOpacityNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSubtreeBlocked = slot;
-	return true;
-}
-
 bool QSGOpacityNode_virtualbase_isSubtreeBlocked(const void* self) {
 	return ( (const MiqtVirtualQSGOpacityNode*)(self) )->virtualbase_isSubtreeBlocked();
-}
-
-bool QSGOpacityNode_override_virtual_preprocess(void* self, intptr_t slot) {
-	MiqtVirtualQSGOpacityNode* self_cast = dynamic_cast<MiqtVirtualQSGOpacityNode*>( (QSGOpacityNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__preprocess = slot;
-	return true;
 }
 
 void QSGOpacityNode_virtualbase_preprocess(void* self) {

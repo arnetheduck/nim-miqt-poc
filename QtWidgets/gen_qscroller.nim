@@ -59,14 +59,12 @@ export gen_qscroller_types
 
 import
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qrect_types,
   gen_qscrollerproperties_types
 export
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qrect_types,
@@ -105,9 +103,9 @@ proc fcQScroller_ensureVisible(self: pointer, rect: pointer, xmargin: float64, y
 proc fcQScroller_ensureVisible2(self: pointer, rect: pointer, xmargin: float64, ymargin: float64, scrollTime: cint): void {.importc: "QScroller_ensureVisible2".}
 proc fcQScroller_resendPrepareEvent(self: pointer, ): void {.importc: "QScroller_resendPrepareEvent".}
 proc fcQScroller_stateChanged(self: pointer, newstate: cint): void {.importc: "QScroller_stateChanged".}
-proc fQScroller_connect_stateChanged(self: pointer, slot: int) {.importc: "QScroller_connect_stateChanged".}
+proc fcQScroller_connect_stateChanged(self: pointer, slot: int) {.importc: "QScroller_connect_stateChanged".}
 proc fcQScroller_scrollerPropertiesChanged(self: pointer, param1: pointer): void {.importc: "QScroller_scrollerPropertiesChanged".}
-proc fQScroller_connect_scrollerPropertiesChanged(self: pointer, slot: int) {.importc: "QScroller_connect_scrollerPropertiesChanged".}
+proc fcQScroller_connect_scrollerPropertiesChanged(self: pointer, slot: int) {.importc: "QScroller_connect_scrollerPropertiesChanged".}
 proc fcQScroller_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QScroller_tr2".}
 proc fcQScroller_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QScroller_tr3".}
 proc fcQScroller_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QScroller_trUtf82".}
@@ -116,9 +114,6 @@ proc fcQScroller_grabGesture2(target: pointer, gestureType: cint): cint {.import
 proc fcQScroller_handleInput3(self: pointer, input: cint, position: pointer, timestamp: clonglong): bool {.importc: "QScroller_handleInput3".}
 proc fcQScroller_staticMetaObject(): pointer {.importc: "QScroller_staticMetaObject".}
 
-
-func init*(T: type gen_qscroller_types.QScroller, h: ptr cQScroller): gen_qscroller_types.QScroller =
-  T(h: h)
 proc metaObject*(self: gen_qscroller_types.QScroller, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQScroller_metaObject(self.h))
 
@@ -232,7 +227,7 @@ proc stateChanged*(self: gen_qscroller_types.QScroller, newstate: cint): void =
   fcQScroller_stateChanged(self.h, cint(newstate))
 
 type QScrollerstateChangedSlot* = proc(newstate: cint)
-proc miqt_exec_callback_QScroller_stateChanged(slot: int, newstate: cint) {.exportc.} =
+proc miqt_exec_callback_cQScroller_stateChanged(slot: int, newstate: cint) {.exportc: "miqt_exec_callback_QScroller_stateChanged".} =
   let nimfunc = cast[ptr QScrollerstateChangedSlot](cast[pointer](slot))
   let slotval1 = cint(newstate)
 
@@ -242,13 +237,13 @@ proc onstateChanged*(self: gen_qscroller_types.QScroller, slot: QScrollerstateCh
   var tmp = new QScrollerstateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScroller_connect_stateChanged(self.h, cast[int](addr tmp[]))
+  fcQScroller_connect_stateChanged(self.h, cast[int](addr tmp[]))
 
 proc scrollerPropertiesChanged*(self: gen_qscroller_types.QScroller, param1: gen_qscrollerproperties_types.QScrollerProperties): void =
   fcQScroller_scrollerPropertiesChanged(self.h, param1.h)
 
 type QScrollerscrollerPropertiesChangedSlot* = proc(param1: gen_qscrollerproperties_types.QScrollerProperties)
-proc miqt_exec_callback_QScroller_scrollerPropertiesChanged(slot: int, param1: pointer) {.exportc.} =
+proc miqt_exec_callback_cQScroller_scrollerPropertiesChanged(slot: int, param1: pointer) {.exportc: "miqt_exec_callback_QScroller_scrollerPropertiesChanged".} =
   let nimfunc = cast[ptr QScrollerscrollerPropertiesChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qscrollerproperties_types.QScrollerProperties(h: param1)
 
@@ -258,7 +253,7 @@ proc onscrollerPropertiesChanged*(self: gen_qscroller_types.QScroller, slot: QSc
   var tmp = new QScrollerscrollerPropertiesChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQScroller_connect_scrollerPropertiesChanged(self.h, cast[int](addr tmp[]))
+  fcQScroller_connect_scrollerPropertiesChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qscroller_types.QScroller, s: cstring, c: cstring): string =
   let v_ms = fcQScroller_tr2(s, c)
@@ -290,5 +285,5 @@ proc grabGesture*(_: type gen_qscroller_types.QScroller, target: gen_qobject_typ
 proc handleInput*(self: gen_qscroller_types.QScroller, input: cint, position: gen_qpoint_types.QPointF, timestamp: clonglong): bool =
   fcQScroller_handleInput3(self.h, cint(input), position.h, timestamp)
 
-proc staticMetaObject*(_: type gen_qscroller_types.QScroller): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQScroller_staticMetaObject())
+proc staticMetaObject*(_: type gen_qscroller_types.QScroller): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScroller_staticMetaObject())

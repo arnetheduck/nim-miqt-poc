@@ -26,40 +26,32 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QPixmap_devType(const QPixmap*, intptr_t);
-QPaintEngine* miqt_exec_callback_QPixmap_paintEngine(const QPixmap*, intptr_t);
-int miqt_exec_callback_QPixmap_metric(const QPixmap*, intptr_t, int);
-void miqt_exec_callback_QPixmap_initPainter(const QPixmap*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QPixmap_redirected(const QPixmap*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QPixmap_sharedPainter(const QPixmap*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQPixmap final : public QPixmap {
+	struct QPixmap_VTable* vtbl;
 public:
 
-	MiqtVirtualQPixmap(): QPixmap() {};
-	MiqtVirtualQPixmap(int w, int h): QPixmap(w, h) {};
-	MiqtVirtualQPixmap(const QSize& param1): QPixmap(param1) {};
-	MiqtVirtualQPixmap(const QString& fileName): QPixmap(fileName) {};
-	MiqtVirtualQPixmap(const QPixmap& param1): QPixmap(param1) {};
-	MiqtVirtualQPixmap(const QString& fileName, const char* format): QPixmap(fileName, format) {};
-	MiqtVirtualQPixmap(const QString& fileName, const char* format, Qt::ImageConversionFlags flags): QPixmap(fileName, format, flags) {};
+	MiqtVirtualQPixmap(struct QPixmap_VTable* vtbl): QPixmap(), vtbl(vtbl) {};
+	MiqtVirtualQPixmap(struct QPixmap_VTable* vtbl, int w, int h): QPixmap(w, h), vtbl(vtbl) {};
+	MiqtVirtualQPixmap(struct QPixmap_VTable* vtbl, const QSize& param1): QPixmap(param1), vtbl(vtbl) {};
+	MiqtVirtualQPixmap(struct QPixmap_VTable* vtbl, const QString& fileName): QPixmap(fileName), vtbl(vtbl) {};
+	MiqtVirtualQPixmap(struct QPixmap_VTable* vtbl, const QPixmap& param1): QPixmap(param1), vtbl(vtbl) {};
+	MiqtVirtualQPixmap(struct QPixmap_VTable* vtbl, const QString& fileName, const char* format): QPixmap(fileName, format), vtbl(vtbl) {};
+	MiqtVirtualQPixmap(struct QPixmap_VTable* vtbl, const QString& fileName, const char* format, Qt::ImageConversionFlags flags): QPixmap(fileName, format, flags), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQPixmap() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__devType = 0;
+	virtual ~MiqtVirtualQPixmap() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual int devType() const override {
-		if (handle__devType == 0) {
+		if (vtbl->devType == 0) {
 			return QPixmap::devType();
 		}
-		
 
-		int callback_return_value = miqt_exec_callback_QPixmap_devType(this, handle__devType);
+
+		int callback_return_value = vtbl->devType(vtbl, this);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -71,17 +63,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__paintEngine = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QPaintEngine* paintEngine() const override {
-		if (handle__paintEngine == 0) {
+		if (vtbl->paintEngine == 0) {
 			return QPixmap::paintEngine();
 		}
-		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QPixmap_paintEngine(this, handle__paintEngine);
+
+		QPaintEngine* callback_return_value = vtbl->paintEngine(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -93,19 +82,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metric = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
-		if (handle__metric == 0) {
+		if (vtbl->metric == 0) {
 			return QPixmap::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QPixmap_metric(this, handle__metric, sigval1);
+		int callback_return_value = vtbl->metric(vtbl, this, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -117,21 +103,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__initPainter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void initPainter(QPainter* painter) const override {
-		if (handle__initPainter == 0) {
+		if (vtbl->initPainter == 0) {
 			QPixmap::initPainter(painter);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QPixmap_initPainter(this, handle__initPainter, sigval1);
+		vtbl->initPainter(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -141,18 +123,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__redirected = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QPaintDevice* redirected(QPoint* offset) const override {
-		if (handle__redirected == 0) {
+		if (vtbl->redirected == 0) {
 			return QPixmap::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QPixmap_redirected(this, handle__redirected, sigval1);
+		QPaintDevice* callback_return_value = vtbl->redirected(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -164,17 +143,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__sharedPainter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QPainter* sharedPainter() const override {
-		if (handle__sharedPainter == 0) {
+		if (vtbl->sharedPainter == 0) {
 			return QPixmap::sharedPainter();
 		}
-		
 
-		QPainter* callback_return_value = miqt_exec_callback_QPixmap_sharedPainter(this, handle__sharedPainter);
+
+		QPainter* callback_return_value = vtbl->sharedPainter(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -188,35 +164,35 @@ public:
 
 };
 
-QPixmap* QPixmap_new() {
-	return new MiqtVirtualQPixmap();
+QPixmap* QPixmap_new(struct QPixmap_VTable* vtbl) {
+	return new MiqtVirtualQPixmap(vtbl);
 }
 
-QPixmap* QPixmap_new2(int w, int h) {
-	return new MiqtVirtualQPixmap(static_cast<int>(w), static_cast<int>(h));
+QPixmap* QPixmap_new2(struct QPixmap_VTable* vtbl, int w, int h) {
+	return new MiqtVirtualQPixmap(vtbl, static_cast<int>(w), static_cast<int>(h));
 }
 
-QPixmap* QPixmap_new3(QSize* param1) {
-	return new MiqtVirtualQPixmap(*param1);
+QPixmap* QPixmap_new3(struct QPixmap_VTable* vtbl, QSize* param1) {
+	return new MiqtVirtualQPixmap(vtbl, *param1);
 }
 
-QPixmap* QPixmap_new4(struct miqt_string fileName) {
+QPixmap* QPixmap_new4(struct QPixmap_VTable* vtbl, struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQPixmap(fileName_QString);
+	return new MiqtVirtualQPixmap(vtbl, fileName_QString);
 }
 
-QPixmap* QPixmap_new5(QPixmap* param1) {
-	return new MiqtVirtualQPixmap(*param1);
+QPixmap* QPixmap_new5(struct QPixmap_VTable* vtbl, QPixmap* param1) {
+	return new MiqtVirtualQPixmap(vtbl, *param1);
 }
 
-QPixmap* QPixmap_new6(struct miqt_string fileName, const char* format) {
+QPixmap* QPixmap_new6(struct QPixmap_VTable* vtbl, struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQPixmap(fileName_QString, format);
+	return new MiqtVirtualQPixmap(vtbl, fileName_QString, format);
 }
 
-QPixmap* QPixmap_new7(struct miqt_string fileName, const char* format, int flags) {
+QPixmap* QPixmap_new7(struct QPixmap_VTable* vtbl, struct miqt_string fileName, const char* format, int flags) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQPixmap(fileName_QString, format, static_cast<Qt::ImageConversionFlags>(flags));
+	return new MiqtVirtualQPixmap(vtbl, fileName_QString, format, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
 void QPixmap_virtbase(QPixmap* src, QPaintDevice** outptr_QPaintDevice) {
@@ -582,84 +558,24 @@ void QPixmap_scroll4(QPixmap* self, int dx, int dy, QRect* rect, QRegion* expose
 	self->scroll(static_cast<int>(dx), static_cast<int>(dy), *rect, exposed);
 }
 
-bool QPixmap_override_virtual_devType(void* self, intptr_t slot) {
-	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__devType = slot;
-	return true;
-}
-
 int QPixmap_virtualbase_devType(const void* self) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_devType();
-}
-
-bool QPixmap_override_virtual_paintEngine(void* self, intptr_t slot) {
-	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__paintEngine = slot;
-	return true;
 }
 
 QPaintEngine* QPixmap_virtualbase_paintEngine(const void* self) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_paintEngine();
 }
 
-bool QPixmap_override_virtual_metric(void* self, intptr_t slot) {
-	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metric = slot;
-	return true;
-}
-
 int QPixmap_virtualbase_metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_metric(param1);
-}
-
-bool QPixmap_override_virtual_initPainter(void* self, intptr_t slot) {
-	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__initPainter = slot;
-	return true;
 }
 
 void QPixmap_virtualbase_initPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQPixmap*)(self) )->virtualbase_initPainter(painter);
 }
 
-bool QPixmap_override_virtual_redirected(void* self, intptr_t slot) {
-	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__redirected = slot;
-	return true;
-}
-
 QPaintDevice* QPixmap_virtualbase_redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_redirected(offset);
-}
-
-bool QPixmap_override_virtual_sharedPainter(void* self, intptr_t slot) {
-	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__sharedPainter = slot;
-	return true;
 }
 
 QPainter* QPixmap_virtualbase_sharedPainter(const void* self) {

@@ -39,11 +39,9 @@ export gen_qmediacontainercontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQMediaContainerControl*{.exportc: "QMediaContainerControl", incompleteStruct.} = object
@@ -64,9 +62,6 @@ proc fcQMediaContainerControl_trUtf83(s: cstring, c: cstring, n: cint): struct_m
 proc fcQMediaContainerControl_staticMetaObject(): pointer {.importc: "QMediaContainerControl_staticMetaObject".}
 proc fcQMediaContainerControl_delete(self: pointer) {.importc: "QMediaContainerControl_delete".}
 
-
-func init*(T: type gen_qmediacontainercontrol_types.QMediaContainerControl, h: ptr cQMediaContainerControl): gen_qmediacontainercontrol_types.QMediaContainerControl =
-  T(h: h)
 proc metaObject*(self: gen_qmediacontainercontrol_types.QMediaContainerControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQMediaContainerControl_metaObject(self.h))
 
@@ -138,7 +133,7 @@ proc trUtf8*(_: type gen_qmediacontainercontrol_types.QMediaContainerControl, s:
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qmediacontainercontrol_types.QMediaContainerControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMediaContainerControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qmediacontainercontrol_types.QMediaContainerControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaContainerControl_staticMetaObject())
 proc delete*(self: gen_qmediacontainercontrol_types.QMediaContainerControl) =
   fcQMediaContainerControl_delete(self.h)

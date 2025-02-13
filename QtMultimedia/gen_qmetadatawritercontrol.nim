@@ -39,12 +39,10 @@ export gen_qmetadatawritercontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -61,13 +59,13 @@ proc fcQMetaDataWriterControl_metaData(self: pointer, key: struct_miqt_string): 
 proc fcQMetaDataWriterControl_setMetaData(self: pointer, key: struct_miqt_string, value: pointer): void {.importc: "QMetaDataWriterControl_setMetaData".}
 proc fcQMetaDataWriterControl_availableMetaData(self: pointer, ): struct_miqt_array {.importc: "QMetaDataWriterControl_availableMetaData".}
 proc fcQMetaDataWriterControl_metaDataChanged(self: pointer, ): void {.importc: "QMetaDataWriterControl_metaDataChanged".}
-proc fQMetaDataWriterControl_connect_metaDataChanged(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_metaDataChanged".}
+proc fcQMetaDataWriterControl_connect_metaDataChanged(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_metaDataChanged".}
 proc fcQMetaDataWriterControl_metaDataChanged2(self: pointer, key: struct_miqt_string, value: pointer): void {.importc: "QMetaDataWriterControl_metaDataChanged2".}
-proc fQMetaDataWriterControl_connect_metaDataChanged2(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_metaDataChanged2".}
+proc fcQMetaDataWriterControl_connect_metaDataChanged2(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_metaDataChanged2".}
 proc fcQMetaDataWriterControl_writableChanged(self: pointer, writable: bool): void {.importc: "QMetaDataWriterControl_writableChanged".}
-proc fQMetaDataWriterControl_connect_writableChanged(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_writableChanged".}
+proc fcQMetaDataWriterControl_connect_writableChanged(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_writableChanged".}
 proc fcQMetaDataWriterControl_metaDataAvailableChanged(self: pointer, available: bool): void {.importc: "QMetaDataWriterControl_metaDataAvailableChanged".}
-proc fQMetaDataWriterControl_connect_metaDataAvailableChanged(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_metaDataAvailableChanged".}
+proc fcQMetaDataWriterControl_connect_metaDataAvailableChanged(self: pointer, slot: int) {.importc: "QMetaDataWriterControl_connect_metaDataAvailableChanged".}
 proc fcQMetaDataWriterControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QMetaDataWriterControl_tr2".}
 proc fcQMetaDataWriterControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMetaDataWriterControl_tr3".}
 proc fcQMetaDataWriterControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMetaDataWriterControl_trUtf82".}
@@ -75,9 +73,6 @@ proc fcQMetaDataWriterControl_trUtf83(s: cstring, c: cstring, n: cint): struct_m
 proc fcQMetaDataWriterControl_staticMetaObject(): pointer {.importc: "QMetaDataWriterControl_staticMetaObject".}
 proc fcQMetaDataWriterControl_delete(self: pointer) {.importc: "QMetaDataWriterControl_delete".}
 
-
-func init*(T: type gen_qmetadatawritercontrol_types.QMetaDataWriterControl, h: ptr cQMetaDataWriterControl): gen_qmetadatawritercontrol_types.QMetaDataWriterControl =
-  T(h: h)
 proc metaObject*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQMetaDataWriterControl_metaObject(self.h))
 
@@ -126,7 +121,7 @@ proc metaDataChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterCont
   fcQMetaDataWriterControl_metaDataChanged(self.h)
 
 type QMetaDataWriterControlmetaDataChangedSlot* = proc()
-proc miqt_exec_callback_QMetaDataWriterControl_metaDataChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQMetaDataWriterControl_metaDataChanged(slot: int) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_metaDataChanged".} =
   let nimfunc = cast[ptr QMetaDataWriterControlmetaDataChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -134,13 +129,13 @@ proc onmetaDataChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterCo
   var tmp = new QMetaDataWriterControlmetaDataChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQMetaDataWriterControl_connect_metaDataChanged(self.h, cast[int](addr tmp[]))
+  fcQMetaDataWriterControl_connect_metaDataChanged(self.h, cast[int](addr tmp[]))
 
 proc metaDataChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, key: string, value: gen_qvariant_types.QVariant): void =
   fcQMetaDataWriterControl_metaDataChanged2(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h)
 
 type QMetaDataWriterControlmetaDataChanged2Slot* = proc(key: string, value: gen_qvariant_types.QVariant)
-proc miqt_exec_callback_QMetaDataWriterControl_metaDataChanged2(slot: int, key: struct_miqt_string, value: pointer) {.exportc.} =
+proc miqt_exec_callback_cQMetaDataWriterControl_metaDataChanged2(slot: int, key: struct_miqt_string, value: pointer) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_metaDataChanged2".} =
   let nimfunc = cast[ptr QMetaDataWriterControlmetaDataChanged2Slot](cast[pointer](slot))
   let vkey_ms = key
   let vkeyx_ret = string.fromBytes(toOpenArrayByte(vkey_ms.data, 0, int(vkey_ms.len)-1))
@@ -155,13 +150,13 @@ proc onmetaDataChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterCo
   var tmp = new QMetaDataWriterControlmetaDataChanged2Slot
   tmp[] = slot
   GC_ref(tmp)
-  fQMetaDataWriterControl_connect_metaDataChanged2(self.h, cast[int](addr tmp[]))
+  fcQMetaDataWriterControl_connect_metaDataChanged2(self.h, cast[int](addr tmp[]))
 
 proc writableChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, writable: bool): void =
   fcQMetaDataWriterControl_writableChanged(self.h, writable)
 
 type QMetaDataWriterControlwritableChangedSlot* = proc(writable: bool)
-proc miqt_exec_callback_QMetaDataWriterControl_writableChanged(slot: int, writable: bool) {.exportc.} =
+proc miqt_exec_callback_cQMetaDataWriterControl_writableChanged(slot: int, writable: bool) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_writableChanged".} =
   let nimfunc = cast[ptr QMetaDataWriterControlwritableChangedSlot](cast[pointer](slot))
   let slotval1 = writable
 
@@ -171,13 +166,13 @@ proc onwritableChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterCo
   var tmp = new QMetaDataWriterControlwritableChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQMetaDataWriterControl_connect_writableChanged(self.h, cast[int](addr tmp[]))
+  fcQMetaDataWriterControl_connect_writableChanged(self.h, cast[int](addr tmp[]))
 
 proc metaDataAvailableChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, available: bool): void =
   fcQMetaDataWriterControl_metaDataAvailableChanged(self.h, available)
 
 type QMetaDataWriterControlmetaDataAvailableChangedSlot* = proc(available: bool)
-proc miqt_exec_callback_QMetaDataWriterControl_metaDataAvailableChanged(slot: int, available: bool) {.exportc.} =
+proc miqt_exec_callback_cQMetaDataWriterControl_metaDataAvailableChanged(slot: int, available: bool) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_metaDataAvailableChanged".} =
   let nimfunc = cast[ptr QMetaDataWriterControlmetaDataAvailableChangedSlot](cast[pointer](slot))
   let slotval1 = available
 
@@ -187,7 +182,7 @@ proc onmetaDataAvailableChanged*(self: gen_qmetadatawritercontrol_types.QMetaDat
   var tmp = new QMetaDataWriterControlmetaDataAvailableChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQMetaDataWriterControl_connect_metaDataAvailableChanged(self.h, cast[int](addr tmp[]))
+  fcQMetaDataWriterControl_connect_metaDataAvailableChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qmetadatawritercontrol_types.QMetaDataWriterControl, s: cstring, c: cstring): string =
   let v_ms = fcQMetaDataWriterControl_tr2(s, c)
@@ -213,7 +208,7 @@ proc trUtf8*(_: type gen_qmetadatawritercontrol_types.QMetaDataWriterControl, s:
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qmetadatawritercontrol_types.QMetaDataWriterControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQMetaDataWriterControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qmetadatawritercontrol_types.QMetaDataWriterControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMetaDataWriterControl_staticMetaObject())
 proc delete*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl) =
   fcQMetaDataWriterControl_delete(self.h)

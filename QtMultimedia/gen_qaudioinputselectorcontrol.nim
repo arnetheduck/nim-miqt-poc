@@ -39,11 +39,9 @@ export gen_qaudioinputselectorcontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQAudioInputSelectorControl*{.exportc: "QAudioInputSelectorControl", incompleteStruct.} = object
@@ -59,9 +57,9 @@ proc fcQAudioInputSelectorControl_defaultInput(self: pointer, ): struct_miqt_str
 proc fcQAudioInputSelectorControl_activeInput(self: pointer, ): struct_miqt_string {.importc: "QAudioInputSelectorControl_activeInput".}
 proc fcQAudioInputSelectorControl_setActiveInput(self: pointer, name: struct_miqt_string): void {.importc: "QAudioInputSelectorControl_setActiveInput".}
 proc fcQAudioInputSelectorControl_activeInputChanged(self: pointer, name: struct_miqt_string): void {.importc: "QAudioInputSelectorControl_activeInputChanged".}
-proc fQAudioInputSelectorControl_connect_activeInputChanged(self: pointer, slot: int) {.importc: "QAudioInputSelectorControl_connect_activeInputChanged".}
+proc fcQAudioInputSelectorControl_connect_activeInputChanged(self: pointer, slot: int) {.importc: "QAudioInputSelectorControl_connect_activeInputChanged".}
 proc fcQAudioInputSelectorControl_availableInputsChanged(self: pointer, ): void {.importc: "QAudioInputSelectorControl_availableInputsChanged".}
-proc fQAudioInputSelectorControl_connect_availableInputsChanged(self: pointer, slot: int) {.importc: "QAudioInputSelectorControl_connect_availableInputsChanged".}
+proc fcQAudioInputSelectorControl_connect_availableInputsChanged(self: pointer, slot: int) {.importc: "QAudioInputSelectorControl_connect_availableInputsChanged".}
 proc fcQAudioInputSelectorControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioInputSelectorControl_tr2".}
 proc fcQAudioInputSelectorControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioInputSelectorControl_tr3".}
 proc fcQAudioInputSelectorControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioInputSelectorControl_trUtf82".}
@@ -69,9 +67,6 @@ proc fcQAudioInputSelectorControl_trUtf83(s: cstring, c: cstring, n: cint): stru
 proc fcQAudioInputSelectorControl_staticMetaObject(): pointer {.importc: "QAudioInputSelectorControl_staticMetaObject".}
 proc fcQAudioInputSelectorControl_delete(self: pointer) {.importc: "QAudioInputSelectorControl_delete".}
 
-
-func init*(T: type gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl, h: ptr cQAudioInputSelectorControl): gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl =
-  T(h: h)
 proc metaObject*(self: gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQAudioInputSelectorControl_metaObject(self.h))
 
@@ -129,7 +124,7 @@ proc activeInputChanged*(self: gen_qaudioinputselectorcontrol_types.QAudioInputS
   fcQAudioInputSelectorControl_activeInputChanged(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 type QAudioInputSelectorControlactiveInputChangedSlot* = proc(name: string)
-proc miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged(slot: int, name: struct_miqt_string) {.exportc.} =
+proc miqt_exec_callback_cQAudioInputSelectorControl_activeInputChanged(slot: int, name: struct_miqt_string) {.exportc: "miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged".} =
   let nimfunc = cast[ptr QAudioInputSelectorControlactiveInputChangedSlot](cast[pointer](slot))
   let vname_ms = name
   let vnamex_ret = string.fromBytes(toOpenArrayByte(vname_ms.data, 0, int(vname_ms.len)-1))
@@ -142,13 +137,13 @@ proc onactiveInputChanged*(self: gen_qaudioinputselectorcontrol_types.QAudioInpu
   var tmp = new QAudioInputSelectorControlactiveInputChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioInputSelectorControl_connect_activeInputChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioInputSelectorControl_connect_activeInputChanged(self.h, cast[int](addr tmp[]))
 
 proc availableInputsChanged*(self: gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl, ): void =
   fcQAudioInputSelectorControl_availableInputsChanged(self.h)
 
 type QAudioInputSelectorControlavailableInputsChangedSlot* = proc()
-proc miqt_exec_callback_QAudioInputSelectorControl_availableInputsChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioInputSelectorControl_availableInputsChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioInputSelectorControl_availableInputsChanged".} =
   let nimfunc = cast[ptr QAudioInputSelectorControlavailableInputsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -156,7 +151,7 @@ proc onavailableInputsChanged*(self: gen_qaudioinputselectorcontrol_types.QAudio
   var tmp = new QAudioInputSelectorControlavailableInputsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioInputSelectorControl_connect_availableInputsChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioInputSelectorControl_connect_availableInputsChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl, s: cstring, c: cstring): string =
   let v_ms = fcQAudioInputSelectorControl_tr2(s, c)
@@ -182,7 +177,7 @@ proc trUtf8*(_: type gen_qaudioinputselectorcontrol_types.QAudioInputSelectorCon
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQAudioInputSelectorControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAudioInputSelectorControl_staticMetaObject())
 proc delete*(self: gen_qaudioinputselectorcontrol_types.QAudioInputSelectorControl) =
   fcQAudioInputSelectorControl_delete(self.h)

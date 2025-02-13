@@ -40,13 +40,11 @@ export gen_qvideoencodersettingscontrol_types
 import
   gen_qmediacontrol,
   gen_qmediaencodersettings_types,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types
 export
   gen_qmediacontrol,
   gen_qmediaencodersettings_types,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types
 
@@ -70,9 +68,6 @@ proc fcQVideoEncoderSettingsControl_trUtf83(s: cstring, c: cstring, n: cint): st
 proc fcQVideoEncoderSettingsControl_staticMetaObject(): pointer {.importc: "QVideoEncoderSettingsControl_staticMetaObject".}
 proc fcQVideoEncoderSettingsControl_delete(self: pointer) {.importc: "QVideoEncoderSettingsControl_delete".}
 
-
-func init*(T: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, h: ptr cQVideoEncoderSettingsControl): gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl =
-  T(h: h)
 proc metaObject*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQVideoEncoderSettingsControl_metaObject(self.h))
 
@@ -157,7 +152,7 @@ proc trUtf8*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSetting
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQVideoEncoderSettingsControl_staticMetaObject())
+proc staticMetaObject*(_: type gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQVideoEncoderSettingsControl_staticMetaObject())
 proc delete*(self: gen_qvideoencodersettingscontrol_types.QVideoEncoderSettingsControl) =
   fcQVideoEncoderSettingsControl_delete(self.h)
