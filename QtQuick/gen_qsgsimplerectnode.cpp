@@ -11,31 +11,27 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QSGSimpleRectNode_isSubtreeBlocked(const QSGSimpleRectNode*, intptr_t);
-void miqt_exec_callback_QSGSimpleRectNode_preprocess(QSGSimpleRectNode*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQSGSimpleRectNode final : public QSGSimpleRectNode {
+	struct QSGSimpleRectNode_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGSimpleRectNode(const QRectF& rect, const QColor& color): QSGSimpleRectNode(rect, color) {};
-	MiqtVirtualQSGSimpleRectNode(): QSGSimpleRectNode() {};
+	MiqtVirtualQSGSimpleRectNode(struct QSGSimpleRectNode_VTable* vtbl, const QRectF& rect, const QColor& color): QSGSimpleRectNode(rect, color), vtbl(vtbl) {};
+	MiqtVirtualQSGSimpleRectNode(struct QSGSimpleRectNode_VTable* vtbl): QSGSimpleRectNode(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGSimpleRectNode() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isSubtreeBlocked = 0;
+	virtual ~MiqtVirtualQSGSimpleRectNode() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSubtreeBlocked() const override {
-		if (handle__isSubtreeBlocked == 0) {
+		if (vtbl->isSubtreeBlocked == 0) {
 			return QSGSimpleRectNode::isSubtreeBlocked();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QSGSimpleRectNode_isSubtreeBlocked(this, handle__isSubtreeBlocked);
+
+		bool callback_return_value = vtbl->isSubtreeBlocked(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -47,20 +43,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__preprocess = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void preprocess() override {
-		if (handle__preprocess == 0) {
+		if (vtbl->preprocess == 0) {
 			QSGSimpleRectNode::preprocess();
 			return;
 		}
-		
 
-		miqt_exec_callback_QSGSimpleRectNode_preprocess(this, handle__preprocess);
 
-		
+		vtbl->preprocess(vtbl, this);
+
 	}
 
 	// Wrapper to allow calling protected method
@@ -72,12 +64,12 @@ public:
 
 };
 
-QSGSimpleRectNode* QSGSimpleRectNode_new(QRectF* rect, QColor* color) {
-	return new MiqtVirtualQSGSimpleRectNode(*rect, *color);
+QSGSimpleRectNode* QSGSimpleRectNode_new(struct QSGSimpleRectNode_VTable* vtbl, QRectF* rect, QColor* color) {
+	return new MiqtVirtualQSGSimpleRectNode(vtbl, *rect, *color);
 }
 
-QSGSimpleRectNode* QSGSimpleRectNode_new2() {
-	return new MiqtVirtualQSGSimpleRectNode();
+QSGSimpleRectNode* QSGSimpleRectNode_new2(struct QSGSimpleRectNode_VTable* vtbl) {
+	return new MiqtVirtualQSGSimpleRectNode(vtbl);
 }
 
 void QSGSimpleRectNode_virtbase(QSGSimpleRectNode* src, QSGGeometryNode** outptr_QSGGeometryNode) {
@@ -104,28 +96,8 @@ QColor* QSGSimpleRectNode_color(const QSGSimpleRectNode* self) {
 	return new QColor(self->color());
 }
 
-bool QSGSimpleRectNode_override_virtual_isSubtreeBlocked(void* self, intptr_t slot) {
-	MiqtVirtualQSGSimpleRectNode* self_cast = dynamic_cast<MiqtVirtualQSGSimpleRectNode*>( (QSGSimpleRectNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isSubtreeBlocked = slot;
-	return true;
-}
-
 bool QSGSimpleRectNode_virtualbase_isSubtreeBlocked(const void* self) {
 	return ( (const MiqtVirtualQSGSimpleRectNode*)(self) )->virtualbase_isSubtreeBlocked();
-}
-
-bool QSGSimpleRectNode_override_virtual_preprocess(void* self, intptr_t slot) {
-	MiqtVirtualQSGSimpleRectNode* self_cast = dynamic_cast<MiqtVirtualQSGSimpleRectNode*>( (QSGSimpleRectNode*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__preprocess = slot;
-	return true;
 }
 
 void QSGSimpleRectNode_virtualbase_preprocess(void* self) {

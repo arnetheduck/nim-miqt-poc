@@ -10,31 +10,27 @@
 extern "C" {
 #endif
 
-QTest__QTouchEventWidgetSequence* miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary(QTest__QTouchEventWidgetSequence*, intptr_t, int);
-bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit(QTest__QTouchEventWidgetSequence*, intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQTestQTouchEventWidgetSequence final : public QTest::QTouchEventWidgetSequence {
+	struct QTest::QTouchEventWidgetSequence_VTable* vtbl;
 public:
 
-	MiqtVirtualQTestQTouchEventWidgetSequence(const QTest::QTouchEventWidgetSequence& param1): QTest::QTouchEventWidgetSequence(param1) {};
+	MiqtVirtualQTestQTouchEventWidgetSequence(struct QTest::QTouchEventWidgetSequence_VTable* vtbl, const QTest::QTouchEventWidgetSequence& param1): QTest::QTouchEventWidgetSequence(param1), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQTestQTouchEventWidgetSequence() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__stationary = 0;
+	virtual ~MiqtVirtualQTestQTouchEventWidgetSequence() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QTest::QTouchEventWidgetSequence& stationary(int touchId) override {
-		if (handle__stationary == 0) {
+		if (vtbl->stationary == 0) {
 			return QTest__QTouchEventWidgetSequence::stationary(touchId);
 		}
-		
+
 		int sigval1 = touchId;
 
-		QTest__QTouchEventWidgetSequence* callback_return_value = miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary(this, handle__stationary, sigval1);
+		QTest__QTouchEventWidgetSequence* callback_return_value = vtbl->stationary(vtbl, this, sigval1);
 
 		return *callback_return_value;
 	}
@@ -48,18 +44,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__commit = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool commit(bool processEvents) override {
-		if (handle__commit == 0) {
+		if (vtbl->commit == 0) {
 			return QTest__QTouchEventWidgetSequence::commit(processEvents);
 		}
-		
+
 		bool sigval1 = processEvents;
 
-		bool callback_return_value = miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit(this, handle__commit, sigval1);
+		bool callback_return_value = vtbl->commit(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -76,8 +69,8 @@ public:
 	friend QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(bool* _dynamic_cast_ok, void* self, int touchId);
 };
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_new(QTest__QTouchEventWidgetSequence* param1) {
-	return new MiqtVirtualQTestQTouchEventWidgetSequence(*param1);
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_new(struct QTest::QTouchEventWidgetSequence_VTable* vtbl, QTest__QTouchEventWidgetSequence* param1) {
+	return new MiqtVirtualQTestQTouchEventWidgetSequence(vtbl, *param1);
 }
 
 void QTest__QTouchEventWidgetSequence_virtbase(QTest__QTouchEventWidgetSequence* src, QTest::QTouchEventSequence** outptr_QTest__QTouchEventSequence) {
@@ -130,28 +123,8 @@ QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_release3(QTes
 	return &_ret;
 }
 
-bool QTest__QTouchEventWidgetSequence_override_virtual_stationary(void* self, intptr_t slot) {
-	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__stationary = slot;
-	return true;
-}
-
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_stationary(void* self, int touchId) {
 	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_stationary(touchId);
-}
-
-bool QTest__QTouchEventWidgetSequence_override_virtual_commit(void* self, intptr_t slot) {
-	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__commit = slot;
-	return true;
 }
 
 bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool processEvents) {

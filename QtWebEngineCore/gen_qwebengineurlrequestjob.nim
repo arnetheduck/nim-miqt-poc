@@ -49,13 +49,11 @@ export gen_qwebengineurlrequestjob_types
 import
   gen_qiodevice_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qiodevice_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -76,9 +74,6 @@ proc fcQWebEngineUrlRequestJob_tr3(s: cstring, c: cstring, n: cint): struct_miqt
 proc fcQWebEngineUrlRequestJob_staticMetaObject(): pointer {.importc: "QWebEngineUrlRequestJob_staticMetaObject".}
 proc fcQWebEngineUrlRequestJob_delete(self: pointer) {.importc: "QWebEngineUrlRequestJob_delete".}
 
-
-func init*(T: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, h: ptr cQWebEngineUrlRequestJob): gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob =
-  T(h: h)
 proc metaObject*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineUrlRequestJob_metaObject(self.h))
 
@@ -127,7 +122,7 @@ proc tr*(_: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, s: c
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlRequestJob_staticMetaObject())
+proc staticMetaObject*(_: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineUrlRequestJob_staticMetaObject())
 proc delete*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob) =
   fcQWebEngineUrlRequestJob_delete(self.h)

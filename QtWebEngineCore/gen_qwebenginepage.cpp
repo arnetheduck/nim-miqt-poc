@@ -80,48 +80,29 @@ void miqt_exec_callback_QWebEnginePage_lifecycleStateChanged(intptr_t, int);
 void miqt_exec_callback_QWebEnginePage_recommendedStateChanged(intptr_t, int);
 void miqt_exec_callback_QWebEnginePage_findTextFinished(intptr_t, QWebEngineFindTextResult*);
 void miqt_exec_callback_QWebEnginePage_QAboutToDelete(intptr_t);
-QMetaObject* miqt_exec_callback_QWebEnginePage_metaObject(const QWebEnginePage*, intptr_t);
-void* miqt_exec_callback_QWebEnginePage_metacast(QWebEnginePage*, intptr_t, const char*);
-int miqt_exec_callback_QWebEnginePage_metacall(QWebEnginePage*, intptr_t, int, int, void**);
-void miqt_exec_callback_QWebEnginePage_triggerAction(QWebEnginePage*, intptr_t, int, bool);
-bool miqt_exec_callback_QWebEnginePage_event(QWebEnginePage*, intptr_t, QEvent*);
-QWebEnginePage* miqt_exec_callback_QWebEnginePage_createWindow(QWebEnginePage*, intptr_t, int);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QWebEnginePage_chooseFiles(QWebEnginePage*, intptr_t, int, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
-void miqt_exec_callback_QWebEnginePage_javaScriptAlert(QWebEnginePage*, intptr_t, QUrl*, struct miqt_string);
-bool miqt_exec_callback_QWebEnginePage_javaScriptConfirm(QWebEnginePage*, intptr_t, QUrl*, struct miqt_string);
-void miqt_exec_callback_QWebEnginePage_javaScriptConsoleMessage(QWebEnginePage*, intptr_t, int, struct miqt_string, int, struct miqt_string);
-bool miqt_exec_callback_QWebEnginePage_acceptNavigationRequest(QWebEnginePage*, intptr_t, QUrl*, int, bool);
-bool miqt_exec_callback_QWebEnginePage_eventFilter(QWebEnginePage*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebEnginePage_timerEvent(QWebEnginePage*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebEnginePage_childEvent(QWebEnginePage*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebEnginePage_customEvent(QWebEnginePage*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebEnginePage_connectNotify(QWebEnginePage*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebEnginePage_disconnectNotify(QWebEnginePage*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQWebEnginePage final : public QWebEnginePage {
+	struct QWebEnginePage_VTable* vtbl;
 public:
 
-	MiqtVirtualQWebEnginePage(): QWebEnginePage() {};
-	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile): QWebEnginePage(profile) {};
-	MiqtVirtualQWebEnginePage(QObject* parent): QWebEnginePage(parent) {};
-	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile, QObject* parent): QWebEnginePage(profile, parent) {};
+	MiqtVirtualQWebEnginePage(struct QWebEnginePage_VTable* vtbl): QWebEnginePage(), vtbl(vtbl) {};
+	MiqtVirtualQWebEnginePage(struct QWebEnginePage_VTable* vtbl, QWebEngineProfile* profile): QWebEnginePage(profile), vtbl(vtbl) {};
+	MiqtVirtualQWebEnginePage(struct QWebEnginePage_VTable* vtbl, QObject* parent): QWebEnginePage(parent), vtbl(vtbl) {};
+	MiqtVirtualQWebEnginePage(struct QWebEnginePage_VTable* vtbl, QWebEngineProfile* profile, QObject* parent): QWebEnginePage(profile, parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQWebEnginePage() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQWebEnginePage() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QWebEnginePage::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QWebEnginePage_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -133,18 +114,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QWebEnginePage::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QWebEnginePage_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -156,21 +134,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QWebEnginePage::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QWebEnginePage_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -182,23 +157,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__triggerAction = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void triggerAction(QWebEnginePage::WebAction action, bool checked) override {
-		if (handle__triggerAction == 0) {
+		if (vtbl->triggerAction == 0) {
 			QWebEnginePage::triggerAction(action, checked);
 			return;
 		}
-		
+
 		QWebEnginePage::WebAction action_ret = action;
 		int sigval1 = static_cast<int>(action_ret);
 		bool sigval2 = checked;
 
-		miqt_exec_callback_QWebEnginePage_triggerAction(this, handle__triggerAction, sigval1, sigval2);
+		vtbl->triggerAction(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -208,18 +179,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* param1) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QWebEnginePage::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_QWebEnginePage_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -231,19 +199,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__createWindow = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QWebEnginePage* createWindow(QWebEnginePage::WebWindowType type) override {
-		if (handle__createWindow == 0) {
+		if (vtbl->createWindow == 0) {
 			return QWebEnginePage::createWindow(type);
 		}
-		
+
 		QWebEnginePage::WebWindowType type_ret = type;
 		int sigval1 = static_cast<int>(type_ret);
 
-		QWebEnginePage* callback_return_value = miqt_exec_callback_QWebEnginePage_createWindow(this, handle__createWindow, sigval1);
+		QWebEnginePage* callback_return_value = vtbl->createWindow(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -255,15 +220,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__chooseFiles = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QStringList chooseFiles(QWebEnginePage::FileSelectionMode mode, const QStringList& oldFiles, const QStringList& acceptedMimeTypes) override {
-		if (handle__chooseFiles == 0) {
+		if (vtbl->chooseFiles == 0) {
 			return QWebEnginePage::chooseFiles(mode, oldFiles, acceptedMimeTypes);
 		}
-		
+
 		QWebEnginePage::FileSelectionMode mode_ret = mode;
 		int sigval1 = static_cast<int>(mode_ret);
 		const QStringList& oldFiles_ret = oldFiles;
@@ -301,7 +263,7 @@ public:
 		acceptedMimeTypes_out.data = static_cast<void*>(acceptedMimeTypes_arr);
 		struct miqt_array /* of struct miqt_string */  sigval3 = acceptedMimeTypes_out;
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QWebEnginePage_chooseFiles(this, handle__chooseFiles, sigval1, sigval2, sigval3);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = vtbl->chooseFiles(vtbl, this, sigval1, sigval2, sigval3);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -350,16 +312,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__javaScriptAlert = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void javaScriptAlert(const QUrl& securityOrigin, const QString& msg) override {
-		if (handle__javaScriptAlert == 0) {
+		if (vtbl->javaScriptAlert == 0) {
 			QWebEnginePage::javaScriptAlert(securityOrigin, msg);
 			return;
 		}
-		
+
 		const QUrl& securityOrigin_ret = securityOrigin;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&securityOrigin_ret);
@@ -372,9 +331,8 @@ public:
 		memcpy(msg_ms.data, msg_b.data(), msg_ms.len);
 		struct miqt_string sigval2 = msg_ms;
 
-		miqt_exec_callback_QWebEnginePage_javaScriptAlert(this, handle__javaScriptAlert, sigval1, sigval2);
+		vtbl->javaScriptAlert(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -385,15 +343,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__javaScriptConfirm = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool javaScriptConfirm(const QUrl& securityOrigin, const QString& msg) override {
-		if (handle__javaScriptConfirm == 0) {
+		if (vtbl->javaScriptConfirm == 0) {
 			return QWebEnginePage::javaScriptConfirm(securityOrigin, msg);
 		}
-		
+
 		const QUrl& securityOrigin_ret = securityOrigin;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&securityOrigin_ret);
@@ -406,7 +361,7 @@ public:
 		memcpy(msg_ms.data, msg_b.data(), msg_ms.len);
 		struct miqt_string sigval2 = msg_ms;
 
-		bool callback_return_value = miqt_exec_callback_QWebEnginePage_javaScriptConfirm(this, handle__javaScriptConfirm, sigval1, sigval2);
+		bool callback_return_value = vtbl->javaScriptConfirm(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -419,16 +374,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__javaScriptConsoleMessage = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void javaScriptConsoleMessage(QWebEnginePage::JavaScriptConsoleMessageLevel level, const QString& message, int lineNumber, const QString& sourceID) override {
-		if (handle__javaScriptConsoleMessage == 0) {
+		if (vtbl->javaScriptConsoleMessage == 0) {
 			QWebEnginePage::javaScriptConsoleMessage(level, message, lineNumber, sourceID);
 			return;
 		}
-		
+
 		QWebEnginePage::JavaScriptConsoleMessageLevel level_ret = level;
 		int sigval1 = static_cast<int>(level_ret);
 		const QString message_ret = message;
@@ -449,9 +401,8 @@ public:
 		memcpy(sourceID_ms.data, sourceID_b.data(), sourceID_ms.len);
 		struct miqt_string sigval4 = sourceID_ms;
 
-		miqt_exec_callback_QWebEnginePage_javaScriptConsoleMessage(this, handle__javaScriptConsoleMessage, sigval1, sigval2, sigval3, sigval4);
+		vtbl->javaScriptConsoleMessage(vtbl, this, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -463,15 +414,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__acceptNavigationRequest = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool acceptNavigationRequest(const QUrl& url, QWebEnginePage::NavigationType type, bool isMainFrame) override {
-		if (handle__acceptNavigationRequest == 0) {
+		if (vtbl->acceptNavigationRequest == 0) {
 			return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
 		}
-		
+
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
@@ -479,7 +427,7 @@ public:
 		int sigval2 = static_cast<int>(type_ret);
 		bool sigval3 = isMainFrame;
 
-		bool callback_return_value = miqt_exec_callback_QWebEnginePage_acceptNavigationRequest(this, handle__acceptNavigationRequest, sigval1, sigval2, sigval3);
+		bool callback_return_value = vtbl->acceptNavigationRequest(vtbl, this, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
@@ -491,19 +439,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QWebEnginePage::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QWebEnginePage_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -515,21 +460,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QWebEnginePage::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QWebEnginePage_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -539,21 +480,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QWebEnginePage::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QWebEnginePage_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -563,21 +500,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QWebEnginePage::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QWebEnginePage_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -587,23 +520,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QWebEnginePage::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QWebEnginePage_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -613,23 +542,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QWebEnginePage::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QWebEnginePage_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -646,20 +571,20 @@ public:
 	friend bool QWebEnginePage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QWebEnginePage* QWebEnginePage_new() {
-	return new MiqtVirtualQWebEnginePage();
+QWebEnginePage* QWebEnginePage_new(struct QWebEnginePage_VTable* vtbl) {
+	return new MiqtVirtualQWebEnginePage(vtbl);
 }
 
-QWebEnginePage* QWebEnginePage_new2(QWebEngineProfile* profile) {
-	return new MiqtVirtualQWebEnginePage(profile);
+QWebEnginePage* QWebEnginePage_new2(struct QWebEnginePage_VTable* vtbl, QWebEngineProfile* profile) {
+	return new MiqtVirtualQWebEnginePage(vtbl, profile);
 }
 
-QWebEnginePage* QWebEnginePage_new3(QObject* parent) {
-	return new MiqtVirtualQWebEnginePage(parent);
+QWebEnginePage* QWebEnginePage_new3(struct QWebEnginePage_VTable* vtbl, QObject* parent) {
+	return new MiqtVirtualQWebEnginePage(vtbl, parent);
 }
 
-QWebEnginePage* QWebEnginePage_new4(QWebEngineProfile* profile, QObject* parent) {
-	return new MiqtVirtualQWebEnginePage(profile, parent);
+QWebEnginePage* QWebEnginePage_new4(struct QWebEnginePage_VTable* vtbl, QWebEngineProfile* profile, QObject* parent) {
+	return new MiqtVirtualQWebEnginePage(vtbl, profile, parent);
 }
 
 void QWebEnginePage_virtbase(QWebEnginePage* src, QObject** outptr_QObject) {
@@ -1442,238 +1367,68 @@ void QWebEnginePage_printToPdf3(QWebEnginePage* self, struct miqt_string filePat
 	self->printToPdf(filePath_QString, *layout, *ranges);
 }
 
-bool QWebEnginePage_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QWebEnginePage_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQWebEnginePage*)(self) )->virtualbase_metaObject();
-}
-
-bool QWebEnginePage_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QWebEnginePage_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QWebEnginePage_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QWebEnginePage_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QWebEnginePage_override_virtual_triggerAction(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__triggerAction = slot;
-	return true;
 }
 
 void QWebEnginePage_virtualbase_triggerAction(void* self, int action, bool checked) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_triggerAction(action, checked);
 }
 
-bool QWebEnginePage_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
-}
-
 bool QWebEnginePage_virtualbase_event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_event(param1);
-}
-
-bool QWebEnginePage_override_virtual_createWindow(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__createWindow = slot;
-	return true;
 }
 
 QWebEnginePage* QWebEnginePage_virtualbase_createWindow(void* self, int type) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_createWindow(type);
 }
 
-bool QWebEnginePage_override_virtual_chooseFiles(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__chooseFiles = slot;
-	return true;
-}
-
 struct miqt_array /* of struct miqt_string */  QWebEnginePage_virtualbase_chooseFiles(void* self, int mode, struct miqt_array /* of struct miqt_string */  oldFiles, struct miqt_array /* of struct miqt_string */  acceptedMimeTypes) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_chooseFiles(mode, oldFiles, acceptedMimeTypes);
-}
-
-bool QWebEnginePage_override_virtual_javaScriptAlert(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__javaScriptAlert = slot;
-	return true;
 }
 
 void QWebEnginePage_virtualbase_javaScriptAlert(void* self, QUrl* securityOrigin, struct miqt_string msg) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_javaScriptAlert(securityOrigin, msg);
 }
 
-bool QWebEnginePage_override_virtual_javaScriptConfirm(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__javaScriptConfirm = slot;
-	return true;
-}
-
 bool QWebEnginePage_virtualbase_javaScriptConfirm(void* self, QUrl* securityOrigin, struct miqt_string msg) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_javaScriptConfirm(securityOrigin, msg);
-}
-
-bool QWebEnginePage_override_virtual_javaScriptConsoleMessage(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__javaScriptConsoleMessage = slot;
-	return true;
 }
 
 void QWebEnginePage_virtualbase_javaScriptConsoleMessage(void* self, int level, struct miqt_string message, int lineNumber, struct miqt_string sourceID) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_javaScriptConsoleMessage(level, message, lineNumber, sourceID);
 }
 
-bool QWebEnginePage_override_virtual_acceptNavigationRequest(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__acceptNavigationRequest = slot;
-	return true;
-}
-
 bool QWebEnginePage_virtualbase_acceptNavigationRequest(void* self, QUrl* url, int type, bool isMainFrame) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_acceptNavigationRequest(url, type, isMainFrame);
-}
-
-bool QWebEnginePage_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QWebEnginePage_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QWebEnginePage_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
-}
-
 void QWebEnginePage_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_timerEvent(event);
-}
-
-bool QWebEnginePage_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
 }
 
 void QWebEnginePage_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QWebEnginePage_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
-}
-
 void QWebEnginePage_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QWebEnginePage_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QWebEnginePage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QWebEnginePage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QWebEnginePage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

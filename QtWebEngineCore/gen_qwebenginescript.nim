@@ -50,16 +50,14 @@ import gen_qwebenginescript_types
 export gen_qwebenginescript_types
 
 import
-  gen_qobjectdefs,
+  gen_qobjectdefs_types,
   gen_qurl_types
 export
-  gen_qobjectdefs,
+  gen_qobjectdefs_types,
   gen_qurl_types
 
 type cQWebEngineScript*{.exportc: "QWebEngineScript", incompleteStruct.} = object
 
-proc fcQWebEngineScript_new(): ptr cQWebEngineScript {.importc: "QWebEngineScript_new".}
-proc fcQWebEngineScript_new2(other: pointer): ptr cQWebEngineScript {.importc: "QWebEngineScript_new2".}
 proc fcQWebEngineScript_operatorAssign(self: pointer, other: pointer): void {.importc: "QWebEngineScript_operatorAssign".}
 proc fcQWebEngineScript_name(self: pointer, ): struct_miqt_string {.importc: "QWebEngineScript_name".}
 proc fcQWebEngineScript_setName(self: pointer, name: struct_miqt_string): void {.importc: "QWebEngineScript_setName".}
@@ -76,17 +74,10 @@ proc fcQWebEngineScript_setRunsOnSubFrames(self: pointer, on: bool): void {.impo
 proc fcQWebEngineScript_operatorEqual(self: pointer, other: pointer): bool {.importc: "QWebEngineScript_operatorEqual".}
 proc fcQWebEngineScript_operatorNotEqual(self: pointer, other: pointer): bool {.importc: "QWebEngineScript_operatorNotEqual".}
 proc fcQWebEngineScript_swap(self: pointer, other: pointer): void {.importc: "QWebEngineScript_swap".}
+proc fcQWebEngineScript_new(): ptr cQWebEngineScript {.importc: "QWebEngineScript_new".}
+proc fcQWebEngineScript_new2(other: pointer): ptr cQWebEngineScript {.importc: "QWebEngineScript_new2".}
 proc fcQWebEngineScript_staticMetaObject(): pointer {.importc: "QWebEngineScript_staticMetaObject".}
 proc fcQWebEngineScript_delete(self: pointer) {.importc: "QWebEngineScript_delete".}
-
-
-func init*(T: type gen_qwebenginescript_types.QWebEngineScript, h: ptr cQWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
-  T(h: h)
-proc create*(T: type gen_qwebenginescript_types.QWebEngineScript, ): gen_qwebenginescript_types.QWebEngineScript =
-  gen_qwebenginescript_types.QWebEngineScript.init(fcQWebEngineScript_new())
-
-proc create*(T: type gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
-  gen_qwebenginescript_types.QWebEngineScript.init(fcQWebEngineScript_new2(other.h))
 
 proc operatorAssign*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): void =
   fcQWebEngineScript_operatorAssign(self.h, other.h)
@@ -142,7 +133,14 @@ proc operatorNotEqual*(self: gen_qwebenginescript_types.QWebEngineScript, other:
 proc swap*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): void =
   fcQWebEngineScript_swap(self.h, other.h)
 
-proc staticMetaObject*(_: type gen_qwebenginescript_types.QWebEngineScript): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebEngineScript_staticMetaObject())
+proc create*(T: type gen_qwebenginescript_types.QWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
+  gen_qwebenginescript_types.QWebEngineScript(h: fcQWebEngineScript_new())
+
+proc create*(T: type gen_qwebenginescript_types.QWebEngineScript,
+    other: gen_qwebenginescript_types.QWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
+  gen_qwebenginescript_types.QWebEngineScript(h: fcQWebEngineScript_new2(other.h))
+
+proc staticMetaObject*(_: type gen_qwebenginescript_types.QWebEngineScript): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineScript_staticMetaObject())
 proc delete*(self: gen_qwebenginescript_types.QWebEngineScript) =
   fcQWebEngineScript_delete(self.h)

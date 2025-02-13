@@ -87,13 +87,11 @@ export gen_qwebenginecontextmenurequest_types
 
 import
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qurl_types
 export
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qurl_types
@@ -122,9 +120,6 @@ proc fcQWebEngineContextMenuRequest_tr3(s: cstring, c: cstring, n: cint): struct
 proc fcQWebEngineContextMenuRequest_staticMetaObject(): pointer {.importc: "QWebEngineContextMenuRequest_staticMetaObject".}
 proc fcQWebEngineContextMenuRequest_delete(self: pointer) {.importc: "QWebEngineContextMenuRequest_delete".}
 
-
-func init*(T: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, h: ptr cQWebEngineContextMenuRequest): gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest =
-  T(h: h)
 proc metaObject*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineContextMenuRequest_metaObject(self.h))
 
@@ -208,7 +203,7 @@ proc tr*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuReq
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebEngineContextMenuRequest_staticMetaObject())
+proc staticMetaObject*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineContextMenuRequest_staticMetaObject())
 proc delete*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest) =
   fcQWebEngineContextMenuRequest_delete(self.h)

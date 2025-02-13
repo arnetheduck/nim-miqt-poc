@@ -15,35 +15,31 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QSGMaterialShader_updateUniformData(QSGMaterialShader*, intptr_t, QSGMaterialShader__RenderState*, QSGMaterial*, QSGMaterial*);
-bool miqt_exec_callback_QSGMaterialShader_updateGraphicsPipelineState(QSGMaterialShader*, intptr_t, QSGMaterialShader__RenderState*, QSGMaterialShader__GraphicsPipelineState*, QSGMaterial*, QSGMaterial*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQSGMaterialShader final : public QSGMaterialShader {
+	struct QSGMaterialShader_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGMaterialShader(): QSGMaterialShader() {};
+	MiqtVirtualQSGMaterialShader(struct QSGMaterialShader_VTable* vtbl): QSGMaterialShader(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGMaterialShader() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updateUniformData = 0;
+	virtual ~MiqtVirtualQSGMaterialShader() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual bool updateUniformData(QSGMaterialShader::RenderState& state, QSGMaterial* newMaterial, QSGMaterial* oldMaterial) override {
-		if (handle__updateUniformData == 0) {
+		if (vtbl->updateUniformData == 0) {
 			return QSGMaterialShader::updateUniformData(state, newMaterial, oldMaterial);
 		}
-		
+
 		QSGMaterialShader::RenderState& state_ret = state;
 		// Cast returned reference into pointer
 		QSGMaterialShader__RenderState* sigval1 = &state_ret;
 		QSGMaterial* sigval2 = newMaterial;
 		QSGMaterial* sigval3 = oldMaterial;
 
-		bool callback_return_value = miqt_exec_callback_QSGMaterialShader_updateUniformData(this, handle__updateUniformData, sigval1, sigval2, sigval3);
+		bool callback_return_value = vtbl->updateUniformData(vtbl, this, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
@@ -55,15 +51,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updateGraphicsPipelineState = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool updateGraphicsPipelineState(QSGMaterialShader::RenderState& state, QSGMaterialShader::GraphicsPipelineState* ps, QSGMaterial* newMaterial, QSGMaterial* oldMaterial) override {
-		if (handle__updateGraphicsPipelineState == 0) {
+		if (vtbl->updateGraphicsPipelineState == 0) {
 			return QSGMaterialShader::updateGraphicsPipelineState(state, ps, newMaterial, oldMaterial);
 		}
-		
+
 		QSGMaterialShader::RenderState& state_ret = state;
 		// Cast returned reference into pointer
 		QSGMaterialShader__RenderState* sigval1 = &state_ret;
@@ -71,7 +64,7 @@ public:
 		QSGMaterial* sigval3 = newMaterial;
 		QSGMaterial* sigval4 = oldMaterial;
 
-		bool callback_return_value = miqt_exec_callback_QSGMaterialShader_updateGraphicsPipelineState(this, handle__updateGraphicsPipelineState, sigval1, sigval2, sigval3, sigval4);
+		bool callback_return_value = vtbl->updateGraphicsPipelineState(vtbl, this, sigval1, sigval2, sigval3, sigval4);
 
 		return callback_return_value;
 	}
@@ -88,8 +81,8 @@ public:
 	friend void QSGMaterialShader_protectedbase_setShader(bool* _dynamic_cast_ok, void* self, int stage, const QShader* shader);
 };
 
-QSGMaterialShader* QSGMaterialShader_new() {
-	return new MiqtVirtualQSGMaterialShader();
+QSGMaterialShader* QSGMaterialShader_new(struct QSGMaterialShader_VTable* vtbl) {
+	return new MiqtVirtualQSGMaterialShader(vtbl);
 }
 
 bool QSGMaterialShader_updateUniformData(QSGMaterialShader* self, QSGMaterialShader__RenderState* state, QSGMaterial* newMaterial, QSGMaterial* oldMaterial) {
@@ -121,28 +114,8 @@ void QSGMaterialShader_setFlag2(QSGMaterialShader* self, int flags, bool on) {
 	self->setFlag(static_cast<QSGMaterialShader::Flags>(flags), on);
 }
 
-bool QSGMaterialShader_override_virtual_updateUniformData(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updateUniformData = slot;
-	return true;
-}
-
 bool QSGMaterialShader_virtualbase_updateUniformData(void* self, QSGMaterialShader__RenderState* state, QSGMaterial* newMaterial, QSGMaterial* oldMaterial) {
 	return ( (MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_updateUniformData(state, newMaterial, oldMaterial);
-}
-
-bool QSGMaterialShader_override_virtual_updateGraphicsPipelineState(void* self, intptr_t slot) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updateGraphicsPipelineState = slot;
-	return true;
 }
 
 bool QSGMaterialShader_virtualbase_updateGraphicsPipelineState(void* self, QSGMaterialShader__RenderState* state, QSGMaterialShader__GraphicsPipelineState* ps, QSGMaterial* newMaterial, QSGMaterial* oldMaterial) {

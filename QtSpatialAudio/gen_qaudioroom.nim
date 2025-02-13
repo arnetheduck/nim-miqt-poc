@@ -78,7 +78,6 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qquaternion_types,
   gen_qvectornd_types
@@ -87,14 +86,12 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qquaternion_types,
   gen_qvectornd_types
 
 type cQAudioRoom*{.exportc: "QAudioRoom", incompleteStruct.} = object
 
-proc fcQAudioRoom_new(engine: pointer): ptr cQAudioRoom {.importc: "QAudioRoom_new".}
 proc fcQAudioRoom_metaObject(self: pointer, ): pointer {.importc: "QAudioRoom_metaObject".}
 proc fcQAudioRoom_metacast(self: pointer, param1: cstring): pointer {.importc: "QAudioRoom_metacast".}
 proc fcQAudioRoom_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QAudioRoom_metacall".}
@@ -116,51 +113,48 @@ proc fcQAudioRoom_reverbTime(self: pointer, ): float32 {.importc: "QAudioRoom_re
 proc fcQAudioRoom_setReverbBrightness(self: pointer, factor: float32): void {.importc: "QAudioRoom_setReverbBrightness".}
 proc fcQAudioRoom_reverbBrightness(self: pointer, ): float32 {.importc: "QAudioRoom_reverbBrightness".}
 proc fcQAudioRoom_positionChanged(self: pointer, ): void {.importc: "QAudioRoom_positionChanged".}
-proc fQAudioRoom_connect_positionChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_positionChanged".}
+proc fcQAudioRoom_connect_positionChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_positionChanged".}
 proc fcQAudioRoom_dimensionsChanged(self: pointer, ): void {.importc: "QAudioRoom_dimensionsChanged".}
-proc fQAudioRoom_connect_dimensionsChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_dimensionsChanged".}
+proc fcQAudioRoom_connect_dimensionsChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_dimensionsChanged".}
 proc fcQAudioRoom_rotationChanged(self: pointer, ): void {.importc: "QAudioRoom_rotationChanged".}
-proc fQAudioRoom_connect_rotationChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_rotationChanged".}
+proc fcQAudioRoom_connect_rotationChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_rotationChanged".}
 proc fcQAudioRoom_wallsChanged(self: pointer, ): void {.importc: "QAudioRoom_wallsChanged".}
-proc fQAudioRoom_connect_wallsChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_wallsChanged".}
+proc fcQAudioRoom_connect_wallsChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_wallsChanged".}
 proc fcQAudioRoom_reflectionGainChanged(self: pointer, ): void {.importc: "QAudioRoom_reflectionGainChanged".}
-proc fQAudioRoom_connect_reflectionGainChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reflectionGainChanged".}
+proc fcQAudioRoom_connect_reflectionGainChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reflectionGainChanged".}
 proc fcQAudioRoom_reverbGainChanged(self: pointer, ): void {.importc: "QAudioRoom_reverbGainChanged".}
-proc fQAudioRoom_connect_reverbGainChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reverbGainChanged".}
+proc fcQAudioRoom_connect_reverbGainChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reverbGainChanged".}
 proc fcQAudioRoom_reverbTimeChanged(self: pointer, ): void {.importc: "QAudioRoom_reverbTimeChanged".}
-proc fQAudioRoom_connect_reverbTimeChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reverbTimeChanged".}
+proc fcQAudioRoom_connect_reverbTimeChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reverbTimeChanged".}
 proc fcQAudioRoom_reverbBrightnessChanged(self: pointer, ): void {.importc: "QAudioRoom_reverbBrightnessChanged".}
-proc fQAudioRoom_connect_reverbBrightnessChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reverbBrightnessChanged".}
+proc fcQAudioRoom_connect_reverbBrightnessChanged(self: pointer, slot: int) {.importc: "QAudioRoom_connect_reverbBrightnessChanged".}
 proc fcQAudioRoom_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioRoom_tr2".}
 proc fcQAudioRoom_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioRoom_tr3".}
-proc fQAudioRoom_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAudioRoom_virtualbase_metaObject".}
-proc fcQAudioRoom_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_metaObject".}
-proc fQAudioRoom_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAudioRoom_virtualbase_metacast".}
-proc fcQAudioRoom_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_metacast".}
-proc fQAudioRoom_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAudioRoom_virtualbase_metacall".}
-proc fcQAudioRoom_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_metacall".}
-proc fQAudioRoom_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QAudioRoom_virtualbase_event".}
-proc fcQAudioRoom_override_virtual_event(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_event".}
-proc fQAudioRoom_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QAudioRoom_virtualbase_eventFilter".}
-proc fcQAudioRoom_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_eventFilter".}
-proc fQAudioRoom_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QAudioRoom_virtualbase_timerEvent".}
-proc fcQAudioRoom_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_timerEvent".}
-proc fQAudioRoom_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QAudioRoom_virtualbase_childEvent".}
-proc fcQAudioRoom_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_childEvent".}
-proc fQAudioRoom_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QAudioRoom_virtualbase_customEvent".}
-proc fcQAudioRoom_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_customEvent".}
-proc fQAudioRoom_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QAudioRoom_virtualbase_connectNotify".}
-proc fcQAudioRoom_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_connectNotify".}
-proc fQAudioRoom_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioRoom_virtualbase_disconnectNotify".}
-proc fcQAudioRoom_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_disconnectNotify".}
+type cQAudioRoomVTable = object
+  destructor*: proc(vtbl: ptr cQAudioRoomVTable, self: ptr cQAudioRoom) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQAudioRoom_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QAudioRoom_virtualbase_metaObject".}
+proc fcQAudioRoom_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QAudioRoom_virtualbase_metacast".}
+proc fcQAudioRoom_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QAudioRoom_virtualbase_metacall".}
+proc fcQAudioRoom_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QAudioRoom_virtualbase_event".}
+proc fcQAudioRoom_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QAudioRoom_virtualbase_eventFilter".}
+proc fcQAudioRoom_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QAudioRoom_virtualbase_timerEvent".}
+proc fcQAudioRoom_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QAudioRoom_virtualbase_childEvent".}
+proc fcQAudioRoom_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QAudioRoom_virtualbase_customEvent".}
+proc fcQAudioRoom_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QAudioRoom_virtualbase_connectNotify".}
+proc fcQAudioRoom_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QAudioRoom_virtualbase_disconnectNotify".}
+proc fcQAudioRoom_new(vtbl: pointer, engine: pointer): ptr cQAudioRoom {.importc: "QAudioRoom_new".}
 proc fcQAudioRoom_staticMetaObject(): pointer {.importc: "QAudioRoom_staticMetaObject".}
 proc fcQAudioRoom_delete(self: pointer) {.importc: "QAudioRoom_delete".}
-
-
-func init*(T: type gen_qaudioroom_types.QAudioRoom, h: ptr cQAudioRoom): gen_qaudioroom_types.QAudioRoom =
-  T(h: h)
-proc create*(T: type gen_qaudioroom_types.QAudioRoom, engine: gen_qaudioengine_types.QAudioEngine): gen_qaudioroom_types.QAudioRoom =
-  gen_qaudioroom_types.QAudioRoom.init(fcQAudioRoom_new(engine.h))
 
 proc metaObject*(self: gen_qaudioroom_types.QAudioRoom, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQAudioRoom_metaObject(self.h))
@@ -229,7 +223,7 @@ proc positionChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_positionChanged(self.h)
 
 type QAudioRoompositionChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_positionChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_positionChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_positionChanged".} =
   let nimfunc = cast[ptr QAudioRoompositionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -237,13 +231,13 @@ proc onpositionChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomp
   var tmp = new QAudioRoompositionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_positionChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_positionChanged(self.h, cast[int](addr tmp[]))
 
 proc dimensionsChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_dimensionsChanged(self.h)
 
 type QAudioRoomdimensionsChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_dimensionsChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_dimensionsChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_dimensionsChanged".} =
   let nimfunc = cast[ptr QAudioRoomdimensionsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -251,13 +245,13 @@ proc ondimensionsChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoo
   var tmp = new QAudioRoomdimensionsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_dimensionsChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_dimensionsChanged(self.h, cast[int](addr tmp[]))
 
 proc rotationChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_rotationChanged(self.h)
 
 type QAudioRoomrotationChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_rotationChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_rotationChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_rotationChanged".} =
   let nimfunc = cast[ptr QAudioRoomrotationChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -265,13 +259,13 @@ proc onrotationChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomr
   var tmp = new QAudioRoomrotationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_rotationChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_rotationChanged(self.h, cast[int](addr tmp[]))
 
 proc wallsChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_wallsChanged(self.h)
 
 type QAudioRoomwallsChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_wallsChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_wallsChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_wallsChanged".} =
   let nimfunc = cast[ptr QAudioRoomwallsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -279,13 +273,13 @@ proc onwallsChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomwall
   var tmp = new QAudioRoomwallsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_wallsChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_wallsChanged(self.h, cast[int](addr tmp[]))
 
 proc reflectionGainChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_reflectionGainChanged(self.h)
 
 type QAudioRoomreflectionGainChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_reflectionGainChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_reflectionGainChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reflectionGainChanged".} =
   let nimfunc = cast[ptr QAudioRoomreflectionGainChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -293,13 +287,13 @@ proc onreflectionGainChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudi
   var tmp = new QAudioRoomreflectionGainChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_reflectionGainChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_reflectionGainChanged(self.h, cast[int](addr tmp[]))
 
 proc reverbGainChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_reverbGainChanged(self.h)
 
 type QAudioRoomreverbGainChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_reverbGainChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_reverbGainChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbGainChanged".} =
   let nimfunc = cast[ptr QAudioRoomreverbGainChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -307,13 +301,13 @@ proc onreverbGainChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoo
   var tmp = new QAudioRoomreverbGainChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_reverbGainChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_reverbGainChanged(self.h, cast[int](addr tmp[]))
 
 proc reverbTimeChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_reverbTimeChanged(self.h)
 
 type QAudioRoomreverbTimeChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_reverbTimeChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_reverbTimeChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbTimeChanged".} =
   let nimfunc = cast[ptr QAudioRoomreverbTimeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -321,13 +315,13 @@ proc onreverbTimeChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoo
   var tmp = new QAudioRoomreverbTimeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_reverbTimeChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_reverbTimeChanged(self.h, cast[int](addr tmp[]))
 
 proc reverbBrightnessChanged*(self: gen_qaudioroom_types.QAudioRoom, ): void =
   fcQAudioRoom_reverbBrightnessChanged(self.h)
 
 type QAudioRoomreverbBrightnessChangedSlot* = proc()
-proc miqt_exec_callback_QAudioRoom_reverbBrightnessChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQAudioRoom_reverbBrightnessChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRoom_reverbBrightnessChanged".} =
   let nimfunc = cast[ptr QAudioRoomreverbBrightnessChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -335,7 +329,7 @@ proc onreverbBrightnessChanged*(self: gen_qaudioroom_types.QAudioRoom, slot: QAu
   var tmp = new QAudioRoomreverbBrightnessChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQAudioRoom_connect_reverbBrightnessChanged(self.h, cast[int](addr tmp[]))
+  fcQAudioRoom_connect_reverbBrightnessChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qaudioroom_types.QAudioRoom, s: cstring, c: cstring): string =
   let v_ms = fcQAudioRoom_tr2(s, c)
@@ -349,191 +343,156 @@ proc tr*(_: type gen_qaudioroom_types.QAudioRoom, s: cstring, c: cstring, n: cin
   c_free(v_ms.data)
   vx_ret
 
+type QAudioRoommetaObjectProc* = proc(self: QAudioRoom): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QAudioRoommetacastProc* = proc(self: QAudioRoom, param1: cstring): pointer {.raises: [], gcsafe.}
+type QAudioRoommetacallProc* = proc(self: QAudioRoom, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QAudioRoomeventProc* = proc(self: QAudioRoom, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QAudioRoomeventFilterProc* = proc(self: QAudioRoom, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QAudioRoomtimerEventProc* = proc(self: QAudioRoom, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QAudioRoomchildEventProc* = proc(self: QAudioRoom, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QAudioRoomcustomEventProc* = proc(self: QAudioRoom, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QAudioRoomconnectNotifyProc* = proc(self: QAudioRoom, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QAudioRoomdisconnectNotifyProc* = proc(self: QAudioRoom, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QAudioRoomVTable* = object
+  vtbl: cQAudioRoomVTable
+  metaObject*: QAudioRoommetaObjectProc
+  metacast*: QAudioRoommetacastProc
+  metacall*: QAudioRoommetacallProc
+  event*: QAudioRoomeventProc
+  eventFilter*: QAudioRoomeventFilterProc
+  timerEvent*: QAudioRoomtimerEventProc
+  childEvent*: QAudioRoomchildEventProc
+  customEvent*: QAudioRoomcustomEventProc
+  connectNotify*: QAudioRoomconnectNotifyProc
+  disconnectNotify*: QAudioRoomdisconnectNotifyProc
 proc QAudioRoommetaObject*(self: gen_qaudioroom_types.QAudioRoom, ): gen_qobjectdefs_types.QMetaObject =
-  gen_qobjectdefs_types.QMetaObject(h: fQAudioRoom_virtualbase_metaObject(self.h))
+  gen_qobjectdefs_types.QMetaObject(h: fcQAudioRoom_virtualbase_metaObject(self.h))
 
-type QAudioRoommetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
-proc onmetaObject*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoommetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoommetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_metaObject(self: ptr cQAudioRoom, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioRoom_metaObject ".} =
-  var nimfunc = cast[ptr QAudioRoommetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQAudioRoom_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QAudioRoommetacast*(self: gen_qaudioroom_types.QAudioRoom, param1: cstring): pointer =
-  fQAudioRoom_virtualbase_metacast(self.h, param1)
+  fcQAudioRoom_virtualbase_metacast(self.h, param1)
 
-type QAudioRoommetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoommetacastProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoommetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_metacast(self: ptr cQAudioRoom, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioRoom_metacast ".} =
-  var nimfunc = cast[ptr QAudioRoommetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QAudioRoommetacall*(self: gen_qaudioroom_types.QAudioRoom, param1: cint, param2: cint, param3: pointer): cint =
-  fQAudioRoom_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQAudioRoom_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAudioRoommetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoommetacallProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoommetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_metacall(self: ptr cQAudioRoom, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAudioRoom_metacall ".} =
-  var nimfunc = cast[ptr QAudioRoommetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QAudioRoomevent*(self: gen_qaudioroom_types.QAudioRoom, event: gen_qcoreevent_types.QEvent): bool =
-  fQAudioRoom_virtualbase_event(self.h, event.h)
+  fcQAudioRoom_virtualbase_event(self.h, event.h)
 
-type QAudioRoomeventProc* = proc(event: gen_qcoreevent_types.QEvent): bool
-proc onevent*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomeventProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoomeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_event(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_event(self: ptr cQAudioRoom, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAudioRoom_event ".} =
-  var nimfunc = cast[ptr QAudioRoomeventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = gen_qcoreevent_types.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
+
 proc QAudioRoomeventFilter*(self: gen_qaudioroom_types.QAudioRoom, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
-  fQAudioRoom_virtualbase_eventFilter(self.h, watched.h, event.h)
+  fcQAudioRoom_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QAudioRoomeventFilterProc* = proc(watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool
-proc oneventFilter*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoomeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_eventFilter(self: ptr cQAudioRoom, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QAudioRoom_eventFilter ".} =
-  var nimfunc = cast[ptr QAudioRoomeventFilterProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = gen_qobject_types.QObject(h: watched)
-
   let slotval2 = gen_qcoreevent_types.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
+
 proc QAudioRoomtimerEvent*(self: gen_qaudioroom_types.QAudioRoom, event: gen_qcoreevent_types.QTimerEvent): void =
-  fQAudioRoom_virtualbase_timerEvent(self.h, event.h)
+  fcQAudioRoom_virtualbase_timerEvent(self.h, event.h)
 
-type QAudioRoomtimerEventProc* = proc(event: gen_qcoreevent_types.QTimerEvent): void
-proc ontimerEvent*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomtimerEventProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoomtimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_timerEvent(self: ptr cQAudioRoom, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioRoom_timerEvent ".} =
-  var nimfunc = cast[ptr QAudioRoomtimerEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QAudioRoomchildEvent*(self: gen_qaudioroom_types.QAudioRoom, event: gen_qcoreevent_types.QChildEvent): void =
-  fQAudioRoom_virtualbase_childEvent(self.h, event.h)
+  fcQAudioRoom_virtualbase_childEvent(self.h, event.h)
 
-type QAudioRoomchildEventProc* = proc(event: gen_qcoreevent_types.QChildEvent): void
-proc onchildEvent*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomchildEventProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoomchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_childEvent(self: ptr cQAudioRoom, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioRoom_childEvent ".} =
-  var nimfunc = cast[ptr QAudioRoomchildEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QAudioRoomcustomEvent*(self: gen_qaudioroom_types.QAudioRoom, event: gen_qcoreevent_types.QEvent): void =
-  fQAudioRoom_virtualbase_customEvent(self.h, event.h)
+  fcQAudioRoom_virtualbase_customEvent(self.h, event.h)
 
-type QAudioRoomcustomEventProc* = proc(event: gen_qcoreevent_types.QEvent): void
-proc oncustomEvent*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoomcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_customEvent(self: ptr cQAudioRoom, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioRoom_customEvent ".} =
-  var nimfunc = cast[ptr QAudioRoomcustomEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QAudioRoomconnectNotify*(self: gen_qaudioroom_types.QAudioRoom, signal: gen_qmetaobject_types.QMetaMethod): void =
-  fQAudioRoom_virtualbase_connectNotify(self.h, signal.h)
+  fcQAudioRoom_virtualbase_connectNotify(self.h, signal.h)
 
-type QAudioRoomconnectNotifyProc* = proc(signal: gen_qmetaobject_types.QMetaMethod): void
-proc onconnectNotify*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoomconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_connectNotify(self: ptr cQAudioRoom, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAudioRoom_connectNotify ".} =
-  var nimfunc = cast[ptr QAudioRoomconnectNotifyProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QAudioRoomdisconnectNotify*(self: gen_qaudioroom_types.QAudioRoom, signal: gen_qmetaobject_types.QMetaMethod): void =
-  fQAudioRoom_virtualbase_disconnectNotify(self.h, signal.h)
+  fcQAudioRoom_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAudioRoomdisconnectNotifyProc* = proc(signal: gen_qmetaobject_types.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qaudioroom_types.QAudioRoom, slot: QAudioRoomdisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QAudioRoomdisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQAudioRoom_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QAudioRoom_disconnectNotify(self: ptr cQAudioRoom, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAudioRoom_disconnectNotify ".} =
-  var nimfunc = cast[ptr QAudioRoomdisconnectNotifyProc](cast[pointer](slot))
+proc miqt_exec_callback_cQAudioRoom_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QAudioRoomVTable](vtbl)
+  let self = QAudioRoom(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qaudioroom_types.QAudioRoom,
+    engine: gen_qaudioengine_types.QAudioEngine,
+    vtbl: ref QAudioRoomVTable = nil): gen_qaudioroom_types.QAudioRoom =
+  let vtbl = if vtbl == nil: new QAudioRoomVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQAudioRoomVTable, _: ptr cQAudioRoom) {.cdecl.} =
+    let vtbl = cast[ref QAudioRoomVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQAudioRoom_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQAudioRoom_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQAudioRoom_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQAudioRoom_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQAudioRoom_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQAudioRoom_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQAudioRoom_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQAudioRoom_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQAudioRoom_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQAudioRoom_disconnectNotify
+  gen_qaudioroom_types.QAudioRoom(h: fcQAudioRoom_new(addr(vtbl[]), engine.h))
 
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qaudioroom_types.QAudioRoom): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQAudioRoom_staticMetaObject())
+proc staticMetaObject*(_: type gen_qaudioroom_types.QAudioRoom): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAudioRoom_staticMetaObject())
 proc delete*(self: gen_qaudioroom_types.QAudioRoom) =
   fcQAudioRoom_delete(self.h)

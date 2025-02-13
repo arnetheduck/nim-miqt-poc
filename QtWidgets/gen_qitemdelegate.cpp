@@ -30,53 +30,27 @@
 extern "C" {
 #endif
 
-QMetaObject* miqt_exec_callback_QItemDelegate_metaObject(const QItemDelegate*, intptr_t);
-void* miqt_exec_callback_QItemDelegate_metacast(QItemDelegate*, intptr_t, const char*);
-int miqt_exec_callback_QItemDelegate_metacall(QItemDelegate*, intptr_t, int, int, void**);
-void miqt_exec_callback_QItemDelegate_paint(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
-QSize* miqt_exec_callback_QItemDelegate_sizeHint(const QItemDelegate*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
-QWidget* miqt_exec_callback_QItemDelegate_createEditor(const QItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_setEditorData(const QItemDelegate*, intptr_t, QWidget*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_setModelData(const QItemDelegate*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_updateEditorGeometry(const QItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_drawDisplay(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, struct miqt_string);
-void miqt_exec_callback_QItemDelegate_drawDecoration(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, QPixmap*);
-void miqt_exec_callback_QItemDelegate_drawFocus(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*);
-void miqt_exec_callback_QItemDelegate_drawCheck(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, int);
-bool miqt_exec_callback_QItemDelegate_eventFilter(QItemDelegate*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QItemDelegate_editorEvent(QItemDelegate*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_destroyEditor(const QItemDelegate*, intptr_t, QWidget*, QModelIndex*);
-bool miqt_exec_callback_QItemDelegate_helpEvent(QItemDelegate*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
-struct miqt_array /* of int */  miqt_exec_callback_QItemDelegate_paintingRoles(const QItemDelegate*, intptr_t);
-bool miqt_exec_callback_QItemDelegate_event(QItemDelegate*, intptr_t, QEvent*);
-void miqt_exec_callback_QItemDelegate_timerEvent(QItemDelegate*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QItemDelegate_childEvent(QItemDelegate*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QItemDelegate_customEvent(QItemDelegate*, intptr_t, QEvent*);
-void miqt_exec_callback_QItemDelegate_connectNotify(QItemDelegate*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QItemDelegate_disconnectNotify(QItemDelegate*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQItemDelegate final : public QItemDelegate {
+	struct QItemDelegate_VTable* vtbl;
 public:
 
-	MiqtVirtualQItemDelegate(): QItemDelegate() {};
-	MiqtVirtualQItemDelegate(QObject* parent): QItemDelegate(parent) {};
+	MiqtVirtualQItemDelegate(struct QItemDelegate_VTable* vtbl): QItemDelegate(), vtbl(vtbl) {};
+	MiqtVirtualQItemDelegate(struct QItemDelegate_VTable* vtbl, QObject* parent): QItemDelegate(parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQItemDelegate() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metaObject = 0;
+	virtual ~MiqtVirtualQItemDelegate() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual const QMetaObject* metaObject() const override {
-		if (handle__metaObject == 0) {
+		if (vtbl->metaObject == 0) {
 			return QItemDelegate::metaObject();
 		}
-		
 
-		QMetaObject* callback_return_value = miqt_exec_callback_QItemDelegate_metaObject(this, handle__metaObject);
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -88,18 +62,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacast = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void* qt_metacast(const char* param1) override {
-		if (handle__metacast == 0) {
+		if (vtbl->metacast == 0) {
 			return QItemDelegate::qt_metacast(param1);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 
-		void* callback_return_value = miqt_exec_callback_QItemDelegate_metacast(this, handle__metacast, sigval1);
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -111,21 +82,18 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QItemDelegate::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QItemDelegate_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -137,16 +105,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__paint = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override {
-		if (handle__paint == 0) {
+		if (vtbl->paint == 0) {
 			QItemDelegate::paint(painter, option, index);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -155,9 +120,8 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_paint(this, handle__paint, sigval1, sigval2, sigval3);
+		vtbl->paint(vtbl, this, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -167,15 +131,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__sizeHint = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override {
-		if (handle__sizeHint == 0) {
+		if (vtbl->sizeHint == 0) {
 			return QItemDelegate::sizeHint(option, index);
 		}
-		
+
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval1 = const_cast<QStyleOptionViewItem*>(&option_ret);
@@ -183,7 +144,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QItemDelegate_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		QSize* callback_return_value = vtbl->sizeHint(vtbl, this, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -195,15 +156,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__createEditor = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option, const QModelIndex& index) const override {
-		if (handle__createEditor == 0) {
+		if (vtbl->createEditor == 0) {
 			return QItemDelegate::createEditor(parent, option, index);
 		}
-		
+
 		QWidget* sigval1 = parent;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -212,7 +170,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		QWidget* callback_return_value = miqt_exec_callback_QItemDelegate_createEditor(this, handle__createEditor, sigval1, sigval2, sigval3);
+		QWidget* callback_return_value = vtbl->createEditor(vtbl, this, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
@@ -224,24 +182,20 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setEditorData = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setEditorData(QWidget* editor, const QModelIndex& index) const override {
-		if (handle__setEditorData == 0) {
+		if (vtbl->setEditorData == 0) {
 			QItemDelegate::setEditorData(editor, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_setEditorData(this, handle__setEditorData, sigval1, sigval2);
+		vtbl->setEditorData(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -251,25 +205,21 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setModelData = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void setModelData(QWidget* editor, QAbstractItemModel* model, const QModelIndex& index) const override {
-		if (handle__setModelData == 0) {
+		if (vtbl->setModelData == 0) {
 			QItemDelegate::setModelData(editor, model, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		QAbstractItemModel* sigval2 = model;
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_setModelData(this, handle__setModelData, sigval1, sigval2, sigval3);
+		vtbl->setModelData(vtbl, this, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -279,16 +229,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updateEditorGeometry = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void updateEditorGeometry(QWidget* editor, const QStyleOptionViewItem& option, const QModelIndex& index) const override {
-		if (handle__updateEditorGeometry == 0) {
+		if (vtbl->updateEditorGeometry == 0) {
 			QItemDelegate::updateEditorGeometry(editor, option, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -297,9 +244,8 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_updateEditorGeometry(this, handle__updateEditorGeometry, sigval1, sigval2, sigval3);
+		vtbl->updateEditorGeometry(vtbl, this, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -309,16 +255,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__drawDisplay = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void drawDisplay(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QString& text) const override {
-		if (handle__drawDisplay == 0) {
+		if (vtbl->drawDisplay == 0) {
 			QItemDelegate::drawDisplay(painter, option, rect, text);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -335,9 +278,8 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval4 = text_ms;
 
-		miqt_exec_callback_QItemDelegate_drawDisplay(this, handle__drawDisplay, sigval1, sigval2, sigval3, sigval4);
+		vtbl->drawDisplay(vtbl, this, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -348,16 +290,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__drawDecoration = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void drawDecoration(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QPixmap& pixmap) const override {
-		if (handle__drawDecoration == 0) {
+		if (vtbl->drawDecoration == 0) {
 			QItemDelegate::drawDecoration(painter, option, rect, pixmap);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -369,9 +308,8 @@ public:
 		// Cast returned reference into pointer
 		QPixmap* sigval4 = const_cast<QPixmap*>(&pixmap_ret);
 
-		miqt_exec_callback_QItemDelegate_drawDecoration(this, handle__drawDecoration, sigval1, sigval2, sigval3, sigval4);
+		vtbl->drawDecoration(vtbl, this, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -381,16 +319,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__drawFocus = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void drawFocus(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect) const override {
-		if (handle__drawFocus == 0) {
+		if (vtbl->drawFocus == 0) {
 			QItemDelegate::drawFocus(painter, option, rect);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -399,9 +334,8 @@ public:
 		// Cast returned reference into pointer
 		QRect* sigval3 = const_cast<QRect*>(&rect_ret);
 
-		miqt_exec_callback_QItemDelegate_drawFocus(this, handle__drawFocus, sigval1, sigval2, sigval3);
+		vtbl->drawFocus(vtbl, this, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -411,16 +345,13 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__drawCheck = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void drawCheck(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, Qt::CheckState state) const override {
-		if (handle__drawCheck == 0) {
+		if (vtbl->drawCheck == 0) {
 			QItemDelegate::drawCheck(painter, option, rect, state);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -431,9 +362,8 @@ public:
 		Qt::CheckState state_ret = state;
 		int sigval4 = static_cast<int>(state_ret);
 
-		miqt_exec_callback_QItemDelegate_drawCheck(this, handle__drawCheck, sigval1, sigval2, sigval3, sigval4);
+		vtbl->drawCheck(vtbl, this, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -443,19 +373,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* object, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QItemDelegate::eventFilter(object, event);
 		}
-		
+
 		QObject* sigval1 = object;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QItemDelegate_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -467,15 +394,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__editorEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool editorEvent(QEvent* event, QAbstractItemModel* model, const QStyleOptionViewItem& option, const QModelIndex& index) override {
-		if (handle__editorEvent == 0) {
+		if (vtbl->editorEvent == 0) {
 			return QItemDelegate::editorEvent(event, model, option, index);
 		}
-		
+
 		QEvent* sigval1 = event;
 		QAbstractItemModel* sigval2 = model;
 		const QStyleOptionViewItem& option_ret = option;
@@ -485,7 +409,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QItemDelegate_editorEvent(this, handle__editorEvent, sigval1, sigval2, sigval3, sigval4);
+		bool callback_return_value = vtbl->editorEvent(vtbl, this, sigval1, sigval2, sigval3, sigval4);
 
 		return callback_return_value;
 	}
@@ -497,24 +421,20 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__destroyEditor = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void destroyEditor(QWidget* editor, const QModelIndex& index) const override {
-		if (handle__destroyEditor == 0) {
+		if (vtbl->destroyEditor == 0) {
 			QItemDelegate::destroyEditor(editor, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_destroyEditor(this, handle__destroyEditor, sigval1, sigval2);
+		vtbl->destroyEditor(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -524,15 +444,12 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__helpEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool helpEvent(QHelpEvent* event, QAbstractItemView* view, const QStyleOptionViewItem& option, const QModelIndex& index) override {
-		if (handle__helpEvent == 0) {
+		if (vtbl->helpEvent == 0) {
 			return QItemDelegate::helpEvent(event, view, option, index);
 		}
-		
+
 		QHelpEvent* sigval1 = event;
 		QAbstractItemView* sigval2 = view;
 		const QStyleOptionViewItem& option_ret = option;
@@ -542,7 +459,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QItemDelegate_helpEvent(this, handle__helpEvent, sigval1, sigval2, sigval3, sigval4);
+		bool callback_return_value = vtbl->helpEvent(vtbl, this, sigval1, sigval2, sigval3, sigval4);
 
 		return callback_return_value;
 	}
@@ -554,17 +471,14 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__paintingRoles = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QList<int> paintingRoles() const override {
-		if (handle__paintingRoles == 0) {
+		if (vtbl->paintingRoles == 0) {
 			return QItemDelegate::paintingRoles();
 		}
-		
 
-		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QItemDelegate_paintingRoles(this, handle__paintingRoles);
+
+		struct miqt_array /* of int */  callback_return_value = vtbl->paintingRoles(vtbl, this);
 		QList<int> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		int* callback_return_value_arr = static_cast<int*>(callback_return_value.data);
@@ -591,18 +505,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QItemDelegate::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QItemDelegate_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -614,21 +525,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QItemDelegate::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QItemDelegate_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -638,21 +545,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QItemDelegate::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QItemDelegate_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -662,21 +565,17 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QItemDelegate::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QItemDelegate_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -686,23 +585,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QItemDelegate::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QItemDelegate_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -712,23 +607,19 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QItemDelegate::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QItemDelegate_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	// Wrapper to allow calling protected method
@@ -752,12 +643,12 @@ public:
 	friend bool QItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QItemDelegate* QItemDelegate_new() {
-	return new MiqtVirtualQItemDelegate();
+QItemDelegate* QItemDelegate_new(struct QItemDelegate_VTable* vtbl) {
+	return new MiqtVirtualQItemDelegate(vtbl);
 }
 
-QItemDelegate* QItemDelegate_new2(QObject* parent) {
-	return new MiqtVirtualQItemDelegate(parent);
+QItemDelegate* QItemDelegate_new2(struct QItemDelegate_VTable* vtbl, QObject* parent) {
+	return new MiqtVirtualQItemDelegate(vtbl, parent);
 }
 
 void QItemDelegate_virtbase(QItemDelegate* src, QAbstractItemDelegate** outptr_QAbstractItemDelegate) {
@@ -849,336 +740,96 @@ struct miqt_string QItemDelegate_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QItemDelegate_override_virtual_metaObject(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metaObject = slot;
-	return true;
-}
-
 QMetaObject* QItemDelegate_virtualbase_metaObject(const void* self) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_metaObject();
-}
-
-bool QItemDelegate_override_virtual_metacast(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacast = slot;
-	return true;
 }
 
 void* QItemDelegate_virtualbase_metacast(void* self, const char* param1) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_metacast(param1);
 }
 
-bool QItemDelegate_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
-}
-
 int QItemDelegate_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_metacall(param1, param2, param3);
-}
-
-bool QItemDelegate_override_virtual_paint(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__paint = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_paint(painter, option, index);
 }
 
-bool QItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__sizeHint = slot;
-	return true;
-}
-
 QSize* QItemDelegate_virtualbase_sizeHint(const void* self, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_sizeHint(option, index);
-}
-
-bool QItemDelegate_override_virtual_createEditor(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__createEditor = slot;
-	return true;
 }
 
 QWidget* QItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_createEditor(parent, option, index);
 }
 
-bool QItemDelegate_override_virtual_setEditorData(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setEditorData = slot;
-	return true;
-}
-
 void QItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_setEditorData(editor, index);
-}
-
-bool QItemDelegate_override_virtual_setModelData(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setModelData = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_setModelData(editor, model, index);
 }
 
-bool QItemDelegate_override_virtual_updateEditorGeometry(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updateEditorGeometry = slot;
-	return true;
-}
-
 void QItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_updateEditorGeometry(editor, option, index);
-}
-
-bool QItemDelegate_override_virtual_drawDisplay(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__drawDisplay = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_drawDisplay(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, struct miqt_string text) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_drawDisplay(painter, option, rect, text);
 }
 
-bool QItemDelegate_override_virtual_drawDecoration(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__drawDecoration = slot;
-	return true;
-}
-
 void QItemDelegate_virtualbase_drawDecoration(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, QPixmap* pixmap) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_drawDecoration(painter, option, rect, pixmap);
-}
-
-bool QItemDelegate_override_virtual_drawFocus(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__drawFocus = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_drawFocus(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_drawFocus(painter, option, rect);
 }
 
-bool QItemDelegate_override_virtual_drawCheck(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__drawCheck = slot;
-	return true;
-}
-
 void QItemDelegate_virtualbase_drawCheck(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, int state) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_drawCheck(painter, option, rect, state);
-}
-
-bool QItemDelegate_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QItemDelegate_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_eventFilter(object, event);
 }
 
-bool QItemDelegate_override_virtual_editorEvent(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__editorEvent = slot;
-	return true;
-}
-
 bool QItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_editorEvent(event, model, option, index);
-}
-
-bool QItemDelegate_override_virtual_destroyEditor(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__destroyEditor = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_destroyEditor(editor, index);
 }
 
-bool QItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__helpEvent = slot;
-	return true;
-}
-
 bool QItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_helpEvent(event, view, option, index);
-}
-
-bool QItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__paintingRoles = slot;
-	return true;
 }
 
 struct miqt_array /* of int */  QItemDelegate_virtualbase_paintingRoles(const void* self) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_paintingRoles();
 }
 
-bool QItemDelegate_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
-}
-
 bool QItemDelegate_virtualbase_event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_event(event);
-}
-
-bool QItemDelegate_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QItemDelegate_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
-}
-
 void QItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_childEvent(event);
-}
-
-bool QItemDelegate_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_connectNotify(signal);
-}
-
-bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

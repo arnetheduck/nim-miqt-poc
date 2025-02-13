@@ -10,31 +10,26 @@
 extern "C" {
 #endif
 
-QSGMaterialType* miqt_exec_callback_QSGFlatColorMaterial_type(const QSGFlatColorMaterial*, intptr_t);
-QSGMaterialShader* miqt_exec_callback_QSGFlatColorMaterial_createShader(const QSGFlatColorMaterial*, intptr_t, int);
-int miqt_exec_callback_QSGFlatColorMaterial_compare(const QSGFlatColorMaterial*, intptr_t, QSGMaterial*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQSGFlatColorMaterial final : public QSGFlatColorMaterial {
+	struct QSGFlatColorMaterial_VTable* vtbl;
 public:
 
-	MiqtVirtualQSGFlatColorMaterial(): QSGFlatColorMaterial() {};
+	MiqtVirtualQSGFlatColorMaterial(struct QSGFlatColorMaterial_VTable* vtbl): QSGFlatColorMaterial(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQSGFlatColorMaterial() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__type = 0;
+	virtual ~MiqtVirtualQSGFlatColorMaterial() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QSGMaterialType* type() const override {
-		if (handle__type == 0) {
+		if (vtbl->type == 0) {
 			return QSGFlatColorMaterial::type();
 		}
-		
 
-		QSGMaterialType* callback_return_value = miqt_exec_callback_QSGFlatColorMaterial_type(this, handle__type);
+
+		QSGMaterialType* callback_return_value = vtbl->type(vtbl, this);
 
 		return callback_return_value;
 	}
@@ -46,19 +41,16 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__createShader = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSGMaterialShader* createShader(QSGRendererInterface::RenderMode renderMode) const override {
-		if (handle__createShader == 0) {
+		if (vtbl->createShader == 0) {
 			return QSGFlatColorMaterial::createShader(renderMode);
 		}
-		
+
 		QSGRendererInterface::RenderMode renderMode_ret = renderMode;
 		int sigval1 = static_cast<int>(renderMode_ret);
 
-		QSGMaterialShader* callback_return_value = miqt_exec_callback_QSGFlatColorMaterial_createShader(this, handle__createShader, sigval1);
+		QSGMaterialShader* callback_return_value = vtbl->createShader(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
@@ -70,18 +62,15 @@ public:
 
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__compare = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual int compare(const QSGMaterial* other) const override {
-		if (handle__compare == 0) {
+		if (vtbl->compare == 0) {
 			return QSGFlatColorMaterial::compare(other);
 		}
-		
+
 		QSGMaterial* sigval1 = (QSGMaterial*) other;
 
-		int callback_return_value = miqt_exec_callback_QSGFlatColorMaterial_compare(this, handle__compare, sigval1);
+		int callback_return_value = vtbl->compare(vtbl, this, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -95,8 +84,8 @@ public:
 
 };
 
-QSGFlatColorMaterial* QSGFlatColorMaterial_new() {
-	return new MiqtVirtualQSGFlatColorMaterial();
+QSGFlatColorMaterial* QSGFlatColorMaterial_new(struct QSGFlatColorMaterial_VTable* vtbl) {
+	return new MiqtVirtualQSGFlatColorMaterial(vtbl);
 }
 
 void QSGFlatColorMaterial_virtbase(QSGFlatColorMaterial* src, QSGMaterial** outptr_QSGMaterial) {
@@ -125,42 +114,12 @@ int QSGFlatColorMaterial_compare(const QSGFlatColorMaterial* self, QSGMaterial* 
 	return self->compare(other);
 }
 
-bool QSGFlatColorMaterial_override_virtual_type(void* self, intptr_t slot) {
-	MiqtVirtualQSGFlatColorMaterial* self_cast = dynamic_cast<MiqtVirtualQSGFlatColorMaterial*>( (QSGFlatColorMaterial*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__type = slot;
-	return true;
-}
-
 QSGMaterialType* QSGFlatColorMaterial_virtualbase_type(const void* self) {
 	return ( (const MiqtVirtualQSGFlatColorMaterial*)(self) )->virtualbase_type();
 }
 
-bool QSGFlatColorMaterial_override_virtual_createShader(void* self, intptr_t slot) {
-	MiqtVirtualQSGFlatColorMaterial* self_cast = dynamic_cast<MiqtVirtualQSGFlatColorMaterial*>( (QSGFlatColorMaterial*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__createShader = slot;
-	return true;
-}
-
 QSGMaterialShader* QSGFlatColorMaterial_virtualbase_createShader(const void* self, int renderMode) {
 	return ( (const MiqtVirtualQSGFlatColorMaterial*)(self) )->virtualbase_createShader(renderMode);
-}
-
-bool QSGFlatColorMaterial_override_virtual_compare(void* self, intptr_t slot) {
-	MiqtVirtualQSGFlatColorMaterial* self_cast = dynamic_cast<MiqtVirtualQSGFlatColorMaterial*>( (QSGFlatColorMaterial*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__compare = slot;
-	return true;
 }
 
 int QSGFlatColorMaterial_virtualbase_compare(const void* self, QSGMaterial* other) {

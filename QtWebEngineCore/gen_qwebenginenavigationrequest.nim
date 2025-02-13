@@ -54,12 +54,10 @@ export gen_qwebenginenavigationrequest_types
 
 import
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -75,15 +73,12 @@ proc fcQWebEngineNavigationRequest_navigationType(self: pointer, ): cint {.impor
 proc fcQWebEngineNavigationRequest_accept(self: pointer, ): void {.importc: "QWebEngineNavigationRequest_accept".}
 proc fcQWebEngineNavigationRequest_reject(self: pointer, ): void {.importc: "QWebEngineNavigationRequest_reject".}
 proc fcQWebEngineNavigationRequest_actionChanged(self: pointer, ): void {.importc: "QWebEngineNavigationRequest_actionChanged".}
-proc fQWebEngineNavigationRequest_connect_actionChanged(self: pointer, slot: int) {.importc: "QWebEngineNavigationRequest_connect_actionChanged".}
+proc fcQWebEngineNavigationRequest_connect_actionChanged(self: pointer, slot: int) {.importc: "QWebEngineNavigationRequest_connect_actionChanged".}
 proc fcQWebEngineNavigationRequest_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineNavigationRequest_tr2".}
 proc fcQWebEngineNavigationRequest_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNavigationRequest_tr3".}
 proc fcQWebEngineNavigationRequest_staticMetaObject(): pointer {.importc: "QWebEngineNavigationRequest_staticMetaObject".}
 proc fcQWebEngineNavigationRequest_delete(self: pointer) {.importc: "QWebEngineNavigationRequest_delete".}
 
-
-func init*(T: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, h: ptr cQWebEngineNavigationRequest): gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest =
-  T(h: h)
 proc metaObject*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineNavigationRequest_metaObject(self.h))
 
@@ -118,7 +113,7 @@ proc actionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNaviga
   fcQWebEngineNavigationRequest_actionChanged(self.h)
 
 type QWebEngineNavigationRequestactionChangedSlot* = proc()
-proc miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQWebEngineNavigationRequest_actionChanged(slot: int) {.exportc: "miqt_exec_callback_QWebEngineNavigationRequest_actionChanged".} =
   let nimfunc = cast[ptr QWebEngineNavigationRequestactionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -126,7 +121,7 @@ proc onactionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavi
   var tmp = new QWebEngineNavigationRequestactionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQWebEngineNavigationRequest_connect_actionChanged(self.h, cast[int](addr tmp[]))
+  fcQWebEngineNavigationRequest_connect_actionChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineNavigationRequest_tr2(s, c)
@@ -140,7 +135,7 @@ proc tr*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationReque
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQWebEngineNavigationRequest_staticMetaObject())
+proc staticMetaObject*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineNavigationRequest_staticMetaObject())
 proc delete*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest) =
   fcQWebEngineNavigationRequest_delete(self.h)

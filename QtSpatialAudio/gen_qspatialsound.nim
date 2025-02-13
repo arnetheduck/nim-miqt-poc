@@ -53,7 +53,6 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qquaternion_types,
   gen_qurl_types,
@@ -63,7 +62,6 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qquaternion_types,
   gen_qurl_types,
@@ -71,7 +69,6 @@ export
 
 type cQSpatialSound*{.exportc: "QSpatialSound", incompleteStruct.} = object
 
-proc fcQSpatialSound_new(engine: pointer): ptr cQSpatialSound {.importc: "QSpatialSound_new".}
 proc fcQSpatialSound_metaObject(self: pointer, ): pointer {.importc: "QSpatialSound_metaObject".}
 proc fcQSpatialSound_metacast(self: pointer, param1: cstring): pointer {.importc: "QSpatialSound_metacast".}
 proc fcQSpatialSound_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QSpatialSound_metacall".}
@@ -106,66 +103,63 @@ proc fcQSpatialSound_setNearFieldGain(self: pointer, gain: float32): void {.impo
 proc fcQSpatialSound_nearFieldGain(self: pointer, ): float32 {.importc: "QSpatialSound_nearFieldGain".}
 proc fcQSpatialSound_engine(self: pointer, ): pointer {.importc: "QSpatialSound_engine".}
 proc fcQSpatialSound_sourceChanged(self: pointer, ): void {.importc: "QSpatialSound_sourceChanged".}
-proc fQSpatialSound_connect_sourceChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_sourceChanged".}
+proc fcQSpatialSound_connect_sourceChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_sourceChanged".}
 proc fcQSpatialSound_loopsChanged(self: pointer, ): void {.importc: "QSpatialSound_loopsChanged".}
-proc fQSpatialSound_connect_loopsChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_loopsChanged".}
+proc fcQSpatialSound_connect_loopsChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_loopsChanged".}
 proc fcQSpatialSound_autoPlayChanged(self: pointer, ): void {.importc: "QSpatialSound_autoPlayChanged".}
-proc fQSpatialSound_connect_autoPlayChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_autoPlayChanged".}
+proc fcQSpatialSound_connect_autoPlayChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_autoPlayChanged".}
 proc fcQSpatialSound_positionChanged(self: pointer, ): void {.importc: "QSpatialSound_positionChanged".}
-proc fQSpatialSound_connect_positionChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_positionChanged".}
+proc fcQSpatialSound_connect_positionChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_positionChanged".}
 proc fcQSpatialSound_rotationChanged(self: pointer, ): void {.importc: "QSpatialSound_rotationChanged".}
-proc fQSpatialSound_connect_rotationChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_rotationChanged".}
+proc fcQSpatialSound_connect_rotationChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_rotationChanged".}
 proc fcQSpatialSound_volumeChanged(self: pointer, ): void {.importc: "QSpatialSound_volumeChanged".}
-proc fQSpatialSound_connect_volumeChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_volumeChanged".}
+proc fcQSpatialSound_connect_volumeChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_volumeChanged".}
 proc fcQSpatialSound_distanceModelChanged(self: pointer, ): void {.importc: "QSpatialSound_distanceModelChanged".}
-proc fQSpatialSound_connect_distanceModelChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_distanceModelChanged".}
+proc fcQSpatialSound_connect_distanceModelChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_distanceModelChanged".}
 proc fcQSpatialSound_sizeChanged(self: pointer, ): void {.importc: "QSpatialSound_sizeChanged".}
-proc fQSpatialSound_connect_sizeChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_sizeChanged".}
+proc fcQSpatialSound_connect_sizeChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_sizeChanged".}
 proc fcQSpatialSound_distanceCutoffChanged(self: pointer, ): void {.importc: "QSpatialSound_distanceCutoffChanged".}
-proc fQSpatialSound_connect_distanceCutoffChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_distanceCutoffChanged".}
+proc fcQSpatialSound_connect_distanceCutoffChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_distanceCutoffChanged".}
 proc fcQSpatialSound_manualAttenuationChanged(self: pointer, ): void {.importc: "QSpatialSound_manualAttenuationChanged".}
-proc fQSpatialSound_connect_manualAttenuationChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_manualAttenuationChanged".}
+proc fcQSpatialSound_connect_manualAttenuationChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_manualAttenuationChanged".}
 proc fcQSpatialSound_occlusionIntensityChanged(self: pointer, ): void {.importc: "QSpatialSound_occlusionIntensityChanged".}
-proc fQSpatialSound_connect_occlusionIntensityChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_occlusionIntensityChanged".}
+proc fcQSpatialSound_connect_occlusionIntensityChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_occlusionIntensityChanged".}
 proc fcQSpatialSound_directivityChanged(self: pointer, ): void {.importc: "QSpatialSound_directivityChanged".}
-proc fQSpatialSound_connect_directivityChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_directivityChanged".}
+proc fcQSpatialSound_connect_directivityChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_directivityChanged".}
 proc fcQSpatialSound_directivityOrderChanged(self: pointer, ): void {.importc: "QSpatialSound_directivityOrderChanged".}
-proc fQSpatialSound_connect_directivityOrderChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_directivityOrderChanged".}
+proc fcQSpatialSound_connect_directivityOrderChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_directivityOrderChanged".}
 proc fcQSpatialSound_nearFieldGainChanged(self: pointer, ): void {.importc: "QSpatialSound_nearFieldGainChanged".}
-proc fQSpatialSound_connect_nearFieldGainChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_nearFieldGainChanged".}
+proc fcQSpatialSound_connect_nearFieldGainChanged(self: pointer, slot: int) {.importc: "QSpatialSound_connect_nearFieldGainChanged".}
 proc fcQSpatialSound_play(self: pointer, ): void {.importc: "QSpatialSound_play".}
 proc fcQSpatialSound_pause(self: pointer, ): void {.importc: "QSpatialSound_pause".}
 proc fcQSpatialSound_stop(self: pointer, ): void {.importc: "QSpatialSound_stop".}
 proc fcQSpatialSound_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSpatialSound_tr2".}
 proc fcQSpatialSound_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSpatialSound_tr3".}
-proc fQSpatialSound_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSpatialSound_virtualbase_metaObject".}
-proc fcQSpatialSound_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_metaObject".}
-proc fQSpatialSound_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSpatialSound_virtualbase_metacast".}
-proc fcQSpatialSound_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_metacast".}
-proc fQSpatialSound_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSpatialSound_virtualbase_metacall".}
-proc fcQSpatialSound_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_metacall".}
-proc fQSpatialSound_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSpatialSound_virtualbase_event".}
-proc fcQSpatialSound_override_virtual_event(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_event".}
-proc fQSpatialSound_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QSpatialSound_virtualbase_eventFilter".}
-proc fcQSpatialSound_override_virtual_eventFilter(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_eventFilter".}
-proc fQSpatialSound_virtualbase_timerEvent(self: pointer, event: pointer): void{.importc: "QSpatialSound_virtualbase_timerEvent".}
-proc fcQSpatialSound_override_virtual_timerEvent(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_timerEvent".}
-proc fQSpatialSound_virtualbase_childEvent(self: pointer, event: pointer): void{.importc: "QSpatialSound_virtualbase_childEvent".}
-proc fcQSpatialSound_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_childEvent".}
-proc fQSpatialSound_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QSpatialSound_virtualbase_customEvent".}
-proc fcQSpatialSound_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_customEvent".}
-proc fQSpatialSound_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QSpatialSound_virtualbase_connectNotify".}
-proc fcQSpatialSound_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_connectNotify".}
-proc fQSpatialSound_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSpatialSound_virtualbase_disconnectNotify".}
-proc fcQSpatialSound_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_disconnectNotify".}
+type cQSpatialSoundVTable = object
+  destructor*: proc(vtbl: ptr cQSpatialSoundVTable, self: ptr cQSpatialSound) {.cdecl, raises:[], gcsafe.}
+  metaObject*: proc(vtbl, self: pointer, ): pointer {.cdecl, raises: [], gcsafe.}
+  metacast*: proc(vtbl, self: pointer, param1: cstring): pointer {.cdecl, raises: [], gcsafe.}
+  metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
+  event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  eventFilter*: proc(vtbl, self: pointer, watched: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
+  timerEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  childEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  customEvent*: proc(vtbl, self: pointer, event: pointer): void {.cdecl, raises: [], gcsafe.}
+  connectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+  disconnectNotify*: proc(vtbl, self: pointer, signal: pointer): void {.cdecl, raises: [], gcsafe.}
+proc fcQSpatialSound_virtualbase_metaObject(self: pointer, ): pointer {.importc: "QSpatialSound_virtualbase_metaObject".}
+proc fcQSpatialSound_virtualbase_metacast(self: pointer, param1: cstring): pointer {.importc: "QSpatialSound_virtualbase_metacast".}
+proc fcQSpatialSound_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QSpatialSound_virtualbase_metacall".}
+proc fcQSpatialSound_virtualbase_event(self: pointer, event: pointer): bool {.importc: "QSpatialSound_virtualbase_event".}
+proc fcQSpatialSound_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool {.importc: "QSpatialSound_virtualbase_eventFilter".}
+proc fcQSpatialSound_virtualbase_timerEvent(self: pointer, event: pointer): void {.importc: "QSpatialSound_virtualbase_timerEvent".}
+proc fcQSpatialSound_virtualbase_childEvent(self: pointer, event: pointer): void {.importc: "QSpatialSound_virtualbase_childEvent".}
+proc fcQSpatialSound_virtualbase_customEvent(self: pointer, event: pointer): void {.importc: "QSpatialSound_virtualbase_customEvent".}
+proc fcQSpatialSound_virtualbase_connectNotify(self: pointer, signal: pointer): void {.importc: "QSpatialSound_virtualbase_connectNotify".}
+proc fcQSpatialSound_virtualbase_disconnectNotify(self: pointer, signal: pointer): void {.importc: "QSpatialSound_virtualbase_disconnectNotify".}
+proc fcQSpatialSound_new(vtbl: pointer, engine: pointer): ptr cQSpatialSound {.importc: "QSpatialSound_new".}
 proc fcQSpatialSound_staticMetaObject(): pointer {.importc: "QSpatialSound_staticMetaObject".}
 proc fcQSpatialSound_delete(self: pointer) {.importc: "QSpatialSound_delete".}
-
-
-func init*(T: type gen_qspatialsound_types.QSpatialSound, h: ptr cQSpatialSound): gen_qspatialsound_types.QSpatialSound =
-  T(h: h)
-proc create*(T: type gen_qspatialsound_types.QSpatialSound, engine: gen_qaudioengine_types.QAudioEngine): gen_qspatialsound_types.QSpatialSound =
-  gen_qspatialsound_types.QSpatialSound.init(fcQSpatialSound_new(engine.h))
 
 proc metaObject*(self: gen_qspatialsound_types.QSpatialSound, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQSpatialSound_metaObject(self.h))
@@ -273,7 +267,7 @@ proc sourceChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_sourceChanged(self.h)
 
 type QSpatialSoundsourceChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_sourceChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_sourceChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_sourceChanged".} =
   let nimfunc = cast[ptr QSpatialSoundsourceChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -281,13 +275,13 @@ proc onsourceChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatia
   var tmp = new QSpatialSoundsourceChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_sourceChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_sourceChanged(self.h, cast[int](addr tmp[]))
 
 proc loopsChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_loopsChanged(self.h)
 
 type QSpatialSoundloopsChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_loopsChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_loopsChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_loopsChanged".} =
   let nimfunc = cast[ptr QSpatialSoundloopsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -295,13 +289,13 @@ proc onloopsChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatial
   var tmp = new QSpatialSoundloopsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_loopsChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_loopsChanged(self.h, cast[int](addr tmp[]))
 
 proc autoPlayChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_autoPlayChanged(self.h)
 
 type QSpatialSoundautoPlayChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_autoPlayChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_autoPlayChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_autoPlayChanged".} =
   let nimfunc = cast[ptr QSpatialSoundautoPlayChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -309,13 +303,13 @@ proc onautoPlayChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpat
   var tmp = new QSpatialSoundautoPlayChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_autoPlayChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_autoPlayChanged(self.h, cast[int](addr tmp[]))
 
 proc positionChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_positionChanged(self.h)
 
 type QSpatialSoundpositionChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_positionChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_positionChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_positionChanged".} =
   let nimfunc = cast[ptr QSpatialSoundpositionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -323,13 +317,13 @@ proc onpositionChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpat
   var tmp = new QSpatialSoundpositionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_positionChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_positionChanged(self.h, cast[int](addr tmp[]))
 
 proc rotationChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_rotationChanged(self.h)
 
 type QSpatialSoundrotationChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_rotationChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_rotationChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_rotationChanged".} =
   let nimfunc = cast[ptr QSpatialSoundrotationChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -337,13 +331,13 @@ proc onrotationChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpat
   var tmp = new QSpatialSoundrotationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_rotationChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_rotationChanged(self.h, cast[int](addr tmp[]))
 
 proc volumeChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_volumeChanged(self.h)
 
 type QSpatialSoundvolumeChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_volumeChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_volumeChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_volumeChanged".} =
   let nimfunc = cast[ptr QSpatialSoundvolumeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -351,13 +345,13 @@ proc onvolumeChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatia
   var tmp = new QSpatialSoundvolumeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_volumeChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_volumeChanged(self.h, cast[int](addr tmp[]))
 
 proc distanceModelChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_distanceModelChanged(self.h)
 
 type QSpatialSounddistanceModelChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_distanceModelChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_distanceModelChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_distanceModelChanged".} =
   let nimfunc = cast[ptr QSpatialSounddistanceModelChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -365,13 +359,13 @@ proc ondistanceModelChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: 
   var tmp = new QSpatialSounddistanceModelChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_distanceModelChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_distanceModelChanged(self.h, cast[int](addr tmp[]))
 
 proc sizeChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_sizeChanged(self.h)
 
 type QSpatialSoundsizeChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_sizeChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_sizeChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_sizeChanged".} =
   let nimfunc = cast[ptr QSpatialSoundsizeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -379,13 +373,13 @@ proc onsizeChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialS
   var tmp = new QSpatialSoundsizeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_sizeChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_sizeChanged(self.h, cast[int](addr tmp[]))
 
 proc distanceCutoffChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_distanceCutoffChanged(self.h)
 
 type QSpatialSounddistanceCutoffChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_distanceCutoffChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_distanceCutoffChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_distanceCutoffChanged".} =
   let nimfunc = cast[ptr QSpatialSounddistanceCutoffChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -393,13 +387,13 @@ proc ondistanceCutoffChanged*(self: gen_qspatialsound_types.QSpatialSound, slot:
   var tmp = new QSpatialSounddistanceCutoffChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_distanceCutoffChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_distanceCutoffChanged(self.h, cast[int](addr tmp[]))
 
 proc manualAttenuationChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_manualAttenuationChanged(self.h)
 
 type QSpatialSoundmanualAttenuationChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_manualAttenuationChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_manualAttenuationChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_manualAttenuationChanged".} =
   let nimfunc = cast[ptr QSpatialSoundmanualAttenuationChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -407,13 +401,13 @@ proc onmanualAttenuationChanged*(self: gen_qspatialsound_types.QSpatialSound, sl
   var tmp = new QSpatialSoundmanualAttenuationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_manualAttenuationChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_manualAttenuationChanged(self.h, cast[int](addr tmp[]))
 
 proc occlusionIntensityChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_occlusionIntensityChanged(self.h)
 
 type QSpatialSoundocclusionIntensityChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_occlusionIntensityChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_occlusionIntensityChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_occlusionIntensityChanged".} =
   let nimfunc = cast[ptr QSpatialSoundocclusionIntensityChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -421,13 +415,13 @@ proc onocclusionIntensityChanged*(self: gen_qspatialsound_types.QSpatialSound, s
   var tmp = new QSpatialSoundocclusionIntensityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_occlusionIntensityChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_occlusionIntensityChanged(self.h, cast[int](addr tmp[]))
 
 proc directivityChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_directivityChanged(self.h)
 
 type QSpatialSounddirectivityChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_directivityChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_directivityChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_directivityChanged".} =
   let nimfunc = cast[ptr QSpatialSounddirectivityChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -435,13 +429,13 @@ proc ondirectivityChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: QS
   var tmp = new QSpatialSounddirectivityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_directivityChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_directivityChanged(self.h, cast[int](addr tmp[]))
 
 proc directivityOrderChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_directivityOrderChanged(self.h)
 
 type QSpatialSounddirectivityOrderChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_directivityOrderChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_directivityOrderChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_directivityOrderChanged".} =
   let nimfunc = cast[ptr QSpatialSounddirectivityOrderChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -449,13 +443,13 @@ proc ondirectivityOrderChanged*(self: gen_qspatialsound_types.QSpatialSound, slo
   var tmp = new QSpatialSounddirectivityOrderChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_directivityOrderChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_directivityOrderChanged(self.h, cast[int](addr tmp[]))
 
 proc nearFieldGainChanged*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_nearFieldGainChanged(self.h)
 
 type QSpatialSoundnearFieldGainChangedSlot* = proc()
-proc miqt_exec_callback_QSpatialSound_nearFieldGainChanged(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQSpatialSound_nearFieldGainChanged(slot: int) {.exportc: "miqt_exec_callback_QSpatialSound_nearFieldGainChanged".} =
   let nimfunc = cast[ptr QSpatialSoundnearFieldGainChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -463,7 +457,7 @@ proc onnearFieldGainChanged*(self: gen_qspatialsound_types.QSpatialSound, slot: 
   var tmp = new QSpatialSoundnearFieldGainChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQSpatialSound_connect_nearFieldGainChanged(self.h, cast[int](addr tmp[]))
+  fcQSpatialSound_connect_nearFieldGainChanged(self.h, cast[int](addr tmp[]))
 
 proc play*(self: gen_qspatialsound_types.QSpatialSound, ): void =
   fcQSpatialSound_play(self.h)
@@ -486,191 +480,156 @@ proc tr*(_: type gen_qspatialsound_types.QSpatialSound, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+type QSpatialSoundmetaObjectProc* = proc(self: QSpatialSound): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
+type QSpatialSoundmetacastProc* = proc(self: QSpatialSound, param1: cstring): pointer {.raises: [], gcsafe.}
+type QSpatialSoundmetacallProc* = proc(self: QSpatialSound, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
+type QSpatialSoundeventProc* = proc(self: QSpatialSound, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QSpatialSoundeventFilterProc* = proc(self: QSpatialSound, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
+type QSpatialSoundtimerEventProc* = proc(self: QSpatialSound, event: gen_qcoreevent_types.QTimerEvent): void {.raises: [], gcsafe.}
+type QSpatialSoundchildEventProc* = proc(self: QSpatialSound, event: gen_qcoreevent_types.QChildEvent): void {.raises: [], gcsafe.}
+type QSpatialSoundcustomEventProc* = proc(self: QSpatialSound, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
+type QSpatialSoundconnectNotifyProc* = proc(self: QSpatialSound, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QSpatialSounddisconnectNotifyProc* = proc(self: QSpatialSound, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
+type QSpatialSoundVTable* = object
+  vtbl: cQSpatialSoundVTable
+  metaObject*: QSpatialSoundmetaObjectProc
+  metacast*: QSpatialSoundmetacastProc
+  metacall*: QSpatialSoundmetacallProc
+  event*: QSpatialSoundeventProc
+  eventFilter*: QSpatialSoundeventFilterProc
+  timerEvent*: QSpatialSoundtimerEventProc
+  childEvent*: QSpatialSoundchildEventProc
+  customEvent*: QSpatialSoundcustomEventProc
+  connectNotify*: QSpatialSoundconnectNotifyProc
+  disconnectNotify*: QSpatialSounddisconnectNotifyProc
 proc QSpatialSoundmetaObject*(self: gen_qspatialsound_types.QSpatialSound, ): gen_qobjectdefs_types.QMetaObject =
-  gen_qobjectdefs_types.QMetaObject(h: fQSpatialSound_virtualbase_metaObject(self.h))
+  gen_qobjectdefs_types.QMetaObject(h: fcQSpatialSound_virtualbase_metaObject(self.h))
 
-type QSpatialSoundmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
-proc onmetaObject*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundmetaObjectProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundmetaObjectProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_metaObject(self: ptr cQSpatialSound, slot: int): pointer {.exportc: "miqt_exec_callback_QSpatialSound_metaObject ".} =
-  var nimfunc = cast[ptr QSpatialSoundmetaObjectProc](cast[pointer](slot))
-
-  let virtualReturn = nimfunc[]( )
-
+proc miqt_exec_callback_cQSpatialSound_metaObject(vtbl: pointer, self: pointer): pointer {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
+  let virtualReturn = vtbl[].metaObject(self)
   virtualReturn.h
+
 proc QSpatialSoundmetacast*(self: gen_qspatialsound_types.QSpatialSound, param1: cstring): pointer =
-  fQSpatialSound_virtualbase_metacast(self.h, param1)
+  fcQSpatialSound_virtualbase_metacast(self.h, param1)
 
-type QSpatialSoundmetacastProc* = proc(param1: cstring): pointer
-proc onmetacast*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundmetacastProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundmetacastProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_metacast(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_metacast(self: ptr cQSpatialSound, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSpatialSound_metacast ".} =
-  var nimfunc = cast[ptr QSpatialSoundmetacastProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_metacast(vtbl: pointer, self: pointer, param1: cstring): pointer {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = (param1)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].metacast(self, slotval1)
   virtualReturn
+
 proc QSpatialSoundmetacall*(self: gen_qspatialsound_types.QSpatialSound, param1: cint, param2: cint, param3: pointer): cint =
-  fQSpatialSound_virtualbase_metacall(self.h, cint(param1), param2, param3)
+  fcQSpatialSound_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSpatialSoundmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
-proc onmetacall*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundmetacallProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundmetacallProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_metacall(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_metacall(self: ptr cQSpatialSound, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSpatialSound_metacall ".} =
-  var nimfunc = cast[ptr QSpatialSoundmetacallProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_metacall(vtbl: pointer, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = cint(param1)
-
   let slotval2 = param2
-
   let slotval3 = param3
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+  let virtualReturn = vtbl[].metacall(self, slotval1, slotval2, slotval3)
   virtualReturn
+
 proc QSpatialSoundevent*(self: gen_qspatialsound_types.QSpatialSound, event: gen_qcoreevent_types.QEvent): bool =
-  fQSpatialSound_virtualbase_event(self.h, event.h)
+  fcQSpatialSound_virtualbase_event(self.h, event.h)
 
-type QSpatialSoundeventProc* = proc(event: gen_qcoreevent_types.QEvent): bool
-proc onevent*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundeventProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundeventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_event(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_event(self: ptr cQSpatialSound, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSpatialSound_event ".} =
-  var nimfunc = cast[ptr QSpatialSoundeventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = gen_qcoreevent_types.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1 )
-
+  let virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
+
 proc QSpatialSoundeventFilter*(self: gen_qspatialsound_types.QSpatialSound, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
-  fQSpatialSound_virtualbase_eventFilter(self.h, watched.h, event.h)
+  fcQSpatialSound_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSpatialSoundeventFilterProc* = proc(watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool
-proc oneventFilter*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundeventFilterProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundeventFilterProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_eventFilter(self: ptr cQSpatialSound, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSpatialSound_eventFilter ".} =
-  var nimfunc = cast[ptr QSpatialSoundeventFilterProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = gen_qobject_types.QObject(h: watched)
-
   let slotval2 = gen_qcoreevent_types.QEvent(h: event)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2 )
-
+  let virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
+
 proc QSpatialSoundtimerEvent*(self: gen_qspatialsound_types.QSpatialSound, event: gen_qcoreevent_types.QTimerEvent): void =
-  fQSpatialSound_virtualbase_timerEvent(self.h, event.h)
+  fcQSpatialSound_virtualbase_timerEvent(self.h, event.h)
 
-type QSpatialSoundtimerEventProc* = proc(event: gen_qcoreevent_types.QTimerEvent): void
-proc ontimerEvent*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundtimerEventProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundtimerEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_timerEvent(self: ptr cQSpatialSound, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpatialSound_timerEvent ".} =
-  var nimfunc = cast[ptr QSpatialSoundtimerEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  vtbl[].timerEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QSpatialSoundchildEvent*(self: gen_qspatialsound_types.QSpatialSound, event: gen_qcoreevent_types.QChildEvent): void =
-  fQSpatialSound_virtualbase_childEvent(self.h, event.h)
+  fcQSpatialSound_virtualbase_childEvent(self.h, event.h)
 
-type QSpatialSoundchildEventProc* = proc(event: gen_qcoreevent_types.QChildEvent): void
-proc onchildEvent*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundchildEventProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundchildEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_childEvent(self: ptr cQSpatialSound, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpatialSound_childEvent ".} =
-  var nimfunc = cast[ptr QSpatialSoundchildEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  vtbl[].childEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QSpatialSoundcustomEvent*(self: gen_qspatialsound_types.QSpatialSound, event: gen_qcoreevent_types.QEvent): void =
-  fQSpatialSound_virtualbase_customEvent(self.h, event.h)
+  fcQSpatialSound_virtualbase_customEvent(self.h, event.h)
 
-type QSpatialSoundcustomEventProc* = proc(event: gen_qcoreevent_types.QEvent): void
-proc oncustomEvent*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundcustomEventProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundcustomEventProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_customEvent(self: ptr cQSpatialSound, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpatialSound_customEvent ".} =
-  var nimfunc = cast[ptr QSpatialSoundcustomEventProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  vtbl[].customEvent(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QSpatialSoundconnectNotify*(self: gen_qspatialsound_types.QSpatialSound, signal: gen_qmetaobject_types.QMetaMethod): void =
-  fQSpatialSound_virtualbase_connectNotify(self.h, signal.h)
+  fcQSpatialSound_virtualbase_connectNotify(self.h, signal.h)
 
-type QSpatialSoundconnectNotifyProc* = proc(signal: gen_qmetaobject_types.QMetaMethod): void
-proc onconnectNotify*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSoundconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSoundconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_connectNotify(self: ptr cQSpatialSound, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSpatialSound_connectNotify ".} =
-  var nimfunc = cast[ptr QSpatialSoundconnectNotifyProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].connectNotify(self, slotval1)
 
-
-  nimfunc[](slotval1)
 proc QSpatialSounddisconnectNotify*(self: gen_qspatialsound_types.QSpatialSound, signal: gen_qmetaobject_types.QMetaMethod): void =
-  fQSpatialSound_virtualbase_disconnectNotify(self.h, signal.h)
+  fcQSpatialSound_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSpatialSounddisconnectNotifyProc* = proc(signal: gen_qmetaobject_types.QMetaMethod): void
-proc ondisconnectNotify*(self: gen_qspatialsound_types.QSpatialSound, slot: QSpatialSounddisconnectNotifyProc) =
-  # TODO check subclass
-  var tmp = new QSpatialSounddisconnectNotifyProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSpatialSound_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSpatialSound_disconnectNotify(self: ptr cQSpatialSound, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSpatialSound_disconnectNotify ".} =
-  var nimfunc = cast[ptr QSpatialSounddisconnectNotifyProc](cast[pointer](slot))
+proc miqt_exec_callback_cQSpatialSound_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[ptr QSpatialSoundVTable](vtbl)
+  let self = QSpatialSound(h: self)
   let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  vtbl[].disconnectNotify(self, slotval1)
 
+proc create*(T: type gen_qspatialsound_types.QSpatialSound,
+    engine: gen_qaudioengine_types.QAudioEngine,
+    vtbl: ref QSpatialSoundVTable = nil): gen_qspatialsound_types.QSpatialSound =
+  let vtbl = if vtbl == nil: new QSpatialSoundVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSpatialSoundVTable, _: ptr cQSpatialSound) {.cdecl.} =
+    let vtbl = cast[ref QSpatialSoundVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.metaObject):
+    vtbl[].vtbl.metaObject = miqt_exec_callback_cQSpatialSound_metaObject
+  if not isNil(vtbl.metacast):
+    vtbl[].vtbl.metacast = miqt_exec_callback_cQSpatialSound_metacast
+  if not isNil(vtbl.metacall):
+    vtbl[].vtbl.metacall = miqt_exec_callback_cQSpatialSound_metacall
+  if not isNil(vtbl.event):
+    vtbl[].vtbl.event = miqt_exec_callback_cQSpatialSound_event
+  if not isNil(vtbl.eventFilter):
+    vtbl[].vtbl.eventFilter = miqt_exec_callback_cQSpatialSound_eventFilter
+  if not isNil(vtbl.timerEvent):
+    vtbl[].vtbl.timerEvent = miqt_exec_callback_cQSpatialSound_timerEvent
+  if not isNil(vtbl.childEvent):
+    vtbl[].vtbl.childEvent = miqt_exec_callback_cQSpatialSound_childEvent
+  if not isNil(vtbl.customEvent):
+    vtbl[].vtbl.customEvent = miqt_exec_callback_cQSpatialSound_customEvent
+  if not isNil(vtbl.connectNotify):
+    vtbl[].vtbl.connectNotify = miqt_exec_callback_cQSpatialSound_connectNotify
+  if not isNil(vtbl.disconnectNotify):
+    vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQSpatialSound_disconnectNotify
+  gen_qspatialsound_types.QSpatialSound(h: fcQSpatialSound_new(addr(vtbl[]), engine.h))
 
-  nimfunc[](slotval1)
-proc staticMetaObject*(_: type gen_qspatialsound_types.QSpatialSound): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSpatialSound_staticMetaObject())
+proc staticMetaObject*(_: type gen_qspatialsound_types.QSpatialSound): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSpatialSound_staticMetaObject())
 proc delete*(self: gen_qspatialsound_types.QSpatialSound) =
   fcQSpatialSound_delete(self.h)

@@ -1,4 +1,4 @@
 import gen_qobject_types
 export gen_qobject_types
-type QMediaRecorder*  = object of gen_qobject_types.QObject
 
+type QMediaRecorder* = object of gen_qobject_types.QObject

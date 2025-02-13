@@ -90,12 +90,10 @@ export gen_qfiledevice_types
 import
   gen_qdatetime_types,
   gen_qiodevice,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qdatetime_types,
   gen_qiodevice,
-  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQFileDevice*{.exportc: "QFileDevice", incompleteStruct.} = object
@@ -128,9 +126,6 @@ proc fcQFileDevice_map3(self: pointer, offset: clonglong, size: clonglong, flags
 proc fcQFileDevice_staticMetaObject(): pointer {.importc: "QFileDevice_staticMetaObject".}
 proc fcQFileDevice_delete(self: pointer) {.importc: "QFileDevice_delete".}
 
-
-func init*(T: type gen_qfiledevice_types.QFileDevice, h: ptr cQFileDevice): gen_qfiledevice_types.QFileDevice =
-  T(h: h)
 proc metaObject*(self: gen_qfiledevice_types.QFileDevice, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQFileDevice_metaObject(self.h))
 
@@ -218,7 +213,7 @@ proc tr*(_: type gen_qfiledevice_types.QFileDevice, s: cstring, c: cstring, n: c
 proc map*(self: gen_qfiledevice_types.QFileDevice, offset: clonglong, size: clonglong, flags: cint): ptr uint8 =
   fcQFileDevice_map3(self.h, offset, size, cint(flags))
 
-proc staticMetaObject*(_: type gen_qfiledevice_types.QFileDevice): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQFileDevice_staticMetaObject())
+proc staticMetaObject*(_: type gen_qfiledevice_types.QFileDevice): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQFileDevice_staticMetaObject())
 proc delete*(self: gen_qfiledevice_types.QFileDevice) =
   fcQFileDevice_delete(self.h)

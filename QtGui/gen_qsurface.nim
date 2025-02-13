@@ -53,11 +53,11 @@ import gen_qsurface_types
 export gen_qsurface_types
 
 import
-  gen_qobjectdefs,
+  gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qsurfaceformat_types
 export
-  gen_qobjectdefs,
+  gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qsurfaceformat_types
 
@@ -71,9 +71,6 @@ proc fcQSurface_size(self: pointer, ): pointer {.importc: "QSurface_size".}
 proc fcQSurface_staticMetaObject(): pointer {.importc: "QSurface_staticMetaObject".}
 proc fcQSurface_delete(self: pointer) {.importc: "QSurface_delete".}
 
-
-func init*(T: type gen_qsurface_types.QSurface, h: ptr cQSurface): gen_qsurface_types.QSurface =
-  T(h: h)
 proc surfaceClass*(self: gen_qsurface_types.QSurface, ): cint =
   cint(fcQSurface_surfaceClass(self.h))
 
@@ -89,7 +86,7 @@ proc supportsOpenGL*(self: gen_qsurface_types.QSurface, ): bool =
 proc size*(self: gen_qsurface_types.QSurface, ): gen_qsize_types.QSize =
   gen_qsize_types.QSize(h: fcQSurface_size(self.h))
 
-proc staticMetaObject*(_: type gen_qsurface_types.QSurface): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQSurface_staticMetaObject())
+proc staticMetaObject*(_: type gen_qsurface_types.QSurface): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSurface_staticMetaObject())
 proc delete*(self: gen_qsurface_types.QSurface) =
   fcQSurface_delete(self.h)

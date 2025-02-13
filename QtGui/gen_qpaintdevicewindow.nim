@@ -38,13 +38,11 @@ import gen_qpaintdevicewindow_types
 export gen_qpaintdevicewindow_types
 
 import
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qregion_types,
   gen_qwindow
 export
-  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qregion_types,
@@ -64,9 +62,6 @@ proc fcQPaintDeviceWindow_tr3(s: cstring, c: cstring, n: cint): struct_miqt_stri
 proc fcQPaintDeviceWindow_staticMetaObject(): pointer {.importc: "QPaintDeviceWindow_staticMetaObject".}
 proc fcQPaintDeviceWindow_delete(self: pointer) {.importc: "QPaintDeviceWindow_delete".}
 
-
-func init*(T: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, h: ptr cQPaintDeviceWindow): gen_qpaintdevicewindow_types.QPaintDeviceWindow =
-  T(h: h)
 proc metaObject*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQPaintDeviceWindow_metaObject(self.h))
 
@@ -103,7 +98,7 @@ proc tr*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c:
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow): gen_qobjectdefs.QMetaObject =
-  gen_qobjectdefs.QMetaObject(h: fcQPaintDeviceWindow_staticMetaObject())
+proc staticMetaObject*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQPaintDeviceWindow_staticMetaObject())
 proc delete*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow) =
   fcQPaintDeviceWindow_delete(self.h)
