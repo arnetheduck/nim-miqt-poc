@@ -4366,6 +4366,7 @@ void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQHeaderView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QHeaderView_staticMetaObject() { return &QHeaderView::staticMetaObject; }
 void QHeaderView_protectedbase_updateSection(bool* _dynamic_cast_ok, void* self, int logicalIndex) {
 	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
 	if (self_cast == nullptr) {

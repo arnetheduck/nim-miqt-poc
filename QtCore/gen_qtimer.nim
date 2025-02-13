@@ -41,11 +41,13 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQTimer*{.exportc: "QTimer", incompleteStruct.} = object
@@ -86,6 +88,7 @@ proc fQTimer_virtualbase_connectNotify(self: pointer, signal: pointer): void{.im
 proc fcQTimer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTimer_override_virtual_connectNotify".}
 proc fQTimer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTimer_virtualbase_disconnectNotify".}
 proc fcQTimer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTimer_override_virtual_disconnectNotify".}
+proc fcQTimer_staticMetaObject(): pointer {.importc: "QTimer_staticMetaObject".}
 proc fcQTimer_delete(self: pointer) {.importc: "QTimer_delete".}
 
 
@@ -308,5 +311,7 @@ proc miqt_exec_callback_QTimer_disconnectNotify(self: ptr cQTimer, slot: int, si
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtimer_types.QTimer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTimer_staticMetaObject())
 proc delete*(self: gen_qtimer_types.QTimer) =
   fcQTimer_delete(self.h)

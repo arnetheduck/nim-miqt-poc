@@ -71,6 +71,7 @@ import
   gen_qimage_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlincubator_types,
   gen_qquickgraphicsconfiguration_types,
@@ -95,6 +96,7 @@ export
   gen_qimage_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qqmlincubator_types,
   gen_qquickgraphicsconfiguration_types,
@@ -265,6 +267,7 @@ proc fQQuickWindow_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQQuickWindow_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickWindow_override_virtual_connectNotify".}
 proc fQQuickWindow_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickWindow_virtualbase_disconnectNotify".}
 proc fcQQuickWindow_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickWindow_override_virtual_disconnectNotify".}
+proc fcQQuickWindow_staticMetaObject(): pointer {.importc: "QQuickWindow_staticMetaObject".}
 proc fcQQuickWindow_delete(self: pointer) {.importc: "QQuickWindow_delete".}
 proc fcQQuickWindowGraphicsStateInfo_delete(self: pointer) {.importc: "QQuickWindow__GraphicsStateInfo_delete".}
 
@@ -1259,6 +1262,8 @@ proc miqt_exec_callback_QQuickWindow_disconnectNotify(self: ptr cQQuickWindow, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickwindow_types.QQuickWindow): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickWindow_staticMetaObject())
 proc delete*(self: gen_qquickwindow_types.QQuickWindow) =
   fcQQuickWindow_delete(self.h)
 

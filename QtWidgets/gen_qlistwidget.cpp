@@ -4798,6 +4798,7 @@ void QListWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QListWidget_staticMetaObject() { return &QListWidget::staticMetaObject; }
 void QListWidget_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height) {
 	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
 	if (self_cast == nullptr) {

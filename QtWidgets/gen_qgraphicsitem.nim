@@ -174,6 +174,7 @@ import
   gen_qline_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpainterpath_types,
@@ -204,6 +205,7 @@ export
   gen_qline_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpainterpath_types,
@@ -598,6 +600,7 @@ proc fQGraphicsObject_virtualbase_setExtension(self: pointer, extension: cint, v
 proc fcQGraphicsObject_override_virtual_setExtension(self: pointer, slot: int) {.importc: "QGraphicsObject_override_virtual_setExtension".}
 proc fQGraphicsObject_virtualbase_extension(self: pointer, variant: pointer): pointer{.importc: "QGraphicsObject_virtualbase_extension".}
 proc fcQGraphicsObject_override_virtual_extension(self: pointer, slot: int) {.importc: "QGraphicsObject_override_virtual_extension".}
+proc fcQGraphicsObject_staticMetaObject(): pointer {.importc: "QGraphicsObject_staticMetaObject".}
 proc fcQGraphicsObject_delete(self: pointer) {.importc: "QGraphicsObject_delete".}
 proc fcQAbstractGraphicsShapeItem_new(): ptr cQAbstractGraphicsShapeItem {.importc: "QAbstractGraphicsShapeItem_new".}
 proc fcQAbstractGraphicsShapeItem_new2(parent: pointer): ptr cQAbstractGraphicsShapeItem {.importc: "QAbstractGraphicsShapeItem_new2".}
@@ -1328,6 +1331,7 @@ proc fQGraphicsTextItem_virtualbase_wheelEvent(self: pointer, event: pointer): v
 proc fcQGraphicsTextItem_override_virtual_wheelEvent(self: pointer, slot: int) {.importc: "QGraphicsTextItem_override_virtual_wheelEvent".}
 proc fQGraphicsTextItem_virtualbase_itemChange(self: pointer, change: cint, value: pointer): pointer{.importc: "QGraphicsTextItem_virtualbase_itemChange".}
 proc fcQGraphicsTextItem_override_virtual_itemChange(self: pointer, slot: int) {.importc: "QGraphicsTextItem_override_virtual_itemChange".}
+proc fcQGraphicsTextItem_staticMetaObject(): pointer {.importc: "QGraphicsTextItem_staticMetaObject".}
 proc fcQGraphicsTextItem_delete(self: pointer) {.importc: "QGraphicsTextItem_delete".}
 proc fcQGraphicsSimpleTextItem_new(): ptr cQGraphicsSimpleTextItem {.importc: "QGraphicsSimpleTextItem_new".}
 proc fcQGraphicsSimpleTextItem_new2(text: struct_miqt_string): ptr cQGraphicsSimpleTextItem {.importc: "QGraphicsSimpleTextItem_new2".}
@@ -3666,6 +3670,8 @@ proc miqt_exec_callback_QGraphicsObject_extension(self: ptr cQGraphicsObject, sl
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qgraphicsitem_types.QGraphicsObject): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsObject_staticMetaObject())
 proc delete*(self: gen_qgraphicsitem_types.QGraphicsObject) =
   fcQGraphicsObject_delete(self.h)
 
@@ -9365,6 +9371,8 @@ proc miqt_exec_callback_QGraphicsTextItem_itemChange(self: ptr cQGraphicsTextIte
   let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qgraphicsitem_types.QGraphicsTextItem): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsTextItem_staticMetaObject())
 proc delete*(self: gen_qgraphicsitem_types.QGraphicsTextItem) =
   fcQGraphicsTextItem_delete(self.h)
 

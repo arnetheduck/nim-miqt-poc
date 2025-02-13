@@ -337,6 +337,7 @@ struct miqt_string QStyleHints_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QStyleHints_staticMetaObject() { return &QStyleHints::staticMetaObject; }
 void QStyleHints_delete(QStyleHints* self) {
 	delete self;
 }

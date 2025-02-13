@@ -2133,6 +2133,7 @@ void QGroupBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGroupBox_staticMetaObject() { return &QGroupBox::staticMetaObject; }
 void QGroupBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGroupBox* self_cast = dynamic_cast<MiqtVirtualQGroupBox*>( (QGroupBox*)(self) );
 	if (self_cast == nullptr) {

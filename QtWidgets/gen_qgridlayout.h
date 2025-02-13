@@ -172,6 +172,7 @@ QObject* QGridLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QGridLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGridLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGridLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGridLayout_staticMetaObject();
 void QGridLayout_delete(QGridLayout* self);
 
 #ifdef __cplusplus

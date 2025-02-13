@@ -62,6 +62,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpoint_types,
@@ -72,6 +73,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpoint_types,
@@ -119,6 +121,7 @@ proc fQGraphicsEffect_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQGraphicsEffect_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsEffect_override_virtual_connectNotify".}
 proc fQGraphicsEffect_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsEffect_virtualbase_disconnectNotify".}
 proc fcQGraphicsEffect_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsEffect_override_virtual_disconnectNotify".}
+proc fcQGraphicsEffect_staticMetaObject(): pointer {.importc: "QGraphicsEffect_staticMetaObject".}
 proc fcQGraphicsEffect_delete(self: pointer) {.importc: "QGraphicsEffect_delete".}
 proc fcQGraphicsColorizeEffect_new(): ptr cQGraphicsColorizeEffect {.importc: "QGraphicsColorizeEffect_new".}
 proc fcQGraphicsColorizeEffect_new2(parent: pointer): ptr cQGraphicsColorizeEffect {.importc: "QGraphicsColorizeEffect_new2".}
@@ -158,6 +161,7 @@ proc fQGraphicsColorizeEffect_virtualbase_connectNotify(self: pointer, signal: p
 proc fcQGraphicsColorizeEffect_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsColorizeEffect_override_virtual_connectNotify".}
 proc fQGraphicsColorizeEffect_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsColorizeEffect_virtualbase_disconnectNotify".}
 proc fcQGraphicsColorizeEffect_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsColorizeEffect_override_virtual_disconnectNotify".}
+proc fcQGraphicsColorizeEffect_staticMetaObject(): pointer {.importc: "QGraphicsColorizeEffect_staticMetaObject".}
 proc fcQGraphicsColorizeEffect_delete(self: pointer) {.importc: "QGraphicsColorizeEffect_delete".}
 proc fcQGraphicsBlurEffect_new(): ptr cQGraphicsBlurEffect {.importc: "QGraphicsBlurEffect_new".}
 proc fcQGraphicsBlurEffect_new2(parent: pointer): ptr cQGraphicsBlurEffect {.importc: "QGraphicsBlurEffect_new2".}
@@ -198,6 +202,7 @@ proc fQGraphicsBlurEffect_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQGraphicsBlurEffect_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsBlurEffect_override_virtual_connectNotify".}
 proc fQGraphicsBlurEffect_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsBlurEffect_virtualbase_disconnectNotify".}
 proc fcQGraphicsBlurEffect_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsBlurEffect_override_virtual_disconnectNotify".}
+proc fcQGraphicsBlurEffect_staticMetaObject(): pointer {.importc: "QGraphicsBlurEffect_staticMetaObject".}
 proc fcQGraphicsBlurEffect_delete(self: pointer) {.importc: "QGraphicsBlurEffect_delete".}
 proc fcQGraphicsDropShadowEffect_new(): ptr cQGraphicsDropShadowEffect {.importc: "QGraphicsDropShadowEffect_new".}
 proc fcQGraphicsDropShadowEffect_new2(parent: pointer): ptr cQGraphicsDropShadowEffect {.importc: "QGraphicsDropShadowEffect_new2".}
@@ -248,6 +253,7 @@ proc fQGraphicsDropShadowEffect_virtualbase_connectNotify(self: pointer, signal:
 proc fcQGraphicsDropShadowEffect_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsDropShadowEffect_override_virtual_connectNotify".}
 proc fQGraphicsDropShadowEffect_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsDropShadowEffect_virtualbase_disconnectNotify".}
 proc fcQGraphicsDropShadowEffect_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsDropShadowEffect_override_virtual_disconnectNotify".}
+proc fcQGraphicsDropShadowEffect_staticMetaObject(): pointer {.importc: "QGraphicsDropShadowEffect_staticMetaObject".}
 proc fcQGraphicsDropShadowEffect_delete(self: pointer) {.importc: "QGraphicsDropShadowEffect_delete".}
 proc fcQGraphicsOpacityEffect_new(): ptr cQGraphicsOpacityEffect {.importc: "QGraphicsOpacityEffect_new".}
 proc fcQGraphicsOpacityEffect_new2(parent: pointer): ptr cQGraphicsOpacityEffect {.importc: "QGraphicsOpacityEffect_new2".}
@@ -287,6 +293,7 @@ proc fQGraphicsOpacityEffect_virtualbase_connectNotify(self: pointer, signal: po
 proc fcQGraphicsOpacityEffect_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsOpacityEffect_override_virtual_connectNotify".}
 proc fQGraphicsOpacityEffect_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsOpacityEffect_virtualbase_disconnectNotify".}
 proc fcQGraphicsOpacityEffect_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsOpacityEffect_override_virtual_disconnectNotify".}
+proc fcQGraphicsOpacityEffect_staticMetaObject(): pointer {.importc: "QGraphicsOpacityEffect_staticMetaObject".}
 proc fcQGraphicsOpacityEffect_delete(self: pointer) {.importc: "QGraphicsOpacityEffect_delete".}
 
 
@@ -554,6 +561,8 @@ proc miqt_exec_callback_QGraphicsEffect_disconnectNotify(self: ptr cQGraphicsEff
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicseffect_types.QGraphicsEffect): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsEffect_staticMetaObject())
 proc delete*(self: gen_qgraphicseffect_types.QGraphicsEffect) =
   fcQGraphicsEffect_delete(self.h)
 
@@ -837,6 +846,8 @@ proc miqt_exec_callback_QGraphicsColorizeEffect_disconnectNotify(self: ptr cQGra
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicseffect_types.QGraphicsColorizeEffect): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsColorizeEffect_staticMetaObject())
 proc delete*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect) =
   fcQGraphicsColorizeEffect_delete(self.h)
 
@@ -1123,6 +1134,8 @@ proc miqt_exec_callback_QGraphicsBlurEffect_disconnectNotify(self: ptr cQGraphic
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicseffect_types.QGraphicsBlurEffect): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsBlurEffect_staticMetaObject())
 proc delete*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect) =
   fcQGraphicsBlurEffect_delete(self.h)
 
@@ -1449,6 +1462,8 @@ proc miqt_exec_callback_QGraphicsDropShadowEffect_disconnectNotify(self: ptr cQG
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicseffect_types.QGraphicsDropShadowEffect): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsDropShadowEffect_staticMetaObject())
 proc delete*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect) =
   fcQGraphicsDropShadowEffect_delete(self.h)
 
@@ -1732,5 +1747,7 @@ proc miqt_exec_callback_QGraphicsOpacityEffect_disconnectNotify(self: ptr cQGrap
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicseffect_types.QGraphicsOpacityEffect): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsOpacityEffect_staticMetaObject())
 proc delete*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect) =
   fcQGraphicsOpacityEffect_delete(self.h)

@@ -43,6 +43,7 @@ import
   gen_qframe,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -58,6 +59,7 @@ export
   gen_qframe,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -210,6 +212,7 @@ proc fQSplitter_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQSplitter_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSplitter_override_virtual_connectNotify".}
 proc fQSplitter_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSplitter_virtualbase_disconnectNotify".}
 proc fcQSplitter_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSplitter_override_virtual_disconnectNotify".}
+proc fcQSplitter_staticMetaObject(): pointer {.importc: "QSplitter_staticMetaObject".}
 proc fcQSplitter_delete(self: pointer) {.importc: "QSplitter_delete".}
 proc fcQSplitterHandle_new(o: cint, parent: pointer): ptr cQSplitterHandle {.importc: "QSplitterHandle_new".}
 proc fcQSplitterHandle_metaObject(self: pointer, ): pointer {.importc: "QSplitterHandle_metaObject".}
@@ -319,6 +322,7 @@ proc fQSplitterHandle_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQSplitterHandle_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSplitterHandle_override_virtual_connectNotify".}
 proc fQSplitterHandle_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSplitterHandle_virtualbase_disconnectNotify".}
 proc fcQSplitterHandle_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSplitterHandle_override_virtual_disconnectNotify".}
+proc fcQSplitterHandle_staticMetaObject(): pointer {.importc: "QSplitterHandle_staticMetaObject".}
 proc fcQSplitterHandle_delete(self: pointer) {.importc: "QSplitterHandle_delete".}
 
 
@@ -1355,6 +1359,8 @@ proc miqt_exec_callback_QSplitter_disconnectNotify(self: ptr cQSplitter, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsplitter_types.QSplitter): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSplitter_staticMetaObject())
 proc delete*(self: gen_qsplitter_types.QSplitter) =
   fcQSplitter_delete(self.h)
 
@@ -2252,5 +2258,7 @@ proc miqt_exec_callback_QSplitterHandle_disconnectNotify(self: ptr cQSplitterHan
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsplitter_types.QSplitterHandle): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSplitterHandle_staticMetaObject())
 proc delete*(self: gen_qsplitter_types.QSplitterHandle) =
   fcQSplitterHandle_delete(self.h)

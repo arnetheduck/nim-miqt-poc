@@ -41,12 +41,14 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qwebengineurlrequestjob_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qwebengineurlrequestjob_types
 
@@ -78,6 +80,7 @@ proc fQWebEngineUrlSchemeHandler_virtualbase_connectNotify(self: pointer, signal
 proc fcQWebEngineUrlSchemeHandler_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_connectNotify".}
 proc fQWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify".}
 proc fcQWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_disconnectNotify".}
+proc fcQWebEngineUrlSchemeHandler_staticMetaObject(): pointer {.importc: "QWebEngineUrlSchemeHandler_staticMetaObject".}
 proc fcQWebEngineUrlSchemeHandler_delete(self: pointer) {.importc: "QWebEngineUrlSchemeHandler_delete".}
 
 
@@ -281,5 +284,7 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_disconnectNotify(self: ptr cQ
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlSchemeHandler_staticMetaObject())
 proc delete*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler) =
   fcQWebEngineUrlSchemeHandler_delete(self.h)

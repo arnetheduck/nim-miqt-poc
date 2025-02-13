@@ -543,6 +543,7 @@ void QAudioEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioEngine_staticMetaObject() { return &QAudioEngine::staticMetaObject; }
 QObject* QAudioEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAudioEngine* self_cast = dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) );
 	if (self_cast == nullptr) {

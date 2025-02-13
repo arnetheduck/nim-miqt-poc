@@ -701,6 +701,7 @@ void QImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QImageCapture_staticMetaObject() { return &QImageCapture::staticMetaObject; }
 QObject* QImageCapture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
 	if (self_cast == nullptr) {

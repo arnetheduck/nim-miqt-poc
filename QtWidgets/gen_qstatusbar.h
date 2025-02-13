@@ -221,6 +221,7 @@ QObject* QStatusBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QStatusBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStatusBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStatusBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QStatusBar_staticMetaObject();
 void QStatusBar_delete(QStatusBar* self);
 
 #ifdef __cplusplus

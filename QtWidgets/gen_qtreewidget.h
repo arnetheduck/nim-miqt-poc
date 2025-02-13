@@ -524,6 +524,7 @@ QObject* QTreeWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QTreeWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTreeWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTreeWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTreeWidget_staticMetaObject();
 void QTreeWidget_delete(QTreeWidget* self);
 
 #ifdef __cplusplus

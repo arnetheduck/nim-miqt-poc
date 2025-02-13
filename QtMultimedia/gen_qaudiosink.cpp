@@ -519,6 +519,7 @@ void QAudioSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioSink*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioSink_staticMetaObject() { return &QAudioSink::staticMetaObject; }
 QObject* QAudioSink_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAudioSink* self_cast = dynamic_cast<MiqtVirtualQAudioSink*>( (QAudioSink*)(self) );
 	if (self_cast == nullptr) {

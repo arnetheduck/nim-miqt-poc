@@ -449,6 +449,7 @@ void QAccessiblePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQAccessiblePlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAccessiblePlugin_staticMetaObject() { return &QAccessiblePlugin::staticMetaObject; }
 QObject* QAccessiblePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAccessiblePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessiblePlugin*>( (QAccessiblePlugin*)(self) );
 	if (self_cast == nullptr) {

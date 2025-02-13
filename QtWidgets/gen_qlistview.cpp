@@ -3995,6 +3995,7 @@ void QListView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQListView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QListView_staticMetaObject() { return &QListView::staticMetaObject; }
 void QListView_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height) {
 	MiqtVirtualQListView* self_cast = dynamic_cast<MiqtVirtualQListView*>( (QListView*)(self) );
 	if (self_cast == nullptr) {

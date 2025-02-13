@@ -47,6 +47,7 @@ import
   gen_qitemselectionmodel_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -68,6 +69,7 @@ export
   gen_qitemselectionmodel_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -322,6 +324,7 @@ proc fQTableView_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQTableView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTableView_override_virtual_connectNotify".}
 proc fQTableView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTableView_virtualbase_disconnectNotify".}
 proc fcQTableView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTableView_override_virtual_disconnectNotify".}
+proc fcQTableView_staticMetaObject(): pointer {.importc: "QTableView_staticMetaObject".}
 proc fcQTableView_delete(self: pointer) {.importc: "QTableView_delete".}
 
 
@@ -2162,5 +2165,7 @@ proc miqt_exec_callback_QTableView_disconnectNotify(self: ptr cQTableView, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtableview_types.QTableView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTableView_staticMetaObject())
 proc delete*(self: gen_qtableview_types.QTableView) =
   fcQTableView_delete(self.h)

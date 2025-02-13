@@ -563,6 +563,7 @@ void QQmlPropertyMap_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQQmlPropertyMap*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlPropertyMap_staticMetaObject() { return &QQmlPropertyMap::staticMetaObject; }
 QObject* QQmlPropertyMap_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlPropertyMap* self_cast = dynamic_cast<MiqtVirtualQQmlPropertyMap*>( (QQmlPropertyMap*)(self) );
 	if (self_cast == nullptr) {

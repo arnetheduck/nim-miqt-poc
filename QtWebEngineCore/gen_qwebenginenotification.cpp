@@ -151,6 +151,7 @@ struct miqt_string QWebEngineNotification_tr3(const char* s, const char* c, int 
 	return _ms;
 }
 
+const QMetaObject* QWebEngineNotification_staticMetaObject() { return &QWebEngineNotification::staticMetaObject; }
 void QWebEngineNotification_delete(QWebEngineNotification* self) {
 	delete self;
 }

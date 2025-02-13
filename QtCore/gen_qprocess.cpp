@@ -1646,6 +1646,7 @@ void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProcess*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QProcess_staticMetaObject() { return &QProcess::staticMetaObject; }
 void QProcess_protectedbase_setProcessState(bool* _dynamic_cast_ok, void* self, int state) {
 	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
 	if (self_cast == nullptr) {

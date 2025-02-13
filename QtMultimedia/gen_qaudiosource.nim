@@ -44,6 +44,7 @@ import
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qaudiodevice_types,
@@ -52,6 +53,7 @@ export
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQAudioSource*{.exportc: "QAudioSource", incompleteStruct.} = object
@@ -103,6 +105,7 @@ proc fQAudioSource_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQAudioSource_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioSource_override_virtual_connectNotify".}
 proc fQAudioSource_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioSource_virtualbase_disconnectNotify".}
 proc fcQAudioSource_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioSource_override_virtual_disconnectNotify".}
+proc fcQAudioSource_staticMetaObject(): pointer {.importc: "QAudioSource_staticMetaObject".}
 proc fcQAudioSource_delete(self: pointer) {.importc: "QAudioSource_delete".}
 
 
@@ -368,5 +371,7 @@ proc miqt_exec_callback_QAudioSource_disconnectNotify(self: ptr cQAudioSource, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaudiosource_types.QAudioSource): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioSource_staticMetaObject())
 proc delete*(self: gen_qaudiosource_types.QAudioSource) =
   fcQAudioSource_delete(self.h)

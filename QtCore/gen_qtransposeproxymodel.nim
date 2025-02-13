@@ -45,6 +45,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types,
@@ -57,6 +58,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvariant_types
@@ -190,6 +192,7 @@ proc fQTransposeProxyModel_virtualbase_connectNotify(self: pointer, signal: poin
 proc fcQTransposeProxyModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTransposeProxyModel_override_virtual_connectNotify".}
 proc fQTransposeProxyModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTransposeProxyModel_virtualbase_disconnectNotify".}
 proc fcQTransposeProxyModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTransposeProxyModel_override_virtual_disconnectNotify".}
+proc fcQTransposeProxyModel_staticMetaObject(): pointer {.importc: "QTransposeProxyModel_staticMetaObject".}
 proc fcQTransposeProxyModel_delete(self: pointer) {.importc: "QTransposeProxyModel_delete".}
 
 
@@ -1396,5 +1399,7 @@ proc miqt_exec_callback_QTransposeProxyModel_disconnectNotify(self: ptr cQTransp
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTransposeProxyModel_staticMetaObject())
 proc delete*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel) =
   fcQTransposeProxyModel_delete(self.h)

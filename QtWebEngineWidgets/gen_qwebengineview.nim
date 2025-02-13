@@ -44,6 +44,7 @@ import
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpagelayout_types,
   gen_qpageranges_types,
@@ -69,6 +70,7 @@ export
   gen_qmenu_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpagelayout_types,
   gen_qpageranges_types,
@@ -258,6 +260,7 @@ proc fQWebEngineView_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQWebEngineView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebEngineView_override_virtual_connectNotify".}
 proc fQWebEngineView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebEngineView_virtualbase_disconnectNotify".}
 proc fcQWebEngineView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebEngineView_override_virtual_disconnectNotify".}
+proc fcQWebEngineView_staticMetaObject(): pointer {.importc: "QWebEngineView_staticMetaObject".}
 proc fcQWebEngineView_delete(self: pointer) {.importc: "QWebEngineView_delete".}
 
 
@@ -1478,5 +1481,7 @@ proc miqt_exec_callback_QWebEngineView_disconnectNotify(self: ptr cQWebEngineVie
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebengineview_types.QWebEngineView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineView_staticMetaObject())
 proc delete*(self: gen_qwebengineview_types.QWebEngineView) =
   fcQWebEngineView_delete(self.h)

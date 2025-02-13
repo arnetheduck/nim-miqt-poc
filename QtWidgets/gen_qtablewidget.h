@@ -517,6 +517,7 @@ QObject* QTableWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QTableWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTableWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTableWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTableWidget_staticMetaObject();
 void QTableWidget_delete(QTableWidget* self);
 
 #ifdef __cplusplus

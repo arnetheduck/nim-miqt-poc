@@ -186,6 +186,7 @@ bool QGraphicsSvgItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 void QGraphicsSvgItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
 void QGraphicsSvgItem_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
 void QGraphicsSvgItem_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
+const QMetaObject* QGraphicsSvgItem_staticMetaObject();
 void QGraphicsSvgItem_delete(QGraphicsSvgItem* self);
 
 #ifdef __cplusplus

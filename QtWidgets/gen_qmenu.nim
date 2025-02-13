@@ -43,6 +43,7 @@ import
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -57,6 +58,7 @@ export
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -199,6 +201,7 @@ proc fQMenu_virtualbase_connectNotify(self: pointer, signal: pointer): void{.imp
 proc fcQMenu_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMenu_override_virtual_connectNotify".}
 proc fQMenu_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMenu_virtualbase_disconnectNotify".}
 proc fcQMenu_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMenu_override_virtual_disconnectNotify".}
+proc fcQMenu_staticMetaObject(): pointer {.importc: "QMenu_staticMetaObject".}
 proc fcQMenu_delete(self: pointer) {.importc: "QMenu_delete".}
 
 
@@ -1184,5 +1187,7 @@ proc miqt_exec_callback_QMenu_disconnectNotify(self: ptr cQMenu, slot: int, sign
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmenu_types.QMenu): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMenu_staticMetaObject())
 proc delete*(self: gen_qmenu_types.QMenu) =
   fcQMenu_delete(self.h)

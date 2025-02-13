@@ -124,6 +124,7 @@ QObject* QMovie_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMovie_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMovie_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMovie_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QMovie_staticMetaObject();
 void QMovie_delete(QMovie* self);
 
 #ifdef __cplusplus

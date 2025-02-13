@@ -42,6 +42,7 @@ import
   gen_qgraphicsitem_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qtimeline_types,
@@ -51,6 +52,7 @@ export
   gen_qgraphicsitem_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qtimeline_types,
@@ -111,6 +113,7 @@ proc fQGraphicsItemAnimation_virtualbase_connectNotify(self: pointer, signal: po
 proc fcQGraphicsItemAnimation_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_connectNotify".}
 proc fQGraphicsItemAnimation_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsItemAnimation_virtualbase_disconnectNotify".}
 proc fcQGraphicsItemAnimation_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_disconnectNotify".}
+proc fcQGraphicsItemAnimation_staticMetaObject(): pointer {.importc: "QGraphicsItemAnimation_staticMetaObject".}
 proc fcQGraphicsItemAnimation_delete(self: pointer) {.importc: "QGraphicsItemAnimation_delete".}
 
 
@@ -466,5 +469,7 @@ proc miqt_exec_callback_QGraphicsItemAnimation_disconnectNotify(self: ptr cQGrap
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsItemAnimation_staticMetaObject())
 proc delete*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation) =
   fcQGraphicsItemAnimation_delete(self.h)

@@ -240,3 +240,4 @@ struct miqt_string QInputMethod_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QInputMethod_staticMetaObject() { return &QInputMethod::staticMetaObject; }

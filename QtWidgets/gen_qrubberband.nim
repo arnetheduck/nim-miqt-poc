@@ -47,6 +47,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -62,6 +63,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -188,6 +190,7 @@ proc fQRubberBand_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQRubberBand_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QRubberBand_override_virtual_connectNotify".}
 proc fQRubberBand_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QRubberBand_virtualbase_disconnectNotify".}
 proc fcQRubberBand_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QRubberBand_override_virtual_disconnectNotify".}
+proc fcQRubberBand_staticMetaObject(): pointer {.importc: "QRubberBand_staticMetaObject".}
 proc fcQRubberBand_delete(self: pointer) {.importc: "QRubberBand_delete".}
 
 
@@ -1111,5 +1114,7 @@ proc miqt_exec_callback_QRubberBand_disconnectNotify(self: ptr cQRubberBand, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qrubberband_types.QRubberBand): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQRubberBand_staticMetaObject())
 proc delete*(self: gen_qrubberband_types.QRubberBand) =
   fcQRubberBand_delete(self.h)

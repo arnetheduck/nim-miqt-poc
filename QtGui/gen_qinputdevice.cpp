@@ -533,6 +533,7 @@ void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QInputDevice_staticMetaObject() { return &QInputDevice::staticMetaObject; }
 QObject* QInputDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQInputDevice* self_cast = dynamic_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
 	if (self_cast == nullptr) {

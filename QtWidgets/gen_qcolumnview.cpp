@@ -3936,6 +3936,7 @@ void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QColumnView_staticMetaObject() { return &QColumnView::staticMetaObject; }
 void QColumnView_protectedbase_initializeColumn(bool* _dynamic_cast_ok, const void* self, QAbstractItemView* column) {
 	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
 	if (self_cast == nullptr) {

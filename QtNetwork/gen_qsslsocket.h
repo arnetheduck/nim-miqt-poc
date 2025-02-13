@@ -256,6 +256,7 @@ QObject* QSslSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QSslSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSslSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSslSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSslSocket_staticMetaObject();
 void QSslSocket_delete(QSslSocket* self);
 
 #ifdef __cplusplus

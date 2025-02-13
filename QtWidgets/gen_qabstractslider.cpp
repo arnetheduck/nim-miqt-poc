@@ -2205,6 +2205,7 @@ void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractSlider_staticMetaObject() { return &QAbstractSlider::staticMetaObject; }
 void QAbstractSlider_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action) {
 	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
 	if (self_cast == nullptr) {

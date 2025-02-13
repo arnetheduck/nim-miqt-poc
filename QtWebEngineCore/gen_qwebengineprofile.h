@@ -118,6 +118,7 @@ QObject* QWebEngineProfile_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QWebEngineProfile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebEngineProfile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebEngineProfile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWebEngineProfile_staticMetaObject();
 void QWebEngineProfile_delete(QWebEngineProfile* self);
 
 #ifdef __cplusplus

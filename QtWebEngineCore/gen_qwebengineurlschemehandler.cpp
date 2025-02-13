@@ -440,6 +440,7 @@ void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMe
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebEngineUrlSchemeHandler_staticMetaObject() { return &QWebEngineUrlSchemeHandler::staticMetaObject; }
 QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
 	if (self_cast == nullptr) {

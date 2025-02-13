@@ -2287,6 +2287,7 @@ void QFontDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFontDialog_staticMetaObject() { return &QFontDialog::staticMetaObject; }
 void QFontDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
 	if (self_cast == nullptr) {

@@ -52,6 +52,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -66,6 +67,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -209,6 +211,7 @@ proc fQDockWidget_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQDockWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDockWidget_override_virtual_connectNotify".}
 proc fQDockWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDockWidget_virtualbase_disconnectNotify".}
 proc fcQDockWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDockWidget_override_virtual_disconnectNotify".}
+proc fcQDockWidget_staticMetaObject(): pointer {.importc: "QDockWidget_staticMetaObject".}
 proc fcQDockWidget_delete(self: pointer) {.importc: "QDockWidget_delete".}
 
 
@@ -1236,5 +1239,7 @@ proc miqt_exec_callback_QDockWidget_disconnectNotify(self: ptr cQDockWidget, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdockwidget_types.QDockWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDockWidget_staticMetaObject())
 proc delete*(self: gen_qdockwidget_types.QDockWidget) =
   fcQDockWidget_delete(self.h)

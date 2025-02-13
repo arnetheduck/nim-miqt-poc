@@ -2303,6 +2303,7 @@ void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QColorDialog_staticMetaObject() { return &QColorDialog::staticMetaObject; }
 void QColorDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
 	if (self_cast == nullptr) {

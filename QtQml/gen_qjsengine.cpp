@@ -570,6 +570,7 @@ void QJSEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQJSEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QJSEngine_staticMetaObject() { return &QJSEngine::staticMetaObject; }
 QObject* QJSEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQJSEngine* self_cast = dynamic_cast<MiqtVirtualQJSEngine*>( (QJSEngine*)(self) );
 	if (self_cast == nullptr) {

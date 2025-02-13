@@ -77,6 +77,7 @@ import
   gen_qgraphicsscene_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -98,6 +99,7 @@ export
   gen_qgraphicsscene_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -326,6 +328,7 @@ proc fQGraphicsView_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQGraphicsView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsView_override_virtual_connectNotify".}
 proc fQGraphicsView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsView_virtualbase_disconnectNotify".}
 proc fcQGraphicsView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsView_override_virtual_disconnectNotify".}
+proc fcQGraphicsView_staticMetaObject(): pointer {.importc: "QGraphicsView_staticMetaObject".}
 proc fcQGraphicsView_delete(self: pointer) {.importc: "QGraphicsView_delete".}
 
 
@@ -1686,5 +1689,7 @@ proc miqt_exec_callback_QGraphicsView_disconnectNotify(self: ptr cQGraphicsView,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicsview_types.QGraphicsView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsView_staticMetaObject())
 proc delete*(self: gen_qgraphicsview_types.QGraphicsView) =
   fcQGraphicsView_delete(self.h)

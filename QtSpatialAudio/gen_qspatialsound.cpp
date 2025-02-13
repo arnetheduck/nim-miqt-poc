@@ -690,6 +690,7 @@ void QSpatialSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSpatialSound*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSpatialSound_staticMetaObject() { return &QSpatialSound::staticMetaObject; }
 QObject* QSpatialSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSpatialSound* self_cast = dynamic_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
 	if (self_cast == nullptr) {

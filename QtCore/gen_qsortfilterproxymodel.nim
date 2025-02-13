@@ -45,6 +45,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qregularexpression_types,
   gen_qsize_types,
@@ -58,6 +59,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qregularexpression_types,
   gen_qsize_types,
@@ -251,6 +253,7 @@ proc fQSortFilterProxyModel_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQSortFilterProxyModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSortFilterProxyModel_override_virtual_connectNotify".}
 proc fQSortFilterProxyModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSortFilterProxyModel_virtualbase_disconnectNotify".}
 proc fcQSortFilterProxyModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSortFilterProxyModel_override_virtual_disconnectNotify".}
+proc fcQSortFilterProxyModel_staticMetaObject(): pointer {.importc: "QSortFilterProxyModel_staticMetaObject".}
 proc fcQSortFilterProxyModel_delete(self: pointer) {.importc: "QSortFilterProxyModel_delete".}
 
 
@@ -1758,5 +1761,7 @@ proc miqt_exec_callback_QSortFilterProxyModel_disconnectNotify(self: ptr cQSortF
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSortFilterProxyModel_staticMetaObject())
 proc delete*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel) =
   fcQSortFilterProxyModel_delete(self.h)

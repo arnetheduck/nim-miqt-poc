@@ -2281,6 +2281,7 @@ void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCalendarWidget_staticMetaObject() { return &QCalendarWidget::staticMetaObject; }
 void QCalendarWidget_protectedbase_updateCell(bool* _dynamic_cast_ok, void* self, QDate* date) {
 	MiqtVirtualQCalendarWidget* self_cast = dynamic_cast<MiqtVirtualQCalendarWidget*>( (QCalendarWidget*)(self) );
 	if (self_cast == nullptr) {

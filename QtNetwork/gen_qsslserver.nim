@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsslconfiguration_types,
   gen_qsslerror_types,
@@ -52,6 +53,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsslconfiguration_types,
   gen_qsslerror_types,
@@ -112,6 +114,7 @@ proc fQSslServer_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQSslServer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSslServer_override_virtual_connectNotify".}
 proc fQSslServer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSslServer_virtualbase_disconnectNotify".}
 proc fcQSslServer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSslServer_override_virtual_disconnectNotify".}
+proc fcQSslServer_staticMetaObject(): pointer {.importc: "QSslServer_staticMetaObject".}
 proc fcQSslServer_delete(self: pointer) {.importc: "QSslServer_delete".}
 
 
@@ -526,5 +529,7 @@ proc miqt_exec_callback_QSslServer_disconnectNotify(self: ptr cQSslServer, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsslserver_types.QSslServer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSslServer_staticMetaObject())
 proc delete*(self: gen_qsslserver_types.QSslServer) =
   fcQSslServer_delete(self.h)

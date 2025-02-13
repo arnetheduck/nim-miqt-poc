@@ -66,6 +66,7 @@ QObject* QAccessiblePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QAccessiblePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAccessiblePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAccessiblePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAccessiblePlugin_staticMetaObject();
 void QAccessiblePlugin_delete(QAccessiblePlugin* self);
 
 #ifdef __cplusplus

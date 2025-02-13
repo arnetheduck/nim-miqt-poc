@@ -535,6 +535,7 @@ void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSystemTrayIcon_staticMetaObject() { return &QSystemTrayIcon::staticMetaObject; }
 QObject* QSystemTrayIcon_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
 	if (self_cast == nullptr) {

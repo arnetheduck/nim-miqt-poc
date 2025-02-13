@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvideoframe_types
@@ -48,6 +49,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qsize_types,
   gen_qvideoframe_types
@@ -89,6 +91,7 @@ proc fQVideoSink_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQVideoSink_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QVideoSink_override_virtual_connectNotify".}
 proc fQVideoSink_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QVideoSink_virtualbase_disconnectNotify".}
 proc fcQVideoSink_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QVideoSink_override_virtual_disconnectNotify".}
+proc fcQVideoSink_staticMetaObject(): pointer {.importc: "QVideoSink_staticMetaObject".}
 proc fcQVideoSink_delete(self: pointer) {.importc: "QVideoSink_delete".}
 
 
@@ -342,5 +345,7 @@ proc miqt_exec_callback_QVideoSink_disconnectNotify(self: ptr cQVideoSink, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qvideosink_types.QVideoSink): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVideoSink_staticMetaObject())
 proc delete*(self: gen_qvideosink_types.QVideoSink) =
   fcQVideoSink_delete(self.h)

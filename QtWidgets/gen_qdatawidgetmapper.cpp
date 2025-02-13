@@ -576,6 +576,7 @@ void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDataWidgetMapper_staticMetaObject() { return &QDataWidgetMapper::staticMetaObject; }
 QObject* QDataWidgetMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDataWidgetMapper* self_cast = dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) );
 	if (self_cast == nullptr) {

@@ -42,6 +42,7 @@ import
   gen_qglyphrun_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qtextcursor_types,
   gen_qtextdocument_types,
@@ -53,6 +54,7 @@ export
   gen_qglyphrun_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qtextcursor_types,
   gen_qtextdocument_types,
@@ -80,12 +82,14 @@ proc fcQTextObject_document(self: pointer, ): pointer {.importc: "QTextObject_do
 proc fcQTextObject_objectIndex(self: pointer, ): cint {.importc: "QTextObject_objectIndex".}
 proc fcQTextObject_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QTextObject_tr2".}
 proc fcQTextObject_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTextObject_tr3".}
+proc fcQTextObject_staticMetaObject(): pointer {.importc: "QTextObject_staticMetaObject".}
 proc fcQTextBlockGroup_metaObject(self: pointer, ): pointer {.importc: "QTextBlockGroup_metaObject".}
 proc fcQTextBlockGroup_metacast(self: pointer, param1: cstring): pointer {.importc: "QTextBlockGroup_metacast".}
 proc fcQTextBlockGroup_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint {.importc: "QTextBlockGroup_metacall".}
 proc fcQTextBlockGroup_tr(s: cstring): struct_miqt_string {.importc: "QTextBlockGroup_tr".}
 proc fcQTextBlockGroup_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QTextBlockGroup_tr2".}
 proc fcQTextBlockGroup_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTextBlockGroup_tr3".}
+proc fcQTextBlockGroup_staticMetaObject(): pointer {.importc: "QTextBlockGroup_staticMetaObject".}
 proc fcQTextFrameLayoutData_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextFrameLayoutData_operatorAssign".}
 proc fcQTextFrameLayoutData_delete(self: pointer) {.importc: "QTextFrameLayoutData_delete".}
 proc fcQTextFrame_new(doc: pointer): ptr cQTextFrame {.importc: "QTextFrame_new".}
@@ -123,6 +127,7 @@ proc fQTextFrame_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQTextFrame_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTextFrame_override_virtual_connectNotify".}
 proc fQTextFrame_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTextFrame_virtualbase_disconnectNotify".}
 proc fcQTextFrame_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTextFrame_override_virtual_disconnectNotify".}
+proc fcQTextFrame_staticMetaObject(): pointer {.importc: "QTextFrame_staticMetaObject".}
 proc fcQTextFrame_delete(self: pointer) {.importc: "QTextFrame_delete".}
 proc fcQTextBlockUserData_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextBlockUserData_operatorAssign".}
 proc fcQTextBlockUserData_delete(self: pointer) {.importc: "QTextBlockUserData_delete".}
@@ -249,6 +254,8 @@ proc tr*(_: type gen_qtextobject_types.QTextObject, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qtextobject_types.QTextObject): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTextObject_staticMetaObject())
 
 func init*(T: type gen_qtextobject_types.QTextBlockGroup, h: ptr cQTextBlockGroup): gen_qtextobject_types.QTextBlockGroup =
   T(h: h)
@@ -279,6 +286,8 @@ proc tr*(_: type gen_qtextobject_types.QTextBlockGroup, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qtextobject_types.QTextBlockGroup): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTextBlockGroup_staticMetaObject())
 
 func init*(T: type gen_qtextobject_types.QTextFrameLayoutData, h: ptr cQTextFrameLayoutData): gen_qtextobject_types.QTextFrameLayoutData =
   T(h: h)
@@ -509,6 +518,8 @@ proc miqt_exec_callback_QTextFrame_disconnectNotify(self: ptr cQTextFrame, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtextobject_types.QTextFrame): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTextFrame_staticMetaObject())
 proc delete*(self: gen_qtextobject_types.QTextFrame) =
   fcQTextFrame_delete(self.h)
 

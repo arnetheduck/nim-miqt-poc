@@ -41,11 +41,13 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQUndoCommand*{.exportc: "QUndoCommand", incompleteStruct.} = object
@@ -135,6 +137,7 @@ proc fQUndoStack_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQUndoStack_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QUndoStack_override_virtual_connectNotify".}
 proc fQUndoStack_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QUndoStack_virtualbase_disconnectNotify".}
 proc fcQUndoStack_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QUndoStack_override_virtual_disconnectNotify".}
+proc fcQUndoStack_staticMetaObject(): pointer {.importc: "QUndoStack_staticMetaObject".}
 proc fcQUndoStack_delete(self: pointer) {.importc: "QUndoStack_delete".}
 
 
@@ -626,5 +629,7 @@ proc miqt_exec_callback_QUndoStack_disconnectNotify(self: ptr cQUndoStack, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qundostack_types.QUndoStack): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQUndoStack_staticMetaObject())
 proc delete*(self: gen_qundostack_types.QUndoStack) =
   fcQUndoStack_delete(self.h)

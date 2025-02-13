@@ -1996,6 +1996,7 @@ void QSizeGrip_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSizeGrip*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSizeGrip_staticMetaObject() { return &QSizeGrip::staticMetaObject; }
 void QSizeGrip_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
 	if (self_cast == nullptr) {

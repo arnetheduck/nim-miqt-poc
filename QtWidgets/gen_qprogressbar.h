@@ -233,6 +233,7 @@ QObject* QProgressBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QProgressBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QProgressBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QProgressBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QProgressBar_staticMetaObject();
 void QProgressBar_delete(QProgressBar* self);
 
 #ifdef __cplusplus

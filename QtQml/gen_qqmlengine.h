@@ -61,6 +61,7 @@ int QQmlImageProviderBase_imageType(const QQmlImageProviderBase* self);
 int QQmlImageProviderBase_flags(const QQmlImageProviderBase* self);
 struct miqt_string QQmlImageProviderBase_tr2(const char* s, const char* c);
 struct miqt_string QQmlImageProviderBase_tr3(const char* s, const char* c, int n);
+const QMetaObject* QQmlImageProviderBase_staticMetaObject();
 void QQmlImageProviderBase_delete(QQmlImageProviderBase* self);
 
 QQmlEngine* QQmlEngine_new();
@@ -136,6 +137,7 @@ QObject* QQmlEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QQmlEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQmlEngine_staticMetaObject();
 void QQmlEngine_delete(QQmlEngine* self);
 
 #ifdef __cplusplus

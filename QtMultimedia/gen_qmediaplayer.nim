@@ -75,6 +75,7 @@ import
   gen_qmediatimerange_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qvideosink_types
@@ -86,6 +87,7 @@ export
   gen_qmediatimerange_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qvideosink_types
@@ -193,6 +195,7 @@ proc fQMediaPlayer_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQMediaPlayer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMediaPlayer_override_virtual_connectNotify".}
 proc fQMediaPlayer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMediaPlayer_virtualbase_disconnectNotify".}
 proc fcQMediaPlayer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMediaPlayer_override_virtual_disconnectNotify".}
+proc fcQMediaPlayer_staticMetaObject(): pointer {.importc: "QMediaPlayer_staticMetaObject".}
 proc fcQMediaPlayer_delete(self: pointer) {.importc: "QMediaPlayer_delete".}
 
 
@@ -799,5 +802,7 @@ proc miqt_exec_callback_QMediaPlayer_disconnectNotify(self: ptr cQMediaPlayer, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmediaplayer_types.QMediaPlayer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaPlayer_staticMetaObject())
 proc delete*(self: gen_qmediaplayer_types.QMediaPlayer) =
   fcQMediaPlayer_delete(self.h)

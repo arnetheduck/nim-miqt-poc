@@ -671,6 +671,7 @@ void QWebEngineProfile_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebEngineProfile_staticMetaObject() { return &QWebEngineProfile::staticMetaObject; }
 QObject* QWebEngineProfile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {

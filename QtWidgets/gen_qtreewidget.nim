@@ -61,6 +61,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -86,6 +87,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -464,6 +466,7 @@ proc fQTreeWidget_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQTreeWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTreeWidget_override_virtual_connectNotify".}
 proc fQTreeWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTreeWidget_virtualbase_disconnectNotify".}
 proc fcQTreeWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTreeWidget_override_virtual_disconnectNotify".}
+proc fcQTreeWidget_staticMetaObject(): pointer {.importc: "QTreeWidget_staticMetaObject".}
 proc fcQTreeWidget_delete(self: pointer) {.importc: "QTreeWidget_delete".}
 
 
@@ -3030,5 +3033,7 @@ proc miqt_exec_callback_QTreeWidget_disconnectNotify(self: ptr cQTreeWidget, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtreewidget_types.QTreeWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTreeWidget_staticMetaObject())
 proc delete*(self: gen_qtreewidget_types.QTreeWidget) =
   fcQTreeWidget_delete(self.h)

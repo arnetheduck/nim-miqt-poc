@@ -2211,6 +2211,7 @@ void QSslSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSslSocket_staticMetaObject() { return &QSslSocket::staticMetaObject; }
 void QSslSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state) {
 	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
 	if (self_cast == nullptr) {

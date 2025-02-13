@@ -97,6 +97,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -115,6 +116,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -339,6 +341,7 @@ proc fQMessageBox_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQMessageBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMessageBox_override_virtual_connectNotify".}
 proc fQMessageBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMessageBox_virtualbase_disconnectNotify".}
 proc fcQMessageBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMessageBox_override_virtual_disconnectNotify".}
+proc fcQMessageBox_staticMetaObject(): pointer {.importc: "QMessageBox_staticMetaObject".}
 proc fcQMessageBox_delete(self: pointer) {.importc: "QMessageBox_delete".}
 
 
@@ -1621,5 +1624,7 @@ proc miqt_exec_callback_QMessageBox_disconnectNotify(self: ptr cQMessageBox, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmessagebox_types.QMessageBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMessageBox_staticMetaObject())
 proc delete*(self: gen_qmessagebox_types.QMessageBox) =
   fcQMessageBox_delete(self.h)

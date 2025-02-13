@@ -445,6 +445,7 @@ void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSocketNotifier_staticMetaObject() { return &QSocketNotifier::staticMetaObject; }
 QObject* QSocketNotifier_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
 	if (self_cast == nullptr) {

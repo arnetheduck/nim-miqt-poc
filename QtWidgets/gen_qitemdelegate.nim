@@ -46,6 +46,7 @@ import
   gen_qitemeditorfactory_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpixmap_types,
@@ -62,6 +63,7 @@ export
   gen_qitemeditorfactory_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qpixmap_types,
@@ -134,6 +136,7 @@ proc fQItemDelegate_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQItemDelegate_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QItemDelegate_override_virtual_connectNotify".}
 proc fQItemDelegate_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QItemDelegate_virtualbase_disconnectNotify".}
 proc fcQItemDelegate_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QItemDelegate_override_virtual_disconnectNotify".}
+proc fcQItemDelegate_staticMetaObject(): pointer {.importc: "QItemDelegate_staticMetaObject".}
 proc fcQItemDelegate_delete(self: pointer) {.importc: "QItemDelegate_delete".}
 
 
@@ -664,5 +667,7 @@ proc miqt_exec_callback_QItemDelegate_disconnectNotify(self: ptr cQItemDelegate,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qitemdelegate_types.QItemDelegate): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQItemDelegate_staticMetaObject())
 proc delete*(self: gen_qitemdelegate_types.QItemDelegate) =
   fcQItemDelegate_delete(self.h)

@@ -2269,6 +2269,7 @@ void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractButton_staticMetaObject() { return &QAbstractButton::staticMetaObject; }
 void QAbstractButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
 	if (self_cast == nullptr) {

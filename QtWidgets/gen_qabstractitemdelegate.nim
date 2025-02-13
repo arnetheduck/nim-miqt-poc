@@ -52,6 +52,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qsize_types,
@@ -64,6 +65,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpainter_types,
   gen_qsize_types,
@@ -132,6 +134,7 @@ proc fQAbstractItemDelegate_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQAbstractItemDelegate_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractItemDelegate_override_virtual_connectNotify".}
 proc fQAbstractItemDelegate_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractItemDelegate_virtualbase_disconnectNotify".}
 proc fcQAbstractItemDelegate_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractItemDelegate_override_virtual_disconnectNotify".}
+proc fcQAbstractItemDelegate_staticMetaObject(): pointer {.importc: "QAbstractItemDelegate_staticMetaObject".}
 proc fcQAbstractItemDelegate_delete(self: pointer) {.importc: "QAbstractItemDelegate_delete".}
 
 
@@ -634,5 +637,7 @@ proc miqt_exec_callback_QAbstractItemDelegate_disconnectNotify(self: ptr cQAbstr
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractitemdelegate_types.QAbstractItemDelegate): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractItemDelegate_staticMetaObject())
 proc delete*(self: gen_qabstractitemdelegate_types.QAbstractItemDelegate) =
   fcQAbstractItemDelegate_delete(self.h)

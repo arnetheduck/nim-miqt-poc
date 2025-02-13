@@ -41,11 +41,13 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQSignalMapper*{.exportc: "QSignalMapper", incompleteStruct.} = object
@@ -89,6 +91,7 @@ proc fQSignalMapper_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQSignalMapper_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSignalMapper_override_virtual_connectNotify".}
 proc fQSignalMapper_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSignalMapper_virtualbase_disconnectNotify".}
 proc fcQSignalMapper_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSignalMapper_override_virtual_disconnectNotify".}
+proc fcQSignalMapper_staticMetaObject(): pointer {.importc: "QSignalMapper_staticMetaObject".}
 proc fcQSignalMapper_delete(self: pointer) {.importc: "QSignalMapper_delete".}
 
 
@@ -353,5 +356,7 @@ proc miqt_exec_callback_QSignalMapper_disconnectNotify(self: ptr cQSignalMapper,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsignalmapper_types.QSignalMapper): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSignalMapper_staticMetaObject())
 proc delete*(self: gen_qsignalmapper_types.QSignalMapper) =
   fcQSignalMapper_delete(self.h)

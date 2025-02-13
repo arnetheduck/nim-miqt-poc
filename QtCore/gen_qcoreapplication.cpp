@@ -825,6 +825,7 @@ void QCoreApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQCoreApplication*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCoreApplication_staticMetaObject() { return &QCoreApplication::staticMetaObject; }
 void* QCoreApplication_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {
 	MiqtVirtualQCoreApplication* self_cast = dynamic_cast<MiqtVirtualQCoreApplication*>( (QCoreApplication*)(self) );
 	if (self_cast == nullptr) {

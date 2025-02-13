@@ -43,6 +43,7 @@ import
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -61,6 +62,7 @@ export
   gen_qmetaobject_types,
   gen_qmimedata_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -244,6 +246,7 @@ proc fQTextBrowser_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQTextBrowser_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTextBrowser_override_virtual_connectNotify".}
 proc fQTextBrowser_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTextBrowser_virtualbase_disconnectNotify".}
 proc fcQTextBrowser_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTextBrowser_override_virtual_disconnectNotify".}
+proc fcQTextBrowser_staticMetaObject(): pointer {.importc: "QTextBrowser_staticMetaObject".}
 proc fcQTextBrowser_delete(self: pointer) {.importc: "QTextBrowser_delete".}
 
 
@@ -1563,5 +1566,7 @@ proc miqt_exec_callback_QTextBrowser_disconnectNotify(self: ptr cQTextBrowser, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtextbrowser_types.QTextBrowser): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTextBrowser_staticMetaObject())
 proc delete*(self: gen_qtextbrowser_types.QTextBrowser) =
   fcQTextBrowser_delete(self.h)

@@ -218,6 +218,7 @@ QObject* QRubberBand_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QRubberBand_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QRubberBand_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QRubberBand_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QRubberBand_staticMetaObject();
 void QRubberBand_delete(QRubberBand* self);
 
 #ifdef __cplusplus

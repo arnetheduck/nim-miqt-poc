@@ -56,6 +56,7 @@ import
   gen_qbindingstorage_types,
   gen_qcoreevent_types,
   gen_qmetaobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qthread_types,
   gen_qvariant_types
@@ -64,6 +65,7 @@ export
   gen_qbindingstorage_types,
   gen_qcoreevent_types,
   gen_qmetaobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qthread_types,
   gen_qvariant_types
@@ -136,6 +138,7 @@ proc fQObject_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQObject_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QObject_override_virtual_connectNotify".}
 proc fQObject_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QObject_virtualbase_disconnectNotify".}
 proc fcQObject_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QObject_override_virtual_disconnectNotify".}
+proc fcQObject_staticMetaObject(): pointer {.importc: "QObject_staticMetaObject".}
 proc fcQObject_delete(self: pointer) {.importc: "QObject_delete".}
 proc fcQSignalBlocker_new(o: pointer): ptr cQSignalBlocker {.importc: "QSignalBlocker_new".}
 proc fcQSignalBlocker_new2(o: pointer): ptr cQSignalBlocker {.importc: "QSignalBlocker_new2".}
@@ -483,6 +486,8 @@ proc miqt_exec_callback_QObject_disconnectNotify(self: ptr cQObject, slot: int, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qobject_types.QObject): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQObject_staticMetaObject())
 proc delete*(self: gen_qobject_types.QObject) =
   fcQObject_delete(self.h)
 

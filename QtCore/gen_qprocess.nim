@@ -84,12 +84,14 @@ import
   gen_qiodevice,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qiodevice,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQProcessEnvironment*{.exportc: "QProcessEnvironment", incompleteStruct.} = object
@@ -239,6 +241,7 @@ proc fQProcess_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQProcess_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QProcess_override_virtual_connectNotify".}
 proc fQProcess_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QProcess_virtualbase_disconnectNotify".}
 proc fcQProcess_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QProcess_override_virtual_disconnectNotify".}
+proc fcQProcess_staticMetaObject(): pointer {.importc: "QProcess_staticMetaObject".}
 proc fcQProcess_delete(self: pointer) {.importc: "QProcess_delete".}
 
 
@@ -1119,5 +1122,7 @@ proc miqt_exec_callback_QProcess_disconnectNotify(self: ptr cQProcess, slot: int
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qprocess_types.QProcess): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQProcess_staticMetaObject())
 proc delete*(self: gen_qprocess_types.QProcess) =
   fcQProcess_delete(self.h)

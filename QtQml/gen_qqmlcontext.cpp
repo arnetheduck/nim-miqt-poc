@@ -502,6 +502,7 @@ void QQmlContext_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlContext*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlContext_staticMetaObject() { return &QQmlContext::staticMetaObject; }
 QObject* QQmlContext_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlContext* self_cast = dynamic_cast<MiqtVirtualQQmlContext*>( (QQmlContext*)(self) );
 	if (self_cast == nullptr) {

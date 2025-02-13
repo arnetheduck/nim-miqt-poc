@@ -60,6 +60,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -73,6 +74,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -226,6 +228,7 @@ proc fQAbstractSlider_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQAbstractSlider_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractSlider_override_virtual_connectNotify".}
 proc fQAbstractSlider_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractSlider_virtualbase_disconnectNotify".}
 proc fcQAbstractSlider_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractSlider_override_virtual_disconnectNotify".}
+proc fcQAbstractSlider_staticMetaObject(): pointer {.importc: "QAbstractSlider_staticMetaObject".}
 proc fcQAbstractSlider_delete(self: pointer) {.importc: "QAbstractSlider_delete".}
 
 
@@ -1294,5 +1297,7 @@ proc miqt_exec_callback_QAbstractSlider_disconnectNotify(self: ptr cQAbstractSli
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractslider_types.QAbstractSlider): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractSlider_staticMetaObject())
 proc delete*(self: gen_qabstractslider_types.QAbstractSlider) =
   fcQAbstractSlider_delete(self.h)

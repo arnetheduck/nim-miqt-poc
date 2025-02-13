@@ -59,6 +59,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -74,6 +75,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -210,6 +212,7 @@ proc fQAbstractPrintDialog_virtualbase_connectNotify(self: pointer, signal: poin
 proc fcQAbstractPrintDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractPrintDialog_override_virtual_connectNotify".}
 proc fQAbstractPrintDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractPrintDialog_virtualbase_disconnectNotify".}
 proc fcQAbstractPrintDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractPrintDialog_override_virtual_disconnectNotify".}
+proc fcQAbstractPrintDialog_staticMetaObject(): pointer {.importc: "QAbstractPrintDialog_staticMetaObject".}
 proc fcQAbstractPrintDialog_delete(self: pointer) {.importc: "QAbstractPrintDialog_delete".}
 
 
@@ -1208,5 +1211,7 @@ proc miqt_exec_callback_QAbstractPrintDialog_disconnectNotify(self: ptr cQAbstra
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractprintdialog_types.QAbstractPrintDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractPrintDialog_staticMetaObject())
 proc delete*(self: gen_qabstractprintdialog_types.QAbstractPrintDialog) =
   fcQAbstractPrintDialog_delete(self.h)

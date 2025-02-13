@@ -42,6 +42,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -55,6 +56,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -171,6 +173,7 @@ proc fQSizeGrip_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQSizeGrip_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSizeGrip_override_virtual_connectNotify".}
 proc fQSizeGrip_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSizeGrip_virtualbase_disconnectNotify".}
 proc fcQSizeGrip_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSizeGrip_override_virtual_disconnectNotify".}
+proc fcQSizeGrip_staticMetaObject(): pointer {.importc: "QSizeGrip_staticMetaObject".}
 proc fcQSizeGrip_delete(self: pointer) {.importc: "QSizeGrip_delete".}
 
 
@@ -1059,5 +1062,7 @@ proc miqt_exec_callback_QSizeGrip_disconnectNotify(self: ptr cQSizeGrip, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsizegrip_types.QSizeGrip): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSizeGrip_staticMetaObject())
 proc delete*(self: gen_qsizegrip_types.QSizeGrip) =
   fcQSizeGrip_delete(self.h)

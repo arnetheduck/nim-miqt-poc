@@ -2145,6 +2145,7 @@ void QDialogButtonBox_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQDialogButtonBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDialogButtonBox_staticMetaObject() { return &QDialogButtonBox::staticMetaObject; }
 void QDialogButtonBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQDialogButtonBox* self_cast = dynamic_cast<MiqtVirtualQDialogButtonBox*>( (QDialogButtonBox*)(self) );
 	if (self_cast == nullptr) {

@@ -129,6 +129,7 @@ QObject* QQuickTransform_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QQuickTransform_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickTransform_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickTransform_staticMetaObject();
 void QQuickTransform_delete(QQuickTransform* self);
 
 QQuickItem* QQuickItem_new();
@@ -437,6 +438,7 @@ QObject* QQuickItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QQuickItem_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickItem_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickItem_staticMetaObject();
 void QQuickItem_delete(QQuickItem* self);
 
 QQuickItem__ItemChangeData* QQuickItem__ItemChangeData_new(QQuickItem* v);

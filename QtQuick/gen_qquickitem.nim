@@ -81,6 +81,7 @@ import
   gen_qmatrix4x4_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qquickwindow_types,
@@ -98,6 +99,7 @@ export
   gen_qmatrix4x4_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpoint_types,
   gen_qquickwindow_types,
@@ -141,6 +143,7 @@ proc fQQuickTransform_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQQuickTransform_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickTransform_override_virtual_connectNotify".}
 proc fQQuickTransform_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickTransform_virtualbase_disconnectNotify".}
 proc fcQQuickTransform_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickTransform_override_virtual_disconnectNotify".}
+proc fcQQuickTransform_staticMetaObject(): pointer {.importc: "QQuickTransform_staticMetaObject".}
 proc fcQQuickTransform_delete(self: pointer) {.importc: "QQuickTransform_delete".}
 proc fcQQuickItem_new(): ptr cQQuickItem {.importc: "QQuickItem_new".}
 proc fcQQuickItem_new2(parent: pointer): ptr cQQuickItem {.importc: "QQuickItem_new2".}
@@ -408,6 +411,7 @@ proc fQQuickItem_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQQuickItem_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickItem_override_virtual_connectNotify".}
 proc fQQuickItem_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickItem_virtualbase_disconnectNotify".}
 proc fcQQuickItem_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickItem_override_virtual_disconnectNotify".}
+proc fcQQuickItem_staticMetaObject(): pointer {.importc: "QQuickItem_staticMetaObject".}
 proc fcQQuickItem_delete(self: pointer) {.importc: "QQuickItem_delete".}
 proc fcQQuickItemItemChangeData_new(v: pointer): ptr cQQuickItemItemChangeData {.importc: "QQuickItem__ItemChangeData_new".}
 proc fcQQuickItemItemChangeData_new2(v: pointer): ptr cQQuickItemItemChangeData {.importc: "QQuickItem__ItemChangeData_new2".}
@@ -623,6 +627,8 @@ proc miqt_exec_callback_QQuickTransform_disconnectNotify(self: ptr cQQuickTransf
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickitem_types.QQuickTransform): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickTransform_staticMetaObject())
 proc delete*(self: gen_qquickitem_types.QQuickTransform) =
   fcQQuickTransform_delete(self.h)
 
@@ -2184,6 +2190,8 @@ proc miqt_exec_callback_QQuickItem_disconnectNotify(self: ptr cQQuickItem, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickitem_types.QQuickItem): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickItem_staticMetaObject())
 proc delete*(self: gen_qquickitem_types.QQuickItem) =
   fcQQuickItem_delete(self.h)
 

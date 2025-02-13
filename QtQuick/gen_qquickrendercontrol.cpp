@@ -528,6 +528,7 @@ void QQuickRenderControl_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQQuickRenderControl*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickRenderControl_staticMetaObject() { return &QQuickRenderControl::staticMetaObject; }
 QObject* QQuickRenderControl_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickRenderControl* self_cast = dynamic_cast<MiqtVirtualQQuickRenderControl*>( (QQuickRenderControl*)(self) );
 	if (self_cast == nullptr) {

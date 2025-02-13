@@ -270,6 +270,7 @@ QObject* QAbstractSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QAbstractSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractSpinBox_staticMetaObject();
 void QAbstractSpinBox_delete(QAbstractSpinBox* self);
 
 #ifdef __cplusplus

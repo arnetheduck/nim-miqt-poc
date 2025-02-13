@@ -2370,6 +2370,7 @@ void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMdiArea*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMdiArea_staticMetaObject() { return &QMdiArea::staticMetaObject; }
 void QMdiArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
 	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	if (self_cast == nullptr) {

@@ -54,6 +54,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -68,6 +69,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -217,6 +219,7 @@ proc fQPrintPreviewWidget_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQPrintPreviewWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPrintPreviewWidget_override_virtual_connectNotify".}
 proc fQPrintPreviewWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPrintPreviewWidget_virtualbase_disconnectNotify".}
 proc fcQPrintPreviewWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPrintPreviewWidget_override_virtual_disconnectNotify".}
+proc fcQPrintPreviewWidget_staticMetaObject(): pointer {.importc: "QPrintPreviewWidget_staticMetaObject".}
 proc fcQPrintPreviewWidget_delete(self: pointer) {.importc: "QPrintPreviewWidget_delete".}
 
 
@@ -1219,5 +1222,7 @@ proc miqt_exec_callback_QPrintPreviewWidget_disconnectNotify(self: ptr cQPrintPr
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qprintpreviewwidget_types.QPrintPreviewWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPrintPreviewWidget_staticMetaObject())
 proc delete*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget) =
   fcQPrintPreviewWidget_delete(self.h)

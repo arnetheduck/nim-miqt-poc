@@ -457,6 +457,7 @@ void QTimer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTimer_staticMetaObject() { return &QTimer::staticMetaObject; }
 QObject* QTimer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTimer* self_cast = dynamic_cast<MiqtVirtualQTimer*>( (QTimer*)(self) );
 	if (self_cast == nullptr) {

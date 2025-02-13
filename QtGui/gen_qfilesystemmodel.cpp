@@ -2477,6 +2477,7 @@ void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFileSystemModel_staticMetaObject() { return &QFileSystemModel::staticMetaObject; }
 QModelIndex* QFileSystemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {

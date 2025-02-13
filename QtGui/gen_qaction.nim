@@ -66,6 +66,7 @@ import
   gen_qkeysequence_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 export
@@ -76,6 +77,7 @@ export
   gen_qkeysequence_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qvariant_types
 
@@ -179,6 +181,7 @@ proc fQAction_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQAction_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAction_override_virtual_connectNotify".}
 proc fQAction_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAction_virtualbase_disconnectNotify".}
 proc fcQAction_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAction_override_virtual_disconnectNotify".}
+proc fcQAction_staticMetaObject(): pointer {.importc: "QAction_staticMetaObject".}
 proc fcQAction_delete(self: pointer) {.importc: "QAction_delete".}
 
 
@@ -688,5 +691,7 @@ proc miqt_exec_callback_QAction_disconnectNotify(self: ptr cQAction, slot: int, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaction_types.QAction): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAction_staticMetaObject())
 proc delete*(self: gen_qaction_types.QAction) =
   fcQAction_delete(self.h)

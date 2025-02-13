@@ -175,6 +175,7 @@ QAbstractEventDispatcher* QAbstractEventDispatcher_instance1(QThread* thread) {
 	return QAbstractEventDispatcher::instance(thread);
 }
 
+const QMetaObject* QAbstractEventDispatcher_staticMetaObject() { return &QAbstractEventDispatcher::staticMetaObject; }
 void QAbstractEventDispatcher_delete(QAbstractEventDispatcher* self) {
 	delete self;
 }

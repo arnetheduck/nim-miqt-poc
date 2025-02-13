@@ -55,6 +55,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qwidget_types
@@ -64,6 +65,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qwidget_types
@@ -144,6 +146,7 @@ proc fQCompleter_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQCompleter_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCompleter_override_virtual_connectNotify".}
 proc fQCompleter_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCompleter_virtualbase_disconnectNotify".}
 proc fcQCompleter_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCompleter_override_virtual_disconnectNotify".}
+proc fcQCompleter_staticMetaObject(): pointer {.importc: "QCompleter_staticMetaObject".}
 proc fcQCompleter_delete(self: pointer) {.importc: "QCompleter_delete".}
 
 
@@ -595,5 +598,7 @@ proc miqt_exec_callback_QCompleter_disconnectNotify(self: ptr cQCompleter, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcompleter_types.QCompleter): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCompleter_staticMetaObject())
 proc delete*(self: gen_qcompleter_types.QCompleter) =
   fcQCompleter_delete(self.h)

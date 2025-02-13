@@ -119,6 +119,7 @@ QObject* QSaveFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QSaveFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSaveFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSaveFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSaveFile_staticMetaObject();
 void QSaveFile_delete(QSaveFile* self);
 
 #ifdef __cplusplus

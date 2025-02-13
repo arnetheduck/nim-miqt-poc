@@ -1523,6 +1523,7 @@ void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QProxyStyle_staticMetaObject() { return &QProxyStyle::staticMetaObject; }
 QObject* QProxyStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQProxyStyle* self_cast = dynamic_cast<MiqtVirtualQProxyStyle*>( (QProxyStyle*)(self) );
 	if (self_cast == nullptr) {

@@ -696,6 +696,7 @@ void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsItemAnimation_staticMetaObject() { return &QGraphicsItemAnimation::staticMetaObject; }
 QObject* QGraphicsItemAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
 	if (self_cast == nullptr) {

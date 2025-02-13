@@ -576,6 +576,7 @@ void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAnimationGroup_staticMetaObject() { return &QAnimationGroup::staticMetaObject; }
 QObject* QAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
 	if (self_cast == nullptr) {

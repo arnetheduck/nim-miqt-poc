@@ -78,6 +78,7 @@ QObject* QSctpServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QSctpServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSctpServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSctpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSctpServer_staticMetaObject();
 void QSctpServer_delete(QSctpServer* self);
 
 #ifdef __cplusplus

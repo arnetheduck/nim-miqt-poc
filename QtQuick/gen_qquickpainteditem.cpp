@@ -1952,6 +1952,7 @@ void QQuickPaintedItem_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQQuickPaintedItem*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickPaintedItem_staticMetaObject() { return &QQuickPaintedItem::staticMetaObject; }
 bool QQuickPaintedItem_protectedbase_isComponentComplete(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickPaintedItem* self_cast = dynamic_cast<MiqtVirtualQQuickPaintedItem*>( (QQuickPaintedItem*)(self) );
 	if (self_cast == nullptr) {

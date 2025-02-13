@@ -232,6 +232,7 @@ QObject* QQuickPaintedItem_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QQuickPaintedItem_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickPaintedItem_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickPaintedItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickPaintedItem_staticMetaObject();
 void QQuickPaintedItem_delete(QQuickPaintedItem* self);
 
 #ifdef __cplusplus

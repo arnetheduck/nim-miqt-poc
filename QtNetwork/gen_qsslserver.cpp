@@ -693,6 +693,7 @@ void QSslServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSslServer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSslServer_staticMetaObject() { return &QSslServer::staticMetaObject; }
 void QSslServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket) {
 	MiqtVirtualQSslServer* self_cast = dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) );
 	if (self_cast == nullptr) {

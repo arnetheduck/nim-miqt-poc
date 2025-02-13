@@ -43,6 +43,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintdevicewindow,
@@ -57,6 +58,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintdevicewindow,
@@ -150,6 +152,7 @@ proc fQRasterWindow_virtualbase_initPainter(self: pointer, painter: pointer): vo
 proc fcQRasterWindow_override_virtual_initPainter(self: pointer, slot: int) {.importc: "QRasterWindow_override_virtual_initPainter".}
 proc fQRasterWindow_virtualbase_sharedPainter(self: pointer, ): pointer{.importc: "QRasterWindow_virtualbase_sharedPainter".}
 proc fcQRasterWindow_override_virtual_sharedPainter(self: pointer, slot: int) {.importc: "QRasterWindow_override_virtual_sharedPainter".}
+proc fcQRasterWindow_staticMetaObject(): pointer {.importc: "QRasterWindow_staticMetaObject".}
 proc fcQRasterWindow_delete(self: pointer) {.importc: "QRasterWindow_delete".}
 
 
@@ -842,5 +845,7 @@ proc miqt_exec_callback_QRasterWindow_sharedPainter(self: ptr cQRasterWindow, sl
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qrasterwindow_types.QRasterWindow): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQRasterWindow_staticMetaObject())
 proc delete*(self: gen_qrasterwindow_types.QRasterWindow) =
   fcQRasterWindow_delete(self.h)

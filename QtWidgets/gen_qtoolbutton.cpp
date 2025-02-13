@@ -2206,6 +2206,7 @@ void QToolButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QToolButton_staticMetaObject() { return &QToolButton::staticMetaObject; }
 void QToolButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
 	if (self_cast == nullptr) {

@@ -42,6 +42,7 @@ import
   gen_qmetaobject_types,
   gen_qmetatype_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qvariant_types
@@ -50,6 +51,7 @@ export
   gen_qmetaobject_types,
   gen_qmetatype_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qvariant_types
@@ -106,6 +108,7 @@ proc fQMimeData_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQMimeData_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMimeData_override_virtual_connectNotify".}
 proc fQMimeData_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMimeData_virtualbase_disconnectNotify".}
 proc fcQMimeData_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMimeData_override_virtual_disconnectNotify".}
+proc fcQMimeData_staticMetaObject(): pointer {.importc: "QMimeData_staticMetaObject".}
 proc fcQMimeData_delete(self: pointer) {.importc: "QMimeData_delete".}
 
 
@@ -453,5 +456,7 @@ proc miqt_exec_callback_QMimeData_disconnectNotify(self: ptr cQMimeData, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmimedata_types.QMimeData): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMimeData_staticMetaObject())
 proc delete*(self: gen_qmimedata_types.QMimeData) =
   fcQMimeData_delete(self.h)

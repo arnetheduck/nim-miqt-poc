@@ -58,11 +58,13 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQSharedMemory*{.exportc: "QSharedMemory", incompleteStruct.} = object
@@ -111,6 +113,7 @@ proc fQSharedMemory_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQSharedMemory_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSharedMemory_override_virtual_connectNotify".}
 proc fQSharedMemory_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSharedMemory_virtualbase_disconnectNotify".}
 proc fcQSharedMemory_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSharedMemory_override_virtual_disconnectNotify".}
+proc fcQSharedMemory_staticMetaObject(): pointer {.importc: "QSharedMemory_staticMetaObject".}
 proc fcQSharedMemory_delete(self: pointer) {.importc: "QSharedMemory_delete".}
 
 
@@ -366,5 +369,7 @@ proc miqt_exec_callback_QSharedMemory_disconnectNotify(self: ptr cQSharedMemory,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsharedmemory_types.QSharedMemory): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSharedMemory_staticMetaObject())
 proc delete*(self: gen_qsharedmemory_types.QSharedMemory) =
   fcQSharedMemory_delete(self.h)

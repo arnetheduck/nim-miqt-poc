@@ -52,6 +52,7 @@ import
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
@@ -61,6 +62,7 @@ export
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -124,6 +126,7 @@ proc fQAudioDecoder_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQAudioDecoder_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioDecoder_override_virtual_connectNotify".}
 proc fQAudioDecoder_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioDecoder_virtualbase_disconnectNotify".}
 proc fcQAudioDecoder_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioDecoder_override_virtual_disconnectNotify".}
+proc fcQAudioDecoder_staticMetaObject(): pointer {.importc: "QAudioDecoder_staticMetaObject".}
 proc fcQAudioDecoder_delete(self: pointer) {.importc: "QAudioDecoder_delete".}
 
 
@@ -499,5 +502,7 @@ proc miqt_exec_callback_QAudioDecoder_disconnectNotify(self: ptr cQAudioDecoder,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaudiodecoder_types.QAudioDecoder): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioDecoder_staticMetaObject())
 proc delete*(self: gen_qaudiodecoder_types.QAudioDecoder) =
   fcQAudioDecoder_delete(self.h)

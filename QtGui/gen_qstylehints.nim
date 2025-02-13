@@ -40,10 +40,12 @@ export gen_qstylehints_types
 import
   gen_qchar_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qchar_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQStyleHints*{.exportc: "QStyleHints", incompleteStruct.} = object
@@ -110,6 +112,7 @@ proc fcQStyleHints_mouseQuickSelectionThresholdChanged(self: pointer, threshold:
 proc fQStyleHints_connect_mouseQuickSelectionThresholdChanged(self: pointer, slot: int) {.importc: "QStyleHints_connect_mouseQuickSelectionThresholdChanged".}
 proc fcQStyleHints_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QStyleHints_tr2".}
 proc fcQStyleHints_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStyleHints_tr3".}
+proc fcQStyleHints_staticMetaObject(): pointer {.importc: "QStyleHints_staticMetaObject".}
 proc fcQStyleHints_delete(self: pointer) {.importc: "QStyleHints_delete".}
 
 
@@ -420,5 +423,7 @@ proc tr*(_: type gen_qstylehints_types.QStyleHints, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qstylehints_types.QStyleHints): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStyleHints_staticMetaObject())
 proc delete*(self: gen_qstylehints_types.QStyleHints) =
   fcQStyleHints_delete(self.h)

@@ -996,6 +996,7 @@ void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCamera_staticMetaObject() { return &QCamera::staticMetaObject; }
 QObject* QCamera_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
 	if (self_cast == nullptr) {

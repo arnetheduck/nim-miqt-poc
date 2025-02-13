@@ -284,6 +284,7 @@ QObject* QWizard_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWizard_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWizard_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWizard_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWizard_staticMetaObject();
 void QWizard_delete(QWizard* self);
 
 QWizardPage* QWizardPage_new(QWidget* parent);
@@ -435,6 +436,7 @@ QObject* QWizardPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QWizardPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWizardPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWizardPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWizardPage_staticMetaObject();
 void QWizardPage_delete(QWizardPage* self);
 
 #ifdef __cplusplus

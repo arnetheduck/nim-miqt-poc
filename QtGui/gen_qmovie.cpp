@@ -703,6 +703,7 @@ void QMovie_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMovie_staticMetaObject() { return &QMovie::staticMetaObject; }
 QObject* QMovie_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
 	if (self_cast == nullptr) {

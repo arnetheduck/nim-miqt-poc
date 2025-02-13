@@ -47,6 +47,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -60,6 +61,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -205,6 +207,7 @@ proc fQDialog_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDialog_override_virtual_connectNotify".}
 proc fQDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDialog_virtualbase_disconnectNotify".}
 proc fcQDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDialog_override_virtual_disconnectNotify".}
+proc fcQDialog_staticMetaObject(): pointer {.importc: "QDialog_staticMetaObject".}
 proc fcQDialog_delete(self: pointer) {.importc: "QDialog_delete".}
 
 
@@ -1255,5 +1258,7 @@ proc miqt_exec_callback_QDialog_disconnectNotify(self: ptr cQDialog, slot: int, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdialog_types.QDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDialog_staticMetaObject())
 proc delete*(self: gen_qdialog_types.QDialog) =
   fcQDialog_delete(self.h)

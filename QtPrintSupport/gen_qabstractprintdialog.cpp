@@ -2234,6 +2234,7 @@ void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractPrintDialog_staticMetaObject() { return &QAbstractPrintDialog::staticMetaObject; }
 void QAbstractPrintDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
 	if (self_cast == nullptr) {

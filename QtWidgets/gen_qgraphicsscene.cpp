@@ -1965,6 +1965,7 @@ void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsScene_staticMetaObject() { return &QGraphicsScene::staticMetaObject; }
 QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
 	if (self_cast == nullptr) {

@@ -495,6 +495,7 @@ void QMediaDevices_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaDevices_staticMetaObject() { return &QMediaDevices::staticMetaObject; }
 QObject* QMediaDevices_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
 	if (self_cast == nullptr) {

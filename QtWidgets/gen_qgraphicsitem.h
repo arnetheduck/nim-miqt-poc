@@ -525,6 +525,7 @@ bool QGraphicsObject_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 void QGraphicsObject_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
 void QGraphicsObject_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
 void QGraphicsObject_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
+const QMetaObject* QGraphicsObject_staticMetaObject();
 void QGraphicsObject_delete(QGraphicsObject* self);
 
 QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem_new();
@@ -1349,6 +1350,7 @@ bool QGraphicsTextItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 void QGraphicsTextItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
 void QGraphicsTextItem_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
 void QGraphicsTextItem_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
+const QMetaObject* QGraphicsTextItem_staticMetaObject();
 void QGraphicsTextItem_delete(QGraphicsTextItem* self);
 
 QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new();

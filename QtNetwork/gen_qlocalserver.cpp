@@ -644,6 +644,7 @@ void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLocalServer_staticMetaObject() { return &QLocalServer::staticMetaObject; }
 QObject* QLocalServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
 	if (self_cast == nullptr) {

@@ -43,6 +43,7 @@ import
   gen_qmargins_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpagelayout_types,
   gen_qpageranges_types,
@@ -57,6 +58,7 @@ export
   gen_qmargins_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpagelayout_types,
   gen_qpageranges_types,
@@ -129,6 +131,7 @@ proc fQPdfWriter_virtualbase_redirected(self: pointer, offset: pointer): pointer
 proc fcQPdfWriter_override_virtual_redirected(self: pointer, slot: int) {.importc: "QPdfWriter_override_virtual_redirected".}
 proc fQPdfWriter_virtualbase_sharedPainter(self: pointer, ): pointer{.importc: "QPdfWriter_virtualbase_sharedPainter".}
 proc fcQPdfWriter_override_virtual_sharedPainter(self: pointer, slot: int) {.importc: "QPdfWriter_override_virtual_sharedPainter".}
+proc fcQPdfWriter_staticMetaObject(): pointer {.importc: "QPdfWriter_staticMetaObject".}
 proc fcQPdfWriter_delete(self: pointer) {.importc: "QPdfWriter_delete".}
 
 
@@ -581,5 +584,7 @@ proc miqt_exec_callback_QPdfWriter_sharedPainter(self: ptr cQPdfWriter, slot: in
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qpdfwriter_types.QPdfWriter): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPdfWriter_staticMetaObject())
 proc delete*(self: gen_qpdfwriter_types.QPdfWriter) =
   fcQPdfWriter_delete(self.h)

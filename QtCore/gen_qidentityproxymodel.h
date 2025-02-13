@@ -203,6 +203,7 @@ QObject* QIdentityProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QIdentityProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIdentityProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIdentityProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QIdentityProxyModel_staticMetaObject();
 void QIdentityProxyModel_delete(QIdentityProxyModel* self);
 
 #ifdef __cplusplus

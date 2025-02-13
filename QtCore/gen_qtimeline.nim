@@ -53,12 +53,14 @@ import
   gen_qeasingcurve_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qeasingcurve_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQTimeLine*{.exportc: "QTimeLine", incompleteStruct.} = object
@@ -117,6 +119,7 @@ proc fQTimeLine_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQTimeLine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTimeLine_override_virtual_connectNotify".}
 proc fQTimeLine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTimeLine_virtualbase_disconnectNotify".}
 proc fcQTimeLine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTimeLine_override_virtual_disconnectNotify".}
+proc fcQTimeLine_staticMetaObject(): pointer {.importc: "QTimeLine_staticMetaObject".}
 proc fcQTimeLine_delete(self: pointer) {.importc: "QTimeLine_delete".}
 
 
@@ -406,5 +409,7 @@ proc miqt_exec_callback_QTimeLine_disconnectNotify(self: ptr cQTimeLine, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtimeline_types.QTimeLine): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTimeLine_staticMetaObject())
 proc delete*(self: gen_qtimeline_types.QTimeLine) =
   fcQTimeLine_delete(self.h)

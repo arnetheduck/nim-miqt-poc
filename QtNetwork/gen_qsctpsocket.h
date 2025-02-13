@@ -149,6 +149,7 @@ QObject* QSctpSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QSctpSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSctpSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSctpSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSctpSocket_staticMetaObject();
 void QSctpSocket_delete(QSctpSocket* self);
 
 #ifdef __cplusplus

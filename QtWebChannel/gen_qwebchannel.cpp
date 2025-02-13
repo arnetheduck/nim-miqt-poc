@@ -492,6 +492,7 @@ void QWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebChannel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebChannel_staticMetaObject() { return &QWebChannel::staticMetaObject; }
 QObject* QWebChannel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
 	if (self_cast == nullptr) {

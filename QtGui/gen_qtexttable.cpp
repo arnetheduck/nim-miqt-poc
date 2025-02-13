@@ -567,6 +567,7 @@ void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextTable*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextTable_staticMetaObject() { return &QTextTable::staticMetaObject; }
 QObject* QTextTable_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
 	if (self_cast == nullptr) {

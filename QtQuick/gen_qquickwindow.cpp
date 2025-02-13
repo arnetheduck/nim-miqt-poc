@@ -1772,6 +1772,7 @@ void QQuickWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQQuickWindow*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickWindow_staticMetaObject() { return &QQuickWindow::staticMetaObject; }
 void* QQuickWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {
 	MiqtVirtualQQuickWindow* self_cast = dynamic_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
 	if (self_cast == nullptr) {

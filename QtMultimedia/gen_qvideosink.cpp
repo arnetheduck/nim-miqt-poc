@@ -483,6 +483,7 @@ void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QVideoSink_staticMetaObject() { return &QVideoSink::staticMetaObject; }
 QObject* QVideoSink_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQVideoSink* self_cast = dynamic_cast<MiqtVirtualQVideoSink*>( (QVideoSink*)(self) );
 	if (self_cast == nullptr) {

@@ -280,6 +280,7 @@ QObject* QTabWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTabWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTabWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTabWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTabWidget_staticMetaObject();
 void QTabWidget_delete(QTabWidget* self);
 
 #ifdef __cplusplus

@@ -53,6 +53,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qwebengineclientcertificatestore_types,
   gen_qwebenginecookiestore_types,
@@ -63,6 +64,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qwebengineclientcertificatestore_types,
   gen_qwebenginecookiestore_types,
@@ -161,6 +163,7 @@ proc fQQuickWebEngineProfile_virtualbase_connectNotify(self: pointer, signal: po
 proc fcQQuickWebEngineProfile_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickWebEngineProfile_override_virtual_connectNotify".}
 proc fQQuickWebEngineProfile_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickWebEngineProfile_virtualbase_disconnectNotify".}
 proc fcQQuickWebEngineProfile_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickWebEngineProfile_override_virtual_disconnectNotify".}
+proc fcQQuickWebEngineProfile_staticMetaObject(): pointer {.importc: "QQuickWebEngineProfile_staticMetaObject".}
 proc fcQQuickWebEngineProfile_delete(self: pointer) {.importc: "QQuickWebEngineProfile_delete".}
 
 
@@ -695,5 +698,7 @@ proc miqt_exec_callback_QQuickWebEngineProfile_disconnectNotify(self: ptr cQQuic
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickwebengineprofile_types.QQuickWebEngineProfile): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickWebEngineProfile_staticMetaObject())
 proc delete*(self: gen_qquickwebengineprofile_types.QQuickWebEngineProfile) =
   fcQQuickWebEngineProfile_delete(self.h)

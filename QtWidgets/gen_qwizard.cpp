@@ -2665,6 +2665,7 @@ void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWizard_staticMetaObject() { return &QWizard::staticMetaObject; }
 void QWizard_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
 	if (self_cast == nullptr) {
@@ -4988,6 +4989,7 @@ void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWizardPage_staticMetaObject() { return &QWizardPage::staticMetaObject; }
 void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QVariant* value) {
 	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
 	if (self_cast == nullptr) {

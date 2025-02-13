@@ -500,6 +500,7 @@ void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWidgetAction_staticMetaObject() { return &QWidgetAction::staticMetaObject; }
 struct miqt_array /* of QWidget* */  QWidgetAction_protectedbase_createdWidgets(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
 	if (self_cast == nullptr) {

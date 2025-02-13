@@ -903,6 +903,7 @@ void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGuiApplication_staticMetaObject() { return &QGuiApplication::staticMetaObject; }
 void* QGuiApplication_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {

@@ -1424,6 +1424,7 @@ void QFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFile_staticMetaObject() { return &QFile::staticMetaObject; }
 void QFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
 	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
 	if (self_cast == nullptr) {

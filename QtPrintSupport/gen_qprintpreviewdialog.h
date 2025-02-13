@@ -222,6 +222,7 @@ QObject* QPrintPreviewDialog_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QPrintPreviewDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPrintPreviewDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPrintPreviewDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPrintPreviewDialog_staticMetaObject();
 void QPrintPreviewDialog_delete(QPrintPreviewDialog* self);
 
 #ifdef __cplusplus

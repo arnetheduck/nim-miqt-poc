@@ -121,6 +121,7 @@ QObject* QStyledItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QStyledItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStyledItemDelegate_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStyledItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QStyledItemDelegate_staticMetaObject();
 void QStyledItemDelegate_delete(QStyledItemDelegate* self);
 
 #ifdef __cplusplus

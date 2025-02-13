@@ -63,6 +63,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -78,6 +79,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -212,6 +214,7 @@ proc fQFrame_virtualbase_connectNotify(self: pointer, signal: pointer): void{.im
 proc fcQFrame_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFrame_override_virtual_connectNotify".}
 proc fQFrame_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFrame_virtualbase_disconnectNotify".}
 proc fcQFrame_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFrame_override_virtual_disconnectNotify".}
+proc fcQFrame_staticMetaObject(): pointer {.importc: "QFrame_staticMetaObject".}
 proc fcQFrame_delete(self: pointer) {.importc: "QFrame_delete".}
 
 
@@ -1159,5 +1162,7 @@ proc miqt_exec_callback_QFrame_disconnectNotify(self: ptr cQFrame, slot: int, si
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qframe_types.QFrame): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFrame_staticMetaObject())
 proc delete*(self: gen_qframe_types.QFrame) =
   fcQFrame_delete(self.h)

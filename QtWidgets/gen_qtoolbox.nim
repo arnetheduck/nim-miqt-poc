@@ -44,6 +44,7 @@ import
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -60,6 +61,7 @@ export
   gen_qicon_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -205,6 +207,7 @@ proc fQToolBox_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQToolBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QToolBox_override_virtual_connectNotify".}
 proc fQToolBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QToolBox_virtualbase_disconnectNotify".}
 proc fcQToolBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QToolBox_override_virtual_disconnectNotify".}
+proc fcQToolBox_staticMetaObject(): pointer {.importc: "QToolBox_staticMetaObject".}
 proc fcQToolBox_delete(self: pointer) {.importc: "QToolBox_delete".}
 
 
@@ -1226,5 +1229,7 @@ proc miqt_exec_callback_QToolBox_disconnectNotify(self: ptr cQToolBox, slot: int
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtoolbox_types.QToolBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQToolBox_staticMetaObject())
 proc delete*(self: gen_qtoolbox_types.QToolBox) =
   fcQToolBox_delete(self.h)

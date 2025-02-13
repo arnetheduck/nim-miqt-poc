@@ -843,6 +843,7 @@ void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QNetworkAccessManager_staticMetaObject() { return &QNetworkAccessManager::staticMetaObject; }
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedbase_supportedSchemesImplementation(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
 	if (self_cast == nullptr) {

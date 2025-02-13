@@ -605,6 +605,7 @@ void QSoundEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSoundEffect_staticMetaObject() { return &QSoundEffect::staticMetaObject; }
 QObject* QSoundEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {

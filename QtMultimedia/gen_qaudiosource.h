@@ -90,6 +90,7 @@ QObject* QAudioSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QAudioSource_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioSource_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioSource_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAudioSource_staticMetaObject();
 void QAudioSource_delete(QAudioSource* self);
 
 #ifdef __cplusplus

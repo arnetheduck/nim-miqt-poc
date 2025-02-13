@@ -905,6 +905,7 @@ void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDnsLookup_staticMetaObject() { return &QDnsLookup::staticMetaObject; }
 QObject* QDnsLookup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
 	if (self_cast == nullptr) {

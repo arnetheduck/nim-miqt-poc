@@ -64,6 +64,7 @@ import
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -78,6 +79,7 @@ export
   gen_qevent_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -242,6 +244,7 @@ proc fQAbstractSpinBox_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQAbstractSpinBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractSpinBox_override_virtual_connectNotify".}
 proc fQAbstractSpinBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractSpinBox_virtualbase_disconnectNotify".}
 proc fcQAbstractSpinBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractSpinBox_override_virtual_disconnectNotify".}
+proc fcQAbstractSpinBox_staticMetaObject(): pointer {.importc: "QAbstractSpinBox_staticMetaObject".}
 proc fcQAbstractSpinBox_delete(self: pointer) {.importc: "QAbstractSpinBox_delete".}
 
 
@@ -1359,5 +1362,7 @@ proc miqt_exec_callback_QAbstractSpinBox_disconnectNotify(self: ptr cQAbstractSp
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractspinbox_types.QAbstractSpinBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractSpinBox_staticMetaObject())
 proc delete*(self: gen_qabstractspinbox_types.QAbstractSpinBox) =
   fcQAbstractSpinBox_delete(self.h)

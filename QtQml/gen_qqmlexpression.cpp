@@ -536,6 +536,7 @@ void QQmlExpression_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQQmlExpression*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlExpression_staticMetaObject() { return &QQmlExpression::staticMetaObject; }
 QObject* QQmlExpression_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlExpression* self_cast = dynamic_cast<MiqtVirtualQQmlExpression*>( (QQmlExpression*)(self) );
 	if (self_cast == nullptr) {

@@ -750,6 +750,7 @@ void QQmlComponent_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQQmlComponent*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlComponent_staticMetaObject() { return &QQmlComponent::staticMetaObject; }
 QObject* QQmlComponent_protectedbase_createObject2(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQQmlComponent* self_cast = dynamic_cast<MiqtVirtualQQmlComponent*>( (QQmlComponent*)(self) );
 	if (self_cast == nullptr) {

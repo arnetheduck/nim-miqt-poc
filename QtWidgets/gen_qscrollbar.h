@@ -221,6 +221,7 @@ QObject* QScrollBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QScrollBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QScrollBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QScrollBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QScrollBar_staticMetaObject();
 void QScrollBar_delete(QScrollBar* self);
 
 #ifdef __cplusplus

@@ -72,6 +72,7 @@ void QAbstractNetworkCache_insert(QAbstractNetworkCache* self, QIODevice* device
 void QAbstractNetworkCache_clear(QAbstractNetworkCache* self);
 struct miqt_string QAbstractNetworkCache_tr2(const char* s, const char* c);
 struct miqt_string QAbstractNetworkCache_tr3(const char* s, const char* c, int n);
+const QMetaObject* QAbstractNetworkCache_staticMetaObject();
 void QAbstractNetworkCache_delete(QAbstractNetworkCache* self);
 
 #ifdef __cplusplus

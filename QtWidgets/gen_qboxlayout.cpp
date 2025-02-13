@@ -1520,6 +1520,7 @@ QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QBoxLayout_staticMetaObject() { return &QBoxLayout::staticMetaObject; }
 void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -2875,6 +2876,7 @@ QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QHBoxLayout_staticMetaObject() { return &QHBoxLayout::staticMetaObject; }
 void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -4230,6 +4232,7 @@ QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QVBoxLayout_staticMetaObject() { return &QVBoxLayout::staticMetaObject; }
 void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQVBoxLayout* self_cast = dynamic_cast<MiqtVirtualQVBoxLayout*>( (QVBoxLayout*)(self) );
 	if (self_cast == nullptr) {

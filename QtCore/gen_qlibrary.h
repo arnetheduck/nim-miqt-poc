@@ -78,6 +78,7 @@ QObject* QLibrary_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QLibrary_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLibrary_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLibrary_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QLibrary_staticMetaObject();
 void QLibrary_delete(QLibrary* self);
 
 #ifdef __cplusplus

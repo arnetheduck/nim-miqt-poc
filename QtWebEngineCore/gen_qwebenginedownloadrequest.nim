@@ -81,11 +81,13 @@ export gen_qwebenginedownloadrequest_types
 
 import
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qwebenginepage_types
 export
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types,
   gen_qwebenginepage_types
@@ -139,6 +141,7 @@ proc fcQWebEngineDownloadRequest_downloadFileNameChanged(self: pointer, ): void 
 proc fQWebEngineDownloadRequest_connect_downloadFileNameChanged(self: pointer, slot: int) {.importc: "QWebEngineDownloadRequest_connect_downloadFileNameChanged".}
 proc fcQWebEngineDownloadRequest_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineDownloadRequest_tr2".}
 proc fcQWebEngineDownloadRequest_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineDownloadRequest_tr3".}
+proc fcQWebEngineDownloadRequest_staticMetaObject(): pointer {.importc: "QWebEngineDownloadRequest_staticMetaObject".}
 proc fcQWebEngineDownloadRequest_delete(self: pointer) {.importc: "QWebEngineDownloadRequest_delete".}
 
 
@@ -383,5 +386,7 @@ proc tr*(_: type gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineDownloadRequest_staticMetaObject())
 proc delete*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest) =
   fcQWebEngineDownloadRequest_delete(self.h)

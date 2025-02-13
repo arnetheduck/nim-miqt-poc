@@ -100,6 +100,7 @@ struct miqt_string QQmlImageProviderBase_tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
+const QMetaObject* QQmlImageProviderBase_staticMetaObject() { return &QQmlImageProviderBase::staticMetaObject; }
 void QQmlImageProviderBase_delete(QQmlImageProviderBase* self) {
 	delete self;
 }
@@ -766,6 +767,7 @@ void QQmlEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlEngine_staticMetaObject() { return &QQmlEngine::staticMetaObject; }
 QObject* QQmlEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlEngine* self_cast = dynamic_cast<MiqtVirtualQQmlEngine*>( (QQmlEngine*)(self) );
 	if (self_cast == nullptr) {

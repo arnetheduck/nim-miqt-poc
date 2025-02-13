@@ -42,12 +42,14 @@ import
   gen_qkeysequence_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 export
   gen_qcoreevent_types,
   gen_qkeysequence_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types
 
 type cQShortcut*{.exportc: "QShortcut", incompleteStruct.} = object
@@ -101,6 +103,7 @@ proc fQShortcut_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQShortcut_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QShortcut_override_virtual_connectNotify".}
 proc fQShortcut_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QShortcut_virtualbase_disconnectNotify".}
 proc fcQShortcut_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QShortcut_override_virtual_disconnectNotify".}
+proc fcQShortcut_staticMetaObject(): pointer {.importc: "QShortcut_staticMetaObject".}
 proc fcQShortcut_delete(self: pointer) {.importc: "QShortcut_delete".}
 
 
@@ -390,5 +393,7 @@ proc miqt_exec_callback_QShortcut_disconnectNotify(self: ptr cQShortcut, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qshortcut_types.QShortcut): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQShortcut_staticMetaObject())
 proc delete*(self: gen_qshortcut_types.QShortcut) =
   fcQShortcut_delete(self.h)

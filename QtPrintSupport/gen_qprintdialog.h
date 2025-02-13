@@ -228,6 +228,7 @@ QObject* QPrintDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QPrintDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPrintDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPrintDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPrintDialog_staticMetaObject();
 void QPrintDialog_delete(QPrintDialog* self);
 
 #ifdef __cplusplus

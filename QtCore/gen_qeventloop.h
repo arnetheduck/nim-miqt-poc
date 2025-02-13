@@ -76,6 +76,7 @@ QObject* QEventLoop_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QEventLoop_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QEventLoop_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QEventLoop_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QEventLoop_staticMetaObject();
 void QEventLoop_delete(QEventLoop* self);
 
 QEventLoopLocker* QEventLoopLocker_new();

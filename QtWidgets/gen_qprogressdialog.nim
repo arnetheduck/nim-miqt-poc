@@ -44,6 +44,7 @@ import
   gen_qlabel_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -61,6 +62,7 @@ export
   gen_qlabel_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qpaintdevice_types,
   gen_qpaintengine_types,
@@ -217,6 +219,7 @@ proc fQProgressDialog_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQProgressDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QProgressDialog_override_virtual_connectNotify".}
 proc fQProgressDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QProgressDialog_virtualbase_disconnectNotify".}
 proc fcQProgressDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QProgressDialog_override_virtual_disconnectNotify".}
+proc fcQProgressDialog_staticMetaObject(): pointer {.importc: "QProgressDialog_staticMetaObject".}
 proc fcQProgressDialog_delete(self: pointer) {.importc: "QProgressDialog_delete".}
 
 
@@ -1279,5 +1282,7 @@ proc miqt_exec_callback_QProgressDialog_disconnectNotify(self: ptr cQProgressDia
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qprogressdialog_types.QProgressDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQProgressDialog_staticMetaObject())
 proc delete*(self: gen_qprogressdialog_types.QProgressDialog) =
   fcQProgressDialog_delete(self.h)

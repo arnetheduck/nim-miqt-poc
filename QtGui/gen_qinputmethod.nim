@@ -45,6 +45,7 @@ export gen_qinputmethod_types
 import
   gen_qlocale_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qtransform_types,
@@ -52,6 +53,7 @@ import
 export
   gen_qlocale_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qrect_types,
   gen_qtransform_types,
@@ -101,6 +103,7 @@ proc fcQInputMethod_inputDirectionChanged(self: pointer, newDirection: cint): vo
 proc fQInputMethod_connect_inputDirectionChanged(self: pointer, slot: int) {.importc: "QInputMethod_connect_inputDirectionChanged".}
 proc fcQInputMethod_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QInputMethod_tr2".}
 proc fcQInputMethod_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QInputMethod_tr3".}
+proc fcQInputMethod_staticMetaObject(): pointer {.importc: "QInputMethod_staticMetaObject".}
 
 
 func init*(T: type gen_qinputmethod_types.QInputMethod, h: ptr cQInputMethod): gen_qinputmethod_types.QInputMethod =
@@ -306,3 +309,5 @@ proc tr*(_: type gen_qinputmethod_types.QInputMethod, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qinputmethod_types.QInputMethod): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQInputMethod_staticMetaObject())

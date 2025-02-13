@@ -2811,6 +2811,7 @@ void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMessageBox_staticMetaObject() { return &QMessageBox::staticMetaObject; }
 void QMessageBox_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
 	if (self_cast == nullptr) {

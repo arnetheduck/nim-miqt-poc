@@ -41,6 +41,7 @@ import
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qquickitem_types,
   gen_qtextdocument_types
@@ -48,6 +49,7 @@ export
   gen_qcoreevent_types,
   gen_qmetaobject_types,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qquickitem_types,
   gen_qtextdocument_types
@@ -78,6 +80,7 @@ proc fQQuickTextDocument_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQQuickTextDocument_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickTextDocument_override_virtual_connectNotify".}
 proc fQQuickTextDocument_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickTextDocument_virtualbase_disconnectNotify".}
 proc fcQQuickTextDocument_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickTextDocument_override_virtual_disconnectNotify".}
+proc fcQQuickTextDocument_staticMetaObject(): pointer {.importc: "QQuickTextDocument_staticMetaObject".}
 proc fcQQuickTextDocument_delete(self: pointer) {.importc: "QQuickTextDocument_delete".}
 
 
@@ -264,5 +267,7 @@ proc miqt_exec_callback_QQuickTextDocument_disconnectNotify(self: ptr cQQuickTex
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquicktextdocument_types.QQuickTextDocument): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickTextDocument_staticMetaObject())
 proc delete*(self: gen_qquicktextdocument_types.QQuickTextDocument) =
   fcQQuickTextDocument_delete(self.h)

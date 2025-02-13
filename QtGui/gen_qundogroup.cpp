@@ -581,6 +581,7 @@ void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QUndoGroup_staticMetaObject() { return &QUndoGroup::staticMetaObject; }
 QObject* QUndoGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
 	if (self_cast == nullptr) {

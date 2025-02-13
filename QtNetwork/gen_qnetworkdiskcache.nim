@@ -43,6 +43,7 @@ import
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 export
@@ -51,6 +52,7 @@ export
   gen_qiodevice_types,
   gen_qmetaobject_types,
   gen_qobject_types,
+  gen_qobjectdefs,
   gen_qobjectdefs_types,
   gen_qurl_types
 
@@ -111,6 +113,7 @@ proc fQNetworkDiskCache_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQNetworkDiskCache_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QNetworkDiskCache_override_virtual_connectNotify".}
 proc fQNetworkDiskCache_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QNetworkDiskCache_virtualbase_disconnectNotify".}
 proc fcQNetworkDiskCache_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QNetworkDiskCache_override_virtual_disconnectNotify".}
+proc fcQNetworkDiskCache_staticMetaObject(): pointer {.importc: "QNetworkDiskCache_staticMetaObject".}
 proc fcQNetworkDiskCache_delete(self: pointer) {.importc: "QNetworkDiskCache_delete".}
 
 
@@ -498,5 +501,7 @@ proc miqt_exec_callback_QNetworkDiskCache_disconnectNotify(self: ptr cQNetworkDi
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qnetworkdiskcache_types.QNetworkDiskCache): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQNetworkDiskCache_staticMetaObject())
 proc delete*(self: gen_qnetworkdiskcache_types.QNetworkDiskCache) =
   fcQNetworkDiskCache_delete(self.h)

@@ -2275,6 +2275,7 @@ void QDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDialog_staticMetaObject() { return &QDialog::staticMetaObject; }
 void QDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQDialog* self_cast = dynamic_cast<MiqtVirtualQDialog*>( (QDialog*)(self) );
 	if (self_cast == nullptr) {

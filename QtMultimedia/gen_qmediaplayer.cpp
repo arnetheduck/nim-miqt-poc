@@ -845,6 +845,7 @@ void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaPlayer_staticMetaObject() { return &QMediaPlayer::staticMetaObject; }
 QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
 	if (self_cast == nullptr) {

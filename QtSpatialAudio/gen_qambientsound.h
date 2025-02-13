@@ -84,6 +84,7 @@ QObject* QAmbientSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QAmbientSound_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAmbientSound_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAmbientSound_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAmbientSound_staticMetaObject();
 void QAmbientSound_delete(QAmbientSound* self);
 
 #ifdef __cplusplus

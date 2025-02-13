@@ -517,6 +517,7 @@ void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSharedMemory_staticMetaObject() { return &QSharedMemory::staticMetaObject; }
 QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
 	if (self_cast == nullptr) {

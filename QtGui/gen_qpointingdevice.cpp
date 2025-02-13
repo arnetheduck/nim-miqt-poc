@@ -53,6 +53,7 @@ long long QPointingDeviceUniqueId_numericId(const QPointingDeviceUniqueId* self)
 	return static_cast<long long>(_ret);
 }
 
+const QMetaObject* QPointingDeviceUniqueId_staticMetaObject() { return &QPointingDeviceUniqueId::staticMetaObject; }
 void QPointingDeviceUniqueId_delete(QPointingDeviceUniqueId* self) {
 	delete self;
 }
@@ -524,6 +525,7 @@ void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPointingDevice_staticMetaObject() { return &QPointingDevice::staticMetaObject; }
 QObject* QPointingDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
