@@ -31,6 +31,7 @@ typedef struct QObject QObject;
 void QCameraFlashControl_virtbase(QCameraFlashControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraFlashControl_metaObject(const QCameraFlashControl* self);
 void* QCameraFlashControl_metacast(QCameraFlashControl* self, const char* param1);
+int QCameraFlashControl_metacall(QCameraFlashControl* self, int param1, int param2, void** param3);
 struct miqt_string QCameraFlashControl_tr(const char* s);
 struct miqt_string QCameraFlashControl_trUtf8(const char* s);
 int QCameraFlashControl_flashMode(const QCameraFlashControl* self);

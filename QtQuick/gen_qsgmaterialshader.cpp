@@ -237,10 +237,6 @@ const char** QSGMaterialShader_attributeNames(const QSGMaterialShader* self) {
 	return (const char**) self->attributeNames();
 }
 
-QOpenGLShaderProgram* QSGMaterialShader_program(QSGMaterialShader* self) {
-	return self->program();
-}
-
 bool QSGMaterialShader_override_virtual_activate(void* self, intptr_t slot) {
 	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
 	if (self_cast == nullptr) {
@@ -434,10 +430,6 @@ float QSGMaterialShader__RenderState_determinant(const QSGMaterialShader__Render
 
 float QSGMaterialShader__RenderState_devicePixelRatio(const QSGMaterialShader__RenderState* self) {
 	return self->devicePixelRatio();
-}
-
-QOpenGLContext* QSGMaterialShader__RenderState_context(const QSGMaterialShader__RenderState* self) {
-	return self->context();
 }
 
 void QSGMaterialShader__RenderState_delete(QSGMaterialShader__RenderState* self) {

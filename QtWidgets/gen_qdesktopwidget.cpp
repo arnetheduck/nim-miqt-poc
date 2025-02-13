@@ -46,6 +46,7 @@ void miqt_exec_callback_QDesktopWidget_resized(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_workAreaResized(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_screenCountChanged(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_primaryScreenChanged(intptr_t);
+int miqt_exec_callback_QDesktopWidget_metacall(QDesktopWidget*, intptr_t, int, int, void**);
 void miqt_exec_callback_QDesktopWidget_resizeEvent(QDesktopWidget*, intptr_t, QResizeEvent*);
 int miqt_exec_callback_QDesktopWidget_devType(const QDesktopWidget*, intptr_t);
 void miqt_exec_callback_QDesktopWidget_setVisible(QDesktopWidget*, intptr_t, bool);
@@ -103,6 +104,32 @@ public:
 	MiqtVirtualQDesktopWidget(): QDesktopWidget() {};
 
 	virtual ~MiqtVirtualQDesktopWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QDesktopWidget::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QDesktopWidget_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QDesktopWidget::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -1255,6 +1282,10 @@ void* QDesktopWidget_metacast(QDesktopWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QDesktopWidget_metacall(QDesktopWidget* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QDesktopWidget_tr(const char* s) {
 	QString _ret = QDesktopWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1430,6 +1461,20 @@ QRect* QDesktopWidget_screenGeometry1(const QDesktopWidget* self, int screen) {
 
 QRect* QDesktopWidget_availableGeometry1(const QDesktopWidget* self, int screen) {
 	return new QRect(self->availableGeometry(static_cast<int>(screen)));
+}
+
+bool QDesktopWidget_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QDesktopWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QDesktopWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {

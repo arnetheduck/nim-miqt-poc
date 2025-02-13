@@ -23,6 +23,7 @@ void miqt_exec_callback_QSignalMapper_mappedInt(intptr_t, int);
 void miqt_exec_callback_QSignalMapper_mappedString(intptr_t, struct miqt_string);
 void miqt_exec_callback_QSignalMapper_mappedWidget(intptr_t, QWidget*);
 void miqt_exec_callback_QSignalMapper_mappedObject(intptr_t, QObject*);
+int miqt_exec_callback_QSignalMapper_metacall(QSignalMapper*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QSignalMapper_event(QSignalMapper*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSignalMapper_eventFilter(QSignalMapper*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QSignalMapper_timerEvent(QSignalMapper*, intptr_t, QTimerEvent*);
@@ -41,6 +42,32 @@ public:
 	MiqtVirtualQSignalMapper(QObject* parent): QSignalMapper(parent) {};
 
 	virtual ~MiqtVirtualQSignalMapper() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QSignalMapper::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QSignalMapper_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QSignalMapper::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -238,6 +265,10 @@ QMetaObject* QSignalMapper_metaObject(const QSignalMapper* self) {
 
 void* QSignalMapper_metacast(QSignalMapper* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QSignalMapper_metacall(QSignalMapper* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QSignalMapper_tr(const char* s) {
@@ -454,6 +485,20 @@ struct miqt_string QSignalMapper_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QSignalMapper_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QSignalMapper_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QSignalMapper_override_virtual_event(void* self, intptr_t slot) {

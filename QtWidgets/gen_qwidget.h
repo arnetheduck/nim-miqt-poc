@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QActionEvent;
 class QBackingStore;
 class QBitmap;
@@ -70,7 +69,6 @@ class QWidget;
 class QWidgetData;
 class QWindow;
 #else
-typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
 typedef struct QBackingStore QBackingStore;
 typedef struct QBitmap QBitmap;
@@ -136,6 +134,7 @@ QWidget* QWidget_new3(QWidget* parent, int f);
 void QWidget_virtbase(QWidget* src, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
 QMetaObject* QWidget_metaObject(const QWidget* self);
 void* QWidget_metacast(QWidget* self, const char* param1);
+int QWidget_metacall(QWidget* self, int param1, int param2, void** param3);
 struct miqt_string QWidget_tr(const char* s);
 struct miqt_string QWidget_trUtf8(const char* s);
 int QWidget_devType(const QWidget* self);
@@ -356,12 +355,6 @@ QWidget* QWidget_nextInFocusChain(const QWidget* self);
 QWidget* QWidget_previousInFocusChain(const QWidget* self);
 bool QWidget_acceptDrops(const QWidget* self);
 void QWidget_setAcceptDrops(QWidget* self, bool on);
-void QWidget_addAction(QWidget* self, QAction* action);
-void QWidget_addActions(QWidget* self, struct miqt_array /* of QAction* */  actions);
-void QWidget_insertActions(QWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions);
-void QWidget_insertAction(QWidget* self, QAction* before, QAction* action);
-void QWidget_removeAction(QWidget* self, QAction* action);
-struct miqt_array /* of QAction* */  QWidget_actions(const QWidget* self);
 QWidget* QWidget_parentWidget(const QWidget* self);
 void QWidget_setWindowFlags(QWidget* self, int type);
 int QWidget_windowFlags(const QWidget* self);
@@ -445,6 +438,8 @@ void QWidget_setWindowFlag2(QWidget* self, int param1, bool on);
 void QWidget_setAttribute2(QWidget* self, int param1, bool on);
 QWidget* QWidget_createWindowContainer2(QWindow* window, QWidget* parent);
 QWidget* QWidget_createWindowContainer3(QWindow* window, QWidget* parent, int flags);
+bool QWidget_override_virtual_metacall(void* self, intptr_t slot);
+int QWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWidget_override_virtual_devType(void* self, intptr_t slot);
 int QWidget_virtualbase_devType(const void* self);
 bool QWidget_override_virtual_setVisible(void* self, intptr_t slot);

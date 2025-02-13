@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QWidgetAction_metacall(QWidgetAction*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QWidgetAction_event(QWidgetAction*, intptr_t, QEvent*);
 bool miqt_exec_callback_QWidgetAction_eventFilter(QWidgetAction*, intptr_t, QObject*, QEvent*);
 QWidget* miqt_exec_callback_QWidgetAction_createWidget(QWidgetAction*, intptr_t, QWidget*);
@@ -37,6 +38,32 @@ public:
 	MiqtVirtualQWidgetAction(QObject* parent): QWidgetAction(parent) {};
 
 	virtual ~MiqtVirtualQWidgetAction() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QWidgetAction::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QWidgetAction_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QWidgetAction::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -280,6 +307,10 @@ void* QWidgetAction_metacast(QWidgetAction* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QWidgetAction_metacall(QWidgetAction* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWidgetAction_tr(const char* s) {
 	QString _ret = QWidgetAction::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -360,6 +391,20 @@ struct miqt_string QWidgetAction_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QWidgetAction_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QWidgetAction_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QWidgetAction_override_virtual_event(void* self, intptr_t slot) {

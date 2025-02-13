@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QChildEvent;
 class QCloseEvent;
 class QEvent;
@@ -55,7 +54,6 @@ class QTimerEvent;
 class QVariant;
 class QWidget;
 #else
-typedef struct QAction QAction;
 typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QEvent QEvent;
@@ -102,6 +100,7 @@ QGraphicsWidget* QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags);
 void QGraphicsWidget_virtbase(QGraphicsWidget* src, QGraphicsObject** outptr_QGraphicsObject, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
 QMetaObject* QGraphicsWidget_metaObject(const QGraphicsWidget* self);
 void* QGraphicsWidget_metacast(QGraphicsWidget* self, const char* param1);
+int QGraphicsWidget_metacall(QGraphicsWidget* self, int param1, int param2, void** param3);
 struct miqt_string QGraphicsWidget_tr(const char* s);
 struct miqt_string QGraphicsWidget_trUtf8(const char* s);
 QGraphicsLayout* QGraphicsWidget_layout(const QGraphicsWidget* self);
@@ -147,12 +146,6 @@ int QGraphicsWidget_grabShortcut(QGraphicsWidget* self, QKeySequence* sequence);
 void QGraphicsWidget_releaseShortcut(QGraphicsWidget* self, int id);
 void QGraphicsWidget_setShortcutEnabled(QGraphicsWidget* self, int id);
 void QGraphicsWidget_setShortcutAutoRepeat(QGraphicsWidget* self, int id);
-void QGraphicsWidget_addAction(QGraphicsWidget* self, QAction* action);
-void QGraphicsWidget_addActions(QGraphicsWidget* self, struct miqt_array /* of QAction* */  actions);
-void QGraphicsWidget_insertActions(QGraphicsWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions);
-void QGraphicsWidget_insertAction(QGraphicsWidget* self, QAction* before, QAction* action);
-void QGraphicsWidget_removeAction(QGraphicsWidget* self, QAction* action);
-struct miqt_array /* of QAction* */  QGraphicsWidget_actions(const QGraphicsWidget* self);
 void QGraphicsWidget_setAttribute(QGraphicsWidget* self, int attribute);
 bool QGraphicsWidget_testAttribute(const QGraphicsWidget* self, int attribute);
 int QGraphicsWidget_type(const QGraphicsWidget* self);
@@ -198,6 +191,8 @@ int QGraphicsWidget_grabShortcut2(QGraphicsWidget* self, QKeySequence* sequence,
 void QGraphicsWidget_setShortcutEnabled2(QGraphicsWidget* self, int id, bool enabled);
 void QGraphicsWidget_setShortcutAutoRepeat2(QGraphicsWidget* self, int id, bool enabled);
 void QGraphicsWidget_setAttribute2(QGraphicsWidget* self, int attribute, bool on);
+bool QGraphicsWidget_override_virtual_metacall(void* self, intptr_t slot);
+int QGraphicsWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsWidget_override_virtual_setGeometry(void* self, intptr_t slot);
 void QGraphicsWidget_virtualbase_setGeometry(void* self, QRectF* rect);
 bool QGraphicsWidget_override_virtual_getContentsMargins(void* self, intptr_t slot);

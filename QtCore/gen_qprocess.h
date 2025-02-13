@@ -60,6 +60,7 @@ QProcess* QProcess_new2(QObject* parent);
 void QProcess_virtbase(QProcess* src, QIODevice** outptr_QIODevice);
 QMetaObject* QProcess_metaObject(const QProcess* self);
 void* QProcess_metacast(QProcess* self, const char* param1);
+int QProcess_metacall(QProcess* self, int param1, int param2, void** param3);
 struct miqt_string QProcess_tr(const char* s);
 struct miqt_string QProcess_trUtf8(const char* s);
 void QProcess_start(QProcess* self, struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments);
@@ -142,6 +143,8 @@ void QProcess_setStandardErrorFile2(QProcess* self, struct miqt_string fileName,
 bool QProcess_waitForStarted1(QProcess* self, int msecs);
 bool QProcess_waitForFinished1(QProcess* self, int msecs);
 bool QProcess_startDetached4(struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments, struct miqt_string workingDirectory, long long* pid);
+bool QProcess_override_virtual_metacall(void* self, intptr_t slot);
+int QProcess_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QProcess_override_virtual_open(void* self, intptr_t slot);
 bool QProcess_virtualbase_open(void* self, int mode);
 bool QProcess_override_virtual_waitForReadyRead(void* self, intptr_t slot);

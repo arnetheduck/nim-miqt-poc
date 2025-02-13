@@ -35,6 +35,7 @@ typedef struct QSize QSize;
 void QImageEncoderControl_virtbase(QImageEncoderControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QImageEncoderControl_metaObject(const QImageEncoderControl* self);
 void* QImageEncoderControl_metacast(QImageEncoderControl* self, const char* param1);
+int QImageEncoderControl_metacall(QImageEncoderControl* self, int param1, int param2, void** param3);
 struct miqt_string QImageEncoderControl_tr(const char* s);
 struct miqt_string QImageEncoderControl_trUtf8(const char* s);
 struct miqt_array /* of struct miqt_string */  QImageEncoderControl_supportedImageCodecs(const QImageEncoderControl* self);

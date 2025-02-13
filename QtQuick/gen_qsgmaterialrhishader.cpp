@@ -579,10 +579,6 @@ struct miqt_string QSGMaterialRhiShader__RenderState_uniformData(QSGMaterialRhiS
 	return _ms;
 }
 
-QRhiResourceUpdateBatch* QSGMaterialRhiShader__RenderState_resourceUpdateBatch(QSGMaterialRhiShader__RenderState* self) {
-	return self->resourceUpdateBatch();
-}
-
 void QSGMaterialRhiShader__RenderState_delete(QSGMaterialRhiShader__RenderState* self) {
 	delete self;
 }

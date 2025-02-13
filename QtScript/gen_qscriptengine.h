@@ -65,6 +65,7 @@ QScriptEngine* QScriptEngine_new2(QObject* parent);
 void QScriptEngine_virtbase(QScriptEngine* src, QObject** outptr_QObject);
 QMetaObject* QScriptEngine_metaObject(const QScriptEngine* self);
 void* QScriptEngine_metacast(QScriptEngine* self, const char* param1);
+int QScriptEngine_metacall(QScriptEngine* self, int param1, int param2, void** param3);
 struct miqt_string QScriptEngine_tr(const char* s);
 struct miqt_string QScriptEngine_trUtf8(const char* s);
 QScriptValue* QScriptEngine_globalObject(const QScriptEngine* self);
@@ -130,6 +131,8 @@ QScriptValue* QScriptEngine_newQObject32(QScriptEngine* self, QScriptValue* scri
 QScriptValue* QScriptEngine_newQObject4(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership, int* options);
 QScriptValue* QScriptEngine_newQMetaObject2(QScriptEngine* self, QMetaObject* metaObject, QScriptValue* ctor);
 void QScriptEngine_installTranslatorFunctions1(QScriptEngine* self, QScriptValue* object);
+bool QScriptEngine_override_virtual_metacall(void* self, intptr_t slot);
+int QScriptEngine_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QScriptEngine_override_virtual_event(void* self, intptr_t slot);
 bool QScriptEngine_virtualbase_event(void* self, QEvent* event);
 bool QScriptEngine_override_virtual_eventFilter(void* self, intptr_t slot);

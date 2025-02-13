@@ -52,11 +52,7 @@ QJSValue* QJSValue_new8(const char* str) {
 	return new QJSValue(str);
 }
 
-QJSValue* QJSValue_new9(QV4::ExecutionEngine* e, unsigned long long val) {
-	return new QJSValue(e, static_cast<quint64>(val));
-}
-
-QJSValue* QJSValue_new10(int value) {
+QJSValue* QJSValue_new9(int value) {
 	return new QJSValue(static_cast<QJSValue::SpecialValue>(value));
 }
 

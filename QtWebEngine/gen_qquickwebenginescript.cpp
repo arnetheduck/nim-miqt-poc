@@ -22,6 +22,7 @@ void miqt_exec_callback_QQuickWebEngineScript_sourceCodeChanged(intptr_t, struct
 void miqt_exec_callback_QQuickWebEngineScript_injectionPointChanged(intptr_t, int);
 void miqt_exec_callback_QQuickWebEngineScript_worldIdChanged(intptr_t, int);
 void miqt_exec_callback_QQuickWebEngineScript_runOnSubframesChanged(intptr_t, bool);
+int miqt_exec_callback_QQuickWebEngineScript_metacall(QQuickWebEngineScript*, intptr_t, int, int, void**);
 void miqt_exec_callback_QQuickWebEngineScript_timerEvent(QQuickWebEngineScript*, intptr_t, QTimerEvent*);
 bool miqt_exec_callback_QQuickWebEngineScript_event(QQuickWebEngineScript*, intptr_t, QEvent*);
 bool miqt_exec_callback_QQuickWebEngineScript_eventFilter(QQuickWebEngineScript*, intptr_t, QObject*, QEvent*);
@@ -40,6 +41,32 @@ public:
 	MiqtVirtualQQuickWebEngineScript(QObject* parent): QQuickWebEngineScript(parent) {};
 
 	virtual ~MiqtVirtualQQuickWebEngineScript() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QQuickWebEngineScript::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QQuickWebEngineScript_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QQuickWebEngineScript::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -237,6 +264,10 @@ QMetaObject* QQuickWebEngineScript_metaObject(const QQuickWebEngineScript* self)
 
 void* QQuickWebEngineScript_metacast(QQuickWebEngineScript* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QQuickWebEngineScript_metacall(QQuickWebEngineScript* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QQuickWebEngineScript_tr(const char* s) {
@@ -466,6 +497,20 @@ struct miqt_string QQuickWebEngineScript_trUtf83(const char* s, const char* c, i
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QQuickWebEngineScript_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQQuickWebEngineScript* self_cast = dynamic_cast<MiqtVirtualQQuickWebEngineScript*>( (QQuickWebEngineScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QQuickWebEngineScript_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQQuickWebEngineScript*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QQuickWebEngineScript_override_virtual_timerEvent(void* self, intptr_t slot) {

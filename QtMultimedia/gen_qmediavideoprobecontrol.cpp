@@ -32,6 +32,10 @@ void* QMediaVideoProbeControl_metacast(QMediaVideoProbeControl* self, const char
 	return self->qt_metacast(param1);
 }
 
+int QMediaVideoProbeControl_metacall(QMediaVideoProbeControl* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QMediaVideoProbeControl_tr(const char* s) {
 	QString _ret = QMediaVideoProbeControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

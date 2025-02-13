@@ -28,6 +28,7 @@ extern "C" {
 void miqt_exec_callback_QQmlEngine_quit(intptr_t);
 void miqt_exec_callback_QQmlEngine_exit(intptr_t, int);
 void miqt_exec_callback_QQmlEngine_warnings(intptr_t, struct miqt_array /* of QQmlError* */ );
+int miqt_exec_callback_QQmlEngine_metacall(QQmlEngine*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QQmlEngine_event(QQmlEngine*, intptr_t, QEvent*);
 bool miqt_exec_callback_QQmlEngine_eventFilter(QQmlEngine*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QQmlEngine_timerEvent(QQmlEngine*, intptr_t, QTimerEvent*);
@@ -60,6 +61,32 @@ public:
 	MiqtVirtualQQmlEngine(QObject* p): QQmlEngine(p) {};
 
 	virtual ~MiqtVirtualQQmlEngine() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QQmlEngine::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QQmlEngine_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QQmlEngine::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -257,6 +284,10 @@ QMetaObject* QQmlEngine_metaObject(const QQmlEngine* self) {
 
 void* QQmlEngine_metacast(QQmlEngine* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QQmlEngine_metacall(QQmlEngine* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QQmlEngine_tr(const char* s) {
@@ -580,6 +611,20 @@ struct miqt_string QQmlEngine_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QQmlEngine_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQQmlEngine* self_cast = dynamic_cast<MiqtVirtualQQmlEngine*>( (QQmlEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QQmlEngine_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQQmlEngine*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QQmlEngine_override_virtual_event(void* self, intptr_t slot) {

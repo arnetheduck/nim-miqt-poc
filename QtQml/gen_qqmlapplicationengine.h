@@ -49,6 +49,7 @@ QQmlApplicationEngine* QQmlApplicationEngine_new6(struct miqt_string filePath, Q
 void QQmlApplicationEngine_virtbase(QQmlApplicationEngine* src, QQmlEngine** outptr_QQmlEngine);
 QMetaObject* QQmlApplicationEngine_metaObject(const QQmlApplicationEngine* self);
 void* QQmlApplicationEngine_metacast(QQmlApplicationEngine* self, const char* param1);
+int QQmlApplicationEngine_metacall(QQmlApplicationEngine* self, int param1, int param2, void** param3);
 struct miqt_string QQmlApplicationEngine_tr(const char* s);
 struct miqt_string QQmlApplicationEngine_trUtf8(const char* s);
 struct miqt_array /* of QObject* */  QQmlApplicationEngine_rootObjects(QQmlApplicationEngine* self);
@@ -64,6 +65,8 @@ struct miqt_string QQmlApplicationEngine_tr3(const char* s, const char* c, int n
 struct miqt_string QQmlApplicationEngine_trUtf82(const char* s, const char* c);
 struct miqt_string QQmlApplicationEngine_trUtf83(const char* s, const char* c, int n);
 void QQmlApplicationEngine_loadData2(QQmlApplicationEngine* self, struct miqt_string data, QUrl* url);
+bool QQmlApplicationEngine_override_virtual_metacall(void* self, intptr_t slot);
+int QQmlApplicationEngine_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QQmlApplicationEngine_override_virtual_event(void* self, intptr_t slot);
 bool QQmlApplicationEngine_virtualbase_event(void* self, QEvent* param1);
 bool QQmlApplicationEngine_override_virtual_eventFilter(void* self, intptr_t slot);

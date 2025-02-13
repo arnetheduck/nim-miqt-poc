@@ -23,6 +23,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStateMachine_runningChanged(intptr_t, bool);
+int miqt_exec_callback_QStateMachine_metacall(QStateMachine*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QStateMachine_eventFilter(QStateMachine*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QStateMachine_onEntry(QStateMachine*, intptr_t, QEvent*);
 void miqt_exec_callback_QStateMachine_onExit(QStateMachine*, intptr_t, QEvent*);
@@ -49,6 +50,32 @@ public:
 	MiqtVirtualQStateMachine(QState::ChildMode childMode, QObject* parent): QStateMachine(childMode, parent) {};
 
 	virtual ~MiqtVirtualQStateMachine() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QStateMachine::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QStateMachine_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QStateMachine::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -400,6 +427,10 @@ void* QStateMachine_metacast(QStateMachine* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QStateMachine_metacall(QStateMachine* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QStateMachine_tr(const char* s) {
 	QString _ret = QStateMachine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -592,6 +623,20 @@ struct miqt_string QStateMachine_trUtf83(const char* s, const char* c, int n) {
 
 void QStateMachine_postEvent2(QStateMachine* self, QEvent* event, int priority) {
 	self->postEvent(event, static_cast<QStateMachine::EventPriority>(priority));
+}
+
+bool QStateMachine_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QStateMachine_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQStateMachine*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QStateMachine_override_virtual_eventFilter(void* self, intptr_t slot) {

@@ -39,6 +39,7 @@ QWebEngineUrlRequestInterceptor* QWebEngineUrlRequestInterceptor_new2(QObject* p
 void QWebEngineUrlRequestInterceptor_virtbase(QWebEngineUrlRequestInterceptor* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineUrlRequestInterceptor_metaObject(const QWebEngineUrlRequestInterceptor* self);
 void* QWebEngineUrlRequestInterceptor_metacast(QWebEngineUrlRequestInterceptor* self, const char* param1);
+int QWebEngineUrlRequestInterceptor_metacall(QWebEngineUrlRequestInterceptor* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineUrlRequestInterceptor_tr(const char* s);
 struct miqt_string QWebEngineUrlRequestInterceptor_trUtf8(const char* s);
 void QWebEngineUrlRequestInterceptor_interceptRequest(QWebEngineUrlRequestInterceptor* self, QWebEngineUrlRequestInfo* info);
@@ -46,6 +47,8 @@ struct miqt_string QWebEngineUrlRequestInterceptor_tr2(const char* s, const char
 struct miqt_string QWebEngineUrlRequestInterceptor_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebEngineUrlRequestInterceptor_trUtf82(const char* s, const char* c);
 struct miqt_string QWebEngineUrlRequestInterceptor_trUtf83(const char* s, const char* c, int n);
+bool QWebEngineUrlRequestInterceptor_override_virtual_metacall(void* self, intptr_t slot);
+int QWebEngineUrlRequestInterceptor_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEngineUrlRequestInterceptor_override_virtual_interceptRequest(void* self, intptr_t slot);
 void QWebEngineUrlRequestInterceptor_virtualbase_interceptRequest(void* self, QWebEngineUrlRequestInfo* info);
 bool QWebEngineUrlRequestInterceptor_override_virtual_event(void* self, intptr_t slot);

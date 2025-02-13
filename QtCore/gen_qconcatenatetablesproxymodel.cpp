@@ -24,6 +24,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QConcatenateTablesProxyModel_metacall(QConcatenateTablesProxyModel*, intptr_t, int, int, void**);
 QVariant* miqt_exec_callback_QConcatenateTablesProxyModel_data(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, int);
 bool miqt_exec_callback_QConcatenateTablesProxyModel_setData(QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, QVariant*, int);
 struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QConcatenateTablesProxyModel_itemData(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
@@ -76,6 +77,32 @@ public:
 	MiqtVirtualQConcatenateTablesProxyModel(QObject* parent): QConcatenateTablesProxyModel(parent) {};
 
 	virtual ~MiqtVirtualQConcatenateTablesProxyModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QConcatenateTablesProxyModel::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QConcatenateTablesProxyModel::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__data = 0;
@@ -1304,6 +1331,10 @@ void* QConcatenateTablesProxyModel_metacast(QConcatenateTablesProxyModel* self, 
 	return self->qt_metacast(param1);
 }
 
+int QConcatenateTablesProxyModel_metacall(QConcatenateTablesProxyModel* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QConcatenateTablesProxyModel_tr(const char* s) {
 	QString _ret = QConcatenateTablesProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1500,6 +1531,20 @@ struct miqt_string QConcatenateTablesProxyModel_trUtf83(const char* s, const cha
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QConcatenateTablesProxyModel_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QConcatenateTablesProxyModel_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQConcatenateTablesProxyModel*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_data(void* self, intptr_t slot) {

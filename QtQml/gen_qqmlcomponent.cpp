@@ -26,6 +26,7 @@ extern "C" {
 
 void miqt_exec_callback_QQmlComponent_statusChanged(intptr_t, int);
 void miqt_exec_callback_QQmlComponent_progressChanged(intptr_t, double);
+int miqt_exec_callback_QQmlComponent_metacall(QQmlComponent*, intptr_t, int, int, void**);
 QObject* miqt_exec_callback_QQmlComponent_create(QQmlComponent*, intptr_t, QQmlContext*);
 QObject* miqt_exec_callback_QQmlComponent_beginCreate(QQmlComponent*, intptr_t, QQmlContext*);
 void miqt_exec_callback_QQmlComponent_completeCreate(QQmlComponent*, intptr_t);
@@ -57,6 +58,32 @@ public:
 	MiqtVirtualQQmlComponent(QQmlEngine* param1, const QUrl& url, QQmlComponent::CompilationMode mode, QObject* parent): QQmlComponent(param1, url, mode, parent) {};
 
 	virtual ~MiqtVirtualQQmlComponent() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QQmlComponent::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QQmlComponent_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QQmlComponent::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__create = 0;
@@ -299,8 +326,6 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QQmlComponent_protectedbase_createObject(bool* _dynamic_cast_ok, void* self, QQmlV4Function* param1);
-	friend void QQmlComponent_protectedbase_incubateObject(bool* _dynamic_cast_ok, void* self, QQmlV4Function* param1);
 	friend QObject* QQmlComponent_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QQmlComponent_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QQmlComponent_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -369,6 +394,10 @@ QMetaObject* QQmlComponent_metaObject(const QQmlComponent* self) {
 
 void* QQmlComponent_metacast(QQmlComponent* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QQmlComponent_metacall(QQmlComponent* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QQmlComponent_tr(const char* s) {
@@ -493,10 +522,6 @@ QQmlEngine* QQmlComponent_engine(const QQmlComponent* self) {
 	return self->engine();
 }
 
-QQmlComponentAttached* QQmlComponent_qmlAttachedProperties(QObject* param1) {
-	return QQmlComponent::qmlAttachedProperties(param1);
-}
-
 void QQmlComponent_loadUrl(QQmlComponent* self, QUrl* url) {
 	self->loadUrl(*url);
 }
@@ -595,6 +620,20 @@ void QQmlComponent_create2(QQmlComponent* self, QQmlIncubator* param1, QQmlConte
 
 void QQmlComponent_create3(QQmlComponent* self, QQmlIncubator* param1, QQmlContext* context, QQmlContext* forContext) {
 	self->create(*param1, context, forContext);
+}
+
+bool QQmlComponent_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQQmlComponent* self_cast = dynamic_cast<MiqtVirtualQQmlComponent*>( (QQmlComponent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QQmlComponent_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQQmlComponent*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QQmlComponent_override_virtual_create(void* self, intptr_t slot) {
@@ -735,32 +774,6 @@ bool QQmlComponent_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QQmlComponent_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlComponent*)(self) )->virtualbase_disconnectNotify(signal);
-}
-
-void QQmlComponent_protectedbase_createObject(bool* _dynamic_cast_ok, void* self, QQmlV4Function* param1) {
-	MiqtVirtualQQmlComponent* self_cast = dynamic_cast<MiqtVirtualQQmlComponent*>( (QQmlComponent*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->createObject(param1);
-
-}
-
-void QQmlComponent_protectedbase_incubateObject(bool* _dynamic_cast_ok, void* self, QQmlV4Function* param1) {
-	MiqtVirtualQQmlComponent* self_cast = dynamic_cast<MiqtVirtualQQmlComponent*>( (QQmlComponent*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->incubateObject(param1);
-
 }
 
 QObject* QQmlComponent_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

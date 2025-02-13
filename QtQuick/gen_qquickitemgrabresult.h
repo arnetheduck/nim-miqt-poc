@@ -35,6 +35,7 @@ typedef struct QUrl QUrl;
 void QQuickItemGrabResult_virtbase(QQuickItemGrabResult* src, QObject** outptr_QObject);
 QMetaObject* QQuickItemGrabResult_metaObject(const QQuickItemGrabResult* self);
 void* QQuickItemGrabResult_metacast(QQuickItemGrabResult* self, const char* param1);
+int QQuickItemGrabResult_metacall(QQuickItemGrabResult* self, int param1, int param2, void** param3);
 struct miqt_string QQuickItemGrabResult_tr(const char* s);
 struct miqt_string QQuickItemGrabResult_trUtf8(const char* s);
 QImage* QQuickItemGrabResult_image(const QQuickItemGrabResult* self);

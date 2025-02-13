@@ -61,6 +61,7 @@ QSslSocket* QSslSocket_new2(QObject* parent);
 void QSslSocket_virtbase(QSslSocket* src, QTcpSocket** outptr_QTcpSocket);
 QMetaObject* QSslSocket_metaObject(const QSslSocket* self);
 void* QSslSocket_metacast(QSslSocket* self, const char* param1);
+int QSslSocket_metacall(QSslSocket* self, int param1, int param2, void** param3);
 struct miqt_string QSslSocket_tr(const char* s);
 struct miqt_string QSslSocket_trUtf8(const char* s);
 void QSslSocket_resume(QSslSocket* self);
@@ -172,6 +173,8 @@ bool QSslSocket_addCaCertificates3(QSslSocket* self, struct miqt_string path, in
 bool QSslSocket_addDefaultCaCertificates2(struct miqt_string path, int format);
 bool QSslSocket_addDefaultCaCertificates3(struct miqt_string path, int format, int syntax);
 bool QSslSocket_waitForEncrypted1(QSslSocket* self, int msecs);
+bool QSslSocket_override_virtual_metacall(void* self, intptr_t slot);
+int QSslSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QSslSocket_override_virtual_resume(void* self, intptr_t slot);
 void QSslSocket_virtualbase_resume(void* self);
 bool QSslSocket_override_virtual_setSocketDescriptor(void* self, intptr_t slot);

@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QAuthenticator;
 class QChildEvent;
 class QColor;
@@ -48,7 +47,6 @@ class QWebEngineSettings;
 class QWebEngineUrlRequestInterceptor;
 class QWidget;
 #else
-typedef struct QAction QAction;
 typedef struct QAuthenticator QAuthenticator;
 typedef struct QChildEvent QChildEvent;
 typedef struct QColor QColor;
@@ -89,6 +87,7 @@ QWebEnginePage* QWebEnginePage_new4(QWebEngineProfile* profile, QObject* parent)
 void QWebEnginePage_virtbase(QWebEnginePage* src, QObject** outptr_QObject);
 QMetaObject* QWebEnginePage_metaObject(const QWebEnginePage* self);
 void* QWebEnginePage_metacast(QWebEnginePage* self, const char* param1);
+int QWebEnginePage_metacall(QWebEnginePage* self, int param1, int param2, void** param3);
 struct miqt_string QWebEnginePage_tr(const char* s);
 struct miqt_string QWebEnginePage_trUtf8(const char* s);
 QWebEngineHistory* QWebEnginePage_history(const QWebEnginePage* self);
@@ -97,7 +96,6 @@ QWidget* QWebEnginePage_view(const QWebEnginePage* self);
 bool QWebEnginePage_hasSelection(const QWebEnginePage* self);
 struct miqt_string QWebEnginePage_selectedText(const QWebEnginePage* self);
 QWebEngineProfile* QWebEnginePage_profile(const QWebEnginePage* self);
-QAction* QWebEnginePage_action(const QWebEnginePage* self, int action);
 void QWebEnginePage_triggerAction(QWebEnginePage* self, int action, bool checked);
 void QWebEnginePage_replaceMisspelledWord(QWebEnginePage* self, struct miqt_string replacement);
 bool QWebEnginePage_event(QWebEnginePage* self, QEvent* param1);
@@ -225,6 +223,8 @@ void QWebEnginePage_setContent2(QWebEnginePage* self, struct miqt_string data, s
 void QWebEnginePage_setContent3(QWebEnginePage* self, struct miqt_string data, struct miqt_string mimeType, QUrl* baseUrl);
 void QWebEnginePage_save2(const QWebEnginePage* self, struct miqt_string filePath, int format);
 void QWebEnginePage_printToPdf2(QWebEnginePage* self, struct miqt_string filePath, QPageLayout* layout);
+bool QWebEnginePage_override_virtual_metacall(void* self, intptr_t slot);
+int QWebEnginePage_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEnginePage_override_virtual_triggerAction(void* self, intptr_t slot);
 void QWebEnginePage_virtualbase_triggerAction(void* self, int action, bool checked);
 bool QWebEnginePage_override_virtual_event(void* self, intptr_t slot);

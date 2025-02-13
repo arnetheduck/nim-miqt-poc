@@ -24,6 +24,7 @@ void miqt_exec_callback_QRadioData_stationNameChanged(intptr_t, struct miqt_stri
 void miqt_exec_callback_QRadioData_radioTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(intptr_t, bool);
 void miqt_exec_callback_QRadioData_errorWithError(intptr_t, int);
+int miqt_exec_callback_QRadioData_metacall(QRadioData*, intptr_t, int, int, void**);
 QMediaObject* miqt_exec_callback_QRadioData_mediaObject(const QRadioData*, intptr_t);
 bool miqt_exec_callback_QRadioData_setMediaObject(QRadioData*, intptr_t, QMediaObject*);
 bool miqt_exec_callback_QRadioData_event(QRadioData*, intptr_t, QEvent*);
@@ -44,6 +45,32 @@ public:
 	MiqtVirtualQRadioData(QMediaObject* mediaObject, QObject* parent): QRadioData(mediaObject, parent) {};
 
 	virtual ~MiqtVirtualQRadioData() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QRadioData::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QRadioData_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QRadioData::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mediaObject = 0;
@@ -287,6 +314,10 @@ QMetaObject* QRadioData_metaObject(const QRadioData* self) {
 
 void* QRadioData_metacast(QRadioData* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QRadioData_metacall(QRadioData* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QRadioData_tr(const char* s) {
@@ -546,6 +577,20 @@ struct miqt_string QRadioData_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QRadioData_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QRadioData_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQRadioData*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QRadioData_override_virtual_mediaObject(void* self, intptr_t slot) {

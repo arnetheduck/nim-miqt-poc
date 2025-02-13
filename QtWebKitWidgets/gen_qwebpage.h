@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QChildEvent;
 class QContextMenuEvent;
 class QEvent;
@@ -81,7 +80,6 @@ class QWebSecurityOrigin;
 class QWebSettings;
 class QWidget;
 #else
-typedef struct QAction QAction;
 typedef struct QChildEvent QChildEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QEvent QEvent;
@@ -125,6 +123,7 @@ QWebPage* QWebPage_new2(QObject* parent);
 void QWebPage_virtbase(QWebPage* src, QObject** outptr_QObject);
 QMetaObject* QWebPage_metaObject(const QWebPage* self);
 void* QWebPage_metacast(QWebPage* self, const char* param1);
+int QWebPage_metacall(QWebPage* self, int param1, int param2, void** param3);
 struct miqt_string QWebPage_tr(const char* s);
 struct miqt_string QWebPage_trUtf8(const char* s);
 QWebFrame* QWebPage_mainFrame(const QWebPage* self);
@@ -148,8 +147,6 @@ bool QWebPage_recentlyAudible(const QWebPage* self);
 bool QWebPage_hasSelection(const QWebPage* self);
 struct miqt_string QWebPage_selectedText(const QWebPage* self);
 struct miqt_string QWebPage_selectedHtml(const QWebPage* self);
-QAction* QWebPage_action(const QWebPage* self, int action);
-QAction* QWebPage_customAction(const QWebPage* self, int action);
 void QWebPage_triggerAction(QWebPage* self, int action, bool checked);
 void QWebPage_setDevicePixelRatio(QWebPage* self, double ratio);
 double QWebPage_devicePixelRatio(const QWebPage* self);
@@ -256,6 +253,8 @@ struct miqt_string QWebPage_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebPage_trUtf82(const char* s, const char* c);
 struct miqt_string QWebPage_trUtf83(const char* s, const char* c, int n);
 bool QWebPage_findText2(QWebPage* self, struct miqt_string subString, int options);
+bool QWebPage_override_virtual_metacall(void* self, intptr_t slot);
+int QWebPage_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebPage_override_virtual_triggerAction(void* self, intptr_t slot);
 void QWebPage_virtualbase_triggerAction(void* self, int action, bool checked);
 bool QWebPage_override_virtual_event(void* self, intptr_t slot);

@@ -33,6 +33,7 @@ typedef struct QObject QObject;
 void QFileDevice_virtbase(QFileDevice* src, QIODevice** outptr_QIODevice);
 QMetaObject* QFileDevice_metaObject(const QFileDevice* self);
 void* QFileDevice_metacast(QFileDevice* self, const char* param1);
+int QFileDevice_metacall(QFileDevice* self, int param1, int param2, void** param3);
 struct miqt_string QFileDevice_tr(const char* s);
 struct miqt_string QFileDevice_trUtf8(const char* s);
 int QFileDevice_error(const QFileDevice* self);

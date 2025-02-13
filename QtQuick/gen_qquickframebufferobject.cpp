@@ -22,7 +22,6 @@
 #include <QRectF>
 #include <QSGNode>
 #include <QSGTextureProvider>
-#include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -39,6 +38,7 @@ extern "C" {
 
 void miqt_exec_callback_QQuickFramebufferObject_textureFollowsItemSizeChanged(intptr_t, bool);
 void miqt_exec_callback_QQuickFramebufferObject_mirrorVerticallyChanged(intptr_t, bool);
+int miqt_exec_callback_QQuickFramebufferObject_metacall(QQuickFramebufferObject*, intptr_t, int, int, void**);
 QQuickFramebufferObject__Renderer* miqt_exec_callback_QQuickFramebufferObject_createRenderer(const QQuickFramebufferObject*, intptr_t);
 bool miqt_exec_callback_QQuickFramebufferObject_isTextureProvider(const QQuickFramebufferObject*, intptr_t);
 QSGTextureProvider* miqt_exec_callback_QQuickFramebufferObject_textureProvider(const QQuickFramebufferObject*, intptr_t);
@@ -93,6 +93,32 @@ public:
 	MiqtVirtualQQuickFramebufferObject(QQuickItem* parent): QQuickFramebufferObject(parent) {};
 
 	virtual ~MiqtVirtualQQuickFramebufferObject() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QQuickFramebufferObject::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QQuickFramebufferObject_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QQuickFramebufferObject::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createRenderer = 0;
@@ -1147,6 +1173,10 @@ void* QQuickFramebufferObject_metacast(QQuickFramebufferObject* self, const char
 	return self->qt_metacast(param1);
 }
 
+int QQuickFramebufferObject_metacall(QQuickFramebufferObject* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QQuickFramebufferObject_tr(const char* s) {
 	QString _ret = QQuickFramebufferObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1265,6 +1295,20 @@ struct miqt_string QQuickFramebufferObject_trUtf83(const char* s, const char* c,
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QQuickFramebufferObject_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QQuickFramebufferObject_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQQuickFramebufferObject*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QQuickFramebufferObject_override_virtual_createRenderer(void* self, intptr_t slot) {

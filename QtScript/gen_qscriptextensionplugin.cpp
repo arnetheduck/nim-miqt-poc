@@ -20,6 +20,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QScriptExtensionPlugin_metacall(QScriptExtensionPlugin*, intptr_t, int, int, void**);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensionPlugin_keys(const QScriptExtensionPlugin*, intptr_t);
 void miqt_exec_callback_QScriptExtensionPlugin_initialize(QScriptExtensionPlugin*, intptr_t, struct miqt_string, QScriptEngine*);
 bool miqt_exec_callback_QScriptExtensionPlugin_event(QScriptExtensionPlugin*, intptr_t, QEvent*);
@@ -40,6 +41,32 @@ public:
 	MiqtVirtualQScriptExtensionPlugin(QObject* parent): QScriptExtensionPlugin(parent) {};
 
 	virtual ~MiqtVirtualQScriptExtensionPlugin() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QScriptExtensionPlugin::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QScriptExtensionPlugin_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QScriptExtensionPlugin::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keys = 0;
@@ -286,6 +313,10 @@ void* QScriptExtensionPlugin_metacast(QScriptExtensionPlugin* self, const char* 
 	return self->qt_metacast(param1);
 }
 
+int QScriptExtensionPlugin_metacall(QScriptExtensionPlugin* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QScriptExtensionPlugin_tr(const char* s) {
 	QString _ret = QScriptExtensionPlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -380,6 +411,20 @@ struct miqt_string QScriptExtensionPlugin_trUtf83(const char* s, const char* c, 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QScriptExtensionPlugin_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QScriptExtensionPlugin_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QScriptExtensionPlugin_override_virtual_keys(void* self, intptr_t slot) {

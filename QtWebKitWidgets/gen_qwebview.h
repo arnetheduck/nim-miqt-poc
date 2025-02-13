@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QActionEvent;
 class QChildEvent;
 class QCloseEvent;
@@ -56,7 +55,6 @@ class QWebView;
 class QWheelEvent;
 class QWidget;
 #else
-typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
 typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
@@ -103,6 +101,7 @@ QWebView* QWebView_new2();
 void QWebView_virtbase(QWebView* src, QWidget** outptr_QWidget);
 QMetaObject* QWebView_metaObject(const QWebView* self);
 void* QWebView_metacast(QWebView* self, const char* param1);
+int QWebView_metacall(QWebView* self, int param1, int param2, void** param3);
 struct miqt_string QWebView_tr(const char* s);
 struct miqt_string QWebView_trUtf8(const char* s);
 QWebPage* QWebView_page(const QWebView* self);
@@ -120,7 +119,6 @@ QIcon* QWebView_icon(const QWebView* self);
 bool QWebView_hasSelection(const QWebView* self);
 struct miqt_string QWebView_selectedText(const QWebView* self);
 struct miqt_string QWebView_selectedHtml(const QWebView* self);
-QAction* QWebView_pageAction(const QWebView* self, int action);
 void QWebView_triggerPageAction(QWebView* self, int action);
 bool QWebView_isModified(const QWebView* self);
 QVariant* QWebView_inputMethodQuery(const QWebView* self, int property);
@@ -189,6 +187,8 @@ void QWebView_setContent3(QWebView* self, struct miqt_string data, struct miqt_s
 void QWebView_triggerPageAction2(QWebView* self, int action, bool checked);
 void QWebView_setRenderHint2(QWebView* self, int hint, bool enabled);
 bool QWebView_findText2(QWebView* self, struct miqt_string subString, int options);
+bool QWebView_override_virtual_metacall(void* self, intptr_t slot);
+int QWebView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebView_override_virtual_inputMethodQuery(void* self, intptr_t slot);
 QVariant* QWebView_virtualbase_inputMethodQuery(const void* self, int property);
 bool QWebView_override_virtual_sizeHint(void* self, intptr_t slot);

@@ -46,6 +46,7 @@ QAbstractSocket* QAbstractSocket_new(int socketType, QObject* parent);
 void QAbstractSocket_virtbase(QAbstractSocket* src, QIODevice** outptr_QIODevice);
 QMetaObject* QAbstractSocket_metaObject(const QAbstractSocket* self);
 void* QAbstractSocket_metacast(QAbstractSocket* self, const char* param1);
+int QAbstractSocket_metacall(QAbstractSocket* self, int param1, int param2, void** param3);
 struct miqt_string QAbstractSocket_tr(const char* s);
 struct miqt_string QAbstractSocket_trUtf8(const char* s);
 void QAbstractSocket_resume(QAbstractSocket* self);
@@ -112,6 +113,8 @@ bool QAbstractSocket_bind22(QAbstractSocket* self, QHostAddress* address, uint16
 bool QAbstractSocket_bind3(QAbstractSocket* self, QHostAddress* address, uint16_t port, int mode);
 bool QAbstractSocket_bind1(QAbstractSocket* self, uint16_t port);
 bool QAbstractSocket_bind23(QAbstractSocket* self, uint16_t port, int mode);
+bool QAbstractSocket_override_virtual_metacall(void* self, intptr_t slot);
+int QAbstractSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractSocket_override_virtual_resume(void* self, intptr_t slot);
 void QAbstractSocket_virtualbase_resume(void* self);
 bool QAbstractSocket_override_virtual_connectToHost(void* self, intptr_t slot);

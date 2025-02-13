@@ -112,6 +112,10 @@ void* QWebSelectMethod_metacast(QWebSelectMethod* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QWebSelectMethod_metacall(QWebSelectMethod* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWebSelectMethod_tr(const char* s) {
 	QString _ret = QWebSelectMethod::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -271,6 +275,10 @@ void* QWebNotificationPresenter_metacast(QWebNotificationPresenter* self, const 
 	return self->qt_metacast(param1);
 }
 
+int QWebNotificationPresenter_metacall(QWebNotificationPresenter* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWebNotificationPresenter_tr(const char* s) {
 	QString _ret = QWebNotificationPresenter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -377,6 +385,10 @@ void* QWebHapticFeedbackPlayer_metacast(QWebHapticFeedbackPlayer* self, const ch
 	return self->qt_metacast(param1);
 }
 
+int QWebHapticFeedbackPlayer_metacall(QWebHapticFeedbackPlayer* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWebHapticFeedbackPlayer_tr(const char* s) {
 	QString _ret = QWebHapticFeedbackPlayer::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -464,6 +476,10 @@ void* QWebTouchModifier_metacast(QWebTouchModifier* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QWebTouchModifier_metacall(QWebTouchModifier* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWebTouchModifier_tr(const char* s) {
 	QString _ret = QWebTouchModifier::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -548,6 +564,10 @@ QMetaObject* QWebSpellChecker_metaObject(const QWebSpellChecker* self) {
 
 void* QWebSpellChecker_metacast(QWebSpellChecker* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QWebSpellChecker_metacall(QWebSpellChecker* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QWebSpellChecker_tr(const char* s) {

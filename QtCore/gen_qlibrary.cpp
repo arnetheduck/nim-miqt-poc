@@ -15,6 +15,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QLibrary_metacall(QLibrary*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QLibrary_event(QLibrary*, intptr_t, QEvent*);
 bool miqt_exec_callback_QLibrary_eventFilter(QLibrary*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QLibrary_timerEvent(QLibrary*, intptr_t, QTimerEvent*);
@@ -39,6 +40,32 @@ public:
 	MiqtVirtualQLibrary(const QString& fileName, const QString& version, QObject* parent): QLibrary(fileName, version, parent) {};
 
 	virtual ~MiqtVirtualQLibrary() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QLibrary::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QLibrary_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QLibrary::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -270,6 +297,10 @@ void* QLibrary_metacast(QLibrary* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QLibrary_metacall(QLibrary* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QLibrary_tr(const char* s) {
 	QString _ret = QLibrary::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -398,6 +429,20 @@ struct miqt_string QLibrary_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QLibrary_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QLibrary_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQLibrary*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QLibrary_override_virtual_event(void* self, intptr_t slot) {

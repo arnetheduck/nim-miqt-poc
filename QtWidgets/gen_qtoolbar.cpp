@@ -1,4 +1,3 @@
-#include <QAction>
 #include <QActionEvent>
 #include <QByteArray>
 #include <QChildEvent>
@@ -11,7 +10,6 @@
 #include <QEvent>
 #include <QFocusEvent>
 #include <QHideEvent>
-#include <QIcon>
 #include <QInputMethodEvent>
 #include <QKeyEvent>
 #include <QMetaMethod>
@@ -24,7 +22,6 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPoint>
-#include <QRect>
 #include <QResizeEvent>
 #include <QShowEvent>
 #include <QSize>
@@ -45,7 +42,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QToolBar_actionTriggered(intptr_t, QAction*);
 void miqt_exec_callback_QToolBar_movableChanged(intptr_t, bool);
 void miqt_exec_callback_QToolBar_allowedAreasChanged(intptr_t, int);
 void miqt_exec_callback_QToolBar_orientationChanged(intptr_t, int);
@@ -53,6 +49,7 @@ void miqt_exec_callback_QToolBar_iconSizeChanged(intptr_t, QSize*);
 void miqt_exec_callback_QToolBar_toolButtonStyleChanged(intptr_t, int);
 void miqt_exec_callback_QToolBar_topLevelChanged(intptr_t, bool);
 void miqt_exec_callback_QToolBar_visibilityChanged(intptr_t, bool);
+int miqt_exec_callback_QToolBar_metacall(QToolBar*, intptr_t, int, int, void**);
 void miqt_exec_callback_QToolBar_actionEvent(QToolBar*, intptr_t, QActionEvent*);
 void miqt_exec_callback_QToolBar_changeEvent(QToolBar*, intptr_t, QEvent*);
 void miqt_exec_callback_QToolBar_paintEvent(QToolBar*, intptr_t, QPaintEvent*);
@@ -113,6 +110,32 @@ public:
 	MiqtVirtualQToolBar(const QString& title, QWidget* parent): QToolBar(title, parent) {};
 
 	virtual ~MiqtVirtualQToolBar() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QToolBar::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QToolBar_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QToolBar::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -1280,6 +1303,10 @@ void* QToolBar_metacast(QToolBar* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QToolBar_metacall(QToolBar* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QToolBar_tr(const char* s) {
 	QString _ret = QToolBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1336,48 +1363,6 @@ void QToolBar_clear(QToolBar* self) {
 	self->clear();
 }
 
-QAction* QToolBar_addAction(QToolBar* self, struct miqt_string text) {
-	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return self->addAction(text_QString);
-}
-
-QAction* QToolBar_addAction2(QToolBar* self, QIcon* icon, struct miqt_string text) {
-	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return self->addAction(*icon, text_QString);
-}
-
-QAction* QToolBar_addSeparator(QToolBar* self) {
-	return self->addSeparator();
-}
-
-QAction* QToolBar_insertSeparator(QToolBar* self, QAction* before) {
-	return self->insertSeparator(before);
-}
-
-QAction* QToolBar_addWidget(QToolBar* self, QWidget* widget) {
-	return self->addWidget(widget);
-}
-
-QAction* QToolBar_insertWidget(QToolBar* self, QAction* before, QWidget* widget) {
-	return self->insertWidget(before, widget);
-}
-
-QRect* QToolBar_actionGeometry(const QToolBar* self, QAction* action) {
-	return new QRect(self->actionGeometry(action));
-}
-
-QAction* QToolBar_actionAt(const QToolBar* self, QPoint* p) {
-	return self->actionAt(*p);
-}
-
-QAction* QToolBar_actionAt2(const QToolBar* self, int x, int y) {
-	return self->actionAt(static_cast<int>(x), static_cast<int>(y));
-}
-
-QAction* QToolBar_toggleViewAction(const QToolBar* self) {
-	return self->toggleViewAction();
-}
-
 QSize* QToolBar_iconSize(const QToolBar* self) {
 	return new QSize(self->iconSize());
 }
@@ -1385,10 +1370,6 @@ QSize* QToolBar_iconSize(const QToolBar* self) {
 int QToolBar_toolButtonStyle(const QToolBar* self) {
 	Qt::ToolButtonStyle _ret = self->toolButtonStyle();
 	return static_cast<int>(_ret);
-}
-
-QWidget* QToolBar_widgetForAction(const QToolBar* self, QAction* action) {
-	return self->widgetForAction(action);
 }
 
 bool QToolBar_isFloatable(const QToolBar* self) {
@@ -1409,17 +1390,6 @@ void QToolBar_setIconSize(QToolBar* self, QSize* iconSize) {
 
 void QToolBar_setToolButtonStyle(QToolBar* self, int toolButtonStyle) {
 	self->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
-}
-
-void QToolBar_actionTriggered(QToolBar* self, QAction* action) {
-	self->actionTriggered(action);
-}
-
-void QToolBar_connect_actionTriggered(QToolBar* self, intptr_t slot) {
-	MiqtVirtualQToolBar::connect(self, static_cast<void (QToolBar::*)(QAction*)>(&QToolBar::actionTriggered), self, [=](QAction* action) {
-		QAction* sigval1 = action;
-		miqt_exec_callback_QToolBar_actionTriggered(slot, sigval1);
-	});
 }
 
 void QToolBar_movableChanged(QToolBar* self, bool movable) {
@@ -1546,6 +1516,20 @@ struct miqt_string QToolBar_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QToolBar_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQToolBar* self_cast = dynamic_cast<MiqtVirtualQToolBar*>( (QToolBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QToolBar_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQToolBar*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QToolBar_override_virtual_actionEvent(void* self, intptr_t slot) {

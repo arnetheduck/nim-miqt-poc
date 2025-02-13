@@ -1,4 +1,3 @@
-#include <QAction>
 #include <QAuthenticator>
 #include <QByteArray>
 #include <QChildEvent>
@@ -73,6 +72,7 @@ void miqt_exec_callback_QWebEnginePage_visibleChanged(intptr_t, bool);
 void miqt_exec_callback_QWebEnginePage_lifecycleStateChanged(intptr_t, int);
 void miqt_exec_callback_QWebEnginePage_recommendedStateChanged(intptr_t, int);
 void miqt_exec_callback_QWebEnginePage_findTextFinished(intptr_t, QWebEngineFindTextResult*);
+int miqt_exec_callback_QWebEnginePage_metacall(QWebEnginePage*, intptr_t, int, int, void**);
 void miqt_exec_callback_QWebEnginePage_triggerAction(QWebEnginePage*, intptr_t, int, bool);
 bool miqt_exec_callback_QWebEnginePage_event(QWebEnginePage*, intptr_t, QEvent*);
 QWebEnginePage* miqt_exec_callback_QWebEnginePage_createWindow(QWebEnginePage*, intptr_t, int);
@@ -101,6 +101,32 @@ public:
 	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile, QObject* parent): QWebEnginePage(profile, parent) {};
 
 	virtual ~MiqtVirtualQWebEnginePage() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QWebEnginePage::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QWebEnginePage_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QWebEnginePage::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__triggerAction = 0;
@@ -619,6 +645,10 @@ void* QWebEnginePage_metacast(QWebEnginePage* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QWebEnginePage_metacall(QWebEnginePage* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWebEnginePage_tr(const char* s) {
 	QString _ret = QWebEnginePage::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -670,10 +700,6 @@ struct miqt_string QWebEnginePage_selectedText(const QWebEnginePage* self) {
 
 QWebEngineProfile* QWebEnginePage_profile(const QWebEnginePage* self) {
 	return self->profile();
-}
-
-QAction* QWebEnginePage_action(const QWebEnginePage* self, int action) {
-	return self->action(static_cast<QWebEnginePage::WebAction>(action));
 }
 
 void QWebEnginePage_triggerAction(QWebEnginePage* self, int action, bool checked) {
@@ -1370,6 +1396,20 @@ void QWebEnginePage_save2(const QWebEnginePage* self, struct miqt_string filePat
 void QWebEnginePage_printToPdf2(QWebEnginePage* self, struct miqt_string filePath, QPageLayout* layout) {
 	QString filePath_QString = QString::fromUtf8(filePath.data, filePath.len);
 	self->printToPdf(filePath_QString, *layout);
+}
+
+bool QWebEnginePage_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QWebEnginePage_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QWebEnginePage_override_virtual_triggerAction(void* self, intptr_t slot) {
