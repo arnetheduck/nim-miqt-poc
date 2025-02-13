@@ -334,11 +334,11 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QQuickTransform_protectedbase_update(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QQuickTransform_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickTransform_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickTransform_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QQuickTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QQuickTransform_protectedbase_update(void* self);
+	friend QObject* QQuickTransform_protectedbase_sender(const void* self);
+	friend int QQuickTransform_protectedbase_senderSignalIndex(const void* self);
+	friend int QQuickTransform_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QQuickTransform_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QQuickTransform* QQuickTransform_new(struct QQuickTransform_VTable* vtbl) {
@@ -451,66 +451,36 @@ void QQuickTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 }
 
 const QMetaObject* QQuickTransform_staticMetaObject() { return &QQuickTransform::staticMetaObject; }
-void QQuickTransform_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QQuickTransform_protectedbase_update(void* self) {
+	MiqtVirtualQQuickTransform* self_cast = static_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
 	
 	self_cast->update();
 
 }
 
-QObject* QQuickTransform_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QQuickTransform_protectedbase_sender(const void* self) {
+	MiqtVirtualQQuickTransform* self_cast = static_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QQuickTransform_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickTransform_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQQuickTransform* self_cast = static_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QQuickTransform_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickTransform_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQQuickTransform* self_cast = static_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QQuickTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQQuickTransform* self_cast = dynamic_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickTransform_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQQuickTransform* self_cast = static_cast<MiqtVirtualQQuickTransform*>( (QQuickTransform*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1421,16 +1391,16 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend bool QQuickItem_protectedbase_isComponentComplete(bool* _dynamic_cast_ok, const void* self);
-	friend void QQuickItem_protectedbase_updateInputMethod(bool* _dynamic_cast_ok, void* self);
-	friend bool QQuickItem_protectedbase_widthValid(bool* _dynamic_cast_ok, const void* self);
-	friend bool QQuickItem_protectedbase_heightValid(bool* _dynamic_cast_ok, const void* self);
-	friend void QQuickItem_protectedbase_setImplicitSize(bool* _dynamic_cast_ok, void* self, double param1, double param2);
-	friend void QQuickItem_protectedbase_updateInputMethod1(bool* _dynamic_cast_ok, void* self, int queries);
-	friend QObject* QQuickItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickItem_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QQuickItem_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QQuickItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend bool QQuickItem_protectedbase_isComponentComplete(const void* self);
+	friend void QQuickItem_protectedbase_updateInputMethod(void* self);
+	friend bool QQuickItem_protectedbase_widthValid(const void* self);
+	friend bool QQuickItem_protectedbase_heightValid(const void* self);
+	friend void QQuickItem_protectedbase_setImplicitSize(void* self, double param1, double param2);
+	friend void QQuickItem_protectedbase_updateInputMethod1(void* self, int queries);
+	friend QObject* QQuickItem_protectedbase_sender(const void* self);
+	friend int QQuickItem_protectedbase_senderSignalIndex(const void* self);
+	friend int QQuickItem_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QQuickItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QQuickItem* QQuickItem_new(struct QQuickItem_VTable* vtbl) {
@@ -2744,131 +2714,71 @@ void QQuickItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QQuickItem_staticMetaObject() { return &QQuickItem::staticMetaObject; }
-bool QQuickItem_protectedbase_isComponentComplete(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickItem_protectedbase_isComponentComplete(const void* self) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	return self_cast->isComponentComplete();
 
 }
 
-void QQuickItem_protectedbase_updateInputMethod(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QQuickItem_protectedbase_updateInputMethod(void* self) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	self_cast->updateInputMethod();
 
 }
 
-bool QQuickItem_protectedbase_widthValid(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickItem_protectedbase_widthValid(const void* self) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	return self_cast->widthValid();
 
 }
 
-bool QQuickItem_protectedbase_heightValid(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickItem_protectedbase_heightValid(const void* self) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	return self_cast->heightValid();
 
 }
 
-void QQuickItem_protectedbase_setImplicitSize(bool* _dynamic_cast_ok, void* self, double param1, double param2) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QQuickItem_protectedbase_setImplicitSize(void* self, double param1, double param2) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	self_cast->setImplicitSize(static_cast<qreal>(param1), static_cast<qreal>(param2));
 
 }
 
-void QQuickItem_protectedbase_updateInputMethod1(bool* _dynamic_cast_ok, void* self, int queries) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QQuickItem_protectedbase_updateInputMethod1(void* self, int queries) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	self_cast->updateInputMethod(static_cast<Qt::InputMethodQueries>(queries));
 
 }
 
-QObject* QQuickItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QQuickItem_protectedbase_sender(const void* self) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QQuickItem_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickItem_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QQuickItem_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQuickItem_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QQuickItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQQuickItem* self_cast = dynamic_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQuickItem_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQQuickItem* self_cast = static_cast<MiqtVirtualQQuickItem*>( (QQuickItem*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

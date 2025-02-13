@@ -275,10 +275,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QAccessibleBridgePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QAccessibleBridgePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QAccessibleBridgePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QAccessibleBridgePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QAccessibleBridgePlugin_protectedbase_sender(const void* self);
+	friend int QAccessibleBridgePlugin_protectedbase_senderSignalIndex(const void* self);
+	friend int QAccessibleBridgePlugin_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QAccessibleBridgePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QAccessibleBridgePlugin* QAccessibleBridgePlugin_new(struct QAccessibleBridgePlugin_VTable* vtbl) {
@@ -384,53 +384,29 @@ void QAccessibleBridgePlugin_virtualbase_disconnectNotify(void* self, QMetaMetho
 }
 
 const QMetaObject* QAccessibleBridgePlugin_staticMetaObject() { return &QAccessibleBridgePlugin::staticMetaObject; }
-QObject* QAccessibleBridgePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QAccessibleBridgePlugin_protectedbase_sender(const void* self) {
+	MiqtVirtualQAccessibleBridgePlugin* self_cast = static_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QAccessibleBridgePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAccessibleBridgePlugin_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQAccessibleBridgePlugin* self_cast = static_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QAccessibleBridgePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QAccessibleBridgePlugin_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQAccessibleBridgePlugin* self_cast = static_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QAccessibleBridgePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QAccessibleBridgePlugin_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAccessibleBridgePlugin* self_cast = static_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

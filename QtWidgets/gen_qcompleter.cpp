@@ -335,10 +335,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QCompleter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QCompleter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QCompleter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QCompleter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QCompleter_protectedbase_sender(const void* self);
+	friend int QCompleter_protectedbase_senderSignalIndex(const void* self);
+	friend int QCompleter_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QCompleter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QCompleter* QCompleter_new(struct QCompleter_VTable* vtbl) {
@@ -756,53 +756,29 @@ void QCompleter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QCompleter_staticMetaObject() { return &QCompleter::staticMetaObject; }
-QObject* QCompleter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QCompleter_protectedbase_sender(const void* self) {
+	MiqtVirtualQCompleter* self_cast = static_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QCompleter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QCompleter_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQCompleter* self_cast = static_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QCompleter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QCompleter_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQCompleter* self_cast = static_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QCompleter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QCompleter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQCompleter* self_cast = static_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

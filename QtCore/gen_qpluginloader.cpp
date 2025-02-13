@@ -241,10 +241,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QPluginLoader_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QPluginLoader_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QPluginLoader_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QPluginLoader_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QPluginLoader_protectedbase_sender(const void* self);
+	friend int QPluginLoader_protectedbase_senderSignalIndex(const void* self);
+	friend int QPluginLoader_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QPluginLoader_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QPluginLoader* QPluginLoader_new(struct QPluginLoader_VTable* vtbl) {
@@ -437,53 +437,29 @@ void QPluginLoader_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QPluginLoader_staticMetaObject() { return &QPluginLoader::staticMetaObject; }
-QObject* QPluginLoader_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QPluginLoader_protectedbase_sender(const void* self) {
+	MiqtVirtualQPluginLoader* self_cast = static_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QPluginLoader_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPluginLoader_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQPluginLoader* self_cast = static_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QPluginLoader_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPluginLoader_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQPluginLoader* self_cast = static_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QPluginLoader_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QPluginLoader_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQPluginLoader* self_cast = static_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

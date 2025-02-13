@@ -239,10 +239,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QQmlFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QQmlFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QQmlFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QQmlFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QQmlFileSelector_protectedbase_sender(const void* self);
+	friend int QQmlFileSelector_protectedbase_senderSignalIndex(const void* self);
+	friend int QQmlFileSelector_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QQmlFileSelector_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QQmlFileSelector* QQmlFileSelector_new(struct QQmlFileSelector_VTable* vtbl, QQmlEngine* engine) {
@@ -366,53 +366,29 @@ void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 }
 
 const QMetaObject* QQmlFileSelector_staticMetaObject() { return &QQmlFileSelector::staticMetaObject; }
-QObject* QQmlFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QQmlFileSelector_protectedbase_sender(const void* self) {
+	MiqtVirtualQQmlFileSelector* self_cast = static_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QQmlFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQmlFileSelector_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQQmlFileSelector* self_cast = static_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QQmlFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QQmlFileSelector_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQQmlFileSelector* self_cast = static_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QQmlFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QQmlFileSelector_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQQmlFileSelector* self_cast = static_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

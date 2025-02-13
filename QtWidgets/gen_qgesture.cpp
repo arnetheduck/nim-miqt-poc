@@ -245,10 +245,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QGesture_protectedbase_sender(const void* self);
+	friend int QGesture_protectedbase_senderSignalIndex(const void* self);
+	friend int QGesture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QGesture* QGesture_new(struct QGesture_VTable* vtbl) {
@@ -384,53 +384,29 @@ void QGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QGesture_staticMetaObject() { return &QGesture::staticMetaObject; }
-QObject* QGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGesture* self_cast = dynamic_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QGesture_protectedbase_sender(const void* self) {
+	MiqtVirtualQGesture* self_cast = static_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQGesture* self_cast = dynamic_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGesture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQGesture* self_cast = static_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQGesture* self_cast = dynamic_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QGesture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQGesture* self_cast = static_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQGesture* self_cast = dynamic_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGesture* self_cast = static_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -657,10 +633,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QPanGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QPanGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QPanGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QPanGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QPanGesture_protectedbase_sender(const void* self);
+	friend int QPanGesture_protectedbase_senderSignalIndex(const void* self);
+	friend int QPanGesture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QPanGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QPanGesture* QPanGesture_new(struct QPanGesture_VTable* vtbl) {
@@ -790,53 +766,29 @@ void QPanGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QPanGesture_staticMetaObject() { return &QPanGesture::staticMetaObject; }
-QObject* QPanGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPanGesture* self_cast = dynamic_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QPanGesture_protectedbase_sender(const void* self) {
+	MiqtVirtualQPanGesture* self_cast = static_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QPanGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPanGesture* self_cast = dynamic_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPanGesture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQPanGesture* self_cast = static_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QPanGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQPanGesture* self_cast = dynamic_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPanGesture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQPanGesture* self_cast = static_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QPanGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQPanGesture* self_cast = dynamic_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QPanGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQPanGesture* self_cast = static_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1063,10 +1015,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QPinchGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QPinchGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QPinchGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QPinchGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QPinchGesture_protectedbase_sender(const void* self);
+	friend int QPinchGesture_protectedbase_senderSignalIndex(const void* self);
+	friend int QPinchGesture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QPinchGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QPinchGesture* QPinchGesture_new(struct QPinchGesture_VTable* vtbl) {
@@ -1263,53 +1215,29 @@ void QPinchGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QPinchGesture_staticMetaObject() { return &QPinchGesture::staticMetaObject; }
-QObject* QPinchGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPinchGesture* self_cast = dynamic_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QPinchGesture_protectedbase_sender(const void* self) {
+	MiqtVirtualQPinchGesture* self_cast = static_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QPinchGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPinchGesture* self_cast = dynamic_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPinchGesture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQPinchGesture* self_cast = static_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QPinchGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQPinchGesture* self_cast = dynamic_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPinchGesture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQPinchGesture* self_cast = static_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QPinchGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQPinchGesture* self_cast = dynamic_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QPinchGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQPinchGesture* self_cast = static_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1536,10 +1464,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QSwipeGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QSwipeGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QSwipeGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QSwipeGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QSwipeGesture_protectedbase_sender(const void* self);
+	friend int QSwipeGesture_protectedbase_senderSignalIndex(const void* self);
+	friend int QSwipeGesture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QSwipeGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QSwipeGesture* QSwipeGesture_new(struct QSwipeGesture_VTable* vtbl) {
@@ -1659,53 +1587,29 @@ void QSwipeGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QSwipeGesture_staticMetaObject() { return &QSwipeGesture::staticMetaObject; }
-QObject* QSwipeGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSwipeGesture* self_cast = dynamic_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QSwipeGesture_protectedbase_sender(const void* self) {
+	MiqtVirtualQSwipeGesture* self_cast = static_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QSwipeGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSwipeGesture* self_cast = dynamic_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSwipeGesture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQSwipeGesture* self_cast = static_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QSwipeGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQSwipeGesture* self_cast = dynamic_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSwipeGesture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQSwipeGesture* self_cast = static_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QSwipeGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQSwipeGesture* self_cast = dynamic_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QSwipeGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSwipeGesture* self_cast = static_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -1932,10 +1836,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QTapGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QTapGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QTapGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QTapGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QTapGesture_protectedbase_sender(const void* self);
+	friend int QTapGesture_protectedbase_senderSignalIndex(const void* self);
+	friend int QTapGesture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QTapGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QTapGesture* QTapGesture_new(struct QTapGesture_VTable* vtbl) {
@@ -2044,53 +1948,29 @@ void QTapGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QTapGesture_staticMetaObject() { return &QTapGesture::staticMetaObject; }
-QObject* QTapGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTapGesture* self_cast = dynamic_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QTapGesture_protectedbase_sender(const void* self) {
+	MiqtVirtualQTapGesture* self_cast = static_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QTapGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTapGesture* self_cast = dynamic_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTapGesture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQTapGesture* self_cast = static_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QTapGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQTapGesture* self_cast = dynamic_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTapGesture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQTapGesture* self_cast = static_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QTapGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQTapGesture* self_cast = dynamic_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTapGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTapGesture* self_cast = static_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -2317,10 +2197,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QTapAndHoldGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QTapAndHoldGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QTapAndHoldGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QTapAndHoldGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QTapAndHoldGesture_protectedbase_sender(const void* self);
+	friend int QTapAndHoldGesture_protectedbase_senderSignalIndex(const void* self);
+	friend int QTapAndHoldGesture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QTapAndHoldGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QTapAndHoldGesture* QTapAndHoldGesture_new(struct QTapAndHoldGesture_VTable* vtbl) {
@@ -2437,53 +2317,29 @@ void QTapAndHoldGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 }
 
 const QMetaObject* QTapAndHoldGesture_staticMetaObject() { return &QTapAndHoldGesture::staticMetaObject; }
-QObject* QTapAndHoldGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTapAndHoldGesture* self_cast = dynamic_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QTapAndHoldGesture_protectedbase_sender(const void* self) {
+	MiqtVirtualQTapAndHoldGesture* self_cast = static_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QTapAndHoldGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTapAndHoldGesture* self_cast = dynamic_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTapAndHoldGesture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQTapAndHoldGesture* self_cast = static_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QTapAndHoldGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQTapAndHoldGesture* self_cast = dynamic_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTapAndHoldGesture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQTapAndHoldGesture* self_cast = static_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QTapAndHoldGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQTapAndHoldGesture* self_cast = dynamic_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTapAndHoldGesture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTapAndHoldGesture* self_cast = static_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

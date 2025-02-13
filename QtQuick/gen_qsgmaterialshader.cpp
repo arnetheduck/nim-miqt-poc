@@ -77,8 +77,8 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QSGMaterialShader_protectedbase_setShaderFileName(bool* _dynamic_cast_ok, void* self, int stage, struct miqt_string filename);
-	friend void QSGMaterialShader_protectedbase_setShader(bool* _dynamic_cast_ok, void* self, int stage, const QShader* shader);
+	friend void QSGMaterialShader_protectedbase_setShaderFileName(void* self, int stage, struct miqt_string filename);
+	friend void QSGMaterialShader_protectedbase_setShader(void* self, int stage, const QShader* shader);
 };
 
 QSGMaterialShader* QSGMaterialShader_new(struct QSGMaterialShader_VTable* vtbl) {
@@ -122,28 +122,16 @@ bool QSGMaterialShader_virtualbase_updateGraphicsPipelineState(void* self, QSGMa
 	return ( (MiqtVirtualQSGMaterialShader*)(self) )->virtualbase_updateGraphicsPipelineState(state, ps, newMaterial, oldMaterial);
 }
 
-void QSGMaterialShader_protectedbase_setShaderFileName(bool* _dynamic_cast_ok, void* self, int stage, struct miqt_string filename) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QSGMaterialShader_protectedbase_setShaderFileName(void* self, int stage, struct miqt_string filename) {
+	MiqtVirtualQSGMaterialShader* self_cast = static_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
 			QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 
 	self_cast->setShaderFileName(static_cast<MiqtVirtualQSGMaterialShader::Stage>(stage), filename_QString);
 
 }
 
-void QSGMaterialShader_protectedbase_setShader(bool* _dynamic_cast_ok, void* self, int stage, const QShader* shader) {
-	MiqtVirtualQSGMaterialShader* self_cast = dynamic_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QSGMaterialShader_protectedbase_setShader(void* self, int stage, const QShader* shader) {
+	MiqtVirtualQSGMaterialShader* self_cast = static_cast<MiqtVirtualQSGMaterialShader*>( (QSGMaterialShader*)(self) );
 	
 	self_cast->setShader(static_cast<MiqtVirtualQSGMaterialShader::Stage>(stage), *shader);
 

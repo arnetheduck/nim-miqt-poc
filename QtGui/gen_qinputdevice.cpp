@@ -243,10 +243,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QInputDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QInputDevice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QInputDevice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QInputDevice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QInputDevice_protectedbase_sender(const void* self);
+	friend int QInputDevice_protectedbase_senderSignalIndex(const void* self);
+	friend int QInputDevice_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QInputDevice_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QInputDevice* QInputDevice_new(struct QInputDevice_VTable* vtbl) {
@@ -475,53 +475,29 @@ void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 }
 
 const QMetaObject* QInputDevice_staticMetaObject() { return &QInputDevice::staticMetaObject; }
-QObject* QInputDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQInputDevice* self_cast = dynamic_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QInputDevice_protectedbase_sender(const void* self) {
+	MiqtVirtualQInputDevice* self_cast = static_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QInputDevice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQInputDevice* self_cast = dynamic_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QInputDevice_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQInputDevice* self_cast = static_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QInputDevice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQInputDevice* self_cast = dynamic_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QInputDevice_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQInputDevice* self_cast = static_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QInputDevice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQInputDevice* self_cast = dynamic_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QInputDevice_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQInputDevice* self_cast = static_cast<MiqtVirtualQInputDevice*>( (QInputDevice*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

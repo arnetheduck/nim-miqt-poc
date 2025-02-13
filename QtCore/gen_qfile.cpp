@@ -679,12 +679,12 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
-	friend void QFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
-	friend QObject* QFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QFile_protectedbase_setOpenMode(void* self, int openMode);
+	friend void QFile_protectedbase_setErrorString(void* self, struct miqt_string errorString);
+	friend QObject* QFile_protectedbase_sender(const void* self);
+	friend int QFile_protectedbase_senderSignalIndex(const void* self);
+	friend int QFile_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QFile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QFile* QFile_new(struct QFile_VTable* vtbl) {
@@ -1061,80 +1061,44 @@ void QFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QFile_staticMetaObject() { return &QFile::staticMetaObject; }
-void QFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QFile_protectedbase_setOpenMode(void* self, int openMode) {
+	MiqtVirtualQFile* self_cast = static_cast<MiqtVirtualQFile*>( (QFile*)(self) );
 	
 	self_cast->setOpenMode(static_cast<MiqtVirtualQFile::OpenMode>(openMode));
 
 }
 
-void QFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QFile_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	MiqtVirtualQFile* self_cast = static_cast<MiqtVirtualQFile*>( (QFile*)(self) );
 			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
 
 	self_cast->setErrorString(errorString_QString);
 
 }
 
-QObject* QFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QFile_protectedbase_sender(const void* self) {
+	MiqtVirtualQFile* self_cast = static_cast<MiqtVirtualQFile*>( (QFile*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QFile_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQFile* self_cast = static_cast<MiqtVirtualQFile*>( (QFile*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QFile_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQFile* self_cast = static_cast<MiqtVirtualQFile*>( (QFile*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QFile_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQFile* self_cast = static_cast<MiqtVirtualQFile*>( (QFile*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

@@ -321,10 +321,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QParallelAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QParallelAnimationGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QParallelAnimationGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QParallelAnimationGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QParallelAnimationGroup_protectedbase_sender(const void* self);
+	friend int QParallelAnimationGroup_protectedbase_senderSignalIndex(const void* self);
+	friend int QParallelAnimationGroup_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QParallelAnimationGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QParallelAnimationGroup* QParallelAnimationGroup_new(struct QParallelAnimationGroup_VTable* vtbl) {
@@ -445,53 +445,29 @@ void QParallelAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMetho
 }
 
 const QMetaObject* QParallelAnimationGroup_staticMetaObject() { return &QParallelAnimationGroup::staticMetaObject; }
-QObject* QParallelAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQParallelAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QParallelAnimationGroup_protectedbase_sender(const void* self) {
+	MiqtVirtualQParallelAnimationGroup* self_cast = static_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QParallelAnimationGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQParallelAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QParallelAnimationGroup_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQParallelAnimationGroup* self_cast = static_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QParallelAnimationGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQParallelAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QParallelAnimationGroup_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQParallelAnimationGroup* self_cast = static_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QParallelAnimationGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQParallelAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QParallelAnimationGroup_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQParallelAnimationGroup* self_cast = static_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

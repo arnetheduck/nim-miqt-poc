@@ -245,10 +245,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QSystemTrayIcon_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QSystemTrayIcon_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QSystemTrayIcon_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QSystemTrayIcon_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QSystemTrayIcon_protectedbase_sender(const void* self);
+	friend int QSystemTrayIcon_protectedbase_senderSignalIndex(const void* self);
+	friend int QSystemTrayIcon_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QSystemTrayIcon_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QSystemTrayIcon* QSystemTrayIcon_new(struct QSystemTrayIcon_VTable* vtbl) {
@@ -487,53 +487,29 @@ void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 }
 
 const QMetaObject* QSystemTrayIcon_staticMetaObject() { return &QSystemTrayIcon::staticMetaObject; }
-QObject* QSystemTrayIcon_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QSystemTrayIcon_protectedbase_sender(const void* self) {
+	MiqtVirtualQSystemTrayIcon* self_cast = static_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QSystemTrayIcon_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSystemTrayIcon_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQSystemTrayIcon* self_cast = static_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QSystemTrayIcon_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSystemTrayIcon_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQSystemTrayIcon* self_cast = static_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QSystemTrayIcon_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QSystemTrayIcon_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSystemTrayIcon* self_cast = static_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

@@ -1070,15 +1070,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QMenuBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QMenuBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QMenuBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QMenuBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QMenuBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QMenuBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QMenuBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QMenuBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QMenuBar_protectedbase_updateMicroFocus(void* self);
+	friend void QMenuBar_protectedbase_create(void* self);
+	friend void QMenuBar_protectedbase_destroy(void* self);
+	friend bool QMenuBar_protectedbase_focusNextChild(void* self);
+	friend bool QMenuBar_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QMenuBar_protectedbase_sender(const void* self);
+	friend int QMenuBar_protectedbase_senderSignalIndex(const void* self);
+	friend int QMenuBar_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QMenuBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QMenuBar* QMenuBar_new(struct QMenuBar_VTable* vtbl, QWidget* parent) {
@@ -1401,118 +1401,64 @@ void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QMenuBar_staticMetaObject() { return &QMenuBar::staticMetaObject; }
-void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMenuBar_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QMenuBar_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMenuBar_protectedbase_create(void* self) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QMenuBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QMenuBar_protectedbase_destroy(void* self) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QMenuBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMenuBar_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QMenuBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMenuBar_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QMenuBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QMenuBar_protectedbase_sender(const void* self) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QMenuBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMenuBar_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QMenuBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QMenuBar_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QMenuBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QMenuBar_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQMenuBar* self_cast = static_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

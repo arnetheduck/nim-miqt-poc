@@ -1094,16 +1094,16 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QStackedWidget_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
-	friend void QStackedWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QStackedWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QStackedWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QStackedWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QStackedWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QStackedWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QStackedWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QStackedWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QStackedWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QStackedWidget_protectedbase_drawFrame(void* self, QPainter* param1);
+	friend void QStackedWidget_protectedbase_updateMicroFocus(void* self);
+	friend void QStackedWidget_protectedbase_create(void* self);
+	friend void QStackedWidget_protectedbase_destroy(void* self);
+	friend bool QStackedWidget_protectedbase_focusNextChild(void* self);
+	friend bool QStackedWidget_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QStackedWidget_protectedbase_sender(const void* self);
+	friend int QStackedWidget_protectedbase_senderSignalIndex(const void* self);
+	friend int QStackedWidget_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QStackedWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QStackedWidget* QStackedWidget_new(struct QStackedWidget_VTable* vtbl, QWidget* parent) {
@@ -1448,131 +1448,71 @@ void QStackedWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 }
 
 const QMetaObject* QStackedWidget_staticMetaObject() { return &QStackedWidget::staticMetaObject; }
-void QStackedWidget_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QStackedWidget_protectedbase_drawFrame(void* self, QPainter* param1) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	self_cast->drawFrame(param1);
 
 }
 
-void QStackedWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QStackedWidget_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QStackedWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QStackedWidget_protectedbase_create(void* self) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QStackedWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QStackedWidget_protectedbase_destroy(void* self) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QStackedWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QStackedWidget_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QStackedWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QStackedWidget_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QStackedWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QStackedWidget_protectedbase_sender(const void* self) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QStackedWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QStackedWidget_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QStackedWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QStackedWidget_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QStackedWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QStackedWidget_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQStackedWidget* self_cast = static_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

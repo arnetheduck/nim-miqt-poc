@@ -1152,15 +1152,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QFontComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QFontComboBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QFontComboBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QFontComboBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QFontComboBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QFontComboBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QFontComboBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QFontComboBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QFontComboBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QFontComboBox_protectedbase_updateMicroFocus(void* self);
+	friend void QFontComboBox_protectedbase_create(void* self);
+	friend void QFontComboBox_protectedbase_destroy(void* self);
+	friend bool QFontComboBox_protectedbase_focusNextChild(void* self);
+	friend bool QFontComboBox_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QFontComboBox_protectedbase_sender(const void* self);
+	friend int QFontComboBox_protectedbase_senderSignalIndex(const void* self);
+	friend int QFontComboBox_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QFontComboBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QFontComboBox* QFontComboBox_new(struct QFontComboBox_VTable* vtbl, QWidget* parent) {
@@ -1528,118 +1528,64 @@ void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QFontComboBox_staticMetaObject() { return &QFontComboBox::staticMetaObject; }
-void QFontComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QFontComboBox_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QFontComboBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QFontComboBox_protectedbase_create(void* self) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QFontComboBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QFontComboBox_protectedbase_destroy(void* self) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QFontComboBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QFontComboBox_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QFontComboBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QFontComboBox_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QFontComboBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QFontComboBox_protectedbase_sender(const void* self) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QFontComboBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QFontComboBox_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QFontComboBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QFontComboBox_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QFontComboBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QFontComboBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQFontComboBox* self_cast = static_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

@@ -1289,17 +1289,17 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QLineEdit* QDateTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
-	friend void QDateTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
-	friend void QDateTimeEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QDateTimeEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QDateTimeEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QDateTimeEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QDateTimeEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QDateTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QDateTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QDateTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QDateTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QLineEdit* QDateTimeEdit_protectedbase_lineEdit(const void* self);
+	friend void QDateTimeEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit);
+	friend void QDateTimeEdit_protectedbase_updateMicroFocus(void* self);
+	friend void QDateTimeEdit_protectedbase_create(void* self);
+	friend void QDateTimeEdit_protectedbase_destroy(void* self);
+	friend bool QDateTimeEdit_protectedbase_focusNextChild(void* self);
+	friend bool QDateTimeEdit_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QDateTimeEdit_protectedbase_sender(const void* self);
+	friend int QDateTimeEdit_protectedbase_senderSignalIndex(const void* self);
+	friend int QDateTimeEdit_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QDateTimeEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QDateTimeEdit* QDateTimeEdit_new(struct QDateTimeEdit_VTable* vtbl, QWidget* parent) {
@@ -1897,144 +1897,78 @@ void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QDateTimeEdit_staticMetaObject() { return &QDateTimeEdit::staticMetaObject; }
-QLineEdit* QDateTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QLineEdit* QDateTimeEdit_protectedbase_lineEdit(const void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	return self_cast->lineEdit();
 
 }
 
-void QDateTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateTimeEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	self_cast->setLineEdit(edit);
 
 }
 
-void QDateTimeEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateTimeEdit_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QDateTimeEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateTimeEdit_protectedbase_create(void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QDateTimeEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateTimeEdit_protectedbase_destroy(void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QDateTimeEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDateTimeEdit_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QDateTimeEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDateTimeEdit_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QDateTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QDateTimeEdit_protectedbase_sender(const void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QDateTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDateTimeEdit_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QDateTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDateTimeEdit_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QDateTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDateTimeEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQDateTimeEdit* self_cast = static_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -3263,17 +3197,17 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QLineEdit* QTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
-	friend void QTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
-	friend void QTimeEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QTimeEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QTimeEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QTimeEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QTimeEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QLineEdit* QTimeEdit_protectedbase_lineEdit(const void* self);
+	friend void QTimeEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit);
+	friend void QTimeEdit_protectedbase_updateMicroFocus(void* self);
+	friend void QTimeEdit_protectedbase_create(void* self);
+	friend void QTimeEdit_protectedbase_destroy(void* self);
+	friend bool QTimeEdit_protectedbase_focusNextChild(void* self);
+	friend bool QTimeEdit_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QTimeEdit_protectedbase_sender(const void* self);
+	friend int QTimeEdit_protectedbase_senderSignalIndex(const void* self);
+	friend int QTimeEdit_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QTimeEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QTimeEdit* QTimeEdit_new(struct QTimeEdit_VTable* vtbl, QWidget* parent) {
@@ -3594,144 +3528,78 @@ void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QTimeEdit_staticMetaObject() { return &QTimeEdit::staticMetaObject; }
-QLineEdit* QTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QLineEdit* QTimeEdit_protectedbase_lineEdit(const void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	return self_cast->lineEdit();
 
 }
 
-void QTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTimeEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	self_cast->setLineEdit(edit);
 
 }
 
-void QTimeEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTimeEdit_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QTimeEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTimeEdit_protectedbase_create(void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QTimeEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QTimeEdit_protectedbase_destroy(void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QTimeEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTimeEdit_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QTimeEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTimeEdit_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QTimeEdit_protectedbase_sender(const void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTimeEdit_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QTimeEdit_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QTimeEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTimeEdit* self_cast = static_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -4960,17 +4828,17 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QLineEdit* QDateEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
-	friend void QDateEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
-	friend void QDateEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QDateEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QDateEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QDateEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QDateEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QDateEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QDateEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QDateEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QDateEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QLineEdit* QDateEdit_protectedbase_lineEdit(const void* self);
+	friend void QDateEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit);
+	friend void QDateEdit_protectedbase_updateMicroFocus(void* self);
+	friend void QDateEdit_protectedbase_create(void* self);
+	friend void QDateEdit_protectedbase_destroy(void* self);
+	friend bool QDateEdit_protectedbase_focusNextChild(void* self);
+	friend bool QDateEdit_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QDateEdit_protectedbase_sender(const void* self);
+	friend int QDateEdit_protectedbase_senderSignalIndex(const void* self);
+	friend int QDateEdit_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QDateEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QDateEdit* QDateEdit_new(struct QDateEdit_VTable* vtbl, QWidget* parent) {
@@ -5291,144 +5159,78 @@ void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QDateEdit_staticMetaObject() { return &QDateEdit::staticMetaObject; }
-QLineEdit* QDateEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QLineEdit* QDateEdit_protectedbase_lineEdit(const void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	return self_cast->lineEdit();
 
 }
 
-void QDateEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateEdit_protectedbase_setLineEdit(void* self, QLineEdit* edit) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	self_cast->setLineEdit(edit);
 
 }
 
-void QDateEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateEdit_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QDateEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateEdit_protectedbase_create(void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QDateEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QDateEdit_protectedbase_destroy(void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QDateEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDateEdit_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QDateEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDateEdit_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QDateEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QDateEdit_protectedbase_sender(const void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QDateEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDateEdit_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QDateEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QDateEdit_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QDateEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QDateEdit_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQDateEdit* self_cast = static_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

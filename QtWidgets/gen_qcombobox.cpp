@@ -1170,15 +1170,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QComboBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QComboBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QComboBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QComboBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QComboBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QComboBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QComboBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QComboBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QComboBox_protectedbase_updateMicroFocus(void* self);
+	friend void QComboBox_protectedbase_create(void* self);
+	friend void QComboBox_protectedbase_destroy(void* self);
+	friend bool QComboBox_protectedbase_focusNextChild(void* self);
+	friend bool QComboBox_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QComboBox_protectedbase_sender(const void* self);
+	friend int QComboBox_protectedbase_senderSignalIndex(const void* self);
+	friend int QComboBox_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QComboBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QComboBox* QComboBox_new(struct QComboBox_VTable* vtbl, QWidget* parent) {
@@ -1990,118 +1990,64 @@ void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QComboBox_staticMetaObject() { return &QComboBox::staticMetaObject; }
-void QComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QComboBox_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QComboBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QComboBox_protectedbase_create(void* self) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QComboBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QComboBox_protectedbase_destroy(void* self) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QComboBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QComboBox_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QComboBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QComboBox_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QComboBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QComboBox_protectedbase_sender(const void* self) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QComboBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QComboBox_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QComboBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QComboBox_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QComboBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QComboBox_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQComboBox* self_cast = static_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

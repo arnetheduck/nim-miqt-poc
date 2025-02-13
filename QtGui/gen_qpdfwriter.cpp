@@ -495,10 +495,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QPdfWriter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QPdfWriter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QPdfWriter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QPdfWriter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QPdfWriter_protectedbase_sender(const void* self);
+	friend int QPdfWriter_protectedbase_senderSignalIndex(const void* self);
+	friend int QPdfWriter_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QPdfWriter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QPdfWriter* QPdfWriter_new(struct QPdfWriter_VTable* vtbl, struct miqt_string filename) {
@@ -729,53 +729,29 @@ QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self) {
 }
 
 const QMetaObject* QPdfWriter_staticMetaObject() { return &QPdfWriter::staticMetaObject; }
-QObject* QPdfWriter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QPdfWriter_protectedbase_sender(const void* self) {
+	MiqtVirtualQPdfWriter* self_cast = static_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QPdfWriter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPdfWriter_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQPdfWriter* self_cast = static_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QPdfWriter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QPdfWriter_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQPdfWriter* self_cast = static_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QPdfWriter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QPdfWriter_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQPdfWriter* self_cast = static_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

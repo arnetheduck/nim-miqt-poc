@@ -249,10 +249,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QShortcut_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QShortcut_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QShortcut_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QShortcut_protectedbase_sender(const void* self);
+	friend int QShortcut_protectedbase_senderSignalIndex(const void* self);
+	friend int QShortcut_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QShortcut_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QShortcut* QShortcut_new(struct QShortcut_VTable* vtbl, QObject* parent) {
@@ -499,53 +499,29 @@ void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QShortcut_staticMetaObject() { return &QShortcut::staticMetaObject; }
-QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QShortcut_protectedbase_sender(const void* self) {
+	MiqtVirtualQShortcut* self_cast = static_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QShortcut_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QShortcut_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQShortcut* self_cast = static_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QShortcut_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QShortcut_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQShortcut* self_cast = static_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QShortcut_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QShortcut_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQShortcut* self_cast = static_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

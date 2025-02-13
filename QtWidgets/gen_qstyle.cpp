@@ -720,10 +720,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QStyle_protectedbase_sender(const void* self);
+	friend int QStyle_protectedbase_senderSignalIndex(const void* self);
+	friend int QStyle_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QStyle_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QStyle* QStyle_new(struct QStyle_VTable* vtbl) {
@@ -1015,53 +1015,29 @@ void QStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QStyle_staticMetaObject() { return &QStyle::staticMetaObject; }
-QObject* QStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QStyle_protectedbase_sender(const void* self) {
+	MiqtVirtualQStyle* self_cast = static_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QStyle_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQStyle* self_cast = static_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QStyle_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQStyle* self_cast = static_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QStyle_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQStyle* self_cast = static_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

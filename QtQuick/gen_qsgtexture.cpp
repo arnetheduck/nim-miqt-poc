@@ -343,11 +343,11 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void* QSGTexture_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
-	friend QObject* QSGTexture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QSGTexture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QSGTexture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QSGTexture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void* QSGTexture_protectedbase_resolveInterface(const void* self, const char* name, int revision);
+	friend QObject* QSGTexture_protectedbase_sender(const void* self);
+	friend int QSGTexture_protectedbase_senderSignalIndex(const void* self);
+	friend int QSGTexture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QSGTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QSGTexture* QSGTexture_new(struct QSGTexture_VTable* vtbl) {
@@ -534,66 +534,36 @@ void QSGTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 }
 
 const QMetaObject* QSGTexture_staticMetaObject() { return &QSGTexture::staticMetaObject; }
-void* QSGTexture_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {
-	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+void* QSGTexture_protectedbase_resolveInterface(const void* self, const char* name, int revision) {
+	MiqtVirtualQSGTexture* self_cast = static_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
 	
 	return self_cast->resolveInterface(name, static_cast<int>(revision));
 
 }
 
-QObject* QSGTexture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QSGTexture_protectedbase_sender(const void* self) {
+	MiqtVirtualQSGTexture* self_cast = static_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QSGTexture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSGTexture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQSGTexture* self_cast = static_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QSGTexture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSGTexture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQSGTexture* self_cast = static_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QSGTexture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QSGTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSGTexture* self_cast = static_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
@@ -936,11 +906,11 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void* QSGDynamicTexture_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
-	friend QObject* QSGDynamicTexture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QSGDynamicTexture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QSGDynamicTexture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QSGDynamicTexture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void* QSGDynamicTexture_protectedbase_resolveInterface(const void* self, const char* name, int revision);
+	friend QObject* QSGDynamicTexture_protectedbase_sender(const void* self);
+	friend int QSGDynamicTexture_protectedbase_senderSignalIndex(const void* self);
+	friend int QSGDynamicTexture_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QSGDynamicTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QSGDynamicTexture* QSGDynamicTexture_new(struct QSGDynamicTexture_VTable* vtbl) {
@@ -1053,66 +1023,36 @@ void QSGDynamicTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 }
 
 const QMetaObject* QSGDynamicTexture_staticMetaObject() { return &QSGDynamicTexture::staticMetaObject; }
-void* QSGDynamicTexture_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {
-	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+void* QSGDynamicTexture_protectedbase_resolveInterface(const void* self, const char* name, int revision) {
+	MiqtVirtualQSGDynamicTexture* self_cast = static_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
 	
 	return self_cast->resolveInterface(name, static_cast<int>(revision));
 
 }
 
-QObject* QSGDynamicTexture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QSGDynamicTexture_protectedbase_sender(const void* self) {
+	MiqtVirtualQSGDynamicTexture* self_cast = static_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QSGDynamicTexture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSGDynamicTexture_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQSGDynamicTexture* self_cast = static_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QSGDynamicTexture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSGDynamicTexture_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQSGDynamicTexture* self_cast = static_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QSGDynamicTexture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QSGDynamicTexture_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSGDynamicTexture* self_cast = static_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

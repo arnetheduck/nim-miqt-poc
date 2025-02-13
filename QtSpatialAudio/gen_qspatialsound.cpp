@@ -267,10 +267,10 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QObject* QSpatialSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QSpatialSound_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QSpatialSound_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QSpatialSound_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend QObject* QSpatialSound_protectedbase_sender(const void* self);
+	friend int QSpatialSound_protectedbase_senderSignalIndex(const void* self);
+	friend int QSpatialSound_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QSpatialSound_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QSpatialSound* QSpatialSound_new(struct QSpatialSound_VTable* vtbl, QAudioEngine* engine) {
@@ -762,53 +762,29 @@ void QSpatialSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 }
 
 const QMetaObject* QSpatialSound_staticMetaObject() { return &QSpatialSound::staticMetaObject; }
-QObject* QSpatialSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSpatialSound* self_cast = dynamic_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QSpatialSound_protectedbase_sender(const void* self) {
+	MiqtVirtualQSpatialSound* self_cast = static_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QSpatialSound_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQSpatialSound* self_cast = dynamic_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSpatialSound_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQSpatialSound* self_cast = static_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QSpatialSound_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQSpatialSound* self_cast = dynamic_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QSpatialSound_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQSpatialSound* self_cast = static_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QSpatialSound_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQSpatialSound* self_cast = dynamic_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QSpatialSound_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSpatialSound* self_cast = static_cast<MiqtVirtualQSpatialSound*>( (QSpatialSound*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

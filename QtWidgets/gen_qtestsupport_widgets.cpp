@@ -65,8 +65,8 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(bool* _dynamic_cast_ok, void* self, int touchId);
-	friend QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(bool* _dynamic_cast_ok, void* self, int touchId);
+	friend QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(void* self, int touchId);
+	friend QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(void* self, int touchId);
 };
 
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_new(struct QTest::QTouchEventWidgetSequence_VTable* vtbl, QTest__QTouchEventWidgetSequence* param1) {
@@ -131,14 +131,8 @@ bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool proces
 	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_commit(processEvents);
 }
 
-QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(bool* _dynamic_cast_ok, void* self, int touchId) {
-	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(void* self, int touchId) {
+	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = static_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
 	
 	QEventPoint& _ret = self_cast->point(static_cast<int>(touchId));
 	// Cast returned reference into pointer
@@ -146,14 +140,8 @@ QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(bool* _dynamic
 
 }
 
-QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(bool* _dynamic_cast_ok, void* self, int touchId) {
-	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(void* self, int touchId) {
+	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = static_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
 	
 	QEventPoint& _ret = self_cast->pointOrPreviousPoint(static_cast<int>(touchId));
 	// Cast returned reference into pointer

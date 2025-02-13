@@ -587,12 +587,12 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QBuffer_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
-	friend void QBuffer_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
-	friend QObject* QBuffer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QBuffer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QBuffer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QBuffer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QBuffer_protectedbase_setOpenMode(void* self, int openMode);
+	friend void QBuffer_protectedbase_setErrorString(void* self, struct miqt_string errorString);
+	friend QObject* QBuffer_protectedbase_sender(const void* self);
+	friend int QBuffer_protectedbase_senderSignalIndex(const void* self);
+	friend int QBuffer_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QBuffer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QBuffer* QBuffer_new(struct QBuffer_VTable* vtbl) {
@@ -827,80 +827,44 @@ void QBuffer_virtualbase_customEvent(void* self, QEvent* event) {
 }
 
 const QMetaObject* QBuffer_staticMetaObject() { return &QBuffer::staticMetaObject; }
-void QBuffer_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
-	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QBuffer_protectedbase_setOpenMode(void* self, int openMode) {
+	MiqtVirtualQBuffer* self_cast = static_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	
 	self_cast->setOpenMode(static_cast<MiqtVirtualQBuffer::OpenMode>(openMode));
 
 }
 
-void QBuffer_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
-	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QBuffer_protectedbase_setErrorString(void* self, struct miqt_string errorString) {
+	MiqtVirtualQBuffer* self_cast = static_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
 
 	self_cast->setErrorString(errorString_QString);
 
 }
 
-QObject* QBuffer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QBuffer_protectedbase_sender(const void* self) {
+	MiqtVirtualQBuffer* self_cast = static_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QBuffer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QBuffer_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQBuffer* self_cast = static_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QBuffer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QBuffer_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQBuffer* self_cast = static_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QBuffer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QBuffer_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQBuffer* self_cast = static_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 

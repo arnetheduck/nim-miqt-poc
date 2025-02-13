@@ -1129,15 +1129,15 @@ public:
 	}
 
 	// Wrappers to allow calling protected methods:
-	friend void QWebEngineView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
-	friend void QWebEngineView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
-	friend void QWebEngineView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
-	friend bool QWebEngineView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
-	friend bool QWebEngineView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QWebEngineView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebEngineView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
-	friend int QWebEngineView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
-	friend bool QWebEngineView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+	friend void QWebEngineView_protectedbase_updateMicroFocus(void* self);
+	friend void QWebEngineView_protectedbase_create(void* self);
+	friend void QWebEngineView_protectedbase_destroy(void* self);
+	friend bool QWebEngineView_protectedbase_focusNextChild(void* self);
+	friend bool QWebEngineView_protectedbase_focusPreviousChild(void* self);
+	friend QObject* QWebEngineView_protectedbase_sender(const void* self);
+	friend int QWebEngineView_protectedbase_senderSignalIndex(const void* self);
+	friend int QWebEngineView_protectedbase_receivers(const void* self, const char* signal);
+	friend bool QWebEngineView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal);
 };
 
 QWebEngineView* QWebEngineView_new(struct QWebEngineView_VTable* vtbl, QWidget* parent) {
@@ -1841,118 +1841,64 @@ void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 }
 
 const QMetaObject* QWebEngineView_staticMetaObject() { return &QWebEngineView::staticMetaObject; }
-void QWebEngineView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebEngineView_protectedbase_updateMicroFocus(void* self) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	self_cast->updateMicroFocus();
 
 }
 
-void QWebEngineView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebEngineView_protectedbase_create(void* self) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	self_cast->create();
 
 }
 
-void QWebEngineView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QWebEngineView_protectedbase_destroy(void* self) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	self_cast->destroy();
 
 }
 
-bool QWebEngineView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebEngineView_protectedbase_focusNextChild(void* self) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	return self_cast->focusNextChild();
 
 }
 
-bool QWebEngineView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebEngineView_protectedbase_focusPreviousChild(void* self) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	return self_cast->focusPreviousChild();
 
 }
 
-QObject* QWebEngineView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return nullptr;
-	}
-	
-	*_dynamic_cast_ok = true;
+QObject* QWebEngineView_protectedbase_sender(const void* self) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	return self_cast->sender();
 
 }
 
-int QWebEngineView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebEngineView_protectedbase_senderSignalIndex(const void* self) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	return self_cast->senderSignalIndex();
 
 }
 
-int QWebEngineView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return 0;
-	}
-	
-	*_dynamic_cast_ok = true;
+int QWebEngineView_protectedbase_receivers(const void* self, const char* signal) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	return self_cast->receivers(signal);
 
 }
 
-bool QWebEngineView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
-	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return false;
-	}
-	
-	*_dynamic_cast_ok = true;
+bool QWebEngineView_protectedbase_isSignalConnected(const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebEngineView* self_cast = static_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
 	
 	return self_cast->isSignalConnected(*signal);
 
