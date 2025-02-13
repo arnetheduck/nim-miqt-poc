@@ -87,6 +87,10 @@ proc fcQSvgWidget_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QS
 proc fcQSvgWidget_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSvgWidget_tr3".}
 proc fcQSvgWidget_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSvgWidget_trUtf82".}
 proc fcQSvgWidget_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSvgWidget_trUtf83".}
+proc fQSvgWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSvgWidget_virtualbase_metaObject".}
+proc fcQSvgWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSvgWidget_override_virtual_metaObject".}
+proc fQSvgWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSvgWidget_virtualbase_metacast".}
+proc fcQSvgWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSvgWidget_override_virtual_metacast".}
 proc fQSvgWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSvgWidget_virtualbase_metacall".}
 proc fcQSvgWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSvgWidget_override_virtual_metacall".}
 proc fQSvgWidget_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QSvgWidget_virtualbase_sizeHint".}
@@ -258,6 +262,42 @@ proc trUtf8*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QSvgWidgetmetaObject*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSvgWidget_virtualbase_metaObject(self.h))
+
+type QSvgWidgetmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsvgwidget_types.QSvgWidget, slot: QSvgWidgetmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSvgWidgetmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSvgWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSvgWidget_metaObject(self: ptr cQSvgWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QSvgWidget_metaObject ".} =
+  var nimfunc = cast[ptr QSvgWidgetmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSvgWidgetmetacast*(self: gen_qsvgwidget_types.QSvgWidget, param1: cstring): pointer =
+  fQSvgWidget_virtualbase_metacast(self.h, param1)
+
+type QSvgWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsvgwidget_types.QSvgWidget, slot: QSvgWidgetmetacastProc) =
+  # TODO check subclass
+  var tmp = new QSvgWidgetmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSvgWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSvgWidget_metacast(self: ptr cQSvgWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSvgWidget_metacast ".} =
+  var nimfunc = cast[ptr QSvgWidgetmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSvgWidgetmetacall*(self: gen_qsvgwidget_types.QSvgWidget, param1: cint, param2: cint, param3: pointer): cint =
   fQSvgWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

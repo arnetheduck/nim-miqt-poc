@@ -123,6 +123,10 @@ proc fcQAudioDecoder_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.
 proc fcQAudioDecoder_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioDecoder_trUtf82".}
 proc fcQAudioDecoder_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioDecoder_trUtf83".}
 proc fcQAudioDecoder_hasSupport2(mimeType: struct_miqt_string, codecs: struct_miqt_array): cint {.importc: "QAudioDecoder_hasSupport2".}
+proc fQAudioDecoder_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAudioDecoder_virtualbase_metaObject".}
+proc fcQAudioDecoder_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAudioDecoder_override_virtual_metaObject".}
+proc fQAudioDecoder_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAudioDecoder_virtualbase_metacast".}
+proc fcQAudioDecoder_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAudioDecoder_override_virtual_metacast".}
 proc fQAudioDecoder_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAudioDecoder_virtualbase_metacall".}
 proc fcQAudioDecoder_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAudioDecoder_override_virtual_metacall".}
 proc fQAudioDecoder_virtualbase_bind(self: pointer, param1: pointer): bool{.importc: "QAudioDecoder_virtualbase_bind".}
@@ -411,6 +415,42 @@ proc hasSupport*(_: type gen_qaudiodecoder_types.QAudioDecoder, mimeType: string
 
   cint(fcQAudioDecoder_hasSupport2(struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))), struct_miqt_array(len: csize_t(len(codecs)), data: if len(codecs) == 0: nil else: addr(codecs_CArray[0]))))
 
+proc QAudioDecodermetaObject*(self: gen_qaudiodecoder_types.QAudioDecoder, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAudioDecoder_virtualbase_metaObject(self.h))
+
+type QAudioDecodermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAudioDecodermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioDecoder_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioDecoder_metaObject(self: ptr cQAudioDecoder, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioDecoder_metaObject ".} =
+  var nimfunc = cast[ptr QAudioDecodermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAudioDecodermetacast*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: cstring): pointer =
+  fQAudioDecoder_virtualbase_metacast(self.h, param1)
+
+type QAudioDecodermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodermetacastProc) =
+  # TODO check subclass
+  var tmp = new QAudioDecodermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioDecoder_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioDecoder_metacast(self: ptr cQAudioDecoder, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioDecoder_metacast ".} =
+  var nimfunc = cast[ptr QAudioDecodermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAudioDecodermetacall*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: cint, param2: cint, param3: pointer): cint =
   fQAudioDecoder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

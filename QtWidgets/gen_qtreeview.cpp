@@ -57,6 +57,8 @@ extern "C" {
 
 void miqt_exec_callback_QTreeView_expanded(intptr_t, QModelIndex*);
 void miqt_exec_callback_QTreeView_collapsed(intptr_t, QModelIndex*);
+QMetaObject* miqt_exec_callback_QTreeView_metaObject(const QTreeView*, intptr_t);
+void* miqt_exec_callback_QTreeView_metacast(QTreeView*, intptr_t, const char*);
 int miqt_exec_callback_QTreeView_metacall(QTreeView*, intptr_t, int, int, void**);
 void miqt_exec_callback_QTreeView_setModel(QTreeView*, intptr_t, QAbstractItemModel*);
 void miqt_exec_callback_QTreeView_setRootIndex(QTreeView*, intptr_t, QModelIndex*);
@@ -160,6 +162,51 @@ public:
 	MiqtVirtualQTreeView(): QTreeView() {};
 
 	virtual ~MiqtVirtualQTreeView() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QTreeView::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QTreeView_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QTreeView::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QTreeView::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QTreeView_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QTreeView::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -2864,6 +2911,34 @@ struct miqt_string QTreeView_trUtf83(const char* s, const char* c, int n) {
 
 void QTreeView_expandRecursively2(QTreeView* self, QModelIndex* index, int depth) {
 	self->expandRecursively(*index, static_cast<int>(depth));
+}
+
+bool QTreeView_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QTreeView_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_metaObject();
+}
+
+bool QTreeView_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QTreeView_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QTreeView_override_virtual_metacall(void* self, intptr_t slot) {

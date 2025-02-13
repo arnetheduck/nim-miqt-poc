@@ -148,6 +148,10 @@ proc fcQRadioData_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QR
 proc fcQRadioData_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRadioData_tr3".}
 proc fcQRadioData_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QRadioData_trUtf82".}
 proc fcQRadioData_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRadioData_trUtf83".}
+proc fQRadioData_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QRadioData_virtualbase_metaObject".}
+proc fcQRadioData_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QRadioData_override_virtual_metaObject".}
+proc fQRadioData_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QRadioData_virtualbase_metacast".}
+proc fcQRadioData_override_virtual_metacast(self: pointer, slot: int) {.importc: "QRadioData_override_virtual_metacast".}
 proc fQRadioData_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QRadioData_virtualbase_metacall".}
 proc fcQRadioData_override_virtual_metacall(self: pointer, slot: int) {.importc: "QRadioData_override_virtual_metacall".}
 proc fQRadioData_virtualbase_mediaObject(self: pointer, ): pointer{.importc: "QRadioData_virtualbase_mediaObject".}
@@ -397,6 +401,42 @@ proc trUtf8*(_: type gen_qradiodata_types.QRadioData, s: cstring, c: cstring, n:
   c_free(v_ms.data)
   vx_ret
 
+proc QRadioDatametaObject*(self: gen_qradiodata_types.QRadioData, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQRadioData_virtualbase_metaObject(self.h))
+
+type QRadioDatametaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatametaObjectProc) =
+  # TODO check subclass
+  var tmp = new QRadioDatametaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRadioData_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRadioData_metaObject(self: ptr cQRadioData, slot: int): pointer {.exportc: "miqt_exec_callback_QRadioData_metaObject ".} =
+  var nimfunc = cast[ptr QRadioDatametaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QRadioDatametacast*(self: gen_qradiodata_types.QRadioData, param1: cstring): pointer =
+  fQRadioData_virtualbase_metacast(self.h, param1)
+
+type QRadioDatametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatametacastProc) =
+  # TODO check subclass
+  var tmp = new QRadioDatametacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRadioData_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRadioData_metacast(self: ptr cQRadioData, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QRadioData_metacast ".} =
+  var nimfunc = cast[ptr QRadioDatametacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QRadioDatametacall*(self: gen_qradiodata_types.QRadioData, param1: cint, param2: cint, param3: pointer): cint =
   fQRadioData_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

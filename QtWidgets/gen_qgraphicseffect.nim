@@ -103,6 +103,10 @@ proc fcQGraphicsEffect_tr2(s: cstring, c: cstring): struct_miqt_string {.importc
 proc fcQGraphicsEffect_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsEffect_tr3".}
 proc fcQGraphicsEffect_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsEffect_trUtf82".}
 proc fcQGraphicsEffect_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsEffect_trUtf83".}
+proc fQGraphicsEffect_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsEffect_virtualbase_metaObject".}
+proc fcQGraphicsEffect_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsEffect_override_virtual_metaObject".}
+proc fQGraphicsEffect_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsEffect_virtualbase_metacast".}
+proc fcQGraphicsEffect_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsEffect_override_virtual_metacast".}
 proc fQGraphicsEffect_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsEffect_virtualbase_metacall".}
 proc fcQGraphicsEffect_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsEffect_override_virtual_metacall".}
 proc fQGraphicsEffect_virtualbase_boundingRectFor(self: pointer, sourceRect: pointer): pointer{.importc: "QGraphicsEffect_virtualbase_boundingRectFor".}
@@ -145,6 +149,10 @@ proc fcQGraphicsColorizeEffect_tr2(s: cstring, c: cstring): struct_miqt_string {
 proc fcQGraphicsColorizeEffect_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsColorizeEffect_tr3".}
 proc fcQGraphicsColorizeEffect_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsColorizeEffect_trUtf82".}
 proc fcQGraphicsColorizeEffect_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsColorizeEffect_trUtf83".}
+proc fQGraphicsColorizeEffect_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsColorizeEffect_virtualbase_metaObject".}
+proc fcQGraphicsColorizeEffect_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsColorizeEffect_override_virtual_metaObject".}
+proc fQGraphicsColorizeEffect_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsColorizeEffect_virtualbase_metacast".}
+proc fcQGraphicsColorizeEffect_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsColorizeEffect_override_virtual_metacast".}
 proc fQGraphicsColorizeEffect_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsColorizeEffect_virtualbase_metacall".}
 proc fcQGraphicsColorizeEffect_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsColorizeEffect_override_virtual_metacall".}
 proc fQGraphicsColorizeEffect_virtualbase_draw(self: pointer, painter: pointer): void{.importc: "QGraphicsColorizeEffect_virtualbase_draw".}
@@ -189,6 +197,10 @@ proc fcQGraphicsBlurEffect_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQGraphicsBlurEffect_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsBlurEffect_tr3".}
 proc fcQGraphicsBlurEffect_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsBlurEffect_trUtf82".}
 proc fcQGraphicsBlurEffect_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsBlurEffect_trUtf83".}
+proc fQGraphicsBlurEffect_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsBlurEffect_virtualbase_metaObject".}
+proc fcQGraphicsBlurEffect_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsBlurEffect_override_virtual_metaObject".}
+proc fQGraphicsBlurEffect_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsBlurEffect_virtualbase_metacast".}
+proc fcQGraphicsBlurEffect_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsBlurEffect_override_virtual_metacast".}
 proc fQGraphicsBlurEffect_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsBlurEffect_virtualbase_metacall".}
 proc fcQGraphicsBlurEffect_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsBlurEffect_override_virtual_metacall".}
 proc fQGraphicsBlurEffect_virtualbase_boundingRectFor(self: pointer, rect: pointer): pointer{.importc: "QGraphicsBlurEffect_virtualbase_boundingRectFor".}
@@ -243,6 +255,10 @@ proc fcQGraphicsDropShadowEffect_tr2(s: cstring, c: cstring): struct_miqt_string
 proc fcQGraphicsDropShadowEffect_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsDropShadowEffect_tr3".}
 proc fcQGraphicsDropShadowEffect_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsDropShadowEffect_trUtf82".}
 proc fcQGraphicsDropShadowEffect_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsDropShadowEffect_trUtf83".}
+proc fQGraphicsDropShadowEffect_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsDropShadowEffect_virtualbase_metaObject".}
+proc fcQGraphicsDropShadowEffect_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsDropShadowEffect_override_virtual_metaObject".}
+proc fQGraphicsDropShadowEffect_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsDropShadowEffect_virtualbase_metacast".}
+proc fcQGraphicsDropShadowEffect_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsDropShadowEffect_override_virtual_metacast".}
 proc fQGraphicsDropShadowEffect_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsDropShadowEffect_virtualbase_metacall".}
 proc fcQGraphicsDropShadowEffect_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsDropShadowEffect_override_virtual_metacall".}
 proc fQGraphicsDropShadowEffect_virtualbase_boundingRectFor(self: pointer, rect: pointer): pointer{.importc: "QGraphicsDropShadowEffect_virtualbase_boundingRectFor".}
@@ -286,6 +302,10 @@ proc fcQGraphicsOpacityEffect_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQGraphicsOpacityEffect_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsOpacityEffect_tr3".}
 proc fcQGraphicsOpacityEffect_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsOpacityEffect_trUtf82".}
 proc fcQGraphicsOpacityEffect_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsOpacityEffect_trUtf83".}
+proc fQGraphicsOpacityEffect_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsOpacityEffect_virtualbase_metaObject".}
+proc fcQGraphicsOpacityEffect_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsOpacityEffect_override_virtual_metaObject".}
+proc fQGraphicsOpacityEffect_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsOpacityEffect_virtualbase_metacast".}
+proc fcQGraphicsOpacityEffect_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsOpacityEffect_override_virtual_metacast".}
 proc fQGraphicsOpacityEffect_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsOpacityEffect_virtualbase_metacall".}
 proc fcQGraphicsOpacityEffect_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsOpacityEffect_override_virtual_metacall".}
 proc fQGraphicsOpacityEffect_virtualbase_draw(self: pointer, painter: pointer): void{.importc: "QGraphicsOpacityEffect_virtualbase_draw".}
@@ -396,6 +416,42 @@ proc trUtf8*(_: type gen_qgraphicseffect_types.QGraphicsEffect, s: cstring, c: c
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsEffectmetaObject*(self: gen_qgraphicseffect_types.QGraphicsEffect, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsEffect_virtualbase_metaObject(self.h))
+
+type QGraphicsEffectmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicseffect_types.QGraphicsEffect, slot: QGraphicsEffectmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsEffectmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsEffect_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsEffect_metaObject(self: ptr cQGraphicsEffect, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsEffect_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsEffectmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsEffectmetacast*(self: gen_qgraphicseffect_types.QGraphicsEffect, param1: cstring): pointer =
+  fQGraphicsEffect_virtualbase_metacast(self.h, param1)
+
+type QGraphicsEffectmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicseffect_types.QGraphicsEffect, slot: QGraphicsEffectmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsEffectmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsEffect_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsEffect_metacast(self: ptr cQGraphicsEffect, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsEffect_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsEffectmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsEffectmetacall*(self: gen_qgraphicseffect_types.QGraphicsEffect, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsEffect_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -696,6 +752,42 @@ proc trUtf8*(_: type gen_qgraphicseffect_types.QGraphicsColorizeEffect, s: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsColorizeEffectmetaObject*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsColorizeEffect_virtualbase_metaObject(self.h))
+
+type QGraphicsColorizeEffectmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect, slot: QGraphicsColorizeEffectmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsColorizeEffectmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsColorizeEffect_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsColorizeEffect_metaObject(self: ptr cQGraphicsColorizeEffect, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsColorizeEffect_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsColorizeEffectmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsColorizeEffectmetacast*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect, param1: cstring): pointer =
+  fQGraphicsColorizeEffect_virtualbase_metacast(self.h, param1)
+
+type QGraphicsColorizeEffectmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect, slot: QGraphicsColorizeEffectmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsColorizeEffectmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsColorizeEffect_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsColorizeEffect_metacast(self: ptr cQGraphicsColorizeEffect, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsColorizeEffect_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsColorizeEffectmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsColorizeEffectmetacall*(self: gen_qgraphicseffect_types.QGraphicsColorizeEffect, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsColorizeEffect_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -1002,6 +1094,42 @@ proc trUtf8*(_: type gen_qgraphicseffect_types.QGraphicsBlurEffect, s: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsBlurEffectmetaObject*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsBlurEffect_virtualbase_metaObject(self.h))
+
+type QGraphicsBlurEffectmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect, slot: QGraphicsBlurEffectmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsBlurEffectmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsBlurEffect_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsBlurEffect_metaObject(self: ptr cQGraphicsBlurEffect, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsBlurEffect_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsBlurEffectmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsBlurEffectmetacast*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect, param1: cstring): pointer =
+  fQGraphicsBlurEffect_virtualbase_metacast(self.h, param1)
+
+type QGraphicsBlurEffectmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect, slot: QGraphicsBlurEffectmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsBlurEffectmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsBlurEffect_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsBlurEffect_metacast(self: ptr cQGraphicsBlurEffect, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsBlurEffect_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsBlurEffectmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsBlurEffectmetacall*(self: gen_qgraphicseffect_types.QGraphicsBlurEffect, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsBlurEffect_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -1348,6 +1476,42 @@ proc trUtf8*(_: type gen_qgraphicseffect_types.QGraphicsDropShadowEffect, s: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsDropShadowEffectmetaObject*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsDropShadowEffect_virtualbase_metaObject(self.h))
+
+type QGraphicsDropShadowEffectmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, slot: QGraphicsDropShadowEffectmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsDropShadowEffectmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsDropShadowEffect_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsDropShadowEffect_metaObject(self: ptr cQGraphicsDropShadowEffect, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsDropShadowEffect_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsDropShadowEffectmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsDropShadowEffectmetacast*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, param1: cstring): pointer =
+  fQGraphicsDropShadowEffect_virtualbase_metacast(self.h, param1)
+
+type QGraphicsDropShadowEffectmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, slot: QGraphicsDropShadowEffectmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsDropShadowEffectmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsDropShadowEffect_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsDropShadowEffect_metacast(self: ptr cQGraphicsDropShadowEffect, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsDropShadowEffect_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsDropShadowEffectmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsDropShadowEffectmetacall*(self: gen_qgraphicseffect_types.QGraphicsDropShadowEffect, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsDropShadowEffect_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -1651,6 +1815,42 @@ proc trUtf8*(_: type gen_qgraphicseffect_types.QGraphicsOpacityEffect, s: cstrin
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsOpacityEffectmetaObject*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsOpacityEffect_virtualbase_metaObject(self.h))
+
+type QGraphicsOpacityEffectmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect, slot: QGraphicsOpacityEffectmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsOpacityEffectmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsOpacityEffect_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsOpacityEffect_metaObject(self: ptr cQGraphicsOpacityEffect, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsOpacityEffect_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsOpacityEffectmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsOpacityEffectmetacast*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect, param1: cstring): pointer =
+  fQGraphicsOpacityEffect_virtualbase_metacast(self.h, param1)
+
+type QGraphicsOpacityEffectmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect, slot: QGraphicsOpacityEffectmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsOpacityEffectmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsOpacityEffect_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsOpacityEffect_metacast(self: ptr cQGraphicsOpacityEffect, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsOpacityEffect_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsOpacityEffectmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsOpacityEffectmetacall*(self: gen_qgraphicseffect_types.QGraphicsOpacityEffect, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsOpacityEffect_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

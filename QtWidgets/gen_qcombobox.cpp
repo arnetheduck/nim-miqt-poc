@@ -61,6 +61,8 @@ void miqt_exec_callback_QComboBox_currentIndexChangedWithQString(intptr_t, struc
 void miqt_exec_callback_QComboBox_currentTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QComboBox_activatedWithQString(intptr_t, struct miqt_string);
 void miqt_exec_callback_QComboBox_highlightedWithQString(intptr_t, struct miqt_string);
+QMetaObject* miqt_exec_callback_QComboBox_metaObject(const QComboBox*, intptr_t);
+void* miqt_exec_callback_QComboBox_metacast(QComboBox*, intptr_t, const char*);
 int miqt_exec_callback_QComboBox_metacall(QComboBox*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QComboBox_sizeHint(const QComboBox*, intptr_t);
 QSize* miqt_exec_callback_QComboBox_minimumSizeHint(const QComboBox*, intptr_t);
@@ -122,6 +124,51 @@ public:
 	MiqtVirtualQComboBox(): QComboBox() {};
 
 	virtual ~MiqtVirtualQComboBox() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QComboBox::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QComboBox_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QComboBox::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QComboBox::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QComboBox_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QComboBox::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1965,6 +2012,34 @@ void QComboBox_insertItem4(QComboBox* self, int index, QIcon* icon, struct miqt_
 
 void QComboBox_setItemData3(QComboBox* self, int index, QVariant* value, int role) {
 	self->setItemData(static_cast<int>(index), *value, static_cast<int>(role));
+}
+
+bool QComboBox_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QComboBox_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_metaObject();
+}
+
+bool QComboBox_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QComboBox_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QComboBox_override_virtual_metacall(void* self, intptr_t slot) {

@@ -22,6 +22,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QUdpSocket_metaObject(const QUdpSocket*, intptr_t);
+void* miqt_exec_callback_QUdpSocket_metacast(QUdpSocket*, intptr_t, const char*);
 int miqt_exec_callback_QUdpSocket_metacall(QUdpSocket*, intptr_t, int, int, void**);
 void miqt_exec_callback_QUdpSocket_resume(QUdpSocket*, intptr_t);
 void miqt_exec_callback_QUdpSocket_connectToHost(QUdpSocket*, intptr_t, struct miqt_string, uint16_t, int, int);
@@ -67,6 +69,51 @@ public:
 	MiqtVirtualQUdpSocket(QObject* parent): QUdpSocket(parent) {};
 
 	virtual ~MiqtVirtualQUdpSocket() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QUdpSocket::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QUdpSocket_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QUdpSocket::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QUdpSocket::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QUdpSocket_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QUdpSocket::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1074,6 +1121,34 @@ long long QUdpSocket_readDatagram3(QUdpSocket* self, char* data, long long maxle
 long long QUdpSocket_readDatagram4(QUdpSocket* self, char* data, long long maxlen, QHostAddress* host, uint16_t* port) {
 	qint64 _ret = self->readDatagram(data, static_cast<qint64>(maxlen), host, static_cast<quint16*>(port));
 	return static_cast<long long>(_ret);
+}
+
+bool QUdpSocket_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QUdpSocket_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQUdpSocket*)(self) )->virtualbase_metaObject();
+}
+
+bool QUdpSocket_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QUdpSocket_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QUdpSocket_override_virtual_metacall(void* self, intptr_t slot) {

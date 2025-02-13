@@ -174,6 +174,10 @@ proc fcQTabBar_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QTabB
 proc fcQTabBar_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTabBar_tr3".}
 proc fcQTabBar_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QTabBar_trUtf82".}
 proc fcQTabBar_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTabBar_trUtf83".}
+proc fQTabBar_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTabBar_virtualbase_metaObject".}
+proc fcQTabBar_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTabBar_override_virtual_metaObject".}
+proc fQTabBar_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTabBar_virtualbase_metacast".}
+proc fcQTabBar_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTabBar_override_virtual_metacast".}
 proc fQTabBar_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTabBar_virtualbase_metacall".}
 proc fcQTabBar_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTabBar_override_virtual_metacall".}
 proc fQTabBar_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QTabBar_virtualbase_sizeHint".}
@@ -602,6 +606,42 @@ proc trUtf8*(_: type gen_qtabbar_types.QTabBar, s: cstring, c: cstring, n: cint)
   c_free(v_ms.data)
   vx_ret
 
+proc QTabBarmetaObject*(self: gen_qtabbar_types.QTabBar, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQTabBar_virtualbase_metaObject(self.h))
+
+type QTabBarmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QTabBarmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTabBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTabBar_metaObject(self: ptr cQTabBar, slot: int): pointer {.exportc: "miqt_exec_callback_QTabBar_metaObject ".} =
+  var nimfunc = cast[ptr QTabBarmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QTabBarmetacast*(self: gen_qtabbar_types.QTabBar, param1: cstring): pointer =
+  fQTabBar_virtualbase_metacast(self.h, param1)
+
+type QTabBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmetacastProc) =
+  # TODO check subclass
+  var tmp = new QTabBarmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTabBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTabBar_metacast(self: ptr cQTabBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTabBar_metacast ".} =
+  var nimfunc = cast[ptr QTabBarmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QTabBarmetacall*(self: gen_qtabbar_types.QTabBar, param1: cint, param2: cint, param3: pointer): cint =
   fQTabBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

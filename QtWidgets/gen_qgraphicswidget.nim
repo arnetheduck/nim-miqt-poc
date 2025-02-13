@@ -161,6 +161,10 @@ proc fcQGraphicsWidget_grabShortcut2(self: pointer, sequence: pointer, context: 
 proc fcQGraphicsWidget_setShortcutEnabled2(self: pointer, id: cint, enabled: bool): void {.importc: "QGraphicsWidget_setShortcutEnabled2".}
 proc fcQGraphicsWidget_setShortcutAutoRepeat2(self: pointer, id: cint, enabled: bool): void {.importc: "QGraphicsWidget_setShortcutAutoRepeat2".}
 proc fcQGraphicsWidget_setAttribute2(self: pointer, attribute: cint, on: bool): void {.importc: "QGraphicsWidget_setAttribute2".}
+proc fQGraphicsWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsWidget_virtualbase_metaObject".}
+proc fcQGraphicsWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsWidget_override_virtual_metaObject".}
+proc fQGraphicsWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsWidget_virtualbase_metacast".}
+proc fcQGraphicsWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsWidget_override_virtual_metacast".}
 proc fQGraphicsWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsWidget_virtualbase_metacall".}
 proc fcQGraphicsWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsWidget_override_virtual_metacall".}
 proc fQGraphicsWidget_virtualbase_setGeometry(self: pointer, rect: pointer): void{.importc: "QGraphicsWidget_virtualbase_setGeometry".}
@@ -545,6 +549,42 @@ proc setShortcutAutoRepeat*(self: gen_qgraphicswidget_types.QGraphicsWidget, id:
 proc setAttribute*(self: gen_qgraphicswidget_types.QGraphicsWidget, attribute: cint, on: bool): void =
   fcQGraphicsWidget_setAttribute2(self.h, cint(attribute), on)
 
+proc QGraphicsWidgetmetaObject*(self: gen_qgraphicswidget_types.QGraphicsWidget, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsWidget_virtualbase_metaObject(self.h))
+
+type QGraphicsWidgetmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicswidget_types.QGraphicsWidget, slot: QGraphicsWidgetmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsWidgetmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsWidget_metaObject(self: ptr cQGraphicsWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsWidget_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsWidgetmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsWidgetmetacast*(self: gen_qgraphicswidget_types.QGraphicsWidget, param1: cstring): pointer =
+  fQGraphicsWidget_virtualbase_metacast(self.h, param1)
+
+type QGraphicsWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicswidget_types.QGraphicsWidget, slot: QGraphicsWidgetmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsWidgetmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsWidget_metacast(self: ptr cQGraphicsWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsWidget_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsWidgetmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsWidgetmetacall*(self: gen_qgraphicswidget_types.QGraphicsWidget, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

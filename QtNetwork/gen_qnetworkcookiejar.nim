@@ -72,6 +72,10 @@ proc fcQNetworkCookieJar_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQNetworkCookieJar_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QNetworkCookieJar_tr3".}
 proc fcQNetworkCookieJar_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QNetworkCookieJar_trUtf82".}
 proc fcQNetworkCookieJar_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QNetworkCookieJar_trUtf83".}
+proc fQNetworkCookieJar_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QNetworkCookieJar_virtualbase_metaObject".}
+proc fcQNetworkCookieJar_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QNetworkCookieJar_override_virtual_metaObject".}
+proc fQNetworkCookieJar_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QNetworkCookieJar_virtualbase_metacast".}
+proc fcQNetworkCookieJar_override_virtual_metacast(self: pointer, slot: int) {.importc: "QNetworkCookieJar_override_virtual_metacast".}
 proc fQNetworkCookieJar_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QNetworkCookieJar_virtualbase_metacall".}
 proc fcQNetworkCookieJar_override_virtual_metacall(self: pointer, slot: int) {.importc: "QNetworkCookieJar_override_virtual_metacall".}
 proc fQNetworkCookieJar_virtualbase_cookiesForUrl(self: pointer, url: pointer): struct_miqt_array{.importc: "QNetworkCookieJar_virtualbase_cookiesForUrl".}
@@ -181,6 +185,42 @@ proc trUtf8*(_: type gen_qnetworkcookiejar_types.QNetworkCookieJar, s: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QNetworkCookieJarmetaObject*(self: gen_qnetworkcookiejar_types.QNetworkCookieJar, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQNetworkCookieJar_virtualbase_metaObject(self.h))
+
+type QNetworkCookieJarmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qnetworkcookiejar_types.QNetworkCookieJar, slot: QNetworkCookieJarmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QNetworkCookieJarmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkCookieJar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkCookieJar_metaObject(self: ptr cQNetworkCookieJar, slot: int): pointer {.exportc: "miqt_exec_callback_QNetworkCookieJar_metaObject ".} =
+  var nimfunc = cast[ptr QNetworkCookieJarmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QNetworkCookieJarmetacast*(self: gen_qnetworkcookiejar_types.QNetworkCookieJar, param1: cstring): pointer =
+  fQNetworkCookieJar_virtualbase_metacast(self.h, param1)
+
+type QNetworkCookieJarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qnetworkcookiejar_types.QNetworkCookieJar, slot: QNetworkCookieJarmetacastProc) =
+  # TODO check subclass
+  var tmp = new QNetworkCookieJarmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkCookieJar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkCookieJar_metacast(self: ptr cQNetworkCookieJar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QNetworkCookieJar_metacast ".} =
+  var nimfunc = cast[ptr QNetworkCookieJarmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QNetworkCookieJarmetacall*(self: gen_qnetworkcookiejar_types.QNetworkCookieJar, param1: cint, param2: cint, param3: pointer): cint =
   fQNetworkCookieJar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

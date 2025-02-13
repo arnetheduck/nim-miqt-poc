@@ -186,6 +186,10 @@ void QGraphicsWebView_setContent3(QGraphicsWebView* self, struct miqt_string dat
 void QGraphicsWebView_triggerPageAction2(QGraphicsWebView* self, int action, bool checked);
 bool QGraphicsWebView_findText2(QGraphicsWebView* self, struct miqt_string subString, int options);
 void QGraphicsWebView_setRenderHint2(QGraphicsWebView* self, int param1, bool enabled);
+bool QGraphicsWebView_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QGraphicsWebView_virtualbase_metaObject(const void* self);
+bool QGraphicsWebView_override_virtual_metacast(void* self, intptr_t slot);
+void* QGraphicsWebView_virtualbase_metacast(void* self, const char* param1);
 bool QGraphicsWebView_override_virtual_metacall(void* self, intptr_t slot);
 int QGraphicsWebView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsWebView_override_virtual_setGeometry(void* self, intptr_t slot);

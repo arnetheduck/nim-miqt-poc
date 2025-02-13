@@ -261,6 +261,10 @@ proc fcQStandardItemModel_insertColumn2(self: pointer, column: cint, parent: poi
 proc fcQStandardItemModel_takeItem2(self: pointer, row: cint, column: cint): pointer {.importc: "QStandardItemModel_takeItem2".}
 proc fcQStandardItemModel_findItems2(self: pointer, text: struct_miqt_string, flags: cint): struct_miqt_array {.importc: "QStandardItemModel_findItems2".}
 proc fcQStandardItemModel_findItems3(self: pointer, text: struct_miqt_string, flags: cint, column: cint): struct_miqt_array {.importc: "QStandardItemModel_findItems3".}
+proc fQStandardItemModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QStandardItemModel_virtualbase_metaObject".}
+proc fcQStandardItemModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_metaObject".}
+proc fQStandardItemModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QStandardItemModel_virtualbase_metacast".}
+proc fcQStandardItemModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_metacast".}
 proc fQStandardItemModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QStandardItemModel_virtualbase_metacall".}
 proc fcQStandardItemModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_metacall".}
 proc fQStandardItemModel_virtualbase_index(self: pointer, row: cint, column: cint, parent: pointer): pointer{.importc: "QStandardItemModel_virtualbase_index".}
@@ -1161,6 +1165,42 @@ proc findItems*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: str
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
+proc QStandardItemModelmetaObject*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQStandardItemModel_virtualbase_metaObject(self.h))
+
+type QStandardItemModelmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QStandardItemModelmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStandardItemModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStandardItemModel_metaObject(self: ptr cQStandardItemModel, slot: int): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_metaObject ".} =
+  var nimfunc = cast[ptr QStandardItemModelmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QStandardItemModelmetacast*(self: gen_qstandarditemmodel_types.QStandardItemModel, param1: cstring): pointer =
+  fQStandardItemModel_virtualbase_metacast(self.h, param1)
+
+type QStandardItemModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmetacastProc) =
+  # TODO check subclass
+  var tmp = new QStandardItemModelmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStandardItemModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStandardItemModel_metacast(self: ptr cQStandardItemModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_metacast ".} =
+  var nimfunc = cast[ptr QStandardItemModelmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QStandardItemModelmetacall*(self: gen_qstandarditemmodel_types.QStandardItemModel, param1: cint, param2: cint, param3: pointer): cint =
   fQStandardItemModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

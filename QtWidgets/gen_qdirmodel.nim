@@ -126,6 +126,10 @@ proc fcQDirModel_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQDirModel_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDirModel_trUtf83".}
 proc fcQDirModel_index2(self: pointer, path: struct_miqt_string, column: cint): pointer {.importc: "QDirModel_index2".}
 proc fcQDirModel_refresh1(self: pointer, parent: pointer): void {.importc: "QDirModel_refresh1".}
+proc fQDirModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDirModel_virtualbase_metaObject".}
+proc fcQDirModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDirModel_override_virtual_metaObject".}
+proc fQDirModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDirModel_virtualbase_metacast".}
+proc fcQDirModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDirModel_override_virtual_metacast".}
 proc fQDirModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDirModel_virtualbase_metacall".}
 proc fcQDirModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDirModel_override_virtual_metacall".}
 proc fQDirModel_virtualbase_index(self: pointer, row: cint, column: cint, parent: pointer): pointer{.importc: "QDirModel_virtualbase_index".}
@@ -431,6 +435,42 @@ proc index*(self: gen_qdirmodel_types.QDirModel, path: string, column: cint): ge
 proc refresh*(self: gen_qdirmodel_types.QDirModel, parent: gen_qabstractitemmodel_types.QModelIndex): void =
   fcQDirModel_refresh1(self.h, parent.h)
 
+proc QDirModelmetaObject*(self: gen_qdirmodel_types.QDirModel, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQDirModel_virtualbase_metaObject(self.h))
+
+type QDirModelmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qdirmodel_types.QDirModel, slot: QDirModelmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QDirModelmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDirModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDirModel_metaObject(self: ptr cQDirModel, slot: int): pointer {.exportc: "miqt_exec_callback_QDirModel_metaObject ".} =
+  var nimfunc = cast[ptr QDirModelmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QDirModelmetacast*(self: gen_qdirmodel_types.QDirModel, param1: cstring): pointer =
+  fQDirModel_virtualbase_metacast(self.h, param1)
+
+type QDirModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdirmodel_types.QDirModel, slot: QDirModelmetacastProc) =
+  # TODO check subclass
+  var tmp = new QDirModelmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDirModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDirModel_metacast(self: ptr cQDirModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDirModel_metacast ".} =
+  var nimfunc = cast[ptr QDirModelmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QDirModelmetacall*(self: gen_qdirmodel_types.QDirModel, param1: cint, param2: cint, param3: pointer): cint =
   fQDirModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

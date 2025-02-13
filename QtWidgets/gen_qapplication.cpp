@@ -28,6 +28,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QApplication_focusChanged(intptr_t, QWidget*, QWidget*);
+QMetaObject* miqt_exec_callback_QApplication_metaObject(const QApplication*, intptr_t);
+void* miqt_exec_callback_QApplication_metacast(QApplication*, intptr_t, const char*);
 int miqt_exec_callback_QApplication_metacall(QApplication*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QApplication_notify(QApplication*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QApplication_event(QApplication*, intptr_t, QEvent*);
@@ -48,6 +50,51 @@ public:
 	MiqtVirtualQApplication(int& argc, char** argv, int param3): QApplication(argc, argv, param3) {};
 
 	virtual ~MiqtVirtualQApplication() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QApplication::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QApplication_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QApplication::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QApplication::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QApplication_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QApplication::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -632,6 +679,34 @@ void QApplication_alert2(QWidget* widget, int duration) {
 
 void QApplication_setEffectEnabled2(int param1, bool enable) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1), enable);
+}
+
+bool QApplication_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QApplication_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQApplication*)(self) )->virtualbase_metaObject();
+}
+
+bool QApplication_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QApplication_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QApplication_override_virtual_metacall(void* self, intptr_t slot) {

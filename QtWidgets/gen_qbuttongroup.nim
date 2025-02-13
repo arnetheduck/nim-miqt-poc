@@ -100,6 +100,10 @@ proc fcQButtonGroup_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.i
 proc fcQButtonGroup_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QButtonGroup_trUtf82".}
 proc fcQButtonGroup_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QButtonGroup_trUtf83".}
 proc fcQButtonGroup_addButton2(self: pointer, param1: pointer, id: cint): void {.importc: "QButtonGroup_addButton2".}
+proc fQButtonGroup_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QButtonGroup_virtualbase_metaObject".}
+proc fcQButtonGroup_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QButtonGroup_override_virtual_metaObject".}
+proc fQButtonGroup_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QButtonGroup_virtualbase_metacast".}
+proc fcQButtonGroup_override_virtual_metacast(self: pointer, slot: int) {.importc: "QButtonGroup_override_virtual_metacast".}
 proc fQButtonGroup_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QButtonGroup_virtualbase_metacall".}
 proc fcQButtonGroup_override_virtual_metacall(self: pointer, slot: int) {.importc: "QButtonGroup_override_virtual_metacall".}
 proc fQButtonGroup_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QButtonGroup_virtualbase_event".}
@@ -409,6 +413,42 @@ proc trUtf8*(_: type gen_qbuttongroup_types.QButtonGroup, s: cstring, c: cstring
 proc addButton*(self: gen_qbuttongroup_types.QButtonGroup, param1: gen_qabstractbutton_types.QAbstractButton, id: cint): void =
   fcQButtonGroup_addButton2(self.h, param1.h, id)
 
+proc QButtonGroupmetaObject*(self: gen_qbuttongroup_types.QButtonGroup, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQButtonGroup_virtualbase_metaObject(self.h))
+
+type QButtonGroupmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QButtonGroupmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQButtonGroup_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QButtonGroup_metaObject(self: ptr cQButtonGroup, slot: int): pointer {.exportc: "miqt_exec_callback_QButtonGroup_metaObject ".} =
+  var nimfunc = cast[ptr QButtonGroupmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QButtonGroupmetacast*(self: gen_qbuttongroup_types.QButtonGroup, param1: cstring): pointer =
+  fQButtonGroup_virtualbase_metacast(self.h, param1)
+
+type QButtonGroupmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qbuttongroup_types.QButtonGroup, slot: QButtonGroupmetacastProc) =
+  # TODO check subclass
+  var tmp = new QButtonGroupmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQButtonGroup_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QButtonGroup_metacast(self: ptr cQButtonGroup, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QButtonGroup_metacast ".} =
+  var nimfunc = cast[ptr QButtonGroupmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QButtonGroupmetacall*(self: gen_qbuttongroup_types.QButtonGroup, param1: cint, param2: cint, param3: pointer): cint =
   fQButtonGroup_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

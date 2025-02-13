@@ -87,6 +87,10 @@ proc fcQAbstractTransition_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQAbstractTransition_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractTransition_tr3".}
 proc fcQAbstractTransition_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractTransition_trUtf82".}
 proc fcQAbstractTransition_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractTransition_trUtf83".}
+proc fQAbstractTransition_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractTransition_virtualbase_metaObject".}
+proc fcQAbstractTransition_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractTransition_override_virtual_metaObject".}
+proc fQAbstractTransition_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractTransition_virtualbase_metacast".}
+proc fcQAbstractTransition_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractTransition_override_virtual_metacast".}
 proc fQAbstractTransition_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractTransition_virtualbase_metacall".}
 proc fcQAbstractTransition_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractTransition_override_virtual_metacall".}
 proc fcQAbstractTransition_override_virtual_eventTest(self: pointer, slot: int) {.importc: "QAbstractTransition_override_virtual_eventTest".}
@@ -209,6 +213,42 @@ proc trUtf8*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc QAbstractTransitionmetaObject*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAbstractTransition_virtualbase_metaObject(self.h))
+
+type QAbstractTransitionmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitionmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAbstractTransitionmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTransition_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTransition_metaObject(self: ptr cQAbstractTransition, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractTransition_metaObject ".} =
+  var nimfunc = cast[ptr QAbstractTransitionmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAbstractTransitionmetacast*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cstring): pointer =
+  fQAbstractTransition_virtualbase_metacast(self.h, param1)
+
+type QAbstractTransitionmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitionmetacastProc) =
+  # TODO check subclass
+  var tmp = new QAbstractTransitionmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTransition_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTransition_metacast(self: ptr cQAbstractTransition, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractTransition_metacast ".} =
+  var nimfunc = cast[ptr QAbstractTransitionmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAbstractTransitionmetacall*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cint, param2: cint, param3: pointer): cint =
   fQAbstractTransition_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

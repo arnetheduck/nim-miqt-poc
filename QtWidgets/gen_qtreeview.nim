@@ -161,6 +161,10 @@ proc fcQTreeView_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.impo
 proc fcQTreeView_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QTreeView_trUtf82".}
 proc fcQTreeView_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTreeView_trUtf83".}
 proc fcQTreeView_expandRecursively2(self: pointer, index: pointer, depth: cint): void {.importc: "QTreeView_expandRecursively2".}
+proc fQTreeView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTreeView_virtualbase_metaObject".}
+proc fcQTreeView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTreeView_override_virtual_metaObject".}
+proc fQTreeView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTreeView_virtualbase_metacast".}
+proc fcQTreeView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTreeView_override_virtual_metacast".}
 proc fQTreeView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTreeView_virtualbase_metacall".}
 proc fcQTreeView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTreeView_override_virtual_metacall".}
 proc fQTreeView_virtualbase_setModel(self: pointer, model: pointer): void{.importc: "QTreeView_virtualbase_setModel".}
@@ -630,6 +634,42 @@ proc trUtf8*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring, n: c
 proc expandRecursively*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel_types.QModelIndex, depth: cint): void =
   fcQTreeView_expandRecursively2(self.h, index.h, depth)
 
+proc QTreeViewmetaObject*(self: gen_qtreeview_types.QTreeView, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQTreeView_virtualbase_metaObject(self.h))
+
+type QTreeViewmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QTreeViewmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTreeView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTreeView_metaObject(self: ptr cQTreeView, slot: int): pointer {.exportc: "miqt_exec_callback_QTreeView_metaObject ".} =
+  var nimfunc = cast[ptr QTreeViewmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QTreeViewmetacast*(self: gen_qtreeview_types.QTreeView, param1: cstring): pointer =
+  fQTreeView_virtualbase_metacast(self.h, param1)
+
+type QTreeViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewmetacastProc) =
+  # TODO check subclass
+  var tmp = new QTreeViewmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTreeView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTreeView_metacast(self: ptr cQTreeView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTreeView_metacast ".} =
+  var nimfunc = cast[ptr QTreeViewmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QTreeViewmetacall*(self: gen_qtreeview_types.QTreeView, param1: cint, param2: cint, param3: pointer): cint =
   fQTreeView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

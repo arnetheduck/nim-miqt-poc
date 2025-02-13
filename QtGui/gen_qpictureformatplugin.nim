@@ -68,6 +68,10 @@ proc fcQPictureFormatPlugin_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQPictureFormatPlugin_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPictureFormatPlugin_tr3".}
 proc fcQPictureFormatPlugin_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QPictureFormatPlugin_trUtf82".}
 proc fcQPictureFormatPlugin_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPictureFormatPlugin_trUtf83".}
+proc fQPictureFormatPlugin_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPictureFormatPlugin_virtualbase_metaObject".}
+proc fcQPictureFormatPlugin_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPictureFormatPlugin_override_virtual_metaObject".}
+proc fQPictureFormatPlugin_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPictureFormatPlugin_virtualbase_metacast".}
+proc fcQPictureFormatPlugin_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPictureFormatPlugin_override_virtual_metacast".}
 proc fQPictureFormatPlugin_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPictureFormatPlugin_virtualbase_metacall".}
 proc fcQPictureFormatPlugin_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPictureFormatPlugin_override_virtual_metacall".}
 proc fQPictureFormatPlugin_virtualbase_loadPicture(self: pointer, format: struct_miqt_string, filename: struct_miqt_string, pic: pointer): bool{.importc: "QPictureFormatPlugin_virtualbase_loadPicture".}
@@ -155,6 +159,42 @@ proc trUtf8*(_: type gen_qpictureformatplugin_types.QPictureFormatPlugin, s: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QPictureFormatPluginmetaObject*(self: gen_qpictureformatplugin_types.QPictureFormatPlugin, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQPictureFormatPlugin_virtualbase_metaObject(self.h))
+
+type QPictureFormatPluginmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qpictureformatplugin_types.QPictureFormatPlugin, slot: QPictureFormatPluginmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QPictureFormatPluginmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPictureFormatPlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPictureFormatPlugin_metaObject(self: ptr cQPictureFormatPlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QPictureFormatPlugin_metaObject ".} =
+  var nimfunc = cast[ptr QPictureFormatPluginmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QPictureFormatPluginmetacast*(self: gen_qpictureformatplugin_types.QPictureFormatPlugin, param1: cstring): pointer =
+  fQPictureFormatPlugin_virtualbase_metacast(self.h, param1)
+
+type QPictureFormatPluginmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpictureformatplugin_types.QPictureFormatPlugin, slot: QPictureFormatPluginmetacastProc) =
+  # TODO check subclass
+  var tmp = new QPictureFormatPluginmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPictureFormatPlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPictureFormatPlugin_metacast(self: ptr cQPictureFormatPlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPictureFormatPlugin_metacast ".} =
+  var nimfunc = cast[ptr QPictureFormatPluginmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QPictureFormatPluginmetacall*(self: gen_qpictureformatplugin_types.QPictureFormatPlugin, param1: cint, param2: cint, param3: pointer): cint =
   fQPictureFormatPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

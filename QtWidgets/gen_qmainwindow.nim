@@ -160,6 +160,10 @@ proc fcQMainWindow_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string 
 proc fcQMainWindow_addToolBarBreak1(self: pointer, area: cint): void {.importc: "QMainWindow_addToolBarBreak1".}
 proc fcQMainWindow_saveState1(self: pointer, version: cint): struct_miqt_string {.importc: "QMainWindow_saveState1".}
 proc fcQMainWindow_restoreState2(self: pointer, state: struct_miqt_string, version: cint): bool {.importc: "QMainWindow_restoreState2".}
+proc fQMainWindow_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMainWindow_virtualbase_metaObject".}
+proc fcQMainWindow_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMainWindow_override_virtual_metaObject".}
+proc fQMainWindow_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMainWindow_virtualbase_metacast".}
+proc fcQMainWindow_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMainWindow_override_virtual_metacast".}
 proc fQMainWindow_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMainWindow_virtualbase_metacall".}
 proc fcQMainWindow_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMainWindow_override_virtual_metacall".}
 proc fQMainWindow_virtualbase_createPopupMenu(self: pointer, ): pointer{.importc: "QMainWindow_virtualbase_createPopupMenu".}
@@ -550,6 +554,42 @@ proc saveState*(self: gen_qmainwindow_types.QMainWindow, version: cint): seq[byt
 proc restoreState*(self: gen_qmainwindow_types.QMainWindow, state: seq[byte], version: cint): bool =
   fcQMainWindow_restoreState2(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))), version)
 
+proc QMainWindowmetaObject*(self: gen_qmainwindow_types.QMainWindow, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQMainWindow_virtualbase_metaObject(self.h))
+
+type QMainWindowmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QMainWindowmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMainWindow_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMainWindow_metaObject(self: ptr cQMainWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMainWindow_metaObject ".} =
+  var nimfunc = cast[ptr QMainWindowmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QMainWindowmetacast*(self: gen_qmainwindow_types.QMainWindow, param1: cstring): pointer =
+  fQMainWindow_virtualbase_metacast(self.h, param1)
+
+type QMainWindowmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmetacastProc) =
+  # TODO check subclass
+  var tmp = new QMainWindowmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMainWindow_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMainWindow_metacast(self: ptr cQMainWindow, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMainWindow_metacast ".} =
+  var nimfunc = cast[ptr QMainWindowmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QMainWindowmetacall*(self: gen_qmainwindow_types.QMainWindow, param1: cint, param2: cint, param3: pointer): cint =
   fQMainWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

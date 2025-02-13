@@ -66,6 +66,10 @@ proc fcQWebEngineUrlSchemeHandler_tr2(s: cstring, c: cstring): struct_miqt_strin
 proc fcQWebEngineUrlSchemeHandler_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineUrlSchemeHandler_tr3".}
 proc fcQWebEngineUrlSchemeHandler_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineUrlSchemeHandler_trUtf82".}
 proc fcQWebEngineUrlSchemeHandler_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineUrlSchemeHandler_trUtf83".}
+proc fQWebEngineUrlSchemeHandler_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebEngineUrlSchemeHandler_virtualbase_metaObject".}
+proc fcQWebEngineUrlSchemeHandler_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_metaObject".}
+proc fQWebEngineUrlSchemeHandler_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebEngineUrlSchemeHandler_virtualbase_metacast".}
+proc fcQWebEngineUrlSchemeHandler_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_metacast".}
 proc fQWebEngineUrlSchemeHandler_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebEngineUrlSchemeHandler_virtualbase_metacall".}
 proc fcQWebEngineUrlSchemeHandler_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_metacall".}
 proc fcQWebEngineUrlSchemeHandler_override_virtual_requestStarted(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_requestStarted".}
@@ -143,6 +147,42 @@ proc trUtf8*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHan
   c_free(v_ms.data)
   vx_ret
 
+proc QWebEngineUrlSchemeHandlermetaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQWebEngineUrlSchemeHandler_virtualbase_metaObject(self.h))
+
+type QWebEngineUrlSchemeHandlermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QWebEngineUrlSchemeHandlermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEngineUrlSchemeHandler_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metaObject(self: ptr cQWebEngineUrlSchemeHandler, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_metaObject ".} =
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QWebEngineUrlSchemeHandlermetacast*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cstring): pointer =
+  fQWebEngineUrlSchemeHandler_virtualbase_metacast(self.h, param1)
+
+type QWebEngineUrlSchemeHandlermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlermetacastProc) =
+  # TODO check subclass
+  var tmp = new QWebEngineUrlSchemeHandlermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEngineUrlSchemeHandler_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metacast(self: ptr cQWebEngineUrlSchemeHandler, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_metacast ".} =
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QWebEngineUrlSchemeHandlermetacall*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cint, param2: cint, param3: pointer): cint =
   fQWebEngineUrlSchemeHandler_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

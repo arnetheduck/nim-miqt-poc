@@ -392,6 +392,10 @@ proc fcQWebPage_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.impor
 proc fcQWebPage_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebPage_trUtf82".}
 proc fcQWebPage_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebPage_trUtf83".}
 proc fcQWebPage_findText2(self: pointer, subString: struct_miqt_string, options: cint): bool {.importc: "QWebPage_findText2".}
+proc fQWebPage_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebPage_virtualbase_metaObject".}
+proc fcQWebPage_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_metaObject".}
+proc fQWebPage_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebPage_virtualbase_metacast".}
+proc fcQWebPage_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_metacast".}
 proc fQWebPage_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebPage_virtualbase_metacall".}
 proc fcQWebPage_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_metacall".}
 proc fQWebPage_virtualbase_triggerAction(self: pointer, action: cint, checked: bool): void{.importc: "QWebPage_virtualbase_triggerAction".}
@@ -1220,6 +1224,42 @@ proc trUtf8*(_: type gen_qwebpage_types.QWebPage, s: cstring, c: cstring, n: cin
 proc findText*(self: gen_qwebpage_types.QWebPage, subString: string, options: cint): bool =
   fcQWebPage_findText2(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), cint(options))
 
+proc QWebPagemetaObject*(self: gen_qwebpage_types.QWebPage, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQWebPage_virtualbase_metaObject(self.h))
+
+type QWebPagemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qwebpage_types.QWebPage, slot: QWebPagemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QWebPagemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebPage_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebPage_metaObject(self: ptr cQWebPage, slot: int): pointer {.exportc: "miqt_exec_callback_QWebPage_metaObject ".} =
+  var nimfunc = cast[ptr QWebPagemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QWebPagemetacast*(self: gen_qwebpage_types.QWebPage, param1: cstring): pointer =
+  fQWebPage_virtualbase_metacast(self.h, param1)
+
+type QWebPagemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebpage_types.QWebPage, slot: QWebPagemetacastProc) =
+  # TODO check subclass
+  var tmp = new QWebPagemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebPage_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebPage_metacast(self: ptr cQWebPage, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebPage_metacast ".} =
+  var nimfunc = cast[ptr QWebPagemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QWebPagemetacall*(self: gen_qwebpage_types.QWebPage, param1: cint, param2: cint, param3: pointer): cint =
   fQWebPage_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

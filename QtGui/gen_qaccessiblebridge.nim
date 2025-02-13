@@ -71,6 +71,10 @@ proc fcQAccessibleBridgePlugin_tr2(s: cstring, c: cstring): struct_miqt_string {
 proc fcQAccessibleBridgePlugin_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAccessibleBridgePlugin_tr3".}
 proc fcQAccessibleBridgePlugin_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAccessibleBridgePlugin_trUtf82".}
 proc fcQAccessibleBridgePlugin_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAccessibleBridgePlugin_trUtf83".}
+proc fQAccessibleBridgePlugin_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAccessibleBridgePlugin_virtualbase_metaObject".}
+proc fcQAccessibleBridgePlugin_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_metaObject".}
+proc fQAccessibleBridgePlugin_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAccessibleBridgePlugin_virtualbase_metacast".}
+proc fcQAccessibleBridgePlugin_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_metacast".}
 proc fQAccessibleBridgePlugin_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAccessibleBridgePlugin_virtualbase_metacall".}
 proc fcQAccessibleBridgePlugin_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_metacall".}
 proc fcQAccessibleBridgePlugin_override_virtual_create(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_create".}
@@ -162,6 +166,42 @@ proc trUtf8*(_: type gen_qaccessiblebridge_types.QAccessibleBridgePlugin, s: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QAccessibleBridgePluginmetaObject*(self: gen_qaccessiblebridge_types.QAccessibleBridgePlugin, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAccessibleBridgePlugin_virtualbase_metaObject(self.h))
+
+type QAccessibleBridgePluginmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qaccessiblebridge_types.QAccessibleBridgePlugin, slot: QAccessibleBridgePluginmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAccessibleBridgePluginmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAccessibleBridgePlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAccessibleBridgePlugin_metaObject(self: ptr cQAccessibleBridgePlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QAccessibleBridgePlugin_metaObject ".} =
+  var nimfunc = cast[ptr QAccessibleBridgePluginmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAccessibleBridgePluginmetacast*(self: gen_qaccessiblebridge_types.QAccessibleBridgePlugin, param1: cstring): pointer =
+  fQAccessibleBridgePlugin_virtualbase_metacast(self.h, param1)
+
+type QAccessibleBridgePluginmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qaccessiblebridge_types.QAccessibleBridgePlugin, slot: QAccessibleBridgePluginmetacastProc) =
+  # TODO check subclass
+  var tmp = new QAccessibleBridgePluginmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAccessibleBridgePlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAccessibleBridgePlugin_metacast(self: ptr cQAccessibleBridgePlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAccessibleBridgePlugin_metacast ".} =
+  var nimfunc = cast[ptr QAccessibleBridgePluginmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAccessibleBridgePluginmetacall*(self: gen_qaccessiblebridge_types.QAccessibleBridgePlugin, param1: cint, param2: cint, param3: pointer): cint =
   fQAccessibleBridgePlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

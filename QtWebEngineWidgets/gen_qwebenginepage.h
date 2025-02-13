@@ -223,6 +223,10 @@ void QWebEnginePage_setContent2(QWebEnginePage* self, struct miqt_string data, s
 void QWebEnginePage_setContent3(QWebEnginePage* self, struct miqt_string data, struct miqt_string mimeType, QUrl* baseUrl);
 void QWebEnginePage_save2(const QWebEnginePage* self, struct miqt_string filePath, int format);
 void QWebEnginePage_printToPdf2(QWebEnginePage* self, struct miqt_string filePath, QPageLayout* layout);
+bool QWebEnginePage_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QWebEnginePage_virtualbase_metaObject(const void* self);
+bool QWebEnginePage_override_virtual_metacast(void* self, intptr_t slot);
+void* QWebEnginePage_virtualbase_metacast(void* self, const char* param1);
 bool QWebEnginePage_override_virtual_metacall(void* self, intptr_t slot);
 int QWebEnginePage_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEnginePage_override_virtual_triggerAction(void* self, intptr_t slot);

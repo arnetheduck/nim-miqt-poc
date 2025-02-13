@@ -99,6 +99,10 @@ struct miqt_string QCameraImageCapture_trUtf83(const char* s, const char* c, int
 struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions1(const QCameraImageCapture* self, QImageEncoderSettings* settings);
 struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous);
 int QCameraImageCapture_capture1(QCameraImageCapture* self, struct miqt_string location);
+bool QCameraImageCapture_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QCameraImageCapture_virtualbase_metaObject(const void* self);
+bool QCameraImageCapture_override_virtual_metacast(void* self, intptr_t slot);
+void* QCameraImageCapture_virtualbase_metacast(void* self, const char* param1);
 bool QCameraImageCapture_override_virtual_metacall(void* self, intptr_t slot);
 int QCameraImageCapture_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCameraImageCapture_override_virtual_mediaObject(void* self, intptr_t slot);

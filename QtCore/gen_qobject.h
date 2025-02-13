@@ -105,6 +105,10 @@ QMetaObject__Connection* QObject_connect5(QObject* sender, QMetaMethod* signal, 
 QMetaObject__Connection* QObject_connect4(const QObject* self, QObject* sender, const char* signal, const char* member, int type);
 void QObject_destroyed1(QObject* self, QObject* param1);
 void QObject_connect_destroyed1(QObject* self, intptr_t slot);
+bool QObject_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QObject_virtualbase_metaObject(const void* self);
+bool QObject_override_virtual_metacast(void* self, intptr_t slot);
+void* QObject_virtualbase_metacast(void* self, const char* param1);
 bool QObject_override_virtual_metacall(void* self, intptr_t slot);
 int QObject_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QObject_override_virtual_event(void* self, intptr_t slot);

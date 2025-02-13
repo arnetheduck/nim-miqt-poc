@@ -63,6 +63,10 @@ struct miqt_string QNetworkConfigurationManager_tr3(const char* s, const char* c
 struct miqt_string QNetworkConfigurationManager_trUtf82(const char* s, const char* c);
 struct miqt_string QNetworkConfigurationManager_trUtf83(const char* s, const char* c, int n);
 struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurations1(const QNetworkConfigurationManager* self, int flags);
+bool QNetworkConfigurationManager_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QNetworkConfigurationManager_virtualbase_metaObject(const void* self);
+bool QNetworkConfigurationManager_override_virtual_metacast(void* self, intptr_t slot);
+void* QNetworkConfigurationManager_virtualbase_metacast(void* self, const char* param1);
 bool QNetworkConfigurationManager_override_virtual_metacall(void* self, intptr_t slot);
 int QNetworkConfigurationManager_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QNetworkConfigurationManager_override_virtual_event(void* self, intptr_t slot);

@@ -143,6 +143,10 @@ void QProcess_setStandardErrorFile2(QProcess* self, struct miqt_string fileName,
 bool QProcess_waitForStarted1(QProcess* self, int msecs);
 bool QProcess_waitForFinished1(QProcess* self, int msecs);
 bool QProcess_startDetached4(struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments, struct miqt_string workingDirectory, long long* pid);
+bool QProcess_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QProcess_virtualbase_metaObject(const void* self);
+bool QProcess_override_virtual_metacast(void* self, intptr_t slot);
+void* QProcess_virtualbase_metacast(void* self, const char* param1);
 bool QProcess_override_virtual_metacall(void* self, intptr_t slot);
 int QProcess_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QProcess_override_virtual_open(void* self, intptr_t slot);

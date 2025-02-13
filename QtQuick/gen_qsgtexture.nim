@@ -111,6 +111,10 @@ proc fcQSGTexture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.imp
 proc fcQSGTexture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGTexture_trUtf82".}
 proc fcQSGTexture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGTexture_trUtf83".}
 proc fcQSGTexture_updateBindOptions1(self: pointer, force: bool): void {.importc: "QSGTexture_updateBindOptions1".}
+proc fQSGTexture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSGTexture_virtualbase_metaObject".}
+proc fcQSGTexture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSGTexture_override_virtual_metaObject".}
+proc fQSGTexture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSGTexture_virtualbase_metacast".}
+proc fcQSGTexture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSGTexture_override_virtual_metacast".}
 proc fQSGTexture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSGTexture_virtualbase_metacall".}
 proc fcQSGTexture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSGTexture_override_virtual_metacall".}
 proc fcQSGTexture_override_virtual_textureId(self: pointer, slot: int) {.importc: "QSGTexture_override_virtual_textureId".}
@@ -151,6 +155,10 @@ proc fcQSGDynamicTexture_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQSGDynamicTexture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGDynamicTexture_tr3".}
 proc fcQSGDynamicTexture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGDynamicTexture_trUtf82".}
 proc fcQSGDynamicTexture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGDynamicTexture_trUtf83".}
+proc fQSGDynamicTexture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSGDynamicTexture_virtualbase_metaObject".}
+proc fcQSGDynamicTexture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSGDynamicTexture_override_virtual_metaObject".}
+proc fQSGDynamicTexture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSGDynamicTexture_virtualbase_metacast".}
+proc fcQSGDynamicTexture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSGDynamicTexture_override_virtual_metacast".}
 proc fQSGDynamicTexture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSGDynamicTexture_virtualbase_metacall".}
 proc fcQSGDynamicTexture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSGDynamicTexture_override_virtual_metacall".}
 proc fcQSGDynamicTexture_override_virtual_updateTexture(self: pointer, slot: int) {.importc: "QSGDynamicTexture_override_virtual_updateTexture".}
@@ -303,6 +311,42 @@ proc trUtf8*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring, n:
 proc updateBindOptions*(self: gen_qsgtexture_types.QSGTexture, force: bool): void =
   fcQSGTexture_updateBindOptions1(self.h, force)
 
+proc QSGTexturemetaObject*(self: gen_qsgtexture_types.QSGTexture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSGTexture_virtualbase_metaObject(self.h))
+
+type QSGTexturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsgtexture_types.QSGTexture, slot: QSGTexturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSGTexturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSGTexture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSGTexture_metaObject(self: ptr cQSGTexture, slot: int): pointer {.exportc: "miqt_exec_callback_QSGTexture_metaObject ".} =
+  var nimfunc = cast[ptr QSGTexturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSGTexturemetacast*(self: gen_qsgtexture_types.QSGTexture, param1: cstring): pointer =
+  fQSGTexture_virtualbase_metacast(self.h, param1)
+
+type QSGTexturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsgtexture_types.QSGTexture, slot: QSGTexturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QSGTexturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSGTexture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSGTexture_metacast(self: ptr cQSGTexture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSGTexture_metacast ".} =
+  var nimfunc = cast[ptr QSGTexturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSGTexturemetacall*(self: gen_qsgtexture_types.QSGTexture, param1: cint, param2: cint, param3: pointer): cint =
   fQSGTexture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -628,6 +672,42 @@ proc trUtf8*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstr
   c_free(v_ms.data)
   vx_ret
 
+proc QSGDynamicTexturemetaObject*(self: gen_qsgtexture_types.QSGDynamicTexture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSGDynamicTexture_virtualbase_metaObject(self.h))
+
+type QSGDynamicTexturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qsgtexture_types.QSGDynamicTexture, slot: QSGDynamicTexturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSGDynamicTexturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSGDynamicTexture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSGDynamicTexture_metaObject(self: ptr cQSGDynamicTexture, slot: int): pointer {.exportc: "miqt_exec_callback_QSGDynamicTexture_metaObject ".} =
+  var nimfunc = cast[ptr QSGDynamicTexturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSGDynamicTexturemetacast*(self: gen_qsgtexture_types.QSGDynamicTexture, param1: cstring): pointer =
+  fQSGDynamicTexture_virtualbase_metacast(self.h, param1)
+
+type QSGDynamicTexturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsgtexture_types.QSGDynamicTexture, slot: QSGDynamicTexturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QSGDynamicTexturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSGDynamicTexture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSGDynamicTexture_metacast(self: ptr cQSGDynamicTexture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSGDynamicTexture_metacast ".} =
+  var nimfunc = cast[ptr QSGDynamicTexturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSGDynamicTexturemetacall*(self: gen_qsgtexture_types.QSGDynamicTexture, param1: cint, param2: cint, param3: pointer): cint =
   fQSGDynamicTexture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

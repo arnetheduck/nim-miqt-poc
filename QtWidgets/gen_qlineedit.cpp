@@ -54,6 +54,8 @@ void miqt_exec_callback_QLineEdit_returnPressed(intptr_t);
 void miqt_exec_callback_QLineEdit_editingFinished(intptr_t);
 void miqt_exec_callback_QLineEdit_selectionChanged(intptr_t);
 void miqt_exec_callback_QLineEdit_inputRejected(intptr_t);
+QMetaObject* miqt_exec_callback_QLineEdit_metaObject(const QLineEdit*, intptr_t);
+void* miqt_exec_callback_QLineEdit_metacast(QLineEdit*, intptr_t, const char*);
 int miqt_exec_callback_QLineEdit_metacall(QLineEdit*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QLineEdit_sizeHint(const QLineEdit*, intptr_t);
 QSize* miqt_exec_callback_QLineEdit_minimumSizeHint(const QLineEdit*, intptr_t);
@@ -115,6 +117,51 @@ public:
 	MiqtVirtualQLineEdit(const QString& param1, QWidget* parent): QLineEdit(param1, parent) {};
 
 	virtual ~MiqtVirtualQLineEdit() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QLineEdit::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QLineEdit_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QLineEdit::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QLineEdit::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QLineEdit_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QLineEdit::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1789,6 +1836,34 @@ void QLineEdit_cursorForward2(QLineEdit* self, bool mark, int steps) {
 
 void QLineEdit_cursorBackward2(QLineEdit* self, bool mark, int steps) {
 	self->cursorBackward(mark, static_cast<int>(steps));
+}
+
+bool QLineEdit_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QLineEdit_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQLineEdit*)(self) )->virtualbase_metaObject();
+}
+
+bool QLineEdit_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QLineEdit_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQLineEdit*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QLineEdit_override_virtual_metacall(void* self, intptr_t slot) {

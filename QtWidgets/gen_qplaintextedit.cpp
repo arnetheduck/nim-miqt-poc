@@ -76,6 +76,8 @@ void miqt_exec_callback_QPlainTextEdit_cursorPositionChanged(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_updateRequest(intptr_t, QRect*, int);
 void miqt_exec_callback_QPlainTextEdit_blockCountChanged(intptr_t, int);
 void miqt_exec_callback_QPlainTextEdit_modificationChanged(intptr_t, bool);
+QMetaObject* miqt_exec_callback_QPlainTextEdit_metaObject(const QPlainTextEdit*, intptr_t);
+void* miqt_exec_callback_QPlainTextEdit_metacast(QPlainTextEdit*, intptr_t, const char*);
 int miqt_exec_callback_QPlainTextEdit_metacall(QPlainTextEdit*, intptr_t, int, int, void**);
 QVariant* miqt_exec_callback_QPlainTextEdit_loadResource(QPlainTextEdit*, intptr_t, int, QUrl*);
 QVariant* miqt_exec_callback_QPlainTextEdit_inputMethodQuery(const QPlainTextEdit*, intptr_t, int);
@@ -133,6 +135,8 @@ void miqt_exec_callback_QPlainTextEdit_childEvent(QPlainTextEdit*, intptr_t, QCh
 void miqt_exec_callback_QPlainTextEdit_customEvent(QPlainTextEdit*, intptr_t, QEvent*);
 void miqt_exec_callback_QPlainTextEdit_connectNotify(QPlainTextEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QPlainTextEdit_disconnectNotify(QPlainTextEdit*, intptr_t, QMetaMethod*);
+QMetaObject* miqt_exec_callback_QPlainTextDocumentLayout_metaObject(const QPlainTextDocumentLayout*, intptr_t);
+void* miqt_exec_callback_QPlainTextDocumentLayout_metacast(QPlainTextDocumentLayout*, intptr_t, const char*);
 int miqt_exec_callback_QPlainTextDocumentLayout_metacall(QPlainTextDocumentLayout*, intptr_t, int, int, void**);
 void miqt_exec_callback_QPlainTextDocumentLayout_draw(QPlainTextDocumentLayout*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
 int miqt_exec_callback_QPlainTextDocumentLayout_hitTest(const QPlainTextDocumentLayout*, intptr_t, QPointF*, int);
@@ -164,6 +168,51 @@ public:
 	MiqtVirtualQPlainTextEdit(const QString& text, QWidget* parent): QPlainTextEdit(text, parent) {};
 
 	virtual ~MiqtVirtualQPlainTextEdit() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QPlainTextEdit::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QPlainTextEdit_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QPlainTextEdit::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QPlainTextEdit::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QPlainTextEdit_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QPlainTextEdit::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -2113,6 +2162,34 @@ void QPlainTextEdit_zoomOut1(QPlainTextEdit* self, int range) {
 	self->zoomOut(static_cast<int>(range));
 }
 
+bool QPlainTextEdit_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QPlainTextEdit_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_metaObject();
+}
+
+bool QPlainTextEdit_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QPlainTextEdit_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QPlainTextEdit_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -3171,6 +3248,51 @@ public:
 	virtual ~MiqtVirtualQPlainTextDocumentLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QPlainTextDocumentLayout::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QPlainTextDocumentLayout::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QPlainTextDocumentLayout::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QPlainTextDocumentLayout::qt_metacast(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -3760,6 +3882,34 @@ struct miqt_string QPlainTextDocumentLayout_trUtf83(const char* s, const char* c
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QPlainTextDocumentLayout_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QPlainTextDocumentLayout_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_metaObject();
+}
+
+bool QPlainTextDocumentLayout_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QPlainTextDocumentLayout_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QPlainTextDocumentLayout_override_virtual_metacall(void* self, intptr_t slot) {

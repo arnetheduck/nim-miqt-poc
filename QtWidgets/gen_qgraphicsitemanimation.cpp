@@ -22,6 +22,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QGraphicsItemAnimation_metaObject(const QGraphicsItemAnimation*, intptr_t);
+void* miqt_exec_callback_QGraphicsItemAnimation_metacast(QGraphicsItemAnimation*, intptr_t, const char*);
 int miqt_exec_callback_QGraphicsItemAnimation_metacall(QGraphicsItemAnimation*, intptr_t, int, int, void**);
 void miqt_exec_callback_QGraphicsItemAnimation_beforeAnimationStep(QGraphicsItemAnimation*, intptr_t, double);
 void miqt_exec_callback_QGraphicsItemAnimation_afterAnimationStep(QGraphicsItemAnimation*, intptr_t, double);
@@ -43,6 +45,51 @@ public:
 	MiqtVirtualQGraphicsItemAnimation(QObject* parent): QGraphicsItemAnimation(parent) {};
 
 	virtual ~MiqtVirtualQGraphicsItemAnimation() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QGraphicsItemAnimation::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QGraphicsItemAnimation_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QGraphicsItemAnimation::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QGraphicsItemAnimation::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QGraphicsItemAnimation_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QGraphicsItemAnimation::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -596,6 +643,34 @@ struct miqt_string QGraphicsItemAnimation_trUtf83(const char* s, const char* c, 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QGraphicsItemAnimation_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QGraphicsItemAnimation_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_metaObject();
+}
+
+bool QGraphicsItemAnimation_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QGraphicsItemAnimation_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QGraphicsItemAnimation_override_virtual_metacall(void* self, intptr_t slot) {

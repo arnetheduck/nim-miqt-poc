@@ -17,6 +17,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLocalServer_newConnection(intptr_t);
+QMetaObject* miqt_exec_callback_QLocalServer_metaObject(const QLocalServer*, intptr_t);
+void* miqt_exec_callback_QLocalServer_metacast(QLocalServer*, intptr_t, const char*);
 int miqt_exec_callback_QLocalServer_metacall(QLocalServer*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QLocalServer_hasPendingConnections(const QLocalServer*, intptr_t);
 QLocalSocket* miqt_exec_callback_QLocalServer_nextPendingConnection(QLocalServer*, intptr_t);
@@ -39,6 +41,51 @@ public:
 	MiqtVirtualQLocalServer(QObject* parent): QLocalServer(parent) {};
 
 	virtual ~MiqtVirtualQLocalServer() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QLocalServer::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QLocalServer_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QLocalServer::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QLocalServer::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QLocalServer_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QLocalServer::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -513,6 +560,34 @@ bool QLocalServer_waitForNewConnection1(QLocalServer* self, int msec) {
 
 bool QLocalServer_waitForNewConnection2(QLocalServer* self, int msec, bool* timedOut) {
 	return self->waitForNewConnection(static_cast<int>(msec), timedOut);
+}
+
+bool QLocalServer_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QLocalServer_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQLocalServer*)(self) )->virtualbase_metaObject();
+}
+
+bool QLocalServer_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QLocalServer_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQLocalServer*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QLocalServer_override_virtual_metacall(void* self, intptr_t slot) {

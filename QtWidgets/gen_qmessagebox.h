@@ -207,6 +207,10 @@ int QMessageBox_critical52(QWidget* parent, struct miqt_string title, struct miq
 int QMessageBox_critical62(QWidget* parent, struct miqt_string title, struct miqt_string text, struct miqt_string button0Text, struct miqt_string button1Text, struct miqt_string button2Text);
 int QMessageBox_critical7(QWidget* parent, struct miqt_string title, struct miqt_string text, struct miqt_string button0Text, struct miqt_string button1Text, struct miqt_string button2Text, int defaultButtonNumber);
 int QMessageBox_critical8(QWidget* parent, struct miqt_string title, struct miqt_string text, struct miqt_string button0Text, struct miqt_string button1Text, struct miqt_string button2Text, int defaultButtonNumber, int escapeButtonNumber);
+bool QMessageBox_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QMessageBox_virtualbase_metaObject(const void* self);
+bool QMessageBox_override_virtual_metacast(void* self, intptr_t slot);
+void* QMessageBox_virtualbase_metacast(void* self, const char* param1);
 bool QMessageBox_override_virtual_metacall(void* self, intptr_t slot);
 int QMessageBox_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QMessageBox_override_virtual_event(void* self, intptr_t slot);

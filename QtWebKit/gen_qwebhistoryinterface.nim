@@ -67,6 +67,10 @@ proc fcQWebHistoryInterface_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQWebHistoryInterface_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebHistoryInterface_tr3".}
 proc fcQWebHistoryInterface_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebHistoryInterface_trUtf82".}
 proc fcQWebHistoryInterface_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebHistoryInterface_trUtf83".}
+proc fQWebHistoryInterface_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebHistoryInterface_virtualbase_metaObject".}
+proc fcQWebHistoryInterface_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebHistoryInterface_override_virtual_metaObject".}
+proc fQWebHistoryInterface_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebHistoryInterface_virtualbase_metacast".}
+proc fcQWebHistoryInterface_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebHistoryInterface_override_virtual_metacast".}
 proc fQWebHistoryInterface_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebHistoryInterface_virtualbase_metacall".}
 proc fcQWebHistoryInterface_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebHistoryInterface_override_virtual_metacall".}
 proc fcQWebHistoryInterface_override_virtual_historyContains(self: pointer, slot: int) {.importc: "QWebHistoryInterface_override_virtual_historyContains".}
@@ -154,6 +158,42 @@ proc trUtf8*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QWebHistoryInterfacemetaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQWebHistoryInterface_virtualbase_metaObject(self.h))
+
+type QWebHistoryInterfacemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QWebHistoryInterfacemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebHistoryInterface_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebHistoryInterface_metaObject(self: ptr cQWebHistoryInterface, slot: int): pointer {.exportc: "miqt_exec_callback_QWebHistoryInterface_metaObject ".} =
+  var nimfunc = cast[ptr QWebHistoryInterfacemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QWebHistoryInterfacemetacast*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cstring): pointer =
+  fQWebHistoryInterface_virtualbase_metacast(self.h, param1)
+
+type QWebHistoryInterfacemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacemetacastProc) =
+  # TODO check subclass
+  var tmp = new QWebHistoryInterfacemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebHistoryInterface_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebHistoryInterface_metacast(self: ptr cQWebHistoryInterface, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebHistoryInterface_metacast ".} =
+  var nimfunc = cast[ptr QWebHistoryInterfacemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QWebHistoryInterfacemetacall*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cint, param2: cint, param3: pointer): cint =
   fQWebHistoryInterface_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

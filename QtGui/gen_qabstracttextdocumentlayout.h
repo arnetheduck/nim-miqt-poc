@@ -110,6 +110,10 @@ struct miqt_string QAbstractTextDocumentLayout_trUtf83(const char* s, const char
 void QAbstractTextDocumentLayout_unregisterHandler2(QAbstractTextDocumentLayout* self, int objectType, QObject* component);
 void QAbstractTextDocumentLayout_update1(QAbstractTextDocumentLayout* self, QRectF* param1);
 void QAbstractTextDocumentLayout_connect_update1(QAbstractTextDocumentLayout* self, intptr_t slot);
+bool QAbstractTextDocumentLayout_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QAbstractTextDocumentLayout_virtualbase_metaObject(const void* self);
+bool QAbstractTextDocumentLayout_override_virtual_metacast(void* self, intptr_t slot);
+void* QAbstractTextDocumentLayout_virtualbase_metacast(void* self, const char* param1);
 bool QAbstractTextDocumentLayout_override_virtual_metacall(void* self, intptr_t slot);
 int QAbstractTextDocumentLayout_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractTextDocumentLayout_override_virtual_draw(void* self, intptr_t slot);

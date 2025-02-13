@@ -43,6 +43,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QRubberBand_metaObject(const QRubberBand*, intptr_t);
+void* miqt_exec_callback_QRubberBand_metacast(QRubberBand*, intptr_t, const char*);
 int miqt_exec_callback_QRubberBand_metacall(QRubberBand*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QRubberBand_event(QRubberBand*, intptr_t, QEvent*);
 void miqt_exec_callback_QRubberBand_paintEvent(QRubberBand*, intptr_t, QPaintEvent*);
@@ -102,6 +104,51 @@ public:
 	MiqtVirtualQRubberBand(QRubberBand::Shape param1, QWidget* param2): QRubberBand(param1, param2) {};
 
 	virtual ~MiqtVirtualQRubberBand() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QRubberBand::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QRubberBand_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QRubberBand::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QRubberBand::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QRubberBand_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QRubberBand::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1382,6 +1429,34 @@ struct miqt_string QRubberBand_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QRubberBand_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QRubberBand_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_metaObject();
+}
+
+bool QRubberBand_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QRubberBand_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQRubberBand*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QRubberBand_override_virtual_metacall(void* self, intptr_t slot) {

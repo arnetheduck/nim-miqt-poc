@@ -143,6 +143,10 @@ proc fcQMediaPlaylist_load2(self: pointer, request: ptr cQNetworkRequest, format
 proc fcQMediaPlaylist_load22(self: pointer, location: pointer, format: cstring): void {.importc: "QMediaPlaylist_load22".}
 proc fcQMediaPlaylist_load23(self: pointer, device: pointer, format: cstring): void {.importc: "QMediaPlaylist_load23".}
 proc fcQMediaPlaylist_save22(self: pointer, location: pointer, format: cstring): bool {.importc: "QMediaPlaylist_save22".}
+proc fQMediaPlaylist_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMediaPlaylist_virtualbase_metaObject".}
+proc fcQMediaPlaylist_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMediaPlaylist_override_virtual_metaObject".}
+proc fQMediaPlaylist_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMediaPlaylist_virtualbase_metacast".}
+proc fcQMediaPlaylist_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMediaPlaylist_override_virtual_metacast".}
 proc fQMediaPlaylist_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMediaPlaylist_virtualbase_metacall".}
 proc fcQMediaPlaylist_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMediaPlaylist_override_virtual_metacall".}
 proc fQMediaPlaylist_virtualbase_mediaObject(self: pointer, ): pointer{.importc: "QMediaPlaylist_virtualbase_mediaObject".}
@@ -505,6 +509,42 @@ proc load*(self: gen_qmediaplaylist_types.QMediaPlaylist, device: gen_qiodevice_
 proc save*(self: gen_qmediaplaylist_types.QMediaPlaylist, location: gen_qurl_types.QUrl, format: cstring): bool =
   fcQMediaPlaylist_save22(self.h, location.h, format)
 
+proc QMediaPlaylistmetaObject*(self: gen_qmediaplaylist_types.QMediaPlaylist, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQMediaPlaylist_virtualbase_metaObject(self.h))
+
+type QMediaPlaylistmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qmediaplaylist_types.QMediaPlaylist, slot: QMediaPlaylistmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QMediaPlaylistmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMediaPlaylist_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMediaPlaylist_metaObject(self: ptr cQMediaPlaylist, slot: int): pointer {.exportc: "miqt_exec_callback_QMediaPlaylist_metaObject ".} =
+  var nimfunc = cast[ptr QMediaPlaylistmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QMediaPlaylistmetacast*(self: gen_qmediaplaylist_types.QMediaPlaylist, param1: cstring): pointer =
+  fQMediaPlaylist_virtualbase_metacast(self.h, param1)
+
+type QMediaPlaylistmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmediaplaylist_types.QMediaPlaylist, slot: QMediaPlaylistmetacastProc) =
+  # TODO check subclass
+  var tmp = new QMediaPlaylistmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMediaPlaylist_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMediaPlaylist_metacast(self: ptr cQMediaPlaylist, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMediaPlaylist_metacast ".} =
+  var nimfunc = cast[ptr QMediaPlaylistmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QMediaPlaylistmetacall*(self: gen_qmediaplaylist_types.QMediaPlaylist, param1: cint, param2: cint, param3: pointer): cint =
   fQMediaPlaylist_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

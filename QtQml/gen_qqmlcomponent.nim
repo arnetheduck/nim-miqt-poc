@@ -125,6 +125,10 @@ proc fcQQmlComponent_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_strin
 proc fcQQmlComponent_createWithInitialProperties2(self: pointer, initialProperties: struct_miqt_map, context: pointer): pointer {.importc: "QQmlComponent_createWithInitialProperties2".}
 proc fcQQmlComponent_create2(self: pointer, param1: pointer, context: pointer): void {.importc: "QQmlComponent_create2".}
 proc fcQQmlComponent_create3(self: pointer, param1: pointer, context: pointer, forContext: pointer): void {.importc: "QQmlComponent_create3".}
+proc fQQmlComponent_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQmlComponent_virtualbase_metaObject".}
+proc fcQQmlComponent_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQmlComponent_override_virtual_metaObject".}
+proc fQQmlComponent_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQmlComponent_virtualbase_metacast".}
+proc fcQQmlComponent_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQmlComponent_override_virtual_metacast".}
 proc fQQmlComponent_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQmlComponent_virtualbase_metacall".}
 proc fcQQmlComponent_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQmlComponent_override_virtual_metacall".}
 proc fQQmlComponent_virtualbase_create(self: pointer, context: pointer): pointer{.importc: "QQmlComponent_virtualbase_create".}
@@ -367,6 +371,42 @@ proc create*(self: gen_qqmlcomponent_types.QQmlComponent, param1: gen_qqmlincuba
 proc create*(self: gen_qqmlcomponent_types.QQmlComponent, param1: gen_qqmlincubator_types.QQmlIncubator, context: gen_qqmlcontext_types.QQmlContext, forContext: gen_qqmlcontext_types.QQmlContext): void =
   fcQQmlComponent_create3(self.h, param1.h, context.h, forContext.h)
 
+proc QQmlComponentmetaObject*(self: gen_qqmlcomponent_types.QQmlComponent, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQQmlComponent_virtualbase_metaObject(self.h))
+
+type QQmlComponentmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qqmlcomponent_types.QQmlComponent, slot: QQmlComponentmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QQmlComponentmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlComponent_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlComponent_metaObject(self: ptr cQQmlComponent, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlComponent_metaObject ".} =
+  var nimfunc = cast[ptr QQmlComponentmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QQmlComponentmetacast*(self: gen_qqmlcomponent_types.QQmlComponent, param1: cstring): pointer =
+  fQQmlComponent_virtualbase_metacast(self.h, param1)
+
+type QQmlComponentmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qqmlcomponent_types.QQmlComponent, slot: QQmlComponentmetacastProc) =
+  # TODO check subclass
+  var tmp = new QQmlComponentmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlComponent_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlComponent_metacast(self: ptr cQQmlComponent, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlComponent_metacast ".} =
+  var nimfunc = cast[ptr QQmlComponentmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QQmlComponentmetacall*(self: gen_qqmlcomponent_types.QQmlComponent, param1: cint, param2: cint, param3: pointer): cint =
   fQQmlComponent_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

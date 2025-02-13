@@ -132,6 +132,10 @@ struct miqt_array /* of double */  QMediaRecorder_supportedFrameRates1(const QMe
 struct miqt_array /* of double */  QMediaRecorder_supportedFrameRates2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous);
 void QMediaRecorder_setEncodingSettings2(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings);
 void QMediaRecorder_setEncodingSettings3(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings, struct miqt_string containerMimeType);
+bool QMediaRecorder_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QMediaRecorder_virtualbase_metaObject(const void* self);
+bool QMediaRecorder_override_virtual_metacast(void* self, intptr_t slot);
+void* QMediaRecorder_virtualbase_metacast(void* self, const char* param1);
 bool QMediaRecorder_override_virtual_metacall(void* self, intptr_t slot);
 int QMediaRecorder_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QMediaRecorder_override_virtual_mediaObject(void* self, intptr_t slot);

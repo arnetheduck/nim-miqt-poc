@@ -42,6 +42,8 @@ void miqt_exec_callback_QGuiApplication_saveStateRequest(intptr_t, QSessionManag
 void miqt_exec_callback_QGuiApplication_paletteChanged(intptr_t, QPalette*);
 void miqt_exec_callback_QGuiApplication_applicationDisplayNameChanged(intptr_t);
 void miqt_exec_callback_QGuiApplication_fontChanged(intptr_t, QFont*);
+QMetaObject* miqt_exec_callback_QGuiApplication_metaObject(const QGuiApplication*, intptr_t);
+void* miqt_exec_callback_QGuiApplication_metacast(QGuiApplication*, intptr_t, const char*);
 int miqt_exec_callback_QGuiApplication_metacall(QGuiApplication*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QGuiApplication_notify(QGuiApplication*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QGuiApplication_event(QGuiApplication*, intptr_t, QEvent*);
@@ -62,6 +64,51 @@ public:
 	MiqtVirtualQGuiApplication(int& argc, char** argv, int param3): QGuiApplication(argc, argv, param3) {};
 
 	virtual ~MiqtVirtualQGuiApplication() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QGuiApplication::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QGuiApplication_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QGuiApplication::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QGuiApplication::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QGuiApplication_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QGuiApplication::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -815,6 +862,34 @@ struct miqt_string QGuiApplication_trUtf83(const char* s, const char* c, int n) 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QGuiApplication_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QGuiApplication_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQGuiApplication*)(self) )->virtualbase_metaObject();
+}
+
+bool QGuiApplication_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QGuiApplication_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QGuiApplication_override_virtual_metacall(void* self, intptr_t slot) {

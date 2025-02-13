@@ -27,6 +27,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QScriptEngine_signalHandlerException(intptr_t, QScriptValue*);
+QMetaObject* miqt_exec_callback_QScriptEngine_metaObject(const QScriptEngine*, intptr_t);
+void* miqt_exec_callback_QScriptEngine_metacast(QScriptEngine*, intptr_t, const char*);
 int miqt_exec_callback_QScriptEngine_metacall(QScriptEngine*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QScriptEngine_event(QScriptEngine*, intptr_t, QEvent*);
 bool miqt_exec_callback_QScriptEngine_eventFilter(QScriptEngine*, intptr_t, QObject*, QEvent*);
@@ -82,6 +84,51 @@ public:
 	MiqtVirtualQScriptEngine(QObject* parent): QScriptEngine(parent) {};
 
 	virtual ~MiqtVirtualQScriptEngine() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QScriptEngine::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QScriptEngine_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QScriptEngine::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QScriptEngine::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QScriptEngine_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QScriptEngine::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -675,6 +722,34 @@ QScriptValue* QScriptEngine_newQMetaObject2(QScriptEngine* self, QMetaObject* me
 
 void QScriptEngine_installTranslatorFunctions1(QScriptEngine* self, QScriptValue* object) {
 	self->installTranslatorFunctions(*object);
+}
+
+bool QScriptEngine_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QScriptEngine_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQScriptEngine*)(self) )->virtualbase_metaObject();
+}
+
+bool QScriptEngine_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QScriptEngine_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QScriptEngine_override_virtual_metacall(void* self, intptr_t slot) {

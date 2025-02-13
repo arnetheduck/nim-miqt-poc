@@ -127,6 +127,10 @@ proc fcQNetworkSession_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string 
 proc fcQNetworkSession_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QNetworkSession_trUtf82".}
 proc fcQNetworkSession_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QNetworkSession_trUtf83".}
 proc fcQNetworkSession_waitForOpened1(self: pointer, msecs: cint): bool {.importc: "QNetworkSession_waitForOpened1".}
+proc fQNetworkSession_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QNetworkSession_virtualbase_metaObject".}
+proc fcQNetworkSession_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QNetworkSession_override_virtual_metaObject".}
+proc fQNetworkSession_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QNetworkSession_virtualbase_metacast".}
+proc fcQNetworkSession_override_virtual_metacast(self: pointer, slot: int) {.importc: "QNetworkSession_override_virtual_metacast".}
 proc fQNetworkSession_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QNetworkSession_virtualbase_metacall".}
 proc fcQNetworkSession_override_virtual_metacall(self: pointer, slot: int) {.importc: "QNetworkSession_override_virtual_metacall".}
 proc fQNetworkSession_virtualbase_connectNotify(self: pointer, signal: pointer): void{.importc: "QNetworkSession_virtualbase_connectNotify".}
@@ -374,6 +378,42 @@ proc trUtf8*(_: type gen_qnetworksession_types.QNetworkSession, s: cstring, c: c
 proc waitForOpened*(self: gen_qnetworksession_types.QNetworkSession, msecs: cint): bool =
   fcQNetworkSession_waitForOpened1(self.h, msecs)
 
+proc QNetworkSessionmetaObject*(self: gen_qnetworksession_types.QNetworkSession, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQNetworkSession_virtualbase_metaObject(self.h))
+
+type QNetworkSessionmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QNetworkSessionmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkSession_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkSession_metaObject(self: ptr cQNetworkSession, slot: int): pointer {.exportc: "miqt_exec_callback_QNetworkSession_metaObject ".} =
+  var nimfunc = cast[ptr QNetworkSessionmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QNetworkSessionmetacast*(self: gen_qnetworksession_types.QNetworkSession, param1: cstring): pointer =
+  fQNetworkSession_virtualbase_metacast(self.h, param1)
+
+type QNetworkSessionmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionmetacastProc) =
+  # TODO check subclass
+  var tmp = new QNetworkSessionmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkSession_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkSession_metacast(self: ptr cQNetworkSession, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QNetworkSession_metacast ".} =
+  var nimfunc = cast[ptr QNetworkSessionmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QNetworkSessionmetacall*(self: gen_qnetworksession_types.QNetworkSession, param1: cint, param2: cint, param3: pointer): cint =
   fQNetworkSession_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

@@ -88,6 +88,10 @@ proc fcQStringListModel_tr2(s: cstring, c: cstring): struct_miqt_string {.import
 proc fcQStringListModel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStringListModel_tr3".}
 proc fcQStringListModel_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QStringListModel_trUtf82".}
 proc fcQStringListModel_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStringListModel_trUtf83".}
+proc fQStringListModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QStringListModel_virtualbase_metaObject".}
+proc fcQStringListModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QStringListModel_override_virtual_metaObject".}
+proc fQStringListModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QStringListModel_virtualbase_metacast".}
+proc fcQStringListModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QStringListModel_override_virtual_metacast".}
 proc fQStringListModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QStringListModel_virtualbase_metacall".}
 proc fcQStringListModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QStringListModel_override_virtual_metacall".}
 proc fQStringListModel_virtualbase_rowCount(self: pointer, parent: pointer): cint{.importc: "QStringListModel_virtualbase_rowCount".}
@@ -309,6 +313,42 @@ proc trUtf8*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c:
   c_free(v_ms.data)
   vx_ret
 
+proc QStringListModelmetaObject*(self: gen_qstringlistmodel_types.QStringListModel, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQStringListModel_virtualbase_metaObject(self.h))
+
+type QStringListModelmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qstringlistmodel_types.QStringListModel, slot: QStringListModelmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QStringListModelmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStringListModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStringListModel_metaObject(self: ptr cQStringListModel, slot: int): pointer {.exportc: "miqt_exec_callback_QStringListModel_metaObject ".} =
+  var nimfunc = cast[ptr QStringListModelmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QStringListModelmetacast*(self: gen_qstringlistmodel_types.QStringListModel, param1: cstring): pointer =
+  fQStringListModel_virtualbase_metacast(self.h, param1)
+
+type QStringListModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qstringlistmodel_types.QStringListModel, slot: QStringListModelmetacastProc) =
+  # TODO check subclass
+  var tmp = new QStringListModelmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStringListModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStringListModel_metacast(self: ptr cQStringListModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStringListModel_metacast ".} =
+  var nimfunc = cast[ptr QStringListModelmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QStringListModelmetacall*(self: gen_qstringlistmodel_types.QStringListModel, param1: cint, param2: cint, param3: pointer): cint =
   fQStringListModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

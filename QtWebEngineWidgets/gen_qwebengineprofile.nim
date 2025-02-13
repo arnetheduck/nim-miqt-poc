@@ -136,6 +136,10 @@ proc fcQWebEngineProfile_tr3(s: cstring, c: cstring, n: cint): struct_miqt_strin
 proc fcQWebEngineProfile_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineProfile_trUtf82".}
 proc fcQWebEngineProfile_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineProfile_trUtf83".}
 proc fcQWebEngineProfile_setUseForGlobalCertificateVerification1(self: pointer, enabled: bool): void {.importc: "QWebEngineProfile_setUseForGlobalCertificateVerification1".}
+proc fQWebEngineProfile_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebEngineProfile_virtualbase_metaObject".}
+proc fcQWebEngineProfile_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebEngineProfile_override_virtual_metaObject".}
+proc fQWebEngineProfile_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebEngineProfile_virtualbase_metacast".}
+proc fcQWebEngineProfile_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebEngineProfile_override_virtual_metacast".}
 proc fQWebEngineProfile_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebEngineProfile_virtualbase_metacall".}
 proc fcQWebEngineProfile_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebEngineProfile_override_virtual_metacall".}
 proc fQWebEngineProfile_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QWebEngineProfile_virtualbase_event".}
@@ -388,6 +392,42 @@ proc trUtf8*(_: type gen_qwebengineprofile_types.QWebEngineProfile, s: cstring, 
 proc setUseForGlobalCertificateVerification*(self: gen_qwebengineprofile_types.QWebEngineProfile, enabled: bool): void =
   fcQWebEngineProfile_setUseForGlobalCertificateVerification1(self.h, enabled)
 
+proc QWebEngineProfilemetaObject*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQWebEngineProfile_virtualbase_metaObject(self.h))
+
+type QWebEngineProfilemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfilemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QWebEngineProfilemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEngineProfile_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEngineProfile_metaObject(self: ptr cQWebEngineProfile, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineProfile_metaObject ".} =
+  var nimfunc = cast[ptr QWebEngineProfilemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QWebEngineProfilemetacast*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: cstring): pointer =
+  fQWebEngineProfile_virtualbase_metacast(self.h, param1)
+
+type QWebEngineProfilemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfilemetacastProc) =
+  # TODO check subclass
+  var tmp = new QWebEngineProfilemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEngineProfile_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEngineProfile_metacast(self: ptr cQWebEngineProfile, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEngineProfile_metacast ".} =
+  var nimfunc = cast[ptr QWebEngineProfilemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QWebEngineProfilemetacall*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: cint, param2: cint, param3: pointer): cint =
   fQWebEngineProfile_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

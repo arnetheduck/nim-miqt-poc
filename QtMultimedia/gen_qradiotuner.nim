@@ -151,6 +151,10 @@ proc fcQRadioTuner_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.im
 proc fcQRadioTuner_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QRadioTuner_trUtf82".}
 proc fcQRadioTuner_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRadioTuner_trUtf83".}
 proc fcQRadioTuner_searchAllStations1(self: pointer, searchMode: cint): void {.importc: "QRadioTuner_searchAllStations1".}
+proc fQRadioTuner_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QRadioTuner_virtualbase_metaObject".}
+proc fcQRadioTuner_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QRadioTuner_override_virtual_metaObject".}
+proc fQRadioTuner_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QRadioTuner_virtualbase_metacast".}
+proc fcQRadioTuner_override_virtual_metacast(self: pointer, slot: int) {.importc: "QRadioTuner_override_virtual_metacast".}
 proc fQRadioTuner_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QRadioTuner_virtualbase_metacall".}
 proc fcQRadioTuner_override_virtual_metacall(self: pointer, slot: int) {.importc: "QRadioTuner_override_virtual_metacall".}
 proc fQRadioTuner_virtualbase_availability(self: pointer, ): cint{.importc: "QRadioTuner_virtualbase_availability".}
@@ -512,6 +516,42 @@ proc trUtf8*(_: type gen_qradiotuner_types.QRadioTuner, s: cstring, c: cstring, 
 proc searchAllStations*(self: gen_qradiotuner_types.QRadioTuner, searchMode: cint): void =
   fcQRadioTuner_searchAllStations1(self.h, cint(searchMode))
 
+proc QRadioTunermetaObject*(self: gen_qradiotuner_types.QRadioTuner, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQRadioTuner_virtualbase_metaObject(self.h))
+
+type QRadioTunermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qradiotuner_types.QRadioTuner, slot: QRadioTunermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QRadioTunermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRadioTuner_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRadioTuner_metaObject(self: ptr cQRadioTuner, slot: int): pointer {.exportc: "miqt_exec_callback_QRadioTuner_metaObject ".} =
+  var nimfunc = cast[ptr QRadioTunermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QRadioTunermetacast*(self: gen_qradiotuner_types.QRadioTuner, param1: cstring): pointer =
+  fQRadioTuner_virtualbase_metacast(self.h, param1)
+
+type QRadioTunermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qradiotuner_types.QRadioTuner, slot: QRadioTunermetacastProc) =
+  # TODO check subclass
+  var tmp = new QRadioTunermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRadioTuner_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRadioTuner_metacast(self: ptr cQRadioTuner, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QRadioTuner_metacast ".} =
+  var nimfunc = cast[ptr QRadioTunermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QRadioTunermetacall*(self: gen_qradiotuner_types.QRadioTuner, param1: cint, param2: cint, param3: pointer): cint =
   fQRadioTuner_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

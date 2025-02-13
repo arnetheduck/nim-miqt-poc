@@ -77,6 +77,10 @@ proc fcQMouseEventTransition_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQMouseEventTransition_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMouseEventTransition_tr3".}
 proc fcQMouseEventTransition_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMouseEventTransition_trUtf82".}
 proc fcQMouseEventTransition_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMouseEventTransition_trUtf83".}
+proc fQMouseEventTransition_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMouseEventTransition_virtualbase_metaObject".}
+proc fcQMouseEventTransition_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMouseEventTransition_override_virtual_metaObject".}
+proc fQMouseEventTransition_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMouseEventTransition_virtualbase_metacast".}
+proc fcQMouseEventTransition_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMouseEventTransition_override_virtual_metacast".}
 proc fQMouseEventTransition_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMouseEventTransition_virtualbase_metacall".}
 proc fcQMouseEventTransition_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMouseEventTransition_override_virtual_metacall".}
 proc fQMouseEventTransition_virtualbase_onTransition(self: pointer, event: pointer): void{.importc: "QMouseEventTransition_virtualbase_onTransition".}
@@ -178,6 +182,42 @@ proc trUtf8*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: c
   c_free(v_ms.data)
   vx_ret
 
+proc QMouseEventTransitionmetaObject*(self: gen_qmouseeventtransition_types.QMouseEventTransition, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQMouseEventTransition_virtualbase_metaObject(self.h))
+
+type QMouseEventTransitionmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qmouseeventtransition_types.QMouseEventTransition, slot: QMouseEventTransitionmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QMouseEventTransitionmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMouseEventTransition_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMouseEventTransition_metaObject(self: ptr cQMouseEventTransition, slot: int): pointer {.exportc: "miqt_exec_callback_QMouseEventTransition_metaObject ".} =
+  var nimfunc = cast[ptr QMouseEventTransitionmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QMouseEventTransitionmetacast*(self: gen_qmouseeventtransition_types.QMouseEventTransition, param1: cstring): pointer =
+  fQMouseEventTransition_virtualbase_metacast(self.h, param1)
+
+type QMouseEventTransitionmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmouseeventtransition_types.QMouseEventTransition, slot: QMouseEventTransitionmetacastProc) =
+  # TODO check subclass
+  var tmp = new QMouseEventTransitionmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMouseEventTransition_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMouseEventTransition_metacast(self: ptr cQMouseEventTransition, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMouseEventTransition_metacast ".} =
+  var nimfunc = cast[ptr QMouseEventTransitionmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QMouseEventTransitionmetacall*(self: gen_qmouseeventtransition_types.QMouseEventTransition, param1: cint, param2: cint, param3: pointer): cint =
   fQMouseEventTransition_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

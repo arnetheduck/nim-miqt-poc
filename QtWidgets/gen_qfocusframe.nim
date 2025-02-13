@@ -81,6 +81,10 @@ proc fcQFocusFrame_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "Q
 proc fcQFocusFrame_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFocusFrame_tr3".}
 proc fcQFocusFrame_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QFocusFrame_trUtf82".}
 proc fcQFocusFrame_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFocusFrame_trUtf83".}
+proc fQFocusFrame_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QFocusFrame_virtualbase_metaObject".}
+proc fcQFocusFrame_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QFocusFrame_override_virtual_metaObject".}
+proc fQFocusFrame_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QFocusFrame_virtualbase_metacast".}
+proc fcQFocusFrame_override_virtual_metacast(self: pointer, slot: int) {.importc: "QFocusFrame_override_virtual_metacast".}
 proc fQFocusFrame_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QFocusFrame_virtualbase_metacall".}
 proc fcQFocusFrame_override_virtual_metacall(self: pointer, slot: int) {.importc: "QFocusFrame_override_virtual_metacall".}
 proc fQFocusFrame_virtualbase_event(self: pointer, e: pointer): bool{.importc: "QFocusFrame_virtualbase_event".}
@@ -240,6 +244,42 @@ proc trUtf8*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QFocusFramemetaObject*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQFocusFrame_virtualbase_metaObject(self.h))
+
+type QFocusFramemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QFocusFramemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFocusFrame_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFocusFrame_metaObject(self: ptr cQFocusFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QFocusFrame_metaObject ".} =
+  var nimfunc = cast[ptr QFocusFramemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QFocusFramemetacast*(self: gen_qfocusframe_types.QFocusFrame, param1: cstring): pointer =
+  fQFocusFrame_virtualbase_metacast(self.h, param1)
+
+type QFocusFramemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemetacastProc) =
+  # TODO check subclass
+  var tmp = new QFocusFramemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFocusFrame_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFocusFrame_metacast(self: ptr cQFocusFrame, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFocusFrame_metacast ".} =
+  var nimfunc = cast[ptr QFocusFramemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QFocusFramemetacall*(self: gen_qfocusframe_types.QFocusFrame, param1: cint, param2: cint, param3: pointer): cint =
   fQFocusFrame_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

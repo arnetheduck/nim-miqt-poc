@@ -76,6 +76,10 @@ proc fcQAudioRecorder_tr2(s: cstring, c: cstring): struct_miqt_string {.importc:
 proc fcQAudioRecorder_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioRecorder_tr3".}
 proc fcQAudioRecorder_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioRecorder_trUtf82".}
 proc fcQAudioRecorder_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioRecorder_trUtf83".}
+proc fQAudioRecorder_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAudioRecorder_virtualbase_metaObject".}
+proc fcQAudioRecorder_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAudioRecorder_override_virtual_metaObject".}
+proc fQAudioRecorder_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAudioRecorder_virtualbase_metacast".}
+proc fcQAudioRecorder_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAudioRecorder_override_virtual_metacast".}
 proc fQAudioRecorder_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAudioRecorder_virtualbase_metacall".}
 proc fcQAudioRecorder_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAudioRecorder_override_virtual_metacall".}
 proc fQAudioRecorder_virtualbase_mediaObject(self: pointer, ): pointer{.importc: "QAudioRecorder_virtualbase_mediaObject".}
@@ -218,6 +222,42 @@ proc trUtf8*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QAudioRecordermetaObject*(self: gen_qaudiorecorder_types.QAudioRecorder, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAudioRecorder_virtualbase_metaObject(self.h))
+
+type QAudioRecordermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: QAudioRecordermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAudioRecordermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioRecorder_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioRecorder_metaObject(self: ptr cQAudioRecorder, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioRecorder_metaObject ".} =
+  var nimfunc = cast[ptr QAudioRecordermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAudioRecordermetacast*(self: gen_qaudiorecorder_types.QAudioRecorder, param1: cstring): pointer =
+  fQAudioRecorder_virtualbase_metacast(self.h, param1)
+
+type QAudioRecordermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: QAudioRecordermetacastProc) =
+  # TODO check subclass
+  var tmp = new QAudioRecordermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioRecorder_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioRecorder_metacast(self: ptr cQAudioRecorder, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioRecorder_metacast ".} =
+  var nimfunc = cast[ptr QAudioRecordermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAudioRecordermetacall*(self: gen_qaudiorecorder_types.QAudioRecorder, param1: cint, param2: cint, param3: pointer): cint =
   fQAudioRecorder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

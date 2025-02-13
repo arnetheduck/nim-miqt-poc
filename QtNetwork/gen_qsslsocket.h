@@ -173,6 +173,10 @@ bool QSslSocket_addCaCertificates3(QSslSocket* self, struct miqt_string path, in
 bool QSslSocket_addDefaultCaCertificates2(struct miqt_string path, int format);
 bool QSslSocket_addDefaultCaCertificates3(struct miqt_string path, int format, int syntax);
 bool QSslSocket_waitForEncrypted1(QSslSocket* self, int msecs);
+bool QSslSocket_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QSslSocket_virtualbase_metaObject(const void* self);
+bool QSslSocket_override_virtual_metacast(void* self, intptr_t slot);
+void* QSslSocket_virtualbase_metacast(void* self, const char* param1);
 bool QSslSocket_override_virtual_metacall(void* self, intptr_t slot);
 int QSslSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QSslSocket_override_virtual_resume(void* self, intptr_t slot);

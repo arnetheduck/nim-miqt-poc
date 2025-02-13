@@ -348,6 +348,10 @@ proc fcQWebEnginePage_setContent2(self: pointer, data: struct_miqt_string, mimeT
 proc fcQWebEnginePage_setContent3(self: pointer, data: struct_miqt_string, mimeType: struct_miqt_string, baseUrl: pointer): void {.importc: "QWebEnginePage_setContent3".}
 proc fcQWebEnginePage_save2(self: pointer, filePath: struct_miqt_string, format: cint): void {.importc: "QWebEnginePage_save2".}
 proc fcQWebEnginePage_printToPdf2(self: pointer, filePath: struct_miqt_string, layout: pointer): void {.importc: "QWebEnginePage_printToPdf2".}
+proc fQWebEnginePage_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebEnginePage_virtualbase_metaObject".}
+proc fcQWebEnginePage_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebEnginePage_override_virtual_metaObject".}
+proc fQWebEnginePage_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebEnginePage_virtualbase_metacast".}
+proc fcQWebEnginePage_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebEnginePage_override_virtual_metacast".}
 proc fQWebEnginePage_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebEnginePage_virtualbase_metacall".}
 proc fcQWebEnginePage_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebEnginePage_override_virtual_metacall".}
 proc fQWebEnginePage_virtualbase_triggerAction(self: pointer, action: cint, checked: bool): void{.importc: "QWebEnginePage_virtualbase_triggerAction".}
@@ -1143,6 +1147,42 @@ proc save*(self: gen_qwebenginepage_types.QWebEnginePage, filePath: string, form
 proc printToPdf*(self: gen_qwebenginepage_types.QWebEnginePage, filePath: string, layout: gen_qpagelayout_types.QPageLayout): void =
   fcQWebEnginePage_printToPdf2(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))), layout.h)
 
+proc QWebEnginePagemetaObject*(self: gen_qwebenginepage_types.QWebEnginePage, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQWebEnginePage_virtualbase_metaObject(self.h))
+
+type QWebEnginePagemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QWebEnginePagemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEnginePage_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEnginePage_metaObject(self: ptr cQWebEnginePage, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEnginePage_metaObject ".} =
+  var nimfunc = cast[ptr QWebEnginePagemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QWebEnginePagemetacast*(self: gen_qwebenginepage_types.QWebEnginePage, param1: cstring): pointer =
+  fQWebEnginePage_virtualbase_metacast(self.h, param1)
+
+type QWebEnginePagemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebenginepage_types.QWebEnginePage, slot: QWebEnginePagemetacastProc) =
+  # TODO check subclass
+  var tmp = new QWebEnginePagemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEnginePage_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEnginePage_metacast(self: ptr cQWebEnginePage, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEnginePage_metacast ".} =
+  var nimfunc = cast[ptr QWebEnginePagemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QWebEnginePagemetacall*(self: gen_qwebenginepage_types.QWebEnginePage, param1: cint, param2: cint, param3: pointer): cint =
   fQWebEnginePage_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

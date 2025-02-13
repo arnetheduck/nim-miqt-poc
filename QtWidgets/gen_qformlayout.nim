@@ -142,6 +142,10 @@ proc fcQFormLayout_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "Q
 proc fcQFormLayout_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFormLayout_tr3".}
 proc fcQFormLayout_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QFormLayout_trUtf82".}
 proc fcQFormLayout_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFormLayout_trUtf83".}
+proc fQFormLayout_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QFormLayout_virtualbase_metaObject".}
+proc fcQFormLayout_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QFormLayout_override_virtual_metaObject".}
+proc fQFormLayout_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QFormLayout_virtualbase_metacast".}
+proc fcQFormLayout_override_virtual_metacast(self: pointer, slot: int) {.importc: "QFormLayout_override_virtual_metacast".}
 proc fQFormLayout_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QFormLayout_virtualbase_metacall".}
 proc fcQFormLayout_override_virtual_metacall(self: pointer, slot: int) {.importc: "QFormLayout_override_virtual_metacall".}
 proc fQFormLayout_virtualbase_addItem(self: pointer, item: pointer): void{.importc: "QFormLayout_virtualbase_addItem".}
@@ -406,6 +410,42 @@ proc trUtf8*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QFormLayoutmetaObject*(self: gen_qformlayout_types.QFormLayout, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQFormLayout_virtualbase_metaObject(self.h))
+
+type QFormLayoutmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qformlayout_types.QFormLayout, slot: QFormLayoutmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QFormLayoutmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFormLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFormLayout_metaObject(self: ptr cQFormLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QFormLayout_metaObject ".} =
+  var nimfunc = cast[ptr QFormLayoutmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QFormLayoutmetacast*(self: gen_qformlayout_types.QFormLayout, param1: cstring): pointer =
+  fQFormLayout_virtualbase_metacast(self.h, param1)
+
+type QFormLayoutmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qformlayout_types.QFormLayout, slot: QFormLayoutmetacastProc) =
+  # TODO check subclass
+  var tmp = new QFormLayoutmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFormLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFormLayout_metacast(self: ptr cQFormLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFormLayout_metacast ".} =
+  var nimfunc = cast[ptr QFormLayoutmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QFormLayoutmetacall*(self: gen_qformlayout_types.QFormLayout, param1: cint, param2: cint, param3: pointer): cint =
   fQFormLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

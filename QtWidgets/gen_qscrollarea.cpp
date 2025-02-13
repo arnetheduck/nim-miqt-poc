@@ -45,6 +45,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QScrollArea_metaObject(const QScrollArea*, intptr_t);
+void* miqt_exec_callback_QScrollArea_metacast(QScrollArea*, intptr_t, const char*);
 int miqt_exec_callback_QScrollArea_metacall(QScrollArea*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QScrollArea_sizeHint(const QScrollArea*, intptr_t);
 bool miqt_exec_callback_QScrollArea_focusNextPrevChild(QScrollArea*, intptr_t, bool);
@@ -108,6 +110,51 @@ public:
 	MiqtVirtualQScrollArea(): QScrollArea() {};
 
 	virtual ~MiqtVirtualQScrollArea() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QScrollArea::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QScrollArea_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QScrollArea::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QScrollArea::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QScrollArea_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QScrollArea::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1517,6 +1564,34 @@ void QScrollArea_ensureWidgetVisible2(QScrollArea* self, QWidget* childWidget, i
 
 void QScrollArea_ensureWidgetVisible3(QScrollArea* self, QWidget* childWidget, int xmargin, int ymargin) {
 	self->ensureWidgetVisible(childWidget, static_cast<int>(xmargin), static_cast<int>(ymargin));
+}
+
+bool QScrollArea_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQScrollArea* self_cast = dynamic_cast<MiqtVirtualQScrollArea*>( (QScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QScrollArea_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQScrollArea*)(self) )->virtualbase_metaObject();
+}
+
+bool QScrollArea_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQScrollArea* self_cast = dynamic_cast<MiqtVirtualQScrollArea*>( (QScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QScrollArea_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQScrollArea*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QScrollArea_override_virtual_metacall(void* self, intptr_t slot) {

@@ -94,6 +94,10 @@ proc fcQLocalServer_trUtf82(s: cstring, c: cstring): struct_miqt_string {.import
 proc fcQLocalServer_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QLocalServer_trUtf83".}
 proc fcQLocalServer_waitForNewConnection1(self: pointer, msec: cint): bool {.importc: "QLocalServer_waitForNewConnection1".}
 proc fcQLocalServer_waitForNewConnection2(self: pointer, msec: cint, timedOut: ptr bool): bool {.importc: "QLocalServer_waitForNewConnection2".}
+proc fQLocalServer_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QLocalServer_virtualbase_metaObject".}
+proc fcQLocalServer_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QLocalServer_override_virtual_metaObject".}
+proc fQLocalServer_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QLocalServer_virtualbase_metacast".}
+proc fcQLocalServer_override_virtual_metacast(self: pointer, slot: int) {.importc: "QLocalServer_override_virtual_metacast".}
 proc fQLocalServer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QLocalServer_virtualbase_metacall".}
 proc fcQLocalServer_override_virtual_metacall(self: pointer, slot: int) {.importc: "QLocalServer_override_virtual_metacall".}
 proc fQLocalServer_virtualbase_hasPendingConnections(self: pointer, ): bool{.importc: "QLocalServer_virtualbase_hasPendingConnections".}
@@ -253,6 +257,42 @@ proc waitForNewConnection*(self: gen_qlocalserver_types.QLocalServer, msec: cint
 proc waitForNewConnection*(self: gen_qlocalserver_types.QLocalServer, msec: cint, timedOut: ptr bool): bool =
   fcQLocalServer_waitForNewConnection2(self.h, msec, timedOut)
 
+proc QLocalServermetaObject*(self: gen_qlocalserver_types.QLocalServer, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQLocalServer_virtualbase_metaObject(self.h))
+
+type QLocalServermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qlocalserver_types.QLocalServer, slot: QLocalServermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QLocalServermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLocalServer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLocalServer_metaObject(self: ptr cQLocalServer, slot: int): pointer {.exportc: "miqt_exec_callback_QLocalServer_metaObject ".} =
+  var nimfunc = cast[ptr QLocalServermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QLocalServermetacast*(self: gen_qlocalserver_types.QLocalServer, param1: cstring): pointer =
+  fQLocalServer_virtualbase_metacast(self.h, param1)
+
+type QLocalServermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qlocalserver_types.QLocalServer, slot: QLocalServermetacastProc) =
+  # TODO check subclass
+  var tmp = new QLocalServermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLocalServer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLocalServer_metacast(self: ptr cQLocalServer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QLocalServer_metacast ".} =
+  var nimfunc = cast[ptr QLocalServermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QLocalServermetacall*(self: gen_qlocalserver_types.QLocalServer, param1: cint, param2: cint, param3: pointer): cint =
   fQLocalServer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

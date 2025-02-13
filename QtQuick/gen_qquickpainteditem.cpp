@@ -44,6 +44,8 @@ void miqt_exec_callback_QQuickPaintedItem_contentsSizeChanged(intptr_t);
 void miqt_exec_callback_QQuickPaintedItem_contentsScaleChanged(intptr_t);
 void miqt_exec_callback_QQuickPaintedItem_renderTargetChanged(intptr_t);
 void miqt_exec_callback_QQuickPaintedItem_textureSizeChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QQuickPaintedItem_metaObject(const QQuickPaintedItem*, intptr_t);
+void* miqt_exec_callback_QQuickPaintedItem_metacast(QQuickPaintedItem*, intptr_t, const char*);
 int miqt_exec_callback_QQuickPaintedItem_metacall(QQuickPaintedItem*, intptr_t, int, int, void**);
 void miqt_exec_callback_QQuickPaintedItem_paint(QQuickPaintedItem*, intptr_t, QPainter*);
 bool miqt_exec_callback_QQuickPaintedItem_isTextureProvider(const QQuickPaintedItem*, intptr_t);
@@ -99,6 +101,51 @@ public:
 	MiqtVirtualQQuickPaintedItem(QQuickItem* parent): QQuickPaintedItem(parent) {};
 
 	virtual ~MiqtVirtualQQuickPaintedItem() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQuickPaintedItem::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQuickPaintedItem_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQuickPaintedItem::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQuickPaintedItem::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQuickPaintedItem_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQuickPaintedItem::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1409,6 +1456,34 @@ void QQuickPaintedItem_update1(QQuickPaintedItem* self, QRect* rect) {
 
 void QQuickPaintedItem_setPerformanceHint2(QQuickPaintedItem* self, int hint, bool enabled) {
 	self->setPerformanceHint(static_cast<QQuickPaintedItem::PerformanceHint>(hint), enabled);
+}
+
+bool QQuickPaintedItem_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQuickPaintedItem* self_cast = dynamic_cast<MiqtVirtualQQuickPaintedItem*>( (QQuickPaintedItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQuickPaintedItem_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQuickPaintedItem*)(self) )->virtualbase_metaObject();
+}
+
+bool QQuickPaintedItem_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQuickPaintedItem* self_cast = dynamic_cast<MiqtVirtualQQuickPaintedItem*>( (QQuickPaintedItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQuickPaintedItem_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQuickPaintedItem*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QQuickPaintedItem_override_virtual_metacall(void* self, intptr_t slot) {

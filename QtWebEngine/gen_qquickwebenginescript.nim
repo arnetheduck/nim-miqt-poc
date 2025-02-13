@@ -102,6 +102,10 @@ proc fcQQuickWebEngineScript_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQQuickWebEngineScript_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickWebEngineScript_tr3".}
 proc fcQQuickWebEngineScript_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickWebEngineScript_trUtf82".}
 proc fcQQuickWebEngineScript_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickWebEngineScript_trUtf83".}
+proc fQQuickWebEngineScript_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQuickWebEngineScript_virtualbase_metaObject".}
+proc fcQQuickWebEngineScript_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQuickWebEngineScript_override_virtual_metaObject".}
+proc fQQuickWebEngineScript_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQuickWebEngineScript_virtualbase_metacast".}
+proc fcQQuickWebEngineScript_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQuickWebEngineScript_override_virtual_metacast".}
 proc fQQuickWebEngineScript_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQuickWebEngineScript_virtualbase_metacall".}
 proc fcQQuickWebEngineScript_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQuickWebEngineScript_override_virtual_metacall".}
 proc fQQuickWebEngineScript_virtualbase_timerEvent(self: pointer, e: pointer): void{.importc: "QQuickWebEngineScript_virtualbase_timerEvent".}
@@ -325,6 +329,42 @@ proc trUtf8*(_: type gen_qquickwebenginescript_types.QQuickWebEngineScript, s: c
   c_free(v_ms.data)
   vx_ret
 
+proc QQuickWebEngineScriptmetaObject*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQQuickWebEngineScript_virtualbase_metaObject(self.h))
+
+type QQuickWebEngineScriptmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QQuickWebEngineScriptmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickWebEngineScript_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickWebEngineScript_metaObject(self: ptr cQQuickWebEngineScript, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickWebEngineScript_metaObject ".} =
+  var nimfunc = cast[ptr QQuickWebEngineScriptmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QQuickWebEngineScriptmetacast*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, param1: cstring): pointer =
+  fQQuickWebEngineScript_virtualbase_metacast(self.h, param1)
+
+type QQuickWebEngineScriptmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, slot: QQuickWebEngineScriptmetacastProc) =
+  # TODO check subclass
+  var tmp = new QQuickWebEngineScriptmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickWebEngineScript_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickWebEngineScript_metacast(self: ptr cQQuickWebEngineScript, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickWebEngineScript_metacast ".} =
+  var nimfunc = cast[ptr QQuickWebEngineScriptmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QQuickWebEngineScriptmetacall*(self: gen_qquickwebenginescript_types.QQuickWebEngineScript, param1: cint, param2: cint, param3: pointer): cint =
   fQQuickWebEngineScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

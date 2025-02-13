@@ -195,6 +195,10 @@ proc fcQProcess_setStandardErrorFile2(self: pointer, fileName: struct_miqt_strin
 proc fcQProcess_waitForStarted1(self: pointer, msecs: cint): bool {.importc: "QProcess_waitForStarted1".}
 proc fcQProcess_waitForFinished1(self: pointer, msecs: cint): bool {.importc: "QProcess_waitForFinished1".}
 proc fcQProcess_startDetached4(program: struct_miqt_string, arguments: struct_miqt_array, workingDirectory: struct_miqt_string, pid: ptr clonglong): bool {.importc: "QProcess_startDetached4".}
+proc fQProcess_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QProcess_virtualbase_metaObject".}
+proc fcQProcess_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QProcess_override_virtual_metaObject".}
+proc fQProcess_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QProcess_virtualbase_metacast".}
+proc fcQProcess_override_virtual_metacast(self: pointer, slot: int) {.importc: "QProcess_override_virtual_metacast".}
 proc fQProcess_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QProcess_virtualbase_metacall".}
 proc fcQProcess_override_virtual_metacall(self: pointer, slot: int) {.importc: "QProcess_override_virtual_metacall".}
 proc fQProcess_virtualbase_open(self: pointer, mode: cint): bool{.importc: "QProcess_virtualbase_open".}
@@ -712,6 +716,42 @@ proc startDetached*(_: type gen_qprocess_types.QProcess, program: string, argume
 
   fcQProcess_startDetached4(struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_array(len: csize_t(len(arguments)), data: if len(arguments) == 0: nil else: addr(arguments_CArray[0])), struct_miqt_string(data: workingDirectory, len: csize_t(len(workingDirectory))), pid)
 
+proc QProcessmetaObject*(self: gen_qprocess_types.QProcess, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQProcess_virtualbase_metaObject(self.h))
+
+type QProcessmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qprocess_types.QProcess, slot: QProcessmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QProcessmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQProcess_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QProcess_metaObject(self: ptr cQProcess, slot: int): pointer {.exportc: "miqt_exec_callback_QProcess_metaObject ".} =
+  var nimfunc = cast[ptr QProcessmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QProcessmetacast*(self: gen_qprocess_types.QProcess, param1: cstring): pointer =
+  fQProcess_virtualbase_metacast(self.h, param1)
+
+type QProcessmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qprocess_types.QProcess, slot: QProcessmetacastProc) =
+  # TODO check subclass
+  var tmp = new QProcessmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQProcess_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QProcess_metacast(self: ptr cQProcess, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QProcess_metacast ".} =
+  var nimfunc = cast[ptr QProcessmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QProcessmetacall*(self: gen_qprocess_types.QProcess, param1: cint, param2: cint, param3: pointer): cint =
   fQProcess_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

@@ -27,6 +27,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QDirModel_metaObject(const QDirModel*, intptr_t);
+void* miqt_exec_callback_QDirModel_metacast(QDirModel*, intptr_t, const char*);
 int miqt_exec_callback_QDirModel_metacall(QDirModel*, intptr_t, int, int, void**);
 QModelIndex* miqt_exec_callback_QDirModel_index(const QDirModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QDirModel_parent(const QDirModel*, intptr_t, QModelIndex*);
@@ -82,6 +84,51 @@ public:
 	MiqtVirtualQDirModel(QObject* parent): QDirModel(parent) {};
 
 	virtual ~MiqtVirtualQDirModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QDirModel::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QDirModel_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QDirModel::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QDirModel::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QDirModel_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QDirModel::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1652,6 +1699,34 @@ QModelIndex* QDirModel_index2(const QDirModel* self, struct miqt_string path, in
 
 void QDirModel_refresh1(QDirModel* self, QModelIndex* parent) {
 	self->refresh(*parent);
+}
+
+bool QDirModel_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QDirModel_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_metaObject();
+}
+
+bool QDirModel_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QDirModel_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QDirModel_override_virtual_metacall(void* self, intptr_t slot) {

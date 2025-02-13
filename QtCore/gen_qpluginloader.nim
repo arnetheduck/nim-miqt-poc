@@ -81,6 +81,10 @@ proc fcQPluginLoader_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQPluginLoader_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPluginLoader_tr3".}
 proc fcQPluginLoader_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QPluginLoader_trUtf82".}
 proc fcQPluginLoader_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPluginLoader_trUtf83".}
+proc fQPluginLoader_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPluginLoader_virtualbase_metaObject".}
+proc fcQPluginLoader_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPluginLoader_override_virtual_metaObject".}
+proc fQPluginLoader_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPluginLoader_virtualbase_metacast".}
+proc fcQPluginLoader_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPluginLoader_override_virtual_metacast".}
 proc fQPluginLoader_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPluginLoader_virtualbase_metacall".}
 proc fcQPluginLoader_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPluginLoader_override_virtual_metacall".}
 proc fQPluginLoader_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QPluginLoader_virtualbase_event".}
@@ -212,6 +216,42 @@ proc trUtf8*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc QPluginLoadermetaObject*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQPluginLoader_virtualbase_metaObject(self.h))
+
+type QPluginLoadermetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadermetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QPluginLoadermetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPluginLoader_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPluginLoader_metaObject(self: ptr cQPluginLoader, slot: int): pointer {.exportc: "miqt_exec_callback_QPluginLoader_metaObject ".} =
+  var nimfunc = cast[ptr QPluginLoadermetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QPluginLoadermetacast*(self: gen_qpluginloader_types.QPluginLoader, param1: cstring): pointer =
+  fQPluginLoader_virtualbase_metacast(self.h, param1)
+
+type QPluginLoadermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadermetacastProc) =
+  # TODO check subclass
+  var tmp = new QPluginLoadermetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPluginLoader_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPluginLoader_metacast(self: ptr cQPluginLoader, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPluginLoader_metacast ".} =
+  var nimfunc = cast[ptr QPluginLoadermetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QPluginLoadermetacall*(self: gen_qpluginloader_types.QPluginLoader, param1: cint, param2: cint, param3: pointer): cint =
   fQPluginLoader_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

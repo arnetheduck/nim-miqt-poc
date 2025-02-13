@@ -212,6 +212,10 @@ proc fcQComboBox_addItem3(self: pointer, icon: pointer, text: struct_miqt_string
 proc fcQComboBox_insertItem3(self: pointer, index: cint, text: struct_miqt_string, userData: pointer): void {.importc: "QComboBox_insertItem3".}
 proc fcQComboBox_insertItem4(self: pointer, index: cint, icon: pointer, text: struct_miqt_string, userData: pointer): void {.importc: "QComboBox_insertItem4".}
 proc fcQComboBox_setItemData3(self: pointer, index: cint, value: pointer, role: cint): void {.importc: "QComboBox_setItemData3".}
+proc fQComboBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QComboBox_virtualbase_metaObject".}
+proc fcQComboBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_metaObject".}
+proc fQComboBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QComboBox_virtualbase_metacast".}
+proc fcQComboBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_metacast".}
 proc fQComboBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QComboBox_virtualbase_metacall".}
 proc fcQComboBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_metacall".}
 proc fQComboBox_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QComboBox_virtualbase_sizeHint".}
@@ -813,6 +817,42 @@ proc insertItem*(self: gen_qcombobox_types.QComboBox, index: cint, icon: gen_qic
 proc setItemData*(self: gen_qcombobox_types.QComboBox, index: cint, value: gen_qvariant_types.QVariant, role: cint): void =
   fcQComboBox_setItemData3(self.h, index, value.h, role)
 
+proc QComboBoxmetaObject*(self: gen_qcombobox_types.QComboBox, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQComboBox_virtualbase_metaObject(self.h))
+
+type QComboBoxmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QComboBoxmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQComboBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QComboBox_metaObject(self: ptr cQComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QComboBox_metaObject ".} =
+  var nimfunc = cast[ptr QComboBoxmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QComboBoxmetacast*(self: gen_qcombobox_types.QComboBox, param1: cstring): pointer =
+  fQComboBox_virtualbase_metacast(self.h, param1)
+
+type QComboBoxmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qcombobox_types.QComboBox, slot: QComboBoxmetacastProc) =
+  # TODO check subclass
+  var tmp = new QComboBoxmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQComboBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QComboBox_metacast(self: ptr cQComboBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QComboBox_metacast ".} =
+  var nimfunc = cast[ptr QComboBoxmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QComboBoxmetacall*(self: gen_qcombobox_types.QComboBox, param1: cint, param2: cint, param3: pointer): cint =
   fQComboBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

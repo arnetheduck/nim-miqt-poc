@@ -95,6 +95,10 @@ proc fcQStackedWidget_tr2(s: cstring, c: cstring): struct_miqt_string {.importc:
 proc fcQStackedWidget_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStackedWidget_tr3".}
 proc fcQStackedWidget_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QStackedWidget_trUtf82".}
 proc fcQStackedWidget_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStackedWidget_trUtf83".}
+proc fQStackedWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QStackedWidget_virtualbase_metaObject".}
+proc fcQStackedWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QStackedWidget_override_virtual_metaObject".}
+proc fQStackedWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QStackedWidget_virtualbase_metacast".}
+proc fcQStackedWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QStackedWidget_override_virtual_metacast".}
 proc fQStackedWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QStackedWidget_virtualbase_metacall".}
 proc fcQStackedWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QStackedWidget_override_virtual_metacall".}
 proc fQStackedWidget_virtualbase_event(self: pointer, e: pointer): bool{.importc: "QStackedWidget_virtualbase_event".}
@@ -310,6 +314,42 @@ proc trUtf8*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cst
   c_free(v_ms.data)
   vx_ret
 
+proc QStackedWidgetmetaObject*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQStackedWidget_virtualbase_metaObject(self.h))
+
+type QStackedWidgetmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qstackedwidget_types.QStackedWidget, slot: QStackedWidgetmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QStackedWidgetmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStackedWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStackedWidget_metaObject(self: ptr cQStackedWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedWidget_metaObject ".} =
+  var nimfunc = cast[ptr QStackedWidgetmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QStackedWidgetmetacast*(self: gen_qstackedwidget_types.QStackedWidget, param1: cstring): pointer =
+  fQStackedWidget_virtualbase_metacast(self.h, param1)
+
+type QStackedWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qstackedwidget_types.QStackedWidget, slot: QStackedWidgetmetacastProc) =
+  # TODO check subclass
+  var tmp = new QStackedWidgetmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStackedWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStackedWidget_metacast(self: ptr cQStackedWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStackedWidget_metacast ".} =
+  var nimfunc = cast[ptr QStackedWidgetmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QStackedWidgetmetacall*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint, param2: cint, param3: pointer): cint =
   fQStackedWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

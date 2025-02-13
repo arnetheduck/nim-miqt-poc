@@ -183,6 +183,10 @@ proc fcQInputDialog_getDouble6(parent: pointer, title: struct_miqt_string, label
 proc fcQInputDialog_getDouble7(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint): float64 {.importc: "QInputDialog_getDouble7".}
 proc fcQInputDialog_getDouble8(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool): float64 {.importc: "QInputDialog_getDouble8".}
 proc fcQInputDialog_getDouble9(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint): float64 {.importc: "QInputDialog_getDouble9".}
+proc fQInputDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_metaObject".}
+proc fcQInputDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metaObject".}
+proc fQInputDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QInputDialog_virtualbase_metacast".}
+proc fcQInputDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metacast".}
 proc fQInputDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QInputDialog_virtualbase_metacall".}
 proc fcQInputDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metacall".}
 proc fQInputDialog_virtualbase_minimumSizeHint(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_minimumSizeHint".}
@@ -781,6 +785,42 @@ proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget
 proc getDouble*(_: type gen_qinputdialog_types.QInputDialog, parent: gen_qwidget_types.QWidget, title: string, label: string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint): float64 =
   fcQInputDialog_getDouble9(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, decimals, ok, cint(flags))
 
+proc QInputDialogmetaObject*(self: gen_qinputdialog_types.QInputDialog, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQInputDialog_virtualbase_metaObject(self.h))
+
+type QInputDialogmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QInputDialogmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQInputDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QInputDialog_metaObject(self: ptr cQInputDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QInputDialog_metaObject ".} =
+  var nimfunc = cast[ptr QInputDialogmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QInputDialogmetacast*(self: gen_qinputdialog_types.QInputDialog, param1: cstring): pointer =
+  fQInputDialog_virtualbase_metacast(self.h, param1)
+
+type QInputDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qinputdialog_types.QInputDialog, slot: QInputDialogmetacastProc) =
+  # TODO check subclass
+  var tmp = new QInputDialogmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQInputDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QInputDialog_metacast(self: ptr cQInputDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QInputDialog_metacast ".} =
+  var nimfunc = cast[ptr QInputDialogmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QInputDialogmetacall*(self: gen_qinputdialog_types.QInputDialog, param1: cint, param2: cint, param3: pointer): cint =
   fQInputDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

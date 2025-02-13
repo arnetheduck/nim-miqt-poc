@@ -207,6 +207,10 @@ QTextCursor* QTextDocument_find37(const QTextDocument* self, QRegularExpression*
 void QTextDocument_drawContents2(QTextDocument* self, QPainter* painter, QRectF* rect);
 void QTextDocument_clearUndoRedoStacks1(QTextDocument* self, int historyToClear);
 void QTextDocument_setModified1(QTextDocument* self, bool m);
+bool QTextDocument_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QTextDocument_virtualbase_metaObject(const void* self);
+bool QTextDocument_override_virtual_metacast(void* self, intptr_t slot);
+void* QTextDocument_virtualbase_metacast(void* self, const char* param1);
 bool QTextDocument_override_virtual_metacall(void* self, intptr_t slot);
 int QTextDocument_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QTextDocument_override_virtual_clear(void* self, intptr_t slot);

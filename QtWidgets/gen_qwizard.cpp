@@ -51,6 +51,8 @@ void miqt_exec_callback_QWizard_helpRequested(intptr_t);
 void miqt_exec_callback_QWizard_customButtonClicked(intptr_t, int);
 void miqt_exec_callback_QWizard_pageAdded(intptr_t, int);
 void miqt_exec_callback_QWizard_pageRemoved(intptr_t, int);
+QMetaObject* miqt_exec_callback_QWizard_metaObject(const QWizard*, intptr_t);
+void* miqt_exec_callback_QWizard_metacast(QWizard*, intptr_t, const char*);
 int miqt_exec_callback_QWizard_metacall(QWizard*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QWizard_validateCurrentPage(QWizard*, intptr_t);
 int miqt_exec_callback_QWizard_nextId(const QWizard*, intptr_t);
@@ -109,6 +111,8 @@ void miqt_exec_callback_QWizard_customEvent(QWizard*, intptr_t, QEvent*);
 void miqt_exec_callback_QWizard_connectNotify(QWizard*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QWizard_disconnectNotify(QWizard*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QWizardPage_completeChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QWizardPage_metaObject(const QWizardPage*, intptr_t);
+void* miqt_exec_callback_QWizardPage_metacast(QWizardPage*, intptr_t, const char*);
 int miqt_exec_callback_QWizardPage_metacall(QWizardPage*, intptr_t, int, int, void**);
 void miqt_exec_callback_QWizardPage_initializePage(QWizardPage*, intptr_t);
 void miqt_exec_callback_QWizardPage_cleanupPage(QWizardPage*, intptr_t);
@@ -174,6 +178,51 @@ public:
 	MiqtVirtualQWizard(QWidget* parent, Qt::WindowFlags flags): QWizard(parent, flags) {};
 
 	virtual ~MiqtVirtualQWizard() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QWizard::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QWizard_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QWizard::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QWizard::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QWizard_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QWizard::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1907,6 +1956,34 @@ void QWizard_setOption2(QWizard* self, int option, bool on) {
 	self->setOption(static_cast<QWizard::WizardOption>(option), on);
 }
 
+bool QWizard_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QWizard_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQWizard*)(self) )->virtualbase_metaObject();
+}
+
+bool QWizard_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QWizard_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQWizard*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QWizard_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
 	if (self_cast == nullptr) {
@@ -2847,6 +2924,51 @@ public:
 	MiqtVirtualQWizardPage(): QWizardPage() {};
 
 	virtual ~MiqtVirtualQWizardPage() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QWizardPage::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QWizardPage_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QWizardPage::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QWizardPage::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QWizardPage_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QWizardPage::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -4317,6 +4439,34 @@ struct miqt_string QWizardPage_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QWizardPage_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QWizardPage_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_metaObject();
+}
+
+bool QWizardPage_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QWizardPage_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQWizardPage*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QWizardPage_override_virtual_metacall(void* self, intptr_t slot) {

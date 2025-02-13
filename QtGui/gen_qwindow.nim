@@ -248,6 +248,10 @@ proc fcQWindow_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "Q
 proc fcQWindow_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWindow_trUtf83".}
 proc fcQWindow_setFlag2(self: pointer, param1: cint, on: bool): void {.importc: "QWindow_setFlag2".}
 proc fcQWindow_isAncestorOf2(self: pointer, child: pointer, mode: cint): bool {.importc: "QWindow_isAncestorOf2".}
+proc fQWindow_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWindow_virtualbase_metaObject".}
+proc fcQWindow_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWindow_override_virtual_metaObject".}
+proc fQWindow_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWindow_virtualbase_metacast".}
+proc fcQWindow_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWindow_override_virtual_metacast".}
 proc fQWindow_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWindow_virtualbase_metacall".}
 proc fcQWindow_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWindow_override_virtual_metacall".}
 proc fQWindow_virtualbase_surfaceType(self: pointer, ): cint{.importc: "QWindow_virtualbase_surfaceType".}
@@ -1009,6 +1013,42 @@ proc setFlag*(self: gen_qwindow_types.QWindow, param1: cint, on: bool): void =
 proc isAncestorOf*(self: gen_qwindow_types.QWindow, child: gen_qwindow_types.QWindow, mode: cint): bool =
   fcQWindow_isAncestorOf2(self.h, child.h, cint(mode))
 
+proc QWindowmetaObject*(self: gen_qwindow_types.QWindow, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQWindow_virtualbase_metaObject(self.h))
+
+type QWindowmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qwindow_types.QWindow, slot: QWindowmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QWindowmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWindow_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWindow_metaObject(self: ptr cQWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QWindow_metaObject ".} =
+  var nimfunc = cast[ptr QWindowmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QWindowmetacast*(self: gen_qwindow_types.QWindow, param1: cstring): pointer =
+  fQWindow_virtualbase_metacast(self.h, param1)
+
+type QWindowmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwindow_types.QWindow, slot: QWindowmetacastProc) =
+  # TODO check subclass
+  var tmp = new QWindowmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWindow_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWindow_metacast(self: ptr cQWindow, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWindow_metacast ".} =
+  var nimfunc = cast[ptr QWindowmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QWindowmetacall*(self: gen_qwindow_types.QWindow, param1: cint, param2: cint, param3: pointer): cint =
   fQWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

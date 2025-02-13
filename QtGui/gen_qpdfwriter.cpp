@@ -25,6 +25,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QPdfWriter_metaObject(const QPdfWriter*, intptr_t);
+void* miqt_exec_callback_QPdfWriter_metacast(QPdfWriter*, intptr_t, const char*);
 int miqt_exec_callback_QPdfWriter_metacall(QPdfWriter*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QPdfWriter_newPage(QPdfWriter*, intptr_t);
 void miqt_exec_callback_QPdfWriter_setPageSize(QPdfWriter*, intptr_t, int);
@@ -54,6 +56,51 @@ public:
 	MiqtVirtualQPdfWriter(QIODevice* device): QPdfWriter(device) {};
 
 	virtual ~MiqtVirtualQPdfWriter() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QPdfWriter::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QPdfWriter_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QPdfWriter::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QPdfWriter::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QPdfWriter_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QPdfWriter::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -678,6 +725,34 @@ void QPdfWriter_addFileAttachment3(QPdfWriter* self, struct miqt_string fileName
 	QByteArray data_QByteArray(data.data, data.len);
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	self->addFileAttachment(fileName_QString, data_QByteArray, mimeType_QString);
+}
+
+bool QPdfWriter_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QPdfWriter_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_metaObject();
+}
+
+bool QPdfWriter_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QPdfWriter_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QPdfWriter_override_virtual_metacall(void* self, intptr_t slot) {

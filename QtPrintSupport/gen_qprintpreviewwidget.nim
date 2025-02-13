@@ -126,6 +126,10 @@ proc fcQPrintPreviewWidget_trUtf82(s: cstring, c: cstring): struct_miqt_string {
 proc fcQPrintPreviewWidget_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPrintPreviewWidget_trUtf83".}
 proc fcQPrintPreviewWidget_zoomIn1(self: pointer, zoom: float64): void {.importc: "QPrintPreviewWidget_zoomIn1".}
 proc fcQPrintPreviewWidget_zoomOut1(self: pointer, zoom: float64): void {.importc: "QPrintPreviewWidget_zoomOut1".}
+proc fQPrintPreviewWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPrintPreviewWidget_virtualbase_metaObject".}
+proc fcQPrintPreviewWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPrintPreviewWidget_override_virtual_metaObject".}
+proc fQPrintPreviewWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPrintPreviewWidget_virtualbase_metacast".}
+proc fcQPrintPreviewWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPrintPreviewWidget_override_virtual_metacast".}
 proc fQPrintPreviewWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPrintPreviewWidget_virtualbase_metacall".}
 proc fcQPrintPreviewWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPrintPreviewWidget_override_virtual_metacall".}
 proc fQPrintPreviewWidget_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QPrintPreviewWidget_virtualbase_setVisible".}
@@ -396,6 +400,42 @@ proc zoomIn*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, zoom: floa
 proc zoomOut*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, zoom: float64): void =
   fcQPrintPreviewWidget_zoomOut1(self.h, zoom)
 
+proc QPrintPreviewWidgetmetaObject*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQPrintPreviewWidget_virtualbase_metaObject(self.h))
+
+type QPrintPreviewWidgetmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QPrintPreviewWidgetmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPrintPreviewWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPrintPreviewWidget_metaObject(self: ptr cQPrintPreviewWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_metaObject ".} =
+  var nimfunc = cast[ptr QPrintPreviewWidgetmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QPrintPreviewWidgetmetacast*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cstring): pointer =
+  fQPrintPreviewWidget_virtualbase_metacast(self.h, param1)
+
+type QPrintPreviewWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmetacastProc) =
+  # TODO check subclass
+  var tmp = new QPrintPreviewWidgetmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPrintPreviewWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPrintPreviewWidget_metacast(self: ptr cQPrintPreviewWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_metacast ".} =
+  var nimfunc = cast[ptr QPrintPreviewWidgetmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QPrintPreviewWidgetmetacall*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cint, param2: cint, param3: pointer): cint =
   fQPrintPreviewWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

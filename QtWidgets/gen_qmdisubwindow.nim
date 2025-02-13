@@ -114,6 +114,10 @@ proc fcQMdiSubWindow_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.
 proc fcQMdiSubWindow_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMdiSubWindow_trUtf82".}
 proc fcQMdiSubWindow_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMdiSubWindow_trUtf83".}
 proc fcQMdiSubWindow_setOption2(self: pointer, option: cint, on: bool): void {.importc: "QMdiSubWindow_setOption2".}
+proc fQMdiSubWindow_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMdiSubWindow_virtualbase_metaObject".}
+proc fcQMdiSubWindow_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMdiSubWindow_override_virtual_metaObject".}
+proc fQMdiSubWindow_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMdiSubWindow_virtualbase_metacast".}
+proc fcQMdiSubWindow_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMdiSubWindow_override_virtual_metacast".}
 proc fQMdiSubWindow_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMdiSubWindow_virtualbase_metacall".}
 proc fcQMdiSubWindow_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMdiSubWindow_override_virtual_metacall".}
 proc fQMdiSubWindow_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QMdiSubWindow_virtualbase_sizeHint".}
@@ -359,6 +363,42 @@ proc trUtf8*(_: type gen_qmdisubwindow_types.QMdiSubWindow, s: cstring, c: cstri
 proc setOption*(self: gen_qmdisubwindow_types.QMdiSubWindow, option: cint, on: bool): void =
   fcQMdiSubWindow_setOption2(self.h, cint(option), on)
 
+proc QMdiSubWindowmetaObject*(self: gen_qmdisubwindow_types.QMdiSubWindow, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQMdiSubWindow_virtualbase_metaObject(self.h))
+
+type QMdiSubWindowmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qmdisubwindow_types.QMdiSubWindow, slot: QMdiSubWindowmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QMdiSubWindowmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMdiSubWindow_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMdiSubWindow_metaObject(self: ptr cQMdiSubWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMdiSubWindow_metaObject ".} =
+  var nimfunc = cast[ptr QMdiSubWindowmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QMdiSubWindowmetacast*(self: gen_qmdisubwindow_types.QMdiSubWindow, param1: cstring): pointer =
+  fQMdiSubWindow_virtualbase_metacast(self.h, param1)
+
+type QMdiSubWindowmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmdisubwindow_types.QMdiSubWindow, slot: QMdiSubWindowmetacastProc) =
+  # TODO check subclass
+  var tmp = new QMdiSubWindowmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMdiSubWindow_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMdiSubWindow_metacast(self: ptr cQMdiSubWindow, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMdiSubWindow_metacast ".} =
+  var nimfunc = cast[ptr QMdiSubWindowmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QMdiSubWindowmetacall*(self: gen_qmdisubwindow_types.QMdiSubWindow, param1: cint, param2: cint, param3: pointer): cint =
   fQMdiSubWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

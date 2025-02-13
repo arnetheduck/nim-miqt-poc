@@ -70,6 +70,10 @@ proc fcQGraphicsTransform_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQGraphicsTransform_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsTransform_tr3".}
 proc fcQGraphicsTransform_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsTransform_trUtf82".}
 proc fcQGraphicsTransform_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsTransform_trUtf83".}
+proc fQGraphicsTransform_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsTransform_virtualbase_metaObject".}
+proc fcQGraphicsTransform_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsTransform_override_virtual_metaObject".}
+proc fQGraphicsTransform_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsTransform_virtualbase_metacast".}
+proc fcQGraphicsTransform_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsTransform_override_virtual_metacast".}
 proc fQGraphicsTransform_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsTransform_virtualbase_metacall".}
 proc fcQGraphicsTransform_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsTransform_override_virtual_metacall".}
 proc fcQGraphicsTransform_override_virtual_applyTo(self: pointer, slot: int) {.importc: "QGraphicsTransform_override_virtual_applyTo".}
@@ -119,6 +123,10 @@ proc fcQGraphicsScale_tr2(s: cstring, c: cstring): struct_miqt_string {.importc:
 proc fcQGraphicsScale_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsScale_tr3".}
 proc fcQGraphicsScale_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsScale_trUtf82".}
 proc fcQGraphicsScale_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsScale_trUtf83".}
+proc fQGraphicsScale_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsScale_virtualbase_metaObject".}
+proc fcQGraphicsScale_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsScale_override_virtual_metaObject".}
+proc fQGraphicsScale_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsScale_virtualbase_metacast".}
+proc fcQGraphicsScale_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsScale_override_virtual_metacast".}
 proc fQGraphicsScale_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsScale_virtualbase_metacall".}
 proc fcQGraphicsScale_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsScale_override_virtual_metacall".}
 proc fQGraphicsScale_virtualbase_applyTo(self: pointer, matrix: pointer): void{.importc: "QGraphicsScale_virtualbase_applyTo".}
@@ -164,6 +172,10 @@ proc fcQGraphicsRotation_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQGraphicsRotation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsRotation_tr3".}
 proc fcQGraphicsRotation_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsRotation_trUtf82".}
 proc fcQGraphicsRotation_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsRotation_trUtf83".}
+proc fQGraphicsRotation_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsRotation_virtualbase_metaObject".}
+proc fcQGraphicsRotation_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsRotation_override_virtual_metaObject".}
+proc fQGraphicsRotation_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsRotation_virtualbase_metacast".}
+proc fcQGraphicsRotation_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsRotation_override_virtual_metacast".}
 proc fQGraphicsRotation_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsRotation_virtualbase_metacall".}
 proc fcQGraphicsRotation_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsRotation_override_virtual_metacall".}
 proc fQGraphicsRotation_virtualbase_applyTo(self: pointer, matrix: pointer): void{.importc: "QGraphicsRotation_virtualbase_applyTo".}
@@ -242,6 +254,42 @@ proc trUtf8*(_: type gen_qgraphicstransform_types.QGraphicsTransform, s: cstring
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsTransformmetaObject*(self: gen_qgraphicstransform_types.QGraphicsTransform, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsTransform_virtualbase_metaObject(self.h))
+
+type QGraphicsTransformmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsTransformmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsTransform_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsTransform_metaObject(self: ptr cQGraphicsTransform, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsTransform_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsTransformmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsTransformmetacast*(self: gen_qgraphicstransform_types.QGraphicsTransform, param1: cstring): pointer =
+  fQGraphicsTransform_virtualbase_metacast(self.h, param1)
+
+type QGraphicsTransformmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsTransformmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsTransform_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsTransform_metacast(self: ptr cQGraphicsTransform, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsTransform_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsTransformmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsTransformmetacall*(self: gen_qgraphicstransform_types.QGraphicsTransform, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsTransform_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -559,6 +607,42 @@ proc trUtf8*(_: type gen_qgraphicstransform_types.QGraphicsScale, s: cstring, c:
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsScalemetaObject*(self: gen_qgraphicstransform_types.QGraphicsScale, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsScale_virtualbase_metaObject(self.h))
+
+type QGraphicsScalemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsScalemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsScale_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsScale_metaObject(self: ptr cQGraphicsScale, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsScale_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsScalemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsScalemetacast*(self: gen_qgraphicstransform_types.QGraphicsScale, param1: cstring): pointer =
+  fQGraphicsScale_virtualbase_metacast(self.h, param1)
+
+type QGraphicsScalemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalemetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsScalemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsScale_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsScale_metacast(self: ptr cQGraphicsScale, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsScale_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsScalemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsScalemetacall*(self: gen_qgraphicstransform_types.QGraphicsScale, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsScale_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -848,6 +932,42 @@ proc trUtf8*(_: type gen_qgraphicstransform_types.QGraphicsRotation, s: cstring,
   c_free(v_ms.data)
   vx_ret
 
+proc QGraphicsRotationmetaObject*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGraphicsRotation_virtualbase_metaObject(self.h))
+
+type QGraphicsRotationmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsRotationmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsRotation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsRotation_metaObject(self: ptr cQGraphicsRotation, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsRotation_metaObject ".} =
+  var nimfunc = cast[ptr QGraphicsRotationmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGraphicsRotationmetacast*(self: gen_qgraphicstransform_types.QGraphicsRotation, param1: cstring): pointer =
+  fQGraphicsRotation_virtualbase_metacast(self.h, param1)
+
+type QGraphicsRotationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationmetacastProc) =
+  # TODO check subclass
+  var tmp = new QGraphicsRotationmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsRotation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsRotation_metacast(self: ptr cQGraphicsRotation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsRotation_metacast ".} =
+  var nimfunc = cast[ptr QGraphicsRotationmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGraphicsRotationmetacall*(self: gen_qgraphicstransform_types.QGraphicsRotation, param1: cint, param2: cint, param3: pointer): cint =
   fQGraphicsRotation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

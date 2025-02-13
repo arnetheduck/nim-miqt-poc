@@ -203,6 +203,10 @@ proc fcQAbstractSocket_bind22(self: pointer, address: pointer, port: cushort): b
 proc fcQAbstractSocket_bind3(self: pointer, address: pointer, port: cushort, mode: cint): bool {.importc: "QAbstractSocket_bind3".}
 proc fcQAbstractSocket_bind1(self: pointer, port: cushort): bool {.importc: "QAbstractSocket_bind1".}
 proc fcQAbstractSocket_bind23(self: pointer, port: cushort, mode: cint): bool {.importc: "QAbstractSocket_bind23".}
+proc fQAbstractSocket_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractSocket_virtualbase_metaObject".}
+proc fcQAbstractSocket_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractSocket_override_virtual_metaObject".}
+proc fQAbstractSocket_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractSocket_virtualbase_metacast".}
+proc fcQAbstractSocket_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractSocket_override_virtual_metacast".}
 proc fQAbstractSocket_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractSocket_virtualbase_metacall".}
 proc fcQAbstractSocket_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractSocket_override_virtual_metacall".}
 proc fQAbstractSocket_virtualbase_resume(self: pointer, ): void{.importc: "QAbstractSocket_virtualbase_resume".}
@@ -570,6 +574,42 @@ proc bindX*(self: gen_qabstractsocket_types.QAbstractSocket, port: cushort): boo
 proc bindX*(self: gen_qabstractsocket_types.QAbstractSocket, port: cushort, mode: cint): bool =
   fcQAbstractSocket_bind23(self.h, port, cint(mode))
 
+proc QAbstractSocketmetaObject*(self: gen_qabstractsocket_types.QAbstractSocket, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQAbstractSocket_virtualbase_metaObject(self.h))
+
+type QAbstractSocketmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QAbstractSocketmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractSocket_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractSocket_metaObject(self: ptr cQAbstractSocket, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractSocket_metaObject ".} =
+  var nimfunc = cast[ptr QAbstractSocketmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QAbstractSocketmetacast*(self: gen_qabstractsocket_types.QAbstractSocket, param1: cstring): pointer =
+  fQAbstractSocket_virtualbase_metacast(self.h, param1)
+
+type QAbstractSocketmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstractsocket_types.QAbstractSocket, slot: QAbstractSocketmetacastProc) =
+  # TODO check subclass
+  var tmp = new QAbstractSocketmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractSocket_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractSocket_metacast(self: ptr cQAbstractSocket, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractSocket_metacast ".} =
+  var nimfunc = cast[ptr QAbstractSocketmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QAbstractSocketmetacall*(self: gen_qabstractsocket_types.QAbstractSocket, param1: cint, param2: cint, param3: pointer): cint =
   fQAbstractSocket_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

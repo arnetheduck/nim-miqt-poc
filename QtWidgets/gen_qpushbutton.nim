@@ -100,6 +100,10 @@ proc fcQPushButton_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "Q
 proc fcQPushButton_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPushButton_tr3".}
 proc fcQPushButton_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QPushButton_trUtf82".}
 proc fcQPushButton_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPushButton_trUtf83".}
+proc fQPushButton_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPushButton_virtualbase_metaObject".}
+proc fcQPushButton_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPushButton_override_virtual_metaObject".}
+proc fQPushButton_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPushButton_virtualbase_metacast".}
+proc fcQPushButton_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPushButton_override_virtual_metacast".}
 proc fQPushButton_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPushButton_virtualbase_metacall".}
 proc fcQPushButton_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPushButton_override_virtual_metacall".}
 proc fQPushButton_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QPushButton_virtualbase_sizeHint".}
@@ -304,6 +308,42 @@ proc trUtf8*(_: type gen_qpushbutton_types.QPushButton, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc QPushButtonmetaObject*(self: gen_qpushbutton_types.QPushButton, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQPushButton_virtualbase_metaObject(self.h))
+
+type QPushButtonmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QPushButtonmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPushButton_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPushButton_metaObject(self: ptr cQPushButton, slot: int): pointer {.exportc: "miqt_exec_callback_QPushButton_metaObject ".} =
+  var nimfunc = cast[ptr QPushButtonmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QPushButtonmetacast*(self: gen_qpushbutton_types.QPushButton, param1: cstring): pointer =
+  fQPushButton_virtualbase_metacast(self.h, param1)
+
+type QPushButtonmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmetacastProc) =
+  # TODO check subclass
+  var tmp = new QPushButtonmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPushButton_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPushButton_metacast(self: ptr cQPushButton, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPushButton_metacast ".} =
+  var nimfunc = cast[ptr QPushButtonmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QPushButtonmetacall*(self: gen_qpushbutton_types.QPushButton, param1: cint, param2: cint, param3: pointer): cint =
   fQPushButton_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

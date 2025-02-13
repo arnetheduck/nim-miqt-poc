@@ -87,6 +87,10 @@ proc fcQMimeData_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QMi
 proc fcQMimeData_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMimeData_tr3".}
 proc fcQMimeData_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMimeData_trUtf82".}
 proc fcQMimeData_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMimeData_trUtf83".}
+proc fQMimeData_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMimeData_virtualbase_metaObject".}
+proc fcQMimeData_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMimeData_override_virtual_metaObject".}
+proc fQMimeData_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMimeData_virtualbase_metacast".}
+proc fcQMimeData_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMimeData_override_virtual_metacast".}
 proc fQMimeData_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMimeData_virtualbase_metacall".}
 proc fcQMimeData_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMimeData_override_virtual_metacall".}
 proc fQMimeData_virtualbase_hasFormat(self: pointer, mimetype: struct_miqt_string): bool{.importc: "QMimeData_virtualbase_hasFormat".}
@@ -252,6 +256,42 @@ proc trUtf8*(_: type gen_qmimedata_types.QMimeData, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc QMimeDatametaObject*(self: gen_qmimedata_types.QMimeData, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQMimeData_virtualbase_metaObject(self.h))
+
+type QMimeDatametaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatametaObjectProc) =
+  # TODO check subclass
+  var tmp = new QMimeDatametaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMimeData_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMimeData_metaObject(self: ptr cQMimeData, slot: int): pointer {.exportc: "miqt_exec_callback_QMimeData_metaObject ".} =
+  var nimfunc = cast[ptr QMimeDatametaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QMimeDatametacast*(self: gen_qmimedata_types.QMimeData, param1: cstring): pointer =
+  fQMimeData_virtualbase_metacast(self.h, param1)
+
+type QMimeDatametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatametacastProc) =
+  # TODO check subclass
+  var tmp = new QMimeDatametacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMimeData_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMimeData_metacast(self: ptr cQMimeData, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMimeData_metacast ".} =
+  var nimfunc = cast[ptr QMimeDatametacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QMimeDatametacall*(self: gen_qmimedata_types.QMimeData, param1: cint, param2: cint, param3: pointer): cint =
   fQMimeData_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

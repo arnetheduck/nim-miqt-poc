@@ -124,6 +124,10 @@ proc fcQUndoStack_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.imp
 proc fcQUndoStack_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QUndoStack_trUtf82".}
 proc fcQUndoStack_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QUndoStack_trUtf83".}
 proc fcQUndoStack_setActive1(self: pointer, active: bool): void {.importc: "QUndoStack_setActive1".}
+proc fQUndoStack_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QUndoStack_virtualbase_metaObject".}
+proc fcQUndoStack_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QUndoStack_override_virtual_metaObject".}
+proc fQUndoStack_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QUndoStack_virtualbase_metacast".}
+proc fcQUndoStack_override_virtual_metacast(self: pointer, slot: int) {.importc: "QUndoStack_override_virtual_metacast".}
 proc fQUndoStack_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QUndoStack_virtualbase_metacall".}
 proc fcQUndoStack_override_virtual_metacall(self: pointer, slot: int) {.importc: "QUndoStack_override_virtual_metacall".}
 proc fQUndoStack_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QUndoStack_virtualbase_event".}
@@ -502,6 +506,42 @@ proc trUtf8*(_: type gen_qundostack_types.QUndoStack, s: cstring, c: cstring, n:
 proc setActive*(self: gen_qundostack_types.QUndoStack, active: bool): void =
   fcQUndoStack_setActive1(self.h, active)
 
+proc QUndoStackmetaObject*(self: gen_qundostack_types.QUndoStack, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQUndoStack_virtualbase_metaObject(self.h))
+
+type QUndoStackmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QUndoStackmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQUndoStack_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QUndoStack_metaObject(self: ptr cQUndoStack, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoStack_metaObject ".} =
+  var nimfunc = cast[ptr QUndoStackmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QUndoStackmetacast*(self: gen_qundostack_types.QUndoStack, param1: cstring): pointer =
+  fQUndoStack_virtualbase_metacast(self.h, param1)
+
+type QUndoStackmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackmetacastProc) =
+  # TODO check subclass
+  var tmp = new QUndoStackmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQUndoStack_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QUndoStack_metacast(self: ptr cQUndoStack, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QUndoStack_metacast ".} =
+  var nimfunc = cast[ptr QUndoStackmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QUndoStackmetacall*(self: gen_qundostack_types.QUndoStack, param1: cint, param2: cint, param3: pointer): cint =
   fQUndoStack_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

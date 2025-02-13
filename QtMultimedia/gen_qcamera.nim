@@ -203,6 +203,10 @@ proc fcQCamera_supportedViewfinderSettings1(self: pointer, settings: pointer): s
 proc fcQCamera_supportedViewfinderResolutions1(self: pointer, settings: pointer): struct_miqt_array {.importc: "QCamera_supportedViewfinderResolutions1".}
 proc fcQCamera_supportedViewfinderFrameRateRanges1(self: pointer, settings: pointer): struct_miqt_array {.importc: "QCamera_supportedViewfinderFrameRateRanges1".}
 proc fcQCamera_supportedViewfinderPixelFormats1(self: pointer, settings: pointer): struct_miqt_array {.importc: "QCamera_supportedViewfinderPixelFormats1".}
+proc fQCamera_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QCamera_virtualbase_metaObject".}
+proc fcQCamera_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QCamera_override_virtual_metaObject".}
+proc fQCamera_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QCamera_virtualbase_metacast".}
+proc fcQCamera_override_virtual_metacast(self: pointer, slot: int) {.importc: "QCamera_override_virtual_metacast".}
 proc fQCamera_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QCamera_virtualbase_metacall".}
 proc fcQCamera_override_virtual_metacall(self: pointer, slot: int) {.importc: "QCamera_override_virtual_metacall".}
 proc fQCamera_virtualbase_availability(self: pointer, ): cint{.importc: "QCamera_virtualbase_availability".}
@@ -622,6 +626,42 @@ proc supportedViewfinderPixelFormats*(self: gen_qcamera_types.QCamera, settings:
     vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
+proc QCamerametaObject*(self: gen_qcamera_types.QCamera, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQCamera_virtualbase_metaObject(self.h))
+
+type QCamerametaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qcamera_types.QCamera, slot: QCamerametaObjectProc) =
+  # TODO check subclass
+  var tmp = new QCamerametaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCamera_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCamera_metaObject(self: ptr cQCamera, slot: int): pointer {.exportc: "miqt_exec_callback_QCamera_metaObject ".} =
+  var nimfunc = cast[ptr QCamerametaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QCamerametacast*(self: gen_qcamera_types.QCamera, param1: cstring): pointer =
+  fQCamera_virtualbase_metacast(self.h, param1)
+
+type QCamerametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qcamera_types.QCamera, slot: QCamerametacastProc) =
+  # TODO check subclass
+  var tmp = new QCamerametacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCamera_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCamera_metacast(self: ptr cQCamera, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QCamera_metacast ".} =
+  var nimfunc = cast[ptr QCamerametacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QCamerametacall*(self: gen_qcamera_types.QCamera, param1: cint, param2: cint, param3: pointer): cint =
   fQCamera_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

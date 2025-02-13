@@ -45,6 +45,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QPushButton_metaObject(const QPushButton*, intptr_t);
+void* miqt_exec_callback_QPushButton_metacast(QPushButton*, intptr_t, const char*);
 int miqt_exec_callback_QPushButton_metacall(QPushButton*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QPushButton_sizeHint(const QPushButton*, intptr_t);
 QSize* miqt_exec_callback_QPushButton_minimumSizeHint(const QPushButton*, intptr_t);
@@ -111,6 +113,51 @@ public:
 	MiqtVirtualQPushButton(const QIcon& icon, const QString& text, QWidget* parent): QPushButton(icon, text, parent) {};
 
 	virtual ~MiqtVirtualQPushButton() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QPushButton::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QPushButton_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QPushButton::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QPushButton::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QPushButton_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QPushButton::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1497,6 +1544,34 @@ struct miqt_string QPushButton_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QPushButton_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QPushButton_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQPushButton*)(self) )->virtualbase_metaObject();
+}
+
+bool QPushButton_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QPushButton_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQPushButton*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QPushButton_override_virtual_metacall(void* self, intptr_t slot) {

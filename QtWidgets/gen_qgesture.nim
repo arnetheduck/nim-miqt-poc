@@ -100,6 +100,10 @@ proc fcQGesture_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QGes
 proc fcQGesture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGesture_tr3".}
 proc fcQGesture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGesture_trUtf82".}
 proc fcQGesture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGesture_trUtf83".}
+proc fQGesture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGesture_virtualbase_metaObject".}
+proc fcQGesture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGesture_override_virtual_metaObject".}
+proc fQGesture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGesture_virtualbase_metacast".}
+proc fcQGesture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGesture_override_virtual_metacast".}
 proc fQGesture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGesture_virtualbase_metacall".}
 proc fcQGesture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGesture_override_virtual_metacall".}
 proc fQGesture_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QGesture_virtualbase_event".}
@@ -136,6 +140,10 @@ proc fcQPanGesture_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "Q
 proc fcQPanGesture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPanGesture_tr3".}
 proc fcQPanGesture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QPanGesture_trUtf82".}
 proc fcQPanGesture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPanGesture_trUtf83".}
+proc fQPanGesture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPanGesture_virtualbase_metaObject".}
+proc fcQPanGesture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPanGesture_override_virtual_metaObject".}
+proc fQPanGesture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPanGesture_virtualbase_metacast".}
+proc fcQPanGesture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPanGesture_override_virtual_metacast".}
 proc fQPanGesture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPanGesture_virtualbase_metacall".}
 proc fcQPanGesture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPanGesture_override_virtual_metacall".}
 proc fQPanGesture_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QPanGesture_virtualbase_event".}
@@ -187,6 +195,10 @@ proc fcQPinchGesture_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQPinchGesture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPinchGesture_tr3".}
 proc fcQPinchGesture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QPinchGesture_trUtf82".}
 proc fcQPinchGesture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPinchGesture_trUtf83".}
+proc fQPinchGesture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPinchGesture_virtualbase_metaObject".}
+proc fcQPinchGesture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPinchGesture_override_virtual_metaObject".}
+proc fQPinchGesture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPinchGesture_virtualbase_metacast".}
+proc fcQPinchGesture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPinchGesture_override_virtual_metacast".}
 proc fQPinchGesture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPinchGesture_virtualbase_metacall".}
 proc fcQPinchGesture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPinchGesture_override_virtual_metacall".}
 proc fQPinchGesture_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QPinchGesture_virtualbase_event".}
@@ -220,6 +232,10 @@ proc fcQSwipeGesture_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQSwipeGesture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSwipeGesture_tr3".}
 proc fcQSwipeGesture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSwipeGesture_trUtf82".}
 proc fcQSwipeGesture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSwipeGesture_trUtf83".}
+proc fQSwipeGesture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSwipeGesture_virtualbase_metaObject".}
+proc fcQSwipeGesture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSwipeGesture_override_virtual_metaObject".}
+proc fQSwipeGesture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSwipeGesture_virtualbase_metacast".}
+proc fcQSwipeGesture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSwipeGesture_override_virtual_metacast".}
 proc fQSwipeGesture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSwipeGesture_virtualbase_metacall".}
 proc fcQSwipeGesture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSwipeGesture_override_virtual_metacall".}
 proc fQSwipeGesture_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSwipeGesture_virtualbase_event".}
@@ -251,6 +267,10 @@ proc fcQTapGesture_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "Q
 proc fcQTapGesture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTapGesture_tr3".}
 proc fcQTapGesture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QTapGesture_trUtf82".}
 proc fcQTapGesture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTapGesture_trUtf83".}
+proc fQTapGesture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTapGesture_virtualbase_metaObject".}
+proc fcQTapGesture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTapGesture_override_virtual_metaObject".}
+proc fQTapGesture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTapGesture_virtualbase_metacast".}
+proc fcQTapGesture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTapGesture_override_virtual_metacast".}
 proc fQTapGesture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTapGesture_virtualbase_metacall".}
 proc fcQTapGesture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTapGesture_override_virtual_metacall".}
 proc fQTapGesture_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QTapGesture_virtualbase_event".}
@@ -284,6 +304,10 @@ proc fcQTapAndHoldGesture_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQTapAndHoldGesture_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTapAndHoldGesture_tr3".}
 proc fcQTapAndHoldGesture_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QTapAndHoldGesture_trUtf82".}
 proc fcQTapAndHoldGesture_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTapAndHoldGesture_trUtf83".}
+proc fQTapAndHoldGesture_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTapAndHoldGesture_virtualbase_metaObject".}
+proc fcQTapAndHoldGesture_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTapAndHoldGesture_override_virtual_metaObject".}
+proc fQTapAndHoldGesture_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTapAndHoldGesture_virtualbase_metacast".}
+proc fcQTapAndHoldGesture_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTapAndHoldGesture_override_virtual_metacast".}
 proc fQTapAndHoldGesture_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTapAndHoldGesture_virtualbase_metacall".}
 proc fcQTapAndHoldGesture_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTapAndHoldGesture_override_virtual_metacall".}
 proc fQTapAndHoldGesture_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QTapAndHoldGesture_virtualbase_event".}
@@ -399,6 +423,42 @@ proc trUtf8*(_: type gen_qgesture_types.QGesture, s: cstring, c: cstring, n: cin
   c_free(v_ms.data)
   vx_ret
 
+proc QGesturemetaObject*(self: gen_qgesture_types.QGesture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQGesture_virtualbase_metaObject(self.h))
+
+type QGesturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QGesture, slot: QGesturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QGesturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGesture_metaObject(self: ptr cQGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QGesture_metaObject ".} =
+  var nimfunc = cast[ptr QGesturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QGesturemetacast*(self: gen_qgesture_types.QGesture, param1: cstring): pointer =
+  fQGesture_virtualbase_metacast(self.h, param1)
+
+type QGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QGesture, slot: QGesturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QGesturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGesture_metacast(self: ptr cQGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGesture_metacast ".} =
+  var nimfunc = cast[ptr QGesturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QGesturemetacall*(self: gen_qgesture_types.QGesture, param1: cint, param2: cint, param3: pointer): cint =
   fQGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -626,6 +686,42 @@ proc trUtf8*(_: type gen_qgesture_types.QPanGesture, s: cstring, c: cstring, n: 
   c_free(v_ms.data)
   vx_ret
 
+proc QPanGesturemetaObject*(self: gen_qgesture_types.QPanGesture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQPanGesture_virtualbase_metaObject(self.h))
+
+type QPanGesturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QPanGesturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPanGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPanGesture_metaObject(self: ptr cQPanGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QPanGesture_metaObject ".} =
+  var nimfunc = cast[ptr QPanGesturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QPanGesturemetacast*(self: gen_qgesture_types.QPanGesture, param1: cstring): pointer =
+  fQPanGesture_virtualbase_metacast(self.h, param1)
+
+type QPanGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QPanGesturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPanGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPanGesture_metacast(self: ptr cQPanGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPanGesture_metacast ".} =
+  var nimfunc = cast[ptr QPanGesturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QPanGesturemetacall*(self: gen_qgesture_types.QPanGesture, param1: cint, param2: cint, param3: pointer): cint =
   fQPanGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -898,6 +994,42 @@ proc trUtf8*(_: type gen_qgesture_types.QPinchGesture, s: cstring, c: cstring, n
   c_free(v_ms.data)
   vx_ret
 
+proc QPinchGesturemetaObject*(self: gen_qgesture_types.QPinchGesture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQPinchGesture_virtualbase_metaObject(self.h))
+
+type QPinchGesturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QPinchGesturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPinchGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPinchGesture_metaObject(self: ptr cQPinchGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QPinchGesture_metaObject ".} =
+  var nimfunc = cast[ptr QPinchGesturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QPinchGesturemetacast*(self: gen_qgesture_types.QPinchGesture, param1: cstring): pointer =
+  fQPinchGesture_virtualbase_metacast(self.h, param1)
+
+type QPinchGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QPinchGesturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPinchGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPinchGesture_metacast(self: ptr cQPinchGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPinchGesture_metacast ".} =
+  var nimfunc = cast[ptr QPinchGesturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QPinchGesturemetacall*(self: gen_qgesture_types.QPinchGesture, param1: cint, param2: cint, param3: pointer): cint =
   fQPinchGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -1116,6 +1248,42 @@ proc trUtf8*(_: type gen_qgesture_types.QSwipeGesture, s: cstring, c: cstring, n
   c_free(v_ms.data)
   vx_ret
 
+proc QSwipeGesturemetaObject*(self: gen_qgesture_types.QSwipeGesture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQSwipeGesture_virtualbase_metaObject(self.h))
+
+type QSwipeGesturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QSwipeGesturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSwipeGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSwipeGesture_metaObject(self: ptr cQSwipeGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QSwipeGesture_metaObject ".} =
+  var nimfunc = cast[ptr QSwipeGesturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QSwipeGesturemetacast*(self: gen_qgesture_types.QSwipeGesture, param1: cstring): pointer =
+  fQSwipeGesture_virtualbase_metacast(self.h, param1)
+
+type QSwipeGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QSwipeGesturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSwipeGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSwipeGesture_metacast(self: ptr cQSwipeGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSwipeGesture_metacast ".} =
+  var nimfunc = cast[ptr QSwipeGesturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QSwipeGesturemetacall*(self: gen_qgesture_types.QSwipeGesture, param1: cint, param2: cint, param3: pointer): cint =
   fQSwipeGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -1328,6 +1496,42 @@ proc trUtf8*(_: type gen_qgesture_types.QTapGesture, s: cstring, c: cstring, n: 
   c_free(v_ms.data)
   vx_ret
 
+proc QTapGesturemetaObject*(self: gen_qgesture_types.QTapGesture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQTapGesture_virtualbase_metaObject(self.h))
+
+type QTapGesturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QTapGesturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTapGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTapGesture_metaObject(self: ptr cQTapGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QTapGesture_metaObject ".} =
+  var nimfunc = cast[ptr QTapGesturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QTapGesturemetacast*(self: gen_qgesture_types.QTapGesture, param1: cstring): pointer =
+  fQTapGesture_virtualbase_metacast(self.h, param1)
+
+type QTapGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QTapGesturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTapGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTapGesture_metacast(self: ptr cQTapGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTapGesture_metacast ".} =
+  var nimfunc = cast[ptr QTapGesturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QTapGesturemetacall*(self: gen_qgesture_types.QTapGesture, param1: cint, param2: cint, param3: pointer): cint =
   fQTapGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
@@ -1546,6 +1750,42 @@ proc trUtf8*(_: type gen_qgesture_types.QTapAndHoldGesture, s: cstring, c: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc QTapAndHoldGesturemetaObject*(self: gen_qgesture_types.QTapAndHoldGesture, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQTapAndHoldGesture_virtualbase_metaObject(self.h))
+
+type QTapAndHoldGesturemetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturemetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QTapAndHoldGesturemetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTapAndHoldGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTapAndHoldGesture_metaObject(self: ptr cQTapAndHoldGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QTapAndHoldGesture_metaObject ".} =
+  var nimfunc = cast[ptr QTapAndHoldGesturemetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QTapAndHoldGesturemetacast*(self: gen_qgesture_types.QTapAndHoldGesture, param1: cstring): pointer =
+  fQTapAndHoldGesture_virtualbase_metacast(self.h, param1)
+
+type QTapAndHoldGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturemetacastProc) =
+  # TODO check subclass
+  var tmp = new QTapAndHoldGesturemetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTapAndHoldGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTapAndHoldGesture_metacast(self: ptr cQTapAndHoldGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTapAndHoldGesture_metacast ".} =
+  var nimfunc = cast[ptr QTapAndHoldGesturemetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QTapAndHoldGesturemetacall*(self: gen_qgesture_types.QTapAndHoldGesture, param1: cint, param2: cint, param3: pointer): cint =
   fQTapAndHoldGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

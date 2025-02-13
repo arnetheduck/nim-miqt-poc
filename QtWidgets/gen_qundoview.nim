@@ -109,6 +109,10 @@ proc fcQUndoView_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QUn
 proc fcQUndoView_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QUndoView_tr3".}
 proc fcQUndoView_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QUndoView_trUtf82".}
 proc fcQUndoView_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QUndoView_trUtf83".}
+proc fQUndoView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QUndoView_virtualbase_metaObject".}
+proc fcQUndoView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QUndoView_override_virtual_metaObject".}
+proc fQUndoView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QUndoView_virtualbase_metacast".}
+proc fcQUndoView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QUndoView_override_virtual_metacast".}
 proc fQUndoView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QUndoView_virtualbase_metacall".}
 proc fcQUndoView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QUndoView_override_virtual_metacall".}
 proc fQUndoView_virtualbase_visualRect(self: pointer, index: pointer): pointer{.importc: "QUndoView_virtualbase_visualRect".}
@@ -385,6 +389,42 @@ proc trUtf8*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc QUndoViewmetaObject*(self: gen_qundoview_types.QUndoView, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fQUndoView_virtualbase_metaObject(self.h))
+
+type QUndoViewmetaObjectProc* = proc(): gen_qobjectdefs_types.QMetaObject
+proc onmetaObject*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmetaObjectProc) =
+  # TODO check subclass
+  var tmp = new QUndoViewmetaObjectProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQUndoView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QUndoView_metaObject(self: ptr cQUndoView, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoView_metaObject ".} =
+  var nimfunc = cast[ptr QUndoViewmetaObjectProc](cast[pointer](slot))
+
+  let virtualReturn = nimfunc[]( )
+
+  virtualReturn.h
+proc QUndoViewmetacast*(self: gen_qundoview_types.QUndoView, param1: cstring): pointer =
+  fQUndoView_virtualbase_metacast(self.h, param1)
+
+type QUndoViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmetacastProc) =
+  # TODO check subclass
+  var tmp = new QUndoViewmetacastProc
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQUndoView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QUndoView_metacast(self: ptr cQUndoView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QUndoView_metacast ".} =
+  var nimfunc = cast[ptr QUndoViewmetacastProc](cast[pointer](slot))
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](slotval1 )
+
+  virtualReturn
 proc QUndoViewmetacall*(self: gen_qundoview_types.QUndoView, param1: cint, param2: cint, param3: pointer): cint =
   fQUndoView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 

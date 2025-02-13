@@ -111,6 +111,10 @@ void QMediaPlaylist_load2(QMediaPlaylist* self, const QNetworkRequest* request, 
 void QMediaPlaylist_load22(QMediaPlaylist* self, QUrl* location, const char* format);
 void QMediaPlaylist_load23(QMediaPlaylist* self, QIODevice* device, const char* format);
 bool QMediaPlaylist_save22(QMediaPlaylist* self, QUrl* location, const char* format);
+bool QMediaPlaylist_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QMediaPlaylist_virtualbase_metaObject(const void* self);
+bool QMediaPlaylist_override_virtual_metacast(void* self, intptr_t slot);
+void* QMediaPlaylist_virtualbase_metacast(void* self, const char* param1);
 bool QMediaPlaylist_override_virtual_metacall(void* self, intptr_t slot);
 int QMediaPlaylist_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QMediaPlaylist_override_virtual_mediaObject(void* self, intptr_t slot);
