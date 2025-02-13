@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QChildEvent;
 class QEvent;
 class QMetaMethod;
@@ -25,7 +24,6 @@ class QTimerEvent;
 class QUndoCommand;
 class QUndoStack;
 #else
-typedef struct QAction QAction;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QMetaMethod QMetaMethod;
@@ -66,6 +64,7 @@ QUndoStack* QUndoStack_new2(QObject* parent);
 void QUndoStack_virtbase(QUndoStack* src, QObject** outptr_QObject);
 QMetaObject* QUndoStack_metaObject(const QUndoStack* self);
 void* QUndoStack_metacast(QUndoStack* self, const char* param1);
+int QUndoStack_metacall(QUndoStack* self, int param1, int param2, void** param3);
 struct miqt_string QUndoStack_tr(const char* s);
 void QUndoStack_clear(QUndoStack* self);
 void QUndoStack_push(QUndoStack* self, QUndoCommand* cmd);
@@ -76,8 +75,6 @@ struct miqt_string QUndoStack_redoText(const QUndoStack* self);
 int QUndoStack_count(const QUndoStack* self);
 int QUndoStack_index(const QUndoStack* self);
 struct miqt_string QUndoStack_text(const QUndoStack* self, int idx);
-QAction* QUndoStack_createUndoAction(const QUndoStack* self, QObject* parent);
-QAction* QUndoStack_createRedoAction(const QUndoStack* self, QObject* parent);
 bool QUndoStack_isActive(const QUndoStack* self);
 bool QUndoStack_isClean(const QUndoStack* self);
 int QUndoStack_cleanIndex(const QUndoStack* self);
@@ -106,9 +103,9 @@ void QUndoStack_redoTextChanged(QUndoStack* self, struct miqt_string redoText);
 void QUndoStack_connect_redoTextChanged(QUndoStack* self, intptr_t slot);
 struct miqt_string QUndoStack_tr2(const char* s, const char* c);
 struct miqt_string QUndoStack_tr3(const char* s, const char* c, int n);
-QAction* QUndoStack_createUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
-QAction* QUndoStack_createRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
 void QUndoStack_setActive1(QUndoStack* self, bool active);
+bool QUndoStack_override_virtual_metacall(void* self, intptr_t slot);
+int QUndoStack_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QUndoStack_override_virtual_event(void* self, intptr_t slot);
 bool QUndoStack_virtualbase_event(void* self, QEvent* event);
 bool QUndoStack_override_virtual_eventFilter(void* self, intptr_t slot);

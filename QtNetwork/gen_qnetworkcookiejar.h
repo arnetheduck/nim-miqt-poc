@@ -41,6 +41,7 @@ QNetworkCookieJar* QNetworkCookieJar_new2(QObject* parent);
 void QNetworkCookieJar_virtbase(QNetworkCookieJar* src, QObject** outptr_QObject);
 QMetaObject* QNetworkCookieJar_metaObject(const QNetworkCookieJar* self);
 void* QNetworkCookieJar_metacast(QNetworkCookieJar* self, const char* param1);
+int QNetworkCookieJar_metacall(QNetworkCookieJar* self, int param1, int param2, void** param3);
 struct miqt_string QNetworkCookieJar_tr(const char* s);
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_cookiesForUrl(const QNetworkCookieJar* self, QUrl* url);
 bool QNetworkCookieJar_setCookiesFromUrl(QNetworkCookieJar* self, struct miqt_array /* of QNetworkCookie* */  cookieList, QUrl* url);
@@ -50,6 +51,8 @@ bool QNetworkCookieJar_deleteCookie(QNetworkCookieJar* self, QNetworkCookie* coo
 bool QNetworkCookieJar_validateCookie(const QNetworkCookieJar* self, QNetworkCookie* cookie, QUrl* url);
 struct miqt_string QNetworkCookieJar_tr2(const char* s, const char* c);
 struct miqt_string QNetworkCookieJar_tr3(const char* s, const char* c, int n);
+bool QNetworkCookieJar_override_virtual_metacall(void* self, intptr_t slot);
+int QNetworkCookieJar_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QNetworkCookieJar_override_virtual_cookiesForUrl(void* self, intptr_t slot);
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_virtualbase_cookiesForUrl(const void* self, QUrl* url);
 bool QNetworkCookieJar_override_virtual_setCookiesFromUrl(void* self, intptr_t slot);

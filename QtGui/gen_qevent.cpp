@@ -1,4 +1,3 @@
-#include <QAction>
 #include <QActionEvent>
 #include <QApplicationStateChangeEvent>
 #include <QCloseEvent>
@@ -158,8 +157,6 @@ QStatusTipEvent* miqt_exec_callback_QStatusTipEvent_clone(const QStatusTipEvent*
 void miqt_exec_callback_QStatusTipEvent_setAccepted(QStatusTipEvent*, intptr_t, bool);
 QWhatsThisClickedEvent* miqt_exec_callback_QWhatsThisClickedEvent_clone(const QWhatsThisClickedEvent*, intptr_t);
 void miqt_exec_callback_QWhatsThisClickedEvent_setAccepted(QWhatsThisClickedEvent*, intptr_t, bool);
-QActionEvent* miqt_exec_callback_QActionEvent_clone(const QActionEvent*, intptr_t);
-void miqt_exec_callback_QActionEvent_setAccepted(QActionEvent*, intptr_t, bool);
 QFileOpenEvent* miqt_exec_callback_QFileOpenEvent_clone(const QFileOpenEvent*, intptr_t);
 void miqt_exec_callback_QFileOpenEvent_setAccepted(QFileOpenEvent*, intptr_t, bool);
 QToolBarChangeEvent* miqt_exec_callback_QToolBarChangeEvent_clone(const QToolBarChangeEvent*, intptr_t);
@@ -5173,112 +5170,12 @@ void QWhatsThisClickedEvent_delete(QWhatsThisClickedEvent* self) {
 	delete self;
 }
 
-class MiqtVirtualQActionEvent final : public QActionEvent {
-public:
-
-	MiqtVirtualQActionEvent(int type, QAction* action): QActionEvent(type, action) {};
-	MiqtVirtualQActionEvent(int type, QAction* action, QAction* before): QActionEvent(type, action, before) {};
-
-	virtual ~MiqtVirtualQActionEvent() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clone = 0;
-
-	// Subclass to allow providing a Go implementation
-	virtual QActionEvent* clone() const override {
-		if (handle__clone == 0) {
-			return QActionEvent::clone();
-		}
-		
-
-		QActionEvent* callback_return_value = miqt_exec_callback_QActionEvent_clone(this, handle__clone);
-
-		return callback_return_value;
-	}
-
-	// Wrapper to allow calling protected method
-	QActionEvent* virtualbase_clone() const {
-
-		return QActionEvent::clone();
-
-	}
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__setAccepted = 0;
-
-	// Subclass to allow providing a Go implementation
-	virtual void setAccepted(bool accepted) override {
-		if (handle__setAccepted == 0) {
-			QActionEvent::setAccepted(accepted);
-			return;
-		}
-		
-		bool sigval1 = accepted;
-
-		miqt_exec_callback_QActionEvent_setAccepted(this, handle__setAccepted, sigval1);
-
-		
-	}
-
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QActionEvent::setAccepted(accepted);
-
-	}
-
-};
-
-QActionEvent* QActionEvent_new(int type, QAction* action) {
-	return new MiqtVirtualQActionEvent(static_cast<int>(type), action);
-}
-
-QActionEvent* QActionEvent_new2(int type, QAction* action, QAction* before) {
-	return new MiqtVirtualQActionEvent(static_cast<int>(type), action, before);
-}
-
 void QActionEvent_virtbase(QActionEvent* src, QEvent** outptr_QEvent) {
 	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QActionEvent* QActionEvent_clone(const QActionEvent* self) {
 	return self->clone();
-}
-
-QAction* QActionEvent_action(const QActionEvent* self) {
-	return self->action();
-}
-
-QAction* QActionEvent_before(const QActionEvent* self) {
-	return self->before();
-}
-
-bool QActionEvent_override_virtual_clone(void* self, intptr_t slot) {
-	MiqtVirtualQActionEvent* self_cast = dynamic_cast<MiqtVirtualQActionEvent*>( (QActionEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clone = slot;
-	return true;
-}
-
-QActionEvent* QActionEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQActionEvent*)(self) )->virtualbase_clone();
-}
-
-bool QActionEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
-	MiqtVirtualQActionEvent* self_cast = dynamic_cast<MiqtVirtualQActionEvent*>( (QActionEvent*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__setAccepted = slot;
-	return true;
-}
-
-void QActionEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQActionEvent*)(self) )->virtualbase_setAccepted(accepted);
 }
 
 void QActionEvent_delete(QActionEvent* self) {

@@ -20,6 +20,7 @@ extern "C" {
 
 void miqt_exec_callback_QWaveDecoder_formatKnown(intptr_t);
 void miqt_exec_callback_QWaveDecoder_parsingError(intptr_t);
+int miqt_exec_callback_QWaveDecoder_metacall(QWaveDecoder*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QWaveDecoder_open(QWaveDecoder*, intptr_t, int);
 void miqt_exec_callback_QWaveDecoder_close(QWaveDecoder*, intptr_t);
 bool miqt_exec_callback_QWaveDecoder_seek(QWaveDecoder*, intptr_t, long long);
@@ -55,6 +56,32 @@ public:
 	MiqtVirtualQWaveDecoder(QIODevice* device, const QAudioFormat& format, QObject* parent): QWaveDecoder(device, format, parent) {};
 
 	virtual ~MiqtVirtualQWaveDecoder() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QWaveDecoder::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QWaveDecoder_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QWaveDecoder::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -612,6 +639,10 @@ void* QWaveDecoder_metacast(QWaveDecoder* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QWaveDecoder_metacall(QWaveDecoder* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWaveDecoder_tr(const char* s) {
 	QString _ret = QWaveDecoder::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -711,6 +742,20 @@ struct miqt_string QWaveDecoder_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QWaveDecoder_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QWaveDecoder_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QWaveDecoder_override_virtual_open(void* self, intptr_t slot) {

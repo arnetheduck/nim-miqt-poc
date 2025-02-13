@@ -20,6 +20,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QPointingDevice_grabChanged(intptr_t, QObject*, int, QPointerEvent*, QEventPoint*);
+int miqt_exec_callback_QPointingDevice_metacall(QPointingDevice*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QPointingDevice_event(QPointingDevice*, intptr_t, QEvent*);
 bool miqt_exec_callback_QPointingDevice_eventFilter(QPointingDevice*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QPointingDevice_timerEvent(QPointingDevice*, intptr_t, QTimerEvent*);
@@ -67,6 +68,32 @@ public:
 	MiqtVirtualQPointingDevice(const QString& name, qint64 systemId, QInputDevice::DeviceType devType, QPointingDevice::PointerType pType, QInputDevice::Capabilities caps, int maxPoints, int buttonCount, const QString& seatName, QPointingDeviceUniqueId uniqueId, QObject* parent): QPointingDevice(name, systemId, devType, pType, caps, maxPoints, buttonCount, seatName, uniqueId, parent) {};
 
 	virtual ~MiqtVirtualQPointingDevice() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QPointingDevice::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QPointingDevice_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QPointingDevice::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -289,6 +316,10 @@ void* QPointingDevice_metacast(QPointingDevice* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QPointingDevice_metacall(QPointingDevice* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QPointingDevice_tr(const char* s) {
 	QString _ret = QPointingDevice::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -379,6 +410,20 @@ struct miqt_string QPointingDevice_tr3(const char* s, const char* c, int n) {
 QPointingDevice* QPointingDevice_primaryPointingDevice1(struct miqt_string seatName) {
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
 	return (QPointingDevice*) QPointingDevice::primaryPointingDevice(seatName_QString);
+}
+
+bool QPointingDevice_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QPointingDevice_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QPointingDevice_override_virtual_event(void* self, intptr_t slot) {

@@ -41,6 +41,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QGraphicsProxyWidget_metacall(QGraphicsProxyWidget*, intptr_t, int, int, void**);
 void miqt_exec_callback_QGraphicsProxyWidget_setGeometry(QGraphicsProxyWidget*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsProxyWidget_paint(QGraphicsProxyWidget*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 int miqt_exec_callback_QGraphicsProxyWidget_type(const QGraphicsProxyWidget*, intptr_t);
@@ -117,6 +118,32 @@ public:
 	MiqtVirtualQGraphicsProxyWidget(QGraphicsItem* parent, Qt::WindowFlags wFlags): QGraphicsProxyWidget(parent, wFlags) {};
 
 	virtual ~MiqtVirtualQGraphicsProxyWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QGraphicsProxyWidget::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QGraphicsProxyWidget_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QGraphicsProxyWidget::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -1720,6 +1747,10 @@ void* QGraphicsProxyWidget_metacast(QGraphicsProxyWidget* self, const char* para
 	return self->qt_metacast(param1);
 }
 
+int QGraphicsProxyWidget_metacall(QGraphicsProxyWidget* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QGraphicsProxyWidget_tr(const char* s) {
 	QString _ret = QGraphicsProxyWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1779,6 +1810,20 @@ struct miqt_string QGraphicsProxyWidget_tr3(const char* s, const char* c, int n)
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QGraphicsProxyWidget_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsProxyWidget* self_cast = dynamic_cast<MiqtVirtualQGraphicsProxyWidget*>( (QGraphicsProxyWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QGraphicsProxyWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQGraphicsProxyWidget*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QGraphicsProxyWidget_override_virtual_setGeometry(void* self, intptr_t slot) {

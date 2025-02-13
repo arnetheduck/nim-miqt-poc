@@ -44,6 +44,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QDial_metacall(QDial*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QDial_sizeHint(const QDial*, intptr_t);
 QSize* miqt_exec_callback_QDial_minimumSizeHint(const QDial*, intptr_t);
 bool miqt_exec_callback_QDial_event(QDial*, intptr_t, QEvent*);
@@ -104,6 +105,32 @@ public:
 	MiqtVirtualQDial(): QDial() {};
 
 	virtual ~MiqtVirtualQDial() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QDial::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QDial_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QDial::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -1312,6 +1339,10 @@ void* QDial_metacast(QDial* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QDial_metacall(QDial* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QDial_tr(const char* s) {
 	QString _ret = QDial::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1380,6 +1411,20 @@ struct miqt_string QDial_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QDial_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QDial_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQDial*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QDial_override_virtual_sizeHint(void* self, intptr_t slot) {

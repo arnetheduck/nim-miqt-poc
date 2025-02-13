@@ -1,4 +1,3 @@
-#include <QAction>
 #include <QActionEvent>
 #include <QBackingStore>
 #include <QBitmap>
@@ -25,7 +24,6 @@
 #include <QKeyEvent>
 #include <QKeySequence>
 #include <QLayout>
-#include <QList>
 #include <QLocale>
 #include <QMargins>
 #include <QMetaMethod>
@@ -70,6 +68,7 @@ void miqt_exec_callback_QWidget_windowTitleChanged(intptr_t, struct miqt_string)
 void miqt_exec_callback_QWidget_windowIconChanged(intptr_t, QIcon*);
 void miqt_exec_callback_QWidget_windowIconTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QWidget_customContextMenuRequested(intptr_t, QPoint*);
+int miqt_exec_callback_QWidget_metacall(QWidget*, intptr_t, int, int, void**);
 int miqt_exec_callback_QWidget_devType(const QWidget*, intptr_t);
 void miqt_exec_callback_QWidget_setVisible(QWidget*, intptr_t, bool);
 QSize* miqt_exec_callback_QWidget_sizeHint(const QWidget*, intptr_t);
@@ -141,6 +140,32 @@ public:
 	MiqtVirtualQWidget(QWidget* parent, Qt::WindowFlags f): QWidget(parent, f) {};
 
 	virtual ~MiqtVirtualQWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QWidget::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QWidget_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QWidget::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -1309,6 +1334,10 @@ void* QWidget_metacast(QWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QWidget_metacall(QWidget* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QWidget_tr(const char* s) {
 	QString _ret = QWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -2311,71 +2340,6 @@ void QWidget_setAcceptDrops(QWidget* self, bool on) {
 	self->setAcceptDrops(on);
 }
 
-void QWidget_addAction(QWidget* self, QAction* action) {
-	self->addAction(action);
-}
-
-void QWidget_addActions(QWidget* self, struct miqt_array /* of QAction* */  actions) {
-	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions.len);
-	QAction** actions_arr = static_cast<QAction**>(actions.data);
-	for(size_t i = 0; i < actions.len; ++i) {
-		actions_QList.push_back(actions_arr[i]);
-	}
-	self->addActions(actions_QList);
-}
-
-void QWidget_insertActions(QWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions) {
-	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions.len);
-	QAction** actions_arr = static_cast<QAction**>(actions.data);
-	for(size_t i = 0; i < actions.len; ++i) {
-		actions_QList.push_back(actions_arr[i]);
-	}
-	self->insertActions(before, actions_QList);
-}
-
-void QWidget_insertAction(QWidget* self, QAction* before, QAction* action) {
-	self->insertAction(before, action);
-}
-
-void QWidget_removeAction(QWidget* self, QAction* action) {
-	self->removeAction(action);
-}
-
-struct miqt_array /* of QAction* */  QWidget_actions(const QWidget* self) {
-	QList<QAction *> _ret = self->actions();
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = _ret[i];
-	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
-QAction* QWidget_addActionWithText(QWidget* self, struct miqt_string text) {
-	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return self->addAction(text_QString);
-}
-
-QAction* QWidget_addAction2(QWidget* self, QIcon* icon, struct miqt_string text) {
-	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return self->addAction(*icon, text_QString);
-}
-
-QAction* QWidget_addAction3(QWidget* self, struct miqt_string text, QKeySequence* shortcut) {
-	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return self->addAction(text_QString, *shortcut);
-}
-
-QAction* QWidget_addAction4(QWidget* self, QIcon* icon, struct miqt_string text, QKeySequence* shortcut) {
-	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return self->addAction(*icon, text_QString, *shortcut);
-}
-
 QWidget* QWidget_parentWidget(const QWidget* self) {
 	return self->parentWidget();
 }
@@ -2619,6 +2583,20 @@ QWidget* QWidget_createWindowContainer2(QWindow* window, QWidget* parent) {
 
 QWidget* QWidget_createWindowContainer3(QWindow* window, QWidget* parent, int flags) {
 	return QWidget::createWindowContainer(window, parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+bool QWidget_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQWidget*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QWidget_override_virtual_devType(void* self, intptr_t slot) {

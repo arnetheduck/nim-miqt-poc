@@ -47,6 +47,7 @@ QQuickWebEngineProfile* QQuickWebEngineProfile_new2(QObject* parent);
 void QQuickWebEngineProfile_virtbase(QQuickWebEngineProfile* src, QObject** outptr_QObject);
 QMetaObject* QQuickWebEngineProfile_metaObject(const QQuickWebEngineProfile* self);
 void* QQuickWebEngineProfile_metacast(QQuickWebEngineProfile* self, const char* param1);
+int QQuickWebEngineProfile_metacall(QQuickWebEngineProfile* self, int param1, int param2, void** param3);
 struct miqt_string QQuickWebEngineProfile_tr(const char* s);
 struct miqt_string QQuickWebEngineProfile_storageName(const QQuickWebEngineProfile* self);
 void QQuickWebEngineProfile_setStorageName(QQuickWebEngineProfile* self, struct miqt_string name);
@@ -115,6 +116,8 @@ void QQuickWebEngineProfile_presentNotification(QQuickWebEngineProfile* self, QW
 void QQuickWebEngineProfile_connect_presentNotification(QQuickWebEngineProfile* self, intptr_t slot);
 struct miqt_string QQuickWebEngineProfile_tr2(const char* s, const char* c);
 struct miqt_string QQuickWebEngineProfile_tr3(const char* s, const char* c, int n);
+bool QQuickWebEngineProfile_override_virtual_metacall(void* self, intptr_t slot);
+int QQuickWebEngineProfile_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QQuickWebEngineProfile_override_virtual_event(void* self, intptr_t slot);
 bool QQuickWebEngineProfile_virtualbase_event(void* self, QEvent* event);
 bool QQuickWebEngineProfile_override_virtual_eventFilter(void* self, intptr_t slot);

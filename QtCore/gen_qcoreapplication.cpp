@@ -25,6 +25,7 @@ void miqt_exec_callback_QCoreApplication_organizationNameChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_organizationDomainChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_applicationNameChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_applicationVersionChanged(intptr_t);
+int miqt_exec_callback_QCoreApplication_metacall(QCoreApplication*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QCoreApplication_notify(QCoreApplication*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QCoreApplication_event(QCoreApplication*, intptr_t, QEvent*);
 bool miqt_exec_callback_QCoreApplication_eventFilter(QCoreApplication*, intptr_t, QObject*, QEvent*);
@@ -44,6 +45,32 @@ public:
 	MiqtVirtualQCoreApplication(int& argc, char** argv, int param3): QCoreApplication(argc, argv, param3) {};
 
 	virtual ~MiqtVirtualQCoreApplication() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QCoreApplication::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QCoreApplication_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QCoreApplication::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__notify = 0;
@@ -266,6 +293,10 @@ QMetaObject* QCoreApplication_metaObject(const QCoreApplication* self) {
 
 void* QCoreApplication_metacast(QCoreApplication* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QCoreApplication_metacall(QCoreApplication* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QCoreApplication_tr(const char* s) {
@@ -666,6 +697,20 @@ struct miqt_string QCoreApplication_translate4(const char* context, const char* 
 
 void QCoreApplication_exit1(int retcode) {
 	QCoreApplication::exit(static_cast<int>(retcode));
+}
+
+bool QCoreApplication_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQCoreApplication* self_cast = dynamic_cast<MiqtVirtualQCoreApplication*>( (QCoreApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QCoreApplication_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQCoreApplication*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QCoreApplication_override_virtual_notify(void* self, intptr_t slot) {

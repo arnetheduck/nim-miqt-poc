@@ -43,6 +43,7 @@ QLibrary* QLibrary_new8(struct miqt_string fileName, struct miqt_string version,
 void QLibrary_virtbase(QLibrary* src, QObject** outptr_QObject);
 QMetaObject* QLibrary_metaObject(const QLibrary* self);
 void* QLibrary_metacast(QLibrary* self, const char* param1);
+int QLibrary_metacall(QLibrary* self, int param1, int param2, void** param3);
 struct miqt_string QLibrary_tr(const char* s);
 bool QLibrary_load(QLibrary* self);
 bool QLibrary_unload(QLibrary* self);
@@ -57,6 +58,8 @@ void QLibrary_setLoadHints(QLibrary* self, int hints);
 int QLibrary_loadHints(const QLibrary* self);
 struct miqt_string QLibrary_tr2(const char* s, const char* c);
 struct miqt_string QLibrary_tr3(const char* s, const char* c, int n);
+bool QLibrary_override_virtual_metacall(void* self, intptr_t slot);
+int QLibrary_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QLibrary_override_virtual_event(void* self, intptr_t slot);
 bool QLibrary_virtualbase_event(void* self, QEvent* event);
 bool QLibrary_override_virtual_eventFilter(void* self, intptr_t slot);

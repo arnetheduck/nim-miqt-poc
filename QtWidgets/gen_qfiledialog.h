@@ -105,6 +105,7 @@ QFileDialog* QFileDialog_new6(QWidget* parent, struct miqt_string caption, struc
 void QFileDialog_virtbase(QFileDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QFileDialog_metaObject(const QFileDialog* self);
 void* QFileDialog_metacast(QFileDialog* self, const char* param1);
+int QFileDialog_metacall(QFileDialog* self, int param1, int param2, void** param3);
 struct miqt_string QFileDialog_tr(const char* s);
 void QFileDialog_setDirectory(QFileDialog* self, struct miqt_string directory);
 void QFileDialog_setDirectoryWithDirectory(QFileDialog* self, QDir* directory);
@@ -221,6 +222,8 @@ struct miqt_array /* of QUrl* */  QFileDialog_getOpenFileUrls1(QWidget* parent);
 struct miqt_array /* of QUrl* */  QFileDialog_getOpenFileUrls2(QWidget* parent, struct miqt_string caption);
 struct miqt_array /* of QUrl* */  QFileDialog_getOpenFileUrls3(QWidget* parent, struct miqt_string caption, QUrl* dir);
 struct miqt_array /* of QUrl* */  QFileDialog_getOpenFileUrls4(QWidget* parent, struct miqt_string caption, QUrl* dir, struct miqt_string filter);
+bool QFileDialog_override_virtual_metacall(void* self, intptr_t slot);
+int QFileDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QFileDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QFileDialog_virtualbase_setVisible(void* self, bool visible);
 bool QFileDialog_override_virtual_done(void* self, intptr_t slot);

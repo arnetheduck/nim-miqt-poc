@@ -34,6 +34,7 @@ void miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock(intptr_t, QTextB
 void miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(intptr_t, QSizeF*);
 void miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged(intptr_t, int);
 void miqt_exec_callback_QAbstractTextDocumentLayout_update1(intptr_t, QRectF*);
+int miqt_exec_callback_QAbstractTextDocumentLayout_metacall(QAbstractTextDocumentLayout*, intptr_t, int, int, void**);
 void miqt_exec_callback_QAbstractTextDocumentLayout_draw(QAbstractTextDocumentLayout*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
 int miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(const QAbstractTextDocumentLayout*, intptr_t, QPointF*, int);
 int miqt_exec_callback_QAbstractTextDocumentLayout_pageCount(const QAbstractTextDocumentLayout*, intptr_t);
@@ -61,6 +62,32 @@ public:
 	MiqtVirtualQAbstractTextDocumentLayout(QTextDocument* doc): QAbstractTextDocumentLayout(doc) {};
 
 	virtual ~MiqtVirtualQAbstractTextDocumentLayout() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QAbstractTextDocumentLayout::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QAbstractTextDocumentLayout::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -467,6 +494,10 @@ void* QAbstractTextDocumentLayout_metacast(QAbstractTextDocumentLayout* self, co
 	return self->qt_metacast(param1);
 }
 
+int QAbstractTextDocumentLayout_metacall(QAbstractTextDocumentLayout* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QAbstractTextDocumentLayout_tr(const char* s) {
 	QString _ret = QAbstractTextDocumentLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -640,6 +671,20 @@ void QAbstractTextDocumentLayout_connect_update1(QAbstractTextDocumentLayout* se
 		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
 		miqt_exec_callback_QAbstractTextDocumentLayout_update1(slot, sigval1);
 	});
+}
+
+bool QAbstractTextDocumentLayout_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QAbstractTextDocumentLayout_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_draw(void* self, intptr_t slot) {

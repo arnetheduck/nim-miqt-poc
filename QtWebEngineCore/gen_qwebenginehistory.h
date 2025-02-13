@@ -58,6 +58,7 @@ void QWebEngineHistoryItem_delete(QWebEngineHistoryItem* self);
 void QWebEngineHistoryModel_virtbase(QWebEngineHistoryModel* src, QAbstractListModel** outptr_QAbstractListModel);
 QMetaObject* QWebEngineHistoryModel_metaObject(const QWebEngineHistoryModel* self);
 void* QWebEngineHistoryModel_metacast(QWebEngineHistoryModel* self, const char* param1);
+int QWebEngineHistoryModel_metacall(QWebEngineHistoryModel* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineHistoryModel_tr(const char* s);
 int QWebEngineHistoryModel_rowCount(const QWebEngineHistoryModel* self, QModelIndex* parent);
 QVariant* QWebEngineHistoryModel_data(const QWebEngineHistoryModel* self, QModelIndex* index, int role);
@@ -69,6 +70,7 @@ struct miqt_string QWebEngineHistoryModel_tr3(const char* s, const char* c, int 
 void QWebEngineHistory_virtbase(QWebEngineHistory* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineHistory_metaObject(const QWebEngineHistory* self);
 void* QWebEngineHistory_metacast(QWebEngineHistory* self, const char* param1);
+int QWebEngineHistory_metacall(QWebEngineHistory* self, int param1, int param2, void** param3);
 struct miqt_string QWebEngineHistory_tr(const char* s);
 void QWebEngineHistory_clear(QWebEngineHistory* self);
 struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_items(const QWebEngineHistory* self);

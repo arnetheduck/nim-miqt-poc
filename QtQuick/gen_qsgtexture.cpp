@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+int miqt_exec_callback_QSGTexture_metacall(QSGTexture*, intptr_t, int, int, void**);
 long long miqt_exec_callback_QSGTexture_comparisonKey(const QSGTexture*, intptr_t);
 QRhiTexture* miqt_exec_callback_QSGTexture_rhiTexture(const QSGTexture*, intptr_t);
 QSize* miqt_exec_callback_QSGTexture_textureSize(const QSGTexture*, intptr_t);
@@ -25,7 +26,6 @@ bool miqt_exec_callback_QSGTexture_hasAlphaChannel(const QSGTexture*, intptr_t);
 bool miqt_exec_callback_QSGTexture_hasMipmaps(const QSGTexture*, intptr_t);
 QRectF* miqt_exec_callback_QSGTexture_normalizedTextureSubRect(const QSGTexture*, intptr_t);
 bool miqt_exec_callback_QSGTexture_isAtlasTexture(const QSGTexture*, intptr_t);
-QSGTexture* miqt_exec_callback_QSGTexture_removedFromAtlas(const QSGTexture*, intptr_t, QRhiResourceUpdateBatch*);
 bool miqt_exec_callback_QSGTexture_event(QSGTexture*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSGTexture_eventFilter(QSGTexture*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QSGTexture_timerEvent(QSGTexture*, intptr_t, QTimerEvent*);
@@ -33,6 +33,7 @@ void miqt_exec_callback_QSGTexture_childEvent(QSGTexture*, intptr_t, QChildEvent
 void miqt_exec_callback_QSGTexture_customEvent(QSGTexture*, intptr_t, QEvent*);
 void miqt_exec_callback_QSGTexture_connectNotify(QSGTexture*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QSGTexture_disconnectNotify(QSGTexture*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QSGDynamicTexture_metacall(QSGDynamicTexture*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QSGDynamicTexture_updateTexture(QSGDynamicTexture*, intptr_t);
 long long miqt_exec_callback_QSGDynamicTexture_comparisonKey(const QSGDynamicTexture*, intptr_t);
 QRhiTexture* miqt_exec_callback_QSGDynamicTexture_rhiTexture(const QSGDynamicTexture*, intptr_t);
@@ -41,7 +42,6 @@ bool miqt_exec_callback_QSGDynamicTexture_hasAlphaChannel(const QSGDynamicTextur
 bool miqt_exec_callback_QSGDynamicTexture_hasMipmaps(const QSGDynamicTexture*, intptr_t);
 QRectF* miqt_exec_callback_QSGDynamicTexture_normalizedTextureSubRect(const QSGDynamicTexture*, intptr_t);
 bool miqt_exec_callback_QSGDynamicTexture_isAtlasTexture(const QSGDynamicTexture*, intptr_t);
-QSGTexture* miqt_exec_callback_QSGDynamicTexture_removedFromAtlas(const QSGDynamicTexture*, intptr_t, QRhiResourceUpdateBatch*);
 bool miqt_exec_callback_QSGDynamicTexture_event(QSGDynamicTexture*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSGDynamicTexture_eventFilter(QSGDynamicTexture*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QSGDynamicTexture_timerEvent(QSGDynamicTexture*, intptr_t, QTimerEvent*);
@@ -59,6 +59,32 @@ public:
 	MiqtVirtualQSGTexture(): QSGTexture() {};
 
 	virtual ~MiqtVirtualQSGTexture() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QSGTexture::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QSGTexture_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QSGTexture::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__comparisonKey = 0;
@@ -183,29 +209,6 @@ public:
 	bool virtualbase_isAtlasTexture() const {
 
 		return QSGTexture::isAtlasTexture();
-
-	}
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__removedFromAtlas = 0;
-
-	// Subclass to allow providing a Go implementation
-	virtual QSGTexture* removedFromAtlas(QRhiResourceUpdateBatch* resourceUpdates) const override {
-		if (handle__removedFromAtlas == 0) {
-			return QSGTexture::removedFromAtlas(resourceUpdates);
-		}
-		
-		QRhiResourceUpdateBatch* sigval1 = resourceUpdates;
-
-		QSGTexture* callback_return_value = miqt_exec_callback_QSGTexture_removedFromAtlas(this, handle__removedFromAtlas, sigval1);
-
-		return callback_return_value;
-	}
-
-	// Wrapper to allow calling protected method
-	QSGTexture* virtualbase_removedFromAtlas(QRhiResourceUpdateBatch* resourceUpdates) const {
-
-		return QSGTexture::removedFromAtlas(resourceUpdates);
 
 	}
 
@@ -404,6 +407,10 @@ void* QSGTexture_metacast(QSGTexture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QSGTexture_metacall(QSGTexture* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QSGTexture_tr(const char* s) {
 	QString _ret = QSGTexture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -442,10 +449,6 @@ QRectF* QSGTexture_normalizedTextureSubRect(const QSGTexture* self) {
 
 bool QSGTexture_isAtlasTexture(const QSGTexture* self) {
 	return self->isAtlasTexture();
-}
-
-QSGTexture* QSGTexture_removedFromAtlas(const QSGTexture* self, QRhiResourceUpdateBatch* resourceUpdates) {
-	return self->removedFromAtlas(resourceUpdates);
 }
 
 void QSGTexture_setMipmapFiltering(QSGTexture* self, int filter) {
@@ -517,6 +520,20 @@ struct miqt_string QSGTexture_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QSGTexture_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QSGTexture_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQSGTexture*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QSGTexture_override_virtual_comparisonKey(void* self, intptr_t slot) {
@@ -599,20 +616,6 @@ bool QSGTexture_override_virtual_isAtlasTexture(void* self, intptr_t slot) {
 
 bool QSGTexture_virtualbase_isAtlasTexture(const void* self) {
 	return ( (const MiqtVirtualQSGTexture*)(self) )->virtualbase_isAtlasTexture();
-}
-
-bool QSGTexture_override_virtual_removedFromAtlas(void* self, intptr_t slot) {
-	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__removedFromAtlas = slot;
-	return true;
-}
-
-QSGTexture* QSGTexture_virtualbase_removedFromAtlas(const void* self, QRhiResourceUpdateBatch* resourceUpdates) {
-	return ( (const MiqtVirtualQSGTexture*)(self) )->virtualbase_removedFromAtlas(resourceUpdates);
 }
 
 bool QSGTexture_override_virtual_event(void* self, intptr_t slot) {
@@ -790,6 +793,32 @@ public:
 	virtual ~MiqtVirtualQSGDynamicTexture() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QSGDynamicTexture::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QSGDynamicTexture_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QSGDynamicTexture::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateTexture = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -927,29 +956,6 @@ public:
 	bool virtualbase_isAtlasTexture() const {
 
 		return QSGDynamicTexture::isAtlasTexture();
-
-	}
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__removedFromAtlas = 0;
-
-	// Subclass to allow providing a Go implementation
-	virtual QSGTexture* removedFromAtlas(QRhiResourceUpdateBatch* resourceUpdates) const override {
-		if (handle__removedFromAtlas == 0) {
-			return QSGDynamicTexture::removedFromAtlas(resourceUpdates);
-		}
-		
-		QRhiResourceUpdateBatch* sigval1 = resourceUpdates;
-
-		QSGTexture* callback_return_value = miqt_exec_callback_QSGDynamicTexture_removedFromAtlas(this, handle__removedFromAtlas, sigval1);
-
-		return callback_return_value;
-	}
-
-	// Wrapper to allow calling protected method
-	QSGTexture* virtualbase_removedFromAtlas(QRhiResourceUpdateBatch* resourceUpdates) const {
-
-		return QSGDynamicTexture::removedFromAtlas(resourceUpdates);
 
 	}
 
@@ -1148,6 +1154,10 @@ void* QSGDynamicTexture_metacast(QSGDynamicTexture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QSGDynamicTexture_metacall(QSGDynamicTexture* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QSGDynamicTexture_tr(const char* s) {
 	QString _ret = QSGDynamicTexture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1183,6 +1193,20 @@ struct miqt_string QSGDynamicTexture_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QSGDynamicTexture_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QSGDynamicTexture_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQSGDynamicTexture*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QSGDynamicTexture_override_virtual_updateTexture(void* self, intptr_t slot) {
@@ -1275,20 +1299,6 @@ bool QSGDynamicTexture_override_virtual_isAtlasTexture(void* self, intptr_t slot
 
 bool QSGDynamicTexture_virtualbase_isAtlasTexture(const void* self) {
 	return ( (const MiqtVirtualQSGDynamicTexture*)(self) )->virtualbase_isAtlasTexture();
-}
-
-bool QSGDynamicTexture_override_virtual_removedFromAtlas(void* self, intptr_t slot) {
-	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__removedFromAtlas = slot;
-	return true;
-}
-
-QSGTexture* QSGDynamicTexture_virtualbase_removedFromAtlas(const void* self, QRhiResourceUpdateBatch* resourceUpdates) {
-	return ( (const MiqtVirtualQSGDynamicTexture*)(self) )->virtualbase_removedFromAtlas(resourceUpdates);
 }
 
 bool QSGDynamicTexture_override_virtual_event(void* self, intptr_t slot) {

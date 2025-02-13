@@ -41,6 +41,7 @@ QQmlFileSelector* QQmlFileSelector_new2(QQmlEngine* engine, QObject* parent);
 void QQmlFileSelector_virtbase(QQmlFileSelector* src, QObject** outptr_QObject);
 QMetaObject* QQmlFileSelector_metaObject(const QQmlFileSelector* self);
 void* QQmlFileSelector_metacast(QQmlFileSelector* self, const char* param1);
+int QQmlFileSelector_metacall(QQmlFileSelector* self, int param1, int param2, void** param3);
 struct miqt_string QQmlFileSelector_tr(const char* s);
 QFileSelector* QQmlFileSelector_selector(const QQmlFileSelector* self);
 void QQmlFileSelector_setSelector(QQmlFileSelector* self, QFileSelector* selector);
@@ -48,6 +49,8 @@ void QQmlFileSelector_setExtraSelectors(QQmlFileSelector* self, struct miqt_arra
 QQmlFileSelector* QQmlFileSelector_get(QQmlEngine* param1);
 struct miqt_string QQmlFileSelector_tr2(const char* s, const char* c);
 struct miqt_string QQmlFileSelector_tr3(const char* s, const char* c, int n);
+bool QQmlFileSelector_override_virtual_metacall(void* self, intptr_t slot);
+int QQmlFileSelector_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QQmlFileSelector_override_virtual_event(void* self, intptr_t slot);
 bool QQmlFileSelector_virtualbase_event(void* self, QEvent* event);
 bool QQmlFileSelector_override_virtual_eventFilter(void* self, intptr_t slot);

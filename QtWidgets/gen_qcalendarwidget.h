@@ -97,6 +97,7 @@ QCalendarWidget* QCalendarWidget_new2();
 void QCalendarWidget_virtbase(QCalendarWidget* src, QWidget** outptr_QWidget);
 QMetaObject* QCalendarWidget_metaObject(const QCalendarWidget* self);
 void* QCalendarWidget_metacast(QCalendarWidget* self, const char* param1);
+int QCalendarWidget_metacall(QCalendarWidget* self, int param1, int param2, void** param3);
 struct miqt_string QCalendarWidget_tr(const char* s);
 QSize* QCalendarWidget_sizeHint(const QCalendarWidget* self);
 QSize* QCalendarWidget_minimumSizeHint(const QCalendarWidget* self);
@@ -157,6 +158,8 @@ void QCalendarWidget_currentPageChanged(QCalendarWidget* self, int year, int mon
 void QCalendarWidget_connect_currentPageChanged(QCalendarWidget* self, intptr_t slot);
 struct miqt_string QCalendarWidget_tr2(const char* s, const char* c);
 struct miqt_string QCalendarWidget_tr3(const char* s, const char* c, int n);
+bool QCalendarWidget_override_virtual_metacall(void* self, intptr_t slot);
+int QCalendarWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCalendarWidget_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QCalendarWidget_virtualbase_sizeHint(const void* self);
 bool QCalendarWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot);

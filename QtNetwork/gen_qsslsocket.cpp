@@ -40,6 +40,7 @@ void miqt_exec_callback_QSslSocket_newSessionTicketReceived(intptr_t);
 void miqt_exec_callback_QSslSocket_alertSent(intptr_t, int, int, struct miqt_string);
 void miqt_exec_callback_QSslSocket_alertReceived(intptr_t, int, int, struct miqt_string);
 void miqt_exec_callback_QSslSocket_handshakeInterruptedOnError(intptr_t, QSslError*);
+int miqt_exec_callback_QSslSocket_metacall(QSslSocket*, intptr_t, int, int, void**);
 void miqt_exec_callback_QSslSocket_resume(QSslSocket*, intptr_t);
 bool miqt_exec_callback_QSslSocket_setSocketDescriptor(QSslSocket*, intptr_t, intptr_t, int, int);
 void miqt_exec_callback_QSslSocket_connectToHost(QSslSocket*, intptr_t, struct miqt_string, uint16_t, int, int);
@@ -86,6 +87,32 @@ public:
 	MiqtVirtualQSslSocket(QObject* parent): QSslSocket(parent) {};
 
 	virtual ~MiqtVirtualQSslSocket() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QSslSocket::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QSslSocket_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QSslSocket::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resume = 0;
@@ -981,6 +1008,10 @@ void* QSslSocket_metacast(QSslSocket* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QSslSocket_metacall(QSslSocket* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QSslSocket_tr(const char* s) {
 	QString _ret = QSslSocket::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1674,6 +1705,20 @@ struct miqt_array /* of int */  QSslSocket_supportedFeatures1(struct miqt_string
 bool QSslSocket_isFeatureSupported2(int feat, struct miqt_string backendName) {
 	QString backendName_QString = QString::fromUtf8(backendName.data, backendName.len);
 	return QSslSocket::isFeatureSupported(static_cast<QSsl::SupportedFeature>(feat), backendName_QString);
+}
+
+bool QSslSocket_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QSslSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QSslSocket_override_virtual_resume(void* self, intptr_t slot) {

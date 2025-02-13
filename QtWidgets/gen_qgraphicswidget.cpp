@@ -1,4 +1,3 @@
-#include <QAction>
 #include <QChildEvent>
 #include <QCloseEvent>
 #include <QEvent>
@@ -20,7 +19,6 @@
 #include <QInputMethodEvent>
 #include <QKeyEvent>
 #include <QKeySequence>
-#include <QList>
 #include <QMarginsF>
 #include <QMetaMethod>
 #include <QMetaObject>
@@ -50,6 +48,7 @@ extern "C" {
 
 void miqt_exec_callback_QGraphicsWidget_geometryChanged(intptr_t);
 void miqt_exec_callback_QGraphicsWidget_layoutChanged(intptr_t);
+int miqt_exec_callback_QGraphicsWidget_metacall(QGraphicsWidget*, intptr_t, int, int, void**);
 void miqt_exec_callback_QGraphicsWidget_setGeometry(QGraphicsWidget*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsWidget_getContentsMargins(const QGraphicsWidget*, intptr_t, double*, double*, double*, double*);
 int miqt_exec_callback_QGraphicsWidget_type(const QGraphicsWidget*, intptr_t);
@@ -126,6 +125,32 @@ public:
 	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent, Qt::WindowFlags wFlags): QGraphicsWidget(parent, wFlags) {};
 
 	virtual ~MiqtVirtualQGraphicsWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QGraphicsWidget::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QGraphicsWidget_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QGraphicsWidget::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -1729,6 +1754,10 @@ void* QGraphicsWidget_metacast(QGraphicsWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QGraphicsWidget_metacall(QGraphicsWidget* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QGraphicsWidget_tr(const char* s) {
 	QString _ret = QGraphicsWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1924,51 +1953,6 @@ void QGraphicsWidget_setShortcutAutoRepeat(QGraphicsWidget* self, int id) {
 	self->setShortcutAutoRepeat(static_cast<int>(id));
 }
 
-void QGraphicsWidget_addAction(QGraphicsWidget* self, QAction* action) {
-	self->addAction(action);
-}
-
-void QGraphicsWidget_addActions(QGraphicsWidget* self, struct miqt_array /* of QAction* */  actions) {
-	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions.len);
-	QAction** actions_arr = static_cast<QAction**>(actions.data);
-	for(size_t i = 0; i < actions.len; ++i) {
-		actions_QList.push_back(actions_arr[i]);
-	}
-	self->addActions(actions_QList);
-}
-
-void QGraphicsWidget_insertActions(QGraphicsWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions) {
-	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions.len);
-	QAction** actions_arr = static_cast<QAction**>(actions.data);
-	for(size_t i = 0; i < actions.len; ++i) {
-		actions_QList.push_back(actions_arr[i]);
-	}
-	self->insertActions(before, actions_QList);
-}
-
-void QGraphicsWidget_insertAction(QGraphicsWidget* self, QAction* before, QAction* action) {
-	self->insertAction(before, action);
-}
-
-void QGraphicsWidget_removeAction(QGraphicsWidget* self, QAction* action) {
-	self->removeAction(action);
-}
-
-struct miqt_array /* of QAction* */  QGraphicsWidget_actions(const QGraphicsWidget* self) {
-	QList<QAction *> _ret = self->actions();
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = _ret[i];
-	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
 void QGraphicsWidget_setAttribute(QGraphicsWidget* self, int attribute) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(attribute));
 }
@@ -2057,6 +2041,20 @@ void QGraphicsWidget_setShortcutAutoRepeat2(QGraphicsWidget* self, int id, bool 
 
 void QGraphicsWidget_setAttribute2(QGraphicsWidget* self, int attribute, bool on) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(attribute), on);
+}
+
+bool QGraphicsWidget_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWidget* self_cast = dynamic_cast<MiqtVirtualQGraphicsWidget*>( (QGraphicsWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QGraphicsWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQGraphicsWidget*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QGraphicsWidget_override_virtual_setGeometry(void* self, intptr_t slot) {

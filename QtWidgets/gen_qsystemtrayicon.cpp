@@ -20,6 +20,7 @@ extern "C" {
 
 void miqt_exec_callback_QSystemTrayIcon_activated(intptr_t, int);
 void miqt_exec_callback_QSystemTrayIcon_messageClicked(intptr_t);
+int miqt_exec_callback_QSystemTrayIcon_metacall(QSystemTrayIcon*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QSystemTrayIcon_event(QSystemTrayIcon*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSystemTrayIcon_eventFilter(QSystemTrayIcon*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QSystemTrayIcon_timerEvent(QSystemTrayIcon*, intptr_t, QTimerEvent*);
@@ -40,6 +41,32 @@ public:
 	MiqtVirtualQSystemTrayIcon(const QIcon& icon, QObject* parent): QSystemTrayIcon(icon, parent) {};
 
 	virtual ~MiqtVirtualQSystemTrayIcon() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QSystemTrayIcon::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QSystemTrayIcon_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QSystemTrayIcon::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -247,6 +274,10 @@ void* QSystemTrayIcon_metacast(QSystemTrayIcon* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QSystemTrayIcon_metacall(QSystemTrayIcon* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QSystemTrayIcon_tr(const char* s) {
 	QString _ret = QSystemTrayIcon::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -390,6 +421,20 @@ void QSystemTrayIcon_showMessage42(QSystemTrayIcon* self, struct miqt_string tit
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, static_cast<QSystemTrayIcon::MessageIcon>(icon), static_cast<int>(msecs));
+}
+
+bool QSystemTrayIcon_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QSystemTrayIcon_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QSystemTrayIcon_override_virtual_event(void* self, intptr_t slot) {

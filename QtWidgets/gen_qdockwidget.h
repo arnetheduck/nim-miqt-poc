@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QActionEvent;
 class QChildEvent;
 class QCloseEvent;
@@ -51,7 +50,6 @@ class QVariant;
 class QWheelEvent;
 class QWidget;
 #else
-typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
 typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
@@ -97,6 +95,7 @@ QDockWidget* QDockWidget_new6(QWidget* parent, int flags);
 void QDockWidget_virtbase(QDockWidget* src, QWidget** outptr_QWidget);
 QMetaObject* QDockWidget_metaObject(const QDockWidget* self);
 void* QDockWidget_metacast(QDockWidget* self, const char* param1);
+int QDockWidget_metacall(QDockWidget* self, int param1, int param2, void** param3);
 struct miqt_string QDockWidget_tr(const char* s);
 QWidget* QDockWidget_widget(const QDockWidget* self);
 void QDockWidget_setWidget(QDockWidget* self, QWidget* widget);
@@ -109,7 +108,6 @@ int QDockWidget_allowedAreas(const QDockWidget* self);
 void QDockWidget_setTitleBarWidget(QDockWidget* self, QWidget* widget);
 QWidget* QDockWidget_titleBarWidget(const QDockWidget* self);
 bool QDockWidget_isAreaAllowed(const QDockWidget* self, int area);
-QAction* QDockWidget_toggleViewAction(const QDockWidget* self);
 void QDockWidget_featuresChanged(QDockWidget* self, int features);
 void QDockWidget_connect_featuresChanged(QDockWidget* self, intptr_t slot);
 void QDockWidget_topLevelChanged(QDockWidget* self, bool topLevel);
@@ -127,6 +125,8 @@ bool QDockWidget_event(QDockWidget* self, QEvent* event);
 void QDockWidget_initStyleOption(const QDockWidget* self, QStyleOptionDockWidget* option);
 struct miqt_string QDockWidget_tr2(const char* s, const char* c);
 struct miqt_string QDockWidget_tr3(const char* s, const char* c, int n);
+bool QDockWidget_override_virtual_metacall(void* self, intptr_t slot);
+int QDockWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QDockWidget_override_virtual_changeEvent(void* self, intptr_t slot);
 void QDockWidget_virtualbase_changeEvent(void* self, QEvent* event);
 bool QDockWidget_override_virtual_closeEvent(void* self, intptr_t slot);

@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QActionEvent;
 class QApplicationStateChangeEvent;
 class QCloseEvent;
@@ -81,7 +80,6 @@ class QWhatsThisClickedEvent;
 class QWheelEvent;
 class QWindowStateChangeEvent;
 #else
-typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
 typedef struct QApplicationStateChangeEvent QApplicationStateChangeEvent;
 typedef struct QCloseEvent QCloseEvent;
@@ -667,16 +665,8 @@ bool QWhatsThisClickedEvent_override_virtual_setAccepted(void* self, intptr_t sl
 void QWhatsThisClickedEvent_virtualbase_setAccepted(void* self, bool accepted);
 void QWhatsThisClickedEvent_delete(QWhatsThisClickedEvent* self);
 
-QActionEvent* QActionEvent_new(int type, QAction* action);
-QActionEvent* QActionEvent_new2(int type, QAction* action, QAction* before);
 void QActionEvent_virtbase(QActionEvent* src, QEvent** outptr_QEvent);
 QActionEvent* QActionEvent_clone(const QActionEvent* self);
-QAction* QActionEvent_action(const QActionEvent* self);
-QAction* QActionEvent_before(const QActionEvent* self);
-bool QActionEvent_override_virtual_clone(void* self, intptr_t slot);
-QActionEvent* QActionEvent_virtualbase_clone(const void* self);
-bool QActionEvent_override_virtual_setAccepted(void* self, intptr_t slot);
-void QActionEvent_virtualbase_setAccepted(void* self, bool accepted);
 void QActionEvent_delete(QActionEvent* self);
 
 QFileOpenEvent* QFileOpenEvent_new(struct miqt_string file);

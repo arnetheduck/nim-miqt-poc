@@ -46,6 +46,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQuickView_statusChanged(intptr_t, int);
+int miqt_exec_callback_QQuickView_metacall(QQuickView*, intptr_t, int, int, void**);
 void miqt_exec_callback_QQuickView_resizeEvent(QQuickView*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QQuickView_timerEvent(QQuickView*, intptr_t, QTimerEvent*);
 void miqt_exec_callback_QQuickView_keyPressEvent(QQuickView*, intptr_t, QKeyEvent*);
@@ -92,6 +93,32 @@ public:
 	MiqtVirtualQQuickView(const QUrl& source, QWindow* parent): QQuickView(source, parent) {};
 
 	virtual ~MiqtVirtualQQuickView() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QQuickView::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QQuickView_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QQuickView::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -883,6 +910,10 @@ void* QQuickView_metacast(QQuickView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QQuickView_metacall(QQuickView* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QQuickView_tr(const char* s) {
 	QString _ret = QQuickView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -996,6 +1027,20 @@ struct miqt_string QQuickView_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QQuickView_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQQuickView* self_cast = dynamic_cast<MiqtVirtualQQuickView*>( (QQuickView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QQuickView_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQQuickView*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QQuickView_override_virtual_resizeEvent(void* self, intptr_t slot) {

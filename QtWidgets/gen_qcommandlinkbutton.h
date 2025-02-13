@@ -99,6 +99,7 @@ QCommandLinkButton* QCommandLinkButton_new6(struct miqt_string text, struct miqt
 void QCommandLinkButton_virtbase(QCommandLinkButton* src, QPushButton** outptr_QPushButton);
 QMetaObject* QCommandLinkButton_metaObject(const QCommandLinkButton* self);
 void* QCommandLinkButton_metacast(QCommandLinkButton* self, const char* param1);
+int QCommandLinkButton_metacall(QCommandLinkButton* self, int param1, int param2, void** param3);
 struct miqt_string QCommandLinkButton_tr(const char* s);
 struct miqt_string QCommandLinkButton_description(const QCommandLinkButton* self);
 void QCommandLinkButton_setDescription(QCommandLinkButton* self, struct miqt_string description);
@@ -110,6 +111,8 @@ bool QCommandLinkButton_event(QCommandLinkButton* self, QEvent* e);
 void QCommandLinkButton_paintEvent(QCommandLinkButton* self, QPaintEvent* param1);
 struct miqt_string QCommandLinkButton_tr2(const char* s, const char* c);
 struct miqt_string QCommandLinkButton_tr3(const char* s, const char* c, int n);
+bool QCommandLinkButton_override_virtual_metacall(void* self, intptr_t slot);
+int QCommandLinkButton_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCommandLinkButton_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QCommandLinkButton_virtualbase_sizeHint(const void* self);
 bool QCommandLinkButton_override_virtual_heightForWidth(void* self, intptr_t slot);

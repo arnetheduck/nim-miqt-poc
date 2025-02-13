@@ -43,6 +43,7 @@ void miqt_exec_callback_QTextDocument_cursorPositionChanged(intptr_t, QTextCurso
 void miqt_exec_callback_QTextDocument_blockCountChanged(intptr_t, int);
 void miqt_exec_callback_QTextDocument_baseUrlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QTextDocument_documentLayoutChanged(intptr_t);
+int miqt_exec_callback_QTextDocument_metacall(QTextDocument*, intptr_t, int, int, void**);
 void miqt_exec_callback_QTextDocument_clear(QTextDocument*, intptr_t);
 QTextObject* miqt_exec_callback_QTextDocument_createObject(QTextDocument*, intptr_t, QTextFormat*);
 QVariant* miqt_exec_callback_QTextDocument_loadResource(QTextDocument*, intptr_t, int, QUrl*);
@@ -82,6 +83,32 @@ public:
 	MiqtVirtualQTextDocument(const QString& text, QObject* parent): QTextDocument(text, parent) {};
 
 	virtual ~MiqtVirtualQTextDocument() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QTextDocument::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QTextDocument_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_metacall(int param1, int param2, void** param3) {
+
+		return QTextDocument::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__clear = 0;
@@ -363,6 +390,10 @@ QMetaObject* QTextDocument_metaObject(const QTextDocument* self) {
 
 void* QTextDocument_metacast(QTextDocument* self, const char* param1) {
 	return self->qt_metacast(param1);
+}
+
+int QTextDocument_metacall(QTextDocument* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
 }
 
 struct miqt_string QTextDocument_tr(const char* s) {
@@ -986,6 +1017,20 @@ void QTextDocument_clearUndoRedoStacks1(QTextDocument* self, int historyToClear)
 
 void QTextDocument_setModified1(QTextDocument* self, bool m) {
 	self->setModified(m);
+}
+
+bool QTextDocument_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QTextDocument_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_metacall(param1, param2, param3);
 }
 
 bool QTextDocument_override_virtual_clear(void* self, intptr_t slot) {
