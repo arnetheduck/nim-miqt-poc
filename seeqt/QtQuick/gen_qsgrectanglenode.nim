@@ -55,23 +55,20 @@ proc fcQSGRectangleNode_setColor(self: pointer, color: pointer): void {.importc:
 proc fcQSGRectangleNode_color(self: pointer, ): pointer {.importc: "QSGRectangleNode_color".}
 proc fcQSGRectangleNode_delete(self: pointer) {.importc: "QSGRectangleNode_delete".}
 
-
-func init*(T: type gen_qsgrectanglenode_types.QSGRectangleNode, h: ptr cQSGRectangleNode): gen_qsgrectanglenode_types.QSGRectangleNode =
-  T(h: h)
-proc setRect*(self: gen_qsgrectanglenode_types.QSGRectangleNode, rect: QRectF): void =
+proc setRect*(self: gen_qsgrectanglenode_types.QSGRectangleNode, rect: gen_qrect_types.QRectF): void =
   fcQSGRectangleNode_setRect(self.h, rect.h)
 
 proc setRect*(self: gen_qsgrectanglenode_types.QSGRectangleNode, x: float64, y: float64, w: float64, h: float64): void =
   fcQSGRectangleNode_setRect2(self.h, x, y, w, h)
 
-proc rect*(self: gen_qsgrectanglenode_types.QSGRectangleNode, ): QRectF =
-  QRectF(h: fcQSGRectangleNode_rect(self.h))
+proc rect*(self: gen_qsgrectanglenode_types.QSGRectangleNode, ): gen_qrect_types.QRectF =
+  gen_qrect_types.QRectF(h: fcQSGRectangleNode_rect(self.h))
 
-proc setColor*(self: gen_qsgrectanglenode_types.QSGRectangleNode, color: QColor): void =
+proc setColor*(self: gen_qsgrectanglenode_types.QSGRectangleNode, color: gen_qcolor_types.QColor): void =
   fcQSGRectangleNode_setColor(self.h, color.h)
 
-proc color*(self: gen_qsgrectanglenode_types.QSGRectangleNode, ): QColor =
-  QColor(h: fcQSGRectangleNode_color(self.h))
+proc color*(self: gen_qsgrectanglenode_types.QSGRectangleNode, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQSGRectangleNode_color(self.h))
 
 proc delete*(self: gen_qsgrectanglenode_types.QSGRectangleNode) =
   fcQSGRectangleNode_delete(self.h)

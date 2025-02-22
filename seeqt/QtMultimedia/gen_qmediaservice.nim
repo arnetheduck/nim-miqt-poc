@@ -62,11 +62,8 @@ proc fcQMediaService_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_strin
 proc fcQMediaService_staticMetaObject(): pointer {.importc: "QMediaService_staticMetaObject".}
 proc fcQMediaService_delete(self: pointer) {.importc: "QMediaService_delete".}
 
-
-func init*(T: type gen_qmediaservice_types.QMediaService, h: ptr cQMediaService): gen_qmediaservice_types.QMediaService =
-  T(h: h)
-proc metaObject*(self: gen_qmediaservice_types.QMediaService, ): QMetaObject =
-  QMetaObject(h: fcQMediaService_metaObject(self.h))
+proc metaObject*(self: gen_qmediaservice_types.QMediaService, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaService_metaObject(self.h))
 
 proc metacast*(self: gen_qmediaservice_types.QMediaService, param1: cstring): pointer =
   fcQMediaService_metacast(self.h, param1)
@@ -86,10 +83,10 @@ proc trUtf8*(_: type gen_qmediaservice_types.QMediaService, s: cstring): string 
   c_free(v_ms.data)
   vx_ret
 
-proc requestControl*(self: gen_qmediaservice_types.QMediaService, name: cstring): QMediaControl =
-  QMediaControl(h: fcQMediaService_requestControl(self.h, name))
+proc requestControl*(self: gen_qmediaservice_types.QMediaService, name: cstring): gen_qmediacontrol_types.QMediaControl =
+  gen_qmediacontrol_types.QMediaControl(h: fcQMediaService_requestControl(self.h, name))
 
-proc releaseControl*(self: gen_qmediaservice_types.QMediaService, control: QMediaControl): void =
+proc releaseControl*(self: gen_qmediaservice_types.QMediaService, control: gen_qmediacontrol_types.QMediaControl): void =
   fcQMediaService_releaseControl(self.h, control.h)
 
 proc tr*(_: type gen_qmediaservice_types.QMediaService, s: cstring, c: cstring): string =

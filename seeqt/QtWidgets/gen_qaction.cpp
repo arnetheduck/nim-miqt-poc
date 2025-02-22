@@ -29,183 +29,176 @@ void miqt_exec_callback_QAction_triggered(intptr_t);
 void miqt_exec_callback_QAction_hovered(intptr_t);
 void miqt_exec_callback_QAction_toggled(intptr_t, bool);
 void miqt_exec_callback_QAction_triggered1(intptr_t, bool);
-int miqt_exec_callback_QAction_metacall(QAction*, intptr_t, int, int, void**);
-bool miqt_exec_callback_QAction_event(QAction*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAction_eventFilter(QAction*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAction_timerEvent(QAction*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAction_childEvent(QAction*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAction_customEvent(QAction*, intptr_t, QEvent*);
-void miqt_exec_callback_QAction_connectNotify(QAction*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAction_disconnectNotify(QAction*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQAction final : public QAction {
+	struct QAction_VTable* vtbl;
 public:
 
-	MiqtVirtualQAction(): QAction() {};
-	MiqtVirtualQAction(const QString& text): QAction(text) {};
-	MiqtVirtualQAction(const QIcon& icon, const QString& text): QAction(icon, text) {};
-	MiqtVirtualQAction(QObject* parent): QAction(parent) {};
-	MiqtVirtualQAction(const QString& text, QObject* parent): QAction(text, parent) {};
-	MiqtVirtualQAction(const QIcon& icon, const QString& text, QObject* parent): QAction(icon, text, parent) {};
+	MiqtVirtualQAction(struct QAction_VTable* vtbl): QAction(), vtbl(vtbl) {};
+	MiqtVirtualQAction(struct QAction_VTable* vtbl, const QString& text): QAction(text), vtbl(vtbl) {};
+	MiqtVirtualQAction(struct QAction_VTable* vtbl, const QIcon& icon, const QString& text): QAction(icon, text), vtbl(vtbl) {};
+	MiqtVirtualQAction(struct QAction_VTable* vtbl, QObject* parent): QAction(parent), vtbl(vtbl) {};
+	MiqtVirtualQAction(struct QAction_VTable* vtbl, const QString& text, QObject* parent): QAction(text, parent), vtbl(vtbl) {};
+	MiqtVirtualQAction(struct QAction_VTable* vtbl, const QIcon& icon, const QString& text, QObject* parent): QAction(icon, text, parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQAction() override = default;
+	virtual ~MiqtVirtualQAction() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (vtbl->metaObject == 0) {
+			return QAction::metaObject();
+		}
+
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
+
+		return callback_return_value;
+	}
+
+	friend QMetaObject* QAction_virtualbase_metaObject(const void* self);
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (vtbl->metacast == 0) {
+			return QAction::qt_metacast(param1);
+		}
+
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
+
+		return callback_return_value;
+	}
+
+	friend void* QAction_virtualbase_metacast(void* self, const char* param1);
 
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QAction::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QAction_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	friend int QAction_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* param1) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QAction::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_QAction_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
 
 	friend bool QAction_virtualbase_event(void* self, QEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QAction::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QAction_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	friend bool QAction_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QAction::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QAction_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAction_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QAction::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QAction_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAction_virtualbase_childEvent(void* self, QChildEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QAction::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QAction_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAction_virtualbase_customEvent(void* self, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QAction::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAction_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAction_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QAction::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAction_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -217,32 +210,32 @@ public:
 	friend bool QAction_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QAction* QAction_new() {
-	return new MiqtVirtualQAction();
+QAction* QAction_new(struct QAction_VTable* vtbl) {
+	return new MiqtVirtualQAction(vtbl);
 }
 
-QAction* QAction_new2(struct miqt_string text) {
+QAction* QAction_new2(struct QAction_VTable* vtbl, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQAction(text_QString);
+	return new MiqtVirtualQAction(vtbl, text_QString);
 }
 
-QAction* QAction_new3(QIcon* icon, struct miqt_string text) {
+QAction* QAction_new3(struct QAction_VTable* vtbl, QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQAction(*icon, text_QString);
+	return new MiqtVirtualQAction(vtbl, *icon, text_QString);
 }
 
-QAction* QAction_new4(QObject* parent) {
-	return new MiqtVirtualQAction(parent);
+QAction* QAction_new4(struct QAction_VTable* vtbl, QObject* parent) {
+	return new MiqtVirtualQAction(vtbl, parent);
 }
 
-QAction* QAction_new5(struct miqt_string text, QObject* parent) {
+QAction* QAction_new5(struct QAction_VTable* vtbl, struct miqt_string text, QObject* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQAction(text_QString, parent);
+	return new MiqtVirtualQAction(vtbl, text_QString, parent);
 }
 
-QAction* QAction_new6(QIcon* icon, struct miqt_string text, QObject* parent) {
+QAction* QAction_new6(struct QAction_VTable* vtbl, QIcon* icon, struct miqt_string text, QObject* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQAction(*icon, text_QString, parent);
+	return new MiqtVirtualQAction(vtbl, *icon, text_QString, parent);
 }
 
 void QAction_virtbase(QAction* src, QObject** outptr_QObject) {
@@ -683,14 +676,16 @@ void QAction_connect_triggered1(QAction* self, intptr_t slot) {
 	});
 }
 
-bool QAction_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
+QMetaObject* QAction_virtualbase_metaObject(const void* self) {
+
+	return (QMetaObject*) ( (const MiqtVirtualQAction*)(self) )->QAction::metaObject();
+
+}
+
+void* QAction_virtualbase_metacast(void* self, const char* param1) {
+
+	return ( (MiqtVirtualQAction*)(self) )->QAction::qt_metacast(param1);
+
 }
 
 int QAction_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
@@ -699,30 +694,10 @@ int QAction_virtualbase_metacall(void* self, int param1, int param2, void** para
 
 }
 
-bool QAction_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
-}
-
 bool QAction_virtualbase_event(void* self, QEvent* param1) {
 
 	return ( (MiqtVirtualQAction*)(self) )->QAction::event(param1);
 
-}
-
-bool QAction_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QAction_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
@@ -731,30 +706,10 @@ bool QAction_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event
 
 }
 
-bool QAction_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
-}
-
 void QAction_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
 	( (MiqtVirtualQAction*)(self) )->QAction::timerEvent(event);
 
-}
-
-bool QAction_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
 }
 
 void QAction_virtualbase_childEvent(void* self, QChildEvent* event) {
@@ -763,46 +718,16 @@ void QAction_virtualbase_childEvent(void* self, QChildEvent* event) {
 
 }
 
-bool QAction_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
-}
-
 void QAction_virtualbase_customEvent(void* self, QEvent* event) {
 
 	( (MiqtVirtualQAction*)(self) )->QAction::customEvent(event);
 
 }
 
-bool QAction_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QAction_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 	( (MiqtVirtualQAction*)(self) )->QAction::connectNotify(*signal);
 
-}
-
-bool QAction_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

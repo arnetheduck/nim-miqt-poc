@@ -10,4 +10,3 @@ type QSGGeometryTexturedPoint2D* {.inheritable, pure.} = object
   h*: pointer
 type QSGGeometryColoredPoint2D* {.inheritable, pure.} = object
   h*: pointer
-

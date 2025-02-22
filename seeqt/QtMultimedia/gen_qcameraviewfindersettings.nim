@@ -44,8 +44,6 @@ export
 
 type cQCameraViewfinderSettings*{.exportc: "QCameraViewfinderSettings", incompleteStruct.} = object
 
-proc fcQCameraViewfinderSettings_new(): ptr cQCameraViewfinderSettings {.importc: "QCameraViewfinderSettings_new".}
-proc fcQCameraViewfinderSettings_new2(other: pointer): ptr cQCameraViewfinderSettings {.importc: "QCameraViewfinderSettings_new2".}
 proc fcQCameraViewfinderSettings_operatorAssign(self: pointer, other: pointer): void {.importc: "QCameraViewfinderSettings_operatorAssign".}
 proc fcQCameraViewfinderSettings_swap(self: pointer, other: pointer): void {.importc: "QCameraViewfinderSettings_swap".}
 proc fcQCameraViewfinderSettings_isNull(self: pointer, ): bool {.importc: "QCameraViewfinderSettings_isNull".}
@@ -61,30 +59,23 @@ proc fcQCameraViewfinderSettings_setPixelFormat(self: pointer, format: cint): vo
 proc fcQCameraViewfinderSettings_pixelAspectRatio(self: pointer, ): pointer {.importc: "QCameraViewfinderSettings_pixelAspectRatio".}
 proc fcQCameraViewfinderSettings_setPixelAspectRatio(self: pointer, ratio: pointer): void {.importc: "QCameraViewfinderSettings_setPixelAspectRatio".}
 proc fcQCameraViewfinderSettings_setPixelAspectRatio2(self: pointer, horizontal: cint, vertical: cint): void {.importc: "QCameraViewfinderSettings_setPixelAspectRatio2".}
+proc fcQCameraViewfinderSettings_new(): ptr cQCameraViewfinderSettings {.importc: "QCameraViewfinderSettings_new".}
+proc fcQCameraViewfinderSettings_new2(other: pointer): ptr cQCameraViewfinderSettings {.importc: "QCameraViewfinderSettings_new2".}
 proc fcQCameraViewfinderSettings_delete(self: pointer) {.importc: "QCameraViewfinderSettings_delete".}
 
-
-func init*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, h: ptr cQCameraViewfinderSettings): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
-  T(h: h)
-proc create*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
-  gen_qcameraviewfindersettings_types.QCameraViewfinderSettings.init(fcQCameraViewfinderSettings_new())
-
-proc create*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: QCameraViewfinderSettings): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
-  gen_qcameraviewfindersettings_types.QCameraViewfinderSettings.init(fcQCameraViewfinderSettings_new2(other.h))
-
-proc operatorAssign*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: QCameraViewfinderSettings): void =
+proc operatorAssign*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings): void =
   fcQCameraViewfinderSettings_operatorAssign(self.h, other.h)
 
-proc swap*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: QCameraViewfinderSettings): void =
+proc swap*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings): void =
   fcQCameraViewfinderSettings_swap(self.h, other.h)
 
 proc isNull*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): bool =
   fcQCameraViewfinderSettings_isNull(self.h)
 
-proc resolution*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): QSize =
-  QSize(h: fcQCameraViewfinderSettings_resolution(self.h))
+proc resolution*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQCameraViewfinderSettings_resolution(self.h))
 
-proc setResolution*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, resolution: QSize): void =
+proc setResolution*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, resolution: gen_qsize_types.QSize): void =
   fcQCameraViewfinderSettings_setResolution(self.h, resolution.h)
 
 proc setResolution*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, width: cint, height: cint): void =
@@ -108,14 +99,21 @@ proc pixelFormat*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSet
 proc setPixelFormat*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, format: cint): void =
   fcQCameraViewfinderSettings_setPixelFormat(self.h, cint(format))
 
-proc pixelAspectRatio*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): QSize =
-  QSize(h: fcQCameraViewfinderSettings_pixelAspectRatio(self.h))
+proc pixelAspectRatio*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQCameraViewfinderSettings_pixelAspectRatio(self.h))
 
-proc setPixelAspectRatio*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ratio: QSize): void =
+proc setPixelAspectRatio*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ratio: gen_qsize_types.QSize): void =
   fcQCameraViewfinderSettings_setPixelAspectRatio(self.h, ratio.h)
 
 proc setPixelAspectRatio*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, horizontal: cint, vertical: cint): void =
   fcQCameraViewfinderSettings_setPixelAspectRatio2(self.h, horizontal, vertical)
+
+proc create*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
+  gen_qcameraviewfindersettings_types.QCameraViewfinderSettings(h: fcQCameraViewfinderSettings_new())
+
+proc create*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings,
+    other: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
+  gen_qcameraviewfindersettings_types.QCameraViewfinderSettings(h: fcQCameraViewfinderSettings_new2(other.h))
 
 proc delete*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings) =
   fcQCameraViewfinderSettings_delete(self.h)

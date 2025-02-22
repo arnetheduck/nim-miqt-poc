@@ -18,15 +18,6 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QAccessibleBridgePlugin_metacall(QAccessibleBridgePlugin*, intptr_t, int, int, void**);
-QAccessibleBridge* miqt_exec_callback_QAccessibleBridgePlugin_create(QAccessibleBridgePlugin*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QAccessibleBridgePlugin_event(QAccessibleBridgePlugin*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAccessibleBridgePlugin_eventFilter(QAccessibleBridgePlugin*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_timerEvent(QAccessibleBridgePlugin*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_childEvent(QAccessibleBridgePlugin*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_customEvent(QAccessibleBridgePlugin*, intptr_t, QEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_connectNotify(QAccessibleBridgePlugin*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAccessibleBridgePlugin_disconnectNotify(QAccessibleBridgePlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -48,43 +39,67 @@ void QAccessibleBridge_delete(QAccessibleBridge* self) {
 }
 
 class MiqtVirtualQAccessibleBridgePlugin final : public QAccessibleBridgePlugin {
+	struct QAccessibleBridgePlugin_VTable* vtbl;
 public:
 
-	MiqtVirtualQAccessibleBridgePlugin(): QAccessibleBridgePlugin() {};
-	MiqtVirtualQAccessibleBridgePlugin(QObject* parent): QAccessibleBridgePlugin(parent) {};
+	MiqtVirtualQAccessibleBridgePlugin(struct QAccessibleBridgePlugin_VTable* vtbl): QAccessibleBridgePlugin(), vtbl(vtbl) {};
+	MiqtVirtualQAccessibleBridgePlugin(struct QAccessibleBridgePlugin_VTable* vtbl, QObject* parent): QAccessibleBridgePlugin(parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQAccessibleBridgePlugin() override = default;
+	virtual ~MiqtVirtualQAccessibleBridgePlugin() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (vtbl->metaObject == 0) {
+			return QAccessibleBridgePlugin::metaObject();
+		}
+
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
+
+		return callback_return_value;
+	}
+
+	friend QMetaObject* QAccessibleBridgePlugin_virtualbase_metaObject(const void* self);
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (vtbl->metacast == 0) {
+			return QAccessibleBridgePlugin::qt_metacast(param1);
+		}
+
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
+
+		return callback_return_value;
+	}
+
+	friend void* QAccessibleBridgePlugin_virtualbase_metacast(void* self, const char* param1);
 
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QAccessibleBridgePlugin::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QAccessibleBridgePlugin_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	friend int QAccessibleBridgePlugin_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__create = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QAccessibleBridge* create(const QString& key) override {
-		if (handle__create == 0) {
+		if (vtbl->create == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QString key_ret = key;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray key_b = key_ret.toUtf8();
@@ -94,143 +109,117 @@ public:
 		memcpy(key_ms.data, key_b.data(), key_ms.len);
 		struct miqt_string sigval1 = key_ms;
 
-		QAccessibleBridge* callback_return_value = miqt_exec_callback_QAccessibleBridgePlugin_create(this, handle__create, sigval1);
+		QAccessibleBridge* callback_return_value = vtbl->create(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QAccessibleBridgePlugin::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QAccessibleBridgePlugin_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
 
 	friend bool QAccessibleBridgePlugin_virtualbase_event(void* self, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QAccessibleBridgePlugin::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QAccessibleBridgePlugin_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	friend bool QAccessibleBridgePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QAccessibleBridgePlugin::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QAccessibleBridgePlugin_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAccessibleBridgePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QAccessibleBridgePlugin::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QAccessibleBridgePlugin_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAccessibleBridgePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QAccessibleBridgePlugin::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QAccessibleBridgePlugin_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAccessibleBridgePlugin_virtualbase_customEvent(void* self, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QAccessibleBridgePlugin::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAccessibleBridgePlugin_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAccessibleBridgePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QAccessibleBridgePlugin::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAccessibleBridgePlugin_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QAccessibleBridgePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -242,12 +231,12 @@ public:
 	friend bool QAccessibleBridgePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QAccessibleBridgePlugin* QAccessibleBridgePlugin_new() {
-	return new MiqtVirtualQAccessibleBridgePlugin();
+QAccessibleBridgePlugin* QAccessibleBridgePlugin_new(struct QAccessibleBridgePlugin_VTable* vtbl) {
+	return new MiqtVirtualQAccessibleBridgePlugin(vtbl);
 }
 
-QAccessibleBridgePlugin* QAccessibleBridgePlugin_new2(QObject* parent) {
-	return new MiqtVirtualQAccessibleBridgePlugin(parent);
+QAccessibleBridgePlugin* QAccessibleBridgePlugin_new2(struct QAccessibleBridgePlugin_VTable* vtbl, QObject* parent) {
+	return new MiqtVirtualQAccessibleBridgePlugin(vtbl, parent);
 }
 
 void QAccessibleBridgePlugin_virtbase(QAccessibleBridgePlugin* src, QObject** outptr_QObject) {
@@ -337,14 +326,16 @@ struct miqt_string QAccessibleBridgePlugin_trUtf83(const char* s, const char* c,
 	return _ms;
 }
 
-bool QAccessibleBridgePlugin_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
+QMetaObject* QAccessibleBridgePlugin_virtualbase_metaObject(const void* self) {
+
+	return (QMetaObject*) ( (const MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::metaObject();
+
+}
+
+void* QAccessibleBridgePlugin_virtualbase_metacast(void* self, const char* param1) {
+
+	return ( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::qt_metacast(param1);
+
 }
 
 int QAccessibleBridgePlugin_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
@@ -353,40 +344,10 @@ int QAccessibleBridgePlugin_virtualbase_metacall(void* self, int param1, int par
 
 }
 
-bool QAccessibleBridgePlugin_override_virtual_create(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__create = slot;
-	return true;
-}
-
-bool QAccessibleBridgePlugin_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
-}
-
 bool QAccessibleBridgePlugin_virtualbase_event(void* self, QEvent* event) {
 
 	return ( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::event(event);
 
-}
-
-bool QAccessibleBridgePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QAccessibleBridgePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
@@ -395,30 +356,10 @@ bool QAccessibleBridgePlugin_virtualbase_eventFilter(void* self, QObject* watche
 
 }
 
-bool QAccessibleBridgePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
-}
-
 void QAccessibleBridgePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
 	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::timerEvent(event);
 
-}
-
-bool QAccessibleBridgePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
 }
 
 void QAccessibleBridgePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
@@ -427,46 +368,16 @@ void QAccessibleBridgePlugin_virtualbase_childEvent(void* self, QChildEvent* eve
 
 }
 
-bool QAccessibleBridgePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
-}
-
 void QAccessibleBridgePlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
 	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::customEvent(event);
 
 }
 
-bool QAccessibleBridgePlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QAccessibleBridgePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::connectNotify(*signal);
 
-}
-
-bool QAccessibleBridgePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QAccessibleBridgePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

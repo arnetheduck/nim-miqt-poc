@@ -6,4 +6,3 @@ type QJsonValuePtr* {.inheritable, pure.} = object
   h*: pointer
 type QJsonValueRefPtr* {.inheritable, pure.} = object
   h*: pointer
-

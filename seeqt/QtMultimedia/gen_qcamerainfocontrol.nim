@@ -60,11 +60,8 @@ proc fcQCameraInfoControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_
 proc fcQCameraInfoControl_staticMetaObject(): pointer {.importc: "QCameraInfoControl_staticMetaObject".}
 proc fcQCameraInfoControl_delete(self: pointer) {.importc: "QCameraInfoControl_delete".}
 
-
-func init*(T: type gen_qcamerainfocontrol_types.QCameraInfoControl, h: ptr cQCameraInfoControl): gen_qcamerainfocontrol_types.QCameraInfoControl =
-  T(h: h)
-proc metaObject*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, ): QMetaObject =
-  QMetaObject(h: fcQCameraInfoControl_metaObject(self.h))
+proc metaObject*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraInfoControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, param1: cstring): pointer =
   fcQCameraInfoControl_metacast(self.h, param1)

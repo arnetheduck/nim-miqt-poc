@@ -4,4 +4,3 @@ type QDebugStateSaver* {.inheritable, pure.} = object
   h*: pointer
 type QNoDebug* {.inheritable, pure.} = object
   h*: pointer
-

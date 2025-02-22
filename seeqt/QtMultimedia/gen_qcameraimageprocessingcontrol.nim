@@ -81,11 +81,8 @@ proc fcQCameraImageProcessingControl_trUtf83(s: cstring, c: cstring, n: cint): s
 proc fcQCameraImageProcessingControl_staticMetaObject(): pointer {.importc: "QCameraImageProcessingControl_staticMetaObject".}
 proc fcQCameraImageProcessingControl_delete(self: pointer) {.importc: "QCameraImageProcessingControl_delete".}
 
-
-func init*(T: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, h: ptr cQCameraImageProcessingControl): gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl =
-  T(h: h)
-proc metaObject*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, ): QMetaObject =
-  QMetaObject(h: fcQCameraImageProcessingControl_metaObject(self.h))
+proc metaObject*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraImageProcessingControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, param1: cstring): pointer =
   fcQCameraImageProcessingControl_metacast(self.h, param1)
@@ -108,13 +105,13 @@ proc trUtf8*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcess
 proc isParameterSupported*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, param1: cint): bool =
   fcQCameraImageProcessingControl_isParameterSupported(self.h, cint(param1))
 
-proc isParameterValueSupported*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint, value: QVariant): bool =
+proc isParameterValueSupported*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint, value: gen_qvariant_types.QVariant): bool =
   fcQCameraImageProcessingControl_isParameterValueSupported(self.h, cint(parameter), value.h)
 
-proc parameter*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint): QVariant =
-  QVariant(h: fcQCameraImageProcessingControl_parameter(self.h, cint(parameter)))
+proc parameter*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQCameraImageProcessingControl_parameter(self.h, cint(parameter)))
 
-proc setParameter*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint, value: QVariant): void =
+proc setParameter*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint, value: gen_qvariant_types.QVariant): void =
   fcQCameraImageProcessingControl_setParameter(self.h, cint(parameter), value.h)
 
 proc tr*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring): string =

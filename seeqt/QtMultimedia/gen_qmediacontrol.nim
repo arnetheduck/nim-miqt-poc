@@ -58,11 +58,8 @@ proc fcQMediaControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_strin
 proc fcQMediaControl_staticMetaObject(): pointer {.importc: "QMediaControl_staticMetaObject".}
 proc fcQMediaControl_delete(self: pointer) {.importc: "QMediaControl_delete".}
 
-
-func init*(T: type gen_qmediacontrol_types.QMediaControl, h: ptr cQMediaControl): gen_qmediacontrol_types.QMediaControl =
-  T(h: h)
-proc metaObject*(self: gen_qmediacontrol_types.QMediaControl, ): QMetaObject =
-  QMetaObject(h: fcQMediaControl_metaObject(self.h))
+proc metaObject*(self: gen_qmediacontrol_types.QMediaControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaControl_metaObject(self.h))
 
 proc metacast*(self: gen_qmediacontrol_types.QMediaControl, param1: cstring): pointer =
   fcQMediaControl_metacast(self.h, param1)

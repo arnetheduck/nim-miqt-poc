@@ -74,9 +74,6 @@ proc fcQLibraryInfo_location(param1: cint): struct_miqt_string {.importc: "QLibr
 proc fcQLibraryInfo_platformPluginArguments(platformName: struct_miqt_string): struct_miqt_array {.importc: "QLibraryInfo_platformPluginArguments".}
 proc fcQLibraryInfo_delete(self: pointer) {.importc: "QLibraryInfo_delete".}
 
-
-func init*(T: type gen_qlibraryinfo_types.QLibraryInfo, h: ptr cQLibraryInfo): gen_qlibraryinfo_types.QLibraryInfo =
-  T(h: h)
 proc licensee*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): string =
   let v_ms = fcQLibraryInfo_licensee()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
@@ -89,8 +86,8 @@ proc licensedProducts*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc buildDate*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): QDate =
-  QDate(h: fcQLibraryInfo_buildDate())
+proc buildDate*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): gen_qdatetime_types.QDate =
+  gen_qdatetime_types.QDate(h: fcQLibraryInfo_buildDate())
 
 proc build*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): cstring =
   (fcQLibraryInfo_build())
@@ -98,8 +95,8 @@ proc build*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): cstring =
 proc isDebugBuild*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): bool =
   fcQLibraryInfo_isDebugBuild()
 
-proc version*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): QVersionNumber =
-  QVersionNumber(h: fcQLibraryInfo_version())
+proc version*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): gen_qversionnumber_types.QVersionNumber =
+  gen_qversionnumber_types.QVersionNumber(h: fcQLibraryInfo_version())
 
 proc location*(_: type gen_qlibraryinfo_types.QLibraryInfo, param1: cint): string =
   let v_ms = fcQLibraryInfo_location(cint(param1))
