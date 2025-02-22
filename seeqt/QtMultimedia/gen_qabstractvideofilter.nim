@@ -150,6 +150,10 @@ proc miqt_exec_callback_cQAbstractVideoFilter_activeChanged(slot: int) {.exportc
   let nimfunc = cast[ptr QAbstractVideoFilteractiveChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQAbstractVideoFilter_activeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractVideoFilter_activeChanged_release".} =
+  let nimfunc = cast[ref QAbstractVideoFilteractiveChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactiveChanged*(self: gen_qabstractvideofilter_types.QAbstractVideoFilter, slot: QAbstractVideoFilteractiveChangedSlot) =
   var tmp = new QAbstractVideoFilteractiveChangedSlot
   tmp[] = slot

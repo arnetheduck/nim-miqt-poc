@@ -279,6 +279,10 @@ proc miqt_exec_callback_cQCameraImageCapture_error2(slot: int, id: cint, error: 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQCameraImageCapture_error2_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_error2_release".} =
+  let nimfunc = cast[ref QCameraImageCaptureerror2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onerror*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCaptureerror2Slot) =
   var tmp = new QCameraImageCaptureerror2Slot
   tmp[] = slot
@@ -294,6 +298,10 @@ proc miqt_exec_callback_cQCameraImageCapture_readyForCaptureChanged(slot: int, r
   let slotval1 = ready
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCameraImageCapture_readyForCaptureChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_readyForCaptureChanged_release".} =
+  let nimfunc = cast[ref QCameraImageCapturereadyForCaptureChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onreadyForCaptureChanged*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCapturereadyForCaptureChangedSlot) =
   var tmp = new QCameraImageCapturereadyForCaptureChangedSlot
@@ -311,6 +319,10 @@ proc miqt_exec_callback_cQCameraImageCapture_bufferFormatChanged(slot: int, form
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraImageCapture_bufferFormatChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_bufferFormatChanged_release".} =
+  let nimfunc = cast[ref QCameraImageCapturebufferFormatChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onbufferFormatChanged*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCapturebufferFormatChangedSlot) =
   var tmp = new QCameraImageCapturebufferFormatChangedSlot
   tmp[] = slot
@@ -327,6 +339,10 @@ proc miqt_exec_callback_cQCameraImageCapture_captureDestinationChanged(slot: int
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQCameraImageCapture_captureDestinationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_captureDestinationChanged_release".} =
+  let nimfunc = cast[ref QCameraImageCapturecaptureDestinationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncaptureDestinationChanged*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCapturecaptureDestinationChangedSlot) =
   var tmp = new QCameraImageCapturecaptureDestinationChangedSlot
   tmp[] = slot
@@ -342,6 +358,10 @@ proc miqt_exec_callback_cQCameraImageCapture_imageExposed(slot: int, id: cint) {
   let slotval1 = id
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQCameraImageCapture_imageExposed_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_imageExposed_release".} =
+  let nimfunc = cast[ref QCameraImageCaptureimageExposedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onimageExposed*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCaptureimageExposedSlot) =
   var tmp = new QCameraImageCaptureimageExposedSlot
@@ -360,6 +380,10 @@ proc miqt_exec_callback_cQCameraImageCapture_imageCaptured(slot: int, id: cint, 
   let slotval2 = gen_qimage_types.QImage(h: preview)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQCameraImageCapture_imageCaptured_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_imageCaptured_release".} =
+  let nimfunc = cast[ref QCameraImageCaptureimageCapturedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onimageCaptured*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCaptureimageCapturedSlot) =
   var tmp = new QCameraImageCaptureimageCapturedSlot
@@ -384,6 +408,10 @@ proc miqt_exec_callback_cQCameraImageCapture_imageMetadataAvailable(slot: int, i
 
   nimfunc[](slotval1, slotval2, slotval3)
 
+proc miqt_exec_callback_cQCameraImageCapture_imageMetadataAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_imageMetadataAvailable_release".} =
+  let nimfunc = cast[ref QCameraImageCaptureimageMetadataAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onimageMetadataAvailable*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCaptureimageMetadataAvailableSlot) =
   var tmp = new QCameraImageCaptureimageMetadataAvailableSlot
   tmp[] = slot
@@ -401,6 +429,10 @@ proc miqt_exec_callback_cQCameraImageCapture_imageAvailable(slot: int, id: cint,
   let slotval2 = gen_qvideoframe_types.QVideoFrame(h: frame)
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQCameraImageCapture_imageAvailable_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_imageAvailable_release".} =
+  let nimfunc = cast[ref QCameraImageCaptureimageAvailableSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onimageAvailable*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCaptureimageAvailableSlot) =
   var tmp = new QCameraImageCaptureimageAvailableSlot
@@ -422,6 +454,10 @@ proc miqt_exec_callback_cQCameraImageCapture_imageSaved(slot: int, id: cint, fil
   let slotval2 = vfileNamex_ret
 
   nimfunc[](slotval1, slotval2)
+
+proc miqt_exec_callback_cQCameraImageCapture_imageSaved_release(slot: int) {.exportc: "miqt_exec_callback_QCameraImageCapture_imageSaved_release".} =
+  let nimfunc = cast[ref QCameraImageCaptureimageSavedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onimageSaved*(self: gen_qcameraimagecapture_types.QCameraImageCapture, slot: QCameraImageCaptureimageSavedSlot) =
   var tmp = new QCameraImageCaptureimageSavedSlot

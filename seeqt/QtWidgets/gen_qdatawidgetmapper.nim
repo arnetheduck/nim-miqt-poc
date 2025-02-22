@@ -239,6 +239,10 @@ proc miqt_exec_callback_cQDataWidgetMapper_currentIndexChanged(slot: int, index:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDataWidgetMapper_currentIndexChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDataWidgetMapper_currentIndexChanged_release".} =
+  let nimfunc = cast[ref QDataWidgetMappercurrentIndexChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentIndexChanged*(self: gen_qdatawidgetmapper_types.QDataWidgetMapper, slot: QDataWidgetMappercurrentIndexChangedSlot) =
   var tmp = new QDataWidgetMappercurrentIndexChangedSlot
   tmp[] = slot

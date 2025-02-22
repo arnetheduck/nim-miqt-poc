@@ -244,6 +244,10 @@ proc miqt_exec_callback_cQNetworkSession_stateChanged(slot: int, param1: cint) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQNetworkSession_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_stateChanged_release".} =
+  let nimfunc = cast[ref QNetworkSessionstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionstateChangedSlot) =
   var tmp = new QNetworkSessionstateChangedSlot
   tmp[] = slot
@@ -258,6 +262,10 @@ proc miqt_exec_callback_cQNetworkSession_opened(slot: int) {.exportc: "miqt_exec
   let nimfunc = cast[ptr QNetworkSessionopenedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQNetworkSession_opened_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_opened_release".} =
+  let nimfunc = cast[ref QNetworkSessionopenedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onopened*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionopenedSlot) =
   var tmp = new QNetworkSessionopenedSlot
   tmp[] = slot
@@ -271,6 +279,10 @@ type QNetworkSessionclosedSlot* = proc()
 proc miqt_exec_callback_cQNetworkSession_closed(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_closed".} =
   let nimfunc = cast[ptr QNetworkSessionclosedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQNetworkSession_closed_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_closed_release".} =
+  let nimfunc = cast[ref QNetworkSessionclosedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onclosed*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionclosedSlot) =
   var tmp = new QNetworkSessionclosedSlot
@@ -287,6 +299,10 @@ proc miqt_exec_callback_cQNetworkSession_errorWithQNetworkSessionSessionError(sl
   let slotval1 = cint(param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQNetworkSession_errorWithQNetworkSessionSessionError_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_errorWithQNetworkSessionSessionError_release".} =
+  let nimfunc = cast[ref QNetworkSessionerrorWithQNetworkSessionSessionErrorSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onerror*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionerrorWithQNetworkSessionSessionErrorSlot) =
   var tmp = new QNetworkSessionerrorWithQNetworkSessionSessionErrorSlot
@@ -306,6 +322,10 @@ proc miqt_exec_callback_cQNetworkSession_preferredConfigurationChanged(slot: int
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQNetworkSession_preferredConfigurationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_preferredConfigurationChanged_release".} =
+  let nimfunc = cast[ref QNetworkSessionpreferredConfigurationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpreferredConfigurationChanged*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionpreferredConfigurationChangedSlot) =
   var tmp = new QNetworkSessionpreferredConfigurationChangedSlot
   tmp[] = slot
@@ -319,6 +339,10 @@ type QNetworkSessionnewConfigurationActivatedSlot* = proc()
 proc miqt_exec_callback_cQNetworkSession_newConfigurationActivated(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_newConfigurationActivated".} =
   let nimfunc = cast[ptr QNetworkSessionnewConfigurationActivatedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQNetworkSession_newConfigurationActivated_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_newConfigurationActivated_release".} =
+  let nimfunc = cast[ref QNetworkSessionnewConfigurationActivatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onnewConfigurationActivated*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionnewConfigurationActivatedSlot) =
   var tmp = new QNetworkSessionnewConfigurationActivatedSlot
@@ -335,6 +359,10 @@ proc miqt_exec_callback_cQNetworkSession_usagePoliciesChanged(slot: int, usagePo
   let slotval1 = cint(usagePolicies)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQNetworkSession_usagePoliciesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QNetworkSession_usagePoliciesChanged_release".} =
+  let nimfunc = cast[ref QNetworkSessionusagePoliciesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onusagePoliciesChanged*(self: gen_qnetworksession_types.QNetworkSession, slot: QNetworkSessionusagePoliciesChangedSlot) =
   var tmp = new QNetworkSessionusagePoliciesChangedSlot

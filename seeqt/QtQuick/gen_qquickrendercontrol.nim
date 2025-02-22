@@ -164,6 +164,10 @@ proc miqt_exec_callback_cQQuickRenderControl_renderRequested(slot: int) {.export
   let nimfunc = cast[ptr QQuickRenderControlrenderRequestedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickRenderControl_renderRequested_release(slot: int) {.exportc: "miqt_exec_callback_QQuickRenderControl_renderRequested_release".} =
+  let nimfunc = cast[ref QQuickRenderControlrenderRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrenderRequested*(self: gen_qquickrendercontrol_types.QQuickRenderControl, slot: QQuickRenderControlrenderRequestedSlot) =
   var tmp = new QQuickRenderControlrenderRequestedSlot
   tmp[] = slot
@@ -177,6 +181,10 @@ type QQuickRenderControlsceneChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickRenderControl_sceneChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickRenderControl_sceneChanged".} =
   let nimfunc = cast[ptr QQuickRenderControlsceneChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickRenderControl_sceneChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickRenderControl_sceneChanged_release".} =
+  let nimfunc = cast[ref QQuickRenderControlsceneChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onsceneChanged*(self: gen_qquickrendercontrol_types.QQuickRenderControl, slot: QQuickRenderControlsceneChangedSlot) =
   var tmp = new QQuickRenderControlsceneChangedSlot

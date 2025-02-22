@@ -623,6 +623,10 @@ proc miqt_exec_callback_cQWizard_currentIdChanged(slot: int, id: cint) {.exportc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWizard_currentIdChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWizard_currentIdChanged_release".} =
+  let nimfunc = cast[ref QWizardcurrentIdChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentIdChanged*(self: gen_qwizard_types.QWizard, slot: QWizardcurrentIdChangedSlot) =
   var tmp = new QWizardcurrentIdChangedSlot
   tmp[] = slot
@@ -636,6 +640,10 @@ type QWizardhelpRequestedSlot* = proc()
 proc miqt_exec_callback_cQWizard_helpRequested(slot: int) {.exportc: "miqt_exec_callback_QWizard_helpRequested".} =
   let nimfunc = cast[ptr QWizardhelpRequestedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWizard_helpRequested_release(slot: int) {.exportc: "miqt_exec_callback_QWizard_helpRequested_release".} =
+  let nimfunc = cast[ref QWizardhelpRequestedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onhelpRequested*(self: gen_qwizard_types.QWizard, slot: QWizardhelpRequestedSlot) =
   var tmp = new QWizardhelpRequestedSlot
@@ -653,6 +661,10 @@ proc miqt_exec_callback_cQWizard_customButtonClicked(slot: int, which: cint) {.e
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWizard_customButtonClicked_release(slot: int) {.exportc: "miqt_exec_callback_QWizard_customButtonClicked_release".} =
+  let nimfunc = cast[ref QWizardcustomButtonClickedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncustomButtonClicked*(self: gen_qwizard_types.QWizard, slot: QWizardcustomButtonClickedSlot) =
   var tmp = new QWizardcustomButtonClickedSlot
   tmp[] = slot
@@ -669,6 +681,10 @@ proc miqt_exec_callback_cQWizard_pageAdded(slot: int, id: cint) {.exportc: "miqt
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQWizard_pageAdded_release(slot: int) {.exportc: "miqt_exec_callback_QWizard_pageAdded_release".} =
+  let nimfunc = cast[ref QWizardpageAddedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpageAdded*(self: gen_qwizard_types.QWizard, slot: QWizardpageAddedSlot) =
   var tmp = new QWizardpageAddedSlot
   tmp[] = slot
@@ -684,6 +700,10 @@ proc miqt_exec_callback_cQWizard_pageRemoved(slot: int, id: cint) {.exportc: "mi
   let slotval1 = id
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQWizard_pageRemoved_release(slot: int) {.exportc: "miqt_exec_callback_QWizard_pageRemoved_release".} =
+  let nimfunc = cast[ref QWizardpageRemovedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onpageRemoved*(self: gen_qwizard_types.QWizard, slot: QWizardpageRemovedSlot) =
   var tmp = new QWizardpageRemovedSlot
@@ -1868,6 +1888,10 @@ type QWizardPagecompleteChangedSlot* = proc()
 proc miqt_exec_callback_cQWizardPage_completeChanged(slot: int) {.exportc: "miqt_exec_callback_QWizardPage_completeChanged".} =
   let nimfunc = cast[ptr QWizardPagecompleteChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQWizardPage_completeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QWizardPage_completeChanged_release".} =
+  let nimfunc = cast[ref QWizardPagecompleteChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncompleteChanged*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagecompleteChangedSlot) =
   var tmp = new QWizardPagecompleteChangedSlot

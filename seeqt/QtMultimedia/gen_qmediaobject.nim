@@ -153,6 +153,10 @@ proc miqt_exec_callback_cQMediaObject_notifyIntervalChanged(slot: int, milliSeco
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaObject_notifyIntervalChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaObject_notifyIntervalChanged_release".} =
+  let nimfunc = cast[ref QMediaObjectnotifyIntervalChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onnotifyIntervalChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectnotifyIntervalChangedSlot) =
   var tmp = new QMediaObjectnotifyIntervalChangedSlot
   tmp[] = slot
@@ -169,6 +173,10 @@ proc miqt_exec_callback_cQMediaObject_metaDataAvailableChanged(slot: int, availa
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaObject_metaDataAvailableChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaObject_metaDataAvailableChanged_release".} =
+  let nimfunc = cast[ref QMediaObjectmetaDataAvailableChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmetaDataAvailableChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectmetaDataAvailableChangedSlot) =
   var tmp = new QMediaObjectmetaDataAvailableChangedSlot
   tmp[] = slot
@@ -182,6 +190,10 @@ type QMediaObjectmetaDataChangedSlot* = proc()
 proc miqt_exec_callback_cQMediaObject_metaDataChanged(slot: int) {.exportc: "miqt_exec_callback_QMediaObject_metaDataChanged".} =
   let nimfunc = cast[ptr QMediaObjectmetaDataChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaObject_metaDataChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaObject_metaDataChanged_release".} =
+  let nimfunc = cast[ref QMediaObjectmetaDataChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmetaDataChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectmetaDataChangedSlot) =
   var tmp = new QMediaObjectmetaDataChangedSlot
@@ -204,6 +216,10 @@ proc miqt_exec_callback_cQMediaObject_metaDataChanged2(slot: int, key: struct_mi
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQMediaObject_metaDataChanged2_release(slot: int) {.exportc: "miqt_exec_callback_QMediaObject_metaDataChanged2_release".} =
+  let nimfunc = cast[ref QMediaObjectmetaDataChanged2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmetaDataChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectmetaDataChanged2Slot) =
   var tmp = new QMediaObjectmetaDataChanged2Slot
   tmp[] = slot
@@ -220,6 +236,10 @@ proc miqt_exec_callback_cQMediaObject_availabilityChanged(slot: int, available: 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaObject_availabilityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaObject_availabilityChanged_release".} =
+  let nimfunc = cast[ref QMediaObjectavailabilityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onavailabilityChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectavailabilityChangedSlot) =
   var tmp = new QMediaObjectavailabilityChangedSlot
   tmp[] = slot
@@ -235,6 +255,10 @@ proc miqt_exec_callback_cQMediaObject_availabilityChangedWithAvailability(slot: 
   let slotval1 = cint(availability)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMediaObject_availabilityChangedWithAvailability_release(slot: int) {.exportc: "miqt_exec_callback_QMediaObject_availabilityChangedWithAvailability_release".} =
+  let nimfunc = cast[ref QMediaObjectavailabilityChangedWithAvailabilitySlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onavailabilityChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectavailabilityChangedWithAvailabilitySlot) =
   var tmp = new QMediaObjectavailabilityChangedWithAvailabilitySlot

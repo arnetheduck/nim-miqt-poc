@@ -169,6 +169,10 @@ proc miqt_exec_callback_cQAudioRecorder_audioInputChanged(slot: int, name: struc
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAudioRecorder_audioInputChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRecorder_audioInputChanged_release".} =
+  let nimfunc = cast[ref QAudioRecorderaudioInputChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onaudioInputChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: QAudioRecorderaudioInputChangedSlot) =
   var tmp = new QAudioRecorderaudioInputChangedSlot
   tmp[] = slot
@@ -182,6 +186,10 @@ type QAudioRecorderavailableAudioInputsChangedSlot* = proc()
 proc miqt_exec_callback_cQAudioRecorder_availableAudioInputsChanged(slot: int) {.exportc: "miqt_exec_callback_QAudioRecorder_availableAudioInputsChanged".} =
   let nimfunc = cast[ptr QAudioRecorderavailableAudioInputsChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQAudioRecorder_availableAudioInputsChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAudioRecorder_availableAudioInputsChanged_release".} =
+  let nimfunc = cast[ref QAudioRecorderavailableAudioInputsChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onavailableAudioInputsChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: QAudioRecorderavailableAudioInputsChangedSlot) =
   var tmp = new QAudioRecorderavailableAudioInputsChangedSlot

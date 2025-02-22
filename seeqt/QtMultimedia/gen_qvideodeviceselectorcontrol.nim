@@ -125,6 +125,10 @@ proc miqt_exec_callback_cQVideoDeviceSelectorControl_selectedDeviceChanged(slot:
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQVideoDeviceSelectorControl_selectedDeviceChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged_release".} =
+  let nimfunc = cast[ref QVideoDeviceSelectorControlselectedDeviceChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectedDeviceChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: QVideoDeviceSelectorControlselectedDeviceChangedSlot) =
   var tmp = new QVideoDeviceSelectorControlselectedDeviceChangedSlot
   tmp[] = slot
@@ -144,6 +148,10 @@ proc miqt_exec_callback_cQVideoDeviceSelectorControl_selectedDeviceChangedWithNa
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQVideoDeviceSelectorControl_selectedDeviceChangedWithName_release(slot: int) {.exportc: "miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName_release".} =
+  let nimfunc = cast[ref QVideoDeviceSelectorControlselectedDeviceChangedWithNameSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectedDeviceChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: QVideoDeviceSelectorControlselectedDeviceChangedWithNameSlot) =
   var tmp = new QVideoDeviceSelectorControlselectedDeviceChangedWithNameSlot
   tmp[] = slot
@@ -157,6 +165,10 @@ type QVideoDeviceSelectorControldevicesChangedSlot* = proc()
 proc miqt_exec_callback_cQVideoDeviceSelectorControl_devicesChanged(slot: int) {.exportc: "miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged".} =
   let nimfunc = cast[ptr QVideoDeviceSelectorControldevicesChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQVideoDeviceSelectorControl_devicesChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged_release".} =
+  let nimfunc = cast[ref QVideoDeviceSelectorControldevicesChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondevicesChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: QVideoDeviceSelectorControldevicesChangedSlot) =
   var tmp = new QVideoDeviceSelectorControldevicesChangedSlot

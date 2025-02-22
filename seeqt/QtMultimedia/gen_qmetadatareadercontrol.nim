@@ -115,6 +115,10 @@ proc miqt_exec_callback_cQMetaDataReaderControl_metaDataChanged(slot: int) {.exp
   let nimfunc = cast[ptr QMetaDataReaderControlmetaDataChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMetaDataReaderControl_metaDataChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMetaDataReaderControl_metaDataChanged_release".} =
+  let nimfunc = cast[ref QMetaDataReaderControlmetaDataChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmetaDataChanged*(self: gen_qmetadatareadercontrol_types.QMetaDataReaderControl, slot: QMetaDataReaderControlmetaDataChangedSlot) =
   var tmp = new QMetaDataReaderControlmetaDataChangedSlot
   tmp[] = slot
@@ -136,6 +140,10 @@ proc miqt_exec_callback_cQMetaDataReaderControl_metaDataChanged2(slot: int, key:
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQMetaDataReaderControl_metaDataChanged2_release(slot: int) {.exportc: "miqt_exec_callback_QMetaDataReaderControl_metaDataChanged2_release".} =
+  let nimfunc = cast[ref QMetaDataReaderControlmetaDataChanged2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmetaDataChanged*(self: gen_qmetadatareadercontrol_types.QMetaDataReaderControl, slot: QMetaDataReaderControlmetaDataChanged2Slot) =
   var tmp = new QMetaDataReaderControlmetaDataChanged2Slot
   tmp[] = slot
@@ -151,6 +159,10 @@ proc miqt_exec_callback_cQMetaDataReaderControl_metaDataAvailableChanged(slot: i
   let slotval1 = available
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMetaDataReaderControl_metaDataAvailableChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMetaDataReaderControl_metaDataAvailableChanged_release".} =
+  let nimfunc = cast[ref QMetaDataReaderControlmetaDataAvailableChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmetaDataAvailableChanged*(self: gen_qmetadatareadercontrol_types.QMetaDataReaderControl, slot: QMetaDataReaderControlmetaDataAvailableChangedSlot) =
   var tmp = new QMetaDataReaderControlmetaDataAvailableChangedSlot

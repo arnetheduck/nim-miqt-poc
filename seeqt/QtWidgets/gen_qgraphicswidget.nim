@@ -478,6 +478,10 @@ proc miqt_exec_callback_cQGraphicsWidget_geometryChanged(slot: int) {.exportc: "
   let nimfunc = cast[ptr QGraphicsWidgetgeometryChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQGraphicsWidget_geometryChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWidget_geometryChanged_release".} =
+  let nimfunc = cast[ref QGraphicsWidgetgeometryChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ongeometryChanged*(self: gen_qgraphicswidget_types.QGraphicsWidget, slot: QGraphicsWidgetgeometryChangedSlot) =
   var tmp = new QGraphicsWidgetgeometryChangedSlot
   tmp[] = slot
@@ -491,6 +495,10 @@ type QGraphicsWidgetlayoutChangedSlot* = proc()
 proc miqt_exec_callback_cQGraphicsWidget_layoutChanged(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWidget_layoutChanged".} =
   let nimfunc = cast[ptr QGraphicsWidgetlayoutChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQGraphicsWidget_layoutChanged_release(slot: int) {.exportc: "miqt_exec_callback_QGraphicsWidget_layoutChanged_release".} =
+  let nimfunc = cast[ref QGraphicsWidgetlayoutChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onlayoutChanged*(self: gen_qgraphicswidget_types.QGraphicsWidget, slot: QGraphicsWidgetlayoutChangedSlot) =
   var tmp = new QGraphicsWidgetlayoutChangedSlot

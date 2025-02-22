@@ -128,6 +128,10 @@ proc miqt_exec_callback_cQWebChannelAbstractTransport_messageReceived(slot: int,
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQWebChannelAbstractTransport_messageReceived_release(slot: int) {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_messageReceived_release".} =
+  let nimfunc = cast[ref QWebChannelAbstractTransportmessageReceivedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmessageReceived*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportmessageReceivedSlot) =
   var tmp = new QWebChannelAbstractTransportmessageReceivedSlot
   tmp[] = slot

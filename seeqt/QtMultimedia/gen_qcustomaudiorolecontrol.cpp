@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCustomAudioRoleControl_customAudioRoleChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QCustomAudioRoleControl_customAudioRoleChanged_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -99,17 +100,26 @@ void QCustomAudioRoleControl_customAudioRoleChanged(QCustomAudioRoleControl* sel
 }
 
 void QCustomAudioRoleControl_connect_customAudioRoleChanged(QCustomAudioRoleControl* self, intptr_t slot) {
-	QCustomAudioRoleControl::connect(self, static_cast<void (QCustomAudioRoleControl::*)(const QString&)>(&QCustomAudioRoleControl::customAudioRoleChanged), self, [=](const QString& role) {
-		const QString role_ret = role;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray role_b = role_ret.toUtf8();
-		struct miqt_string role_ms;
-		role_ms.len = role_b.length();
-		role_ms.data = static_cast<char*>(malloc(role_ms.len));
-		memcpy(role_ms.data, role_b.data(), role_ms.len);
-		struct miqt_string sigval1 = role_ms;
-		miqt_exec_callback_QCustomAudioRoleControl_customAudioRoleChanged(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QString& role) {
+			const QString role_ret = role;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray role_b = role_ret.toUtf8();
+			struct miqt_string role_ms;
+			role_ms.len = role_b.length();
+			role_ms.data = static_cast<char*>(malloc(role_ms.len));
+			memcpy(role_ms.data, role_b.data(), role_ms.len);
+			struct miqt_string sigval1 = role_ms;
+			miqt_exec_callback_QCustomAudioRoleControl_customAudioRoleChanged(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QCustomAudioRoleControl_customAudioRoleChanged_release(slot); }
+	};
+	QCustomAudioRoleControl::connect(self, static_cast<void (QCustomAudioRoleControl::*)(const QString&)>(&QCustomAudioRoleControl::customAudioRoleChanged), self, caller{slot});
 }
 
 struct miqt_string QCustomAudioRoleControl_tr2(const char* s, const char* c) {

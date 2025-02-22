@@ -278,6 +278,10 @@ proc miqt_exec_callback_cQDesktopWidget_resized(slot: int, param1: cint) {.expor
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDesktopWidget_resized_release(slot: int) {.exportc: "miqt_exec_callback_QDesktopWidget_resized_release".} =
+  let nimfunc = cast[ref QDesktopWidgetresizedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onresized*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetresizedSlot) =
   var tmp = new QDesktopWidgetresizedSlot
   tmp[] = slot
@@ -293,6 +297,10 @@ proc miqt_exec_callback_cQDesktopWidget_workAreaResized(slot: int, param1: cint)
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQDesktopWidget_workAreaResized_release(slot: int) {.exportc: "miqt_exec_callback_QDesktopWidget_workAreaResized_release".} =
+  let nimfunc = cast[ref QDesktopWidgetworkAreaResizedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onworkAreaResized*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetworkAreaResizedSlot) =
   var tmp = new QDesktopWidgetworkAreaResizedSlot
@@ -310,6 +318,10 @@ proc miqt_exec_callback_cQDesktopWidget_screenCountChanged(slot: int, param1: ci
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQDesktopWidget_screenCountChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDesktopWidget_screenCountChanged_release".} =
+  let nimfunc = cast[ref QDesktopWidgetscreenCountChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onscreenCountChanged*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetscreenCountChangedSlot) =
   var tmp = new QDesktopWidgetscreenCountChangedSlot
   tmp[] = slot
@@ -323,6 +335,10 @@ type QDesktopWidgetprimaryScreenChangedSlot* = proc()
 proc miqt_exec_callback_cQDesktopWidget_primaryScreenChanged(slot: int) {.exportc: "miqt_exec_callback_QDesktopWidget_primaryScreenChanged".} =
   let nimfunc = cast[ptr QDesktopWidgetprimaryScreenChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQDesktopWidget_primaryScreenChanged_release(slot: int) {.exportc: "miqt_exec_callback_QDesktopWidget_primaryScreenChanged_release".} =
+  let nimfunc = cast[ref QDesktopWidgetprimaryScreenChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onprimaryScreenChanged*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetprimaryScreenChangedSlot) =
   var tmp = new QDesktopWidgetprimaryScreenChangedSlot

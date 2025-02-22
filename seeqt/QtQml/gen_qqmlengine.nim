@@ -332,6 +332,10 @@ proc miqt_exec_callback_cQQmlEngine_quit(slot: int) {.exportc: "miqt_exec_callba
   let nimfunc = cast[ptr QQmlEnginequitSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQmlEngine_quit_release(slot: int) {.exportc: "miqt_exec_callback_QQmlEngine_quit_release".} =
+  let nimfunc = cast[ref QQmlEnginequitSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onquit*(self: gen_qqmlengine_types.QQmlEngine, slot: QQmlEnginequitSlot) =
   var tmp = new QQmlEnginequitSlot
   tmp[] = slot
@@ -347,6 +351,10 @@ proc miqt_exec_callback_cQQmlEngine_exit(slot: int, retCode: cint) {.exportc: "m
   let slotval1 = retCode
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQmlEngine_exit_release(slot: int) {.exportc: "miqt_exec_callback_QQmlEngine_exit_release".} =
+  let nimfunc = cast[ref QQmlEngineexitSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onexit*(self: gen_qqmlengine_types.QQmlEngine, slot: QQmlEngineexitSlot) =
   var tmp = new QQmlEngineexitSlot
@@ -372,6 +380,10 @@ proc miqt_exec_callback_cQQmlEngine_warnings(slot: int, warnings: struct_miqt_ar
   let slotval1 = vwarningsx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQmlEngine_warnings_release(slot: int) {.exportc: "miqt_exec_callback_QQmlEngine_warnings_release".} =
+  let nimfunc = cast[ref QQmlEnginewarningsSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onwarnings*(self: gen_qqmlengine_types.QQmlEngine, slot: QQmlEnginewarningsSlot) =
   var tmp = new QQmlEnginewarningsSlot

@@ -175,6 +175,10 @@ proc miqt_exec_callback_cQQmlApplicationEngine_objectCreated(slot: int, objectVa
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQQmlApplicationEngine_objectCreated_release(slot: int) {.exportc: "miqt_exec_callback_QQmlApplicationEngine_objectCreated_release".} =
+  let nimfunc = cast[ref QQmlApplicationEngineobjectCreatedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onobjectCreated*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, slot: QQmlApplicationEngineobjectCreatedSlot) =
   var tmp = new QQmlApplicationEngineobjectCreatedSlot
   tmp[] = slot

@@ -15,7 +15,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed(intptr_t, QAudioBuffer*);
+void miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed_release(intptr_t);
 void miqt_exec_callback_QMediaAudioProbeControl_flush(intptr_t);
+void miqt_exec_callback_QMediaAudioProbeControl_flush_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -63,12 +65,21 @@ void QMediaAudioProbeControl_audioBufferProbed(QMediaAudioProbeControl* self, QA
 }
 
 void QMediaAudioProbeControl_connect_audioBufferProbed(QMediaAudioProbeControl* self, intptr_t slot) {
-	QMediaAudioProbeControl::connect(self, static_cast<void (QMediaAudioProbeControl::*)(const QAudioBuffer&)>(&QMediaAudioProbeControl::audioBufferProbed), self, [=](const QAudioBuffer& buffer) {
-		const QAudioBuffer& buffer_ret = buffer;
-		// Cast returned reference into pointer
-		QAudioBuffer* sigval1 = const_cast<QAudioBuffer*>(&buffer_ret);
-		miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed(slot, sigval1);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()(const QAudioBuffer& buffer) {
+			const QAudioBuffer& buffer_ret = buffer;
+			// Cast returned reference into pointer
+			QAudioBuffer* sigval1 = const_cast<QAudioBuffer*>(&buffer_ret);
+			miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed(slot, sigval1);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed_release(slot); }
+	};
+	QMediaAudioProbeControl::connect(self, static_cast<void (QMediaAudioProbeControl::*)(const QAudioBuffer&)>(&QMediaAudioProbeControl::audioBufferProbed), self, caller{slot});
 }
 
 void QMediaAudioProbeControl_flush(QMediaAudioProbeControl* self) {
@@ -76,9 +87,18 @@ void QMediaAudioProbeControl_flush(QMediaAudioProbeControl* self) {
 }
 
 void QMediaAudioProbeControl_connect_flush(QMediaAudioProbeControl* self, intptr_t slot) {
-	QMediaAudioProbeControl::connect(self, static_cast<void (QMediaAudioProbeControl::*)()>(&QMediaAudioProbeControl::flush), self, [=]() {
-		miqt_exec_callback_QMediaAudioProbeControl_flush(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QMediaAudioProbeControl_flush(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QMediaAudioProbeControl_flush_release(slot); }
+	};
+	QMediaAudioProbeControl::connect(self, static_cast<void (QMediaAudioProbeControl::*)()>(&QMediaAudioProbeControl::flush), self, caller{slot});
 }
 
 struct miqt_string QMediaAudioProbeControl_tr2(const char* s, const char* c) {

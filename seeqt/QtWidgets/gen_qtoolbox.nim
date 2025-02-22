@@ -310,6 +310,10 @@ proc miqt_exec_callback_cQToolBox_currentChanged(slot: int, index: cint) {.expor
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQToolBox_currentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QToolBox_currentChanged_release".} =
+  let nimfunc = cast[ref QToolBoxcurrentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentChanged*(self: gen_qtoolbox_types.QToolBox, slot: QToolBoxcurrentChangedSlot) =
   var tmp = new QToolBoxcurrentChangedSlot
   tmp[] = slot

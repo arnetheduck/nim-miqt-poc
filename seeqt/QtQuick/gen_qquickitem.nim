@@ -1050,6 +1050,10 @@ proc miqt_exec_callback_cQQuickItem_childrenRectChanged(slot: int, param1: point
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickItem_childrenRectChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_childrenRectChanged_release".} =
+  let nimfunc = cast[ref QQuickItemchildrenRectChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onchildrenRectChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemchildrenRectChangedSlot) =
   var tmp = new QQuickItemchildrenRectChangedSlot
   tmp[] = slot
@@ -1065,6 +1069,10 @@ proc miqt_exec_callback_cQQuickItem_baselineOffsetChanged(slot: int, param1: flo
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickItem_baselineOffsetChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_baselineOffsetChanged_release".} =
+  let nimfunc = cast[ref QQuickItembaselineOffsetChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onbaselineOffsetChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItembaselineOffsetChangedSlot) =
   var tmp = new QQuickItembaselineOffsetChangedSlot
@@ -1085,6 +1093,10 @@ proc miqt_exec_callback_cQQuickItem_stateChanged(slot: int, param1: struct_miqt_
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickItem_stateChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_stateChanged_release".} =
+  let nimfunc = cast[ref QQuickItemstateChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstateChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemstateChangedSlot) =
   var tmp = new QQuickItemstateChangedSlot
   tmp[] = slot
@@ -1100,6 +1112,10 @@ proc miqt_exec_callback_cQQuickItem_focusChanged(slot: int, param1: bool) {.expo
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickItem_focusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_focusChanged_release".} =
+  let nimfunc = cast[ref QQuickItemfocusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfocusChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemfocusChangedSlot) =
   var tmp = new QQuickItemfocusChangedSlot
@@ -1117,6 +1133,10 @@ proc miqt_exec_callback_cQQuickItem_activeFocusChanged(slot: int, param1: bool) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickItem_activeFocusChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_activeFocusChanged_release".} =
+  let nimfunc = cast[ref QQuickItemactiveFocusChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactiveFocusChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemactiveFocusChangedSlot) =
   var tmp = new QQuickItemactiveFocusChangedSlot
   tmp[] = slot
@@ -1132,6 +1152,10 @@ proc miqt_exec_callback_cQQuickItem_activeFocusOnTabChanged(slot: int, param1: b
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickItem_activeFocusOnTabChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_activeFocusOnTabChanged_release".} =
+  let nimfunc = cast[ref QQuickItemactiveFocusOnTabChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onactiveFocusOnTabChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemactiveFocusOnTabChangedSlot) =
   var tmp = new QQuickItemactiveFocusOnTabChangedSlot
@@ -1149,6 +1173,10 @@ proc miqt_exec_callback_cQQuickItem_parentChanged(slot: int, param1: pointer) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickItem_parentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_parentChanged_release".} =
+  let nimfunc = cast[ref QQuickItemparentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onparentChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemparentChangedSlot) =
   var tmp = new QQuickItemparentChangedSlot
   tmp[] = slot
@@ -1164,6 +1192,10 @@ proc miqt_exec_callback_cQQuickItem_transformOriginChanged(slot: int, param1: ci
   let slotval1 = cint(param1)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickItem_transformOriginChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_transformOriginChanged_release".} =
+  let nimfunc = cast[ref QQuickItemtransformOriginChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ontransformOriginChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemtransformOriginChangedSlot) =
   var tmp = new QQuickItemtransformOriginChangedSlot
@@ -1181,6 +1213,10 @@ proc miqt_exec_callback_cQQuickItem_smoothChanged(slot: int, param1: bool) {.exp
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickItem_smoothChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_smoothChanged_release".} =
+  let nimfunc = cast[ref QQuickItemsmoothChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onsmoothChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemsmoothChangedSlot) =
   var tmp = new QQuickItemsmoothChangedSlot
   tmp[] = slot
@@ -1196,6 +1232,10 @@ proc miqt_exec_callback_cQQuickItem_antialiasingChanged(slot: int, param1: bool)
   let slotval1 = param1
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQQuickItem_antialiasingChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_antialiasingChanged_release".} =
+  let nimfunc = cast[ref QQuickItemantialiasingChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onantialiasingChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemantialiasingChangedSlot) =
   var tmp = new QQuickItemantialiasingChangedSlot
@@ -1213,6 +1253,10 @@ proc miqt_exec_callback_cQQuickItem_clipChanged(slot: int, param1: bool) {.expor
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickItem_clipChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_clipChanged_release".} =
+  let nimfunc = cast[ref QQuickItemclipChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onclipChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemclipChangedSlot) =
   var tmp = new QQuickItemclipChangedSlot
   tmp[] = slot
@@ -1229,6 +1273,10 @@ proc miqt_exec_callback_cQQuickItem_windowChanged(slot: int, window: pointer) {.
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQQuickItem_windowChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_windowChanged_release".} =
+  let nimfunc = cast[ref QQuickItemwindowChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onwindowChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemwindowChangedSlot) =
   var tmp = new QQuickItemwindowChangedSlot
   tmp[] = slot
@@ -1242,6 +1290,10 @@ type QQuickItemchildrenChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_childrenChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_childrenChanged".} =
   let nimfunc = cast[ptr QQuickItemchildrenChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_childrenChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_childrenChanged_release".} =
+  let nimfunc = cast[ref QQuickItemchildrenChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onchildrenChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemchildrenChangedSlot) =
   var tmp = new QQuickItemchildrenChangedSlot
@@ -1257,6 +1309,10 @@ proc miqt_exec_callback_cQQuickItem_opacityChanged(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QQuickItemopacityChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItem_opacityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_opacityChanged_release".} =
+  let nimfunc = cast[ref QQuickItemopacityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onopacityChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemopacityChangedSlot) =
   var tmp = new QQuickItemopacityChangedSlot
   tmp[] = slot
@@ -1270,6 +1326,10 @@ type QQuickItemenabledChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_enabledChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_enabledChanged".} =
   let nimfunc = cast[ptr QQuickItemenabledChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_enabledChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_enabledChanged_release".} =
+  let nimfunc = cast[ref QQuickItemenabledChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onenabledChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemenabledChangedSlot) =
   var tmp = new QQuickItemenabledChangedSlot
@@ -1285,6 +1345,10 @@ proc miqt_exec_callback_cQQuickItem_visibleChanged(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QQuickItemvisibleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItem_visibleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_visibleChanged_release".} =
+  let nimfunc = cast[ref QQuickItemvisibleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvisibleChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemvisibleChangedSlot) =
   var tmp = new QQuickItemvisibleChangedSlot
   tmp[] = slot
@@ -1298,6 +1362,10 @@ type QQuickItemvisibleChildrenChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_visibleChildrenChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_visibleChildrenChanged".} =
   let nimfunc = cast[ptr QQuickItemvisibleChildrenChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_visibleChildrenChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_visibleChildrenChanged_release".} =
+  let nimfunc = cast[ref QQuickItemvisibleChildrenChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onvisibleChildrenChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemvisibleChildrenChangedSlot) =
   var tmp = new QQuickItemvisibleChildrenChangedSlot
@@ -1313,6 +1381,10 @@ proc miqt_exec_callback_cQQuickItem_rotationChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QQuickItemrotationChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItem_rotationChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_rotationChanged_release".} =
+  let nimfunc = cast[ref QQuickItemrotationChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onrotationChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemrotationChangedSlot) =
   var tmp = new QQuickItemrotationChangedSlot
   tmp[] = slot
@@ -1326,6 +1398,10 @@ type QQuickItemscaleChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_scaleChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_scaleChanged".} =
   let nimfunc = cast[ptr QQuickItemscaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_scaleChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_scaleChanged_release".} =
+  let nimfunc = cast[ref QQuickItemscaleChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onscaleChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemscaleChangedSlot) =
   var tmp = new QQuickItemscaleChangedSlot
@@ -1341,6 +1417,10 @@ proc miqt_exec_callback_cQQuickItem_xChanged(slot: int) {.exportc: "miqt_exec_ca
   let nimfunc = cast[ptr QQuickItemxChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItem_xChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_xChanged_release".} =
+  let nimfunc = cast[ref QQuickItemxChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onxChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemxChangedSlot) =
   var tmp = new QQuickItemxChangedSlot
   tmp[] = slot
@@ -1354,6 +1434,10 @@ type QQuickItemyChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_yChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_yChanged".} =
   let nimfunc = cast[ptr QQuickItemyChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_yChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_yChanged_release".} =
+  let nimfunc = cast[ref QQuickItemyChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onyChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemyChangedSlot) =
   var tmp = new QQuickItemyChangedSlot
@@ -1369,6 +1453,10 @@ proc miqt_exec_callback_cQQuickItem_widthChanged(slot: int) {.exportc: "miqt_exe
   let nimfunc = cast[ptr QQuickItemwidthChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItem_widthChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_widthChanged_release".} =
+  let nimfunc = cast[ref QQuickItemwidthChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onwidthChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemwidthChangedSlot) =
   var tmp = new QQuickItemwidthChangedSlot
   tmp[] = slot
@@ -1382,6 +1470,10 @@ type QQuickItemheightChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_heightChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_heightChanged".} =
   let nimfunc = cast[ptr QQuickItemheightChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_heightChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_heightChanged_release".} =
+  let nimfunc = cast[ref QQuickItemheightChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onheightChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemheightChangedSlot) =
   var tmp = new QQuickItemheightChangedSlot
@@ -1397,6 +1489,10 @@ proc miqt_exec_callback_cQQuickItem_zChanged(slot: int) {.exportc: "miqt_exec_ca
   let nimfunc = cast[ptr QQuickItemzChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItem_zChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_zChanged_release".} =
+  let nimfunc = cast[ref QQuickItemzChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onzChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemzChangedSlot) =
   var tmp = new QQuickItemzChangedSlot
   tmp[] = slot
@@ -1410,6 +1506,10 @@ type QQuickItemimplicitWidthChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_implicitWidthChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_implicitWidthChanged".} =
   let nimfunc = cast[ptr QQuickItemimplicitWidthChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_implicitWidthChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_implicitWidthChanged_release".} =
+  let nimfunc = cast[ref QQuickItemimplicitWidthChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onimplicitWidthChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemimplicitWidthChangedSlot) =
   var tmp = new QQuickItemimplicitWidthChangedSlot
@@ -1425,6 +1525,10 @@ proc miqt_exec_callback_cQQuickItem_implicitHeightChanged(slot: int) {.exportc: 
   let nimfunc = cast[ptr QQuickItemimplicitHeightChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQQuickItem_implicitHeightChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_implicitHeightChanged_release".} =
+  let nimfunc = cast[ref QQuickItemimplicitHeightChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onimplicitHeightChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemimplicitHeightChangedSlot) =
   var tmp = new QQuickItemimplicitHeightChangedSlot
   tmp[] = slot
@@ -1438,6 +1542,10 @@ type QQuickItemcontainmentMaskChangedSlot* = proc()
 proc miqt_exec_callback_cQQuickItem_containmentMaskChanged(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_containmentMaskChanged".} =
   let nimfunc = cast[ptr QQuickItemcontainmentMaskChangedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQQuickItem_containmentMaskChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQuickItem_containmentMaskChanged_release".} =
+  let nimfunc = cast[ref QQuickItemcontainmentMaskChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncontainmentMaskChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemcontainmentMaskChangedSlot) =
   var tmp = new QQuickItemcontainmentMaskChangedSlot

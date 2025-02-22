@@ -107,6 +107,10 @@ proc miqt_exec_callback_cQAbstractState_activeChanged(slot: int, active: bool) {
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQAbstractState_activeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QAbstractState_activeChanged_release".} =
+  let nimfunc = cast[ref QAbstractStateactiveChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onactiveChanged*(self: gen_qabstractstate_types.QAbstractState, slot: QAbstractStateactiveChangedSlot) =
   var tmp = new QAbstractStateactiveChangedSlot
   tmp[] = slot

@@ -176,6 +176,10 @@ proc miqt_exec_callback_cQQmlPropertyMap_valueChanged(slot: int, key: struct_miq
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQQmlPropertyMap_valueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QQmlPropertyMap_valueChanged_release".} =
+  let nimfunc = cast[ref QQmlPropertyMapvalueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvalueChanged*(self: gen_qqmlpropertymap_types.QQmlPropertyMap, slot: QQmlPropertyMapvalueChangedSlot) =
   var tmp = new QQmlPropertyMapvalueChangedSlot
   tmp[] = slot

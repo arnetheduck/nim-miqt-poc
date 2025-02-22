@@ -532,6 +532,10 @@ proc miqt_exec_callback_cQLineEdit_textChanged(slot: int, param1: struct_miqt_st
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQLineEdit_textChanged_release(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_textChanged_release".} =
+  let nimfunc = cast[ref QLineEdittextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontextChanged*(self: gen_qlineedit_types.QLineEdit, slot: QLineEdittextChangedSlot) =
   var tmp = new QLineEdittextChangedSlot
   tmp[] = slot
@@ -551,6 +555,10 @@ proc miqt_exec_callback_cQLineEdit_textEdited(slot: int, param1: struct_miqt_str
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQLineEdit_textEdited_release(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_textEdited_release".} =
+  let nimfunc = cast[ref QLineEdittextEditedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ontextEdited*(self: gen_qlineedit_types.QLineEdit, slot: QLineEdittextEditedSlot) =
   var tmp = new QLineEdittextEditedSlot
   tmp[] = slot
@@ -569,6 +577,10 @@ proc miqt_exec_callback_cQLineEdit_cursorPositionChanged(slot: int, param1: cint
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQLineEdit_cursorPositionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_cursorPositionChanged_release".} =
+  let nimfunc = cast[ref QLineEditcursorPositionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncursorPositionChanged*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditcursorPositionChangedSlot) =
   var tmp = new QLineEditcursorPositionChangedSlot
   tmp[] = slot
@@ -582,6 +594,10 @@ type QLineEditreturnPressedSlot* = proc()
 proc miqt_exec_callback_cQLineEdit_returnPressed(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_returnPressed".} =
   let nimfunc = cast[ptr QLineEditreturnPressedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQLineEdit_returnPressed_release(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_returnPressed_release".} =
+  let nimfunc = cast[ref QLineEditreturnPressedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onreturnPressed*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditreturnPressedSlot) =
   var tmp = new QLineEditreturnPressedSlot
@@ -597,6 +613,10 @@ proc miqt_exec_callback_cQLineEdit_editingFinished(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QLineEditeditingFinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQLineEdit_editingFinished_release(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_editingFinished_release".} =
+  let nimfunc = cast[ref QLineEditeditingFinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oneditingFinished*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditeditingFinishedSlot) =
   var tmp = new QLineEditeditingFinishedSlot
   tmp[] = slot
@@ -611,6 +631,10 @@ proc miqt_exec_callback_cQLineEdit_selectionChanged(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QLineEditselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQLineEdit_selectionChanged_release(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_selectionChanged_release".} =
+  let nimfunc = cast[ref QLineEditselectionChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onselectionChanged*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditselectionChangedSlot) =
   var tmp = new QLineEditselectionChangedSlot
   tmp[] = slot
@@ -624,6 +648,10 @@ type QLineEditinputRejectedSlot* = proc()
 proc miqt_exec_callback_cQLineEdit_inputRejected(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_inputRejected".} =
   let nimfunc = cast[ptr QLineEditinputRejectedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQLineEdit_inputRejected_release(slot: int) {.exportc: "miqt_exec_callback_QLineEdit_inputRejected_release".} =
+  let nimfunc = cast[ref QLineEditinputRejectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oninputRejected*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditinputRejectedSlot) =
   var tmp = new QLineEditinputRejectedSlot

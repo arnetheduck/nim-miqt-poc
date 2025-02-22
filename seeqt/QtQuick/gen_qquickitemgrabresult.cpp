@@ -16,6 +16,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QQuickItemGrabResult_ready(intptr_t);
+void miqt_exec_callback_QQuickItemGrabResult_ready_release(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -81,9 +82,18 @@ void QQuickItemGrabResult_ready(QQuickItemGrabResult* self) {
 }
 
 void QQuickItemGrabResult_connect_ready(QQuickItemGrabResult* self, intptr_t slot) {
-	QQuickItemGrabResult::connect(self, static_cast<void (QQuickItemGrabResult::*)()>(&QQuickItemGrabResult::ready), self, [=]() {
-		miqt_exec_callback_QQuickItemGrabResult_ready(slot);
-	});
+	struct caller {
+		intptr_t slot;
+		void operator()() {
+			miqt_exec_callback_QQuickItemGrabResult_ready(slot);
+		}
+		caller(caller &&) = default;
+		caller &operator=(caller &&) = default;
+		caller(const caller &) = delete;
+		caller &operator=(const caller &) = delete;
+		~caller() { miqt_exec_callback_QQuickItemGrabResult_ready_release(slot); }
+	};
+	QQuickItemGrabResult::connect(self, static_cast<void (QQuickItemGrabResult::*)()>(&QQuickItemGrabResult::ready), self, caller{slot});
 }
 
 struct miqt_string QQuickItemGrabResult_tr2(const char* s, const char* c) {

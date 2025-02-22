@@ -95,6 +95,10 @@ proc miqt_exec_callback_cQMediaVideoProbeControl_videoFrameProbed(slot: int, fra
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaVideoProbeControl_videoFrameProbed_release(slot: int) {.exportc: "miqt_exec_callback_QMediaVideoProbeControl_videoFrameProbed_release".} =
+  let nimfunc = cast[ref QMediaVideoProbeControlvideoFrameProbedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvideoFrameProbed*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, slot: QMediaVideoProbeControlvideoFrameProbedSlot) =
   var tmp = new QMediaVideoProbeControlvideoFrameProbedSlot
   tmp[] = slot
@@ -108,6 +112,10 @@ type QMediaVideoProbeControlflushSlot* = proc()
 proc miqt_exec_callback_cQMediaVideoProbeControl_flush(slot: int) {.exportc: "miqt_exec_callback_QMediaVideoProbeControl_flush".} =
   let nimfunc = cast[ptr QMediaVideoProbeControlflushSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMediaVideoProbeControl_flush_release(slot: int) {.exportc: "miqt_exec_callback_QMediaVideoProbeControl_flush_release".} =
+  let nimfunc = cast[ref QMediaVideoProbeControlflushSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onflush*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, slot: QMediaVideoProbeControlflushSlot) =
   var tmp = new QMediaVideoProbeControlflushSlot

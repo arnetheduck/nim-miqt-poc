@@ -259,6 +259,10 @@ proc miqt_exec_callback_cQFontComboBox_currentFontChanged(slot: int, f: pointer)
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFontComboBox_currentFontChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFontComboBox_currentFontChanged_release".} =
+  let nimfunc = cast[ref QFontComboBoxcurrentFontChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentFontChanged*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxcurrentFontChangedSlot) =
   var tmp = new QFontComboBoxcurrentFontChangedSlot
   tmp[] = slot

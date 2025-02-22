@@ -209,6 +209,10 @@ proc miqt_exec_callback_cQVariantAnimation_valueChanged(slot: int, value: pointe
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQVariantAnimation_valueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QVariantAnimation_valueChanged_release".} =
+  let nimfunc = cast[ref QVariantAnimationvalueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onvalueChanged*(self: gen_qvariantanimation_types.QVariantAnimation, slot: QVariantAnimationvalueChangedSlot) =
   var tmp = new QVariantAnimationvalueChangedSlot
   tmp[] = slot

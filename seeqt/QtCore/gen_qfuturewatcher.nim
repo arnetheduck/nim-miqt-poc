@@ -165,6 +165,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_started(slot: int) {.exportc: "miqt_
   let nimfunc = cast[ptr QFutureWatcherBasestartedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQFutureWatcherBase_started_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_started_release".} =
+  let nimfunc = cast[ref QFutureWatcherBasestartedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onstarted*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBasestartedSlot) =
   var tmp = new QFutureWatcherBasestartedSlot
   tmp[] = slot
@@ -178,6 +182,10 @@ type QFutureWatcherBasefinishedSlot* = proc()
 proc miqt_exec_callback_cQFutureWatcherBase_finished(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_finished".} =
   let nimfunc = cast[ptr QFutureWatcherBasefinishedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQFutureWatcherBase_finished_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_finished_release".} =
+  let nimfunc = cast[ref QFutureWatcherBasefinishedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfinished*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBasefinishedSlot) =
   var tmp = new QFutureWatcherBasefinishedSlot
@@ -193,6 +201,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_canceled(slot: int) {.exportc: "miqt
   let nimfunc = cast[ptr QFutureWatcherBasecanceledSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQFutureWatcherBase_canceled_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_canceled_release".} =
+  let nimfunc = cast[ref QFutureWatcherBasecanceledSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncanceled*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBasecanceledSlot) =
   var tmp = new QFutureWatcherBasecanceledSlot
   tmp[] = slot
@@ -207,6 +219,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_paused(slot: int) {.exportc: "miqt_e
   let nimfunc = cast[ptr QFutureWatcherBasepausedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQFutureWatcherBase_paused_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_paused_release".} =
+  let nimfunc = cast[ref QFutureWatcherBasepausedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onpaused*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBasepausedSlot) =
   var tmp = new QFutureWatcherBasepausedSlot
   tmp[] = slot
@@ -220,6 +236,10 @@ type QFutureWatcherBaseresumedSlot* = proc()
 proc miqt_exec_callback_cQFutureWatcherBase_resumed(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_resumed".} =
   let nimfunc = cast[ptr QFutureWatcherBaseresumedSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQFutureWatcherBase_resumed_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_resumed_release".} =
+  let nimfunc = cast[ref QFutureWatcherBaseresumedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onresumed*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBaseresumedSlot) =
   var tmp = new QFutureWatcherBaseresumedSlot
@@ -236,6 +256,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_resultReadyAt(slot: int, resultIndex
   let slotval1 = resultIndex
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFutureWatcherBase_resultReadyAt_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_resultReadyAt_release".} =
+  let nimfunc = cast[ref QFutureWatcherBaseresultReadyAtSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onresultReadyAt*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBaseresultReadyAtSlot) =
   var tmp = new QFutureWatcherBaseresultReadyAtSlot
@@ -255,6 +279,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_resultsReadyAt(slot: int, beginIndex
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQFutureWatcherBase_resultsReadyAt_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_resultsReadyAt_release".} =
+  let nimfunc = cast[ref QFutureWatcherBaseresultsReadyAtSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onresultsReadyAt*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBaseresultsReadyAtSlot) =
   var tmp = new QFutureWatcherBaseresultsReadyAtSlot
   tmp[] = slot
@@ -273,6 +301,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_progressRangeChanged(slot: int, mini
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQFutureWatcherBase_progressRangeChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_progressRangeChanged_release".} =
+  let nimfunc = cast[ref QFutureWatcherBaseprogressRangeChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onprogressRangeChanged*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBaseprogressRangeChangedSlot) =
   var tmp = new QFutureWatcherBaseprogressRangeChangedSlot
   tmp[] = slot
@@ -288,6 +320,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_progressValueChanged(slot: int, prog
   let slotval1 = progressValue
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFutureWatcherBase_progressValueChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_progressValueChanged_release".} =
+  let nimfunc = cast[ref QFutureWatcherBaseprogressValueChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onprogressValueChanged*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBaseprogressValueChangedSlot) =
   var tmp = new QFutureWatcherBaseprogressValueChangedSlot
@@ -307,6 +343,10 @@ proc miqt_exec_callback_cQFutureWatcherBase_progressTextChanged(slot: int, progr
   let slotval1 = vprogressTextx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFutureWatcherBase_progressTextChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFutureWatcherBase_progressTextChanged_release".} =
+  let nimfunc = cast[ref QFutureWatcherBaseprogressTextChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onprogressTextChanged*(self: gen_qfuturewatcher_types.QFutureWatcherBase, slot: QFutureWatcherBaseprogressTextChangedSlot) =
   var tmp = new QFutureWatcherBaseprogressTextChangedSlot

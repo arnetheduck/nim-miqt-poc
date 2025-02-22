@@ -95,6 +95,10 @@ proc miqt_exec_callback_cQMediaAvailabilityControl_availabilityChanged(slot: int
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMediaAvailabilityControl_availabilityChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged_release".} =
+  let nimfunc = cast[ref QMediaAvailabilityControlavailabilityChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onavailabilityChanged*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, slot: QMediaAvailabilityControlavailabilityChangedSlot) =
   var tmp = new QMediaAvailabilityControlavailabilityChangedSlot
   tmp[] = slot

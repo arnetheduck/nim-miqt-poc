@@ -653,6 +653,10 @@ proc miqt_exec_callback_cQFileDialog_fileSelected(slot: int, file: struct_miqt_s
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFileDialog_fileSelected_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_fileSelected_release".} =
+  let nimfunc = cast[ref QFileDialogfileSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfileSelected*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogfileSelectedSlot) =
   var tmp = new QFileDialogfileSelectedSlot
   tmp[] = slot
@@ -681,6 +685,10 @@ proc miqt_exec_callback_cQFileDialog_filesSelected(slot: int, files: struct_miqt
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFileDialog_filesSelected_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_filesSelected_release".} =
+  let nimfunc = cast[ref QFileDialogfilesSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onfilesSelected*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogfilesSelectedSlot) =
   var tmp = new QFileDialogfilesSelectedSlot
   tmp[] = slot
@@ -699,6 +707,10 @@ proc miqt_exec_callback_cQFileDialog_currentChanged(slot: int, path: struct_miqt
   let slotval1 = vpathx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFileDialog_currentChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_currentChanged_release".} =
+  let nimfunc = cast[ref QFileDialogcurrentChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc oncurrentChanged*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogcurrentChangedSlot) =
   var tmp = new QFileDialogcurrentChangedSlot
@@ -719,6 +731,10 @@ proc miqt_exec_callback_cQFileDialog_directoryEntered(slot: int, directory: stru
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFileDialog_directoryEntered_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_directoryEntered_release".} =
+  let nimfunc = cast[ref QFileDialogdirectoryEnteredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc ondirectoryEntered*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdirectoryEnteredSlot) =
   var tmp = new QFileDialogdirectoryEnteredSlot
   tmp[] = slot
@@ -734,6 +750,10 @@ proc miqt_exec_callback_cQFileDialog_urlSelected(slot: int, url: pointer) {.expo
   let slotval1 = gen_qurl_types.QUrl(h: url)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFileDialog_urlSelected_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_urlSelected_release".} =
+  let nimfunc = cast[ref QFileDialogurlSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onurlSelected*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogurlSelectedSlot) =
   var tmp = new QFileDialogurlSelectedSlot
@@ -760,6 +780,10 @@ proc miqt_exec_callback_cQFileDialog_urlsSelected(slot: int, urls: struct_miqt_a
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFileDialog_urlsSelected_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_urlsSelected_release".} =
+  let nimfunc = cast[ref QFileDialogurlsSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onurlsSelected*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogurlsSelectedSlot) =
   var tmp = new QFileDialogurlsSelectedSlot
   tmp[] = slot
@@ -776,6 +800,10 @@ proc miqt_exec_callback_cQFileDialog_currentUrlChanged(slot: int, url: pointer) 
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQFileDialog_currentUrlChanged_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_currentUrlChanged_release".} =
+  let nimfunc = cast[ref QFileDialogcurrentUrlChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc oncurrentUrlChanged*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogcurrentUrlChangedSlot) =
   var tmp = new QFileDialogcurrentUrlChangedSlot
   tmp[] = slot
@@ -791,6 +819,10 @@ proc miqt_exec_callback_cQFileDialog_directoryUrlEntered(slot: int, directory: p
   let slotval1 = gen_qurl_types.QUrl(h: directory)
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFileDialog_directoryUrlEntered_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_directoryUrlEntered_release".} =
+  let nimfunc = cast[ref QFileDialogdirectoryUrlEnteredSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc ondirectoryUrlEntered*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdirectoryUrlEnteredSlot) =
   var tmp = new QFileDialogdirectoryUrlEnteredSlot
@@ -810,6 +842,10 @@ proc miqt_exec_callback_cQFileDialog_filterSelected(slot: int, filter: struct_mi
   let slotval1 = vfilterx_ret
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQFileDialog_filterSelected_release(slot: int) {.exportc: "miqt_exec_callback_QFileDialog_filterSelected_release".} =
+  let nimfunc = cast[ref QFileDialogfilterSelectedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onfilterSelected*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogfilterSelectedSlot) =
   var tmp = new QFileDialogfilterSelectedSlot

@@ -125,6 +125,10 @@ proc miqt_exec_callback_cQMetaDataWriterControl_metaDataChanged(slot: int) {.exp
   let nimfunc = cast[ptr QMetaDataWriterControlmetaDataChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
+proc miqt_exec_callback_cQMetaDataWriterControl_metaDataChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_metaDataChanged_release".} =
+  let nimfunc = cast[ref QMetaDataWriterControlmetaDataChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmetaDataChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, slot: QMetaDataWriterControlmetaDataChangedSlot) =
   var tmp = new QMetaDataWriterControlmetaDataChangedSlot
   tmp[] = slot
@@ -146,6 +150,10 @@ proc miqt_exec_callback_cQMetaDataWriterControl_metaDataChanged2(slot: int, key:
 
   nimfunc[](slotval1, slotval2)
 
+proc miqt_exec_callback_cQMetaDataWriterControl_metaDataChanged2_release(slot: int) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_metaDataChanged2_release".} =
+  let nimfunc = cast[ref QMetaDataWriterControlmetaDataChanged2Slot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onmetaDataChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, slot: QMetaDataWriterControlmetaDataChanged2Slot) =
   var tmp = new QMetaDataWriterControlmetaDataChanged2Slot
   tmp[] = slot
@@ -162,6 +170,10 @@ proc miqt_exec_callback_cQMetaDataWriterControl_writableChanged(slot: int, writa
 
   nimfunc[](slotval1)
 
+proc miqt_exec_callback_cQMetaDataWriterControl_writableChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_writableChanged_release".} =
+  let nimfunc = cast[ref QMetaDataWriterControlwritableChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
+
 proc onwritableChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, slot: QMetaDataWriterControlwritableChangedSlot) =
   var tmp = new QMetaDataWriterControlwritableChangedSlot
   tmp[] = slot
@@ -177,6 +189,10 @@ proc miqt_exec_callback_cQMetaDataWriterControl_metaDataAvailableChanged(slot: i
   let slotval1 = available
 
   nimfunc[](slotval1)
+
+proc miqt_exec_callback_cQMetaDataWriterControl_metaDataAvailableChanged_release(slot: int) {.exportc: "miqt_exec_callback_QMetaDataWriterControl_metaDataAvailableChanged_release".} =
+  let nimfunc = cast[ref QMetaDataWriterControlmetaDataAvailableChangedSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onmetaDataAvailableChanged*(self: gen_qmetadatawritercontrol_types.QMetaDataWriterControl, slot: QMetaDataWriterControlmetaDataAvailableChangedSlot) =
   var tmp = new QMetaDataWriterControlmetaDataAvailableChangedSlot
