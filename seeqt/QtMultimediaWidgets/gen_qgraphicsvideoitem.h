@@ -75,6 +75,7 @@ QGraphicsVideoItem* QGraphicsVideoItem_new2(QGraphicsItem* parent);
 void QGraphicsVideoItem_virtbase(QGraphicsVideoItem* src, QGraphicsObject** outptr_QGraphicsObject);
 QMetaObject* QGraphicsVideoItem_metaObject(const QGraphicsVideoItem* self);
 void* QGraphicsVideoItem_metacast(QGraphicsVideoItem* self, const char* param1);
+int QGraphicsVideoItem_metacall(QGraphicsVideoItem* self, int param1, int param2, void** param3);
 struct miqt_string QGraphicsVideoItem_tr(const char* s);
 QVideoSink* QGraphicsVideoItem_videoSink(const QGraphicsVideoItem* self);
 int QGraphicsVideoItem_aspectRatioMode(const QGraphicsVideoItem* self);
@@ -93,6 +94,8 @@ void QGraphicsVideoItem_timerEvent(QGraphicsVideoItem* self, QTimerEvent* event)
 QVariant* QGraphicsVideoItem_itemChange(QGraphicsVideoItem* self, int change, QVariant* value);
 struct miqt_string QGraphicsVideoItem_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsVideoItem_tr3(const char* s, const char* c, int n);
+bool QGraphicsVideoItem_override_virtual_metacall(void* self, intptr_t slot);
+int QGraphicsVideoItem_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsVideoItem_override_virtual_boundingRect(void* self, intptr_t slot);
 QRectF* QGraphicsVideoItem_virtualbase_boundingRect(const void* self);
 bool QGraphicsVideoItem_override_virtual_paint(void* self, intptr_t slot);

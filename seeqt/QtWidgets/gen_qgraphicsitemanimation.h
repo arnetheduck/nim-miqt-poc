@@ -45,6 +45,7 @@ QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent);
 void QGraphicsItemAnimation_virtbase(QGraphicsItemAnimation* src, QObject** outptr_QObject);
 QMetaObject* QGraphicsItemAnimation_metaObject(const QGraphicsItemAnimation* self);
 void* QGraphicsItemAnimation_metacast(QGraphicsItemAnimation* self, const char* param1);
+int QGraphicsItemAnimation_metacall(QGraphicsItemAnimation* self, int param1, int param2, void** param3);
 struct miqt_string QGraphicsItemAnimation_tr(const char* s);
 QGraphicsItem* QGraphicsItemAnimation_item(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_setItem(QGraphicsItemAnimation* self, QGraphicsItem* item);
@@ -75,6 +76,8 @@ void QGraphicsItemAnimation_beforeAnimationStep(QGraphicsItemAnimation* self, do
 void QGraphicsItemAnimation_afterAnimationStep(QGraphicsItemAnimation* self, double step);
 struct miqt_string QGraphicsItemAnimation_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsItemAnimation_tr3(const char* s, const char* c, int n);
+bool QGraphicsItemAnimation_override_virtual_metacall(void* self, intptr_t slot);
+int QGraphicsItemAnimation_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsItemAnimation_override_virtual_beforeAnimationStep(void* self, intptr_t slot);
 void QGraphicsItemAnimation_virtualbase_beforeAnimationStep(void* self, double step);
 bool QGraphicsItemAnimation_override_virtual_afterAnimationStep(void* self, intptr_t slot);

@@ -1,5 +1,3 @@
-#include <QAction>
-#include <QObject>
 #include <QPoint>
 #include <QString>
 #include <QByteArray>
@@ -38,17 +36,9 @@ void QWhatsThis_hideText() {
 	QWhatsThis::hideText();
 }
 
-QAction* QWhatsThis_createAction() {
-	return QWhatsThis::createAction();
-}
-
 void QWhatsThis_showText3(QPoint* pos, struct miqt_string text, QWidget* w) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QWhatsThis::showText(*pos, text_QString, w);
-}
-
-QAction* QWhatsThis_createAction1(QObject* parent) {
-	return QWhatsThis::createAction(parent);
 }
 
 void QWhatsThis_delete(QWhatsThis* self) {

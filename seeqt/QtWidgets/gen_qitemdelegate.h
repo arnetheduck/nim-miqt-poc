@@ -65,6 +65,7 @@ QItemDelegate* QItemDelegate_new2(QObject* parent);
 void QItemDelegate_virtbase(QItemDelegate* src, QAbstractItemDelegate** outptr_QAbstractItemDelegate);
 QMetaObject* QItemDelegate_metaObject(const QItemDelegate* self);
 void* QItemDelegate_metacast(QItemDelegate* self, const char* param1);
+int QItemDelegate_metacall(QItemDelegate* self, int param1, int param2, void** param3);
 struct miqt_string QItemDelegate_tr(const char* s);
 bool QItemDelegate_hasClipping(const QItemDelegate* self);
 void QItemDelegate_setClipping(QItemDelegate* self, bool clip);
@@ -84,6 +85,8 @@ bool QItemDelegate_eventFilter(QItemDelegate* self, QObject* object, QEvent* eve
 bool QItemDelegate_editorEvent(QItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
 struct miqt_string QItemDelegate_tr2(const char* s, const char* c);
 struct miqt_string QItemDelegate_tr3(const char* s, const char* c, int n);
+bool QItemDelegate_override_virtual_metacall(void* self, intptr_t slot);
+int QItemDelegate_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QItemDelegate_override_virtual_paint(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 bool QItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot);

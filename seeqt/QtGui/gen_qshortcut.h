@@ -46,6 +46,7 @@ QShortcut* QShortcut_new9(int key, QObject* parent, const char* member, const ch
 void QShortcut_virtbase(QShortcut* src, QObject** outptr_QObject);
 QMetaObject* QShortcut_metaObject(const QShortcut* self);
 void* QShortcut_metacast(QShortcut* self, const char* param1);
+int QShortcut_metacall(QShortcut* self, int param1, int param2, void** param3);
 struct miqt_string QShortcut_tr(const char* s);
 void QShortcut_setKey(QShortcut* self, QKeySequence* key);
 QKeySequence* QShortcut_key(const QShortcut* self);
@@ -68,6 +69,8 @@ void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot);
 bool QShortcut_event(QShortcut* self, QEvent* e);
 struct miqt_string QShortcut_tr2(const char* s, const char* c);
 struct miqt_string QShortcut_tr3(const char* s, const char* c, int n);
+bool QShortcut_override_virtual_metacall(void* self, intptr_t slot);
+int QShortcut_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QShortcut_override_virtual_event(void* self, intptr_t slot);
 bool QShortcut_virtualbase_event(void* self, QEvent* e);
 bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot);

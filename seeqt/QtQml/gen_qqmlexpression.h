@@ -52,6 +52,7 @@ QQmlExpression* QQmlExpression_new7(QQmlScriptString* param1, QQmlContext* param
 void QQmlExpression_virtbase(QQmlExpression* src, QObject** outptr_QObject);
 QMetaObject* QQmlExpression_metaObject(const QQmlExpression* self);
 void* QQmlExpression_metacast(QQmlExpression* self, const char* param1);
+int QQmlExpression_metacall(QQmlExpression* self, int param1, int param2, void** param3);
 struct miqt_string QQmlExpression_tr(const char* s);
 QQmlEngine* QQmlExpression_engine(const QQmlExpression* self);
 QQmlContext* QQmlExpression_context(const QQmlExpression* self);
@@ -74,6 +75,8 @@ struct miqt_string QQmlExpression_tr2(const char* s, const char* c);
 struct miqt_string QQmlExpression_tr3(const char* s, const char* c, int n);
 void QQmlExpression_setSourceLocation3(QQmlExpression* self, struct miqt_string fileName, int line, int column);
 QVariant* QQmlExpression_evaluate1(QQmlExpression* self, bool* valueIsUndefined);
+bool QQmlExpression_override_virtual_metacall(void* self, intptr_t slot);
+int QQmlExpression_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QQmlExpression_override_virtual_event(void* self, intptr_t slot);
 bool QQmlExpression_virtualbase_event(void* self, QEvent* event);
 bool QQmlExpression_override_virtual_eventFilter(void* self, intptr_t slot);

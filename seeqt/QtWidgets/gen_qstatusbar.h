@@ -89,6 +89,7 @@ QStatusBar* QStatusBar_new2();
 void QStatusBar_virtbase(QStatusBar* src, QWidget** outptr_QWidget);
 QMetaObject* QStatusBar_metaObject(const QStatusBar* self);
 void* QStatusBar_metacast(QStatusBar* self, const char* param1);
+int QStatusBar_metacall(QStatusBar* self, int param1, int param2, void** param3);
 struct miqt_string QStatusBar_tr(const char* s);
 void QStatusBar_addWidget(QStatusBar* self, QWidget* widget);
 int QStatusBar_insertWidget(QStatusBar* self, int index, QWidget* widget);
@@ -113,6 +114,8 @@ int QStatusBar_insertWidget3(QStatusBar* self, int index, QWidget* widget, int s
 void QStatusBar_addPermanentWidget2(QStatusBar* self, QWidget* widget, int stretch);
 int QStatusBar_insertPermanentWidget3(QStatusBar* self, int index, QWidget* widget, int stretch);
 void QStatusBar_showMessage2(QStatusBar* self, struct miqt_string text, int timeout);
+bool QStatusBar_override_virtual_metacall(void* self, intptr_t slot);
+int QStatusBar_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStatusBar_override_virtual_showEvent(void* self, intptr_t slot);
 void QStatusBar_virtualbase_showEvent(void* self, QShowEvent* param1);
 bool QStatusBar_override_virtual_paintEvent(void* self, intptr_t slot);

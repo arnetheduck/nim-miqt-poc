@@ -26,10 +26,6 @@ bool QQuickGraphicsDevice_isNull(const QQuickGraphicsDevice* self) {
 	return self->isNull();
 }
 
-QQuickGraphicsDevice* QQuickGraphicsDevice_fromOpenGLContext(QOpenGLContext* context) {
-	return new QQuickGraphicsDevice(QQuickGraphicsDevice::fromOpenGLContext(context));
-}
-
 QQuickGraphicsDevice* QQuickGraphicsDevice_fromPhysicalDevice(VkPhysicalDevice physicalDevice) {
 	return new QQuickGraphicsDevice(QQuickGraphicsDevice::fromPhysicalDevice(physicalDevice));
 }

@@ -115,6 +115,7 @@ QGraphicsView* QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent);
 void QGraphicsView_virtbase(QGraphicsView* src, QAbstractScrollArea** outptr_QAbstractScrollArea);
 QMetaObject* QGraphicsView_metaObject(const QGraphicsView* self);
 void* QGraphicsView_metacast(QGraphicsView* self, const char* param1);
+int QGraphicsView_metacall(QGraphicsView* self, int param1, int param2, void** param3);
 struct miqt_string QGraphicsView_tr(const char* s);
 QSize* QGraphicsView_sizeHint(const QGraphicsView* self);
 int QGraphicsView_renderHints(const QGraphicsView* self);
@@ -236,6 +237,8 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items5(const QGraphicsV
 struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items24(const QGraphicsView* self, QPainterPath* path, int mode);
 void QGraphicsView_invalidateScene1(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_invalidateScene2(QGraphicsView* self, QRectF* rect, int layers);
+bool QGraphicsView_override_virtual_metacall(void* self, intptr_t slot);
+int QGraphicsView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsView_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QGraphicsView_virtualbase_sizeHint(const void* self);
 bool QGraphicsView_override_virtual_inputMethodQuery(void* self, intptr_t slot);

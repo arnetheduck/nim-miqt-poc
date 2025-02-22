@@ -56,6 +56,7 @@ QPointingDevice* QPointingDevice_new6(struct miqt_string name, long long systemI
 void QPointingDevice_virtbase(QPointingDevice* src, QInputDevice** outptr_QInputDevice);
 QMetaObject* QPointingDevice_metaObject(const QPointingDevice* self);
 void* QPointingDevice_metacast(QPointingDevice* self, const char* param1);
+int QPointingDevice_metacall(QPointingDevice* self, int param1, int param2, void** param3);
 struct miqt_string QPointingDevice_tr(const char* s);
 void QPointingDevice_setType(QPointingDevice* self, int devType);
 void QPointingDevice_setCapabilities(QPointingDevice* self, int caps);
@@ -71,6 +72,8 @@ void QPointingDevice_connect_grabChanged(QPointingDevice* self, intptr_t slot);
 struct miqt_string QPointingDevice_tr2(const char* s, const char* c);
 struct miqt_string QPointingDevice_tr3(const char* s, const char* c, int n);
 QPointingDevice* QPointingDevice_primaryPointingDevice1(struct miqt_string seatName);
+bool QPointingDevice_override_virtual_metacall(void* self, intptr_t slot);
+int QPointingDevice_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QPointingDevice_override_virtual_event(void* self, intptr_t slot);
 bool QPointingDevice_virtualbase_event(void* self, QEvent* event);
 bool QPointingDevice_override_virtual_eventFilter(void* self, intptr_t slot);

@@ -45,6 +45,7 @@ QQuickRenderControl* QQuickRenderControl_new2(QObject* parent);
 void QQuickRenderControl_virtbase(QQuickRenderControl* src, QObject** outptr_QObject);
 QMetaObject* QQuickRenderControl_metaObject(const QQuickRenderControl* self);
 void* QQuickRenderControl_metacast(QQuickRenderControl* self, const char* param1);
+int QQuickRenderControl_metacall(QQuickRenderControl* self, int param1, int param2, void** param3);
 struct miqt_string QQuickRenderControl_tr(const char* s);
 void QQuickRenderControl_prepareThread(QQuickRenderControl* self, QThread* targetThread);
 void QQuickRenderControl_setSamples(QQuickRenderControl* self, int sampleCount);
@@ -66,6 +67,8 @@ void QQuickRenderControl_connect_sceneChanged(QQuickRenderControl* self, intptr_
 struct miqt_string QQuickRenderControl_tr2(const char* s, const char* c);
 struct miqt_string QQuickRenderControl_tr3(const char* s, const char* c, int n);
 QWindow* QQuickRenderControl_renderWindowFor2(QQuickWindow* win, QPoint* offset);
+bool QQuickRenderControl_override_virtual_metacall(void* self, intptr_t slot);
+int QQuickRenderControl_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QQuickRenderControl_override_virtual_renderWindow(void* self, intptr_t slot);
 QWindow* QQuickRenderControl_virtualbase_renderWindow(void* self, QPoint* offset);
 bool QQuickRenderControl_override_virtual_event(void* self, intptr_t slot);

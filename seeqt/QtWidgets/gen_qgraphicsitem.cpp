@@ -105,6 +105,7 @@ void miqt_exec_callback_QGraphicsObject_scaleChanged(intptr_t);
 void miqt_exec_callback_QGraphicsObject_childrenChanged(intptr_t);
 void miqt_exec_callback_QGraphicsObject_widthChanged(intptr_t);
 void miqt_exec_callback_QGraphicsObject_heightChanged(intptr_t);
+int miqt_exec_callback_QGraphicsObject_metacall(QGraphicsObject*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QGraphicsObject_event(QGraphicsObject*, intptr_t, QEvent*);
 bool miqt_exec_callback_QGraphicsObject_eventFilter(QGraphicsObject*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QGraphicsObject_timerEvent(QGraphicsObject*, intptr_t, QTimerEvent*);
@@ -394,6 +395,7 @@ QVariant* miqt_exec_callback_QGraphicsPixmapItem_inputMethodQuery(const QGraphic
 QVariant* miqt_exec_callback_QGraphicsPixmapItem_itemChange(QGraphicsPixmapItem*, intptr_t, int, QVariant*);
 void miqt_exec_callback_QGraphicsTextItem_linkActivated(intptr_t, struct miqt_string);
 void miqt_exec_callback_QGraphicsTextItem_linkHovered(intptr_t, struct miqt_string);
+int miqt_exec_callback_QGraphicsTextItem_metacall(QGraphicsTextItem*, intptr_t, int, int, void**);
 QRectF* miqt_exec_callback_QGraphicsTextItem_boundingRect(const QGraphicsTextItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsTextItem_shape(const QGraphicsTextItem*, intptr_t);
 bool miqt_exec_callback_QGraphicsTextItem_contains(const QGraphicsTextItem*, intptr_t, QPointF*);
@@ -2574,6 +2576,27 @@ public:
 	virtual ~MiqtVirtualQGraphicsObject() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QGraphicsObject::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QGraphicsObject_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	friend int QGraphicsObject_virtualbase_metacall(void* self, int param1, int param2, void** param3);
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -3406,6 +3429,10 @@ void* QGraphicsObject_metacast(QGraphicsObject* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QGraphicsObject_metacall(QGraphicsObject* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QGraphicsObject_tr(const char* s) {
 	QString _ret = QGraphicsObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -3569,6 +3596,22 @@ struct miqt_string QGraphicsObject_tr3(const char* s, const char* c, int n) {
 
 void QGraphicsObject_grabGesture2(QGraphicsObject* self, int type, int flags) {
 	self->grabGesture(static_cast<Qt::GestureType>(type), static_cast<Qt::GestureFlags>(flags));
+}
+
+bool QGraphicsObject_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsObject* self_cast = dynamic_cast<MiqtVirtualQGraphicsObject*>( (QGraphicsObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QGraphicsObject_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+
+	return ( (MiqtVirtualQGraphicsObject*)(self) )->QGraphicsObject::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
 }
 
 bool QGraphicsObject_override_virtual_event(void* self, intptr_t slot) {
@@ -13911,6 +13954,27 @@ public:
 	virtual ~MiqtVirtualQGraphicsTextItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QGraphicsTextItem::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QGraphicsTextItem_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	friend int QGraphicsTextItem_virtualbase_metacall(void* self, int param1, int param2, void** param3);
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__boundingRect = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -14757,6 +14821,10 @@ void* QGraphicsTextItem_metacast(QGraphicsTextItem* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QGraphicsTextItem_metacall(QGraphicsTextItem* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QGraphicsTextItem_tr(const char* s) {
 	QString _ret = QGraphicsTextItem::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -14956,6 +15024,22 @@ struct miqt_string QGraphicsTextItem_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QGraphicsTextItem_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTextItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsTextItem*>( (QGraphicsTextItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QGraphicsTextItem_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+
+	return ( (MiqtVirtualQGraphicsTextItem*)(self) )->QGraphicsTextItem::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
 }
 
 bool QGraphicsTextItem_override_virtual_boundingRect(void* self, intptr_t slot) {

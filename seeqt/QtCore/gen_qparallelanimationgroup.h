@@ -41,6 +41,7 @@ QParallelAnimationGroup* QParallelAnimationGroup_new2(QObject* parent);
 void QParallelAnimationGroup_virtbase(QParallelAnimationGroup* src, QAnimationGroup** outptr_QAnimationGroup);
 QMetaObject* QParallelAnimationGroup_metaObject(const QParallelAnimationGroup* self);
 void* QParallelAnimationGroup_metacast(QParallelAnimationGroup* self, const char* param1);
+int QParallelAnimationGroup_metacall(QParallelAnimationGroup* self, int param1, int param2, void** param3);
 struct miqt_string QParallelAnimationGroup_tr(const char* s);
 int QParallelAnimationGroup_duration(const QParallelAnimationGroup* self);
 bool QParallelAnimationGroup_event(QParallelAnimationGroup* self, QEvent* event);
@@ -49,6 +50,8 @@ void QParallelAnimationGroup_updateState(QParallelAnimationGroup* self, int newS
 void QParallelAnimationGroup_updateDirection(QParallelAnimationGroup* self, int direction);
 struct miqt_string QParallelAnimationGroup_tr2(const char* s, const char* c);
 struct miqt_string QParallelAnimationGroup_tr3(const char* s, const char* c, int n);
+bool QParallelAnimationGroup_override_virtual_metacall(void* self, intptr_t slot);
+int QParallelAnimationGroup_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QParallelAnimationGroup_override_virtual_duration(void* self, intptr_t slot);
 int QParallelAnimationGroup_virtualbase_duration(const void* self);
 bool QParallelAnimationGroup_override_virtual_event(void* self, intptr_t slot);

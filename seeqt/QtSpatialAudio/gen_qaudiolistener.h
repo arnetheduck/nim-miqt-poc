@@ -43,6 +43,8 @@ QVector3D* QAudioListener_position(const QAudioListener* self);
 void QAudioListener_setRotation(QAudioListener* self, QQuaternion* q);
 QQuaternion* QAudioListener_rotation(const QAudioListener* self);
 QAudioEngine* QAudioListener_engine(const QAudioListener* self);
+bool QAudioListener_override_virtual_metacall(void* self, intptr_t slot);
+int QAudioListener_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAudioListener_override_virtual_event(void* self, intptr_t slot);
 bool QAudioListener_virtualbase_event(void* self, QEvent* event);
 bool QAudioListener_override_virtual_eventFilter(void* self, intptr_t slot);

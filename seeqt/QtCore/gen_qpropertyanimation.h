@@ -45,6 +45,7 @@ QPropertyAnimation* QPropertyAnimation_new4(QObject* target, struct miqt_string 
 void QPropertyAnimation_virtbase(QPropertyAnimation* src, QVariantAnimation** outptr_QVariantAnimation);
 QMetaObject* QPropertyAnimation_metaObject(const QPropertyAnimation* self);
 void* QPropertyAnimation_metacast(QPropertyAnimation* self, const char* param1);
+int QPropertyAnimation_metacall(QPropertyAnimation* self, int param1, int param2, void** param3);
 struct miqt_string QPropertyAnimation_tr(const char* s);
 QObject* QPropertyAnimation_targetObject(const QPropertyAnimation* self);
 void QPropertyAnimation_setTargetObject(QPropertyAnimation* self, QObject* target);
@@ -55,6 +56,8 @@ void QPropertyAnimation_updateCurrentValue(QPropertyAnimation* self, QVariant* v
 void QPropertyAnimation_updateState(QPropertyAnimation* self, int newState, int oldState);
 struct miqt_string QPropertyAnimation_tr2(const char* s, const char* c);
 struct miqt_string QPropertyAnimation_tr3(const char* s, const char* c, int n);
+bool QPropertyAnimation_override_virtual_metacall(void* self, intptr_t slot);
+int QPropertyAnimation_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QPropertyAnimation_override_virtual_event(void* self, intptr_t slot);
 bool QPropertyAnimation_virtualbase_event(void* self, QEvent* event);
 bool QPropertyAnimation_override_virtual_updateCurrentValue(void* self, intptr_t slot);

@@ -39,6 +39,7 @@ QWebChannel* QWebChannel_new2(QObject* parent);
 void QWebChannel_virtbase(QWebChannel* src, QObject** outptr_QObject);
 QMetaObject* QWebChannel_metaObject(const QWebChannel* self);
 void* QWebChannel_metacast(QWebChannel* self, const char* param1);
+int QWebChannel_metacall(QWebChannel* self, int param1, int param2, void** param3);
 struct miqt_string QWebChannel_tr(const char* s);
 void QWebChannel_registerObjects(QWebChannel* self, struct miqt_map /* of struct miqt_string to QObject* */  objects);
 struct miqt_map /* of struct miqt_string to QObject* */  QWebChannel_registeredObjects(const QWebChannel* self);
@@ -54,6 +55,8 @@ void QWebChannel_connectTo(QWebChannel* self, QWebChannelAbstractTransport* tran
 void QWebChannel_disconnectFrom(QWebChannel* self, QWebChannelAbstractTransport* transport);
 struct miqt_string QWebChannel_tr2(const char* s, const char* c);
 struct miqt_string QWebChannel_tr3(const char* s, const char* c, int n);
+bool QWebChannel_override_virtual_metacall(void* self, intptr_t slot);
+int QWebChannel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebChannel_override_virtual_event(void* self, intptr_t slot);
 bool QWebChannel_virtualbase_event(void* self, QEvent* event);
 bool QWebChannel_override_virtual_eventFilter(void* self, intptr_t slot);

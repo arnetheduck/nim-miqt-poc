@@ -66,7 +66,6 @@ QRect* QSGMaterialShader__RenderState_deviceRect(const QSGMaterialShader__Render
 float QSGMaterialShader__RenderState_determinant(const QSGMaterialShader__RenderState* self);
 float QSGMaterialShader__RenderState_devicePixelRatio(const QSGMaterialShader__RenderState* self);
 struct miqt_string QSGMaterialShader__RenderState_uniformData(QSGMaterialShader__RenderState* self);
-QRhiResourceUpdateBatch* QSGMaterialShader__RenderState_resourceUpdateBatch(QSGMaterialShader__RenderState* self);
 void QSGMaterialShader__RenderState_delete(QSGMaterialShader__RenderState* self);
 
 void QSGMaterialShader__GraphicsPipelineState_delete(QSGMaterialShader__GraphicsPipelineState* self);

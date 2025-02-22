@@ -62,6 +62,7 @@ QStyle* QStyle_new();
 void QStyle_virtbase(QStyle* src, QObject** outptr_QObject);
 QMetaObject* QStyle_metaObject(const QStyle* self);
 void* QStyle_metacast(QStyle* self, const char* param1);
+int QStyle_metacall(QStyle* self, int param1, int param2, void** param3);
 struct miqt_string QStyle_tr(const char* s);
 struct miqt_string QStyle_name(const QStyle* self);
 void QStyle_polish(QStyle* self, QWidget* widget);
@@ -101,6 +102,8 @@ int QStyle_sliderPositionFromValue5(int min, int max, int val, int space, bool u
 int QStyle_sliderValueFromPosition5(int min, int max, int pos, int space, bool upsideDown);
 int QStyle_combinedLayoutSpacing4(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option);
 int QStyle_combinedLayoutSpacing5(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option, QWidget* widget);
+bool QStyle_override_virtual_metacall(void* self, intptr_t slot);
+int QStyle_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStyle_override_virtual_polish(void* self, intptr_t slot);
 void QStyle_virtualbase_polish(void* self, QWidget* widget);
 bool QStyle_override_virtual_unpolish(void* self, intptr_t slot);

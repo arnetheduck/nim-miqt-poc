@@ -115,6 +115,7 @@ QListView* QListView_new2();
 void QListView_virtbase(QListView* src, QAbstractItemView** outptr_QAbstractItemView);
 QMetaObject* QListView_metaObject(const QListView* self);
 void* QListView_metacast(QListView* self, const char* param1);
+int QListView_metacall(QListView* self, int param1, int param2, void** param3);
 struct miqt_string QListView_tr(const char* s);
 void QListView_setMovement(QListView* self, int movement);
 int QListView_movement(const QListView* self);
@@ -184,6 +185,8 @@ void QListView_currentChanged(QListView* self, QModelIndex* current, QModelIndex
 QSize* QListView_viewportSizeHint(const QListView* self);
 struct miqt_string QListView_tr2(const char* s, const char* c);
 struct miqt_string QListView_tr3(const char* s, const char* c, int n);
+bool QListView_override_virtual_metacall(void* self, intptr_t slot);
+int QListView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QListView_override_virtual_visualRect(void* self, intptr_t slot);
 QRect* QListView_virtualbase_visualRect(const void* self, QModelIndex* index);
 bool QListView_override_virtual_scrollTo(void* self, intptr_t slot);

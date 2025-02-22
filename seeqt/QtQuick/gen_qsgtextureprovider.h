@@ -31,6 +31,7 @@ typedef struct QSGTextureProvider QSGTextureProvider;
 void QSGTextureProvider_virtbase(QSGTextureProvider* src, QObject** outptr_QObject);
 QMetaObject* QSGTextureProvider_metaObject(const QSGTextureProvider* self);
 void* QSGTextureProvider_metacast(QSGTextureProvider* self, const char* param1);
+int QSGTextureProvider_metacall(QSGTextureProvider* self, int param1, int param2, void** param3);
 struct miqt_string QSGTextureProvider_tr(const char* s);
 QSGTexture* QSGTextureProvider_texture(const QSGTextureProvider* self);
 void QSGTextureProvider_textureChanged(QSGTextureProvider* self);

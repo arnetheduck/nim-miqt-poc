@@ -93,6 +93,7 @@ QAbstractPrintDialog* QAbstractPrintDialog_new2(QPrinter* printer, QWidget* pare
 void QAbstractPrintDialog_virtbase(QAbstractPrintDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QAbstractPrintDialog_metaObject(const QAbstractPrintDialog* self);
 void* QAbstractPrintDialog_metacast(QAbstractPrintDialog* self, const char* param1);
+int QAbstractPrintDialog_metacall(QAbstractPrintDialog* self, int param1, int param2, void** param3);
 struct miqt_string QAbstractPrintDialog_tr(const char* s);
 void QAbstractPrintDialog_setOptionTabs(QAbstractPrintDialog* self, struct miqt_array /* of QWidget* */  tabs);
 void QAbstractPrintDialog_setPrintRange(QAbstractPrintDialog* self, int range);
@@ -106,6 +107,8 @@ int QAbstractPrintDialog_toPage(const QAbstractPrintDialog* self);
 QPrinter* QAbstractPrintDialog_printer(const QAbstractPrintDialog* self);
 struct miqt_string QAbstractPrintDialog_tr2(const char* s, const char* c);
 struct miqt_string QAbstractPrintDialog_tr3(const char* s, const char* c, int n);
+bool QAbstractPrintDialog_override_virtual_metacall(void* self, intptr_t slot);
+int QAbstractPrintDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractPrintDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QAbstractPrintDialog_virtualbase_setVisible(void* self, bool visible);
 bool QAbstractPrintDialog_override_virtual_sizeHint(void* self, intptr_t slot);

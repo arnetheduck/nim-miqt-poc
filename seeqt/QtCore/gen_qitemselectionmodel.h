@@ -74,6 +74,7 @@ QItemSelectionModel* QItemSelectionModel_new3(QAbstractItemModel* model);
 void QItemSelectionModel_virtbase(QItemSelectionModel* src, QObject** outptr_QObject);
 QMetaObject* QItemSelectionModel_metaObject(const QItemSelectionModel* self);
 void* QItemSelectionModel_metacast(QItemSelectionModel* self, const char* param1);
+int QItemSelectionModel_metacall(QItemSelectionModel* self, int param1, int param2, void** param3);
 struct miqt_string QItemSelectionModel_tr(const char* s);
 QModelIndex* QItemSelectionModel_currentIndex(const QItemSelectionModel* self);
 bool QItemSelectionModel_isSelected(const QItemSelectionModel* self, QModelIndex* index);
@@ -114,6 +115,8 @@ bool QItemSelectionModel_rowIntersectsSelection2(const QItemSelectionModel* self
 bool QItemSelectionModel_columnIntersectsSelection2(const QItemSelectionModel* self, int column, QModelIndex* parent);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRows1(const QItemSelectionModel* self, int column);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumns1(const QItemSelectionModel* self, int row);
+bool QItemSelectionModel_override_virtual_metacall(void* self, intptr_t slot);
+int QItemSelectionModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QItemSelectionModel_override_virtual_setCurrentIndex(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, QModelIndex* index, int command);
 bool QItemSelectionModel_override_virtual_select(void* self, intptr_t slot);

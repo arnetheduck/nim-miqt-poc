@@ -51,6 +51,7 @@ QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */  compl
 void QCompleter_virtbase(QCompleter* src, QObject** outptr_QObject);
 QMetaObject* QCompleter_metaObject(const QCompleter* self);
 void* QCompleter_metacast(QCompleter* self, const char* param1);
+int QCompleter_metacall(QCompleter* self, int param1, int param2, void** param3);
 struct miqt_string QCompleter_tr(const char* s);
 void QCompleter_setWidget(QCompleter* self, QWidget* widget);
 QWidget* QCompleter_widget(const QCompleter* self);
@@ -98,6 +99,8 @@ void QCompleter_connect_highlightedWithIndex(QCompleter* self, intptr_t slot);
 struct miqt_string QCompleter_tr2(const char* s, const char* c);
 struct miqt_string QCompleter_tr3(const char* s, const char* c, int n);
 void QCompleter_complete1(QCompleter* self, QRect* rect);
+bool QCompleter_override_virtual_metacall(void* self, intptr_t slot);
+int QCompleter_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCompleter_override_virtual_pathFromIndex(void* self, intptr_t slot);
 struct miqt_string QCompleter_virtualbase_pathFromIndex(const void* self, QModelIndex* index);
 bool QCompleter_override_virtual_splitPath(void* self, intptr_t slot);
