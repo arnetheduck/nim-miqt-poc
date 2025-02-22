@@ -82,6 +82,7 @@ proc fQQmlFileSelector_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQQmlFileSelector_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_connectNotify".}
 proc fQQmlFileSelector_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlFileSelector_virtualbase_disconnectNotify".}
 proc fcQQmlFileSelector_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlFileSelector_override_virtual_disconnectNotify".}
+proc fcQQmlFileSelector_staticMetaObject(): pointer {.importc: "QQmlFileSelector_staticMetaObject".}
 proc fcQQmlFileSelector_delete(self: pointer) {.importc: "QQmlFileSelector_delete".}
 
 
@@ -284,5 +285,7 @@ proc miqt_exec_callback_QQmlFileSelector_disconnectNotify(self: ptr cQQmlFileSel
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlfileselector_types.QQmlFileSelector): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQmlFileSelector_staticMetaObject())
 proc delete*(self: gen_qqmlfileselector_types.QQmlFileSelector) =
   fcQQmlFileSelector_delete(self.h)

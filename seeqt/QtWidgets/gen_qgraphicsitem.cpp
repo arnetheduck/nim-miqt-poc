@@ -4274,6 +4274,7 @@ QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* vari
 
 }
 
+const QMetaObject* QGraphicsObject_staticMetaObject() { return &QGraphicsObject::staticMetaObject; }
 void QGraphicsObject_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsObject* self_cast = dynamic_cast<MiqtVirtualQGraphicsObject*>( (QGraphicsObject*)(self) );
 	if (self_cast == nullptr) {
@@ -15714,6 +15715,7 @@ QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVari
 
 }
 
+const QMetaObject* QGraphicsTextItem_staticMetaObject() { return &QGraphicsTextItem::staticMetaObject; }
 void QGraphicsTextItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsTextItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsTextItem*>( (QGraphicsTextItem*)(self) );
 	if (self_cast == nullptr) {

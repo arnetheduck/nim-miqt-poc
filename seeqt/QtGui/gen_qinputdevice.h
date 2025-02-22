@@ -80,6 +80,7 @@ QObject* QInputDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QInputDevice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QInputDevice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QInputDevice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QInputDevice_staticMetaObject();
 void QInputDevice_delete(QInputDevice* self);
 
 #ifdef __cplusplus

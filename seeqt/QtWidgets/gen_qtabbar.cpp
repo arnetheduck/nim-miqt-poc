@@ -2395,6 +2395,7 @@ void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QTabBar_staticMetaObject() { return &QTabBar::staticMetaObject; }
 void QTabBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
 	if (self_cast == nullptr) {

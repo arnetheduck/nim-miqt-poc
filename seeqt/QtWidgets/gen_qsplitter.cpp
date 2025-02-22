@@ -2128,6 +2128,7 @@ void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QSplitter_staticMetaObject() { return &QSplitter::staticMetaObject; }
 void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index) {
 	MiqtVirtualQSplitter* self_cast = dynamic_cast<MiqtVirtualQSplitter*>( (QSplitter*)(self) );
 	if (self_cast == nullptr) {
@@ -4074,6 +4075,7 @@ void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 
 }
 
+const QMetaObject* QSplitterHandle_staticMetaObject() { return &QSplitterHandle::staticMetaObject; }
 void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p) {
 	MiqtVirtualQSplitterHandle* self_cast = dynamic_cast<MiqtVirtualQSplitterHandle*>( (QSplitterHandle*)(self) );
 	if (self_cast == nullptr) {

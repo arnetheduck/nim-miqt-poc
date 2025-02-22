@@ -78,6 +78,7 @@ proc fQAccessiblePlugin_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQAccessiblePlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAccessiblePlugin_override_virtual_connectNotify".}
 proc fQAccessiblePlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAccessiblePlugin_virtualbase_disconnectNotify".}
 proc fcQAccessiblePlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAccessiblePlugin_override_virtual_disconnectNotify".}
+proc fcQAccessiblePlugin_staticMetaObject(): pointer {.importc: "QAccessiblePlugin_staticMetaObject".}
 proc fcQAccessiblePlugin_delete(self: pointer) {.importc: "QAccessiblePlugin_delete".}
 
 
@@ -288,5 +289,7 @@ proc miqt_exec_callback_QAccessiblePlugin_disconnectNotify(self: ptr cQAccessibl
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAccessiblePlugin_staticMetaObject())
 proc delete*(self: gen_qaccessibleplugin_types.QAccessiblePlugin) =
   fcQAccessiblePlugin_delete(self.h)

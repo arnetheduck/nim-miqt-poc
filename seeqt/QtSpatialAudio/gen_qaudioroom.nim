@@ -147,6 +147,7 @@ proc fQAudioRoom_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQAudioRoom_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_connectNotify".}
 proc fQAudioRoom_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioRoom_virtualbase_disconnectNotify".}
 proc fcQAudioRoom_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioRoom_override_virtual_disconnectNotify".}
+proc fcQAudioRoom_staticMetaObject(): pointer {.importc: "QAudioRoom_staticMetaObject".}
 proc fcQAudioRoom_delete(self: pointer) {.importc: "QAudioRoom_delete".}
 
 
@@ -490,5 +491,7 @@ proc miqt_exec_callback_QAudioRoom_disconnectNotify(self: ptr cQAudioRoom, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaudioroom_types.QAudioRoom): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAudioRoom_staticMetaObject())
 proc delete*(self: gen_qaudioroom_types.QAudioRoom) =
   fcQAudioRoom_delete(self.h)

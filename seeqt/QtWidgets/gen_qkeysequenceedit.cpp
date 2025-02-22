@@ -1905,6 +1905,7 @@ void QKeySequenceEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 
 }
 
+const QMetaObject* QKeySequenceEdit_staticMetaObject() { return &QKeySequenceEdit::staticMetaObject; }
 void QKeySequenceEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
 	if (self_cast == nullptr) {

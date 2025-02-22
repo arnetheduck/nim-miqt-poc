@@ -1371,6 +1371,7 @@ QSpacerItem* QLayout_virtualbase_spacerItem(void* self) {
 
 }
 
+const QMetaObject* QLayout_staticMetaObject() { return &QLayout::staticMetaObject; }
 void QLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {

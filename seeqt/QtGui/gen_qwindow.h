@@ -331,6 +331,7 @@ QObject* QWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWindow_staticMetaObject();
 void QWindow_delete(QWindow* self);
 
 #ifdef __cplusplus

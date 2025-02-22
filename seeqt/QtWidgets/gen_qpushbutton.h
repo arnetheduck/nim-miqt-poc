@@ -237,6 +237,7 @@ QObject* QPushButton_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QPushButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPushButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPushButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPushButton_staticMetaObject();
 void QPushButton_delete(QPushButton* self);
 
 #ifdef __cplusplus

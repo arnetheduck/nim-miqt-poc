@@ -2581,6 +2581,7 @@ void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QDateTimeEdit_staticMetaObject() { return &QDateTimeEdit::staticMetaObject; }
 QLineEdit* QDateTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -4817,6 +4818,7 @@ void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QTimeEdit_staticMetaObject() { return &QTimeEdit::staticMetaObject; }
 QLineEdit* QTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -7053,6 +7055,7 @@ void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QDateEdit_staticMetaObject() { return &QDateEdit::staticMetaObject; }
 QLineEdit* QDateEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
 	if (self_cast == nullptr) {

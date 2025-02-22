@@ -103,6 +103,7 @@ QObject* QAbstractAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QAbstractAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractAnimation_staticMetaObject();
 void QAbstractAnimation_delete(QAbstractAnimation* self);
 
 QAnimationDriver* QAnimationDriver_new();
@@ -154,6 +155,7 @@ QObject* QAnimationDriver_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QAnimationDriver_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAnimationDriver_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAnimationDriver_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAnimationDriver_staticMetaObject();
 void QAnimationDriver_delete(QAnimationDriver* self);
 
 #ifdef __cplusplus

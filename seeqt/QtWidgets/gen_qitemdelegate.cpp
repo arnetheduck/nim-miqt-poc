@@ -1044,6 +1044,7 @@ void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QItemDelegate_staticMetaObject() { return &QItemDelegate::staticMetaObject; }
 void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
 	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
 	if (self_cast == nullptr) {

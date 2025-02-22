@@ -403,6 +403,7 @@ QObject* QPlainTextEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QPlainTextEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPlainTextEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPlainTextEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPlainTextEdit_staticMetaObject();
 void QPlainTextEdit_delete(QPlainTextEdit* self);
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document);
@@ -466,6 +467,7 @@ QObject* QPlainTextDocumentLayout_protectedbase_sender(bool* _dynamic_cast_ok, c
 int QPlainTextDocumentLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPlainTextDocumentLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPlainTextDocumentLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPlainTextDocumentLayout_staticMetaObject();
 void QPlainTextDocumentLayout_delete(QPlainTextDocumentLayout* self);
 
 #ifdef __cplusplus

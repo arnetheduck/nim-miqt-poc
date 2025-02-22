@@ -160,6 +160,7 @@ QObject* QIODevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QIODevice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIODevice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIODevice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QIODevice_staticMetaObject();
 void QIODevice_delete(QIODevice* self);
 
 #ifdef __cplusplus

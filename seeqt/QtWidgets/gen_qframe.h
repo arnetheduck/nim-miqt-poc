@@ -224,6 +224,7 @@ QObject* QFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QFrame_staticMetaObject();
 void QFrame_delete(QFrame* self);
 
 #ifdef __cplusplus

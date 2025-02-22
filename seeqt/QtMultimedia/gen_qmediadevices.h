@@ -77,6 +77,7 @@ QObject* QMediaDevices_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QMediaDevices_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMediaDevices_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMediaDevices_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QMediaDevices_staticMetaObject();
 void QMediaDevices_delete(QMediaDevices* self);
 
 #ifdef __cplusplus

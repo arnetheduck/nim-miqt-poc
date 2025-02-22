@@ -1059,6 +1059,7 @@ void QBuffer_virtualbase_customEvent(void* self, QEvent* event) {
 
 }
 
+const QMetaObject* QBuffer_staticMetaObject() { return &QBuffer::staticMetaObject; }
 void QBuffer_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {

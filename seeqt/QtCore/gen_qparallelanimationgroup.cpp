@@ -536,6 +536,7 @@ void QParallelAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMetho
 
 }
 
+const QMetaObject* QParallelAnimationGroup_staticMetaObject() { return &QParallelAnimationGroup::staticMetaObject; }
 QObject* QParallelAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQParallelAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
 	if (self_cast == nullptr) {

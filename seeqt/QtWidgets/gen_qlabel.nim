@@ -228,6 +228,7 @@ proc fQLabel_virtualbase_connectNotify(self: pointer, signal: pointer): void{.im
 proc fcQLabel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QLabel_override_virtual_connectNotify".}
 proc fQLabel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QLabel_virtualbase_disconnectNotify".}
 proc fcQLabel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QLabel_override_virtual_disconnectNotify".}
+proc fcQLabel_staticMetaObject(): pointer {.importc: "QLabel_staticMetaObject".}
 proc fcQLabel_delete(self: pointer) {.importc: "QLabel_delete".}
 
 
@@ -1300,5 +1301,7 @@ proc miqt_exec_callback_QLabel_disconnectNotify(self: ptr cQLabel, slot: int, si
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qlabel_types.QLabel): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQLabel_staticMetaObject())
 proc delete*(self: gen_qlabel_types.QLabel) =
   fcQLabel_delete(self.h)

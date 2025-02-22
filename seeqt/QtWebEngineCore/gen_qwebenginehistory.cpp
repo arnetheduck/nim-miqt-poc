@@ -159,6 +159,7 @@ struct miqt_string QWebEngineHistoryModel_tr3(const char* s, const char* c, int 
 	return _ms;
 }
 
+const QMetaObject* QWebEngineHistoryModel_staticMetaObject() { return &QWebEngineHistoryModel::staticMetaObject; }
 void QWebEngineHistory_virtbase(QWebEngineHistory* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
@@ -307,3 +308,4 @@ struct miqt_string QWebEngineHistory_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QWebEngineHistory_staticMetaObject() { return &QWebEngineHistory::staticMetaObject; }

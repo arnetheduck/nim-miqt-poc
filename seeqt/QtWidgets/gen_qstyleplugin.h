@@ -66,6 +66,7 @@ QObject* QStylePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QStylePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStylePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStylePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QStylePlugin_staticMetaObject();
 void QStylePlugin_delete(QStylePlugin* self);
 
 #ifdef __cplusplus

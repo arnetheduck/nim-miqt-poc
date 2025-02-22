@@ -296,6 +296,7 @@ QObject* QWebEngineView_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QWebEngineView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebEngineView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebEngineView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWebEngineView_staticMetaObject();
 void QWebEngineView_delete(QWebEngineView* self);
 
 #ifdef __cplusplus

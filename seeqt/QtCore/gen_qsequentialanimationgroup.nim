@@ -94,6 +94,7 @@ proc fQSequentialAnimationGroup_virtualbase_connectNotify(self: pointer, signal:
 proc fcQSequentialAnimationGroup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSequentialAnimationGroup_override_virtual_connectNotify".}
 proc fQSequentialAnimationGroup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSequentialAnimationGroup_virtualbase_disconnectNotify".}
 proc fcQSequentialAnimationGroup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSequentialAnimationGroup_override_virtual_disconnectNotify".}
+proc fcQSequentialAnimationGroup_staticMetaObject(): pointer {.importc: "QSequentialAnimationGroup_staticMetaObject".}
 proc fcQSequentialAnimationGroup_delete(self: pointer) {.importc: "QSequentialAnimationGroup_delete".}
 
 
@@ -378,5 +379,7 @@ proc miqt_exec_callback_QSequentialAnimationGroup_disconnectNotify(self: ptr cQS
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsequentialanimationgroup_types.QSequentialAnimationGroup): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSequentialAnimationGroup_staticMetaObject())
 proc delete*(self: gen_qsequentialanimationgroup_types.QSequentialAnimationGroup) =
   fcQSequentialAnimationGroup_delete(self.h)

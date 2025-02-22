@@ -450,6 +450,7 @@ void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QSyntaxHighlighter_staticMetaObject() { return &QSyntaxHighlighter::staticMetaObject; }
 void QSyntaxHighlighter_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, int start, int count, QTextCharFormat* format) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {

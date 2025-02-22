@@ -90,6 +90,7 @@ QObject* QSyntaxHighlighter_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QSyntaxHighlighter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSyntaxHighlighter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSyntaxHighlighter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSyntaxHighlighter_staticMetaObject();
 void QSyntaxHighlighter_delete(QSyntaxHighlighter* self);
 
 #ifdef __cplusplus

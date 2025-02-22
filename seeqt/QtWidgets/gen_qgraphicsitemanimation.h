@@ -100,6 +100,7 @@ QObject* QGraphicsItemAnimation_protectedbase_sender(bool* _dynamic_cast_ok, con
 int QGraphicsItemAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsItemAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsItemAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsItemAnimation_staticMetaObject();
 void QGraphicsItemAnimation_delete(QGraphicsItemAnimation* self);
 
 #ifdef __cplusplus

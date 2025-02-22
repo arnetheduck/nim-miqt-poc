@@ -180,6 +180,7 @@ proc fQLayout_virtualbase_widget(self: pointer, ): pointer{.importc: "QLayout_vi
 proc fcQLayout_override_virtual_widget(self: pointer, slot: int) {.importc: "QLayout_override_virtual_widget".}
 proc fQLayout_virtualbase_spacerItem(self: pointer, ): pointer{.importc: "QLayout_virtualbase_spacerItem".}
 proc fcQLayout_override_virtual_spacerItem(self: pointer, slot: int) {.importc: "QLayout_override_virtual_spacerItem".}
+proc fcQLayout_staticMetaObject(): pointer {.importc: "QLayout_staticMetaObject".}
 proc fcQLayout_delete(self: pointer) {.importc: "QLayout_delete".}
 
 
@@ -907,5 +908,7 @@ proc miqt_exec_callback_QLayout_spacerItem(self: ptr cQLayout, slot: int): point
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qlayout_types.QLayout): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQLayout_staticMetaObject())
 proc delete*(self: gen_qlayout_types.QLayout) =
   fcQLayout_delete(self.h)

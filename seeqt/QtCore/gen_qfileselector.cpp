@@ -453,6 +453,7 @@ void QFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QFileSelector_staticMetaObject() { return &QFileSelector::staticMetaObject; }
 QObject* QFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQFileSelector* self_cast = dynamic_cast<MiqtVirtualQFileSelector*>( (QFileSelector*)(self) );
 	if (self_cast == nullptr) {

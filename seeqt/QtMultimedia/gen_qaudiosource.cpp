@@ -495,6 +495,7 @@ void QAudioSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 
 }
 
+const QMetaObject* QAudioSource_staticMetaObject() { return &QAudioSource::staticMetaObject; }
 QObject* QAudioSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAudioSource* self_cast = dynamic_cast<MiqtVirtualQAudioSource*>( (QAudioSource*)(self) );
 	if (self_cast == nullptr) {

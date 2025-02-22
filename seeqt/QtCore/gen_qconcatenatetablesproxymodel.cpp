@@ -2073,6 +2073,7 @@ void QConcatenateTablesProxyModel_virtualbase_disconnectNotify(void* self, QMeta
 
 }
 
+const QMetaObject* QConcatenateTablesProxyModel_staticMetaObject() { return &QConcatenateTablesProxyModel::staticMetaObject; }
 QModelIndex* QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {

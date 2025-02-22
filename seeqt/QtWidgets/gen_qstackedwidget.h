@@ -220,6 +220,7 @@ QObject* QStackedWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QStackedWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStackedWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStackedWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QStackedWidget_staticMetaObject();
 void QStackedWidget_delete(QStackedWidget* self);
 
 #ifdef __cplusplus

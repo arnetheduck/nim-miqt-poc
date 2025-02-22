@@ -78,6 +78,7 @@ proc fQWebEngineUrlRequestInterceptor_virtualbase_connectNotify(self: pointer, s
 proc fcQWebEngineUrlRequestInterceptor_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebEngineUrlRequestInterceptor_override_virtual_connectNotify".}
 proc fQWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify".}
 proc fcQWebEngineUrlRequestInterceptor_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebEngineUrlRequestInterceptor_override_virtual_disconnectNotify".}
+proc fcQWebEngineUrlRequestInterceptor_staticMetaObject(): pointer {.importc: "QWebEngineUrlRequestInterceptor_staticMetaObject".}
 proc fcQWebEngineUrlRequestInterceptor_delete(self: pointer) {.importc: "QWebEngineUrlRequestInterceptor_delete".}
 
 
@@ -281,5 +282,7 @@ proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_disconnectNotify(self: p
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineUrlRequestInterceptor_staticMetaObject())
 proc delete*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor) =
   fcQWebEngineUrlRequestInterceptor_delete(self.h)

@@ -246,6 +246,7 @@ QObject* QMdiSubWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QMdiSubWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMdiSubWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMdiSubWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QMdiSubWindow_staticMetaObject();
 void QMdiSubWindow_delete(QMdiSubWindow* self);
 
 #ifdef __cplusplus

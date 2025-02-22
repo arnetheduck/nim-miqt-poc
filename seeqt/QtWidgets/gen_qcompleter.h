@@ -123,6 +123,7 @@ QObject* QCompleter_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QCompleter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCompleter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCompleter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QCompleter_staticMetaObject();
 void QCompleter_delete(QCompleter* self);
 
 #ifdef __cplusplus

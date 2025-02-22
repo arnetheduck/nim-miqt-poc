@@ -473,6 +473,7 @@ void QAmbientSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QAmbientSound_staticMetaObject() { return &QAmbientSound::staticMetaObject; }
 QObject* QAmbientSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAmbientSound* self_cast = dynamic_cast<MiqtVirtualQAmbientSound*>( (QAmbientSound*)(self) );
 	if (self_cast == nullptr) {

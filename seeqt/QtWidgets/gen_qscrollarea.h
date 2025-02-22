@@ -239,6 +239,7 @@ QObject* QScrollArea_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QScrollArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QScrollArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QScrollArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QScrollArea_staticMetaObject();
 void QScrollArea_delete(QScrollArea* self);
 
 #ifdef __cplusplus

@@ -2054,6 +2054,7 @@ void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 
 }
 
+const QMetaObject* QProgressBar_staticMetaObject() { return &QProgressBar::staticMetaObject; }
 void QProgressBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQProgressBar* self_cast = dynamic_cast<MiqtVirtualQProgressBar*>( (QProgressBar*)(self) );
 	if (self_cast == nullptr) {

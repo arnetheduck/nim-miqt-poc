@@ -2358,6 +2358,7 @@ void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QSpinBox_staticMetaObject() { return &QSpinBox::staticMetaObject; }
 QLineEdit* QSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSpinBox* self_cast = dynamic_cast<MiqtVirtualQSpinBox*>( (QSpinBox*)(self) );
 	if (self_cast == nullptr) {
@@ -4724,6 +4725,7 @@ void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 
 }
 
+const QMetaObject* QDoubleSpinBox_staticMetaObject() { return &QDoubleSpinBox::staticMetaObject; }
 QLineEdit* QDoubleSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDoubleSpinBox* self_cast = dynamic_cast<MiqtVirtualQDoubleSpinBox*>( (QDoubleSpinBox*)(self) );
 	if (self_cast == nullptr) {

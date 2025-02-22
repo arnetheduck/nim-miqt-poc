@@ -476,6 +476,7 @@ QObject* QListWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QListWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QListWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QListWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QListWidget_staticMetaObject();
 void QListWidget_delete(QListWidget* self);
 
 #ifdef __cplusplus

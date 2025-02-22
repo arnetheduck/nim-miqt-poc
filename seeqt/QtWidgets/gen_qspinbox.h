@@ -251,6 +251,7 @@ QObject* QSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSpinBox_staticMetaObject();
 void QSpinBox_delete(QSpinBox* self);
 
 QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent);
@@ -411,6 +412,7 @@ QObject* QDoubleSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QDoubleSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDoubleSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDoubleSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDoubleSpinBox_staticMetaObject();
 void QDoubleSpinBox_delete(QDoubleSpinBox* self);
 
 #ifdef __cplusplus

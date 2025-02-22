@@ -120,6 +120,7 @@ QObject* QTextTable_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTextTable_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextTable_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextTable_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTextTable_staticMetaObject();
 void QTextTable_delete(QTextTable* self);
 
 #ifdef __cplusplus

@@ -129,6 +129,7 @@ proc fQTemporaryFile_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQTemporaryFile_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTemporaryFile_override_virtual_connectNotify".}
 proc fQTemporaryFile_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTemporaryFile_virtualbase_disconnectNotify".}
 proc fcQTemporaryFile_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTemporaryFile_override_virtual_disconnectNotify".}
+proc fcQTemporaryFile_staticMetaObject(): pointer {.importc: "QTemporaryFile_staticMetaObject".}
 proc fcQTemporaryFile_delete(self: pointer) {.importc: "QTemporaryFile_delete".}
 
 
@@ -738,5 +739,7 @@ proc miqt_exec_callback_QTemporaryFile_disconnectNotify(self: ptr cQTemporaryFil
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtemporaryfile_types.QTemporaryFile): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQTemporaryFile_staticMetaObject())
 proc delete*(self: gen_qtemporaryfile_types.QTemporaryFile) =
   fcQTemporaryFile_delete(self.h)

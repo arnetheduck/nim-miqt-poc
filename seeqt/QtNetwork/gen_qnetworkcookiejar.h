@@ -85,6 +85,7 @@ QObject* QNetworkCookieJar_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QNetworkCookieJar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QNetworkCookieJar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QNetworkCookieJar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QNetworkCookieJar_staticMetaObject();
 void QNetworkCookieJar_delete(QNetworkCookieJar* self);
 
 #ifdef __cplusplus

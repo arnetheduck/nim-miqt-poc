@@ -2719,6 +2719,7 @@ void QInputDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 
 }
 
+const QMetaObject* QInputDialog_staticMetaObject() { return &QInputDialog::staticMetaObject; }
 void QInputDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
 	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
 	if (self_cast == nullptr) {

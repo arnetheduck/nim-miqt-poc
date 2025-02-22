@@ -241,6 +241,7 @@ QObject* QFileSystemModel_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QFileSystemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFileSystemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFileSystemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QFileSystemModel_staticMetaObject();
 void QFileSystemModel_delete(QFileSystemModel* self);
 
 #ifdef __cplusplus

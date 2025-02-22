@@ -1731,6 +1731,7 @@ QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* v
 
 }
 
+const QMetaObject* QGraphicsVideoItem_staticMetaObject() { return &QGraphicsVideoItem::staticMetaObject; }
 void QGraphicsVideoItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
 	if (self_cast == nullptr) {

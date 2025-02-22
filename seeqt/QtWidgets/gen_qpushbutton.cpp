@@ -2064,6 +2064,7 @@ void QPushButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QPushButton_staticMetaObject() { return &QPushButton::staticMetaObject; }
 void QPushButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
 	if (self_cast == nullptr) {

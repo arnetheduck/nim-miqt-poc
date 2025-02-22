@@ -99,6 +99,7 @@ proc fQThreadPool_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQThreadPool_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QThreadPool_override_virtual_connectNotify".}
 proc fQThreadPool_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QThreadPool_virtualbase_disconnectNotify".}
 proc fcQThreadPool_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QThreadPool_override_virtual_disconnectNotify".}
+proc fcQThreadPool_staticMetaObject(): pointer {.importc: "QThreadPool_staticMetaObject".}
 proc fcQThreadPool_delete(self: pointer) {.importc: "QThreadPool_delete".}
 
 
@@ -348,5 +349,7 @@ proc miqt_exec_callback_QThreadPool_disconnectNotify(self: ptr cQThreadPool, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qthreadpool_types.QThreadPool): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQThreadPool_staticMetaObject())
 proc delete*(self: gen_qthreadpool_types.QThreadPool) =
   fcQThreadPool_delete(self.h)

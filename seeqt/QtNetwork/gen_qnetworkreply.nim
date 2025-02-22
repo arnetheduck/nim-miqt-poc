@@ -149,6 +149,7 @@ proc fcQNetworkReply_downloadProgress(self: pointer, bytesReceived: clonglong, b
 proc fQNetworkReply_connect_downloadProgress(self: pointer, slot: int) {.importc: "QNetworkReply_connect_downloadProgress".}
 proc fcQNetworkReply_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QNetworkReply_tr2".}
 proc fcQNetworkReply_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QNetworkReply_tr3".}
+proc fcQNetworkReply_staticMetaObject(): pointer {.importc: "QNetworkReply_staticMetaObject".}
 proc fcQNetworkReply_delete(self: pointer) {.importc: "QNetworkReply_delete".}
 
 
@@ -473,5 +474,7 @@ proc tr*(_: type gen_qnetworkreply_types.QNetworkReply, s: cstring, c: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qnetworkreply_types.QNetworkReply): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQNetworkReply_staticMetaObject())
 proc delete*(self: gen_qnetworkreply_types.QNetworkReply) =
   fcQNetworkReply_delete(self.h)

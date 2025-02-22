@@ -348,6 +348,7 @@ proc fQStandardItemModel_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQStandardItemModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_connectNotify".}
 proc fQStandardItemModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QStandardItemModel_virtualbase_disconnectNotify".}
 proc fcQStandardItemModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_disconnectNotify".}
+proc fcQStandardItemModel_staticMetaObject(): pointer {.importc: "QStandardItemModel_staticMetaObject".}
 proc fcQStandardItemModel_delete(self: pointer) {.importc: "QStandardItemModel_delete".}
 
 
@@ -2175,5 +2176,7 @@ proc miqt_exec_callback_QStandardItemModel_disconnectNotify(self: ptr cQStandard
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstandarditemmodel_types.QStandardItemModel): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQStandardItemModel_staticMetaObject())
 proc delete*(self: gen_qstandarditemmodel_types.QStandardItemModel) =
   fcQStandardItemModel_delete(self.h)

@@ -242,6 +242,7 @@ QObject* QMenu_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMenu_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMenu_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMenu_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QMenu_staticMetaObject();
 void QMenu_delete(QMenu* self);
 
 #ifdef __cplusplus

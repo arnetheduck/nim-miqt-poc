@@ -1940,6 +1940,7 @@ void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QStatusBar_staticMetaObject() { return &QStatusBar::staticMetaObject; }
 void QStatusBar_protectedbase_reformat(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
 	if (self_cast == nullptr) {

@@ -472,6 +472,7 @@ void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QThreadPool_staticMetaObject() { return &QThreadPool::staticMetaObject; }
 QObject* QThreadPool_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
 	if (self_cast == nullptr) {

@@ -1997,6 +1997,7 @@ void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 
 }
 
+const QMetaObject* QPrintPreviewWidget_staticMetaObject() { return &QPrintPreviewWidget::staticMetaObject; }
 void QPrintPreviewWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQPrintPreviewWidget* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( (QPrintPreviewWidget*)(self) );
 	if (self_cast == nullptr) {

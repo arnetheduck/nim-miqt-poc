@@ -125,6 +125,7 @@ proc fQWaveDecoder_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQWaveDecoder_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWaveDecoder_override_virtual_connectNotify".}
 proc fQWaveDecoder_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWaveDecoder_virtualbase_disconnectNotify".}
 proc fcQWaveDecoder_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWaveDecoder_override_virtual_disconnectNotify".}
+proc fcQWaveDecoder_staticMetaObject(): pointer {.importc: "QWaveDecoder_staticMetaObject".}
 proc fcQWaveDecoder_delete(self: pointer) {.importc: "QWaveDecoder_delete".}
 
 
@@ -645,5 +646,7 @@ proc miqt_exec_callback_QWaveDecoder_disconnectNotify(self: ptr cQWaveDecoder, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwavedecoder_types.QWaveDecoder): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWaveDecoder_staticMetaObject())
 proc delete*(self: gen_qwavedecoder_types.QWaveDecoder) =
   fcQWaveDecoder_delete(self.h)

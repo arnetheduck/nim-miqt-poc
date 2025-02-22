@@ -310,6 +310,7 @@ QObject* QDateTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QDateTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDateTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDateTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDateTimeEdit_staticMetaObject();
 void QDateTimeEdit_delete(QDateTimeEdit* self);
 
 QTimeEdit* QTimeEdit_new(QWidget* parent);
@@ -448,6 +449,7 @@ QObject* QTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTimeEdit_staticMetaObject();
 void QTimeEdit_delete(QTimeEdit* self);
 
 QDateEdit* QDateEdit_new(QWidget* parent);
@@ -586,6 +588,7 @@ QObject* QDateEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QDateEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDateEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDateEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDateEdit_staticMetaObject();
 void QDateEdit_delete(QDateEdit* self);
 
 #ifdef __cplusplus

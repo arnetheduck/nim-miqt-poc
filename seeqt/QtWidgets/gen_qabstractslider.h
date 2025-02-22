@@ -246,6 +246,7 @@ QObject* QAbstractSlider_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QAbstractSlider_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractSlider_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractSlider_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractSlider_staticMetaObject();
 void QAbstractSlider_delete(QAbstractSlider* self);
 
 #ifdef __cplusplus

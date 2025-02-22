@@ -1155,6 +1155,7 @@ void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QSaveFile_staticMetaObject() { return &QSaveFile::staticMetaObject; }
 void QSaveFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
 	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
 	if (self_cast == nullptr) {

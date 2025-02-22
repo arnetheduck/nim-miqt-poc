@@ -182,6 +182,7 @@ proc fQQuickView_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQQuickView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickView_override_virtual_connectNotify".}
 proc fQQuickView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickView_virtualbase_disconnectNotify".}
 proc fcQQuickView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickView_override_virtual_disconnectNotify".}
+proc fcQQuickView_staticMetaObject(): pointer {.importc: "QQuickView_staticMetaObject".}
 proc fcQQuickView_delete(self: pointer) {.importc: "QQuickView_delete".}
 
 
@@ -865,5 +866,7 @@ proc miqt_exec_callback_QQuickView_disconnectNotify(self: ptr cQQuickView, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickview_types.QQuickView): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQuickView_staticMetaObject())
 proc delete*(self: gen_qquickview_types.QQuickView) =
   fcQQuickView_delete(self.h)

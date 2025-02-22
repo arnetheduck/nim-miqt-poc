@@ -3847,6 +3847,7 @@ void QAbstractItemView_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 
 }
 
+const QMetaObject* QAbstractItemView_staticMetaObject() { return &QAbstractItemView::staticMetaObject; }
 int QAbstractItemView_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
 	if (self_cast == nullptr) {

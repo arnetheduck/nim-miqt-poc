@@ -535,6 +535,7 @@ void QAudioRoom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QAudioRoom_staticMetaObject() { return &QAudioRoom::staticMetaObject; }
 QObject* QAudioRoom_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAudioRoom* self_cast = dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) );
 	if (self_cast == nullptr) {

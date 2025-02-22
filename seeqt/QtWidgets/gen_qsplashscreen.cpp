@@ -1974,6 +1974,7 @@ void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QSplashScreen_staticMetaObject() { return &QSplashScreen::staticMetaObject; }
 void QSplashScreen_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQSplashScreen* self_cast = dynamic_cast<MiqtVirtualQSplashScreen*>( (QSplashScreen*)(self) );
 	if (self_cast == nullptr) {

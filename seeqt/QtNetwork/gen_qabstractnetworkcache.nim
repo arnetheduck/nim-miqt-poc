@@ -90,6 +90,7 @@ proc fcQAbstractNetworkCache_insert(self: pointer, device: pointer): void {.impo
 proc fcQAbstractNetworkCache_clear(self: pointer, ): void {.importc: "QAbstractNetworkCache_clear".}
 proc fcQAbstractNetworkCache_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractNetworkCache_tr2".}
 proc fcQAbstractNetworkCache_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractNetworkCache_tr3".}
+proc fcQAbstractNetworkCache_staticMetaObject(): pointer {.importc: "QAbstractNetworkCache_staticMetaObject".}
 proc fcQAbstractNetworkCache_delete(self: pointer) {.importc: "QAbstractNetworkCache_delete".}
 
 
@@ -252,5 +253,7 @@ proc tr*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache, s: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qabstractnetworkcache_types.QAbstractNetworkCache): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractNetworkCache_staticMetaObject())
 proc delete*(self: gen_qabstractnetworkcache_types.QAbstractNetworkCache) =
   fcQAbstractNetworkCache_delete(self.h)

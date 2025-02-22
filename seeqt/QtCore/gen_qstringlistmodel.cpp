@@ -1960,6 +1960,7 @@ void QStringListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 
 }
 
+const QMetaObject* QStringListModel_staticMetaObject() { return &QStringListModel::staticMetaObject; }
 QModelIndex* QStringListModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
 	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
 	if (self_cast == nullptr) {

@@ -274,6 +274,7 @@ QObject* QQuickWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QQuickWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickWindow_staticMetaObject();
 void QQuickWindow_delete(QQuickWindow* self);
 
 void QQuickWindow__GraphicsStateInfo_delete(QQuickWindow__GraphicsStateInfo* self);

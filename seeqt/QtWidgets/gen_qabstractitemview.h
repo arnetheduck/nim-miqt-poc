@@ -454,6 +454,7 @@ QObject* QAbstractItemView_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QAbstractItemView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractItemView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractItemView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractItemView_staticMetaObject();
 void QAbstractItemView_delete(QAbstractItemView* self);
 
 #ifdef __cplusplus

@@ -253,6 +253,7 @@ proc fQMainWindow_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQMainWindow_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMainWindow_override_virtual_connectNotify".}
 proc fQMainWindow_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMainWindow_virtualbase_disconnectNotify".}
 proc fcQMainWindow_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMainWindow_override_virtual_disconnectNotify".}
+proc fcQMainWindow_staticMetaObject(): pointer {.importc: "QMainWindow_staticMetaObject".}
 proc fcQMainWindow_delete(self: pointer) {.importc: "QMainWindow_delete".}
 
 
@@ -1390,5 +1391,7 @@ proc miqt_exec_callback_QMainWindow_disconnectNotify(self: ptr cQMainWindow, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmainwindow_types.QMainWindow): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMainWindow_staticMetaObject())
 proc delete*(self: gen_qmainwindow_types.QMainWindow) =
   fcQMainWindow_delete(self.h)

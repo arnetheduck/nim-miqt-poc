@@ -77,6 +77,7 @@ QObject* QWidgetAction_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QWidgetAction_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWidgetAction_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWidgetAction_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWidgetAction_staticMetaObject();
 void QWidgetAction_delete(QWidgetAction* self);
 
 #ifdef __cplusplus

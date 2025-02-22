@@ -116,6 +116,7 @@ QObject* QImageCapture_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QImageCapture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QImageCapture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QImageCapture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QImageCapture_staticMetaObject();
 void QImageCapture_delete(QImageCapture* self);
 
 #ifdef __cplusplus

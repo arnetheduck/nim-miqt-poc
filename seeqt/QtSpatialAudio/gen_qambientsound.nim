@@ -102,6 +102,7 @@ proc fQAmbientSound_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQAmbientSound_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAmbientSound_override_virtual_connectNotify".}
 proc fQAmbientSound_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAmbientSound_virtualbase_disconnectNotify".}
 proc fcQAmbientSound_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAmbientSound_override_virtual_disconnectNotify".}
+proc fcQAmbientSound_staticMetaObject(): pointer {.importc: "QAmbientSound_staticMetaObject".}
 proc fcQAmbientSound_delete(self: pointer) {.importc: "QAmbientSound_delete".}
 
 
@@ -377,5 +378,7 @@ proc miqt_exec_callback_QAmbientSound_disconnectNotify(self: ptr cQAmbientSound,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qambientsound_types.QAmbientSound): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAmbientSound_staticMetaObject())
 proc delete*(self: gen_qambientsound_types.QAmbientSound) =
   fcQAmbientSound_delete(self.h)

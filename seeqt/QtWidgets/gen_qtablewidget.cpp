@@ -4668,6 +4668,7 @@ void QTableWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 
 }
 
+const QMetaObject* QTableWidget_staticMetaObject() { return &QTableWidget::staticMetaObject; }
 void QTableWidget_protectedbase_rowMoved(bool* _dynamic_cast_ok, void* self, int row, int oldIndex, int newIndex) {
 	MiqtVirtualQTableWidget* self_cast = dynamic_cast<MiqtVirtualQTableWidget*>( (QTableWidget*)(self) );
 	if (self_cast == nullptr) {

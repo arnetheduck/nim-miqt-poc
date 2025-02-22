@@ -2758,6 +2758,7 @@ bool QGraphicsWidget_virtualbase_isEmpty(const void* self) {
 
 }
 
+const QMetaObject* QGraphicsWidget_staticMetaObject() { return &QGraphicsWidget::staticMetaObject; }
 void QGraphicsWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsWidget* self_cast = dynamic_cast<MiqtVirtualQGraphicsWidget*>( (QGraphicsWidget*)(self) );
 	if (self_cast == nullptr) {

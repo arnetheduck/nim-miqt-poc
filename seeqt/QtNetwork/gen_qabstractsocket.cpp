@@ -1677,6 +1677,7 @@ void QAbstractSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 
 }
 
+const QMetaObject* QAbstractSocket_staticMetaObject() { return &QAbstractSocket::staticMetaObject; }
 void QAbstractSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state) {
 	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
 	if (self_cast == nullptr) {

@@ -96,6 +96,7 @@ struct miqt_string QQuickItemGrabResult_tr3(const char* s, const char* c, int n)
 	return _ms;
 }
 
+const QMetaObject* QQuickItemGrabResult_staticMetaObject() { return &QQuickItemGrabResult::staticMetaObject; }
 void QQuickItemGrabResult_delete(QQuickItemGrabResult* self) {
 	delete self;
 }

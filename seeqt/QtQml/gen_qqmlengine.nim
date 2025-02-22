@@ -87,6 +87,7 @@ proc fcQQmlImageProviderBase_imageType(self: pointer, ): cint {.importc: "QQmlIm
 proc fcQQmlImageProviderBase_flags(self: pointer, ): cint {.importc: "QQmlImageProviderBase_flags".}
 proc fcQQmlImageProviderBase_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QQmlImageProviderBase_tr2".}
 proc fcQQmlImageProviderBase_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlImageProviderBase_tr3".}
+proc fcQQmlImageProviderBase_staticMetaObject(): pointer {.importc: "QQmlImageProviderBase_staticMetaObject".}
 proc fcQQmlImageProviderBase_delete(self: pointer) {.importc: "QQmlImageProviderBase_delete".}
 proc fcQQmlEngine_new(): ptr cQQmlEngine {.importc: "QQmlEngine_new".}
 proc fcQQmlEngine_new2(p: pointer): ptr cQQmlEngine {.importc: "QQmlEngine_new2".}
@@ -155,6 +156,7 @@ proc fQQmlEngine_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQQmlEngine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlEngine_override_virtual_connectNotify".}
 proc fQQmlEngine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlEngine_virtualbase_disconnectNotify".}
 proc fcQQmlEngine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlEngine_override_virtual_disconnectNotify".}
+proc fcQQmlEngine_staticMetaObject(): pointer {.importc: "QQmlEngine_staticMetaObject".}
 proc fcQQmlEngine_delete(self: pointer) {.importc: "QQmlEngine_delete".}
 
 
@@ -193,6 +195,8 @@ proc tr*(_: type gen_qqmlengine_types.QQmlImageProviderBase, s: cstring, c: cstr
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qqmlengine_types.QQmlImageProviderBase): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQmlImageProviderBase_staticMetaObject())
 proc delete*(self: gen_qqmlengine_types.QQmlImageProviderBase) =
   fcQQmlImageProviderBase_delete(self.h)
 
@@ -584,5 +588,7 @@ proc miqt_exec_callback_QQmlEngine_disconnectNotify(self: ptr cQQmlEngine, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlengine_types.QQmlEngine): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQmlEngine_staticMetaObject())
 proc delete*(self: gen_qqmlengine_types.QQmlEngine) =
   fcQQmlEngine_delete(self.h)

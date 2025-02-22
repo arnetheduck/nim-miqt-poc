@@ -134,6 +134,7 @@ proc fQAbstractTextDocumentLayout_virtualbase_connectNotify(self: pointer, signa
 proc fcQAbstractTextDocumentLayout_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_connectNotify".}
 proc fQAbstractTextDocumentLayout_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractTextDocumentLayout_virtualbase_disconnectNotify".}
 proc fcQAbstractTextDocumentLayout_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_disconnectNotify".}
+proc fcQAbstractTextDocumentLayout_staticMetaObject(): pointer {.importc: "QAbstractTextDocumentLayout_staticMetaObject".}
 proc fcQAbstractTextDocumentLayout_delete(self: pointer) {.importc: "QAbstractTextDocumentLayout_delete".}
 proc fcQTextObjectInterface_intrinsicSize(self: pointer, doc: pointer, posInDocument: cint, format: pointer): pointer {.importc: "QTextObjectInterface_intrinsicSize".}
 proc fcQTextObjectInterface_drawObject(self: pointer, painter: pointer, rect: pointer, doc: pointer, posInDocument: cint, format: pointer): void {.importc: "QTextObjectInterface_drawObject".}
@@ -642,6 +643,8 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_disconnectNotify(self: ptr c
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractTextDocumentLayout_staticMetaObject())
 proc delete*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout) =
   fcQAbstractTextDocumentLayout_delete(self.h)
 

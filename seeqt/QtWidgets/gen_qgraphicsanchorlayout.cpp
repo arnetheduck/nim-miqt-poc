@@ -104,6 +104,7 @@ struct miqt_string QGraphicsAnchor_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QGraphicsAnchor_staticMetaObject() { return &QGraphicsAnchor::staticMetaObject; }
 void QGraphicsAnchor_delete(QGraphicsAnchor* self) {
 	delete self;
 }

@@ -88,6 +88,7 @@ proc fQActionGroup_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQActionGroup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QActionGroup_override_virtual_connectNotify".}
 proc fQActionGroup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QActionGroup_virtualbase_disconnectNotify".}
 proc fcQActionGroup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QActionGroup_override_virtual_disconnectNotify".}
+proc fcQActionGroup_staticMetaObject(): pointer {.importc: "QActionGroup_staticMetaObject".}
 proc fcQActionGroup_delete(self: pointer) {.importc: "QActionGroup_delete".}
 
 
@@ -298,5 +299,7 @@ proc miqt_exec_callback_QActionGroup_disconnectNotify(self: ptr cQActionGroup, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qactiongroup_types.QActionGroup): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQActionGroup_staticMetaObject())
 proc delete*(self: gen_qactiongroup_types.QActionGroup) =
   fcQActionGroup_delete(self.h)

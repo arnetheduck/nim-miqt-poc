@@ -205,6 +205,7 @@ proc fQToolBar_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQToolBar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QToolBar_override_virtual_connectNotify".}
 proc fQToolBar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QToolBar_virtualbase_disconnectNotify".}
 proc fcQToolBar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QToolBar_override_virtual_disconnectNotify".}
+proc fcQToolBar_staticMetaObject(): pointer {.importc: "QToolBar_staticMetaObject".}
 proc fcQToolBar_delete(self: pointer) {.importc: "QToolBar_delete".}
 
 
@@ -1270,5 +1271,7 @@ proc miqt_exec_callback_QToolBar_disconnectNotify(self: ptr cQToolBar, slot: int
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtoolbar_types.QToolBar): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQToolBar_staticMetaObject())
 proc delete*(self: gen_qtoolbar_types.QToolBar) =
   fcQToolBar_delete(self.h)

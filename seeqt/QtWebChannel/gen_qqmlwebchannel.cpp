@@ -406,6 +406,7 @@ void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 
 }
 
+const QMetaObject* QQmlWebChannel_staticMetaObject() { return &QQmlWebChannel::staticMetaObject; }
 QObject* QQmlWebChannel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {

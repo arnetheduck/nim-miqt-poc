@@ -2224,6 +2224,7 @@ void QTransposeProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 
 }
 
+const QMetaObject* QTransposeProxyModel_staticMetaObject() { return &QTransposeProxyModel::staticMetaObject; }
 QModelIndex* QTransposeProxyModel_protectedbase_createSourceIndex(bool* _dynamic_cast_ok, const void* self, int row, int col, void* internalPtr) {
 	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
 	if (self_cast == nullptr) {

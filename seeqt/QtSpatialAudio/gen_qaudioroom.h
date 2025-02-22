@@ -98,6 +98,7 @@ QObject* QAudioRoom_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QAudioRoom_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioRoom_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioRoom_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAudioRoom_staticMetaObject();
 void QAudioRoom_delete(QAudioRoom* self);
 
 #ifdef __cplusplus

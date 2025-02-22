@@ -515,6 +515,7 @@ void QQmlExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 
 }
 
+const QMetaObject* QQmlExtensionPlugin_staticMetaObject() { return &QQmlExtensionPlugin::staticMetaObject; }
 QObject* QQmlExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQQmlExtensionPlugin*>( (QQmlExtensionPlugin*)(self) );
 	if (self_cast == nullptr) {
@@ -969,6 +970,7 @@ void QQmlEngineExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMet
 
 }
 
+const QMetaObject* QQmlEngineExtensionPlugin_staticMetaObject() { return &QQmlEngineExtensionPlugin::staticMetaObject; }
 QObject* QQmlEngineExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlEngineExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQQmlEngineExtensionPlugin*>( (QQmlEngineExtensionPlugin*)(self) );
 	if (self_cast == nullptr) {

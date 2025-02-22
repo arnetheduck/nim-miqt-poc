@@ -181,6 +181,7 @@ proc fQVideoWidget_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQVideoWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QVideoWidget_override_virtual_connectNotify".}
 proc fQVideoWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QVideoWidget_virtualbase_disconnectNotify".}
 proc fcQVideoWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QVideoWidget_override_virtual_disconnectNotify".}
+proc fcQVideoWidget_staticMetaObject(): pointer {.importc: "QVideoWidget_staticMetaObject".}
 proc fcQVideoWidget_delete(self: pointer) {.importc: "QVideoWidget_delete".}
 
 
@@ -1113,5 +1114,7 @@ proc miqt_exec_callback_QVideoWidget_disconnectNotify(self: ptr cQVideoWidget, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qvideowidget_types.QVideoWidget): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQVideoWidget_staticMetaObject())
 proc delete*(self: gen_qvideowidget_types.QVideoWidget) =
   fcQVideoWidget_delete(self.h)

@@ -654,6 +654,7 @@ void QAbstractAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QAbstractAnimation_staticMetaObject() { return &QAbstractAnimation::staticMetaObject; }
 QObject* QAbstractAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
 	if (self_cast == nullptr) {
@@ -1245,6 +1246,7 @@ void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 
 }
 
+const QMetaObject* QAnimationDriver_staticMetaObject() { return &QAnimationDriver::staticMetaObject; }
 void QAnimationDriver_protectedbase_advanceAnimation(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
 	if (self_cast == nullptr) {

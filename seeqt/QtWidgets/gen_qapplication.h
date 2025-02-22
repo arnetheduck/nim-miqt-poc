@@ -133,6 +133,7 @@ QObject* QApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QApplication_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QApplication_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QApplication_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QApplication_staticMetaObject();
 void QApplication_delete(QApplication* self);
 
 #ifdef __cplusplus

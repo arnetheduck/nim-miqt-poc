@@ -85,6 +85,7 @@ QObject* QGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGesture_staticMetaObject();
 void QGesture_delete(QGesture* self);
 
 QPanGesture* QPanGesture_new();
@@ -123,6 +124,7 @@ QObject* QPanGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QPanGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPanGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPanGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPanGesture_staticMetaObject();
 void QPanGesture_delete(QPanGesture* self);
 
 QPinchGesture* QPinchGesture_new();
@@ -176,6 +178,7 @@ QObject* QPinchGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QPinchGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPinchGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPinchGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPinchGesture_staticMetaObject();
 void QPinchGesture_delete(QPinchGesture* self);
 
 QSwipeGesture* QSwipeGesture_new();
@@ -211,6 +214,7 @@ QObject* QSwipeGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QSwipeGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSwipeGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSwipeGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSwipeGesture_staticMetaObject();
 void QSwipeGesture_delete(QSwipeGesture* self);
 
 QTapGesture* QTapGesture_new();
@@ -244,6 +248,7 @@ QObject* QTapGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QTapGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTapGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTapGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTapGesture_staticMetaObject();
 void QTapGesture_delete(QTapGesture* self);
 
 QTapAndHoldGesture* QTapAndHoldGesture_new();
@@ -279,6 +284,7 @@ QObject* QTapAndHoldGesture_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QTapAndHoldGesture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTapAndHoldGesture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTapAndHoldGesture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTapAndHoldGesture_staticMetaObject();
 void QTapAndHoldGesture_delete(QTapAndHoldGesture* self);
 
 QGestureEvent* QGestureEvent_new(struct miqt_array /* of QGesture* */  gestures);

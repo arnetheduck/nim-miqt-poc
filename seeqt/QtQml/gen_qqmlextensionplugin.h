@@ -83,6 +83,7 @@ QObject* QQmlExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QQmlExtensionPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlExtensionPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlExtensionPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQmlExtensionPlugin_staticMetaObject();
 void QQmlExtensionPlugin_delete(QQmlExtensionPlugin* self);
 
 QQmlEngineExtensionPlugin* QQmlEngineExtensionPlugin_new();
@@ -117,6 +118,7 @@ QObject* QQmlEngineExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, 
 int QQmlEngineExtensionPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlEngineExtensionPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlEngineExtensionPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQmlEngineExtensionPlugin_staticMetaObject();
 void QQmlEngineExtensionPlugin_delete(QQmlEngineExtensionPlugin* self);
 
 #ifdef __cplusplus

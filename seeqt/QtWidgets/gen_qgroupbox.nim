@@ -193,6 +193,7 @@ proc fQGroupBox_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQGroupBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGroupBox_override_virtual_connectNotify".}
 proc fQGroupBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGroupBox_virtualbase_disconnectNotify".}
 proc fcQGroupBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGroupBox_override_virtual_disconnectNotify".}
+proc fcQGroupBox_staticMetaObject(): pointer {.importc: "QGroupBox_staticMetaObject".}
 proc fcQGroupBox_delete(self: pointer) {.importc: "QGroupBox_delete".}
 
 
@@ -1183,5 +1184,7 @@ proc miqt_exec_callback_QGroupBox_disconnectNotify(self: ptr cQGroupBox, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgroupbox_types.QGroupBox): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQGroupBox_staticMetaObject())
 proc delete*(self: gen_qgroupbox_types.QGroupBox) =
   fcQGroupBox_delete(self.h)

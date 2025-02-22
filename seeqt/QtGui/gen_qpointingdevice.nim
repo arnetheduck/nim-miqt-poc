@@ -82,6 +82,7 @@ proc fcQPointingDeviceUniqueId_new2(param1: pointer): ptr cQPointingDeviceUnique
 proc fcQPointingDeviceUniqueId_fromNumericId(id: clonglong): pointer {.importc: "QPointingDeviceUniqueId_fromNumericId".}
 proc fcQPointingDeviceUniqueId_isValid(self: pointer, ): bool {.importc: "QPointingDeviceUniqueId_isValid".}
 proc fcQPointingDeviceUniqueId_numericId(self: pointer, ): clonglong {.importc: "QPointingDeviceUniqueId_numericId".}
+proc fcQPointingDeviceUniqueId_staticMetaObject(): pointer {.importc: "QPointingDeviceUniqueId_staticMetaObject".}
 proc fcQPointingDeviceUniqueId_delete(self: pointer) {.importc: "QPointingDeviceUniqueId_delete".}
 proc fcQPointingDevice_new(): ptr cQPointingDevice {.importc: "QPointingDevice_new".}
 proc fcQPointingDevice_new2(name: struct_miqt_string, systemId: clonglong, devType: cint, pType: cint, caps: cint, maxPoints: cint, buttonCount: cint): ptr cQPointingDevice {.importc: "QPointingDevice_new2".}
@@ -123,6 +124,7 @@ proc fQPointingDevice_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQPointingDevice_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPointingDevice_override_virtual_connectNotify".}
 proc fQPointingDevice_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPointingDevice_virtualbase_disconnectNotify".}
 proc fcQPointingDevice_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPointingDevice_override_virtual_disconnectNotify".}
+proc fcQPointingDevice_staticMetaObject(): pointer {.importc: "QPointingDevice_staticMetaObject".}
 proc fcQPointingDevice_delete(self: pointer) {.importc: "QPointingDevice_delete".}
 
 
@@ -143,6 +145,8 @@ proc isValid*(self: gen_qpointingdevice_types.QPointingDeviceUniqueId, ): bool =
 proc numericId*(self: gen_qpointingdevice_types.QPointingDeviceUniqueId, ): clonglong =
   fcQPointingDeviceUniqueId_numericId(self.h)
 
+proc staticMetaObject*(_: type gen_qpointingdevice_types.QPointingDeviceUniqueId): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQPointingDeviceUniqueId_staticMetaObject())
 proc delete*(self: gen_qpointingdevice_types.QPointingDeviceUniqueId) =
   fcQPointingDeviceUniqueId_delete(self.h)
 
@@ -393,5 +397,7 @@ proc miqt_exec_callback_QPointingDevice_disconnectNotify(self: ptr cQPointingDev
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpointingdevice_types.QPointingDevice): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQPointingDevice_staticMetaObject())
 proc delete*(self: gen_qpointingdevice_types.QPointingDevice) =
   fcQPointingDevice_delete(self.h)

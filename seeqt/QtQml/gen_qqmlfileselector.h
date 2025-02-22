@@ -69,6 +69,7 @@ QObject* QQmlFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QQmlFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQmlFileSelector_staticMetaObject();
 void QQmlFileSelector_delete(QQmlFileSelector* self);
 
 #ifdef __cplusplus

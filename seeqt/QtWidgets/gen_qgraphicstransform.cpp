@@ -446,6 +446,7 @@ void QGraphicsTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QGraphicsTransform_staticMetaObject() { return &QGraphicsTransform::staticMetaObject; }
 void QGraphicsTransform_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
 	if (self_cast == nullptr) {
@@ -997,6 +998,7 @@ void QGraphicsScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 
 }
 
+const QMetaObject* QGraphicsScale_staticMetaObject() { return &QGraphicsScale::staticMetaObject; }
 void QGraphicsScale_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsScale* self_cast = dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
 	if (self_cast == nullptr) {
@@ -1522,6 +1524,7 @@ void QGraphicsRotation_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 
 }
 
+const QMetaObject* QGraphicsRotation_staticMetaObject() { return &QGraphicsRotation::staticMetaObject; }
 void QGraphicsRotation_protectedbase_update(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsRotation* self_cast = dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
 	if (self_cast == nullptr) {

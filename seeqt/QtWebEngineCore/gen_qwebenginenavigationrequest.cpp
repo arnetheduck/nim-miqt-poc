@@ -98,6 +98,7 @@ struct miqt_string QWebEngineNavigationRequest_tr3(const char* s, const char* c,
 	return _ms;
 }
 
+const QMetaObject* QWebEngineNavigationRequest_staticMetaObject() { return &QWebEngineNavigationRequest::staticMetaObject; }
 void QWebEngineNavigationRequest_delete(QWebEngineNavigationRequest* self) {
 	delete self;
 }

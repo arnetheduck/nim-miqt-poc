@@ -95,6 +95,7 @@ proc fcQNetworkInformation_isMeteredChanged(self: pointer, isMetered: bool): voi
 proc fQNetworkInformation_connect_isMeteredChanged(self: pointer, slot: int) {.importc: "QNetworkInformation_connect_isMeteredChanged".}
 proc fcQNetworkInformation_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QNetworkInformation_tr2".}
 proc fcQNetworkInformation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QNetworkInformation_tr3".}
+proc fcQNetworkInformation_staticMetaObject(): pointer {.importc: "QNetworkInformation_staticMetaObject".}
 
 
 func init*(T: type gen_qnetworkinformation_types.QNetworkInformation, h: ptr cQNetworkInformation): gen_qnetworkinformation_types.QNetworkInformation =
@@ -237,3 +238,5 @@ proc tr*(_: type gen_qnetworkinformation_types.QNetworkInformation, s: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qnetworkinformation_types.QNetworkInformation): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQNetworkInformation_staticMetaObject())

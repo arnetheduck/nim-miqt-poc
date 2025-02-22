@@ -1196,6 +1196,7 @@ void QLocalSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 
 }
 
+const QMetaObject* QLocalSocket_staticMetaObject() { return &QLocalSocket::staticMetaObject; }
 void QLocalSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
 	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
 	if (self_cast == nullptr) {

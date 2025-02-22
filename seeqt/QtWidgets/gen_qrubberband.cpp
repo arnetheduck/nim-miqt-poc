@@ -1916,6 +1916,7 @@ void QRubberBand_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QRubberBand_staticMetaObject() { return &QRubberBand::staticMetaObject; }
 void QRubberBand_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
 	if (self_cast == nullptr) {

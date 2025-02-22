@@ -136,6 +136,7 @@ QObject* QQuickWebEngineProfile_protectedbase_sender(bool* _dynamic_cast_ok, con
 int QQuickWebEngineProfile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQuickWebEngineProfile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQuickWebEngineProfile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQuickWebEngineProfile_staticMetaObject();
 void QQuickWebEngineProfile_delete(QQuickWebEngineProfile* self);
 
 #ifdef __cplusplus

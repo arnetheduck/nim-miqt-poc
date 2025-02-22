@@ -68,6 +68,7 @@ proc fcQGraphicsAnchor_setSizePolicy(self: pointer, policy: cint): void {.import
 proc fcQGraphicsAnchor_sizePolicy(self: pointer, ): cint {.importc: "QGraphicsAnchor_sizePolicy".}
 proc fcQGraphicsAnchor_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsAnchor_tr2".}
 proc fcQGraphicsAnchor_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsAnchor_tr3".}
+proc fcQGraphicsAnchor_staticMetaObject(): pointer {.importc: "QGraphicsAnchor_staticMetaObject".}
 proc fcQGraphicsAnchor_delete(self: pointer) {.importc: "QGraphicsAnchor_delete".}
 proc fcQGraphicsAnchorLayout_new(): ptr cQGraphicsAnchorLayout {.importc: "QGraphicsAnchorLayout_new".}
 proc fcQGraphicsAnchorLayout_new2(parent: pointer): ptr cQGraphicsAnchorLayout {.importc: "QGraphicsAnchorLayout_new2".}
@@ -153,6 +154,8 @@ proc tr*(_: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor, s: cstring, c:
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQGraphicsAnchor_staticMetaObject())
 proc delete*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor) =
   fcQGraphicsAnchor_delete(self.h)
 
