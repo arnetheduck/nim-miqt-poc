@@ -116,6 +116,7 @@ proc fQDtlsClientVerifier_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQDtlsClientVerifier_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDtlsClientVerifier_override_virtual_connectNotify".}
 proc fQDtlsClientVerifier_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDtlsClientVerifier_virtualbase_disconnectNotify".}
 proc fcQDtlsClientVerifier_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDtlsClientVerifier_override_virtual_disconnectNotify".}
+proc fcQDtlsClientVerifier_staticMetaObject(): pointer {.importc: "QDtlsClientVerifier_staticMetaObject".}
 proc fcQDtlsClientVerifier_delete(self: pointer) {.importc: "QDtlsClientVerifier_delete".}
 proc fcQDtls_new(mode: cint): ptr cQDtls {.importc: "QDtls_new".}
 proc fcQDtls_new2(mode: cint, parent: pointer): ptr cQDtls {.importc: "QDtls_new2".}
@@ -177,6 +178,7 @@ proc fQDtls_virtualbase_connectNotify(self: pointer, signal: pointer): void{.imp
 proc fcQDtls_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDtls_override_virtual_connectNotify".}
 proc fQDtls_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDtls_virtualbase_disconnectNotify".}
 proc fcQDtls_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDtls_override_virtual_disconnectNotify".}
+proc fcQDtls_staticMetaObject(): pointer {.importc: "QDtls_staticMetaObject".}
 proc fcQDtls_delete(self: pointer) {.importc: "QDtls_delete".}
 proc fcQDtlsClientVerifierGeneratorParameters_new(): ptr cQDtlsClientVerifierGeneratorParameters {.importc: "QDtlsClientVerifier__GeneratorParameters_new".}
 proc fcQDtlsClientVerifierGeneratorParameters_new2(a: cint, s: struct_miqt_string): ptr cQDtlsClientVerifierGeneratorParameters {.importc: "QDtlsClientVerifier__GeneratorParameters_new2".}
@@ -410,6 +412,8 @@ proc miqt_exec_callback_QDtlsClientVerifier_disconnectNotify(self: ptr cQDtlsCli
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdtls_types.QDtlsClientVerifier): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQDtlsClientVerifier_staticMetaObject())
 proc delete*(self: gen_qdtls_types.QDtlsClientVerifier) =
   fcQDtlsClientVerifier_delete(self.h)
 
@@ -749,6 +753,8 @@ proc miqt_exec_callback_QDtls_disconnectNotify(self: ptr cQDtls, slot: int, sign
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdtls_types.QDtls): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQDtls_staticMetaObject())
 proc delete*(self: gen_qdtls_types.QDtls) =
   fcQDtls_delete(self.h)
 

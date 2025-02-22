@@ -570,6 +570,7 @@ void QThread_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QThread_staticMetaObject() { return &QThread::staticMetaObject; }
 int QThread_protectedbase_exec(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
 	if (self_cast == nullptr) {

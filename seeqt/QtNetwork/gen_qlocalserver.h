@@ -94,6 +94,7 @@ QObject* QLocalServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QLocalServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLocalServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLocalServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QLocalServer_staticMetaObject();
 void QLocalServer_delete(QLocalServer* self);
 
 #ifdef __cplusplus

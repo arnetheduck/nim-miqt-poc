@@ -448,6 +448,7 @@ QObject* QHeaderView_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QHeaderView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHeaderView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHeaderView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QHeaderView_staticMetaObject();
 void QHeaderView_delete(QHeaderView* self);
 
 #ifdef __cplusplus

@@ -82,6 +82,7 @@ QObject* QPluginLoader_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QPluginLoader_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPluginLoader_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPluginLoader_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPluginLoader_staticMetaObject();
 void QPluginLoader_delete(QPluginLoader* self);
 
 #ifdef __cplusplus

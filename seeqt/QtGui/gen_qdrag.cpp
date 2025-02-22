@@ -519,6 +519,7 @@ void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QDrag_staticMetaObject() { return &QDrag::staticMetaObject; }
 QObject* QDrag_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
 	if (self_cast == nullptr) {

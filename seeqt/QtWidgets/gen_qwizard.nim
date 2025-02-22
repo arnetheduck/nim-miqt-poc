@@ -303,6 +303,7 @@ proc fQWizard_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQWizard_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWizard_override_virtual_connectNotify".}
 proc fQWizard_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWizard_virtualbase_disconnectNotify".}
 proc fcQWizard_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWizard_override_virtual_disconnectNotify".}
+proc fcQWizard_staticMetaObject(): pointer {.importc: "QWizard_staticMetaObject".}
 proc fcQWizard_delete(self: pointer) {.importc: "QWizard_delete".}
 proc fcQWizardPage_new(parent: pointer): ptr cQWizardPage {.importc: "QWizardPage_new".}
 proc fcQWizardPage_new2(): ptr cQWizardPage {.importc: "QWizardPage_new2".}
@@ -440,6 +441,7 @@ proc fQWizardPage_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQWizardPage_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWizardPage_override_virtual_connectNotify".}
 proc fQWizardPage_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWizardPage_virtualbase_disconnectNotify".}
 proc fcQWizardPage_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWizardPage_override_virtual_disconnectNotify".}
+proc fcQWizardPage_staticMetaObject(): pointer {.importc: "QWizardPage_staticMetaObject".}
 proc fcQWizardPage_delete(self: pointer) {.importc: "QWizardPage_delete".}
 
 
@@ -1719,6 +1721,8 @@ proc miqt_exec_callback_QWizard_disconnectNotify(self: ptr cQWizard, slot: int, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwizard_types.QWizard): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWizard_staticMetaObject())
 proc delete*(self: gen_qwizard_types.QWizard) =
   fcQWizard_delete(self.h)
 
@@ -2777,5 +2781,7 @@ proc miqt_exec_callback_QWizardPage_disconnectNotify(self: ptr cQWizardPage, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwizard_types.QWizardPage): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWizardPage_staticMetaObject())
 proc delete*(self: gen_qwizard_types.QWizardPage) =
   fcQWizardPage_delete(self.h)

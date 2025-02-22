@@ -580,6 +580,7 @@ void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QTimeLine_staticMetaObject() { return &QTimeLine::staticMetaObject; }
 QObject* QTimeLine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
 	if (self_cast == nullptr) {

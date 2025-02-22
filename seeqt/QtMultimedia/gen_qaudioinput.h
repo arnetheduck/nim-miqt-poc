@@ -97,6 +97,7 @@ QObject* QAudioInput_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QAudioInput_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioInput_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioInput_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QAudioInput_staticMetaObject();
 void QAudioInput_delete(QAudioInput* self);
 
 #ifdef __cplusplus

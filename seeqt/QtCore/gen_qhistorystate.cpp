@@ -527,6 +527,7 @@ void QHistoryState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QHistoryState_staticMetaObject() { return &QHistoryState::staticMetaObject; }
 QObject* QHistoryState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQHistoryState* self_cast = dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) );
 	if (self_cast == nullptr) {

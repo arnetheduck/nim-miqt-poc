@@ -187,6 +187,7 @@ proc fQIdentityProxyModel_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQIdentityProxyModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QIdentityProxyModel_override_virtual_connectNotify".}
 proc fQIdentityProxyModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QIdentityProxyModel_virtualbase_disconnectNotify".}
 proc fcQIdentityProxyModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QIdentityProxyModel_override_virtual_disconnectNotify".}
+proc fcQIdentityProxyModel_staticMetaObject(): pointer {.importc: "QIdentityProxyModel_staticMetaObject".}
 proc fcQIdentityProxyModel_delete(self: pointer) {.importc: "QIdentityProxyModel_delete".}
 
 
@@ -1345,5 +1346,7 @@ proc miqt_exec_callback_QIdentityProxyModel_disconnectNotify(self: ptr cQIdentit
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQIdentityProxyModel_staticMetaObject())
 proc delete*(self: gen_qidentityproxymodel_types.QIdentityProxyModel) =
   fcQIdentityProxyModel_delete(self.h)

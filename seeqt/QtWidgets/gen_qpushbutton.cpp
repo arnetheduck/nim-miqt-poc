@@ -2060,6 +2060,7 @@ void QPushButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QPushButton_staticMetaObject() { return &QPushButton::staticMetaObject; }
 void QPushButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option) {
 	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
 	if (self_cast == nullptr) {

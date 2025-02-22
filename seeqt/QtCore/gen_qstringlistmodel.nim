@@ -164,6 +164,7 @@ proc fQStringListModel_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQStringListModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QStringListModel_override_virtual_connectNotify".}
 proc fQStringListModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QStringListModel_virtualbase_disconnectNotify".}
 proc fcQStringListModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QStringListModel_override_virtual_disconnectNotify".}
+proc fcQStringListModel_staticMetaObject(): pointer {.importc: "QStringListModel_staticMetaObject".}
 proc fcQStringListModel_delete(self: pointer) {.importc: "QStringListModel_delete".}
 
 
@@ -1196,5 +1197,7 @@ proc miqt_exec_callback_QStringListModel_disconnectNotify(self: ptr cQStringList
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstringlistmodel_types.QStringListModel): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQStringListModel_staticMetaObject())
 proc delete*(self: gen_qstringlistmodel_types.QStringListModel) =
   fcQStringListModel_delete(self.h)

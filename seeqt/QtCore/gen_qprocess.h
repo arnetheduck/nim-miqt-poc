@@ -200,6 +200,7 @@ QObject* QProcess_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QProcess_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QProcess_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QProcess_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QProcess_staticMetaObject();
 void QProcess_delete(QProcess* self);
 
 #ifdef __cplusplus

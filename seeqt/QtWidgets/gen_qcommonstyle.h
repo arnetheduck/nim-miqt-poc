@@ -155,6 +155,7 @@ QObject* QCommonStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QCommonStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCommonStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCommonStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QCommonStyle_staticMetaObject();
 void QCommonStyle_delete(QCommonStyle* self);
 
 #ifdef __cplusplus

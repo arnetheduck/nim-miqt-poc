@@ -95,6 +95,7 @@ proc fQMouseEventTransition_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQMouseEventTransition_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMouseEventTransition_override_virtual_connectNotify".}
 proc fQMouseEventTransition_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMouseEventTransition_virtualbase_disconnectNotify".}
 proc fcQMouseEventTransition_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMouseEventTransition_override_virtual_disconnectNotify".}
+proc fcQMouseEventTransition_staticMetaObject(): pointer {.importc: "QMouseEventTransition_staticMetaObject".}
 proc fcQMouseEventTransition_delete(self: pointer) {.importc: "QMouseEventTransition_delete".}
 
 
@@ -359,5 +360,7 @@ proc miqt_exec_callback_QMouseEventTransition_disconnectNotify(self: ptr cQMouse
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmouseeventtransition_types.QMouseEventTransition): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMouseEventTransition_staticMetaObject())
 proc delete*(self: gen_qmouseeventtransition_types.QMouseEventTransition) =
   fcQMouseEventTransition_delete(self.h)

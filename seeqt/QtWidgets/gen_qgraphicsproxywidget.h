@@ -272,6 +272,7 @@ void QGraphicsProxyWidget_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, 
 void QGraphicsProxyWidget_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QGraphicsProxyWidget_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QGraphicsProxyWidget_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+const QMetaObject* QGraphicsProxyWidget_staticMetaObject();
 void QGraphicsProxyWidget_delete(QGraphicsProxyWidget* self);
 
 #ifdef __cplusplus

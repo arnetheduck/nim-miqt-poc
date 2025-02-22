@@ -762,6 +762,7 @@ void QSGTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QSGTexture_staticMetaObject() { return &QSGTexture::staticMetaObject; }
 QObject* QSGTexture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSGTexture* self_cast = dynamic_cast<MiqtVirtualQSGTexture*>( (QSGTexture*)(self) );
 	if (self_cast == nullptr) {
@@ -1456,6 +1457,7 @@ void QSGDynamicTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 
 }
 
+const QMetaObject* QSGDynamicTexture_staticMetaObject() { return &QSGDynamicTexture::staticMetaObject; }
 QObject* QSGDynamicTexture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSGDynamicTexture* self_cast = dynamic_cast<MiqtVirtualQSGDynamicTexture*>( (QSGDynamicTexture*)(self) );
 	if (self_cast == nullptr) {

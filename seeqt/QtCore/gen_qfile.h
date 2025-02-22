@@ -143,6 +143,7 @@ QObject* QFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QFile_staticMetaObject();
 void QFile_delete(QFile* self);
 
 #ifdef __cplusplus

@@ -64,6 +64,7 @@ proc fcQAbstractState_tr2(s: cstring, c: cstring): struct_miqt_string {.importc:
 proc fcQAbstractState_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractState_tr3".}
 proc fcQAbstractState_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractState_trUtf82".}
 proc fcQAbstractState_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractState_trUtf83".}
+proc fcQAbstractState_staticMetaObject(): pointer {.importc: "QAbstractState_staticMetaObject".}
 proc fcQAbstractState_delete(self: pointer) {.importc: "QAbstractState_delete".}
 
 
@@ -139,5 +140,7 @@ proc trUtf8*(_: type gen_qabstractstate_types.QAbstractState, s: cstring, c: cst
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qabstractstate_types.QAbstractState): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractState_staticMetaObject())
 proc delete*(self: gen_qabstractstate_types.QAbstractState) =
   fcQAbstractState_delete(self.h)

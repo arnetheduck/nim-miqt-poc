@@ -125,6 +125,7 @@ int QPdfWriter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const voi
 int QPdfWriter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPdfWriter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 QPageLayout* QPdfWriter_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self);
+const QMetaObject* QPdfWriter_staticMetaObject();
 void QPdfWriter_delete(QPdfWriter* self);
 
 #ifdef __cplusplus

@@ -221,6 +221,7 @@ struct miqt_string QWebSelectMethod_trUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
+const QMetaObject* QWebSelectMethod_staticMetaObject() { return &QWebSelectMethod::staticMetaObject; }
 void QWebSelectMethod_delete(QWebSelectMethod* self) {
 	delete self;
 }
@@ -369,6 +370,7 @@ struct miqt_string QWebNotificationPresenter_trUtf83(const char* s, const char* 
 	return _ms;
 }
 
+const QMetaObject* QWebNotificationPresenter_staticMetaObject() { return &QWebNotificationPresenter::staticMetaObject; }
 void QWebNotificationPresenter_delete(QWebNotificationPresenter* self) {
 	delete self;
 }
@@ -460,6 +462,7 @@ struct miqt_string QWebHapticFeedbackPlayer_trUtf83(const char* s, const char* c
 	return _ms;
 }
 
+const QMetaObject* QWebHapticFeedbackPlayer_staticMetaObject() { return &QWebHapticFeedbackPlayer::staticMetaObject; }
 void QWebHapticFeedbackPlayer_delete(QWebHapticFeedbackPlayer* self) {
 	delete self;
 }
@@ -550,6 +553,7 @@ struct miqt_string QWebTouchModifier_trUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
+const QMetaObject* QWebTouchModifier_staticMetaObject() { return &QWebTouchModifier::staticMetaObject; }
 void QWebTouchModifier_delete(QWebTouchModifier* self) {
 	delete self;
 }
@@ -703,6 +707,7 @@ struct miqt_string QWebSpellChecker_trUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
+const QMetaObject* QWebSpellChecker_staticMetaObject() { return &QWebSpellChecker::staticMetaObject; }
 void QWebSpellChecker_delete(QWebSpellChecker* self) {
 	delete self;
 }

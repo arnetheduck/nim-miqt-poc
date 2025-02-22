@@ -60,6 +60,7 @@ proc fcQAudioRoleControl_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQAudioRoleControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioRoleControl_tr3".}
 proc fcQAudioRoleControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioRoleControl_trUtf82".}
 proc fcQAudioRoleControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioRoleControl_trUtf83".}
+proc fcQAudioRoleControl_staticMetaObject(): pointer {.importc: "QAudioRoleControl_staticMetaObject".}
 proc fcQAudioRoleControl_delete(self: pointer) {.importc: "QAudioRoleControl_delete".}
 
 
@@ -140,5 +141,7 @@ proc trUtf8*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl, s: cstring, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAudioRoleControl_staticMetaObject())
 proc delete*(self: gen_qaudiorolecontrol_types.QAudioRoleControl) =
   fcQAudioRoleControl_delete(self.h)

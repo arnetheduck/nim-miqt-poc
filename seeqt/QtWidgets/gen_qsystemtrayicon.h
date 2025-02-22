@@ -95,6 +95,7 @@ QObject* QSystemTrayIcon_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QSystemTrayIcon_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSystemTrayIcon_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSystemTrayIcon_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSystemTrayIcon_staticMetaObject();
 void QSystemTrayIcon_delete(QSystemTrayIcon* self);
 
 #ifdef __cplusplus

@@ -91,6 +91,7 @@ QObject* QPropertyAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QPropertyAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPropertyAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPropertyAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QPropertyAnimation_staticMetaObject();
 void QPropertyAnimation_delete(QPropertyAnimation* self);
 
 #ifdef __cplusplus

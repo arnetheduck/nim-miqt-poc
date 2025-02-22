@@ -518,6 +518,7 @@ void QKeyEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 
 }
 
+const QMetaObject* QKeyEventTransition_staticMetaObject() { return &QKeyEventTransition::staticMetaObject; }
 QObject* QKeyEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQKeyEventTransition* self_cast = dynamic_cast<MiqtVirtualQKeyEventTransition*>( (QKeyEventTransition*)(self) );
 	if (self_cast == nullptr) {

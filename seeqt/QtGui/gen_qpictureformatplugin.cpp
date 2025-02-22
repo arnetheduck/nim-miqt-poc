@@ -577,6 +577,7 @@ void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 
 }
 
+const QMetaObject* QPictureFormatPlugin_staticMetaObject() { return &QPictureFormatPlugin::staticMetaObject; }
 QObject* QPictureFormatPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
 	if (self_cast == nullptr) {

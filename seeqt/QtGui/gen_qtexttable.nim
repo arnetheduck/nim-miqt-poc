@@ -124,6 +124,7 @@ proc fQTextTable_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQTextTable_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTextTable_override_virtual_connectNotify".}
 proc fQTextTable_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTextTable_virtualbase_disconnectNotify".}
 proc fcQTextTable_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTextTable_override_virtual_disconnectNotify".}
+proc fcQTextTable_staticMetaObject(): pointer {.importc: "QTextTable_staticMetaObject".}
 proc fcQTextTable_delete(self: pointer) {.importc: "QTextTable_delete".}
 
 
@@ -444,5 +445,7 @@ proc miqt_exec_callback_QTextTable_disconnectNotify(self: ptr cQTextTable, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtexttable_types.QTextTable): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQTextTable_staticMetaObject())
 proc delete*(self: gen_qtexttable_types.QTextTable) =
   fcQTextTable_delete(self.h)

@@ -3045,6 +3045,7 @@ void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QStandardItemModel_staticMetaObject() { return &QStandardItemModel::staticMetaObject; }
 void QStandardItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
 	if (self_cast == nullptr) {

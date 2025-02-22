@@ -631,6 +631,7 @@ void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QAudioSystemPlugin_staticMetaObject() { return &QAudioSystemPlugin::staticMetaObject; }
 QObject* QAudioSystemPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
 	if (self_cast == nullptr) {

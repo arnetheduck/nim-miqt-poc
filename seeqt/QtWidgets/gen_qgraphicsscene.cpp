@@ -1896,6 +1896,7 @@ void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 
 }
 
+const QMetaObject* QGraphicsScene_staticMetaObject() { return &QGraphicsScene::staticMetaObject; }
 bool QGraphicsScene_protectedbase_focusNextPrevChild(bool* _dynamic_cast_ok, void* self, bool next) {
 	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
 	if (self_cast == nullptr) {

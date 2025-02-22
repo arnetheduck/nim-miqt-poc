@@ -57,6 +57,7 @@ struct miqt_string QWebEngineCookieStore_trUtf82(const char* s, const char* c);
 struct miqt_string QWebEngineCookieStore_trUtf83(const char* s, const char* c, int n);
 void QWebEngineCookieStore_setCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
 void QWebEngineCookieStore_deleteCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
+const QMetaObject* QWebEngineCookieStore_staticMetaObject();
 void QWebEngineCookieStore_delete(QWebEngineCookieStore* self);
 
 QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1);

@@ -1940,6 +1940,7 @@ void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QScrollBar_staticMetaObject() { return &QScrollBar::staticMetaObject; }
 void QScrollBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSlider* option) {
 	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
 	if (self_cast == nullptr) {

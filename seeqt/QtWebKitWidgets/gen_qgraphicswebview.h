@@ -324,6 +324,7 @@ void QGraphicsWebView_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void
 void QGraphicsWebView_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QGraphicsWebView_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QGraphicsWebView_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+const QMetaObject* QGraphicsWebView_staticMetaObject();
 void QGraphicsWebView_delete(QGraphicsWebView* self);
 
 #ifdef __cplusplus

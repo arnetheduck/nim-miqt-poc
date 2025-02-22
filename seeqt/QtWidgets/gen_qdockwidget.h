@@ -231,6 +231,7 @@ QObject* QDockWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QDockWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDockWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDockWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDockWidget_staticMetaObject();
 void QDockWidget_delete(QDockWidget* self);
 
 #ifdef __cplusplus

@@ -209,6 +209,7 @@ QObject* QWebInspector_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QWebInspector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebInspector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebInspector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWebInspector_staticMetaObject();
 void QWebInspector_delete(QWebInspector* self);
 
 #ifdef __cplusplus

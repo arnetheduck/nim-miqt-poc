@@ -136,6 +136,7 @@ struct miqt_string QCameraCaptureBufferFormatControl_trUtf83(const char* s, cons
 	return _ms;
 }
 
+const QMetaObject* QCameraCaptureBufferFormatControl_staticMetaObject() { return &QCameraCaptureBufferFormatControl::staticMetaObject; }
 void QCameraCaptureBufferFormatControl_delete(QCameraCaptureBufferFormatControl* self) {
 	delete self;
 }

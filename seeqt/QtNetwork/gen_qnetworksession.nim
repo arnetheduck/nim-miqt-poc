@@ -141,6 +141,7 @@ proc fQNetworkSession_virtualbase_childEvent(self: pointer, event: pointer): voi
 proc fcQNetworkSession_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QNetworkSession_override_virtual_childEvent".}
 proc fQNetworkSession_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QNetworkSession_virtualbase_customEvent".}
 proc fcQNetworkSession_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QNetworkSession_override_virtual_customEvent".}
+proc fcQNetworkSession_staticMetaObject(): pointer {.importc: "QNetworkSession_staticMetaObject".}
 proc fcQNetworkSession_delete(self: pointer) {.importc: "QNetworkSession_delete".}
 
 
@@ -519,5 +520,7 @@ proc miqt_exec_callback_QNetworkSession_customEvent(self: ptr cQNetworkSession, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qnetworksession_types.QNetworkSession): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQNetworkSession_staticMetaObject())
 proc delete*(self: gen_qnetworksession_types.QNetworkSession) =
   fcQNetworkSession_delete(self.h)

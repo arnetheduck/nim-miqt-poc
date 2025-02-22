@@ -59,6 +59,7 @@ proc fcQMediaContainerControl_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQMediaContainerControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaContainerControl_tr3".}
 proc fcQMediaContainerControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaContainerControl_trUtf82".}
 proc fcQMediaContainerControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaContainerControl_trUtf83".}
+proc fcQMediaContainerControl_staticMetaObject(): pointer {.importc: "QMediaContainerControl_staticMetaObject".}
 proc fcQMediaContainerControl_delete(self: pointer) {.importc: "QMediaContainerControl_delete".}
 
 
@@ -135,5 +136,7 @@ proc trUtf8*(_: type gen_qmediacontainercontrol_types.QMediaContainerControl, s:
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmediacontainercontrol_types.QMediaContainerControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaContainerControl_staticMetaObject())
 proc delete*(self: gen_qmediacontainercontrol_types.QMediaContainerControl) =
   fcQMediaContainerControl_delete(self.h)

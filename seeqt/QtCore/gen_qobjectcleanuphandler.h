@@ -67,6 +67,7 @@ QObject* QObjectCleanupHandler_protectedbase_sender(bool* _dynamic_cast_ok, cons
 int QObjectCleanupHandler_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QObjectCleanupHandler_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QObjectCleanupHandler_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QObjectCleanupHandler_staticMetaObject();
 void QObjectCleanupHandler_delete(QObjectCleanupHandler* self);
 
 #ifdef __cplusplus

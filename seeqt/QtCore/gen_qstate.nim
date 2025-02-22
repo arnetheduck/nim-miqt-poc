@@ -113,6 +113,7 @@ proc fQState_virtualbase_connectNotify(self: pointer, signal: pointer): void{.im
 proc fcQState_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QState_override_virtual_connectNotify".}
 proc fQState_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QState_virtualbase_disconnectNotify".}
 proc fcQState_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QState_override_virtual_disconnectNotify".}
+proc fcQState_staticMetaObject(): pointer {.importc: "QState_staticMetaObject".}
 proc fcQState_delete(self: pointer) {.importc: "QState_delete".}
 
 
@@ -398,5 +399,7 @@ proc miqt_exec_callback_QState_disconnectNotify(self: ptr cQState, slot: int, si
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstate_types.QState): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQState_staticMetaObject())
 proc delete*(self: gen_qstate_types.QState) =
   fcQState_delete(self.h)

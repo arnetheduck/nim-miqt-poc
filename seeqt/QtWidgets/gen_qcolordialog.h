@@ -245,6 +245,7 @@ QObject* QColorDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QColorDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QColorDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QColorDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QColorDialog_staticMetaObject();
 void QColorDialog_delete(QColorDialog* self);
 
 #ifdef __cplusplus

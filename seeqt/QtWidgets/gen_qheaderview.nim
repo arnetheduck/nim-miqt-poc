@@ -369,6 +369,7 @@ proc fQHeaderView_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQHeaderView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QHeaderView_override_virtual_connectNotify".}
 proc fQHeaderView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QHeaderView_virtualbase_disconnectNotify".}
 proc fcQHeaderView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QHeaderView_override_virtual_disconnectNotify".}
+proc fcQHeaderView_staticMetaObject(): pointer {.importc: "QHeaderView_staticMetaObject".}
 proc fcQHeaderView_delete(self: pointer) {.importc: "QHeaderView_delete".}
 
 
@@ -2464,5 +2465,7 @@ proc miqt_exec_callback_QHeaderView_disconnectNotify(self: ptr cQHeaderView, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qheaderview_types.QHeaderView): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQHeaderView_staticMetaObject())
 proc delete*(self: gen_qheaderview_types.QHeaderView) =
   fcQHeaderView_delete(self.h)

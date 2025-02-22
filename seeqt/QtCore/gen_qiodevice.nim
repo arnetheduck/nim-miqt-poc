@@ -177,6 +177,7 @@ proc fQIODevice_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQIODevice_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QIODevice_override_virtual_connectNotify".}
 proc fQIODevice_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QIODevice_virtualbase_disconnectNotify".}
 proc fcQIODevice_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QIODevice_override_virtual_disconnectNotify".}
+proc fcQIODevice_staticMetaObject(): pointer {.importc: "QIODevice_staticMetaObject".}
 proc fcQIODevice_delete(self: pointer) {.importc: "QIODevice_delete".}
 
 
@@ -910,5 +911,7 @@ proc miqt_exec_callback_QIODevice_disconnectNotify(self: ptr cQIODevice, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qiodevice_types.QIODevice): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQIODevice_staticMetaObject())
 proc delete*(self: gen_qiodevice_types.QIODevice) =
   fcQIODevice_delete(self.h)

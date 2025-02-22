@@ -80,6 +80,7 @@ proc fcQVideoWidgetControl_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQVideoWidgetControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoWidgetControl_tr3".}
 proc fcQVideoWidgetControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QVideoWidgetControl_trUtf82".}
 proc fcQVideoWidgetControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoWidgetControl_trUtf83".}
+proc fcQVideoWidgetControl_staticMetaObject(): pointer {.importc: "QVideoWidgetControl_staticMetaObject".}
 proc fcQVideoWidgetControl_delete(self: pointer) {.importc: "QVideoWidgetControl_delete".}
 
 
@@ -249,5 +250,7 @@ proc trUtf8*(_: type gen_qvideowidgetcontrol_types.QVideoWidgetControl, s: cstri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qvideowidgetcontrol_types.QVideoWidgetControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQVideoWidgetControl_staticMetaObject())
 proc delete*(self: gen_qvideowidgetcontrol_types.QVideoWidgetControl) =
   fcQVideoWidgetControl_delete(self.h)

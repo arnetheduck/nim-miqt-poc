@@ -1780,6 +1780,7 @@ void QQuickFramebufferObject_virtualbase_disconnectNotify(void* self, QMetaMetho
 
 }
 
+const QMetaObject* QQuickFramebufferObject_staticMetaObject() { return &QQuickFramebufferObject::staticMetaObject; }
 bool QQuickFramebufferObject_protectedbase_isComponentComplete(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
 	if (self_cast == nullptr) {

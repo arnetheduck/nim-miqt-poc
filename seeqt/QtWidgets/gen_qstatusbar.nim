@@ -190,6 +190,7 @@ proc fQStatusBar_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQStatusBar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QStatusBar_override_virtual_connectNotify".}
 proc fQStatusBar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QStatusBar_virtualbase_disconnectNotify".}
 proc fcQStatusBar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QStatusBar_override_virtual_disconnectNotify".}
+proc fcQStatusBar_staticMetaObject(): pointer {.importc: "QStatusBar_staticMetaObject".}
 proc fcQStatusBar_delete(self: pointer) {.importc: "QStatusBar_delete".}
 
 
@@ -1160,5 +1161,7 @@ proc miqt_exec_callback_QStatusBar_disconnectNotify(self: ptr cQStatusBar, slot:
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstatusbar_types.QStatusBar): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQStatusBar_staticMetaObject())
 proc delete*(self: gen_qstatusbar_types.QStatusBar) =
   fcQStatusBar_delete(self.h)

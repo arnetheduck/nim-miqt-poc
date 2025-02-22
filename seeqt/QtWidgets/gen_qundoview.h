@@ -350,6 +350,7 @@ QObject* QUndoView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QUndoView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QUndoView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QUndoView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QUndoView_staticMetaObject();
 void QUndoView_delete(QUndoView* self);
 
 #ifdef __cplusplus

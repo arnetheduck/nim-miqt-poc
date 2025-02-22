@@ -91,6 +91,7 @@ QObject* QSignalMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QSignalMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSignalMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSignalMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSignalMapper_staticMetaObject();
 void QSignalMapper_delete(QSignalMapper* self);
 
 #ifdef __cplusplus

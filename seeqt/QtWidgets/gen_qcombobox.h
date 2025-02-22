@@ -338,6 +338,7 @@ QObject* QComboBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QComboBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QComboBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QComboBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QComboBox_staticMetaObject();
 void QComboBox_delete(QComboBox* self);
 
 #ifdef __cplusplus

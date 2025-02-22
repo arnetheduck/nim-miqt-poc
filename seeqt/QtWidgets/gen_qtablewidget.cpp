@@ -4636,6 +4636,7 @@ void QTableWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 
 }
 
+const QMetaObject* QTableWidget_staticMetaObject() { return &QTableWidget::staticMetaObject; }
 struct miqt_array /* of QTableWidgetItem* */  QTableWidget_protectedbase_items(bool* _dynamic_cast_ok, const void* self, QMimeData* data) {
 	MiqtVirtualQTableWidget* self_cast = dynamic_cast<MiqtVirtualQTableWidget*>( (QTableWidget*)(self) );
 	if (self_cast == nullptr) {

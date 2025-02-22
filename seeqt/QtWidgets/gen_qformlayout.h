@@ -177,6 +177,7 @@ QObject* QFormLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QFormLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFormLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFormLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QFormLayout_staticMetaObject();
 void QFormLayout_delete(QFormLayout* self);
 
 void QFormLayout__TakeRowResult_delete(QFormLayout__TakeRowResult* self);

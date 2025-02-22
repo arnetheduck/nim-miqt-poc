@@ -104,6 +104,7 @@ proc fQSignalMapper_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQSignalMapper_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSignalMapper_override_virtual_connectNotify".}
 proc fQSignalMapper_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSignalMapper_virtualbase_disconnectNotify".}
 proc fcQSignalMapper_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSignalMapper_override_virtual_disconnectNotify".}
+proc fcQSignalMapper_staticMetaObject(): pointer {.importc: "QSignalMapper_staticMetaObject".}
 proc fcQSignalMapper_delete(self: pointer) {.importc: "QSignalMapper_delete".}
 
 
@@ -473,5 +474,7 @@ proc miqt_exec_callback_QSignalMapper_disconnectNotify(self: ptr cQSignalMapper,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsignalmapper_types.QSignalMapper): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSignalMapper_staticMetaObject())
 proc delete*(self: gen_qsignalmapper_types.QSignalMapper) =
   fcQSignalMapper_delete(self.h)

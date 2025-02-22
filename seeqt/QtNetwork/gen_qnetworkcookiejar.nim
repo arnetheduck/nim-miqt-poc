@@ -98,6 +98,7 @@ proc fQNetworkCookieJar_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQNetworkCookieJar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QNetworkCookieJar_override_virtual_connectNotify".}
 proc fQNetworkCookieJar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QNetworkCookieJar_virtualbase_disconnectNotify".}
 proc fcQNetworkCookieJar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QNetworkCookieJar_override_virtual_disconnectNotify".}
+proc fcQNetworkCookieJar_staticMetaObject(): pointer {.importc: "QNetworkCookieJar_staticMetaObject".}
 proc fcQNetworkCookieJar_delete(self: pointer) {.importc: "QNetworkCookieJar_delete".}
 
 
@@ -462,5 +463,7 @@ proc miqt_exec_callback_QNetworkCookieJar_disconnectNotify(self: ptr cQNetworkCo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qnetworkcookiejar_types.QNetworkCookieJar): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQNetworkCookieJar_staticMetaObject())
 proc delete*(self: gen_qnetworkcookiejar_types.QNetworkCookieJar) =
   fcQNetworkCookieJar_delete(self.h)

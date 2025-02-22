@@ -58,6 +58,7 @@ proc fcQMediaAvailabilityControl_tr2(s: cstring, c: cstring): struct_miqt_string
 proc fcQMediaAvailabilityControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaAvailabilityControl_tr3".}
 proc fcQMediaAvailabilityControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaAvailabilityControl_trUtf82".}
 proc fcQMediaAvailabilityControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaAvailabilityControl_trUtf83".}
+proc fcQMediaAvailabilityControl_staticMetaObject(): pointer {.importc: "QMediaAvailabilityControl_staticMetaObject".}
 proc fcQMediaAvailabilityControl_delete(self: pointer) {.importc: "QMediaAvailabilityControl_delete".}
 
 
@@ -127,5 +128,7 @@ proc trUtf8*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityContr
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaAvailabilityControl_staticMetaObject())
 proc delete*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl) =
   fcQMediaAvailabilityControl_delete(self.h)

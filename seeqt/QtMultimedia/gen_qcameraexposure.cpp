@@ -379,3 +379,4 @@ struct miqt_array /* of double */  QCameraExposure_supportedShutterSpeeds1(const
 	return _out;
 }
 
+const QMetaObject* QCameraExposure_staticMetaObject() { return &QCameraExposure::staticMetaObject; }

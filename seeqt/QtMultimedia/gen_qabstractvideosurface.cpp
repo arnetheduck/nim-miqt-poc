@@ -734,6 +734,7 @@ void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod*
 
 }
 
+const QMetaObject* QAbstractVideoSurface_staticMetaObject() { return &QAbstractVideoSurface::staticMetaObject; }
 void QAbstractVideoSurface_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int error) {
 	MiqtVirtualQAbstractVideoSurface* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( (QAbstractVideoSurface*)(self) );
 	if (self_cast == nullptr) {

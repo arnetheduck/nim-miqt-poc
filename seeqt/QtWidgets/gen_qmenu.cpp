@@ -2010,6 +2010,7 @@ void QMenu_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QMenu_staticMetaObject() { return &QMenu::staticMetaObject; }
 int QMenu_protectedbase_columnCount(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQMenu* self_cast = dynamic_cast<MiqtVirtualQMenu*>( (QMenu*)(self) );
 	if (self_cast == nullptr) {

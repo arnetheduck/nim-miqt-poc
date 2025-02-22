@@ -154,6 +154,7 @@ struct miqt_string QAudioEncoderSettingsControl_trUtf83(const char* s, const cha
 	return _ms;
 }
 
+const QMetaObject* QAudioEncoderSettingsControl_staticMetaObject() { return &QAudioEncoderSettingsControl::staticMetaObject; }
 void QAudioEncoderSettingsControl_delete(QAudioEncoderSettingsControl* self) {
 	delete self;
 }

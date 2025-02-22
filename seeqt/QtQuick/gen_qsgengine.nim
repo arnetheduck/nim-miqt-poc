@@ -110,6 +110,7 @@ proc fQSGEngine_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQSGEngine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSGEngine_override_virtual_connectNotify".}
 proc fQSGEngine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSGEngine_virtualbase_disconnectNotify".}
 proc fcQSGEngine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSGEngine_override_virtual_disconnectNotify".}
+proc fcQSGEngine_staticMetaObject(): pointer {.importc: "QSGEngine_staticMetaObject".}
 proc fcQSGEngine_delete(self: pointer) {.importc: "QSGEngine_delete".}
 
 
@@ -344,5 +345,7 @@ proc miqt_exec_callback_QSGEngine_disconnectNotify(self: ptr cQSGEngine, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsgengine_types.QSGEngine): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSGEngine_staticMetaObject())
 proc delete*(self: gen_qsgengine_types.QSGEngine) =
   fcQSGEngine_delete(self.h)

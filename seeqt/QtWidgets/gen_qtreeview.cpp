@@ -3878,6 +3878,7 @@ void QTreeView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QTreeView_staticMetaObject() { return &QTreeView::staticMetaObject; }
 void QTreeView_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize) {
 	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
 	if (self_cast == nullptr) {

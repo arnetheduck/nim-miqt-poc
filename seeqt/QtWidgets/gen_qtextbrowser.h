@@ -294,6 +294,7 @@ QObject* QTextBrowser_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QTextBrowser_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextBrowser_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextBrowser_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTextBrowser_staticMetaObject();
 void QTextBrowser_delete(QTextBrowser* self);
 
 #ifdef __cplusplus

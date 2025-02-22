@@ -182,6 +182,7 @@ proc fQCameraViewfinder_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQCameraViewfinder_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCameraViewfinder_override_virtual_connectNotify".}
 proc fQCameraViewfinder_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCameraViewfinder_virtualbase_disconnectNotify".}
 proc fcQCameraViewfinder_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCameraViewfinder_override_virtual_disconnectNotify".}
+proc fcQCameraViewfinder_staticMetaObject(): pointer {.importc: "QCameraViewfinder_staticMetaObject".}
 proc fcQCameraViewfinder_delete(self: pointer) {.importc: "QCameraViewfinder_delete".}
 
 
@@ -1124,5 +1125,7 @@ proc miqt_exec_callback_QCameraViewfinder_disconnectNotify(self: ptr cQCameraVie
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcameraviewfinder_types.QCameraViewfinder): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraViewfinder_staticMetaObject())
 proc delete*(self: gen_qcameraviewfinder_types.QCameraViewfinder) =
   fcQCameraViewfinder_delete(self.h)

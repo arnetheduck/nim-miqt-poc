@@ -71,6 +71,7 @@ QObject* QWebChannelAbstractTransport_protectedbase_sender(bool* _dynamic_cast_o
 int QWebChannelAbstractTransport_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebChannelAbstractTransport_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebChannelAbstractTransport_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWebChannelAbstractTransport_staticMetaObject();
 void QWebChannelAbstractTransport_delete(QWebChannelAbstractTransport* self);
 
 #ifdef __cplusplus

@@ -297,6 +297,7 @@ QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QWebPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QWebPage_staticMetaObject();
 void QWebPage_delete(QWebPage* self);
 
 QWebPage__ViewportAttributes* QWebPage__ViewportAttributes_new();

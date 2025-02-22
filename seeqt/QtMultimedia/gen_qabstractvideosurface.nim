@@ -119,6 +119,7 @@ proc fQAbstractVideoSurface_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQAbstractVideoSurface_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractVideoSurface_override_virtual_connectNotify".}
 proc fQAbstractVideoSurface_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractVideoSurface_virtualbase_disconnectNotify".}
 proc fcQAbstractVideoSurface_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractVideoSurface_override_virtual_disconnectNotify".}
+proc fcQAbstractVideoSurface_staticMetaObject(): pointer {.importc: "QAbstractVideoSurface_staticMetaObject".}
 proc fcQAbstractVideoSurface_delete(self: pointer) {.importc: "QAbstractVideoSurface_delete".}
 
 
@@ -528,5 +529,7 @@ proc miqt_exec_callback_QAbstractVideoSurface_disconnectNotify(self: ptr cQAbstr
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractVideoSurface_staticMetaObject())
 proc delete*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface) =
   fcQAbstractVideoSurface_delete(self.h)

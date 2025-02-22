@@ -2804,6 +2804,7 @@ QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* var
 
 }
 
+const QMetaObject* QGraphicsWebView_staticMetaObject() { return &QGraphicsWebView::staticMetaObject; }
 void QGraphicsWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
 	if (self_cast == nullptr) {

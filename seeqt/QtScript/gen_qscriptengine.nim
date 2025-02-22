@@ -186,6 +186,7 @@ proc fQScriptEngine_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQScriptEngine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_connectNotify".}
 proc fQScriptEngine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QScriptEngine_virtualbase_disconnectNotify".}
 proc fcQScriptEngine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_disconnectNotify".}
+proc fcQScriptEngine_staticMetaObject(): pointer {.importc: "QScriptEngine_staticMetaObject".}
 proc fcQScriptEngine_delete(self: pointer) {.importc: "QScriptEngine_delete".}
 
 
@@ -627,5 +628,7 @@ proc miqt_exec_callback_QScriptEngine_disconnectNotify(self: ptr cQScriptEngine,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qscriptengine_types.QScriptEngine): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScriptEngine_staticMetaObject())
 proc delete*(self: gen_qscriptengine_types.QScriptEngine) =
   fcQScriptEngine_delete(self.h)

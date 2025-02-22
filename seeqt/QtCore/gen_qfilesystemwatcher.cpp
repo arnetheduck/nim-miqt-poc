@@ -546,6 +546,7 @@ void QFileSystemWatcher_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QFileSystemWatcher_staticMetaObject() { return &QFileSystemWatcher::staticMetaObject; }
 QObject* QFileSystemWatcher_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQFileSystemWatcher* self_cast = dynamic_cast<MiqtVirtualQFileSystemWatcher*>( (QFileSystemWatcher*)(self) );
 	if (self_cast == nullptr) {

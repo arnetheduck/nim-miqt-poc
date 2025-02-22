@@ -227,6 +227,7 @@ proc fQCamera_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQCamera_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCamera_override_virtual_connectNotify".}
 proc fQCamera_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCamera_virtualbase_disconnectNotify".}
 proc fcQCamera_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCamera_override_virtual_disconnectNotify".}
+proc fcQCamera_staticMetaObject(): pointer {.importc: "QCamera_staticMetaObject".}
 proc fcQCamera_delete(self: pointer) {.importc: "QCamera_delete".}
 proc fcQCameraFrameRateRange_new(): ptr cQCameraFrameRateRange {.importc: "QCamera__FrameRateRange_new".}
 proc fcQCameraFrameRateRange_new2(minimum: float64, maximum: float64): ptr cQCameraFrameRateRange {.importc: "QCamera__FrameRateRange_new2".}
@@ -854,6 +855,8 @@ proc miqt_exec_callback_QCamera_disconnectNotify(self: ptr cQCamera, slot: int, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcamera_types.QCamera): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCamera_staticMetaObject())
 proc delete*(self: gen_qcamera_types.QCamera) =
   fcQCamera_delete(self.h)
 

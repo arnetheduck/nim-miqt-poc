@@ -290,6 +290,7 @@ struct miqt_string QRadioDataControl_trUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
+const QMetaObject* QRadioDataControl_staticMetaObject() { return &QRadioDataControl::staticMetaObject; }
 void QRadioDataControl_delete(QRadioDataControl* self) {
 	delete self;
 }

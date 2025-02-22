@@ -939,6 +939,7 @@ void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod*
 
 }
 
+const QMetaObject* QAbstractItemDelegate_staticMetaObject() { return &QAbstractItemDelegate::staticMetaObject; }
 QObject* QAbstractItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
 	if (self_cast == nullptr) {

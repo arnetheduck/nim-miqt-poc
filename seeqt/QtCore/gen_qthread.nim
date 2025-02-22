@@ -122,6 +122,7 @@ proc fQThread_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQThread_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QThread_override_virtual_connectNotify".}
 proc fQThread_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QThread_virtualbase_disconnectNotify".}
 proc fcQThread_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QThread_override_virtual_disconnectNotify".}
+proc fcQThread_staticMetaObject(): pointer {.importc: "QThread_staticMetaObject".}
 proc fcQThread_delete(self: pointer) {.importc: "QThread_delete".}
 
 
@@ -425,5 +426,7 @@ proc miqt_exec_callback_QThread_disconnectNotify(self: ptr cQThread, slot: int, 
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qthread_types.QThread): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQThread_staticMetaObject())
 proc delete*(self: gen_qthread_types.QThread) =
   fcQThread_delete(self.h)

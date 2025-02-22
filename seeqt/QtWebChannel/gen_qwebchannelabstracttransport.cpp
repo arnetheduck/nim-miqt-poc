@@ -466,6 +466,7 @@ void QWebChannelAbstractTransport_virtualbase_disconnectNotify(void* self, QMeta
 
 }
 
+const QMetaObject* QWebChannelAbstractTransport_staticMetaObject() { return &QWebChannelAbstractTransport::staticMetaObject; }
 QObject* QWebChannelAbstractTransport_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWebChannelAbstractTransport* self_cast = dynamic_cast<MiqtVirtualQWebChannelAbstractTransport*>( (QWebChannelAbstractTransport*)(self) );
 	if (self_cast == nullptr) {

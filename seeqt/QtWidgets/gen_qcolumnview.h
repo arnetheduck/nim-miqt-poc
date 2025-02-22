@@ -356,6 +356,7 @@ QObject* QColumnView_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QColumnView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QColumnView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QColumnView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QColumnView_staticMetaObject();
 void QColumnView_delete(QColumnView* self);
 
 #ifdef __cplusplus

@@ -151,6 +151,7 @@ proc fQMovie_virtualbase_connectNotify(self: pointer, signal: pointer): void{.im
 proc fcQMovie_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMovie_override_virtual_connectNotify".}
 proc fQMovie_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMovie_virtualbase_disconnectNotify".}
 proc fcQMovie_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMovie_override_virtual_disconnectNotify".}
+proc fcQMovie_staticMetaObject(): pointer {.importc: "QMovie_staticMetaObject".}
 proc fcQMovie_delete(self: pointer) {.importc: "QMovie_delete".}
 
 
@@ -591,5 +592,7 @@ proc miqt_exec_callback_QMovie_disconnectNotify(self: ptr cQMovie, slot: int, si
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmovie_types.QMovie): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMovie_staticMetaObject())
 proc delete*(self: gen_qmovie_types.QMovie) =
   fcQMovie_delete(self.h)

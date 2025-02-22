@@ -90,6 +90,7 @@ QObject* QDtlsClientVerifier_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QDtlsClientVerifier_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDtlsClientVerifier_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDtlsClientVerifier_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDtlsClientVerifier_staticMetaObject();
 void QDtlsClientVerifier_delete(QDtlsClientVerifier* self);
 
 QDtls* QDtls_new(int mode);
@@ -157,6 +158,7 @@ QObject* QDtls_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDtls_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDtls_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDtls_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDtls_staticMetaObject();
 void QDtls_delete(QDtls* self);
 
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new();

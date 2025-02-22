@@ -1440,6 +1440,7 @@ QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self) {
 
 }
 
+const QMetaObject* QRasterWindow_staticMetaObject() { return &QRasterWindow::staticMetaObject; }
 QObject* QRasterWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQRasterWindow* self_cast = dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) );
 	if (self_cast == nullptr) {

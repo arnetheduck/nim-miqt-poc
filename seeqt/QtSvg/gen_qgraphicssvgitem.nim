@@ -188,6 +188,7 @@ proc fQGraphicsSvgItem_virtualbase_setExtension(self: pointer, extension: cint, 
 proc fcQGraphicsSvgItem_override_virtual_setExtension(self: pointer, slot: int) {.importc: "QGraphicsSvgItem_override_virtual_setExtension".}
 proc fQGraphicsSvgItem_virtualbase_extension(self: pointer, variant: pointer): pointer{.importc: "QGraphicsSvgItem_virtualbase_extension".}
 proc fcQGraphicsSvgItem_override_virtual_extension(self: pointer, slot: int) {.importc: "QGraphicsSvgItem_override_virtual_extension".}
+proc fcQGraphicsSvgItem_staticMetaObject(): pointer {.importc: "QGraphicsSvgItem_staticMetaObject".}
 proc fcQGraphicsSvgItem_delete(self: pointer) {.importc: "QGraphicsSvgItem_delete".}
 
 
@@ -1063,5 +1064,7 @@ proc miqt_exec_callback_QGraphicsSvgItem_extension(self: ptr cQGraphicsSvgItem, 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qgraphicssvgitem_types.QGraphicsSvgItem): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQGraphicsSvgItem_staticMetaObject())
 proc delete*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem) =
   fcQGraphicsSvgItem_delete(self.h)

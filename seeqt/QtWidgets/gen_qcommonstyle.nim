@@ -164,6 +164,7 @@ proc fQCommonStyle_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQCommonStyle_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCommonStyle_override_virtual_connectNotify".}
 proc fQCommonStyle_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCommonStyle_virtualbase_disconnectNotify".}
 proc fcQCommonStyle_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCommonStyle_override_virtual_disconnectNotify".}
+proc fcQCommonStyle_staticMetaObject(): pointer {.importc: "QCommonStyle_staticMetaObject".}
 proc fcQCommonStyle_delete(self: pointer) {.importc: "QCommonStyle_delete".}
 
 
@@ -940,5 +941,7 @@ proc miqt_exec_callback_QCommonStyle_disconnectNotify(self: ptr cQCommonStyle, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcommonstyle_types.QCommonStyle): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCommonStyle_staticMetaObject())
 proc delete*(self: gen_qcommonstyle_types.QCommonStyle) =
   fcQCommonStyle_delete(self.h)

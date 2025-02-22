@@ -287,6 +287,7 @@ proc fQUndoView_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQUndoView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QUndoView_override_virtual_connectNotify".}
 proc fQUndoView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QUndoView_virtualbase_disconnectNotify".}
 proc fcQUndoView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QUndoView_override_virtual_disconnectNotify".}
+proc fcQUndoView_staticMetaObject(): pointer {.importc: "QUndoView_staticMetaObject".}
 proc fcQUndoView_delete(self: pointer) {.importc: "QUndoView_delete".}
 
 
@@ -2004,5 +2005,7 @@ proc miqt_exec_callback_QUndoView_disconnectNotify(self: ptr cQUndoView, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qundoview_types.QUndoView): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQUndoView_staticMetaObject())
 proc delete*(self: gen_qundoview_types.QUndoView) =
   fcQUndoView_delete(self.h)

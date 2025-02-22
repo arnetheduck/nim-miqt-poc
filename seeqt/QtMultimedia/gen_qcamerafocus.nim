@@ -120,6 +120,7 @@ proc fcQCameraFocus_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "
 proc fcQCameraFocus_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFocus_tr3".}
 proc fcQCameraFocus_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFocus_trUtf82".}
 proc fcQCameraFocus_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFocus_trUtf83".}
+proc fcQCameraFocus_staticMetaObject(): pointer {.importc: "QCameraFocus_staticMetaObject".}
 
 
 func init*(T: type gen_qcamerafocus_types.QCameraFocusZone, h: ptr cQCameraFocusZone): gen_qcamerafocus_types.QCameraFocusZone =
@@ -335,3 +336,5 @@ proc trUtf8*(_: type gen_qcamerafocus_types.QCameraFocus, s: cstring, c: cstring
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qcamerafocus_types.QCameraFocus): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraFocus_staticMetaObject())

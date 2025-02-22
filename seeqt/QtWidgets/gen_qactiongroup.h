@@ -72,6 +72,7 @@ QObject* QActionGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QActionGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QActionGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QActionGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QActionGroup_staticMetaObject();
 void QActionGroup_delete(QActionGroup* self);
 
 #ifdef __cplusplus

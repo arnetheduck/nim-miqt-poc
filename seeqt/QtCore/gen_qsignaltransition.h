@@ -81,6 +81,7 @@ QObject* QSignalTransition_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QSignalTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSignalTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSignalTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QSignalTransition_staticMetaObject();
 void QSignalTransition_delete(QSignalTransition* self);
 
 #ifdef __cplusplus

@@ -517,6 +517,7 @@ void QQmlApplicationEngine_virtualbase_disconnectNotify(void* self, QMetaMethod*
 
 }
 
+const QMetaObject* QQmlApplicationEngine_staticMetaObject() { return &QQmlApplicationEngine::staticMetaObject; }
 QObject* QQmlApplicationEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQmlApplicationEngine* self_cast = dynamic_cast<MiqtVirtualQQmlApplicationEngine*>( (QQmlApplicationEngine*)(self) );
 	if (self_cast == nullptr) {

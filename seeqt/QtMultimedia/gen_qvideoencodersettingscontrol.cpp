@@ -168,6 +168,7 @@ struct miqt_string QVideoEncoderSettingsControl_trUtf83(const char* s, const cha
 	return _ms;
 }
 
+const QMetaObject* QVideoEncoderSettingsControl_staticMetaObject() { return &QVideoEncoderSettingsControl::staticMetaObject; }
 void QVideoEncoderSettingsControl_delete(QVideoEncoderSettingsControl* self) {
 	delete self;
 }

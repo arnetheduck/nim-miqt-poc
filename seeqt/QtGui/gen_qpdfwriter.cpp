@@ -878,6 +878,7 @@ QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self) {
 
 }
 
+const QMetaObject* QPdfWriter_staticMetaObject() { return &QPdfWriter::staticMetaObject; }
 QObject* QPdfWriter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
 	if (self_cast == nullptr) {

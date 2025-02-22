@@ -75,6 +75,7 @@ QObject* QFinalState_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QFinalState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFinalState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFinalState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QFinalState_staticMetaObject();
 void QFinalState_delete(QFinalState* self);
 
 #ifdef __cplusplus

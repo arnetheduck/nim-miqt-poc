@@ -114,6 +114,7 @@ proc fQButtonGroup_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQButtonGroup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QButtonGroup_override_virtual_connectNotify".}
 proc fQButtonGroup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QButtonGroup_virtualbase_disconnectNotify".}
 proc fcQButtonGroup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QButtonGroup_override_virtual_disconnectNotify".}
+proc fcQButtonGroup_staticMetaObject(): pointer {.importc: "QButtonGroup_staticMetaObject".}
 proc fcQButtonGroup_delete(self: pointer) {.importc: "QButtonGroup_delete".}
 
 
@@ -554,5 +555,7 @@ proc miqt_exec_callback_QButtonGroup_disconnectNotify(self: ptr cQButtonGroup, s
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qbuttongroup_types.QButtonGroup): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQButtonGroup_staticMetaObject())
 proc delete*(self: gen_qbuttongroup_types.QButtonGroup) =
   fcQButtonGroup_delete(self.h)

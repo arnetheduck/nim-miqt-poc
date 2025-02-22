@@ -1943,6 +1943,7 @@ void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QWindow_staticMetaObject() { return &QWindow::staticMetaObject; }
 QObject* QWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWindow* self_cast = dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) );
 	if (self_cast == nullptr) {

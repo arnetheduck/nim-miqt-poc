@@ -681,6 +681,7 @@ void QPropertyAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QPropertyAnimation_staticMetaObject() { return &QPropertyAnimation::staticMetaObject; }
 QObject* QPropertyAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
 	if (self_cast == nullptr) {

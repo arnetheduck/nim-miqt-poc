@@ -679,6 +679,7 @@ void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 
 }
 
+const QMetaObject* QWebPluginFactory_staticMetaObject() { return &QWebPluginFactory::staticMetaObject; }
 QObject* QWebPluginFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQWebPluginFactory* self_cast = dynamic_cast<MiqtVirtualQWebPluginFactory*>( (QWebPluginFactory*)(self) );
 	if (self_cast == nullptr) {

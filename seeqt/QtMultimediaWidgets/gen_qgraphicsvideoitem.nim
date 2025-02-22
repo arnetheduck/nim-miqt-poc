@@ -190,6 +190,7 @@ proc fQGraphicsVideoItem_virtualbase_setExtension(self: pointer, extension: cint
 proc fcQGraphicsVideoItem_override_virtual_setExtension(self: pointer, slot: int) {.importc: "QGraphicsVideoItem_override_virtual_setExtension".}
 proc fQGraphicsVideoItem_virtualbase_extension(self: pointer, variant: pointer): pointer{.importc: "QGraphicsVideoItem_virtualbase_extension".}
 proc fcQGraphicsVideoItem_override_virtual_extension(self: pointer, slot: int) {.importc: "QGraphicsVideoItem_override_virtual_extension".}
+proc fcQGraphicsVideoItem_staticMetaObject(): pointer {.importc: "QGraphicsVideoItem_staticMetaObject".}
 proc fcQGraphicsVideoItem_delete(self: pointer) {.importc: "QGraphicsVideoItem_delete".}
 
 
@@ -1108,5 +1109,7 @@ proc miqt_exec_callback_QGraphicsVideoItem_extension(self: ptr cQGraphicsVideoIt
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
+proc staticMetaObject*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQGraphicsVideoItem_staticMetaObject())
 proc delete*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem) =
   fcQGraphicsVideoItem_delete(self.h)

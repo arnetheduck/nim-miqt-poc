@@ -96,6 +96,7 @@ proc fQWebPluginFactory_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQWebPluginFactory_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebPluginFactory_override_virtual_connectNotify".}
 proc fQWebPluginFactory_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebPluginFactory_virtualbase_disconnectNotify".}
 proc fcQWebPluginFactory_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebPluginFactory_override_virtual_disconnectNotify".}
+proc fcQWebPluginFactory_staticMetaObject(): pointer {.importc: "QWebPluginFactory_staticMetaObject".}
 proc fcQWebPluginFactory_delete(self: pointer) {.importc: "QWebPluginFactory_delete".}
 proc fcQWebPluginFactoryMimeType_new(param1: pointer): ptr cQWebPluginFactoryMimeType {.importc: "QWebPluginFactory__MimeType_new".}
 proc fcQWebPluginFactoryMimeType_operatorEqual(self: pointer, other: pointer): bool {.importc: "QWebPluginFactory__MimeType_operatorEqual".}
@@ -454,6 +455,8 @@ proc miqt_exec_callback_QWebPluginFactory_disconnectNotify(self: ptr cQWebPlugin
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebpluginfactory_types.QWebPluginFactory): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebPluginFactory_staticMetaObject())
 proc delete*(self: gen_qwebpluginfactory_types.QWebPluginFactory) =
   fcQWebPluginFactory_delete(self.h)
 

@@ -226,6 +226,7 @@ QObject* QDesktopWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QDesktopWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDesktopWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDesktopWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDesktopWidget_staticMetaObject();
 void QDesktopWidget_delete(QDesktopWidget* self);
 
 #ifdef __cplusplus

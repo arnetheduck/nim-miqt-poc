@@ -122,6 +122,7 @@ proc fcQScreen_grabWindow2(self: pointer, window: uint, x: cint): pointer {.impo
 proc fcQScreen_grabWindow3(self: pointer, window: uint, x: cint, y: cint): pointer {.importc: "QScreen_grabWindow3".}
 proc fcQScreen_grabWindow4(self: pointer, window: uint, x: cint, y: cint, w: cint): pointer {.importc: "QScreen_grabWindow4".}
 proc fcQScreen_grabWindow5(self: pointer, window: uint, x: cint, y: cint, w: cint, h: cint): pointer {.importc: "QScreen_grabWindow5".}
+proc fcQScreen_staticMetaObject(): pointer {.importc: "QScreen_staticMetaObject".}
 proc fcQScreen_delete(self: pointer) {.importc: "QScreen_delete".}
 
 
@@ -450,5 +451,7 @@ proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint
 proc grabWindow*(self: gen_qscreen_types.QScreen, window: uint, x: cint, y: cint, w: cint, h: cint): QPixmap =
   QPixmap(h: fcQScreen_grabWindow5(self.h, window, x, y, w, h))
 
+proc staticMetaObject*(_: type gen_qscreen_types.QScreen): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQScreen_staticMetaObject())
 proc delete*(self: gen_qscreen_types.QScreen) =
   fcQScreen_delete(self.h)

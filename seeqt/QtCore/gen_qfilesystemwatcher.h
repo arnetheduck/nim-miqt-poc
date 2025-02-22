@@ -72,6 +72,7 @@ QObject* QFileSystemWatcher_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QFileSystemWatcher_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFileSystemWatcher_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFileSystemWatcher_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QFileSystemWatcher_staticMetaObject();
 void QFileSystemWatcher_delete(QFileSystemWatcher* self);
 
 #ifdef __cplusplus

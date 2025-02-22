@@ -1878,6 +1878,7 @@ void QStringListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 
 }
 
+const QMetaObject* QStringListModel_staticMetaObject() { return &QStringListModel::staticMetaObject; }
 void QStringListModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
 	if (self_cast == nullptr) {

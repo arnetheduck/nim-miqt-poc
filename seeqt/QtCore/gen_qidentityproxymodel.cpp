@@ -2134,6 +2134,7 @@ void QIdentityProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 
 }
 
+const QMetaObject* QIdentityProxyModel_staticMetaObject() { return &QIdentityProxyModel::staticMetaObject; }
 void QIdentityProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {

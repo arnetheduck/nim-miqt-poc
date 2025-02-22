@@ -82,6 +82,7 @@ proc fcQMediaRecorderControl_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQMediaRecorderControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaRecorderControl_tr3".}
 proc fcQMediaRecorderControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaRecorderControl_trUtf82".}
 proc fcQMediaRecorderControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaRecorderControl_trUtf83".}
+proc fcQMediaRecorderControl_staticMetaObject(): pointer {.importc: "QMediaRecorderControl_staticMetaObject".}
 proc fcQMediaRecorderControl_delete(self: pointer) {.importc: "QMediaRecorderControl_delete".}
 
 
@@ -282,5 +283,7 @@ proc trUtf8*(_: type gen_qmediarecordercontrol_types.QMediaRecorderControl, s: c
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmediarecordercontrol_types.QMediaRecorderControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaRecorderControl_staticMetaObject())
 proc delete*(self: gen_qmediarecordercontrol_types.QMediaRecorderControl) =
   fcQMediaRecorderControl_delete(self.h)

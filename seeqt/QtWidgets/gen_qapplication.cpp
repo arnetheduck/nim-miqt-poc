@@ -733,6 +733,7 @@ void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 
 }
 
+const QMetaObject* QApplication_staticMetaObject() { return &QApplication::staticMetaObject; }
 QObject* QApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {

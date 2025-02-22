@@ -501,6 +501,7 @@ void QGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QGesture_staticMetaObject() { return &QGesture::staticMetaObject; }
 QObject* QGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGesture* self_cast = dynamic_cast<MiqtVirtualQGesture*>( (QGesture*)(self) );
 	if (self_cast == nullptr) {
@@ -976,6 +977,7 @@ void QPanGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QPanGesture_staticMetaObject() { return &QPanGesture::staticMetaObject; }
 QObject* QPanGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPanGesture* self_cast = dynamic_cast<MiqtVirtualQPanGesture*>( (QPanGesture*)(self) );
 	if (self_cast == nullptr) {
@@ -1518,6 +1520,7 @@ void QPinchGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QPinchGesture_staticMetaObject() { return &QPinchGesture::staticMetaObject; }
 QObject* QPinchGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPinchGesture* self_cast = dynamic_cast<MiqtVirtualQPinchGesture*>( (QPinchGesture*)(self) );
 	if (self_cast == nullptr) {
@@ -1983,6 +1986,7 @@ void QSwipeGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 
 }
 
+const QMetaObject* QSwipeGesture_staticMetaObject() { return &QSwipeGesture::staticMetaObject; }
 QObject* QSwipeGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQSwipeGesture* self_cast = dynamic_cast<MiqtVirtualQSwipeGesture*>( (QSwipeGesture*)(self) );
 	if (self_cast == nullptr) {
@@ -2437,6 +2441,7 @@ void QTapGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QTapGesture_staticMetaObject() { return &QTapGesture::staticMetaObject; }
 QObject* QTapGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTapGesture* self_cast = dynamic_cast<MiqtVirtualQTapGesture*>( (QTapGesture*)(self) );
 	if (self_cast == nullptr) {
@@ -2899,6 +2904,7 @@ void QTapAndHoldGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 
 }
 
+const QMetaObject* QTapAndHoldGesture_staticMetaObject() { return &QTapAndHoldGesture::staticMetaObject; }
 QObject* QTapAndHoldGesture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTapAndHoldGesture* self_cast = dynamic_cast<MiqtVirtualQTapAndHoldGesture*>( (QTapAndHoldGesture*)(self) );
 	if (self_cast == nullptr) {

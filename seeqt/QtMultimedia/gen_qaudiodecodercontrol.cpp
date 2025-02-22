@@ -284,6 +284,7 @@ struct miqt_string QAudioDecoderControl_trUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
+const QMetaObject* QAudioDecoderControl_staticMetaObject() { return &QAudioDecoderControl::staticMetaObject; }
 void QAudioDecoderControl_delete(QAudioDecoderControl* self) {
 	delete self;
 }

@@ -2527,6 +2527,7 @@ void QSortFilterProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod*
 
 }
 
+const QMetaObject* QSortFilterProxyModel_staticMetaObject() { return &QSortFilterProxyModel::staticMetaObject; }
 void QSortFilterProxyModel_protectedbase_filterChanged(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
 	if (self_cast == nullptr) {

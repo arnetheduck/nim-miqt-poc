@@ -125,6 +125,7 @@ struct miqt_string QCameraCaptureDestinationControl_trUtf83(const char* s, const
 	return _ms;
 }
 
+const QMetaObject* QCameraCaptureDestinationControl_staticMetaObject() { return &QCameraCaptureDestinationControl::staticMetaObject; }
 void QCameraCaptureDestinationControl_delete(QCameraCaptureDestinationControl* self) {
 	delete self;
 }

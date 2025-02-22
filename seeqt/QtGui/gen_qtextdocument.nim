@@ -270,6 +270,7 @@ proc fQTextDocument_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQTextDocument_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTextDocument_override_virtual_connectNotify".}
 proc fQTextDocument_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTextDocument_virtualbase_disconnectNotify".}
 proc fcQTextDocument_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTextDocument_override_virtual_disconnectNotify".}
+proc fcQTextDocument_staticMetaObject(): pointer {.importc: "QTextDocument_staticMetaObject".}
 proc fcQTextDocument_delete(self: pointer) {.importc: "QTextDocument_delete".}
 
 
@@ -1030,5 +1031,7 @@ proc miqt_exec_callback_QTextDocument_disconnectNotify(self: ptr cQTextDocument,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtextdocument_types.QTextDocument): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQTextDocument_staticMetaObject())
 proc delete*(self: gen_qtextdocument_types.QTextDocument) =
   fcQTextDocument_delete(self.h)

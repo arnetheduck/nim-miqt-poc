@@ -118,6 +118,7 @@ proc fQDataWidgetMapper_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQDataWidgetMapper_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDataWidgetMapper_override_virtual_connectNotify".}
 proc fQDataWidgetMapper_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDataWidgetMapper_virtualbase_disconnectNotify".}
 proc fcQDataWidgetMapper_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDataWidgetMapper_override_virtual_disconnectNotify".}
+proc fcQDataWidgetMapper_staticMetaObject(): pointer {.importc: "QDataWidgetMapper_staticMetaObject".}
 proc fcQDataWidgetMapper_delete(self: pointer) {.importc: "QDataWidgetMapper_delete".}
 
 
@@ -436,5 +437,7 @@ proc miqt_exec_callback_QDataWidgetMapper_disconnectNotify(self: ptr cQDataWidge
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdatawidgetmapper_types.QDataWidgetMapper): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQDataWidgetMapper_staticMetaObject())
 proc delete*(self: gen_qdatawidgetmapper_types.QDataWidgetMapper) =
   fcQDataWidgetMapper_delete(self.h)

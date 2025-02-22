@@ -233,6 +233,7 @@ QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QTextDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QTextDocument_staticMetaObject();
 void QTextDocument_delete(QTextDocument* self);
 
 #ifdef __cplusplus

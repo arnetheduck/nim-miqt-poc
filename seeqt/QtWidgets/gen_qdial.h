@@ -224,6 +224,7 @@ QObject* QDial_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDial_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDial_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDial_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QDial_staticMetaObject();
 void QDial_delete(QDial* self);
 
 #ifdef __cplusplus

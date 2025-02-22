@@ -61,6 +61,7 @@ proc fcQMediaAudioProbeControl_tr2(s: cstring, c: cstring): struct_miqt_string {
 proc fcQMediaAudioProbeControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaAudioProbeControl_tr3".}
 proc fcQMediaAudioProbeControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaAudioProbeControl_trUtf82".}
 proc fcQMediaAudioProbeControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaAudioProbeControl_trUtf83".}
+proc fcQMediaAudioProbeControl_staticMetaObject(): pointer {.importc: "QMediaAudioProbeControl_staticMetaObject".}
 proc fcQMediaAudioProbeControl_delete(self: pointer) {.importc: "QMediaAudioProbeControl_delete".}
 
 
@@ -141,5 +142,7 @@ proc trUtf8*(_: type gen_qmediaaudioprobecontrol_types.QMediaAudioProbeControl, 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type gen_qmediaaudioprobecontrol_types.QMediaAudioProbeControl): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQMediaAudioProbeControl_staticMetaObject())
 proc delete*(self: gen_qmediaaudioprobecontrol_types.QMediaAudioProbeControl) =
   fcQMediaAudioProbeControl_delete(self.h)

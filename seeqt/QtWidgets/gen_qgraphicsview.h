@@ -365,6 +365,7 @@ QObject* QGraphicsView_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QGraphicsView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsView_staticMetaObject();
 void QGraphicsView_delete(QGraphicsView* self);
 
 #ifdef __cplusplus

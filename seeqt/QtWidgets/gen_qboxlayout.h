@@ -166,6 +166,7 @@ QObject* QBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QBoxLayout_staticMetaObject();
 void QBoxLayout_delete(QBoxLayout* self);
 
 QHBoxLayout* QHBoxLayout_new(QWidget* parent);
@@ -245,6 +246,7 @@ QObject* QHBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QHBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QHBoxLayout_staticMetaObject();
 void QHBoxLayout_delete(QHBoxLayout* self);
 
 QVBoxLayout* QVBoxLayout_new(QWidget* parent);
@@ -324,6 +326,7 @@ QObject* QVBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QVBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QVBoxLayout_staticMetaObject();
 void QVBoxLayout_delete(QVBoxLayout* self);
 
 #ifdef __cplusplus

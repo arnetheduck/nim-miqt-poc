@@ -91,6 +91,7 @@ QObject* QQmlContext_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QQmlContext_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlContext_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlContext_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QQmlContext_staticMetaObject();
 void QQmlContext_delete(QQmlContext* self);
 
 QQmlContext__PropertyPair* QQmlContext__PropertyPair_new(QQmlContext__PropertyPair* param1);

@@ -347,6 +347,7 @@ proc fQTextEdit_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQTextEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTextEdit_override_virtual_connectNotify".}
 proc fQTextEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTextEdit_virtualbase_disconnectNotify".}
 proc fcQTextEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTextEdit_override_virtual_disconnectNotify".}
+proc fcQTextEdit_staticMetaObject(): pointer {.importc: "QTextEdit_staticMetaObject".}
 proc fcQTextEdit_delete(self: pointer) {.importc: "QTextEdit_delete".}
 proc fcQTextEditExtraSelection_new(param1: pointer): ptr cQTextEditExtraSelection {.importc: "QTextEdit__ExtraSelection_new".}
 proc fcQTextEditExtraSelection_operatorAssign(self: pointer, param1: pointer): void {.importc: "QTextEdit__ExtraSelection_operatorAssign".}
@@ -1861,6 +1862,8 @@ proc miqt_exec_callback_QTextEdit_disconnectNotify(self: ptr cQTextEdit, slot: i
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtextedit_types.QTextEdit): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQTextEdit_staticMetaObject())
 proc delete*(self: gen_qtextedit_types.QTextEdit) =
   fcQTextEdit_delete(self.h)
 

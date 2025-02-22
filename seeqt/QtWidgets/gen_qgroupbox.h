@@ -230,6 +230,7 @@ QObject* QGroupBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QGroupBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGroupBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGroupBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGroupBox_staticMetaObject();
 void QGroupBox_delete(QGroupBox* self);
 
 #ifdef __cplusplus

@@ -217,6 +217,7 @@ proc fQFontDialog_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQFontDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFontDialog_override_virtual_connectNotify".}
 proc fQFontDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFontDialog_virtualbase_disconnectNotify".}
 proc fcQFontDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFontDialog_override_virtual_disconnectNotify".}
+proc fcQFontDialog_staticMetaObject(): pointer {.importc: "QFontDialog_staticMetaObject".}
 proc fcQFontDialog_delete(self: pointer) {.importc: "QFontDialog_delete".}
 
 
@@ -1282,5 +1283,7 @@ proc miqt_exec_callback_QFontDialog_disconnectNotify(self: ptr cQFontDialog, slo
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfontdialog_types.QFontDialog): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQFontDialog_staticMetaObject())
 proc delete*(self: gen_qfontdialog_types.QFontDialog) =
   fcQFontDialog_delete(self.h)

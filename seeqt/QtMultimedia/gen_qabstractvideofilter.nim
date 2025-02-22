@@ -95,6 +95,7 @@ proc fQAbstractVideoFilter_virtualbase_connectNotify(self: pointer, signal: poin
 proc fcQAbstractVideoFilter_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractVideoFilter_override_virtual_connectNotify".}
 proc fQAbstractVideoFilter_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractVideoFilter_virtualbase_disconnectNotify".}
 proc fcQAbstractVideoFilter_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractVideoFilter_override_virtual_disconnectNotify".}
+proc fcQAbstractVideoFilter_staticMetaObject(): pointer {.importc: "QAbstractVideoFilter_staticMetaObject".}
 proc fcQAbstractVideoFilter_delete(self: pointer) {.importc: "QAbstractVideoFilter_delete".}
 
 
@@ -347,5 +348,7 @@ proc miqt_exec_callback_QAbstractVideoFilter_disconnectNotify(self: ptr cQAbstra
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractvideofilter_types.QAbstractVideoFilter): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQAbstractVideoFilter_staticMetaObject())
 proc delete*(self: gen_qabstractvideofilter_types.QAbstractVideoFilter) =
   fcQAbstractVideoFilter_delete(self.h)

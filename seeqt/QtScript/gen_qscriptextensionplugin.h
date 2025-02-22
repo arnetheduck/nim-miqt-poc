@@ -79,6 +79,7 @@ QObject* QScriptExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, con
 int QScriptExtensionPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QScriptExtensionPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QScriptExtensionPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QScriptExtensionPlugin_staticMetaObject();
 void QScriptExtensionPlugin_delete(QScriptExtensionPlugin* self);
 
 #ifdef __cplusplus

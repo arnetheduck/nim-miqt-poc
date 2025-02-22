@@ -299,6 +299,7 @@ struct miqt_string QFutureWatcherBase_trUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
+const QMetaObject* QFutureWatcherBase_staticMetaObject() { return &QFutureWatcherBase::staticMetaObject; }
 void QFutureWatcherBase_delete(QFutureWatcherBase* self) {
 	delete self;
 }

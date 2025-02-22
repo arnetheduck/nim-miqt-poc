@@ -243,6 +243,7 @@ struct miqt_string QMediaObject_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QMediaObject_staticMetaObject() { return &QMediaObject::staticMetaObject; }
 void QMediaObject_delete(QMediaObject* self) {
 	delete self;
 }

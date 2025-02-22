@@ -120,6 +120,7 @@ struct miqt_string QCameraFeedbackControl_trUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
+const QMetaObject* QCameraFeedbackControl_staticMetaObject() { return &QCameraFeedbackControl::staticMetaObject; }
 void QCameraFeedbackControl_delete(QCameraFeedbackControl* self) {
 	delete self;
 }

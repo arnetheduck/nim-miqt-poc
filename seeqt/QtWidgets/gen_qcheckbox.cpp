@@ -2043,6 +2043,7 @@ void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 }
 
+const QMetaObject* QCheckBox_staticMetaObject() { return &QCheckBox::staticMetaObject; }
 void QCheckBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option) {
 	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
 	if (self_cast == nullptr) {

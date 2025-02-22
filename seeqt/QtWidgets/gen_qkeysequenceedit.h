@@ -214,6 +214,7 @@ QObject* QKeySequenceEdit_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QKeySequenceEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QKeySequenceEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QKeySequenceEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QKeySequenceEdit_staticMetaObject();
 void QKeySequenceEdit_delete(QKeySequenceEdit* self);
 
 #ifdef __cplusplus

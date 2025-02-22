@@ -321,6 +321,7 @@ QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QGraphicsScene_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsScene_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsScene_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsScene_staticMetaObject();
 void QGraphicsScene_delete(QGraphicsScene* self);
 
 #ifdef __cplusplus

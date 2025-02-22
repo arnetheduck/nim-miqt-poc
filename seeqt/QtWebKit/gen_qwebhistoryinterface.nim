@@ -83,6 +83,7 @@ proc fQWebHistoryInterface_virtualbase_connectNotify(self: pointer, signal: poin
 proc fcQWebHistoryInterface_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebHistoryInterface_override_virtual_connectNotify".}
 proc fQWebHistoryInterface_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebHistoryInterface_virtualbase_disconnectNotify".}
 proc fcQWebHistoryInterface_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebHistoryInterface_override_virtual_disconnectNotify".}
+proc fcQWebHistoryInterface_staticMetaObject(): pointer {.importc: "QWebHistoryInterface_staticMetaObject".}
 proc fcQWebHistoryInterface_delete(self: pointer) {.importc: "QWebHistoryInterface_delete".}
 
 
@@ -335,5 +336,7 @@ proc miqt_exec_callback_QWebHistoryInterface_disconnectNotify(self: ptr cQWebHis
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebHistoryInterface_staticMetaObject())
 proc delete*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface) =
   fcQWebHistoryInterface_delete(self.h)

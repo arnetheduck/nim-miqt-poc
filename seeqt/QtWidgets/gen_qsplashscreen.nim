@@ -199,6 +199,7 @@ proc fQSplashScreen_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQSplashScreen_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSplashScreen_override_virtual_connectNotify".}
 proc fQSplashScreen_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSplashScreen_virtualbase_disconnectNotify".}
 proc fcQSplashScreen_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSplashScreen_override_virtual_disconnectNotify".}
+proc fcQSplashScreen_staticMetaObject(): pointer {.importc: "QSplashScreen_staticMetaObject".}
 proc fcQSplashScreen_delete(self: pointer) {.importc: "QSplashScreen_delete".}
 
 
@@ -1189,5 +1190,7 @@ proc miqt_exec_callback_QSplashScreen_disconnectNotify(self: ptr cQSplashScreen,
 
 
   nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsplashscreen_types.QSplashScreen): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQSplashScreen_staticMetaObject())
 proc delete*(self: gen_qsplashscreen_types.QSplashScreen) =
   fcQSplashScreen_delete(self.h)

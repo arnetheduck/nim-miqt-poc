@@ -577,6 +577,7 @@ void QQuickTextureFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 
 }
 
+const QMetaObject* QQuickTextureFactory_staticMetaObject() { return &QQuickTextureFactory::staticMetaObject; }
 QObject* QQuickTextureFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickTextureFactory* self_cast = dynamic_cast<MiqtVirtualQQuickTextureFactory*>( (QQuickTextureFactory*)(self) );
 	if (self_cast == nullptr) {
@@ -1147,6 +1148,7 @@ void QQuickImageResponse_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 
 }
 
+const QMetaObject* QQuickImageResponse_staticMetaObject() { return &QQuickImageResponse::staticMetaObject; }
 QObject* QQuickImageResponse_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQQuickImageResponse* self_cast = dynamic_cast<MiqtVirtualQQuickImageResponse*>( (QQuickImageResponse*)(self) );
 	if (self_cast == nullptr) {

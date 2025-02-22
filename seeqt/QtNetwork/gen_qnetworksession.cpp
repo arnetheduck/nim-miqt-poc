@@ -606,6 +606,7 @@ void QNetworkSession_virtualbase_customEvent(void* self, QEvent* event) {
 
 }
 
+const QMetaObject* QNetworkSession_staticMetaObject() { return &QNetworkSession::staticMetaObject; }
 QObject* QNetworkSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
 	if (self_cast == nullptr) {
