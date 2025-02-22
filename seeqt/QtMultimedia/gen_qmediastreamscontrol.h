@@ -33,6 +33,7 @@ typedef struct QVariant QVariant;
 void QMediaStreamsControl_virtbase(QMediaStreamsControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMediaStreamsControl_metaObject(const QMediaStreamsControl* self);
 void* QMediaStreamsControl_metacast(QMediaStreamsControl* self, const char* param1);
+int QMediaStreamsControl_metacall(QMediaStreamsControl* self, int param1, int param2, void** param3);
 struct miqt_string QMediaStreamsControl_tr(const char* s);
 struct miqt_string QMediaStreamsControl_trUtf8(const char* s);
 int QMediaStreamsControl_streamCount(QMediaStreamsControl* self);

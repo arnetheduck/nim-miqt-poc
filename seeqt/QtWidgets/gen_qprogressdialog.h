@@ -99,6 +99,7 @@ QProgressDialog* QProgressDialog_new6(struct miqt_string labelText, struct miqt_
 void QProgressDialog_virtbase(QProgressDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QProgressDialog_metaObject(const QProgressDialog* self);
 void* QProgressDialog_metacast(QProgressDialog* self, const char* param1);
+int QProgressDialog_metacall(QProgressDialog* self, int param1, int param2, void** param3);
 struct miqt_string QProgressDialog_tr(const char* s);
 struct miqt_string QProgressDialog_trUtf8(const char* s);
 void QProgressDialog_setLabel(QProgressDialog* self, QLabel* label);
@@ -134,6 +135,8 @@ struct miqt_string QProgressDialog_tr2(const char* s, const char* c);
 struct miqt_string QProgressDialog_tr3(const char* s, const char* c, int n);
 struct miqt_string QProgressDialog_trUtf82(const char* s, const char* c);
 struct miqt_string QProgressDialog_trUtf83(const char* s, const char* c, int n);
+bool QProgressDialog_override_virtual_metacall(void* self, intptr_t slot);
+int QProgressDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QProgressDialog_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QProgressDialog_virtualbase_sizeHint(const void* self);
 bool QProgressDialog_override_virtual_resizeEvent(void* self, intptr_t slot);

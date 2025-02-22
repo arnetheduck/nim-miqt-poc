@@ -97,6 +97,7 @@ QDialogButtonBox* QDialogButtonBox_new8(int buttons, int orientation, QWidget* p
 void QDialogButtonBox_virtbase(QDialogButtonBox* src, QWidget** outptr_QWidget);
 QMetaObject* QDialogButtonBox_metaObject(const QDialogButtonBox* self);
 void* QDialogButtonBox_metacast(QDialogButtonBox* self, const char* param1);
+int QDialogButtonBox_metacall(QDialogButtonBox* self, int param1, int param2, void** param3);
 struct miqt_string QDialogButtonBox_tr(const char* s);
 struct miqt_string QDialogButtonBox_trUtf8(const char* s);
 void QDialogButtonBox_setOrientation(QDialogButtonBox* self, int orientation);
@@ -128,6 +129,8 @@ struct miqt_string QDialogButtonBox_tr2(const char* s, const char* c);
 struct miqt_string QDialogButtonBox_tr3(const char* s, const char* c, int n);
 struct miqt_string QDialogButtonBox_trUtf82(const char* s, const char* c);
 struct miqt_string QDialogButtonBox_trUtf83(const char* s, const char* c, int n);
+bool QDialogButtonBox_override_virtual_metacall(void* self, intptr_t slot);
+int QDialogButtonBox_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QDialogButtonBox_override_virtual_changeEvent(void* self, intptr_t slot);
 void QDialogButtonBox_virtualbase_changeEvent(void* self, QEvent* event);
 bool QDialogButtonBox_override_virtual_event(void* self, intptr_t slot);

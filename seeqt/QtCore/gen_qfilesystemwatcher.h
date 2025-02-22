@@ -39,6 +39,7 @@ QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array /* of struct miqt_
 void QFileSystemWatcher_virtbase(QFileSystemWatcher* src, QObject** outptr_QObject);
 QMetaObject* QFileSystemWatcher_metaObject(const QFileSystemWatcher* self);
 void* QFileSystemWatcher_metacast(QFileSystemWatcher* self, const char* param1);
+int QFileSystemWatcher_metacall(QFileSystemWatcher* self, int param1, int param2, void** param3);
 struct miqt_string QFileSystemWatcher_tr(const char* s);
 struct miqt_string QFileSystemWatcher_trUtf8(const char* s);
 bool QFileSystemWatcher_addPath(QFileSystemWatcher* self, struct miqt_string file);
@@ -51,6 +52,8 @@ struct miqt_string QFileSystemWatcher_tr2(const char* s, const char* c);
 struct miqt_string QFileSystemWatcher_tr3(const char* s, const char* c, int n);
 struct miqt_string QFileSystemWatcher_trUtf82(const char* s, const char* c);
 struct miqt_string QFileSystemWatcher_trUtf83(const char* s, const char* c, int n);
+bool QFileSystemWatcher_override_virtual_metacall(void* self, intptr_t slot);
+int QFileSystemWatcher_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QFileSystemWatcher_override_virtual_event(void* self, intptr_t slot);
 bool QFileSystemWatcher_virtualbase_event(void* self, QEvent* event);
 bool QFileSystemWatcher_override_virtual_eventFilter(void* self, intptr_t slot);

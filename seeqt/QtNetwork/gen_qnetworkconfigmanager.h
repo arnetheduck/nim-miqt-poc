@@ -39,6 +39,7 @@ QNetworkConfigurationManager* QNetworkConfigurationManager_new2(QObject* parent)
 void QNetworkConfigurationManager_virtbase(QNetworkConfigurationManager* src, QObject** outptr_QObject);
 QMetaObject* QNetworkConfigurationManager_metaObject(const QNetworkConfigurationManager* self);
 void* QNetworkConfigurationManager_metacast(QNetworkConfigurationManager* self, const char* param1);
+int QNetworkConfigurationManager_metacall(QNetworkConfigurationManager* self, int param1, int param2, void** param3);
 struct miqt_string QNetworkConfigurationManager_tr(const char* s);
 struct miqt_string QNetworkConfigurationManager_trUtf8(const char* s);
 int QNetworkConfigurationManager_capabilities(const QNetworkConfigurationManager* self);
@@ -62,6 +63,8 @@ struct miqt_string QNetworkConfigurationManager_tr3(const char* s, const char* c
 struct miqt_string QNetworkConfigurationManager_trUtf82(const char* s, const char* c);
 struct miqt_string QNetworkConfigurationManager_trUtf83(const char* s, const char* c, int n);
 struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurations1(const QNetworkConfigurationManager* self, int flags);
+bool QNetworkConfigurationManager_override_virtual_metacall(void* self, intptr_t slot);
+int QNetworkConfigurationManager_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QNetworkConfigurationManager_override_virtual_event(void* self, intptr_t slot);
 bool QNetworkConfigurationManager_virtualbase_event(void* self, QEvent* event);
 bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intptr_t slot);

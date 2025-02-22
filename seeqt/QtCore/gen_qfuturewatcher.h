@@ -31,6 +31,7 @@ typedef struct QObject QObject;
 void QFutureWatcherBase_virtbase(QFutureWatcherBase* src, QObject** outptr_QObject);
 QMetaObject* QFutureWatcherBase_metaObject(const QFutureWatcherBase* self);
 void* QFutureWatcherBase_metacast(QFutureWatcherBase* self, const char* param1);
+int QFutureWatcherBase_metacall(QFutureWatcherBase* self, int param1, int param2, void** param3);
 struct miqt_string QFutureWatcherBase_tr(const char* s);
 struct miqt_string QFutureWatcherBase_trUtf8(const char* s);
 int QFutureWatcherBase_progressValue(const QFutureWatcherBase* self);

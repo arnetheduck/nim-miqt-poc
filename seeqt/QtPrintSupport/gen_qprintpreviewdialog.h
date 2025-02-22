@@ -95,6 +95,7 @@ QPrintPreviewDialog* QPrintPreviewDialog_new6(QPrinter* printer, QWidget* parent
 void QPrintPreviewDialog_virtbase(QPrintPreviewDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QPrintPreviewDialog_metaObject(const QPrintPreviewDialog* self);
 void* QPrintPreviewDialog_metacast(QPrintPreviewDialog* self, const char* param1);
+int QPrintPreviewDialog_metacall(QPrintPreviewDialog* self, int param1, int param2, void** param3);
 struct miqt_string QPrintPreviewDialog_tr(const char* s);
 struct miqt_string QPrintPreviewDialog_trUtf8(const char* s);
 QPrinter* QPrintPreviewDialog_printer(QPrintPreviewDialog* self);
@@ -106,6 +107,8 @@ struct miqt_string QPrintPreviewDialog_tr2(const char* s, const char* c);
 struct miqt_string QPrintPreviewDialog_tr3(const char* s, const char* c, int n);
 struct miqt_string QPrintPreviewDialog_trUtf82(const char* s, const char* c);
 struct miqt_string QPrintPreviewDialog_trUtf83(const char* s, const char* c, int n);
+bool QPrintPreviewDialog_override_virtual_metacall(void* self, intptr_t slot);
+int QPrintPreviewDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QPrintPreviewDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QPrintPreviewDialog_virtualbase_setVisible(void* self, bool visible);
 bool QPrintPreviewDialog_override_virtual_done(void* self, intptr_t slot);

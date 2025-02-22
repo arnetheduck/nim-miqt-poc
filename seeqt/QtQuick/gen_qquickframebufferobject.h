@@ -51,7 +51,6 @@ class QQuickItem__UpdatePaintNodeData;
 class QRectF;
 class QSGNode;
 class QSGTextureProvider;
-class QSize;
 class QTimerEvent;
 class QTouchEvent;
 class QVariant;
@@ -81,7 +80,6 @@ typedef struct QQuickItem__UpdatePaintNodeData QQuickItem__UpdatePaintNodeData;
 typedef struct QRectF QRectF;
 typedef struct QSGNode QSGNode;
 typedef struct QSGTextureProvider QSGTextureProvider;
-typedef struct QSize QSize;
 typedef struct QTimerEvent QTimerEvent;
 typedef struct QTouchEvent QTouchEvent;
 typedef struct QVariant QVariant;
@@ -93,6 +91,7 @@ QQuickFramebufferObject* QQuickFramebufferObject_new2(QQuickItem* parent);
 void QQuickFramebufferObject_virtbase(QQuickFramebufferObject* src, QQuickItem** outptr_QQuickItem);
 QMetaObject* QQuickFramebufferObject_metaObject(const QQuickFramebufferObject* self);
 void* QQuickFramebufferObject_metacast(QQuickFramebufferObject* self, const char* param1);
+int QQuickFramebufferObject_metacall(QQuickFramebufferObject* self, int param1, int param2, void** param3);
 struct miqt_string QQuickFramebufferObject_tr(const char* s);
 struct miqt_string QQuickFramebufferObject_trUtf8(const char* s);
 bool QQuickFramebufferObject_textureFollowsItemSize(const QQuickFramebufferObject* self);
@@ -113,6 +112,8 @@ struct miqt_string QQuickFramebufferObject_tr2(const char* s, const char* c);
 struct miqt_string QQuickFramebufferObject_tr3(const char* s, const char* c, int n);
 struct miqt_string QQuickFramebufferObject_trUtf82(const char* s, const char* c);
 struct miqt_string QQuickFramebufferObject_trUtf83(const char* s, const char* c, int n);
+bool QQuickFramebufferObject_override_virtual_metacall(void* self, intptr_t slot);
+int QQuickFramebufferObject_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QQuickFramebufferObject_override_virtual_createRenderer(void* self, intptr_t slot);
 QQuickFramebufferObject__Renderer* QQuickFramebufferObject_virtualbase_createRenderer(const void* self);
 bool QQuickFramebufferObject_override_virtual_isTextureProvider(void* self, intptr_t slot);
@@ -211,7 +212,6 @@ bool QQuickFramebufferObject_protectedbase_isSignalConnected(bool* _dynamic_cast
 void QQuickFramebufferObject_delete(QQuickFramebufferObject* self);
 
 void QQuickFramebufferObject__Renderer_render(QQuickFramebufferObject__Renderer* self);
-QOpenGLFramebufferObject* QQuickFramebufferObject__Renderer_createFramebufferObject(QQuickFramebufferObject__Renderer* self, QSize* size);
 void QQuickFramebufferObject__Renderer_synchronize(QQuickFramebufferObject__Renderer* self, QQuickFramebufferObject* param1);
 
 #ifdef __cplusplus

@@ -39,6 +39,7 @@ QTranslator* QTranslator_new2(QObject* parent);
 void QTranslator_virtbase(QTranslator* src, QObject** outptr_QObject);
 QMetaObject* QTranslator_metaObject(const QTranslator* self);
 void* QTranslator_metacast(QTranslator* self, const char* param1);
+int QTranslator_metacall(QTranslator* self, int param1, int param2, void** param3);
 struct miqt_string QTranslator_tr(const char* s);
 struct miqt_string QTranslator_trUtf8(const char* s);
 struct miqt_string QTranslator_translate(const QTranslator* self, const char* context, const char* sourceText, const char* disambiguation, int n);
@@ -59,6 +60,8 @@ bool QTranslator_load33(QTranslator* self, QLocale* locale, struct miqt_string f
 bool QTranslator_load42(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory);
 bool QTranslator_load5(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory, struct miqt_string suffix);
 bool QTranslator_load34(QTranslator* self, const unsigned char* data, int len, struct miqt_string directory);
+bool QTranslator_override_virtual_metacall(void* self, intptr_t slot);
+int QTranslator_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QTranslator_override_virtual_translate(void* self, intptr_t slot);
 struct miqt_string QTranslator_virtualbase_translate(const void* self, const char* context, const char* sourceText, const char* disambiguation, int n);
 bool QTranslator_override_virtual_isEmpty(void* self, intptr_t slot);

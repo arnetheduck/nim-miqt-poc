@@ -91,6 +91,7 @@ QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* pare
 void QKeySequenceEdit_virtbase(QKeySequenceEdit* src, QWidget** outptr_QWidget);
 QMetaObject* QKeySequenceEdit_metaObject(const QKeySequenceEdit* self);
 void* QKeySequenceEdit_metacast(QKeySequenceEdit* self, const char* param1);
+int QKeySequenceEdit_metacall(QKeySequenceEdit* self, int param1, int param2, void** param3);
 struct miqt_string QKeySequenceEdit_tr(const char* s);
 struct miqt_string QKeySequenceEdit_trUtf8(const char* s);
 QKeySequence* QKeySequenceEdit_keySequence(const QKeySequenceEdit* self);
@@ -108,6 +109,8 @@ struct miqt_string QKeySequenceEdit_tr2(const char* s, const char* c);
 struct miqt_string QKeySequenceEdit_tr3(const char* s, const char* c, int n);
 struct miqt_string QKeySequenceEdit_trUtf82(const char* s, const char* c);
 struct miqt_string QKeySequenceEdit_trUtf83(const char* s, const char* c, int n);
+bool QKeySequenceEdit_override_virtual_metacall(void* self, intptr_t slot);
+int QKeySequenceEdit_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QKeySequenceEdit_override_virtual_event(void* self, intptr_t slot);
 bool QKeySequenceEdit_virtualbase_event(void* self, QEvent* param1);
 bool QKeySequenceEdit_override_virtual_keyPressEvent(void* self, intptr_t slot);

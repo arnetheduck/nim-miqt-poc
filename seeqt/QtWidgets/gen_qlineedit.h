@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAction;
 class QActionEvent;
 class QChildEvent;
 class QCloseEvent;
@@ -28,7 +27,6 @@ class QDropEvent;
 class QEvent;
 class QFocusEvent;
 class QHideEvent;
-class QIcon;
 class QInputMethodEvent;
 class QKeyEvent;
 class QLineEdit;
@@ -56,7 +54,6 @@ class QVariant;
 class QWheelEvent;
 class QWidget;
 #else
-typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
 typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
@@ -69,7 +66,6 @@ typedef struct QDropEvent QDropEvent;
 typedef struct QEvent QEvent;
 typedef struct QFocusEvent QFocusEvent;
 typedef struct QHideEvent QHideEvent;
-typedef struct QIcon QIcon;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
 typedef struct QLineEdit QLineEdit;
@@ -105,6 +101,7 @@ QLineEdit* QLineEdit_new4(struct miqt_string param1, QWidget* parent);
 void QLineEdit_virtbase(QLineEdit* src, QWidget** outptr_QWidget);
 QMetaObject* QLineEdit_metaObject(const QLineEdit* self);
 void* QLineEdit_metacast(QLineEdit* self, const char* param1);
+int QLineEdit_metacall(QLineEdit* self, int param1, int param2, void** param3);
 struct miqt_string QLineEdit_tr(const char* s);
 struct miqt_string QLineEdit_trUtf8(const char* s);
 struct miqt_string QLineEdit_text(const QLineEdit* self);
@@ -161,8 +158,6 @@ void QLineEdit_setTextMargins(QLineEdit* self, int left, int top, int right, int
 void QLineEdit_setTextMarginsWithMargins(QLineEdit* self, QMargins* margins);
 void QLineEdit_getTextMargins(const QLineEdit* self, int* left, int* top, int* right, int* bottom);
 QMargins* QLineEdit_textMargins(const QLineEdit* self);
-void QLineEdit_addAction(QLineEdit* self, QAction* action, int position);
-QAction* QLineEdit_addAction2(QLineEdit* self, QIcon* icon, int position);
 void QLineEdit_setText(QLineEdit* self, struct miqt_string text);
 void QLineEdit_clear(QLineEdit* self);
 void QLineEdit_selectAll(QLineEdit* self);
@@ -212,6 +207,8 @@ struct miqt_string QLineEdit_trUtf82(const char* s, const char* c);
 struct miqt_string QLineEdit_trUtf83(const char* s, const char* c, int n);
 void QLineEdit_cursorForward2(QLineEdit* self, bool mark, int steps);
 void QLineEdit_cursorBackward2(QLineEdit* self, bool mark, int steps);
+bool QLineEdit_override_virtual_metacall(void* self, intptr_t slot);
+int QLineEdit_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QLineEdit_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QLineEdit_virtualbase_sizeHint(const void* self);
 bool QLineEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot);

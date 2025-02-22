@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractButton;
-class QAction;
 class QActionEvent;
 class QChildEvent;
 class QCloseEvent;
@@ -53,7 +52,6 @@ class QWheelEvent;
 class QWidget;
 #else
 typedef struct QAbstractButton QAbstractButton;
-typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
 typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
@@ -95,6 +93,7 @@ QToolButton* QToolButton_new2();
 void QToolButton_virtbase(QToolButton* src, QAbstractButton** outptr_QAbstractButton);
 QMetaObject* QToolButton_metaObject(const QToolButton* self);
 void* QToolButton_metacast(QToolButton* self, const char* param1);
+int QToolButton_metacall(QToolButton* self, int param1, int param2, void** param3);
 struct miqt_string QToolButton_tr(const char* s);
 struct miqt_string QToolButton_trUtf8(const char* s);
 QSize* QToolButton_sizeHint(const QToolButton* self);
@@ -106,14 +105,10 @@ void QToolButton_setMenu(QToolButton* self, QMenu* menu);
 QMenu* QToolButton_menu(const QToolButton* self);
 void QToolButton_setPopupMode(QToolButton* self, int mode);
 int QToolButton_popupMode(const QToolButton* self);
-QAction* QToolButton_defaultAction(const QToolButton* self);
 void QToolButton_setAutoRaise(QToolButton* self, bool enable);
 bool QToolButton_autoRaise(const QToolButton* self);
 void QToolButton_showMenu(QToolButton* self);
 void QToolButton_setToolButtonStyle(QToolButton* self, int style);
-void QToolButton_setDefaultAction(QToolButton* self, QAction* defaultAction);
-void QToolButton_triggered(QToolButton* self, QAction* param1);
-void QToolButton_connect_triggered(QToolButton* self, intptr_t slot);
 bool QToolButton_event(QToolButton* self, QEvent* e);
 void QToolButton_mousePressEvent(QToolButton* self, QMouseEvent* param1);
 void QToolButton_mouseReleaseEvent(QToolButton* self, QMouseEvent* param1);
@@ -129,6 +124,8 @@ struct miqt_string QToolButton_tr2(const char* s, const char* c);
 struct miqt_string QToolButton_tr3(const char* s, const char* c, int n);
 struct miqt_string QToolButton_trUtf82(const char* s, const char* c);
 struct miqt_string QToolButton_trUtf83(const char* s, const char* c, int n);
+bool QToolButton_override_virtual_metacall(void* self, intptr_t slot);
+int QToolButton_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QToolButton_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QToolButton_virtualbase_sizeHint(const void* self);
 bool QToolButton_override_virtual_minimumSizeHint(void* self, intptr_t slot);

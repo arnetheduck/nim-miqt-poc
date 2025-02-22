@@ -53,6 +53,7 @@ QStringListModel* QStringListModel_new4(struct miqt_array /* of struct miqt_stri
 void QStringListModel_virtbase(QStringListModel* src, QAbstractListModel** outptr_QAbstractListModel);
 QMetaObject* QStringListModel_metaObject(const QStringListModel* self);
 void* QStringListModel_metacast(QStringListModel* self, const char* param1);
+int QStringListModel_metacall(QStringListModel* self, int param1, int param2, void** param3);
 struct miqt_string QStringListModel_tr(const char* s);
 struct miqt_string QStringListModel_trUtf8(const char* s);
 int QStringListModel_rowCount(const QStringListModel* self, QModelIndex* parent);
@@ -73,6 +74,8 @@ struct miqt_string QStringListModel_tr2(const char* s, const char* c);
 struct miqt_string QStringListModel_tr3(const char* s, const char* c, int n);
 struct miqt_string QStringListModel_trUtf82(const char* s, const char* c);
 struct miqt_string QStringListModel_trUtf83(const char* s, const char* c, int n);
+bool QStringListModel_override_virtual_metacall(void* self, intptr_t slot);
+int QStringListModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStringListModel_override_virtual_rowCount(void* self, intptr_t slot);
 int QStringListModel_virtualbase_rowCount(const void* self, QModelIndex* parent);
 bool QStringListModel_override_virtual_sibling(void* self, intptr_t slot);

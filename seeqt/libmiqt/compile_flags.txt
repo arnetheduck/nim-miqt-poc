@@ -1,0 +1,17 @@
+-DQT_QUICK_LIB
+-I/usr/include/qt5/QtQuick
+-I/usr/include/qt5
+-DQT_GUI_LIB
+-I/usr/include/qt5/QtGui
+-DQT_QMLMODELS_LIB
+-I/usr/include/qt5/QtQmlModels
+-DQT_QML_LIB
+-I/usr/include/qt5/QtQml
+-DQT_NETWORK_LIB
+-I/usr/include/qt5/QtNetwork
+-DQT_CORE_LIB
+-I/usr/include/qt5/QtCore
+
+-I/usr/include/qt5/QtCore/5.15.15
+-I/usr/include/qt5/QtCore/5.15.15/QtCore
+-xc++

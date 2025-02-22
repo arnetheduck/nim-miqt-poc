@@ -37,7 +37,6 @@ void QSGMaterialShader_activate(QSGMaterialShader* self);
 void QSGMaterialShader_deactivate(QSGMaterialShader* self);
 void QSGMaterialShader_updateState(QSGMaterialShader* self, QSGMaterialShader__RenderState* state, QSGMaterial* newMaterial, QSGMaterial* oldMaterial);
 const char** QSGMaterialShader_attributeNames(const QSGMaterialShader* self);
-QOpenGLShaderProgram* QSGMaterialShader_program(QSGMaterialShader* self);
 void QSGMaterialShader_compile(QSGMaterialShader* self);
 void QSGMaterialShader_initialize(QSGMaterialShader* self);
 const char* QSGMaterialShader_vertexShader(const QSGMaterialShader* self);
@@ -74,7 +73,6 @@ QRect* QSGMaterialShader__RenderState_viewportRect(const QSGMaterialShader__Rend
 QRect* QSGMaterialShader__RenderState_deviceRect(const QSGMaterialShader__RenderState* self);
 float QSGMaterialShader__RenderState_determinant(const QSGMaterialShader__RenderState* self);
 float QSGMaterialShader__RenderState_devicePixelRatio(const QSGMaterialShader__RenderState* self);
-QOpenGLContext* QSGMaterialShader__RenderState_context(const QSGMaterialShader__RenderState* self);
 void QSGMaterialShader__RenderState_delete(QSGMaterialShader__RenderState* self);
 
 #ifdef __cplusplus

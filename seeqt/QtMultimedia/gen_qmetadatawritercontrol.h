@@ -33,6 +33,7 @@ typedef struct QVariant QVariant;
 void QMetaDataWriterControl_virtbase(QMetaDataWriterControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMetaDataWriterControl_metaObject(const QMetaDataWriterControl* self);
 void* QMetaDataWriterControl_metacast(QMetaDataWriterControl* self, const char* param1);
+int QMetaDataWriterControl_metacall(QMetaDataWriterControl* self, int param1, int param2, void** param3);
 struct miqt_string QMetaDataWriterControl_tr(const char* s);
 struct miqt_string QMetaDataWriterControl_trUtf8(const char* s);
 bool QMetaDataWriterControl_isWritable(const QMetaDataWriterControl* self);

@@ -33,6 +33,7 @@ typedef struct QVideoRendererControl QVideoRendererControl;
 void QVideoRendererControl_virtbase(QVideoRendererControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QVideoRendererControl_metaObject(const QVideoRendererControl* self);
 void* QVideoRendererControl_metacast(QVideoRendererControl* self, const char* param1);
+int QVideoRendererControl_metacall(QVideoRendererControl* self, int param1, int param2, void** param3);
 struct miqt_string QVideoRendererControl_tr(const char* s);
 struct miqt_string QVideoRendererControl_trUtf8(const char* s);
 QAbstractVideoSurface* QVideoRendererControl_surface(const QVideoRendererControl* self);

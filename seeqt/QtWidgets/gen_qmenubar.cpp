@@ -1,4 +1,3 @@
-#include <QAction>
 #include <QActionEvent>
 #include <QByteArray>
 #include <QChildEvent>
@@ -26,14 +25,12 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPoint>
-#include <QRect>
 #include <QResizeEvent>
 #include <QShowEvent>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include <QStyleOptionMenuItem>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -46,8 +43,7 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMenuBar_triggered(intptr_t, QAction*);
-void miqt_exec_callback_QMenuBar_hovered(intptr_t, QAction*);
+int miqt_exec_callback_QMenuBar_metacall(QMenuBar*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QMenuBar_sizeHint(const QMenuBar*, intptr_t);
 QSize* miqt_exec_callback_QMenuBar_minimumSizeHint(const QMenuBar*, intptr_t);
 int miqt_exec_callback_QMenuBar_heightForWidth(const QMenuBar*, intptr_t, int);
@@ -106,6 +102,27 @@ public:
 	MiqtVirtualQMenuBar(): QMenuBar() {};
 
 	virtual ~MiqtVirtualQMenuBar() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacall = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
+		if (handle__metacall == 0) {
+			return QMenuBar::qt_metacall(param1, param2, param3);
+		}
+		
+		QMetaObject::Call param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+		int sigval2 = param2;
+		void** sigval3 = param3;
+
+		int callback_return_value = miqt_exec_callback_QMenuBar_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	friend int QMenuBar_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -995,7 +1012,6 @@ public:
 	friend void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
-	friend void QMenuBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionMenuItem* option, QAction* action);
 	friend void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QMenuBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 	friend void QMenuBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -1027,6 +1043,10 @@ void* QMenuBar_metacast(QMenuBar* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
+int QMenuBar_metacall(QMenuBar* self, int param1, int param2, void** param3) {
+	return self->qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+}
+
 struct miqt_string QMenuBar_tr(const char* s) {
 	QString _ret = QMenuBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1049,15 +1069,6 @@ struct miqt_string QMenuBar_trUtf8(const char* s) {
 	return _ms;
 }
 
-QAction* QMenuBar_addAction(QMenuBar* self, struct miqt_string text) {
-	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return self->addAction(text_QString);
-}
-
-QAction* QMenuBar_addMenu(QMenuBar* self, QMenu* menu) {
-	return self->addMenu(menu);
-}
-
 QMenu* QMenuBar_addMenuWithTitle(QMenuBar* self, struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return self->addMenu(title_QString);
@@ -1068,28 +1079,8 @@ QMenu* QMenuBar_addMenu2(QMenuBar* self, QIcon* icon, struct miqt_string title) 
 	return self->addMenu(*icon, title_QString);
 }
 
-QAction* QMenuBar_addSeparator(QMenuBar* self) {
-	return self->addSeparator();
-}
-
-QAction* QMenuBar_insertSeparator(QMenuBar* self, QAction* before) {
-	return self->insertSeparator(before);
-}
-
-QAction* QMenuBar_insertMenu(QMenuBar* self, QAction* before, QMenu* menu) {
-	return self->insertMenu(before, menu);
-}
-
 void QMenuBar_clear(QMenuBar* self) {
 	self->clear();
-}
-
-QAction* QMenuBar_activeAction(const QMenuBar* self) {
-	return self->activeAction();
-}
-
-void QMenuBar_setActiveAction(QMenuBar* self, QAction* action) {
-	self->setActiveAction(action);
 }
 
 void QMenuBar_setDefaultUp(QMenuBar* self, bool defaultUp) {
@@ -1112,14 +1103,6 @@ int QMenuBar_heightForWidth(const QMenuBar* self, int param1) {
 	return self->heightForWidth(static_cast<int>(param1));
 }
 
-QRect* QMenuBar_actionGeometry(const QMenuBar* self, QAction* param1) {
-	return new QRect(self->actionGeometry(param1));
-}
-
-QAction* QMenuBar_actionAt(const QMenuBar* self, QPoint* param1) {
-	return self->actionAt(*param1);
-}
-
 void QMenuBar_setCornerWidget(QMenuBar* self, QWidget* w) {
 	self->setCornerWidget(w);
 }
@@ -1138,28 +1121,6 @@ void QMenuBar_setNativeMenuBar(QMenuBar* self, bool nativeMenuBar) {
 
 void QMenuBar_setVisible(QMenuBar* self, bool visible) {
 	self->setVisible(visible);
-}
-
-void QMenuBar_triggered(QMenuBar* self, QAction* action) {
-	self->triggered(action);
-}
-
-void QMenuBar_connect_triggered(QMenuBar* self, intptr_t slot) {
-	MiqtVirtualQMenuBar::connect(self, static_cast<void (QMenuBar::*)(QAction*)>(&QMenuBar::triggered), self, [=](QAction* action) {
-		QAction* sigval1 = action;
-		miqt_exec_callback_QMenuBar_triggered(slot, sigval1);
-	});
-}
-
-void QMenuBar_hovered(QMenuBar* self, QAction* action) {
-	self->hovered(action);
-}
-
-void QMenuBar_connect_hovered(QMenuBar* self, intptr_t slot) {
-	MiqtVirtualQMenuBar::connect(self, static_cast<void (QMenuBar::*)(QAction*)>(&QMenuBar::hovered), self, [=](QAction* action) {
-		QAction* sigval1 = action;
-		miqt_exec_callback_QMenuBar_hovered(slot, sigval1);
-	});
 }
 
 struct miqt_string QMenuBar_tr2(const char* s, const char* c) {
@@ -1212,6 +1173,22 @@ void QMenuBar_setCornerWidget2(QMenuBar* self, QWidget* w, int corner) {
 
 QWidget* QMenuBar_cornerWidget1(const QMenuBar* self, int corner) {
 	return self->cornerWidget(static_cast<Qt::Corner>(corner));
+}
+
+bool QMenuBar_override_virtual_metacall(void* self, intptr_t slot) {
+	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacall = slot;
+	return true;
+}
+
+int QMenuBar_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
+
+	return ( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::qt_metacall(static_cast<QMetaObject::Call>(param1), static_cast<int>(param2), param3);
+
 }
 
 bool QMenuBar_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1964,19 +1941,6 @@ bool QMenuBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::disconnectNotify(*signal);
-
-}
-
-void QMenuBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionMenuItem* option, QAction* action) {
-	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->initStyleOption(option, action);
 
 }
 

@@ -219,6 +219,7 @@ QTreeWidget* QTreeWidget_new2();
 void QTreeWidget_virtbase(QTreeWidget* src, QTreeView** outptr_QTreeView);
 QMetaObject* QTreeWidget_metaObject(const QTreeWidget* self);
 void* QTreeWidget_metacast(QTreeWidget* self, const char* param1);
+int QTreeWidget_metacall(QTreeWidget* self, int param1, int param2, void** param3);
 struct miqt_string QTreeWidget_tr(const char* s);
 struct miqt_string QTreeWidget_trUtf8(const char* s);
 int QTreeWidget_columnCount(const QTreeWidget* self);
@@ -306,6 +307,8 @@ void QTreeWidget_closePersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item
 bool QTreeWidget_isPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetItem* item, int column);
 struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column);
 void QTreeWidget_scrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, int hint);
+bool QTreeWidget_override_virtual_metacall(void* self, intptr_t slot);
+int QTreeWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QTreeWidget_override_virtual_setSelectionModel(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel);
 bool QTreeWidget_override_virtual_event(void* self, intptr_t slot);

@@ -41,6 +41,7 @@ typedef struct QThread QThread;
 void QAbstractEventDispatcher_virtbase(QAbstractEventDispatcher* src, QObject** outptr_QObject);
 QMetaObject* QAbstractEventDispatcher_metaObject(const QAbstractEventDispatcher* self);
 void* QAbstractEventDispatcher_metacast(QAbstractEventDispatcher* self, const char* param1);
+int QAbstractEventDispatcher_metacall(QAbstractEventDispatcher* self, int param1, int param2, void** param3);
 struct miqt_string QAbstractEventDispatcher_tr(const char* s);
 struct miqt_string QAbstractEventDispatcher_trUtf8(const char* s);
 QAbstractEventDispatcher* QAbstractEventDispatcher_instance();

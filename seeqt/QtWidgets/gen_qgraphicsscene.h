@@ -109,6 +109,7 @@ QGraphicsScene* QGraphicsScene_new6(double x, double y, double width, double hei
 void QGraphicsScene_virtbase(QGraphicsScene* src, QObject** outptr_QObject);
 QMetaObject* QGraphicsScene_metaObject(const QGraphicsScene* self);
 void* QGraphicsScene_metacast(QGraphicsScene* self, const char* param1);
+int QGraphicsScene_metacall(QGraphicsScene* self, int param1, int param2, void** param3);
 struct miqt_string QGraphicsScene_tr(const char* s);
 struct miqt_string QGraphicsScene_trUtf8(const char* s);
 QRectF* QGraphicsScene_sceneRect(const QGraphicsScene* self);
@@ -261,6 +262,8 @@ void QGraphicsScene_invalidate5(QGraphicsScene* self, double x, double y, double
 void QGraphicsScene_update1(QGraphicsScene* self, QRectF* rect);
 void QGraphicsScene_invalidate1(QGraphicsScene* self, QRectF* rect);
 void QGraphicsScene_invalidate22(QGraphicsScene* self, QRectF* rect, int layers);
+bool QGraphicsScene_override_virtual_metacall(void* self, intptr_t slot);
+int QGraphicsScene_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsScene_override_virtual_inputMethodQuery(void* self, intptr_t slot);
 QVariant* QGraphicsScene_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsScene_override_virtual_event(void* self, intptr_t slot);

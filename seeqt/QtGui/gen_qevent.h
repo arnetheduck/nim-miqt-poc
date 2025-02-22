@@ -461,12 +461,8 @@ void QWhatsThisClickedEvent_virtbase(QWhatsThisClickedEvent* src, QEvent** outpt
 struct miqt_string QWhatsThisClickedEvent_href(const QWhatsThisClickedEvent* self);
 void QWhatsThisClickedEvent_delete(QWhatsThisClickedEvent* self);
 
-QActionEvent* QActionEvent_new(int type, QAction* action);
-QActionEvent* QActionEvent_new2(QActionEvent* param1);
-QActionEvent* QActionEvent_new3(int type, QAction* action, QAction* before);
+QActionEvent* QActionEvent_new(QActionEvent* param1);
 void QActionEvent_virtbase(QActionEvent* src, QEvent** outptr_QEvent);
-QAction* QActionEvent_action(const QActionEvent* self);
-QAction* QActionEvent_before(const QActionEvent* self);
 void QActionEvent_operatorAssign(QActionEvent* self, QActionEvent* param1);
 void QActionEvent_delete(QActionEvent* self);
 

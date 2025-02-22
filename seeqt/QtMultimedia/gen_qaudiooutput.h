@@ -47,6 +47,7 @@ QAudioOutput* QAudioOutput_new6(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat*
 void QAudioOutput_virtbase(QAudioOutput* src, QObject** outptr_QObject);
 QMetaObject* QAudioOutput_metaObject(const QAudioOutput* self);
 void* QAudioOutput_metacast(QAudioOutput* self, const char* param1);
+int QAudioOutput_metacall(QAudioOutput* self, int param1, int param2, void** param3);
 struct miqt_string QAudioOutput_tr(const char* s);
 struct miqt_string QAudioOutput_trUtf8(const char* s);
 QAudioFormat* QAudioOutput_format(const QAudioOutput* self);
@@ -78,6 +79,8 @@ struct miqt_string QAudioOutput_tr2(const char* s, const char* c);
 struct miqt_string QAudioOutput_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioOutput_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioOutput_trUtf83(const char* s, const char* c, int n);
+bool QAudioOutput_override_virtual_metacall(void* self, intptr_t slot);
+int QAudioOutput_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAudioOutput_override_virtual_event(void* self, intptr_t slot);
 bool QAudioOutput_virtualbase_event(void* self, QEvent* event);
 bool QAudioOutput_override_virtual_eventFilter(void* self, intptr_t slot);

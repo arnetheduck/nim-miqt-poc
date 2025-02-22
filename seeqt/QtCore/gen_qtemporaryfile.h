@@ -45,6 +45,7 @@ QTemporaryFile* QTemporaryFile_new4(struct miqt_string templateName, QObject* pa
 void QTemporaryFile_virtbase(QTemporaryFile* src, QFile** outptr_QFile);
 QMetaObject* QTemporaryFile_metaObject(const QTemporaryFile* self);
 void* QTemporaryFile_metacast(QTemporaryFile* self, const char* param1);
+int QTemporaryFile_metacall(QTemporaryFile* self, int param1, int param2, void** param3);
 struct miqt_string QTemporaryFile_tr(const char* s);
 struct miqt_string QTemporaryFile_trUtf8(const char* s);
 bool QTemporaryFile_autoRemove(const QTemporaryFile* self);
@@ -63,6 +64,8 @@ struct miqt_string QTemporaryFile_tr2(const char* s, const char* c);
 struct miqt_string QTemporaryFile_tr3(const char* s, const char* c, int n);
 struct miqt_string QTemporaryFile_trUtf82(const char* s, const char* c);
 struct miqt_string QTemporaryFile_trUtf83(const char* s, const char* c, int n);
+bool QTemporaryFile_override_virtual_metacall(void* self, intptr_t slot);
+int QTemporaryFile_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QTemporaryFile_override_virtual_fileName(void* self, intptr_t slot);
 struct miqt_string QTemporaryFile_virtualbase_fileName(const void* self);
 bool QTemporaryFile_override_virtual_openWithFlags(void* self, intptr_t slot);

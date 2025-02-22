@@ -35,6 +35,7 @@ typedef struct QPointF QPointF;
 void QCameraFocusControl_virtbase(QCameraFocusControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraFocusControl_metaObject(const QCameraFocusControl* self);
 void* QCameraFocusControl_metacast(QCameraFocusControl* self, const char* param1);
+int QCameraFocusControl_metacall(QCameraFocusControl* self, int param1, int param2, void** param3);
 struct miqt_string QCameraFocusControl_tr(const char* s);
 struct miqt_string QCameraFocusControl_trUtf8(const char* s);
 int QCameraFocusControl_focusMode(const QCameraFocusControl* self);

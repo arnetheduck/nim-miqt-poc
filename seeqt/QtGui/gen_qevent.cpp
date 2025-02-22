@@ -1379,28 +1379,12 @@ void QWhatsThisClickedEvent_delete(QWhatsThisClickedEvent* self) {
 	delete self;
 }
 
-QActionEvent* QActionEvent_new(int type, QAction* action) {
-	return new QActionEvent(static_cast<int>(type), action);
-}
-
-QActionEvent* QActionEvent_new2(QActionEvent* param1) {
+QActionEvent* QActionEvent_new(QActionEvent* param1) {
 	return new QActionEvent(*param1);
-}
-
-QActionEvent* QActionEvent_new3(int type, QAction* action, QAction* before) {
-	return new QActionEvent(static_cast<int>(type), action, before);
 }
 
 void QActionEvent_virtbase(QActionEvent* src, QEvent** outptr_QEvent) {
 	*outptr_QEvent = static_cast<QEvent*>(src);
-}
-
-QAction* QActionEvent_action(const QActionEvent* self) {
-	return self->action();
-}
-
-QAction* QActionEvent_before(const QActionEvent* self) {
-	return self->before();
 }
 
 void QActionEvent_operatorAssign(QActionEvent* self, QActionEvent* param1) {

@@ -87,6 +87,7 @@ void QWebHitTestResult_delete(QWebHitTestResult* self);
 void QWebFrame_virtbase(QWebFrame* src, QObject** outptr_QObject);
 QMetaObject* QWebFrame_metaObject(const QWebFrame* self);
 void* QWebFrame_metacast(QWebFrame* self, const char* param1);
+int QWebFrame_metacall(QWebFrame* self, int param1, int param2, void** param3);
 struct miqt_string QWebFrame_tr(const char* s);
 struct miqt_string QWebFrame_trUtf8(const char* s);
 QWebPage* QWebFrame_page(const QWebFrame* self);
