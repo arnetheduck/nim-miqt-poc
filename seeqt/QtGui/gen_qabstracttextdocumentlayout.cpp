@@ -150,8 +150,10 @@ public:
 
 
 		QSizeF* callback_return_value = vtbl->documentSize(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	// Subclass to allow providing a Go implementation
@@ -163,8 +165,10 @@ public:
 		QTextFrame* sigval1 = frame;
 
 		QRectF* callback_return_value = vtbl->frameBoundingRect(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	// Subclass to allow providing a Go implementation
@@ -178,8 +182,10 @@ public:
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
 
 		QRectF* callback_return_value = vtbl->blockBoundingRect(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	// Subclass to allow providing a Go implementation

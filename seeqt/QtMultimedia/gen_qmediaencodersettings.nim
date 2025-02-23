@@ -2,7 +2,7 @@ import ./Qt5Multimedia_libs
 
 {.push raises: [].}
 
-from system/ansi_c import c_free
+from system/ansi_c import c_free, c_malloc
 
 type
   struct_miqt_string {.used.} = object
@@ -192,7 +192,7 @@ proc setEncodingOptions*(self: gen_qmediaencodersettings_types.QAudioEncoderSett
   var options_Keys_CArray = newSeq[struct_miqt_string](len(options))
   var options_Values_CArray = newSeq[pointer](len(options))
   var options_ctr = 0
-  for optionsk, optionsv in options:
+  for options_k, options_v in options:
     options_Keys_CArray[options_ctr] = struct_miqt_string(data: options_k, len: csize_t(len(options_k)))
     options_Values_CArray[options_ctr] = options_v.h
     options_ctr += 1
@@ -288,7 +288,7 @@ proc setEncodingOptions*(self: gen_qmediaencodersettings_types.QVideoEncoderSett
   var options_Keys_CArray = newSeq[struct_miqt_string](len(options))
   var options_Values_CArray = newSeq[pointer](len(options))
   var options_ctr = 0
-  for optionsk, optionsv in options:
+  for options_k, options_v in options:
     options_Keys_CArray[options_ctr] = struct_miqt_string(data: options_k, len: csize_t(len(options_k)))
     options_Values_CArray[options_ctr] = options_v.h
     options_ctr += 1
@@ -366,7 +366,7 @@ proc setEncodingOptions*(self: gen_qmediaencodersettings_types.QImageEncoderSett
   var options_Keys_CArray = newSeq[struct_miqt_string](len(options))
   var options_Values_CArray = newSeq[pointer](len(options))
   var options_ctr = 0
-  for optionsk, optionsv in options:
+  for options_k, options_v in options:
     options_Keys_CArray[options_ctr] = struct_miqt_string(data: options_k, len: csize_t(len(options_k)))
     options_Values_CArray[options_ctr] = options_v.h
     options_ctr += 1

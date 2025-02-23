@@ -124,8 +124,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->minimumSizeHint(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSize* QInputDialog_virtualbase_minimumSizeHint(const void* self);
@@ -138,8 +140,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->sizeHint(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSize* QInputDialog_virtualbase_sizeHint(const void* self);
@@ -800,8 +804,10 @@ public:
 		int sigval1 = static_cast<int>(param1_ret);
 
 		QVariant* callback_return_value = vtbl->inputMethodQuery(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QVariant* QInputDialog_virtualbase_inputMethodQuery(const void* self, int param1);

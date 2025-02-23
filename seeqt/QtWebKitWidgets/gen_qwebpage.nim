@@ -2,7 +2,7 @@ import ./Qt5WebKitWidgets_libs
 
 {.push raises: [].}
 
-from system/ansi_c import c_free
+from system/ansi_c import c_free, c_malloc
 
 type
   struct_miqt_string {.used.} = object
@@ -1548,7 +1548,9 @@ proc miqt_exec_callback_cQWebPage_chooseFile(vtbl: pointer, self: pointer, origi
   c_free(voldFile_ms.data)
   let slotval2 = voldFilex_ret
   let virtualReturn = vtbl[].chooseFile(self, slotval1, slotval2)
-  struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
+  var virtualReturn_copy = cast[cstring](if len(virtualReturn) > 0: c_malloc(csize_t(len(virtualReturn))) else: nil)
+  if len(virtualReturn) > 0: copyMem(cast[pointer](virtualReturn_copy), addr virtualReturn[0], csize_t(len(virtualReturn)))
+  struct_miqt_string(data: virtualReturn_copy, len: csize_t(len(virtualReturn)))
 
 proc QWebPagejavaScriptAlert*(self: gen_qwebpage_types.QWebPage, originatingFrame: gen_qwebframe_types.QWebFrame, msg: string): void =
   fcQWebPage_virtualbase_javaScriptAlert(self.h, originatingFrame.h, struct_miqt_string(data: msg, len: csize_t(len(msg))))
@@ -1605,7 +1607,9 @@ proc miqt_exec_callback_cQWebPage_userAgentForUrl(vtbl: pointer, self: pointer, 
   let self = QWebPage(h: self)
   let slotval1 = gen_qurl_types.QUrl(h: url)
   let virtualReturn = vtbl[].userAgentForUrl(self, slotval1)
-  struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
+  var virtualReturn_copy = cast[cstring](if len(virtualReturn) > 0: c_malloc(csize_t(len(virtualReturn))) else: nil)
+  if len(virtualReturn) > 0: copyMem(cast[pointer](virtualReturn_copy), addr virtualReturn[0], csize_t(len(virtualReturn)))
+  struct_miqt_string(data: virtualReturn_copy, len: csize_t(len(virtualReturn)))
 
 proc QWebPageeventFilter*(self: gen_qwebpage_types.QWebPage, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool =
   fcQWebPage_virtualbase_eventFilter(self.h, watched.h, event.h)

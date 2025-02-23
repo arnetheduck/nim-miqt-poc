@@ -157,8 +157,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->sizeHint(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSize* QHeaderView_virtualbase_sizeHint(const void* self);
@@ -359,8 +361,10 @@ public:
 		int sigval1 = logicalIndex;
 
 		QSize* callback_return_value = vtbl->sectionSizeFromContents(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSize* QHeaderView_virtualbase_sectionSizeFromContents(const void* self, int logicalIndex);
@@ -483,8 +487,10 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
 		QRect* callback_return_value = vtbl->visualRect(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRect* QHeaderView_virtualbase_visualRect(const void* self, QModelIndex* index);
@@ -519,8 +525,10 @@ public:
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
 
 		QModelIndex* callback_return_value = vtbl->indexAt(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QModelIndex* QHeaderView_virtualbase_indexAt(const void* self, QPoint* p);
@@ -554,8 +562,10 @@ public:
 		int sigval2 = static_cast<int>(param2_ret);
 
 		QModelIndex* callback_return_value = vtbl->moveCursor(vtbl, this, sigval1, sigval2);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QModelIndex* QHeaderView_virtualbase_moveCursor(void* self, int param1, int param2);
@@ -590,8 +600,10 @@ public:
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
 		QRegion* callback_return_value = vtbl->visualRegionForSelection(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRegion* QHeaderView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection);
@@ -673,8 +685,10 @@ public:
 		int sigval1 = static_cast<int>(query_ret);
 
 		QVariant* callback_return_value = vtbl->inputMethodQuery(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QVariant* QHeaderView_virtualbase_inputMethodQuery(const void* self, int query);
@@ -898,6 +912,7 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		free(callback_return_value.data);
 
 		return callback_return_value_QList;
 	}
@@ -966,8 +981,10 @@ public:
 
 
 		QStyleOptionViewItem* callback_return_value = vtbl->viewOptions(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QStyleOptionViewItem* QHeaderView_virtualbase_viewOptions(const void* self);
@@ -1161,8 +1178,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->viewportSizeHint(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSize* QHeaderView_virtualbase_viewportSizeHint(const void* self);
@@ -1175,8 +1194,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->minimumSizeHint(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSize* QHeaderView_virtualbase_minimumSizeHint(const void* self);

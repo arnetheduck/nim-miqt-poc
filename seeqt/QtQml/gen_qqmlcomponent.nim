@@ -2,7 +2,7 @@ import ./Qt5Qml_libs
 
 {.push raises: [].}
 
-from system/ansi_c import c_free
+from system/ansi_c import c_free, c_malloc
 
 type
   struct_miqt_string {.used.} = object
@@ -221,7 +221,7 @@ proc createWithInitialProperties*(self: gen_qqmlcomponent_types.QQmlComponent, i
   var initialProperties_Keys_CArray = newSeq[struct_miqt_string](len(initialProperties))
   var initialProperties_Values_CArray = newSeq[pointer](len(initialProperties))
   var initialProperties_ctr = 0
-  for initialPropertiesk, initialPropertiesv in initialProperties:
+  for initialProperties_k, initialProperties_v in initialProperties:
     initialProperties_Keys_CArray[initialProperties_ctr] = struct_miqt_string(data: initialProperties_k, len: csize_t(len(initialProperties_k)))
     initialProperties_Values_CArray[initialProperties_ctr] = initialProperties_v.h
     initialProperties_ctr += 1
@@ -232,7 +232,7 @@ proc setInitialProperties*(self: gen_qqmlcomponent_types.QQmlComponent, componen
   var properties_Keys_CArray = newSeq[struct_miqt_string](len(properties))
   var properties_Values_CArray = newSeq[pointer](len(properties))
   var properties_ctr = 0
-  for propertiesk, propertiesv in properties:
+  for properties_k, properties_v in properties:
     properties_Keys_CArray[properties_ctr] = struct_miqt_string(data: properties_k, len: csize_t(len(properties_k)))
     properties_Values_CArray[properties_ctr] = properties_v.h
     properties_ctr += 1
@@ -331,7 +331,7 @@ proc createWithInitialProperties*(self: gen_qqmlcomponent_types.QQmlComponent, i
   var initialProperties_Keys_CArray = newSeq[struct_miqt_string](len(initialProperties))
   var initialProperties_Values_CArray = newSeq[pointer](len(initialProperties))
   var initialProperties_ctr = 0
-  for initialPropertiesk, initialPropertiesv in initialProperties:
+  for initialProperties_k, initialProperties_v in initialProperties:
     initialProperties_Keys_CArray[initialProperties_ctr] = struct_miqt_string(data: initialProperties_k, len: csize_t(len(initialProperties_k)))
     initialProperties_Values_CArray[initialProperties_ctr] = initialProperties_v.h
     initialProperties_ctr += 1

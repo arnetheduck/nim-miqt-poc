@@ -360,6 +360,7 @@ public:
 
 		struct miqt_string callback_return_value = vtbl->chooseFile(vtbl, this, sigval1, sigval2);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 
 		return callback_return_value_QString;
 	}
@@ -455,6 +456,7 @@ public:
 
 		struct miqt_string callback_return_value = vtbl->userAgentForUrl(vtbl, this, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 
 		return callback_return_value_QString;
 	}

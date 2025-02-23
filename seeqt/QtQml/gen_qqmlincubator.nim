@@ -2,7 +2,7 @@ import ./Qt5Qml_libs
 
 {.push raises: [].}
 
-from system/ansi_c import c_free
+from system/ansi_c import c_free, c_malloc
 
 type
   struct_miqt_string {.used.} = object
@@ -136,7 +136,7 @@ proc setInitialProperties*(self: gen_qqmlincubator_types.QQmlIncubator, initialP
   var initialProperties_Keys_CArray = newSeq[struct_miqt_string](len(initialProperties))
   var initialProperties_Values_CArray = newSeq[pointer](len(initialProperties))
   var initialProperties_ctr = 0
-  for initialPropertiesk, initialPropertiesv in initialProperties:
+  for initialProperties_k, initialProperties_v in initialProperties:
     initialProperties_Keys_CArray[initialProperties_ctr] = struct_miqt_string(data: initialProperties_k, len: csize_t(len(initialProperties_k)))
     initialProperties_Values_CArray[initialProperties_ctr] = initialProperties_v.h
     initialProperties_ctr += 1

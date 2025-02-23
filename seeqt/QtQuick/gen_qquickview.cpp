@@ -399,8 +399,10 @@ public:
 
 
 		QSurfaceFormat* callback_return_value = vtbl->format(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSurfaceFormat* QQuickView_virtualbase_format(const void* self);
@@ -413,8 +415,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->size(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QSize* QQuickView_virtualbase_size(const void* self);

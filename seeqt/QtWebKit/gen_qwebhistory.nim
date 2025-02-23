@@ -2,7 +2,7 @@ import ./Qt5WebKit_libs
 
 {.push raises: [].}
 
-from system/ansi_c import c_free
+from system/ansi_c import c_free, c_malloc
 
 type
   struct_miqt_string {.used.} = object
@@ -135,7 +135,7 @@ proc loadFromMap*(self: gen_qwebhistory_types.QWebHistoryItem, map: Table[string
   var map_Keys_CArray = newSeq[struct_miqt_string](len(map))
   var map_Values_CArray = newSeq[pointer](len(map))
   var map_ctr = 0
-  for mapk, mapv in map:
+  for map_k, map_v in map:
     map_Keys_CArray[map_ctr] = struct_miqt_string(data: map_k, len: csize_t(len(map_k)))
     map_Values_CArray[map_ctr] = map_v.h
     map_ctr += 1
@@ -234,7 +234,7 @@ proc loadFromMap*(self: gen_qwebhistory_types.QWebHistory, map: Table[string,gen
   var map_Keys_CArray = newSeq[struct_miqt_string](len(map))
   var map_Values_CArray = newSeq[pointer](len(map))
   var map_ctr = 0
-  for mapk, mapv in map:
+  for map_k, map_v in map:
     map_Keys_CArray[map_ctr] = struct_miqt_string(data: map_k, len: csize_t(len(map_k)))
     map_Values_CArray[map_ctr] = map_v.h
     map_ctr += 1
