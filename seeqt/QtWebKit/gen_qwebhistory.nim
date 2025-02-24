@@ -129,6 +129,8 @@ proc toMap*(self: gen_qwebhistory_types.QWebHistoryItem, ): Table[string,gen_qva
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc loadFromMap*(self: gen_qwebhistory_types.QWebHistoryItem, map: Table[string,gen_qvariant_types.QVariant]): void =
@@ -157,6 +159,7 @@ proc items*(self: gen_qwebhistory_types.QWebHistory, ): seq[gen_qwebhistory_type
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qwebhistory_types.QWebHistoryItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc backItems*(self: gen_qwebhistory_types.QWebHistory, maxItems: cint): seq[gen_qwebhistory_types.QWebHistoryItem] =
@@ -165,6 +168,7 @@ proc backItems*(self: gen_qwebhistory_types.QWebHistory, maxItems: cint): seq[ge
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qwebhistory_types.QWebHistoryItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc forwardItems*(self: gen_qwebhistory_types.QWebHistory, maxItems: cint): seq[gen_qwebhistory_types.QWebHistoryItem] =
@@ -173,6 +177,7 @@ proc forwardItems*(self: gen_qwebhistory_types.QWebHistory, maxItems: cint): seq
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qwebhistory_types.QWebHistoryItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc canGoBack*(self: gen_qwebhistory_types.QWebHistory, ): bool =
@@ -228,6 +233,8 @@ proc toMap*(self: gen_qwebhistory_types.QWebHistory, ): Table[string,gen_qvarian
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc loadFromMap*(self: gen_qwebhistory_types.QWebHistory, map: Table[string,gen_qvariant_types.QVariant]): void =

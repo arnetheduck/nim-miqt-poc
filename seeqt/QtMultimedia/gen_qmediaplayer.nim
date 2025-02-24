@@ -263,6 +263,7 @@ proc supportedMimeTypes*(_: type gen_qmediaplayer_types.QMediaPlayer, ): seq[str
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc setVideoOutput*(self: gen_qmediaplayer_types.QMediaPlayer, videoOutput: ptr QVideoWidget): void =
@@ -352,6 +353,7 @@ proc supportedAudioRoles*(self: gen_qmediaplayer_types.QMediaPlayer, ): seq[cint
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = cint(v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc customAudioRole*(self: gen_qmediaplayer_types.QMediaPlayer, ): string =
@@ -372,6 +374,7 @@ proc supportedCustomAudioRoles*(self: gen_qmediaplayer_types.QMediaPlayer, ): se
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc play*(self: gen_qmediaplayer_types.QMediaPlayer, ): void =
@@ -803,6 +806,7 @@ proc supportedMimeTypes*(_: type gen_qmediaplayer_types.QMediaPlayer, flags: cin
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc setMedia*(self: gen_qmediaplayer_types.QMediaPlayer, media: gen_qmediacontent_types.QMediaContent, stream: gen_qiodevice_types.QIODevice): void =

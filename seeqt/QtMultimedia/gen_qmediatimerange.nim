@@ -129,6 +129,7 @@ proc intervals*(self: gen_qmediatimerange_types.QMediaTimeRange, ): seq[gen_qmed
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qmediatimerange_types.QMediaTimeInterval(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc isEmpty*(self: gen_qmediatimerange_types.QMediaTimeRange, ): bool =

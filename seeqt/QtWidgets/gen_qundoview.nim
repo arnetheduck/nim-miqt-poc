@@ -711,6 +711,7 @@ proc miqt_exec_callback_cQUndoView_dataChanged(vtbl: pointer, self: pointer, top
   let vroles_outCast = cast[ptr UncheckedArray[cint]](vroles_ma.data)
   for i in 0 ..< vroles_ma.len:
     vrolesx_ret[i] = vroles_outCast[i]
+  c_free(vroles_ma.data)
   let slotval3 = vrolesx_ret
   vtbl[].dataChanged(self, slotval1, slotval2, slotval3)
 
@@ -890,6 +891,7 @@ proc QUndoViewselectedIndexes*(self: gen_qundoview_types.QUndoView, ): seq[gen_q
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQUndoView_selectedIndexes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =

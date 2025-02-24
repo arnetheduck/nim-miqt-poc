@@ -237,6 +237,7 @@ proc sourceModels*(self: gen_qconcatenatetablesproxymodel_types.QConcatenateTabl
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QAbstractItemModel(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc addSourceModel*(self: gen_qconcatenatetablesproxymodel_types.QConcatenateTablesProxyModel, sourceModel: gen_qabstractitemmodel_types.QAbstractItemModel): void =
@@ -268,6 +269,8 @@ proc itemData*(self: gen_qconcatenatetablesproxymodel_types.QConcatenateTablesPr
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc setItemData*(self: gen_qconcatenatetablesproxymodel_types.QConcatenateTablesProxyModel, index: gen_qabstractitemmodel_types.QModelIndex, roles: Table[cint,gen_qvariant_types.QVariant]): bool =
@@ -308,6 +311,7 @@ proc mimeTypes*(self: gen_qconcatenatetablesproxymodel_types.QConcatenateTablesP
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc mimeData*(self: gen_qconcatenatetablesproxymodel_types.QConcatenateTablesProxyModel, indexes: seq[gen_qabstractitemmodel_types.QModelIndex]): gen_qmimedata_types.QMimeData =
@@ -505,6 +509,8 @@ proc QConcatenateTablesProxyModelitemData*(self: gen_qconcatenatetablesproxymode
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQConcatenateTablesProxyModel_itemData(vtbl: pointer, self: pointer, proxyIndex: pointer): struct_miqt_map {.cdecl.} =
@@ -547,6 +553,8 @@ proc miqt_exec_callback_cQConcatenateTablesProxyModel_setItemData(vtbl: pointer,
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   let virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -624,6 +632,7 @@ proc QConcatenateTablesProxyModelmimeTypes*(self: gen_qconcatenatetablesproxymod
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQConcatenateTablesProxyModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -653,6 +662,7 @@ proc miqt_exec_callback_cQConcatenateTablesProxyModel_mimeData(vtbl: pointer, se
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   let virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -869,6 +879,7 @@ proc QConcatenateTablesProxyModelmatch*(self: gen_qconcatenatetablesproxymodel_t
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQConcatenateTablesProxyModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -900,6 +911,8 @@ proc QConcatenateTablesProxyModelroleNames*(self: gen_qconcatenatetablesproxymod
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQConcatenateTablesProxyModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -1079,6 +1092,7 @@ proc persistentIndexList*(self: gen_qconcatenatetablesproxymodel_types.QConcaten
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qconcatenatetablesproxymodel_types.QConcatenateTablesProxyModel, ): gen_qobject_types.QObject =

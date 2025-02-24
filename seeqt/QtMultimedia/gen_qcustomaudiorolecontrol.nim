@@ -110,6 +110,7 @@ proc supportedCustomAudioRoles*(self: gen_qcustomaudiorolecontrol_types.QCustomA
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc customAudioRoleChanged*(self: gen_qcustomaudiorolecontrol_types.QCustomAudioRoleControl, role: string): void =

@@ -140,6 +140,7 @@ proc searchPaths*(_: type gen_qresource_types.QResource, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc isCompressed*(self: gen_qresource_types.QResource, ): bool =
@@ -184,6 +185,7 @@ proc children*(self: gen_qresource_types.QResource, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc create*(T: type gen_qresource_types.QResource): gen_qresource_types.QResource =

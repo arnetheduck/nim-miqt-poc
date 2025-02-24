@@ -659,6 +659,7 @@ proc takeRow*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint): seq[
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc takeColumn*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
@@ -667,6 +668,7 @@ proc takeColumn*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint)
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sortChildren*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint): void =
@@ -996,6 +998,8 @@ proc itemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc setItemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel_types.QModelIndex, roles: Table[cint,gen_qvariant_types.QVariant]): bool =
@@ -1114,6 +1118,7 @@ proc takeRow*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint):
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc takeColumn*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
@@ -1122,6 +1127,7 @@ proc takeColumn*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: 
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc takeHorizontalHeaderItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint): gen_qstandarditemmodel_types.QStandardItem =
@@ -1142,6 +1148,7 @@ proc findItems*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: str
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sortRole*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): cint =
@@ -1159,6 +1166,7 @@ proc mimeTypes*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): seq[st
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc mimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, indexes: seq[gen_qabstractitemmodel_types.QModelIndex]): gen_qmimedata_types.QMimeData =
@@ -1233,6 +1241,7 @@ proc findItems*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: str
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc findItems*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: string, flags: cint, column: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
@@ -1241,6 +1250,7 @@ proc findItems*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: str
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 type QStandardItemModelmetaObjectProc* = proc(self: QStandardItemModel): gen_qobjectdefs_types.QMetaObject {.raises: [], gcsafe.}
@@ -1554,6 +1564,8 @@ proc QStandardItemModelitemData*(self: gen_qstandarditemmodel_types.QStandardIte
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQStandardItemModel_itemData(vtbl: pointer, self: pointer, index: pointer): struct_miqt_map {.cdecl.} =
@@ -1596,6 +1608,8 @@ proc miqt_exec_callback_cQStandardItemModel_setItemData(vtbl: pointer, self: poi
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   let virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -1619,6 +1633,7 @@ proc QStandardItemModelmimeTypes*(self: gen_qstandarditemmodel_types.QStandardIt
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQStandardItemModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -1648,6 +1663,7 @@ proc miqt_exec_callback_cQStandardItemModel_mimeData(vtbl: pointer, self: pointe
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   let virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -1752,6 +1768,7 @@ proc QStandardItemModelmatch*(self: gen_qstandarditemmodel_types.QStandardItemMo
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQStandardItemModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -1793,6 +1810,8 @@ proc QStandardItemModelroleNames*(self: gen_qstandarditemmodel_types.QStandardIt
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQStandardItemModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -1972,6 +1991,7 @@ proc persistentIndexList*(self: gen_qstandarditemmodel_types.QStandardItemModel,
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): gen_qobject_types.QObject =

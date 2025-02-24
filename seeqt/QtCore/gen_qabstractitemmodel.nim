@@ -763,6 +763,8 @@ proc itemData*(self: gen_qabstractitemmodel_types.QAbstractItemModel, index: gen
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc setItemData*(self: gen_qabstractitemmodel_types.QAbstractItemModel, index: gen_qabstractitemmodel_types.QModelIndex, roles: Table[cint,gen_qvariant_types.QVariant]): bool =
@@ -785,6 +787,7 @@ proc mimeTypes*(self: gen_qabstractitemmodel_types.QAbstractItemModel, ): seq[st
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc mimeData*(self: gen_qabstractitemmodel_types.QAbstractItemModel, indexes: seq[gen_qabstractitemmodel_types.QModelIndex]): gen_qmimedata_types.QMimeData =
@@ -863,6 +866,7 @@ proc match*(self: gen_qabstractitemmodel_types.QAbstractItemModel, start: gen_qa
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc span*(self: gen_qabstractitemmodel_types.QAbstractItemModel, index: gen_qabstractitemmodel_types.QModelIndex): gen_qsize_types.QSize =
@@ -882,6 +886,8 @@ proc roleNames*(self: gen_qabstractitemmodel_types.QAbstractItemModel, ): Table[
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc checkIndex*(self: gen_qabstractitemmodel_types.QAbstractItemModel, index: gen_qabstractitemmodel_types.QModelIndex): bool =
@@ -1036,6 +1042,7 @@ proc miqt_exec_callback_cQAbstractItemModel_dataChanged3(slot: int, topLeft: poi
   let vroles_outCast = cast[ptr UncheckedArray[cint]](vroles_ma.data)
   for i in 0 ..< vroles_ma.len:
     vrolesx_ret[i] = vroles_outCast[i]
+  c_free(vroles_ma.data)
   let slotval3 = vrolesx_ret
 
   nimfunc[](slotval1, slotval2, slotval3)
@@ -1065,6 +1072,7 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutChanged1(slot: int, parents: s
   let vparents_outCast = cast[ptr UncheckedArray[pointer]](vparents_ma.data)
   for i in 0 ..< vparents_ma.len:
     vparentsx_ret[i] = gen_qabstractitemmodel_types.QPersistentModelIndex(h: vparents_outCast[i])
+  c_free(vparents_ma.data)
   let slotval1 = vparentsx_ret
 
   nimfunc[](slotval1)
@@ -1094,6 +1102,7 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutChanged2(slot: int, parents: s
   let vparents_outCast = cast[ptr UncheckedArray[pointer]](vparents_ma.data)
   for i in 0 ..< vparents_ma.len:
     vparentsx_ret[i] = gen_qabstractitemmodel_types.QPersistentModelIndex(h: vparents_outCast[i])
+  c_free(vparents_ma.data)
   let slotval1 = vparentsx_ret
 
   let slotval2 = cint(hint)
@@ -1125,6 +1134,7 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged1(slot: int, p
   let vparents_outCast = cast[ptr UncheckedArray[pointer]](vparents_ma.data)
   for i in 0 ..< vparents_ma.len:
     vparentsx_ret[i] = gen_qabstractitemmodel_types.QPersistentModelIndex(h: vparents_outCast[i])
+  c_free(vparents_ma.data)
   let slotval1 = vparentsx_ret
 
   nimfunc[](slotval1)
@@ -1154,6 +1164,7 @@ proc miqt_exec_callback_cQAbstractItemModel_layoutAboutToBeChanged2(slot: int, p
   let vparents_outCast = cast[ptr UncheckedArray[pointer]](vparents_ma.data)
   for i in 0 ..< vparents_ma.len:
     vparentsx_ret[i] = gen_qabstractitemmodel_types.QPersistentModelIndex(h: vparents_outCast[i])
+  c_free(vparents_ma.data)
   let slotval1 = vparentsx_ret
 
   let slotval2 = cint(hint)
@@ -1399,6 +1410,8 @@ proc QAbstractItemModelitemData*(self: gen_qabstractitemmodel_types.QAbstractIte
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractItemModel_itemData(vtbl: pointer, self: pointer, index: pointer): struct_miqt_map {.cdecl.} =
@@ -1441,6 +1454,8 @@ proc miqt_exec_callback_cQAbstractItemModel_setItemData(vtbl: pointer, self: poi
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   let virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -1454,6 +1469,7 @@ proc QAbstractItemModelmimeTypes*(self: gen_qabstractitemmodel_types.QAbstractIt
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractItemModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -1483,6 +1499,7 @@ proc miqt_exec_callback_cQAbstractItemModel_mimeData(vtbl: pointer, self: pointe
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   let virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -1664,6 +1681,7 @@ proc QAbstractItemModelmatch*(self: gen_qabstractitemmodel_types.QAbstractItemMo
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractItemModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -1705,6 +1723,8 @@ proc QAbstractItemModelroleNames*(self: gen_qabstractitemmodel_types.QAbstractIt
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractItemModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -1887,6 +1907,7 @@ proc persistentIndexList*(self: gen_qabstractitemmodel_types.QAbstractItemModel,
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc createIndex*(self: gen_qabstractitemmodel_types.QAbstractItemModel, row: cint, column: cint, data: pointer): gen_qabstractitemmodel_types.QModelIndex =
@@ -2395,6 +2416,8 @@ proc QAbstractTableModelitemData*(self: gen_qabstractitemmodel_types.QAbstractTa
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractTableModel_itemData(vtbl: pointer, self: pointer, index: pointer): struct_miqt_map {.cdecl.} =
@@ -2437,6 +2460,8 @@ proc miqt_exec_callback_cQAbstractTableModel_setItemData(vtbl: pointer, self: po
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   let virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -2450,6 +2475,7 @@ proc QAbstractTableModelmimeTypes*(self: gen_qabstractitemmodel_types.QAbstractT
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractTableModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -2479,6 +2505,7 @@ proc miqt_exec_callback_cQAbstractTableModel_mimeData(vtbl: pointer, self: point
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   let virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -2636,6 +2663,7 @@ proc QAbstractTableModelmatch*(self: gen_qabstractitemmodel_types.QAbstractTable
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractTableModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -2677,6 +2705,8 @@ proc QAbstractTableModelroleNames*(self: gen_qabstractitemmodel_types.QAbstractT
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractTableModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -2856,6 +2886,7 @@ proc persistentIndexList*(self: gen_qabstractitemmodel_types.QAbstractTableModel
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qabstractitemmodel_types.QAbstractTableModel, ): gen_qobject_types.QObject =
@@ -3344,6 +3375,8 @@ proc QAbstractListModelitemData*(self: gen_qabstractitemmodel_types.QAbstractLis
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractListModel_itemData(vtbl: pointer, self: pointer, index: pointer): struct_miqt_map {.cdecl.} =
@@ -3386,6 +3419,8 @@ proc miqt_exec_callback_cQAbstractListModel_setItemData(vtbl: pointer, self: poi
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   let virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -3399,6 +3434,7 @@ proc QAbstractListModelmimeTypes*(self: gen_qabstractitemmodel_types.QAbstractLi
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractListModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -3428,6 +3464,7 @@ proc miqt_exec_callback_cQAbstractListModel_mimeData(vtbl: pointer, self: pointe
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   let virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -3585,6 +3622,7 @@ proc QAbstractListModelmatch*(self: gen_qabstractitemmodel_types.QAbstractListMo
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractListModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -3626,6 +3664,8 @@ proc QAbstractListModelroleNames*(self: gen_qabstractitemmodel_types.QAbstractLi
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractListModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -3805,6 +3845,7 @@ proc persistentIndexList*(self: gen_qabstractitemmodel_types.QAbstractListModel,
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qabstractitemmodel_types.QAbstractListModel, ): gen_qobject_types.QObject =

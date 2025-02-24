@@ -57,6 +57,7 @@ proc keys*(_: type gen_qstylefactory_types.QStyleFactory, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc create*(_: type gen_qstylefactory_types.QStyleFactory, param1: string): gen_qstyle_types.QStyle =

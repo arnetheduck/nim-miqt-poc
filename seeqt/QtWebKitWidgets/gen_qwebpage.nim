@@ -645,6 +645,7 @@ proc supportedContentTypes*(self: gen_qwebpage_types.QWebPage, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc supportsContentType*(self: gen_qwebpage_types.QWebPage, mimeType: string): bool =
@@ -1508,6 +1509,7 @@ proc miqt_exec_callback_cQWebPage_createPlugin(vtbl: pointer, self: pointer, cla
     let vparamNames_lvx_ret = string.fromBytes(toOpenArrayByte(vparamNames_lv_ms.data, 0, int(vparamNames_lv_ms.len)-1))
     c_free(vparamNames_lv_ms.data)
     vparamNamesx_ret[i] = vparamNames_lvx_ret
+  c_free(vparamNames_ma.data)
   let slotval3 = vparamNamesx_ret
   var vparamValues_ma = paramValues
   var vparamValuesx_ret = newSeq[string](int(vparamValues_ma.len))
@@ -1517,6 +1519,7 @@ proc miqt_exec_callback_cQWebPage_createPlugin(vtbl: pointer, self: pointer, cla
     let vparamValues_lvx_ret = string.fromBytes(toOpenArrayByte(vparamValues_lv_ms.data, 0, int(vparamValues_lv_ms.len)-1))
     c_free(vparamValues_lv_ms.data)
     vparamValuesx_ret[i] = vparamValues_lvx_ret
+  c_free(vparamValues_ma.data)
   let slotval4 = vparamValuesx_ret
   let virtualReturn = vtbl[].createPlugin(self, slotval1, slotval2, slotval3, slotval4)
   virtualReturn.h

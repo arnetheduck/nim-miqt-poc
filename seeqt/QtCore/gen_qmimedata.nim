@@ -147,6 +147,7 @@ proc urls*(self: gen_qmimedata_types.QMimeData, ): seq[gen_qurl_types.QUrl] =
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qurl_types.QUrl(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc setUrls*(self: gen_qmimedata_types.QMimeData, urls: seq[gen_qurl_types.QUrl]): void =
@@ -225,6 +226,7 @@ proc formats*(self: gen_qmimedata_types.QMimeData, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc clear*(self: gen_qmimedata_types.QMimeData, ): void =
@@ -335,6 +337,7 @@ proc QMimeDataformats*(self: gen_qmimedata_types.QMimeData, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQMimeData_formats(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =

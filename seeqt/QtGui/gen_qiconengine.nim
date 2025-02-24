@@ -145,6 +145,7 @@ proc availableSizes*(self: gen_qiconengine_types.QIconEngine, mode: cint, state:
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qsize_types.QSize(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc iconName*(self: gen_qiconengine_types.QIconEngine, ): string =
@@ -293,6 +294,7 @@ proc QIconEngineavailableSizes*(self: gen_qiconengine_types.QIconEngine, mode: c
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qsize_types.QSize(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQIconEngine_availableSizes(vtbl: pointer, self: pointer, mode: cint, state: cint): struct_miqt_array {.cdecl.} =

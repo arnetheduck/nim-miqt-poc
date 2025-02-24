@@ -211,6 +211,7 @@ proc paintingRoles*(self: gen_qabstractitemdelegate_types.QAbstractItemDelegate,
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = v_outCast[i]
+  c_free(v_ma.data)
   vx_ret
 
 proc commitData*(self: gen_qabstractitemdelegate_types.QAbstractItemDelegate, editor: gen_qwidget_types.QWidget): void =
@@ -494,6 +495,7 @@ proc QAbstractItemDelegatepaintingRoles*(self: gen_qabstractitemdelegate_types.Q
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = v_outCast[i]
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractItemDelegate_paintingRoles(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =

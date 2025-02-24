@@ -388,6 +388,7 @@ proc rawHeaderList*(self: gen_qnetworkproxy_types.QNetworkProxy, ): seq[seq[byte
     var vx_lvx_ret = @(toOpenArrayByte(vx_lv_bytearray.data, 0, int(vx_lv_bytearray.len)-1))
     c_free(vx_lv_bytearray.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc rawHeader*(self: gen_qnetworkproxy_types.QNetworkProxy, headerName: seq[byte]): seq[byte] =
@@ -434,6 +435,7 @@ proc queryProxy*(self: gen_qnetworkproxy_types.QNetworkProxyFactory, query: gen_
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qnetworkproxy_types.QNetworkProxy(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc usesSystemConfiguration*(_: type gen_qnetworkproxy_types.QNetworkProxyFactory, ): bool =
@@ -451,6 +453,7 @@ proc proxyForQuery*(_: type gen_qnetworkproxy_types.QNetworkProxyFactory, query:
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qnetworkproxy_types.QNetworkProxy(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc systemProxyForQuery*(_: type gen_qnetworkproxy_types.QNetworkProxyFactory, ): seq[gen_qnetworkproxy_types.QNetworkProxy] =
@@ -459,6 +462,7 @@ proc systemProxyForQuery*(_: type gen_qnetworkproxy_types.QNetworkProxyFactory, 
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qnetworkproxy_types.QNetworkProxy(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc operatorAssign*(self: gen_qnetworkproxy_types.QNetworkProxyFactory, param1: gen_qnetworkproxy_types.QNetworkProxyFactory): void =
@@ -470,6 +474,7 @@ proc systemProxyForQuery*(_: type gen_qnetworkproxy_types.QNetworkProxyFactory, 
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qnetworkproxy_types.QNetworkProxy(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 type QNetworkProxyFactoryqueryProxyProc* = proc(self: QNetworkProxyFactory, query: gen_qnetworkproxy_types.QNetworkProxyQuery): seq[gen_qnetworkproxy_types.QNetworkProxy] {.raises: [], gcsafe.}

@@ -104,6 +104,7 @@ proc supportedAudioRoles*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, )
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = cint(v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc audioRoleChanged*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, role: cint): void =

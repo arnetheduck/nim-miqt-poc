@@ -198,6 +198,7 @@ proc keys*(self: gen_qcbormap_types.QCborMap, ): seq[gen_qcborvalue_types.QCborV
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qcborvalue_types.QCborValue(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc value*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcborvalue_types.QCborValue =
@@ -387,6 +388,8 @@ proc toVariantMap*(self: gen_qcbormap_types.QCborMap, ): Table[string,gen_qvaria
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc toVariantHash*(self: gen_qcbormap_types.QCborMap, ): Table[string,gen_qvariant_types.QVariant] =
@@ -403,6 +406,8 @@ proc toVariantHash*(self: gen_qcbormap_types.QCborMap, ): Table[string,gen_qvari
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc toJsonObject*(self: gen_qcbormap_types.QCborMap, ): gen_qjsonobject_types.QJsonObject =
@@ -428,6 +433,8 @@ proc operatorMultiply*(self: gen_qcbormap_types.QCborMapIterator, ): tuple[first
 
   var v_entry_Second = gen_qcborvalue_types.QCborValueRef(h: v_Second_CArray[0])
 
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   (first: v_entry_First , second: v_entry_Second )
 
 proc operatorMinusGreater*(self: gen_qcbormap_types.QCborMapIterator, ): gen_qcborvalue_types.QCborValueRef =
@@ -522,6 +529,8 @@ proc operatorMultiply*(self: gen_qcbormap_types.QCborMapConstIterator, ): tuple[
 
   var v_entry_Second = gen_qcborvalue_types.QCborValueRef(h: v_Second_CArray[0])
 
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   (first: v_entry_First , second: v_entry_Second )
 
 proc operatorMinusGreater*(self: gen_qcbormap_types.QCborMapConstIterator, ): gen_qcborvalue_types.QCborValueRef =

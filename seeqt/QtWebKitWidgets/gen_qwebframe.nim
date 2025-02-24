@@ -374,6 +374,7 @@ proc childFrames*(self: gen_qwebframe_types.QWebFrame, ): seq[gen_qwebframe_type
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qwebframe_types.QWebFrame(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc scrollBarPolicy*(self: gen_qwebframe_types.QWebFrame, orientation: cint): cint =

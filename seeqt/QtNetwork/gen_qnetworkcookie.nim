@@ -168,6 +168,7 @@ proc parseCookies*(_: type gen_qnetworkcookie_types.QNetworkCookie, cookieString
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qnetworkcookie_types.QNetworkCookie(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc toRawForm*(self: gen_qnetworkcookie_types.QNetworkCookie, form: cint): seq[byte] =

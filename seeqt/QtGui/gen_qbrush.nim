@@ -517,7 +517,10 @@ proc stops*(self: gen_qbrush_types.QGradient, ): seq[tuple[first: float64, secon
 
     var vx_vv_entry_Second = gen_qcolor_types.QColor(h: vx_vv_Second_CArray[0])
 
+    c_free(vx_vv_mm.keys)
+    c_free(vx_vv_mm.values)
     vx_ret[i] = (first: vx_vv_entry_First , second: vx_vv_entry_Second )
+  c_free(v_ma.data)
   vx_ret
 
 proc coordinateMode*(self: gen_qbrush_types.QGradient, ): cint =

@@ -176,6 +176,8 @@ proc toVariantMap*(self: gen_qjsonobject_types.QJsonObject, ): Table[string,gen_
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc fromVariantHash*(_: type gen_qjsonobject_types.QJsonObject, map: Table[string,gen_qvariant_types.QVariant]): gen_qjsonobject_types.QJsonObject =
@@ -203,6 +205,8 @@ proc toVariantHash*(self: gen_qjsonobject_types.QJsonObject, ): Table[string,gen
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc keys*(self: gen_qjsonobject_types.QJsonObject, ): seq[string] =
@@ -214,6 +218,7 @@ proc keys*(self: gen_qjsonobject_types.QJsonObject, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc size*(self: gen_qjsonobject_types.QJsonObject, ): cint =
