@@ -1,23 +1,22 @@
-import seeqt/[qapplication, qpushbutton]
-
-import strformat
+import std/strformat, seeqt/[qapplication, qpushbutton]
 
 proc main() =
-  let app = QApplication.create()
+  let
+    app = QApplication.create()
+    btn = QPushButton.create("Hello world!")
 
-  let btn = QPushButton.create("Hello world!")
   btn.setFixedWidth(320)
 
   var counter = 0
 
-  btn.onPressed(proc =
-    counter += 1
-    btn.setText(&"You have clicked the button {counter} time(s)")
+  btn.onPressed(
+    proc() =
+      counter += 1
+      btn.setText(&"You have clicked the button {counter} time(s)")
   )
 
   btn.show()
 
   echo QApplication.exec()
-
 
 main()
