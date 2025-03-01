@@ -48,9 +48,6 @@ export
 
 type cQPrinterInfo*{.exportc: "QPrinterInfo", incompleteStruct.} = object
 
-proc fcQPrinterInfo_new(): ptr cQPrinterInfo {.importc: "QPrinterInfo_new".}
-proc fcQPrinterInfo_new2(other: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new2".}
-proc fcQPrinterInfo_new3(printer: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new3".}
 proc fcQPrinterInfo_operatorAssign(self: pointer, other: pointer): void {.importc: "QPrinterInfo_operatorAssign".}
 proc fcQPrinterInfo_printerName(self: pointer, ): struct_miqt_string {.importc: "QPrinterInfo_printerName".}
 proc fcQPrinterInfo_description(self: pointer, ): struct_miqt_string {.importc: "QPrinterInfo_description".}
@@ -77,21 +74,12 @@ proc fcQPrinterInfo_availablePrinters(): struct_miqt_array {.importc: "QPrinterI
 proc fcQPrinterInfo_defaultPrinterName(): struct_miqt_string {.importc: "QPrinterInfo_defaultPrinterName".}
 proc fcQPrinterInfo_defaultPrinter(): pointer {.importc: "QPrinterInfo_defaultPrinter".}
 proc fcQPrinterInfo_printerInfo(printerName: struct_miqt_string): pointer {.importc: "QPrinterInfo_printerInfo".}
+proc fcQPrinterInfo_new(): ptr cQPrinterInfo {.importc: "QPrinterInfo_new".}
+proc fcQPrinterInfo_new2(other: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new2".}
+proc fcQPrinterInfo_new3(printer: pointer): ptr cQPrinterInfo {.importc: "QPrinterInfo_new3".}
 proc fcQPrinterInfo_delete(self: pointer) {.importc: "QPrinterInfo_delete".}
 
-
-func init*(T: type gen_qprinterinfo_types.QPrinterInfo, h: ptr cQPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
-  T(h: h)
-proc create*(T: type gen_qprinterinfo_types.QPrinterInfo, ): gen_qprinterinfo_types.QPrinterInfo =
-  gen_qprinterinfo_types.QPrinterInfo.init(fcQPrinterInfo_new())
-
-proc create*(T: type gen_qprinterinfo_types.QPrinterInfo, other: QPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
-  gen_qprinterinfo_types.QPrinterInfo.init(fcQPrinterInfo_new2(other.h))
-
-proc create*(T: type gen_qprinterinfo_types.QPrinterInfo, printer: QPrinter): gen_qprinterinfo_types.QPrinterInfo =
-  gen_qprinterinfo_types.QPrinterInfo.init(fcQPrinterInfo_new3(printer.h))
-
-proc operatorAssign*(self: gen_qprinterinfo_types.QPrinterInfo, other: QPrinterInfo): void =
+proc operatorAssign*(self: gen_qprinterinfo_types.QPrinterInfo, other: gen_qprinterinfo_types.QPrinterInfo): void =
   fcQPrinterInfo_operatorAssign(self.h, other.h)
 
 proc printerName*(self: gen_qprinterinfo_types.QPrinterInfo, ): string =
@@ -130,25 +118,25 @@ proc isRemote*(self: gen_qprinterinfo_types.QPrinterInfo, ): bool =
 proc state*(self: gen_qprinterinfo_types.QPrinterInfo, ): cint =
   cint(fcQPrinterInfo_state(self.h))
 
-proc supportedPageSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[QPageSize] =
+proc supportedPageSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[gen_qpagesize_types.QPageSize] =
   var v_ma = fcQPrinterInfo_supportedPageSizes(self.h)
-  var vx_ret = newSeq[QPageSize](int(v_ma.len))
+  var vx_ret = newSeq[gen_qpagesize_types.QPageSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QPageSize(h: v_outCast[i])
+    vx_ret[i] = gen_qpagesize_types.QPageSize(h: v_outCast[i])
   vx_ret
 
-proc defaultPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): QPageSize =
-  QPageSize(h: fcQPrinterInfo_defaultPageSize(self.h))
+proc defaultPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize_types.QPageSize =
+  gen_qpagesize_types.QPageSize(h: fcQPrinterInfo_defaultPageSize(self.h))
 
 proc supportsCustomPageSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): bool =
   fcQPrinterInfo_supportsCustomPageSizes(self.h)
 
-proc minimumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): QPageSize =
-  QPageSize(h: fcQPrinterInfo_minimumPhysicalPageSize(self.h))
+proc minimumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize_types.QPageSize =
+  gen_qpagesize_types.QPageSize(h: fcQPrinterInfo_minimumPhysicalPageSize(self.h))
 
-proc maximumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): QPageSize =
-  QPageSize(h: fcQPrinterInfo_maximumPhysicalPageSize(self.h))
+proc maximumPhysicalPageSize*(self: gen_qprinterinfo_types.QPrinterInfo, ): gen_qpagesize_types.QPageSize =
+  gen_qpagesize_types.QPageSize(h: fcQPrinterInfo_maximumPhysicalPageSize(self.h))
 
 proc supportedPaperSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[cint] =
   var v_ma = fcQPrinterInfo_supportedPaperSizes(self.h)
@@ -158,9 +146,9 @@ proc supportedPaperSizes*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[cint
     vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc supportedSizesWithNames*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[tuple[first: string, second: QSizeF]] =
+proc supportedSizesWithNames*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[tuple[first: string, second: gen_qsize_types.QSizeF]] =
   var v_ma = fcQPrinterInfo_supportedSizesWithNames(self.h)
-  var vx_ret = newSeq[tuple[first: string, second: QSizeF]](int(v_ma.len))
+  var vx_ret = newSeq[tuple[first: string, second: gen_qsize_types.QSizeF]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
   for i in 0 ..< v_ma.len:
     var vx_lv_mm = v_outCast[i]
@@ -171,7 +159,7 @@ proc supportedSizesWithNames*(self: gen_qprinterinfo_types.QPrinterInfo, ): seq[
     c_free(vx_lv_first_ms.data)
     var vx_lv_entry_First = vx_lv_firstx_ret
 
-    var vx_lv_entry_Second = QSizeF(h: vx_lv_Second_CArray[0])
+    var vx_lv_entry_Second = gen_qsize_types.QSizeF(h: vx_lv_Second_CArray[0])
 
     vx_ret[i] = (first: vx_lv_entry_First , second: vx_lv_entry_Second )
   vx_ret
@@ -217,12 +205,12 @@ proc availablePrinterNames*(_: type gen_qprinterinfo_types.QPrinterInfo, ): seq[
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc availablePrinters*(_: type gen_qprinterinfo_types.QPrinterInfo, ): seq[QPrinterInfo] =
+proc availablePrinters*(_: type gen_qprinterinfo_types.QPrinterInfo, ): seq[gen_qprinterinfo_types.QPrinterInfo] =
   var v_ma = fcQPrinterInfo_availablePrinters()
-  var vx_ret = newSeq[QPrinterInfo](int(v_ma.len))
+  var vx_ret = newSeq[gen_qprinterinfo_types.QPrinterInfo](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QPrinterInfo(h: v_outCast[i])
+    vx_ret[i] = gen_qprinterinfo_types.QPrinterInfo(h: v_outCast[i])
   vx_ret
 
 proc defaultPrinterName*(_: type gen_qprinterinfo_types.QPrinterInfo, ): string =
@@ -231,11 +219,22 @@ proc defaultPrinterName*(_: type gen_qprinterinfo_types.QPrinterInfo, ): string 
   c_free(v_ms.data)
   vx_ret
 
-proc defaultPrinter*(_: type gen_qprinterinfo_types.QPrinterInfo, ): QPrinterInfo =
-  QPrinterInfo(h: fcQPrinterInfo_defaultPrinter())
+proc defaultPrinter*(_: type gen_qprinterinfo_types.QPrinterInfo, ): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_defaultPrinter())
 
-proc printerInfo*(_: type gen_qprinterinfo_types.QPrinterInfo, printerName: string): QPrinterInfo =
-  QPrinterInfo(h: fcQPrinterInfo_printerInfo(struct_miqt_string(data: printerName, len: csize_t(len(printerName)))))
+proc printerInfo*(_: type gen_qprinterinfo_types.QPrinterInfo, printerName: string): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_printerInfo(struct_miqt_string(data: printerName, len: csize_t(len(printerName)))))
+
+proc create*(T: type gen_qprinterinfo_types.QPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_new())
+
+proc create*(T: type gen_qprinterinfo_types.QPrinterInfo,
+    other: gen_qprinterinfo_types.QPrinterInfo): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_new2(other.h))
+
+proc create*(T: type gen_qprinterinfo_types.QPrinterInfo,
+    printer: gen_qprinter_types.QPrinter): gen_qprinterinfo_types.QPrinterInfo =
+  gen_qprinterinfo_types.QPrinterInfo(h: fcQPrinterInfo_new3(printer.h))
 
 proc delete*(self: gen_qprinterinfo_types.QPrinterInfo) =
   fcQPrinterInfo_delete(self.h)

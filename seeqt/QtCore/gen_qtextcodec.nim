@@ -81,34 +81,31 @@ proc fcQTextCodec_toUnicode3(self: pointer, inVal: cstring, length: cint, state:
 proc fcQTextCodec_fromUnicode3(self: pointer, inVal: pointer, length: cint, state: pointer): struct_miqt_string {.importc: "QTextCodec_fromUnicode3".}
 proc fcQTextCodec_makeDecoder1(self: pointer, flags: cint): pointer {.importc: "QTextCodec_makeDecoder1".}
 proc fcQTextCodec_makeEncoder1(self: pointer, flags: cint): pointer {.importc: "QTextCodec_makeEncoder1".}
-proc fcQTextEncoder_new(codec: pointer): ptr cQTextEncoder {.importc: "QTextEncoder_new".}
-proc fcQTextEncoder_new2(codec: pointer, flags: cint): ptr cQTextEncoder {.importc: "QTextEncoder_new2".}
 proc fcQTextEncoder_fromUnicode(self: pointer, str: struct_miqt_string): struct_miqt_string {.importc: "QTextEncoder_fromUnicode".}
 proc fcQTextEncoder_fromUnicode2(self: pointer, uc: pointer, len: cint): struct_miqt_string {.importc: "QTextEncoder_fromUnicode2".}
 proc fcQTextEncoder_hasFailure(self: pointer, ): bool {.importc: "QTextEncoder_hasFailure".}
+proc fcQTextEncoder_new(codec: pointer): ptr cQTextEncoder {.importc: "QTextEncoder_new".}
+proc fcQTextEncoder_new2(codec: pointer, flags: cint): ptr cQTextEncoder {.importc: "QTextEncoder_new2".}
 proc fcQTextEncoder_delete(self: pointer) {.importc: "QTextEncoder_delete".}
-proc fcQTextDecoder_new(codec: pointer): ptr cQTextDecoder {.importc: "QTextDecoder_new".}
-proc fcQTextDecoder_new2(codec: pointer, flags: cint): ptr cQTextDecoder {.importc: "QTextDecoder_new2".}
 proc fcQTextDecoder_toUnicode(self: pointer, chars: cstring, len: cint): struct_miqt_string {.importc: "QTextDecoder_toUnicode".}
 proc fcQTextDecoder_toUnicodeWithBa(self: pointer, ba: struct_miqt_string): struct_miqt_string {.importc: "QTextDecoder_toUnicodeWithBa".}
 proc fcQTextDecoder_hasFailure(self: pointer, ): bool {.importc: "QTextDecoder_hasFailure".}
 proc fcQTextDecoder_needsMoreData(self: pointer, ): bool {.importc: "QTextDecoder_needsMoreData".}
+proc fcQTextDecoder_new(codec: pointer): ptr cQTextDecoder {.importc: "QTextDecoder_new".}
+proc fcQTextDecoder_new2(codec: pointer, flags: cint): ptr cQTextDecoder {.importc: "QTextDecoder_new2".}
 proc fcQTextDecoder_delete(self: pointer) {.importc: "QTextDecoder_delete".}
 proc fcQTextCodecConverterState_new(): ptr cQTextCodecConverterState {.importc: "QTextCodec__ConverterState_new".}
 proc fcQTextCodecConverterState_new2(f: cint): ptr cQTextCodecConverterState {.importc: "QTextCodec__ConverterState_new2".}
 proc fcQTextCodecConverterState_delete(self: pointer) {.importc: "QTextCodec__ConverterState_delete".}
 
+proc codecForName*(_: type gen_qtextcodec_types.QTextCodec, name: seq[byte]): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForName(struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name)))))
 
-func init*(T: type gen_qtextcodec_types.QTextCodec, h: ptr cQTextCodec): gen_qtextcodec_types.QTextCodec =
-  T(h: h)
-proc codecForName*(_: type gen_qtextcodec_types.QTextCodec, name: seq[byte]): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForName(struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name)))))
+proc codecForName*(_: type gen_qtextcodec_types.QTextCodec, name: cstring): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForNameWithName(name))
 
-proc codecForName*(_: type gen_qtextcodec_types.QTextCodec, name: cstring): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForNameWithName(name))
-
-proc codecForMib*(_: type gen_qtextcodec_types.QTextCodec, mib: cint): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForMib(mib))
+proc codecForMib*(_: type gen_qtextcodec_types.QTextCodec, mib: cint): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForMib(mib))
 
 proc availableCodecs*(_: type gen_qtextcodec_types.QTextCodec, ): seq[seq[byte]] =
   var v_ma = fcQTextCodec_availableCodecs()
@@ -129,25 +126,25 @@ proc availableMibs*(_: type gen_qtextcodec_types.QTextCodec, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc codecForLocale*(_: type gen_qtextcodec_types.QTextCodec, ): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForLocale())
+proc codecForLocale*(_: type gen_qtextcodec_types.QTextCodec, ): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForLocale())
 
-proc setCodecForLocale*(_: type gen_qtextcodec_types.QTextCodec, c: QTextCodec): void =
+proc setCodecForLocale*(_: type gen_qtextcodec_types.QTextCodec, c: gen_qtextcodec_types.QTextCodec): void =
   fcQTextCodec_setCodecForLocale(c.h)
 
-proc codecForHtml*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte]): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForHtml(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
+proc codecForHtml*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte]): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForHtml(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
 
-proc codecForHtml*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte], defaultCodec: QTextCodec): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForHtml2(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))), defaultCodec.h))
+proc codecForHtml*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte], defaultCodec: gen_qtextcodec_types.QTextCodec): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForHtml2(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))), defaultCodec.h))
 
-proc codecForUtfText*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte]): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForUtfText(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
+proc codecForUtfText*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte]): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForUtfText(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
 
-proc codecForUtfText*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte], defaultCodec: QTextCodec): QTextCodec =
-  QTextCodec(h: fcQTextCodec_codecForUtfText2(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))), defaultCodec.h))
+proc codecForUtfText*(_: type gen_qtextcodec_types.QTextCodec, ba: seq[byte], defaultCodec: gen_qtextcodec_types.QTextCodec): gen_qtextcodec_types.QTextCodec =
+  gen_qtextcodec_types.QTextCodec(h: fcQTextCodec_codecForUtfText2(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))), defaultCodec.h))
 
-proc canEncode*(self: gen_qtextcodec_types.QTextCodec, param1: QChar): bool =
+proc canEncode*(self: gen_qtextcodec_types.QTextCodec, param1: gen_qchar_types.QChar): bool =
   fcQTextCodec_canEncode(self.h, param1.h)
 
 proc canEncode*(self: gen_qtextcodec_types.QTextCodec, param1: string): bool =
@@ -177,17 +174,17 @@ proc toUnicode*(self: gen_qtextcodec_types.QTextCodec, inVal: cstring, length: c
   c_free(v_ms.data)
   vx_ret
 
-proc fromUnicode*(self: gen_qtextcodec_types.QTextCodec, inVal: QChar, length: cint): seq[byte] =
+proc fromUnicode*(self: gen_qtextcodec_types.QTextCodec, inVal: gen_qchar_types.QChar, length: cint): seq[byte] =
   var v_bytearray = fcQTextCodec_fromUnicode2(self.h, inVal.h, length)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc makeDecoder*(self: gen_qtextcodec_types.QTextCodec, ): QTextDecoder =
-  QTextDecoder(h: fcQTextCodec_makeDecoder(self.h))
+proc makeDecoder*(self: gen_qtextcodec_types.QTextCodec, ): gen_qtextcodec_types.QTextDecoder =
+  gen_qtextcodec_types.QTextDecoder(h: fcQTextCodec_makeDecoder(self.h))
 
-proc makeEncoder*(self: gen_qtextcodec_types.QTextCodec, ): QTextEncoder =
-  QTextEncoder(h: fcQTextCodec_makeEncoder(self.h))
+proc makeEncoder*(self: gen_qtextcodec_types.QTextCodec, ): gen_qtextcodec_types.QTextEncoder =
+  gen_qtextcodec_types.QTextEncoder(h: fcQTextCodec_makeEncoder(self.h))
 
 proc name*(self: gen_qtextcodec_types.QTextCodec, ): seq[byte] =
   var v_bytearray = fcQTextCodec_name(self.h)
@@ -209,32 +206,23 @@ proc aliases*(self: gen_qtextcodec_types.QTextCodec, ): seq[seq[byte]] =
 proc mibEnum*(self: gen_qtextcodec_types.QTextCodec, ): cint =
   fcQTextCodec_mibEnum(self.h)
 
-proc toUnicode*(self: gen_qtextcodec_types.QTextCodec, inVal: cstring, length: cint, state: QTextCodecConverterState): string =
+proc toUnicode*(self: gen_qtextcodec_types.QTextCodec, inVal: cstring, length: cint, state: gen_qtextcodec_types.QTextCodecConverterState): string =
   let v_ms = fcQTextCodec_toUnicode3(self.h, inVal, length, state.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fromUnicode*(self: gen_qtextcodec_types.QTextCodec, inVal: QChar, length: cint, state: QTextCodecConverterState): seq[byte] =
+proc fromUnicode*(self: gen_qtextcodec_types.QTextCodec, inVal: gen_qchar_types.QChar, length: cint, state: gen_qtextcodec_types.QTextCodecConverterState): seq[byte] =
   var v_bytearray = fcQTextCodec_fromUnicode3(self.h, inVal.h, length, state.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc makeDecoder*(self: gen_qtextcodec_types.QTextCodec, flags: cint): QTextDecoder =
-  QTextDecoder(h: fcQTextCodec_makeDecoder1(self.h, cint(flags)))
+proc makeDecoder*(self: gen_qtextcodec_types.QTextCodec, flags: cint): gen_qtextcodec_types.QTextDecoder =
+  gen_qtextcodec_types.QTextDecoder(h: fcQTextCodec_makeDecoder1(self.h, cint(flags)))
 
-proc makeEncoder*(self: gen_qtextcodec_types.QTextCodec, flags: cint): QTextEncoder =
-  QTextEncoder(h: fcQTextCodec_makeEncoder1(self.h, cint(flags)))
-
-
-func init*(T: type gen_qtextcodec_types.QTextEncoder, h: ptr cQTextEncoder): gen_qtextcodec_types.QTextEncoder =
-  T(h: h)
-proc create*(T: type gen_qtextcodec_types.QTextEncoder, codec: QTextCodec): gen_qtextcodec_types.QTextEncoder =
-  gen_qtextcodec_types.QTextEncoder.init(fcQTextEncoder_new(codec.h))
-
-proc create*(T: type gen_qtextcodec_types.QTextEncoder, codec: QTextCodec, flags: cint): gen_qtextcodec_types.QTextEncoder =
-  gen_qtextcodec_types.QTextEncoder.init(fcQTextEncoder_new2(codec.h, cint(flags)))
+proc makeEncoder*(self: gen_qtextcodec_types.QTextCodec, flags: cint): gen_qtextcodec_types.QTextEncoder =
+  gen_qtextcodec_types.QTextEncoder(h: fcQTextCodec_makeEncoder1(self.h, cint(flags)))
 
 proc fromUnicode*(self: gen_qtextcodec_types.QTextEncoder, str: string): seq[byte] =
   var v_bytearray = fcQTextEncoder_fromUnicode(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
@@ -242,7 +230,7 @@ proc fromUnicode*(self: gen_qtextcodec_types.QTextEncoder, str: string): seq[byt
   c_free(v_bytearray.data)
   vx_ret
 
-proc fromUnicode*(self: gen_qtextcodec_types.QTextEncoder, uc: QChar, len: cint): seq[byte] =
+proc fromUnicode*(self: gen_qtextcodec_types.QTextEncoder, uc: gen_qchar_types.QChar, len: cint): seq[byte] =
   var v_bytearray = fcQTextEncoder_fromUnicode2(self.h, uc.h, len)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
@@ -251,17 +239,16 @@ proc fromUnicode*(self: gen_qtextcodec_types.QTextEncoder, uc: QChar, len: cint)
 proc hasFailure*(self: gen_qtextcodec_types.QTextEncoder, ): bool =
   fcQTextEncoder_hasFailure(self.h)
 
+proc create*(T: type gen_qtextcodec_types.QTextEncoder,
+    codec: gen_qtextcodec_types.QTextCodec): gen_qtextcodec_types.QTextEncoder =
+  gen_qtextcodec_types.QTextEncoder(h: fcQTextEncoder_new(codec.h))
+
+proc create*(T: type gen_qtextcodec_types.QTextEncoder,
+    codec: gen_qtextcodec_types.QTextCodec, flags: cint): gen_qtextcodec_types.QTextEncoder =
+  gen_qtextcodec_types.QTextEncoder(h: fcQTextEncoder_new2(codec.h, cint(flags)))
+
 proc delete*(self: gen_qtextcodec_types.QTextEncoder) =
   fcQTextEncoder_delete(self.h)
-
-func init*(T: type gen_qtextcodec_types.QTextDecoder, h: ptr cQTextDecoder): gen_qtextcodec_types.QTextDecoder =
-  T(h: h)
-proc create*(T: type gen_qtextcodec_types.QTextDecoder, codec: QTextCodec): gen_qtextcodec_types.QTextDecoder =
-  gen_qtextcodec_types.QTextDecoder.init(fcQTextDecoder_new(codec.h))
-
-proc create*(T: type gen_qtextcodec_types.QTextDecoder, codec: QTextCodec, flags: cint): gen_qtextcodec_types.QTextDecoder =
-  gen_qtextcodec_types.QTextDecoder.init(fcQTextDecoder_new2(codec.h, cint(flags)))
-
 proc toUnicode*(self: gen_qtextcodec_types.QTextDecoder, chars: cstring, len: cint): string =
   let v_ms = fcQTextDecoder_toUnicode(self.h, chars, len)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
@@ -280,16 +267,22 @@ proc hasFailure*(self: gen_qtextcodec_types.QTextDecoder, ): bool =
 proc needsMoreData*(self: gen_qtextcodec_types.QTextDecoder, ): bool =
   fcQTextDecoder_needsMoreData(self.h)
 
+proc create*(T: type gen_qtextcodec_types.QTextDecoder,
+    codec: gen_qtextcodec_types.QTextCodec): gen_qtextcodec_types.QTextDecoder =
+  gen_qtextcodec_types.QTextDecoder(h: fcQTextDecoder_new(codec.h))
+
+proc create*(T: type gen_qtextcodec_types.QTextDecoder,
+    codec: gen_qtextcodec_types.QTextCodec, flags: cint): gen_qtextcodec_types.QTextDecoder =
+  gen_qtextcodec_types.QTextDecoder(h: fcQTextDecoder_new2(codec.h, cint(flags)))
+
 proc delete*(self: gen_qtextcodec_types.QTextDecoder) =
   fcQTextDecoder_delete(self.h)
+proc create*(T: type gen_qtextcodec_types.QTextCodecConverterState): gen_qtextcodec_types.QTextCodecConverterState =
+  gen_qtextcodec_types.QTextCodecConverterState(h: fcQTextCodecConverterState_new())
 
-func init*(T: type gen_qtextcodec_types.QTextCodecConverterState, h: ptr cQTextCodecConverterState): gen_qtextcodec_types.QTextCodecConverterState =
-  T(h: h)
-proc create*(T: type gen_qtextcodec_types.QTextCodecConverterState, ): gen_qtextcodec_types.QTextCodecConverterState =
-  gen_qtextcodec_types.QTextCodecConverterState.init(fcQTextCodecConverterState_new())
-
-proc create*(T: type gen_qtextcodec_types.QTextCodecConverterState, f: cint): gen_qtextcodec_types.QTextCodecConverterState =
-  gen_qtextcodec_types.QTextCodecConverterState.init(fcQTextCodecConverterState_new2(cint(f)))
+proc create*(T: type gen_qtextcodec_types.QTextCodecConverterState,
+    f: cint): gen_qtextcodec_types.QTextCodecConverterState =
+  gen_qtextcodec_types.QTextCodecConverterState(h: fcQTextCodecConverterState_new2(cint(f)))
 
 proc delete*(self: gen_qtextcodec_types.QTextCodecConverterState) =
   fcQTextCodecConverterState_delete(self.h)

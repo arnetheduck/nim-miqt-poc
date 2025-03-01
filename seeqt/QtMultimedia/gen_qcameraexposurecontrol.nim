@@ -72,11 +72,11 @@ proc fcQCameraExposureControl_requestedValue(self: pointer, parameter: cint): po
 proc fcQCameraExposureControl_actualValue(self: pointer, parameter: cint): pointer {.importc: "QCameraExposureControl_actualValue".}
 proc fcQCameraExposureControl_setValue(self: pointer, parameter: cint, value: pointer): bool {.importc: "QCameraExposureControl_setValue".}
 proc fcQCameraExposureControl_requestedValueChanged(self: pointer, parameter: cint): void {.importc: "QCameraExposureControl_requestedValueChanged".}
-proc fQCameraExposureControl_connect_requestedValueChanged(self: pointer, slot: int) {.importc: "QCameraExposureControl_connect_requestedValueChanged".}
+proc fcQCameraExposureControl_connect_requestedValueChanged(self: pointer, slot: int) {.importc: "QCameraExposureControl_connect_requestedValueChanged".}
 proc fcQCameraExposureControl_actualValueChanged(self: pointer, parameter: cint): void {.importc: "QCameraExposureControl_actualValueChanged".}
-proc fQCameraExposureControl_connect_actualValueChanged(self: pointer, slot: int) {.importc: "QCameraExposureControl_connect_actualValueChanged".}
+proc fcQCameraExposureControl_connect_actualValueChanged(self: pointer, slot: int) {.importc: "QCameraExposureControl_connect_actualValueChanged".}
 proc fcQCameraExposureControl_parameterRangeChanged(self: pointer, parameter: cint): void {.importc: "QCameraExposureControl_parameterRangeChanged".}
-proc fQCameraExposureControl_connect_parameterRangeChanged(self: pointer, slot: int) {.importc: "QCameraExposureControl_connect_parameterRangeChanged".}
+proc fcQCameraExposureControl_connect_parameterRangeChanged(self: pointer, slot: int) {.importc: "QCameraExposureControl_connect_parameterRangeChanged".}
 proc fcQCameraExposureControl_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraExposureControl_tr2".}
 proc fcQCameraExposureControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraExposureControl_tr3".}
 proc fcQCameraExposureControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraExposureControl_trUtf82".}
@@ -84,11 +84,8 @@ proc fcQCameraExposureControl_trUtf83(s: cstring, c: cstring, n: cint): struct_m
 proc fcQCameraExposureControl_staticMetaObject(): pointer {.importc: "QCameraExposureControl_staticMetaObject".}
 proc fcQCameraExposureControl_delete(self: pointer) {.importc: "QCameraExposureControl_delete".}
 
-
-func init*(T: type gen_qcameraexposurecontrol_types.QCameraExposureControl, h: ptr cQCameraExposureControl): gen_qcameraexposurecontrol_types.QCameraExposureControl =
-  T(h: h)
-proc metaObject*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, ): QMetaObject =
-  QMetaObject(h: fcQCameraExposureControl_metaObject(self.h))
+proc metaObject*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQCameraExposureControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, param1: cstring): pointer =
   fcQCameraExposureControl_metacast(self.h, param1)
@@ -111,20 +108,20 @@ proc trUtf8*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s:
 proc isParameterSupported*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): bool =
   fcQCameraExposureControl_isParameterSupported(self.h, cint(parameter))
 
-proc requestedValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): QVariant =
-  QVariant(h: fcQCameraExposureControl_requestedValue(self.h, cint(parameter)))
+proc requestedValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQCameraExposureControl_requestedValue(self.h, cint(parameter)))
 
-proc actualValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): QVariant =
-  QVariant(h: fcQCameraExposureControl_actualValue(self.h, cint(parameter)))
+proc actualValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQCameraExposureControl_actualValue(self.h, cint(parameter)))
 
-proc setValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint, value: QVariant): bool =
+proc setValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint, value: gen_qvariant_types.QVariant): bool =
   fcQCameraExposureControl_setValue(self.h, cint(parameter), value.h)
 
 proc requestedValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): void =
   fcQCameraExposureControl_requestedValueChanged(self.h, parameter)
 
 type QCameraExposureControlrequestedValueChangedSlot* = proc(parameter: cint)
-proc miqt_exec_callback_QCameraExposureControl_requestedValueChanged(slot: int, parameter: cint) {.exportc.} =
+proc miqt_exec_callback_cQCameraExposureControl_requestedValueChanged(slot: int, parameter: cint) {.exportc: "miqt_exec_callback_QCameraExposureControl_requestedValueChanged".} =
   let nimfunc = cast[ptr QCameraExposureControlrequestedValueChangedSlot](cast[pointer](slot))
   let slotval1 = parameter
 
@@ -134,13 +131,13 @@ proc onrequestedValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExpo
   var tmp = new QCameraExposureControlrequestedValueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQCameraExposureControl_connect_requestedValueChanged(self.h, cast[int](addr tmp[]))
+  fcQCameraExposureControl_connect_requestedValueChanged(self.h, cast[int](addr tmp[]))
 
 proc actualValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): void =
   fcQCameraExposureControl_actualValueChanged(self.h, parameter)
 
 type QCameraExposureControlactualValueChangedSlot* = proc(parameter: cint)
-proc miqt_exec_callback_QCameraExposureControl_actualValueChanged(slot: int, parameter: cint) {.exportc.} =
+proc miqt_exec_callback_cQCameraExposureControl_actualValueChanged(slot: int, parameter: cint) {.exportc: "miqt_exec_callback_QCameraExposureControl_actualValueChanged".} =
   let nimfunc = cast[ptr QCameraExposureControlactualValueChangedSlot](cast[pointer](slot))
   let slotval1 = parameter
 
@@ -150,13 +147,13 @@ proc onactualValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposur
   var tmp = new QCameraExposureControlactualValueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQCameraExposureControl_connect_actualValueChanged(self.h, cast[int](addr tmp[]))
+  fcQCameraExposureControl_connect_actualValueChanged(self.h, cast[int](addr tmp[]))
 
 proc parameterRangeChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): void =
   fcQCameraExposureControl_parameterRangeChanged(self.h, parameter)
 
 type QCameraExposureControlparameterRangeChangedSlot* = proc(parameter: cint)
-proc miqt_exec_callback_QCameraExposureControl_parameterRangeChanged(slot: int, parameter: cint) {.exportc.} =
+proc miqt_exec_callback_cQCameraExposureControl_parameterRangeChanged(slot: int, parameter: cint) {.exportc: "miqt_exec_callback_QCameraExposureControl_parameterRangeChanged".} =
   let nimfunc = cast[ptr QCameraExposureControlparameterRangeChangedSlot](cast[pointer](slot))
   let slotval1 = parameter
 
@@ -166,7 +163,7 @@ proc onparameterRangeChanged*(self: gen_qcameraexposurecontrol_types.QCameraExpo
   var tmp = new QCameraExposureControlparameterRangeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
-  fQCameraExposureControl_connect_parameterRangeChanged(self.h, cast[int](addr tmp[]))
+  fcQCameraExposureControl_connect_parameterRangeChanged(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraExposureControl_tr2(s, c)

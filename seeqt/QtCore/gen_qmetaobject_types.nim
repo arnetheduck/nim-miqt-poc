@@ -6,4 +6,3 @@ type QMetaProperty* {.inheritable, pure.} = object
   h*: pointer
 type QMetaClassInfo* {.inheritable, pure.} = object
   h*: pointer
-

@@ -82,10 +82,6 @@ export
 
 type cQUrl*{.exportc: "QUrl", incompleteStruct.} = object
 
-proc fcQUrl_new(): ptr cQUrl {.importc: "QUrl_new".}
-proc fcQUrl_new2(copy: pointer): ptr cQUrl {.importc: "QUrl_new2".}
-proc fcQUrl_new3(url: struct_miqt_string): ptr cQUrl {.importc: "QUrl_new3".}
-proc fcQUrl_new4(url: struct_miqt_string, mode: cint): ptr cQUrl {.importc: "QUrl_new4".}
 proc fcQUrl_operatorAssign(self: pointer, copy: pointer): void {.importc: "QUrl_operatorAssign".}
 proc fcQUrl_operatorAssignWithUrl(self: pointer, url: struct_miqt_string): void {.importc: "QUrl_operatorAssignWithUrl".}
 proc fcQUrl_swap(self: pointer, other: pointer): void {.importc: "QUrl_swap".}
@@ -170,30 +166,19 @@ proc fcQUrl_setFragment2(self: pointer, fragment: struct_miqt_string, mode: cint
 proc fcQUrl_toPercentEncoding2(param1: struct_miqt_string, exclude: struct_miqt_string): struct_miqt_string {.importc: "QUrl_toPercentEncoding2".}
 proc fcQUrl_toPercentEncoding3(param1: struct_miqt_string, exclude: struct_miqt_string, includeVal: struct_miqt_string): struct_miqt_string {.importc: "QUrl_toPercentEncoding3".}
 proc fcQUrl_fromStringList2(uris: struct_miqt_array, mode: cint): struct_miqt_array {.importc: "QUrl_fromStringList2".}
+proc fcQUrl_new(): ptr cQUrl {.importc: "QUrl_new".}
+proc fcQUrl_new2(copy: pointer): ptr cQUrl {.importc: "QUrl_new2".}
+proc fcQUrl_new3(url: struct_miqt_string): ptr cQUrl {.importc: "QUrl_new3".}
+proc fcQUrl_new4(url: struct_miqt_string, mode: cint): ptr cQUrl {.importc: "QUrl_new4".}
 proc fcQUrl_delete(self: pointer) {.importc: "QUrl_delete".}
 
-
-func init*(T: type gen_qurl_types.QUrl, h: ptr cQUrl): gen_qurl_types.QUrl =
-  T(h: h)
-proc create*(T: type gen_qurl_types.QUrl, ): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new())
-
-proc create*(T: type gen_qurl_types.QUrl, copy: QUrl): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new2(copy.h))
-
-proc create*(T: type gen_qurl_types.QUrl, url: string): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new3(struct_miqt_string(data: url, len: csize_t(len(url)))))
-
-proc create*(T: type gen_qurl_types.QUrl, url: string, mode: cint): gen_qurl_types.QUrl =
-  gen_qurl_types.QUrl.init(fcQUrl_new4(struct_miqt_string(data: url, len: csize_t(len(url))), cint(mode)))
-
-proc operatorAssign*(self: gen_qurl_types.QUrl, copy: QUrl): void =
+proc operatorAssign*(self: gen_qurl_types.QUrl, copy: gen_qurl_types.QUrl): void =
   fcQUrl_operatorAssign(self.h, copy.h)
 
 proc operatorAssign*(self: gen_qurl_types.QUrl, url: string): void =
   fcQUrl_operatorAssignWithUrl(self.h, struct_miqt_string(data: url, len: csize_t(len(url))))
 
-proc swap*(self: gen_qurl_types.QUrl, other: QUrl): void =
+proc swap*(self: gen_qurl_types.QUrl, other: gen_qurl_types.QUrl): void =
   fcQUrl_swap(self.h, other.h)
 
 proc setUrl*(self: gen_qurl_types.QUrl, url: string): void =
@@ -223,14 +208,14 @@ proc toEncoded*(self: gen_qurl_types.QUrl, ): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc fromEncoded*(_: type gen_qurl_types.QUrl, url: seq[byte]): QUrl =
-  QUrl(h: fcQUrl_fromEncoded(struct_miqt_string(data: cast[cstring](if len(url) == 0: nil else: unsafeAddr url[0]), len: csize_t(len(url)))))
+proc fromEncoded*(_: type gen_qurl_types.QUrl, url: seq[byte]): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_fromEncoded(struct_miqt_string(data: cast[cstring](if len(url) == 0: nil else: unsafeAddr url[0]), len: csize_t(len(url)))))
 
-proc fromUserInput*(_: type gen_qurl_types.QUrl, userInput: string): QUrl =
-  QUrl(h: fcQUrl_fromUserInput(struct_miqt_string(data: userInput, len: csize_t(len(userInput)))))
+proc fromUserInput*(_: type gen_qurl_types.QUrl, userInput: string): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_fromUserInput(struct_miqt_string(data: userInput, len: csize_t(len(userInput)))))
 
-proc fromUserInput*(_: type gen_qurl_types.QUrl, userInput: string, workingDirectory: string): QUrl =
-  QUrl(h: fcQUrl_fromUserInput2(struct_miqt_string(data: userInput, len: csize_t(len(userInput))), struct_miqt_string(data: workingDirectory, len: csize_t(len(workingDirectory)))))
+proc fromUserInput*(_: type gen_qurl_types.QUrl, userInput: string, workingDirectory: string): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_fromUserInput2(struct_miqt_string(data: userInput, len: csize_t(len(userInput))), struct_miqt_string(data: workingDirectory, len: csize_t(len(workingDirectory)))))
 
 proc isValid*(self: gen_qurl_types.QUrl, ): bool =
   fcQUrl_isValid(self.h)
@@ -334,7 +319,7 @@ proc hasQuery*(self: gen_qurl_types.QUrl, ): bool =
 proc setQuery*(self: gen_qurl_types.QUrl, query: string): void =
   fcQUrl_setQuery(self.h, struct_miqt_string(data: query, len: csize_t(len(query))))
 
-proc setQuery*(self: gen_qurl_types.QUrl, query: QUrlQuery): void =
+proc setQuery*(self: gen_qurl_types.QUrl, query: gen_qurlquery_types.QUrlQuery): void =
   fcQUrl_setQueryWithQuery(self.h, query.h)
 
 proc query*(self: gen_qurl_types.QUrl, ): string =
@@ -355,20 +340,20 @@ proc fragment*(self: gen_qurl_types.QUrl, ): string =
 proc setFragment*(self: gen_qurl_types.QUrl, fragment: string): void =
   fcQUrl_setFragment(self.h, struct_miqt_string(data: fragment, len: csize_t(len(fragment))))
 
-proc resolved*(self: gen_qurl_types.QUrl, relative: QUrl): QUrl =
-  QUrl(h: fcQUrl_resolved(self.h, relative.h))
+proc resolved*(self: gen_qurl_types.QUrl, relative: gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_resolved(self.h, relative.h))
 
 proc isRelative*(self: gen_qurl_types.QUrl, ): bool =
   fcQUrl_isRelative(self.h)
 
-proc isParentOf*(self: gen_qurl_types.QUrl, url: QUrl): bool =
+proc isParentOf*(self: gen_qurl_types.QUrl, url: gen_qurl_types.QUrl): bool =
   fcQUrl_isParentOf(self.h, url.h)
 
 proc isLocalFile*(self: gen_qurl_types.QUrl, ): bool =
   fcQUrl_isLocalFile(self.h)
 
-proc fromLocalFile*(_: type gen_qurl_types.QUrl, localfile: string): QUrl =
-  QUrl(h: fcQUrl_fromLocalFile(struct_miqt_string(data: localfile, len: csize_t(len(localfile)))))
+proc fromLocalFile*(_: type gen_qurl_types.QUrl, localfile: string): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_fromLocalFile(struct_miqt_string(data: localfile, len: csize_t(len(localfile)))))
 
 proc toLocalFile*(self: gen_qurl_types.QUrl, ): string =
   let v_ms = fcQUrl_toLocalFile(self.h)
@@ -382,13 +367,13 @@ proc detach*(self: gen_qurl_types.QUrl, ): void =
 proc isDetached*(self: gen_qurl_types.QUrl, ): bool =
   fcQUrl_isDetached(self.h)
 
-proc operatorLesser*(self: gen_qurl_types.QUrl, url: QUrl): bool =
+proc operatorLesser*(self: gen_qurl_types.QUrl, url: gen_qurl_types.QUrl): bool =
   fcQUrl_operatorLesser(self.h, url.h)
 
-proc operatorEqual*(self: gen_qurl_types.QUrl, url: QUrl): bool =
+proc operatorEqual*(self: gen_qurl_types.QUrl, url: gen_qurl_types.QUrl): bool =
   fcQUrl_operatorEqual(self.h, url.h)
 
-proc operatorNotEqual*(self: gen_qurl_types.QUrl, url: QUrl): bool =
+proc operatorNotEqual*(self: gen_qurl_types.QUrl, url: gen_qurl_types.QUrl): bool =
   fcQUrl_operatorNotEqual(self.h, url.h)
 
 proc fromPercentEncoding*(_: type gen_qurl_types.QUrl, param1: seq[byte]): string =
@@ -426,7 +411,7 @@ proc idnWhitelist*(_: type gen_qurl_types.QUrl, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc toStringList*(_: type gen_qurl_types.QUrl, uris: seq[QUrl]): seq[string] =
+proc toStringList*(_: type gen_qurl_types.QUrl, uris: seq[gen_qurl_types.QUrl]): seq[string] =
   var uris_CArray = newSeq[pointer](len(uris))
   for i in 0..<len(uris):
     uris_CArray[i] = uris[i].h
@@ -441,16 +426,16 @@ proc toStringList*(_: type gen_qurl_types.QUrl, uris: seq[QUrl]): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc fromStringList*(_: type gen_qurl_types.QUrl, uris: seq[string]): seq[QUrl] =
+proc fromStringList*(_: type gen_qurl_types.QUrl, uris: seq[string]): seq[gen_qurl_types.QUrl] =
   var uris_CArray = newSeq[struct_miqt_string](len(uris))
   for i in 0..<len(uris):
     uris_CArray[i] = struct_miqt_string(data: uris[i], len: csize_t(len(uris[i])))
 
   var v_ma = fcQUrl_fromStringList(struct_miqt_array(len: csize_t(len(uris)), data: if len(uris) == 0: nil else: addr(uris_CArray[0])))
-  var vx_ret = newSeq[QUrl](int(v_ma.len))
+  var vx_ret = newSeq[gen_qurl_types.QUrl](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QUrl(h: v_outCast[i])
+    vx_ret[i] = gen_qurl_types.QUrl(h: v_outCast[i])
   vx_ret
 
 proc setIdnWhitelist*(_: type gen_qurl_types.QUrl, idnWhitelist: seq[string]): void =
@@ -463,11 +448,11 @@ proc setIdnWhitelist*(_: type gen_qurl_types.QUrl, idnWhitelist: seq[string]): v
 proc setUrl*(self: gen_qurl_types.QUrl, url: string, mode: cint): void =
   fcQUrl_setUrl2(self.h, struct_miqt_string(data: url, len: csize_t(len(url))), cint(mode))
 
-proc fromEncoded*(_: type gen_qurl_types.QUrl, url: seq[byte], mode: cint): QUrl =
-  QUrl(h: fcQUrl_fromEncoded2(struct_miqt_string(data: cast[cstring](if len(url) == 0: nil else: unsafeAddr url[0]), len: csize_t(len(url))), cint(mode)))
+proc fromEncoded*(_: type gen_qurl_types.QUrl, url: seq[byte], mode: cint): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_fromEncoded2(struct_miqt_string(data: cast[cstring](if len(url) == 0: nil else: unsafeAddr url[0]), len: csize_t(len(url))), cint(mode)))
 
-proc fromUserInput*(_: type gen_qurl_types.QUrl, userInput: string, workingDirectory: string, options: cint): QUrl =
-  QUrl(h: fcQUrl_fromUserInput3(struct_miqt_string(data: userInput, len: csize_t(len(userInput))), struct_miqt_string(data: workingDirectory, len: csize_t(len(workingDirectory))), cint(options)))
+proc fromUserInput*(_: type gen_qurl_types.QUrl, userInput: string, workingDirectory: string, options: cint): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_fromUserInput3(struct_miqt_string(data: userInput, len: csize_t(len(userInput))), struct_miqt_string(data: workingDirectory, len: csize_t(len(workingDirectory))), cint(options)))
 
 proc setAuthority*(self: gen_qurl_types.QUrl, authority: string, mode: cint): void =
   fcQUrl_setAuthority2(self.h, struct_miqt_string(data: authority, len: csize_t(len(authority))), cint(mode))
@@ -568,17 +553,32 @@ proc toPercentEncoding*(_: type gen_qurl_types.QUrl, param1: string, exclude: se
   c_free(v_bytearray.data)
   vx_ret
 
-proc fromStringList*(_: type gen_qurl_types.QUrl, uris: seq[string], mode: cint): seq[QUrl] =
+proc fromStringList*(_: type gen_qurl_types.QUrl, uris: seq[string], mode: cint): seq[gen_qurl_types.QUrl] =
   var uris_CArray = newSeq[struct_miqt_string](len(uris))
   for i in 0..<len(uris):
     uris_CArray[i] = struct_miqt_string(data: uris[i], len: csize_t(len(uris[i])))
 
   var v_ma = fcQUrl_fromStringList2(struct_miqt_array(len: csize_t(len(uris)), data: if len(uris) == 0: nil else: addr(uris_CArray[0])), cint(mode))
-  var vx_ret = newSeq[QUrl](int(v_ma.len))
+  var vx_ret = newSeq[gen_qurl_types.QUrl](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QUrl(h: v_outCast[i])
+    vx_ret[i] = gen_qurl_types.QUrl(h: v_outCast[i])
   vx_ret
+
+proc create*(T: type gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new())
+
+proc create*(T: type gen_qurl_types.QUrl,
+    copy: gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new2(copy.h))
+
+proc create*(T: type gen_qurl_types.QUrl,
+    url: string): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new3(struct_miqt_string(data: url, len: csize_t(len(url)))))
+
+proc create*(T: type gen_qurl_types.QUrl,
+    url: string, mode: cint): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQUrl_new4(struct_miqt_string(data: url, len: csize_t(len(url))), cint(mode)))
 
 proc delete*(self: gen_qurl_types.QUrl) =
   fcQUrl_delete(self.h)

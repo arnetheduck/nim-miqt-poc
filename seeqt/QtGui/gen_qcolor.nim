@@ -60,18 +60,6 @@ export
 
 type cQColor*{.exportc: "QColor", incompleteStruct.} = object
 
-proc fcQColor_new(): ptr cQColor {.importc: "QColor_new".}
-proc fcQColor_new2(color: cint): ptr cQColor {.importc: "QColor_new2".}
-proc fcQColor_new3(r: cint, g: cint, b: cint): ptr cQColor {.importc: "QColor_new3".}
-proc fcQColor_new4(rgb: cuint): ptr cQColor {.importc: "QColor_new4".}
-proc fcQColor_new5(rgba64: pointer): ptr cQColor {.importc: "QColor_new5".}
-proc fcQColor_new6(name: struct_miqt_string): ptr cQColor {.importc: "QColor_new6".}
-proc fcQColor_new7(aname: cstring): ptr cQColor {.importc: "QColor_new7".}
-proc fcQColor_new8(spec: cint): ptr cQColor {.importc: "QColor_new8".}
-proc fcQColor_new9(color: pointer): ptr cQColor {.importc: "QColor_new9".}
-proc fcQColor_new10(spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort): ptr cQColor {.importc: "QColor_new10".}
-proc fcQColor_new11(r: cint, g: cint, b: cint, a: cint): ptr cQColor {.importc: "QColor_new11".}
-proc fcQColor_new12(spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort, a5: cushort): ptr cQColor {.importc: "QColor_new12".}
 proc fcQColor_operatorAssign(self: pointer, param1: pointer): void {.importc: "QColor_operatorAssign".}
 proc fcQColor_operatorAssignWithColor(self: pointer, color: cint): void {.importc: "QColor_operatorAssignWithColor".}
 proc fcQColor_isValid(self: pointer, ): bool {.importc: "QColor_isValid".}
@@ -201,48 +189,21 @@ proc fcQColor_light1(self: pointer, f: cint): pointer {.importc: "QColor_light1"
 proc fcQColor_dark1(self: pointer, f: cint): pointer {.importc: "QColor_dark1".}
 proc fcQColor_lighter1(self: pointer, f: cint): pointer {.importc: "QColor_lighter1".}
 proc fcQColor_darker1(self: pointer, f: cint): pointer {.importc: "QColor_darker1".}
+proc fcQColor_new(): ptr cQColor {.importc: "QColor_new".}
+proc fcQColor_new2(color: cint): ptr cQColor {.importc: "QColor_new2".}
+proc fcQColor_new3(r: cint, g: cint, b: cint): ptr cQColor {.importc: "QColor_new3".}
+proc fcQColor_new4(rgb: cuint): ptr cQColor {.importc: "QColor_new4".}
+proc fcQColor_new5(rgba64: pointer): ptr cQColor {.importc: "QColor_new5".}
+proc fcQColor_new6(name: struct_miqt_string): ptr cQColor {.importc: "QColor_new6".}
+proc fcQColor_new7(aname: cstring): ptr cQColor {.importc: "QColor_new7".}
+proc fcQColor_new8(spec: cint): ptr cQColor {.importc: "QColor_new8".}
+proc fcQColor_new9(color: pointer): ptr cQColor {.importc: "QColor_new9".}
+proc fcQColor_new10(spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort): ptr cQColor {.importc: "QColor_new10".}
+proc fcQColor_new11(r: cint, g: cint, b: cint, a: cint): ptr cQColor {.importc: "QColor_new11".}
+proc fcQColor_new12(spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort, a5: cushort): ptr cQColor {.importc: "QColor_new12".}
 proc fcQColor_delete(self: pointer) {.importc: "QColor_delete".}
 
-
-func init*(T: type gen_qcolor_types.QColor, h: ptr cQColor): gen_qcolor_types.QColor =
-  T(h: h)
-proc create*(T: type gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new())
-
-proc create*(T: type gen_qcolor_types.QColor, color: cint): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new2(cint(color)))
-
-proc create*(T: type gen_qcolor_types.QColor, r: cint, g: cint, b: cint): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new3(r, g, b))
-
-proc create*(T: type gen_qcolor_types.QColor, rgb: cuint): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new4(rgb))
-
-proc create*(T: type gen_qcolor_types.QColor, rgba64: QRgba64): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new5(rgba64.h))
-
-proc create*(T: type gen_qcolor_types.QColor, name: string): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new6(struct_miqt_string(data: name, len: csize_t(len(name)))))
-
-proc create*(T: type gen_qcolor_types.QColor, aname: cstring): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new7(aname))
-
-proc create2*(T: type gen_qcolor_types.QColor, spec: cint): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new8(cint(spec)))
-
-proc create*(T: type gen_qcolor_types.QColor, color: QColor): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new9(color.h))
-
-proc create*(T: type gen_qcolor_types.QColor, spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new10(cint(spec), a1, a2, a3, a4))
-
-proc create*(T: type gen_qcolor_types.QColor, r: cint, g: cint, b: cint, a: cint): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new11(r, g, b, a))
-
-proc create*(T: type gen_qcolor_types.QColor, spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort, a5: cushort): gen_qcolor_types.QColor =
-  gen_qcolor_types.QColor.init(fcQColor_new12(cint(spec), a1, a2, a3, a4, a5))
-
-proc operatorAssign*(self: gen_qcolor_types.QColor, param1: QColor): void =
+proc operatorAssign*(self: gen_qcolor_types.QColor, param1: gen_qcolor_types.QColor): void =
   fcQColor_operatorAssign(self.h, param1.h)
 
 proc operatorAssign*(self: gen_qcolor_types.QColor, color: cint): void =
@@ -340,10 +301,10 @@ proc getRgbF*(self: gen_qcolor_types.QColor, r: ptr float64, g: ptr float64, b: 
 proc setRgbF*(self: gen_qcolor_types.QColor, r: float64, g: float64, b: float64): void =
   fcQColor_setRgbF(self.h, r, g, b)
 
-proc rgba64*(self: gen_qcolor_types.QColor, ): QRgba64 =
-  QRgba64(h: fcQColor_rgba64(self.h))
+proc rgba64*(self: gen_qcolor_types.QColor, ): gen_qrgba64_types.QRgba64 =
+  gen_qrgba64_types.QRgba64(h: fcQColor_rgba64(self.h))
 
-proc setRgba64*(self: gen_qcolor_types.QColor, rgba: QRgba64): void =
+proc setRgba64*(self: gen_qcolor_types.QColor, rgba: gen_qrgba64_types.QRgba64): void =
   fcQColor_setRgba64(self.h, rgba.h)
 
 proc rgba*(self: gen_qcolor_types.QColor, ): cuint =
@@ -472,80 +433,80 @@ proc getHslF*(self: gen_qcolor_types.QColor, h: ptr float64, s: ptr float64, l: 
 proc setHslF*(self: gen_qcolor_types.QColor, h: float64, s: float64, l: float64): void =
   fcQColor_setHslF(self.h, h, s, l)
 
-proc toRgb*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_toRgb(self.h))
+proc toRgb*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_toRgb(self.h))
 
-proc toHsv*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_toHsv(self.h))
+proc toHsv*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_toHsv(self.h))
 
-proc toCmyk*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_toCmyk(self.h))
+proc toCmyk*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_toCmyk(self.h))
 
-proc toHsl*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_toHsl(self.h))
+proc toHsl*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_toHsl(self.h))
 
-proc toExtendedRgb*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_toExtendedRgb(self.h))
+proc toExtendedRgb*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_toExtendedRgb(self.h))
 
-proc convertTo*(self: gen_qcolor_types.QColor, colorSpec: cint): QColor =
-  QColor(h: fcQColor_convertTo(self.h, cint(colorSpec)))
+proc convertTo*(self: gen_qcolor_types.QColor, colorSpec: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_convertTo(self.h, cint(colorSpec)))
 
-proc fromRgb*(_: type gen_qcolor_types.QColor, rgb: cuint): QColor =
-  QColor(h: fcQColor_fromRgb(rgb))
+proc fromRgb*(_: type gen_qcolor_types.QColor, rgb: cuint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgb(rgb))
 
-proc fromRgba*(_: type gen_qcolor_types.QColor, rgba: cuint): QColor =
-  QColor(h: fcQColor_fromRgba(rgba))
+proc fromRgba*(_: type gen_qcolor_types.QColor, rgba: cuint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgba(rgba))
 
-proc fromRgb*(_: type gen_qcolor_types.QColor, r: cint, g: cint, b: cint): QColor =
-  QColor(h: fcQColor_fromRgb2(r, g, b))
+proc fromRgb*(_: type gen_qcolor_types.QColor, r: cint, g: cint, b: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgb2(r, g, b))
 
-proc fromRgbF*(_: type gen_qcolor_types.QColor, r: float64, g: float64, b: float64): QColor =
-  QColor(h: fcQColor_fromRgbF(r, g, b))
+proc fromRgbF*(_: type gen_qcolor_types.QColor, r: float64, g: float64, b: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgbF(r, g, b))
 
-proc fromRgba64*(_: type gen_qcolor_types.QColor, r: cushort, g: cushort, b: cushort): QColor =
-  QColor(h: fcQColor_fromRgba64(r, g, b))
+proc fromRgba64*(_: type gen_qcolor_types.QColor, r: cushort, g: cushort, b: cushort): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgba64(r, g, b))
 
-proc fromRgba64*(_: type gen_qcolor_types.QColor, rgba: QRgba64): QColor =
-  QColor(h: fcQColor_fromRgba64WithRgba(rgba.h))
+proc fromRgba64*(_: type gen_qcolor_types.QColor, rgba: gen_qrgba64_types.QRgba64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgba64WithRgba(rgba.h))
 
-proc fromHsv*(_: type gen_qcolor_types.QColor, h: cint, s: cint, v: cint): QColor =
-  QColor(h: fcQColor_fromHsv(h, s, v))
+proc fromHsv*(_: type gen_qcolor_types.QColor, h: cint, s: cint, v: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHsv(h, s, v))
 
-proc fromHsvF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, v: float64): QColor =
-  QColor(h: fcQColor_fromHsvF(h, s, v))
+proc fromHsvF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, v: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHsvF(h, s, v))
 
-proc fromCmyk*(_: type gen_qcolor_types.QColor, c: cint, m: cint, y: cint, k: cint): QColor =
-  QColor(h: fcQColor_fromCmyk(c, m, y, k))
+proc fromCmyk*(_: type gen_qcolor_types.QColor, c: cint, m: cint, y: cint, k: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromCmyk(c, m, y, k))
 
-proc fromCmykF*(_: type gen_qcolor_types.QColor, c: float64, m: float64, y: float64, k: float64): QColor =
-  QColor(h: fcQColor_fromCmykF(c, m, y, k))
+proc fromCmykF*(_: type gen_qcolor_types.QColor, c: float64, m: float64, y: float64, k: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromCmykF(c, m, y, k))
 
-proc fromHsl*(_: type gen_qcolor_types.QColor, h: cint, s: cint, l: cint): QColor =
-  QColor(h: fcQColor_fromHsl(h, s, l))
+proc fromHsl*(_: type gen_qcolor_types.QColor, h: cint, s: cint, l: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHsl(h, s, l))
 
-proc fromHslF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, l: float64): QColor =
-  QColor(h: fcQColor_fromHslF(h, s, l))
+proc fromHslF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, l: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHslF(h, s, l))
 
-proc light*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_light(self.h))
+proc light*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_light(self.h))
 
-proc dark*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_dark(self.h))
+proc dark*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_dark(self.h))
 
-proc lighter*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_lighter(self.h))
+proc lighter*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_lighter(self.h))
 
-proc darker*(self: gen_qcolor_types.QColor, ): QColor =
-  QColor(h: fcQColor_darker(self.h))
+proc darker*(self: gen_qcolor_types.QColor, ): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_darker(self.h))
 
-proc operatorEqual*(self: gen_qcolor_types.QColor, c: QColor): bool =
+proc operatorEqual*(self: gen_qcolor_types.QColor, c: gen_qcolor_types.QColor): bool =
   fcQColor_operatorEqual(self.h, c.h)
 
-proc operatorNotEqual*(self: gen_qcolor_types.QColor, c: QColor): bool =
+proc operatorNotEqual*(self: gen_qcolor_types.QColor, c: gen_qcolor_types.QColor): bool =
   fcQColor_operatorNotEqual(self.h, c.h)
 
-proc ToQVariant*(self: gen_qcolor_types.QColor, ): QVariant =
-  QVariant(h: fcQColor_ToQVariant(self.h))
+proc ToQVariant*(self: gen_qcolor_types.QColor, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQColor_ToQVariant(self.h))
 
 proc isValidColor*(_: type gen_qcolor_types.QColor, name: string): bool =
   fcQColor_isValidColor(struct_miqt_string(data: name, len: csize_t(len(name))))
@@ -604,44 +565,91 @@ proc getHslF*(self: gen_qcolor_types.QColor, h: ptr float64, s: ptr float64, l: 
 proc setHslF*(self: gen_qcolor_types.QColor, h: float64, s: float64, l: float64, a: float64): void =
   fcQColor_setHslF4(self.h, h, s, l, a)
 
-proc fromRgb*(_: type gen_qcolor_types.QColor, r: cint, g: cint, b: cint, a: cint): QColor =
-  QColor(h: fcQColor_fromRgb4(r, g, b, a))
+proc fromRgb*(_: type gen_qcolor_types.QColor, r: cint, g: cint, b: cint, a: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgb4(r, g, b, a))
 
-proc fromRgbF*(_: type gen_qcolor_types.QColor, r: float64, g: float64, b: float64, a: float64): QColor =
-  QColor(h: fcQColor_fromRgbF4(r, g, b, a))
+proc fromRgbF*(_: type gen_qcolor_types.QColor, r: float64, g: float64, b: float64, a: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgbF4(r, g, b, a))
 
-proc fromRgba64*(_: type gen_qcolor_types.QColor, r: cushort, g: cushort, b: cushort, a: cushort): QColor =
-  QColor(h: fcQColor_fromRgba644(r, g, b, a))
+proc fromRgba64*(_: type gen_qcolor_types.QColor, r: cushort, g: cushort, b: cushort, a: cushort): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromRgba644(r, g, b, a))
 
-proc fromHsv*(_: type gen_qcolor_types.QColor, h: cint, s: cint, v: cint, a: cint): QColor =
-  QColor(h: fcQColor_fromHsv4(h, s, v, a))
+proc fromHsv*(_: type gen_qcolor_types.QColor, h: cint, s: cint, v: cint, a: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHsv4(h, s, v, a))
 
-proc fromHsvF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, v: float64, a: float64): QColor =
-  QColor(h: fcQColor_fromHsvF4(h, s, v, a))
+proc fromHsvF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, v: float64, a: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHsvF4(h, s, v, a))
 
-proc fromCmyk*(_: type gen_qcolor_types.QColor, c: cint, m: cint, y: cint, k: cint, a: cint): QColor =
-  QColor(h: fcQColor_fromCmyk5(c, m, y, k, a))
+proc fromCmyk*(_: type gen_qcolor_types.QColor, c: cint, m: cint, y: cint, k: cint, a: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromCmyk5(c, m, y, k, a))
 
-proc fromCmykF*(_: type gen_qcolor_types.QColor, c: float64, m: float64, y: float64, k: float64, a: float64): QColor =
-  QColor(h: fcQColor_fromCmykF5(c, m, y, k, a))
+proc fromCmykF*(_: type gen_qcolor_types.QColor, c: float64, m: float64, y: float64, k: float64, a: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromCmykF5(c, m, y, k, a))
 
-proc fromHsl*(_: type gen_qcolor_types.QColor, h: cint, s: cint, l: cint, a: cint): QColor =
-  QColor(h: fcQColor_fromHsl4(h, s, l, a))
+proc fromHsl*(_: type gen_qcolor_types.QColor, h: cint, s: cint, l: cint, a: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHsl4(h, s, l, a))
 
-proc fromHslF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, l: float64, a: float64): QColor =
-  QColor(h: fcQColor_fromHslF4(h, s, l, a))
+proc fromHslF*(_: type gen_qcolor_types.QColor, h: float64, s: float64, l: float64, a: float64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_fromHslF4(h, s, l, a))
 
-proc light*(self: gen_qcolor_types.QColor, f: cint): QColor =
-  QColor(h: fcQColor_light1(self.h, f))
+proc light*(self: gen_qcolor_types.QColor, f: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_light1(self.h, f))
 
-proc dark*(self: gen_qcolor_types.QColor, f: cint): QColor =
-  QColor(h: fcQColor_dark1(self.h, f))
+proc dark*(self: gen_qcolor_types.QColor, f: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_dark1(self.h, f))
 
-proc lighter*(self: gen_qcolor_types.QColor, f: cint): QColor =
-  QColor(h: fcQColor_lighter1(self.h, f))
+proc lighter*(self: gen_qcolor_types.QColor, f: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_lighter1(self.h, f))
 
-proc darker*(self: gen_qcolor_types.QColor, f: cint): QColor =
-  QColor(h: fcQColor_darker1(self.h, f))
+proc darker*(self: gen_qcolor_types.QColor, f: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_darker1(self.h, f))
+
+proc create*(T: type gen_qcolor_types.QColor): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new())
+
+proc create*(T: type gen_qcolor_types.QColor,
+    color: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new2(cint(color)))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    r: cint, g: cint, b: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new3(r, g, b))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    rgb: cuint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new4(rgb))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    rgba64: gen_qrgba64_types.QRgba64): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new5(rgba64.h))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    name: string): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new6(struct_miqt_string(data: name, len: csize_t(len(name)))))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    aname: cstring): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new7(aname))
+
+proc create2*(T: type gen_qcolor_types.QColor,
+    spec: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new8(cint(spec)))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    color: gen_qcolor_types.QColor): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new9(color.h))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new10(cint(spec), a1, a2, a3, a4))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    r: cint, g: cint, b: cint, a: cint): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new11(r, g, b, a))
+
+proc create*(T: type gen_qcolor_types.QColor,
+    spec: cint, a1: cushort, a2: cushort, a3: cushort, a4: cushort, a5: cushort): gen_qcolor_types.QColor =
+  gen_qcolor_types.QColor(h: fcQColor_new12(cint(spec), a1, a2, a3, a4, a5))
 
 proc delete*(self: gen_qcolor_types.QColor) =
   fcQColor_delete(self.h)

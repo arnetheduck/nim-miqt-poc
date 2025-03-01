@@ -14,6 +14,6 @@ type QMediaServiceFeaturesInterface* {.inheritable, pure.} = object
   h*: pointer
 import ../QtCore/gen_qobject_types
 export gen_qobject_types
-# TODO Multiple inheritance from QMediaServiceProviderFactoryInterface
-type QMediaServiceProviderPlugin*  = object of gen_qobject_types.QObject
 
+# TODO Multiple inheritance from QMediaServiceProviderFactoryInterface
+type QMediaServiceProviderPlugin* = object of gen_qobject_types.QObject

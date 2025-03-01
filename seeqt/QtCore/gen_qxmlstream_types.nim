@@ -14,4 +14,3 @@ type QXmlStreamReader* {.inheritable, pure.} = object
   h*: pointer
 type QXmlStreamWriter* {.inheritable, pure.} = object
   h*: pointer
-

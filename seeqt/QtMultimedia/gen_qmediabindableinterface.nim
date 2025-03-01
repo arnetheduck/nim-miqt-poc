@@ -47,11 +47,8 @@ type cQMediaBindableInterface*{.exportc: "QMediaBindableInterface", incompleteSt
 proc fcQMediaBindableInterface_mediaObject(self: pointer, ): pointer {.importc: "QMediaBindableInterface_mediaObject".}
 proc fcQMediaBindableInterface_delete(self: pointer) {.importc: "QMediaBindableInterface_delete".}
 
-
-func init*(T: type gen_qmediabindableinterface_types.QMediaBindableInterface, h: ptr cQMediaBindableInterface): gen_qmediabindableinterface_types.QMediaBindableInterface =
-  T(h: h)
-proc mediaObject*(self: gen_qmediabindableinterface_types.QMediaBindableInterface, ): QMediaObject =
-  QMediaObject(h: fcQMediaBindableInterface_mediaObject(self.h))
+proc mediaObject*(self: gen_qmediabindableinterface_types.QMediaBindableInterface, ): gen_qmediaobject_types.QMediaObject =
+  gen_qmediaobject_types.QMediaObject(h: fcQMediaBindableInterface_mediaObject(self.h))
 
 proc delete*(self: gen_qmediabindableinterface_types.QMediaBindableInterface) =
   fcQMediaBindableInterface_delete(self.h)
