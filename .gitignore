@@ -52,3 +52,6 @@ deployment-settings.json
 
 # IDE / LSP files
 compile_flags.txt
+/examples/helloworld/main
+/examples/helloworld6/main
+main

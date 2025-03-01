@@ -234,6 +234,7 @@ func (p CppParameter) Void() bool {
 type CppProperty struct {
 	PropertyName string
 	PropertyType string
+	IsStatic     bool
 	Visibility   string
 }
 
@@ -438,9 +439,6 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		if m.IsSignal {
 			continue
 		}
-		if !AllowVirtual(m) {
-			continue
-		}
 
 		ret = append(ret, m)
 		retNames[m.CppCallTarget()] = struct{}{}
@@ -547,7 +545,6 @@ func (c *CppClass) ProtectedMethods() []CppMethod {
 	}
 
 	for _, cinfo := range c.AllInheritsClassInfo() {
-
 		for _, m := range cinfo.Class.Methods {
 			if !m.IsProtected {
 				continue

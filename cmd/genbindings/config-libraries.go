@@ -11,8 +11,10 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	InsertTypedefs(false)
 
 	{
+		qtDir := filepath.Join(outDir, "qt-5.15")
 		seeqtDir := filepath.Join(outDir, "qt-5.15", "seeqt")
 		os.RemoveAll(seeqtDir)
+		writeNimbleFile(qtDir, "5.15")
 
 		// TODO more modules
 		libs5 := []string{
@@ -21,7 +23,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 
 			// https://doc.qt.io/qt-5/qtmodules.html#qt-add-ons
 			"PrintSupport", "Script", "Svg", "WebChannel",
-			"WebEngineCore", "WebEngine", "WebEngineWidgets",
+			"WebEngineCore",
 
 			// TODO Not sure where these are from :)
 			"WebKit", "WebKitWidgets"}
@@ -69,8 +71,11 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 
 	// Qt 6
 	{
+		qtDir := filepath.Join(outDir, "qt-6.4")
+
 		seeqtDir := filepath.Join(outDir, "qt-6.4", "seeqt")
 		os.RemoveAll(seeqtDir)
+		writeNimbleFile(qtDir, "6.4")
 
 		libs6 := []string{
 			"Core", "Gui", "Widgets", "Multimedia", "MultimediaWidgets", "Network", "Qml", "Quick",
