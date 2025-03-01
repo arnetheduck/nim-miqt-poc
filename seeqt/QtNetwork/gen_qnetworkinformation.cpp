@@ -13,10 +13,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QNetworkInformation_reachabilityChanged(intptr_t, int);
-void miqt_exec_callback_QNetworkInformation_isBehindCaptivePortalChanged(intptr_t, bool);
-void miqt_exec_callback_QNetworkInformation_transportMediumChanged(intptr_t, int);
-void miqt_exec_callback_QNetworkInformation_isMeteredChanged(intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -126,46 +122,82 @@ void QNetworkInformation_reachabilityChanged(QNetworkInformation* self, int newR
 	self->reachabilityChanged(static_cast<QNetworkInformation::Reachability>(newReachability));
 }
 
-void QNetworkInformation_connect_reachabilityChanged(QNetworkInformation* self, intptr_t slot) {
-	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(QNetworkInformation::Reachability)>(&QNetworkInformation::reachabilityChanged), self, [=](QNetworkInformation::Reachability newReachability) {
-		QNetworkInformation::Reachability newReachability_ret = newReachability;
-		int sigval1 = static_cast<int>(newReachability_ret);
-		miqt_exec_callback_QNetworkInformation_reachabilityChanged(slot, sigval1);
-	});
+void QNetworkInformation_connect_reachabilityChanged(QNetworkInformation* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(QNetworkInformation::Reachability newReachability) {
+			QNetworkInformation::Reachability newReachability_ret = newReachability;
+			int sigval1 = static_cast<int>(newReachability_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(QNetworkInformation::Reachability)>(&QNetworkInformation::reachabilityChanged), self, caller{slot, callback, release});
 }
 
 void QNetworkInformation_isBehindCaptivePortalChanged(QNetworkInformation* self, bool state) {
 	self->isBehindCaptivePortalChanged(state);
 }
 
-void QNetworkInformation_connect_isBehindCaptivePortalChanged(QNetworkInformation* self, intptr_t slot) {
-	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(bool)>(&QNetworkInformation::isBehindCaptivePortalChanged), self, [=](bool state) {
-		bool sigval1 = state;
-		miqt_exec_callback_QNetworkInformation_isBehindCaptivePortalChanged(slot, sigval1);
-	});
+void QNetworkInformation_connect_isBehindCaptivePortalChanged(QNetworkInformation* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool state) {
+			bool sigval1 = state;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(bool)>(&QNetworkInformation::isBehindCaptivePortalChanged), self, caller{slot, callback, release});
 }
 
 void QNetworkInformation_transportMediumChanged(QNetworkInformation* self, int current) {
 	self->transportMediumChanged(static_cast<QNetworkInformation::TransportMedium>(current));
 }
 
-void QNetworkInformation_connect_transportMediumChanged(QNetworkInformation* self, intptr_t slot) {
-	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(QNetworkInformation::TransportMedium)>(&QNetworkInformation::transportMediumChanged), self, [=](QNetworkInformation::TransportMedium current) {
-		QNetworkInformation::TransportMedium current_ret = current;
-		int sigval1 = static_cast<int>(current_ret);
-		miqt_exec_callback_QNetworkInformation_transportMediumChanged(slot, sigval1);
-	});
+void QNetworkInformation_connect_transportMediumChanged(QNetworkInformation* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(QNetworkInformation::TransportMedium current) {
+			QNetworkInformation::TransportMedium current_ret = current;
+			int sigval1 = static_cast<int>(current_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(QNetworkInformation::TransportMedium)>(&QNetworkInformation::transportMediumChanged), self, caller{slot, callback, release});
 }
 
 void QNetworkInformation_isMeteredChanged(QNetworkInformation* self, bool isMetered) {
 	self->isMeteredChanged(isMetered);
 }
 
-void QNetworkInformation_connect_isMeteredChanged(QNetworkInformation* self, intptr_t slot) {
-	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(bool)>(&QNetworkInformation::isMeteredChanged), self, [=](bool isMetered) {
-		bool sigval1 = isMetered;
-		miqt_exec_callback_QNetworkInformation_isMeteredChanged(slot, sigval1);
-	});
+void QNetworkInformation_connect_isMeteredChanged(QNetworkInformation* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool isMetered) {
+			bool sigval1 = isMetered;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QNetworkInformation::connect(self, static_cast<void (QNetworkInformation::*)(bool)>(&QNetworkInformation::isMeteredChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QNetworkInformation_tr2(const char* s, const char* c) {

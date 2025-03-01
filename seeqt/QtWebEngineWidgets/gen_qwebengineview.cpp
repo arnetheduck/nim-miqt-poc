@@ -54,18 +54,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWebEngineView_loadStarted(intptr_t);
-void miqt_exec_callback_QWebEngineView_loadProgress(intptr_t, int);
-void miqt_exec_callback_QWebEngineView_loadFinished(intptr_t, bool);
-void miqt_exec_callback_QWebEngineView_titleChanged(intptr_t, struct miqt_string);
-void miqt_exec_callback_QWebEngineView_selectionChanged(intptr_t);
-void miqt_exec_callback_QWebEngineView_urlChanged(intptr_t, QUrl*);
-void miqt_exec_callback_QWebEngineView_iconUrlChanged(intptr_t, QUrl*);
-void miqt_exec_callback_QWebEngineView_iconChanged(intptr_t, QIcon*);
-void miqt_exec_callback_QWebEngineView_renderProcessTerminated(intptr_t, int, int);
-void miqt_exec_callback_QWebEngineView_pdfPrintingFinished(intptr_t, struct miqt_string, bool);
-void miqt_exec_callback_QWebEngineView_printRequested(intptr_t);
-void miqt_exec_callback_QWebEngineView_printFinished(intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1057,32 +1045,59 @@ void QWebEngineView_loadStarted(QWebEngineView* self) {
 	self->loadStarted();
 }
 
-void QWebEngineView_connect_loadStarted(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)()>(&QWebEngineView::loadStarted), self, [=]() {
-		miqt_exec_callback_QWebEngineView_loadStarted(slot);
-	});
+void QWebEngineView_connect_loadStarted(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)()>(&QWebEngineView::loadStarted), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_loadProgress(QWebEngineView* self, int progress) {
 	self->loadProgress(static_cast<int>(progress));
 }
 
-void QWebEngineView_connect_loadProgress(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(int)>(&QWebEngineView::loadProgress), self, [=](int progress) {
-		int sigval1 = progress;
-		miqt_exec_callback_QWebEngineView_loadProgress(slot, sigval1);
-	});
+void QWebEngineView_connect_loadProgress(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int progress) {
+			int sigval1 = progress;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(int)>(&QWebEngineView::loadProgress), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_loadFinished(QWebEngineView* self, bool param1) {
 	self->loadFinished(param1);
 }
 
-void QWebEngineView_connect_loadFinished(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(bool)>(&QWebEngineView::loadFinished), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QWebEngineView_loadFinished(slot, sigval1);
-	});
+void QWebEngineView_connect_loadFinished(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(bool)>(&QWebEngineView::loadFinished), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_titleChanged(QWebEngineView* self, struct miqt_string title) {
@@ -1090,80 +1105,134 @@ void QWebEngineView_titleChanged(QWebEngineView* self, struct miqt_string title)
 	self->titleChanged(title_QString);
 }
 
-void QWebEngineView_connect_titleChanged(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QString&)>(&QWebEngineView::titleChanged), self, [=](const QString& title) {
-		const QString title_ret = title;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray title_b = title_ret.toUtf8();
-		struct miqt_string title_ms;
-		title_ms.len = title_b.length();
-		title_ms.data = static_cast<char*>(malloc(title_ms.len));
-		memcpy(title_ms.data, title_b.data(), title_ms.len);
-		struct miqt_string sigval1 = title_ms;
-		miqt_exec_callback_QWebEngineView_titleChanged(slot, sigval1);
-	});
+void QWebEngineView_connect_titleChanged(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, struct miqt_string), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, struct miqt_string);
+		seeqt::release_callback release;
+		void operator()(const QString& title) {
+			const QString title_ret = title;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray title_b = title_ret.toUtf8();
+			struct miqt_string title_ms;
+			title_ms.len = title_b.length();
+			title_ms.data = static_cast<char*>(malloc(title_ms.len));
+			memcpy(title_ms.data, title_b.data(), title_ms.len);
+			struct miqt_string sigval1 = title_ms;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QString&)>(&QWebEngineView::titleChanged), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_selectionChanged(QWebEngineView* self) {
 	self->selectionChanged();
 }
 
-void QWebEngineView_connect_selectionChanged(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)()>(&QWebEngineView::selectionChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineView_selectionChanged(slot);
-	});
+void QWebEngineView_connect_selectionChanged(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)()>(&QWebEngineView::selectionChanged), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_urlChanged(QWebEngineView* self, QUrl* param1) {
 	self->urlChanged(*param1);
 }
 
-void QWebEngineView_connect_urlChanged(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QUrl&)>(&QWebEngineView::urlChanged), self, [=](const QUrl& param1) {
-		const QUrl& param1_ret = param1;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
-		miqt_exec_callback_QWebEngineView_urlChanged(slot, sigval1);
-	});
+void QWebEngineView_connect_urlChanged(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, QUrl*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QUrl*);
+		seeqt::release_callback release;
+		void operator()(const QUrl& param1) {
+			const QUrl& param1_ret = param1;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QUrl&)>(&QWebEngineView::urlChanged), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_iconUrlChanged(QWebEngineView* self, QUrl* param1) {
 	self->iconUrlChanged(*param1);
 }
 
-void QWebEngineView_connect_iconUrlChanged(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QUrl&)>(&QWebEngineView::iconUrlChanged), self, [=](const QUrl& param1) {
-		const QUrl& param1_ret = param1;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
-		miqt_exec_callback_QWebEngineView_iconUrlChanged(slot, sigval1);
-	});
+void QWebEngineView_connect_iconUrlChanged(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, QUrl*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QUrl*);
+		seeqt::release_callback release;
+		void operator()(const QUrl& param1) {
+			const QUrl& param1_ret = param1;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QUrl&)>(&QWebEngineView::iconUrlChanged), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_iconChanged(QWebEngineView* self, QIcon* param1) {
 	self->iconChanged(*param1);
 }
 
-void QWebEngineView_connect_iconChanged(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QIcon&)>(&QWebEngineView::iconChanged), self, [=](const QIcon& param1) {
-		const QIcon& param1_ret = param1;
-		// Cast returned reference into pointer
-		QIcon* sigval1 = const_cast<QIcon*>(&param1_ret);
-		miqt_exec_callback_QWebEngineView_iconChanged(slot, sigval1);
-	});
+void QWebEngineView_connect_iconChanged(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, QIcon*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QIcon*);
+		seeqt::release_callback release;
+		void operator()(const QIcon& param1) {
+			const QIcon& param1_ret = param1;
+			// Cast returned reference into pointer
+			QIcon* sigval1 = const_cast<QIcon*>(&param1_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QIcon&)>(&QWebEngineView::iconChanged), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_renderProcessTerminated(QWebEngineView* self, int terminationStatus, int exitCode) {
 	self->renderProcessTerminated(static_cast<QWebEnginePage::RenderProcessTerminationStatus>(terminationStatus), static_cast<int>(exitCode));
 }
 
-void QWebEngineView_connect_renderProcessTerminated(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(QWebEnginePage::RenderProcessTerminationStatus, int)>(&QWebEngineView::renderProcessTerminated), self, [=](QWebEnginePage::RenderProcessTerminationStatus terminationStatus, int exitCode) {
-		QWebEnginePage::RenderProcessTerminationStatus terminationStatus_ret = terminationStatus;
-		int sigval1 = static_cast<int>(terminationStatus_ret);
-		int sigval2 = exitCode;
-		miqt_exec_callback_QWebEngineView_renderProcessTerminated(slot, sigval1, sigval2);
-	});
+void QWebEngineView_connect_renderProcessTerminated(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, int, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int, int);
+		seeqt::release_callback release;
+		void operator()(QWebEnginePage::RenderProcessTerminationStatus terminationStatus, int exitCode) {
+			QWebEnginePage::RenderProcessTerminationStatus terminationStatus_ret = terminationStatus;
+			int sigval1 = static_cast<int>(terminationStatus_ret);
+			int sigval2 = exitCode;
+			callback(slot, sigval1, sigval2);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(QWebEnginePage::RenderProcessTerminationStatus, int)>(&QWebEngineView::renderProcessTerminated), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_pdfPrintingFinished(QWebEngineView* self, struct miqt_string filePath, bool success) {
@@ -1171,40 +1240,67 @@ void QWebEngineView_pdfPrintingFinished(QWebEngineView* self, struct miqt_string
 	self->pdfPrintingFinished(filePath_QString, success);
 }
 
-void QWebEngineView_connect_pdfPrintingFinished(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QString&, bool)>(&QWebEngineView::pdfPrintingFinished), self, [=](const QString& filePath, bool success) {
-		const QString filePath_ret = filePath;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray filePath_b = filePath_ret.toUtf8();
-		struct miqt_string filePath_ms;
-		filePath_ms.len = filePath_b.length();
-		filePath_ms.data = static_cast<char*>(malloc(filePath_ms.len));
-		memcpy(filePath_ms.data, filePath_b.data(), filePath_ms.len);
-		struct miqt_string sigval1 = filePath_ms;
-		bool sigval2 = success;
-		miqt_exec_callback_QWebEngineView_pdfPrintingFinished(slot, sigval1, sigval2);
-	});
+void QWebEngineView_connect_pdfPrintingFinished(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, struct miqt_string, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, struct miqt_string, bool);
+		seeqt::release_callback release;
+		void operator()(const QString& filePath, bool success) {
+			const QString filePath_ret = filePath;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray filePath_b = filePath_ret.toUtf8();
+			struct miqt_string filePath_ms;
+			filePath_ms.len = filePath_b.length();
+			filePath_ms.data = static_cast<char*>(malloc(filePath_ms.len));
+			memcpy(filePath_ms.data, filePath_b.data(), filePath_ms.len);
+			struct miqt_string sigval1 = filePath_ms;
+			bool sigval2 = success;
+			callback(slot, sigval1, sigval2);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(const QString&, bool)>(&QWebEngineView::pdfPrintingFinished), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_printRequested(QWebEngineView* self) {
 	self->printRequested();
 }
 
-void QWebEngineView_connect_printRequested(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)()>(&QWebEngineView::printRequested), self, [=]() {
-		miqt_exec_callback_QWebEngineView_printRequested(slot);
-	});
+void QWebEngineView_connect_printRequested(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)()>(&QWebEngineView::printRequested), self, caller{slot, callback, release});
 }
 
 void QWebEngineView_printFinished(QWebEngineView* self, bool success) {
 	self->printFinished(success);
 }
 
-void QWebEngineView_connect_printFinished(QWebEngineView* self, intptr_t slot) {
-	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(bool)>(&QWebEngineView::printFinished), self, [=](bool success) {
-		bool sigval1 = success;
-		miqt_exec_callback_QWebEngineView_printFinished(slot, sigval1);
-	});
+void QWebEngineView_connect_printFinished(QWebEngineView* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool success) {
+			bool sigval1 = success;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWebEngineView::connect(self, static_cast<void (QWebEngineView::*)(bool)>(&QWebEngineView::printFinished), self, caller{slot, callback, release});
 }
 
 struct miqt_string QWebEngineView_tr2(const char* s, const char* c) {

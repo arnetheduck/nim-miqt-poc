@@ -94,9 +94,9 @@ proc fcQMenu_setSeparatorsCollapsible(self: pointer, collapse: bool): void {.imp
 proc fcQMenu_toolTipsVisible(self: pointer, ): bool {.importc: "QMenu_toolTipsVisible".}
 proc fcQMenu_setToolTipsVisible(self: pointer, visible: bool): void {.importc: "QMenu_setToolTipsVisible".}
 proc fcQMenu_aboutToShow(self: pointer, ): void {.importc: "QMenu_aboutToShow".}
-proc fcQMenu_connect_aboutToShow(self: pointer, slot: int) {.importc: "QMenu_connect_aboutToShow".}
+proc fcQMenu_connect_aboutToShow(self: pointer, slot: int, callback: proc (slot: int) {.cdecl.}, release: proc(slot: int) {.cdecl.}) {.importc: "QMenu_connect_aboutToShow".}
 proc fcQMenu_aboutToHide(self: pointer, ): void {.importc: "QMenu_aboutToHide".}
-proc fcQMenu_connect_aboutToHide(self: pointer, slot: int) {.importc: "QMenu_connect_aboutToHide".}
+proc fcQMenu_connect_aboutToHide(self: pointer, slot: int, callback: proc (slot: int) {.cdecl.}, release: proc(slot: int) {.cdecl.}) {.importc: "QMenu_connect_aboutToHide".}
 proc fcQMenu_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QMenu_tr2".}
 proc fcQMenu_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMenu_tr3".}
 type cQMenuVTable = object
@@ -293,29 +293,37 @@ proc aboutToShow*(self: gen_qmenu_types.QMenu, ): void =
   fcQMenu_aboutToShow(self.h)
 
 type QMenuaboutToShowSlot* = proc()
-proc miqt_exec_callback_cQMenu_aboutToShow(slot: int) {.exportc: "miqt_exec_callback_QMenu_aboutToShow".} =
+proc miqt_exec_callback_cQMenu_aboutToShow(slot: int) {.cdecl.} =
   let nimfunc = cast[ptr QMenuaboutToShowSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMenu_aboutToShow_release(slot: int) {.cdecl.} =
+  let nimfunc = cast[ref QMenuaboutToShowSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaboutToShow*(self: gen_qmenu_types.QMenu, slot: QMenuaboutToShowSlot) =
   var tmp = new QMenuaboutToShowSlot
   tmp[] = slot
   GC_ref(tmp)
-  fcQMenu_connect_aboutToShow(self.h, cast[int](addr tmp[]))
+  fcQMenu_connect_aboutToShow(self.h, cast[int](addr tmp[]), miqt_exec_callback_cQMenu_aboutToShow, miqt_exec_callback_cQMenu_aboutToShow_release)
 
 proc aboutToHide*(self: gen_qmenu_types.QMenu, ): void =
   fcQMenu_aboutToHide(self.h)
 
 type QMenuaboutToHideSlot* = proc()
-proc miqt_exec_callback_cQMenu_aboutToHide(slot: int) {.exportc: "miqt_exec_callback_QMenu_aboutToHide".} =
+proc miqt_exec_callback_cQMenu_aboutToHide(slot: int) {.cdecl.} =
   let nimfunc = cast[ptr QMenuaboutToHideSlot](cast[pointer](slot))
   nimfunc[]()
+
+proc miqt_exec_callback_cQMenu_aboutToHide_release(slot: int) {.cdecl.} =
+  let nimfunc = cast[ref QMenuaboutToHideSlot](cast[pointer](slot))
+  GC_unref(nimfunc)
 
 proc onaboutToHide*(self: gen_qmenu_types.QMenu, slot: QMenuaboutToHideSlot) =
   var tmp = new QMenuaboutToHideSlot
   tmp[] = slot
   GC_ref(tmp)
-  fcQMenu_connect_aboutToHide(self.h, cast[int](addr tmp[]))
+  fcQMenu_connect_aboutToHide(self.h, cast[int](addr tmp[]), miqt_exec_callback_cQMenu_aboutToHide, miqt_exec_callback_cQMenu_aboutToHide_release)
 
 proc tr*(_: type gen_qmenu_types.QMenu, s: cstring, c: cstring): string =
   let v_ms = fcQMenu_tr2(s, c)

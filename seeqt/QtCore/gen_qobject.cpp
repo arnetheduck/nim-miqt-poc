@@ -23,8 +23,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QObject_destroyed(intptr_t);
-void miqt_exec_callback_QObject_destroyed1(intptr_t, QObject*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -387,10 +385,19 @@ void QObject_destroyed(QObject* self) {
 	self->destroyed();
 }
 
-void QObject_connect_destroyed(QObject* self, intptr_t slot) {
-	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=]() {
-		miqt_exec_callback_QObject_destroyed(slot);
-	});
+void QObject_connect_destroyed(QObject* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, caller{slot, callback, release});
 }
 
 QObject* QObject_parent(const QObject* self) {
@@ -443,11 +450,20 @@ void QObject_destroyed1(QObject* self, QObject* param1) {
 	self->destroyed(param1);
 }
 
-void QObject_connect_destroyed1(QObject* self, intptr_t slot) {
-	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=](QObject* param1) {
-		QObject* sigval1 = param1;
-		miqt_exec_callback_QObject_destroyed1(slot, sigval1);
-	});
+void QObject_connect_destroyed1(QObject* self, intptr_t slot, void (*callback)(intptr_t, QObject*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QObject*);
+		seeqt::release_callback release;
+		void operator()(QObject* param1) {
+			QObject* sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, caller{slot, callback, release});
 }
 
 QMetaObject* QObject_virtualbase_metaObject(const void* self) {

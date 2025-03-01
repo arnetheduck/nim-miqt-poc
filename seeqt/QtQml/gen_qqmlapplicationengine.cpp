@@ -22,8 +22,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QQmlApplicationEngine_objectCreated(intptr_t, QObject*, QUrl*);
-void miqt_exec_callback_QQmlApplicationEngine_objectCreationFailed(intptr_t, QUrl*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -311,27 +309,45 @@ void QQmlApplicationEngine_objectCreated(QQmlApplicationEngine* self, QObject* o
 	self->objectCreated(object, *url);
 }
 
-void QQmlApplicationEngine_connect_objectCreated(QQmlApplicationEngine* self, intptr_t slot) {
-	MiqtVirtualQQmlApplicationEngine::connect(self, static_cast<void (QQmlApplicationEngine::*)(QObject*, const QUrl&)>(&QQmlApplicationEngine::objectCreated), self, [=](QObject* object, const QUrl& url) {
-		QObject* sigval1 = object;
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QQmlApplicationEngine_objectCreated(slot, sigval1, sigval2);
-	});
+void QQmlApplicationEngine_connect_objectCreated(QQmlApplicationEngine* self, intptr_t slot, void (*callback)(intptr_t, QObject*, QUrl*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QObject*, QUrl*);
+		seeqt::release_callback release;
+		void operator()(QObject* object, const QUrl& url) {
+			QObject* sigval1 = object;
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
+			callback(slot, sigval1, sigval2);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQQmlApplicationEngine::connect(self, static_cast<void (QQmlApplicationEngine::*)(QObject*, const QUrl&)>(&QQmlApplicationEngine::objectCreated), self, caller{slot, callback, release});
 }
 
 void QQmlApplicationEngine_objectCreationFailed(QQmlApplicationEngine* self, QUrl* url) {
 	self->objectCreationFailed(*url);
 }
 
-void QQmlApplicationEngine_connect_objectCreationFailed(QQmlApplicationEngine* self, intptr_t slot) {
-	MiqtVirtualQQmlApplicationEngine::connect(self, static_cast<void (QQmlApplicationEngine::*)(const QUrl&)>(&QQmlApplicationEngine::objectCreationFailed), self, [=](const QUrl& url) {
-		const QUrl& url_ret = url;
-		// Cast returned reference into pointer
-		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
-		miqt_exec_callback_QQmlApplicationEngine_objectCreationFailed(slot, sigval1);
-	});
+void QQmlApplicationEngine_connect_objectCreationFailed(QQmlApplicationEngine* self, intptr_t slot, void (*callback)(intptr_t, QUrl*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QUrl*);
+		seeqt::release_callback release;
+		void operator()(const QUrl& url) {
+			const QUrl& url_ret = url;
+			// Cast returned reference into pointer
+			QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQQmlApplicationEngine::connect(self, static_cast<void (QQmlApplicationEngine::*)(const QUrl&)>(&QQmlApplicationEngine::objectCreationFailed), self, caller{slot, callback, release});
 }
 
 struct miqt_string QQmlApplicationEngine_tr2(const char* s, const char* c) {

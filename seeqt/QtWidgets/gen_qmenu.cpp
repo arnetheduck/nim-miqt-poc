@@ -43,8 +43,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMenu_aboutToShow(intptr_t);
-void miqt_exec_callback_QMenu_aboutToHide(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -977,20 +975,38 @@ void QMenu_aboutToShow(QMenu* self) {
 	self->aboutToShow();
 }
 
-void QMenu_connect_aboutToShow(QMenu* self, intptr_t slot) {
-	MiqtVirtualQMenu::connect(self, static_cast<void (QMenu::*)()>(&QMenu::aboutToShow), self, [=]() {
-		miqt_exec_callback_QMenu_aboutToShow(slot);
-	});
+void QMenu_connect_aboutToShow(QMenu* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMenu::connect(self, static_cast<void (QMenu::*)()>(&QMenu::aboutToShow), self, caller{slot, callback, release});
 }
 
 void QMenu_aboutToHide(QMenu* self) {
 	self->aboutToHide();
 }
 
-void QMenu_connect_aboutToHide(QMenu* self, intptr_t slot) {
-	MiqtVirtualQMenu::connect(self, static_cast<void (QMenu::*)()>(&QMenu::aboutToHide), self, [=]() {
-		miqt_exec_callback_QMenu_aboutToHide(slot);
-	});
+void QMenu_connect_aboutToHide(QMenu* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMenu::connect(self, static_cast<void (QMenu::*)()>(&QMenu::aboutToHide), self, caller{slot, callback, release});
 }
 
 struct miqt_string QMenu_tr2(const char* s, const char* c) {

@@ -57,8 +57,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QTreeView_expanded(intptr_t, QModelIndex*);
-void miqt_exec_callback_QTreeView_collapsed(intptr_t, QModelIndex*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1894,26 +1892,44 @@ void QTreeView_expanded(QTreeView* self, QModelIndex* index) {
 	self->expanded(*index);
 }
 
-void QTreeView_connect_expanded(QTreeView* self, intptr_t slot) {
-	MiqtVirtualQTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::expanded), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		miqt_exec_callback_QTreeView_expanded(slot, sigval1);
-	});
+void QTreeView_connect_expanded(QTreeView* self, intptr_t slot, void (*callback)(intptr_t, QModelIndex*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QModelIndex*);
+		seeqt::release_callback release;
+		void operator()(const QModelIndex& index) {
+			const QModelIndex& index_ret = index;
+			// Cast returned reference into pointer
+			QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::expanded), self, caller{slot, callback, release});
 }
 
 void QTreeView_collapsed(QTreeView* self, QModelIndex* index) {
 	self->collapsed(*index);
 }
 
-void QTreeView_connect_collapsed(QTreeView* self, intptr_t slot) {
-	MiqtVirtualQTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::collapsed), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		miqt_exec_callback_QTreeView_collapsed(slot, sigval1);
-	});
+void QTreeView_connect_collapsed(QTreeView* self, intptr_t slot, void (*callback)(intptr_t, QModelIndex*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QModelIndex*);
+		seeqt::release_callback release;
+		void operator()(const QModelIndex& index) {
+			const QModelIndex& index_ret = index;
+			// Cast returned reference into pointer
+			QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::collapsed), self, caller{slot, callback, release});
 }
 
 void QTreeView_hideColumn(QTreeView* self, int column) {

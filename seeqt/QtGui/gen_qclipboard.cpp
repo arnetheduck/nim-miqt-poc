@@ -15,10 +15,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QClipboard_changed(intptr_t, int);
-void miqt_exec_callback_QClipboard_selectionChanged(intptr_t);
-void miqt_exec_callback_QClipboard_findBufferChanged(intptr_t);
-void miqt_exec_callback_QClipboard_dataChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -130,42 +126,78 @@ void QClipboard_changed(QClipboard* self, int mode) {
 	self->changed(static_cast<QClipboard::Mode>(mode));
 }
 
-void QClipboard_connect_changed(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)(QClipboard::Mode)>(&QClipboard::changed), self, [=](QClipboard::Mode mode) {
-		QClipboard::Mode mode_ret = mode;
-		int sigval1 = static_cast<int>(mode_ret);
-		miqt_exec_callback_QClipboard_changed(slot, sigval1);
-	});
+void QClipboard_connect_changed(QClipboard* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(QClipboard::Mode mode) {
+			QClipboard::Mode mode_ret = mode;
+			int sigval1 = static_cast<int>(mode_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)(QClipboard::Mode)>(&QClipboard::changed), self, caller{slot, callback, release});
 }
 
 void QClipboard_selectionChanged(QClipboard* self) {
 	self->selectionChanged();
 }
 
-void QClipboard_connect_selectionChanged(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::selectionChanged), self, [=]() {
-		miqt_exec_callback_QClipboard_selectionChanged(slot);
-	});
+void QClipboard_connect_selectionChanged(QClipboard* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::selectionChanged), self, caller{slot, callback, release});
 }
 
 void QClipboard_findBufferChanged(QClipboard* self) {
 	self->findBufferChanged();
 }
 
-void QClipboard_connect_findBufferChanged(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::findBufferChanged), self, [=]() {
-		miqt_exec_callback_QClipboard_findBufferChanged(slot);
-	});
+void QClipboard_connect_findBufferChanged(QClipboard* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::findBufferChanged), self, caller{slot, callback, release});
 }
 
 void QClipboard_dataChanged(QClipboard* self) {
 	self->dataChanged();
 }
 
-void QClipboard_connect_dataChanged(QClipboard* self, intptr_t slot) {
-	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::dataChanged), self, [=]() {
-		miqt_exec_callback_QClipboard_dataChanged(slot);
-	});
+void QClipboard_connect_dataChanged(QClipboard* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::dataChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QClipboard_tr2(const char* s, const char* c) {

@@ -46,7 +46,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QProgressDialog_canceled(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1072,10 +1071,19 @@ void QProgressDialog_canceled(QProgressDialog* self) {
 	self->canceled();
 }
 
-void QProgressDialog_connect_canceled(QProgressDialog* self, intptr_t slot) {
-	MiqtVirtualQProgressDialog::connect(self, static_cast<void (QProgressDialog::*)()>(&QProgressDialog::canceled), self, [=]() {
-		miqt_exec_callback_QProgressDialog_canceled(slot);
-	});
+void QProgressDialog_connect_canceled(QProgressDialog* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQProgressDialog::connect(self, static_cast<void (QProgressDialog::*)()>(&QProgressDialog::canceled), self, caller{slot, callback, release});
 }
 
 struct miqt_string QProgressDialog_tr2(const char* s, const char* c) {

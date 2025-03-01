@@ -47,12 +47,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWizard_currentIdChanged(intptr_t, int);
-void miqt_exec_callback_QWizard_helpRequested(intptr_t);
-void miqt_exec_callback_QWizard_customButtonClicked(intptr_t, int);
-void miqt_exec_callback_QWizard_pageAdded(intptr_t, int);
-void miqt_exec_callback_QWizard_pageRemoved(intptr_t, int);
-void miqt_exec_callback_QWizardPage_completeChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1199,54 +1193,99 @@ void QWizard_currentIdChanged(QWizard* self, int id) {
 	self->currentIdChanged(static_cast<int>(id));
 }
 
-void QWizard_connect_currentIdChanged(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::currentIdChanged), self, [=](int id) {
-		int sigval1 = id;
-		miqt_exec_callback_QWizard_currentIdChanged(slot, sigval1);
-	});
+void QWizard_connect_currentIdChanged(QWizard* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int id) {
+			int sigval1 = id;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::currentIdChanged), self, caller{slot, callback, release});
 }
 
 void QWizard_helpRequested(QWizard* self) {
 	self->helpRequested();
 }
 
-void QWizard_connect_helpRequested(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)()>(&QWizard::helpRequested), self, [=]() {
-		miqt_exec_callback_QWizard_helpRequested(slot);
-	});
+void QWizard_connect_helpRequested(QWizard* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)()>(&QWizard::helpRequested), self, caller{slot, callback, release});
 }
 
 void QWizard_customButtonClicked(QWizard* self, int which) {
 	self->customButtonClicked(static_cast<int>(which));
 }
 
-void QWizard_connect_customButtonClicked(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::customButtonClicked), self, [=](int which) {
-		int sigval1 = which;
-		miqt_exec_callback_QWizard_customButtonClicked(slot, sigval1);
-	});
+void QWizard_connect_customButtonClicked(QWizard* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int which) {
+			int sigval1 = which;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::customButtonClicked), self, caller{slot, callback, release});
 }
 
 void QWizard_pageAdded(QWizard* self, int id) {
 	self->pageAdded(static_cast<int>(id));
 }
 
-void QWizard_connect_pageAdded(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageAdded), self, [=](int id) {
-		int sigval1 = id;
-		miqt_exec_callback_QWizard_pageAdded(slot, sigval1);
-	});
+void QWizard_connect_pageAdded(QWizard* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int id) {
+			int sigval1 = id;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageAdded), self, caller{slot, callback, release});
 }
 
 void QWizard_pageRemoved(QWizard* self, int id) {
 	self->pageRemoved(static_cast<int>(id));
 }
 
-void QWizard_connect_pageRemoved(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageRemoved), self, [=](int id) {
-		int sigval1 = id;
-		miqt_exec_callback_QWizard_pageRemoved(slot, sigval1);
-	});
+void QWizard_connect_pageRemoved(QWizard* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int id) {
+			int sigval1 = id;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageRemoved), self, caller{slot, callback, release});
 }
 
 void QWizard_back(QWizard* self) {
@@ -2770,10 +2809,19 @@ void QWizardPage_completeChanged(QWizardPage* self) {
 	self->completeChanged();
 }
 
-void QWizardPage_connect_completeChanged(QWizardPage* self, intptr_t slot) {
-	MiqtVirtualQWizardPage::connect(self, static_cast<void (QWizardPage::*)()>(&QWizardPage::completeChanged), self, [=]() {
-		miqt_exec_callback_QWizardPage_completeChanged(slot);
-	});
+void QWizardPage_connect_completeChanged(QWizardPage* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQWizardPage::connect(self, static_cast<void (QWizardPage::*)()>(&QWizardPage::completeChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QWizardPage_tr2(const char* s, const char* c) {

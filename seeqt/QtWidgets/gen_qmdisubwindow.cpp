@@ -44,8 +44,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMdiSubWindow_windowStateChanged(intptr_t, int, int);
-void miqt_exec_callback_QMdiSubWindow_aboutToActivate(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -940,24 +938,42 @@ void QMdiSubWindow_windowStateChanged(QMdiSubWindow* self, int oldState, int new
 	self->windowStateChanged(static_cast<Qt::WindowStates>(oldState), static_cast<Qt::WindowStates>(newState));
 }
 
-void QMdiSubWindow_connect_windowStateChanged(QMdiSubWindow* self, intptr_t slot) {
-	MiqtVirtualQMdiSubWindow::connect(self, static_cast<void (QMdiSubWindow::*)(Qt::WindowStates, Qt::WindowStates)>(&QMdiSubWindow::windowStateChanged), self, [=](Qt::WindowStates oldState, Qt::WindowStates newState) {
-		Qt::WindowStates oldState_ret = oldState;
-		int sigval1 = static_cast<int>(oldState_ret);
-		Qt::WindowStates newState_ret = newState;
-		int sigval2 = static_cast<int>(newState_ret);
-		miqt_exec_callback_QMdiSubWindow_windowStateChanged(slot, sigval1, sigval2);
-	});
+void QMdiSubWindow_connect_windowStateChanged(QMdiSubWindow* self, intptr_t slot, void (*callback)(intptr_t, int, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int, int);
+		seeqt::release_callback release;
+		void operator()(Qt::WindowStates oldState, Qt::WindowStates newState) {
+			Qt::WindowStates oldState_ret = oldState;
+			int sigval1 = static_cast<int>(oldState_ret);
+			Qt::WindowStates newState_ret = newState;
+			int sigval2 = static_cast<int>(newState_ret);
+			callback(slot, sigval1, sigval2);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMdiSubWindow::connect(self, static_cast<void (QMdiSubWindow::*)(Qt::WindowStates, Qt::WindowStates)>(&QMdiSubWindow::windowStateChanged), self, caller{slot, callback, release});
 }
 
 void QMdiSubWindow_aboutToActivate(QMdiSubWindow* self) {
 	self->aboutToActivate();
 }
 
-void QMdiSubWindow_connect_aboutToActivate(QMdiSubWindow* self, intptr_t slot) {
-	MiqtVirtualQMdiSubWindow::connect(self, static_cast<void (QMdiSubWindow::*)()>(&QMdiSubWindow::aboutToActivate), self, [=]() {
-		miqt_exec_callback_QMdiSubWindow_aboutToActivate(slot);
-	});
+void QMdiSubWindow_connect_aboutToActivate(QMdiSubWindow* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMdiSubWindow::connect(self, static_cast<void (QMdiSubWindow::*)()>(&QMdiSubWindow::aboutToActivate), self, caller{slot, callback, release});
 }
 
 void QMdiSubWindow_showSystemMenu(QMdiSubWindow* self) {

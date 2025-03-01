@@ -16,11 +16,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAudioEngine_outputModeChanged(intptr_t);
-void miqt_exec_callback_QAudioEngine_outputDeviceChanged(intptr_t);
-void miqt_exec_callback_QAudioEngine_masterVolumeChanged(intptr_t);
-void miqt_exec_callback_QAudioEngine_pausedChanged(intptr_t);
-void miqt_exec_callback_QAudioEngine_distanceScaleChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -300,50 +295,95 @@ void QAudioEngine_outputModeChanged(QAudioEngine* self) {
 	self->outputModeChanged();
 }
 
-void QAudioEngine_connect_outputModeChanged(QAudioEngine* self, intptr_t slot) {
-	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputModeChanged), self, [=]() {
-		miqt_exec_callback_QAudioEngine_outputModeChanged(slot);
-	});
+void QAudioEngine_connect_outputModeChanged(QAudioEngine* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputModeChanged), self, caller{slot, callback, release});
 }
 
 void QAudioEngine_outputDeviceChanged(QAudioEngine* self) {
 	self->outputDeviceChanged();
 }
 
-void QAudioEngine_connect_outputDeviceChanged(QAudioEngine* self, intptr_t slot) {
-	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputDeviceChanged), self, [=]() {
-		miqt_exec_callback_QAudioEngine_outputDeviceChanged(slot);
-	});
+void QAudioEngine_connect_outputDeviceChanged(QAudioEngine* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputDeviceChanged), self, caller{slot, callback, release});
 }
 
 void QAudioEngine_masterVolumeChanged(QAudioEngine* self) {
 	self->masterVolumeChanged();
 }
 
-void QAudioEngine_connect_masterVolumeChanged(QAudioEngine* self, intptr_t slot) {
-	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::masterVolumeChanged), self, [=]() {
-		miqt_exec_callback_QAudioEngine_masterVolumeChanged(slot);
-	});
+void QAudioEngine_connect_masterVolumeChanged(QAudioEngine* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::masterVolumeChanged), self, caller{slot, callback, release});
 }
 
 void QAudioEngine_pausedChanged(QAudioEngine* self) {
 	self->pausedChanged();
 }
 
-void QAudioEngine_connect_pausedChanged(QAudioEngine* self, intptr_t slot) {
-	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::pausedChanged), self, [=]() {
-		miqt_exec_callback_QAudioEngine_pausedChanged(slot);
-	});
+void QAudioEngine_connect_pausedChanged(QAudioEngine* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::pausedChanged), self, caller{slot, callback, release});
 }
 
 void QAudioEngine_distanceScaleChanged(QAudioEngine* self) {
 	self->distanceScaleChanged();
 }
 
-void QAudioEngine_connect_distanceScaleChanged(QAudioEngine* self, intptr_t slot) {
-	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::distanceScaleChanged), self, [=]() {
-		miqt_exec_callback_QAudioEngine_distanceScaleChanged(slot);
-	});
+void QAudioEngine_connect_distanceScaleChanged(QAudioEngine* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::distanceScaleChanged), self, caller{slot, callback, release});
 }
 
 void QAudioEngine_start(QAudioEngine* self) {

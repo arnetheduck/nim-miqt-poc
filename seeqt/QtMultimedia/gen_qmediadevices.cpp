@@ -18,9 +18,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMediaDevices_audioInputsChanged(intptr_t);
-void miqt_exec_callback_QMediaDevices_audioOutputsChanged(intptr_t);
-void miqt_exec_callback_QMediaDevices_videoInputsChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -288,30 +285,57 @@ void QMediaDevices_audioInputsChanged(QMediaDevices* self) {
 	self->audioInputsChanged();
 }
 
-void QMediaDevices_connect_audioInputsChanged(QMediaDevices* self, intptr_t slot) {
-	MiqtVirtualQMediaDevices::connect(self, static_cast<void (QMediaDevices::*)()>(&QMediaDevices::audioInputsChanged), self, [=]() {
-		miqt_exec_callback_QMediaDevices_audioInputsChanged(slot);
-	});
+void QMediaDevices_connect_audioInputsChanged(QMediaDevices* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMediaDevices::connect(self, static_cast<void (QMediaDevices::*)()>(&QMediaDevices::audioInputsChanged), self, caller{slot, callback, release});
 }
 
 void QMediaDevices_audioOutputsChanged(QMediaDevices* self) {
 	self->audioOutputsChanged();
 }
 
-void QMediaDevices_connect_audioOutputsChanged(QMediaDevices* self, intptr_t slot) {
-	MiqtVirtualQMediaDevices::connect(self, static_cast<void (QMediaDevices::*)()>(&QMediaDevices::audioOutputsChanged), self, [=]() {
-		miqt_exec_callback_QMediaDevices_audioOutputsChanged(slot);
-	});
+void QMediaDevices_connect_audioOutputsChanged(QMediaDevices* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMediaDevices::connect(self, static_cast<void (QMediaDevices::*)()>(&QMediaDevices::audioOutputsChanged), self, caller{slot, callback, release});
 }
 
 void QMediaDevices_videoInputsChanged(QMediaDevices* self) {
 	self->videoInputsChanged();
 }
 
-void QMediaDevices_connect_videoInputsChanged(QMediaDevices* self, intptr_t slot) {
-	MiqtVirtualQMediaDevices::connect(self, static_cast<void (QMediaDevices::*)()>(&QMediaDevices::videoInputsChanged), self, [=]() {
-		miqt_exec_callback_QMediaDevices_videoInputsChanged(slot);
-	});
+void QMediaDevices_connect_videoInputsChanged(QMediaDevices* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMediaDevices::connect(self, static_cast<void (QMediaDevices::*)()>(&QMediaDevices::videoInputsChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QMediaDevices_tr2(const char* s, const char* c) {

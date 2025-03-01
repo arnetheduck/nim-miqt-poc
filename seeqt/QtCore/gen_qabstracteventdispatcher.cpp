@@ -18,8 +18,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAbstractEventDispatcher_aboutToBlock(intptr_t);
-void miqt_exec_callback_QAbstractEventDispatcher_awake(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -133,20 +131,38 @@ void QAbstractEventDispatcher_aboutToBlock(QAbstractEventDispatcher* self) {
 	self->aboutToBlock();
 }
 
-void QAbstractEventDispatcher_connect_aboutToBlock(QAbstractEventDispatcher* self, intptr_t slot) {
-	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::aboutToBlock), self, [=]() {
-		miqt_exec_callback_QAbstractEventDispatcher_aboutToBlock(slot);
-	});
+void QAbstractEventDispatcher_connect_aboutToBlock(QAbstractEventDispatcher* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::aboutToBlock), self, caller{slot, callback, release});
 }
 
 void QAbstractEventDispatcher_awake(QAbstractEventDispatcher* self) {
 	self->awake();
 }
 
-void QAbstractEventDispatcher_connect_awake(QAbstractEventDispatcher* self, intptr_t slot) {
-	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::awake), self, [=]() {
-		miqt_exec_callback_QAbstractEventDispatcher_awake(slot);
-	});
+void QAbstractEventDispatcher_connect_awake(QAbstractEventDispatcher* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::awake), self, caller{slot, callback, release});
 }
 
 struct miqt_string QAbstractEventDispatcher_tr2(const char* s, const char* c) {

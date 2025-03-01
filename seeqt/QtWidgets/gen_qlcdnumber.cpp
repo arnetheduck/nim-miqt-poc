@@ -44,7 +44,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QLCDNumber_overflow(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -979,10 +978,19 @@ void QLCDNumber_overflow(QLCDNumber* self) {
 	self->overflow();
 }
 
-void QLCDNumber_connect_overflow(QLCDNumber* self, intptr_t slot) {
-	MiqtVirtualQLCDNumber::connect(self, static_cast<void (QLCDNumber::*)()>(&QLCDNumber::overflow), self, [=]() {
-		miqt_exec_callback_QLCDNumber_overflow(slot);
-	});
+void QLCDNumber_connect_overflow(QLCDNumber* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQLCDNumber::connect(self, static_cast<void (QLCDNumber::*)()>(&QLCDNumber::overflow), self, caller{slot, callback, release});
 }
 
 struct miqt_string QLCDNumber_tr2(const char* s, const char* c) {

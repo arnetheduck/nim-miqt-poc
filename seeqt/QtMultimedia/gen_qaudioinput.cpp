@@ -16,9 +16,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAudioInput_deviceChanged(intptr_t);
-void miqt_exec_callback_QAudioInput_volumeChanged(intptr_t, float);
-void miqt_exec_callback_QAudioInput_mutedChanged(intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -269,32 +266,59 @@ void QAudioInput_deviceChanged(QAudioInput* self) {
 	self->deviceChanged();
 }
 
-void QAudioInput_connect_deviceChanged(QAudioInput* self, intptr_t slot) {
-	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)()>(&QAudioInput::deviceChanged), self, [=]() {
-		miqt_exec_callback_QAudioInput_deviceChanged(slot);
-	});
+void QAudioInput_connect_deviceChanged(QAudioInput* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)()>(&QAudioInput::deviceChanged), self, caller{slot, callback, release});
 }
 
 void QAudioInput_volumeChanged(QAudioInput* self, float volume) {
 	self->volumeChanged(static_cast<float>(volume));
 }
 
-void QAudioInput_connect_volumeChanged(QAudioInput* self, intptr_t slot) {
-	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)(float)>(&QAudioInput::volumeChanged), self, [=](float volume) {
-		float sigval1 = volume;
-		miqt_exec_callback_QAudioInput_volumeChanged(slot, sigval1);
-	});
+void QAudioInput_connect_volumeChanged(QAudioInput* self, intptr_t slot, void (*callback)(intptr_t, float), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, float);
+		seeqt::release_callback release;
+		void operator()(float volume) {
+			float sigval1 = volume;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)(float)>(&QAudioInput::volumeChanged), self, caller{slot, callback, release});
 }
 
 void QAudioInput_mutedChanged(QAudioInput* self, bool muted) {
 	self->mutedChanged(muted);
 }
 
-void QAudioInput_connect_mutedChanged(QAudioInput* self, intptr_t slot) {
-	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)(bool)>(&QAudioInput::mutedChanged), self, [=](bool muted) {
-		bool sigval1 = muted;
-		miqt_exec_callback_QAudioInput_mutedChanged(slot, sigval1);
-	});
+void QAudioInput_connect_mutedChanged(QAudioInput* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool muted) {
+			bool sigval1 = muted;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)(bool)>(&QAudioInput::mutedChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QAudioInput_tr2(const char* s, const char* c) {

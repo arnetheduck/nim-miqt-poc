@@ -47,10 +47,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCalendarWidget_selectionChanged(intptr_t);
-void miqt_exec_callback_QCalendarWidget_clicked(intptr_t, QDate*);
-void miqt_exec_callback_QCalendarWidget_activated(intptr_t, QDate*);
-void miqt_exec_callback_QCalendarWidget_currentPageChanged(intptr_t, int, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1087,44 +1083,80 @@ void QCalendarWidget_selectionChanged(QCalendarWidget* self) {
 	self->selectionChanged();
 }
 
-void QCalendarWidget_connect_selectionChanged(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)()>(&QCalendarWidget::selectionChanged), self, [=]() {
-		miqt_exec_callback_QCalendarWidget_selectionChanged(slot);
-	});
+void QCalendarWidget_connect_selectionChanged(QCalendarWidget* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)()>(&QCalendarWidget::selectionChanged), self, caller{slot, callback, release});
 }
 
 void QCalendarWidget_clicked(QCalendarWidget* self, QDate* date) {
 	self->clicked(*date);
 }
 
-void QCalendarWidget_connect_clicked(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::clicked), self, [=](QDate date) {
-		QDate* sigval1 = new QDate(date);
-		miqt_exec_callback_QCalendarWidget_clicked(slot, sigval1);
-	});
+void QCalendarWidget_connect_clicked(QCalendarWidget* self, intptr_t slot, void (*callback)(intptr_t, QDate*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QDate*);
+		seeqt::release_callback release;
+		void operator()(QDate date) {
+			QDate* sigval1 = new QDate(date);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::clicked), self, caller{slot, callback, release});
 }
 
 void QCalendarWidget_activated(QCalendarWidget* self, QDate* date) {
 	self->activated(*date);
 }
 
-void QCalendarWidget_connect_activated(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::activated), self, [=](QDate date) {
-		QDate* sigval1 = new QDate(date);
-		miqt_exec_callback_QCalendarWidget_activated(slot, sigval1);
-	});
+void QCalendarWidget_connect_activated(QCalendarWidget* self, intptr_t slot, void (*callback)(intptr_t, QDate*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QDate*);
+		seeqt::release_callback release;
+		void operator()(QDate date) {
+			QDate* sigval1 = new QDate(date);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::activated), self, caller{slot, callback, release});
 }
 
 void QCalendarWidget_currentPageChanged(QCalendarWidget* self, int year, int month) {
 	self->currentPageChanged(static_cast<int>(year), static_cast<int>(month));
 }
 
-void QCalendarWidget_connect_currentPageChanged(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(int, int)>(&QCalendarWidget::currentPageChanged), self, [=](int year, int month) {
-		int sigval1 = year;
-		int sigval2 = month;
-		miqt_exec_callback_QCalendarWidget_currentPageChanged(slot, sigval1, sigval2);
-	});
+void QCalendarWidget_connect_currentPageChanged(QCalendarWidget* self, intptr_t slot, void (*callback)(intptr_t, int, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int, int);
+		seeqt::release_callback release;
+		void operator()(int year, int month) {
+			int sigval1 = year;
+			int sigval2 = month;
+			callback(slot, sigval1, sigval2);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(int, int)>(&QCalendarWidget::currentPageChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QCalendarWidget_tr2(const char* s, const char* c) {

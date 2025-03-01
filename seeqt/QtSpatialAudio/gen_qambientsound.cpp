@@ -17,10 +17,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAmbientSound_sourceChanged(intptr_t);
-void miqt_exec_callback_QAmbientSound_loopsChanged(intptr_t);
-void miqt_exec_callback_QAmbientSound_autoPlayChanged(intptr_t);
-void miqt_exec_callback_QAmbientSound_volumeChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -268,40 +264,76 @@ void QAmbientSound_sourceChanged(QAmbientSound* self) {
 	self->sourceChanged();
 }
 
-void QAmbientSound_connect_sourceChanged(QAmbientSound* self, intptr_t slot) {
-	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::sourceChanged), self, [=]() {
-		miqt_exec_callback_QAmbientSound_sourceChanged(slot);
-	});
+void QAmbientSound_connect_sourceChanged(QAmbientSound* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::sourceChanged), self, caller{slot, callback, release});
 }
 
 void QAmbientSound_loopsChanged(QAmbientSound* self) {
 	self->loopsChanged();
 }
 
-void QAmbientSound_connect_loopsChanged(QAmbientSound* self, intptr_t slot) {
-	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::loopsChanged), self, [=]() {
-		miqt_exec_callback_QAmbientSound_loopsChanged(slot);
-	});
+void QAmbientSound_connect_loopsChanged(QAmbientSound* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::loopsChanged), self, caller{slot, callback, release});
 }
 
 void QAmbientSound_autoPlayChanged(QAmbientSound* self) {
 	self->autoPlayChanged();
 }
 
-void QAmbientSound_connect_autoPlayChanged(QAmbientSound* self, intptr_t slot) {
-	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::autoPlayChanged), self, [=]() {
-		miqt_exec_callback_QAmbientSound_autoPlayChanged(slot);
-	});
+void QAmbientSound_connect_autoPlayChanged(QAmbientSound* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::autoPlayChanged), self, caller{slot, callback, release});
 }
 
 void QAmbientSound_volumeChanged(QAmbientSound* self) {
 	self->volumeChanged();
 }
 
-void QAmbientSound_connect_volumeChanged(QAmbientSound* self, intptr_t slot) {
-	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::volumeChanged), self, [=]() {
-		miqt_exec_callback_QAmbientSound_volumeChanged(slot);
-	});
+void QAmbientSound_connect_volumeChanged(QAmbientSound* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAmbientSound::connect(self, static_cast<void (QAmbientSound::*)()>(&QAmbientSound::volumeChanged), self, caller{slot, callback, release});
 }
 
 void QAmbientSound_play(QAmbientSound* self) {

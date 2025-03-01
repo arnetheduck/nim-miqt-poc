@@ -17,7 +17,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(intptr_t, QRect*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -340,11 +339,20 @@ void QInputDevice_availableVirtualGeometryChanged(QInputDevice* self, QRect* are
 	self->availableVirtualGeometryChanged(*area);
 }
 
-void QInputDevice_connect_availableVirtualGeometryChanged(QInputDevice* self, intptr_t slot) {
-	MiqtVirtualQInputDevice::connect(self, static_cast<void (QInputDevice::*)(QRect)>(&QInputDevice::availableVirtualGeometryChanged), self, [=](QRect area) {
-		QRect* sigval1 = new QRect(area);
-		miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(slot, sigval1);
-	});
+void QInputDevice_connect_availableVirtualGeometryChanged(QInputDevice* self, intptr_t slot, void (*callback)(intptr_t, QRect*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QRect*);
+		seeqt::release_callback release;
+		void operator()(QRect area) {
+			QRect* sigval1 = new QRect(area);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQInputDevice::connect(self, static_cast<void (QInputDevice::*)(QRect)>(&QInputDevice::availableVirtualGeometryChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QInputDevice_tr2(const char* s, const char* c) {

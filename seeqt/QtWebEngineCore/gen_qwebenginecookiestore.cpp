@@ -15,8 +15,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWebEngineCookieStore_cookieAdded(intptr_t, QNetworkCookie*);
-void miqt_exec_callback_QWebEngineCookieStore_cookieRemoved(intptr_t, QNetworkCookie*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -72,26 +70,44 @@ void QWebEngineCookieStore_cookieAdded(QWebEngineCookieStore* self, QNetworkCook
 	self->cookieAdded(*cookie);
 }
 
-void QWebEngineCookieStore_connect_cookieAdded(QWebEngineCookieStore* self, intptr_t slot) {
-	QWebEngineCookieStore::connect(self, static_cast<void (QWebEngineCookieStore::*)(const QNetworkCookie&)>(&QWebEngineCookieStore::cookieAdded), self, [=](const QNetworkCookie& cookie) {
-		const QNetworkCookie& cookie_ret = cookie;
-		// Cast returned reference into pointer
-		QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
-		miqt_exec_callback_QWebEngineCookieStore_cookieAdded(slot, sigval1);
-	});
+void QWebEngineCookieStore_connect_cookieAdded(QWebEngineCookieStore* self, intptr_t slot, void (*callback)(intptr_t, QNetworkCookie*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QNetworkCookie*);
+		seeqt::release_callback release;
+		void operator()(const QNetworkCookie& cookie) {
+			const QNetworkCookie& cookie_ret = cookie;
+			// Cast returned reference into pointer
+			QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QWebEngineCookieStore::connect(self, static_cast<void (QWebEngineCookieStore::*)(const QNetworkCookie&)>(&QWebEngineCookieStore::cookieAdded), self, caller{slot, callback, release});
 }
 
 void QWebEngineCookieStore_cookieRemoved(QWebEngineCookieStore* self, QNetworkCookie* cookie) {
 	self->cookieRemoved(*cookie);
 }
 
-void QWebEngineCookieStore_connect_cookieRemoved(QWebEngineCookieStore* self, intptr_t slot) {
-	QWebEngineCookieStore::connect(self, static_cast<void (QWebEngineCookieStore::*)(const QNetworkCookie&)>(&QWebEngineCookieStore::cookieRemoved), self, [=](const QNetworkCookie& cookie) {
-		const QNetworkCookie& cookie_ret = cookie;
-		// Cast returned reference into pointer
-		QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
-		miqt_exec_callback_QWebEngineCookieStore_cookieRemoved(slot, sigval1);
-	});
+void QWebEngineCookieStore_connect_cookieRemoved(QWebEngineCookieStore* self, intptr_t slot, void (*callback)(intptr_t, QNetworkCookie*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QNetworkCookie*);
+		seeqt::release_callback release;
+		void operator()(const QNetworkCookie& cookie) {
+			const QNetworkCookie& cookie_ret = cookie;
+			// Cast returned reference into pointer
+			QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QWebEngineCookieStore::connect(self, static_cast<void (QWebEngineCookieStore::*)(const QNetworkCookie&)>(&QWebEngineCookieStore::cookieRemoved), self, caller{slot, callback, release});
 }
 
 struct miqt_string QWebEngineCookieStore_tr2(const char* s, const char* c) {

@@ -46,7 +46,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QFontComboBox_currentFontChanged(intptr_t, QFont*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -999,13 +998,22 @@ void QFontComboBox_currentFontChanged(QFontComboBox* self, QFont* f) {
 	self->currentFontChanged(*f);
 }
 
-void QFontComboBox_connect_currentFontChanged(QFontComboBox* self, intptr_t slot) {
-	MiqtVirtualQFontComboBox::connect(self, static_cast<void (QFontComboBox::*)(const QFont&)>(&QFontComboBox::currentFontChanged), self, [=](const QFont& f) {
-		const QFont& f_ret = f;
-		// Cast returned reference into pointer
-		QFont* sigval1 = const_cast<QFont*>(&f_ret);
-		miqt_exec_callback_QFontComboBox_currentFontChanged(slot, sigval1);
-	});
+void QFontComboBox_connect_currentFontChanged(QFontComboBox* self, intptr_t slot, void (*callback)(intptr_t, QFont*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QFont*);
+		seeqt::release_callback release;
+		void operator()(const QFont& f) {
+			const QFont& f_ret = f;
+			// Cast returned reference into pointer
+			QFont* sigval1 = const_cast<QFont*>(&f_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQFontComboBox::connect(self, static_cast<void (QFontComboBox::*)(const QFont&)>(&QFontComboBox::currentFontChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QFontComboBox_tr2(const char* s, const char* c) {

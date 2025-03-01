@@ -49,7 +49,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMdiArea_subWindowActivated(intptr_t, QMdiSubWindow*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1066,11 +1065,20 @@ void QMdiArea_subWindowActivated(QMdiArea* self, QMdiSubWindow* param1) {
 	self->subWindowActivated(param1);
 }
 
-void QMdiArea_connect_subWindowActivated(QMdiArea* self, intptr_t slot) {
-	MiqtVirtualQMdiArea::connect(self, static_cast<void (QMdiArea::*)(QMdiSubWindow*)>(&QMdiArea::subWindowActivated), self, [=](QMdiSubWindow* param1) {
-		QMdiSubWindow* sigval1 = param1;
-		miqt_exec_callback_QMdiArea_subWindowActivated(slot, sigval1);
-	});
+void QMdiArea_connect_subWindowActivated(QMdiArea* self, intptr_t slot, void (*callback)(intptr_t, QMdiSubWindow*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QMdiSubWindow*);
+		seeqt::release_callback release;
+		void operator()(QMdiSubWindow* param1) {
+			QMdiSubWindow* sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMdiArea::connect(self, static_cast<void (QMdiArea::*)(QMdiSubWindow*)>(&QMdiArea::subWindowActivated), self, caller{slot, callback, release});
 }
 
 void QMdiArea_setActiveSubWindow(QMdiArea* self, QMdiSubWindow* window) {

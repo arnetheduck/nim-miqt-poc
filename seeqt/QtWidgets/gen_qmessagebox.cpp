@@ -48,7 +48,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMessageBox_buttonClicked(intptr_t, QAbstractButton*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1311,11 +1310,20 @@ void QMessageBox_buttonClicked(QMessageBox* self, QAbstractButton* button) {
 	self->buttonClicked(button);
 }
 
-void QMessageBox_connect_buttonClicked(QMessageBox* self, intptr_t slot) {
-	MiqtVirtualQMessageBox::connect(self, static_cast<void (QMessageBox::*)(QAbstractButton*)>(&QMessageBox::buttonClicked), self, [=](QAbstractButton* button) {
-		QAbstractButton* sigval1 = button;
-		miqt_exec_callback_QMessageBox_buttonClicked(slot, sigval1);
-	});
+void QMessageBox_connect_buttonClicked(QMessageBox* self, intptr_t slot, void (*callback)(intptr_t, QAbstractButton*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QAbstractButton*);
+		seeqt::release_callback release;
+		void operator()(QAbstractButton* button) {
+			QAbstractButton* sigval1 = button;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQMessageBox::connect(self, static_cast<void (QMessageBox::*)(QAbstractButton*)>(&QMessageBox::buttonClicked), self, caller{slot, callback, release});
 }
 
 struct miqt_string QMessageBox_tr2(const char* s, const char* c) {
