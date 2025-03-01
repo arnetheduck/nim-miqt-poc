@@ -185,9 +185,9 @@ public:
 	friend bool QGraphicsGridLayout_virtualbase_isEmpty(const void* self);
 
 	// Wrappers to allow calling protected methods:
-	friend void QGraphicsGridLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
-	friend void QGraphicsGridLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
-	friend void QGraphicsGridLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+	friend void QGraphicsGridLayout_protectedbase_addChildLayoutItem(void* self, QGraphicsLayoutItem* layoutItem);
+	friend void QGraphicsGridLayout_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item);
+	friend void QGraphicsGridLayout_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout);
 };
 
 QGraphicsGridLayout* QGraphicsGridLayout_new(struct QGraphicsGridLayout_VTable* vtbl) {
@@ -463,40 +463,22 @@ bool QGraphicsGridLayout_virtualbase_isEmpty(const void* self) {
 
 }
 
-void QGraphicsGridLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {
-	MiqtVirtualQGraphicsGridLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsGridLayout*>( (QGraphicsGridLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsGridLayout_protectedbase_addChildLayoutItem(void* self, QGraphicsLayoutItem* layoutItem) {
+	MiqtVirtualQGraphicsGridLayout* self_cast = static_cast<MiqtVirtualQGraphicsGridLayout*>( (QGraphicsGridLayout*)(self) );
 	
 	self_cast->addChildLayoutItem(layoutItem);
 
 }
 
-void QGraphicsGridLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {
-	MiqtVirtualQGraphicsGridLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsGridLayout*>( (QGraphicsGridLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsGridLayout_protectedbase_setGraphicsItem(void* self, QGraphicsItem* item) {
+	MiqtVirtualQGraphicsGridLayout* self_cast = static_cast<MiqtVirtualQGraphicsGridLayout*>( (QGraphicsGridLayout*)(self) );
 	
 	self_cast->setGraphicsItem(item);
 
 }
 
-void QGraphicsGridLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout) {
-	MiqtVirtualQGraphicsGridLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsGridLayout*>( (QGraphicsGridLayout*)(self) );
-	if (self_cast == nullptr) {
-		*_dynamic_cast_ok = false;
-		return ;
-	}
-	
-	*_dynamic_cast_ok = true;
+void QGraphicsGridLayout_protectedbase_setOwnedByLayout(void* self, bool ownedByLayout) {
+	MiqtVirtualQGraphicsGridLayout* self_cast = static_cast<MiqtVirtualQGraphicsGridLayout*>( (QGraphicsGridLayout*)(self) );
 	
 	self_cast->setOwnedByLayout(ownedByLayout);
 
