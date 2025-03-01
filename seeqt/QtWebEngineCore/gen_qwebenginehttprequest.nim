@@ -128,6 +128,7 @@ proc headers*(self: gen_qwebenginehttprequest_types.QWebEngineHttpRequest, ): se
     var vx_lvx_ret = @(toOpenArrayByte(vx_lv_bytearray.data, 0, int(vx_lv_bytearray.len)-1))
     c_free(vx_lv_bytearray.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc header*(self: gen_qwebenginehttprequest_types.QWebEngineHttpRequest, headerName: seq[byte]): seq[byte] =

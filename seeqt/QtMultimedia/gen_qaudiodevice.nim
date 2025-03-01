@@ -131,6 +131,7 @@ proc supportedSampleFormats*(self: gen_qaudiodevice_types.QAudioDevice, ): seq[c
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = cint(v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc channelConfiguration*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =

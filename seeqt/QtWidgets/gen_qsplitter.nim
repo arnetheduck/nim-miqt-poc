@@ -422,6 +422,7 @@ proc sizes*(self: gen_qsplitter_types.QSplitter, ): seq[cint] =
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = v_outCast[i]
+  c_free(v_ma.data)
   vx_ret
 
 proc setSizes*(self: gen_qsplitter_types.QSplitter, list: seq[cint]): void =

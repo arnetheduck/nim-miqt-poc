@@ -370,6 +370,8 @@ proc dateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): Table[g
     var v_entry_Value = gen_qtextformat_types.QTextCharFormat(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc dateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime_types.QDate): gen_qtextformat_types.QTextCharFormat =

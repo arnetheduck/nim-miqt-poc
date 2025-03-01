@@ -232,6 +232,7 @@ proc allKeys*(self: gen_qsettings_types.QSettings, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc childKeys*(self: gen_qsettings_types.QSettings, ): seq[string] =
@@ -243,6 +244,7 @@ proc childKeys*(self: gen_qsettings_types.QSettings, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc childGroups*(self: gen_qsettings_types.QSettings, ): seq[string] =
@@ -254,6 +256,7 @@ proc childGroups*(self: gen_qsettings_types.QSettings, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc isWritable*(self: gen_qsettings_types.QSettings, ): bool =

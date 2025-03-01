@@ -206,6 +206,7 @@ proc supportedSchemes*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManag
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc clearAccessCache*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): void =
@@ -263,6 +264,7 @@ proc strictTransportSecurityHosts*(self: gen_qnetworkaccessmanager_types.QNetwor
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qhstspolicy_types.QHstsPolicy(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc head*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest_types.QNetworkRequest): gen_qnetworkreply_types.QNetworkReply =
@@ -429,6 +431,7 @@ proc miqt_exec_callback_cQNetworkAccessManager_sslErrors(slot: int, reply: point
   let verrors_outCast = cast[ptr UncheckedArray[pointer]](verrors_ma.data)
   for i in 0 ..< verrors_ma.len:
     verrorsx_ret[i] = gen_qsslerror_types.QSslError(h: verrors_outCast[i])
+  c_free(verrors_ma.data)
   let slotval2 = verrorsx_ret
 
   nimfunc[](slotval1, slotval2)
@@ -561,6 +564,7 @@ proc QNetworkAccessManagersupportedSchemes*(self: gen_qnetworkaccessmanager_type
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQNetworkAccessManager_supportedSchemes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -662,6 +666,7 @@ proc supportedSchemesImplementation*(self: gen_qnetworkaccessmanager_types.QNetw
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qobject_types.QObject =

@@ -170,6 +170,7 @@ proc miqt_exec_callback_cQSslServer_sslErrors(slot: int, socket: pointer, errors
   let verrors_outCast = cast[ptr UncheckedArray[pointer]](verrors_ma.data)
   for i in 0 ..< verrors_ma.len:
     verrorsx_ret[i] = gen_qsslerror_types.QSslError(h: verrors_outCast[i])
+  c_free(verrors_ma.data)
   let slotval2 = verrorsx_ret
 
   nimfunc[](slotval1, slotval2)

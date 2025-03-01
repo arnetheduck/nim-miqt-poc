@@ -323,6 +323,7 @@ proc blockList*(self: gen_qtextlist_types.QTextList, ): seq[gen_qtextobject_type
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qtextobject_types.QTextBlock(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qtextlist_types.QTextList, ): gen_qobject_types.QObject =

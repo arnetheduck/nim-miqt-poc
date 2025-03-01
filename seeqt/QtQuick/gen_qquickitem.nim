@@ -729,6 +729,7 @@ proc childItems*(self: gen_qquickitem_types.QQuickItem, ): seq[gen_qquickitem_ty
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qquickitem_types.QQuickItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc clip*(self: gen_qquickitem_types.QQuickItem, ): bool =

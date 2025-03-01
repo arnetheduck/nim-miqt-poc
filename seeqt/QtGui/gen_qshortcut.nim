@@ -151,6 +151,7 @@ proc keys*(self: gen_qshortcut_types.QShortcut, ): seq[gen_qkeysequence_types.QK
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qkeysequence_types.QKeySequence(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc setEnabled*(self: gen_qshortcut_types.QShortcut, enable: bool): void =

@@ -142,6 +142,7 @@ proc stacks*(self: gen_qundogroup_types.QUndoGroup, ): seq[gen_qundostack_types.
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qundostack_types.QUndoStack(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc activeStack*(self: gen_qundogroup_types.QUndoGroup, ): gen_qundostack_types.QUndoStack =

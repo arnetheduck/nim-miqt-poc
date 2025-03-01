@@ -106,6 +106,7 @@ proc keys*(self: gen_qmediametadata_types.QMediaMetaData, ): seq[cint] =
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = cint(v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc operatorSubscript*(self: gen_qmediametadata_types.QMediaMetaData, k: cint): gen_qvariant_types.QVariant =

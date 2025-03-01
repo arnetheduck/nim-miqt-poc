@@ -172,6 +172,7 @@ proc toUcs4*(self: gen_qstringview_types.QStringView, ): seq[cuint] =
   let v_outCast = cast[ptr UncheckedArray[cuint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = v_outCast[i]
+  c_free(v_ma.data)
   vx_ret
 
 proc at*(self: gen_qstringview_types.QStringView, n: int64): gen_qchar_types.QChar =

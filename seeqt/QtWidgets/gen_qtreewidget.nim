@@ -706,6 +706,7 @@ proc takeChildren*(self: gen_qtreewidget_types.QTreeWidgetItem, ): seq[gen_qtree
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qtreewidget_types.QTreeWidgetItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc typeX*(self: gen_qtreewidget_types.QTreeWidgetItem, ): cint =
@@ -1318,6 +1319,7 @@ proc selectedItems*(self: gen_qtreewidget_types.QTreeWidget, ): seq[gen_qtreewid
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qtreewidget_types.QTreeWidgetItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc findItems*(self: gen_qtreewidget_types.QTreeWidget, text: string, flags: cint): seq[gen_qtreewidget_types.QTreeWidgetItem] =
@@ -1326,6 +1328,7 @@ proc findItems*(self: gen_qtreewidget_types.QTreeWidget, text: string, flags: ci
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qtreewidget_types.QTreeWidgetItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc itemAbove*(self: gen_qtreewidget_types.QTreeWidget, item: gen_qtreewidget_types.QTreeWidgetItem): gen_qtreewidget_types.QTreeWidgetItem =
@@ -1597,6 +1600,7 @@ proc findItems*(self: gen_qtreewidget_types.QTreeWidget, text: string, flags: ci
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qtreewidget_types.QTreeWidgetItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc indexFromItem*(self: gen_qtreewidget_types.QTreeWidget, item: gen_qtreewidget_types.QTreeWidgetItem, column: cint): gen_qabstractitemmodel_types.QModelIndex =
@@ -1864,6 +1868,7 @@ proc QTreeWidgetmimeTypes*(self: gen_qtreewidget_types.QTreeWidget, ): seq[strin
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQTreeWidget_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -1893,6 +1898,7 @@ proc miqt_exec_callback_cQTreeWidget_mimeData(vtbl: pointer, self: pointer, item
   let vitems_outCast = cast[ptr UncheckedArray[pointer]](vitems_ma.data)
   for i in 0 ..< vitems_ma.len:
     vitemsx_ret[i] = gen_qtreewidget_types.QTreeWidgetItem(h: vitems_outCast[i])
+  c_free(vitems_ma.data)
   let slotval1 = vitemsx_ret
   var virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -2012,6 +2018,7 @@ proc miqt_exec_callback_cQTreeWidget_dataChanged(vtbl: pointer, self: pointer, t
   let vroles_outCast = cast[ptr UncheckedArray[cint]](vroles_ma.data)
   for i in 0 ..< vroles_ma.len:
     vrolesx_ret[i] = vroles_outCast[i]
+  c_free(vroles_ma.data)
   let slotval3 = vrolesx_ret
   vtbl[].dataChanged(self, slotval1, slotval2, slotval3)
 
@@ -2119,6 +2126,7 @@ proc QTreeWidgetselectedIndexes*(self: gen_qtreewidget_types.QTreeWidget, ): seq
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQTreeWidget_selectedIndexes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =

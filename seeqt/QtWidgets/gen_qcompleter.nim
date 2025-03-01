@@ -286,6 +286,7 @@ proc splitPath*(self: gen_qcompleter_types.QCompleter, path: string): seq[string
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc activated*(self: gen_qcompleter_types.QCompleter, text: string): void =
@@ -470,6 +471,7 @@ proc QCompletersplitPath*(self: gen_qcompleter_types.QCompleter, path: string): 
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQCompleter_splitPath(vtbl: pointer, self: pointer, path: struct_miqt_string): struct_miqt_array {.cdecl.} =

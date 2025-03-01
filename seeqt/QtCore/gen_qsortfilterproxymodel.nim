@@ -468,6 +468,7 @@ proc match*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, start: 
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc span*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel_types.QModelIndex): gen_qsize_types.QSize =
@@ -485,6 +486,7 @@ proc mimeTypes*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): 
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc supportedDropActions*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
@@ -1014,6 +1016,7 @@ proc miqt_exec_callback_cQSortFilterProxyModel_mimeData(vtbl: pointer, self: poi
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   var virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -1125,6 +1128,7 @@ proc QSortFilterProxyModelmatch*(self: gen_qsortfilterproxymodel_types.QSortFilt
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQSortFilterProxyModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -1171,6 +1175,7 @@ proc QSortFilterProxyModelmimeTypes*(self: gen_qsortfilterproxymodel_types.QSort
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQSortFilterProxyModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -1222,6 +1227,8 @@ proc QSortFilterProxyModelitemData*(self: gen_qsortfilterproxymodel_types.QSortF
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQSortFilterProxyModel_itemData(vtbl: pointer, self: pointer, index: pointer): struct_miqt_map {.cdecl.} =
@@ -1264,6 +1271,8 @@ proc miqt_exec_callback_cQSortFilterProxyModel_setItemData(vtbl: pointer, self: 
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   var virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -1315,6 +1324,8 @@ proc QSortFilterProxyModelroleNames*(self: gen_qsortfilterproxymodel_types.QSort
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQSortFilterProxyModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -1532,6 +1543,7 @@ proc persistentIndexList*(self: gen_qsortfilterproxymodel_types.QSortFilterProxy
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): gen_qobject_types.QObject =

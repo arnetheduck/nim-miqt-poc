@@ -371,6 +371,7 @@ proc toStringList*(self: gen_qvariant_types.QVariant, ): seq[string] =
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc toChar*(self: gen_qvariant_types.QVariant, ): gen_qchar_types.QChar =
@@ -399,6 +400,8 @@ proc toMap*(self: gen_qvariant_types.QVariant, ): Table[string,gen_qvariant_type
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc toHash*(self: gen_qvariant_types.QVariant, ): Table[string,gen_qvariant_types.QVariant] =
@@ -415,6 +418,8 @@ proc toHash*(self: gen_qvariant_types.QVariant, ): Table[string,gen_qvariant_typ
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc toPoint*(self: gen_qvariant_types.QVariant, ): gen_qpoint_types.QPoint =

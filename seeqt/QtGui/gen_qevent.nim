@@ -915,6 +915,7 @@ proc points*(self: gen_qevent_types.QPointerEvent, ): seq[gen_qeventpoint_types.
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qeventpoint_types.QEventPoint(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc pointById*(self: gen_qevent_types.QPointerEvent, id: cint): gen_qeventpoint_types.QEventPoint =
@@ -3084,6 +3085,7 @@ proc attributes*(self: gen_qevent_types.QInputMethodEvent, ): seq[gen_qevent_typ
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qevent_types.QInputMethodEventAttribute(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc preeditString*(self: gen_qevent_types.QInputMethodEvent, ): string =
@@ -3898,6 +3900,7 @@ proc touchPoints*(self: gen_qevent_types.QTouchEvent, ): seq[gen_qeventpoint_typ
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qeventpoint_types.QEventPoint(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc isBeginEvent*(self: gen_qevent_types.QTouchEvent, ): bool =

@@ -130,6 +130,7 @@ proc rootObjects*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, )
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qobject_types.QObject(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc load*(self: gen_qqmlapplicationengine_types.QQmlApplicationEngine, url: gen_qurl_types.QUrl): void =

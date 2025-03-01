@@ -307,6 +307,8 @@ proc qAccessibleTextBoundaryHelper*(_: type gen_qaccessible_base_types.QAccessib
 
   var v_entry_Second = v_Second_CArray[0]
 
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   (first: v_entry_First , second: v_entry_Second )
 
 proc staticMetaObject*(_: type gen_qaccessible_base_types.QAccessible): gen_qobjectdefs_types.QMetaObject =

@@ -285,6 +285,8 @@ proc itemData*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, index: g
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc flags*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, index: gen_qabstractitemmodel_types.QModelIndex): cint =
@@ -353,6 +355,7 @@ proc mimeTypes*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, ): seq[
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc supportedDragActions*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, ): cint =
@@ -375,6 +378,8 @@ proc roleNames*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, ): Tabl
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc tr*(_: type gen_qabstractproxymodel_types.QAbstractProxyModel, s: cstring, c: cstring): string =
@@ -620,6 +625,8 @@ proc QAbstractProxyModelitemData*(self: gen_qabstractproxymodel_types.QAbstractP
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractProxyModel_itemData(vtbl: pointer, self: pointer, index: pointer): struct_miqt_map {.cdecl.} =
@@ -684,6 +691,8 @@ proc miqt_exec_callback_cQAbstractProxyModel_setItemData(vtbl: pointer, self: po
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   var virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -797,6 +806,7 @@ proc miqt_exec_callback_cQAbstractProxyModel_mimeData(vtbl: pointer, self: point
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   var virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -838,6 +848,7 @@ proc QAbstractProxyModelmimeTypes*(self: gen_qabstractproxymodel_types.QAbstract
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractProxyModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -884,6 +895,8 @@ proc QAbstractProxyModelroleNames*(self: gen_qabstractproxymodel_types.QAbstract
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractProxyModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -1014,6 +1027,7 @@ proc QAbstractProxyModelmatch*(self: gen_qabstractproxymodel_types.QAbstractProx
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQAbstractProxyModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -1193,6 +1207,7 @@ proc persistentIndexList*(self: gen_qabstractproxymodel_types.QAbstractProxyMode
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qabstractproxymodel_types.QAbstractProxyModel, ): gen_qobject_types.QObject =

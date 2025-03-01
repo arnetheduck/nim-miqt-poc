@@ -290,6 +290,7 @@ proc scrollBarWidgets*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, 
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qwidget_types.QWidget(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc viewport*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qwidget_types.QWidget =

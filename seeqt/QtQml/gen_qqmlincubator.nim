@@ -119,6 +119,7 @@ proc errors*(self: gen_qqmlincubator_types.QQmlIncubator, ): seq[gen_qqmlerror_t
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qqmlerror_types.QQmlError(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc incubationMode*(self: gen_qqmlincubator_types.QQmlIncubator, ): cint =

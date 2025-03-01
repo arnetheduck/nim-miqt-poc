@@ -227,6 +227,7 @@ proc audioTracks*(self: gen_qmediaplayer_types.QMediaPlayer, ): seq[gen_qmediame
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qmediametadata_types.QMediaMetaData(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc videoTracks*(self: gen_qmediaplayer_types.QMediaPlayer, ): seq[gen_qmediametadata_types.QMediaMetaData] =
@@ -235,6 +236,7 @@ proc videoTracks*(self: gen_qmediaplayer_types.QMediaPlayer, ): seq[gen_qmediame
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qmediametadata_types.QMediaMetaData(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc subtitleTracks*(self: gen_qmediaplayer_types.QMediaPlayer, ): seq[gen_qmediametadata_types.QMediaMetaData] =
@@ -243,6 +245,7 @@ proc subtitleTracks*(self: gen_qmediaplayer_types.QMediaPlayer, ): seq[gen_qmedi
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qmediametadata_types.QMediaMetaData(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc activeAudioTrack*(self: gen_qmediaplayer_types.QMediaPlayer, ): cint =

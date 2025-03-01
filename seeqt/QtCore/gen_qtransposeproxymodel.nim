@@ -281,6 +281,8 @@ proc itemData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index:
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc mapFromSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, sourceIndex: gen_qabstractitemmodel_types.QModelIndex): gen_qabstractitemmodel_types.QModelIndex =
@@ -544,6 +546,8 @@ proc miqt_exec_callback_cQTransposeProxyModel_setItemData(vtbl: pointer, self: p
     var vroles_entry_Value = gen_qvariant_types.QVariant(h: vroles_Values[i])
 
     vrolesx_ret[vroles_entry_Key] = vroles_entry_Value
+  c_free(vroles_mm.keys)
+  c_free(vroles_mm.values)
   let slotval2 = vrolesx_ret
   var virtualReturn = vtbl[].setItemData(self, slotval1, slotval2)
   virtualReturn
@@ -569,6 +573,8 @@ proc QTransposeProxyModelitemData*(self: gen_qtransposeproxymodel_types.QTranspo
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQTransposeProxyModel_itemData(vtbl: pointer, self: pointer, index: pointer): struct_miqt_map {.cdecl.} =
@@ -860,6 +866,7 @@ proc miqt_exec_callback_cQTransposeProxyModel_mimeData(vtbl: pointer, self: poin
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
   var virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -901,6 +908,7 @@ proc QTransposeProxyModelmimeTypes*(self: gen_qtransposeproxymodel_types.QTransp
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQTransposeProxyModel_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -947,6 +955,8 @@ proc QTransposeProxyModelroleNames*(self: gen_qtransposeproxymodel_types.QTransp
     var v_entry_Value = vx_hashvalx_ret
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc miqt_exec_callback_cQTransposeProxyModel_roleNames(vtbl: pointer, self: pointer): struct_miqt_map {.cdecl.} =
@@ -971,6 +981,7 @@ proc QTransposeProxyModelmatch*(self: gen_qtransposeproxymodel_types.QTransposeP
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQTransposeProxyModel_match(vtbl: pointer, self: pointer, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.cdecl.} =
@@ -1150,6 +1161,7 @@ proc persistentIndexList*(self: gen_qtransposeproxymodel_types.QTransposeProxyMo
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc sender*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): gen_qobject_types.QObject =

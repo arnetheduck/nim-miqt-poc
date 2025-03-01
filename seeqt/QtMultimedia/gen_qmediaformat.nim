@@ -170,6 +170,7 @@ proc supportedFileFormats*(self: gen_qmediaformat_types.QMediaFormat, m: cint): 
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = cint(v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc supportedVideoCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): seq[cint] =
@@ -178,6 +179,7 @@ proc supportedVideoCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): 
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = cint(v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc supportedAudioCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): seq[cint] =
@@ -186,6 +188,7 @@ proc supportedAudioCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): 
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = cint(v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc fileFormatName*(_: type gen_qmediaformat_types.QMediaFormat, fileFormat: cint): string =

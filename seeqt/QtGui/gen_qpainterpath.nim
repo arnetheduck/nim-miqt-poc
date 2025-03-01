@@ -431,6 +431,7 @@ proc dashPattern*(self: gen_qpainterpath_types.QPainterPathStroker, ): seq[float
   let v_outCast = cast[ptr UncheckedArray[float64]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = v_outCast[i]
+  c_free(v_ma.data)
   vx_ret
 
 proc setDashOffset*(self: gen_qpainterpath_types.QPainterPathStroker, offset: float64): void =

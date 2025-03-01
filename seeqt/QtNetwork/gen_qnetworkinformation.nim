@@ -160,6 +160,7 @@ proc availableBackends*(_: type gen_qnetworkinformation_types.QNetworkInformatio
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc instance*(_: type gen_qnetworkinformation_types.QNetworkInformation, ): gen_qnetworkinformation_types.QNetworkInformation =
