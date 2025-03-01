@@ -97,8 +97,10 @@ public:
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 
 		QRectF* callback_return_value = vtbl->boundingRectFor(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRectF* QGraphicsEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
@@ -604,8 +606,10 @@ public:
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 
 		QRectF* callback_return_value = vtbl->boundingRectFor(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRectF* QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
@@ -1078,8 +1082,10 @@ public:
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
 
 		QRectF* callback_return_value = vtbl->boundingRectFor(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRectF* QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
@@ -1571,8 +1577,10 @@ public:
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
 
 		QRectF* callback_return_value = vtbl->boundingRectFor(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRectF* QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
@@ -2135,8 +2143,10 @@ public:
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 
 		QRectF* callback_return_value = vtbl->boundingRectFor(vtbl, this, sigval1);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRectF* QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);

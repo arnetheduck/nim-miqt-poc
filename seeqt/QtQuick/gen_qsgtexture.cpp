@@ -111,8 +111,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->textureSize(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	// Subclass to allow providing a Go implementation
@@ -147,8 +149,10 @@ public:
 
 
 		QRectF* callback_return_value = vtbl->normalizedTextureSubRect(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRectF* QSGTexture_virtualbase_normalizedTextureSubRect(const void* self);
@@ -635,8 +639,10 @@ public:
 
 
 		QSize* callback_return_value = vtbl->textureSize(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	// Subclass to allow providing a Go implementation
@@ -671,8 +677,10 @@ public:
 
 
 		QRectF* callback_return_value = vtbl->normalizedTextureSubRect(vtbl, this);
+		auto callback_return_value_Value = std::move(*callback_return_value);
+		delete callback_return_value;
 
-		return *callback_return_value;
+		return callback_return_value_Value;
 	}
 
 	friend QRectF* QSGDynamicTexture_virtualbase_normalizedTextureSubRect(const void* self);

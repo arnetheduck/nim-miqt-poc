@@ -2,7 +2,7 @@ import ./Qt6Widgets_libs
 
 {.push raises: [].}
 
-from system/ansi_c import c_free
+from system/ansi_c import c_free, c_malloc
 
 type
   struct_miqt_string {.used.} = object
@@ -1603,7 +1603,7 @@ proc miqt_exec_callback_cQHeaderView_selectedIndexes(vtbl: pointer, self: pointe
   let vtbl = cast[ptr QHeaderViewVTable](vtbl)
   let self = QHeaderView(h: self)
   var virtualReturn = vtbl[].selectedIndexes(self)
-  var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
+  var virtualReturn_CArray = cast[ptr UncheckedArray[pointer]](if len(virtualReturn) > 0: c_malloc(c_sizet(sizeof(pointer) * len(virtualReturn))) else: nil)
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
