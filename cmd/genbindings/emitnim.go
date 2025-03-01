@@ -1070,7 +1070,7 @@ proc on%[8]s*(self: %[9]s, slot: %[1]s) =
 
 		if len(virtualMethods) > 0 {
 			for _, m := range virtualMethods {
-				cbTypeName := nimClassName + m.nimMethodName() + "Proc"
+				cbTypeName := nimClassName + m.rawMethodName() + "Proc"
 				fmt.Fprintf(&ret, "type %s* = proc(self: %s%s): %s {.raises: [], gcsafe.}\n", cbTypeName, nimClassName+ifv(len(m.Parameters) > 0, ", ", ""), gfs.emitParametersNim(m.Parameters, false), m.ReturnType.renderReturnTypeNim(&gfs, false))
 			}
 
@@ -1083,10 +1083,10 @@ proc on%[8]s*(self: %[9]s, slot: %[1]s) =
 `, nimClassName, rawClassName)
 
 			for _, m := range virtualMethods {
-				fmt.Fprintf(&cabi, "  %s*: proc(vtbl, self: pointer, %s): %s {.cdecl, raises: [], gcsafe.}\n", m.nimMethodName(), gfs.emitParametersNim(m.Parameters, true), m.ReturnType.renderReturnTypeNim(&gfs, true))
+				fmt.Fprintf(&cabi, "  %s*: proc(vtbl, self: pointer, %s): %s {.cdecl, raises: [], gcsafe.}\n", m.rawMethodName(), gfs.emitParametersNim(m.Parameters, true), m.ReturnType.renderReturnTypeNim(&gfs, true))
 
-				cbTypeName := nimClassName + m.nimMethodName() + "Proc"
-				fmt.Fprintf(&ret, "  %s*: %s\n", m.nimMethodName(), cbTypeName)
+				cbTypeName := nimClassName + m.rawMethodName() + "Proc"
+				fmt.Fprintf(&ret, "  %s*: %s\n", m.rawMethodName(), cbTypeName)
 			}
 
 			for _, m := range virtualMethods {
@@ -1142,9 +1142,9 @@ proc on%[8]s*(self: %[9]s, slot: %[1]s) =
 `)
 					ret.WriteString(conversion)
 					if cabiReturnType == "void" {
-						ret.WriteString(gfs.ind + `vtbl[].` + m.nimMethodName() + `(` + strings.Join(paramNames, `, `) + ")\n\n")
+						ret.WriteString(gfs.ind + `vtbl[].` + m.rawMethodName() + `(` + strings.Join(paramNames, `, `) + ")\n\n")
 					} else {
-						ret.WriteString(gfs.ind + `let virtualReturn = vtbl[].` + m.nimMethodName() + `(` + strings.Join(paramNames, `, `) + ")\n")
+						ret.WriteString(gfs.ind + `var virtualReturn = vtbl[].` + m.rawMethodName() + `(` + strings.Join(paramNames, `, `) + ")\n")
 						virtualRetP := m.ReturnType // copy
 						virtualRetP.ParameterName = "virtualReturn"
 						binding, rvalue := gfs.emitParameterNim2CABIForwarding(virtualRetP)
@@ -1195,7 +1195,7 @@ proc on%[8]s*(self: %[9]s, slot: %[1]s) =
 				for _, m := range virtualMethods {
 					preamble = preamble + fmt.Sprintf(`  if not isNil(vtbl.%[1]s):
     vtbl[].vtbl.%[1]s = %[2]s
-`, m.nimMethodName(), ncabiCallbackName(c, m))
+`, m.rawMethodName(), ncabiCallbackName(c, m))
 				}
 			}
 
