@@ -45,9 +45,6 @@ export
 type cQSize*{.exportc: "QSize", incompleteStruct.} = object
 type cQSizeF*{.exportc: "QSizeF", incompleteStruct.} = object
 
-proc fcQSize_new(): ptr cQSize {.importc: "QSize_new".}
-proc fcQSize_new2(w: cint, h: cint): ptr cQSize {.importc: "QSize_new2".}
-proc fcQSize_new3(param1: pointer): ptr cQSize {.importc: "QSize_new3".}
 proc fcQSize_isNull(self: pointer, ): bool {.importc: "QSize_isNull".}
 proc fcQSize_isEmpty(self: pointer, ): bool {.importc: "QSize_isEmpty".}
 proc fcQSize_isValid(self: pointer, ): bool {.importc: "QSize_isValid".}
@@ -70,11 +67,10 @@ proc fcQSize_operatorMinusAssign(self: pointer, param1: pointer): pointer {.impo
 proc fcQSize_operatorMultiplyAssign(self: pointer, c: float64): pointer {.importc: "QSize_operatorMultiplyAssign".}
 proc fcQSize_operatorDivideAssign(self: pointer, c: float64): pointer {.importc: "QSize_operatorDivideAssign".}
 proc fcQSize_toSizeF(self: pointer, ): pointer {.importc: "QSize_toSizeF".}
+proc fcQSize_new(): ptr cQSize {.importc: "QSize_new".}
+proc fcQSize_new2(w: cint, h: cint): ptr cQSize {.importc: "QSize_new2".}
+proc fcQSize_new3(param1: pointer): ptr cQSize {.importc: "QSize_new3".}
 proc fcQSize_delete(self: pointer) {.importc: "QSize_delete".}
-proc fcQSizeF_new(): ptr cQSizeF {.importc: "QSizeF_new".}
-proc fcQSizeF_new2(sz: pointer): ptr cQSizeF {.importc: "QSizeF_new2".}
-proc fcQSizeF_new3(w: float64, h: float64): ptr cQSizeF {.importc: "QSizeF_new3".}
-proc fcQSizeF_new4(param1: pointer): ptr cQSizeF {.importc: "QSizeF_new4".}
 proc fcQSizeF_isNull(self: pointer, ): bool {.importc: "QSizeF_isNull".}
 proc fcQSizeF_isEmpty(self: pointer, ): bool {.importc: "QSizeF_isEmpty".}
 proc fcQSizeF_isValid(self: pointer, ): bool {.importc: "QSizeF_isValid".}
@@ -97,19 +93,11 @@ proc fcQSizeF_operatorMinusAssign(self: pointer, param1: pointer): pointer {.imp
 proc fcQSizeF_operatorMultiplyAssign(self: pointer, c: float64): pointer {.importc: "QSizeF_operatorMultiplyAssign".}
 proc fcQSizeF_operatorDivideAssign(self: pointer, c: float64): pointer {.importc: "QSizeF_operatorDivideAssign".}
 proc fcQSizeF_toSize(self: pointer, ): pointer {.importc: "QSizeF_toSize".}
+proc fcQSizeF_new(): ptr cQSizeF {.importc: "QSizeF_new".}
+proc fcQSizeF_new2(sz: pointer): ptr cQSizeF {.importc: "QSizeF_new2".}
+proc fcQSizeF_new3(w: float64, h: float64): ptr cQSizeF {.importc: "QSizeF_new3".}
+proc fcQSizeF_new4(param1: pointer): ptr cQSizeF {.importc: "QSizeF_new4".}
 proc fcQSizeF_delete(self: pointer) {.importc: "QSizeF_delete".}
-
-
-func init*(T: type gen_qsize_types.QSize, h: ptr cQSize): gen_qsize_types.QSize =
-  T(h: h)
-proc create*(T: type gen_qsize_types.QSize, ): gen_qsize_types.QSize =
-  gen_qsize_types.QSize.init(fcQSize_new())
-
-proc create*(T: type gen_qsize_types.QSize, w: cint, h: cint): gen_qsize_types.QSize =
-  gen_qsize_types.QSize.init(fcQSize_new2(w, h))
-
-proc create*(T: type gen_qsize_types.QSize, param1: QSize): gen_qsize_types.QSize =
-  gen_qsize_types.QSize.init(fcQSize_new3(param1.h))
 
 proc isNull*(self: gen_qsize_types.QSize, ): bool =
   fcQSize_isNull(self.h)
@@ -135,65 +123,61 @@ proc setHeight*(self: gen_qsize_types.QSize, h: cint): void =
 proc transpose*(self: gen_qsize_types.QSize, ): void =
   fcQSize_transpose(self.h)
 
-proc transposed*(self: gen_qsize_types.QSize, ): QSize =
-  QSize(h: fcQSize_transposed(self.h))
+proc transposed*(self: gen_qsize_types.QSize, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_transposed(self.h))
 
 proc scale*(self: gen_qsize_types.QSize, w: cint, h: cint, mode: cint): void =
   fcQSize_scale(self.h, w, h, cint(mode))
 
-proc scale*(self: gen_qsize_types.QSize, s: QSize, mode: cint): void =
+proc scale*(self: gen_qsize_types.QSize, s: gen_qsize_types.QSize, mode: cint): void =
   fcQSize_scale2(self.h, s.h, cint(mode))
 
-proc scaled*(self: gen_qsize_types.QSize, w: cint, h: cint, mode: cint): QSize =
-  QSize(h: fcQSize_scaled(self.h, w, h, cint(mode)))
+proc scaled*(self: gen_qsize_types.QSize, w: cint, h: cint, mode: cint): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_scaled(self.h, w, h, cint(mode)))
 
-proc scaled*(self: gen_qsize_types.QSize, s: QSize, mode: cint): QSize =
-  QSize(h: fcQSize_scaled2(self.h, s.h, cint(mode)))
+proc scaled*(self: gen_qsize_types.QSize, s: gen_qsize_types.QSize, mode: cint): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_scaled2(self.h, s.h, cint(mode)))
 
-proc expandedTo*(self: gen_qsize_types.QSize, param1: QSize): QSize =
-  QSize(h: fcQSize_expandedTo(self.h, param1.h))
+proc expandedTo*(self: gen_qsize_types.QSize, param1: gen_qsize_types.QSize): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_expandedTo(self.h, param1.h))
 
-proc boundedTo*(self: gen_qsize_types.QSize, param1: QSize): QSize =
-  QSize(h: fcQSize_boundedTo(self.h, param1.h))
+proc boundedTo*(self: gen_qsize_types.QSize, param1: gen_qsize_types.QSize): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_boundedTo(self.h, param1.h))
 
-proc grownBy*(self: gen_qsize_types.QSize, m: QMargins): QSize =
-  QSize(h: fcQSize_grownBy(self.h, m.h))
+proc grownBy*(self: gen_qsize_types.QSize, m: gen_qmargins_types.QMargins): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_grownBy(self.h, m.h))
 
-proc shrunkBy*(self: gen_qsize_types.QSize, m: QMargins): QSize =
-  QSize(h: fcQSize_shrunkBy(self.h, m.h))
+proc shrunkBy*(self: gen_qsize_types.QSize, m: gen_qmargins_types.QMargins): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_shrunkBy(self.h, m.h))
 
-proc operatorPlusAssign*(self: gen_qsize_types.QSize, param1: QSize): QSize =
-  QSize(h: fcQSize_operatorPlusAssign(self.h, param1.h))
+proc operatorPlusAssign*(self: gen_qsize_types.QSize, param1: gen_qsize_types.QSize): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_operatorPlusAssign(self.h, param1.h))
 
-proc operatorMinusAssign*(self: gen_qsize_types.QSize, param1: QSize): QSize =
-  QSize(h: fcQSize_operatorMinusAssign(self.h, param1.h))
+proc operatorMinusAssign*(self: gen_qsize_types.QSize, param1: gen_qsize_types.QSize): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_operatorMinusAssign(self.h, param1.h))
 
-proc operatorMultiplyAssign*(self: gen_qsize_types.QSize, c: float64): QSize =
-  QSize(h: fcQSize_operatorMultiplyAssign(self.h, c))
+proc operatorMultiplyAssign*(self: gen_qsize_types.QSize, c: float64): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_operatorMultiplyAssign(self.h, c))
 
-proc operatorDivideAssign*(self: gen_qsize_types.QSize, c: float64): QSize =
-  QSize(h: fcQSize_operatorDivideAssign(self.h, c))
+proc operatorDivideAssign*(self: gen_qsize_types.QSize, c: float64): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_operatorDivideAssign(self.h, c))
 
-proc toSizeF*(self: gen_qsize_types.QSize, ): QSizeF =
-  QSizeF(h: fcQSize_toSizeF(self.h))
+proc toSizeF*(self: gen_qsize_types.QSize, ): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSize_toSizeF(self.h))
+
+proc create*(T: type gen_qsize_types.QSize): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_new())
+
+proc create*(T: type gen_qsize_types.QSize,
+    w: cint, h: cint): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_new2(w, h))
+
+proc create*(T: type gen_qsize_types.QSize,
+    param1: gen_qsize_types.QSize): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSize_new3(param1.h))
 
 proc delete*(self: gen_qsize_types.QSize) =
   fcQSize_delete(self.h)
-
-func init*(T: type gen_qsize_types.QSizeF, h: ptr cQSizeF): gen_qsize_types.QSizeF =
-  T(h: h)
-proc create*(T: type gen_qsize_types.QSizeF, ): gen_qsize_types.QSizeF =
-  gen_qsize_types.QSizeF.init(fcQSizeF_new())
-
-proc create*(T: type gen_qsize_types.QSizeF, sz: QSize): gen_qsize_types.QSizeF =
-  gen_qsize_types.QSizeF.init(fcQSizeF_new2(sz.h))
-
-proc create*(T: type gen_qsize_types.QSizeF, w: float64, h: float64): gen_qsize_types.QSizeF =
-  gen_qsize_types.QSizeF.init(fcQSizeF_new3(w, h))
-
-proc create*(T: type gen_qsize_types.QSizeF, param1: QSizeF): gen_qsize_types.QSizeF =
-  gen_qsize_types.QSizeF.init(fcQSizeF_new4(param1.h))
-
 proc isNull*(self: gen_qsize_types.QSizeF, ): bool =
   fcQSizeF_isNull(self.h)
 
@@ -218,47 +202,62 @@ proc setHeight*(self: gen_qsize_types.QSizeF, h: float64): void =
 proc transpose*(self: gen_qsize_types.QSizeF, ): void =
   fcQSizeF_transpose(self.h)
 
-proc transposed*(self: gen_qsize_types.QSizeF, ): QSizeF =
-  QSizeF(h: fcQSizeF_transposed(self.h))
+proc transposed*(self: gen_qsize_types.QSizeF, ): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_transposed(self.h))
 
 proc scale*(self: gen_qsize_types.QSizeF, w: float64, h: float64, mode: cint): void =
   fcQSizeF_scale(self.h, w, h, cint(mode))
 
-proc scale*(self: gen_qsize_types.QSizeF, s: QSizeF, mode: cint): void =
+proc scale*(self: gen_qsize_types.QSizeF, s: gen_qsize_types.QSizeF, mode: cint): void =
   fcQSizeF_scale2(self.h, s.h, cint(mode))
 
-proc scaled*(self: gen_qsize_types.QSizeF, w: float64, h: float64, mode: cint): QSizeF =
-  QSizeF(h: fcQSizeF_scaled(self.h, w, h, cint(mode)))
+proc scaled*(self: gen_qsize_types.QSizeF, w: float64, h: float64, mode: cint): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_scaled(self.h, w, h, cint(mode)))
 
-proc scaled*(self: gen_qsize_types.QSizeF, s: QSizeF, mode: cint): QSizeF =
-  QSizeF(h: fcQSizeF_scaled2(self.h, s.h, cint(mode)))
+proc scaled*(self: gen_qsize_types.QSizeF, s: gen_qsize_types.QSizeF, mode: cint): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_scaled2(self.h, s.h, cint(mode)))
 
-proc expandedTo*(self: gen_qsize_types.QSizeF, param1: QSizeF): QSizeF =
-  QSizeF(h: fcQSizeF_expandedTo(self.h, param1.h))
+proc expandedTo*(self: gen_qsize_types.QSizeF, param1: gen_qsize_types.QSizeF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_expandedTo(self.h, param1.h))
 
-proc boundedTo*(self: gen_qsize_types.QSizeF, param1: QSizeF): QSizeF =
-  QSizeF(h: fcQSizeF_boundedTo(self.h, param1.h))
+proc boundedTo*(self: gen_qsize_types.QSizeF, param1: gen_qsize_types.QSizeF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_boundedTo(self.h, param1.h))
 
-proc grownBy*(self: gen_qsize_types.QSizeF, m: QMarginsF): QSizeF =
-  QSizeF(h: fcQSizeF_grownBy(self.h, m.h))
+proc grownBy*(self: gen_qsize_types.QSizeF, m: gen_qmargins_types.QMarginsF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_grownBy(self.h, m.h))
 
-proc shrunkBy*(self: gen_qsize_types.QSizeF, m: QMarginsF): QSizeF =
-  QSizeF(h: fcQSizeF_shrunkBy(self.h, m.h))
+proc shrunkBy*(self: gen_qsize_types.QSizeF, m: gen_qmargins_types.QMarginsF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_shrunkBy(self.h, m.h))
 
-proc operatorPlusAssign*(self: gen_qsize_types.QSizeF, param1: QSizeF): QSizeF =
-  QSizeF(h: fcQSizeF_operatorPlusAssign(self.h, param1.h))
+proc operatorPlusAssign*(self: gen_qsize_types.QSizeF, param1: gen_qsize_types.QSizeF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_operatorPlusAssign(self.h, param1.h))
 
-proc operatorMinusAssign*(self: gen_qsize_types.QSizeF, param1: QSizeF): QSizeF =
-  QSizeF(h: fcQSizeF_operatorMinusAssign(self.h, param1.h))
+proc operatorMinusAssign*(self: gen_qsize_types.QSizeF, param1: gen_qsize_types.QSizeF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_operatorMinusAssign(self.h, param1.h))
 
-proc operatorMultiplyAssign*(self: gen_qsize_types.QSizeF, c: float64): QSizeF =
-  QSizeF(h: fcQSizeF_operatorMultiplyAssign(self.h, c))
+proc operatorMultiplyAssign*(self: gen_qsize_types.QSizeF, c: float64): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_operatorMultiplyAssign(self.h, c))
 
-proc operatorDivideAssign*(self: gen_qsize_types.QSizeF, c: float64): QSizeF =
-  QSizeF(h: fcQSizeF_operatorDivideAssign(self.h, c))
+proc operatorDivideAssign*(self: gen_qsize_types.QSizeF, c: float64): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_operatorDivideAssign(self.h, c))
 
-proc toSize*(self: gen_qsize_types.QSizeF, ): QSize =
-  QSize(h: fcQSizeF_toSize(self.h))
+proc toSize*(self: gen_qsize_types.QSizeF, ): gen_qsize_types.QSize =
+  gen_qsize_types.QSize(h: fcQSizeF_toSize(self.h))
+
+proc create*(T: type gen_qsize_types.QSizeF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_new())
+
+proc create*(T: type gen_qsize_types.QSizeF,
+    sz: gen_qsize_types.QSize): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_new2(sz.h))
+
+proc create*(T: type gen_qsize_types.QSizeF,
+    w: float64, h: float64): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_new3(w, h))
+
+proc create*(T: type gen_qsize_types.QSizeF,
+    param1: gen_qsize_types.QSizeF): gen_qsize_types.QSizeF =
+  gen_qsize_types.QSizeF(h: fcQSizeF_new4(param1.h))
 
 proc delete*(self: gen_qsize_types.QSizeF) =
   fcQSizeF_delete(self.h)

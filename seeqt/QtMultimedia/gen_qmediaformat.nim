@@ -106,9 +106,6 @@ export
 
 type cQMediaFormat*{.exportc: "QMediaFormat", incompleteStruct.} = object
 
-proc fcQMediaFormat_new(): ptr cQMediaFormat {.importc: "QMediaFormat_new".}
-proc fcQMediaFormat_new2(other: pointer): ptr cQMediaFormat {.importc: "QMediaFormat_new2".}
-proc fcQMediaFormat_new3(format: cint): ptr cQMediaFormat {.importc: "QMediaFormat_new3".}
 proc fcQMediaFormat_operatorAssign(self: pointer, other: pointer): void {.importc: "QMediaFormat_operatorAssign".}
 proc fcQMediaFormat_swap(self: pointer, other: pointer): void {.importc: "QMediaFormat_swap".}
 proc fcQMediaFormat_fileFormat(self: pointer, ): cint {.importc: "QMediaFormat_fileFormat".}
@@ -131,25 +128,16 @@ proc fcQMediaFormat_videoCodecDescription(codec: cint): struct_miqt_string {.imp
 proc fcQMediaFormat_operatorEqual(self: pointer, other: pointer): bool {.importc: "QMediaFormat_operatorEqual".}
 proc fcQMediaFormat_operatorNotEqual(self: pointer, other: pointer): bool {.importc: "QMediaFormat_operatorNotEqual".}
 proc fcQMediaFormat_resolveForEncoding(self: pointer, flags: cint): void {.importc: "QMediaFormat_resolveForEncoding".}
+proc fcQMediaFormat_new(): ptr cQMediaFormat {.importc: "QMediaFormat_new".}
+proc fcQMediaFormat_new2(other: pointer): ptr cQMediaFormat {.importc: "QMediaFormat_new2".}
+proc fcQMediaFormat_new3(format: cint): ptr cQMediaFormat {.importc: "QMediaFormat_new3".}
 proc fcQMediaFormat_staticMetaObject(): pointer {.importc: "QMediaFormat_staticMetaObject".}
 proc fcQMediaFormat_delete(self: pointer) {.importc: "QMediaFormat_delete".}
 
-
-func init*(T: type gen_qmediaformat_types.QMediaFormat, h: ptr cQMediaFormat): gen_qmediaformat_types.QMediaFormat =
-  T(h: h)
-proc create*(T: type gen_qmediaformat_types.QMediaFormat, ): gen_qmediaformat_types.QMediaFormat =
-  gen_qmediaformat_types.QMediaFormat.init(fcQMediaFormat_new())
-
-proc create*(T: type gen_qmediaformat_types.QMediaFormat, other: QMediaFormat): gen_qmediaformat_types.QMediaFormat =
-  gen_qmediaformat_types.QMediaFormat.init(fcQMediaFormat_new2(other.h))
-
-proc create*(T: type gen_qmediaformat_types.QMediaFormat, format: cint): gen_qmediaformat_types.QMediaFormat =
-  gen_qmediaformat_types.QMediaFormat.init(fcQMediaFormat_new3(cint(format)))
-
-proc operatorAssign*(self: gen_qmediaformat_types.QMediaFormat, other: QMediaFormat): void =
+proc operatorAssign*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): void =
   fcQMediaFormat_operatorAssign(self.h, other.h)
 
-proc swap*(self: gen_qmediaformat_types.QMediaFormat, other: QMediaFormat): void =
+proc swap*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): void =
   fcQMediaFormat_swap(self.h, other.h)
 
 proc fileFormat*(self: gen_qmediaformat_types.QMediaFormat, ): cint =
@@ -173,8 +161,8 @@ proc audioCodec*(self: gen_qmediaformat_types.QMediaFormat, ): cint =
 proc isSupported*(self: gen_qmediaformat_types.QMediaFormat, mode: cint): bool =
   fcQMediaFormat_isSupported(self.h, cint(mode))
 
-proc mimeType*(self: gen_qmediaformat_types.QMediaFormat, ): QMimeType =
-  QMimeType(h: fcQMediaFormat_mimeType(self.h))
+proc mimeType*(self: gen_qmediaformat_types.QMediaFormat, ): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMediaFormat_mimeType(self.h))
 
 proc supportedFileFormats*(self: gen_qmediaformat_types.QMediaFormat, m: cint): seq[cint] =
   var v_ma = fcQMediaFormat_supportedFileFormats(self.h, cint(m))
@@ -236,14 +224,25 @@ proc videoCodecDescription*(_: type gen_qmediaformat_types.QMediaFormat, codec: 
   c_free(v_ms.data)
   vx_ret
 
-proc operatorEqual*(self: gen_qmediaformat_types.QMediaFormat, other: QMediaFormat): bool =
+proc operatorEqual*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): bool =
   fcQMediaFormat_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: gen_qmediaformat_types.QMediaFormat, other: QMediaFormat): bool =
+proc operatorNotEqual*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): bool =
   fcQMediaFormat_operatorNotEqual(self.h, other.h)
 
 proc resolveForEncoding*(self: gen_qmediaformat_types.QMediaFormat, flags: cint): void =
   fcQMediaFormat_resolveForEncoding(self.h, cint(flags))
+
+proc create*(T: type gen_qmediaformat_types.QMediaFormat): gen_qmediaformat_types.QMediaFormat =
+  gen_qmediaformat_types.QMediaFormat(h: fcQMediaFormat_new())
+
+proc create*(T: type gen_qmediaformat_types.QMediaFormat,
+    other: gen_qmediaformat_types.QMediaFormat): gen_qmediaformat_types.QMediaFormat =
+  gen_qmediaformat_types.QMediaFormat(h: fcQMediaFormat_new2(other.h))
+
+proc create*(T: type gen_qmediaformat_types.QMediaFormat,
+    format: cint): gen_qmediaformat_types.QMediaFormat =
+  gen_qmediaformat_types.QMediaFormat(h: fcQMediaFormat_new3(cint(format)))
 
 proc staticMetaObject*(_: type gen_qmediaformat_types.QMediaFormat): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQMediaFormat_staticMetaObject())

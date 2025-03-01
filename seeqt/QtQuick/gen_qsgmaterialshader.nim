@@ -106,7 +106,6 @@ type cQSGMaterialShader*{.exportc: "QSGMaterialShader", incompleteStruct.} = obj
 type cQSGMaterialShaderRenderState*{.exportc: "QSGMaterialShader__RenderState", incompleteStruct.} = object
 type cQSGMaterialShaderGraphicsPipelineState*{.exportc: "QSGMaterialShader__GraphicsPipelineState", incompleteStruct.} = object
 
-proc fcQSGMaterialShader_new(): ptr cQSGMaterialShader {.importc: "QSGMaterialShader_new".}
 proc fcQSGMaterialShader_updateUniformData(self: pointer, state: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.importc: "QSGMaterialShader_updateUniformData".}
 proc fcQSGMaterialShader_updateGraphicsPipelineState(self: pointer, state: pointer, ps: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.importc: "QSGMaterialShader_updateGraphicsPipelineState".}
 proc fcQSGMaterialShader_flags(self: pointer, ): cint {.importc: "QSGMaterialShader_flags".}
@@ -114,10 +113,13 @@ proc fcQSGMaterialShader_setFlag(self: pointer, flags: cint): void {.importc: "Q
 proc fcQSGMaterialShader_setFlags(self: pointer, flags: cint): void {.importc: "QSGMaterialShader_setFlags".}
 proc fcQSGMaterialShader_combinedImageSamplerCount(self: pointer, binding: cint): cint {.importc: "QSGMaterialShader_combinedImageSamplerCount".}
 proc fcQSGMaterialShader_setFlag2(self: pointer, flags: cint, on: bool): void {.importc: "QSGMaterialShader_setFlag2".}
-proc fQSGMaterialShader_virtualbase_updateUniformData(self: pointer, state: pointer, newMaterial: pointer, oldMaterial: pointer): bool{.importc: "QSGMaterialShader_virtualbase_updateUniformData".}
-proc fcQSGMaterialShader_override_virtual_updateUniformData(self: pointer, slot: int) {.importc: "QSGMaterialShader_override_virtual_updateUniformData".}
-proc fQSGMaterialShader_virtualbase_updateGraphicsPipelineState(self: pointer, state: pointer, ps: pointer, newMaterial: pointer, oldMaterial: pointer): bool{.importc: "QSGMaterialShader_virtualbase_updateGraphicsPipelineState".}
-proc fcQSGMaterialShader_override_virtual_updateGraphicsPipelineState(self: pointer, slot: int) {.importc: "QSGMaterialShader_override_virtual_updateGraphicsPipelineState".}
+type cQSGMaterialShaderVTable = object
+  destructor*: proc(vtbl: ptr cQSGMaterialShaderVTable, self: ptr cQSGMaterialShader) {.cdecl, raises:[], gcsafe.}
+  updateUniformData*: proc(vtbl, self: pointer, state: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.cdecl, raises: [], gcsafe.}
+  updateGraphicsPipelineState*: proc(vtbl, self: pointer, state: pointer, ps: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.cdecl, raises: [], gcsafe.}
+proc fcQSGMaterialShader_virtualbase_updateUniformData(self: pointer, state: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.importc: "QSGMaterialShader_virtualbase_updateUniformData".}
+proc fcQSGMaterialShader_virtualbase_updateGraphicsPipelineState(self: pointer, state: pointer, ps: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.importc: "QSGMaterialShader_virtualbase_updateGraphicsPipelineState".}
+proc fcQSGMaterialShader_new(vtbl: pointer, ): ptr cQSGMaterialShader {.importc: "QSGMaterialShader_new".}
 proc fcQSGMaterialShader_delete(self: pointer) {.importc: "QSGMaterialShader_delete".}
 proc fcQSGMaterialShaderRenderState_dirtyStates(self: pointer, ): cint {.importc: "QSGMaterialShader__RenderState_dirtyStates".}
 proc fcQSGMaterialShaderRenderState_isMatrixDirty(self: pointer, ): bool {.importc: "QSGMaterialShader__RenderState_isMatrixDirty".}
@@ -134,16 +136,10 @@ proc fcQSGMaterialShaderRenderState_uniformData(self: pointer, ): struct_miqt_st
 proc fcQSGMaterialShaderRenderState_delete(self: pointer) {.importc: "QSGMaterialShader__RenderState_delete".}
 proc fcQSGMaterialShaderGraphicsPipelineState_delete(self: pointer) {.importc: "QSGMaterialShader__GraphicsPipelineState_delete".}
 
-
-func init*(T: type gen_qsgmaterialshader_types.QSGMaterialShader, h: ptr cQSGMaterialShader): gen_qsgmaterialshader_types.QSGMaterialShader =
-  T(h: h)
-proc create*(T: type gen_qsgmaterialshader_types.QSGMaterialShader, ): gen_qsgmaterialshader_types.QSGMaterialShader =
-  gen_qsgmaterialshader_types.QSGMaterialShader.init(fcQSGMaterialShader_new())
-
-proc updateUniformData*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: QSGMaterialShaderRenderState, newMaterial: QSGMaterial, oldMaterial: QSGMaterial): bool =
+proc updateUniformData*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, newMaterial: gen_qsgmaterial_types.QSGMaterial, oldMaterial: gen_qsgmaterial_types.QSGMaterial): bool =
   fcQSGMaterialShader_updateUniformData(self.h, state.h, newMaterial.h, oldMaterial.h)
 
-proc updateGraphicsPipelineState*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: QSGMaterialShaderRenderState, ps: QSGMaterialShaderGraphicsPipelineState, newMaterial: QSGMaterial, oldMaterial: QSGMaterial): bool =
+proc updateGraphicsPipelineState*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ps: gen_qsgmaterialshader_types.QSGMaterialShaderGraphicsPipelineState, newMaterial: gen_qsgmaterial_types.QSGMaterial, oldMaterial: gen_qsgmaterial_types.QSGMaterial): bool =
   fcQSGMaterialShader_updateGraphicsPipelineState(self.h, state.h, ps.h, newMaterial.h, oldMaterial.h)
 
 proc flags*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): cint =
@@ -161,59 +157,52 @@ proc combinedImageSamplerCount*(self: gen_qsgmaterialshader_types.QSGMaterialSha
 proc setFlag*(self: gen_qsgmaterialshader_types.QSGMaterialShader, flags: cint, on: bool): void =
   fcQSGMaterialShader_setFlag2(self.h, cint(flags), on)
 
-proc QSGMaterialShaderupdateUniformData*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: QSGMaterialShaderRenderState, newMaterial: QSGMaterial, oldMaterial: QSGMaterial): bool =
-  fQSGMaterialShader_virtualbase_updateUniformData(self.h, state.h, newMaterial.h, oldMaterial.h)
+type QSGMaterialShaderupdateUniformDataProc* = proc(self: QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, newMaterial: gen_qsgmaterial_types.QSGMaterial, oldMaterial: gen_qsgmaterial_types.QSGMaterial): bool {.raises: [], gcsafe.}
+type QSGMaterialShaderupdateGraphicsPipelineStateProc* = proc(self: QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ps: gen_qsgmaterialshader_types.QSGMaterialShaderGraphicsPipelineState, newMaterial: gen_qsgmaterial_types.QSGMaterial, oldMaterial: gen_qsgmaterial_types.QSGMaterial): bool {.raises: [], gcsafe.}
+type QSGMaterialShaderVTable* = object
+  vtbl: cQSGMaterialShaderVTable
+  updateUniformData*: QSGMaterialShaderupdateUniformDataProc
+  updateGraphicsPipelineState*: QSGMaterialShaderupdateGraphicsPipelineStateProc
+proc QSGMaterialShaderupdateUniformData*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, newMaterial: gen_qsgmaterial_types.QSGMaterial, oldMaterial: gen_qsgmaterial_types.QSGMaterial): bool =
+  fcQSGMaterialShader_virtualbase_updateUniformData(self.h, state.h, newMaterial.h, oldMaterial.h)
 
-type QSGMaterialShaderupdateUniformDataProc* = proc(state: QSGMaterialShaderRenderState, newMaterial: QSGMaterial, oldMaterial: QSGMaterial): bool
-proc onupdateUniformData*(self: gen_qsgmaterialshader_types.QSGMaterialShader, slot: QSGMaterialShaderupdateUniformDataProc) =
-  # TODO check subclass
-  var tmp = new QSGMaterialShaderupdateUniformDataProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSGMaterialShader_override_virtual_updateUniformData(self.h, cast[int](addr tmp[]))
-
-proc miqt_exec_callback_QSGMaterialShader_updateUniformData(self: ptr cQSGMaterialShader, slot: int, state: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.exportc: "miqt_exec_callback_QSGMaterialShader_updateUniformData ".} =
-  var nimfunc = cast[ptr QSGMaterialShaderupdateUniformDataProc](cast[pointer](slot))
-  let slotval1 = QSGMaterialShaderRenderState(h: state)
-
-  let slotval2 = QSGMaterial(h: newMaterial)
-
-  let slotval3 = QSGMaterial(h: oldMaterial)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
-
+proc miqt_exec_callback_cQSGMaterialShader_updateUniformData(vtbl: pointer, self: pointer, state: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QSGMaterialShaderVTable](vtbl)
+  let self = QSGMaterialShader(h: self)
+  let slotval1 = gen_qsgmaterialshader_types.QSGMaterialShaderRenderState(h: state)
+  let slotval2 = gen_qsgmaterial_types.QSGMaterial(h: newMaterial)
+  let slotval3 = gen_qsgmaterial_types.QSGMaterial(h: oldMaterial)
+  var virtualReturn = vtbl[].updateUniformData(self, slotval1, slotval2, slotval3)
   virtualReturn
-proc QSGMaterialShaderupdateGraphicsPipelineState*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: QSGMaterialShaderRenderState, ps: QSGMaterialShaderGraphicsPipelineState, newMaterial: QSGMaterial, oldMaterial: QSGMaterial): bool =
-  fQSGMaterialShader_virtualbase_updateGraphicsPipelineState(self.h, state.h, ps.h, newMaterial.h, oldMaterial.h)
 
-type QSGMaterialShaderupdateGraphicsPipelineStateProc* = proc(state: QSGMaterialShaderRenderState, ps: QSGMaterialShaderGraphicsPipelineState, newMaterial: QSGMaterial, oldMaterial: QSGMaterial): bool
-proc onupdateGraphicsPipelineState*(self: gen_qsgmaterialshader_types.QSGMaterialShader, slot: QSGMaterialShaderupdateGraphicsPipelineStateProc) =
-  # TODO check subclass
-  var tmp = new QSGMaterialShaderupdateGraphicsPipelineStateProc
-  tmp[] = slot
-  GC_ref(tmp)
-  fcQSGMaterialShader_override_virtual_updateGraphicsPipelineState(self.h, cast[int](addr tmp[]))
+proc QSGMaterialShaderupdateGraphicsPipelineState*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ps: gen_qsgmaterialshader_types.QSGMaterialShaderGraphicsPipelineState, newMaterial: gen_qsgmaterial_types.QSGMaterial, oldMaterial: gen_qsgmaterial_types.QSGMaterial): bool =
+  fcQSGMaterialShader_virtualbase_updateGraphicsPipelineState(self.h, state.h, ps.h, newMaterial.h, oldMaterial.h)
 
-proc miqt_exec_callback_QSGMaterialShader_updateGraphicsPipelineState(self: ptr cQSGMaterialShader, slot: int, state: pointer, ps: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.exportc: "miqt_exec_callback_QSGMaterialShader_updateGraphicsPipelineState ".} =
-  var nimfunc = cast[ptr QSGMaterialShaderupdateGraphicsPipelineStateProc](cast[pointer](slot))
-  let slotval1 = QSGMaterialShaderRenderState(h: state)
-
-  let slotval2 = QSGMaterialShaderGraphicsPipelineState(h: ps)
-
-  let slotval3 = QSGMaterial(h: newMaterial)
-
-  let slotval4 = QSGMaterial(h: oldMaterial)
-
-
-  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
-
+proc miqt_exec_callback_cQSGMaterialShader_updateGraphicsPipelineState(vtbl: pointer, self: pointer, state: pointer, ps: pointer, newMaterial: pointer, oldMaterial: pointer): bool {.cdecl.} =
+  let vtbl = cast[ptr QSGMaterialShaderVTable](vtbl)
+  let self = QSGMaterialShader(h: self)
+  let slotval1 = gen_qsgmaterialshader_types.QSGMaterialShaderRenderState(h: state)
+  let slotval2 = gen_qsgmaterialshader_types.QSGMaterialShaderGraphicsPipelineState(h: ps)
+  let slotval3 = gen_qsgmaterial_types.QSGMaterial(h: newMaterial)
+  let slotval4 = gen_qsgmaterial_types.QSGMaterial(h: oldMaterial)
+  var virtualReturn = vtbl[].updateGraphicsPipelineState(self, slotval1, slotval2, slotval3, slotval4)
   virtualReturn
+
+proc create*(T: type gen_qsgmaterialshader_types.QSGMaterialShader,
+    vtbl: ref QSGMaterialShaderVTable = nil): gen_qsgmaterialshader_types.QSGMaterialShader =
+  let vtbl = if vtbl == nil: new QSGMaterialShaderVTable else: vtbl
+  GC_ref(vtbl)
+  vtbl.vtbl.destructor = proc(vtbl: ptr cQSGMaterialShaderVTable, _: ptr cQSGMaterialShader) {.cdecl.} =
+    let vtbl = cast[ref QSGMaterialShaderVTable](vtbl)
+    GC_unref(vtbl)
+  if not isNil(vtbl.updateUniformData):
+    vtbl[].vtbl.updateUniformData = miqt_exec_callback_cQSGMaterialShader_updateUniformData
+  if not isNil(vtbl.updateGraphicsPipelineState):
+    vtbl[].vtbl.updateGraphicsPipelineState = miqt_exec_callback_cQSGMaterialShader_updateGraphicsPipelineState
+  gen_qsgmaterialshader_types.QSGMaterialShader(h: fcQSGMaterialShader_new(addr(vtbl[]), ))
+
 proc delete*(self: gen_qsgmaterialshader_types.QSGMaterialShader) =
   fcQSGMaterialShader_delete(self.h)
-
-func init*(T: type gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, h: ptr cQSGMaterialShaderRenderState): gen_qsgmaterialshader_types.QSGMaterialShaderRenderState =
-  T(h: h)
 proc dirtyStates*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): cint =
   cint(fcQSGMaterialShaderRenderState_dirtyStates(self.h))
 
@@ -226,20 +215,20 @@ proc isOpacityDirty*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderSt
 proc opacity*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): float32 =
   fcQSGMaterialShaderRenderState_opacity(self.h)
 
-proc combinedMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): QMatrix4x4 =
-  QMatrix4x4(h: fcQSGMaterialShaderRenderState_combinedMatrix(self.h))
+proc combinedMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qmatrix4x4_types.QMatrix4x4 =
+  gen_qmatrix4x4_types.QMatrix4x4(h: fcQSGMaterialShaderRenderState_combinedMatrix(self.h))
 
-proc modelViewMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): QMatrix4x4 =
-  QMatrix4x4(h: fcQSGMaterialShaderRenderState_modelViewMatrix(self.h))
+proc modelViewMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qmatrix4x4_types.QMatrix4x4 =
+  gen_qmatrix4x4_types.QMatrix4x4(h: fcQSGMaterialShaderRenderState_modelViewMatrix(self.h))
 
-proc projectionMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): QMatrix4x4 =
-  QMatrix4x4(h: fcQSGMaterialShaderRenderState_projectionMatrix(self.h))
+proc projectionMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qmatrix4x4_types.QMatrix4x4 =
+  gen_qmatrix4x4_types.QMatrix4x4(h: fcQSGMaterialShaderRenderState_projectionMatrix(self.h))
 
-proc viewportRect*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): QRect =
-  QRect(h: fcQSGMaterialShaderRenderState_viewportRect(self.h))
+proc viewportRect*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQSGMaterialShaderRenderState_viewportRect(self.h))
 
-proc deviceRect*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): QRect =
-  QRect(h: fcQSGMaterialShaderRenderState_deviceRect(self.h))
+proc deviceRect*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQSGMaterialShaderRenderState_deviceRect(self.h))
 
 proc determinant*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): float32 =
   fcQSGMaterialShaderRenderState_determinant(self.h)
@@ -255,8 +244,5 @@ proc uniformData*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState
 
 proc delete*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState) =
   fcQSGMaterialShaderRenderState_delete(self.h)
-
-func init*(T: type gen_qsgmaterialshader_types.QSGMaterialShaderGraphicsPipelineState, h: ptr cQSGMaterialShaderGraphicsPipelineState): gen_qsgmaterialshader_types.QSGMaterialShaderGraphicsPipelineState =
-  T(h: h)
 proc delete*(self: gen_qsgmaterialshader_types.QSGMaterialShaderGraphicsPipelineState) =
   fcQSGMaterialShaderGraphicsPipelineState_delete(self.h)

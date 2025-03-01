@@ -73,11 +73,8 @@ proc fcQWebEngineNewWindowRequest_tr3(s: cstring, c: cstring, n: cint): struct_m
 proc fcQWebEngineNewWindowRequest_staticMetaObject(): pointer {.importc: "QWebEngineNewWindowRequest_staticMetaObject".}
 proc fcQWebEngineNewWindowRequest_delete(self: pointer) {.importc: "QWebEngineNewWindowRequest_delete".}
 
-
-func init*(T: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, h: ptr cQWebEngineNewWindowRequest): gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest =
-  T(h: h)
-proc metaObject*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): QMetaObject =
-  QMetaObject(h: fcQWebEngineNewWindowRequest_metaObject(self.h))
+proc metaObject*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineNewWindowRequest_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, param1: cstring): pointer =
   fcQWebEngineNewWindowRequest_metacast(self.h, param1)
@@ -94,16 +91,16 @@ proc tr*(_: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest
 proc destination*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): cint =
   cint(fcQWebEngineNewWindowRequest_destination(self.h))
 
-proc requestedUrl*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): QUrl =
-  QUrl(h: fcQWebEngineNewWindowRequest_requestedUrl(self.h))
+proc requestedUrl*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineNewWindowRequest_requestedUrl(self.h))
 
-proc requestedGeometry*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): QRect =
-  QRect(h: fcQWebEngineNewWindowRequest_requestedGeometry(self.h))
+proc requestedGeometry*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): gen_qrect_types.QRect =
+  gen_qrect_types.QRect(h: fcQWebEngineNewWindowRequest_requestedGeometry(self.h))
 
 proc isUserInitiated*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): bool =
   fcQWebEngineNewWindowRequest_isUserInitiated(self.h)
 
-proc openIn*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, param1: QWebEnginePage): void =
+proc openIn*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, param1: gen_qwebenginepage_types.QWebEnginePage): void =
   fcQWebEngineNewWindowRequest_openIn(self.h, param1.h)
 
 proc tr*(_: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, s: cstring, c: cstring): string =

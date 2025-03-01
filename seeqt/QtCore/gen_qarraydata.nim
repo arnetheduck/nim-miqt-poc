@@ -73,9 +73,6 @@ proc fcQArrayData_reallocateUnaligned(data: pointer, dataPointer: pointer, objec
 proc fcQArrayData_deallocate(data: pointer, objectSize: int64, alignment: int64): void {.importc: "QArrayData_deallocate".}
 proc fcQArrayData_delete(self: pointer) {.importc: "QArrayData_delete".}
 
-
-func init*(T: type gen_qarraydata_types.QArrayData, h: ptr cQArrayData): gen_qarraydata_types.QArrayData =
-  T(h: h)
 proc allocatedCapacity*(self: gen_qarraydata_types.QArrayData, ): int64 =
   fcQArrayData_allocatedCapacity(self.h)
 
@@ -97,17 +94,17 @@ proc needsDetach*(self: gen_qarraydata_types.QArrayData, ): bool =
 proc detachCapacity*(self: gen_qarraydata_types.QArrayData, newSize: int64): int64 =
   fcQArrayData_detachCapacity(self.h, newSize)
 
-proc reallocateUnaligned*(_: type gen_qarraydata_types.QArrayData, data: QArrayData, dataPointer: pointer, objectSize: int64, newCapacity: int64, option: cint): tuple[first: QArrayData, second: pointer] =
+proc reallocateUnaligned*(_: type gen_qarraydata_types.QArrayData, data: gen_qarraydata_types.QArrayData, dataPointer: pointer, objectSize: int64, newCapacity: int64, option: cint): tuple[first: gen_qarraydata_types.QArrayData, second: pointer] =
   var v_mm = fcQArrayData_reallocateUnaligned(data.h, dataPointer, objectSize, newCapacity, cint(option))
   var v_First_CArray = cast[ptr UncheckedArray[pointer]](v_mm.keys)
   var v_Second_CArray = cast[ptr UncheckedArray[pointer]](v_mm.values)
-  var v_entry_First = QArrayData(h: v_First_CArray[0])
+  var v_entry_First = gen_qarraydata_types.QArrayData(h: v_First_CArray[0])
 
   var v_entry_Second = v_Second_CArray[0]
 
   (first: v_entry_First , second: v_entry_Second )
 
-proc deallocate*(_: type gen_qarraydata_types.QArrayData, data: QArrayData, objectSize: int64, alignment: int64): void =
+proc deallocate*(_: type gen_qarraydata_types.QArrayData, data: gen_qarraydata_types.QArrayData, objectSize: int64, alignment: int64): void =
   fcQArrayData_deallocate(data.h, objectSize, alignment)
 
 proc delete*(self: gen_qarraydata_types.QArrayData) =

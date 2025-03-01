@@ -112,16 +112,13 @@ proc fcQSGRendererInterface_isApiRhiBased(api: cint): bool {.importc: "QSGRender
 proc fcQSGRendererInterface_operatorAssign(self: pointer, param1: pointer): void {.importc: "QSGRendererInterface_operatorAssign".}
 proc fcQSGRendererInterface_delete(self: pointer) {.importc: "QSGRendererInterface_delete".}
 
-
-func init*(T: type gen_qsgrendererinterface_types.QSGRendererInterface, h: ptr cQSGRendererInterface): gen_qsgrendererinterface_types.QSGRendererInterface =
-  T(h: h)
 proc graphicsApi*(self: gen_qsgrendererinterface_types.QSGRendererInterface, ): cint =
   cint(fcQSGRendererInterface_graphicsApi(self.h))
 
-proc getResource*(self: gen_qsgrendererinterface_types.QSGRendererInterface, window: QQuickWindow, resource: cint): pointer =
+proc getResource*(self: gen_qsgrendererinterface_types.QSGRendererInterface, window: gen_qquickwindow_types.QQuickWindow, resource: cint): pointer =
   fcQSGRendererInterface_getResource(self.h, window.h, cint(resource))
 
-proc getResource*(self: gen_qsgrendererinterface_types.QSGRendererInterface, window: QQuickWindow, resource: cstring): pointer =
+proc getResource*(self: gen_qsgrendererinterface_types.QSGRendererInterface, window: gen_qquickwindow_types.QQuickWindow, resource: cstring): pointer =
   fcQSGRendererInterface_getResource2(self.h, window.h, resource)
 
 proc shaderType*(self: gen_qsgrendererinterface_types.QSGRendererInterface, ): cint =
@@ -136,7 +133,7 @@ proc shaderSourceType*(self: gen_qsgrendererinterface_types.QSGRendererInterface
 proc isApiRhiBased*(_: type gen_qsgrendererinterface_types.QSGRendererInterface, api: cint): bool =
   fcQSGRendererInterface_isApiRhiBased(cint(api))
 
-proc operatorAssign*(self: gen_qsgrendererinterface_types.QSGRendererInterface, param1: QSGRendererInterface): void =
+proc operatorAssign*(self: gen_qsgrendererinterface_types.QSGRendererInterface, param1: gen_qsgrendererinterface_types.QSGRendererInterface): void =
   fcQSGRendererInterface_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qsgrendererinterface_types.QSGRendererInterface) =

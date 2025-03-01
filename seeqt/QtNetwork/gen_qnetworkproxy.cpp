@@ -15,7 +15,6 @@
 extern "C" {
 #endif
 
-struct miqt_array /* of QNetworkProxy* */  miqt_exec_callback_QNetworkProxyFactory_queryProxy(QNetworkProxyFactory*, intptr_t, QNetworkProxyQuery*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -347,26 +346,24 @@ void QNetworkProxy_delete(QNetworkProxy* self) {
 }
 
 class MiqtVirtualQNetworkProxyFactory final : public QNetworkProxyFactory {
+	struct QNetworkProxyFactory_VTable* vtbl;
 public:
 
-	MiqtVirtualQNetworkProxyFactory(): QNetworkProxyFactory() {};
+	MiqtVirtualQNetworkProxyFactory(struct QNetworkProxyFactory_VTable* vtbl): QNetworkProxyFactory(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQNetworkProxyFactory() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__queryProxy = 0;
+	virtual ~MiqtVirtualQNetworkProxyFactory() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual QList<QNetworkProxy> queryProxy(const QNetworkProxyQuery& query) override {
-		if (handle__queryProxy == 0) {
+		if (vtbl->queryProxy == 0) {
 			return QList<QNetworkProxy>(); // Pure virtual, there is no base we can call
 		}
-		
+
 		const QNetworkProxyQuery& query_ret = query;
 		// Cast returned reference into pointer
 		QNetworkProxyQuery* sigval1 = const_cast<QNetworkProxyQuery*>(&query_ret);
 
-		struct miqt_array /* of QNetworkProxy* */  callback_return_value = miqt_exec_callback_QNetworkProxyFactory_queryProxy(this, handle__queryProxy, sigval1);
+		struct miqt_array /* of QNetworkProxy* */  callback_return_value = vtbl->queryProxy(vtbl, this, sigval1);
 		QList<QNetworkProxy> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QNetworkProxy** callback_return_value_arr = static_cast<QNetworkProxy**>(callback_return_value.data);
@@ -379,8 +376,8 @@ public:
 
 };
 
-QNetworkProxyFactory* QNetworkProxyFactory_new() {
-	return new MiqtVirtualQNetworkProxyFactory();
+QNetworkProxyFactory* QNetworkProxyFactory_new(struct QNetworkProxyFactory_VTable* vtbl) {
+	return new MiqtVirtualQNetworkProxyFactory(vtbl);
 }
 
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_queryProxy(QNetworkProxyFactory* self, QNetworkProxyQuery* query) {
@@ -449,16 +446,6 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_systemProxyForQu
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-}
-
-bool QNetworkProxyFactory_override_virtual_queryProxy(void* self, intptr_t slot) {
-	MiqtVirtualQNetworkProxyFactory* self_cast = dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( (QNetworkProxyFactory*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__queryProxy = slot;
-	return true;
 }
 
 void QNetworkProxyFactory_delete(QNetworkProxyFactory* self) {

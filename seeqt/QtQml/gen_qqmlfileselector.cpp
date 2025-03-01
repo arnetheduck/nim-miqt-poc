@@ -18,179 +18,172 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QQmlFileSelector_metacall(QQmlFileSelector*, intptr_t, int, int, void**);
-bool miqt_exec_callback_QQmlFileSelector_event(QQmlFileSelector*, intptr_t, QEvent*);
-bool miqt_exec_callback_QQmlFileSelector_eventFilter(QQmlFileSelector*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QQmlFileSelector_timerEvent(QQmlFileSelector*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QQmlFileSelector_childEvent(QQmlFileSelector*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QQmlFileSelector_customEvent(QQmlFileSelector*, intptr_t, QEvent*);
-void miqt_exec_callback_QQmlFileSelector_connectNotify(QQmlFileSelector*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QQmlFileSelector_disconnectNotify(QQmlFileSelector*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQQmlFileSelector final : public QQmlFileSelector {
+	struct QQmlFileSelector_VTable* vtbl;
 public:
 
-	MiqtVirtualQQmlFileSelector(QQmlEngine* engine): QQmlFileSelector(engine) {};
-	MiqtVirtualQQmlFileSelector(QQmlEngine* engine, QObject* parent): QQmlFileSelector(engine, parent) {};
+	MiqtVirtualQQmlFileSelector(struct QQmlFileSelector_VTable* vtbl, QQmlEngine* engine): QQmlFileSelector(engine), vtbl(vtbl) {};
+	MiqtVirtualQQmlFileSelector(struct QQmlFileSelector_VTable* vtbl, QQmlEngine* engine, QObject* parent): QQmlFileSelector(engine, parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQQmlFileSelector() override = default;
+	virtual ~MiqtVirtualQQmlFileSelector() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (vtbl->metaObject == 0) {
+			return QQmlFileSelector::metaObject();
+		}
+
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
+
+		return callback_return_value;
+	}
+
+	friend QMetaObject* QQmlFileSelector_virtualbase_metaObject(const void* self);
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (vtbl->metacast == 0) {
+			return QQmlFileSelector::qt_metacast(param1);
+		}
+
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
+
+		return callback_return_value;
+	}
+
+	friend void* QQmlFileSelector_virtualbase_metacast(void* self, const char* param1);
 
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QQmlFileSelector::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QQmlFileSelector_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	friend int QQmlFileSelector_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QQmlFileSelector::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQmlFileSelector_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
 
 	friend bool QQmlFileSelector_virtualbase_event(void* self, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QQmlFileSelector::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQmlFileSelector_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	friend bool QQmlFileSelector_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QQmlFileSelector::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QQmlFileSelector_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QQmlFileSelector::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QQmlFileSelector_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_childEvent(void* self, QChildEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QQmlFileSelector::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QQmlFileSelector_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_customEvent(void* self, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QQmlFileSelector::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQmlFileSelector_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QQmlFileSelector::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQmlFileSelector_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -202,12 +195,12 @@ public:
 	friend bool QQmlFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QQmlFileSelector* QQmlFileSelector_new(QQmlEngine* engine) {
-	return new MiqtVirtualQQmlFileSelector(engine);
+QQmlFileSelector* QQmlFileSelector_new(struct QQmlFileSelector_VTable* vtbl, QQmlEngine* engine) {
+	return new MiqtVirtualQQmlFileSelector(vtbl, engine);
 }
 
-QQmlFileSelector* QQmlFileSelector_new2(QQmlEngine* engine, QObject* parent) {
-	return new MiqtVirtualQQmlFileSelector(engine, parent);
+QQmlFileSelector* QQmlFileSelector_new2(struct QQmlFileSelector_VTable* vtbl, QQmlEngine* engine, QObject* parent) {
+	return new MiqtVirtualQQmlFileSelector(vtbl, engine, parent);
 }
 
 void QQmlFileSelector_virtbase(QQmlFileSelector* src, QObject** outptr_QObject) {
@@ -282,14 +275,16 @@ struct miqt_string QQmlFileSelector_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QQmlFileSelector_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
+QMetaObject* QQmlFileSelector_virtualbase_metaObject(const void* self) {
+
+	return (QMetaObject*) ( (const MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::metaObject();
+
+}
+
+void* QQmlFileSelector_virtualbase_metacast(void* self, const char* param1) {
+
+	return ( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::qt_metacast(param1);
+
 }
 
 int QQmlFileSelector_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
@@ -298,30 +293,10 @@ int QQmlFileSelector_virtualbase_metacall(void* self, int param1, int param2, vo
 
 }
 
-bool QQmlFileSelector_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
-}
-
 bool QQmlFileSelector_virtualbase_event(void* self, QEvent* event) {
 
 	return ( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::event(event);
 
-}
-
-bool QQmlFileSelector_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QQmlFileSelector_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
@@ -330,30 +305,10 @@ bool QQmlFileSelector_virtualbase_eventFilter(void* self, QObject* watched, QEve
 
 }
 
-bool QQmlFileSelector_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
-}
-
 void QQmlFileSelector_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
 	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::timerEvent(event);
 
-}
-
-bool QQmlFileSelector_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
 }
 
 void QQmlFileSelector_virtualbase_childEvent(void* self, QChildEvent* event) {
@@ -362,46 +317,16 @@ void QQmlFileSelector_virtualbase_childEvent(void* self, QChildEvent* event) {
 
 }
 
-bool QQmlFileSelector_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
-}
-
 void QQmlFileSelector_virtualbase_customEvent(void* self, QEvent* event) {
 
 	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::customEvent(event);
 
 }
 
-bool QQmlFileSelector_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QQmlFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::connectNotify(*signal);
 
-}
-
-bool QQmlFileSelector_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQmlFileSelector* self_cast = dynamic_cast<MiqtVirtualQQmlFileSelector*>( (QQmlFileSelector*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

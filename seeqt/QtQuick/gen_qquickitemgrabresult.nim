@@ -59,17 +59,14 @@ proc fcQQuickItemGrabResult_url(self: pointer, ): pointer {.importc: "QQuickItem
 proc fcQQuickItemGrabResult_saveToFile(self: pointer, fileName: struct_miqt_string): bool {.importc: "QQuickItemGrabResult_saveToFile".}
 proc fcQQuickItemGrabResult_saveToFileWithFileName(self: pointer, fileName: pointer): bool {.importc: "QQuickItemGrabResult_saveToFileWithFileName".}
 proc fcQQuickItemGrabResult_ready(self: pointer, ): void {.importc: "QQuickItemGrabResult_ready".}
-proc fQQuickItemGrabResult_connect_ready(self: pointer, slot: int) {.importc: "QQuickItemGrabResult_connect_ready".}
+proc fcQQuickItemGrabResult_connect_ready(self: pointer, slot: int) {.importc: "QQuickItemGrabResult_connect_ready".}
 proc fcQQuickItemGrabResult_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickItemGrabResult_tr2".}
 proc fcQQuickItemGrabResult_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickItemGrabResult_tr3".}
 proc fcQQuickItemGrabResult_staticMetaObject(): pointer {.importc: "QQuickItemGrabResult_staticMetaObject".}
 proc fcQQuickItemGrabResult_delete(self: pointer) {.importc: "QQuickItemGrabResult_delete".}
 
-
-func init*(T: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, h: ptr cQQuickItemGrabResult): gen_qquickitemgrabresult_types.QQuickItemGrabResult =
-  T(h: h)
-proc metaObject*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): QMetaObject =
-  QMetaObject(h: fcQQuickItemGrabResult_metaObject(self.h))
+proc metaObject*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQQuickItemGrabResult_metaObject(self.h))
 
 proc metacast*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, param1: cstring): pointer =
   fcQQuickItemGrabResult_metacast(self.h, param1)
@@ -83,23 +80,23 @@ proc tr*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring
   c_free(v_ms.data)
   vx_ret
 
-proc image*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): QImage =
-  QImage(h: fcQQuickItemGrabResult_image(self.h))
+proc image*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): gen_qimage_types.QImage =
+  gen_qimage_types.QImage(h: fcQQuickItemGrabResult_image(self.h))
 
-proc url*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): QUrl =
-  QUrl(h: fcQQuickItemGrabResult_url(self.h))
+proc url*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQQuickItemGrabResult_url(self.h))
 
 proc saveToFile*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, fileName: string): bool =
   fcQQuickItemGrabResult_saveToFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
-proc saveToFile*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, fileName: QUrl): bool =
+proc saveToFile*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, fileName: gen_qurl_types.QUrl): bool =
   fcQQuickItemGrabResult_saveToFileWithFileName(self.h, fileName.h)
 
 proc ready*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): void =
   fcQQuickItemGrabResult_ready(self.h)
 
 type QQuickItemGrabResultreadySlot* = proc()
-proc miqt_exec_callback_QQuickItemGrabResult_ready(slot: int) {.exportc.} =
+proc miqt_exec_callback_cQQuickItemGrabResult_ready(slot: int) {.exportc: "miqt_exec_callback_QQuickItemGrabResult_ready".} =
   let nimfunc = cast[ptr QQuickItemGrabResultreadySlot](cast[pointer](slot))
   nimfunc[]()
 
@@ -107,7 +104,7 @@ proc onready*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, slot: Q
   var tmp = new QQuickItemGrabResultreadySlot
   tmp[] = slot
   GC_ref(tmp)
-  fQQuickItemGrabResult_connect_ready(self.h, cast[int](addr tmp[]))
+  fcQQuickItemGrabResult_connect_ready(self.h, cast[int](addr tmp[]))
 
 proc tr*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring): string =
   let v_ms = fcQQuickItemGrabResult_tr2(s, c)

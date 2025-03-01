@@ -69,7 +69,6 @@ export
 
 type cQWebEngineCertificateError*{.exportc: "QWebEngineCertificateError", incompleteStruct.} = object
 
-proc fcQWebEngineCertificateError_new(other: pointer): ptr cQWebEngineCertificateError {.importc: "QWebEngineCertificateError_new".}
 proc fcQWebEngineCertificateError_operatorAssign(self: pointer, other: pointer): void {.importc: "QWebEngineCertificateError_operatorAssign".}
 proc fcQWebEngineCertificateError_typeX(self: pointer, ): cint {.importc: "QWebEngineCertificateError_type".}
 proc fcQWebEngineCertificateError_url(self: pointer, ): pointer {.importc: "QWebEngineCertificateError_url".}
@@ -79,23 +78,18 @@ proc fcQWebEngineCertificateError_deferX(self: pointer, ): void {.importc: "QWeb
 proc fcQWebEngineCertificateError_rejectCertificate(self: pointer, ): void {.importc: "QWebEngineCertificateError_rejectCertificate".}
 proc fcQWebEngineCertificateError_acceptCertificate(self: pointer, ): void {.importc: "QWebEngineCertificateError_acceptCertificate".}
 proc fcQWebEngineCertificateError_certificateChain(self: pointer, ): struct_miqt_array {.importc: "QWebEngineCertificateError_certificateChain".}
+proc fcQWebEngineCertificateError_new(other: pointer): ptr cQWebEngineCertificateError {.importc: "QWebEngineCertificateError_new".}
 proc fcQWebEngineCertificateError_staticMetaObject(): pointer {.importc: "QWebEngineCertificateError_staticMetaObject".}
 proc fcQWebEngineCertificateError_delete(self: pointer) {.importc: "QWebEngineCertificateError_delete".}
 
-
-func init*(T: type gen_qwebenginecertificateerror_types.QWebEngineCertificateError, h: ptr cQWebEngineCertificateError): gen_qwebenginecertificateerror_types.QWebEngineCertificateError =
-  T(h: h)
-proc create*(T: type gen_qwebenginecertificateerror_types.QWebEngineCertificateError, other: QWebEngineCertificateError): gen_qwebenginecertificateerror_types.QWebEngineCertificateError =
-  gen_qwebenginecertificateerror_types.QWebEngineCertificateError.init(fcQWebEngineCertificateError_new(other.h))
-
-proc operatorAssign*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, other: QWebEngineCertificateError): void =
+proc operatorAssign*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, other: gen_qwebenginecertificateerror_types.QWebEngineCertificateError): void =
   fcQWebEngineCertificateError_operatorAssign(self.h, other.h)
 
 proc typeX*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): cint =
   cint(fcQWebEngineCertificateError_typeX(self.h))
 
-proc url*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): QUrl =
-  QUrl(h: fcQWebEngineCertificateError_url(self.h))
+proc url*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineCertificateError_url(self.h))
 
 proc isOverridable*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): bool =
   fcQWebEngineCertificateError_isOverridable(self.h)
@@ -115,13 +109,17 @@ proc rejectCertificate*(self: gen_qwebenginecertificateerror_types.QWebEngineCer
 proc acceptCertificate*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): void =
   fcQWebEngineCertificateError_acceptCertificate(self.h)
 
-proc certificateChain*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): seq[QSslCertificate] =
+proc certificateChain*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): seq[gen_qsslcertificate_types.QSslCertificate] =
   var v_ma = fcQWebEngineCertificateError_certificateChain(self.h)
-  var vx_ret = newSeq[QSslCertificate](int(v_ma.len))
+  var vx_ret = newSeq[gen_qsslcertificate_types.QSslCertificate](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QSslCertificate(h: v_outCast[i])
+    vx_ret[i] = gen_qsslcertificate_types.QSslCertificate(h: v_outCast[i])
   vx_ret
+
+proc create*(T: type gen_qwebenginecertificateerror_types.QWebEngineCertificateError,
+    other: gen_qwebenginecertificateerror_types.QWebEngineCertificateError): gen_qwebenginecertificateerror_types.QWebEngineCertificateError =
+  gen_qwebenginecertificateerror_types.QWebEngineCertificateError(h: fcQWebEngineCertificateError_new(other.h))
 
 proc staticMetaObject*(_: type gen_qwebenginecertificateerror_types.QWebEngineCertificateError): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineCertificateError_staticMetaObject())

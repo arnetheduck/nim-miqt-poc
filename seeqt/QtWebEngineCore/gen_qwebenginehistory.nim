@@ -64,7 +64,6 @@ type cQWebEngineHistoryItem*{.exportc: "QWebEngineHistoryItem", incompleteStruct
 type cQWebEngineHistoryModel*{.exportc: "QWebEngineHistoryModel", incompleteStruct.} = object
 type cQWebEngineHistory*{.exportc: "QWebEngineHistory", incompleteStruct.} = object
 
-proc fcQWebEngineHistoryItem_new(other: pointer): ptr cQWebEngineHistoryItem {.importc: "QWebEngineHistoryItem_new".}
 proc fcQWebEngineHistoryItem_operatorAssign(self: pointer, other: pointer): void {.importc: "QWebEngineHistoryItem_operatorAssign".}
 proc fcQWebEngineHistoryItem_originalUrl(self: pointer, ): pointer {.importc: "QWebEngineHistoryItem_originalUrl".}
 proc fcQWebEngineHistoryItem_url(self: pointer, ): pointer {.importc: "QWebEngineHistoryItem_url".}
@@ -73,6 +72,7 @@ proc fcQWebEngineHistoryItem_lastVisited(self: pointer, ): pointer {.importc: "Q
 proc fcQWebEngineHistoryItem_iconUrl(self: pointer, ): pointer {.importc: "QWebEngineHistoryItem_iconUrl".}
 proc fcQWebEngineHistoryItem_isValid(self: pointer, ): bool {.importc: "QWebEngineHistoryItem_isValid".}
 proc fcQWebEngineHistoryItem_swap(self: pointer, other: pointer): void {.importc: "QWebEngineHistoryItem_swap".}
+proc fcQWebEngineHistoryItem_new(other: pointer): ptr cQWebEngineHistoryItem {.importc: "QWebEngineHistoryItem_new".}
 proc fcQWebEngineHistoryItem_delete(self: pointer) {.importc: "QWebEngineHistoryItem_delete".}
 proc fcQWebEngineHistoryModel_metaObject(self: pointer, ): pointer {.importc: "QWebEngineHistoryModel_metaObject".}
 proc fcQWebEngineHistoryModel_metacast(self: pointer, param1: cstring): pointer {.importc: "QWebEngineHistoryModel_metacast".}
@@ -111,20 +111,14 @@ proc fcQWebEngineHistory_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQWebEngineHistory_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineHistory_tr3".}
 proc fcQWebEngineHistory_staticMetaObject(): pointer {.importc: "QWebEngineHistory_staticMetaObject".}
 
-
-func init*(T: type gen_qwebenginehistory_types.QWebEngineHistoryItem, h: ptr cQWebEngineHistoryItem): gen_qwebenginehistory_types.QWebEngineHistoryItem =
-  T(h: h)
-proc create*(T: type gen_qwebenginehistory_types.QWebEngineHistoryItem, other: QWebEngineHistoryItem): gen_qwebenginehistory_types.QWebEngineHistoryItem =
-  gen_qwebenginehistory_types.QWebEngineHistoryItem.init(fcQWebEngineHistoryItem_new(other.h))
-
-proc operatorAssign*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, other: QWebEngineHistoryItem): void =
+proc operatorAssign*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, other: gen_qwebenginehistory_types.QWebEngineHistoryItem): void =
   fcQWebEngineHistoryItem_operatorAssign(self.h, other.h)
 
-proc originalUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): QUrl =
-  QUrl(h: fcQWebEngineHistoryItem_originalUrl(self.h))
+proc originalUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineHistoryItem_originalUrl(self.h))
 
-proc url*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): QUrl =
-  QUrl(h: fcQWebEngineHistoryItem_url(self.h))
+proc url*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineHistoryItem_url(self.h))
 
 proc title*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): string =
   let v_ms = fcQWebEngineHistoryItem_title(self.h)
@@ -132,25 +126,26 @@ proc title*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc lastVisited*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): QDateTime =
-  QDateTime(h: fcQWebEngineHistoryItem_lastVisited(self.h))
+proc lastVisited*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQWebEngineHistoryItem_lastVisited(self.h))
 
-proc iconUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): QUrl =
-  QUrl(h: fcQWebEngineHistoryItem_iconUrl(self.h))
+proc iconUrl*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineHistoryItem_iconUrl(self.h))
 
 proc isValid*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, ): bool =
   fcQWebEngineHistoryItem_isValid(self.h)
 
-proc swap*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, other: QWebEngineHistoryItem): void =
+proc swap*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem, other: gen_qwebenginehistory_types.QWebEngineHistoryItem): void =
   fcQWebEngineHistoryItem_swap(self.h, other.h)
+
+proc create*(T: type gen_qwebenginehistory_types.QWebEngineHistoryItem,
+    other: gen_qwebenginehistory_types.QWebEngineHistoryItem): gen_qwebenginehistory_types.QWebEngineHistoryItem =
+  gen_qwebenginehistory_types.QWebEngineHistoryItem(h: fcQWebEngineHistoryItem_new(other.h))
 
 proc delete*(self: gen_qwebenginehistory_types.QWebEngineHistoryItem) =
   fcQWebEngineHistoryItem_delete(self.h)
-
-func init*(T: type gen_qwebenginehistory_types.QWebEngineHistoryModel, h: ptr cQWebEngineHistoryModel): gen_qwebenginehistory_types.QWebEngineHistoryModel =
-  T(h: h)
-proc metaObject*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, ): QMetaObject =
-  QMetaObject(h: fcQWebEngineHistoryModel_metaObject(self.h))
+proc metaObject*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineHistoryModel_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, param1: cstring): pointer =
   fcQWebEngineHistoryModel_metacast(self.h, param1)
@@ -164,11 +159,11 @@ proc tr*(_: type gen_qwebenginehistory_types.QWebEngineHistoryModel, s: cstring)
   c_free(v_ms.data)
   vx_ret
 
-proc rowCount*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, parent: QModelIndex): cint =
+proc rowCount*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, parent: gen_qabstractitemmodel_types.QModelIndex): cint =
   fcQWebEngineHistoryModel_rowCount(self.h, parent.h)
 
-proc data*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, index: QModelIndex, role: cint): QVariant =
-  QVariant(h: fcQWebEngineHistoryModel_data(self.h, index.h, role))
+proc data*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, index: gen_qabstractitemmodel_types.QModelIndex, role: cint): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQWebEngineHistoryModel_data(self.h, index.h, role))
 
 proc roleNames*(self: gen_qwebenginehistory_types.QWebEngineHistoryModel, ): Table[cint,seq[byte]] =
   var v_mm = fcQWebEngineHistoryModel_roleNames(self.h)
@@ -203,11 +198,8 @@ proc tr*(_: type gen_qwebenginehistory_types.QWebEngineHistoryModel, s: cstring,
 
 proc staticMetaObject*(_: type gen_qwebenginehistory_types.QWebEngineHistoryModel): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineHistoryModel_staticMetaObject())
-
-func init*(T: type gen_qwebenginehistory_types.QWebEngineHistory, h: ptr cQWebEngineHistory): gen_qwebenginehistory_types.QWebEngineHistory =
-  T(h: h)
-proc metaObject*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): QMetaObject =
-  QMetaObject(h: fcQWebEngineHistory_metaObject(self.h))
+proc metaObject*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineHistory_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginehistory_types.QWebEngineHistory, param1: cstring): pointer =
   fcQWebEngineHistory_metacast(self.h, param1)
@@ -224,28 +216,28 @@ proc tr*(_: type gen_qwebenginehistory_types.QWebEngineHistory, s: cstring): str
 proc clear*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): void =
   fcQWebEngineHistory_clear(self.h)
 
-proc items*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): seq[QWebEngineHistoryItem] =
+proc items*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): seq[gen_qwebenginehistory_types.QWebEngineHistoryItem] =
   var v_ma = fcQWebEngineHistory_items(self.h)
-  var vx_ret = newSeq[QWebEngineHistoryItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qwebenginehistory_types.QWebEngineHistoryItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QWebEngineHistoryItem(h: v_outCast[i])
+    vx_ret[i] = gen_qwebenginehistory_types.QWebEngineHistoryItem(h: v_outCast[i])
   vx_ret
 
-proc backItems*(self: gen_qwebenginehistory_types.QWebEngineHistory, maxItems: cint): seq[QWebEngineHistoryItem] =
+proc backItems*(self: gen_qwebenginehistory_types.QWebEngineHistory, maxItems: cint): seq[gen_qwebenginehistory_types.QWebEngineHistoryItem] =
   var v_ma = fcQWebEngineHistory_backItems(self.h, maxItems)
-  var vx_ret = newSeq[QWebEngineHistoryItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qwebenginehistory_types.QWebEngineHistoryItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QWebEngineHistoryItem(h: v_outCast[i])
+    vx_ret[i] = gen_qwebenginehistory_types.QWebEngineHistoryItem(h: v_outCast[i])
   vx_ret
 
-proc forwardItems*(self: gen_qwebenginehistory_types.QWebEngineHistory, maxItems: cint): seq[QWebEngineHistoryItem] =
+proc forwardItems*(self: gen_qwebenginehistory_types.QWebEngineHistory, maxItems: cint): seq[gen_qwebenginehistory_types.QWebEngineHistoryItem] =
   var v_ma = fcQWebEngineHistory_forwardItems(self.h, maxItems)
-  var vx_ret = newSeq[QWebEngineHistoryItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qwebenginehistory_types.QWebEngineHistoryItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QWebEngineHistoryItem(h: v_outCast[i])
+    vx_ret[i] = gen_qwebenginehistory_types.QWebEngineHistoryItem(h: v_outCast[i])
   vx_ret
 
 proc canGoBack*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): bool =
@@ -260,20 +252,20 @@ proc back*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): void =
 proc forward*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): void =
   fcQWebEngineHistory_forward(self.h)
 
-proc goToItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, item: QWebEngineHistoryItem): void =
+proc goToItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, item: gen_qwebenginehistory_types.QWebEngineHistoryItem): void =
   fcQWebEngineHistory_goToItem(self.h, item.h)
 
-proc backItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): QWebEngineHistoryItem =
-  QWebEngineHistoryItem(h: fcQWebEngineHistory_backItem(self.h))
+proc backItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): gen_qwebenginehistory_types.QWebEngineHistoryItem =
+  gen_qwebenginehistory_types.QWebEngineHistoryItem(h: fcQWebEngineHistory_backItem(self.h))
 
-proc currentItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): QWebEngineHistoryItem =
-  QWebEngineHistoryItem(h: fcQWebEngineHistory_currentItem(self.h))
+proc currentItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): gen_qwebenginehistory_types.QWebEngineHistoryItem =
+  gen_qwebenginehistory_types.QWebEngineHistoryItem(h: fcQWebEngineHistory_currentItem(self.h))
 
-proc forwardItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): QWebEngineHistoryItem =
-  QWebEngineHistoryItem(h: fcQWebEngineHistory_forwardItem(self.h))
+proc forwardItem*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): gen_qwebenginehistory_types.QWebEngineHistoryItem =
+  gen_qwebenginehistory_types.QWebEngineHistoryItem(h: fcQWebEngineHistory_forwardItem(self.h))
 
-proc itemAt*(self: gen_qwebenginehistory_types.QWebEngineHistory, i: cint): QWebEngineHistoryItem =
-  QWebEngineHistoryItem(h: fcQWebEngineHistory_itemAt(self.h, i))
+proc itemAt*(self: gen_qwebenginehistory_types.QWebEngineHistory, i: cint): gen_qwebenginehistory_types.QWebEngineHistoryItem =
+  gen_qwebenginehistory_types.QWebEngineHistoryItem(h: fcQWebEngineHistory_itemAt(self.h, i))
 
 proc currentItemIndex*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): cint =
   fcQWebEngineHistory_currentItemIndex(self.h)
@@ -281,14 +273,14 @@ proc currentItemIndex*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): c
 proc count*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): cint =
   fcQWebEngineHistory_count(self.h)
 
-proc itemsModel*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): QWebEngineHistoryModel =
-  QWebEngineHistoryModel(h: fcQWebEngineHistory_itemsModel(self.h))
+proc itemsModel*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): gen_qwebenginehistory_types.QWebEngineHistoryModel =
+  gen_qwebenginehistory_types.QWebEngineHistoryModel(h: fcQWebEngineHistory_itemsModel(self.h))
 
-proc backItemsModel*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): QWebEngineHistoryModel =
-  QWebEngineHistoryModel(h: fcQWebEngineHistory_backItemsModel(self.h))
+proc backItemsModel*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): gen_qwebenginehistory_types.QWebEngineHistoryModel =
+  gen_qwebenginehistory_types.QWebEngineHistoryModel(h: fcQWebEngineHistory_backItemsModel(self.h))
 
-proc forwardItemsModel*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): QWebEngineHistoryModel =
-  QWebEngineHistoryModel(h: fcQWebEngineHistory_forwardItemsModel(self.h))
+proc forwardItemsModel*(self: gen_qwebenginehistory_types.QWebEngineHistory, ): gen_qwebenginehistory_types.QWebEngineHistoryModel =
+  gen_qwebenginehistory_types.QWebEngineHistoryModel(h: fcQWebEngineHistory_forwardItemsModel(self.h))
 
 proc tr*(_: type gen_qwebenginehistory_types.QWebEngineHistory, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineHistory_tr2(s, c)

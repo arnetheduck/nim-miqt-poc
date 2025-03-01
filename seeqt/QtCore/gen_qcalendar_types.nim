@@ -4,4 +4,3 @@ type QCalendarYearMonthDay* {.inheritable, pure.} = object
   h*: pointer
 type QCalendarSystemId* {.inheritable, pure.} = object
   h*: pointer
-

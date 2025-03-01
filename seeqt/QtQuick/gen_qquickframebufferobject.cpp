@@ -38,159 +38,127 @@ extern "C" {
 
 void miqt_exec_callback_QQuickFramebufferObject_textureFollowsItemSizeChanged(intptr_t, bool);
 void miqt_exec_callback_QQuickFramebufferObject_mirrorVerticallyChanged(intptr_t, bool);
-int miqt_exec_callback_QQuickFramebufferObject_metacall(QQuickFramebufferObject*, intptr_t, int, int, void**);
-QQuickFramebufferObject__Renderer* miqt_exec_callback_QQuickFramebufferObject_createRenderer(const QQuickFramebufferObject*, intptr_t);
-bool miqt_exec_callback_QQuickFramebufferObject_isTextureProvider(const QQuickFramebufferObject*, intptr_t);
-QSGTextureProvider* miqt_exec_callback_QQuickFramebufferObject_textureProvider(const QQuickFramebufferObject*, intptr_t);
-void miqt_exec_callback_QQuickFramebufferObject_releaseResources(QQuickFramebufferObject*, intptr_t);
-void miqt_exec_callback_QQuickFramebufferObject_geometryChange(QQuickFramebufferObject*, intptr_t, QRectF*, QRectF*);
-QSGNode* miqt_exec_callback_QQuickFramebufferObject_updatePaintNode(QQuickFramebufferObject*, intptr_t, QSGNode*, QQuickItem__UpdatePaintNodeData*);
-QRectF* miqt_exec_callback_QQuickFramebufferObject_boundingRect(const QQuickFramebufferObject*, intptr_t);
-QRectF* miqt_exec_callback_QQuickFramebufferObject_clipRect(const QQuickFramebufferObject*, intptr_t);
-bool miqt_exec_callback_QQuickFramebufferObject_contains(const QQuickFramebufferObject*, intptr_t, QPointF*);
-QVariant* miqt_exec_callback_QQuickFramebufferObject_inputMethodQuery(const QQuickFramebufferObject*, intptr_t, int);
-bool miqt_exec_callback_QQuickFramebufferObject_event(QQuickFramebufferObject*, intptr_t, QEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_itemChange(QQuickFramebufferObject*, intptr_t, int, QQuickItem__ItemChangeData*);
-void miqt_exec_callback_QQuickFramebufferObject_classBegin(QQuickFramebufferObject*, intptr_t);
-void miqt_exec_callback_QQuickFramebufferObject_componentComplete(QQuickFramebufferObject*, intptr_t);
-void miqt_exec_callback_QQuickFramebufferObject_keyPressEvent(QQuickFramebufferObject*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_keyReleaseEvent(QQuickFramebufferObject*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_inputMethodEvent(QQuickFramebufferObject*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_focusInEvent(QQuickFramebufferObject*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_focusOutEvent(QQuickFramebufferObject*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_mousePressEvent(QQuickFramebufferObject*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_mouseMoveEvent(QQuickFramebufferObject*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_mouseReleaseEvent(QQuickFramebufferObject*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_mouseDoubleClickEvent(QQuickFramebufferObject*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_mouseUngrabEvent(QQuickFramebufferObject*, intptr_t);
-void miqt_exec_callback_QQuickFramebufferObject_touchUngrabEvent(QQuickFramebufferObject*, intptr_t);
-void miqt_exec_callback_QQuickFramebufferObject_wheelEvent(QQuickFramebufferObject*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_touchEvent(QQuickFramebufferObject*, intptr_t, QTouchEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_hoverEnterEvent(QQuickFramebufferObject*, intptr_t, QHoverEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_hoverMoveEvent(QQuickFramebufferObject*, intptr_t, QHoverEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_hoverLeaveEvent(QQuickFramebufferObject*, intptr_t, QHoverEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_dragEnterEvent(QQuickFramebufferObject*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_dragMoveEvent(QQuickFramebufferObject*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_dragLeaveEvent(QQuickFramebufferObject*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_dropEvent(QQuickFramebufferObject*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QQuickFramebufferObject_childMouseEventFilter(QQuickFramebufferObject*, intptr_t, QQuickItem*, QEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_updatePolish(QQuickFramebufferObject*, intptr_t);
-bool miqt_exec_callback_QQuickFramebufferObject_eventFilter(QQuickFramebufferObject*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_timerEvent(QQuickFramebufferObject*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_childEvent(QQuickFramebufferObject*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_customEvent(QQuickFramebufferObject*, intptr_t, QEvent*);
-void miqt_exec_callback_QQuickFramebufferObject_connectNotify(QQuickFramebufferObject*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QQuickFramebufferObject_disconnectNotify(QQuickFramebufferObject*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQQuickFramebufferObject final : public QQuickFramebufferObject {
+	struct QQuickFramebufferObject_VTable* vtbl;
 public:
 
-	MiqtVirtualQQuickFramebufferObject(): QQuickFramebufferObject() {};
-	MiqtVirtualQQuickFramebufferObject(QQuickItem* parent): QQuickFramebufferObject(parent) {};
+	MiqtVirtualQQuickFramebufferObject(struct QQuickFramebufferObject_VTable* vtbl): QQuickFramebufferObject(), vtbl(vtbl) {};
+	MiqtVirtualQQuickFramebufferObject(struct QQuickFramebufferObject_VTable* vtbl, QQuickItem* parent): QQuickFramebufferObject(parent), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQQuickFramebufferObject() override = default;
+	virtual ~MiqtVirtualQQuickFramebufferObject() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__metacall = 0;
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (vtbl->metaObject == 0) {
+			return QQuickFramebufferObject::metaObject();
+		}
+
+
+		QMetaObject* callback_return_value = vtbl->metaObject(vtbl, this);
+
+		return callback_return_value;
+	}
+
+	friend QMetaObject* QQuickFramebufferObject_virtualbase_metaObject(const void* self);
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (vtbl->metacast == 0) {
+			return QQuickFramebufferObject::qt_metacast(param1);
+		}
+
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = vtbl->metacast(vtbl, this, sigval1);
+
+		return callback_return_value;
+	}
+
+	friend void* QQuickFramebufferObject_virtualbase_metacast(void* self, const char* param1);
 
 	// Subclass to allow providing a Go implementation
 	virtual int qt_metacall(QMetaObject::Call param1, int param2, void** param3) override {
-		if (handle__metacall == 0) {
+		if (vtbl->metacall == 0) {
 			return QQuickFramebufferObject::qt_metacall(param1, param2, param3);
 		}
-		
+
 		QMetaObject::Call param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		int sigval2 = param2;
 		void** sigval3 = param3;
 
-		int callback_return_value = miqt_exec_callback_QQuickFramebufferObject_metacall(this, handle__metacall, sigval1, sigval2, sigval3);
+		int callback_return_value = vtbl->metacall(vtbl, this, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	friend int QQuickFramebufferObject_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__createRenderer = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QQuickFramebufferObject::Renderer* createRenderer() const override {
-		if (handle__createRenderer == 0) {
+		if (vtbl->createRenderer == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
 
-		QQuickFramebufferObject__Renderer* callback_return_value = miqt_exec_callback_QQuickFramebufferObject_createRenderer(this, handle__createRenderer);
+
+		QQuickFramebufferObject__Renderer* callback_return_value = vtbl->createRenderer(vtbl, this);
 
 		return callback_return_value;
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__isTextureProvider = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool isTextureProvider() const override {
-		if (handle__isTextureProvider == 0) {
+		if (vtbl->isTextureProvider == 0) {
 			return QQuickFramebufferObject::isTextureProvider();
 		}
-		
 
-		bool callback_return_value = miqt_exec_callback_QQuickFramebufferObject_isTextureProvider(this, handle__isTextureProvider);
+
+		bool callback_return_value = vtbl->isTextureProvider(vtbl, this);
 
 		return callback_return_value;
 	}
 
 	friend bool QQuickFramebufferObject_virtualbase_isTextureProvider(const void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__textureProvider = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSGTextureProvider* textureProvider() const override {
-		if (handle__textureProvider == 0) {
+		if (vtbl->textureProvider == 0) {
 			return QQuickFramebufferObject::textureProvider();
 		}
-		
 
-		QSGTextureProvider* callback_return_value = miqt_exec_callback_QQuickFramebufferObject_textureProvider(this, handle__textureProvider);
+
+		QSGTextureProvider* callback_return_value = vtbl->textureProvider(vtbl, this);
 
 		return callback_return_value;
 	}
 
 	friend QSGTextureProvider* QQuickFramebufferObject_virtualbase_textureProvider(const void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__releaseResources = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void releaseResources() override {
-		if (handle__releaseResources == 0) {
+		if (vtbl->releaseResources == 0) {
 			QQuickFramebufferObject::releaseResources();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickFramebufferObject_releaseResources(this, handle__releaseResources);
 
-		
+		vtbl->releaseResources(vtbl, this);
+
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_releaseResources(void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__geometryChange = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void geometryChange(const QRectF& newGeometry, const QRectF& oldGeometry) override {
-		if (handle__geometryChange == 0) {
+		if (vtbl->geometryChange == 0) {
 			QQuickFramebufferObject::geometryChange(newGeometry, oldGeometry);
 			return;
 		}
-		
+
 		const QRectF& newGeometry_ret = newGeometry;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&newGeometry_ret);
@@ -198,711 +166,570 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval2 = const_cast<QRectF*>(&oldGeometry_ret);
 
-		miqt_exec_callback_QQuickFramebufferObject_geometryChange(this, handle__geometryChange, sigval1, sigval2);
+		vtbl->geometryChange(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_geometryChange(void* self, QRectF* newGeometry, QRectF* oldGeometry);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updatePaintNode = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QSGNode* updatePaintNode(QSGNode* param1, QQuickItem::UpdatePaintNodeData* param2) override {
-		if (handle__updatePaintNode == 0) {
+		if (vtbl->updatePaintNode == 0) {
 			return QQuickFramebufferObject::updatePaintNode(param1, param2);
 		}
-		
+
 		QSGNode* sigval1 = param1;
 		QQuickItem__UpdatePaintNodeData* sigval2 = param2;
 
-		QSGNode* callback_return_value = miqt_exec_callback_QQuickFramebufferObject_updatePaintNode(this, handle__updatePaintNode, sigval1, sigval2);
+		QSGNode* callback_return_value = vtbl->updatePaintNode(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	friend QSGNode* QQuickFramebufferObject_virtualbase_updatePaintNode(void* self, QSGNode* param1, QQuickItem__UpdatePaintNodeData* param2);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__boundingRect = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QRectF boundingRect() const override {
-		if (handle__boundingRect == 0) {
+		if (vtbl->boundingRect == 0) {
 			return QQuickFramebufferObject::boundingRect();
 		}
-		
 
-		QRectF* callback_return_value = miqt_exec_callback_QQuickFramebufferObject_boundingRect(this, handle__boundingRect);
+
+		QRectF* callback_return_value = vtbl->boundingRect(vtbl, this);
 
 		return *callback_return_value;
 	}
 
 	friend QRectF* QQuickFramebufferObject_virtualbase_boundingRect(const void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__clipRect = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QRectF clipRect() const override {
-		if (handle__clipRect == 0) {
+		if (vtbl->clipRect == 0) {
 			return QQuickFramebufferObject::clipRect();
 		}
-		
 
-		QRectF* callback_return_value = miqt_exec_callback_QQuickFramebufferObject_clipRect(this, handle__clipRect);
+
+		QRectF* callback_return_value = vtbl->clipRect(vtbl, this);
 
 		return *callback_return_value;
 	}
 
 	friend QRectF* QQuickFramebufferObject_virtualbase_clipRect(const void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__contains = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool contains(const QPointF& point) const override {
-		if (handle__contains == 0) {
+		if (vtbl->contains == 0) {
 			return QQuickFramebufferObject::contains(point);
 		}
-		
+
 		const QPointF& point_ret = point;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
 
-		bool callback_return_value = miqt_exec_callback_QQuickFramebufferObject_contains(this, handle__contains, sigval1);
+		bool callback_return_value = vtbl->contains(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
 
 	friend bool QQuickFramebufferObject_virtualbase_contains(const void* self, QPointF* point);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__inputMethodQuery = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
-		if (handle__inputMethodQuery == 0) {
+		if (vtbl->inputMethodQuery == 0) {
 			return QQuickFramebufferObject::inputMethodQuery(query);
 		}
-		
+
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QQuickFramebufferObject_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
+		QVariant* callback_return_value = vtbl->inputMethodQuery(vtbl, this, sigval1);
 
 		return *callback_return_value;
 	}
 
 	friend QVariant* QQuickFramebufferObject_virtualbase_inputMethodQuery(const void* self, int query);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__event = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* param1) override {
-		if (handle__event == 0) {
+		if (vtbl->event == 0) {
 			return QQuickFramebufferObject::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_QQuickFramebufferObject_event(this, handle__event, sigval1);
+		bool callback_return_value = vtbl->event(vtbl, this, sigval1);
 
 		return callback_return_value;
 	}
 
 	friend bool QQuickFramebufferObject_virtualbase_event(void* self, QEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__itemChange = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void itemChange(QQuickItem::ItemChange param1, const QQuickItem::ItemChangeData& param2) override {
-		if (handle__itemChange == 0) {
+		if (vtbl->itemChange == 0) {
 			QQuickFramebufferObject::itemChange(param1, param2);
 			return;
 		}
-		
+
 		QQuickItem::ItemChange param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		const QQuickItem::ItemChangeData& param2_ret = param2;
 		// Cast returned reference into pointer
 		QQuickItem__ItemChangeData* sigval2 = const_cast<QQuickItem::ItemChangeData*>(&param2_ret);
 
-		miqt_exec_callback_QQuickFramebufferObject_itemChange(this, handle__itemChange, sigval1, sigval2);
+		vtbl->itemChange(vtbl, this, sigval1, sigval2);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_itemChange(void* self, int param1, QQuickItem__ItemChangeData* param2);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__classBegin = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void classBegin() override {
-		if (handle__classBegin == 0) {
+		if (vtbl->classBegin == 0) {
 			QQuickFramebufferObject::classBegin();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickFramebufferObject_classBegin(this, handle__classBegin);
 
-		
+		vtbl->classBegin(vtbl, this);
+
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_classBegin(void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__componentComplete = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void componentComplete() override {
-		if (handle__componentComplete == 0) {
+		if (vtbl->componentComplete == 0) {
 			QQuickFramebufferObject::componentComplete();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickFramebufferObject_componentComplete(this, handle__componentComplete);
 
-		
+		vtbl->componentComplete(vtbl, this);
+
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_componentComplete(void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__keyPressEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void keyPressEvent(QKeyEvent* event) override {
-		if (handle__keyPressEvent == 0) {
+		if (vtbl->keyPressEvent == 0) {
 			QQuickFramebufferObject::keyPressEvent(event);
 			return;
 		}
-		
+
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_keyPressEvent(this, handle__keyPressEvent, sigval1);
+		vtbl->keyPressEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__keyReleaseEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void keyReleaseEvent(QKeyEvent* event) override {
-		if (handle__keyReleaseEvent == 0) {
+		if (vtbl->keyReleaseEvent == 0) {
 			QQuickFramebufferObject::keyReleaseEvent(event);
 			return;
 		}
-		
+
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
+		vtbl->keyReleaseEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__inputMethodEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void inputMethodEvent(QInputMethodEvent* param1) override {
-		if (handle__inputMethodEvent == 0) {
+		if (vtbl->inputMethodEvent == 0) {
 			QQuickFramebufferObject::inputMethodEvent(param1);
 			return;
 		}
-		
+
 		QInputMethodEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickFramebufferObject_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
+		vtbl->inputMethodEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__focusInEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void focusInEvent(QFocusEvent* param1) override {
-		if (handle__focusInEvent == 0) {
+		if (vtbl->focusInEvent == 0) {
 			QQuickFramebufferObject::focusInEvent(param1);
 			return;
 		}
-		
+
 		QFocusEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickFramebufferObject_focusInEvent(this, handle__focusInEvent, sigval1);
+		vtbl->focusInEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_focusInEvent(void* self, QFocusEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__focusOutEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void focusOutEvent(QFocusEvent* param1) override {
-		if (handle__focusOutEvent == 0) {
+		if (vtbl->focusOutEvent == 0) {
 			QQuickFramebufferObject::focusOutEvent(param1);
 			return;
 		}
-		
+
 		QFocusEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickFramebufferObject_focusOutEvent(this, handle__focusOutEvent, sigval1);
+		vtbl->focusOutEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_focusOutEvent(void* self, QFocusEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mousePressEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mousePressEvent(QMouseEvent* event) override {
-		if (handle__mousePressEvent == 0) {
+		if (vtbl->mousePressEvent == 0) {
 			QQuickFramebufferObject::mousePressEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_mousePressEvent(this, handle__mousePressEvent, sigval1);
+		vtbl->mousePressEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseMoveEvent(QMouseEvent* event) override {
-		if (handle__mouseMoveEvent == 0) {
+		if (vtbl->mouseMoveEvent == 0) {
 			QQuickFramebufferObject::mouseMoveEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
+		vtbl->mouseMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseReleaseEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseReleaseEvent(QMouseEvent* event) override {
-		if (handle__mouseReleaseEvent == 0) {
+		if (vtbl->mouseReleaseEvent == 0) {
 			QQuickFramebufferObject::mouseReleaseEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
+		vtbl->mouseReleaseEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseDoubleClickEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
-		if (handle__mouseDoubleClickEvent == 0) {
+		if (vtbl->mouseDoubleClickEvent == 0) {
 			QQuickFramebufferObject::mouseDoubleClickEvent(event);
 			return;
 		}
-		
+
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
+		vtbl->mouseDoubleClickEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__mouseUngrabEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void mouseUngrabEvent() override {
-		if (handle__mouseUngrabEvent == 0) {
+		if (vtbl->mouseUngrabEvent == 0) {
 			QQuickFramebufferObject::mouseUngrabEvent();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickFramebufferObject_mouseUngrabEvent(this, handle__mouseUngrabEvent);
 
-		
+		vtbl->mouseUngrabEvent(vtbl, this);
+
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_mouseUngrabEvent(void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__touchUngrabEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void touchUngrabEvent() override {
-		if (handle__touchUngrabEvent == 0) {
+		if (vtbl->touchUngrabEvent == 0) {
 			QQuickFramebufferObject::touchUngrabEvent();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickFramebufferObject_touchUngrabEvent(this, handle__touchUngrabEvent);
 
-		
+		vtbl->touchUngrabEvent(vtbl, this);
+
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_touchUngrabEvent(void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__wheelEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void wheelEvent(QWheelEvent* event) override {
-		if (handle__wheelEvent == 0) {
+		if (vtbl->wheelEvent == 0) {
 			QQuickFramebufferObject::wheelEvent(event);
 			return;
 		}
-		
+
 		QWheelEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_wheelEvent(this, handle__wheelEvent, sigval1);
+		vtbl->wheelEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__touchEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void touchEvent(QTouchEvent* event) override {
-		if (handle__touchEvent == 0) {
+		if (vtbl->touchEvent == 0) {
 			QQuickFramebufferObject::touchEvent(event);
 			return;
 		}
-		
+
 		QTouchEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_touchEvent(this, handle__touchEvent, sigval1);
+		vtbl->touchEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_touchEvent(void* self, QTouchEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hoverEnterEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void hoverEnterEvent(QHoverEvent* event) override {
-		if (handle__hoverEnterEvent == 0) {
+		if (vtbl->hoverEnterEvent == 0) {
 			QQuickFramebufferObject::hoverEnterEvent(event);
 			return;
 		}
-		
+
 		QHoverEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_hoverEnterEvent(this, handle__hoverEnterEvent, sigval1);
+		vtbl->hoverEnterEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_hoverEnterEvent(void* self, QHoverEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hoverMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void hoverMoveEvent(QHoverEvent* event) override {
-		if (handle__hoverMoveEvent == 0) {
+		if (vtbl->hoverMoveEvent == 0) {
 			QQuickFramebufferObject::hoverMoveEvent(event);
 			return;
 		}
-		
+
 		QHoverEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_hoverMoveEvent(this, handle__hoverMoveEvent, sigval1);
+		vtbl->hoverMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_hoverMoveEvent(void* self, QHoverEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__hoverLeaveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void hoverLeaveEvent(QHoverEvent* event) override {
-		if (handle__hoverLeaveEvent == 0) {
+		if (vtbl->hoverLeaveEvent == 0) {
 			QQuickFramebufferObject::hoverLeaveEvent(event);
 			return;
 		}
-		
+
 		QHoverEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_hoverLeaveEvent(this, handle__hoverLeaveEvent, sigval1);
+		vtbl->hoverLeaveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_hoverLeaveEvent(void* self, QHoverEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragEnterEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragEnterEvent(QDragEnterEvent* param1) override {
-		if (handle__dragEnterEvent == 0) {
+		if (vtbl->dragEnterEvent == 0) {
 			QQuickFramebufferObject::dragEnterEvent(param1);
 			return;
 		}
-		
+
 		QDragEnterEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickFramebufferObject_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
+		vtbl->dragEnterEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragMoveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragMoveEvent(QDragMoveEvent* param1) override {
-		if (handle__dragMoveEvent == 0) {
+		if (vtbl->dragMoveEvent == 0) {
 			QQuickFramebufferObject::dragMoveEvent(param1);
 			return;
 		}
-		
+
 		QDragMoveEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickFramebufferObject_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
+		vtbl->dragMoveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dragLeaveEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dragLeaveEvent(QDragLeaveEvent* param1) override {
-		if (handle__dragLeaveEvent == 0) {
+		if (vtbl->dragLeaveEvent == 0) {
 			QQuickFramebufferObject::dragLeaveEvent(param1);
 			return;
 		}
-		
+
 		QDragLeaveEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickFramebufferObject_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
+		vtbl->dragLeaveEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__dropEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void dropEvent(QDropEvent* param1) override {
-		if (handle__dropEvent == 0) {
+		if (vtbl->dropEvent == 0) {
 			QQuickFramebufferObject::dropEvent(param1);
 			return;
 		}
-		
+
 		QDropEvent* sigval1 = param1;
 
-		miqt_exec_callback_QQuickFramebufferObject_dropEvent(this, handle__dropEvent, sigval1);
+		vtbl->dropEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_dropEvent(void* self, QDropEvent* param1);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childMouseEventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool childMouseEventFilter(QQuickItem* param1, QEvent* param2) override {
-		if (handle__childMouseEventFilter == 0) {
+		if (vtbl->childMouseEventFilter == 0) {
 			return QQuickFramebufferObject::childMouseEventFilter(param1, param2);
 		}
-		
+
 		QQuickItem* sigval1 = param1;
 		QEvent* sigval2 = param2;
 
-		bool callback_return_value = miqt_exec_callback_QQuickFramebufferObject_childMouseEventFilter(this, handle__childMouseEventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->childMouseEventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	friend bool QQuickFramebufferObject_virtualbase_childMouseEventFilter(void* self, QQuickItem* param1, QEvent* param2);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__updatePolish = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void updatePolish() override {
-		if (handle__updatePolish == 0) {
+		if (vtbl->updatePolish == 0) {
 			QQuickFramebufferObject::updatePolish();
 			return;
 		}
-		
 
-		miqt_exec_callback_QQuickFramebufferObject_updatePolish(this, handle__updatePolish);
 
-		
+		vtbl->updatePolish(vtbl, this);
+
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_updatePolish(void* self);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__eventFilter = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__eventFilter == 0) {
+		if (vtbl->eventFilter == 0) {
 			return QQuickFramebufferObject::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQuickFramebufferObject_eventFilter(this, handle__eventFilter, sigval1, sigval2);
+		bool callback_return_value = vtbl->eventFilter(vtbl, this, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	friend bool QQuickFramebufferObject_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__timerEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__timerEvent == 0) {
+		if (vtbl->timerEvent == 0) {
 			QQuickFramebufferObject::timerEvent(event);
 			return;
 		}
-		
+
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_timerEvent(this, handle__timerEvent, sigval1);
+		vtbl->timerEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__childEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__childEvent == 0) {
+		if (vtbl->childEvent == 0) {
 			QQuickFramebufferObject::childEvent(event);
 			return;
 		}
-		
+
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_childEvent(this, handle__childEvent, sigval1);
+		vtbl->childEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_childEvent(void* self, QChildEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__customEvent = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__customEvent == 0) {
+		if (vtbl->customEvent == 0) {
 			QQuickFramebufferObject::customEvent(event);
 			return;
 		}
-		
+
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QQuickFramebufferObject_customEvent(this, handle__customEvent, sigval1);
+		vtbl->customEvent(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_customEvent(void* self, QEvent* event);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__connectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__connectNotify == 0) {
+		if (vtbl->connectNotify == 0) {
 			QQuickFramebufferObject::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQuickFramebufferObject_connectNotify(this, handle__connectNotify, sigval1);
+		vtbl->connectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__disconnectNotify = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__disconnectNotify == 0) {
+		if (vtbl->disconnectNotify == 0) {
 			QQuickFramebufferObject::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQuickFramebufferObject_disconnectNotify(this, handle__disconnectNotify, sigval1);
+		vtbl->disconnectNotify(vtbl, this, sigval1);
 
-		
 	}
 
 	friend void QQuickFramebufferObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -919,12 +746,12 @@ public:
 	friend bool QQuickFramebufferObject_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
-QQuickFramebufferObject* QQuickFramebufferObject_new() {
-	return new MiqtVirtualQQuickFramebufferObject();
+QQuickFramebufferObject* QQuickFramebufferObject_new(struct QQuickFramebufferObject_VTable* vtbl) {
+	return new MiqtVirtualQQuickFramebufferObject(vtbl);
 }
 
-QQuickFramebufferObject* QQuickFramebufferObject_new2(QQuickItem* parent) {
-	return new MiqtVirtualQQuickFramebufferObject(parent);
+QQuickFramebufferObject* QQuickFramebufferObject_new2(struct QQuickFramebufferObject_VTable* vtbl, QQuickItem* parent) {
+	return new MiqtVirtualQQuickFramebufferObject(vtbl, parent);
 }
 
 void QQuickFramebufferObject_virtbase(QQuickFramebufferObject* src, QQuickItem** outptr_QQuickItem) {
@@ -1030,14 +857,16 @@ struct miqt_string QQuickFramebufferObject_tr3(const char* s, const char* c, int
 	return _ms;
 }
 
-bool QQuickFramebufferObject_override_virtual_metacall(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__metacall = slot;
-	return true;
+QMetaObject* QQuickFramebufferObject_virtualbase_metaObject(const void* self) {
+
+	return (QMetaObject*) ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::metaObject();
+
+}
+
+void* QQuickFramebufferObject_virtualbase_metacast(void* self, const char* param1) {
+
+	return ( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::qt_metacast(param1);
+
 }
 
 int QQuickFramebufferObject_virtualbase_metacall(void* self, int param1, int param2, void** param3) {
@@ -1046,40 +875,10 @@ int QQuickFramebufferObject_virtualbase_metacall(void* self, int param1, int par
 
 }
 
-bool QQuickFramebufferObject_override_virtual_createRenderer(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__createRenderer = slot;
-	return true;
-}
-
-bool QQuickFramebufferObject_override_virtual_isTextureProvider(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__isTextureProvider = slot;
-	return true;
-}
-
 bool QQuickFramebufferObject_virtualbase_isTextureProvider(const void* self) {
 
 	return ( (const MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::isTextureProvider();
 
-}
-
-bool QQuickFramebufferObject_override_virtual_textureProvider(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__textureProvider = slot;
-	return true;
 }
 
 QSGTextureProvider* QQuickFramebufferObject_virtualbase_textureProvider(const void* self) {
@@ -1088,30 +887,10 @@ QSGTextureProvider* QQuickFramebufferObject_virtualbase_textureProvider(const vo
 
 }
 
-bool QQuickFramebufferObject_override_virtual_releaseResources(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__releaseResources = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_releaseResources(void* self) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::releaseResources();
 
-}
-
-bool QQuickFramebufferObject_override_virtual_geometryChange(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__geometryChange = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_geometryChange(void* self, QRectF* newGeometry, QRectF* oldGeometry) {
@@ -1120,30 +899,10 @@ void QQuickFramebufferObject_virtualbase_geometryChange(void* self, QRectF* newG
 
 }
 
-bool QQuickFramebufferObject_override_virtual_updatePaintNode(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updatePaintNode = slot;
-	return true;
-}
-
 QSGNode* QQuickFramebufferObject_virtualbase_updatePaintNode(void* self, QSGNode* param1, QQuickItem__UpdatePaintNodeData* param2) {
 
 	return ( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::updatePaintNode(param1, param2);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_boundingRect(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__boundingRect = slot;
-	return true;
 }
 
 QRectF* QQuickFramebufferObject_virtualbase_boundingRect(const void* self) {
@@ -1152,30 +911,10 @@ QRectF* QQuickFramebufferObject_virtualbase_boundingRect(const void* self) {
 
 }
 
-bool QQuickFramebufferObject_override_virtual_clipRect(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__clipRect = slot;
-	return true;
-}
-
 QRectF* QQuickFramebufferObject_virtualbase_clipRect(const void* self) {
 
 	return new QRectF(( (const MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::clipRect());
 
-}
-
-bool QQuickFramebufferObject_override_virtual_contains(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__contains = slot;
-	return true;
 }
 
 bool QQuickFramebufferObject_virtualbase_contains(const void* self, QPointF* point) {
@@ -1184,30 +923,10 @@ bool QQuickFramebufferObject_virtualbase_contains(const void* self, QPointF* poi
 
 }
 
-bool QQuickFramebufferObject_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__inputMethodQuery = slot;
-	return true;
-}
-
 QVariant* QQuickFramebufferObject_virtualbase_inputMethodQuery(const void* self, int query) {
 
 	return new QVariant(( (const MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
-}
-
-bool QQuickFramebufferObject_override_virtual_event(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__event = slot;
-	return true;
 }
 
 bool QQuickFramebufferObject_virtualbase_event(void* self, QEvent* param1) {
@@ -1216,30 +935,10 @@ bool QQuickFramebufferObject_virtualbase_event(void* self, QEvent* param1) {
 
 }
 
-bool QQuickFramebufferObject_override_virtual_itemChange(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__itemChange = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_itemChange(void* self, int param1, QQuickItem__ItemChangeData* param2) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::itemChange(static_cast<MiqtVirtualQQuickFramebufferObject::ItemChange>(param1), *param2);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_classBegin(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__classBegin = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_classBegin(void* self) {
@@ -1248,30 +947,10 @@ void QQuickFramebufferObject_virtualbase_classBegin(void* self) {
 
 }
 
-bool QQuickFramebufferObject_override_virtual_componentComplete(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__componentComplete = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_componentComplete(void* self) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::componentComplete();
 
-}
-
-bool QQuickFramebufferObject_override_virtual_keyPressEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__keyPressEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
@@ -1280,30 +959,10 @@ void QQuickFramebufferObject_virtualbase_keyPressEvent(void* self, QKeyEvent* ev
 
 }
 
-bool QQuickFramebufferObject_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__keyReleaseEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::keyReleaseEvent(event);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__inputMethodEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
@@ -1312,30 +971,10 @@ void QQuickFramebufferObject_virtualbase_inputMethodEvent(void* self, QInputMeth
 
 }
 
-bool QQuickFramebufferObject_override_virtual_focusInEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__focusInEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::focusInEvent(param1);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_focusOutEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__focusOutEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
@@ -1344,30 +983,10 @@ void QQuickFramebufferObject_virtualbase_focusOutEvent(void* self, QFocusEvent* 
 
 }
 
-bool QQuickFramebufferObject_override_virtual_mousePressEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mousePressEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::mousePressEvent(event);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseMoveEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
@@ -1376,30 +995,10 @@ void QQuickFramebufferObject_virtualbase_mouseMoveEvent(void* self, QMouseEvent*
 
 }
 
-bool QQuickFramebufferObject_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseReleaseEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::mouseReleaseEvent(event);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseDoubleClickEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
@@ -1408,30 +1007,10 @@ void QQuickFramebufferObject_virtualbase_mouseDoubleClickEvent(void* self, QMous
 
 }
 
-bool QQuickFramebufferObject_override_virtual_mouseUngrabEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__mouseUngrabEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_mouseUngrabEvent(void* self) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::mouseUngrabEvent();
 
-}
-
-bool QQuickFramebufferObject_override_virtual_touchUngrabEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__touchUngrabEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_touchUngrabEvent(void* self) {
@@ -1440,30 +1019,10 @@ void QQuickFramebufferObject_virtualbase_touchUngrabEvent(void* self) {
 
 }
 
-bool QQuickFramebufferObject_override_virtual_wheelEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__wheelEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::wheelEvent(event);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_touchEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__touchEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_touchEvent(void* self, QTouchEvent* event) {
@@ -1472,30 +1031,10 @@ void QQuickFramebufferObject_virtualbase_touchEvent(void* self, QTouchEvent* eve
 
 }
 
-bool QQuickFramebufferObject_override_virtual_hoverEnterEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hoverEnterEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_hoverEnterEvent(void* self, QHoverEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::hoverEnterEvent(event);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_hoverMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hoverMoveEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_hoverMoveEvent(void* self, QHoverEvent* event) {
@@ -1504,30 +1043,10 @@ void QQuickFramebufferObject_virtualbase_hoverMoveEvent(void* self, QHoverEvent*
 
 }
 
-bool QQuickFramebufferObject_override_virtual_hoverLeaveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__hoverLeaveEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_hoverLeaveEvent(void* self, QHoverEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::hoverLeaveEvent(event);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragEnterEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1) {
@@ -1536,30 +1055,10 @@ void QQuickFramebufferObject_virtualbase_dragEnterEvent(void* self, QDragEnterEv
 
 }
 
-bool QQuickFramebufferObject_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragMoveEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* param1) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::dragMoveEvent(param1);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dragLeaveEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* param1) {
@@ -1568,30 +1067,10 @@ void QQuickFramebufferObject_virtualbase_dragLeaveEvent(void* self, QDragLeaveEv
 
 }
 
-bool QQuickFramebufferObject_override_virtual_dropEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__dropEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_dropEvent(void* self, QDropEvent* param1) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::dropEvent(param1);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_childMouseEventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childMouseEventFilter = slot;
-	return true;
 }
 
 bool QQuickFramebufferObject_virtualbase_childMouseEventFilter(void* self, QQuickItem* param1, QEvent* param2) {
@@ -1600,30 +1079,10 @@ bool QQuickFramebufferObject_virtualbase_childMouseEventFilter(void* self, QQuic
 
 }
 
-bool QQuickFramebufferObject_override_virtual_updatePolish(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__updatePolish = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_updatePolish(void* self) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::updatePolish();
 
-}
-
-bool QQuickFramebufferObject_override_virtual_eventFilter(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__eventFilter = slot;
-	return true;
 }
 
 bool QQuickFramebufferObject_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
@@ -1632,30 +1091,10 @@ bool QQuickFramebufferObject_virtualbase_eventFilter(void* self, QObject* watche
 
 }
 
-bool QQuickFramebufferObject_override_virtual_timerEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__timerEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::timerEvent(event);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_childEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__childEvent = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_childEvent(void* self, QChildEvent* event) {
@@ -1664,46 +1103,16 @@ void QQuickFramebufferObject_virtualbase_childEvent(void* self, QChildEvent* eve
 
 }
 
-bool QQuickFramebufferObject_override_virtual_customEvent(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__customEvent = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_customEvent(void* self, QEvent* event) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::customEvent(event);
 
 }
 
-bool QQuickFramebufferObject_override_virtual_connectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__connectNotify = slot;
-	return true;
-}
-
 void QQuickFramebufferObject_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->QQuickFramebufferObject::connectNotify(*signal);
 
-}
-
-bool QQuickFramebufferObject_override_virtual_disconnectNotify(void* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject* self_cast = dynamic_cast<MiqtVirtualQQuickFramebufferObject*>( (QQuickFramebufferObject*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__disconnectNotify = slot;
-	return true;
 }
 
 void QQuickFramebufferObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {

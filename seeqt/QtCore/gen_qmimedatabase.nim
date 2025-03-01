@@ -56,7 +56,6 @@ export
 
 type cQMimeDatabase*{.exportc: "QMimeDatabase", incompleteStruct.} = object
 
-proc fcQMimeDatabase_new(): ptr cQMimeDatabase {.importc: "QMimeDatabase_new".}
 proc fcQMimeDatabase_mimeTypeForName(self: pointer, nameOrAlias: struct_miqt_string): pointer {.importc: "QMimeDatabase_mimeTypeForName".}
 proc fcQMimeDatabase_mimeTypeForFile(self: pointer, fileName: struct_miqt_string): pointer {.importc: "QMimeDatabase_mimeTypeForFile".}
 proc fcQMimeDatabase_mimeTypeForFileWithFileInfo(self: pointer, fileInfo: pointer): pointer {.importc: "QMimeDatabase_mimeTypeForFileWithFileInfo".}
@@ -70,45 +69,40 @@ proc fcQMimeDatabase_suffixForFileName(self: pointer, fileName: struct_miqt_stri
 proc fcQMimeDatabase_allMimeTypes(self: pointer, ): struct_miqt_array {.importc: "QMimeDatabase_allMimeTypes".}
 proc fcQMimeDatabase_mimeTypeForFile2(self: pointer, fileName: struct_miqt_string, mode: cint): pointer {.importc: "QMimeDatabase_mimeTypeForFile2".}
 proc fcQMimeDatabase_mimeTypeForFile22(self: pointer, fileInfo: pointer, mode: cint): pointer {.importc: "QMimeDatabase_mimeTypeForFile22".}
+proc fcQMimeDatabase_new(): ptr cQMimeDatabase {.importc: "QMimeDatabase_new".}
 proc fcQMimeDatabase_delete(self: pointer) {.importc: "QMimeDatabase_delete".}
 
+proc mimeTypeForName*(self: gen_qmimedatabase_types.QMimeDatabase, nameOrAlias: string): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForName(self.h, struct_miqt_string(data: nameOrAlias, len: csize_t(len(nameOrAlias)))))
 
-func init*(T: type gen_qmimedatabase_types.QMimeDatabase, h: ptr cQMimeDatabase): gen_qmimedatabase_types.QMimeDatabase =
-  T(h: h)
-proc create*(T: type gen_qmimedatabase_types.QMimeDatabase, ): gen_qmimedatabase_types.QMimeDatabase =
-  gen_qmimedatabase_types.QMimeDatabase.init(fcQMimeDatabase_new())
+proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
 
-proc mimeTypeForName*(self: gen_qmimedatabase_types.QMimeDatabase, nameOrAlias: string): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForName(self.h, struct_miqt_string(data: nameOrAlias, len: csize_t(len(nameOrAlias)))))
+proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileInfo: gen_qfileinfo_types.QFileInfo): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForFileWithFileInfo(self.h, fileInfo.h))
 
-proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-
-proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileInfo: QFileInfo): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForFileWithFileInfo(self.h, fileInfo.h))
-
-proc mimeTypesForFileName*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string): seq[QMimeType] =
+proc mimeTypesForFileName*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string): seq[gen_qmimetype_types.QMimeType] =
   var v_ma = fcQMimeDatabase_mimeTypesForFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
-  var vx_ret = newSeq[QMimeType](int(v_ma.len))
+  var vx_ret = newSeq[gen_qmimetype_types.QMimeType](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QMimeType(h: v_outCast[i])
+    vx_ret[i] = gen_qmimetype_types.QMimeType(h: v_outCast[i])
   vx_ret
 
-proc mimeTypeForData*(self: gen_qmimedatabase_types.QMimeDatabase, data: seq[byte]): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForData(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
+proc mimeTypeForData*(self: gen_qmimedatabase_types.QMimeDatabase, data: seq[byte]): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForData(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
 
-proc mimeTypeForData*(self: gen_qmimedatabase_types.QMimeDatabase, device: QIODevice): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForDataWithDevice(self.h, device.h))
+proc mimeTypeForData*(self: gen_qmimedatabase_types.QMimeDatabase, device: gen_qiodevice_types.QIODevice): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForDataWithDevice(self.h, device.h))
 
-proc mimeTypeForUrl*(self: gen_qmimedatabase_types.QMimeDatabase, url: QUrl): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForUrl(self.h, url.h))
+proc mimeTypeForUrl*(self: gen_qmimedatabase_types.QMimeDatabase, url: gen_qurl_types.QUrl): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForUrl(self.h, url.h))
 
-proc mimeTypeForFileNameAndData*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string, device: QIODevice): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForFileNameAndData(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), device.h))
+proc mimeTypeForFileNameAndData*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string, device: gen_qiodevice_types.QIODevice): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForFileNameAndData(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), device.h))
 
-proc mimeTypeForFileNameAndData*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string, data: seq[byte]): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForFileNameAndData2(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
+proc mimeTypeForFileNameAndData*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string, data: seq[byte]): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForFileNameAndData2(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
 
 proc suffixForFileName*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string): string =
   let v_ms = fcQMimeDatabase_suffixForFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
@@ -116,19 +110,22 @@ proc suffixForFileName*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: s
   c_free(v_ms.data)
   vx_ret
 
-proc allMimeTypes*(self: gen_qmimedatabase_types.QMimeDatabase, ): seq[QMimeType] =
+proc allMimeTypes*(self: gen_qmimedatabase_types.QMimeDatabase, ): seq[gen_qmimetype_types.QMimeType] =
   var v_ma = fcQMimeDatabase_allMimeTypes(self.h)
-  var vx_ret = newSeq[QMimeType](int(v_ma.len))
+  var vx_ret = newSeq[gen_qmimetype_types.QMimeType](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QMimeType(h: v_outCast[i])
+    vx_ret[i] = gen_qmimetype_types.QMimeType(h: v_outCast[i])
   vx_ret
 
-proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string, mode: cint): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForFile2(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(mode)))
+proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileName: string, mode: cint): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForFile2(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(mode)))
 
-proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileInfo: QFileInfo, mode: cint): QMimeType =
-  QMimeType(h: fcQMimeDatabase_mimeTypeForFile22(self.h, fileInfo.h, cint(mode)))
+proc mimeTypeForFile*(self: gen_qmimedatabase_types.QMimeDatabase, fileInfo: gen_qfileinfo_types.QFileInfo, mode: cint): gen_qmimetype_types.QMimeType =
+  gen_qmimetype_types.QMimeType(h: fcQMimeDatabase_mimeTypeForFile22(self.h, fileInfo.h, cint(mode)))
+
+proc create*(T: type gen_qmimedatabase_types.QMimeDatabase): gen_qmimedatabase_types.QMimeDatabase =
+  gen_qmimedatabase_types.QMimeDatabase(h: fcQMimeDatabase_new())
 
 proc delete*(self: gen_qmimedatabase_types.QMimeDatabase) =
   fcQMimeDatabase_delete(self.h)

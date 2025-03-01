@@ -6,37 +6,33 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QRunnable_run(QRunnable*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQRunnable final : public QRunnable {
+	struct QRunnable_VTable* vtbl;
 public:
 
-	MiqtVirtualQRunnable(): QRunnable() {};
+	MiqtVirtualQRunnable(struct QRunnable_VTable* vtbl): QRunnable(), vtbl(vtbl) {};
 
-	virtual ~MiqtVirtualQRunnable() override = default;
-
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__run = 0;
+	virtual ~MiqtVirtualQRunnable() override { if(vtbl->destructor) vtbl->destructor(vtbl, this); }
 
 	// Subclass to allow providing a Go implementation
 	virtual void run() override {
-		if (handle__run == 0) {
+		if (vtbl->run == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
 
-		miqt_exec_callback_QRunnable_run(this, handle__run);
 
-		
+		vtbl->run(vtbl, this);
+
 	}
 
 };
 
-QRunnable* QRunnable_new() {
-	return new MiqtVirtualQRunnable();
+QRunnable* QRunnable_new(struct QRunnable_VTable* vtbl) {
+	return new MiqtVirtualQRunnable(vtbl);
 }
 
 void QRunnable_run(QRunnable* self) {
@@ -49,16 +45,6 @@ bool QRunnable_autoDelete(const QRunnable* self) {
 
 void QRunnable_setAutoDelete(QRunnable* self, bool autoDelete) {
 	self->setAutoDelete(autoDelete);
-}
-
-bool QRunnable_override_virtual_run(void* self, intptr_t slot) {
-	MiqtVirtualQRunnable* self_cast = dynamic_cast<MiqtVirtualQRunnable*>( (QRunnable*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__run = slot;
-	return true;
 }
 
 void QRunnable_delete(QRunnable* self) {

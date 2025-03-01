@@ -120,11 +120,8 @@ proc fcQWebEngineContextMenuRequest_tr3(s: cstring, c: cstring, n: cint): struct
 proc fcQWebEngineContextMenuRequest_staticMetaObject(): pointer {.importc: "QWebEngineContextMenuRequest_staticMetaObject".}
 proc fcQWebEngineContextMenuRequest_delete(self: pointer) {.importc: "QWebEngineContextMenuRequest_delete".}
 
-
-func init*(T: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, h: ptr cQWebEngineContextMenuRequest): gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest =
-  T(h: h)
-proc metaObject*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): QMetaObject =
-  QMetaObject(h: fcQWebEngineContextMenuRequest_metaObject(self.h))
+proc metaObject*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qobjectdefs_types.QMetaObject =
+  gen_qobjectdefs_types.QMetaObject(h: fcQWebEngineContextMenuRequest_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, param1: cstring): pointer =
   fcQWebEngineContextMenuRequest_metacast(self.h, param1)
@@ -138,8 +135,8 @@ proc tr*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuReq
   c_free(v_ms.data)
   vx_ret
 
-proc position*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): QPoint =
-  QPoint(h: fcQWebEngineContextMenuRequest_position(self.h))
+proc position*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qpoint_types.QPoint =
+  gen_qpoint_types.QPoint(h: fcQWebEngineContextMenuRequest_position(self.h))
 
 proc selectedText*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): string =
   let v_ms = fcQWebEngineContextMenuRequest_selectedText(self.h)
@@ -153,11 +150,11 @@ proc linkText*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMen
   c_free(v_ms.data)
   vx_ret
 
-proc linkUrl*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): QUrl =
-  QUrl(h: fcQWebEngineContextMenuRequest_linkUrl(self.h))
+proc linkUrl*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineContextMenuRequest_linkUrl(self.h))
 
-proc mediaUrl*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): QUrl =
-  QUrl(h: fcQWebEngineContextMenuRequest_mediaUrl(self.h))
+proc mediaUrl*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQWebEngineContextMenuRequest_mediaUrl(self.h))
 
 proc mediaType*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): cint =
   cint(fcQWebEngineContextMenuRequest_mediaType(self.h))

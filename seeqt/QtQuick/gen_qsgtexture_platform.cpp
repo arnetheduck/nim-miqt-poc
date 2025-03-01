@@ -10,42 +10,37 @@
 extern "C" {
 #endif
 
-GLuint miqt_exec_callback_QNativeInterface__QSGOpenGLTexture_nativeTexture(const QNativeInterface__QSGOpenGLTexture*, intptr_t);
-VkImage miqt_exec_callback_QNativeInterface__QSGVulkanTexture_nativeImage(const QNativeInterface__QSGVulkanTexture*, intptr_t);
-VkImageLayout miqt_exec_callback_QNativeInterface__QSGVulkanTexture_nativeImageLayout(const QNativeInterface__QSGVulkanTexture*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
 class MiqtVirtualQNativeInterfaceQSGOpenGLTexture final : public QNativeInterface::QSGOpenGLTexture {
+	struct QNativeInterface::QSGOpenGLTexture_VTable* vtbl;
 public:
 
-	MiqtVirtualQNativeInterfaceQSGOpenGLTexture(): QNativeInterface::QSGOpenGLTexture() {};
+	MiqtVirtualQNativeInterfaceQSGOpenGLTexture(struct QNativeInterface::QSGOpenGLTexture_VTable* vtbl): QNativeInterface::QSGOpenGLTexture(), vtbl(vtbl) {};
 
 private:
 	virtual ~MiqtVirtualQNativeInterfaceQSGOpenGLTexture();
 
 public:
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__nativeTexture = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual GLuint nativeTexture() const override {
-		if (handle__nativeTexture == 0) {
+		if (vtbl->nativeTexture == 0) {
 			return GLuint(); // Pure virtual, there is no base we can call
 		}
-		
 
-		GLuint callback_return_value = miqt_exec_callback_QNativeInterface__QSGOpenGLTexture_nativeTexture(this, handle__nativeTexture);
+
+		GLuint callback_return_value = vtbl->nativeTexture(vtbl, this);
 
 		return callback_return_value;
 	}
 
 };
 
-QNativeInterface__QSGOpenGLTexture* QNativeInterface__QSGOpenGLTexture_new() {
-	return new MiqtVirtualQNativeInterfaceQSGOpenGLTexture();
+QNativeInterface__QSGOpenGLTexture* QNativeInterface__QSGOpenGLTexture_new(struct QNativeInterface::QSGOpenGLTexture_VTable* vtbl) {
+	return new MiqtVirtualQNativeInterfaceQSGOpenGLTexture(vtbl);
 }
 
 GLuint QNativeInterface__QSGOpenGLTexture_nativeTexture(const QNativeInterface__QSGOpenGLTexture* self) {
@@ -68,60 +63,45 @@ QSGTexture* QNativeInterface__QSGOpenGLTexture_fromNativeExternalOES4(GLuint tex
 	return QNativeInterface::QSGOpenGLTexture::fromNativeExternalOES(textureId, window, *size, static_cast<QQuickWindow::CreateTextureOptions>(options));
 }
 
-bool QNativeInterface__QSGOpenGLTexture_override_virtual_nativeTexture(void* self, intptr_t slot) {
-	MiqtVirtualQNativeInterfaceQSGOpenGLTexture* self_cast = dynamic_cast<MiqtVirtualQNativeInterfaceQSGOpenGLTexture*>( (QNativeInterface__QSGOpenGLTexture*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__nativeTexture = slot;
-	return true;
-}
-
 class MiqtVirtualQNativeInterfaceQSGVulkanTexture final : public QNativeInterface::QSGVulkanTexture {
+	struct QNativeInterface::QSGVulkanTexture_VTable* vtbl;
 public:
 
-	MiqtVirtualQNativeInterfaceQSGVulkanTexture(): QNativeInterface::QSGVulkanTexture() {};
+	MiqtVirtualQNativeInterfaceQSGVulkanTexture(struct QNativeInterface::QSGVulkanTexture_VTable* vtbl): QNativeInterface::QSGVulkanTexture(), vtbl(vtbl) {};
 
 private:
 	virtual ~MiqtVirtualQNativeInterfaceQSGVulkanTexture();
 
 public:
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__nativeImage = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual VkImage nativeImage() const override {
-		if (handle__nativeImage == 0) {
+		if (vtbl->nativeImage == 0) {
 			return VkImage(); // Pure virtual, there is no base we can call
 		}
-		
 
-		VkImage callback_return_value = miqt_exec_callback_QNativeInterface__QSGVulkanTexture_nativeImage(this, handle__nativeImage);
+
+		VkImage callback_return_value = vtbl->nativeImage(vtbl, this);
 
 		return callback_return_value;
 	}
 
-	// cgo.Handle value for overwritten implementation
-	intptr_t handle__nativeImageLayout = 0;
-
 	// Subclass to allow providing a Go implementation
 	virtual VkImageLayout nativeImageLayout() const override {
-		if (handle__nativeImageLayout == 0) {
+		if (vtbl->nativeImageLayout == 0) {
 			return VkImageLayout(); // Pure virtual, there is no base we can call
 		}
-		
 
-		VkImageLayout callback_return_value = miqt_exec_callback_QNativeInterface__QSGVulkanTexture_nativeImageLayout(this, handle__nativeImageLayout);
+
+		VkImageLayout callback_return_value = vtbl->nativeImageLayout(vtbl, this);
 
 		return callback_return_value;
 	}
 
 };
 
-QNativeInterface__QSGVulkanTexture* QNativeInterface__QSGVulkanTexture_new() {
-	return new MiqtVirtualQNativeInterfaceQSGVulkanTexture();
+QNativeInterface__QSGVulkanTexture* QNativeInterface__QSGVulkanTexture_new(struct QNativeInterface::QSGVulkanTexture_VTable* vtbl) {
+	return new MiqtVirtualQNativeInterfaceQSGVulkanTexture(vtbl);
 }
 
 VkImage QNativeInterface__QSGVulkanTexture_nativeImage(const QNativeInterface__QSGVulkanTexture* self) {
@@ -138,25 +118,5 @@ QSGTexture* QNativeInterface__QSGVulkanTexture_fromNative(VkImage image, VkImage
 
 QSGTexture* QNativeInterface__QSGVulkanTexture_fromNative5(VkImage image, VkImageLayout layout, QQuickWindow* window, QSize* size, int options) {
 	return QNativeInterface::QSGVulkanTexture::fromNative(image, layout, window, *size, static_cast<QQuickWindow::CreateTextureOptions>(options));
-}
-
-bool QNativeInterface__QSGVulkanTexture_override_virtual_nativeImage(void* self, intptr_t slot) {
-	MiqtVirtualQNativeInterfaceQSGVulkanTexture* self_cast = dynamic_cast<MiqtVirtualQNativeInterfaceQSGVulkanTexture*>( (QNativeInterface__QSGVulkanTexture*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__nativeImage = slot;
-	return true;
-}
-
-bool QNativeInterface__QSGVulkanTexture_override_virtual_nativeImageLayout(void* self, intptr_t slot) {
-	MiqtVirtualQNativeInterfaceQSGVulkanTexture* self_cast = dynamic_cast<MiqtVirtualQNativeInterfaceQSGVulkanTexture*>( (QNativeInterface__QSGVulkanTexture*)(self) );
-	if (self_cast == nullptr) {
-		return false;
-	}
-	
-	self_cast->handle__nativeImageLayout = slot;
-	return true;
 }
 

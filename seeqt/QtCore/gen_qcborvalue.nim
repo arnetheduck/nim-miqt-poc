@@ -103,28 +103,6 @@ type cQCborValueRef*{.exportc: "QCborValueRef", incompleteStruct.} = object
 
 proc fcQCborParserError_errorString(self: pointer, ): struct_miqt_string {.importc: "QCborParserError_errorString".}
 proc fcQCborParserError_delete(self: pointer) {.importc: "QCborParserError_delete".}
-proc fcQCborValue_new(): ptr cQCborValue {.importc: "QCborValue_new".}
-proc fcQCborValue_new2(t_x: cint): ptr cQCborValue {.importc: "QCborValue_new2".}
-proc fcQCborValue_new3(b_x: bool): ptr cQCborValue {.importc: "QCborValue_new3".}
-proc fcQCborValue_new4(i: cint): ptr cQCborValue {.importc: "QCborValue_new4".}
-proc fcQCborValue_new5(u: cuint): ptr cQCborValue {.importc: "QCborValue_new5".}
-proc fcQCborValue_new6(i: clonglong): ptr cQCborValue {.importc: "QCborValue_new6".}
-proc fcQCborValue_new7(v: float64): ptr cQCborValue {.importc: "QCborValue_new7".}
-proc fcQCborValue_new8(st: cint): ptr cQCborValue {.importc: "QCborValue_new8".}
-proc fcQCborValue_new9(ba: struct_miqt_string): ptr cQCborValue {.importc: "QCborValue_new9".}
-proc fcQCborValue_new10(s: struct_miqt_string): ptr cQCborValue {.importc: "QCborValue_new10".}
-proc fcQCborValue_new11(s: cstring): ptr cQCborValue {.importc: "QCborValue_new11".}
-proc fcQCborValue_new12(a: pointer): ptr cQCborValue {.importc: "QCborValue_new12".}
-proc fcQCborValue_new13(m: pointer): ptr cQCborValue {.importc: "QCborValue_new13".}
-proc fcQCborValue_new14(tag: cint): ptr cQCborValue {.importc: "QCborValue_new14".}
-proc fcQCborValue_new15(t_x: cint): ptr cQCborValue {.importc: "QCborValue_new15".}
-proc fcQCborValue_new16(dt: pointer): ptr cQCborValue {.importc: "QCborValue_new16".}
-proc fcQCborValue_new17(url: pointer): ptr cQCborValue {.importc: "QCborValue_new17".}
-proc fcQCborValue_new18(rx: pointer): ptr cQCborValue {.importc: "QCborValue_new18".}
-proc fcQCborValue_new19(uuid: pointer): ptr cQCborValue {.importc: "QCborValue_new19".}
-proc fcQCborValue_new20(other: pointer): ptr cQCborValue {.importc: "QCborValue_new20".}
-proc fcQCborValue_new21(tag: cint, taggedValue: pointer): ptr cQCborValue {.importc: "QCborValue_new21".}
-proc fcQCborValue_new22(t_x: cint, tv: pointer): ptr cQCborValue {.importc: "QCborValue_new22".}
 proc fcQCborValue_operatorAssign(self: pointer, other: pointer): void {.importc: "QCborValue_operatorAssign".}
 proc fcQCborValue_swap(self: pointer, other: pointer): void {.importc: "QCborValue_swap".}
 proc fcQCborValue_typeX(self: pointer, ): cint {.importc: "QCborValue_type".}
@@ -201,9 +179,30 @@ proc fcQCborValue_fromCbor33(data: ptr uint8, len: int64, error: pointer): point
 proc fcQCborValue_toCbor1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValue_toCbor1".}
 proc fcQCborValue_toCbor2(self: pointer, writer: pointer, opt: cint): void {.importc: "QCborValue_toCbor2".}
 proc fcQCborValue_toDiagnosticNotation1(self: pointer, opts: cint): struct_miqt_string {.importc: "QCborValue_toDiagnosticNotation1".}
+proc fcQCborValue_new(): ptr cQCborValue {.importc: "QCborValue_new".}
+proc fcQCborValue_new2(t_x: cint): ptr cQCborValue {.importc: "QCborValue_new2".}
+proc fcQCborValue_new3(b_x: bool): ptr cQCborValue {.importc: "QCborValue_new3".}
+proc fcQCborValue_new4(i: cint): ptr cQCborValue {.importc: "QCborValue_new4".}
+proc fcQCborValue_new5(u: cuint): ptr cQCborValue {.importc: "QCborValue_new5".}
+proc fcQCborValue_new6(i: clonglong): ptr cQCborValue {.importc: "QCborValue_new6".}
+proc fcQCborValue_new7(v: float64): ptr cQCborValue {.importc: "QCborValue_new7".}
+proc fcQCborValue_new8(st: cint): ptr cQCborValue {.importc: "QCborValue_new8".}
+proc fcQCborValue_new9(ba: struct_miqt_string): ptr cQCborValue {.importc: "QCborValue_new9".}
+proc fcQCborValue_new10(s: struct_miqt_string): ptr cQCborValue {.importc: "QCborValue_new10".}
+proc fcQCborValue_new11(s: cstring): ptr cQCborValue {.importc: "QCborValue_new11".}
+proc fcQCborValue_new12(a: pointer): ptr cQCborValue {.importc: "QCborValue_new12".}
+proc fcQCborValue_new13(m: pointer): ptr cQCborValue {.importc: "QCborValue_new13".}
+proc fcQCborValue_new14(tag: cint): ptr cQCborValue {.importc: "QCborValue_new14".}
+proc fcQCborValue_new15(t_x: cint): ptr cQCborValue {.importc: "QCborValue_new15".}
+proc fcQCborValue_new16(dt: pointer): ptr cQCborValue {.importc: "QCborValue_new16".}
+proc fcQCborValue_new17(url: pointer): ptr cQCborValue {.importc: "QCborValue_new17".}
+proc fcQCborValue_new18(rx: pointer): ptr cQCborValue {.importc: "QCborValue_new18".}
+proc fcQCborValue_new19(uuid: pointer): ptr cQCborValue {.importc: "QCborValue_new19".}
+proc fcQCborValue_new20(other: pointer): ptr cQCborValue {.importc: "QCborValue_new20".}
+proc fcQCborValue_new21(tag: cint, taggedValue: pointer): ptr cQCborValue {.importc: "QCborValue_new21".}
+proc fcQCborValue_new22(t_x: cint, tv: pointer): ptr cQCborValue {.importc: "QCborValue_new22".}
 proc fcQCborValue_staticMetaObject(): pointer {.importc: "QCborValue_staticMetaObject".}
 proc fcQCborValue_delete(self: pointer) {.importc: "QCborValue_delete".}
-proc fcQCborValueConstRef_new(param1: pointer): ptr cQCborValueConstRef {.importc: "QCborValueConstRef_new".}
 proc fcQCborValueConstRef_ToQCborValue(self: pointer, ): pointer {.importc: "QCborValueConstRef_ToQCborValue".}
 proc fcQCborValueConstRef_typeX(self: pointer, ): cint {.importc: "QCborValueConstRef_type".}
 proc fcQCborValueConstRef_isInteger(self: pointer, ): bool {.importc: "QCborValueConstRef_isInteger".}
@@ -268,8 +267,8 @@ proc fcQCborValueConstRef_toUuid1(self: pointer, defaultValue: pointer): pointer
 proc fcQCborValueConstRef_toCbor1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueConstRef_toCbor1".}
 proc fcQCborValueConstRef_toCbor2(self: pointer, writer: pointer, opt: cint): void {.importc: "QCborValueConstRef_toCbor2".}
 proc fcQCborValueConstRef_toDiagnosticNotation1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueConstRef_toDiagnosticNotation1".}
+proc fcQCborValueConstRef_new(param1: pointer): ptr cQCborValueConstRef {.importc: "QCborValueConstRef_new".}
 proc fcQCborValueConstRef_delete(self: pointer) {.importc: "QCborValueConstRef_delete".}
-proc fcQCborValueRef_new(param1: pointer): ptr cQCborValueRef {.importc: "QCborValueRef_new".}
 proc fcQCborValueRef_operatorAssign(self: pointer, other: pointer): void {.importc: "QCborValueRef_operatorAssign".}
 proc fcQCborValueRef_operatorAssignWithOther(self: pointer, other: pointer): void {.importc: "QCborValueRef_operatorAssignWithOther".}
 proc fcQCborValueRef_operatorSubscript(self: pointer, key: clonglong): pointer {.importc: "QCborValueRef_operatorSubscript".}
@@ -338,11 +337,9 @@ proc fcQCborValueRef_toUuid1(self: pointer, defaultValue: pointer): pointer {.im
 proc fcQCborValueRef_toCbor1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueRef_toCbor1".}
 proc fcQCborValueRef_toCbor2(self: pointer, writer: pointer, opt: cint): void {.importc: "QCborValueRef_toCbor2".}
 proc fcQCborValueRef_toDiagnosticNotation1(self: pointer, opt: cint): struct_miqt_string {.importc: "QCborValueRef_toDiagnosticNotation1".}
+proc fcQCborValueRef_new(param1: pointer): ptr cQCborValueRef {.importc: "QCborValueRef_new".}
 proc fcQCborValueRef_delete(self: pointer) {.importc: "QCborValueRef_delete".}
 
-
-func init*(T: type gen_qcborvalue_types.QCborParserError, h: ptr cQCborParserError): gen_qcborvalue_types.QCborParserError =
-  T(h: h)
 proc errorString*(self: gen_qcborvalue_types.QCborParserError, ): string =
   let v_ms = fcQCborParserError_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
@@ -351,79 +348,10 @@ proc errorString*(self: gen_qcborvalue_types.QCborParserError, ): string =
 
 proc delete*(self: gen_qcborvalue_types.QCborParserError) =
   fcQCborParserError_delete(self.h)
-
-func init*(T: type gen_qcborvalue_types.QCborValue, h: ptr cQCborValue): gen_qcborvalue_types.QCborValue =
-  T(h: h)
-proc create*(T: type gen_qcborvalue_types.QCborValue, ): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new())
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, t_x: cint): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new2(cint(t_x)))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, b_x: bool): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new3(b_x))
-
-proc create2*(T: type gen_qcborvalue_types.QCborValue, i: cint): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new4(i))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, u: cuint): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new5(u))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, i: clonglong): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new6(i))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, v: float64): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new7(v))
-
-proc create3*(T: type gen_qcborvalue_types.QCborValue, st: cint): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new8(cint(st)))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, ba: seq[byte]): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new9(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, s: string): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new10(struct_miqt_string(data: s, len: csize_t(len(s)))))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, s: cstring): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new11(s))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, a: QCborArray): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new12(a.h))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, m: QCborMap): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new13(m.h))
-
-proc create4*(T: type gen_qcborvalue_types.QCborValue, tag: cint): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new14(cint(tag)))
-
-proc create5*(T: type gen_qcborvalue_types.QCborValue, t_x: cint): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new15(cint(t_x)))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, dt: QDateTime): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new16(dt.h))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, url: QUrl): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new17(url.h))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, rx: QRegularExpression): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new18(rx.h))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, uuid: QUuid): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new19(uuid.h))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, other: QCborValue): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new20(other.h))
-
-proc create*(T: type gen_qcborvalue_types.QCborValue, tag: cint, taggedValue: QCborValue): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new21(cint(tag), taggedValue.h))
-
-proc create2*(T: type gen_qcborvalue_types.QCborValue, t_x: cint, tv: QCborValue): gen_qcborvalue_types.QCborValue =
-  gen_qcborvalue_types.QCborValue.init(fcQCborValue_new22(cint(t_x), tv.h))
-
-proc operatorAssign*(self: gen_qcborvalue_types.QCborValue, other: QCborValue): void =
+proc operatorAssign*(self: gen_qcborvalue_types.QCborValue, other: gen_qcborvalue_types.QCborValue): void =
   fcQCborValue_operatorAssign(self.h, other.h)
 
-proc swap*(self: gen_qcborvalue_types.QCborValue, other: QCborValue): void =
+proc swap*(self: gen_qcborvalue_types.QCborValue, other: gen_qcborvalue_types.QCborValue): void =
   fcQCborValue_swap(self.h, other.h)
 
 proc typeX*(self: gen_qcborvalue_types.QCborValue, ): cint =
@@ -504,8 +432,8 @@ proc toDouble*(self: gen_qcborvalue_types.QCborValue, ): float64 =
 proc tag*(self: gen_qcborvalue_types.QCborValue, ): cint =
   cint(fcQCborValue_tag(self.h))
 
-proc taggedValue*(self: gen_qcborvalue_types.QCborValue, ): QCborValue =
-  QCborValue(h: fcQCborValue_taggedValue(self.h))
+proc taggedValue*(self: gen_qcborvalue_types.QCborValue, ): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_taggedValue(self.h))
 
 proc toByteArray*(self: gen_qcborvalue_types.QCborValue, ): seq[byte] =
   var v_bytearray = fcQCborValue_toByteArray(self.h)
@@ -519,77 +447,77 @@ proc toString*(self: gen_qcborvalue_types.QCborValue, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc toDateTime*(self: gen_qcborvalue_types.QCborValue, ): QDateTime =
-  QDateTime(h: fcQCborValue_toDateTime(self.h))
+proc toDateTime*(self: gen_qcborvalue_types.QCborValue, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQCborValue_toDateTime(self.h))
 
-proc toUrl*(self: gen_qcborvalue_types.QCborValue, ): QUrl =
-  QUrl(h: fcQCborValue_toUrl(self.h))
+proc toUrl*(self: gen_qcborvalue_types.QCborValue, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQCborValue_toUrl(self.h))
 
-proc toRegularExpression*(self: gen_qcborvalue_types.QCborValue, ): QRegularExpression =
-  QRegularExpression(h: fcQCborValue_toRegularExpression(self.h))
+proc toRegularExpression*(self: gen_qcborvalue_types.QCborValue, ): gen_qregularexpression_types.QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression(h: fcQCborValue_toRegularExpression(self.h))
 
-proc toUuid*(self: gen_qcborvalue_types.QCborValue, ): QUuid =
-  QUuid(h: fcQCborValue_toUuid(self.h))
+proc toUuid*(self: gen_qcborvalue_types.QCborValue, ): gen_quuid_types.QUuid =
+  gen_quuid_types.QUuid(h: fcQCborValue_toUuid(self.h))
 
-proc toArray*(self: gen_qcborvalue_types.QCborValue, ): QCborArray =
-  QCborArray(h: fcQCborValue_toArray(self.h))
+proc toArray*(self: gen_qcborvalue_types.QCborValue, ): gen_qcborarray_types.QCborArray =
+  gen_qcborarray_types.QCborArray(h: fcQCborValue_toArray(self.h))
 
-proc toArray*(self: gen_qcborvalue_types.QCborValue, defaultValue: QCborArray): QCborArray =
-  QCborArray(h: fcQCborValue_toArrayWithDefaultValue(self.h, defaultValue.h))
+proc toArray*(self: gen_qcborvalue_types.QCborValue, defaultValue: gen_qcborarray_types.QCborArray): gen_qcborarray_types.QCborArray =
+  gen_qcborarray_types.QCborArray(h: fcQCborValue_toArrayWithDefaultValue(self.h, defaultValue.h))
 
-proc toMap*(self: gen_qcborvalue_types.QCborValue, ): QCborMap =
-  QCborMap(h: fcQCborValue_toMap(self.h))
+proc toMap*(self: gen_qcborvalue_types.QCborValue, ): gen_qcbormap_types.QCborMap =
+  gen_qcbormap_types.QCborMap(h: fcQCborValue_toMap(self.h))
 
-proc toMap*(self: gen_qcborvalue_types.QCborValue, defaultValue: QCborMap): QCborMap =
-  QCborMap(h: fcQCborValue_toMapWithDefaultValue(self.h, defaultValue.h))
+proc toMap*(self: gen_qcborvalue_types.QCborValue, defaultValue: gen_qcbormap_types.QCborMap): gen_qcbormap_types.QCborMap =
+  gen_qcbormap_types.QCborMap(h: fcQCborValue_toMapWithDefaultValue(self.h, defaultValue.h))
 
-proc operatorSubscript*(self: gen_qcborvalue_types.QCborValue, key: string): QCborValue =
-  QCborValue(h: fcQCborValue_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc operatorSubscript*(self: gen_qcborvalue_types.QCborValue, key: string): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscript*(self: gen_qcborvalue_types.QCborValue, key: clonglong): QCborValue =
-  QCborValue(h: fcQCborValue_operatorSubscript2(self.h, key))
+proc operatorSubscript*(self: gen_qcborvalue_types.QCborValue, key: clonglong): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_operatorSubscript2(self.h, key))
 
-proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValue, key: clonglong): QCborValueRef =
-  QCborValueRef(h: fcQCborValue_operatorSubscript3(self.h, key))
+proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValue, key: clonglong): gen_qcborvalue_types.QCborValueRef =
+  gen_qcborvalue_types.QCborValueRef(h: fcQCborValue_operatorSubscript3(self.h, key))
 
-proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValue, key: string): QCborValueRef =
-  QCborValueRef(h: fcQCborValue_operatorSubscript5(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValue, key: string): gen_qcborvalue_types.QCborValueRef =
+  gen_qcborvalue_types.QCborValueRef(h: fcQCborValue_operatorSubscript5(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc compare*(self: gen_qcborvalue_types.QCborValue, other: QCborValue): cint =
+proc compare*(self: gen_qcborvalue_types.QCborValue, other: gen_qcborvalue_types.QCborValue): cint =
   fcQCborValue_compare(self.h, other.h)
 
-proc operatorEqual*(self: gen_qcborvalue_types.QCborValue, other: QCborValue): bool =
+proc operatorEqual*(self: gen_qcborvalue_types.QCborValue, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValue_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: gen_qcborvalue_types.QCborValue, other: QCborValue): bool =
+proc operatorNotEqual*(self: gen_qcborvalue_types.QCborValue, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValue_operatorNotEqual(self.h, other.h)
 
-proc operatorLesser*(self: gen_qcborvalue_types.QCborValue, other: QCborValue): bool =
+proc operatorLesser*(self: gen_qcborvalue_types.QCborValue, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValue_operatorLesser(self.h, other.h)
 
-proc fromVariant*(_: type gen_qcborvalue_types.QCborValue, variant: QVariant): QCborValue =
-  QCborValue(h: fcQCborValue_fromVariant(variant.h))
+proc fromVariant*(_: type gen_qcborvalue_types.QCborValue, variant: gen_qvariant_types.QVariant): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromVariant(variant.h))
 
-proc toVariant*(self: gen_qcborvalue_types.QCborValue, ): QVariant =
-  QVariant(h: fcQCborValue_toVariant(self.h))
+proc toVariant*(self: gen_qcborvalue_types.QCborValue, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQCborValue_toVariant(self.h))
 
-proc fromJsonValue*(_: type gen_qcborvalue_types.QCborValue, v: QJsonValue): QCborValue =
-  QCborValue(h: fcQCborValue_fromJsonValue(v.h))
+proc fromJsonValue*(_: type gen_qcborvalue_types.QCborValue, v: gen_qjsonvalue_types.QJsonValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromJsonValue(v.h))
 
-proc toJsonValue*(self: gen_qcborvalue_types.QCborValue, ): QJsonValue =
-  QJsonValue(h: fcQCborValue_toJsonValue(self.h))
+proc toJsonValue*(self: gen_qcborvalue_types.QCborValue, ): gen_qjsonvalue_types.QJsonValue =
+  gen_qjsonvalue_types.QJsonValue(h: fcQCborValue_toJsonValue(self.h))
 
-proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, reader: QCborStreamReader): QCborValue =
-  QCborValue(h: fcQCborValue_fromCbor(reader.h))
+proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, reader: gen_qcborstreamreader_types.QCborStreamReader): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromCbor(reader.h))
 
-proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, ba: seq[byte]): QCborValue =
-  QCborValue(h: fcQCborValue_fromCborWithBa(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
+proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, ba: seq[byte]): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromCborWithBa(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
 
-proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: cstring, len: int64): QCborValue =
-  QCborValue(h: fcQCborValue_fromCbor2(data, len))
+proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: cstring, len: int64): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromCbor2(data, len))
 
-proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: ptr uint8, len: int64): QCborValue =
-  QCborValue(h: fcQCborValue_fromCbor3(data, len))
+proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: ptr uint8, len: int64): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromCbor3(data, len))
 
 proc toCbor*(self: gen_qcborvalue_types.QCborValue, ): seq[byte] =
   var v_bytearray = fcQCborValue_toCbor(self.h)
@@ -597,7 +525,7 @@ proc toCbor*(self: gen_qcborvalue_types.QCborValue, ): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc toCbor*(self: gen_qcborvalue_types.QCborValue, writer: QCborStreamWriter): void =
+proc toCbor*(self: gen_qcborvalue_types.QCborValue, writer: gen_qcborstreamwriter_types.QCborStreamWriter): void =
   fcQCborValue_toCborWithWriter(self.h, writer.h)
 
 proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValue, ): string =
@@ -621,8 +549,8 @@ proc toDouble*(self: gen_qcborvalue_types.QCborValue, defaultValue: float64): fl
 proc tag*(self: gen_qcborvalue_types.QCborValue, defaultValue: cint): cint =
   cint(fcQCborValue_tag1(self.h, cint(defaultValue)))
 
-proc taggedValue*(self: gen_qcborvalue_types.QCborValue, defaultValue: QCborValue): QCborValue =
-  QCborValue(h: fcQCborValue_taggedValue1(self.h, defaultValue.h))
+proc taggedValue*(self: gen_qcborvalue_types.QCborValue, defaultValue: gen_qcborvalue_types.QCborValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_taggedValue1(self.h, defaultValue.h))
 
 proc toByteArray*(self: gen_qcborvalue_types.QCborValue, defaultValue: seq[byte]): seq[byte] =
   var v_bytearray = fcQCborValue_toByteArray1(self.h, struct_miqt_string(data: cast[cstring](if len(defaultValue) == 0: nil else: unsafeAddr defaultValue[0]), len: csize_t(len(defaultValue))))
@@ -636,26 +564,26 @@ proc toString*(self: gen_qcborvalue_types.QCborValue, defaultValue: string): str
   c_free(v_ms.data)
   vx_ret
 
-proc toDateTime*(self: gen_qcborvalue_types.QCborValue, defaultValue: QDateTime): QDateTime =
-  QDateTime(h: fcQCborValue_toDateTime1(self.h, defaultValue.h))
+proc toDateTime*(self: gen_qcborvalue_types.QCborValue, defaultValue: gen_qdatetime_types.QDateTime): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQCborValue_toDateTime1(self.h, defaultValue.h))
 
-proc toUrl*(self: gen_qcborvalue_types.QCborValue, defaultValue: QUrl): QUrl =
-  QUrl(h: fcQCborValue_toUrl1(self.h, defaultValue.h))
+proc toUrl*(self: gen_qcborvalue_types.QCborValue, defaultValue: gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQCborValue_toUrl1(self.h, defaultValue.h))
 
-proc toRegularExpression*(self: gen_qcborvalue_types.QCborValue, defaultValue: QRegularExpression): QRegularExpression =
-  QRegularExpression(h: fcQCborValue_toRegularExpression1(self.h, defaultValue.h))
+proc toRegularExpression*(self: gen_qcborvalue_types.QCborValue, defaultValue: gen_qregularexpression_types.QRegularExpression): gen_qregularexpression_types.QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression(h: fcQCborValue_toRegularExpression1(self.h, defaultValue.h))
 
-proc toUuid*(self: gen_qcborvalue_types.QCborValue, defaultValue: QUuid): QUuid =
-  QUuid(h: fcQCborValue_toUuid1(self.h, defaultValue.h))
+proc toUuid*(self: gen_qcborvalue_types.QCborValue, defaultValue: gen_quuid_types.QUuid): gen_quuid_types.QUuid =
+  gen_quuid_types.QUuid(h: fcQCborValue_toUuid1(self.h, defaultValue.h))
 
-proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, ba: seq[byte], error: QCborParserError): QCborValue =
-  QCborValue(h: fcQCborValue_fromCbor22(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))), error.h))
+proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, ba: seq[byte], error: gen_qcborvalue_types.QCborParserError): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromCbor22(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))), error.h))
 
-proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: cstring, len: int64, error: QCborParserError): QCborValue =
-  QCborValue(h: fcQCborValue_fromCbor32(data, len, error.h))
+proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: cstring, len: int64, error: gen_qcborvalue_types.QCborParserError): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromCbor32(data, len, error.h))
 
-proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: ptr uint8, len: int64, error: QCborParserError): QCborValue =
-  QCborValue(h: fcQCborValue_fromCbor33(data, len, error.h))
+proc fromCbor*(_: type gen_qcborvalue_types.QCborValue, data: ptr uint8, len: int64, error: gen_qcborvalue_types.QCborParserError): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_fromCbor33(data, len, error.h))
 
 proc toCbor*(self: gen_qcborvalue_types.QCborValue, opt: cint): seq[byte] =
   var v_bytearray = fcQCborValue_toCbor1(self.h, cint(opt))
@@ -663,7 +591,7 @@ proc toCbor*(self: gen_qcborvalue_types.QCborValue, opt: cint): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc toCbor*(self: gen_qcborvalue_types.QCborValue, writer: QCborStreamWriter, opt: cint): void =
+proc toCbor*(self: gen_qcborvalue_types.QCborValue, writer: gen_qcborstreamwriter_types.QCborStreamWriter, opt: cint): void =
   fcQCborValue_toCbor2(self.h, writer.h, cint(opt))
 
 proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValue, opts: cint): string =
@@ -672,18 +600,99 @@ proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValue, opts: cint): s
   c_free(v_ms.data)
   vx_ret
 
+proc create*(T: type gen_qcborvalue_types.QCborValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new())
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    t_x: cint): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new2(cint(t_x)))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    b_x: bool): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new3(b_x))
+
+proc create2*(T: type gen_qcborvalue_types.QCborValue,
+    i: cint): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new4(i))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    u: cuint): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new5(u))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    i: clonglong): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new6(i))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    v: float64): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new7(v))
+
+proc create3*(T: type gen_qcborvalue_types.QCborValue,
+    st: cint): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new8(cint(st)))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    ba: seq[byte]): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new9(struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba)))))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    s: string): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new10(struct_miqt_string(data: s, len: csize_t(len(s)))))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    s: cstring): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new11(s))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    a: gen_qcborarray_types.QCborArray): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new12(a.h))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    m: gen_qcbormap_types.QCborMap): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new13(m.h))
+
+proc create4*(T: type gen_qcborvalue_types.QCborValue,
+    tag: cint): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new14(cint(tag)))
+
+proc create5*(T: type gen_qcborvalue_types.QCborValue,
+    t_x: cint): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new15(cint(t_x)))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    dt: gen_qdatetime_types.QDateTime): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new16(dt.h))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    url: gen_qurl_types.QUrl): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new17(url.h))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    rx: gen_qregularexpression_types.QRegularExpression): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new18(rx.h))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    uuid: gen_quuid_types.QUuid): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new19(uuid.h))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    other: gen_qcborvalue_types.QCborValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new20(other.h))
+
+proc create*(T: type gen_qcborvalue_types.QCborValue,
+    tag: cint, taggedValue: gen_qcborvalue_types.QCborValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new21(cint(tag), taggedValue.h))
+
+proc create2*(T: type gen_qcborvalue_types.QCborValue,
+    t_x: cint, tv: gen_qcborvalue_types.QCborValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValue_new22(cint(t_x), tv.h))
+
 proc staticMetaObject*(_: type gen_qcborvalue_types.QCborValue): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQCborValue_staticMetaObject())
 proc delete*(self: gen_qcborvalue_types.QCborValue) =
   fcQCborValue_delete(self.h)
-
-func init*(T: type gen_qcborvalue_types.QCborValueConstRef, h: ptr cQCborValueConstRef): gen_qcborvalue_types.QCborValueConstRef =
-  T(h: h)
-proc create*(T: type gen_qcborvalue_types.QCborValueConstRef, param1: QCborValueConstRef): gen_qcborvalue_types.QCborValueConstRef =
-  gen_qcborvalue_types.QCborValueConstRef.init(fcQCborValueConstRef_new(param1.h))
-
-proc ToQCborValue*(self: gen_qcborvalue_types.QCborValueConstRef, ): QCborValue =
-  QCborValue(h: fcQCborValueConstRef_ToQCborValue(self.h))
+proc ToQCborValue*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueConstRef_ToQCborValue(self.h))
 
 proc typeX*(self: gen_qcborvalue_types.QCborValueConstRef, ): cint =
   cint(fcQCborValueConstRef_typeX(self.h))
@@ -754,8 +763,8 @@ proc toSimpleType*(self: gen_qcborvalue_types.QCborValueConstRef, ): cint =
 proc tag*(self: gen_qcborvalue_types.QCborValueConstRef, ): cint =
   cint(fcQCborValueConstRef_tag(self.h))
 
-proc taggedValue*(self: gen_qcborvalue_types.QCborValueConstRef, ): QCborValue =
-  QCborValue(h: fcQCborValueConstRef_taggedValue(self.h))
+proc taggedValue*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueConstRef_taggedValue(self.h))
 
 proc toInteger*(self: gen_qcborvalue_types.QCborValueConstRef, ): clonglong =
   fcQCborValueConstRef_toInteger(self.h)
@@ -778,53 +787,53 @@ proc toString*(self: gen_qcborvalue_types.QCborValueConstRef, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc toDateTime*(self: gen_qcborvalue_types.QCborValueConstRef, ): QDateTime =
-  QDateTime(h: fcQCborValueConstRef_toDateTime(self.h))
+proc toDateTime*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQCborValueConstRef_toDateTime(self.h))
 
-proc toUrl*(self: gen_qcborvalue_types.QCborValueConstRef, ): QUrl =
-  QUrl(h: fcQCborValueConstRef_toUrl(self.h))
+proc toUrl*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQCborValueConstRef_toUrl(self.h))
 
-proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueConstRef, ): QRegularExpression =
-  QRegularExpression(h: fcQCborValueConstRef_toRegularExpression(self.h))
+proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qregularexpression_types.QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression(h: fcQCborValueConstRef_toRegularExpression(self.h))
 
-proc toUuid*(self: gen_qcborvalue_types.QCborValueConstRef, ): QUuid =
-  QUuid(h: fcQCborValueConstRef_toUuid(self.h))
+proc toUuid*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_quuid_types.QUuid =
+  gen_quuid_types.QUuid(h: fcQCborValueConstRef_toUuid(self.h))
 
-proc toArray*(self: gen_qcborvalue_types.QCborValueConstRef, ): QCborArray =
-  QCborArray(h: fcQCborValueConstRef_toArray(self.h))
+proc toArray*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qcborarray_types.QCborArray =
+  gen_qcborarray_types.QCborArray(h: fcQCborValueConstRef_toArray(self.h))
 
-proc toArray*(self: gen_qcborvalue_types.QCborValueConstRef, a: QCborArray): QCborArray =
-  QCborArray(h: fcQCborValueConstRef_toArrayWithQCborArray(self.h, a.h))
+proc toArray*(self: gen_qcborvalue_types.QCborValueConstRef, a: gen_qcborarray_types.QCborArray): gen_qcborarray_types.QCborArray =
+  gen_qcborarray_types.QCborArray(h: fcQCborValueConstRef_toArrayWithQCborArray(self.h, a.h))
 
-proc toMap*(self: gen_qcborvalue_types.QCborValueConstRef, ): QCborMap =
-  QCborMap(h: fcQCborValueConstRef_toMap(self.h))
+proc toMap*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qcbormap_types.QCborMap =
+  gen_qcbormap_types.QCborMap(h: fcQCborValueConstRef_toMap(self.h))
 
-proc toMap*(self: gen_qcborvalue_types.QCborValueConstRef, m: QCborMap): QCborMap =
-  QCborMap(h: fcQCborValueConstRef_toMapWithQCborMap(self.h, m.h))
+proc toMap*(self: gen_qcborvalue_types.QCborValueConstRef, m: gen_qcbormap_types.QCborMap): gen_qcbormap_types.QCborMap =
+  gen_qcbormap_types.QCborMap(h: fcQCborValueConstRef_toMapWithQCborMap(self.h, m.h))
 
-proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueConstRef, key: string): QCborValue =
-  QCborValue(h: fcQCborValueConstRef_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueConstRef, key: string): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueConstRef_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueConstRef, key: clonglong): QCborValue =
-  QCborValue(h: fcQCborValueConstRef_operatorSubscript2(self.h, key))
+proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueConstRef, key: clonglong): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueConstRef_operatorSubscript2(self.h, key))
 
-proc compare*(self: gen_qcborvalue_types.QCborValueConstRef, other: QCborValue): cint =
+proc compare*(self: gen_qcborvalue_types.QCborValueConstRef, other: gen_qcborvalue_types.QCborValue): cint =
   fcQCborValueConstRef_compare(self.h, other.h)
 
-proc operatorEqual*(self: gen_qcborvalue_types.QCborValueConstRef, other: QCborValue): bool =
+proc operatorEqual*(self: gen_qcborvalue_types.QCborValueConstRef, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValueConstRef_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: gen_qcborvalue_types.QCborValueConstRef, other: QCborValue): bool =
+proc operatorNotEqual*(self: gen_qcborvalue_types.QCborValueConstRef, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValueConstRef_operatorNotEqual(self.h, other.h)
 
-proc operatorLesser*(self: gen_qcborvalue_types.QCborValueConstRef, other: QCborValue): bool =
+proc operatorLesser*(self: gen_qcborvalue_types.QCborValueConstRef, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValueConstRef_operatorLesser(self.h, other.h)
 
-proc toVariant*(self: gen_qcborvalue_types.QCborValueConstRef, ): QVariant =
-  QVariant(h: fcQCborValueConstRef_toVariant(self.h))
+proc toVariant*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQCborValueConstRef_toVariant(self.h))
 
-proc toJsonValue*(self: gen_qcborvalue_types.QCborValueConstRef, ): QJsonValue =
-  QJsonValue(h: fcQCborValueConstRef_toJsonValue(self.h))
+proc toJsonValue*(self: gen_qcborvalue_types.QCborValueConstRef, ): gen_qjsonvalue_types.QJsonValue =
+  gen_qjsonvalue_types.QJsonValue(h: fcQCborValueConstRef_toJsonValue(self.h))
 
 proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, ): seq[byte] =
   var v_bytearray = fcQCborValueConstRef_toCbor(self.h)
@@ -832,7 +841,7 @@ proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, ): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, writer: QCborStreamWriter): void =
+proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, writer: gen_qcborstreamwriter_types.QCborStreamWriter): void =
   fcQCborValueConstRef_toCborWithWriter(self.h, writer.h)
 
 proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueConstRef, ): string =
@@ -847,8 +856,8 @@ proc toSimpleType*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: 
 proc tag*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: cint): cint =
   cint(fcQCborValueConstRef_tag1(self.h, cint(defaultValue)))
 
-proc taggedValue*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: QCborValue): QCborValue =
-  QCborValue(h: fcQCborValueConstRef_taggedValue1(self.h, defaultValue.h))
+proc taggedValue*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: gen_qcborvalue_types.QCborValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueConstRef_taggedValue1(self.h, defaultValue.h))
 
 proc toInteger*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: clonglong): clonglong =
   fcQCborValueConstRef_toInteger1(self.h, defaultValue)
@@ -871,17 +880,17 @@ proc toString*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: stri
   c_free(v_ms.data)
   vx_ret
 
-proc toDateTime*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: QDateTime): QDateTime =
-  QDateTime(h: fcQCborValueConstRef_toDateTime1(self.h, defaultValue.h))
+proc toDateTime*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: gen_qdatetime_types.QDateTime): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQCborValueConstRef_toDateTime1(self.h, defaultValue.h))
 
-proc toUrl*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: QUrl): QUrl =
-  QUrl(h: fcQCborValueConstRef_toUrl1(self.h, defaultValue.h))
+proc toUrl*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQCborValueConstRef_toUrl1(self.h, defaultValue.h))
 
-proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: QRegularExpression): QRegularExpression =
-  QRegularExpression(h: fcQCborValueConstRef_toRegularExpression1(self.h, defaultValue.h))
+proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: gen_qregularexpression_types.QRegularExpression): gen_qregularexpression_types.QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression(h: fcQCborValueConstRef_toRegularExpression1(self.h, defaultValue.h))
 
-proc toUuid*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: QUuid): QUuid =
-  QUuid(h: fcQCborValueConstRef_toUuid1(self.h, defaultValue.h))
+proc toUuid*(self: gen_qcborvalue_types.QCborValueConstRef, defaultValue: gen_quuid_types.QUuid): gen_quuid_types.QUuid =
+  gen_quuid_types.QUuid(h: fcQCborValueConstRef_toUuid1(self.h, defaultValue.h))
 
 proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, opt: cint): seq[byte] =
   var v_bytearray = fcQCborValueConstRef_toCbor1(self.h, cint(opt))
@@ -889,7 +898,7 @@ proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, opt: cint): seq[byte
   c_free(v_bytearray.data)
   vx_ret
 
-proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, writer: QCborStreamWriter, opt: cint): void =
+proc toCbor*(self: gen_qcborvalue_types.QCborValueConstRef, writer: gen_qcborstreamwriter_types.QCborStreamWriter, opt: cint): void =
   fcQCborValueConstRef_toCbor2(self.h, writer.h, cint(opt))
 
 proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueConstRef, opt: cint): string =
@@ -898,28 +907,26 @@ proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueConstRef, opt: c
   c_free(v_ms.data)
   vx_ret
 
+proc create*(T: type gen_qcborvalue_types.QCborValueConstRef,
+    param1: gen_qcborvalue_types.QCborValueConstRef): gen_qcborvalue_types.QCborValueConstRef =
+  gen_qcborvalue_types.QCborValueConstRef(h: fcQCborValueConstRef_new(param1.h))
+
 proc delete*(self: gen_qcborvalue_types.QCborValueConstRef) =
   fcQCborValueConstRef_delete(self.h)
-
-func init*(T: type gen_qcborvalue_types.QCborValueRef, h: ptr cQCborValueRef): gen_qcborvalue_types.QCborValueRef =
-  T(h: h)
-proc create*(T: type gen_qcborvalue_types.QCborValueRef, param1: QCborValueRef): gen_qcborvalue_types.QCborValueRef =
-  gen_qcborvalue_types.QCborValueRef.init(fcQCborValueRef_new(param1.h))
-
-proc operatorAssign*(self: gen_qcborvalue_types.QCborValueRef, other: QCborValue): void =
+proc operatorAssign*(self: gen_qcborvalue_types.QCborValueRef, other: gen_qcborvalue_types.QCborValue): void =
   fcQCborValueRef_operatorAssign(self.h, other.h)
 
-proc operatorAssign*(self: gen_qcborvalue_types.QCborValueRef, other: QCborValueRef): void =
+proc operatorAssign*(self: gen_qcborvalue_types.QCborValueRef, other: gen_qcborvalue_types.QCborValueRef): void =
   fcQCborValueRef_operatorAssignWithOther(self.h, other.h)
 
-proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueRef, key: clonglong): QCborValueRef =
-  QCborValueRef(h: fcQCborValueRef_operatorSubscript(self.h, key))
+proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueRef, key: clonglong): gen_qcborvalue_types.QCborValueRef =
+  gen_qcborvalue_types.QCborValueRef(h: fcQCborValueRef_operatorSubscript(self.h, key))
 
-proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueRef, key: string): QCborValueRef =
-  QCborValueRef(h: fcQCborValueRef_operatorSubscript2(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc operatorSubscript*(self: gen_qcborvalue_types.QCborValueRef, key: string): gen_qcborvalue_types.QCborValueRef =
+  gen_qcborvalue_types.QCborValueRef(h: fcQCborValueRef_operatorSubscript2(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc ToQCborValue*(self: gen_qcborvalue_types.QCborValueRef, ): QCborValue =
-  QCborValue(h: fcQCborValueRef_ToQCborValue(self.h))
+proc ToQCborValue*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueRef_ToQCborValue(self.h))
 
 proc typeX*(self: gen_qcborvalue_types.QCborValueRef, ): cint =
   cint(fcQCborValueRef_typeX(self.h))
@@ -990,8 +997,8 @@ proc toSimpleType*(self: gen_qcborvalue_types.QCborValueRef, ): cint =
 proc tag*(self: gen_qcborvalue_types.QCborValueRef, ): cint =
   cint(fcQCborValueRef_tag(self.h))
 
-proc taggedValue*(self: gen_qcborvalue_types.QCborValueRef, ): QCborValue =
-  QCborValue(h: fcQCborValueRef_taggedValue(self.h))
+proc taggedValue*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueRef_taggedValue(self.h))
 
 proc toInteger*(self: gen_qcborvalue_types.QCborValueRef, ): clonglong =
   fcQCborValueRef_toInteger(self.h)
@@ -1014,53 +1021,53 @@ proc toString*(self: gen_qcborvalue_types.QCborValueRef, ): string =
   c_free(v_ms.data)
   vx_ret
 
-proc toDateTime*(self: gen_qcborvalue_types.QCborValueRef, ): QDateTime =
-  QDateTime(h: fcQCborValueRef_toDateTime(self.h))
+proc toDateTime*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQCborValueRef_toDateTime(self.h))
 
-proc toUrl*(self: gen_qcborvalue_types.QCborValueRef, ): QUrl =
-  QUrl(h: fcQCborValueRef_toUrl(self.h))
+proc toUrl*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQCborValueRef_toUrl(self.h))
 
-proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueRef, ): QRegularExpression =
-  QRegularExpression(h: fcQCborValueRef_toRegularExpression(self.h))
+proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qregularexpression_types.QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression(h: fcQCborValueRef_toRegularExpression(self.h))
 
-proc toUuid*(self: gen_qcborvalue_types.QCborValueRef, ): QUuid =
-  QUuid(h: fcQCborValueRef_toUuid(self.h))
+proc toUuid*(self: gen_qcborvalue_types.QCborValueRef, ): gen_quuid_types.QUuid =
+  gen_quuid_types.QUuid(h: fcQCborValueRef_toUuid(self.h))
 
-proc toArray*(self: gen_qcborvalue_types.QCborValueRef, ): QCborArray =
-  QCborArray(h: fcQCborValueRef_toArray(self.h))
+proc toArray*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qcborarray_types.QCborArray =
+  gen_qcborarray_types.QCborArray(h: fcQCborValueRef_toArray(self.h))
 
-proc toArray*(self: gen_qcborvalue_types.QCborValueRef, a: QCborArray): QCborArray =
-  QCborArray(h: fcQCborValueRef_toArrayWithQCborArray(self.h, a.h))
+proc toArray*(self: gen_qcborvalue_types.QCborValueRef, a: gen_qcborarray_types.QCborArray): gen_qcborarray_types.QCborArray =
+  gen_qcborarray_types.QCborArray(h: fcQCborValueRef_toArrayWithQCborArray(self.h, a.h))
 
-proc toMap*(self: gen_qcborvalue_types.QCborValueRef, ): QCborMap =
-  QCborMap(h: fcQCborValueRef_toMap(self.h))
+proc toMap*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qcbormap_types.QCborMap =
+  gen_qcbormap_types.QCborMap(h: fcQCborValueRef_toMap(self.h))
 
-proc toMap*(self: gen_qcborvalue_types.QCborValueRef, m: QCborMap): QCborMap =
-  QCborMap(h: fcQCborValueRef_toMapWithQCborMap(self.h, m.h))
+proc toMap*(self: gen_qcborvalue_types.QCborValueRef, m: gen_qcbormap_types.QCborMap): gen_qcbormap_types.QCborMap =
+  gen_qcbormap_types.QCborMap(h: fcQCborValueRef_toMapWithQCborMap(self.h, m.h))
 
-proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValueRef, key: string): QCborValue =
-  QCborValue(h: fcQCborValueRef_operatorSubscript3(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValueRef, key: string): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueRef_operatorSubscript3(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValueRef, key: clonglong): QCborValue =
-  QCborValue(h: fcQCborValueRef_operatorSubscript5(self.h, key))
+proc operatorSubscript2*(self: gen_qcborvalue_types.QCborValueRef, key: clonglong): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueRef_operatorSubscript5(self.h, key))
 
-proc compare*(self: gen_qcborvalue_types.QCborValueRef, other: QCborValue): cint =
+proc compare*(self: gen_qcborvalue_types.QCborValueRef, other: gen_qcborvalue_types.QCborValue): cint =
   fcQCborValueRef_compare(self.h, other.h)
 
-proc operatorEqual*(self: gen_qcborvalue_types.QCborValueRef, other: QCborValue): bool =
+proc operatorEqual*(self: gen_qcborvalue_types.QCborValueRef, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValueRef_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: gen_qcborvalue_types.QCborValueRef, other: QCborValue): bool =
+proc operatorNotEqual*(self: gen_qcborvalue_types.QCborValueRef, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValueRef_operatorNotEqual(self.h, other.h)
 
-proc operatorLesser*(self: gen_qcborvalue_types.QCborValueRef, other: QCborValue): bool =
+proc operatorLesser*(self: gen_qcborvalue_types.QCborValueRef, other: gen_qcborvalue_types.QCborValue): bool =
   fcQCborValueRef_operatorLesser(self.h, other.h)
 
-proc toVariant*(self: gen_qcborvalue_types.QCborValueRef, ): QVariant =
-  QVariant(h: fcQCborValueRef_toVariant(self.h))
+proc toVariant*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qvariant_types.QVariant =
+  gen_qvariant_types.QVariant(h: fcQCborValueRef_toVariant(self.h))
 
-proc toJsonValue*(self: gen_qcborvalue_types.QCborValueRef, ): QJsonValue =
-  QJsonValue(h: fcQCborValueRef_toJsonValue(self.h))
+proc toJsonValue*(self: gen_qcborvalue_types.QCborValueRef, ): gen_qjsonvalue_types.QJsonValue =
+  gen_qjsonvalue_types.QJsonValue(h: fcQCborValueRef_toJsonValue(self.h))
 
 proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, ): seq[byte] =
   var v_bytearray = fcQCborValueRef_toCbor(self.h)
@@ -1068,7 +1075,7 @@ proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, ): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, writer: QCborStreamWriter): void =
+proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, writer: gen_qcborstreamwriter_types.QCborStreamWriter): void =
   fcQCborValueRef_toCborWithWriter(self.h, writer.h)
 
 proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueRef, ): string =
@@ -1083,8 +1090,8 @@ proc toSimpleType*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: cint)
 proc tag*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: cint): cint =
   cint(fcQCborValueRef_tag1(self.h, cint(defaultValue)))
 
-proc taggedValue*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: QCborValue): QCborValue =
-  QCborValue(h: fcQCborValueRef_taggedValue1(self.h, defaultValue.h))
+proc taggedValue*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: gen_qcborvalue_types.QCborValue): gen_qcborvalue_types.QCborValue =
+  gen_qcborvalue_types.QCborValue(h: fcQCborValueRef_taggedValue1(self.h, defaultValue.h))
 
 proc toInteger*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: clonglong): clonglong =
   fcQCborValueRef_toInteger1(self.h, defaultValue)
@@ -1107,17 +1114,17 @@ proc toString*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: string): 
   c_free(v_ms.data)
   vx_ret
 
-proc toDateTime*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: QDateTime): QDateTime =
-  QDateTime(h: fcQCborValueRef_toDateTime1(self.h, defaultValue.h))
+proc toDateTime*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: gen_qdatetime_types.QDateTime): gen_qdatetime_types.QDateTime =
+  gen_qdatetime_types.QDateTime(h: fcQCborValueRef_toDateTime1(self.h, defaultValue.h))
 
-proc toUrl*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: QUrl): QUrl =
-  QUrl(h: fcQCborValueRef_toUrl1(self.h, defaultValue.h))
+proc toUrl*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: gen_qurl_types.QUrl): gen_qurl_types.QUrl =
+  gen_qurl_types.QUrl(h: fcQCborValueRef_toUrl1(self.h, defaultValue.h))
 
-proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: QRegularExpression): QRegularExpression =
-  QRegularExpression(h: fcQCborValueRef_toRegularExpression1(self.h, defaultValue.h))
+proc toRegularExpression*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: gen_qregularexpression_types.QRegularExpression): gen_qregularexpression_types.QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression(h: fcQCborValueRef_toRegularExpression1(self.h, defaultValue.h))
 
-proc toUuid*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: QUuid): QUuid =
-  QUuid(h: fcQCborValueRef_toUuid1(self.h, defaultValue.h))
+proc toUuid*(self: gen_qcborvalue_types.QCborValueRef, defaultValue: gen_quuid_types.QUuid): gen_quuid_types.QUuid =
+  gen_quuid_types.QUuid(h: fcQCborValueRef_toUuid1(self.h, defaultValue.h))
 
 proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, opt: cint): seq[byte] =
   var v_bytearray = fcQCborValueRef_toCbor1(self.h, cint(opt))
@@ -1125,7 +1132,7 @@ proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, opt: cint): seq[byte] =
   c_free(v_bytearray.data)
   vx_ret
 
-proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, writer: QCborStreamWriter, opt: cint): void =
+proc toCbor*(self: gen_qcborvalue_types.QCborValueRef, writer: gen_qcborstreamwriter_types.QCborStreamWriter, opt: cint): void =
   fcQCborValueRef_toCbor2(self.h, writer.h, cint(opt))
 
 proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueRef, opt: cint): string =
@@ -1133,6 +1140,10 @@ proc toDiagnosticNotation*(self: gen_qcborvalue_types.QCborValueRef, opt: cint):
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
+
+proc create*(T: type gen_qcborvalue_types.QCborValueRef,
+    param1: gen_qcborvalue_types.QCborValueRef): gen_qcborvalue_types.QCborValueRef =
+  gen_qcborvalue_types.QCborValueRef(h: fcQCborValueRef_new(param1.h))
 
 proc delete*(self: gen_qcborvalue_types.QCborValueRef) =
   fcQCborValueRef_delete(self.h)
