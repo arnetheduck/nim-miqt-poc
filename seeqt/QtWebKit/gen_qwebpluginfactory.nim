@@ -146,6 +146,7 @@ proc plugins*(self: gen_qwebpluginfactory_types.QWebPluginFactory, ): seq[gen_qw
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qwebpluginfactory_types.QWebPluginFactoryPlugin(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc refreshPlugins*(self: gen_qwebpluginfactory_types.QWebPluginFactory, ): void =
@@ -289,6 +290,7 @@ proc miqt_exec_callback_cQWebPluginFactory_create(vtbl: pointer, self: pointer, 
     let vargumentNames_lvx_ret = string.fromBytes(toOpenArrayByte(vargumentNames_lv_ms.data, 0, int(vargumentNames_lv_ms.len)-1))
     c_free(vargumentNames_lv_ms.data)
     vargumentNamesx_ret[i] = vargumentNames_lvx_ret
+  c_free(vargumentNames_ma.data)
   let slotval3 = vargumentNamesx_ret
   var vargumentValues_ma = argumentValues
   var vargumentValuesx_ret = newSeq[string](int(vargumentValues_ma.len))
@@ -298,6 +300,7 @@ proc miqt_exec_callback_cQWebPluginFactory_create(vtbl: pointer, self: pointer, 
     let vargumentValues_lvx_ret = string.fromBytes(toOpenArrayByte(vargumentValues_lv_ms.data, 0, int(vargumentValues_lv_ms.len)-1))
     c_free(vargumentValues_lv_ms.data)
     vargumentValuesx_ret[i] = vargumentValues_lvx_ret
+  c_free(vargumentValues_ma.data)
   let slotval4 = vargumentValuesx_ret
   var virtualReturn = vtbl[].create(self, slotval1, slotval2, slotval3, slotval4)
   virtualReturn.h

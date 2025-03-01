@@ -112,6 +112,7 @@ proc supportedDocumentFormats*(_: type gen_qtextdocumentwriter_types.QTextDocume
     var vx_lvx_ret = @(toOpenArrayByte(vx_lv_bytearray.data, 0, int(vx_lv_bytearray.len)-1))
     c_free(vx_lv_bytearray.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc create*(T: type gen_qtextdocumentwriter_types.QTextDocumentWriter): gen_qtextdocumentwriter_types.QTextDocumentWriter =

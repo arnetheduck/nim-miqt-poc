@@ -489,6 +489,7 @@ proc QItemDelegatepaintingRoles*(self: gen_qitemdelegate_types.QItemDelegate, ):
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = v_outCast[i]
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQItemDelegate_paintingRoles(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =

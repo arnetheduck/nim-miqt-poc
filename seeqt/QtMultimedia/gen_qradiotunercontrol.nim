@@ -161,6 +161,8 @@ proc frequencyRange*(self: gen_qradiotunercontrol_types.QRadioTunerControl, b: c
 
   var v_entry_Second = v_Second_CArray[0]
 
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   (first: v_entry_First , second: v_entry_Second )
 
 proc setFrequency*(self: gen_qradiotunercontrol_types.QRadioTunerControl, frequency: cint): void =

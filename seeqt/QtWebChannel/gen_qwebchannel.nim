@@ -149,6 +149,8 @@ proc registeredObjects*(self: gen_qwebchannel_types.QWebChannel, ): Table[string
     var v_entry_Value = gen_qobject_types.QObject(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc registerObject*(self: gen_qwebchannel_types.QWebChannel, id: string, objectVal: gen_qobject_types.QObject): void =

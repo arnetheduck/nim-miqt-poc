@@ -524,6 +524,7 @@ proc miqt_exec_callback_cQListView_indexesMoved(slot: int, indexes: struct_miqt_
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
   for i in 0 ..< vindexes_ma.len:
     vindexesx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: vindexes_outCast[i])
+  c_free(vindexes_ma.data)
   let slotval1 = vindexesx_ret
 
   nimfunc[](slotval1)
@@ -871,6 +872,7 @@ proc miqt_exec_callback_cQListView_dataChanged(vtbl: pointer, self: pointer, top
   let vroles_outCast = cast[ptr UncheckedArray[cint]](vroles_ma.data)
   for i in 0 ..< vroles_ma.len:
     vrolesx_ret[i] = vroles_outCast[i]
+  c_free(vroles_ma.data)
   let slotval3 = vrolesx_ret
   vtbl[].dataChanged(self, slotval1, slotval2, slotval3)
 
@@ -1050,6 +1052,7 @@ proc QListViewselectedIndexes*(self: gen_qlistview_types.QListView, ): seq[gen_q
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQListView_selectedIndexes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =

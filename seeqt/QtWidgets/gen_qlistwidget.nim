@@ -1058,6 +1058,7 @@ proc selectedItems*(self: gen_qlistwidget_types.QListWidget, ): seq[gen_qlistwid
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qlistwidget_types.QListWidgetItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc findItems*(self: gen_qlistwidget_types.QListWidget, text: string, flags: cint): seq[gen_qlistwidget_types.QListWidgetItem] =
@@ -1066,6 +1067,7 @@ proc findItems*(self: gen_qlistwidget_types.QListWidget, text: string, flags: ci
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qlistwidget_types.QListWidgetItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc isItemHidden*(self: gen_qlistwidget_types.QListWidget, item: gen_qlistwidget_types.QListWidgetItem): bool =
@@ -1576,6 +1578,7 @@ proc QListWidgetmimeTypes*(self: gen_qlistwidget_types.QListWidget, ): seq[strin
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQListWidget_mimeTypes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -1605,6 +1608,7 @@ proc miqt_exec_callback_cQListWidget_mimeData(vtbl: pointer, self: pointer, item
   let vitems_outCast = cast[ptr UncheckedArray[pointer]](vitems_ma.data)
   for i in 0 ..< vitems_ma.len:
     vitemsx_ret[i] = gen_qlistwidget_types.QListWidgetItem(h: vitems_outCast[i])
+  c_free(vitems_ma.data)
   let slotval1 = vitemsx_ret
   var virtualReturn = vtbl[].mimeData(self, slotval1)
   virtualReturn.h
@@ -1712,6 +1716,7 @@ proc miqt_exec_callback_cQListWidget_dataChanged(vtbl: pointer, self: pointer, t
   let vroles_outCast = cast[ptr UncheckedArray[cint]](vroles_ma.data)
   for i in 0 ..< vroles_ma.len:
     vrolesx_ret[i] = vroles_outCast[i]
+  c_free(vroles_ma.data)
   let slotval3 = vrolesx_ret
   vtbl[].dataChanged(self, slotval1, slotval2, slotval3)
 
@@ -1882,6 +1887,7 @@ proc QListWidgetselectedIndexes*(self: gen_qlistwidget_types.QListWidget, ): seq
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractitemmodel_types.QModelIndex(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc miqt_exec_callback_cQListWidget_selectedIndexes(vtbl: pointer, self: pointer): struct_miqt_array {.cdecl.} =
@@ -2455,6 +2461,7 @@ proc items*(self: gen_qlistwidget_types.QListWidget, data: gen_qmimedata_types.Q
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qlistwidget_types.QListWidgetItem(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc indexFromItem*(self: gen_qlistwidget_types.QListWidget, item: gen_qlistwidget_types.QListWidgetItem): gen_qabstractitemmodel_types.QModelIndex =

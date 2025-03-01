@@ -138,6 +138,7 @@ proc focusZones*(self: gen_qcamerafocuscontrol_types.QCameraFocusControl, ): seq
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qcamerafocus_types.QCameraFocusZone(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc focusModeChanged*(self: gen_qcamerafocuscontrol_types.QCameraFocusControl, mode: cint): void =

@@ -75,6 +75,7 @@ proc debuggerServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): seq[
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc inspectorServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): seq[string] =
@@ -86,6 +87,7 @@ proc inspectorServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): seq
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc profilerServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): seq[string] =
@@ -97,6 +99,7 @@ proc profilerServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): seq[
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc nativeDebuggerServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, ): seq[string] =
@@ -108,6 +111,7 @@ proc nativeDebuggerServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, )
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc setServices*(_: type gen_qqmldebug_types.QQmlDebuggingEnabler, services: seq[string]): void =

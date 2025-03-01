@@ -129,6 +129,7 @@ proc keys*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, ): seq
     let vx_lvx_ret = string.fromBytes(toOpenArrayByte(vx_lv_ms.data, 0, int(vx_lv_ms.len)-1))
     c_free(vx_lv_ms.data)
     vx_ret[i] = vx_lvx_ret
+  c_free(v_ma.data)
   vx_ret
 
 proc initialize*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, key: string, engine: gen_qscriptengine_types.QScriptEngine): void =

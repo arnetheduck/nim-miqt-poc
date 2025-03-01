@@ -92,6 +92,7 @@ proc addresses*(self: gen_qhostinfo_types.QHostInfo, ): seq[gen_qhostaddress_typ
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qhostaddress_types.QHostAddress(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc setAddresses*(self: gen_qhostinfo_types.QHostInfo, addresses: seq[gen_qhostaddress_types.QHostAddress]): void =

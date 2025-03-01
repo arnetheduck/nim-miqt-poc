@@ -78,6 +78,7 @@ proc devices*(_: type gen_qtouchdevice_types.QTouchDevice, ): seq[gen_qtouchdevi
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qtouchdevice_types.QTouchDevice(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc name*(self: gen_qtouchdevice_types.QTouchDevice, ): string =

@@ -152,6 +152,7 @@ proc targetStates*(self: gen_qabstracttransition_types.QAbstractTransition, ): s
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractstate_types.QAbstractState(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc setTargetStates*(self: gen_qabstracttransition_types.QAbstractTransition, targets: seq[gen_qabstractstate_types.QAbstractState]): void =
@@ -182,6 +183,7 @@ proc animations*(self: gen_qabstracttransition_types.QAbstractTransition, ): seq
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qabstractanimation_types.QAbstractAnimation(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc tr*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring): string =

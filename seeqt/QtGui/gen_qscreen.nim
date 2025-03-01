@@ -221,6 +221,7 @@ proc virtualSiblings*(self: gen_qscreen_types.QScreen, ): seq[gen_qscreen_types.
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qscreen_types.QScreen(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc virtualSiblingAt*(self: gen_qscreen_types.QScreen, point: gen_qpoint_types.QPoint): gen_qscreen_types.QScreen =

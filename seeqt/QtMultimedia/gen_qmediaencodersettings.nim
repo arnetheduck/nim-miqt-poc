@@ -183,6 +183,8 @@ proc encodingOptions*(self: gen_qmediaencodersettings_types.QAudioEncoderSetting
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc setEncodingOption*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, option: string, value: gen_qvariant_types.QVariant): void =
@@ -279,6 +281,8 @@ proc encodingOptions*(self: gen_qmediaencodersettings_types.QVideoEncoderSetting
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc setEncodingOption*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, option: string, value: gen_qvariant_types.QVariant): void =
@@ -357,6 +361,8 @@ proc encodingOptions*(self: gen_qmediaencodersettings_types.QImageEncoderSetting
     var v_entry_Value = gen_qvariant_types.QVariant(h: v_Values[i])
 
     vx_ret[v_entry_Key] = v_entry_Value
+  c_free(v_mm.keys)
+  c_free(v_mm.values)
   vx_ret
 
 proc setEncodingOption*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, option: string, value: gen_qvariant_types.QVariant): void =

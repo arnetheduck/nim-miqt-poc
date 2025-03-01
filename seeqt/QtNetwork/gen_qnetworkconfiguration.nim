@@ -146,6 +146,7 @@ proc children*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): s
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
     vx_ret[i] = gen_qnetworkconfiguration_types.QNetworkConfiguration(h: v_outCast[i])
+  c_free(v_ma.data)
   vx_ret
 
 proc name*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): string =
