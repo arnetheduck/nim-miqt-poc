@@ -30,7 +30,7 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
     else:
       copyMem(addr result[0], unsafeAddr v[0], v.len)
 
-const cflags = gorge("pkg-config --cflags Qt6Quick")
+const cflags = gorge("pkg-config --cflags Qt6Quick") & " -fPIC"
 {.compile("gen_qsgtexture_platform.cpp", cflags).}
 
 
@@ -54,7 +54,7 @@ proc fcQNativeInterfaceQSGOpenGLTexture_fromNative(textureId: cGLuint, window: p
 proc fcQNativeInterfaceQSGOpenGLTexture_fromNativeExternalOES(textureId: cGLuint, window: pointer, size: pointer): pointer {.importc: "QNativeInterface__QSGOpenGLTexture_fromNativeExternalOES".}
 proc fcQNativeInterfaceQSGOpenGLTexture_fromNative4(textureId: cGLuint, window: pointer, size: pointer, options: cint): pointer {.importc: "QNativeInterface__QSGOpenGLTexture_fromNative4".}
 proc fcQNativeInterfaceQSGOpenGLTexture_fromNativeExternalOES4(textureId: cGLuint, window: pointer, size: pointer, options: cint): pointer {.importc: "QNativeInterface__QSGOpenGLTexture_fromNativeExternalOES4".}
-type cQNativeInterfaceQSGOpenGLTextureVTable = object
+type cQNativeInterfaceQSGOpenGLTextureVTable {.pure.} = object
   destructor*: proc(vtbl: ptr cQNativeInterfaceQSGOpenGLTextureVTable, self: ptr cQNativeInterfaceQSGOpenGLTexture) {.cdecl, raises:[], gcsafe.}
   nativeTexture*: proc(vtbl, self: pointer, ): cGLuint {.cdecl, raises: [], gcsafe.}
 proc fcQNativeInterfaceQSGOpenGLTexture_new(vtbl: pointer, ): ptr cQNativeInterfaceQSGOpenGLTexture {.importc: "QNativeInterface__QSGOpenGLTexture_new".}
@@ -62,7 +62,7 @@ proc fcQNativeInterfaceQSGVulkanTexture_nativeImage(self: pointer, ): cVkImage {
 proc fcQNativeInterfaceQSGVulkanTexture_nativeImageLayout(self: pointer, ): cVkImageLayout {.importc: "QNativeInterface__QSGVulkanTexture_nativeImageLayout".}
 proc fcQNativeInterfaceQSGVulkanTexture_fromNative(image: cVkImage, layout: cVkImageLayout, window: pointer, size: pointer): pointer {.importc: "QNativeInterface__QSGVulkanTexture_fromNative".}
 proc fcQNativeInterfaceQSGVulkanTexture_fromNative5(image: cVkImage, layout: cVkImageLayout, window: pointer, size: pointer, options: cint): pointer {.importc: "QNativeInterface__QSGVulkanTexture_fromNative5".}
-type cQNativeInterfaceQSGVulkanTextureVTable = object
+type cQNativeInterfaceQSGVulkanTextureVTable {.pure.} = object
   destructor*: proc(vtbl: ptr cQNativeInterfaceQSGVulkanTextureVTable, self: ptr cQNativeInterfaceQSGVulkanTexture) {.cdecl, raises:[], gcsafe.}
   nativeImage*: proc(vtbl, self: pointer, ): cVkImage {.cdecl, raises: [], gcsafe.}
   nativeImageLayout*: proc(vtbl, self: pointer, ): cVkImageLayout {.cdecl, raises: [], gcsafe.}
@@ -71,19 +71,19 @@ proc fcQNativeInterfaceQSGVulkanTexture_new(vtbl: pointer, ): ptr cQNativeInterf
 proc nativeTexture*(self: gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture, ): GLuint =
 TODO GLuint
 proc fromNative*(_: type gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture, textureId: GLuint, window: gen_qquickwindow_types.QQuickWindow, size: gen_qsize_types.QSize): gen_qsgtexture_types.QSGTexture =
-  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNative(textureId, window.h, size.h))
+  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNative(textureId, window.h, size.h), owned: false)
 
 proc fromNativeExternalOES*(_: type gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture, textureId: GLuint, window: gen_qquickwindow_types.QQuickWindow, size: gen_qsize_types.QSize): gen_qsgtexture_types.QSGTexture =
-  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNativeExternalOES(textureId, window.h, size.h))
+  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNativeExternalOES(textureId, window.h, size.h), owned: false)
 
 proc fromNative*(_: type gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture, textureId: GLuint, window: gen_qquickwindow_types.QQuickWindow, size: gen_qsize_types.QSize, options: cint): gen_qsgtexture_types.QSGTexture =
-  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNative4(textureId, window.h, size.h, cint(options)))
+  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNative4(textureId, window.h, size.h, cint(options)), owned: false)
 
 proc fromNativeExternalOES*(_: type gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture, textureId: GLuint, window: gen_qquickwindow_types.QQuickWindow, size: gen_qsize_types.QSize, options: cint): gen_qsgtexture_types.QSGTexture =
-  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNativeExternalOES4(textureId, window.h, size.h, cint(options)))
+  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGOpenGLTexture_fromNativeExternalOES4(textureId, window.h, size.h, cint(options)), owned: false)
 
 type QNativeInterfaceQSGOpenGLTexturenativeTextureProc* = proc(self: QNativeInterfaceQSGOpenGLTexture): GLuint {.raises: [], gcsafe.}
-type QNativeInterfaceQSGOpenGLTextureVTable* = object
+type QNativeInterfaceQSGOpenGLTextureVTable* {.inheritable, pure.} = object
   vtbl: cQNativeInterfaceQSGOpenGLTextureVTable
   nativeTexture*: QNativeInterfaceQSGOpenGLTexturenativeTextureProc
 proc miqt_exec_callback_cQNativeInterfaceQSGOpenGLTexture_nativeTexture(vtbl: pointer, self: pointer): cGLuint {.cdecl.} =
@@ -92,30 +92,51 @@ proc miqt_exec_callback_cQNativeInterfaceQSGOpenGLTexture_nativeTexture(vtbl: po
   var virtualReturn = vtbl[].nativeTexture(self)
   virtualReturn
 
+type VirtualQNativeInterfaceQSGOpenGLTexture* {.inheritable.} = ref object of QNativeInterfaceQSGOpenGLTexture
+  vtbl*: cQNativeInterfaceQSGOpenGLTextureVTable
+method nativeTexture*(self: VirtualQNativeInterfaceQSGOpenGLTexture, ): GLuint {.base.} =
+  raiseAssert("missing implementation of QNativeInterface__QSGOpenGLTexture_virtualbase_nativeTexture")
+proc miqt_exec_method_cQNativeInterfaceQSGOpenGLTexture_nativeTexture(vtbl: pointer, inst: pointer): cGLuint {.cdecl.} =
+  let vtbl = cast[VirtualQNativeInterfaceQSGOpenGLTexture](cast[uint](vtbl) - uint(offsetOf(VirtualQNativeInterfaceQSGOpenGLTexture, vtbl)))
+  var virtualReturn = vtbl.nativeTexture()
+  virtualReturn
+
 proc create*(T: type gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture,
     vtbl: ref QNativeInterfaceQSGOpenGLTextureVTable = nil): gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture =
   let vtbl = if vtbl == nil: new QNativeInterfaceQSGOpenGLTextureVTable else: vtbl
   GC_ref(vtbl)
-  vtbl.vtbl.destructor = proc(vtbl: ptr cQNativeInterfaceQSGOpenGLTextureVTable, _: ptr cQNativeInterfaceQSGOpenGLTexture) {.cdecl.} =
+  vtbl[].vtbl.destructor = proc(vtbl: ptr cQNativeInterfaceQSGOpenGLTextureVTable, _: ptr cQNativeInterfaceQSGOpenGLTexture) {.cdecl.} =
     let vtbl = cast[ref QNativeInterfaceQSGOpenGLTextureVTable](vtbl)
     GC_unref(vtbl)
-  if not isNil(vtbl.nativeTexture):
+  if not isNil(vtbl[].nativeTexture):
     vtbl[].vtbl.nativeTexture = miqt_exec_callback_cQNativeInterfaceQSGOpenGLTexture_nativeTexture
-  gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture(h: fcQNativeInterfaceQSGOpenGLTexture_new(addr(vtbl[]), ))
+  gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture(h: fcQNativeInterfaceQSGOpenGLTexture_new(addr(vtbl[].vtbl), ), owned: true)
+
+proc create*(T: type gen_qsgtexture_platform_types.QNativeInterfaceQSGOpenGLTexture,
+    vtbl: VirtualQNativeInterfaceQSGOpenGLTexture) =
+
+  vtbl[].vtbl.destructor = proc(vtbl: ptr cQNativeInterfaceQSGOpenGLTextureVTable, _: ptr cQNativeInterfaceQSGOpenGLTexture) {.cdecl.} =
+    let vtbl = cast[ptr typeof(VirtualQNativeInterfaceQSGOpenGLTexture()[])](cast[uint](vtbl) - uint(offsetOf(VirtualQNativeInterfaceQSGOpenGLTexture, vtbl)))
+    vtbl[].h = nil
+    vtbl[].owned = false
+  vtbl[].vtbl.nativeTexture = miqt_exec_method_cQNativeInterfaceQSGOpenGLTexture_nativeTexture
+  if vtbl[].h != nil: delete(move(vtbl[]))
+  vtbl[].h = fcQNativeInterfaceQSGOpenGLTexture_new(addr(vtbl[].vtbl), )
+  vtbl[].owned = true
 
 proc nativeImage*(self: gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture, ): VkImage =
 TODO VkImage
 proc nativeImageLayout*(self: gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture, ): VkImageLayout =
 TODO VkImageLayout
 proc fromNative*(_: type gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture, image: VkImage, layout: VkImageLayout, window: gen_qquickwindow_types.QQuickWindow, size: gen_qsize_types.QSize): gen_qsgtexture_types.QSGTexture =
-  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGVulkanTexture_fromNative(image, layout, window.h, size.h))
+  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGVulkanTexture_fromNative(image, layout, window.h, size.h), owned: false)
 
 proc fromNative*(_: type gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture, image: VkImage, layout: VkImageLayout, window: gen_qquickwindow_types.QQuickWindow, size: gen_qsize_types.QSize, options: cint): gen_qsgtexture_types.QSGTexture =
-  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGVulkanTexture_fromNative5(image, layout, window.h, size.h, cint(options)))
+  gen_qsgtexture_types.QSGTexture(h: fcQNativeInterfaceQSGVulkanTexture_fromNative5(image, layout, window.h, size.h, cint(options)), owned: false)
 
 type QNativeInterfaceQSGVulkanTexturenativeImageProc* = proc(self: QNativeInterfaceQSGVulkanTexture): VkImage {.raises: [], gcsafe.}
 type QNativeInterfaceQSGVulkanTexturenativeImageLayoutProc* = proc(self: QNativeInterfaceQSGVulkanTexture): VkImageLayout {.raises: [], gcsafe.}
-type QNativeInterfaceQSGVulkanTextureVTable* = object
+type QNativeInterfaceQSGVulkanTextureVTable* {.inheritable, pure.} = object
   vtbl: cQNativeInterfaceQSGVulkanTextureVTable
   nativeImage*: QNativeInterfaceQSGVulkanTexturenativeImageProc
   nativeImageLayout*: QNativeInterfaceQSGVulkanTexturenativeImageLayoutProc
@@ -131,16 +152,45 @@ proc miqt_exec_callback_cQNativeInterfaceQSGVulkanTexture_nativeImageLayout(vtbl
   var virtualReturn = vtbl[].nativeImageLayout(self)
   virtualReturn
 
+type VirtualQNativeInterfaceQSGVulkanTexture* {.inheritable.} = ref object of QNativeInterfaceQSGVulkanTexture
+  vtbl*: cQNativeInterfaceQSGVulkanTextureVTable
+method nativeImage*(self: VirtualQNativeInterfaceQSGVulkanTexture, ): VkImage {.base.} =
+  raiseAssert("missing implementation of QNativeInterface__QSGVulkanTexture_virtualbase_nativeImage")
+proc miqt_exec_method_cQNativeInterfaceQSGVulkanTexture_nativeImage(vtbl: pointer, inst: pointer): cVkImage {.cdecl.} =
+  let vtbl = cast[VirtualQNativeInterfaceQSGVulkanTexture](cast[uint](vtbl) - uint(offsetOf(VirtualQNativeInterfaceQSGVulkanTexture, vtbl)))
+  var virtualReturn = vtbl.nativeImage()
+  virtualReturn
+
+method nativeImageLayout*(self: VirtualQNativeInterfaceQSGVulkanTexture, ): VkImageLayout {.base.} =
+  raiseAssert("missing implementation of QNativeInterface__QSGVulkanTexture_virtualbase_nativeImageLayout")
+proc miqt_exec_method_cQNativeInterfaceQSGVulkanTexture_nativeImageLayout(vtbl: pointer, inst: pointer): cVkImageLayout {.cdecl.} =
+  let vtbl = cast[VirtualQNativeInterfaceQSGVulkanTexture](cast[uint](vtbl) - uint(offsetOf(VirtualQNativeInterfaceQSGVulkanTexture, vtbl)))
+  var virtualReturn = vtbl.nativeImageLayout()
+  virtualReturn
+
 proc create*(T: type gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture,
     vtbl: ref QNativeInterfaceQSGVulkanTextureVTable = nil): gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture =
   let vtbl = if vtbl == nil: new QNativeInterfaceQSGVulkanTextureVTable else: vtbl
   GC_ref(vtbl)
-  vtbl.vtbl.destructor = proc(vtbl: ptr cQNativeInterfaceQSGVulkanTextureVTable, _: ptr cQNativeInterfaceQSGVulkanTexture) {.cdecl.} =
+  vtbl[].vtbl.destructor = proc(vtbl: ptr cQNativeInterfaceQSGVulkanTextureVTable, _: ptr cQNativeInterfaceQSGVulkanTexture) {.cdecl.} =
     let vtbl = cast[ref QNativeInterfaceQSGVulkanTextureVTable](vtbl)
     GC_unref(vtbl)
-  if not isNil(vtbl.nativeImage):
+  if not isNil(vtbl[].nativeImage):
     vtbl[].vtbl.nativeImage = miqt_exec_callback_cQNativeInterfaceQSGVulkanTexture_nativeImage
-  if not isNil(vtbl.nativeImageLayout):
+  if not isNil(vtbl[].nativeImageLayout):
     vtbl[].vtbl.nativeImageLayout = miqt_exec_callback_cQNativeInterfaceQSGVulkanTexture_nativeImageLayout
-  gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture(h: fcQNativeInterfaceQSGVulkanTexture_new(addr(vtbl[]), ))
+  gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture(h: fcQNativeInterfaceQSGVulkanTexture_new(addr(vtbl[].vtbl), ), owned: true)
+
+proc create*(T: type gen_qsgtexture_platform_types.QNativeInterfaceQSGVulkanTexture,
+    vtbl: VirtualQNativeInterfaceQSGVulkanTexture) =
+
+  vtbl[].vtbl.destructor = proc(vtbl: ptr cQNativeInterfaceQSGVulkanTextureVTable, _: ptr cQNativeInterfaceQSGVulkanTexture) {.cdecl.} =
+    let vtbl = cast[ptr typeof(VirtualQNativeInterfaceQSGVulkanTexture()[])](cast[uint](vtbl) - uint(offsetOf(VirtualQNativeInterfaceQSGVulkanTexture, vtbl)))
+    vtbl[].h = nil
+    vtbl[].owned = false
+  vtbl[].vtbl.nativeImage = miqt_exec_method_cQNativeInterfaceQSGVulkanTexture_nativeImage
+  vtbl[].vtbl.nativeImageLayout = miqt_exec_method_cQNativeInterfaceQSGVulkanTexture_nativeImageLayout
+  if vtbl[].h != nil: delete(move(vtbl[]))
+  vtbl[].h = fcQNativeInterfaceQSGVulkanTexture_new(addr(vtbl[].vtbl), )
+  vtbl[].owned = true
 

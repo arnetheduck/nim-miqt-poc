@@ -30,7 +30,7 @@ func fromBytes(T: type string, v: openArray[byte]): string {.used.} =
     else:
       copyMem(addr result[0], unsafeAddr v[0], v.len)
 
-const cflags = gorge("pkg-config --cflags Qt6SpatialAudio")
+const cflags = gorge("pkg-config --cflags Qt6SpatialAudio") & " -fPIC"
 {.compile("gen_qaudiolistener.cpp", cflags).}
 
 
@@ -59,7 +59,7 @@ proc fcQAudioListener_position(self: pointer, ): pointer {.importc: "QAudioListe
 proc fcQAudioListener_setRotation(self: pointer, q: pointer): void {.importc: "QAudioListener_setRotation".}
 proc fcQAudioListener_rotation(self: pointer, ): pointer {.importc: "QAudioListener_rotation".}
 proc fcQAudioListener_engine(self: pointer, ): pointer {.importc: "QAudioListener_engine".}
-type cQAudioListenerVTable = object
+type cQAudioListenerVTable {.pure.} = object
   destructor*: proc(vtbl: ptr cQAudioListenerVTable, self: ptr cQAudioListener) {.cdecl, raises:[], gcsafe.}
   metacall*: proc(vtbl, self: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl, raises: [], gcsafe.}
   event*: proc(vtbl, self: pointer, event: pointer): bool {.cdecl, raises: [], gcsafe.}
@@ -82,22 +82,21 @@ proc fcQAudioListener_protectedbase_senderSignalIndex(self: pointer, ): cint {.i
 proc fcQAudioListener_protectedbase_receivers(self: pointer, signal: cstring): cint {.importc: "QAudioListener_protectedbase_receivers".}
 proc fcQAudioListener_protectedbase_isSignalConnected(self: pointer, signal: pointer): bool {.importc: "QAudioListener_protectedbase_isSignalConnected".}
 proc fcQAudioListener_new(vtbl: pointer, engine: pointer): ptr cQAudioListener {.importc: "QAudioListener_new".}
-proc fcQAudioListener_delete(self: pointer) {.importc: "QAudioListener_delete".}
 
 proc setPosition*(self: gen_qaudiolistener_types.QAudioListener, pos: gen_qvectornd_types.QVector3D): void =
   fcQAudioListener_setPosition(self.h, pos.h)
 
 proc position*(self: gen_qaudiolistener_types.QAudioListener, ): gen_qvectornd_types.QVector3D =
-  gen_qvectornd_types.QVector3D(h: fcQAudioListener_position(self.h))
+  gen_qvectornd_types.QVector3D(h: fcQAudioListener_position(self.h), owned: true)
 
 proc setRotation*(self: gen_qaudiolistener_types.QAudioListener, q: gen_qquaternion_types.QQuaternion): void =
   fcQAudioListener_setRotation(self.h, q.h)
 
 proc rotation*(self: gen_qaudiolistener_types.QAudioListener, ): gen_qquaternion_types.QQuaternion =
-  gen_qquaternion_types.QQuaternion(h: fcQAudioListener_rotation(self.h))
+  gen_qquaternion_types.QQuaternion(h: fcQAudioListener_rotation(self.h), owned: true)
 
 proc engine*(self: gen_qaudiolistener_types.QAudioListener, ): gen_qaudioengine_types.QAudioEngine =
-  gen_qaudioengine_types.QAudioEngine(h: fcQAudioListener_engine(self.h))
+  gen_qaudioengine_types.QAudioEngine(h: fcQAudioListener_engine(self.h), owned: false)
 
 type QAudioListenermetacallProc* = proc(self: QAudioListener, param1: cint, param2: cint, param3: pointer): cint {.raises: [], gcsafe.}
 type QAudioListenereventProc* = proc(self: QAudioListener, event: gen_qcoreevent_types.QEvent): bool {.raises: [], gcsafe.}
@@ -107,7 +106,7 @@ type QAudioListenerchildEventProc* = proc(self: QAudioListener, event: gen_qcore
 type QAudioListenercustomEventProc* = proc(self: QAudioListener, event: gen_qcoreevent_types.QEvent): void {.raises: [], gcsafe.}
 type QAudioListenerconnectNotifyProc* = proc(self: QAudioListener, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
 type QAudioListenerdisconnectNotifyProc* = proc(self: QAudioListener, signal: gen_qmetaobject_types.QMetaMethod): void {.raises: [], gcsafe.}
-type QAudioListenerVTable* = object
+type QAudioListenerVTable* {.inheritable, pure.} = object
   vtbl: cQAudioListenerVTable
   metacall*: QAudioListenermetacallProc
   event*: QAudioListenereventProc
@@ -135,7 +134,7 @@ proc QAudioListenerevent*(self: gen_qaudiolistener_types.QAudioListener, event: 
 proc miqt_exec_callback_cQAudioListener_event(vtbl: pointer, self: pointer, event: pointer): bool {.cdecl.} =
   let vtbl = cast[ptr QAudioListenerVTable](vtbl)
   let self = QAudioListener(h: self)
-  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event, owned: false)
   var virtualReturn = vtbl[].event(self, slotval1)
   virtualReturn
 
@@ -145,8 +144,8 @@ proc QAudioListenereventFilter*(self: gen_qaudiolistener_types.QAudioListener, w
 proc miqt_exec_callback_cQAudioListener_eventFilter(vtbl: pointer, self: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
   let vtbl = cast[ptr QAudioListenerVTable](vtbl)
   let self = QAudioListener(h: self)
-  let slotval1 = gen_qobject_types.QObject(h: watched)
-  let slotval2 = gen_qcoreevent_types.QEvent(h: event)
+  let slotval1 = gen_qobject_types.QObject(h: watched, owned: false)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event, owned: false)
   var virtualReturn = vtbl[].eventFilter(self, slotval1, slotval2)
   virtualReturn
 
@@ -156,7 +155,7 @@ proc QAudioListenertimerEvent*(self: gen_qaudiolistener_types.QAudioListener, ev
 proc miqt_exec_callback_cQAudioListener_timerEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
   let vtbl = cast[ptr QAudioListenerVTable](vtbl)
   let self = QAudioListener(h: self)
-  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event)
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event, owned: false)
   vtbl[].timerEvent(self, slotval1)
 
 proc QAudioListenerchildEvent*(self: gen_qaudiolistener_types.QAudioListener, event: gen_qcoreevent_types.QChildEvent): void =
@@ -165,7 +164,7 @@ proc QAudioListenerchildEvent*(self: gen_qaudiolistener_types.QAudioListener, ev
 proc miqt_exec_callback_cQAudioListener_childEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
   let vtbl = cast[ptr QAudioListenerVTable](vtbl)
   let self = QAudioListener(h: self)
-  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event)
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event, owned: false)
   vtbl[].childEvent(self, slotval1)
 
 proc QAudioListenercustomEvent*(self: gen_qaudiolistener_types.QAudioListener, event: gen_qcoreevent_types.QEvent): void =
@@ -174,7 +173,7 @@ proc QAudioListenercustomEvent*(self: gen_qaudiolistener_types.QAudioListener, e
 proc miqt_exec_callback_cQAudioListener_customEvent(vtbl: pointer, self: pointer, event: pointer): void {.cdecl.} =
   let vtbl = cast[ptr QAudioListenerVTable](vtbl)
   let self = QAudioListener(h: self)
-  let slotval1 = gen_qcoreevent_types.QEvent(h: event)
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event, owned: false)
   vtbl[].customEvent(self, slotval1)
 
 proc QAudioListenerconnectNotify*(self: gen_qaudiolistener_types.QAudioListener, signal: gen_qmetaobject_types.QMetaMethod): void =
@@ -183,7 +182,7 @@ proc QAudioListenerconnectNotify*(self: gen_qaudiolistener_types.QAudioListener,
 proc miqt_exec_callback_cQAudioListener_connectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
   let vtbl = cast[ptr QAudioListenerVTable](vtbl)
   let self = QAudioListener(h: self)
-  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal, owned: false)
   vtbl[].connectNotify(self, slotval1)
 
 proc QAudioListenerdisconnectNotify*(self: gen_qaudiolistener_types.QAudioListener, signal: gen_qmetaobject_types.QMetaMethod): void =
@@ -192,11 +191,75 @@ proc QAudioListenerdisconnectNotify*(self: gen_qaudiolistener_types.QAudioListen
 proc miqt_exec_callback_cQAudioListener_disconnectNotify(vtbl: pointer, self: pointer, signal: pointer): void {.cdecl.} =
   let vtbl = cast[ptr QAudioListenerVTable](vtbl)
   let self = QAudioListener(h: self)
-  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal)
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal, owned: false)
   vtbl[].disconnectNotify(self, slotval1)
 
+type VirtualQAudioListener* {.inheritable.} = ref object of QAudioListener
+  vtbl*: cQAudioListenerVTable
+method metacall*(self: VirtualQAudioListener, param1: cint, param2: cint, param3: pointer): cint {.base.} =
+  QAudioListenermetacall(self[], param1, param2, param3)
+proc miqt_exec_method_cQAudioListener_metacall(vtbl: pointer, inst: pointer, param1: cint, param2: cint, param3: pointer): cint {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = cint(param1)
+  let slotval2 = param2
+  let slotval3 = param3
+  var virtualReturn = vtbl.metacall(slotval1, slotval2, slotval3)
+  virtualReturn
+
+method event*(self: VirtualQAudioListener, event: gen_qcoreevent_types.QEvent): bool {.base.} =
+  QAudioListenerevent(self[], event)
+proc miqt_exec_method_cQAudioListener_event(vtbl: pointer, inst: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event, owned: false)
+  var virtualReturn = vtbl.event(slotval1)
+  virtualReturn
+
+method eventFilter*(self: VirtualQAudioListener, watched: gen_qobject_types.QObject, event: gen_qcoreevent_types.QEvent): bool {.base.} =
+  QAudioListenereventFilter(self[], watched, event)
+proc miqt_exec_method_cQAudioListener_eventFilter(vtbl: pointer, inst: pointer, watched: pointer, event: pointer): bool {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = gen_qobject_types.QObject(h: watched, owned: false)
+  let slotval2 = gen_qcoreevent_types.QEvent(h: event, owned: false)
+  var virtualReturn = vtbl.eventFilter(slotval1, slotval2)
+  virtualReturn
+
+method timerEvent*(self: VirtualQAudioListener, event: gen_qcoreevent_types.QTimerEvent): void {.base.} =
+  QAudioListenertimerEvent(self[], event)
+proc miqt_exec_method_cQAudioListener_timerEvent(vtbl: pointer, inst: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = gen_qcoreevent_types.QTimerEvent(h: event, owned: false)
+  vtbl.timerEvent(slotval1)
+
+method childEvent*(self: VirtualQAudioListener, event: gen_qcoreevent_types.QChildEvent): void {.base.} =
+  QAudioListenerchildEvent(self[], event)
+proc miqt_exec_method_cQAudioListener_childEvent(vtbl: pointer, inst: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = gen_qcoreevent_types.QChildEvent(h: event, owned: false)
+  vtbl.childEvent(slotval1)
+
+method customEvent*(self: VirtualQAudioListener, event: gen_qcoreevent_types.QEvent): void {.base.} =
+  QAudioListenercustomEvent(self[], event)
+proc miqt_exec_method_cQAudioListener_customEvent(vtbl: pointer, inst: pointer, event: pointer): void {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = gen_qcoreevent_types.QEvent(h: event, owned: false)
+  vtbl.customEvent(slotval1)
+
+method connectNotify*(self: VirtualQAudioListener, signal: gen_qmetaobject_types.QMetaMethod): void {.base.} =
+  QAudioListenerconnectNotify(self[], signal)
+proc miqt_exec_method_cQAudioListener_connectNotify(vtbl: pointer, inst: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal, owned: false)
+  vtbl.connectNotify(slotval1)
+
+method disconnectNotify*(self: VirtualQAudioListener, signal: gen_qmetaobject_types.QMetaMethod): void {.base.} =
+  QAudioListenerdisconnectNotify(self[], signal)
+proc miqt_exec_method_cQAudioListener_disconnectNotify(vtbl: pointer, inst: pointer, signal: pointer): void {.cdecl.} =
+  let vtbl = cast[VirtualQAudioListener](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+  let slotval1 = gen_qmetaobject_types.QMetaMethod(h: signal, owned: false)
+  vtbl.disconnectNotify(slotval1)
+
 proc sender*(self: gen_qaudiolistener_types.QAudioListener, ): gen_qobject_types.QObject =
-  gen_qobject_types.QObject(h: fcQAudioListener_protectedbase_sender(self.h))
+  gen_qobject_types.QObject(h: fcQAudioListener_protectedbase_sender(self.h), owned: false)
 
 proc senderSignalIndex*(self: gen_qaudiolistener_types.QAudioListener, ): cint =
   fcQAudioListener_protectedbase_senderSignalIndex(self.h)
@@ -212,26 +275,44 @@ proc create*(T: type gen_qaudiolistener_types.QAudioListener,
     vtbl: ref QAudioListenerVTable = nil): gen_qaudiolistener_types.QAudioListener =
   let vtbl = if vtbl == nil: new QAudioListenerVTable else: vtbl
   GC_ref(vtbl)
-  vtbl.vtbl.destructor = proc(vtbl: ptr cQAudioListenerVTable, _: ptr cQAudioListener) {.cdecl.} =
+  vtbl[].vtbl.destructor = proc(vtbl: ptr cQAudioListenerVTable, _: ptr cQAudioListener) {.cdecl.} =
     let vtbl = cast[ref QAudioListenerVTable](vtbl)
     GC_unref(vtbl)
-  if not isNil(vtbl.metacall):
+  if not isNil(vtbl[].metacall):
     vtbl[].vtbl.metacall = miqt_exec_callback_cQAudioListener_metacall
-  if not isNil(vtbl.event):
+  if not isNil(vtbl[].event):
     vtbl[].vtbl.event = miqt_exec_callback_cQAudioListener_event
-  if not isNil(vtbl.eventFilter):
+  if not isNil(vtbl[].eventFilter):
     vtbl[].vtbl.eventFilter = miqt_exec_callback_cQAudioListener_eventFilter
-  if not isNil(vtbl.timerEvent):
+  if not isNil(vtbl[].timerEvent):
     vtbl[].vtbl.timerEvent = miqt_exec_callback_cQAudioListener_timerEvent
-  if not isNil(vtbl.childEvent):
+  if not isNil(vtbl[].childEvent):
     vtbl[].vtbl.childEvent = miqt_exec_callback_cQAudioListener_childEvent
-  if not isNil(vtbl.customEvent):
+  if not isNil(vtbl[].customEvent):
     vtbl[].vtbl.customEvent = miqt_exec_callback_cQAudioListener_customEvent
-  if not isNil(vtbl.connectNotify):
+  if not isNil(vtbl[].connectNotify):
     vtbl[].vtbl.connectNotify = miqt_exec_callback_cQAudioListener_connectNotify
-  if not isNil(vtbl.disconnectNotify):
+  if not isNil(vtbl[].disconnectNotify):
     vtbl[].vtbl.disconnectNotify = miqt_exec_callback_cQAudioListener_disconnectNotify
-  gen_qaudiolistener_types.QAudioListener(h: fcQAudioListener_new(addr(vtbl[]), engine.h))
+  gen_qaudiolistener_types.QAudioListener(h: fcQAudioListener_new(addr(vtbl[].vtbl), engine.h), owned: true)
 
-proc delete*(self: gen_qaudiolistener_types.QAudioListener) =
-  fcQAudioListener_delete(self.h)
+proc create*(T: type gen_qaudiolistener_types.QAudioListener,
+    engine: gen_qaudioengine_types.QAudioEngine,
+    vtbl: VirtualQAudioListener) =
+
+  vtbl[].vtbl.destructor = proc(vtbl: ptr cQAudioListenerVTable, _: ptr cQAudioListener) {.cdecl.} =
+    let vtbl = cast[ptr typeof(VirtualQAudioListener()[])](cast[uint](vtbl) - uint(offsetOf(VirtualQAudioListener, vtbl)))
+    vtbl[].h = nil
+    vtbl[].owned = false
+  vtbl[].vtbl.metacall = miqt_exec_method_cQAudioListener_metacall
+  vtbl[].vtbl.event = miqt_exec_method_cQAudioListener_event
+  vtbl[].vtbl.eventFilter = miqt_exec_method_cQAudioListener_eventFilter
+  vtbl[].vtbl.timerEvent = miqt_exec_method_cQAudioListener_timerEvent
+  vtbl[].vtbl.childEvent = miqt_exec_method_cQAudioListener_childEvent
+  vtbl[].vtbl.customEvent = miqt_exec_method_cQAudioListener_customEvent
+  vtbl[].vtbl.connectNotify = miqt_exec_method_cQAudioListener_connectNotify
+  vtbl[].vtbl.disconnectNotify = miqt_exec_method_cQAudioListener_disconnectNotify
+  if vtbl[].h != nil: delete(move(vtbl[]))
+  vtbl[].h = fcQAudioListener_new(addr(vtbl[].vtbl), engine.h)
+  vtbl[].owned = true
+
