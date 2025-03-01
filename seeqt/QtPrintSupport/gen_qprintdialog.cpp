@@ -44,7 +44,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QPrintDialog_accepted(intptr_t, QPrinter*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -995,11 +994,20 @@ void QPrintDialog_accepted(QPrintDialog* self, QPrinter* printer) {
 	self->accepted(printer);
 }
 
-void QPrintDialog_connect_accepted(QPrintDialog* self, intptr_t slot) {
-	MiqtVirtualQPrintDialog::connect(self, static_cast<void (QPrintDialog::*)(QPrinter*)>(&QPrintDialog::accepted), self, [=](QPrinter* printer) {
-		QPrinter* sigval1 = printer;
-		miqt_exec_callback_QPrintDialog_accepted(slot, sigval1);
-	});
+void QPrintDialog_connect_accepted(QPrintDialog* self, intptr_t slot, void (*callback)(intptr_t, QPrinter*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QPrinter*);
+		seeqt::release_callback release;
+		void operator()(QPrinter* printer) {
+			QPrinter* sigval1 = printer;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQPrintDialog::connect(self, static_cast<void (QPrintDialog::*)(QPrinter*)>(&QPrintDialog::accepted), self, caller{slot, callback, release});
 }
 
 struct miqt_string QPrintDialog_tr2(const char* s, const char* c) {

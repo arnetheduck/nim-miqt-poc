@@ -14,7 +14,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMediaNetworkAccessControl_configurationChanged(intptr_t, const QNetworkConfiguration*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -75,11 +74,20 @@ void QMediaNetworkAccessControl_configurationChanged(QMediaNetworkAccessControl*
 	self->configurationChanged(*configuration);
 }
 
-void QMediaNetworkAccessControl_connect_configurationChanged(QMediaNetworkAccessControl* self, intptr_t slot) {
-	QMediaNetworkAccessControl::connect(self, static_cast<void (QMediaNetworkAccessControl::*)(const QNetworkConfiguration&)>(&QMediaNetworkAccessControl::configurationChanged), self, [=](const QNetworkConfiguration& configuration) {
-		const QNetworkConfiguration* sigval1 = (const QNetworkConfiguration*) configuration;
-		miqt_exec_callback_QMediaNetworkAccessControl_configurationChanged(slot, sigval1);
-	});
+void QMediaNetworkAccessControl_connect_configurationChanged(QMediaNetworkAccessControl* self, intptr_t slot, void (*callback)(intptr_t, const QNetworkConfiguration*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, const QNetworkConfiguration*);
+		seeqt::release_callback release;
+		void operator()(const QNetworkConfiguration& configuration) {
+			const QNetworkConfiguration* sigval1 = (const QNetworkConfiguration*) configuration;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QMediaNetworkAccessControl::connect(self, static_cast<void (QMediaNetworkAccessControl::*)(const QNetworkConfiguration&)>(&QMediaNetworkAccessControl::configurationChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QMediaNetworkAccessControl_tr2(const char* s, const char* c) {

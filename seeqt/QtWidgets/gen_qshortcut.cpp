@@ -17,8 +17,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QShortcut_activated(intptr_t);
-void miqt_exec_callback_QShortcut_activatedAmbiguously(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -318,20 +316,38 @@ void QShortcut_activated(QShortcut* self) {
 	self->activated();
 }
 
-void QShortcut_connect_activated(QShortcut* self, intptr_t slot) {
-	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, [=]() {
-		miqt_exec_callback_QShortcut_activated(slot);
-	});
+void QShortcut_connect_activated(QShortcut* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, caller{slot, callback, release});
 }
 
 void QShortcut_activatedAmbiguously(QShortcut* self) {
 	self->activatedAmbiguously();
 }
 
-void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot) {
-	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, [=]() {
-		miqt_exec_callback_QShortcut_activatedAmbiguously(slot);
-	});
+void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, caller{slot, callback, release});
 }
 
 struct miqt_string QShortcut_tr2(const char* s, const char* c) {

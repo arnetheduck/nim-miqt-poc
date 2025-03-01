@@ -18,7 +18,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAbstractVideoFilter_activeChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -282,10 +281,19 @@ void QAbstractVideoFilter_activeChanged(QAbstractVideoFilter* self) {
 	self->activeChanged();
 }
 
-void QAbstractVideoFilter_connect_activeChanged(QAbstractVideoFilter* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoFilter::connect(self, static_cast<void (QAbstractVideoFilter::*)()>(&QAbstractVideoFilter::activeChanged), self, [=]() {
-		miqt_exec_callback_QAbstractVideoFilter_activeChanged(slot);
-	});
+void QAbstractVideoFilter_connect_activeChanged(QAbstractVideoFilter* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAbstractVideoFilter::connect(self, static_cast<void (QAbstractVideoFilter::*)()>(&QAbstractVideoFilter::activeChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QAbstractVideoFilter_tr2(const char* s, const char* c) {

@@ -14,9 +14,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCameraExposureControl_requestedValueChanged(intptr_t, int);
-void miqt_exec_callback_QCameraExposureControl_actualValueChanged(intptr_t, int);
-void miqt_exec_callback_QCameraExposureControl_parameterRangeChanged(intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -79,33 +76,60 @@ void QCameraExposureControl_requestedValueChanged(QCameraExposureControl* self, 
 	self->requestedValueChanged(static_cast<int>(parameter));
 }
 
-void QCameraExposureControl_connect_requestedValueChanged(QCameraExposureControl* self, intptr_t slot) {
-	QCameraExposureControl::connect(self, static_cast<void (QCameraExposureControl::*)(int)>(&QCameraExposureControl::requestedValueChanged), self, [=](int parameter) {
-		int sigval1 = parameter;
-		miqt_exec_callback_QCameraExposureControl_requestedValueChanged(slot, sigval1);
-	});
+void QCameraExposureControl_connect_requestedValueChanged(QCameraExposureControl* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int parameter) {
+			int sigval1 = parameter;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QCameraExposureControl::connect(self, static_cast<void (QCameraExposureControl::*)(int)>(&QCameraExposureControl::requestedValueChanged), self, caller{slot, callback, release});
 }
 
 void QCameraExposureControl_actualValueChanged(QCameraExposureControl* self, int parameter) {
 	self->actualValueChanged(static_cast<int>(parameter));
 }
 
-void QCameraExposureControl_connect_actualValueChanged(QCameraExposureControl* self, intptr_t slot) {
-	QCameraExposureControl::connect(self, static_cast<void (QCameraExposureControl::*)(int)>(&QCameraExposureControl::actualValueChanged), self, [=](int parameter) {
-		int sigval1 = parameter;
-		miqt_exec_callback_QCameraExposureControl_actualValueChanged(slot, sigval1);
-	});
+void QCameraExposureControl_connect_actualValueChanged(QCameraExposureControl* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int parameter) {
+			int sigval1 = parameter;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QCameraExposureControl::connect(self, static_cast<void (QCameraExposureControl::*)(int)>(&QCameraExposureControl::actualValueChanged), self, caller{slot, callback, release});
 }
 
 void QCameraExposureControl_parameterRangeChanged(QCameraExposureControl* self, int parameter) {
 	self->parameterRangeChanged(static_cast<int>(parameter));
 }
 
-void QCameraExposureControl_connect_parameterRangeChanged(QCameraExposureControl* self, intptr_t slot) {
-	QCameraExposureControl::connect(self, static_cast<void (QCameraExposureControl::*)(int)>(&QCameraExposureControl::parameterRangeChanged), self, [=](int parameter) {
-		int sigval1 = parameter;
-		miqt_exec_callback_QCameraExposureControl_parameterRangeChanged(slot, sigval1);
-	});
+void QCameraExposureControl_connect_parameterRangeChanged(QCameraExposureControl* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int parameter) {
+			int sigval1 = parameter;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QCameraExposureControl::connect(self, static_cast<void (QCameraExposureControl::*)(int)>(&QCameraExposureControl::parameterRangeChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QCameraExposureControl_tr2(const char* s, const char* c) {

@@ -51,11 +51,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QDateTimeEdit_dateTimeChanged(intptr_t, QDateTime*);
-void miqt_exec_callback_QDateTimeEdit_timeChanged(intptr_t, QTime*);
-void miqt_exec_callback_QDateTimeEdit_dateChanged(intptr_t, QDate*);
-void miqt_exec_callback_QTimeEdit_userTimeChanged(intptr_t, QTime*);
-void miqt_exec_callback_QDateEdit_userDateChanged(intptr_t, QDate*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1259,39 +1254,66 @@ void QDateTimeEdit_dateTimeChanged(QDateTimeEdit* self, QDateTime* dateTime) {
 	self->dateTimeChanged(*dateTime);
 }
 
-void QDateTimeEdit_connect_dateTimeChanged(QDateTimeEdit* self, intptr_t slot) {
-	MiqtVirtualQDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QDateTime&)>(&QDateTimeEdit::dateTimeChanged), self, [=](const QDateTime& dateTime) {
-		const QDateTime& dateTime_ret = dateTime;
-		// Cast returned reference into pointer
-		QDateTime* sigval1 = const_cast<QDateTime*>(&dateTime_ret);
-		miqt_exec_callback_QDateTimeEdit_dateTimeChanged(slot, sigval1);
-	});
+void QDateTimeEdit_connect_dateTimeChanged(QDateTimeEdit* self, intptr_t slot, void (*callback)(intptr_t, QDateTime*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QDateTime*);
+		seeqt::release_callback release;
+		void operator()(const QDateTime& dateTime) {
+			const QDateTime& dateTime_ret = dateTime;
+			// Cast returned reference into pointer
+			QDateTime* sigval1 = const_cast<QDateTime*>(&dateTime_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QDateTime&)>(&QDateTimeEdit::dateTimeChanged), self, caller{slot, callback, release});
 }
 
 void QDateTimeEdit_timeChanged(QDateTimeEdit* self, QTime* time) {
 	self->timeChanged(*time);
 }
 
-void QDateTimeEdit_connect_timeChanged(QDateTimeEdit* self, intptr_t slot) {
-	MiqtVirtualQDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QTime&)>(&QDateTimeEdit::timeChanged), self, [=](const QTime& time) {
-		const QTime& time_ret = time;
-		// Cast returned reference into pointer
-		QTime* sigval1 = const_cast<QTime*>(&time_ret);
-		miqt_exec_callback_QDateTimeEdit_timeChanged(slot, sigval1);
-	});
+void QDateTimeEdit_connect_timeChanged(QDateTimeEdit* self, intptr_t slot, void (*callback)(intptr_t, QTime*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QTime*);
+		seeqt::release_callback release;
+		void operator()(const QTime& time) {
+			const QTime& time_ret = time;
+			// Cast returned reference into pointer
+			QTime* sigval1 = const_cast<QTime*>(&time_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QTime&)>(&QDateTimeEdit::timeChanged), self, caller{slot, callback, release});
 }
 
 void QDateTimeEdit_dateChanged(QDateTimeEdit* self, QDate* date) {
 	self->dateChanged(*date);
 }
 
-void QDateTimeEdit_connect_dateChanged(QDateTimeEdit* self, intptr_t slot) {
-	MiqtVirtualQDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QDate&)>(&QDateTimeEdit::dateChanged), self, [=](const QDate& date) {
-		const QDate& date_ret = date;
-		// Cast returned reference into pointer
-		QDate* sigval1 = const_cast<QDate*>(&date_ret);
-		miqt_exec_callback_QDateTimeEdit_dateChanged(slot, sigval1);
-	});
+void QDateTimeEdit_connect_dateChanged(QDateTimeEdit* self, intptr_t slot, void (*callback)(intptr_t, QDate*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QDate*);
+		seeqt::release_callback release;
+		void operator()(const QDate& date) {
+			const QDate& date_ret = date;
+			// Cast returned reference into pointer
+			QDate* sigval1 = const_cast<QDate*>(&date_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QDate&)>(&QDateTimeEdit::dateChanged), self, caller{slot, callback, release});
 }
 
 void QDateTimeEdit_setDateTime(QDateTimeEdit* self, QDateTime* dateTime) {
@@ -2838,13 +2860,22 @@ void QTimeEdit_userTimeChanged(QTimeEdit* self, QTime* time) {
 	self->userTimeChanged(*time);
 }
 
-void QTimeEdit_connect_userTimeChanged(QTimeEdit* self, intptr_t slot) {
-	MiqtVirtualQTimeEdit::connect(self, static_cast<void (QTimeEdit::*)(const QTime&)>(&QTimeEdit::userTimeChanged), self, [=](const QTime& time) {
-		const QTime& time_ret = time;
-		// Cast returned reference into pointer
-		QTime* sigval1 = const_cast<QTime*>(&time_ret);
-		miqt_exec_callback_QTimeEdit_userTimeChanged(slot, sigval1);
-	});
+void QTimeEdit_connect_userTimeChanged(QTimeEdit* self, intptr_t slot, void (*callback)(intptr_t, QTime*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QTime*);
+		seeqt::release_callback release;
+		void operator()(const QTime& time) {
+			const QTime& time_ret = time;
+			// Cast returned reference into pointer
+			QTime* sigval1 = const_cast<QTime*>(&time_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQTimeEdit::connect(self, static_cast<void (QTimeEdit::*)(const QTime&)>(&QTimeEdit::userTimeChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QTimeEdit_tr2(const char* s, const char* c) {
@@ -4379,13 +4410,22 @@ void QDateEdit_userDateChanged(QDateEdit* self, QDate* date) {
 	self->userDateChanged(*date);
 }
 
-void QDateEdit_connect_userDateChanged(QDateEdit* self, intptr_t slot) {
-	MiqtVirtualQDateEdit::connect(self, static_cast<void (QDateEdit::*)(const QDate&)>(&QDateEdit::userDateChanged), self, [=](const QDate& date) {
-		const QDate& date_ret = date;
-		// Cast returned reference into pointer
-		QDate* sigval1 = const_cast<QDate*>(&date_ret);
-		miqt_exec_callback_QDateEdit_userDateChanged(slot, sigval1);
-	});
+void QDateEdit_connect_userDateChanged(QDateEdit* self, intptr_t slot, void (*callback)(intptr_t, QDate*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QDate*);
+		seeqt::release_callback release;
+		void operator()(const QDate& date) {
+			const QDate& date_ret = date;
+			// Cast returned reference into pointer
+			QDate* sigval1 = const_cast<QDate*>(&date_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQDateEdit::connect(self, static_cast<void (QDateEdit::*)(const QDate&)>(&QDateEdit::userDateChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QDateEdit_tr2(const char* s, const char* c) {

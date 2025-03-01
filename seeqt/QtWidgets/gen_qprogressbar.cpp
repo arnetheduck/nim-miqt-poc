@@ -42,7 +42,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QProgressBar_valueChanged(intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1008,11 +1007,20 @@ void QProgressBar_valueChanged(QProgressBar* self, int value) {
 	self->valueChanged(static_cast<int>(value));
 }
 
-void QProgressBar_connect_valueChanged(QProgressBar* self, intptr_t slot) {
-	MiqtVirtualQProgressBar::connect(self, static_cast<void (QProgressBar::*)(int)>(&QProgressBar::valueChanged), self, [=](int value) {
-		int sigval1 = value;
-		miqt_exec_callback_QProgressBar_valueChanged(slot, sigval1);
-	});
+void QProgressBar_connect_valueChanged(QProgressBar* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int value) {
+			int sigval1 = value;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQProgressBar::connect(self, static_cast<void (QProgressBar::*)(int)>(&QProgressBar::valueChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QProgressBar_tr2(const char* s, const char* c) {

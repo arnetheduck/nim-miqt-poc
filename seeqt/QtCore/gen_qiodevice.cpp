@@ -16,12 +16,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QIODevice_readyRead(intptr_t);
-void miqt_exec_callback_QIODevice_channelReadyRead(intptr_t, int);
-void miqt_exec_callback_QIODevice_bytesWritten(intptr_t, long long);
-void miqt_exec_callback_QIODevice_channelBytesWritten(intptr_t, int, long long);
-void miqt_exec_callback_QIODevice_aboutToClose(intptr_t);
-void miqt_exec_callback_QIODevice_readChannelFinished(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -702,66 +696,120 @@ void QIODevice_readyRead(QIODevice* self) {
 	self->readyRead();
 }
 
-void QIODevice_connect_readyRead(QIODevice* self, intptr_t slot) {
-	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readyRead), self, [=]() {
-		miqt_exec_callback_QIODevice_readyRead(slot);
-	});
+void QIODevice_connect_readyRead(QIODevice* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readyRead), self, caller{slot, callback, release});
 }
 
 void QIODevice_channelReadyRead(QIODevice* self, int channel) {
 	self->channelReadyRead(static_cast<int>(channel));
 }
 
-void QIODevice_connect_channelReadyRead(QIODevice* self, intptr_t slot) {
-	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)(int)>(&QIODevice::channelReadyRead), self, [=](int channel) {
-		int sigval1 = channel;
-		miqt_exec_callback_QIODevice_channelReadyRead(slot, sigval1);
-	});
+void QIODevice_connect_channelReadyRead(QIODevice* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int channel) {
+			int sigval1 = channel;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)(int)>(&QIODevice::channelReadyRead), self, caller{slot, callback, release});
 }
 
 void QIODevice_bytesWritten(QIODevice* self, long long bytes) {
 	self->bytesWritten(static_cast<qint64>(bytes));
 }
 
-void QIODevice_connect_bytesWritten(QIODevice* self, intptr_t slot) {
-	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)(qint64)>(&QIODevice::bytesWritten), self, [=](qint64 bytes) {
-		qint64 bytes_ret = bytes;
-		long long sigval1 = static_cast<long long>(bytes_ret);
-		miqt_exec_callback_QIODevice_bytesWritten(slot, sigval1);
-	});
+void QIODevice_connect_bytesWritten(QIODevice* self, intptr_t slot, void (*callback)(intptr_t, long long), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, long long);
+		seeqt::release_callback release;
+		void operator()(qint64 bytes) {
+			qint64 bytes_ret = bytes;
+			long long sigval1 = static_cast<long long>(bytes_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)(qint64)>(&QIODevice::bytesWritten), self, caller{slot, callback, release});
 }
 
 void QIODevice_channelBytesWritten(QIODevice* self, int channel, long long bytes) {
 	self->channelBytesWritten(static_cast<int>(channel), static_cast<qint64>(bytes));
 }
 
-void QIODevice_connect_channelBytesWritten(QIODevice* self, intptr_t slot) {
-	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)(int, qint64)>(&QIODevice::channelBytesWritten), self, [=](int channel, qint64 bytes) {
-		int sigval1 = channel;
-		qint64 bytes_ret = bytes;
-		long long sigval2 = static_cast<long long>(bytes_ret);
-		miqt_exec_callback_QIODevice_channelBytesWritten(slot, sigval1, sigval2);
-	});
+void QIODevice_connect_channelBytesWritten(QIODevice* self, intptr_t slot, void (*callback)(intptr_t, int, long long), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int, long long);
+		seeqt::release_callback release;
+		void operator()(int channel, qint64 bytes) {
+			int sigval1 = channel;
+			qint64 bytes_ret = bytes;
+			long long sigval2 = static_cast<long long>(bytes_ret);
+			callback(slot, sigval1, sigval2);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)(int, qint64)>(&QIODevice::channelBytesWritten), self, caller{slot, callback, release});
 }
 
 void QIODevice_aboutToClose(QIODevice* self) {
 	self->aboutToClose();
 }
 
-void QIODevice_connect_aboutToClose(QIODevice* self, intptr_t slot) {
-	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::aboutToClose), self, [=]() {
-		miqt_exec_callback_QIODevice_aboutToClose(slot);
-	});
+void QIODevice_connect_aboutToClose(QIODevice* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::aboutToClose), self, caller{slot, callback, release});
 }
 
 void QIODevice_readChannelFinished(QIODevice* self) {
 	self->readChannelFinished();
 }
 
-void QIODevice_connect_readChannelFinished(QIODevice* self, intptr_t slot) {
-	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readChannelFinished), self, [=]() {
-		miqt_exec_callback_QIODevice_readChannelFinished(slot);
-	});
+void QIODevice_connect_readChannelFinished(QIODevice* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readChannelFinished), self, caller{slot, callback, release});
 }
 
 struct miqt_string QIODevice_tr2(const char* s, const char* c) {

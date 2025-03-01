@@ -14,7 +14,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCameraCaptureBufferFormatControl_bufferFormatChanged(intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -84,12 +83,21 @@ void QCameraCaptureBufferFormatControl_bufferFormatChanged(QCameraCaptureBufferF
 	self->bufferFormatChanged(static_cast<QVideoFrame::PixelFormat>(format));
 }
 
-void QCameraCaptureBufferFormatControl_connect_bufferFormatChanged(QCameraCaptureBufferFormatControl* self, intptr_t slot) {
-	QCameraCaptureBufferFormatControl::connect(self, static_cast<void (QCameraCaptureBufferFormatControl::*)(QVideoFrame::PixelFormat)>(&QCameraCaptureBufferFormatControl::bufferFormatChanged), self, [=](QVideoFrame::PixelFormat format) {
-		QVideoFrame::PixelFormat format_ret = format;
-		int sigval1 = static_cast<int>(format_ret);
-		miqt_exec_callback_QCameraCaptureBufferFormatControl_bufferFormatChanged(slot, sigval1);
-	});
+void QCameraCaptureBufferFormatControl_connect_bufferFormatChanged(QCameraCaptureBufferFormatControl* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(QVideoFrame::PixelFormat format) {
+			QVideoFrame::PixelFormat format_ret = format;
+			int sigval1 = static_cast<int>(format_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QCameraCaptureBufferFormatControl::connect(self, static_cast<void (QCameraCaptureBufferFormatControl::*)(QVideoFrame::PixelFormat)>(&QCameraCaptureBufferFormatControl::bufferFormatChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QCameraCaptureBufferFormatControl_tr2(const char* s, const char* c) {

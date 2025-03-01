@@ -14,8 +14,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMediaStreamsControl_streamsChanged(intptr_t);
-void miqt_exec_callback_QMediaStreamsControl_activeStreamsChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -84,20 +82,38 @@ void QMediaStreamsControl_streamsChanged(QMediaStreamsControl* self) {
 	self->streamsChanged();
 }
 
-void QMediaStreamsControl_connect_streamsChanged(QMediaStreamsControl* self, intptr_t slot) {
-	QMediaStreamsControl::connect(self, static_cast<void (QMediaStreamsControl::*)()>(&QMediaStreamsControl::streamsChanged), self, [=]() {
-		miqt_exec_callback_QMediaStreamsControl_streamsChanged(slot);
-	});
+void QMediaStreamsControl_connect_streamsChanged(QMediaStreamsControl* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QMediaStreamsControl::connect(self, static_cast<void (QMediaStreamsControl::*)()>(&QMediaStreamsControl::streamsChanged), self, caller{slot, callback, release});
 }
 
 void QMediaStreamsControl_activeStreamsChanged(QMediaStreamsControl* self) {
 	self->activeStreamsChanged();
 }
 
-void QMediaStreamsControl_connect_activeStreamsChanged(QMediaStreamsControl* self, intptr_t slot) {
-	QMediaStreamsControl::connect(self, static_cast<void (QMediaStreamsControl::*)()>(&QMediaStreamsControl::activeStreamsChanged), self, [=]() {
-		miqt_exec_callback_QMediaStreamsControl_activeStreamsChanged(slot);
-	});
+void QMediaStreamsControl_connect_activeStreamsChanged(QMediaStreamsControl* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QMediaStreamsControl::connect(self, static_cast<void (QMediaStreamsControl::*)()>(&QMediaStreamsControl::activeStreamsChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QMediaStreamsControl_tr2(const char* s, const char* c) {

@@ -25,8 +25,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QDtls_pskRequired(intptr_t, QSslPreSharedKeyAuthenticator*);
-void miqt_exec_callback_QDtls_handshakeTimeout(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -824,21 +822,39 @@ void QDtls_pskRequired(QDtls* self, QSslPreSharedKeyAuthenticator* authenticator
 	self->pskRequired(authenticator);
 }
 
-void QDtls_connect_pskRequired(QDtls* self, intptr_t slot) {
-	MiqtVirtualQDtls::connect(self, static_cast<void (QDtls::*)(QSslPreSharedKeyAuthenticator*)>(&QDtls::pskRequired), self, [=](QSslPreSharedKeyAuthenticator* authenticator) {
-		QSslPreSharedKeyAuthenticator* sigval1 = authenticator;
-		miqt_exec_callback_QDtls_pskRequired(slot, sigval1);
-	});
+void QDtls_connect_pskRequired(QDtls* self, intptr_t slot, void (*callback)(intptr_t, QSslPreSharedKeyAuthenticator*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QSslPreSharedKeyAuthenticator*);
+		seeqt::release_callback release;
+		void operator()(QSslPreSharedKeyAuthenticator* authenticator) {
+			QSslPreSharedKeyAuthenticator* sigval1 = authenticator;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQDtls::connect(self, static_cast<void (QDtls::*)(QSslPreSharedKeyAuthenticator*)>(&QDtls::pskRequired), self, caller{slot, callback, release});
 }
 
 void QDtls_handshakeTimeout(QDtls* self) {
 	self->handshakeTimeout();
 }
 
-void QDtls_connect_handshakeTimeout(QDtls* self, intptr_t slot) {
-	MiqtVirtualQDtls::connect(self, static_cast<void (QDtls::*)()>(&QDtls::handshakeTimeout), self, [=]() {
-		miqt_exec_callback_QDtls_handshakeTimeout(slot);
-	});
+void QDtls_connect_handshakeTimeout(QDtls* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQDtls::connect(self, static_cast<void (QDtls::*)()>(&QDtls::handshakeTimeout), self, caller{slot, callback, release});
 }
 
 struct miqt_string QDtls_tr2(const char* s, const char* c) {

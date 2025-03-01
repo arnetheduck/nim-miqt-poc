@@ -36,8 +36,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QQuickFramebufferObject_textureFollowsItemSizeChanged(intptr_t, bool);
-void miqt_exec_callback_QQuickFramebufferObject_mirrorVerticallyChanged(intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -842,22 +840,40 @@ void QQuickFramebufferObject_textureFollowsItemSizeChanged(QQuickFramebufferObje
 	self->textureFollowsItemSizeChanged(param1);
 }
 
-void QQuickFramebufferObject_connect_textureFollowsItemSizeChanged(QQuickFramebufferObject* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject::connect(self, static_cast<void (QQuickFramebufferObject::*)(bool)>(&QQuickFramebufferObject::textureFollowsItemSizeChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickFramebufferObject_textureFollowsItemSizeChanged(slot, sigval1);
-	});
+void QQuickFramebufferObject_connect_textureFollowsItemSizeChanged(QQuickFramebufferObject* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQQuickFramebufferObject::connect(self, static_cast<void (QQuickFramebufferObject::*)(bool)>(&QQuickFramebufferObject::textureFollowsItemSizeChanged), self, caller{slot, callback, release});
 }
 
 void QQuickFramebufferObject_mirrorVerticallyChanged(QQuickFramebufferObject* self, bool param1) {
 	self->mirrorVerticallyChanged(param1);
 }
 
-void QQuickFramebufferObject_connect_mirrorVerticallyChanged(QQuickFramebufferObject* self, intptr_t slot) {
-	MiqtVirtualQQuickFramebufferObject::connect(self, static_cast<void (QQuickFramebufferObject::*)(bool)>(&QQuickFramebufferObject::mirrorVerticallyChanged), self, [=](bool param1) {
-		bool sigval1 = param1;
-		miqt_exec_callback_QQuickFramebufferObject_mirrorVerticallyChanged(slot, sigval1);
-	});
+void QQuickFramebufferObject_connect_mirrorVerticallyChanged(QQuickFramebufferObject* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool param1) {
+			bool sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQQuickFramebufferObject::connect(self, static_cast<void (QQuickFramebufferObject::*)(bool)>(&QQuickFramebufferObject::mirrorVerticallyChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QQuickFramebufferObject_tr2(const char* s, const char* c) {

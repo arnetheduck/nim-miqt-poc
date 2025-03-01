@@ -13,7 +13,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCameraLocksControl_lockStatusChanged(intptr_t, int, int, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -78,16 +77,25 @@ void QCameraLocksControl_lockStatusChanged(QCameraLocksControl* self, int type, 
 	self->lockStatusChanged(static_cast<QCamera::LockType>(type), static_cast<QCamera::LockStatus>(status), static_cast<QCamera::LockChangeReason>(reason));
 }
 
-void QCameraLocksControl_connect_lockStatusChanged(QCameraLocksControl* self, intptr_t slot) {
-	QCameraLocksControl::connect(self, static_cast<void (QCameraLocksControl::*)(QCamera::LockType, QCamera::LockStatus, QCamera::LockChangeReason)>(&QCameraLocksControl::lockStatusChanged), self, [=](QCamera::LockType type, QCamera::LockStatus status, QCamera::LockChangeReason reason) {
-		QCamera::LockType type_ret = type;
-		int sigval1 = static_cast<int>(type_ret);
-		QCamera::LockStatus status_ret = status;
-		int sigval2 = static_cast<int>(status_ret);
-		QCamera::LockChangeReason reason_ret = reason;
-		int sigval3 = static_cast<int>(reason_ret);
-		miqt_exec_callback_QCameraLocksControl_lockStatusChanged(slot, sigval1, sigval2, sigval3);
-	});
+void QCameraLocksControl_connect_lockStatusChanged(QCameraLocksControl* self, intptr_t slot, void (*callback)(intptr_t, int, int, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int, int, int);
+		seeqt::release_callback release;
+		void operator()(QCamera::LockType type, QCamera::LockStatus status, QCamera::LockChangeReason reason) {
+			QCamera::LockType type_ret = type;
+			int sigval1 = static_cast<int>(type_ret);
+			QCamera::LockStatus status_ret = status;
+			int sigval2 = static_cast<int>(status_ret);
+			QCamera::LockChangeReason reason_ret = reason;
+			int sigval3 = static_cast<int>(reason_ret);
+			callback(slot, sigval1, sigval2, sigval3);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QCameraLocksControl::connect(self, static_cast<void (QCameraLocksControl::*)(QCamera::LockType, QCamera::LockStatus, QCamera::LockChangeReason)>(&QCameraLocksControl::lockStatusChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QCameraLocksControl_tr2(const char* s, const char* c) {

@@ -13,7 +13,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCameraCaptureDestinationControl_captureDestinationChanged(intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -73,12 +72,21 @@ void QCameraCaptureDestinationControl_captureDestinationChanged(QCameraCaptureDe
 	self->captureDestinationChanged(static_cast<QCameraImageCapture::CaptureDestinations>(destination));
 }
 
-void QCameraCaptureDestinationControl_connect_captureDestinationChanged(QCameraCaptureDestinationControl* self, intptr_t slot) {
-	QCameraCaptureDestinationControl::connect(self, static_cast<void (QCameraCaptureDestinationControl::*)(QCameraImageCapture::CaptureDestinations)>(&QCameraCaptureDestinationControl::captureDestinationChanged), self, [=](QCameraImageCapture::CaptureDestinations destination) {
-		QCameraImageCapture::CaptureDestinations destination_ret = destination;
-		int sigval1 = static_cast<int>(destination_ret);
-		miqt_exec_callback_QCameraCaptureDestinationControl_captureDestinationChanged(slot, sigval1);
-	});
+void QCameraCaptureDestinationControl_connect_captureDestinationChanged(QCameraCaptureDestinationControl* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(QCameraImageCapture::CaptureDestinations destination) {
+			QCameraImageCapture::CaptureDestinations destination_ret = destination;
+			int sigval1 = static_cast<int>(destination_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	QCameraCaptureDestinationControl::connect(self, static_cast<void (QCameraCaptureDestinationControl::*)(QCameraImageCapture::CaptureDestinations)>(&QCameraCaptureDestinationControl::captureDestinationChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QCameraCaptureDestinationControl_tr2(const char* s, const char* c) {

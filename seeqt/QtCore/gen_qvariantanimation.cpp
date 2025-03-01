@@ -20,7 +20,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QVariantAnimation_valueChanged(intptr_t, QVariant*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -432,13 +431,22 @@ void QVariantAnimation_valueChanged(QVariantAnimation* self, QVariant* value) {
 	self->valueChanged(*value);
 }
 
-void QVariantAnimation_connect_valueChanged(QVariantAnimation* self, intptr_t slot) {
-	MiqtVirtualQVariantAnimation::connect(self, static_cast<void (QVariantAnimation::*)(const QVariant&)>(&QVariantAnimation::valueChanged), self, [=](const QVariant& value) {
-		const QVariant& value_ret = value;
-		// Cast returned reference into pointer
-		QVariant* sigval1 = const_cast<QVariant*>(&value_ret);
-		miqt_exec_callback_QVariantAnimation_valueChanged(slot, sigval1);
-	});
+void QVariantAnimation_connect_valueChanged(QVariantAnimation* self, intptr_t slot, void (*callback)(intptr_t, QVariant*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QVariant*);
+		seeqt::release_callback release;
+		void operator()(const QVariant& value) {
+			const QVariant& value_ret = value;
+			// Cast returned reference into pointer
+			QVariant* sigval1 = const_cast<QVariant*>(&value_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQVariantAnimation::connect(self, static_cast<void (QVariantAnimation::*)(const QVariant&)>(&QVariantAnimation::valueChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QVariantAnimation_tr2(const char* s, const char* c) {

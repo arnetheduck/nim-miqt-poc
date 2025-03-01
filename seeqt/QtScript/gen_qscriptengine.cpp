@@ -26,7 +26,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QScriptEngine_signalHandlerException(intptr_t, QScriptValue*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -529,13 +528,22 @@ void QScriptEngine_signalHandlerException(QScriptEngine* self, QScriptValue* exc
 	self->signalHandlerException(*exception);
 }
 
-void QScriptEngine_connect_signalHandlerException(QScriptEngine* self, intptr_t slot) {
-	MiqtVirtualQScriptEngine::connect(self, static_cast<void (QScriptEngine::*)(const QScriptValue&)>(&QScriptEngine::signalHandlerException), self, [=](const QScriptValue& exception) {
-		const QScriptValue& exception_ret = exception;
-		// Cast returned reference into pointer
-		QScriptValue* sigval1 = const_cast<QScriptValue*>(&exception_ret);
-		miqt_exec_callback_QScriptEngine_signalHandlerException(slot, sigval1);
-	});
+void QScriptEngine_connect_signalHandlerException(QScriptEngine* self, intptr_t slot, void (*callback)(intptr_t, QScriptValue*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QScriptValue*);
+		seeqt::release_callback release;
+		void operator()(const QScriptValue& exception) {
+			const QScriptValue& exception_ret = exception;
+			// Cast returned reference into pointer
+			QScriptValue* sigval1 = const_cast<QScriptValue*>(&exception_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQScriptEngine::connect(self, static_cast<void (QScriptEngine::*)(const QScriptValue&)>(&QScriptEngine::signalHandlerException), self, caller{slot, callback, release});
 }
 
 struct miqt_string QScriptEngine_tr2(const char* s, const char* c) {

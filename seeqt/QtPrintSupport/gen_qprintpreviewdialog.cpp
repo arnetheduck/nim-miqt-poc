@@ -43,7 +43,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QPrintPreviewDialog_paintRequested(intptr_t, QPrinter*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -983,11 +982,20 @@ void QPrintPreviewDialog_paintRequested(QPrintPreviewDialog* self, QPrinter* pri
 	self->paintRequested(printer);
 }
 
-void QPrintPreviewDialog_connect_paintRequested(QPrintPreviewDialog* self, intptr_t slot) {
-	MiqtVirtualQPrintPreviewDialog::connect(self, static_cast<void (QPrintPreviewDialog::*)(QPrinter*)>(&QPrintPreviewDialog::paintRequested), self, [=](QPrinter* printer) {
-		QPrinter* sigval1 = printer;
-		miqt_exec_callback_QPrintPreviewDialog_paintRequested(slot, sigval1);
-	});
+void QPrintPreviewDialog_connect_paintRequested(QPrintPreviewDialog* self, intptr_t slot, void (*callback)(intptr_t, QPrinter*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QPrinter*);
+		seeqt::release_callback release;
+		void operator()(QPrinter* printer) {
+			QPrinter* sigval1 = printer;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQPrintPreviewDialog::connect(self, static_cast<void (QPrintPreviewDialog::*)(QPrinter*)>(&QPrintPreviewDialog::paintRequested), self, caller{slot, callback, release});
 }
 
 struct miqt_string QPrintPreviewDialog_tr2(const char* s, const char* c) {

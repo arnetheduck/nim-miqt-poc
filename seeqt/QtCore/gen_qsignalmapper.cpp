@@ -15,14 +15,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QSignalMapper_mapped(intptr_t, int);
-void miqt_exec_callback_QSignalMapper_mappedWithQString(intptr_t, struct miqt_string);
-void miqt_exec_callback_QSignalMapper_mappedWithQWidget(intptr_t, QWidget*);
-void miqt_exec_callback_QSignalMapper_mappedWithQObject(intptr_t, QObject*);
-void miqt_exec_callback_QSignalMapper_mappedInt(intptr_t, int);
-void miqt_exec_callback_QSignalMapper_mappedString(intptr_t, struct miqt_string);
-void miqt_exec_callback_QSignalMapper_mappedWidget(intptr_t, QWidget*);
-void miqt_exec_callback_QSignalMapper_mappedObject(intptr_t, QObject*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -288,11 +280,20 @@ void QSignalMapper_mapped(QSignalMapper* self, int param1) {
 	self->mapped(static_cast<int>(param1));
 }
 
-void QSignalMapper_connect_mapped(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mapped), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mapped(slot, sigval1);
-	});
+void QSignalMapper_connect_mapped(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mapped), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_mappedWithQString(QSignalMapper* self, struct miqt_string param1) {
@@ -300,51 +301,87 @@ void QSignalMapper_mappedWithQString(QSignalMapper* self, struct miqt_string par
 	self->mapped(param1_QString);
 }
 
-void QSignalMapper_connect_mappedWithQString(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mapped), self, [=](const QString& param1) {
-		const QString param1_ret = param1;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string param1_ms;
-		param1_ms.len = param1_b.length();
-		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
-		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
-		struct miqt_string sigval1 = param1_ms;
-		miqt_exec_callback_QSignalMapper_mappedWithQString(slot, sigval1);
-	});
+void QSignalMapper_connect_mappedWithQString(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, struct miqt_string), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, struct miqt_string);
+		seeqt::release_callback release;
+		void operator()(const QString& param1) {
+			const QString param1_ret = param1;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray param1_b = param1_ret.toUtf8();
+			struct miqt_string param1_ms;
+			param1_ms.len = param1_b.length();
+			param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+			memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+			struct miqt_string sigval1 = param1_ms;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mapped), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_mappedWithQWidget(QSignalMapper* self, QWidget* param1) {
 	self->mapped(param1);
 }
 
-void QSignalMapper_connect_mappedWithQWidget(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QWidget*)>(&QSignalMapper::mapped), self, [=](QWidget* param1) {
-		QWidget* sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mappedWithQWidget(slot, sigval1);
-	});
+void QSignalMapper_connect_mappedWithQWidget(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, QWidget*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QWidget*);
+		seeqt::release_callback release;
+		void operator()(QWidget* param1) {
+			QWidget* sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QWidget*)>(&QSignalMapper::mapped), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_mappedWithQObject(QSignalMapper* self, QObject* param1) {
 	self->mapped(param1);
 }
 
-void QSignalMapper_connect_mappedWithQObject(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mapped), self, [=](QObject* param1) {
-		QObject* sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mappedWithQObject(slot, sigval1);
-	});
+void QSignalMapper_connect_mappedWithQObject(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, QObject*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QObject*);
+		seeqt::release_callback release;
+		void operator()(QObject* param1) {
+			QObject* sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mapped), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_mappedInt(QSignalMapper* self, int param1) {
 	self->mappedInt(static_cast<int>(param1));
 }
 
-void QSignalMapper_connect_mappedInt(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mappedInt), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mappedInt(slot, sigval1);
-	});
+void QSignalMapper_connect_mappedInt(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mappedInt), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_mappedString(QSignalMapper* self, struct miqt_string param1) {
@@ -352,40 +389,67 @@ void QSignalMapper_mappedString(QSignalMapper* self, struct miqt_string param1) 
 	self->mappedString(param1_QString);
 }
 
-void QSignalMapper_connect_mappedString(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mappedString), self, [=](const QString& param1) {
-		const QString param1_ret = param1;
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string param1_ms;
-		param1_ms.len = param1_b.length();
-		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
-		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
-		struct miqt_string sigval1 = param1_ms;
-		miqt_exec_callback_QSignalMapper_mappedString(slot, sigval1);
-	});
+void QSignalMapper_connect_mappedString(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, struct miqt_string), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, struct miqt_string);
+		seeqt::release_callback release;
+		void operator()(const QString& param1) {
+			const QString param1_ret = param1;
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray param1_b = param1_ret.toUtf8();
+			struct miqt_string param1_ms;
+			param1_ms.len = param1_b.length();
+			param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+			memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+			struct miqt_string sigval1 = param1_ms;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mappedString), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_mappedWidget(QSignalMapper* self, QWidget* param1) {
 	self->mappedWidget(param1);
 }
 
-void QSignalMapper_connect_mappedWidget(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QWidget*)>(&QSignalMapper::mappedWidget), self, [=](QWidget* param1) {
-		QWidget* sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mappedWidget(slot, sigval1);
-	});
+void QSignalMapper_connect_mappedWidget(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, QWidget*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QWidget*);
+		seeqt::release_callback release;
+		void operator()(QWidget* param1) {
+			QWidget* sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QWidget*)>(&QSignalMapper::mappedWidget), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_mappedObject(QSignalMapper* self, QObject* param1) {
 	self->mappedObject(param1);
 }
 
-void QSignalMapper_connect_mappedObject(QSignalMapper* self, intptr_t slot) {
-	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mappedObject), self, [=](QObject* param1) {
-		QObject* sigval1 = param1;
-		miqt_exec_callback_QSignalMapper_mappedObject(slot, sigval1);
-	});
+void QSignalMapper_connect_mappedObject(QSignalMapper* self, intptr_t slot, void (*callback)(intptr_t, QObject*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QObject*);
+		seeqt::release_callback release;
+		void operator()(QObject* param1) {
+			QObject* sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mappedObject), self, caller{slot, callback, release});
 }
 
 void QSignalMapper_map(QSignalMapper* self) {

@@ -43,7 +43,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCheckBox_stateChanged(intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -962,11 +961,20 @@ void QCheckBox_stateChanged(QCheckBox* self, int param1) {
 	self->stateChanged(static_cast<int>(param1));
 }
 
-void QCheckBox_connect_stateChanged(QCheckBox* self, intptr_t slot) {
-	MiqtVirtualQCheckBox::connect(self, static_cast<void (QCheckBox::*)(int)>(&QCheckBox::stateChanged), self, [=](int param1) {
-		int sigval1 = param1;
-		miqt_exec_callback_QCheckBox_stateChanged(slot, sigval1);
-	});
+void QCheckBox_connect_stateChanged(QCheckBox* self, intptr_t slot, void (*callback)(intptr_t, int), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, int);
+		seeqt::release_callback release;
+		void operator()(int param1) {
+			int sigval1 = param1;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQCheckBox::connect(self, static_cast<void (QCheckBox::*)(int)>(&QCheckBox::stateChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QCheckBox_tr2(const char* s, const char* c) {

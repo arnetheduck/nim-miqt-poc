@@ -16,7 +16,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QJSEngine_uiLanguageChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -323,10 +322,19 @@ void QJSEngine_uiLanguageChanged(QJSEngine* self) {
 	self->uiLanguageChanged();
 }
 
-void QJSEngine_connect_uiLanguageChanged(QJSEngine* self, intptr_t slot) {
-	MiqtVirtualQJSEngine::connect(self, static_cast<void (QJSEngine::*)()>(&QJSEngine::uiLanguageChanged), self, [=]() {
-		miqt_exec_callback_QJSEngine_uiLanguageChanged(slot);
-	});
+void QJSEngine_connect_uiLanguageChanged(QJSEngine* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQJSEngine::connect(self, static_cast<void (QJSEngine::*)()>(&QJSEngine::uiLanguageChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QJSEngine_tr2(const char* s, const char* c) {

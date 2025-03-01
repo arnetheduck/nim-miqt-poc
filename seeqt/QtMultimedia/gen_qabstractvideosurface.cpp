@@ -19,10 +19,6 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAbstractVideoSurface_activeChanged(intptr_t, bool);
-void miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(intptr_t, QVideoSurfaceFormat*);
-void miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(intptr_t);
-void miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(intptr_t, QSize*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -403,47 +399,83 @@ void QAbstractVideoSurface_activeChanged(QAbstractVideoSurface* self, bool activ
 	self->activeChanged(active);
 }
 
-void QAbstractVideoSurface_connect_activeChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(bool)>(&QAbstractVideoSurface::activeChanged), self, [=](bool active) {
-		bool sigval1 = active;
-		miqt_exec_callback_QAbstractVideoSurface_activeChanged(slot, sigval1);
-	});
+void QAbstractVideoSurface_connect_activeChanged(QAbstractVideoSurface* self, intptr_t slot, void (*callback)(intptr_t, bool), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, bool);
+		seeqt::release_callback release;
+		void operator()(bool active) {
+			bool sigval1 = active;
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(bool)>(&QAbstractVideoSurface::activeChanged), self, caller{slot, callback, release});
 }
 
 void QAbstractVideoSurface_surfaceFormatChanged(QAbstractVideoSurface* self, QVideoSurfaceFormat* format) {
 	self->surfaceFormatChanged(*format);
 }
 
-void QAbstractVideoSurface_connect_surfaceFormatChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QVideoSurfaceFormat&)>(&QAbstractVideoSurface::surfaceFormatChanged), self, [=](const QVideoSurfaceFormat& format) {
-		const QVideoSurfaceFormat& format_ret = format;
-		// Cast returned reference into pointer
-		QVideoSurfaceFormat* sigval1 = const_cast<QVideoSurfaceFormat*>(&format_ret);
-		miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(slot, sigval1);
-	});
+void QAbstractVideoSurface_connect_surfaceFormatChanged(QAbstractVideoSurface* self, intptr_t slot, void (*callback)(intptr_t, QVideoSurfaceFormat*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QVideoSurfaceFormat*);
+		seeqt::release_callback release;
+		void operator()(const QVideoSurfaceFormat& format) {
+			const QVideoSurfaceFormat& format_ret = format;
+			// Cast returned reference into pointer
+			QVideoSurfaceFormat* sigval1 = const_cast<QVideoSurfaceFormat*>(&format_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QVideoSurfaceFormat&)>(&QAbstractVideoSurface::surfaceFormatChanged), self, caller{slot, callback, release});
 }
 
 void QAbstractVideoSurface_supportedFormatsChanged(QAbstractVideoSurface* self) {
 	self->supportedFormatsChanged();
 }
 
-void QAbstractVideoSurface_connect_supportedFormatsChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)()>(&QAbstractVideoSurface::supportedFormatsChanged), self, [=]() {
-		miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(slot);
-	});
+void QAbstractVideoSurface_connect_supportedFormatsChanged(QAbstractVideoSurface* self, intptr_t slot, void (*callback)(intptr_t), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t);
+		seeqt::release_callback release;
+		void operator()() {
+			callback(slot);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)()>(&QAbstractVideoSurface::supportedFormatsChanged), self, caller{slot, callback, release});
 }
 
 void QAbstractVideoSurface_nativeResolutionChanged(QAbstractVideoSurface* self, QSize* resolution) {
 	self->nativeResolutionChanged(*resolution);
 }
 
-void QAbstractVideoSurface_connect_nativeResolutionChanged(QAbstractVideoSurface* self, intptr_t slot) {
-	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QSize&)>(&QAbstractVideoSurface::nativeResolutionChanged), self, [=](const QSize& resolution) {
-		const QSize& resolution_ret = resolution;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&resolution_ret);
-		miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(slot, sigval1);
-	});
+void QAbstractVideoSurface_connect_nativeResolutionChanged(QAbstractVideoSurface* self, intptr_t slot, void (*callback)(intptr_t, QSize*), void (*release)(intptr_t)) {
+	struct caller {
+		intptr_t slot;
+		void (*callback)(intptr_t, QSize*);
+		seeqt::release_callback release;
+		void operator()(const QSize& resolution) {
+			const QSize& resolution_ret = resolution;
+			// Cast returned reference into pointer
+			QSize* sigval1 = const_cast<QSize*>(&resolution_ret);
+			callback(slot, sigval1);
+		}
+		caller(caller&&) = default;
+		caller& operator=(caller&&) = default;
+		~caller() { release(slot); }
+	};
+	MiqtVirtualQAbstractVideoSurface::connect(self, static_cast<void (QAbstractVideoSurface::*)(const QSize&)>(&QAbstractVideoSurface::nativeResolutionChanged), self, caller{slot, callback, release});
 }
 
 struct miqt_string QAbstractVideoSurface_tr2(const char* s, const char* c) {
