@@ -151,7 +151,7 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		fullCommand = append(fullCommand, "-t")
 	}
 
-	if needsSudo && runtime.GOOS != "windows" {
+	if runtime.GOOS != "windows" {
 		userinfo, err := user.Current()
 		if err != nil {
 			log.Panic(err)
